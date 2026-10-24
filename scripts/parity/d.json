@@ -1,0 +1,8 @@
+{
+  "progress:uploading": "document.querySelectorAll('.js_progress').forEach(e => e.style.width = '40%'); document.querySelector('#btnUpload').classList.add('weui-btn_disabled');",
+  "slider:value80": "document.querySelector('#sliderTrack').style.width = '80%'; document.querySelector('#sliderHandler').style.left = '80%'; document.querySelector('#sliderValue').textContent = '80';",
+  "information-bar:closed": "document.querySelectorAll('.weui-information-bar')[0].style.display = 'none';",
+  "uploader:viewer": "document.querySelector('#uploaderFiles li').click(); await new Promise(r => setTimeout(r, 400));",
+  "uploader:preview": "document.querySelector('#uploaderFilesWithDelete .weui-uploader__file__thumb').click(); await new Promise(r => setTimeout(r, 400));",
+  "gallery:closed": "document.querySelector('#gallery').style.display = 'none';"
+}
