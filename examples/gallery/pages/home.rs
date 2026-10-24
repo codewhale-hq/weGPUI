@@ -9,7 +9,13 @@ use wegpui::{
     components::{Cell, Cells, CellsStyle, modal::ease},
 };
 
-const CATEGORIES: &[(&str, &str, &[(&str, &str)])] = &[
+type Category = (
+    &'static str,
+    &'static str,
+    &'static [(&'static str, &'static str)],
+);
+
+const CATEGORIES: &[Category] = &[
     (
         "表单",
         "icon_nav_form.png",

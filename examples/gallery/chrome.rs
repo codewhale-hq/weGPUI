@@ -52,7 +52,6 @@ pub struct PageFrame {
     header: Option<AnyElement>,
     spacing: bool,
     bg: Option<Hsla>,
-    footer: Option<bool>,
     scroll: bool,
     body: Vec<AnyElement>,
     fixed: Vec<AnyElement>,
@@ -67,7 +66,6 @@ impl PageFrame {
             header: None,
             spacing: false,
             bg: None,
-            footer: None,
             scroll: true,
             body: vec![],
             fixed: vec![],
@@ -91,10 +89,6 @@ impl PageFrame {
     }
     pub fn bg(mut self, bg: Hsla) -> Self {
         self.bg = Some(bg);
-        self
-    }
-    pub fn footer(mut self, show: bool) -> Self {
-        self.footer = Some(show);
         self
     }
     pub fn no_scroll(mut self) -> Self {
@@ -160,7 +154,7 @@ impl RenderOnce for PageFrame {
         } else {
             t.bg_0
         });
-        let show_footer = self.footer.unwrap_or(!footer_hidden(self.route));
+        let show_footer = !footer_hidden(self.route);
         let handle = window
             .use_keyed_state(
                 SharedString::from(format!("scroll-{}", self.route)),
@@ -205,23 +199,5 @@ impl RenderOnce for PageFrame {
                     .child(content),
             )
             .children(self.fixed)
-    }
-}
-
-pub struct Placeholder {
-    route: &'static str,
-}
-
-impl Placeholder {
-    pub fn view(route: &'static str, cx: &mut App) -> AnyView {
-        cx.new(|_| Placeholder { route }).into()
-    }
-}
-
-impl Render for Placeholder {
-    fn render(&mut self, _: &mut Window, _: &mut Context<Self>) -> impl IntoElement {
-        PageFrame::new(self.route)
-            .title(self.route)
-            .desc("Not implemented yet")
     }
 }
