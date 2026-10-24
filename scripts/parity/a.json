@@ -1,0 +1,9 @@
+{
+  "searchbar_filled:focused": "document.querySelector('#searchText').click();",
+  "searchbar_filled:typed": "document.querySelector('#searchText').click(); const i = document.querySelector('#searchInput'); i.value = 'weui'; i.dispatchEvent(new Event('input'));",
+  "searchbar_grey:focused": "document.querySelector('#searchText').click();",
+  "searchbar_grey:typed": "document.querySelector('#searchText').click(); const i = document.querySelector('#searchInput'); i.value = 'weui'; i.dispatchEvent(new Event('input'));",
+  "searchbar_outlined:focused": "document.querySelector('#searchInput').focus();",
+  "searchbar_outlined:typed": "const i = document.querySelector('#searchInput'); i.focus(); i.value = 'weui'; i.dispatchEvent(new Event('input'));",
+  "searchbar_outlined:filled": "const i = document.querySelector('#searchInput'); i.value = 'weui'; i.dispatchEvent(new Event('input')); i.blur();"
+}
