@@ -314,10 +314,11 @@ impl RenderOnce for Modal {
                 }
             })
             .on_click(move |_, window, cx| {
-                if dismiss_on_mask && interactive {
-                    if let Some(handler) = dismiss.as_ref() {
-                        handler(window, cx);
-                    }
+                if dismiss_on_mask
+                    && interactive
+                    && let Some(handler) = dismiss.as_ref()
+                {
+                    handler(window, cx);
                 }
             })
             .child(content);
