@@ -1,0 +1,4 @@
+Source: 51be7e3873404941ea9e51f3a76383c1d2443d7d; clean working tree
+Command: cargo fmt --all -- --check
+
+exit=0

@@ -1,55 +1,50 @@
 # Status — 2026-10-24
 
-weGPUI ports every WeUI 2.6.26 example family to native GPUI components, with a gallery that reproduces all 61 upstream example files. Visual evidence covers every route and registered state in light and dark. The remaining gaps are listed below; they are real and are not hidden by the verdicts in [PARITY](PARITY.md).
+weGPUI is an independent Rust library and gallery port of WeUI 2.6.26. GitHub is the canonical contributor home; CNB is a mirror. All 61 upstream example files have gallery mappings, but complete visual, behavioural and accessibility parity is **not verified**. See the [independent review and per-family table](REVIEW-2026-10-24.md).
+
+The requested platform target is macOS, Windows, Linux, iOS and Android. Only macOS arm64 has local build and interaction evidence. Mobile support is not implemented or verified.
 
 ## Done
 
-- **Coverage:** all 61 upstream HTML files (58 in 29 component directories plus `home`, `index`, `layers`) map to gallery routes built from public library components; no placeholder routes remain. See [UPSTREAM-COVERAGE](UPSTREAM-COVERAGE.md).
-- **Library:** one module per family in `src/components/` (38 modules), a shared `Modal`/`Presence` overlay layer, `TextInput` (single- and multi-line), `TextArea`, `Theme` with exact light, dark, care-light and care-dark palettes (180 variables each), system appearance, explicit mode and brand override.
-- **Generated sources:** `scripts/extract_weui.py` regenerates `assets/` (32 upstream SVG icons plus example images), `src/assets.rs`, `src/theme/palette.rs` and `docs/tokens.json`. A scratch regeneration from the pinned package reproduces all of them byte for byte.
-- **Visual parity:** 264 native/official pairs (528 PNGs) at 375×812 pt @2x, light and dark, every route and every registered state, plus brand and care-mode samples. All routes match apart from the residuals listed in PARITY.
-- **Build gates** (macOS, source `2c8ed10` and the later label-only commit): `cargo build --all-targets --locked --offline` and `cargo clippy --all-targets --locked --offline` exit 0 with no crate diagnostics; `cargo fmt --all -- --check` passes. The only remaining output is the future-incompatibility notice for `block v0.1.6`, which comes through `cocoa` from the pinned `gpui-pre-macos 0.3.7`. It is upstream, cannot change without unpinning GPUI, and is left visible. Receipts: `docs/receipts/takeover-build.txt`, `docs/receipts/takeover-clippy.txt`.
-- **Interactions driven with real macOS input events** (`scripts/drive.py`):
-  - search: focus, typing, results, clear, cancel;
-  - dialog: open, Tab trapped inside, Escape closes;
-  - action sheet: open, mask dismiss;
-  - picker: drag with inertia/snap; Down/Up/End skipping the disabled item; Tab across date-picker columns; Escape restores focus to the opener;
-  - switch: click and Tab+Space;
-  - textarea: typing, Return, live count;
-  - layers: Tab+Enter isolation;
-  - gallery: Tab/Shift-Tab traversal with visible focus rings.
-- **Accessibility tree** (macOS AX dump): the dialog is exposed as a focused modal `dialog` with its actions; the radio group exposes checked values; switches expose on/off and disabled; sliders expose values; the picker column is a focused list with the selected option marked; form headings carry their text.
+- Frozen `51be7e3`: macOS `cargo build --all-targets --locked --offline`, `cargo clippy --all-targets --locked --offline -- -D warnings`, and `cargo fmt --all -- --check` passed. Only the upstream `block v0.1.6` future-incompatibility notice remained.
+- Coverage inventory: all 61 HTML filenames match [UPSTREAM-COVERAGE](UPSTREAM-COVERAGE.md). Home/layers are gallery-specific; index is the shell. Public components cover the component families.
+- A scratch extraction reproduced 65 generated files, including 32 SVG icons and four 180-field palettes.
+- Independent recapture: 28 pairs across 13 routes, light and dark, including overlays and single/date pickers. 52 of 56 images reproduced committed files exactly. Residuals and limitations are in [PARITY](PARITY.md).
+- Fixed navbar/tabbar arrow navigation to follow the focused tab, and action-sheet child corners. Fresh native input and light/dark screenshots cover these changes.
+- Fixed the AX dumper to walk the whole first window. Nine routes were dumped.
+- Real Pinyin marked-text composition and candidate commit succeeded in TextArea. This is limited evidence, not general IME qualification.
 
 ## Partly done
 
-- **Accessibility:** roles, names, values and focus are present and sampled on five routes. VoiceOver itself has not been run. Picker option labels are set through AccessKit but did not appear in the AX dump's name attribute. Page content behind an open modal is still present in the AX tree; the modal node is flagged modal and focused.
-- **Reduced motion:** the system preference is read at start-up and on activation (`motion::sync_reduce_motion`), and every animation honours `App::reduce_motion`. Toggling the macOS setting while the app runs was not tested.
-- **Care mode:** palettes and type scale are implemented. Only `form_primary` was compared against the official care mode (light and dark, matches).
-- **Layers:** a native projection of the 3D layer stack. Labels are drawn upright because GPUI has no 3D text transform. In one of four captures the default page was still flat after 3 s, so the start-up timer appears timing-sensitive; not reproduced since.
-- **Hosted CI:** `.cnb.yml` defines Linux fmt/build/clippy (`-D warnings`) on push to CNB. `2c8ed10` was pushed to CNB, but the run result was not read; it needs CNB access.
+- **Behaviour:** see the per-family review table. Static examples and empty sample callbacks do not prove working product flows.
+- **Accessibility:** roles, values and selected states are sampled; modal background controls remain exposed and picker/select option labels are missing from AX dumps. No VoiceOver session has been run.
+- **Input:** ordinary typing/selection and textarea Return/count have evidence. Single-line Pinyin composition was attempted but not confirmed; cancellation, selection replacement and composition at length limits remain untested.
+- **Rustdoc:** `cargo doc --no-deps --locked --offline` succeeds, but the missing-docs audit reports 1,019 warnings. API rustdoc and generator preservation are approved; implementation remains outstanding.
+- **Reduced motion/animations:** startup preference support exists. Live setting changes and frame-by-frame timing are unverified. Modal slide distance uses the viewport height rather than the panel height, and reverse easing differs from CSS.
+- **Visual parity:** the archive contains 264 regular pairs plus three brand/care pairs. The independent review only sampled 28 pairs. Long-page content and care mode across every family remain unverified.
 
-## Not done
+## Known unresolved defects and gaps
 
-- **Real Chinese IME composition:** not exercised. Unicode paste and programmatic Unicode key events were used; neither proves marked-text composition.
-- **Windows and Linux:** never run natively; only the CNB Linux build config exists.
-- **Localisation:** no locale system and no right-to-left layout. Component default strings (搜索, 取消, 确定) are overridable by callers, and sample text reproduces upstream verbatim.
-- **Mobile safe-area insets:** not applicable to desktop windows and not implemented.
-- **GitCode mirror:** the push needs the owner's credentials; `gitcode/main` is still `e8216d7`. CNB (`origin`) and GitHub hold the current `main`.
-- **Release:** no release packaging, crates.io publication or macOS runner qualification.
+- `SelectMenu`: option arrows use global focus traversal; real-input probes showed focus reaching a background trigger. Focus initialization, containment and disabled-option traversal need a verified fix.
+- `Slider::range`: non-finite caller values can reach `f32::clamp` or invalid layout arithmetic. Inputs/range/step need validation.
+- `Picker::initial_index`: remembered/default values can select disabled items; all-disabled/empty columns need an explicit confirm contract. `today()` uses UTC, unlike the browser example's local date.
+- `Presence`: hide without an opener only blurs the root focus handle, not a focused child; interrupted transitions and exact easing/travel need review.
+- `LinkText`: multiple mouse links share a single keyboard target/first handler. Article heading levels/list-item semantics and hidden swipe actions need accessibility work.
+- Text input length counts graphemes rather than HTML UTF-16 units; numeric character filtering is not complete input validation; undo/redo is absent.
+- Uploader gallery add uses a bundled image. A native chooser and honest file/error lifecycle demonstration are outstanding; transport remains application-owned.
+- Public naming mixes `Navbar`/`Tabbar` with `SearchBar`, and terse `hd`/`bd`/`ft` helpers. Document the existing API before deciding on breaking changes.
+- **Linux:** no desktop backend feature is enabled (`font-kit` only). The pinned backend requires `wayland` or `x11`. Compilation and a displayed, interactive gallery must both be qualified.
+- **iOS/Android:** no native platform branch exists in the pinned `gpui-pre-platform` constructor. Resolve feasibility before promising support or changing dependencies.
 
-## Known residual differences
+## Not done / missing receipts
 
-Full list per route: [PARITY](PARITY.md). In summary:
-- macOS shaping inserts spacing at CJK/Latin boundaries;
-- line-breaking differs for “?” and CJK kinsoku/ellipsis in the panel clamp;
-- “verification” hyphenates at a different point;
-- the date/time rows draw a WeUI icon in place of Chromium's native control;
-- the default `layers` frame differs because the official screenshot is captured mid-transition.
+- Native Windows/Linux/iOS/Android builds and runtime evidence; mobile safe areas, touch, software keyboards, rotation and lifecycle.
+- Hosted CNB CI result; GitHub Actions approval and configuration. No new workflow has been enabled.
+- VoiceOver and other screen-reader sessions; comprehensive single-line and multiline IME coverage.
+- Reproducible upstream download/serve tooling, contributor parity guide, README usage example, contribution/security/conduct/changelog documents and templates.
+- Measured MSRV and package-content review. Rust 1.99.0 is verified; the resolved graph declares a 1.89 lower bound, which is not yet a measured project MSRV.
+- Complete public API docs; a test suite requires owner approval.
+- Release policy, crates.io name/publication, screenshot storage policy, and localisation/RTL scope. No release or publication occurred.
+- GitCode mirror update requires owner credentials; do not infer its state from other mirrors.
 
-One upstream bug is reproduced as intended behaviour: in `form_vcode`, two buttons share an id, so the visible 确定 never shows the toast in the official page.
-
-## Commits (since the initial licence commit `e8216d7`)
-
-`8064418` checkpoint · `d4c04b1` foundation · `ef939fe` CNB metadata · `4d357df` panel, preview, progress, slider, steps, information bar, uploader, gallery, msg · `ca1abbb` interaction driver, AX dump, sRGB captures, CI config · `7d4b44c` buttons, loading, loadmore, badge, icons, flex, footer, article, grid, swiped list · `17b598a` semibold weights, gallery Tab traversal · `483d57d` TextInput, TextArea, search · `c1b4369` form system · `dcceb37` overlays, picker, navbar, tabbar, layers · `2c8ed10` clippy-clean generator, complete SVG extraction · then the evidence/docs commit, which adds the form heading label and the `form_vcode:toast` replay fix.
-
-Work from `483d57d` to `dcceb37` was written by parallel workers in an earlier session that stopped at an API usage limit. The takeover lead reviewed it, fixed the defects listed in those commit messages, and verified it on the final tree. Intermediate commits were not built individually.
+[Sources](SOURCES.md) · [Coverage](UPSTREAM-COVERAGE.md) · [Visual evidence](PARITY.md) · [Independent review](REVIEW-2026-10-24.md)

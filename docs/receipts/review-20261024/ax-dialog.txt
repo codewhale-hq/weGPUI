@@ -1,0 +1,15 @@
+AXWindow | standard window | weGPUI [focused]
+  AXGroup | group
+    AXButton | button | 样式一
+    AXButton | button | 样式二
+    AXButton | button | 样式三
+    AXLink | link | WeUI 首页
+    AXWindow | dialog | 弹窗标题
+      AXButton | button | 辅助操作
+      AXButton | button | 主操作
+  AXButton | close button
+  AXButton | full screen button
+    AXGroup | group
+      AXGroup | group
+  AXButton | minimize button
+  AXStaticText | text | weGPUI | weGPUI

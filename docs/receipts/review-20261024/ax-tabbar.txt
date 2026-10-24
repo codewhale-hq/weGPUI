@@ -1,0 +1,14 @@
+AXWindow | standard window | weGPUI [focused]
+  AXGroup | group
+    AXGroup | group | 通讯录
+    AXTabGroup | tab group | 选项卡标题
+      AXRadioButton | tab | 微信 | false
+      AXRadioButton | tab | 通讯录 | true
+      AXRadioButton | tab | 发现 | false [focused]
+      AXRadioButton | tab | 我 | false
+  AXButton | close button
+  AXButton | full screen button
+    AXGroup | group
+      AXGroup | group
+  AXButton | minimize button
+  AXStaticText | text | weGPUI | weGPUI

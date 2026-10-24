@@ -1,0 +1,31 @@
+AXWindow | standard window | weGPUI [focused]
+  AXGroup | group
+    AXLink | link | 组件Gallery
+      AXStaticText | text | 上传组件，一般配合组件Gallery来使用。 | 上传组件，一般配合组件Gallery来使用。
+    AXGroup | group
+      AXGroup | group | 图片上传，缩略图不带删除，3/10
+      AXList | list
+        AXImage | image | 图片标题
+        AXImage | image | 图片标题
+        AXImage | image | 图片标题
+        AXGroup | group | 错误
+        AXGroup | group | 50%
+        AXImage | image | 图片标题
+        AXButton | button | 上传图片 [focused]
+    AXGroup | group
+      AXGroup | group | 图片上传，缩略图带删除，3/10
+      AXList | list
+        AXImage | image | 图片标题
+        AXButton | button | 删除
+        AXImage | image | 图片标题
+        AXButton | button | 删除
+        AXGroup | group | 错误
+        AXGroup | group | 50%
+        AXButton | button | 上传图片
+    AXLink | link | WeUI 首页
+  AXButton | close button
+  AXButton | full screen button
+    AXGroup | group
+      AXGroup | group
+  AXButton | minimize button
+  AXStaticText | text | weGPUI | weGPUI

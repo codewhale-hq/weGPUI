@@ -1,0 +1,20 @@
+AXWindow | standard window | weGPUI [focused]
+  AXGroup | group
+    AXGroup | group
+      AXButton | button | 返回
+      AXPopUpButton | pop up button
+        AXTextField | search text field | 搜索 | nihao  [focused]
+        AXButton | button | 清除
+      AXButton | button | 取消
+    AXList | list | 搜索结果
+      AXStaticText | text
+      AXStaticText | text
+      AXStaticText | text
+      AXStaticText | text
+    AXLink | link | WeUI 首页
+  AXButton | close button
+  AXButton | full screen button
+    AXGroup | group
+      AXGroup | group
+  AXButton | minimize button
+  AXStaticText | text | weGPUI | weGPUI

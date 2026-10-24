@@ -1,7 +1,9 @@
 # Upstream sources
 
 - WeUI npm package: `weui@2.6.26`, SHA-1 `457eaa5a7ab9539b9944ff736bf0afffdd5d7baf`.
-- Tokens: `dist/style/weui.css`, default `.wx-root,body` and explicit dark selectors. Care mode is excluded from these two palettes.
+- Tarball: `https://registry.npmjs.org/weui/-/weui-2.6.26.tgz`, SHA-256 `f88a8f1d22ceb94e802bf423bd477a4a0cfad4cf9d70a77eedbc3cb17511b435`.
+- Example runtime: `dist/example/index.html` loads external weui.js 1.2.17 and WeChat JS SDK 1.0.0; the CSS tarball hash alone does not pin those responses.
+- Tokens: `dist/style/weui.css`, default `.wx-root,body` and explicit dark selectors. Four palettes are generated: light, dark, care-light and care-dark.
 - Dimensions and behaviour: `src/style/widget/`, `src/style/base/variable/`, `src/example/`.
 - GPUI: crates.io `gpui-pre =0.3.7`, `gpui-pre-platform =0.3.7`.
 - Input base: `gpui-pre-0.3.7/examples/input.rs`.

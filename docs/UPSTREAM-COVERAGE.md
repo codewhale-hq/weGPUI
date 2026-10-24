@@ -85,3 +85,7 @@ Total: 61 files.
 | safe-area insets (`env(safe-area-inset-*)`) | base padding only | desktop windows have no insets, so this equals upstream with `env()` = 0; mobile inset handling is not implemented |
 
 The original `steps_horizonal.html` spelling is preserved intentionally.
+
+## Independent review qualification
+
+All 61 upstream filenames were counted again on 2026-10-24. `index` is the gallery shell; home and layers include gallery-specific implementations. The mapping establishes route coverage, not complete behaviour. See [the review](REVIEW-2026-10-24.md) for per-family evidence, sample-only/no-op actions and outstanding differences.

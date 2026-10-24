@@ -1,0 +1,12 @@
+AXWindow | standard window | weGPUI [focused]
+  AXGroup | group
+    Heading | Heading | 文本域
+    AXTextArea | text entry area | 请描述你所发生的问题
+    AXGroup | group | 0/200
+    AXButton | button | 确定
+  AXButton | close button
+  AXButton | full screen button
+    AXGroup | group
+      AXGroup | group
+  AXButton | minimize button
+  AXStaticText | text | weGPUI | weGPUI

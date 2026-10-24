@@ -1,0 +1,13 @@
+AXWindow | standard window | weGPUI [focused]
+  AXGroup | group
+    Heading | Heading | 开关样式展示
+    AXCheckBox | switch | 标题文字 | false [focused]
+    AXCheckBox | switch | 标题文字 | true [disabled]
+    AXCheckBox | switch | 兼容IE Edge的版本 | true
+    AXButton | button | 确定
+  AXButton | close button
+  AXButton | full screen button
+    AXGroup | group
+      AXGroup | group
+  AXButton | minimize button
+  AXStaticText | text | weGPUI | weGPUI

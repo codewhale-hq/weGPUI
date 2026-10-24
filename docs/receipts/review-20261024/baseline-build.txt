@@ -1,0 +1,8 @@
+Source: 51be7e3873404941ea9e51f3a76383c1d2443d7d; clean working tree
+Command: cargo build --all-targets --locked --offline
+   Compiling wegpui v0.1.0 (<checkout>)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 4.72s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`
+
+exit=0

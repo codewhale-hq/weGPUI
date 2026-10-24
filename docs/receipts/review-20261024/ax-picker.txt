@@ -1,0 +1,19 @@
+AXWindow | standard window | weGPUI [focused]
+  AXGroup | group
+    AXButton | button | 单列选择器
+    AXButton | button | 日期选择器
+    AXLink | link | WeUI 首页
+    AXWindow | dialog | 单列选择器
+      AXList | list | 单列选择器 的士票
+        AXStaticText | text
+        AXStaticText | text
+        AXStaticText | text [selected]
+        AXStaticText | text
+        AXStaticText | text
+      AXButton | button | 确定
+  AXButton | close button
+  AXButton | full screen button
+    AXGroup | group
+      AXGroup | group
+  AXButton | minimize button
+  AXStaticText | text | weGPUI | weGPUI

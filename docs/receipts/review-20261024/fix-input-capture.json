@@ -1,0 +1,118 @@
+[
+  {
+    "command": [
+      "python3",
+      "-I",
+      "scripts/drive.py",
+      "navbar",
+      "click:185,24",
+      "key:tab",
+      "key:left",
+      "shot:aligned",
+      "--out",
+      "<review-output>/fixes/navbar"
+    ],
+    "exit": 0,
+    "output": "<review-output>/fixes/navbar/aligned.png\n"
+  },
+  {
+    "command": [
+      "python3",
+      "-I",
+      "scripts/drive.py",
+      "tabbar",
+      "click:234,780",
+      "key:tab",
+      "key:left",
+      "shot:aligned",
+      "--out",
+      "<review-output>/fixes/tabbar"
+    ],
+    "exit": 0,
+    "output": "<review-output>/fixes/tabbar/aligned.png\n"
+  },
+  {
+    "command": [
+      "python3",
+      "-I",
+      "scripts/drive.py",
+      "form_select",
+      "click:200,166",
+      "key:up",
+      "shot:wrapped",
+      "key:down",
+      "shot:first",
+      "key:escape",
+      "shot:closed",
+      "--out",
+      "<review-output>/fixes/form_select"
+    ],
+    "exit": 0,
+    "output": "<review-output>/fixes/form_select/wrapped.png\n<review-output>/fixes/form_select/first.png\n<review-output>/fixes/form_select/closed.png\n",
+    "interpretation": "Inconclusive focus evidence; candidate implementation reverted, not part of the landed fixes."
+  },
+  {
+    "command": [
+      "python3",
+      "-I",
+      "scripts/capture.py",
+      "actionsheet",
+      "--state",
+      "ios",
+      "--theme",
+      "light",
+      "--out",
+      "<review-output>/fixes/captures"
+    ],
+    "exit": 0,
+    "output": "<review-output>/fixes/pairs/actionsheet-ios-light-pair.png\n<review-output>/fixes/captures/actionsheet-ios-light-gpui.png <review-output>/fixes/captures/actionsheet-ios-light-weui.png\n"
+  },
+  {
+    "command": [
+      "python3",
+      "-I",
+      "scripts/capture.py",
+      "actionsheet",
+      "--state",
+      "ios",
+      "--theme",
+      "dark",
+      "--out",
+      "<review-output>/fixes/captures"
+    ],
+    "exit": 0,
+    "output": "<review-output>/fixes/pairs/actionsheet-ios-dark-pair.png\n<review-output>/fixes/captures/actionsheet-ios-dark-gpui.png <review-output>/fixes/captures/actionsheet-ios-dark-weui.png\n"
+  },
+  {
+    "command": [
+      "python3",
+      "-I",
+      "scripts/capture.py",
+      "actionsheet",
+      "--state",
+      "android",
+      "--theme",
+      "light",
+      "--out",
+      "<review-output>/fixes/captures"
+    ],
+    "exit": 0,
+    "output": "<review-output>/fixes/pairs/actionsheet-android-light-pair.png\n<review-output>/fixes/captures/actionsheet-android-light-gpui.png <review-output>/fixes/captures/actionsheet-android-light-weui.png\n"
+  },
+  {
+    "command": [
+      "python3",
+      "-I",
+      "scripts/capture.py",
+      "actionsheet",
+      "--state",
+      "android",
+      "--theme",
+      "dark",
+      "--out",
+      "<review-output>/fixes/captures"
+    ],
+    "exit": 0,
+    "output": "<review-output>/fixes/pairs/actionsheet-android-dark-pair.png\n<review-output>/fixes/captures/actionsheet-android-dark-gpui.png <review-output>/fixes/captures/actionsheet-android-dark-weui.png\n"
+  }
+]

@@ -1,0 +1,12 @@
+AXWindow | standard window | weGPUI [focused]
+  AXGroup | group
+    AXSlider | slider | 不可调滑块 | 0
+    AXSlider | slider | 可调滑块 | 50
+    AXGroup | group | 50
+    AXLink | link | WeUI 首页
+  AXButton | close button
+  AXButton | full screen button
+    AXGroup | group
+      AXGroup | group
+  AXButton | minimize button
+  AXStaticText | text | weGPUI | weGPUI

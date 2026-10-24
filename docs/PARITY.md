@@ -1,6 +1,10 @@
 # Visual parity
 
-Evidence for the candidate at commit `2c8ed10` (gallery binary built from that source). Every gallery route and every registered capture state was captured natively and beside the official WeUI 2.6.26 example, in light and dark: **264 pairs, 528 PNG files** in `docs/parity/`, plus brand and care-mode samples. Each pair was inspected (light at pair scale, dark at contact-sheet scale, the 40 largest pixel-difference scores individually).
+Historical evidence for the candidate at commit `2c8ed10` (gallery binary built from that source). Every gallery route and every registered capture state was captured natively and beside the official WeUI 2.6.26 example, in light and dark: **264 pairs, 528 PNG files** in `docs/parity/`, plus brand and care-mode samples. Each pair was inspected (light at pair scale, dark at contact-sheet scale, the 40 largest pixel-difference scores individually).
+
+## Independent review qualification
+
+The [2026-10-24 review](REVIEW-2026-10-24.md) rechecked 28 pairs across 13 routes. The table below preserves earlier verdicts and must not be read as independent proof of every state. Additional form-description wrapping and native-window clipping differences were found. Action-sheet corners were corrected after the baseline captures. Complete behaviour, animation and accessibility parity remain unverified.
 
 ## Method
 
@@ -12,6 +16,7 @@ Evidence for the candidate at commit `2c8ed10` (gallery binary built from that s
 ## Differences common to every pair
 
 - Glyph rasterisation: CoreText via GPUI vs Chromium/Skia; system UI fonts on both sides, slightly different hinting and line-box rounding (≤1 pt).
+- Native screenshots include macOS bottom-corner clipping; browser viewports are rectangular.
 - Spinners and caret blink are frozen by reduced motion natively; Chromium frames are taken at an arbitrary animation phase.
 
 ## Results by route
@@ -28,7 +33,7 @@ Verdict “Matches” means no layout, spacing, size, colour or content differen
 | `list` | Matches. | default ([light](parity/list-light-gpui.png) / [weui](parity/list-light-weui.png); [dark](parity/list-dark-gpui.png) / [weui](parity/list-dark-weui.png)), `closed` |
 | `input` | Matches. The date/time rows mimic Chromium’s native `<input type=date>` text; the calendar glyph is a WeUI-style icon, not Chromium’s control. | default ([light](parity/input-light-gpui.png) / [weui](parity/input-light-weui.png); [dark](parity/input-dark-gpui.png) / [weui](parity/input-dark-weui.png)) |
 | `form` | Matches. | default ([light](parity/form-light-gpui.png) / [weui](parity/form-light-weui.png); [dark](parity/form-dark-gpui.png) / [weui](parity/form-dark-weui.png)) |
-| `form_primary` | Matches. | default ([light](parity/form_primary-light-gpui.png) / [weui](parity/form_primary-light-weui.png); [dark](parity/form_primary-dark-gpui.png) / [weui](parity/form_primary-dark-weui.png)), `switch`, `filled` |
+| `form_primary` | Differs: description wrapping and CJK/slash spacing differ in the independent sample. | default ([light](parity/form_primary-light-gpui.png) / [weui](parity/form_primary-light-weui.png); [dark](parity/form_primary-dark-gpui.png) / [weui](parity/form_primary-dark-weui.png)), `switch`, `filled` |
 | `form_page` | Matches. The “verification address” label hyphenates as “verificati-on” natively vs “verifica-tion” (CSS `hyphens`). | default ([light](parity/form_page-light-gpui.png) / [weui](parity/form_page-light-weui.png); [dark](parity/form_page-dark-gpui.png) / [weui](parity/form_page-dark-weui.png)), `filled`, `toast` |
 | `form_page_old` | Matches; same hyphenation difference as form_page. | default ([light](parity/form_page_old-light-gpui.png) / [weui](parity/form_page_old-light-weui.png); [dark](parity/form_page_old-dark-gpui.png) / [weui](parity/form_page_old-dark-weui.png)), `filled` |
 | `form_input_status` | Matches layout, colours and states. macOS text shaping inserts visible spacing at CJK/Latin boundaries (“置顶 tipsbar”, “16 位”); source strings are identical to upstream. | default ([light](parity/form_input_status-light-gpui.png) / [weui](parity/form_input_status-light-weui.png); [dark](parity/form_input_status-dark-gpui.png) / [weui](parity/form_input_status-dark-weui.png)), `error`, `amount`, `toast` |
@@ -61,7 +66,7 @@ Verdict “Matches” means no layout, spacing, size, colour or content differen
 | `navbar` | Matches. | default ([light](parity/navbar-light-gpui.png) / [weui](parity/navbar-light-weui.png); [dark](parity/navbar-dark-gpui.png) / [weui](parity/navbar-dark-weui.png)), `tab2`, `tab3` |
 | `tabbar` | Matches. | default ([light](parity/tabbar-light-gpui.png) / [weui](parity/tabbar-light-weui.png); [dark](parity/tabbar-dark-gpui.png) / [weui](parity/tabbar-dark-weui.png)), `tab2`, `tab3` |
 | `panel` | Matches. Description clamp: Chromium applies CJK kinsoku and an ellipsis on line 2; GPUI may start line 2 with “。” and the text happens to fit without ellipsis. | default ([light](parity/panel-light-gpui.png) / [weui](parity/panel-light-weui.png); [dark](parity/panel-dark-gpui.png) / [weui](parity/panel-dark-weui.png)) |
-| `actionsheet` | Matches. | default ([light](parity/actionsheet-light-gpui.png) / [weui](parity/actionsheet-light-weui.png); [dark](parity/actionsheet-dark-gpui.png) / [weui](parity/actionsheet-dark-weui.png)), `ios`, `android` |
+| `actionsheet` | Baseline iOS top corners were square; corrected and recaptured in the review. | default ([light](parity/actionsheet-light-gpui.png) / [weui](parity/actionsheet-light-weui.png); [dark](parity/actionsheet-dark-gpui.png) / [weui](parity/actionsheet-dark-weui.png)), `ios`, `android` |
 | `icons` | Matches. | default ([light](parity/icons-light-gpui.png) / [weui](parity/icons-light-weui.png); [dark](parity/icons-dark-gpui.png) / [weui](parity/icons-dark-weui.png)) |
 | `searchbar` | Matches. | default ([light](parity/searchbar-light-gpui.png) / [weui](parity/searchbar-light-weui.png); [dark](parity/searchbar-dark-gpui.png) / [weui](parity/searchbar-dark-weui.png)) |
 | `searchbar_filled` | Matches. | default ([light](parity/searchbar_filled-light-gpui.png) / [weui](parity/searchbar_filled-light-weui.png); [dark](parity/searchbar_filled-dark-gpui.png) / [weui](parity/searchbar_filled-dark-weui.png)), `focused`, `typed` |
