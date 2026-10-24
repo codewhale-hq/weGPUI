@@ -4,6 +4,10 @@ WeUI 2.6.26 reimplemented as native Rust GPUI components. This is an independent
 
 The port is in development. See [STATUS](docs/STATUS.md) for build and interaction evidence and [PARITY](docs/PARITY.md) for visual comparisons. Presence in the gallery does not establish visual or behavioural parity.
 
+[GitHub](https://github.com/codewhale-hq/weGPUI) is the canonical home for issues and pull requests; [CNB](https://cnb.cool/codewhale.net/weGPUI) is a mirror. This repository builds independently of any parent workspace.
+
+The platform target is desktop (macOS, Windows, Linux) and mobile (iOS, Android). Current verification is limited to macOS arm64. Linux backend configuration and native mobile backend feasibility remain open; see the [independent review](docs/REVIEW-2026-10-24.md).
+
 ```sh
 cargo run --example gallery
 ```

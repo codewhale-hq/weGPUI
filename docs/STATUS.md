@@ -13,6 +13,8 @@ The requested platform target is macOS, Windows, Linux, iOS and Android. Only ma
 - Fixed navbar/tabbar arrow navigation to follow the focused tab, and action-sheet child corners. Fresh native input and light/dark screenshots cover these changes.
 - Fixed the AX dumper to walk the whole first window. Nine routes were dumped.
 - Real Pinyin marked-text composition and candidate commit succeeded in TextArea. This is limited evidence, not general IME qualification.
+- Removed the internal takeover brief and machine-specific paths from the current public tree. Capture tooling defaults to Cargo's normal target directory and respects `CARGO_TARGET_DIR`. Git history was preserved.
+- Package repository/homepage and contributor links point to GitHub. Remaining package metadata and onboarding work are listed below.
 
 ## Partly done
 

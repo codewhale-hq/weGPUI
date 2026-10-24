@@ -5,7 +5,8 @@ edition = "2024"
 license = "MIT OR Apache-2.0"
 description = "WeUI 2.6.26 design system as native GPUI components"
 readme = "README.md"
-repository = "https://cnb.cool/codewhale.net/weGPUI"
+repository = "https://github.com/codewhale-hq/weGPUI"
+homepage = "https://github.com/codewhale-hq/weGPUI"
 
 [dependencies]
 gpui = { package = "gpui-pre", version = "=0.3.7" }
