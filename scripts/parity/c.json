@@ -1,0 +1,4 @@
+{
+  "list:closed": "document.querySelector('.weui-cell_swiped > .weui-cell__bd').style.transform = 'none'",
+  "button_bottom_fixed:agreed": "document.querySelector('#weuiAgreeCheckbox').click()"
+}
