@@ -358,7 +358,7 @@
    Compiling accesskit_macos v0.26.3
    Compiling gpui-pre-macos v0.3.7
    Compiling gpui-pre-platform v0.3.7
-   Compiling wegpui v0.1.0 (/Volumes/VIXinSSD/CW/weGPUI)
+   Compiling wegpui v0.1.0 (<checkout>)
 error[E0282]: type annotations needed for `&_`
   --> src/components/overlay.rs:96:45
    |

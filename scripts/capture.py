@@ -20,7 +20,7 @@ import tempfile
 import time
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-TARGET = pathlib.Path(os.environ.get('CARGO_TARGET_DIR', '/Volumes/VIXinSSD/cw-build-cache/target/wegpui'))
+TARGET = pathlib.Path(os.environ.get('CARGO_TARGET_DIR', ROOT / 'target'))
 BINARY = TARGET / 'debug/examples/gallery'
 WEUI_URL = os.environ.get('WEUI_URL', 'http://127.0.0.1:7193/dist/example/index.html')
 WIDTH = 375

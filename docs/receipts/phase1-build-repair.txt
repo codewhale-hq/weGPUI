@@ -1,4 +1,4 @@
-   Compiling wegpui v0.1.0 (/Volumes/VIXinSSD/CW/weGPUI)
+   Compiling wegpui v0.1.0 (<checkout>)
 error[E0659]: `Size` is ambiguous
   --> examples/gallery.rs:48:76
    |
