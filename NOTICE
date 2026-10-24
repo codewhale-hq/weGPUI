@@ -1,0 +1,18 @@
+weGPUI
+Original implementation Copyright 2026 weGPUI contributors.
+Licensed under MIT OR Apache-2.0.
+
+WeUI 2.6.26
+Copyright Tencent, Inc.
+Copyright 2026 Tencent, Inc.
+Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
+Design, tokens, icons, and example content adapted under the MIT licence.
+See LICENSE-WEUI for the complete upstream notice.
+Package: weui@2.6.26
+Tarball SHA-1: 457eaa5a7ab9539b9944ff736bf0afffdd5d7baf
+
+GPUI text input (src/input.rs)
+Adapted from gpui-pre 0.3.7 examples/input.rs.
+Copyright Zed Industries. Licensed under the Apache License, Version 2.0.
+Changes include public library API, WeUI styling, scoped key bindings,
+marked-text range correction, clipping and horizontal scrolling.
