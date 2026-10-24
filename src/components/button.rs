@@ -1,4 +1,4 @@
-use super::{ClickHandler, Loading};
+use super::{ClickHandler, loading::Loading};
 use crate::Theme;
 use gpui::{prelude::*, *};
 

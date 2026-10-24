@@ -1,4 +1,4 @@
-use super::{Icon, Loading};
+use super::{Icon, loading::Loading};
 use crate::Theme;
 use gpui::{prelude::*, *};
 #[derive(Clone, Copy, PartialEq, Eq)]
