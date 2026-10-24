@@ -1,0 +1,164 @@
+   Compiling wegpui v0.1.0 (/Volumes/VIXinSSD/CW/weGPUI)
+error[E0659]: `Size` is ambiguous
+  --> examples/gallery.rs:48:76
+   |
+48 | ...   })).child(Button::new("medium 按钮").id("medium").primary().size(Size::Medium)).child(Button::new("按钮").id("mini").primary()...
+   |                                                                        ^^^^ ambiguous name
+   |
+   = note: ambiguous because of multiple glob imports of a name in the same module
+note: `Size` could refer to the struct imported here
+  --> examples/gallery.rs:1:24
+   |
+ 1 | use gpui::{prelude::*, *};
+   |                        ^
+   = help: consider adding an explicit import of `Size` to disambiguate
+note: `Size` could also refer to the enum imported here
+  --> examples/gallery.rs:2:40
+   |
+ 2 | use wegpui::{Assets, Theme, ThemeMode, components::*, input::TextInput};
+   |                                        ^^^^^^^^^^^^^
+   = help: consider adding an explicit import of `Size` to disambiguate
+
+error[E0659]: `Size` is ambiguous
+  --> examples/gallery.rs:48:141
+   |
+48 | ...)).child(Button::new("按钮").id("mini").primary().size(Size::Mini)).into_any_element(),
+   |                                                           ^^^^ ambiguous name
+   |
+   = note: ambiguous because of multiple glob imports of a name in the same module
+note: `Size` could refer to the struct imported here
+  --> examples/gallery.rs:1:24
+   |
+ 1 | use gpui::{prelude::*, *};
+   |                        ^
+   = help: consider adding an explicit import of `Size` to disambiguate
+note: `Size` could also refer to the enum imported here
+  --> examples/gallery.rs:2:40
+   |
+ 2 | use wegpui::{Assets, Theme, ThemeMode, components::*, input::TextInput};
+   |                                        ^^^^^^^^^^^^^
+   = help: consider adding an explicit import of `Size` to disambiguate
+
+error[E0659]: `Size` is ambiguous
+   --> examples/gallery.rs:122:43
+    |
+122 | ...                   .size(Size::Mini)
+    |                             ^^^^ ambiguous name
+    |
+    = note: ambiguous because of multiple glob imports of a name in the same module
+note: `Size` could refer to the struct imported here
+   --> examples/gallery.rs:1:24
+    |
+  1 | use gpui::{prelude::*, *};
+    |                        ^
+    = help: consider adding an explicit import of `Size` to disambiguate
+note: `Size` could also refer to the enum imported here
+   --> examples/gallery.rs:2:40
+    |
+  2 | use wegpui::{Assets, Theme, ThemeMode, components::*, input::TextInput};
+    |                                        ^^^^^^^^^^^^^
+    = help: consider adding an explicit import of `Size` to disambiguate
+
+error[E0659]: `Size` is ambiguous
+   --> examples/gallery.rs:134:43
+    |
+134 | ...                   .size(Size::Mini)
+    |                             ^^^^ ambiguous name
+    |
+    = note: ambiguous because of multiple glob imports of a name in the same module
+note: `Size` could refer to the struct imported here
+   --> examples/gallery.rs:1:24
+    |
+  1 | use gpui::{prelude::*, *};
+    |                        ^
+    = help: consider adding an explicit import of `Size` to disambiguate
+note: `Size` could also refer to the enum imported here
+   --> examples/gallery.rs:2:40
+    |
+  2 | use wegpui::{Assets, Theme, ThemeMode, components::*, input::TextInput};
+    |                                        ^^^^^^^^^^^^^
+    = help: consider adding an explicit import of `Size` to disambiguate
+
+error[E0659]: `Size` is ambiguous
+   --> examples/gallery.rs:137:62
+    |
+137 | ...                   .child(Button::new("Brand").size(Size::Mini).on_click(|_, _, cx| {
+    |                                                        ^^^^ ambiguous name
+    |
+    = note: ambiguous because of multiple glob imports of a name in the same module
+note: `Size` could refer to the struct imported here
+   --> examples/gallery.rs:1:24
+    |
+  1 | use gpui::{prelude::*, *};
+    |                        ^
+    = help: consider adding an explicit import of `Size` to disambiguate
+note: `Size` could also refer to the enum imported here
+   --> examples/gallery.rs:2:40
+    |
+  2 | use wegpui::{Assets, Theme, ThemeMode, components::*, input::TextInput};
+    |                                        ^^^^^^^^^^^^^
+    = help: consider adding an explicit import of `Size` to disambiguate
+
+error[E0599]: no associated function or constant named `Mini` found for struct `gpui::Size<T>` in the current scope
+   --> examples/gallery.rs:122:49
+    |
+122 | ...                   .size(Size::Mini)
+    |                                   ^^^^ associated function or constant not found in `gpui::Size<_>`
+
+error[E0599]: no associated function or constant named `Mini` found for struct `gpui::Size<T>` in the current scope
+   --> examples/gallery.rs:134:49
+    |
+134 | ...                   .size(Size::Mini)
+    |                                   ^^^^ associated function or constant not found in `gpui::Size<_>`
+
+error[E0599]: no associated function or constant named `Mini` found for struct `gpui::Size<T>` in the current scope
+   --> examples/gallery.rs:137:68
+    |
+137 | ...                   .child(Button::new("Brand").size(Size::Mini).on_click(|_, _, cx| {
+    |                                                              ^^^^ associated function or constant not found in `gpui::Size<_>`
+
+error[E0599]: no associated function or constant named `Medium` found for struct `gpui::Size<T>` in the current scope
+  --> examples/gallery.rs:48:82
+   |
+48 | ..."medium").primary().size(Size::Medium)).child(Button::new("按钮").id("mini").primary().size(Size::Mini)).into_any_element(),
+   |                                   ^^^^^^ associated function or constant not found in `gpui::Size<_>`
+
+error[E0599]: no associated function or constant named `Mini` found for struct `gpui::Size<T>` in the current scope
+  --> examples/gallery.rs:48:147
+   |
+48 | ...id("mini").primary().size(Size::Mini)).into_any_element(),
+   |                                    ^^^^ associated function or constant not found in `gpui::Size<_>`
+
+error[E0308]: mismatched types
+  --> examples/gallery.rs:51:194
+   |
+51 | ...cked).on_change(cx.listener(|s,v,_,cx|{s.checked=v;cx.notify();})))))
+   |                                           --------- ^ expected `bool`, found `&_`
+   |                                           |
+   |                                           expected due to the type of this binding
+   |
+   = note:   expected type `bool`
+           found reference `&_`
+help: consider dereferencing the borrow
+   |
+51 |                 .child(Cells::new().title("复选列表项").child(Cell::new("standard is dealt for u.").header(Checkbox::new("checkbox").checked(self.checked).on_change(cx.listener(|s,v,_,cx|{s.checked=*v;cx.notify();})))))
+   |                                                                                                                                                                                                       +
+
+error[E0308]: mismatched types
+  --> examples/gallery.rs:52:282
+   |
+52 | ...cked).on_change(cx.listener(|s,v,_,cx|{s.checked=v;cx.notify();}))))).into_any_element(),
+   |                                           --------- ^ expected `bool`, found `&_`
+   |                                           |
+   |                                           expected due to the type of this binding
+   |
+   = note:   expected type `bool`
+           found reference `&_`
+help: consider dereferencing the borrow
+   |
+52 |                 .child(Cells::new().title("表单").child(Cell::new("文本").body(div().flex().gap(px(16.)).child(div().w(px(80.)).child("文本")).child(self.input.clone()))).child(Cell::new("开关").footer(Switch::new("switch").checked(self.checked).on_change(cx.listener(|s,v,_,cx|{s.checked=*v;cx.notify();}))))).into_any_element(),
+   |                                                                                                                                                                                                                                                                                                  +
+
+Some errors have detailed explanations: E0308, E0599, E0659.
+For more information about an error, try `rustc --explain E0308`.
+error: could not compile `wegpui` (example "gallery") due to 12 previous errors

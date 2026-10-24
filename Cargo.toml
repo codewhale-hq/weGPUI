@@ -1,0 +1,19 @@
+[package]
+name = "wegpui"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+description = "WeUI 2.6.26 design system as native GPUI components"
+readme = "README.md"
+repository = "https://gitcode.com/HunterBown/weGPUI"
+
+[dependencies]
+gpui = { package = "gpui-pre", version = "=0.3.7" }
+gpui_platform = { package = "gpui-pre-platform", version = "=0.3.7", features = ["font-kit"] }
+unicode-segmentation = "1.12"
+
+[profile.dev]
+debug = 1
+
+[profile.dev.package."*"]
+debug = 0
