@@ -182,6 +182,17 @@ impl Render for Gallery {
             .line_height(relative(1.6))
             .text_color(t.fg_0)
             .bg(t.bg_0)
+            .on_key_down(|event, window, cx| {
+                if event.keystroke.key == "tab" && !event.keystroke.modifiers.platform {
+                    if event.keystroke.modifiers.shift {
+                        window.focus_prev(cx)
+                    } else {
+                        window.focus_next(cx)
+                    }
+                    window.prevent_default();
+                    cx.stop_propagation();
+                }
+            })
             .on_action(|_: &Back, w, cx| back(w, cx))
             .on_action(|_: &Home, w, cx| home(w, cx));
         for (i, entry) in self.stack.iter().enumerate() {

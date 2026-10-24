@@ -77,7 +77,7 @@ impl RenderOnce for Panel {
                         .pb(px(13.))
                         .text_size(px(15.))
                         .line_height(px(24.))
-                        .font_weight(FontWeight::MEDIUM)
+                        .font_weight(FontWeight::SEMIBOLD)
                         .text_color(t.fg_0)
                         .child(title)
                         .child(hairline(line).bottom_0().left(px(15.)).right_0()),

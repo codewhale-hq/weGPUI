@@ -107,7 +107,7 @@ fn text_block(step: &Step, c: &Ctx) -> Div {
         .flex_col()
         .child(
             div()
-                .font_weight(FontWeight::MEDIUM)
+                .font_weight(FontWeight::SEMIBOLD)
                 .child(step.title.clone()),
         )
         .when_some(step.desc.clone(), |el, desc| {

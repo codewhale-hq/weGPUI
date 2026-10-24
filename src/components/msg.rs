@@ -265,7 +265,7 @@ impl RenderOnce for Msg {
                                 TextKind::Title => div()
                                     .mb(px(16.))
                                     .text_size(px(22.))
-                                    .font_weight(FontWeight::MEDIUM)
+                                    .font_weight(FontWeight::SEMIBOLD)
                                     .text_color(t.fg_0),
                                 TextKind::Desc => {
                                     div().mb(px(16.)).text_size(px(17.)).text_color(t.fg_0)
