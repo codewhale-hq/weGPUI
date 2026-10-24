@@ -109,7 +109,7 @@ fn cell(
     first: bool,
     android: bool,
     t: &Theme,
-) -> impl IntoElement {
+) -> Stateful<Div> {
     let handler = item.handler.clone();
     let has_tips = item.tips.is_some();
     let line = t.fg_3;
@@ -170,10 +170,13 @@ impl RenderOnce for ActionSheet {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
         let android = self.android;
+        let has_title = self.title.is_some();
+        let count = self.items.len();
         let menu = div()
             .flex()
             .flex_col()
             .bg(t.bg_2)
+            .when(!android && !has_title, |el| el.rounded_t(px(12.)))
             .when(android, |el| {
                 el.rounded(px(2.)).overflow_hidden().shadow(vec![BoxShadow {
                     color: hsla(0., 0., 0., 0.1),
@@ -191,6 +194,16 @@ impl RenderOnce for ActionSheet {
                     android,
                     &t,
                 )
+                .when(i == 0, |el| {
+                    el.rounded_t(px(if android {
+                        2.
+                    } else if has_title {
+                        0.
+                    } else {
+                        12.
+                    }))
+                })
+                .when(android && i + 1 == count, |el| el.rounded_b(px(2.)))
             }));
         let sheet = if android {
             div().w(px(274.)).child(menu)
@@ -217,6 +230,7 @@ impl RenderOnce for ActionSheet {
                             .line_height(relative(1.4))
                             .text_color(t.fg_1)
                             .bg(t.bg_2)
+                            .rounded_t(px(12.))
                             .child(div().line_clamp(2).child(title))
                             .child(
                                 div()

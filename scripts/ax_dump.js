@@ -19,6 +19,6 @@ function run(argv) {
     try { n = e.uiElements.length; } catch (err) {}
     for (let i = 0; i < n; i++) walk(e.uiElements[i], depth + 1);
   }
-  walk(proc.windows[0].uiElements[0], 0);
+  walk(proc.windows[0], 0);
   return out.join('\n');
 }

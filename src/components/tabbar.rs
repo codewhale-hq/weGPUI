@@ -71,7 +71,6 @@ impl RenderOnce for Tabbar {
         let t = Theme::get(cx).clone();
         let count = self.items.len();
         let selected = self.selected;
-        let keys = tab_keys(count, selected, self.on_select.clone());
         div()
             .id(self.id)
             .role(Role::TabList)
@@ -80,7 +79,6 @@ impl RenderOnce for Tabbar {
             .flex()
             .flex_shrink_0()
             .bg(t.bg_1)
-            .on_key_down(keys)
             .child(
                 div()
                     .absolute()
@@ -102,6 +100,7 @@ impl RenderOnce for Tabbar {
                     .aria_selected(on)
                     .focusable()
                     .tab_stop(true)
+                    .on_key_down(tab_keys(count, i, self.on_select.clone()))
                     .flex_1()
                     .pt(px(6.))
                     .pb(px(6.))
