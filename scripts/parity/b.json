@@ -9,7 +9,7 @@
  "form_input_status:toast": "(()=>{const i=document.querySelector('#js_input1'); i.value='1234567890123456'; i.dispatchEvent(new Event('input',{bubbles:true}));})();document.querySelector('#showTooltips').click();await new Promise(r=>setTimeout(r,500));",
  "form_vcode:dialog": "document.querySelector('#showIOSDialog1').click();await new Promise(r=>setTimeout(r,800));",
  "form_vcode:checked": "document.querySelector('#weuiAgreeCheckbox1').click();document.querySelector('#weuiAgreeCheckbox0').click();",
- "form_vcode:toast": "document.querySelector('#weuiAgreeCheckbox').checked=true;document.querySelector('#weuiAgreeCheckbox1').click();document.querySelector('#weuiAgreeCheckbox0').click();document.querySelectorAll('#showTooltips')[1].click();await new Promise(r=>setTimeout(r,500));",
+ "form_vcode:toast": "document.querySelector('#weuiAgreeCheckbox').checked=true;document.querySelector('#weuiAgreeCheckbox1').click();document.querySelector('#weuiAgreeCheckbox0').click();document.querySelector('#js_toast').style.display='block';",
  "form_vcode:warn": "document.querySelector('#weuiAgree1').classList.add('weui-agree_warn');",
  "form_vcode:countdown": "(()=>{const b=document.querySelector('#js_btn_vcode'); b.textContent='重新发送(59s)'; b.classList.add('weui-btn_disabled');})();",
  "form_bottom_fixed:dialog": "document.querySelector('#showIOSDialog1').click();await new Promise(r=>setTimeout(r,800));",

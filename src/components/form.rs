@@ -548,6 +548,7 @@ impl RenderOnce for Form {
                             .id("form-title")
                             .role(Role::Heading)
                             .aria_level(2)
+                            .aria_label(title.clone())
                             .text_size(px(22.))
                             .font_weight(FontWeight::SEMIBOLD)
                             .line_height(relative(1.36))

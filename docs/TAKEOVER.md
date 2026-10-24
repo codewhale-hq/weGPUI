@@ -1,3 +1,5 @@
+> **Historical prompt.** This brief described the state before the full port. As of 2026-10-24 the port, gallery and evidence pass are complete apart from the gaps recorded in [STATUS](STATUS.md); read STATUS, [PARITY](PARITY.md) and [UPSTREAM-COVERAGE](UPSTREAM-COVERAGE.md) for current truth. The "Actual checkpoint state" section below is out of date.
+
 # Takeover prompt: complete the full WeUI 2.6.26 → GPUI port
 
 You are taking over **weGPUI**, a standalone open-source Rust library that ports the **entire WeUI 2.6.26 design system** to native GPUI primitives, plus a complete interactive gallery. Finish the implementation and evidence. This is a full product task, including every official family, meaningful variant and interaction.

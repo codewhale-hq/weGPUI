@@ -1,73 +1,87 @@
 # Upstream example coverage
 
-Inventory of WeUI 2.6.26: **61 HTML files: 58 within 29 component directories and 3 root index/home/layers pages**. This is an implementation inventory, not a parity claim.
+Inventory of WeUI 2.6.26: **61 HTML files — 58 within 29 component directories plus `home.html`, `index.html` and `layers.html`**. Every file maps to a gallery route built from the public library components; no route is a placeholder. Capture states are the `--state` values registered in `scripts/parity/*.json`, each with a replay that drives the official page into the same state.
 
-The current gallery has 10 demo entries. No upstream example has completed the required light/dark screenshot comparison. “Partial” means some related native component exists; it does not mean the complete example or its interactions are implemented.
+Visual results are in [PARITY](PARITY.md). Mapping a file here records implementation, not parity.
 
-| Upstream HTML under `src/example/` | Current coverage | Visual parity |
+| Upstream HTML under `src/example/` | Library components | Gallery route | Capture states |
+| --- | --- | --- | --- |
+| `actionsheet/actionsheet.html` | `components::{action_sheet}` | `actionsheet` | ios, android |
+| `article/article.html` | `components::{article}` | `article` | — |
+| `badge/badge.html` | `components::{badge, cells}` | `badge` | — |
+| `button/button.html` | `components::{button, agree}` | `button` | — |
+| `button/button_bottom_fixed.html` | `components::{button, agree}` | `button_bottom_fixed` | agreed |
+| `button/button_default.html` | `components::{button, agree}` | `button_default` | — |
+| `dialog/dialog.html` | `components::{dialog, modal}` | `dialog` | ios1, ios2, ios3, android1, android2 |
+| `flex/flex.html` | `components::{flex}` | `flex` | — |
+| `footer/footer.html` | `components::{footer}` | `footer` | — |
+| `form/form.html` | `components::{form, checkbox, radio, switch, select, vcode, agree, toptips, textarea, input, toast, half_screen_dialog, picker}` | `form` | — |
+| `form/form_access.html` | `components::{form, checkbox, radio, switch, select, vcode, agree, toptips, textarea, input, toast, half_screen_dialog, picker}` | `form_access` | — |
+| `form/form_bottom_fixed.html` | `components::{form, checkbox, radio, switch, select, vcode, agree, toptips, textarea, input, toast, half_screen_dialog, picker}` | `form_bottom_fixed` | dialog, checked, toast |
+| `form/form_checkbox.html` | `components::{form, checkbox, radio, switch, select, vcode, agree, toptips, textarea, input, toast, half_screen_dialog, picker}` | `form_checkbox` | toast, checked |
+| `form/form_input_status.html` | `components::{form, checkbox, radio, switch, select, vcode, agree, toptips, textarea, input, toast, half_screen_dialog, picker}` | `form_input_status` | error, amount, toast |
+| `form/form_page.html` | `components::{form, checkbox, radio, switch, select, vcode, agree, toptips, textarea, input, toast, half_screen_dialog, picker}` | `form_page` | filled, toast |
+| `form/form_page_old.html` | `components::{form, checkbox, radio, switch, select, vcode, agree, toptips, textarea, input, toast, half_screen_dialog, picker}` | `form_page_old` | filled |
+| `form/form_primary.html` | `components::{form, checkbox, radio, switch, select, vcode, agree, toptips, textarea, input, toast, half_screen_dialog, picker}` | `form_primary` | switch, filled |
+| `form/form_radio.html` | `components::{form, checkbox, radio, switch, select, vcode, agree, toptips, textarea, input, toast, half_screen_dialog, picker}` | `form_radio` | toast, checked |
+| `form/form_select.html` | `components::{form, checkbox, radio, switch, select, vcode, agree, toptips, textarea, input, toast, half_screen_dialog, picker}` | `form_select` | toast |
+| `form/form_select_primary.html` | `components::{form, checkbox, radio, switch, select, vcode, agree, toptips, textarea, input, toast, half_screen_dialog, picker}` | `form_select_primary` | select1, select2, select3 |
+| `form/form_switch.html` | `components::{form, checkbox, radio, switch, select, vcode, agree, toptips, textarea, input, toast, half_screen_dialog, picker}` | `form_switch` | toast, checked |
+| `form/form_textarea.html` | `components::{form, checkbox, radio, switch, select, vcode, agree, toptips, textarea, input, toast, half_screen_dialog, picker}` | `form_textarea` | — |
+| `form/form_vcode.html` | `components::{form, checkbox, radio, switch, select, vcode, agree, toptips, textarea, input, toast, half_screen_dialog, picker}` | `form_vcode` | dialog, checked, toast, warn, countdown |
+| `form/form_vertical.html` | `components::{form, checkbox, radio, switch, select, vcode, agree, toptips, textarea, input, toast, half_screen_dialog, picker}` | `form_vertical` | — |
+| `gallery/gallery.html` | `components::{gallery}` | `gallery` | closed |
+| `grid/grid.html` | `components::{grid}` | `grid` | — |
+| `half-screen-dialog/half-screen-dialog.html` | `components::{half_screen_dialog, modal}` | `half-screen-dialog` | 1, 2, 3, 4, 5 |
+| `home.html` | `home` route: grouped categories with expanding lists (`pages/home.rs`) | `home` | category-1 |
+| `icons/icons.html` | `components::{icons}` | `icons` | — |
+| `index.html` | gallery shell (`examples/gallery/main.rs`, `chrome.rs`): grouped home, page navigation, back, light/dark/system, care mode, brand and reduced-motion menus | `home` route | — |
+| `information-bar/information-bar.html` | `components::{information_bar}` | `information-bar` | closed |
+| `input/input.html` | `components::{input, textarea, cells, checkbox, radio, vcode}` | `input` | — |
+| `layers.html` | `layers` route (`pages/layers.rs`): 3D layer stack, click/keyboard isolation | `layers` | popout, mask, navigation, content, 3d |
+| `list/list.html` | `components::{cells, swiped}` | `list` | closed |
+| `loading/loading.html` | `components::{loading}` | `loading` | — |
+| `loadmore/loadmore.html` | `components::{loadmore}` | `loadmore` | — |
+| `msg/msg.html` | `components::{msg, button, cells, form_preview}` | `msg` | — |
+| `msg/msg_custom_area_cell.html` | `components::{msg, button, cells, form_preview}` | `msg_custom_area_cell` | — |
+| `msg/msg_custom_area_preview.html` | `components::{msg, button, cells, form_preview}` | `msg_custom_area_preview` | — |
+| `msg/msg_custom_area_tips.html` | `components::{msg, button, cells, form_preview}` | `msg_custom_area_tips` | — |
+| `msg/msg_success.html` | `components::{msg, button, cells, form_preview}` | `msg_success` | — |
+| `msg/msg_text.html` | `components::{msg, button, cells, form_preview}` | `msg_text` | — |
+| `msg/msg_text_primary.html` | `components::{msg, button, cells, form_preview}` | `msg_text_primary` | — |
+| `msg/msg_warn.html` | `components::{msg, button, cells, form_preview}` | `msg_warn` | — |
+| `navbar/navbar.html` | `components::{navbar}` | `navbar` | tab2, tab3 |
+| `panel/panel.html` | `components::{panel}` | `panel` | — |
+| `picker/picker.html` | `components::{picker, half_screen_dialog}` | `picker` | single, date, multi, cascade |
+| `preview/preview.html` | `components::{form_preview}` | `preview` | — |
+| `progress/progress.html` | `components::{progress, icons}` | `progress` | uploading |
+| `searchbar/searchbar.html` | `components::{search_bar}` | `searchbar` | — |
+| `searchbar/searchbar_filled.html` | `components::{search_bar}` | `searchbar_filled` | focused, typed |
+| `searchbar/searchbar_grey.html` | `components::{search_bar}` | `searchbar_grey` | focused, typed |
+| `searchbar/searchbar_homepage.html` | `components::{search_bar}` | `searchbar_homepage` | — |
+| `searchbar/searchbar_outlined.html` | `components::{search_bar}` | `searchbar_outlined` | focused, typed, filled |
+| `slider/slider.html` | `components::{slider}` | `slider` | value80 |
+| `steps/steps.html` | `components::{steps}` | `steps` | — |
+| `steps/steps_horizonal.html` | `components::{steps}` | `steps_horizonal` | — |
+| `steps/steps_vertical.html` | `components::{steps}` | `steps_vertical` | — |
+| `tabbar/tabbar.html` | `components::{tabbar, badge}` | `tabbar` | tab2, tab3 |
+| `toast/toast.html` | `components::{toast, modal}` | `toast` | success, fail, longtext, loading, text |
+| `uploader/uploader.html` | `components::{uploader, gallery}` | `uploader` | viewer, preview |
+
+Total: 61 files.
+
+## CSS families without their own example
+
+| Family | Where it is ported | Notes |
 | --- | --- | --- |
-| `actionsheet/actionsheet.html` | Partial family; example not fully reproduced | Not assessed |
-| `article/article.html` | Not implemented | Not assessed |
-| `badge/badge.html` | Partial family; example not fully reproduced | Not assessed |
-| `button/button.html` | Partial family; example not fully reproduced | Not assessed |
-| `button/button_bottom_fixed.html` | Partial family; example not fully reproduced | Not assessed |
-| `button/button_default.html` | Partial family; example not fully reproduced | Not assessed |
-| `dialog/dialog.html` | Partial family; example not fully reproduced | Not assessed |
-| `flex/flex.html` | Not implemented | Not assessed |
-| `footer/footer.html` | Not implemented | Not assessed |
-| `form/form.html` | Not implemented | Not assessed |
-| `form/form_access.html` | Not implemented | Not assessed |
-| `form/form_bottom_fixed.html` | Not implemented | Not assessed |
-| `form/form_checkbox.html` | Not implemented | Not assessed |
-| `form/form_input_status.html` | Not implemented | Not assessed |
-| `form/form_page.html` | Not implemented | Not assessed |
-| `form/form_page_old.html` | Not implemented | Not assessed |
-| `form/form_primary.html` | Not implemented | Not assessed |
-| `form/form_radio.html` | Not implemented | Not assessed |
-| `form/form_select.html` | Not implemented | Not assessed |
-| `form/form_select_primary.html` | Not implemented | Not assessed |
-| `form/form_switch.html` | Not implemented | Not assessed |
-| `form/form_textarea.html` | Not implemented | Not assessed |
-| `form/form_vcode.html` | Not implemented | Not assessed |
-| `form/form_vertical.html` | Not implemented | Not assessed |
-| `gallery/gallery.html` | Not implemented | Not assessed |
-| `grid/grid.html` | Not implemented | Not assessed |
-| `half-screen-dialog/half-screen-dialog.html` | Not implemented | Not assessed |
-| `home.html` | Flat family list only; official grouped home not reproduced | Not assessed |
-| `icons/icons.html` | Not implemented | Not assessed |
-| `index.html` | Custom gallery shell only; official index not reproduced | Not assessed |
-| `information-bar/information-bar.html` | Not implemented | Not assessed |
-| `input/input.html` | Partial family; example not fully reproduced | Not assessed |
-| `layers.html` | Not implemented | Not assessed |
-| `list/list.html` | Partial family; example not fully reproduced | Not assessed |
-| `loading/loading.html` | Partial family; example not fully reproduced | Not assessed |
-| `loadmore/loadmore.html` | Partial family; example not fully reproduced | Not assessed |
-| `msg/msg.html` | Not implemented | Not assessed |
-| `msg/msg_custom_area_cell.html` | Not implemented | Not assessed |
-| `msg/msg_custom_area_preview.html` | Not implemented | Not assessed |
-| `msg/msg_custom_area_tips.html` | Not implemented | Not assessed |
-| `msg/msg_success.html` | Not implemented | Not assessed |
-| `msg/msg_text.html` | Not implemented | Not assessed |
-| `msg/msg_text_primary.html` | Not implemented | Not assessed |
-| `msg/msg_warn.html` | Not implemented | Not assessed |
-| `navbar/navbar.html` | Not implemented | Not assessed |
-| `panel/panel.html` | Not implemented | Not assessed |
-| `picker/picker.html` | Not implemented | Not assessed |
-| `preview/preview.html` | Not implemented | Not assessed |
-| `progress/progress.html` | Not implemented | Not assessed |
-| `searchbar/searchbar.html` | Partial family; example not fully reproduced | Not assessed |
-| `searchbar/searchbar_filled.html` | Partial family; example not fully reproduced | Not assessed |
-| `searchbar/searchbar_grey.html` | Partial family; example not fully reproduced | Not assessed |
-| `searchbar/searchbar_homepage.html` | Partial family; example not fully reproduced | Not assessed |
-| `searchbar/searchbar_outlined.html` | Partial family; example not fully reproduced | Not assessed |
-| `slider/slider.html` | Not implemented | Not assessed |
-| `steps/steps.html` | Not implemented | Not assessed |
-| `steps/steps_horizonal.html` | Not implemented | Not assessed |
-| `steps/steps_vertical.html` | Not implemented | Not assessed |
-| `tabbar/tabbar.html` | Not implemented | Not assessed |
-| `toast/toast.html` | Partial family; example not fully reproduced | Not assessed |
-| `uploader/uploader.html` | Not implemented | Not assessed |
-
-Also audit CSS families and variants that do not have their own directory: top tips, agree checkbox, list tips, swiped cells, button cell/icon/xmini/overlay/wrap/bottom-fixed variants, all form states and layouts, care mode, loading variants, overlay transitions, safe-area handling and responsive layout. The package CSS and example markup/behavior are the authoritative inventory.
+| top tips (`weui-toptips`) | `components::toptips` | shown by `form_input_status` (`--state error`) |
+| agree (`weui-agree`) | `components::agree` | `button_bottom_fixed`, `form_vcode`, `form_bottom_fixed` |
+| list tips / information bar | `components::information_bar` | `information-bar` |
+| swiped cells (`weui-cell_swiped`) | `components::swiped` | `list` (`--state closed`) |
+| button cell/icon/xmini/overlay/wrap/bottom-fixed | `components::button` | `button`, `button_default`, `button_bottom_fixed` |
+| mask, animations (`weui-mask`, `weui-animate`) | `components::modal` (`Presence`, `Modal`) | fade/slide transitions, reduced motion respected |
+| care mode (`data-weui-mode=care`) | `Theme::set_care`, care light/dark palettes from `weui.css` | gallery Appearance menu and `--care`; not compared screen by screen, see STATUS |
+| brand override (`--weui-BRAND`) | `Theme::set_brand` | gallery menu and `--brand RRGGBB` |
+| safe-area insets (`env(safe-area-inset-*)`) | base padding only | desktop windows have no insets, so this equals upstream with `env()` = 0; mobile inset handling is not implemented |
 
 The original `steps_horizonal.html` spelling is preserved intentionally.
