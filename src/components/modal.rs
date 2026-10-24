@@ -1,4 +1,4 @@
-use crate::{Theme, accessibility::Semantics};
+use crate::accessibility::Semantics;
 use gpui::{prelude::*, *};
 use std::time::{Duration, Instant};
 
@@ -119,11 +119,7 @@ pub fn ease(t: f32) -> f32 {
     for _ in 0..24 {
         u = (lo + hi) / 2.;
         let x = 3. * (1. - u).powi(2) * u * x1 + 3. * (1. - u) * u * u * x2 + u.powi(3);
-        if x < t {
-            lo = u
-        } else {
-            hi = u
-        }
+        if x < t { lo = u } else { hi = u }
     }
     3. * (1. - u).powi(2) * u * y1 + 3. * (1. - u) * u * u * y2 + u.powi(3)
 }
@@ -232,7 +228,6 @@ impl RenderOnce for Modal {
         let Some(p) = self.presence.progress(window, cx) else {
             return div().into_any_element();
         };
-        let t = Theme::get(cx);
         let viewport = window.viewport_size();
         let focus = self.presence.focus.clone();
         let interactive = self.presence.visible;
@@ -240,11 +235,7 @@ impl RenderOnce for Modal {
         let dismiss_key = dismiss.clone();
         let mask_alpha = if self.mask_motion { p } else { 1. };
         let mask_color = match self.mask {
-            MaskKind::Dark => {
-                let mut c = t.overlay;
-                c.a *= mask_alpha;
-                c
-            }
+            MaskKind::Dark => hsla(0., 0., 0., 0.5 * mask_alpha),
             _ => transparent_black(),
         };
         let mut content = div()
@@ -288,7 +279,9 @@ impl RenderOnce for Modal {
                 Placement::Top => el.justify_start(),
                 Placement::Fill => el,
             })
-            .when(self.mask != MaskKind::None || interactive, |el| el.occlude())
+            .when(self.mask != MaskKind::None || interactive, |el| {
+                el.occlude()
+            })
             .bg(mask_color)
             .capture_key_down({
                 let focus = focus.clone();

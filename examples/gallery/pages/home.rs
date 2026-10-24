@@ -126,6 +126,7 @@ impl Render for Home {
                     .text_color(t.fg_1)
                     .child("WeUI 是一套同微信原生视觉体验一致的基础样式库，由微信官方设计团队为微信内网页和微信小程序量身设计，令用户的使用感知更加统一。"),
             );
+        let brand = t.brand;
         let category = |i: usize,
                         label: &'static str,
                         icon: &'static str,
@@ -140,7 +141,10 @@ impl Render for Home {
                 .tab_stop(true)
                 .flex()
                 .items_center()
-                .p(px(20.))
+                .p(px(18.))
+                .border_2()
+                .border_color(transparent_black())
+                .focus_visible(move |s| s.border_color(brand))
                 .when(expanded, |el| el.opacity(0.5))
                 .cursor_pointer()
                 .child(div().flex_1().child(label))
@@ -161,6 +165,7 @@ impl Render for Home {
             if expanded {
                 let cells = Cells::new()
                     .style(CellsStyle::Bare)
+                    .margin_top(0.)
                     .separator_inset(20., 20.)
                     .role(Role::Menu)
                     .children(items.iter().map(|(route, title)| {
@@ -188,25 +193,36 @@ impl Render for Home {
             list = list.child(li);
         }
         list = list.child(
-            div().mt(px(8.)).bg(t.bg_2).rounded(px(2.)).overflow_hidden().child(
-                div()
-                    .id("layers")
-                    .role(Role::MenuItem)
-                    .aria_label("层级规范")
-                    .focusable()
-                    .tab_stop(true)
-                    .flex()
-                    .items_center()
-                    .p(px(20.))
-                    .cursor_pointer()
-                    .child(div().flex_1().child("层级规范"))
-                    .child(img(themed_image("icon_nav_z-index.png", cx)).size(px(30.)))
-                    .on_click(|_, w, cx| crate::go("layers", w, cx)),
-            ),
+            div()
+                .mt(px(8.))
+                .bg(t.bg_2)
+                .rounded(px(2.))
+                .overflow_hidden()
+                .child(
+                    div()
+                        .id("layers")
+                        .role(Role::MenuItem)
+                        .aria_label("层级规范")
+                        .focusable()
+                        .tab_stop(true)
+                        .flex()
+                        .items_center()
+                        .p(px(18.))
+                        .border_2()
+                        .border_color(transparent_black())
+                        .focus_visible(move |s| s.border_color(brand))
+                        .cursor_pointer()
+                        .child(div().flex_1().child("层级规范"))
+                        .child(img(themed_image("icon_nav_z-index.png", cx)).size(px(30.)))
+                        .on_click(|_, w, cx| crate::go("layers", w, cx)),
+                ),
         );
-        PageFrame::new("home")
-            .header(header)
-            .spacing()
-            .child(div().id("menubar").role(Role::MenuBar).aria_label("WeUI组件列表").child(list))
+        PageFrame::new("home").header(header).spacing().child(
+            div()
+                .id("menubar")
+                .role(Role::MenuBar)
+                .aria_label("WeUI组件列表")
+                .child(list),
+        )
     }
 }

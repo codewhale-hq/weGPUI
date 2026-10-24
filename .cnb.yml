@@ -1,0 +1,18 @@
+main:
+  push:
+    - name: linux-check
+      docker:
+        image: rust:1
+      stages:
+        - name: system dependencies
+          script:
+            - apt-get update
+            - apt-get install -y --no-install-recommends libxkbcommon-dev libxkbcommon-x11-dev libwayland-dev libvulkan-dev libfontconfig-dev libfreetype-dev libx11-xcb-dev libxcb1-dev libssl-dev pkg-config clang
+        - name: toolchain
+          script: rustup component add clippy rustfmt
+        - name: fmt
+          script: cargo fmt --all -- --check
+        - name: build
+          script: cargo build --all-targets --locked
+        - name: clippy
+          script: cargo clippy --all-targets --locked -- -D warnings

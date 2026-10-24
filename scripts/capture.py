@@ -33,6 +33,17 @@ def weui_states():
     return states
 
 
+def to_srgb(im):
+    import io
+    from PIL import ImageCms
+    icc = im.info.get('icc_profile')
+    im = im.convert('RGB')
+    if icc:
+        src = ImageCms.ImageCmsProfile(io.BytesIO(icc))
+        im = ImageCms.profileToProfile(im, src, ImageCms.createProfile('sRGB'), outputMode='RGB')
+    return im
+
+
 def window_id(pid, height):
     import Quartz
     infos = Quartz.CGWindowListCopyWindowInfo(Quartz.kCGWindowListOptionAll, Quartz.kCGNullWindowID)
@@ -74,7 +85,7 @@ def capture_gpui(args, out):
             scale = round(im.width / WIDTH)
             content_h = args.height * scale
             top = im.height - content_h
-            im.crop((0, top, im.width, im.height)).save(out)
+            to_srgb(im).crop((0, top, im.width, im.height)).save(out)
     finally:
         proc.terminate()
         try:

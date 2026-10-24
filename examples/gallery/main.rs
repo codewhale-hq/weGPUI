@@ -44,8 +44,10 @@ pub fn go(route: &str, window: &mut Window, cx: &mut App) {
     };
     let route = route.to_string();
     window.defer(cx, move |window, cx| {
-        nav.update(cx, |g, cx| g.push(&route, &pages::Args::default(), true, window, cx))
-            .ok();
+        nav.update(cx, |g, cx| {
+            g.push(&route, &pages::Args::default(), true, window, cx)
+        })
+        .ok();
     });
 }
 
@@ -79,13 +81,14 @@ impl Gallery {
             stack: vec![],
             leaving: None,
         };
-        this.push("home", &pages::Args::default(), false, window, cx);
-        if let Some(page) = &args.page
-            && page != "home"
-        {
-            let page_args = pages::Args {
-                state: args.state.clone(),
-            };
+        let page_args = pages::Args {
+            state: args.state.clone(),
+        };
+        let page = args.page.as_deref().unwrap_or("home");
+        if page == "home" {
+            this.push("home", &page_args, false, window, cx);
+        } else {
+            this.push("home", &pages::Args::default(), false, window, cx);
             this.push(page, &page_args, false, window, cx);
         }
         if let Some(y) = args.scroll {
@@ -157,7 +160,10 @@ impl Render for Gallery {
         let t = Theme::get(cx).clone();
         let width = window.viewport_size().width;
         let n = self.stack.len();
-        let top = self.stack.last().map(|e| Self::progress(e.pushed, window, cx));
+        let top = self
+            .stack
+            .last()
+            .map(|e| Self::progress(e.pushed, window, cx));
         let leaving_p = self
             .leaving
             .as_ref()

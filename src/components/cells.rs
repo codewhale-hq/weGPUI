@@ -123,20 +123,17 @@ impl RenderOnce for Cells {
             .unwrap_or(if has_title && !form { 0. } else { 8. });
         let count = self.children.len();
         let rows = self.children.into_iter().enumerate().map(|(i, item)| {
-            div()
-                .relative()
-                .child(item)
-                .when(i > 0, |el| {
-                    el.child(
-                        div()
-                            .absolute()
-                            .top_0()
-                            .left(px(inset_l))
-                            .right(px(inset_r))
-                            .h(px(0.5))
-                            .bg(line),
-                    )
-                })
+            div().relative().child(item).when(i > 0, |el| {
+                el.child(
+                    div()
+                        .absolute()
+                        .top_0()
+                        .left(px(inset_l))
+                        .right(px(inset_r))
+                        .h(px(0.5))
+                        .bg(line),
+                )
+            })
         });
         let mut group = div()
             .id("cells-group")
@@ -425,11 +422,11 @@ impl RenderOnce for Cell {
             .flex()
             .when(self.primary, |el| el.items_start())
             .when(!self.primary, |el| el.items_center())
-            .pt(padding.top)
-            .pb(padding.bottom)
+            .pt(padding.top - px(2.))
+            .pb(padding.bottom - px(2.))
             .pl(padding.left - px(2.))
             .pr(padding.right - px(2.))
-            .border_x(px(2.))
+            .border_2()
             .border_color(transparent_black())
             .when_some(self.min_height, |el, h| el.min_h(px(h)))
             .text_size(px(17.))

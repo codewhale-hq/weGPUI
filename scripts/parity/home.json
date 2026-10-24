@@ -1,1 +1,1 @@
-{}
+{"home:category-1": "document.querySelectorAll(\".js_category\")[1].click(); await new Promise(r=>setTimeout(r,800));"}

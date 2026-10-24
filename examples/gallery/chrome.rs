@@ -117,7 +117,12 @@ pub fn page_hd(title: impl IntoElement, desc: Option<SharedString>, cx: &App) ->
     let t = Theme::get(cx);
     div()
         .p(px(40.))
-        .child(div().text_size(px(20.)).line_height(relative(1.6)).child(title))
+        .child(
+            div()
+                .text_size(px(20.))
+                .line_height(relative(1.6))
+                .child(title),
+        )
         .when_some(desc, |el, desc| {
             el.child(
                 div()
@@ -131,25 +136,20 @@ pub fn page_hd(title: impl IntoElement, desc: Option<SharedString>, cx: &App) ->
 }
 
 pub fn page_ft(cx: &App) -> impl IntoElement {
-    div()
-        .pt(px(40.))
-        .pb(px(32.))
-        .flex()
-        .justify_center()
-        .child(
-            div()
-                .id("page-footer-home")
-                .role(Role::Link)
-                .aria_label("WeUI 首页")
-                .cursor_pointer()
-                .active(|s| s.opacity(0.5))
-                .on_click(|_, w, cx| crate::home(w, cx))
-                .child(
-                    img(themed_image("icon_footer_link.png", cx))
-                        .w(px(84.))
-                        .h(px(19.)),
-                ),
-        )
+    div().pt(px(40.)).pb(px(32.)).flex().justify_center().child(
+        div()
+            .id("page-footer-home")
+            .role(Role::Link)
+            .aria_label("WeUI 首页")
+            .cursor_pointer()
+            .active(|s| s.opacity(0.5))
+            .on_click(|_, w, cx| crate::home(w, cx))
+            .child(
+                img(themed_image("icon_footer_link.png", cx))
+                    .w(px(84.))
+                    .h(px(19.)),
+            ),
+    )
 }
 
 impl RenderOnce for PageFrame {
@@ -184,14 +184,13 @@ impl RenderOnce for PageFrame {
             .children(header)
             .child(
                 div()
+                    .flex_1()
                     .flex()
                     .flex_col()
                     .when(self.spacing, |el| el.px(px(16.)))
                     .children(self.body),
             )
-            .when(show_footer, |el| {
-                el.child(div().flex_1()).child(page_ft(cx))
-            });
+            .when(show_footer, |el| el.child(page_ft(cx)));
         div()
             .relative()
             .size_full()
