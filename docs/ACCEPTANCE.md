@@ -63,6 +63,8 @@ presentational.
 | Screen readers | None accepted (VoiceOver stays off per owner; NVDA/Narrator/Orca not run). |
 | IME / selection / clipboard / undo | `TextInput`/`TextArea` sampled on Linux XIM and macOS Pinyin; Windows IME not run. |
 | Scaling / resize | Not run. |
+| Set positions | Fixed 2026-10-24 (were off by one); Linux AT-SPI verified. |
+| Disabled buttons on Linux | AccessKit AT-SPI 0.19.1 does not export disabled for buttons; documented upstream limitation (`receipts/a11y-p1-20261024`). |
 | Upstream static demos vs broken callbacks | Static upstream demos (empty handlers): footer, grid, form_preview, msg, list delete. Gallery keeps them inert intentionally; library callbacks exist. |
 
 ## Regenerating

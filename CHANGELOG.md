@@ -23,6 +23,8 @@ versioning once a release policy is decided. No version has been published.
 
 ### Fixed
 
+- Accessible set positions were one too high (AccessKit positions are zero-based) for radios,
+  select options, article lists, form-preview items and list tips.
 - Bottom-fixed pages reveal focused fields above the toolbar fade (`FocusScroll::inset_bottom`).
 - Picker arrow/Page/Home/End keys pressed during a snap animation no longer panic debug builds.
 

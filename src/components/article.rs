@@ -263,7 +263,7 @@ impl RenderOnce for ArticleList {
                     .id(("article-list-item", i))
                     .role(Role::ListItem)
                     .aria_label(text.clone())
-                    .aria_position_in_set(i + 1)
+                    .aria_position_in_set(i)
                     .aria_size_of_set(count)
                     .relative()
                     .mt(px(if i == 0 && !nested_list { 0.5 * em } else { 0. }))

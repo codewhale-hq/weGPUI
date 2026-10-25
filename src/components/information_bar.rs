@@ -290,7 +290,7 @@ impl RenderOnce for ListTips {
                 div()
                     .id(ElementId::NamedInteger("list-tips-item".into(), i as u64))
                     .role(Role::ListItem)
-                    .aria_position_in_set(i + 1)
+                    .aria_position_in_set(i)
                     .aria_size_of_set(count)
                     .aria_label(text.clone())
                     .relative()

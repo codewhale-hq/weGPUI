@@ -1,0 +1,66 @@
+dbus-daemon[453769]: [session uid=1000 pid=453769 pidfd=5] Activating service name='org.freedesktop.portal.Desktop' requested by ':1.2' (uid=1000 pid=453785 comm="target/debug/examples/component_states" label="kernel")
+dbus-daemon[453769]: [session uid=1000 pid=453769 pidfd=5] Activating service name='org.freedesktop.impl.portal.PermissionStore' requested by ':1.3' (uid=1000 pid=453802 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[453769]: [session uid=1000 pid=453769 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.PermissionStore'
+dbus-daemon[453769]: [session uid=1000 pid=453769 pidfd=5] Activating service name='org.freedesktop.portal.Documents' requested by ':1.3' (uid=1000 pid=453802 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[453769]: [session uid=1000 pid=453769 pidfd=5] Successfully activated service 'org.freedesktop.portal.Documents'
+
+(/usr/libexec/xdg-desktop-portal:453802): xdg-desktop-portal-WARNING **: 22:11:45.356: Choosing gtk.portal for org.freedesktop.impl.portal.Lockdown as a last-resort fallback
+dbus-daemon[453769]: [session uid=1000 pid=453769 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.3' (uid=1000 pid=453802 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:453824): xdg-desktop-portal-gtk-WARNING **: 22:11:45.395: error: Could not connect: No such file or directory
+
+dbus-daemon[453769]: [session uid=1000 pid=453769 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.desktop.gtk'
+
+(/usr/libexec/xdg-desktop-portal:453802): xdg-desktop-portal-WARNING **: 22:11:45.441: Failed to create RealtimeKit proxy: Could not connect: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:453802): xdg-desktop-portal-WARNING **: 22:11:45.441: Choosing gtk.portal for org.freedesktop.impl.portal.Settings as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:453802): xdg-desktop-portal-WARNING **: 22:11:45.442: Choosing gtk.portal for org.freedesktop.impl.portal.FileChooser as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:453802): xdg-desktop-portal-WARNING **: 22:11:45.442: Choosing gtk.portal for org.freedesktop.impl.portal.AppChooser as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:453802): xdg-desktop-portal-WARNING **: 22:11:45.443: Choosing gtk.portal for org.freedesktop.impl.portal.Print as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:453802): xdg-desktop-portal-WARNING **: 22:11:45.443: Choosing gtk.portal for org.freedesktop.impl.portal.Notification as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:453802): xdg-desktop-portal-WARNING **: 22:11:45.443: Choosing gtk.portal for org.freedesktop.impl.portal.Inhibit as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:453802): xdg-desktop-portal-WARNING **: 22:11:45.444: Choosing gtk.portal for org.freedesktop.impl.portal.Access as a last-resort fallback
+[W][22:11:45.445720] pw.conf      | [          conf.c: 1182 try_load_conf()] can't load config client.conf: No such file or directory
+[E][22:11:45.445728] pw.conf      | [          conf.c: 1215 pw_conf_load_conf_for_context()] can't load config client.conf: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:453802): xdg-desktop-portal-WARNING **: 22:11:45.445: Failed connect to PipeWire: Couldn't create PipeWire context
+
+(/usr/libexec/xdg-desktop-portal:453802): xdg-desktop-portal-WARNING **: 22:11:45.446: Choosing gtk.portal for org.freedesktop.impl.portal.Account as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:453802): xdg-desktop-portal-WARNING **: 22:11:45.446: Choosing gtk.portal for org.freedesktop.impl.portal.Email as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:453802): xdg-desktop-portal-WARNING **: 22:11:45.446: Choosing gtk.portal for org.freedesktop.impl.portal.DynamicLauncher as a last-resort fallback
+dbus-daemon[453769]: [session uid=1000 pid=453769 pidfd=5] Successfully activated service 'org.freedesktop.portal.Desktop'
+## initial
+apps 2
+application 'xdg-desktop-portal-gtk' [] DISABLED
+application 'component_states' [] DISABLED
+  frame '' ['focusable', 'showing']
+    entry 'Display name' ['focusable', 'showing']
+    button 'Save profile' ['focusable', 'showing']
+    button 'Unavailable' ['showing']
+    button 'Send code' ['focusable', 'showing']
+    button 'Start countdown twice' ['focusable', 'showing']
+    link 'Profile details' ['focusable', 'showing']
+    panel 'Delivery and frequency' ['showing']
+      radio button 'Email' ['checked', 'focusable', 'showing'] ['posinset:1']
+      radio button 'SMS' ['focusable', 'showing'] ['posinset:2']
+      radio button 'Daily' ['checked', 'focusable', 'showing'] ['posinset:1']
+      radio button 'Weekly' ['focusable', 'showing'] ['posinset:2']
+    paragraph 'Read the profile guide or review the longer account preferences link that wraps onto another line before saving.' ['showing']
+      label 'Read the profile guide or review the longer account preferences link that wraps onto another line before saving.' ['showing']
+      link 'the profile guide' ['focusable', 'showing']
+      link 'review the longer account preferences link that wraps onto another line' ['focusable', 'showing']
+    image 'Standard spinner' ['showing']
+    image 'Primary spinner' ['showing']
+    image 'Brand spinner' ['showing']
+    list '' ['showing']
+      list item 'Your profile stays on this computer.' ['showing'] ['posinset:1']
+      list item 'Sending is simulated.' ['showing'] ['posinset:2']
+    label '' ['showing']

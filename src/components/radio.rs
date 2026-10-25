@@ -108,7 +108,7 @@ impl RadioGroup {
                 } else {
                     Toggled::False
                 })
-                .aria_position_in_set(i + 1)
+                .aria_position_in_set(i)
                 .aria_size_of_set(n)
                 .text_color(if disabled { t.fg_2 } else { t.fg_0 })
                 .child(div().flex_1().min_w_0().child(label))

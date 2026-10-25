@@ -357,7 +357,7 @@ impl RenderOnce for SelectMenu {
                     .role(Role::ListBoxOption)
                     .aria_label(label.clone())
                     .aria_selected(selected)
-                    .aria_position_in_set(i + 1)
+                    .aria_position_in_set(i)
                     .aria_size_of_set(n)
                     .relative()
                     .h(px(56.))

@@ -181,7 +181,7 @@ impl RenderOnce for FormPreview {
                             .id(("preview-item", i))
                             .role(Role::ListItem)
                             .aria_label(name)
-                            .aria_position_in_set(i + 1)
+                            .aria_position_in_set(i)
                             .aria_size_of_set(count)
                         }),
                 )
@@ -318,7 +318,7 @@ impl RenderOnce for FormPreviewList {
                                 i as u64,
                             ))
                             .role(Role::ListItem)
-                            .aria_position_in_set(i + 1)
+                            .aria_position_in_set(i)
                             .aria_size_of_set(count)
                             .aria_label(SharedString::from(format!("{label} {value}")))
                             .child(preview_item(
