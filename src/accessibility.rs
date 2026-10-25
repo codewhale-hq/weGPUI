@@ -1,6 +1,20 @@
+//! Accessibility helpers layered on GPUI's AccessKit integration.
+//!
+//! [`Semantics`] adds AccessKit states that GPUI's element builders do not expose (disabled,
+//! busy, modal, hidden) to an existing element. [`ModalScope`] hides application content from
+//! assistive technology while a [`crate::components::Modal`] is open.
+//!
+//! Known limitations: these nodes only reach platforms whose GPUI backend wires an AccessKit
+//! adapter (macOS, Windows and Linux at the pinned GPUI). Mobile backends have none. Screen-reader
+//! behaviour has not been verified with VoiceOver, Narrator/NVDA or Orca.
+
 use gpui::*;
 use std::collections::HashSet;
 
+/// Wraps an element and adds AccessKit states to its node.
+///
+/// The wrapped element must have an id and a role for a node to exist; otherwise the flags have
+/// no effect. Layout, painting and events are delegated unchanged.
 pub struct Semantics<E: Element> {
     inner: E,
     disabled: bool,
@@ -9,6 +23,7 @@ pub struct Semantics<E: Element> {
     hidden: bool,
 }
 impl<E: Element> Semantics<E> {
+    /// Wraps `inner` with no extra states.
     pub fn new(inner: impl IntoElement<Element = E>) -> Self {
         Self {
             inner: inner.into_element(),
@@ -18,18 +33,23 @@ impl<E: Element> Semantics<E> {
             hidden: false,
         }
     }
+    /// Marks the node disabled (unavailable to activate) when `value` is true.
     pub fn disabled(mut self, value: bool) -> Self {
         self.disabled = value;
         self
     }
+    /// Marks the node busy, for example a loading button, when `value` is true.
     pub fn busy(mut self, value: bool) -> Self {
         self.busy = value;
         self
     }
+    /// Marks the node as a modal dialog.
     pub fn modal(mut self) -> Self {
         self.modal = true;
         self
     }
+    /// Hides the node and its subtree from assistive technology when `value` is true, for
+    /// example actions behind a closed swipe cell.
     pub fn hidden(mut self, value: bool) -> Self {
         self.hidden = value;
         self
@@ -122,12 +142,20 @@ pub(crate) fn register_open_modal(window: &Window, cx: &mut App) {
         .insert(window.window_handle().window_id());
 }
 
+/// Hides its content from assistive technology while a [`crate::components::Modal`] is open.
+///
+/// Wrap the window's root element in it. Modals register themselves when they render as open.
+/// The scope checks after its children are laid out, so every `Modal` must be rendered inside
+/// the scope. Modals are deferred overlays and attach to the window root of the accessibility
+/// tree, so they stay exposed while the scope's group node is marked hidden. The scope fills its
+/// parent (`size_full`) and adds an unnamed `Group` node to the tree.
 pub struct ModalScope {
     inner: Stateful<Div>,
     hidden: bool,
 }
 
 impl ModalScope {
+    /// Wraps `content`, typically the root view's element tree.
     pub fn new(content: impl IntoElement) -> Self {
         Self {
             inner: div()

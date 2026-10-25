@@ -1,7 +1,14 @@
+//! WeUI top tab bar (`weui-tab/weui-navbar.less`) and tab panel (`weui-tab/weui-tab.less`).
+//!
+//! [`Navbar`] is stateless: the caller owns the selected index and updates it in `on_select`. Arrow
+//! keys move focus and selection together. Known limitation: arrows use window-wide focus
+//! traversal, so they assume the tabs are adjacent in Tab order, and every tab is a Tab stop.
+
 use crate::Theme;
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
+/// Shared callback receiving the index of the tab to select.
 pub type SelectHandler = Rc<dyn Fn(usize, &mut Window, &mut App)>;
 
 pub(crate) fn tab_keys(
@@ -29,6 +36,9 @@ pub(crate) fn tab_keys(
     }
 }
 
+/// Equal-width tab list (`TabList` role) with hairline separators; the selected tab gets the
+/// pressed background. On a focused tab, Left/Up and Right/Down focus and select the neighbour
+/// (only when `on_select` is set).
 #[derive(IntoElement)]
 pub struct Navbar {
     id: ElementId,
@@ -38,6 +48,7 @@ pub struct Navbar {
 }
 
 impl Navbar {
+    /// Creates an empty navbar with tab 0 selected.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -46,14 +57,18 @@ impl Navbar {
             on_select: None,
         }
     }
+    /// Sets the tab labels, replacing any earlier ones.
     pub fn items(mut self, items: impl IntoIterator<Item = impl Into<SharedString>>) -> Self {
         self.items = items.into_iter().map(Into::into).collect();
         self
     }
+    /// Sets the selected tab index (default 0); an out-of-range index selects none.
     pub fn selected(mut self, index: usize) -> Self {
         self.selected = index;
         self
     }
+    /// Called with a tab's index when it is clicked, activated with Enter or Space, or reached with
+    /// an arrow key. Store the index and re-render.
     pub fn on_select(mut self, handler: impl Fn(usize, &mut Window, &mut App) + 'static) -> Self {
         self.on_select = Some(Rc::new(handler));
         self
@@ -125,6 +140,8 @@ impl RenderOnce for Navbar {
     }
 }
 
+/// Scrolling panel (`TabPanel` role, `weui-tab__panel`) that fills the remaining height; add the
+/// selected tab's content as children.
 pub fn tab_panel(id: impl Into<ElementId>, label: impl Into<SharedString>) -> Stateful<Div> {
     div()
         .id(id)

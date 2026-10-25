@@ -1,3 +1,11 @@
+//! WeUI components. Each module ports one WeUI widget family from `src/style/widget/` of the
+//! pinned WeUI 2.6.26 package, with the matching example page in `examples/gallery`.
+//!
+//! The most common types are re-exported here: list cells ([`Cell`], [`Cells`]), [`Icon`], and
+//! the overlay building blocks ([`Presence`], [`Modal`], [`MaskKind`], [`Placement`],
+//! [`Motion`]). Component coverage is listed in `docs/UPSTREAM-COVERAGE.md`; behaviour evidence
+//! and known differences per family are in `docs/REVIEW-2026-10-24.md`.
+
 pub mod action_sheet;
 pub mod agree;
 pub mod article;
@@ -41,5 +49,9 @@ pub use cells::{Cell, Cells, CellsStyle, cells_title};
 pub use icons::Icon;
 pub use modal::{MaskKind, Modal, Motion, Placement, Presence};
 
+/// Boxed click callback used by component builders. It receives GPUI's click event (mouse,
+/// touch or keyboard activation), the window, and the app.
 pub type ClickHandler = Box<dyn Fn(&gpui::ClickEvent, &mut gpui::Window, &mut gpui::App)>;
+/// Boxed value-change callback used by component builders. It receives the proposed new value;
+/// components do not store it, so the owner must re-render with the new value.
 pub type ChangeHandler<T> = Box<dyn Fn(&T, &mut gpui::Window, &mut gpui::App)>;

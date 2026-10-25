@@ -1,3 +1,10 @@
+//! WeUI toast (`weui-tips/weui-toast.less`): a dark rounded box with a success, warning or loading
+//! icon, or text only, over a transparent mask that blocks pointer input.
+//!
+//! [`Toast`] renders in a [`Modal`] when given a [`Presence`]; hiding it is up to the caller, for
+//! example [`Presence::hide_after`] with [`TOAST_DURATION`]. Known limitation: showing a toast
+//! moves keyboard focus to its layer until it hides, which the upstream page does not do.
+
 use super::{
     Icon,
     loading::Loading,
@@ -7,18 +14,30 @@ use crate::{Theme, accessibility::Semantics};
 use gpui::{prelude::*, *};
 use std::time::Duration;
 
+/// How long the upstream example keeps a toast up before fading it out.
 pub const TOAST_DURATION: Duration = Duration::from_secs(2);
+/// Toast fade length, matching the upstream `fadeIn(100)` and `fadeOut(100)`.
 pub const TOAST_FADE: Duration = Duration::from_millis(100);
 
+/// Icon shown above the toast text.
 #[derive(Clone, Copy, Default, PartialEq, Eq)]
 pub enum ToastKind {
+    /// 40 px `success-no-circle` icon; the default.
     #[default]
     Success,
+    /// 40 px `warn` icon.
     Warn,
+    /// 40 px loading spinner; the toast is exposed as a busy `Status` instead of an `Alert`.
     Loading,
+    /// No icon, compact padding and no minimum width (`weui-toast_text`).
     Text,
 }
 
+/// Toast message box, 132 to 320 px wide (text-only toasts have no minimum width).
+///
+/// Exposed as an `Alert`, or a busy `Status` while loading, named by its text. With
+/// [`Toast::presence`] it renders centred in a [`Modal`] with a transparent mask and no dismissal;
+/// without one it renders inline.
 #[derive(IntoElement)]
 pub struct Toast {
     id: ElementId,
@@ -29,6 +48,7 @@ pub struct Toast {
 }
 
 impl Toast {
+    /// Creates a success toast with id `"weui-toast"` and no presence.
     pub fn new(text: impl Into<SharedString>) -> Self {
         Self {
             id: ElementId::Name("weui-toast".into()),
@@ -38,34 +58,46 @@ impl Toast {
             presence: None,
         }
     }
+    /// Overrides the element id (default `"weui-toast"`); give each toast that can be visible at
+    /// the same time its own id.
     pub fn id(mut self, id: impl Into<ElementId>) -> Self {
         self.id = id.into();
         self
     }
+    /// Sets the icon style (default [`ToastKind::Success`]).
     pub fn kind(mut self, kind: ToastKind) -> Self {
         self.kind = kind;
         self
     }
+    /// Shorthand for `kind(ToastKind::Success)`.
     pub fn success(self) -> Self {
         self.kind(ToastKind::Success)
     }
+    /// Shorthand for `kind(ToastKind::Warn)`.
     pub fn warn(self) -> Self {
         self.kind(ToastKind::Warn)
     }
+    /// Shorthand for `kind(ToastKind::Loading)`.
     pub fn loading(self) -> Self {
         self.kind(ToastKind::Loading)
     }
+    /// Shorthand for `kind(ToastKind::Text)`.
     pub fn text_only(self) -> Self {
         self.kind(ToastKind::Text)
     }
+    /// Positions the box like a bare `.weui-toast`, centred 10 % of the window height above the
+    /// middle. By default it follows `.weui-toast__wrp`, whose `margin-top: -10%` is 10 % of the
+    /// window width.
     pub fn standalone(mut self) -> Self {
         self.standalone = true;
         self
     }
+    /// Renders the toast as a modal driven by `presence` (cloned); without it the toast is inline.
     pub fn presence(mut self, presence: &Presence) -> Self {
         self.presence = Some(presence.clone());
         self
     }
+    /// Creates a [`Presence`] with the [`TOAST_FADE`] transition.
     pub fn presence_for(cx: &mut App) -> Presence {
         Presence::new(cx).duration(TOAST_FADE)
     }

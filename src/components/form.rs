@@ -1,10 +1,22 @@
+//! WeUI form page and form groups: `.weui-form` (`src/style/widget/weui-page/weui-form.less`)
+//! and `.weui-cells__group_form` (`src/style/widget/weui-cell/weui-cells__group.less` and
+//! `weui-cell/weui-form/`). [`Form`] lays out the page areas, [`FormGroup`] a group of rows,
+//! [`FormCell`] a labelled row, [`TipsGroup`] stacked tips, [`ClearableInput`] the clear button.
+//! Known limitations: [`FormCell::label`] is visual only (it does not name the control as an HTML
+//! `<label for>` would), safe-area insets are not applied, and there is no submission/validation.
+
 use super::ClickHandler;
 use crate::{Theme, accessibility::Semantics, input::TextInput};
 use gpui::{prelude::*, *};
 
+/// Default form label width in logical pixels (WeUI `@weuiCellLabelWidth`, 105px).
 pub const LABEL_WIDTH: f32 = 105.;
+/// Maximum rendered label width in logical pixels: the form group's `max-width: 5em` at 17px.
+/// [`form_label`] clamps every requested width to this.
 pub const LABEL_MAX_WIDTH: f32 = 85.;
 
+/// The keyboard focus indicator used across weGPUI: a 2px inset ring of `color` with no blur.
+/// Pass it to `shadow` inside a `focus_visible` style; callers normally use the theme brand.
 pub fn focus_ring(color: Hsla) -> Vec<BoxShadow> {
     vec![BoxShadow {
         color,
@@ -15,6 +27,9 @@ pub fn focus_ring(color: Hsla) -> Vec<BoxShadow> {
     }]
 }
 
+/// Base row for selectable form cells (checkbox and radio rows): a vertically centred flex row
+/// with 14px padding plus a 2px transparent border (16px in total) that callers recolour on
+/// focus, and 17px text on a 24px line.
 pub fn cell_frame(id: impl Into<ElementId>) -> Stateful<Div> {
     div()
         .id(id)
@@ -31,6 +46,8 @@ pub fn cell_frame(id: impl Into<ElementId>) -> Stateful<Div> {
         .line_height(relative(24. / 17.))
 }
 
+/// Form label (`.weui-label`): non-shrinking `text` that is `width` px wide, clamped to
+/// [`LABEL_MAX_WIDTH`], with an 8px right margin. Visual only; it sets no accessible name.
 pub fn form_label(text: impl Into<SharedString>, width: f32) -> Div {
     div()
         .flex_shrink_0()
@@ -39,10 +56,14 @@ pub fn form_label(text: impl Into<SharedString>, width: f32) -> Div {
         .child(text.into())
 }
 
+/// Wraps `el` as a `.weui-cell__control` item (8px vertical and 16px left margin) for the
+/// wrapping [`CellKind::Wrap`] and [`CellKind::Vcode`] rows.
 pub fn cell_control(el: impl IntoElement) -> Div {
     div().my(px(8.)).ml(px(16.)).child(el)
 }
 
+/// Like [`cell_control`], but grows to fill the row (`.weui-cell__control_flex`) with a 112.5px
+/// minimum width (upstream `30vw` at a 375px viewport).
 pub fn cell_control_flex(el: impl IntoElement) -> Div {
     div()
         .my(px(8.))
@@ -52,6 +73,8 @@ pub fn cell_control_flex(el: impl IntoElement) -> Div {
         .child(el)
 }
 
+/// Form page tip text (`.weui-form__tips`): 14px on a 1.4 line height in `fg_1`. Place it in
+/// [`Form::tips_area`] or a [`TipsGroup`].
 pub fn form_tips(text: impl IntoElement, cx: &App) -> Div {
     let t = Theme::get(cx);
     div()
@@ -61,6 +84,9 @@ pub fn form_tips(text: impl IntoElement, cx: &App) -> Div {
         .child(text)
 }
 
+/// Inline link for tips and agreements: link-coloured `text`, semibold when `bold` (as in
+/// `.weui-cells__tips a`). It is a `Role::Link` tab stop named by `text` with a [`focus_ring`];
+/// `on_click` runs on click or Enter/Space and the click does not reach the enclosing row.
 pub fn form_link(
     id: impl Into<ElementId>,
     text: impl Into<SharedString>,
@@ -89,17 +115,30 @@ pub fn form_link(
         .child(text)
 }
 
+/// Row variant of a [`FormCell`], mirroring WeUI's `weui-cell_*` modifier classes.
 #[derive(Clone, Copy, Default, PartialEq, Eq)]
 pub enum CellKind {
+    /// Ordinary row: 16px padding with the content vertically centred. The default.
     #[default]
     Default,
+    /// `.weui-cell_primary`: content aligned to the top, for multi-line bodies such as a textarea.
     Primary,
+    /// `.weui-cell_switch`: 12px vertical padding to fit a
+    /// [`crate::components::switch::Switch`]; no pressed highlight, disabled text in `fg_3`.
     Switch,
+    /// `.weui-cell_wrap`: 8px vertical padding and a wrapping body for [`cell_control`] items,
+    /// so a large-font row folds instead of overflowing.
     Wrap,
+    /// `.weui-cell_vcode.weui-cell_wrap`: 4px vertical padding so a 32px verification-code button
+    /// keeps the row 56px tall; wrapping body and no pressed highlight.
     Vcode,
+    /// `.weui-cell_vertical`: the label sits above the body, both full width, 12px apart.
     Vertical,
 }
 
+/// One labelled row of a form group (`.weui-cells__group_form .weui-cell`): a header (label,
+/// description, custom content), a body holding the children added through `ParentElement`,
+/// and an optional footer. Stateless; the caller owns any input entity placed in the body.
 #[derive(IntoElement)]
 pub struct FormCell {
     id: ElementId,
@@ -123,6 +162,8 @@ pub struct FormCell {
 }
 
 impl FormCell {
+    /// Creates an empty [`CellKind::Default`] row with a [`LABEL_WIDTH`] label width, the pressed
+    /// highlight on (8px corners), and no role, accessible name or handlers.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -145,66 +186,99 @@ impl FormCell {
             on_tap: None,
         }
     }
+    /// Sets the row variant, which controls padding, alignment and pressed feedback. Default
+    /// [`CellKind::Default`].
     pub fn kind(mut self, kind: CellKind) -> Self {
         self.kind = kind;
         self
     }
+    /// Shows `label` as the row's [`form_label`] at the start of the header. Visual only: it does
+    /// not name the row or the body control for assistive technology (use [`FormCell::aria_label`]
+    /// or the control's own label). No label by default.
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = Some(label.into());
         self
     }
+    /// Sets the label width in logical pixels, clamped to [`LABEL_MAX_WIDTH`] when rendered.
+    /// Default [`LABEL_WIDTH`], which renders at that 85px cap.
     pub fn label_width(mut self, width: f32) -> Self {
         self.label_width = width;
         self
     }
+    /// Adds a secondary line under the label (`.weui-cell__desc`: 12px in `fg_2`). None by
+    /// default.
     pub fn label_desc(mut self, desc: impl Into<SharedString>) -> Self {
         self.label_desc = Some(desc.into());
         self
     }
+    /// Adds custom header content after the label and description, such as an icon. None by
+    /// default; the header is omitted when there is neither a label nor custom content.
     pub fn hd(mut self, hd: impl IntoElement) -> Self {
         self.hd = Some(hd.into_any_element());
         self
     }
+    /// Lays the body out as a vertically centred flex row, for bodies such as
+    /// [`ClearableInput`] that pair a field with trailing controls. Off by default.
     pub fn bd_flex(mut self) -> Self {
         self.bd_flex = true;
         self
     }
+    /// Sets the footer (`.weui-cell__ft`): trailing content in `fg_1` with 16px left padding
+    /// (none for [`CellKind::Vertical`]), e.g. a switch or a help button. None by default.
     pub fn ft(mut self, ft: impl IntoElement) -> Self {
         self.ft = Some(ft.into_any_element());
         self
     }
+    /// Shows the warning state (`.weui-cell_warn`): all row text turns red. Off by default.
     pub fn warn(mut self, warn: bool) -> Self {
         self.warn = warn;
         self
     }
+    /// Styles the row as read-only (`.weui-cell_readonly`): no pressed highlight and body text in
+    /// `fg_1`. The body control itself must be made read-only separately. Off by default.
     pub fn readonly(mut self, readonly: bool) -> Self {
         self.readonly = readonly;
         self
     }
+    /// Styles the row as disabled (`.weui-cell_disabled`): no pressed highlight, body text in
+    /// `fg_1` (row text in `fg_3` for [`CellKind::Switch`]), `focus_target` and `on_tap` ignored,
+    /// and the node flagged disabled when a role is set. The body control is not disabled.
     pub fn disabled(mut self, disabled: bool) -> Self {
         self.disabled = disabled;
         self
     }
+    /// Enables the pressed highlight (`fg_3` background while pressed). Default `true`; it never
+    /// shows for [`CellKind::Switch`], [`CellKind::Vcode`], read-only or disabled rows.
     pub fn active(mut self, active: bool) -> Self {
         self.active = active;
         self
     }
+    /// Squares the pressed highlight's corners (0 instead of 8px), as
+    /// `.weui-cells__group_form-primary` does. Use it for rows inside a [`FormGroup::primary`].
     pub fn in_primary_group(mut self) -> Self {
         self.press_radius = 0.;
         self
     }
+    /// Focuses `handle` when the row receives a left mouse-down, so tapping anywhere on the row
+    /// focuses its input as in the upstream examples. Ignored while disabled. None by default.
     pub fn focus_target(mut self, handle: FocusHandle) -> Self {
         self.focus_target = Some(handle);
         self
     }
+    /// Sets the row's accessibility role. None by default.
     pub fn role(mut self, role: Role) -> Self {
         self.role = Some(role);
         self
     }
+    /// Sets the row's accessible name, normally together with [`FormCell::role`]. None by
+    /// default.
     pub fn aria_label(mut self, label: impl Into<SharedString>) -> Self {
         self.aria_label = Some(label.into());
         self
     }
+    /// Calls `handler` when the row is clicked and shows a pointer cursor, e.g. to toggle a switch
+    /// from anywhere on a [`CellKind::Switch`] row. Ignored while disabled. The row is not
+    /// focusable, so keep a focusable control in it for keyboard users. None by default.
     pub fn on_tap(
         mut self,
         handler: impl Fn(&ClickEvent, &mut Window, &mut App) + 'static,
@@ -331,6 +405,8 @@ impl RenderOnce for FormCell {
     }
 }
 
+/// A form group (`.weui-cells__group_form`): an optional title, a column of rows separated by
+/// 0.5px `fg_3` hairlines in a container inset 16px from each side, and optional tips below.
 #[derive(IntoElement)]
 pub struct FormGroup {
     id: ElementId,
@@ -345,6 +421,8 @@ pub struct FormGroup {
 }
 
 impl FormGroup {
+    /// Creates an empty group in the standard style: `bg_2` rows between top and bottom
+    /// hairlines, with a 24px top margin.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -358,42 +436,59 @@ impl FormGroup {
             rows: vec![],
         }
     }
+    /// Sets the group title (`.weui-cells__title`): 14px `fg_1` text above the rows with 32px
+    /// side padding and 8px below. None by default.
     pub fn title(mut self, title: impl IntoElement) -> Self {
         self.title = Some(title.into_any_element());
         self
     }
+    /// Sets the tips under the rows (`.weui-cells__tips`): 14px `fg_2` text with 32px side
+    /// padding and 8px above, e.g. a [`form_link`]. None by default.
     pub fn tips(mut self, tips: impl IntoElement) -> Self {
         self.tips = Some(tips.into_any_element());
         self
     }
+    /// Shows the tips in red (`.weui-cells__tips_warn`). Off by default.
     pub fn tips_warn(mut self, warn: bool) -> Self {
         self.tips_warn = warn;
         self
     }
+    /// Uses the inverted style (`.weui-cells__group_form-primary`): rows on a rounded 8px `bg_1`
+    /// card without outer hairlines, and a 32px top margin. Mark its rows `in_primary_group`.
     pub fn primary(mut self) -> Self {
         self.primary = true;
         self
     }
+    /// Marks the group as the first in the control area (`:first-child`): no top margin when it
+    /// has a title, 8px otherwise.
     pub fn first(mut self) -> Self {
         self.first = true;
         self
     }
+    /// Sets the accessibility role of the rows container, e.g. `Role::RadioGroup` around
+    /// [`crate::components::radio::RadioGroup`] rows. None by default.
     pub fn role(mut self, role: Role) -> Self {
         self.role = Some(role);
         self
     }
+    /// Sets the accessible name of the rows container. None by default.
     pub fn aria_label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = Some(label.into());
         self
     }
+    /// Appends a row. From the second row on, its top separator starts 16px from the left.
     pub fn row(mut self, row: impl IntoElement) -> Self {
         self.rows.push((row.into_any_element(), 16.));
         self
     }
+    /// Appends a row whose top separator starts `inset` px from the left, e.g. 56 to line up with
+    /// checkbox labels (`.weui-cells_checkbox`). Separators always end 16px from the right.
     pub fn row_inset(mut self, row: impl IntoElement, inset: f32) -> Self {
         self.rows.push((row.into_any_element(), inset));
         self
     }
+    /// Appends prebuilt rows, such as [`crate::components::radio::RadioGroup::rows`], all with a
+    /// separator left inset of `inset` px.
     pub fn rows(mut self, rows: impl IntoIterator<Item = AnyElement>, inset: f32) -> Self {
         self.rows.extend(rows.into_iter().map(|r| (r, inset)));
         self
@@ -480,6 +575,9 @@ enum FtKind {
     Extra,
 }
 
+/// A form page (`.weui-form`): a centred title and description, the control area holding the
+/// children (usually [`FormGroup`]s), and footer areas for tips, operations and extra content,
+/// on a `bg_2` background with 56px top padding. It fills at least its parent's height.
 #[derive(IntoElement)]
 pub struct Form {
     id: ElementId,
@@ -491,6 +589,8 @@ pub struct Form {
 }
 
 impl Form {
+    /// Creates an empty page. It does not scroll by itself; place it in a scrolling parent
+    /// unless [`Form::bottom_fixed`] is used.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -501,26 +601,39 @@ impl Form {
             bottom_fixed: None,
         }
     }
+    /// Sets the page title (`.weui-form__title`): 22px semibold text, exposed as a level-2
+    /// heading named by the text. None by default.
     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
         self.title = Some(title.into());
         self
     }
+    /// Sets the description under the title (`.weui-form__desc`): 17px text 16px below it. None
+    /// by default.
     pub fn desc(mut self, desc: impl Into<SharedString>) -> Self {
         self.desc = Some(desc.into());
         self
     }
+    /// Appends a centred tips area (`.weui-form__tips-area`) to the footer. Footer areas keep
+    /// call order and reproduce upstream's sibling margins (e.g. 16px after an operation area).
     pub fn tips_area(mut self, el: impl IntoElement) -> Self {
         self.ft.push((FtKind::Tips, el.into_any_element()));
         self
     }
+    /// Appends an operation area (`.weui-form__opr-area`), usually the primary button, to the
+    /// footer; as the last area it gets a 96px bottom margin.
     pub fn opr_area(mut self, el: impl IntoElement) -> Self {
         self.ft.push((FtKind::Opr, el.into_any_element()));
         self
     }
+    /// Appends a centred extra area (`.weui-form__extra-area`), usually the page footer, 52px
+    /// below the previous area (32px after a tips area).
     pub fn extra_area(mut self, el: impl IntoElement) -> Self {
         self.ft.push((FtKind::Extra, el.into_any_element()));
         self
     }
+    /// Switches to the bottom-fixed layout (`.weui-bottom-fixed-opr-page`): the title and
+    /// controls scroll inside the form, tracked by `scroll`, while the footer areas stay pinned
+    /// over an 80px fade. The form then fills its parent, which must have a bounded height.
     pub fn bottom_fixed(mut self, scroll: &ScrollHandle) -> Self {
         self.bottom_fixed = Some(scroll.clone());
         self
@@ -664,6 +777,8 @@ impl RenderOnce for Form {
     }
 }
 
+/// A left-aligned stack of tip rows (`.weui-form__tips__group_primary`) 8px apart, e.g.
+/// several [`crate::components::agree::Agree`] lines in one [`Form::tips_area`].
 #[derive(IntoElement)]
 pub struct TipsGroup {
     items: Vec<AnyElement>,
@@ -676,6 +791,7 @@ impl Default for TipsGroup {
 }
 
 impl TipsGroup {
+    /// Creates an empty group; add rows with `child` or `children`.
     pub fn new() -> Self {
         Self { items: vec![] }
     }
@@ -706,6 +822,9 @@ impl RenderOnce for TipsGroup {
     }
 }
 
+/// A [`TextInput`] plus the WeUI clear button (`.weui-btn_input-clear`), shown while the text is
+/// non-empty and either the input or the button has focus. The button is a `Role::Button` tab
+/// stop named "清除"; activating it clears the text and refocuses the input.
 pub struct ClearableInput {
     input: Entity<TextInput>,
     clear_focus: FocusHandle,
@@ -713,6 +832,9 @@ pub struct ClearableInput {
 }
 
 impl ClearableInput {
+    /// Wraps `input`, which stays shared with the caller; create the entity with
+    /// `cx.new(|cx| ClearableInput::new(input, window, cx))`. It observes the input's text and
+    /// focus so the button appears and hides without caller notifications.
     pub fn new(input: Entity<TextInput>, window: &mut Window, cx: &mut Context<Self>) -> Self {
         let clear_focus = cx.focus_handle().tab_stop(true);
         let input_focus = input.read(cx).focus_handle(cx);
@@ -728,6 +850,7 @@ impl ClearableInput {
             _subscriptions: subscriptions,
         }
     }
+    /// The wrapped text input entity, for reading or changing its text.
     pub fn input(&self) -> &Entity<TextInput> {
         &self.input
     }

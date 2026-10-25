@@ -1,15 +1,30 @@
+//! Load-more indicators from WeUI's `src/style/widget/weui-tips/weui-loadmore.less`: [`LoadMore`]
+//! shows a spinner with text, text on a line ("no data"), or an end-of-list dot.
+//!
+//! Known limitations: it is presentation only and loads nothing; the owner switches the kind when
+//! loading ends. The line and dot variants paint the label background in theme `bg_2`, so they
+//! assume a `bg_2` surface.
+
 use super::loading::Loading;
 use crate::Theme;
 use gpui::{prelude::*, *};
 
+/// Visual state of a [`LoadMore`].
 #[derive(Clone, Copy, Default, PartialEq, Eq)]
 pub enum LoadMoreKind {
+    /// A spinner followed by the text, exposed as an alert so the text is announced.
     #[default]
     Loading,
+    /// The text centred on a hairline (`weui-loadmore_line`), for example "暂无数据".
     Line,
+    /// A 4px dot centred on a hairline (`weui-loadmore_dot`); the text is only the accessible name.
     Dot,
 }
 
+/// A load-more row: 65% of the container width, centred, with 14px theme `fg_1` text.
+///
+/// Its role is alert for [`LoadMoreKind::Loading`], paragraph for `Line` and list item for `Dot`;
+/// the text is always the accessible name.
 #[derive(IntoElement)]
 pub struct LoadMore {
     id: ElementId,
@@ -19,6 +34,8 @@ pub struct LoadMore {
 }
 
 impl LoadMore {
+    /// Creates a [`LoadMoreKind::Loading`] row showing `text`. The element id defaults to
+    /// `"loadmore-{text}"`.
     pub fn new(text: impl Into<SharedString>) -> Self {
         let text = text.into();
         Self {
@@ -28,26 +45,35 @@ impl LoadMore {
             margin: None,
         }
     }
+    /// Same as [`LoadMore::new`]: a spinner with `text`.
     pub fn loading(text: impl Into<SharedString>) -> Self {
         Self::new(text)
     }
+    /// Creates a [`LoadMoreKind::Line`] row showing `text`.
     pub fn line(text: impl Into<SharedString>) -> Self {
         Self::new(text).kind(LoadMoreKind::Line)
     }
+    /// Creates a [`LoadMoreKind::Dot`] row; `text` is announced but not drawn.
     pub fn dot(text: impl Into<SharedString>) -> Self {
         Self::new(text).kind(LoadMoreKind::Dot)
     }
+    /// Sets the visual state. Default: [`LoadMoreKind::Loading`].
     pub fn kind(mut self, kind: LoadMoreKind) -> Self {
         self.kind = kind;
         self
     }
+    /// Shorthand for `kind(LoadMoreKind::Line)`. The text is unchanged, so construct the row with
+    /// the end-state text.
     pub fn finished(self) -> Self {
         self.kind(LoadMoreKind::Line)
     }
+    /// Sets the element id. Default: `"loadmore-{text}"`.
     pub fn id(mut self, id: impl Into<ElementId>) -> Self {
         self.id = id.into();
         self
     }
+    /// Sets the top and bottom margins in logical pixels. Default: 20px/20px for `Loading`,
+    /// 32px/20px for `Line` and `Dot`.
     pub fn margin(mut self, top: f32, bottom: f32) -> Self {
         self.margin = Some((top, bottom));
         self

@@ -1,3 +1,8 @@
+//! WeUI agreement checkbox (`src/style/widget/weui-agree/weui-agree.less`, example
+//! `src/example/form/form_vcode.html`). [`Agree`] is a 20px check, description text and an
+//! optional terms link, with the `weui-agree_warn` and `weui-agree_animate` (shake) states.
+//! With reduced motion the warn state shows without the shake.
+
 use super::{ChangeHandler, ClickHandler, checkbox::check_icon, form::focus_ring};
 use crate::{Theme, accessibility::Semantics};
 use gpui::{prelude::*, *};
@@ -26,6 +31,9 @@ fn shake(delta: f32) -> f32 {
     0.
 }
 
+/// An inline consent control (`.weui-agree`, 14px text). The whole line is one `Role::CheckBox`
+/// tab stop named by the text plus the link text; the optional link is a separate `Role::Link`
+/// tab stop. Controlled; the caller stores the value.
 #[derive(IntoElement)]
 pub struct Agree {
     id: ElementId,
@@ -39,6 +47,7 @@ pub struct Agree {
 }
 
 impl Agree {
+    /// Creates an unchecked, enabled line showing `text` (e.g. "阅读并同意") in `fg_1`.
     pub fn new(id: impl Into<ElementId>, text: impl Into<SharedString>) -> Self {
         Self {
             id: id.into(),
@@ -51,6 +60,8 @@ impl Agree {
             on_change: None,
         }
     }
+    /// Appends link-coloured `text` (e.g. "《相关条款》") after the description. Clicking or
+    /// activating it calls `handler` and does not toggle the checkbox. No link by default.
     pub fn link(
         mut self,
         text: impl Into<SharedString>,
@@ -59,22 +70,31 @@ impl Agree {
         self.link = Some((text.into(), Box::new(handler)));
         self
     }
+    /// Sets whether the check is drawn and exposed as checked. Default `false`.
     pub fn checked(mut self, value: bool) -> Self {
         self.checked = value;
         self
     }
+    /// Disables the checkbox: icon at 30% opacity, not focusable, `on_change` never called, and
+    /// flagged disabled. The link stays active. Default `false`.
     pub fn disabled(mut self, value: bool) -> Self {
         self.disabled = value;
         self
     }
+    /// Shows the description in red (`weui-agree_warn`), e.g. after submitting without consent;
+    /// the link keeps its colour. Default `false`.
     pub fn warn(mut self, value: bool) -> Self {
         self.warn = value;
         self
     }
+    /// Plays the 300ms horizontal shake (`weui-agree_animate`) whenever `generation` changes to a
+    /// new non-zero value; increment a counter to replay it. Default 0 (no shake).
     pub fn shake(mut self, generation: usize) -> Self {
         self.shake = generation;
         self
     }
+    /// Calls `handler` with the requested new value (`!checked`) when the line outside the link
+    /// is clicked or activated with Enter/Space. Re-render with [`Agree::checked`] to show it.
     pub fn on_change(mut self, handler: impl Fn(&bool, &mut Window, &mut App) + 'static) -> Self {
         self.on_change = Some(Box::new(handler));
         self
@@ -157,7 +177,7 @@ impl RenderOnce for Agree {
             }
         }
         let el = Semantics::new(el).disabled(self.disabled);
-        if self.shake > 0 {
+        if self.shake > 0 && !cx.reduce_motion() {
             div()
                 .relative()
                 .child(el)

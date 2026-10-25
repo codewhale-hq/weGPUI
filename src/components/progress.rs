@@ -1,7 +1,18 @@
+//! Progress bars from WeUI's `src/style/widget/weui-progress/`: [`Progress`] draws a 3px bar
+//! followed by a cancel icon button (`weui-progress__opr`).
+//!
+//! Known limitations: the cancel button is always shown, and progress changes are exposed as the
+//! indicator's value rather than announced through a live region as the upstream example does.
+
 use super::{ClickHandler, Icon};
 use crate::Theme;
 use gpui::{prelude::*, *};
 
+/// A horizontal progress bar filled with the brand colour, followed by a red `cancel` [`Icon`].
+///
+/// The bar is exposed as `Role::ProgressIndicator` with a 0–100 value and "N%" value text; the
+/// cancel icon is a Tab-stop button with a 44px hit area. It holds no state: re-render it with the
+/// new value.
 #[derive(IntoElement)]
 pub struct Progress {
     id: ElementId,
@@ -12,6 +23,8 @@ pub struct Progress {
 }
 
 impl Progress {
+    /// Creates a bar at 0% with element id `id`, labelled "进度", with a cancel button labelled
+    /// "取消".
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -21,18 +34,28 @@ impl Progress {
             on_cancel: None,
         }
     }
+    /// Sets the filled percentage, clamped to 0–100; NaN is treated as 0. Default: 0.
     pub fn value(mut self, percent: f32) -> Self {
-        self.value = percent.clamp(0., 100.);
+        self.value = if percent.is_nan() {
+            0.
+        } else {
+            percent.clamp(0., 100.)
+        };
         self
     }
+    /// Sets the progress indicator's accessible name. Default: "进度" (progress).
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = label.into();
         self
     }
+    /// Sets the cancel button's accessible name. Default: "取消" (cancel).
     pub fn cancel_label(mut self, label: impl Into<SharedString>) -> Self {
         self.cancel_label = label.into();
         self
     }
+    /// Sets the cancel callback. It receives the click event when the cancel button is clicked, or
+    /// activated with Enter or Space while focused. Without it the button still renders and takes
+    /// focus.
     pub fn on_cancel(
         mut self,
         handler: impl Fn(&ClickEvent, &mut Window, &mut App) + 'static,

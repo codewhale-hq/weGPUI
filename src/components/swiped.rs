@@ -1,3 +1,11 @@
+//! WeUI swiped cell (`weui-cell/weui-cell_swiped.less`): a list row that slides left to reveal
+//! action buttons (`weui-swiped-btn`).
+//!
+//! [`SwipedCell`] keeps its open state in window element state keyed by its id; [`SwipedAction`]s
+//! are its buttons. Closed cells hide their actions from accessibility and the Tab order, and the
+//! row supports the Expand and Collapse accessible actions. Known limitation: the upstream list
+//! example is static, so the drag thresholds and 200 ms snap are this crate's own choices.
+
 use super::{ClickHandler, modal::ease};
 use crate::{Theme, accessibility::Semantics};
 use gpui::{prelude::*, *};
@@ -5,13 +13,18 @@ use std::time::{Duration, Instant};
 
 const SNAP: Duration = Duration::from_millis(200);
 
+/// Background colour of a [`SwipedAction`].
 #[derive(Clone, Copy, Default, PartialEq, Eq)]
 pub enum SwipedActionKind {
+    /// Neutral background (`weui-swiped-btn_default`).
     Default,
+    /// Warning red background (`weui-swiped-btn_warn`); the default.
     #[default]
     Warn,
 }
 
+/// Button revealed behind a [`SwipedCell`]. While the cell is closed it is hidden from
+/// accessibility and left out of the Tab order.
 #[derive(IntoElement)]
 pub struct SwipedAction {
     id: ElementId,
@@ -22,6 +35,7 @@ pub struct SwipedAction {
 }
 
 impl SwipedAction {
+    /// Creates a warn-coloured action showing `label`.
     pub fn new(id: impl Into<ElementId>, label: impl Into<SharedString>) -> Self {
         Self {
             id: id.into(),
@@ -31,14 +45,17 @@ impl SwipedAction {
             on_click: None,
         }
     }
+    /// Uses [`SwipedActionKind::Warn`], the default.
     pub fn warn(mut self) -> Self {
         self.kind = SwipedActionKind::Warn;
         self
     }
+    /// Uses [`SwipedActionKind::Default`].
     pub fn default_kind(mut self) -> Self {
         self.kind = SwipedActionKind::Default;
         self
     }
+    /// Called with the click event when the action is clicked or activated with Enter or Space.
     pub fn on_click(
         mut self,
         handler: impl Fn(&ClickEvent, &mut Window, &mut App) + 'static,
@@ -116,6 +133,11 @@ impl Render for SwipeDrag {
     }
 }
 
+/// List row (`ListItem` role, with expanded state) whose content slides left to expose its actions.
+///
+/// Dragging left past half the actions' width and releasing opens it; a click without a drag on an
+/// open row closes it. While focused, Left opens, Right or Escape closes, and Enter or Space
+/// toggles. Snaps take 200 ms with CSS `ease`, or are instant under reduced motion.
 #[derive(IntoElement)]
 pub struct SwipedCell {
     id: ElementId,
@@ -126,6 +148,7 @@ pub struct SwipedCell {
 }
 
 impl SwipedCell {
+    /// Creates a closed cell with no content or actions.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -135,18 +158,23 @@ impl SwipedCell {
             label: None,
         }
     }
+    /// Sets the row content that slides over the actions.
     pub fn content(mut self, content: impl IntoElement) -> Self {
         self.content = Some(content.into_any_element());
         self
     }
+    /// Appends an action; actions sit left to right at the row's right edge.
     pub fn action(mut self, action: SwipedAction) -> Self {
         self.actions.push(action);
         self
     }
+    /// Starts the cell open when its state is first created (default `false`); later changes are
+    /// ignored.
     pub fn default_open(mut self, open: bool) -> Self {
         self.open = open;
         self
     }
+    /// Sets the row's accessible name (default none).
     pub fn aria_label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = Some(label.into());
         self

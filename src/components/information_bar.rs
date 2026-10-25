@@ -1,17 +1,31 @@
+//! WeUI information bar (`weui-tips/weui-information-bar.less`) in its five colour variants, with
+//! optional icon, link and close button, plus the bulleted list tips
+//! (`weui-tips/weui-list-tips.less`).
+//!
+//! [`InformationBar`] and [`ListTips`] are stateless; removing a closed bar is up to the caller.
+
 use super::{ClickHandler, Icon};
 use crate::Theme;
 use gpui::{prelude::*, *};
 
+/// Colour variant of an [`InformationBar`].
 #[derive(Clone, Copy, Default, PartialEq, Eq)]
 pub enum InformationBarKind {
+    /// White text on red, the base `weui-information-bar` colours; the default.
     #[default]
     WarnStrong,
+    /// Secondary text and a red icon on a pale red background (`weui-information-bar_warn-weak`).
     WarnWeak,
+    /// White text on the grey `FG-2` background (`weui-information-bar_warn-no-color`).
     WarnNoColor,
+    /// White text on orange (`weui-information-bar_tips-strong`).
     TipsStrong,
+    /// Secondary text on the `BG-1` background (`weui-information-bar_tips-weak`).
     TipsWeak,
 }
 
+/// Rounded notice bar exposed as an `Alert` named by its text. The text is centred only when there
+/// is no icon, link or close button.
 #[derive(IntoElement)]
 pub struct InformationBar {
     id: ElementId,
@@ -26,6 +40,8 @@ pub struct InformationBar {
 }
 
 impl InformationBar {
+    /// Creates an [`InformationBarKind::WarnStrong`] bar showing `text` with the `outlined-warn`
+    /// icon.
     pub fn new(id: impl Into<ElementId>, text: impl Into<SharedString>) -> Self {
         Self {
             id: id.into(),
@@ -39,14 +55,17 @@ impl InformationBar {
             opacity: 1.,
         }
     }
+    /// Sets the colour variant (default [`InformationBarKind::WarnStrong`]).
     pub fn kind(mut self, kind: InformationBarKind) -> Self {
         self.kind = kind;
         self
     }
+    /// Sets the leading 24 px icon by asset name; `None` removes it (default `outlined-warn`).
     pub fn icon(mut self, name: Option<SharedString>) -> Self {
         self.icon = name;
         self
     }
+    /// Adds a trailing focusable link with the `Link` role; the handler receives the click event.
     pub fn link(
         mut self,
         label: impl Into<SharedString>,
@@ -55,10 +74,14 @@ impl InformationBar {
         self.link = Some((label.into(), Some(Box::new(handler))));
         self
     }
+    /// Adds a close button with this accessible label; it does nothing until
+    /// [`InformationBar::on_close`] is set.
     pub fn closable(mut self, label: impl Into<SharedString>) -> Self {
         self.close_label = Some(label.into());
         self
     }
+    /// Sets the close button's handler, adding the button with label "关闭" if `closable` was not
+    /// called. The caller removes the bar.
     pub fn on_close(
         mut self,
         handler: impl Fn(&ClickEvent, &mut Window, &mut App) + 'static,
@@ -69,10 +92,13 @@ impl InformationBar {
         self.on_close = Some(Box::new(handler));
         self
     }
+    /// Positions the bar absolutely, 8 px from the top, left and right of its parent (default
+    /// `false`).
     pub fn floating(mut self, floating: bool) -> Self {
         self.floating = floating;
         self
     }
+    /// Sets the bar's opacity, for example during a caller-driven fade (default `1.0`).
     pub fn opacity(mut self, opacity: f32) -> Self {
         self.opacity = opacity;
         self
@@ -199,6 +225,8 @@ impl RenderOnce for InformationBar {
     }
 }
 
+/// Bulleted tips list (`weui-list-tips`): 14 px secondary text under a hairline, one `ListItem` per
+/// tip.
 #[derive(IntoElement)]
 pub struct ListTips {
     items: Vec<SharedString>,
@@ -212,16 +240,20 @@ impl Default for ListTips {
 }
 
 impl ListTips {
+    /// Creates an empty list styled as the last block, with no bottom padding.
     pub fn new() -> Self {
         Self {
             items: vec![],
             last: true,
         }
     }
+    /// Appends a bulleted tip.
     pub fn item(mut self, text: impl Into<SharedString>) -> Self {
         self.items.push(text.into());
         self
     }
+    /// Whether this is the last block (default `true`); `false` keeps the 24 px bottom padding that
+    /// upstream removes from the last child.
     pub fn last(mut self, last: bool) -> Self {
         self.last = last;
         self

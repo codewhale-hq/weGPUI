@@ -1,3 +1,9 @@
+//! WeUI select cells (`src/style/widget/weui-cell/weui-form/weui-select.less`, examples
+//! `src/example/form/form_select.html` and `form_select_primary.html`). [`SelectCell`] is the
+//! `.weui-cell_select` trigger row and [`SelectMenu`] the option sheet it opens.
+//! Known limitations: the native HTML `<select>` popup is replaced by a bottom-sheet overlay
+//! that the caller opens and closes through a [`Presence`]; the cell never opens it by itself.
+
 use super::{
     ClickHandler, Icon,
     form::{LABEL_MAX_WIDTH, LABEL_WIDTH, form_label},
@@ -7,11 +13,17 @@ use crate::{Theme, accessibility::Semantics};
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
+/// Arrangement of a [`SelectCell`], after the `weui-cell_select*` modifiers. Chosen with
+/// [`SelectCell::before`] and [`SelectCell::after`].
 #[derive(Clone, Copy, Default, PartialEq, Eq)]
 pub enum SelectLayout {
+    /// `.weui-cell_select`: the whole row is the trigger and shows the value. The default.
     #[default]
     Plain,
+    /// `.weui-cell_select-before`: a narrow trigger on the left, then caller content (e.g. a
+    /// phone-number input) after a vertical hairline.
     Before,
+    /// `.weui-cell_select-after`: a form label, then the value; the whole row is the trigger.
     After,
 }
 
@@ -19,6 +31,9 @@ fn arrow(cx: &App) -> impl IntoElement {
     Icon::new("arrow").w(12.).h(24.).color(Theme::get(cx).fg_2)
 }
 
+/// A select trigger row: the current value on a 56px row with a trailing `fg_2` arrow, exposed
+/// as a focusable `Role::ComboBox` carrying the value and expanded state. It only reports
+/// activation; the caller opens a [`SelectMenu`] (or a picker) and reports it via `expanded`.
 #[derive(IntoElement)]
 pub struct SelectCell {
     id: ElementId,
@@ -33,6 +48,8 @@ pub struct SelectCell {
 }
 
 impl SelectCell {
+    /// Creates a collapsed [`SelectLayout::Plain`] row showing `value`, which is also its
+    /// accessible value and name, with a [`LABEL_WIDTH`] label width and no click handler.
     pub fn new(id: impl Into<ElementId>, value: impl Into<SharedString>) -> Self {
         Self {
             id: id.into(),
@@ -46,28 +63,39 @@ impl SelectCell {
             on_click: None,
         }
     }
+    /// Switches to [`SelectLayout::Before`]: the trigger shrinks to the label width (capped at
+    /// [`LABEL_MAX_WIDTH`]) on the left and `body` fills the rest of the row, outside the trigger.
     pub fn before(mut self, body: impl IntoElement) -> Self {
         self.layout = SelectLayout::Before;
         self.body = Some(body.into_any_element());
         self
     }
+    /// Switches to [`SelectLayout::After`] with `label` as the visible form label; the accessible
+    /// name becomes the label followed by the value.
     pub fn after(mut self, label: impl Into<SharedString>) -> Self {
         self.layout = SelectLayout::After;
         self.label = Some(label.into());
         self
     }
+    /// Sets the label width in logical pixels: the label column for `after`, or the trigger's
+    /// value width for `before`, both capped at [`LABEL_MAX_WIDTH`]. Default [`LABEL_WIDTH`].
     pub fn label_width(mut self, width: f32) -> Self {
         self.label_width = width;
         self
     }
+    /// Exposes whether the menu this cell opened is showing (`aria-expanded`). Default `false`.
     pub fn expanded(mut self, expanded: bool) -> Self {
         self.expanded = expanded;
         self
     }
+    /// Squares the pressed highlight's corners (0 instead of 8px) for rows inside a primary form
+    /// group.
     pub fn in_primary_group(mut self) -> Self {
         self.in_primary = true;
         self
     }
+    /// Calls `handler` when the trigger is clicked or activated with Enter/Space, typically to
+    /// show a [`SelectMenu`]. Without it the trigger is still focusable but does nothing.
     pub fn on_click(
         mut self,
         handler: impl Fn(&ClickEvent, &mut Window, &mut App) + 'static,
@@ -216,6 +244,13 @@ impl RenderOnce for SelectCell {
 type PickHandler = Rc<dyn Fn(&usize, &mut Window, &mut App)>;
 type DismissHandler = Rc<dyn Fn(&mut Window, &mut App)>;
 
+/// A bottom-sheet option list replacing the native select popup: an optional title, a
+/// `Role::ListBox` of options (the selected one in brand colour with a tick), and a "取消"
+/// button, in a dark-masked [`Modal`] that slides up.
+///
+/// Visibility is the caller's [`Presence`]; the menu never hides itself, so hide it from
+/// `on_select` and `on_dismiss`. On opening, focus moves to the selected (or first enabled)
+/// option; Up/Down/Home/End move between enabled options without wrapping.
 #[derive(IntoElement)]
 pub struct SelectMenu {
     id: ElementId,
@@ -228,6 +263,8 @@ pub struct SelectMenu {
 }
 
 impl SelectMenu {
+    /// Creates an empty menu bound to a clone of `presence`, so rebuild it each render to see
+    /// the current state. `id` keys the modal and the option focus handles in window state.
     pub fn new(id: impl Into<ElementId>, presence: &Presence) -> Self {
         Self {
             id: id.into(),
@@ -239,31 +276,43 @@ impl SelectMenu {
             on_dismiss: None,
         }
     }
+    /// Sets the title row above the options (12px, `fg_1`), also used as the modal's accessible
+    /// label. Without it there is no title row and the label is "选择".
     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
         self.title = Some(title.into());
         self
     }
+    /// Appends an enabled option; `label` is its text and accessible name.
     pub fn option(mut self, label: impl Into<SharedString>) -> Self {
         self.options.push((label.into(), false));
         self
     }
+    /// Appends a disabled option: `fg_2` text, flagged disabled, not focusable or selectable,
+    /// and skipped by the arrow keys.
     pub fn disabled_option(mut self, label: impl Into<SharedString>) -> Self {
         self.options.push((label.into(), true));
         self
     }
+    /// Appends several enabled options in order.
     pub fn options<S: Into<SharedString>>(mut self, labels: impl IntoIterator<Item = S>) -> Self {
         self.options
             .extend(labels.into_iter().map(|l| (l.into(), false)));
         self
     }
+    /// Marks the option at `index` as selected (brand colour, tick, `aria-selected`) and makes
+    /// it the initial focus target if enabled. Default `None`.
     pub fn selected(mut self, index: Option<usize>) -> Self {
         self.selected = index;
         self
     }
+    /// Calls `handler` with the index of an enabled option when it is clicked or activated with
+    /// Enter/Space. The menu stays open until the caller hides its [`Presence`].
     pub fn on_select(mut self, handler: impl Fn(&usize, &mut Window, &mut App) + 'static) -> Self {
         self.on_select = Some(Rc::new(handler));
         self
     }
+    /// Calls `handler` when the user cancels with the "取消" button, a mask click or Escape. The
+    /// caller should hide the [`Presence`]; nothing closes otherwise.
     pub fn on_dismiss(mut self, handler: impl Fn(&mut Window, &mut App) + 'static) -> Self {
         self.on_dismiss = Some(Rc::new(handler));
         self

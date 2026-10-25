@@ -1,15 +1,31 @@
+//! WeUI icons (`src/style/icon/weui-icon.less`) drawn as tinted SVGs from the bundled `icon-*.svg`
+//! assets, plus [`IconButton`], the tappable icon of `weui-icon-btn` and `weui-btn_icon`.
+//!
+//! [`Icon`] loads `icon-{name}.svg` through the app's `AssetSource`, so register [`crate::Assets`]
+//! (or serve the same names) first. Known limitations: an unknown name paints nothing in a box of
+//! the icon's size, and an icon without a label is invisible to assistive technology.
+
 use super::ClickHandler;
 use crate::Theme;
 use gpui::{prelude::*, *};
 
+/// Size and colour preset of an [`Icon`].
 #[derive(Clone, Copy, Default, PartialEq, Eq)]
 pub enum IconVariant {
+    /// Inline icon: 24px square (WeUI's `2.4em` at a 10px icon font size).
     #[default]
     Normal,
+    /// `weui-icon_msg`: 64px result icon; `warn` is red and `info-circle` is blue.
     Msg,
+    /// `weui-icon_msg-primary`: 64px result icon; `warn` is yellow.
     MsgPrimary,
 }
 
+/// A single WeUI icon, tinted with one colour.
+///
+/// By default it is 24px square (64px for the message variants); the narrow arrows (`arrow`,
+/// `arrow-bold`, `back-arrow`, `back-arrow-thin`) default to half width. The tint defaults to
+/// [`icon_color`]. Without [`Icon::label`] the icon is decorative and has no accessibility node.
 #[derive(IntoElement)]
 pub struct Icon {
     name: SharedString,
@@ -22,6 +38,8 @@ pub struct Icon {
 }
 
 impl Icon {
+    /// Creates the icon `name`: the asset file name without the `icon-` prefix and `.svg` suffix,
+    /// for example `"success"` or `"arrow"`.
     pub fn new(name: impl Into<SharedString>) -> Self {
         Self {
             name: name.into(),
@@ -33,35 +51,45 @@ impl Icon {
             active: None,
         }
     }
+    /// Sets the width and height to `size` logical pixels.
     pub fn size(mut self, size: f32) -> Self {
         self.w = Some(size);
         self.h = Some(size);
         self
     }
+    /// Sets the width in logical pixels, keeping the default or previously set height.
     pub fn w(mut self, w: f32) -> Self {
         self.w = Some(w);
         self
     }
+    /// Sets the height in logical pixels, keeping the default or previously set width.
     pub fn h(mut self, h: f32) -> Self {
         self.h = Some(h);
         self
     }
+    /// Overrides the tint. Default: [`icon_color`] for the name and variant.
     pub fn color(mut self, color: impl Into<Hsla>) -> Self {
         self.color = Some(color.into());
         self
     }
+    /// Uses the [`IconVariant::Msg`] preset (64px, message colours).
     pub fn msg(mut self) -> Self {
         self.variant = IconVariant::Msg;
         self
     }
+    /// Uses the [`IconVariant::MsgPrimary`] preset (64px, yellow `warn`).
     pub fn msg_primary(mut self) -> Self {
         self.variant = IconVariant::MsgPrimary;
         self
     }
+    /// Exposes the icon to assistive technology as an image (`Role::Image`) named `label`. Default:
+    /// none (decorative).
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = Some(label.into());
         self
     }
+    /// Switches the tint to `color` while an ancestor marked with GPUI's `group(group)` is pressed,
+    /// mirroring WeUI's `:active` icon colours.
     pub fn group_active_color(
         mut self,
         group: impl Into<SharedString>,
@@ -79,6 +107,9 @@ fn narrow(name: &str) -> bool {
     )
 }
 
+/// Returns WeUI's default tint for icon `name` in `variant`, taken from the active [`Theme`]: for
+/// example brand for success icons, blue for waiting and info, red for warn and cancel, and `fg_2`
+/// for arrows, circle and clear. Names it does not list get `fg_0`.
 pub fn icon_color(name: &str, variant: IconVariant, cx: &App) -> Hsla {
     let t = Theme::get(cx);
     match (variant, name) {
@@ -142,6 +173,12 @@ impl RenderOnce for Icon {
     }
 }
 
+/// An icon that acts as a button (`weui-icon-btn`), with a hit area extending 10px beyond the icon
+/// on every side and at least 44px square.
+///
+/// It exposes `Role::Button` with an accessible label, is a Tab stop and activates on click, Enter
+/// or Space. Pressing dims the icon to 50% (or recolours it in [`IconButton::btn_icon`] mode);
+/// keyboard focus shows a brand ring.
 #[derive(IntoElement)]
 pub struct IconButton {
     id: ElementId,
@@ -154,6 +191,8 @@ pub struct IconButton {
 }
 
 impl IconButton {
+    /// Creates a button with element id `id` showing the icon named `icon`. The accessible label
+    /// defaults to the icon name; set a meaningful one with [`IconButton::label`].
     pub fn new(id: impl Into<ElementId>, icon: impl Into<SharedString>) -> Self {
         let icon = icon.into();
         Self {
@@ -166,48 +205,64 @@ impl IconButton {
             on_click: None,
         }
     }
+    /// Creates a 12×24px `back-arrow` button labelled "返回" (back), as `weui-icon-btn_goback`.
     pub fn goback(id: impl Into<ElementId>) -> Self {
         let mut this = Self::new(id, "back-arrow").label("返回");
         this.icon = this.icon.w(12.).h(24.);
         this
     }
+    /// Creates a 24px `close` button labelled "关闭" (close), as `weui-icon-btn_close`.
     pub fn close(id: impl Into<ElementId>) -> Self {
         let mut this = Self::new(id, "close").label("关闭");
         this.icon = this.icon.size(24.);
         this
     }
+    /// Sets the accessible name of the button.
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = label.into();
         self
     }
+    /// Sets the icon's width and height in logical pixels. Default: 24px.
     pub fn size(mut self, size: f32) -> Self {
         self.icon = self.icon.size(size);
         self
     }
+    /// Sets the icon width in logical pixels.
     pub fn w(mut self, w: f32) -> Self {
         self.icon = self.icon.w(w);
         self
     }
+    /// Sets the icon height in logical pixels.
     pub fn h(mut self, h: f32) -> Self {
         self.icon = self.icon.h(h);
         self
     }
+    /// Sets the icon tint. Default: `fg_0` (the `weui-icon-btn` colour), or the icon's own default
+    /// colour in [`IconButton::btn_icon`] mode.
     pub fn color(mut self, color: impl Into<Hsla>) -> Self {
         self.icon = self.icon.color(color);
         self
     }
+    /// Switches to `weui-btn_icon` behaviour: the icon keeps its default colour and turns `fg_1`
+    /// while pressed instead of dimming.
     pub fn btn_icon(mut self) -> Self {
         self.btn_icon = true;
         self
     }
+    /// Disables the button when `disabled` is true (default false): the icon dims to 30%, the
+    /// button is not focusable, never calls `on_click`, and is exposed as disabled.
     pub fn disabled(mut self, disabled: bool) -> Self {
         self.disabled = disabled;
         self
     }
+    /// Uses `focus` as the button's focus handle so the owner can focus it programmatically.
+    /// Ignored while disabled.
     pub fn track_focus(mut self, focus: &FocusHandle) -> Self {
         self.focus = Some(focus.clone());
         self
     }
+    /// Sets the activation callback. It receives the click event on a pointer click, or on Enter or
+    /// Space while focused, and is not attached while disabled.
     pub fn on_click(
         mut self,
         handler: impl Fn(&ClickEvent, &mut Window, &mut App) + 'static,

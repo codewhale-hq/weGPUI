@@ -1,3 +1,10 @@
+//! WeUI gallery image viewer (`weui-cell/weui-gallery.less`): a full-window black overlay showing
+//! one image, with an optional delete bar (`weui-gallery__opr`).
+//!
+//! [`Gallery`] renders in a [`Modal`] driven by a caller-owned [`Presence`], created with
+//! [`gallery_presence`]. Known limitations: no pinch, zoom, swipe or multi-image paging, and the
+//! image is not focusable, so keyboard users close the viewer with Escape.
+
 use super::{
     ClickHandler, Icon,
     modal::{MaskKind, Modal, Motion, Placement, Presence},
@@ -8,12 +15,16 @@ use std::{rc::Rc, time::Duration};
 
 type DismissHandler = Rc<dyn Fn(&mut Window, &mut App)>;
 
+/// Viewer fade length, matching the upstream example's `fadeIn(100)`.
 pub const GALLERY_FADE: Duration = Duration::from_millis(100);
 
+/// Creates a [`Presence`] with the [`GALLERY_FADE`] transition.
 pub fn gallery_presence(cx: &mut App) -> Presence {
     Presence::new(cx).duration(GALLERY_FADE)
 }
 
+/// Full-window image viewer exposed as a modal `Dialog`. Clicking the image area or pressing Escape
+/// calls `on_dismiss`.
 #[derive(IntoElement)]
 pub struct Gallery {
     id: ElementId,
@@ -26,6 +37,7 @@ pub struct Gallery {
 }
 
 impl Gallery {
+    /// Creates a viewer for `presence` (cloned) with no image, label "大图" and no delete bar.
     pub fn new(id: impl Into<ElementId>, presence: &Presence) -> Self {
         Self {
             id: id.into(),
@@ -37,18 +49,24 @@ impl Gallery {
             on_dismiss: None,
         }
     }
+    /// Sets the image, any GPUI `ImageSource` (asset name, URI or path), scaled to fit. Without one
+    /// only the black background is drawn.
     pub fn src(mut self, src: impl Into<ImageSource>) -> Self {
         self.src = Some(src.into());
         self
     }
+    /// Sets the accessible name of the image and the dialog (default "大图").
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = label.into();
         self
     }
+    /// Sets the delete button's accessible label (default "删除").
     pub fn delete_label(mut self, label: impl Into<SharedString>) -> Self {
         self.delete_label = label.into();
         self
     }
+    /// Shows the 60 px bottom bar with a focusable delete button; the handler receives its click
+    /// event. Without it there is no bar.
     pub fn on_delete(
         mut self,
         handler: impl Fn(&ClickEvent, &mut Window, &mut App) + 'static,
@@ -56,6 +74,7 @@ impl Gallery {
         self.on_delete = Some(Box::new(handler));
         self
     }
+    /// Called on an image click or Escape; hide the presence here.
     pub fn on_dismiss(mut self, handler: impl Fn(&mut Window, &mut App) + 'static) -> Self {
         self.on_dismiss = Some(Rc::new(handler));
         self

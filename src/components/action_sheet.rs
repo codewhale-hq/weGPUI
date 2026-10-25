@@ -1,10 +1,19 @@
+//! WeUI action sheet (`weui-tips/weui-actionsheet.less`): an iOS bottom sheet with optional title,
+//! menu cells and a separate action group, or the Android skin's centred 274 px menu card.
+//!
+//! [`ActionSheet`] renders in a [`Modal`] when given a [`Presence`]; [`ActionSheetItem`] handlers
+//! do not close it. Known limitations: in Android style the title is only the accessible name and
+//! is not drawn, and the action group is omitted (upstream hides `weui-actionsheet__action` there).
+
 use super::modal::{MaskKind, Modal, Motion, Placement, Presence};
 use crate::Theme;
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
+/// Shared callback for item activation and dismissal.
 pub type ActionHandler = Rc<dyn Fn(&mut Window, &mut App)>;
 
+/// One cell of an [`ActionSheet`] menu or action group, exposed as a focusable `Button`.
 #[derive(Clone)]
 pub struct ActionSheetItem {
     label: SharedString,
@@ -15,6 +24,7 @@ pub struct ActionSheetItem {
 }
 
 impl ActionSheetItem {
+    /// Creates a plain cell showing `label`, with no handler.
     pub fn new(label: impl Into<SharedString>) -> Self {
         Self {
             label: label.into(),
@@ -24,24 +34,35 @@ impl ActionSheetItem {
             handler: None,
         }
     }
+    /// Adds a 12 px secondary line under the label (`weui-actionsheet__cell__tips`); it is included
+    /// in the accessible name.
     pub fn tips(mut self, tips: impl Into<SharedString>) -> Self {
         self.tips = Some(tips.into());
         self
     }
+    /// Draws the label in the warning red (`weui-actionsheet__cell_warn`).
     pub fn warn(mut self) -> Self {
         self.warn = true;
         self
     }
+    /// Uses `focus` as the cell's focus handle, so the caller can focus it, for example on open.
     pub fn track_focus(mut self, focus: &FocusHandle) -> Self {
         self.focus = Some(focus.clone());
         self
     }
+    /// Called when the cell is clicked or activated with Enter or Space; it does not close the
+    /// sheet.
     pub fn on_click(mut self, handler: impl Fn(&mut Window, &mut App) + 'static) -> Self {
         self.handler = Some(Rc::new(handler));
         self
     }
 }
 
+/// Action sheet listing [`ActionSheetItem`]s.
+///
+/// With [`ActionSheet::presence`] it renders in a [`Modal`] with a dark mask: iOS style slides up
+/// from the bottom, Android style fades in centred. Escape and mask clicks call `on_dismiss`.
+/// Without a presence it renders inline with the `Dialog` role.
 #[derive(IntoElement)]
 pub struct ActionSheet {
     id: ElementId,
@@ -55,6 +76,7 @@ pub struct ActionSheet {
 }
 
 impl ActionSheet {
+    /// Creates an empty iOS-style sheet with no presence.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -67,36 +89,46 @@ impl ActionSheet {
             on_dismiss: None,
         }
     }
+    /// Sets the 12 px title row (up to two lines, iOS style only) and uses it as the accessible
+    /// name.
     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
         let title = title.into();
         self.label = title.clone();
         self.title = Some(title);
         self
     }
+    /// Sets the accessible name explicitly; a later `title` call replaces it.
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = label.into();
         self
     }
+    /// Appends a menu cell.
     pub fn item(mut self, item: ActionSheetItem) -> Self {
         self.items.push(item);
         self
     }
+    /// Appends several menu cells, in order.
     pub fn items(mut self, items: impl IntoIterator<Item = ActionSheetItem>) -> Self {
         self.items.extend(items);
         self
     }
+    /// Appends a cell to the action group drawn 8 px below the menu, such as 取消 (iOS style only).
     pub fn action(mut self, item: ActionSheetItem) -> Self {
         self.actions.push(item);
         self
     }
+    /// Uses the Android skin (`weui-skin_android`): a centred 274 px card with left-aligned cells.
+    /// Default `false`.
     pub fn android(mut self, value: bool) -> Self {
         self.android = value;
         self
     }
+    /// Renders the sheet as a modal driven by `presence` (cloned); without it the sheet is inline.
     pub fn presence(mut self, presence: &Presence) -> Self {
         self.presence = Some(presence.clone());
         self
     }
+    /// Called on Escape or a mask click in the open modal; hide the presence here.
     pub fn on_dismiss(mut self, handler: impl Fn(&mut Window, &mut App) + 'static) -> Self {
         self.on_dismiss = Some(Rc::new(handler));
         self

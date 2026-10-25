@@ -1,9 +1,20 @@
+//! WeUI top tips (`weui-tips/weui-toptips.less`): a full-width alert banner 8 px from the top of
+//! the window, drawn above modals.
+//!
+//! [`ToptipsState`] is the caller-owned visibility; [`Toptips`] renders it. Unlike
+//! [`Presence`](super::modal::Presence) it never moves focus. Known limitation: the fade is linear,
+//! and hiding during the fade-in restarts the fade-out from full opacity instead of reversing.
+
 use crate::Theme;
 use gpui::{prelude::*, *};
 use std::time::{Duration, Instant};
 
+/// Fade-in and fade-out length of [`Toptips`].
 pub const FADE: Duration = Duration::from_millis(100);
 
+/// Caller-owned, cloneable visibility of a [`Toptips`]: open flag, transition start and a
+/// generation counter. Keep one in your view state and pass `&state` when rendering. Under reduced
+/// motion the fade is instant.
 #[derive(Clone, Default)]
 pub struct ToptipsState {
     visible: bool,
@@ -12,12 +23,15 @@ pub struct ToptipsState {
 }
 
 impl ToptipsState {
+    /// Creates a hidden state.
     pub fn new() -> Self {
         Self::default()
     }
+    /// Returns `true` after `show` and `false` as soon as `hide` is called, even while fading out.
     pub fn is_open(&self) -> bool {
         self.visible
     }
+    /// Fades the tips in if hidden, bumping the generation, and refreshes the window.
     pub fn show(&mut self, window: &mut Window) {
         if !self.visible {
             self.visible = true;
@@ -26,10 +40,12 @@ impl ToptipsState {
         }
         window.refresh();
     }
+    /// Like [`ToptipsState::show`] but fully opaque at once.
     pub fn show_instantly(&mut self, window: &mut Window) {
         self.show(window);
         self.changed = None;
     }
+    /// Starts the fade-out; does nothing when already hidden.
     pub fn hide(&mut self, window: &mut Window) {
         if self.visible {
             self.visible = false;
@@ -37,6 +53,8 @@ impl ToptipsState {
             window.refresh();
         }
     }
+    /// Hides after `delay` unless the tips were hidden or shown again in the meantime. Spawns a
+    /// task on the entity `T`; `get` returns this state's field from it. Call it after `show`.
     pub fn hide_after<T: 'static>(
         &self,
         delay: Duration,
@@ -78,6 +96,8 @@ impl ToptipsState {
     }
 }
 
+/// Top alert banner (`weui-toptips`): window width minus 16 px, 14 px white centred text, exposed
+/// as an `Alert`. Renders nothing once its state has faded out.
 #[derive(IntoElement)]
 pub struct Toptips {
     id: ElementId,
@@ -87,6 +107,7 @@ pub struct Toptips {
 }
 
 impl Toptips {
+    /// Creates a banner showing `text` while `state` (cloned) is visible.
     pub fn new(
         id: impl Into<ElementId>,
         state: &ToptipsState,
@@ -99,6 +120,8 @@ impl Toptips {
             warn: false,
         }
     }
+    /// Uses the warning red background (`weui-toptips_warn`). Without it there is no background, as
+    /// in the upstream CSS.
     pub fn warn(mut self) -> Self {
         self.warn = true;
         self

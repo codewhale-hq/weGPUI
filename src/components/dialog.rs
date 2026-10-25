@@ -1,21 +1,38 @@
+//! WeUI dialog (`weui-tips/weui-dialog.less`): title, scrolling body and a button footer, in iOS
+//! (default), stacked-button (`weui-dialog_btn-wrap`) or Android (`weui-skin_android`) style.
+//!
+//! [`Dialog`] renders inside a [`Modal`] when given a [`Presence`], or inline as a static
+//! `Dialog`-role element otherwise. [`DialogButton`] handlers do not close it; hide the presence in
+//! them. Known limitation: as in the upstream example the mask does not dismiss, so Escape is the
+//! only built-in dismissal.
+
 use super::modal::{MaskKind, Modal, Motion, Placement, Presence};
 use crate::{Theme, accessibility::Semantics};
 use gpui::{prelude::*, *};
 use std::{rc::Rc, time::Duration};
 
+/// Dialog fade length, matching the upstream example's `fadeIn(200)` and `fadeOut(200)`.
 pub const DIALOG_FADE: Duration = Duration::from_millis(200);
 
+/// Shared callback for button activation and dismissal.
 pub type ActionHandler = Rc<dyn Fn(&mut Window, &mut App)>;
 
+/// Visual role of a [`DialogButton`] (`weui-dialog__btn_*`).
 #[derive(Clone, Copy, Default, PartialEq, Eq)]
 pub enum DialogButtonKind {
+    /// Link-coloured main action (`weui-dialog__btn_primary`); the default.
     #[default]
     Primary,
+    /// Secondary action in the half-strength text colour (`weui-dialog__btn_default`).
     Default,
+    /// Destructive action in the warning red (`weui-dialog__btn_warn`).
     Warn,
+    /// Greyed out (`weui-dialog__btn_disabled`): not focusable, ignores clicks and is exposed as
+    /// disabled.
     Disabled,
 }
 
+/// One footer button of a [`Dialog`]: label, [`DialogButtonKind`] and optional handler.
 #[derive(Clone)]
 pub struct DialogButton {
     label: SharedString,
@@ -24,6 +41,7 @@ pub struct DialogButton {
 }
 
 impl DialogButton {
+    /// Creates a [`DialogButtonKind::Primary`] button with no handler.
     pub fn new(label: impl Into<SharedString>) -> Self {
         Self {
             label: label.into(),
@@ -31,28 +49,41 @@ impl DialogButton {
             handler: None,
         }
     }
+    /// Sets the visual role (default [`DialogButtonKind::Primary`]).
     pub fn kind(mut self, kind: DialogButtonKind) -> Self {
         self.kind = kind;
         self
     }
+    /// Shorthand for `kind(DialogButtonKind::Primary)`.
     pub fn primary(self) -> Self {
         self.kind(DialogButtonKind::Primary)
     }
+    /// Shorthand for `kind(DialogButtonKind::Default)`.
     pub fn default_style(self) -> Self {
         self.kind(DialogButtonKind::Default)
     }
+    /// Shorthand for `kind(DialogButtonKind::Warn)`.
     pub fn warn(self) -> Self {
         self.kind(DialogButtonKind::Warn)
     }
+    /// Shorthand for `kind(DialogButtonKind::Disabled)`.
     pub fn disabled(self) -> Self {
         self.kind(DialogButtonKind::Disabled)
     }
+    /// Called when the button is clicked, or activated with Enter or Space while focused. It does
+    /// not close the dialog; hide the presence here.
     pub fn on_click(mut self, handler: impl Fn(&mut Window, &mut App) + 'static) -> Self {
         self.handler = Some(Rc::new(handler));
         self
     }
 }
 
+/// WeUI dialog box: 320 px wide (window width minus 32 px when narrower), at most 90 % of the
+/// window height, with a scrolling body.
+///
+/// With [`Dialog::presence`] it renders in a [`Modal`] with a dark mask, centred and fading; Escape
+/// calls `on_dismiss` and mask clicks do nothing. Without a presence it renders inline with the
+/// `Dialog` role. `.child(...)` appends arbitrary elements to the body.
 #[derive(IntoElement)]
 pub struct Dialog {
     id: ElementId,
@@ -67,6 +98,7 @@ pub struct Dialog {
 }
 
 impl Dialog {
+    /// Creates an empty iOS-style dialog with side-by-side buttons and no presence.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -80,12 +112,15 @@ impl Dialog {
             on_dismiss: None,
         }
     }
+    /// Sets the semibold title and uses it as the accessible name, replacing any earlier label.
     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
         let title = title.into();
         self.label = title.clone();
         self.title = Some(title);
         self
     }
+    /// Appends a text paragraph to the body; it becomes the accessible name if none is set yet.
+    /// Without a title the body is drawn semibold in the primary text colour.
     pub fn body(mut self, text: impl Into<SharedString>) -> Self {
         let text = text.into();
         if self.label.is_empty() {
@@ -94,34 +129,46 @@ impl Dialog {
         self.body.push(text.into_any_element());
         self
     }
+    /// Sets the accessible name explicitly; a later `title` call replaces it.
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = label.into();
         self
     }
+    /// Appends one footer button.
     pub fn button(mut self, button: DialogButton) -> Self {
         self.buttons.push(button);
         self
     }
+    /// Appends several footer buttons, in order.
     pub fn buttons(mut self, buttons: impl IntoIterator<Item = DialogButton>) -> Self {
         self.buttons.extend(buttons);
         self
     }
+    /// Uses the Android skin (`weui-skin_android`): left-aligned 22 px title and body, and buttons
+    /// right-aligned without separators. Default `false`.
     pub fn android(mut self, value: bool) -> Self {
         self.android = value;
         self
     }
+    /// Stacks iOS buttons vertically with hairline separators (`weui-dialog_btn-wrap`). Default
+    /// `false`; ignored in Android style.
     pub fn btn_wrap(mut self, value: bool) -> Self {
         self.btn_wrap = value;
         self
     }
+    /// Renders the dialog as a modal driven by `presence` (cloned); without it the dialog is
+    /// inline.
     pub fn presence(mut self, presence: &Presence) -> Self {
         self.presence = Some(presence.clone());
         self
     }
+    /// Called when Escape is pressed in the open modal; hide the presence here. Unused without a
+    /// presence.
     pub fn on_dismiss(mut self, handler: impl Fn(&mut Window, &mut App) + 'static) -> Self {
         self.on_dismiss = Some(Rc::new(handler));
         self
     }
+    /// Creates a [`Presence`] with the [`DIALOG_FADE`] transition.
     pub fn presence_for(cx: &mut App) -> Presence {
         Presence::new(cx).duration(DIALOG_FADE)
     }

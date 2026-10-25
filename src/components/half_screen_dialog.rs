@@ -1,3 +1,12 @@
+//! WeUI half-screen dialog (`weui-tips/weui-half-screen-dialog.less`): a bottom sheet with a header
+//! (side actions, title and subtitle), scrolling body and footer, plus the large, slide (`grab`)
+//! and bottom-fixed (`weui-bottom-fixed-opr-page`) variants.
+//!
+//! [`HalfScreenDialog`] renders inside a sliding [`Modal`] when given a [`Presence`]. The helpers
+//! [`HdIconButton`], [`action_group`], [`hd_link`] and [`attachment_area`] build header and footer
+//! parts. Known limitation: a grab drag shorter than 56 px snaps back instantly, without the
+//! upstream 0.3 s transition.
+
 use super::{
     ClickHandler, Icon,
     modal::{MaskKind, Modal, Motion, Placement, Presence},
@@ -6,10 +15,13 @@ use crate::Theme;
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
+/// Shared callback invoked when the dialog asks to be dismissed.
 pub type DismissHandler = Rc<dyn Fn(&mut Window, &mut App)>;
 
 const GRAB_DISTANCE: f32 = 56.;
 
+/// 24 px header icon button (`weui-btn_icon` in `__hd__side`) with a focusable 44 px hit area and
+/// the `Button` role.
 #[derive(IntoElement)]
 pub struct HdIconButton {
     id: ElementId,
@@ -19,6 +31,8 @@ pub struct HdIconButton {
 }
 
 impl HdIconButton {
+    /// Creates an icon button from an icon asset name (as for [`Icon`]) and an accessible label.
+    /// The `"search"` icon uses the secondary text colour, others the primary one.
     pub fn new(
         id: impl Into<ElementId>,
         icon: impl Into<SharedString>,
@@ -31,6 +45,7 @@ impl HdIconButton {
             on_click: None,
         }
     }
+    /// Called with the click event when the button is clicked or activated with Enter or Space.
     pub fn on_click(
         mut self,
         handler: impl Fn(&ClickEvent, &mut Window, &mut App) + 'static,
@@ -75,6 +90,7 @@ impl RenderOnce for HdIconButton {
     }
 }
 
+/// Lays out header actions in a non-wrapping row with 16 px gaps (`__hd__action-group`).
 pub fn action_group(children: impl IntoIterator<Item = AnyElement>) -> Div {
     div()
         .flex()
@@ -85,6 +101,8 @@ pub fn action_group(children: impl IntoIterator<Item = AnyElement>) -> Div {
         .children(children)
 }
 
+/// Text link for the header (`weui-link`): 15 px, link colour, `Link` role and focusable; `handler`
+/// receives the click. Returns the element for further styling.
 pub fn hd_link(
     id: impl Into<ElementId>,
     label: impl Into<SharedString>,
@@ -112,6 +130,8 @@ pub fn hd_link(
         .child(label)
 }
 
+/// Centres `child` below the footer with a 24 px top and -34 px bottom margin
+/// (`__attachment-area`).
 pub fn attachment_area(child: impl IntoElement) -> Div {
     div()
         .mt(px(24.))
@@ -127,6 +147,12 @@ struct GrabState {
     offset: f32,
 }
 
+/// Bottom sheet with a header, scrolling body and optional footer; children go in the body.
+///
+/// Unless `large`, its height ranges from 255 px to 75 % of the window. With
+/// [`HalfScreenDialog::presence`] it renders in a [`Modal`] at the bottom with a dark mask and
+/// slide-up motion, and Escape or a mask click calls `on_dismiss`. Without a presence it renders
+/// inline with the `Dialog` role.
 #[derive(IntoElement)]
 pub struct HalfScreenDialog {
     id: ElementId,
@@ -148,6 +174,7 @@ pub struct HalfScreenDialog {
 }
 
 impl HalfScreenDialog {
+    /// Creates an empty dialog with 24 px horizontal padding and no presence.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -168,60 +195,83 @@ impl HalfScreenDialog {
             on_dismiss: None,
         }
     }
+    /// Sets the 15 px semibold title (`__title`) and uses it as the accessible name. Not drawn when
+    /// [`HalfScreenDialog::main`] is set.
     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
         let title = title.into();
         self.label = title.clone();
         self.title = Some(title);
         self
     }
+    /// Sets the 10 px line under the title (`__subtitle`); drawn only with a title and no `main`.
     pub fn subtitle(mut self, subtitle: impl Into<SharedString>) -> Self {
         self.subtitle = Some(subtitle.into());
         self
     }
+    /// Replaces the title block in the header (`__hd__main`). Set [`HalfScreenDialog::label`] to
+    /// give the dialog an accessible name.
     pub fn main(mut self, main: impl IntoElement) -> Self {
         self.main = Some(main.into_any_element());
         self
     }
+    /// Places content on the header's left side (`__hd__side`), such as a close [`HdIconButton`];
+    /// the main block is then centred.
     pub fn left(mut self, side: impl IntoElement) -> Self {
         self.left = Some(side.into_any_element());
         self
     }
+    /// Places content on the header's right side, aligned to the end, such as an [`action_group`].
     pub fn right(mut self, side: impl IntoElement) -> Self {
         self.right = Some(side.into_any_element());
         self
     }
+    /// Sets the accessible name explicitly; a later `title` call replaces it.
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = label.into();
         self
     }
+    /// Enables the slide variant (`weui-half-screen-dialog_slide`): a grab handle above the header,
+    /// and dragging the dialog down at least 56 px then releasing calls `on_dismiss`. Default
+    /// `false`.
     pub fn grab(mut self, value: bool) -> Self {
         self.grab = value;
         self
     }
+    /// Uses the large variant (`weui-half-screen-dialog_large`): the window height minus 16 px.
+    /// Default `false`.
     pub fn large(mut self, value: bool) -> Self {
         self.large = value;
         self
     }
+    /// Pins the footer at the bottom over a fading gradient (`weui-bottom-fixed-opr-page`) and
+    /// moves the 24 px side padding onto the header, body and footer. Default `false`.
     pub fn bottom_fixed(mut self, value: bool) -> Self {
         self.bottom_fixed = value;
         self
     }
+    /// Drops the dialog's side padding so the body runs edge to edge, keeping 24 px on the header.
+    /// Default `false`; the picker uses it.
     pub fn flush(mut self, value: bool) -> Self {
         self.flush = value;
         self
     }
+    /// Overrides the body's bottom padding in px (default 56, or 80 with `bottom_fixed`).
     pub fn body_padding_bottom(mut self, padding: f32) -> Self {
         self.body_padding_bottom = Some(padding);
         self
     }
+    /// Sets the footer (`__ft`), drawn below the body with 64 px bottom padding.
     pub fn footer(mut self, footer: impl IntoElement) -> Self {
         self.footer = Some(footer.into_any_element());
         self
     }
+    /// Renders the dialog as a modal driven by `presence` (cloned); without it the dialog is
+    /// inline.
     pub fn presence(mut self, presence: &Presence) -> Self {
         self.presence = Some(presence.clone());
         self
     }
+    /// Called on Escape, a mask click or a completed grab drag; hide the presence here.
     pub fn on_dismiss(mut self, handler: impl Fn(&mut Window, &mut App) + 'static) -> Self {
         self.on_dismiss = Some(Rc::new(handler));
         self

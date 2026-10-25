@@ -1,16 +1,33 @@
+//! Step indicators from WeUI's `src/style/widget/weui-steps/`: [`Steps`] lays out [`Step`]s in one
+//! of the [`StepsLayout`]s, sized and coloured by the theme's `steps_*` tokens.
+//!
+//! Known limitations: display only, with no current-step state or interaction. Upstream marks the
+//! primary and centred horizontal layouts as unreleased extensions.
+
 use super::Icon;
 use crate::Theme;
 use gpui::{prelude::*, *};
 
+/// Arrangement of a [`Steps`] list.
 #[derive(Clone, Copy, Default, PartialEq, Eq)]
 pub enum StepsLayout {
+    /// `weui-steps_vertical`: dots or icons on a vertical line with the text to their right.
     #[default]
     Vertical,
+    /// `weui-steps_horizonal`: dots in a row joined by lines, with the text beside each dot.
     Horizontal,
+    /// `weui-steps_horizonal-primary`: a line along the top carrying the dots, with left-aligned
+    /// text below.
     HorizontalPrimary,
+    /// `weui-steps_horizonal-center`: like `HorizontalPrimary`, with dot and text centred in each
+    /// item.
     HorizontalCenter,
 }
 
+/// One step: a semibold title, an optional description and a completion flag.
+///
+/// A completed step highlights its outgoing line and the next step's dot. The vertical and plain
+/// horizontal layouts also highlight the first dot, as WeUI does.
 pub struct Step {
     title: SharedString,
     desc: Option<SharedString>,
@@ -20,6 +37,7 @@ pub struct Step {
 }
 
 impl Step {
+    /// Creates an incomplete step titled `title`.
     pub fn new(title: impl Into<SharedString>) -> Self {
         Self {
             title: title.into(),
@@ -29,24 +47,34 @@ impl Step {
             show_text: true,
         }
     }
+    /// Adds a 14px theme `fg_2` description under the title. Default: none.
     pub fn desc(mut self, desc: impl Into<SharedString>) -> Self {
         self.desc = Some(desc.into());
         self
     }
+    /// Marks the step completed when `success` is true (default false); its accessible label then
+    /// ends with "，已完成".
     pub fn success(mut self, success: bool) -> Self {
         self.success = success;
         self
     }
+    /// Replaces the dot with the 40px [`Icon`] named `name`, in the vertical layout only. The tint
+    /// follows the name: brand for success icons, red for `warn`, blue for waiting and `info`,
+    /// `fg_2` otherwise.
     pub fn icon(mut self, name: impl Into<SharedString>) -> Self {
         self.icon = Some(name.into());
         self
     }
+    /// Shows or hides the title and description in the horizontal layouts (default true). The
+    /// vertical layout always shows them, and the accessible label is unaffected.
     pub fn show_text(mut self, show: bool) -> Self {
         self.show_text = show;
         self
     }
 }
 
+/// A list of steps, exposed as `Role::List`. Each step is a list item labelled
+/// "第{n}步，共{total}步，{title}", followed by the description and "，已完成" when present.
 #[derive(IntoElement)]
 pub struct Steps {
     id: ElementId,
@@ -56,6 +84,7 @@ pub struct Steps {
 }
 
 impl Steps {
+    /// Creates an empty vertical list with element id `id`.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -64,24 +93,30 @@ impl Steps {
             items: vec![],
         }
     }
+    /// Sets the arrangement. Default: [`StepsLayout::Vertical`].
     pub fn layout(mut self, layout: StepsLayout) -> Self {
         self.layout = layout;
         self
     }
+    /// Shorthand for `layout(StepsLayout::Vertical)`.
     pub fn vertical(self) -> Self {
         self.layout(StepsLayout::Vertical)
     }
+    /// Shorthand for `layout(StepsLayout::Horizontal)`.
     pub fn horizontal(self) -> Self {
         self.layout(StepsLayout::Horizontal)
     }
+    /// Sets the list's accessible name. Default: none.
     pub fn aria_label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = Some(label.into());
         self
     }
+    /// Appends one step.
     pub fn item(mut self, step: Step) -> Self {
         self.items.push(step);
         self
     }
+    /// Appends several steps in order.
     pub fn items(mut self, steps: impl IntoIterator<Item = Step>) -> Self {
         self.items.extend(steps);
         self

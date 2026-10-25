@@ -1,7 +1,19 @@
+//! Panels from WeUI's `src/style/widget/weui-panel/` and media boxes from
+//! `src/style/widget/weui-media-box/`: a [`Panel`] groups [`MediaBox`] rows under an optional title
+//! and footer.
+//!
+//! Known limitations: descriptions are clamped to two lines by GPUI's line breaker, which lacks CJK
+//! line-start rules, so a line can begin with "。" and the ellipsis can differ from a browser.
+//! Panel rows of any kind get the separators drawn for media boxes.
+
 use super::ClickHandler;
 use crate::Theme;
 use gpui::{prelude::*, *};
 
+/// A panel (`weui-panel`) on theme `bg_2` with full-width top and bottom hairlines.
+///
+/// Children added through `ParentElement` form the body (`weui-panel__bd`), separated by hairlines
+/// inset 16px from the left. The panel is exposed as `Role::Group`, named by its title when set.
 #[derive(IntoElement)]
 pub struct Panel {
     id: ElementId,
@@ -12,6 +24,7 @@ pub struct Panel {
 }
 
 impl Panel {
+    /// Creates an empty panel with element id `id` and a 10px top margin.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -21,18 +34,24 @@ impl Panel {
             children: vec![],
         }
     }
+    /// Sets the header (`weui-panel__hd`): 15px semibold text above an inset hairline. It also
+    /// names the group for assistive technology. Default: none.
     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
         self.title = Some(title.into());
         self
     }
+    /// Sets the footer slot (`weui-panel__ft`) below the body, after an inset hairline; typically a
+    /// "查看更多" link cell. Default: none.
     pub fn footer(mut self, footer: impl IntoElement) -> Self {
         self.footer = Some(footer.into_any_element());
         self
     }
+    /// Removes the top margin, as WeUI's `:first-child` rule does for the first panel on a page.
     pub fn first(mut self) -> Self {
         self.margin_top = 0.;
         self
     }
+    /// Sets the top margin in logical pixels. Default: 10px.
     pub fn margin_top(mut self, margin: f32) -> Self {
         self.margin_top = margin;
         self
@@ -97,19 +116,31 @@ impl RenderOnce for Panel {
     }
 }
 
+/// Layout of a [`MediaBox`].
 #[derive(Clone, Copy, Default, PartialEq, Eq)]
 pub enum MediaBoxKind {
+    /// `weui-media-box_text`: title, description and meta row stacked.
     #[default]
     Text,
+    /// `weui-media-box_appmsg`: a 60px thumbnail to the left of the text.
     Appmsg,
+    /// `weui-media-box_small-appmsg`: no padding or text; children such as cells fill the box.
     SmallAppmsg,
 }
 
+/// One entry of a media box's meta row (`weui-media-box__info__meta`). It is created only by
+/// [`MediaBox::meta`] and [`MediaBox::meta_extra`].
 pub struct MediaMeta {
     text: SharedString,
     extra: bool,
 }
 
+/// A media box row (`weui-media-box`): a one-line 17px title, a two-line 14px description and an
+/// optional 13px meta row, padded 16px including a 2px focus-ring border.
+///
+/// The accessible name defaults to the title and description joined by "，". With
+/// [`MediaBox::on_click`] the box is a `Role::Link` Tab stop; otherwise it is a `Role::ListItem`.
+/// Children added through `ParentElement` follow the text.
 #[derive(IntoElement)]
 pub struct MediaBox {
     id: ElementId,
@@ -126,6 +157,7 @@ pub struct MediaBox {
 }
 
 impl MediaBox {
+    /// Creates an empty [`MediaBoxKind::Text`] box with element id `id`.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -141,28 +173,35 @@ impl MediaBox {
             children: vec![],
         }
     }
+    /// Same as [`MediaBox::new`].
     pub fn text(id: impl Into<ElementId>) -> Self {
         Self::new(id)
     }
+    /// Creates a [`MediaBoxKind::Appmsg`] box with the thumbnail `thumb`, a URL or the name of an
+    /// asset served by the app's `AssetSource`, fitted inside 60px.
     pub fn appmsg(id: impl Into<ElementId>, thumb: impl Into<SharedString>) -> Self {
         let mut this = Self::new(id);
         this.kind = MediaBoxKind::Appmsg;
         this.thumb = Some(thumb.into());
         this
     }
+    /// Creates a [`MediaBoxKind::SmallAppmsg`] box; add its content with `child`.
     pub fn small_appmsg(id: impl Into<ElementId>) -> Self {
         let mut this = Self::new(id);
         this.kind = MediaBoxKind::SmallAppmsg;
         this
     }
+    /// Sets the title (`weui-media-box__title`), truncated to one line. Default: none.
     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
         self.title = Some(title.into());
         self
     }
+    /// Sets the description (`weui-media-box__desc`), clamped to two lines. Default: none.
     pub fn desc(mut self, desc: impl Into<SharedString>) -> Self {
         self.desc = Some(desc.into());
         self
     }
+    /// Appends a meta entry (`weui-media-box__info__meta`), such as a source or a time.
     pub fn meta(mut self, meta: impl Into<SharedString>) -> Self {
         self.meta.push(MediaMeta {
             text: meta.into(),
@@ -170,6 +209,7 @@ impl MediaBox {
         });
         self
     }
+    /// Appends a meta entry preceded by a 1px separator line (`weui-media-box__info__meta_extra`).
     pub fn meta_extra(mut self, meta: impl Into<SharedString>) -> Self {
         self.meta.push(MediaMeta {
             text: meta.into(),
@@ -177,18 +217,24 @@ impl MediaBox {
         });
         self
     }
+    /// Overrides the accessible name. Default: the title and description joined by "，".
     pub fn aria_label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = Some(label.into());
         self
     }
+    /// Sets the accessible description, for example the meta texts. Default: none.
     pub fn aria_description(mut self, description: impl Into<SharedString>) -> Self {
         self.description = Some(description.into());
         self
     }
+    /// Overrides the accessibility role. Default: `Role::Link` with a click handler, otherwise
+    /// `Role::ListItem`.
     pub fn role(mut self, role: Role) -> Self {
         self.role = Some(role);
         self
     }
+    /// Makes the box interactive: a Tab stop with a pressed background and a brand focus ring. The
+    /// callback receives the click event on a pointer click, or on Enter or Space while focused.
     pub fn on_click(
         mut self,
         handler: impl Fn(&ClickEvent, &mut Window, &mut App) + 'static,

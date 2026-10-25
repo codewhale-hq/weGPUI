@@ -1,3 +1,10 @@
+//! WeUI slider (`weui-slider/weui-slider.less`) with the optional value readout of
+//! `weui-slider-box`.
+//!
+//! [`Slider`] is controlled: the caller owns the value and stores what `on_change` reports. Known
+//! limitations: only the thumb starts a drag (clicking the track does nothing, as in the upstream
+//! example), and the readout shows at most one decimal place.
+
 use super::ChangeHandler;
 use crate::Theme;
 use gpui::{prelude::*, *};
@@ -14,6 +21,12 @@ impl Render for SliderGhost {
     }
 }
 
+/// Horizontal range slider with a 28 px thumb (`Slider` role) on a 2 px track.
+///
+/// Without `on_change`, or when disabled, it is read-only: not focusable or draggable. While
+/// focused, Left/Down and Right/Up move one step, PageUp and PageDown a tenth of the range (at
+/// least one step), and Home and End jump to the ends. Increment and Decrement accessible actions
+/// are supported.
 #[derive(IntoElement)]
 pub struct Slider {
     id: ElementId,
@@ -28,6 +41,7 @@ pub struct Slider {
 }
 
 impl Slider {
+    /// Creates a read-only slider at 0 in `0..=100` with step 1.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -41,10 +55,14 @@ impl Slider {
             on_change: None,
         }
     }
+    /// Sets the current value (default 0), clamped to the range when drawn. A non-finite value
+    /// renders at the midpoint, as an HTML range input does by default.
     pub fn value(mut self, value: f32) -> Self {
         self.value = value;
         self
     }
+    /// Sets `min` and `max` (default `0..=100`); a `max` below `min` becomes `min`. Ignored when
+    /// either bound or their difference is not finite.
     pub fn range(mut self, min: f32, max: f32) -> Self {
         if min.is_finite() && max.is_finite() && (max - min).is_finite() {
             self.min = min;
@@ -52,6 +70,7 @@ impl Slider {
         }
         self
     }
+    /// Sets the step (default 1); non-finite or non-positive values fall back to 1.
     pub fn step(mut self, step: f32) -> Self {
         self.step = if step.is_finite() && step > 0. {
             step
@@ -60,18 +79,25 @@ impl Slider {
         };
         self
     }
+    /// Sets the accessible name of the thumb (default empty).
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = label.into();
         self
     }
+    /// Shows the value to the right (`weui-slider-box__value`) as an integer or with one decimal
+    /// place. Default `false`.
     pub fn show_value(mut self, show: bool) -> Self {
         self.show_value = show;
         self
     }
+    /// Makes the slider read-only without changing its appearance (default `false`).
     pub fn disabled(mut self, disabled: bool) -> Self {
         self.disabled = disabled;
         self
     }
+    /// Called with the new value when a drag, key or accessible action changes it. The value is
+    /// snapped to the nearest step from `min` (as HTML range does) and clamped. Store it and
+    /// re-render.
     pub fn on_change(mut self, handler: impl Fn(&f32, &mut Window, &mut App) + 'static) -> Self {
         self.on_change = Some(Box::new(handler));
         self
@@ -79,7 +105,7 @@ impl Slider {
 }
 
 fn snap(value: f32, min: f32, max: f32, step: f32) -> f32 {
-    let snapped = min + ((value - min) / step + 1e-4).floor() * step;
+    let snapped = min + ((value - min) / step).round() * step;
     snapped.clamp(min, max)
 }
 

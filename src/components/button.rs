@@ -1,24 +1,53 @@
+//! Buttons from WeUI's `src/style/widget/weui-button/`: [`Button`] (`weui-btn` with its size, kind,
+//! overlay, loading, disabled and `weui-btn_cell` variants), [`ButtonArea`] (`weui-btn-area`) and
+//! the bottom-fixed operation layout ([`BottomFixedOpr`], [`BottomFixedOprPage`]).
+//!
+//! Known limitations: the safe-area insets of the upstream bottom-fixed CSS are not applied, and a
+//! [`Button::cell`] button ignores size, width, overlay and loading settings.
+
 use super::{ClickHandler, loading::Loading};
 use crate::Theme;
 use gpui::{prelude::*, *};
 
+/// Height and typography preset of a [`Button`], matching WeUI's size modifiers.
 #[derive(Clone, Copy, Default, PartialEq, Eq)]
 pub enum Size {
+    /// Default `weui-btn`: theme `btn_height` (48px), 17px text, 24px side padding, 8px radius and
+    /// a 184px minimum width.
     #[default]
     Large,
+    /// `weui-btn_medium`: theme `btn_height_medium` (40px), 14px text, 24px side padding, 8px
+    /// radius.
     Medium,
+    /// `weui-btn_mini`: theme `btn_height_small` (32px), 14px text, 12px side padding, 6px radius;
+    /// no minimum width and no automatic centring.
     Mini,
+    /// `weui-btn_xmini`: 28px high, 14px text, 12px side padding, 4px radius; no minimum width and
+    /// no automatic centring.
     XMini,
 }
 
+/// Colour scheme of a [`Button`]. See [`Button::overlay`] for the variants used on coloured
+/// backgrounds.
 #[derive(Clone, Copy, Default, PartialEq, Eq)]
 pub enum ButtonKind {
+    /// `weui-btn_default`: theme `fg_5` fill with `fg_0` text. Cell buttons use `fg_0` text.
     #[default]
     Default,
+    /// `weui-btn_primary`: brand fill with white text. Cell buttons use the theme link colour.
     Primary,
+    /// `weui-btn_warn`: theme `red_100` fill with white text. Cell buttons use red text.
     Warn,
 }
 
+/// A WeUI push button (`weui-btn`).
+///
+/// Defaults: [`ButtonKind::Default`], [`Size::Large`], enabled, horizontally centred, between 184px
+/// and 280px wide. The semibold label is clamped to two lines with an ellipsis. The button exposes
+/// `Role::Button`, is a Tab stop and activates on click, Enter or Space unless disabled or loading;
+/// keyboard focus shows a 2px ring, brand-coloured on default and overlay primary buttons and
+/// white otherwise. It holds no state: the owner rebuilds it each render with the current
+/// `disabled`/`loading` values.
 #[derive(IntoElement)]
 pub struct Button {
     id: ElementId,
@@ -43,6 +72,9 @@ pub struct Button {
 }
 
 impl Button {
+    /// Creates a button showing `label`. The label is also the element id and accessible name
+    /// unless [`Button::id`] or [`Button::title`] replace them. An empty label gives a label-less
+    /// button, such as a spinner-only loading button.
     pub fn new(label: impl Into<SharedString>) -> Self {
         let label = label.into();
         Self {
@@ -67,91 +99,134 @@ impl Button {
             on_click: None,
         }
     }
+    /// Sets the element id. Default: the label, so set it whenever sibling buttons share a label.
     pub fn id(mut self, id: impl Into<ElementId>) -> Self {
         self.id = id.into();
         self
     }
+    /// Shorthand for `kind(ButtonKind::Primary)`.
     pub fn primary(mut self) -> Self {
         self.kind = ButtonKind::Primary;
         self
     }
+    /// Shorthand for `kind(ButtonKind::Warn)`.
     pub fn warn(mut self) -> Self {
         self.kind = ButtonKind::Warn;
         self
     }
+    /// Sets the colour scheme. Default: [`ButtonKind::Default`].
     pub fn kind(mut self, kind: ButtonKind) -> Self {
         self.kind = kind;
         self
     }
+    /// Sets the size preset. Default: [`Size::Large`].
     pub fn size(mut self, size: Size) -> Self {
         self.size = size;
         self
     }
+    /// Shorthand for `size(Size::Medium)`.
     pub fn medium(self) -> Self {
         self.size(Size::Medium)
     }
+    /// Shorthand for `size(Size::Mini)`.
     pub fn mini(self) -> Self {
         self.size(Size::Mini)
     }
+    /// Shorthand for `size(Size::XMini)`.
     pub fn xmini(self) -> Self {
         self.size(Size::XMini)
     }
+    /// Disables the button when `value` is true (default false). A disabled button uses WeUI's
+    /// greyed colours, is not focusable, never calls `on_click`, and is exposed as disabled with
+    /// the description "不可用". In cell mode it dims to 50% opacity instead.
     pub fn disabled(mut self, value: bool) -> Self {
         self.disabled = value;
         self
     }
+    /// Shows a 20px [`Loading`] spinner before the label when `value` is true (default false), as
+    /// `weui-btn_loading`. A loading button is not focusable, never calls `on_click`, and is
+    /// exposed as busy with the description "正在加载". Ignored in cell mode.
     pub fn loading(mut self, value: bool) -> Self {
         self.loading = value;
         self
     }
+    /// Stretches the button to the container width, still capped at 280px (`weui-btn_block`).
     pub fn block(mut self) -> Self {
         self.block = true;
         self
     }
+    /// Lays the button out inline (`weui-btn_inline`): no automatic horizontal centring and no
+    /// default minimum width.
     pub fn inline(mut self) -> Self {
         self.inline = true;
         self
     }
+    /// Uses the palette for buttons placed on brand or dark backgrounds (`weui-btn_overlay`): white
+    /// primary, translucent default and red warn buttons, with translucent disabled colours.
     pub fn overlay(mut self) -> Self {
         self.overlay = true;
         self
     }
+    /// Renders as a full-width cell button (`weui-btn_cell`): 17px text on theme `bg_5`, coloured
+    /// by kind, with an optional 24px leading icon and a pressed background. Size, width, padding,
+    /// overlay and loading settings are ignored in this mode.
     pub fn cell(mut self) -> Self {
         self.cell = true;
         self
     }
+    /// Drops the automatic horizontal centring (`weui-btn_margin-reset`) so the parent positions
+    /// the button.
     pub fn margin_reset(mut self) -> Self {
         self.margin_reset = true;
         self
     }
+    /// Sets a fixed width in logical pixels. Default: fit the content between the minimum width and
+    /// 280px. The label wraps within `min(width, 280)` minus the horizontal padding.
     pub fn width(mut self, width: f32) -> Self {
         self.width = Some(width);
         self
     }
+    /// Overrides the minimum width in logical pixels. Default: 184px for large and medium buttons,
+    /// 0 for mini, xmini and inline buttons.
     pub fn min_width(mut self, width: f32) -> Self {
         self.min_width = Some(width);
         self
     }
+    /// Overrides the horizontal padding in logical pixels, including the 2px focus-ring border.
+    /// Default: 24px for large and medium buttons, 12px for mini and xmini.
     pub fn padding_x(mut self, padding: f32) -> Self {
         self.padding_x = Some(padding);
         self
     }
+    /// Lets the button grow to fill a flex row and shrink below its content width, as buttons in an
+    /// inline [`ButtonArea`] do. Also disables automatic centring.
     pub fn flex_1(mut self) -> Self {
         self.flex_1 = true;
         self
     }
+    /// Adds a leading element, placed after the spinner and before the label. In cell mode it sits
+    /// in a 24px box with a right margin (`weui-btn_cell__icon`). Default: none.
     pub fn icon(mut self, icon: impl IntoElement) -> Self {
         self.icon = Some(icon.into_any_element());
         self
     }
+    /// Sets the accessible name, replacing the label for assistive technology only; nothing is
+    /// drawn. Default: the label, or "正在操作" for a loading button with an empty label (upstream's
+    /// `title`). An empty-label button that is not loading has no accessible name unless this is
+    /// set.
     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
         self.title = Some(title.into());
         self
     }
+    /// Uses `focus` as the button's focus handle so the owner can focus it programmatically, for
+    /// example to restore focus after a dialog closes. Ignored while disabled or loading.
     pub fn track_focus(mut self, focus: &FocusHandle) -> Self {
         self.focus = Some(focus.clone());
         self
     }
+    /// Sets the activation callback. It receives the click event on a pointer click, or on Enter or
+    /// Space while the button is focused, and is not attached while the button is disabled or
+    /// (outside cell mode) loading.
     pub fn on_click(
         mut self,
         handler: impl Fn(&ClickEvent, &mut Window, &mut App) + 'static,
@@ -231,6 +306,12 @@ impl Button {
     }
 }
 
+/// Shortens `text` so that it shapes into at most `lines` lines at `size` px and `weight` within
+/// `max_width` logical pixels, cutting at a character boundary and appending "…". Returns the text
+/// unchanged when it is empty or already fits.
+///
+/// Measures with the window's current font family and GPUI's line breaker, which does not apply CJK
+/// line-start rules, so break points can differ from a browser's `-webkit-line-clamp`.
 pub fn clamp_lines(
     text: &SharedString,
     size: f32,
@@ -320,7 +401,7 @@ impl RenderOnce for Button {
         let group = SharedString::from("weui-btn");
         let label_only = self.label.is_empty();
         let aria = self.title.clone().unwrap_or_else(|| {
-            if label_only {
+            if label_only && self.loading {
                 SharedString::from("正在操作")
             } else {
                 self.label.clone()
@@ -414,6 +495,8 @@ impl RenderOnce for Button {
     }
 }
 
+/// A button group with WeUI's `weui-btn-area` margins (48px top, 16px sides, 8px bottom). Buttons
+/// stack vertically 16px apart, or share one row equally when [`ButtonArea::inline`] is set.
 #[derive(IntoElement)]
 pub struct ButtonArea {
     inline: bool,
@@ -428,6 +511,7 @@ impl Default for ButtonArea {
 }
 
 impl ButtonArea {
+    /// Creates an empty vertical area with the default margins.
     pub fn new() -> Self {
         Self {
             inline: false,
@@ -435,18 +519,22 @@ impl ButtonArea {
             buttons: vec![],
         }
     }
+    /// Places the buttons in one row, each set to [`Button::flex_1`] (`weui-btn-area_inline`).
     pub fn inline(mut self) -> Self {
         self.inline = true;
         self
     }
+    /// Replaces the default margins (48px top, 16px right, 8px bottom, 16px left).
     pub fn margin(mut self, margin: Edges<Pixels>) -> Self {
         self.margin = Some(margin);
         self
     }
+    /// Appends one button.
     pub fn button(mut self, button: Button) -> Self {
         self.buttons.push(button);
         self
     }
+    /// Appends several buttons in order.
     pub fn buttons(mut self, buttons: impl IntoIterator<Item = Button>) -> Self {
         self.buttons.extend(buttons);
         self
@@ -479,6 +567,11 @@ impl RenderOnce for ButtonArea {
     }
 }
 
+/// A centred row of action buttons for a bottom-fixed toolbar (`weui-bottom-fixed-opr`).
+///
+/// It overrides each button's sizing and centring: a single button is 184px wide; several buttons
+/// are 136px each in a row, or 184px each stacked when [`BottomFixedOpr::wrap`] is set. Buttons are
+/// 16px apart.
 #[derive(IntoElement)]
 pub struct BottomFixedOpr {
     wrap: bool,
@@ -493,6 +586,7 @@ impl Default for BottomFixedOpr {
 }
 
 impl BottomFixedOpr {
+    /// Creates an empty, unpadded, horizontal operation row.
     pub fn new() -> Self {
         Self {
             wrap: false,
@@ -500,18 +594,23 @@ impl BottomFixedOpr {
             buttons: vec![],
         }
     }
+    /// Stacks the buttons vertically when `wrap` is true (`weui-bottom-fixed-opr-page_btn-wrap`).
+    /// Default: false.
     pub fn wrap(mut self, wrap: bool) -> Self {
         self.wrap = wrap;
         self
     }
+    /// Adds padding around the row. Default: none; [`BottomFixedOprPage`] already pads its toolbar.
     pub fn padding(mut self, padding: Edges<Pixels>) -> Self {
         self.padding = Some(padding);
         self
     }
+    /// Appends one button.
     pub fn button(mut self, button: Button) -> Self {
         self.buttons.push(button);
         self
     }
+    /// Appends several buttons in order.
     pub fn buttons(mut self, buttons: impl IntoIterator<Item = Button>) -> Self {
         self.buttons.extend(buttons);
         self
@@ -544,6 +643,12 @@ impl RenderOnce for BottomFixedOpr {
     }
 }
 
+/// A full-height page with scrolling content above a toolbar pinned to the bottom
+/// (`weui-bottom-fixed-opr-page`).
+///
+/// Children added through `ParentElement` scroll with 80px of bottom padding, under an 80px fade
+/// from the toolbar colour. The toolbar is padded 16px/32px/24px and holds optional tips above a
+/// [`BottomFixedOpr`].
 #[derive(IntoElement)]
 pub struct BottomFixedOprPage {
     id: ElementId,
@@ -554,6 +659,8 @@ pub struct BottomFixedOprPage {
 }
 
 impl BottomFixedOprPage {
+    /// Creates the page. `id` identifies the scrolling content area, whose scroll offset GPUI keeps
+    /// by id; `opr` is the toolbar's button row.
     pub fn new(id: impl Into<ElementId>, opr: BottomFixedOpr) -> Self {
         Self {
             id: id.into(),
@@ -563,10 +670,13 @@ impl BottomFixedOprPage {
             tool_bg: None,
         }
     }
+    /// Shows `tips` centred above the buttons (`weui-bottom-fixed-opr-page__tips`), for example an
+    /// `Agree` consent row. Default: none.
     pub fn tips(mut self, tips: impl IntoElement) -> Self {
         self.tips = Some(tips.into_any_element());
         self
     }
+    /// Overrides the toolbar and fade colour. Default: white in light mode, `#191919` in dark mode.
     pub fn tool_bg(mut self, bg: Hsla) -> Self {
         self.tool_bg = Some(bg);
         self

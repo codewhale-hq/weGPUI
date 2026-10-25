@@ -1,3 +1,8 @@
+//! WeUI switch (`src/style/widget/weui-cell/weui-switch.less`, example
+//! `src/example/form/form_switch.html`). [`Switch`] is the 52×32px toggle with upstream's 0.35s
+//! knob and 0.1s colour transitions, which become instant when reduced motion is set.
+//! Place it in the footer of a `CellKind::Switch` form row for the `.weui-cell_switch` layout.
+
 use super::ChangeHandler;
 use crate::{Theme, accessibility::Semantics};
 use gpui::{prelude::*, *};
@@ -24,6 +29,9 @@ struct SwitchMotion {
     changed: Option<Instant>,
 }
 
+/// A toggle switch exposed as `Role::Switch` with a toggled state. Controlled: the caller stores
+/// the value. The knob animates when the `checked` value changes between renders; the animation
+/// state lives in window state keyed by the element id, so keep the id stable.
 #[derive(IntoElement)]
 pub struct Switch {
     id: ElementId,
@@ -35,6 +43,7 @@ pub struct Switch {
 }
 
 impl Switch {
+    /// Creates an off, enabled switch whose accessible name is "开关".
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -45,22 +54,31 @@ impl Switch {
             on_change: None,
         }
     }
+    /// Sets the accessible name, usually the row's visible title. It is not drawn. Default "开关".
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = label.into();
         self
     }
+    /// Sets the on/off state to draw and expose; a change between renders animates the knob.
+    /// Default `false`.
     pub fn checked(mut self, value: bool) -> Self {
         self.checked = value;
         self
     }
+    /// Disables the switch: faded track (10% opacity) and knob, not focusable, `on_change` never
+    /// called, and flagged disabled. Default `false`.
     pub fn disabled(mut self, value: bool) -> Self {
         self.disabled = value;
         self
     }
+    /// Sets the colour behind the switch, used to composite the translucent track. Defaults to
+    /// the theme's `bg_2`; pass `bg_1` inside a primary (`bg_1`) form group.
     pub fn surface(mut self, color: Hsla) -> Self {
         self.surface = Some(color);
         self
     }
+    /// Calls `handler` with the requested new value (`!checked`) on click or Enter/Space. The
+    /// click does not propagate, so a row `on_tap` that also toggles does not fire as well.
     pub fn on_change(mut self, handler: impl Fn(&bool, &mut Window, &mut App) + 'static) -> Self {
         self.on_change = Some(Box::new(handler));
         self

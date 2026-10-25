@@ -1,14 +1,27 @@
+//! WeUI form preview (`src/style/widget/weui-cell/weui-form/weui-form-preview.less`, examples
+//! `src/example/preview/preview.html` and `src/example/msg/msg_custom_area_preview.html`).
+//! [`FormPreview`] is the read-only summary card with header, items and footer buttons;
+//! [`FormPreviewList`] is the `.weui-form-preview__list` block for msg page custom areas.
+//! Known limitations: rows are `ListItem` nodes without a `List` parent, and the card body is a
+//! single node whose name joins all of its items.
+
 use super::ClickHandler;
 use crate::Theme;
 use gpui::{prelude::*, *};
 
+/// Colour of a [`FormPreviewButton`].
 #[derive(Clone, Copy, Default, PartialEq, Eq)]
 pub enum FormPreviewButtonKind {
+    /// `.weui-form-preview__btn_primary`: link colour. The default.
     #[default]
     Primary,
+    /// `.weui-form-preview__btn_default`: the secondary `fg_half` colour.
     Default,
 }
 
+/// A footer action of a [`FormPreview`] (`.weui-form-preview__btn`). Buttons share the footer
+/// width equally, separated by hairlines, and are focusable `Role::Button` nodes named by their
+/// label.
 pub struct FormPreviewButton {
     label: SharedString,
     kind: FormPreviewButtonKind,
@@ -16,6 +29,8 @@ pub struct FormPreviewButton {
 }
 
 impl FormPreviewButton {
+    /// Creates a [`FormPreviewButtonKind::Primary`] button; `label` is its text and accessible
+    /// name.
     pub fn primary(label: impl Into<SharedString>) -> Self {
         Self {
             label: label.into(),
@@ -23,6 +38,8 @@ impl FormPreviewButton {
             on_click: None,
         }
     }
+    /// Creates a [`FormPreviewButtonKind::Default`] (secondary) button. This inherent
+    /// constructor takes a label; it is not `Default::default`.
     pub fn default(label: impl Into<SharedString>) -> Self {
         Self {
             label: label.into(),
@@ -30,6 +47,8 @@ impl FormPreviewButton {
             on_click: None,
         }
     }
+    /// Calls `handler` on click or Enter/Space. Without it the button still renders, takes focus
+    /// and shows its pressed state, but does nothing.
     pub fn on_click(
         mut self,
         handler: impl Fn(&ClickEvent, &mut Window, &mut App) + 'static,
@@ -39,6 +58,8 @@ impl FormPreviewButton {
     }
 }
 
+/// A form preview card (`.weui-form-preview`): an optional header with a large value, label and
+/// value items, and a footer of buttons, on `bg_2` between top and bottom hairlines.
 #[derive(IntoElement)]
 pub struct FormPreview {
     id: ElementId,
@@ -48,6 +69,7 @@ pub struct FormPreview {
 }
 
 impl FormPreview {
+    /// Creates an empty card; sections without content are not rendered.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -56,6 +78,8 @@ impl FormPreview {
             buttons: vec![],
         }
     }
+    /// Sets the header (`.weui-form-preview__hd`): `label` in `fg_1` and `value` right-aligned at
+    /// 25.6px (1.6em), e.g. an amount, exposed as one `ListItem` named by label and value.
     pub fn header(
         mut self,
         label: impl Into<SharedString>,
@@ -64,10 +88,13 @@ impl FormPreview {
         self.header = Some((label.into(), value.into()));
         self
     }
+    /// Appends a body item (`.weui-form-preview__item`): the label in a 60.48px (4.2em) `fg_1`
+    /// column and the value right-aligned in `fg_0`, 14.4px text on a 28.8px line.
     pub fn item(mut self, label: impl Into<SharedString>, value: impl Into<SharedString>) -> Self {
         self.items.push((label.into(), value.into()));
         self
     }
+    /// Appends a footer button; buttons render left to right in call order.
     pub fn button(mut self, button: FormPreviewButton) -> Self {
         self.buttons.push(button);
         self
@@ -215,6 +242,8 @@ impl RenderOnce for FormPreview {
     }
 }
 
+/// A compact label/value list (`.weui-form-preview__list`) for msg page custom areas: 14px rows
+/// 12px apart with an 84px (6em) `fg_1` label column, below a top hairline and 24px of padding.
 #[derive(IntoElement)]
 pub struct FormPreviewList {
     items: Vec<(SharedString, SharedString)>,
@@ -228,16 +257,20 @@ impl Default for FormPreviewList {
 }
 
 impl FormPreviewList {
+    /// Creates an empty list treated as the last block in its container (no bottom padding).
     pub fn new() -> Self {
         Self {
             items: vec![],
             last: true,
         }
     }
+    /// Appends a row, exposed as a `ListItem` named by the label and value.
     pub fn item(mut self, label: impl Into<SharedString>, value: impl Into<SharedString>) -> Self {
         self.items.push((label.into(), value.into()));
         self
     }
+    /// Sets whether this is the last block in its container (`:last-child`); `false` adds 24px
+    /// bottom padding. Default `true`.
     pub fn last(mut self, last: bool) -> Self {
         self.last = last;
         self

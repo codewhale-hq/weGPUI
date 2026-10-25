@@ -1,6 +1,22 @@
 // Adapted from GPUI examples/input.rs, Copyright Zed Industries.
 // Licensed under Apache-2.0; see LICENSE-APACHE and NOTICE.
 
+//! Single-line and multiline text editing: the native replacement for HTML `<input>` and
+//! `<textarea>` inside WeUI form cells.
+//!
+//! [`TextInput`] is a GPUI entity that owns its text, selection, IME marked range, scroll position
+//! and undo history. Create it with `cx.new(|cx| TextInput::new("placeholder", cx))`, render the
+//! entity as a child, observe [`InputEvent`]s with `cx.subscribe`, and call [`init`] once (done by
+//! [`crate::init`]) to install the key bindings, which are scoped to the `TextInput` key context.
+//! It implements GPUI's `EntityInputHandler`, so platform IME composition and candidate windows
+//! work where the GPUI backend supports them.
+//!
+//! Known limitations: `maxlength` counts UTF-16 code units, as HTML does, but IME composition text
+//! is only limited on commit. [`InputKind`] filters characters and is not HTML form validation.
+//! There is no spell checking or context menu. Undo history is cleared by
+//! [`TextInput::set_text`]. Linux XIM preedit was observed in the input method's own window
+//! rather than inline at the caret.
+
 use std::{ops::Range, time::Duration};
 
 use crate::Theme;
@@ -10,37 +26,69 @@ use unicode_segmentation::*;
 actions!(
     text_input,
     [
+        /// Deletes the selection, or the grapheme before the caret.
         Backspace,
+        /// Deletes the selection, or the grapheme after the caret.
         Delete,
+        /// Deletes the selection, or back to the previous word boundary.
         DeleteWordLeft,
+        /// Deletes the selection, or back to the start of the current line.
         DeleteToLineStart,
+        /// Moves the caret one grapheme left, collapsing any selection.
         Left,
+        /// Moves the caret one grapheme right, collapsing any selection.
         Right,
+        /// Moves the caret up one visual line (multiline), or to the start (single line).
         Up,
+        /// Moves the caret down one visual line (multiline), or to the end (single line).
         Down,
+        /// Extends the selection one grapheme left.
         SelectLeft,
+        /// Extends the selection one grapheme right.
         SelectRight,
+        /// Extends the selection up one visual line.
         SelectUp,
+        /// Extends the selection down one visual line.
         SelectDown,
+        /// Moves the caret to the previous word boundary.
         WordLeft,
+        /// Moves the caret to the next word boundary.
         WordRight,
+        /// Extends the selection to the previous word boundary.
         SelectWordLeft,
+        /// Extends the selection to the next word boundary.
         SelectWordRight,
+        /// Selects the whole text.
         SelectAll,
+        /// Moves the caret to the start of the current line.
         Home,
+        /// Moves the caret to the end of the current line.
         End,
+        /// Extends the selection to the start of the current line.
         SelectHome,
+        /// Extends the selection to the end of the current line.
         SelectEnd,
+        /// Moves the caret to the start of the text.
         DocStart,
+        /// Moves the caret to the end of the text.
         DocEnd,
+        /// Extends the selection to the start of the text.
         SelectDocStart,
+        /// Extends the selection to the end of the text.
         SelectDocEnd,
+        /// Inserts a newline (multiline) or emits [`InputEvent::Submit`] (single line).
         Enter,
+        /// Opens the platform's character/emoji palette where supported.
         ShowCharacterPalette,
+        /// Replaces the selection with clipboard text, sanitised and length-limited.
         Paste,
+        /// Copies the selection to the clipboard and deletes it (not for passwords).
         Cut,
+        /// Copies the selection to the clipboard (not for passwords).
         Copy,
+        /// Restores the text and selection before the last edit.
         Undo,
+        /// Re-applies the last undone edit.
         Redo,
     ]
 );
@@ -63,13 +111,23 @@ enum EditKind {
 }
 const BLINK_INTERVAL: Duration = Duration::from_millis(500);
 
+/// Character filter and presentation for a [`TextInput`], mirroring HTML `type` values.
+///
+/// Typing, pasting and committed IME text are filtered per character. This is not validation:
+/// a `Number` field can still hold `"1-e"`.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub enum InputKind {
+    /// Any printable text (`type="text"`). The default.
     #[default]
     Text,
+    /// ASCII digits plus `.`, `-`, `+`, `e`, `E` (`type="number"`). [`TextInput::set_text`] clears
+    /// values that do not parse as a number.
     Number,
+    /// ASCII digits only (the `pattern="[0-9]*"` examples).
     Digit,
+    /// Digits plus `+ - ( ) * #` and spaces (`type="tel"`).
     Tel,
+    /// Any text, rendered as bullets. Copy and cut are disabled (`type="password"`).
     Password,
 }
 
@@ -86,14 +144,25 @@ impl InputKind {
     }
 }
 
+/// Notifications emitted by [`TextInput`] (and re-emitted by `TextArea`).
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum InputEvent {
+    /// The text changed through editing, paste, undo/redo, `set_text`, or truncation by
+    /// `set_max_len`. Not emitted while IME text is only being composed.
     Changed,
+    /// The input gained keyboard focus.
     Focus,
+    /// The input lost keyboard focus.
     Blur,
+    /// Enter was pressed in a single-line input.
     Submit,
 }
 
+/// An editable text field entity. See the [module documentation](self) for usage.
+///
+/// Lengths and offsets in the public API are in UTF-16 code units, matching HTML. The entity
+/// renders WeUI input typography and colours from [`crate::Theme`] and exposes a
+/// `TextInput`/multiline accessibility node with its value, placeholder and label.
 pub struct TextInput {
     focus_handle: FocusHandle,
     content: SharedString,
@@ -127,6 +196,7 @@ pub struct TextInput {
 }
 
 impl TextInput {
+    /// Creates an empty, enabled, single-line [`InputKind::Text`] input with the given placeholder.
     pub fn new(placeholder: impl Into<SharedString>, cx: &mut Context<Self>) -> Self {
         Self {
             focus_handle: cx.focus_handle().tab_stop(true),
@@ -171,38 +241,52 @@ impl TextInput {
         }
     }
 
+    /// The current committed text, including any IME text being composed.
     pub fn text(&self) -> &str {
         &self.content
     }
 
+    /// Text length in UTF-16 code units, the unit HTML `maxlength` counts.
     pub fn len(&self) -> usize {
         self.content.encode_utf16().count()
     }
 
+    /// Whether the text is empty.
     pub fn is_empty(&self) -> bool {
         self.content.is_empty()
     }
 
+    /// The placeholder shown while the text is empty.
     pub fn placeholder(&self) -> &str {
         &self.placeholder
     }
 
+    /// The character filter and presentation in effect.
     pub fn kind(&self) -> InputKind {
         self.kind
     }
 
+    /// The maximum length in UTF-16 code units, if any.
     pub fn max_len(&self) -> Option<usize> {
         self.max_len
     }
 
+    /// Whether the input is disabled (not focusable, not editable).
     pub fn is_disabled(&self) -> bool {
         self.disabled
     }
 
+    /// Whether the input is read-only (focusable and selectable, not editable).
     pub fn is_readonly(&self) -> bool {
         self.readonly
     }
 
+    /// Replaces the text programmatically.
+    ///
+    /// The text is sanitised (newlines become spaces in single-line inputs; control characters
+    /// and characters rejected by the [`InputKind`] are dropped) and truncated to the maximum
+    /// length. The caret moves to the end, any composition ends, and the undo history is cleared.
+    /// Emits [`InputEvent::Changed`] if the text differs.
     pub fn set_text(&mut self, text: impl Into<SharedString>, cx: &mut Context<Self>) {
         let text: SharedString = text.into();
         let text = if self.kind == InputKind::Number
@@ -231,31 +315,39 @@ impl TextInput {
         cx.notify();
     }
 
+    /// Clears the text and scroll position, as `set_text("")`.
     pub fn clear(&mut self, cx: &mut Context<Self>) {
         self.set_text("", cx);
         self.scroll = Point::default();
     }
 
+    /// Sets the placeholder, also used as the accessible placeholder.
     pub fn set_placeholder(&mut self, text: impl Into<SharedString>, cx: &mut Context<Self>) {
         self.placeholder = text.into();
         cx.notify();
     }
 
+    /// Overrides the placeholder colour; `None` restores the theme's placeholder colour.
     pub fn set_placeholder_color(&mut self, color: Option<Hsla>, cx: &mut Context<Self>) {
         self.placeholder_color = color;
         cx.notify();
     }
 
+    /// Sets the accessible name, usually the visible form label of the cell.
     pub fn set_aria_label(&mut self, label: impl Into<SharedString>, cx: &mut Context<Self>) {
         self.label = Some(label.into());
         cx.notify();
     }
 
+    /// Overrides the accessibility role (for example `Role::SearchInput`); `None` uses the
+    /// default text-input role.
     pub fn set_accessible_role(&mut self, role: Option<Role>, cx: &mut Context<Self>) {
         self.role = role;
         cx.notify();
     }
 
+    /// Enables or disables the input. Disabling removes it from the tab order, ends any
+    /// selection drag or composition, and stops the caret blink.
     pub fn set_disabled(&mut self, disabled: bool, cx: &mut Context<Self>) {
         self.disabled = disabled;
         self.focus_handle = self.focus_handle.clone().tab_stop(!disabled);
@@ -267,12 +359,18 @@ impl TextInput {
         cx.notify();
     }
 
+    /// Makes the input read-only or editable. Read-only inputs keep focus and selection.
     pub fn set_readonly(&mut self, readonly: bool, cx: &mut Context<Self>) {
         self.readonly = readonly;
         self.marked_range = None;
         cx.notify();
     }
 
+    /// Sets the maximum length in UTF-16 code units (HTML `maxlength`); `None` removes it.
+    ///
+    /// Longer existing text is truncated at a grapheme boundary and emits
+    /// [`InputEvent::Changed`]. Later edits that would exceed the limit insert only the graphemes
+    /// that fit.
     pub fn set_max_len(&mut self, max_len: Option<usize>, cx: &mut Context<Self>) {
         self.max_len = max_len;
         if let Some(max) = max_len
@@ -288,6 +386,7 @@ impl TextInput {
         cx.notify();
     }
 
+    /// Changes the [`InputKind`] and re-filters the current text through `set_text`.
     pub fn set_kind(&mut self, kind: InputKind, cx: &mut Context<Self>) {
         self.kind = kind;
         let text = self.content.clone();
@@ -299,10 +398,12 @@ impl TextInput {
         cx.notify();
     }
 
+    /// Whether this input holds keyboard focus in `window`.
     pub fn is_focused(&self, window: &Window) -> bool {
         self.focus_handle.is_focused(window)
     }
 
+    /// Focuses the input unless it is disabled, and starts the caret blink.
     pub fn focus(&mut self, window: &mut Window, cx: &mut Context<Self>) {
         if self.disabled {
             return;
@@ -1680,6 +1781,8 @@ fn utf16_offset(text: &str, offset: usize) -> usize {
     text.len()
 }
 
+/// Installs the text-editing key bindings for the `TextInput` key context. Both `ctrl-` and
+/// `cmd-` variants are bound for clipboard, select-all and undo/redo. Called by [`crate::init`].
 pub fn init(cx: &mut App) {
     let ctx = Some("TextInput");
     cx.bind_keys([

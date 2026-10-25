@@ -1,23 +1,41 @@
+//! WeUI uploader (`weui-cell/weui-uploader.less`): a titled, wrapping grid of 96 px thumbnails with
+//! progress, error and delete states, followed by an add box (`weui-uploader__input-box`).
+//!
+//! [`Uploader`] only renders [`UploaderFile`]s in their [`UploaderStatus`]. Choosing and
+//! transporting files is application-owned: open a chooser in `on_add` and update the statuses.
+//! Known limitations: there is no maximum count (the add box is always shown), and the preview hint
+//! "轻点两下查看大图" cannot be changed.
+
 use super::{ClickHandler, Icon};
 use crate::Theme;
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
+/// Display state of an [`UploaderFile`].
 #[derive(Clone, PartialEq)]
 pub enum UploaderStatus {
+    /// Uploaded: shows the thumbnail and allows preview and delete.
     Done,
+    /// Failed: dims the thumbnail and shows a red warning icon, exposed as an `Alert` named "错误".
     Error,
+    /// In progress: dims the thumbnail and shows the given text, such as `"50%"`, as an `Alert`.
     Progress(SharedString),
 }
 
+/// One file shown by an [`Uploader`].
 #[derive(Clone)]
 pub struct UploaderFile {
+    /// Thumbnail as a GPUI `ImageSource` (asset name, URI or filesystem path), cropped to cover the
+    /// 96 px square.
     pub src: ImageSource,
+    /// Display state (default [`UploaderStatus::Done`]).
     pub status: UploaderStatus,
+    /// Accessible name of the thumbnail (default "图片标题").
     pub label: SharedString,
 }
 
 impl UploaderFile {
+    /// Creates a done file showing `src` with the default label.
     pub fn new(src: impl Into<ImageSource>) -> Self {
         Self {
             src: src.into(),
@@ -25,14 +43,17 @@ impl UploaderFile {
             label: "图片标题".into(),
         }
     }
+    /// Sets the status to [`UploaderStatus::Error`].
     pub fn error(mut self) -> Self {
         self.status = UploaderStatus::Error;
         self
     }
+    /// Sets the status to [`UploaderStatus::Progress`] with `text`.
     pub fn progress(mut self, text: impl Into<SharedString>) -> Self {
         self.status = UploaderStatus::Progress(text.into());
         self
     }
+    /// Sets the thumbnail's accessible name.
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = label.into();
         self
@@ -41,6 +62,7 @@ impl UploaderFile {
 
 type IndexHandler = Rc<dyn Fn(&usize, &mut Window, &mut App)>;
 
+/// Uploader body: a header with title and info, then the files in a wrapping row and the add box.
 #[derive(IntoElement)]
 pub struct Uploader {
     id: ElementId,
@@ -56,6 +78,7 @@ pub struct Uploader {
 }
 
 impl Uploader {
+    /// Creates an uploader titled `title` with no files, deletion off and add label "上传图片".
     pub fn new(id: impl Into<ElementId>, title: impl Into<SharedString>) -> Self {
         Self {
             id: id.into(),
@@ -70,30 +93,40 @@ impl Uploader {
             on_add: None,
         }
     }
+    /// Sets the right-aligned header text (`weui-uploader__info`), such as a `"0/2"` count; it is
+    /// read together with the title.
     pub fn info(mut self, info: impl Into<SharedString>) -> Self {
         self.info = Some(info.into());
         self
     }
+    /// Appends files in display order; callbacks receive indices into this list.
     pub fn files(mut self, files: impl IntoIterator<Item = UploaderFile>) -> Self {
         self.files.extend(files);
         self
     }
+    /// Shows a delete button on done files when `on_delete` is also set (default `false`).
     pub fn deletable(mut self, deletable: bool) -> Self {
         self.deletable = deletable;
         self
     }
+    /// Sets the add box's accessible label (default "上传图片").
     pub fn add_label(mut self, label: impl Into<SharedString>) -> Self {
         self.add_label = label.into();
         self
     }
+    /// Makes done thumbnails focusable and calls the handler with the file index on click or
+    /// Enter/Space.
     pub fn on_preview(mut self, handler: impl Fn(&usize, &mut Window, &mut App) + 'static) -> Self {
         self.on_preview = Some(Rc::new(handler));
         self
     }
+    /// Called with the file index when a done file's delete button is activated; requires
+    /// `deletable(true)`.
     pub fn on_delete(mut self, handler: impl Fn(&usize, &mut Window, &mut App) + 'static) -> Self {
         self.on_delete = Some(Rc::new(handler));
         self
     }
+    /// Called with the click event when the add box is clicked or activated with Enter or Space.
     pub fn on_add(
         mut self,
         handler: impl Fn(&ClickEvent, &mut Window, &mut App) + 'static,

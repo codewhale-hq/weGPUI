@@ -1,8 +1,17 @@
+//! WeUI radio lists (`src/style/widget/weui-cell/weui-check/weui-radio.less`, example
+//! `src/example/form/form_radio.html`). [`RadioGroup`] builds one `RadioButton` row per option
+//! for the caller to place in a container; [`radio_icon`] is the trailing tick.
+//! Known limitations: the builder is not an element and adds no `RadioGroup` node, so set that
+//! role on the container; row element ids do not include the group id, so keep each group in
+//! its own container.
+
 use super::Icon;
 use crate::{Theme, accessibility::Semantics};
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
+/// The trailing radio mark: a 24px brand-coloured tick when `checked`, otherwise an empty 24px
+/// box (upstream hides the unchecked icon with a transparent colour).
 pub fn radio_icon(checked: bool, cx: &App) -> Div {
     let brand = Theme::get(cx).brand;
     div().size(px(24.)).flex_shrink_0().when(checked, |el| {
@@ -12,6 +21,12 @@ pub fn radio_icon(checked: bool, cx: &App) -> Div {
 
 type SelectHandler = Rc<dyn Fn(&usize, &mut Window, &mut App)>;
 
+/// Builder for a single-choice list (`.weui-cells_radio`). Controlled: the caller stores the
+/// selected index and passes it back through [`RadioGroup::selected`].
+///
+/// Keyboard: only the selected option (or the first enabled one) is a tab stop. Up/Left and
+/// Down/Right move focus to the previous or next enabled option, wrapping, and select it;
+/// Enter/Space select the focused option.
 pub struct RadioGroup {
     id: ElementId,
     options: Vec<(SharedString, bool)>,
@@ -20,6 +35,8 @@ pub struct RadioGroup {
 }
 
 impl RadioGroup {
+    /// Creates an empty group with no selection. `id` keys the option focus handles kept in
+    /// window state, so keep it stable across renders and unique per group.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -28,23 +45,32 @@ impl RadioGroup {
             on_change: None,
         }
     }
+    /// Appends an enabled option; `label` is its visible text and accessible name.
     pub fn option(mut self, label: impl Into<SharedString>) -> Self {
         self.options.push((label.into(), false));
         self
     }
+    /// Appends a disabled option: `fg_2` text, icon at 30% opacity, flagged disabled, not
+    /// focusable or clickable, and skipped by the arrow keys.
     pub fn disabled_option(mut self, label: impl Into<SharedString>) -> Self {
         self.options.push((label.into(), true));
         self
     }
+    /// Sets the selected option index, or `None` for no selection. Default `None`.
     pub fn selected(mut self, index: Option<usize>) -> Self {
         self.selected = index;
         self
     }
+    /// Calls `handler` with an option index when that option is clicked or activated, and when
+    /// an arrow key moves to it, even if it is already selected.
     pub fn on_change(mut self, handler: impl Fn(&usize, &mut Window, &mut App) + 'static) -> Self {
         self.on_change = Some(Rc::new(handler));
         self
     }
 
+    /// Builds one row per option: a [`crate::components::form::cell_frame`] with the label and
+    /// a trailing [`radio_icon`], exposed as `RadioButton` with toggled state and position in
+    /// the set. Place them in a container such as `FormGroup::rows` or `Cells::children`.
     pub fn rows(self, window: &mut Window, cx: &mut App) -> Vec<AnyElement> {
         let t = Theme::get(cx).clone();
         let n = self.options.len();

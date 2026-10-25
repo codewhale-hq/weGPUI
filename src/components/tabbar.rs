@@ -1,8 +1,15 @@
+//! WeUI bottom tab bar (`weui-tab/weui-tabbar.less`): icon-over-label tabs with optional badges.
+//!
+//! [`Tabbar`] is stateless like [`Navbar`](super::navbar::Navbar) and shares its arrow-key
+//! handling; [`TabbarItem`] describes one tab. Known limitation: arrows use window-wide focus
+//! traversal, so they assume the tabs are adjacent in Tab order.
+
 use super::navbar::{SelectHandler, tab_keys};
 use crate::Theme;
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
+/// One tab: label, 28 px icon slot, optional badge and accessible description.
 pub struct TabbarItem {
     label: SharedString,
     icon: AnyElement,
@@ -11,6 +18,8 @@ pub struct TabbarItem {
 }
 
 impl TabbarItem {
+    /// Creates a tab with `label` under `icon`. The icon is drawn as given, so pass the selected or
+    /// unselected variant yourself; only the label colour follows the selection.
     pub fn new(label: impl Into<SharedString>, icon: impl IntoElement) -> Self {
         Self {
             label: label.into(),
@@ -19,16 +28,22 @@ impl TabbarItem {
             description: None,
         }
     }
+    /// Overlays `badge` on the icon, offset `top` and `right` px from the icon box's top-right
+    /// corner; negative values push it outward.
     pub fn badge(mut self, badge: impl IntoElement, top: f32, right: f32) -> Self {
         self.badge = Some((badge.into_any_element(), px(top), px(right)));
         self
     }
+    /// Sets the tab's accessible description, such as an unread count.
     pub fn description(mut self, description: impl Into<SharedString>) -> Self {
         self.description = Some(description.into());
         self
     }
 }
 
+/// Bottom tab list (`TabList` role) under a hairline; the selected tab's label uses the brand
+/// colour. On a focused tab, Left/Up and Right/Down focus and select the neighbour (only when
+/// `on_select` is set).
 #[derive(IntoElement)]
 pub struct Tabbar {
     id: ElementId,
@@ -39,6 +54,7 @@ pub struct Tabbar {
 }
 
 impl Tabbar {
+    /// Creates an empty tabbar with tab 0 selected.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -48,18 +64,23 @@ impl Tabbar {
             on_select: None,
         }
     }
+    /// Sets the tab list's accessible name (default empty).
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = label.into();
         self
     }
+    /// Appends a tab.
     pub fn item(mut self, item: TabbarItem) -> Self {
         self.items.push(item);
         self
     }
+    /// Sets the selected tab index (default 0); an out-of-range index selects none.
     pub fn selected(mut self, index: usize) -> Self {
         self.selected = index;
         self
     }
+    /// Called with a tab's index when it is clicked, activated with Enter or Space, or reached with
+    /// an arrow key. Store the index and re-render.
     pub fn on_select(mut self, handler: impl Fn(usize, &mut Window, &mut App) + 'static) -> Self {
         self.on_select = Some(Rc::new(handler));
         self

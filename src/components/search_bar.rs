@@ -1,3 +1,10 @@
+//! WeUI search bar (`weui-searchbar/weui-searchbar.less`) in its filled, filled-grey, outlined and
+//! homepage variants, plus a plain result list.
+//!
+//! [`SearchBar`] is a GPUI entity wrapping a [`TextInput`] and emitting [`SearchBarEvent`]s;
+//! [`SearchResults`] renders result strings as cells. Known limitations: searching, filtering and
+//! history are application-owned, and `words` is not drawn in the outlined variant.
+
 use super::{Cell, Cells, Icon};
 use crate::{
     Theme,
@@ -6,28 +13,53 @@ use crate::{
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
+/// Visual variant of a [`SearchBar`].
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub enum SearchBarVariant {
+    /// `BG-2` field on the `BG-0` page background (`weui-search-bar`); the default.
     #[default]
     Filled,
+    /// Grey field on a `BG-2` bar (`weui-search-bar_filled-grey`).
     FilledGrey,
+    /// Outlined field with an attached 搜索 button (`weui-search-bar_outlined`); always in the
+    /// focusing state.
     Outlined,
+    /// Tappable placeholder plus a camera button (`weui-search-bar_homepage`). It has no text field
+    /// and only emits `Open` and `Camera`.
     Homepage,
 }
 
+/// Events emitted by [`SearchBar`]; observe them with `cx.subscribe`.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum SearchBarEvent {
+    /// The input text changed.
     Changed,
+    /// Enter was pressed in the input, or the outlined variant's 搜索 button was activated.
     Submit,
+    /// The bar left the focusing state, through 取消, [`SearchBar::cancel`] or a blur with empty
+    /// text.
     Cancel,
+    /// The clear button emptied the text; the input keeps focus.
     Clear,
+    /// The back arrow shown while focusing was activated; the bar does not cancel by itself.
     Back,
+    /// The homepage variant's camera button was activated.
     Camera,
+    /// The homepage placeholder was activated, or [`SearchBar::activate`] was called on a homepage
+    /// bar.
     Open,
+    /// The input gained focus.
     Focus,
+    /// The input lost focus, after any automatic `Cancel`.
     Blur,
 }
 
+/// Search bar entity: create it with `cx.new(|cx| SearchBar::new(cx).variant(...))`, render it and
+/// subscribe to [`SearchBarEvent`].
+///
+/// Unfocused, it shows a centred placeholder label; activating it enters the focusing state with
+/// back and 取消 buttons, plus a clear button while there is text. Blurring with empty text
+/// cancels automatically. Its focus handle is the inner input's.
 pub struct SearchBar {
     input: Entity<TextInput>,
     variant: SearchBarVariant,
@@ -39,6 +71,8 @@ pub struct SearchBar {
 }
 
 impl SearchBar {
+    /// Creates a filled search bar with placeholder "搜索" and clear-on-cancel on; the inner input
+    /// has the `SearchInput` role.
     pub fn new(cx: &mut Context<Self>) -> Self {
         let input = cx.new(|cx| {
             let mut input = TextInput::new("搜索", cx);
@@ -73,31 +107,38 @@ impl SearchBar {
         }
     }
 
+    /// Sets the variant while building (default [`SearchBarVariant::Filled`]).
     pub fn variant(mut self, variant: SearchBarVariant) -> Self {
         self.variant = variant;
         self
     }
 
+    /// Shows a brand-coloured keyword before the input (`weui-search-bar__words`), such as "微信".
+    /// Default none; not drawn in the outlined variant.
     pub fn words(mut self, words: impl Into<SharedString>) -> Self {
         self.words = Some(words.into());
         self
     }
 
+    /// Whether cancelling also clears the text (default `true`).
     pub fn clear_on_cancel(mut self, clear: bool) -> Self {
         self.clear_on_cancel = clear;
         self
     }
 
+    /// Changes the variant and re-renders.
     pub fn set_variant(&mut self, variant: SearchBarVariant, cx: &mut Context<Self>) {
         self.variant = variant;
         cx.notify();
     }
 
+    /// Sets or removes the keyword shown before the input, then re-renders.
     pub fn set_words(&mut self, words: Option<SharedString>, cx: &mut Context<Self>) {
         self.words = words;
         cx.notify();
     }
 
+    /// Sets the placeholder used by the label, the homepage button and the input (default "搜索").
     pub fn set_placeholder(&mut self, text: impl Into<SharedString>, cx: &mut Context<Self>) {
         self.placeholder = text.into();
         let placeholder = self.placeholder.clone();
@@ -106,28 +147,36 @@ impl SearchBar {
         cx.notify();
     }
 
+    /// The inner [`TextInput`] entity, for direct text, length or focus control.
     pub fn input(&self) -> &Entity<TextInput> {
         &self.input
     }
 
+    /// Current input text.
     pub fn text<'a>(&self, cx: &'a App) -> &'a str {
         self.input.read(cx).text()
     }
 
+    /// Replaces the input text; the bar emits `Changed` if it differs.
     pub fn set_text(&mut self, text: impl Into<SharedString>, cx: &mut Context<Self>) {
         let text = text.into();
         self.input.update(cx, |input, cx| input.set_text(text, cx));
         cx.notify();
     }
 
+    /// Whether the bar is in the focusing state (always `true` for the outlined variant).
     pub fn is_focusing(&self) -> bool {
         self.focusing || self.variant == SearchBarVariant::Outlined
     }
 
+    /// Whether results should show: focusing with non-empty text. Also exposed as the expanded
+    /// state of the form's `ComboBox` node.
     pub fn is_expanded(&self, cx: &App) -> bool {
         self.is_focusing() && !self.input.read(cx).is_empty()
     }
 
+    /// Enters the focusing state and focuses the input; for the homepage variant it only emits
+    /// `Open`.
     pub fn activate(&mut self, window: &mut Window, cx: &mut Context<Self>) {
         if self.variant == SearchBarVariant::Homepage {
             cx.emit(SearchBarEvent::Open);
@@ -138,6 +187,7 @@ impl SearchBar {
         cx.notify();
     }
 
+    /// Empties the text, focuses the input and emits `Clear`.
     pub fn clear(&mut self, window: &mut Window, cx: &mut Context<Self>) {
         self.input.update(cx, |input, cx| {
             input.clear(cx);
@@ -147,6 +197,8 @@ impl SearchBar {
         cx.notify();
     }
 
+    /// Leaves the focusing state, clearing the text if `clear_on_cancel`, emitting `Cancel` if it
+    /// was focusing, and blurring the input if it has focus.
     pub fn cancel(&mut self, window: &mut Window, cx: &mut Context<Self>) {
         self.finish_cancel(cx);
         if self.input.read(cx).is_focused(window) {
@@ -477,6 +529,8 @@ impl Render for SearchBar {
 
 type SelectHandler = Rc<dyn Fn(usize, &mut Window, &mut App)>;
 
+/// Result list (`ListBox` role named "搜索结果") of focusable text cells; what a selection does
+/// is up to the caller.
 #[derive(IntoElement)]
 pub struct SearchResults {
     id: ElementId,
@@ -485,6 +539,7 @@ pub struct SearchResults {
 }
 
 impl SearchResults {
+    /// Creates an empty result list.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -493,16 +548,19 @@ impl SearchResults {
         }
     }
 
+    /// Appends one result.
     pub fn item(mut self, text: impl Into<SharedString>) -> Self {
         self.items.push(text.into());
         self
     }
 
+    /// Appends several results, in order.
     pub fn items(mut self, items: impl IntoIterator<Item = impl Into<SharedString>>) -> Self {
         self.items.extend(items.into_iter().map(Into::into));
         self
     }
 
+    /// Called with the result's index when it is clicked or activated with Enter or Space.
     pub fn on_select(mut self, handler: impl Fn(usize, &mut Window, &mut App) + 'static) -> Self {
         self.on_select = Some(Rc::new(handler));
         self

@@ -1,3 +1,11 @@
+//! WeUI picker (`weui-picker/weui-picker.less`) with the column, cascade and date behaviour of the
+//! weui.js 1.2.17 `weui.picker` and `weui.datePicker` calls the upstream examples make, shown in a
+//! flush [`HalfScreenDialog`].
+//!
+//! [`Picker`] is a GPUI entity emitting [`PickerEvent`]s; [`PickerItem`] trees describe the
+//! options. Known limitations: [`today`] is the UTC date, not the local one, and a column whose
+//! rows are all disabled keeps Confirm disabled.
+
 use super::{
     button::Button,
     half_screen_dialog::{HalfScreenDialog, HdIconButton},
@@ -11,21 +19,31 @@ use std::{
     time::{Duration, Instant},
 };
 
+/// Height of one picker row in px (`@pickerItemHeight`). Five rows are visible, with the current
+/// row in the middle.
 pub const ROW_HEIGHT: f32 = 56.;
 const OFFSET: f32 = 2.;
 const VISIBLE_ROWS: f32 = 5.;
 const SNAP: Duration = Duration::from_millis(300);
 const WHEEL_IDLE: Duration = Duration::from_millis(120);
 
+/// One option in a picker column; in cascade mode its `children` fill the next column.
 #[derive(Clone, Debug, PartialEq)]
 pub struct PickerItem {
+    /// Text shown in the row; also its accessible name.
     pub label: SharedString,
+    /// Value matched by [`Picker::default_value`]; returned with the item in events.
     pub value: SharedString,
+    /// Drawn greyed and skipped by dragging, the wheel and keys; never returned by
+    /// [`Picker::selected`].
     pub disabled: bool,
+    /// Options for the next column while this item is selected in a cascade; ignored by plain
+    /// columns.
     pub children: Vec<PickerItem>,
 }
 
 impl PickerItem {
+    /// Creates an enabled item with no children.
     pub fn new(label: impl Into<SharedString>, value: impl Into<SharedString>) -> Self {
         Self {
             label: label.into(),
@@ -34,20 +52,28 @@ impl PickerItem {
             children: vec![],
         }
     }
+    /// Sets whether the item is disabled (default `false`).
     pub fn disabled(mut self, value: bool) -> Self {
         self.disabled = value;
         self
     }
+    /// Replaces the child options used by cascade pickers.
     pub fn children(mut self, children: impl IntoIterator<Item = PickerItem>) -> Self {
         self.children = children.into_iter().collect();
         self
     }
 }
 
+/// Events emitted by [`Picker`]; observe them with `cx.subscribe`.
 #[derive(Clone, Debug)]
 pub enum PickerEvent {
+    /// A column's current row changed by drag, wheel or keys. Carries [`Picker::selected`] after
+    /// the dependent cascade columns were rebuilt.
     Change(Vec<PickerItem>),
+    /// Confirm was pressed, or Enter in a column, while [`Picker::can_confirm`] held. Carries the
+    /// selected items and is followed by `Close`.
     Confirm(Vec<PickerItem>),
+    /// The picker closed: close button, Escape, mask click, [`Picker::close`] or after a confirm.
     Close,
 }
 
@@ -124,6 +150,16 @@ fn default_index(items: &[PickerItem]) -> usize {
     i
 }
 
+/// Wheel picker entity rendered as a bottom sheet with a title, columns and a Confirm button.
+///
+/// Create it with `cx.new(|cx| Picker::single(...))`, or `Picker::new` plus `columns`, `cascade` or
+/// `date`; render the entity in your view and call [`Picker::open`]. Columns are rebuilt on every
+/// open. Each level remembers its last row for the next open, falling back to
+/// [`Picker::default_value`] and then to the first enabled row from the middle; a disabled row is
+/// never chosen while an enabled one exists. Keys in a focused column: Up and Down move one row,
+/// PageUp and PageDown five, Home and End to the ends, and Enter confirms. A move that lands on a
+/// disabled row continues in the direction of travel, then searches back for the nearest enabled
+/// row.
 pub struct Picker {
     presence: Presence,
     id: SharedString,
@@ -141,6 +177,8 @@ pub struct Picker {
 impl EventEmitter<PickerEvent> for Picker {}
 
 impl Picker {
+    /// Creates an empty, closed picker with Confirm text "确定", close button label "关闭" and the
+    /// close button shown.
     pub fn new(id: impl Into<SharedString>, cx: &mut Context<Self>) -> Self {
         Self {
             presence: Presence::new(cx),
@@ -156,6 +194,7 @@ impl Picker {
             columns: vec![],
         }
     }
+    /// Creates a one-column picker from `items`.
     pub fn single(
         id: impl Into<SharedString>,
         items: impl IntoIterator<Item = PickerItem>,
@@ -163,14 +202,21 @@ impl Picker {
     ) -> Self {
         Self::new(id, cx).columns(vec![items.into_iter().collect()])
     }
+    /// Uses independent columns, like the weui.js multi-column picker; replaces any previous
+    /// source.
     pub fn columns(mut self, columns: Vec<Vec<PickerItem>>) -> Self {
         self.source = Source::Columns(columns);
         self
     }
+    /// Uses a cascading tree: each column lists the children of the row selected to its left, up to
+    /// `depth` columns or until an item has no children. Replaces any previous source.
     pub fn cascade(mut self, items: Vec<PickerItem>, depth: usize) -> Self {
         self.source = Source::Cascade { items, depth };
         self
     }
+    /// Uses a year, month and day cascade over `start_year..=end_year`, labelled `"{y}年"`,
+    /// `"{m}月"` and `"{d}日"` with unpadded numeric values, and makes `today`
+    /// (`(year, month, day)`) the default value. Pass the user's local date; [`today`] is UTC.
     pub fn date(mut self, start_year: i32, end_year: i32, today: (i32, u32, u32)) -> Self {
         let years = (start_year..=end_year)
             .map(|y| {
@@ -193,26 +239,33 @@ impl Picker {
         ];
         self
     }
+    /// Sets the sheet title, also part of each column's accessible name (default empty).
     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
         self.title = title.into();
         self
     }
+    /// Sets a subtitle under the title (default none).
     pub fn desc(mut self, desc: impl Into<SharedString>) -> Self {
         self.desc = desc.into();
         self
     }
+    /// Whether to show the header close button (default `true`).
     pub fn show_close(mut self, value: bool) -> Self {
         self.show_close = value;
         self
     }
+    /// Sets the Confirm button text (default "确定").
     pub fn confirm_text(mut self, text: impl Into<SharedString>) -> Self {
         self.confirm_text = text.into();
         self
     }
+    /// Sets the close button's accessible label (default "关闭").
     pub fn close_text(mut self, text: impl Into<SharedString>) -> Self {
         self.close_text = text.into();
         self
     }
+    /// Sets, per column level, the item value to select when that level has no remembered row.
+    /// Missing or disabled values fall back to the first enabled row from the middle.
     pub fn default_value(
         mut self,
         values: impl IntoIterator<Item = impl Into<SharedString>>,
@@ -220,9 +273,12 @@ impl Picker {
         self.default_value = values.into_iter().map(Into::into).collect();
         self
     }
+    /// Whether the picker is open; `false` as soon as closing starts.
     pub fn is_open(&self) -> bool {
         self.presence.is_open()
     }
+    /// Items at each column's current row, omitting disabled ones, so the list can be shorter than
+    /// the column count. Empty before the first [`Picker::open`].
     pub fn selected(&self) -> Vec<PickerItem> {
         self.columns
             .iter()
@@ -234,9 +290,13 @@ impl Picker {
             })
             .collect()
     }
+    /// Current row index of every column, including rows that are disabled. Empty before the first
+    /// open.
     pub fn indices(&self) -> Vec<usize> {
         self.columns.iter().map(Column::index).collect()
     }
+    /// `true` only when there is at least one column and every column's current row exists and is
+    /// enabled. The Confirm button is disabled otherwise.
     pub fn can_confirm(&self) -> bool {
         !self.columns.is_empty()
             && self
@@ -245,6 +305,8 @@ impl Picker {
                 .all(|column| enabled_at(&column.items, column.index()))
     }
 
+    /// Rebuilds the columns, slides the sheet up and focuses the first column. The previously
+    /// focused element gets focus back when the picker closes.
     pub fn open(&mut self, window: &mut Window, cx: &mut Context<Self>) {
         self.rebuild(cx);
         self.presence.show(window, cx);
@@ -253,6 +315,7 @@ impl Picker {
         }
         cx.notify();
     }
+    /// Like [`Picker::open`] without the opening transition.
     pub fn open_instantly(&mut self, window: &mut Window, cx: &mut Context<Self>) {
         self.rebuild(cx);
         self.presence.show_instantly(window, cx);
@@ -261,6 +324,7 @@ impl Picker {
         }
         cx.notify();
     }
+    /// Slides the sheet down and emits [`PickerEvent::Close`]; does nothing when already closed.
     pub fn close(&mut self, window: &mut Window, cx: &mut Context<Self>) {
         if self.presence.is_open() {
             self.presence.hide(window, cx);
@@ -379,19 +443,21 @@ impl Picker {
         k = (k / ROW_HEIGHT).round() * ROW_HEIGHT;
         k = k.min(col.max_offset()).max(col.min_offset());
         let len = col.items.len() as isize;
-        let mut i = (OFFSET - k / ROW_HEIGHT).round() as isize;
-        let mut guard = 0;
-        while i >= 0 && i < len && col.items[i as usize].disabled && guard < len {
-            if dir > 0. {
-                i -= 1
-            } else {
-                i += 1
+        let target = (OFFSET - k / ROW_HEIGHT).round() as isize;
+        let forward = if dir > 0. { -1 } else { 1 };
+        let enabled_from = |step: isize| {
+            let mut j = target;
+            while j >= 0 && j < len {
+                if !col.items[j as usize].disabled {
+                    return Some(j);
+                }
+                j += step;
             }
-            guard += 1;
-        }
-        if i < 0 || i >= len || col.items[i as usize].disabled {
-            i = before as isize;
-        }
+            None
+        };
+        let i = enabled_from(forward)
+            .or_else(|| enabled_from(-forward))
+            .unwrap_or(before as isize);
         col.from = visual;
         col.offset = (OFFSET - i as f32) * ROW_HEIGHT;
         col.anim = Some(Instant::now());
@@ -748,6 +814,8 @@ impl Render for Picker {
     }
 }
 
+/// Days in `month` (1 to 12) of `year` in the proleptic Gregorian calendar. Any other month value
+/// is treated as February.
 pub fn days_in_month(year: i32, month: u32) -> u32 {
     match month {
         1 | 3 | 5 | 7 | 8 | 10 | 12 => 31,
@@ -762,6 +830,9 @@ pub fn days_in_month(year: i32, month: u32) -> u32 {
     }
 }
 
+/// Today's date as `(year, month, day)` in UTC, read from the system clock (1970-01-01 if the clock
+/// is before the Unix epoch). The standard library has no local time zone, so apps wanting local
+/// dates pass their own `(year, month, day)` to [`Picker::date`].
 pub fn today() -> (i32, u32, u32) {
     let secs = std::time::SystemTime::now()
         .duration_since(std::time::UNIX_EPOCH)

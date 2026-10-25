@@ -12,191 +12,560 @@ fn rgba_hsla(r: u8, g: u8, b: u8, a: f32) -> Hsla {
     .into()
 }
 
+/// Every `--weui-*` custom property from WeUI 2.6.26 `dist/style/weui.css`, resolved for one
+/// theme.
+///
+/// Field names are the CSS names in snake case (`--weui-BG-0` is `bg_0`). Colours are [`Hsla`];
+/// lengths are `f32` CSS pixels, which GPUI treats as logical pixels. Each field lists its raw
+/// CSS value in the light, dark, care-light and care-dark palettes. `var()` references are
+/// resolved and `calc()` lengths are evaluated at generation time. Read it through
+/// [`crate::Theme`], which dereferences to the active palette.
 #[derive(Clone, Debug, PartialEq)]
 pub struct Palette {
+    /// `--weui-BTN-HEIGHT` (CSS pixels, written without a unit). Light `48`; dark `48`;
+    /// care-light `48`; care-dark `48`.
     pub btn_height: f32,
+    /// `--weui-BTN-HEIGHT-MEDIUM` (CSS pixels, written without a unit). Light `40`; dark `40`;
+    /// care-light `40`; care-dark `40`.
     pub btn_height_medium: f32,
+    /// `--weui-BTN-HEIGHT-SMALL` (CSS pixels, written without a unit). Light `32`; dark `32`;
+    /// care-light `32`; care-dark `32`.
     pub btn_height_small: f32,
+    /// `--weui-BTN-ACTIVE-MASK` (colour). Light `rgba(0, 0, 0, 0.2)`; dark `rgba(255, 255, 255, 0.2)`;
+    /// care-light `rgba(0, 0, 0, 0.2)`; care-dark `rgba(255, 255, 255, 0.2)`.
     pub btn_active_mask: Hsla,
+    /// `--weui-BTN-DEFAULT-ACTIVE-BG` (colour). Light `#e6e6e6`; dark `rgba(255, 255, 255, 0.126)`;
+    /// care-light `#e6e6e6`; care-dark `rgba(255, 255, 255, 0.126)`.
     pub btn_default_active_bg: Hsla,
+    /// `--weui-DIALOG-LINE-COLOR` (colour). Light `rgba(0, 0, 0, 0.1)`; dark `rgba(255, 255, 255, 0.1)`;
+    /// care-light `rgba(0, 0, 0, 0.1)`; care-dark `rgba(255, 255, 255, 0.1)`.
     pub dialog_line_color: Hsla,
+    /// `--weui-BG-0` (colour). Light `#ededed`; dark `#111`;
+    /// care-light `#ededed`; care-dark `#111`.
     pub bg_0: Hsla,
+    /// `--weui-BG-1` (colour). Light `#f7f7f7`; dark `#1e1e1e`;
+    /// care-light `#f7f7f7`; care-dark `#1e1e1e`.
     pub bg_1: Hsla,
+    /// `--weui-BG-2` (colour). Light `#fff`; dark `#191919`;
+    /// care-light `#fff`; care-dark `#191919`.
     pub bg_2: Hsla,
+    /// `--weui-BG-3` (colour). Light `#f7f7f7`; dark `#202020`;
+    /// care-light `#f7f7f7`; care-dark `#202020`.
     pub bg_3: Hsla,
+    /// `--weui-BG-4` (colour). Light `#4c4c4c`; dark `#404040`;
+    /// care-light `#4c4c4c`; care-dark `#404040`.
     pub bg_4: Hsla,
+    /// `--weui-BG-5` (colour). Light `#fff`; dark `#2c2c2c`;
+    /// care-light `#fff`; care-dark `#2c2c2c`.
     pub bg_5: Hsla,
+    /// `--weui-BLUE-100` (colour). Light `#10aeff`; dark `#10aeff`;
+    /// care-light `#007dbb`; care-dark `#10aeff`.
     pub blue_100: Hsla,
+    /// `--weui-BLUE-120` (colour). Light `#3fbeff`; dark `#0c8bcc`;
+    /// care-light `#3fbeff`; care-dark `#0c8bcc`.
     pub blue_120: Hsla,
+    /// `--weui-BLUE-170` (colour). Light `#b7e6ff`; dark `#04344d`;
+    /// care-light `#b7e6ff`; care-dark `#04344d`.
     pub blue_170: Hsla,
+    /// `--weui-BLUE-80` (colour). Light `#0c8bcc`; dark `#3fbeff`;
+    /// care-light `#0c8bcc`; care-dark `#3fbeff`.
     pub blue_80: Hsla,
+    /// `--weui-BLUE-90` (colour). Light `#0e9ce6`; dark `#28b6ff`;
+    /// care-light `#0e9ce6`; care-dark `#28b6ff`.
     pub blue_90: Hsla,
+    /// `--weui-BLUE-BG-100` (colour). Light `#48a6e2`; dark `#48a6e2`;
+    /// care-light `#48a6e2`; care-dark `#48a6e2`.
     pub blue_bg_100: Hsla,
+    /// `--weui-BLUE-BG-110` (colour). Light `#5aafe4`; dark `#4095cb`;
+    /// care-light `#5aafe4`; care-dark `#4095cb`.
     pub blue_bg_110: Hsla,
+    /// `--weui-BLUE-BG-130` (colour). Light `#7fc0ea`; dark `#32749e`;
+    /// care-light `#7fc0ea`; care-dark `#32749e`.
     pub blue_bg_130: Hsla,
+    /// `--weui-BLUE-BG-90` (colour). Light `#4095cb`; dark `#5aafe4`;
+    /// care-light `#4095cb`; care-dark `#5aafe4`.
     pub blue_bg_90: Hsla,
+    /// `--weui-BRAND-100` (colour). Light `#07c160`; dark `#07c160`;
+    /// care-light `#018942`; care-dark `#07c160`.
     pub brand_100: Hsla,
+    /// `--weui-BRAND-120` (colour). Light `#38cd7f`; dark `#059a4c`;
+    /// care-light `#38cd7f`; care-dark `#059a4c`.
     pub brand_120: Hsla,
+    /// `--weui-BRAND-170` (colour). Light `#b4ecce`; dark `#023a1c`;
+    /// care-light `#b4ecce`; care-dark `#023a1c`.
     pub brand_170: Hsla,
+    /// `--weui-BRAND-80` (colour). Light `#059a4c`; dark `#38cd7f`;
+    /// care-light `#059a4c`; care-dark `#38cd7f`.
     pub brand_80: Hsla,
+    /// `--weui-BRAND-90` (colour). Light `#06ae56`; dark `#20c770`;
+    /// care-light `#06ae56`; care-dark `#20c770`.
     pub brand_90: Hsla,
+    /// `--weui-BRAND-BG-100` (colour). Light `#2aae67`; dark `#2aae67`;
+    /// care-light `#2aae67`; care-dark `#2aae67`.
     pub brand_bg_100: Hsla,
+    /// `--weui-BRAND-BG-110` (colour). Light `#3eb575`; dark `#259c5c`;
+    /// care-light `#3eb575`; care-dark `#259c5c`.
     pub brand_bg_110: Hsla,
+    /// `--weui-BRAND-BG-130` (colour). Light `#69c694`; dark `#1d7a48`;
+    /// care-light `#69c694`; care-dark `#1d7a48`.
     pub brand_bg_130: Hsla,
+    /// `--weui-BRAND-BG-90` (colour). Light `#259c5c`; dark `#3eb575`;
+    /// care-light `#259c5c`; care-dark `#3eb575`.
     pub brand_bg_90: Hsla,
+    /// `--weui-FG-0` (colour). Light `rgba(0, 0, 0, 0.9)`; dark `rgba(255, 255, 255, 0.8)`;
+    /// care-light `#000`; care-dark `rgba(255, 255, 255, 0.85)`.
     pub fg_0: Hsla,
+    /// `--weui-FG-0_5` (colour). Light `rgba(0, 0, 0, 0.9)`; dark `rgba(255, 255, 255, 0.6)`;
+    /// care-light `#000`; care-dark `rgba(255, 255, 255, 0.65)`.
     pub fg_0_5: Hsla,
+    /// `--weui-FG-1` (colour). Light `rgba(0, 0, 0, 0.55)`; dark `rgba(255, 255, 255, 0.5)`;
+    /// care-light `rgba(0, 0, 0, 0.6)`; care-dark `rgba(255, 255, 255, 0.55)`.
     pub fg_1: Hsla,
+    /// `--weui-FG-2` (colour). Light `rgba(0, 0, 0, 0.3)`; dark `rgba(255, 255, 255, 0.3)`;
+    /// care-light `rgba(0, 0, 0, 0.42)`; care-dark `rgba(255, 255, 255, 0.35)`.
     pub fg_2: Hsla,
+    /// `--weui-FG-3` (colour). Light `rgba(0, 0, 0, 0.1)`; dark `rgba(255, 255, 255, 0.1)`;
+    /// care-light `rgba(0, 0, 0, 0.1)`; care-dark `rgba(255, 255, 255, 0.1)`.
     pub fg_3: Hsla,
+    /// `--weui-FG-4` (colour). Light `rgba(0, 0, 0, 0.15)`; dark `rgba(255, 255, 255, 0.15)`;
+    /// care-light `rgba(0, 0, 0, 0.15)`; care-dark `rgba(255, 255, 255, 0.15)`.
     pub fg_4: Hsla,
+    /// `--weui-GLYPH-0` (colour). Light `rgba(0, 0, 0, 0.9)`; dark `rgba(255, 255, 255, 0.8)`;
+    /// care-light `#000`; care-dark `rgba(255, 255, 255, 0.85)`.
     pub glyph_0: Hsla,
+    /// `--weui-GLYPH-1` (colour). Light `rgba(0, 0, 0, 0.55)`; dark `rgba(255, 255, 255, 0.5)`;
+    /// care-light `rgba(0, 0, 0, 0.6)`; care-dark `rgba(255, 255, 255, 0.55)`.
     pub glyph_1: Hsla,
+    /// `--weui-GLYPH-2` (colour). Light `rgba(0, 0, 0, 0.3)`; dark `rgba(255, 255, 255, 0.3)`;
+    /// care-light `rgba(0, 0, 0, 0.42)`; care-dark `rgba(255, 255, 255, 0.35)`.
     pub glyph_2: Hsla,
+    /// `--weui-GLYPH-WHITE-0` (colour). Light `rgba(255, 255, 255, 0.8)`; dark `rgba(255, 255, 255, 0.8)`;
+    /// care-light `rgba(255, 255, 255, 0.85)`; care-dark `rgba(255, 255, 255, 0.85)`.
     pub glyph_white_0: Hsla,
+    /// `--weui-GLYPH-WHITE-1` (colour). Light `rgba(255, 255, 255, 0.5)`; dark `rgba(255, 255, 255, 0.5)`;
+    /// care-light `rgba(255, 255, 255, 0.55)`; care-dark `rgba(255, 255, 255, 0.55)`.
     pub glyph_white_1: Hsla,
+    /// `--weui-GLYPH-WHITE-2` (colour). Light `rgba(255, 255, 255, 0.3)`; dark `rgba(255, 255, 255, 0.3)`;
+    /// care-light `rgba(255, 255, 255, 0.35)`; care-dark `rgba(255, 255, 255, 0.35)`.
     pub glyph_white_2: Hsla,
+    /// `--weui-GLYPH-WHITE-3` (colour). Light `#fff`; dark `#fff`;
+    /// care-light `#fff`; care-dark `#fff`.
     pub glyph_white_3: Hsla,
+    /// `--weui-GREEN-100` (colour). Light `#91d300`; dark `#74a800`;
+    /// care-light `#4f8400`; care-dark `#74a800`.
     pub green_100: Hsla,
+    /// `--weui-GREEN-120` (colour). Light `#a7db33`; dark `#5c8600`;
+    /// care-light `#a7db33`; care-dark `#5c8600`.
     pub green_120: Hsla,
+    /// `--weui-GREEN-170` (colour). Light `#def1b3`; dark `#233200`;
+    /// care-light `#def1b3`; care-dark `#233200`.
     pub green_170: Hsla,
+    /// `--weui-GREEN-80` (colour). Light `#74a800`; dark `#8fb933`;
+    /// care-light `#74a800`; care-dark `#8fb933`.
     pub green_80: Hsla,
+    /// `--weui-GREEN-90` (colour). Light `#82bd00`; dark `#82b01a`;
+    /// care-light `#82bd00`; care-dark `#82b01a`.
     pub green_90: Hsla,
+    /// `--weui-GREEN-BG-100` (colour). Light `#96be40`; dark `#789833`;
+    /// care-light `#96be40`; care-dark `#789833`.
     pub green_bg_100: Hsla,
+    /// `--weui-GREEN-BG-110` (colour). Light `#a0c452`; dark `#6b882d`;
+    /// care-light `#a0c452`; care-dark `#6b882d`.
     pub green_bg_110: Hsla,
+    /// `--weui-GREEN-BG-130` (colour). Light `#b5d179`; dark `#65802b`;
+    /// care-light `#b5d179`; care-dark `#65802b`.
     pub green_bg_130: Hsla,
+    /// `--weui-GREEN-BG-90` (colour). Light `#86aa39`; dark `#85a247`;
+    /// care-light `#86aa39`; care-dark `#85a247`.
     pub green_bg_90: Hsla,
+    /// `--weui-INDIGO-100` (colour). Light `#1485ee`; dark `#1196ff`;
+    /// care-light `#0075e2`; care-dark `#1196ff`.
     pub indigo_100: Hsla,
+    /// `--weui-INDIGO-120` (colour). Light `#439df1`; dark `#0d78cc`;
+    /// care-light `#439df1`; care-dark `#0d78cc`.
     pub indigo_120: Hsla,
+    /// `--weui-INDIGO-170` (colour). Light `#b8daf9`; dark `#052d4d`;
+    /// care-light `#b8daf9`; care-dark `#052d4d`.
     pub indigo_170: Hsla,
+    /// `--weui-INDIGO-80` (colour). Light `#106abe`; dark `#40abff`;
+    /// care-light `#106abe`; care-dark `#40abff`.
     pub indigo_80: Hsla,
+    /// `--weui-INDIGO-90` (colour). Light `#1277d6`; dark `#28a0ff`;
+    /// care-light `#1277d6`; care-dark `#28a0ff`.
     pub indigo_90: Hsla,
+    /// `--weui-INDIGO-BG-100` (colour). Light `#2b77bf`; dark `#0d78cc`;
+    /// care-light `#2b77bf`; care-dark `#0d78cc`.
     pub indigo_bg_100: Hsla,
+    /// `--weui-INDIGO-BG-110` (colour). Light `#3f84c5`; dark `#0b6bb7`;
+    /// care-light `#3f84c5`; care-dark `#0b6bb7`.
     pub indigo_bg_110: Hsla,
+    /// `--weui-INDIGO-BG-130` (colour). Light `#6ba0d2`; dark `#09548f`;
+    /// care-light `#6ba0d2`; care-dark `#09548f`.
     pub indigo_bg_130: Hsla,
+    /// `--weui-INDIGO-BG-90` (colour). Light `#266aab`; dark `#2585d1`;
+    /// care-light `#266aab`; care-dark `#2585d1`.
     pub indigo_bg_90: Hsla,
+    /// `--weui-LIGHTGREEN-100` (colour). Light `#95ec69`; dark `#3eb575`;
+    /// care-light `#2e8800`; care-dark `#3eb575`.
     pub lightgreen_100: Hsla,
+    /// `--weui-LIGHTGREEN-120` (colour). Light `#aaef87`; dark `#31905d`;
+    /// care-light `#aaef87`; care-dark `#31905d`.
     pub lightgreen_120: Hsla,
+    /// `--weui-LIGHTGREEN-170` (colour). Light `#def9d1`; dark `#123522`;
+    /// care-light `#def9d1`; care-dark `#123522`.
     pub lightgreen_170: Hsla,
+    /// `--weui-LIGHTGREEN-80` (colour). Light `#77bc54`; dark `#64c390`;
+    /// care-light `#77bc54`; care-dark `#64c390`.
     pub lightgreen_80: Hsla,
+    /// `--weui-LIGHTGREEN-90` (colour). Light `#85d35e`; dark `#51bc83`;
+    /// care-light `#85d35e`; care-dark `#51bc83`.
     pub lightgreen_90: Hsla,
+    /// `--weui-LIGHTGREEN-BG-100` (colour). Light `#72cf60`; dark `#31905d`;
+    /// care-light `#72cf60`; care-dark `#31905d`.
     pub lightgreen_bg_100: Hsla,
+    /// `--weui-LIGHTGREEN-BG-110` (colour). Light `#80d370`; dark `#2c8153`;
+    /// care-light `#80d370`; care-dark `#2c8153`.
     pub lightgreen_bg_110: Hsla,
+    /// `--weui-LIGHTGREEN-BG-130` (colour). Light `#9cdd90`; dark `#226541`;
+    /// care-light `#9cdd90`; care-dark `#226541`.
     pub lightgreen_bg_130: Hsla,
+    /// `--weui-LIGHTGREEN-BG-90` (colour). Light `#66b956`; dark `#31905d`;
+    /// care-light `#66b956`; care-dark `#31905d`.
     pub lightgreen_bg_90: Hsla,
+    /// `--weui-LINK-100` (colour). Light `#576b95`; dark `#7d90a9`;
+    /// care-light `#576b95`; care-dark `#7d90a9`.
     pub link_100: Hsla,
+    /// `--weui-LINK-120` (colour). Light `#7888aa`; dark `#647387`;
+    /// care-light `#7888aa`; care-dark `#647387`.
     pub link_120: Hsla,
+    /// `--weui-LINK-170` (colour). Light `#ccd2de`; dark `#252a32`;
+    /// care-light `#ccd2de`; care-dark `#252a32`.
     pub link_170: Hsla,
+    /// `--weui-LINK-80` (colour). Light `#455577`; dark `#97a6ba`;
+    /// care-light `#455577`; care-dark `#97a6ba`.
     pub link_80: Hsla,
+    /// `--weui-LINK-90` (colour). Light `#4e6085`; dark `#899ab1`;
+    /// care-light `#4e6085`; care-dark `#899ab1`.
     pub link_90: Hsla,
+    /// `--weui-LINKFINDER-100` (colour). Light `#002666`; dark `#dee9ff`;
+    /// care-light `#002666`; care-dark `#dee9ff`.
     pub linkfinder_100: Hsla,
+    /// `--weui-MATERIAL-ATTACHMENTCOLUMN` (colour). Light `rgba(245, 245, 245, 0.95)`; dark `rgba(32, 32, 32, 0.93)`;
+    /// care-light `rgba(245, 245, 245, 0.95)`; care-dark `rgba(32, 32, 32, 0.93)`.
     pub material_attachmentcolumn: Hsla,
+    /// `--weui-MATERIAL-NAVIGATIONBAR` (colour). Light `rgba(237, 237, 237, 0.94)`; dark `rgba(18, 18, 18, 0.9)`;
+    /// care-light `rgba(237, 237, 237, 0.94)`; care-dark `rgba(18, 18, 18, 0.9)`.
     pub material_navigationbar: Hsla,
+    /// `--weui-MATERIAL-REGULAR` (colour). Light `rgba(247, 247, 247, 0.3)`; dark `rgba(37, 37, 37, 0.6)`;
+    /// care-light `rgba(247, 247, 247, 0.3)`; care-dark `rgba(37, 37, 37, 0.6)`.
     pub material_regular: Hsla,
+    /// `--weui-MATERIAL-THICK` (colour). Light `rgba(247, 247, 247, 0.8)`; dark `rgba(34, 34, 34, 0.9)`;
+    /// care-light `rgba(247, 247, 247, 0.8)`; care-dark `rgba(34, 34, 34, 0.9)`.
     pub material_thick: Hsla,
+    /// `--weui-MATERIAL-THIN` (colour). Light `rgba(255, 255, 255, 0.2)`; dark `rgba(95, 95, 95, 0.4)`;
+    /// care-light `rgba(255, 255, 255, 0.2)`; care-dark `rgba(245, 245, 245, 0.4)`.
     pub material_thin: Hsla,
+    /// `--weui-MATERIAL-TOOLBAR` (colour). Light `rgba(246, 246, 246, 0.82)`; dark `rgba(35, 35, 35, 0.93)`;
+    /// care-light `rgba(246, 246, 246, 0.82)`; care-dark `rgba(35, 35, 35, 0.93)`.
     pub material_toolbar: Hsla,
+    /// `--weui-ORANGE-100` (colour). Light `#fa9d3b`; dark `#c87d2f`;
+    /// care-light `#e17719`; care-dark `#c87d2f`.
     pub orange_100: Hsla,
+    /// `--weui-ORANGE-120` (colour). Light `#fbb062`; dark `#a06425`;
+    /// care-light `#fbb062`; care-dark `#a06425`.
     pub orange_120: Hsla,
+    /// `--weui-ORANGE-170` (colour). Light `#fde1c3`; dark `#3b250e`;
+    /// care-light `#fde1c3`; care-dark `#3b250e`.
     pub orange_170: Hsla,
+    /// `--weui-ORANGE-80` (colour). Light `#c87d2f`; dark `#d39758`;
+    /// care-light `#c87d2f`; care-dark `#d39758`.
     pub orange_80: Hsla,
+    /// `--weui-ORANGE-90` (colour). Light `#e08c34`; dark `#cd8943`;
+    /// care-light `#e08c34`; care-dark `#cd8943`.
     pub orange_90: Hsla,
+    /// `--weui-ORANGE-BG-100` (colour). Light `#ea7800`; dark `#bb6000`;
+    /// care-light `#ea7800`; care-dark `#bb6000`.
     pub orange_bg_100: Hsla,
+    /// `--weui-ORANGE-BG-110` (colour). Light `#ec8519`; dark `#a85600`;
+    /// care-light `#ec8519`; care-dark `#a85600`.
     pub orange_bg_110: Hsla,
+    /// `--weui-ORANGE-BG-130` (colour). Light `#f0a04d`; dark `#824300`;
+    /// care-light `#f0a04d`; care-dark `#824300`.
     pub orange_bg_130: Hsla,
+    /// `--weui-ORANGE-BG-90` (colour). Light `#d26b00`; dark `#c1701a`;
+    /// care-light `#d26b00`; care-dark `#c1701a`.
     pub orange_bg_90: Hsla,
+    /// `--weui-ORANGERED-100` (colour). Light `#ff6146`; dark `#ff6146`;
+    /// care-light `#d14730`; care-dark `#ff6146`.
     pub orangered_100: Hsla,
+    /// `--weui-OVERLAY` (colour). Light `rgba(0, 0, 0, 0.5)`; dark `rgba(0, 0, 0, 0.8)`;
+    /// care-light `rgba(0, 0, 0, 0.5)`; care-dark `rgba(0, 0, 0, 0.8)`.
     pub overlay: Hsla,
+    /// `--weui-OVERLAY-WHITE` (colour). Light `rgba(242, 242, 242, 0.8)`; dark `rgba(242, 242, 242, 0.8)`;
+    /// care-light `rgba(242, 242, 242, 0.8)`; care-dark `rgba(242, 242, 242, 0.8)`.
     pub overlay_white: Hsla,
+    /// `--weui-PURPLE-100` (colour). Light `#6467f0`; dark `#8183ff`;
+    /// care-light `#6265f1`; care-dark `#8183ff`.
     pub purple_100: Hsla,
+    /// `--weui-PURPLE-120` (colour). Light `#8385f3`; dark `#6768cc`;
+    /// care-light `#8385f3`; care-dark `#6768cc`.
     pub purple_120: Hsla,
+    /// `--weui-PURPLE-170` (colour). Light `#d0d1fa`; dark `#26274c`;
+    /// care-light `#d0d1fa`; care-dark `#26274c`.
     pub purple_170: Hsla,
+    /// `--weui-PURPLE-80` (colour). Light `#5052c0`; dark `#9a9bff`;
+    /// care-light `#5052c0`; care-dark `#9a9bff`.
     pub purple_80: Hsla,
+    /// `--weui-PURPLE-90` (colour). Light `#595cd7`; dark `#8d8fff`;
+    /// care-light `#595cd7`; care-dark `#8d8fff`.
     pub purple_90: Hsla,
+    /// `--weui-PURPLE-BG-100` (colour). Light `#6769ba`; dark `#6768cc`;
+    /// care-light `#6769ba`; care-dark `#6768cc`.
     pub purple_bg_100: Hsla,
+    /// `--weui-PURPLE-BG-110` (colour). Light `#7678c1`; dark `#5c5db7`;
+    /// care-light `#7678c1`; care-dark `#5c5db7`.
     pub purple_bg_110: Hsla,
+    /// `--weui-PURPLE-BG-130` (colour). Light `#9496ce`; dark `#48498f`;
+    /// care-light `#9496ce`; care-dark `#48498f`.
     pub purple_bg_130: Hsla,
+    /// `--weui-PURPLE-BG-90` (colour). Light `#5c5ea7`; dark `#7677d1`;
+    /// care-light `#5c5ea7`; care-dark `#7677d1`.
     pub purple_bg_90: Hsla,
+    /// `--weui-RED-100` (colour). Light `#fa5151`; dark `#fa5151`;
+    /// care-light `#dc3636`; care-dark `#fa5151`.
     pub red_100: Hsla,
+    /// `--weui-RED-120` (colour). Light `#fb7373`; dark `#c84040`;
+    /// care-light `#fb7373`; care-dark `#c84040`.
     pub red_120: Hsla,
+    /// `--weui-RED-170` (colour). Light `#fdcaca`; dark `#4b1818`;
+    /// care-light `#fdcaca`; care-dark `#4b1818`.
     pub red_170: Hsla,
+    /// `--weui-RED-80` (colour). Light `#c84040`; dark `#fb7373`;
+    /// care-light `#c84040`; care-dark `#fb7373`.
     pub red_80: Hsla,
+    /// `--weui-RED-90` (colour). Light `#e14949`; dark `#fa6262`;
+    /// care-light `#e14949`; care-dark `#fa6262`.
     pub red_90: Hsla,
+    /// `--weui-RED-BG-100` (colour). Light `#cf5148`; dark `#cf5148`;
+    /// care-light `#cf5148`; care-dark `#cf5148`.
     pub red_bg_100: Hsla,
+    /// `--weui-RED-BG-110` (colour). Light `#d3625a`; dark `#ba4940`;
+    /// care-light `#d3625a`; care-dark `#ba4940`.
     pub red_bg_110: Hsla,
+    /// `--weui-RED-BG-130` (colour). Light `#dd847e`; dark `#913832`;
+    /// care-light `#dd847e`; care-dark `#913832`.
     pub red_bg_130: Hsla,
+    /// `--weui-RED-BG-90` (colour). Light `#b94840`; dark `#d3625a`;
+    /// care-light `#b94840`; care-dark `#d3625a`.
     pub red_bg_90: Hsla,
+    /// `--weui-SECONDARY-BG` (colour). Light `rgba(0, 0, 0, 0.05)`; dark `rgba(255, 255, 255, 0.1)`;
+    /// care-light `rgba(0, 0, 0, 0.1)`; care-dark `rgba(255, 255, 255, 0.15)`.
     pub secondary_bg: Hsla,
+    /// `--weui-SEPARATOR-0` (colour). Light `rgba(0, 0, 0, 0.1)`; dark `rgba(255, 255, 255, 0.05)`;
+    /// care-light `rgba(0, 0, 0, 0.1)`; care-dark `rgba(255, 255, 255, 0.05)`.
     pub separator_0: Hsla,
+    /// `--weui-SEPARATOR-1` (colour). Light `rgba(0, 0, 0, 0.15)`; dark `rgba(255, 255, 255, 0.15)`;
+    /// care-light `rgba(0, 0, 0, 0.15)`; care-dark `rgba(255, 255, 255, 0.15)`.
     pub separator_1: Hsla,
+    /// `--weui-STATELAYER-HOVERED` (colour). Light `rgba(0, 0, 0, 0.02)`; dark `rgba(0, 0, 0, 0.02)`;
+    /// care-light `rgba(0, 0, 0, 0.02)`; care-dark `rgba(0, 0, 0, 0.02)`.
     pub statelayer_hovered: Hsla,
+    /// `--weui-STATELAYER-PRESSED` (colour). Light `rgba(0, 0, 0, 0.1)`; dark `rgba(255, 255, 255, 0.1)`;
+    /// care-light `rgba(0, 0, 0, 0.1)`; care-dark `rgba(255, 255, 255, 0.1)`.
     pub statelayer_pressed: Hsla,
+    /// `--weui-STATELAYER-PRESSEDSTRENGTHENED` (colour). Light `rgba(0, 0, 0, 0.2)`; dark `rgba(255, 255, 255, 0.2)`;
+    /// care-light `rgba(0, 0, 0, 0.2)`; care-dark `rgba(255, 255, 255, 0.2)`.
     pub statelayer_pressedstrengthened: Hsla,
+    /// `--weui-YELLOW-100` (colour). Light `#ffc300`; dark `#cc9c00`;
+    /// care-light `#bb8e00`; care-dark `#cc9c00`.
     pub yellow_100: Hsla,
+    /// `--weui-YELLOW-120` (colour). Light `#ffcf33`; dark `#a37c00`;
+    /// care-light `#ffcf33`; care-dark `#a37c00`.
     pub yellow_120: Hsla,
+    /// `--weui-YELLOW-170` (colour). Light `#ffecb2`; dark `#3d2f00`;
+    /// care-light `#ffecb2`; care-dark `#3d2f00`.
     pub yellow_170: Hsla,
+    /// `--weui-YELLOW-80` (colour). Light `#cc9c00`; dark `#d6af33`;
+    /// care-light `#cc9c00`; care-dark `#d6af33`.
     pub yellow_80: Hsla,
+    /// `--weui-YELLOW-90` (colour). Light `#e6af00`; dark `#d1a519`;
+    /// care-light `#e6af00`; care-dark `#d1a519`.
     pub yellow_90: Hsla,
+    /// `--weui-YELLOW-BG-100` (colour). Light `#efb600`; dark `#bf9100`;
+    /// care-light `#efb600`; care-dark `#bf9100`.
     pub yellow_bg_100: Hsla,
+    /// `--weui-YELLOW-BG-110` (colour). Light `#f0bd19`; dark `#ab8200`;
+    /// care-light `#f0bd19`; care-dark `#ab8200`.
     pub yellow_bg_110: Hsla,
+    /// `--weui-YELLOW-BG-130` (colour). Light `#f3cc4d`; dark `#866500`;
+    /// care-light `#f3cc4d`; care-dark `#866500`.
     pub yellow_bg_130: Hsla,
+    /// `--weui-YELLOW-BG-90` (colour). Light `#d7a400`; dark `#c59c1a`;
+    /// care-light `#d7a400`; care-dark `#c59c1a`.
     pub yellow_bg_90: Hsla,
+    /// `--weui-FG-HALF` (colour). Light `rgba(0, 0, 0, 0.9)`; dark `rgba(255, 255, 255, 0.6)`;
+    /// care-light `#000`; care-dark `rgba(255, 255, 255, 0.65)`.
     pub fg_half: Hsla,
+    /// `--weui-RED` (colour). Light `#fa5151`; dark `#fa5151`;
+    /// care-light `#dc3636`; care-dark `#fa5151`.
     pub red: Hsla,
+    /// `--weui-ORANGERED` (colour). Light `#ff6146`; dark `#ff6146`;
+    /// care-light `#d14730`; care-dark `#ff6146`.
     pub orangered: Hsla,
+    /// `--weui-ORANGE` (colour). Light `#fa9d3b`; dark `#c87d2f`;
+    /// care-light `#e17719`; care-dark `#c87d2f`.
     pub orange: Hsla,
+    /// `--weui-YELLOW` (colour). Light `#ffc300`; dark `#cc9c00`;
+    /// care-light `#bb8e00`; care-dark `#cc9c00`.
     pub yellow: Hsla,
+    /// `--weui-GREEN` (colour). Light `#91d300`; dark `#74a800`;
+    /// care-light `#4f8400`; care-dark `#74a800`.
     pub green: Hsla,
+    /// `--weui-LIGHTGREEN` (colour). Light `#95ec69`; dark `#3eb575`;
+    /// care-light `#2e8800`; care-dark `#3eb575`.
     pub lightgreen: Hsla,
+    /// `--weui-TEXTGREEN` (colour). Light `#06ae56`; dark `#259c5c`;
+    /// care-light `#06ae56`; care-dark `#259c5c`.
     pub textgreen: Hsla,
+    /// `--weui-BRAND` (colour). Light `#07c160`; dark `#07c160`;
+    /// care-light `#018942`; care-dark `#07c160`.
     pub brand: Hsla,
+    /// `--weui-BLUE` (colour). Light `#10aeff`; dark `#10aeff`;
+    /// care-light `#007dbb`; care-dark `#10aeff`.
     pub blue: Hsla,
+    /// `--weui-INDIGO` (colour). Light `#1485ee`; dark `#1196ff`;
+    /// care-light `#0075e2`; care-dark `#1196ff`.
     pub indigo: Hsla,
+    /// `--weui-PURPLE` (colour). Light `#6467f0`; dark `#8183ff`;
+    /// care-light `#6265f1`; care-dark `#8183ff`.
     pub purple: Hsla,
+    /// `--weui-LINK` (colour). Light `#576b95`; dark `#7d90a9`;
+    /// care-light `#576b95`; care-dark `#7d90a9`.
     pub link: Hsla,
+    /// `--weui-TAG-TEXT-ORANGE` (colour). Light `#fa9d3b`; dark `rgba(250, 157, 59, 0.6)`;
+    /// care-light `#e17719`; care-dark `rgba(250, 157, 59, 0.6)`.
     pub tag_text_orange: Hsla,
+    /// `--weui-TAG-TEXT-GREEN` (colour). Light `#06ae56`; dark `rgba(6, 174, 86, 0.6)`;
+    /// care-light `#06ae56`; care-dark `rgba(6, 174, 86, 0.6)`.
     pub tag_text_green: Hsla,
+    /// `--weui-TAG-TEXT-BLUE` (colour). Light `#10aeff`; dark `rgba(16, 174, 255, 0.6)`;
+    /// care-light `#007dbb`; care-dark `rgba(16, 174, 255, 0.6)`.
     pub tag_text_blue: Hsla,
+    /// `--weui-REDORANGE` (colour). Light `#ff6146`; dark `#ff6146`;
+    /// care-light `#d14730`; care-dark `#ff6146`.
     pub redorange: Hsla,
+    /// `--weui-TAG-TEXT-BLACK` (colour). Light `rgba(0, 0, 0, 0.5)`; dark `rgba(255, 255, 255, 0.5)`;
+    /// care-light `rgba(0, 0, 0, 0.5)`; care-dark `rgba(255, 255, 255, 0.5)`.
     pub tag_text_black: Hsla,
+    /// `--weui-TAG-BACKGROUND-BLACK` (colour). Light `rgba(0, 0, 0, 0.05)`; dark `rgba(255, 255, 255, 0.05)`;
+    /// care-light `rgba(0, 0, 0, 0.05)`; care-dark `rgba(255, 255, 255, 0.05)`.
     pub tag_background_black: Hsla,
+    /// `--weui-WHITE` (colour). Light `#fff`; dark `rgba(255, 255, 255, 0.8)`;
+    /// care-light `#fff`; care-dark `rgba(255, 255, 255, 0.8)`.
     pub white: Hsla,
+    /// `--weui-BG` (colour). Light `#fff`; dark `#000`;
+    /// care-light `#fff`; care-dark `#000`.
     pub bg: Hsla,
+    /// `--weui-FG` (colour). Light `#000`; dark `#fff`;
+    /// care-light `#000`; care-dark `#fff`.
     pub fg: Hsla,
+    /// `--weui-FG-5` (colour). Light `rgba(0, 0, 0, 0.05)`; dark `rgba(255, 255, 255, 0.1)`;
+    /// care-light `rgba(0, 0, 0, 0.05)`; care-dark `rgba(255, 255, 255, 0.1)`.
     pub fg_5: Hsla,
+    /// `--weui-TAG-BACKGROUND-ORANGE` (colour). Light `rgba(250, 157, 59, 0.1)`; dark `rgba(250, 157, 59, 0.1)`;
+    /// care-light `rgba(225, 119, 25, 0.1)`; care-dark `rgba(250, 157, 59, 0.1)`.
     pub tag_background_orange: Hsla,
+    /// `--weui-TAG-BACKGROUND-GREEN` (colour). Light `rgba(6, 174, 86, 0.1)`; dark `rgba(6, 174, 86, 0.1)`;
+    /// care-light `rgba(6, 174, 86, 0.1)`; care-dark `rgba(6, 174, 86, 0.1)`.
     pub tag_background_green: Hsla,
+    /// `--weui-TAG-TEXT-RED` (colour). Light `rgba(250, 81, 81, 0.6)`; dark `rgba(250, 81, 81, 0.6)`;
+    /// care-light `rgba(250, 81, 81, 0.6)`; care-dark `rgba(250, 81, 81, 0.6)`.
     pub tag_text_red: Hsla,
+    /// `--weui-TAG-BACKGROUND-RED` (colour). Light `rgba(250, 81, 81, 0.1)`; dark `rgba(250, 81, 81, 0.1)`;
+    /// care-light `rgba(250, 81, 81, 0.1)`; care-dark `rgba(250, 81, 81, 0.1)`.
     pub tag_background_red: Hsla,
+    /// `--weui-TAG-BACKGROUND-BLUE` (colour). Light `rgba(16, 174, 255, 0.1)`; dark `rgba(16, 174, 255, 0.1)`;
+    /// care-light `rgba(0, 125, 187, 0.1)`; care-dark `rgba(16, 174, 255, 0.1)`.
     pub tag_background_blue: Hsla,
+    /// `--weui-BG-COLOR-ACTIVE` (colour). Light `#ececec`; dark `#373737`;
+    /// care-light `#ececec`; care-dark `#373737`.
     pub bg_color_active: Hsla,
+    /// `--weui-STEPS-DEFAULT-COLOR` (colour). Light `var(--weui-FG-3)`; dark `var(--weui-FG-3)`;
+    /// care-light `var(--weui-FG-3)`; care-dark `var(--weui-FG-3)`.
     pub steps_default_color: Hsla,
+    /// `--weui-STEPS-HIGHLIGHT-COLOR` (colour). Light `var(--weui-BRAND)`; dark `var(--weui-BRAND)`;
+    /// care-light `var(--weui-BRAND)`; care-dark `var(--weui-BRAND)`.
     pub steps_highlight_color: Hsla,
+    /// `--weui-STEPS-FONT-SIZE` (CSS pixels, written without a unit). Light `17`; dark `17`;
+    /// care-light `17`; care-dark `17`.
     pub steps_font_size: f32,
+    /// `--weui-STEPS-LINEHEIGHT` (line-height ratio). Light `1.4`; dark `1.4`;
+    /// care-light `1.4`; care-dark `1.4`.
     pub steps_lineheight: f32,
+    /// `--weui-STEPS-DOT-SIZE` (CSS pixels). Light `8.0px` (from `calc(8 / var(--weui-STEPS-FONT-SIZE) * 1em)`); dark `8.0px` (from `calc(8 / var(--weui-STEPS-FONT-SIZE) * 1em)`);
+    /// care-light `8.0px` (from `calc(8 / var(--weui-STEPS-FONT-SIZE) * 1em)`); care-dark `8.0px` (from `calc(8 / var(--weui-STEPS-FONT-SIZE) * 1em)`).
     pub steps_dot_size: f32,
+    /// `--weui-STEPS-ICON-SIZE` (CSS pixels, written without a unit). Light `40`; dark `40`;
+    /// care-light `40`; care-dark `40`.
     pub steps_icon_size: f32,
+    /// `--weui-STEPS-VERTICAL-DOT-GAP` (CSS pixels). Light `4.5px` (from `calc((1em - var(--weui-STEPS-DOT-SIZE)) / 2)`); dark `4.5px` (from `calc((1em - var(--weui-STEPS-DOT-SIZE)) / 2)`);
+    /// care-light `4.5px` (from `calc((1em - var(--weui-STEPS-DOT-SIZE)) / 2)`); care-dark `4.5px` (from `calc((1em - var(--weui-STEPS-DOT-SIZE)) / 2)`).
     pub steps_vertical_dot_gap: f32,
+    /// `--weui-STEPS-HORIZONAL-DOT-GAP` (CSS pixels). Light `4px`; dark `4px`;
+    /// care-light `4px`; care-dark `4px`.
     pub steps_horizonal_dot_gap: f32,
+    /// `--weui-cellMarginLR` (CSS pixels). Light `16px`; dark `16px`;
+    /// care-light `16px`; care-dark `16px`.
     pub cell_margin_lr: f32,
+    /// `--weui-cellPaddingLR` (CSS pixels). Light `16px`; dark `16px`;
+    /// care-light `16px`; care-dark `16px`.
     pub cell_padding_lr: f32,
+    /// `--weui-informationBar-FG` (colour). Light `#FFFFFF`; dark `#FFFFFF`;
+    /// care-light `#FFFFFF`; care-dark `#FFFFFF`.
     pub information_bar_fg: Hsla,
+    /// `--weui-informationBar-LINK` (colour). Light `#FFFFFF`; dark `#FFFFFF`;
+    /// care-light `#FFFFFF`; care-dark `#FFFFFF`.
     pub information_bar_link: Hsla,
+    /// `--weui-informationBar-ICON` (colour). Light `#FFFFFF`; dark `#FFFFFF`;
+    /// care-light `#FFFFFF`; care-dark `#FFFFFF`.
     pub information_bar_icon: Hsla,
+    /// `--weui-informationBar-BG` (colour). Light `#FA5151`; dark `#FA5151`;
+    /// care-light `#FA5151`; care-dark `#FA5151`.
     pub information_bar_bg: Hsla,
+    /// `--weui-informationBar-warnWeak-FG` (colour). Light `rgba(0, 0, 0, 0.55)`; dark `rgba(255, 255, 255, 0.5)`;
+    /// care-light `rgba(0, 0, 0, 0.55)`; care-dark `rgba(255, 255, 255, 0.5)`.
     pub information_bar_warn_weak_fg: Hsla,
+    /// `--weui-informationBar-warnWeak-LINK` (colour). Light `#576B95`; dark `#7D90A9`;
+    /// care-light `#576B95`; care-dark `#7D90A9`.
     pub information_bar_warn_weak_link: Hsla,
+    /// `--weui-informationBar-warnWeak-ICON` (colour). Light `#FA5151`; dark `#FA5151`;
+    /// care-light `#FA5151`; care-dark `#FA5151`.
     pub information_bar_warn_weak_icon: Hsla,
+    /// `--weui-informationBar-warnWeak-BG` (colour). Light `rgba(250, 81, 81, 0.1)`; dark `rgba(250, 81, 81, 0.1)`;
+    /// care-light `rgba(250, 81, 81, 0.1)`; care-dark `rgba(250, 81, 81, 0.1)`.
     pub information_bar_warn_weak_bg: Hsla,
+    /// `--weui-informationBar-noColor-BG` (colour). Light `rgba(0, 0, 0, 0.3)`; dark `rgba(255, 255, 255, 0.3)`;
+    /// care-light `rgba(0, 0, 0, 0.3)`; care-dark `rgba(255, 255, 255, 0.3)`.
     pub information_bar_no_color_bg: Hsla,
+    /// `--weui-informationBar-tipsStrong-BG` (colour). Light `#FA9D3B`; dark `#C87D2F`;
+    /// care-light `#FA9D3B`; care-dark `#C87D2F`.
     pub information_bar_tips_strong_bg: Hsla,
+    /// `--weui-informationBar-tipsWeak-FG` (colour). Light `rgba(0, 0, 0, 0.55)`; dark `rgba(255, 255, 255, 0.5)`;
+    /// care-light `rgba(0, 0, 0, 0.55)`; care-dark `rgba(255, 255, 255, 0.5)`.
     pub information_bar_tips_weak_fg: Hsla,
+    /// `--weui-informationBar-tipsWeak-LINK` (colour). Light `#576B95`; dark `#7D90A9`;
+    /// care-light `#576B95`; care-dark `#7D90A9`.
     pub information_bar_tips_weak_link: Hsla,
+    /// `--weui-informationBar-tipsWeak-ICON` (colour). Light `rgba(0, 0, 0, 0.55)`; dark `rgba(255, 255, 255, 0.5)`;
+    /// care-light `rgba(0, 0, 0, 0.55)`; care-dark `rgba(255, 255, 255, 0.5)`.
     pub information_bar_tips_weak_icon: Hsla,
+    /// `--weui-informationBar-tipsWeak-BG` (colour). Light `#F7F7F7`; dark `#1E1E1E`;
+    /// care-light `#F7F7F7`; care-dark `#1E1E1E`.
     pub information_bar_tips_weak_bg: Hsla,
 }
 
 impl Palette {
+    /// Light theme: the `.wx-root, body` defaults.
     pub fn light() -> Self {
         Self {
             btn_height: 48.0,
@@ -381,6 +750,7 @@ impl Palette {
             information_bar_tips_weak_bg: rgb(0xF7F7F7).into(),
         }
     }
+    /// Dark theme: the `[data-weui-theme='dark']` overrides.
     pub fn dark() -> Self {
         Self {
             btn_height: 48.0,
@@ -565,6 +935,7 @@ impl Palette {
             information_bar_tips_weak_bg: rgb(0x1E1E1E).into(),
         }
     }
+    /// Care mode (larger type, higher contrast) in light: `[data-weui-mode='care']`.
     pub fn care_light() -> Self {
         Self {
             btn_height: 48.0,
@@ -749,6 +1120,7 @@ impl Palette {
             information_bar_tips_weak_bg: rgb(0xF7F7F7).into(),
         }
     }
+    /// Care mode in dark: both the dark and care overrides.
     pub fn care_dark() -> Self {
         Self {
             btn_height: 48.0,

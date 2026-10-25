@@ -1,7 +1,19 @@
+//! Page footers from WeUI's `src/style/widget/weui-footer/`: [`Footer`] (`weui-footer`) with
+//! [`FooterLink`]s, 12px text lines and optional bottom placement.
+//!
+//! Known limitations: [`Footer::fixed_bottom`] positions the footer absolutely within the nearest
+//! positioned ancestor rather than the viewport, without safe-area insets, and links keep a
+//! text-sized hit area (no 44px `weui-wa-hotarea`).
+
 use super::ClickHandler;
 use crate::Theme;
 use gpui::{prelude::*, *};
 
+/// A footer link (`weui-footer__link`): 14px text in the theme link colour, with a hairline
+/// separator before every link except the first.
+///
+/// It exposes `Role::Link` named by its text, is a Tab stop and activates on click, Enter or Space;
+/// pressing halves its opacity.
 #[derive(IntoElement)]
 pub struct FooterLink {
     id: ElementId,
@@ -11,6 +23,7 @@ pub struct FooterLink {
 }
 
 impl FooterLink {
+    /// Creates a link with element id `id` showing `text`.
     pub fn new(id: impl Into<ElementId>, text: impl Into<SharedString>) -> Self {
         Self {
             id: id.into(),
@@ -19,6 +32,8 @@ impl FooterLink {
             on_click: None,
         }
     }
+    /// Sets the activation callback. It receives the click event on a pointer click, or on Enter or
+    /// Space while focused. Default: none, though the link stays focusable.
     pub fn on_click(
         mut self,
         handler: impl Fn(&ClickEvent, &mut Window, &mut App) + 'static,
@@ -65,6 +80,9 @@ impl RenderOnce for FooterLink {
     }
 }
 
+/// A centred footer with 14px text at 20% black (20% white in dark mode, see [`footer_color`]).
+///
+/// It shows one row of links, then the text lines, then any children added through `ParentElement`.
 #[derive(IntoElement)]
 pub struct Footer {
     links: Vec<FooterLink>,
@@ -80,6 +98,7 @@ impl Default for Footer {
 }
 
 impl Footer {
+    /// Creates an empty footer in normal flow.
     pub fn new() -> Self {
         Self {
             links: vec![],
@@ -88,15 +107,19 @@ impl Footer {
             fixed_bottom: false,
         }
     }
+    /// Appends a link to the links row; only the first link has no separator.
     pub fn link(mut self, mut link: FooterLink) -> Self {
         link.first = self.links.is_empty();
         self.links.push(link);
         self
     }
+    /// Appends a 12px text line with 16px side padding (`weui-footer__text`).
     pub fn text(mut self, text: impl IntoElement) -> Self {
         self.texts.push(text.into_any_element());
         self
     }
+    /// Pins the footer to the bottom of its positioned ancestor, full width, with 16px vertical
+    /// padding (`weui-footer_fixed-bottom`). Default: normal flow.
     pub fn fixed_bottom(mut self) -> Self {
         self.fixed_bottom = true;
         self
@@ -109,6 +132,7 @@ impl ParentElement for Footer {
     }
 }
 
+/// Returns the footer text colour: black at 20% alpha, or white at 20% alpha in dark mode.
 pub fn footer_color(cx: &App) -> Hsla {
     if Theme::get(cx).is_dark {
         rgba(0xffffff33).into()

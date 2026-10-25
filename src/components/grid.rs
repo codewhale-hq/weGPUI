@@ -1,7 +1,18 @@
+//! Nine-grid navigation from WeUI's `src/style/widget/weui-grid/`: [`Grids`] (`weui-grids`) holds
+//! [`Grid`] cells (`weui-grid`), each an icon above a label, separated by hairlines.
+//!
+//! Known limitations: the column count is fixed at WeUI's three, and cells have no disabled state;
+//! they stay focusable even without a click handler.
+
 use super::ClickHandler;
 use crate::Theme;
 use gpui::{prelude::*, *};
 
+/// One grid cell: a third of the row wide, padded 20px vertically and 10px horizontally, with a
+/// 28px icon above a 14px label.
+///
+/// It exposes `Role::Button` named by the label, is a Tab stop and activates on click, Enter or
+/// Space. Pressing shows theme `bg_color_active`; keyboard focus tints it with the brand colour.
 #[derive(IntoElement)]
 pub struct Grid {
     id: ElementId,
@@ -12,6 +23,7 @@ pub struct Grid {
 }
 
 impl Grid {
+    /// Creates an empty cell with element id `id`.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
@@ -21,18 +33,25 @@ impl Grid {
             on_click: None,
         }
     }
+    /// Sets the element drawn in the centred 28px icon box (`weui-grid__icon`). Default: none.
     pub fn icon(mut self, icon: impl IntoElement) -> Self {
         self.icon = Some(icon.into_any_element());
         self
     }
+    /// Uses an image filling the icon box. `path` is a URL or the name of an asset served by the
+    /// app's `AssetSource`, such as [`crate::Assets`].
     pub fn image(self, path: impl Into<SharedString>) -> Self {
         let path: SharedString = path.into();
         self.icon(img(path).size_full())
     }
+    /// Sets the single-line label (`weui-grid__label`), truncated with an ellipsis; it is also the
+    /// accessible name. Default: none.
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = Some(label.into());
         self
     }
+    /// Sets the activation callback. It receives the click event on a pointer click, or on Enter or
+    /// Space while the cell is focused.
     pub fn on_click(
         mut self,
         handler: impl Fn(&ClickEvent, &mut Window, &mut App) + 'static,
@@ -97,6 +116,8 @@ impl RenderOnce for Grid {
     }
 }
 
+/// The grid container: a wrapping row of [`Grid`] cells with top and left hairlines, exposed as
+/// `Role::Group`. Add cells with `child` or `children`.
 #[derive(IntoElement)]
 pub struct Grids {
     id: ElementId,
@@ -104,6 +125,7 @@ pub struct Grids {
 }
 
 impl Grids {
+    /// Creates an empty container with element id `id`.
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
