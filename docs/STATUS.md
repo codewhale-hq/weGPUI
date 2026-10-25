@@ -446,7 +446,7 @@ No platform support or publication decision follows from the approvals above.
 
 ## Picking up the work
 
-Read TAKEOVER first for the current handoff, worktree and final-gate state. The historical
+Read ACCEPTANCE, RELEASE-READINESS and recent receipts for current acceptance and source-gate evidence. The historical
 October 24 checkout details below are retained as provenance, not current main.
 
 At the October 24 macOS audit, the checkout was clean at `0c6555d` and GitHub advertised only
