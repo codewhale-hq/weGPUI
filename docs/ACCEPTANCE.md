@@ -42,7 +42,7 @@ presentational.
 | `radio` | RadioGroup | on_change | selected | yes | custom | yes | role+name | Roving arrows, scoped IDs, disabled | — | P2 |
 | `search_bar` | SearchBarVariant, SearchBarEvent, SearchBar, SearchResults | on_select, SearchBarEvent | — | yes | click (Enter/Space) | yes | role+name | Variants, events, results, IME commit/cancel | Homepage variant runtime | P2 |
 | `select` | SelectLayout, SelectCell, SelectMenu | on_click, on_dismiss, on_select | selected | yes | custom | yes | role+name | Overlay menu adaptation, keys, Escape restore | Linux keyboard open/move/select/focus-return passed 2026-10-24; macOS key sequence inconclusive | P1 |
-| `slider` | Slider | on_change | disabled | yes | custom | yes | role+name | Drag/keys, step snapping, disabled | Zero-step runtime receipt | P2 |
+| `slider` | Slider | on_change | disabled | yes | custom | yes | role+name | Drag/keys, step snapping, disabled | Linux keys 50→53 with ring 2026-10-24; zero-step runtime receipt open | P2 |
 | `steps` | StepsLayout, Step, Steps | — | — | n/a | n/a | n/a | role+name | Static | None | P3 |
 | `swiped` | SwipedActionKind, SwipedAction, SwipedCell | on_click | warn | yes | custom | yes | role+name | Drag reveal, hidden actions, keyboard | Delete callback empty upstream | P2 |
 | `switch` | Switch | on_change | disabled, checked | yes | click (Enter/Space) | yes | role+name | Controlled checked, disabled, focus ring | — | P2 |
@@ -65,6 +65,7 @@ presentational.
 | Scaling / resize | Not run. |
 | Set positions | Fixed 2026-10-24 (were off by one); Linux AT-SPI verified. |
 | Disabled buttons on Linux | AccessKit AT-SPI 0.19.1 does not export disabled for buttons; documented upstream limitation (`receipts/a11y-p1-20261024`). |
+| Keyboard sweep | 15 interactive pages tabbed on Linux openbox with visible focus and no panics (`receipts/keyboard-sweep-20261024`). |
 | Upstream static demos vs broken callbacks | Static upstream demos (empty handlers): footer, grid, form_preview, msg, list delete. Gallery keeps them inert intentionally; library callbacks exist. |
 
 ## Regenerating
