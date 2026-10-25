@@ -98,10 +98,6 @@ pub(super) fn input(
     })
 }
 
-pub(super) fn focus_of(input: &Entity<TextInput>, cx: &App) -> FocusHandle {
-    input.read(cx).focus_handle(cx)
-}
-
 pub(super) fn primary_button(
     id: &'static str,
     label: &'static str,

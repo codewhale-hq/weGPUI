@@ -1,0 +1,17 @@
+   Compiling wegpui v0.1.0 (C:\CW\artifacts\wegpui-20261024\wegpui-0.1.0)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 8.28s
+     Running unittests src\lib.rs (C:\CW\artifacts\wegpui-20261024\target\debug\deps\wegpui-ce518fa8c5b03024.exe)
+
+running 9 tests
+test components::picker::tests::gregorian_centuries_and_month_lengths ... ok
+test components::article::tests::public_constructors_agree_on_marker_and_placement ... ok
+test components::article::tests::nested_lists_inherit_placement_without_losing_marker_kind ... ok
+test components::slider::tests::invalid_ranges_cannot_replace_the_last_finite_range ... ok
+test components::picker::tests::disabled_default_wraps_to_an_enabled_option ... ok
+test components::picker::tests::empty_and_all_disabled_columns_have_no_enabled_default ... ok
+test components::slider::tests::invalid_steps_preserve_a_usable_keyboard_increment ... ok
+test components::slider::tests::snapping_is_relative_to_minimum_and_clamped ... ok
+test input::tests::utf16_offsets_stay_on_utf8_boundaries ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

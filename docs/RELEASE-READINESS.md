@@ -28,16 +28,17 @@ and rely on the supported behavior. A website is one part of that promise.
 
 Use the acceptance matrix in PLATFORMS; each result needs source/host versions.
 
-- [ ] macOS: current native rendering, input, resizing, IME and VoiceOver on a
-  separately authorized Apple host. Hosted compilation is not runtime acceptance.
+- [ ] macOS: current native rendering, input, resizing, IME and VoiceOver on the
+  authorized local Apple host. Hosted compilation is not runtime acceptance.
 - [ ] Windows: native MSVC build (CI configured; result pending) followed by a real Windows window, rendering at
   multiple scales, keyboard/input/IME and Narrator or NVDA.
 - [ ] Linux: X11 and Wayland runtime checks, resizing/scaling, IME and Orca.
 - [ ] Package a runnable gallery for the supported desktop platforms and verify
   fresh-machine installation. Define signing/notarization requirements before release.
 
-No personal Mac access, infrastructure purchase or public package publication is
-implied by this checklist. The existing authorization for cloud work remains in force.
+Local macOS work and the existing Windows VM are authorized for this continuation.
+Infrastructure purchases and public package publication still require approval.
+VoiceOver remains off under the owner’s existing instruction.
 
 ## 3. Developer experience and distribution
 

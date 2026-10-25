@@ -1,10 +1,9 @@
 //! WeUI bottom tab bar (`weui-tab/weui-tabbar.less`): icon-over-label tabs with optional badges.
 //!
 //! [`Tabbar`] is stateless like [`Navbar`](super::navbar::Navbar) and shares its arrow-key
-//! handling; [`TabbarItem`] describes one tab. Known limitation: arrows use window-wide focus
-//! traversal, so they assume the tabs are adjacent in Tab order.
+//! handling, with focus contained to the bar and one Tab stop. [`TabbarItem`] describes one tab.
 
-use super::navbar::{SelectHandler, tab_keys};
+use super::navbar::{SelectHandler, tab_focus_handles, tab_keys};
 use crate::Theme;
 use gpui::{prelude::*, *};
 use std::rc::Rc;
@@ -88,10 +87,12 @@ impl Tabbar {
 }
 
 impl RenderOnce for Tabbar {
-    fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
+    fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
         let count = self.items.len();
         let selected = self.selected;
+        let handles = tab_focus_handles(self.id.clone(), count, window, cx);
+        let tab_stop = selected.min(count.saturating_sub(1));
         div()
             .id(self.id)
             .role(Role::TabList)
@@ -119,9 +120,9 @@ impl RenderOnce for Tabbar {
                     .aria_label(item.label.clone())
                     .when_some(item.description, |el, d| el.aria_description(d))
                     .aria_selected(on)
+                    .track_focus(&handles[i].clone().tab_stop(i == tab_stop))
                     .focusable()
-                    .tab_stop(true)
-                    .on_key_down(tab_keys(count, i, self.on_select.clone()))
+                    .on_key_down(tab_keys(handles.clone(), i, self.on_select.clone()))
                     .flex_1()
                     .pt(px(6.))
                     .pb(px(6.))

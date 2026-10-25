@@ -2,8 +2,7 @@
 //! `src/example/form/form_radio.html`). [`RadioGroup`] builds one `RadioButton` row per option
 //! for the caller to place in a container; [`radio_icon`] is the trailing tick.
 //! Known limitations: the builder is not an element and adds no `RadioGroup` node, so set that
-//! role on the container; row element ids do not include the group id, so keep each group in
-//! its own container.
+//! role on the container. Row element ids are scoped by the group id.
 
 use super::Icon;
 use crate::{Theme, accessibility::Semantics};
@@ -97,10 +96,10 @@ impl RadioGroup {
                 let on_key = self.on_change.clone();
                 let handles = handles.clone();
                 let enabled = enabled.clone();
-                let mut el = super::form::cell_frame(ElementId::NamedInteger(
-                    "radio-option".into(),
-                    i as u64,
-                ))
+                let mut el = super::form::cell_frame(ElementId::from((
+                    self.id.clone(),
+                    format!("radio-option-{i}"),
+                )))
                 .role(Role::RadioButton)
                 .aria_label(label.clone())
                 .aria_toggled(if checked {

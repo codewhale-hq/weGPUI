@@ -48,8 +48,8 @@ impl VcodeButton {
         self.label = label.into();
         cx.notify();
     }
-    /// Sets the countdown length in seconds for later starts, minimum 1. Default 60. The first
-    /// displayed value is `seconds - 1`, and the button is idle again after that many seconds.
+    /// Sets the countdown length in seconds for later starts, minimum 1. Default 60.
+    /// The first displayed value is `seconds`; the button is idle after that many seconds.
     pub fn set_seconds(&mut self, seconds: u32) {
         self.seconds = seconds.max(1);
     }
@@ -67,11 +67,14 @@ impl VcodeButton {
     pub fn remaining(&self) -> u32 {
         self.remaining
     }
-    /// Starts the countdown and emits [`VcodeEvent::Send`]. If it is already counting, it
-    /// restarts and emits again. The timer task is owned by the entity and dropped by
+    /// Starts the countdown and emits [`VcodeEvent::Send`] only while idle. Calls during a
+    /// countdown do nothing. The timer task is owned by the entity and dropped by
     /// [`VcodeButton::reset`].
     pub fn start(&mut self, window: &mut Window, cx: &mut Context<Self>) {
-        self.remaining = self.seconds - 1;
+        if self.is_counting() {
+            return;
+        }
+        self.remaining = self.seconds;
         cx.emit(VcodeEvent::Send);
         cx.notify();
         self.timer = Some(cx.spawn_in(window, async move |this, cx| {
@@ -164,7 +167,7 @@ impl Render for VcodeButton {
                 .when(!counting, |el| el.active(move |s| s.bg(bg.blend(mask))))
         };
         let el = el
-            .track_focus(&self.focus)
+            .track_focus(&self.focus.clone().tab_stop(!counting))
             .focus_visible(move |s| s.border_color(brand))
             .on_click(cx.listener(|this, _, window, cx| {
                 cx.stop_propagation();

@@ -1,8 +1,8 @@
 //! WeUI top tab bar (`weui-tab/weui-navbar.less`) and tab panel (`weui-tab/weui-tab.less`).
 //!
 //! [`Navbar`] is stateless: the caller owns the selected index and updates it in `on_select`. Arrow
-//! keys move focus and selection together. Known limitation: arrows use window-wide focus
-//! traversal, so they assume the tabs are adjacent in Tab order, and every tab is a Tab stop.
+//! keys move focus and selection within this bar. Only the selected tab is in the Tab order;
+//! Home/End select the first/last tab, and arrows wrap at the ends.
 
 use crate::Theme;
 use gpui::{prelude::*, *};
@@ -11,8 +11,24 @@ use std::rc::Rc;
 /// Shared callback receiving the index of the tab to select.
 pub type SelectHandler = Rc<dyn Fn(usize, &mut Window, &mut App)>;
 
-pub(crate) fn tab_keys(
+pub(crate) fn tab_focus_handles(
+    id: ElementId,
     count: usize,
+    window: &mut Window,
+    cx: &mut App,
+) -> Vec<FocusHandle> {
+    let handles = window.use_keyed_state((id, "tab-focus"), cx, |_, _| Vec::<FocusHandle>::new());
+    handles.update(cx, |handles, cx| {
+        handles.truncate(count);
+        while handles.len() < count {
+            handles.push(cx.focus_handle());
+        }
+        handles.clone()
+    })
+}
+
+pub(crate) fn tab_keys(
+    handles: Vec<FocusHandle>,
     selected: usize,
     handler: Option<SelectHandler>,
 ) -> impl Fn(&KeyDownEvent, &mut Window, &mut App) + 'static {
@@ -20,17 +36,18 @@ pub(crate) fn tab_keys(
         let Some(handler) = handler.as_ref() else {
             return;
         };
+        let count = handles.len();
+        if count == 0 {
+            return;
+        }
         let next = match event.keystroke.key.as_str() {
-            "right" | "down" if selected + 1 < count => {
-                window.focus_next(cx);
-                selected + 1
-            }
-            "left" | "up" if selected > 0 => {
-                window.focus_prev(cx);
-                selected - 1
-            }
+            "right" | "down" => (selected + 1) % count,
+            "left" | "up" => (selected + count - 1) % count,
+            "home" => 0,
+            "end" => count - 1,
             _ => return,
         };
+        window.focus(&handles[next], cx);
         handler(next, window, cx);
         cx.stop_propagation();
     }
@@ -76,10 +93,12 @@ impl Navbar {
 }
 
 impl RenderOnce for Navbar {
-    fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
+    fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
         let count = self.items.len();
         let selected = self.selected;
+        let handles = tab_focus_handles(self.id.clone(), count, window, cx);
+        let tab_stop = selected.min(count.saturating_sub(1));
         div()
             .id(self.id)
             .role(Role::TabList)
@@ -95,9 +114,9 @@ impl RenderOnce for Navbar {
                     .role(Role::Tab)
                     .aria_label(label.clone())
                     .aria_selected(on)
+                    .track_focus(&handles[i].clone().tab_stop(i == tab_stop))
                     .focusable()
-                    .tab_stop(true)
-                    .on_key_down(tab_keys(count, i, self.on_select.clone()))
+                    .on_key_down(tab_keys(handles.clone(), i, self.on_select.clone()))
                     .relative()
                     .flex_1()
                     .py(px(14.))

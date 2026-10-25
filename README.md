@@ -7,7 +7,7 @@ and is written to stay close to upstream behaviour.
 
 | Native GPUI (macOS) | Upstream WeUI in Chromium |
 | --- | --- |
-| <img src="docs/parity/half-screen-dialog-1-light-gpui.png" width="280" alt="weGPUI half-screen dialog"> | <img src="docs/parity/half-screen-dialog-1-light-weui.png" width="280" alt="WeUI half-screen dialog"> |
+| <img src="https://raw.githubusercontent.com/codewhale-hq/weGPUI/main/docs/parity/half-screen-dialog-1-light-gpui.png" width="280" alt="weGPUI half-screen dialog"> | <img src="https://raw.githubusercontent.com/codewhale-hq/weGPUI/main/docs/parity/half-screen-dialog-1-light-weui.png" width="280" alt="WeUI half-screen dialog"> |
 
 The library is in development: **0.1.0, unreleased**. All 61 upstream example files map to the
 gallery (60 routes plus the index shell), but parity is sampled, not complete. [docs/STATUS.md](docs/STATUS.md) records what is
@@ -19,11 +19,12 @@ verified, what differs, and what has not been tested.
 git clone https://github.com/codewhale-hq/weGPUI && cd weGPUI
 cargo run --example minimal    # a small app: a list cell, a button and a dialog
 cargo run --example gallery    # every WeUI example page, with theme and care-mode menus
+cargo run --example component_states # loading, labels, countdown and keyboard checks
 ```
 
 Rust 1.95 or newer is required. Linux needs GPUI's system libraries (see
-[CONTRIBUTING](CONTRIBUTING.md)) and, for now, a local change that enables `gpui_platform`'s
-`wayland`/`x11` features before a window can open ([docs/PLATFORMS.md](docs/PLATFORMS.md)).
+[CONTRIBUTING](CONTRIBUTING.md)). Both examples already enable `gpui_platform`'s
+`wayland`/`x11` features ([docs/PLATFORMS.md](docs/PLATFORMS.md)).
 
 ## Using the library
 
@@ -63,7 +64,7 @@ gpui_platform = { package = "gpui-pre-platform", version = "=0.3.9", features = 
 ```
 
 On Linux, that application dependency also needs `"wayland"` or `"x11"` in `features`;
-`font-kit` alone builds but panics when opening a window. This applies to both examples too.
+`font-kit` alone builds but panics when opening a window. The bundled examples already enable both.
 
 [`examples/minimal.rs`](examples/minimal.rs) is the compiled, complete version, including
 `ModalScope` (hides the page from screen readers while a modal is open), Tab navigation and a

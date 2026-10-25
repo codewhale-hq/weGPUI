@@ -117,6 +117,11 @@ for block in css.split('}'):
     key = 'icon-'+names[0]+'.svg'
     if key not in assets:
         assets[key]=urllib.parse.unquote(encoded)
+loading_source = (package / 'src/style/widget/weui-loading/weui-loading.less').read_text()
+loading_encoded = re.search(r'url\("data:image/svg\+xml,([^"\n]+)"\)', loading_source).group(1)
+loading_svg = urllib.parse.unquote(loading_encoded)
+loading_svg = re.sub(r'<animateTransform[^>]*/>', '', loading_svg)
+(root / 'assets/loading.svg').write_text(loading_svg.replace('#606060', 'white'))
 for k,v in assets.items(): (root/'assets'/k).write_text(v)
 for p in list((package/'src/example/images').glob('*')) + list((package/'src/example/images/layers').glob('*.png')):
     if p.is_file():

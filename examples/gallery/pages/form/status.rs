@@ -1,4 +1,4 @@
-use super::{focus_of, input, primary_button, show_toast, toast, toast_presence};
+use super::{input, primary_button, show_toast, toast, toast_presence};
 use crate::chrome::PageFrame;
 use gpui::{prelude::*, *};
 use std::time::Duration;
@@ -106,7 +106,7 @@ impl Render for Status {
                             .label_width(W)
                             .warn(warn)
                             .bd_flex()
-                            .focus_target(focus_of(&self.card, cx))
+                            .label_for(&self.card)
                             .child(self.card_field.clone()),
                     )
                     .row(
@@ -114,7 +114,7 @@ impl Render for Status {
                             .label("持卡人")
                             .label_width(W)
                             .bd_flex()
-                            .focus_target(focus_of(&self.holder, cx))
+                            .label_for(&self.holder)
                             .child(self.holder.clone()),
                     ),
             )
@@ -126,7 +126,7 @@ impl Render for Status {
                             .label("金额")
                             .label_width(W)
                             .bd_flex()
-                            .focus_target(focus_of(&self.amount, cx))
+                            .label_for(&self.amount)
                             .child(self.amount.clone()),
                     )
                     .when(amount_tips, |g| {
@@ -148,7 +148,7 @@ impl Render for Status {
                             .label("EMail")
                             .label_width(W)
                             .readonly(true)
-                            .focus_target(focus_of(&self.email, cx))
+                            .label_for(&self.email)
                             .child(self.email.clone()),
                     )
                     .row(
@@ -156,6 +156,7 @@ impl Render for Status {
                             .label("微信号")
                             .label_width(W)
                             .disabled(true)
+                            .label_for(&self.wechat)
                             .child(self.wechat.clone()),
                     ),
             )

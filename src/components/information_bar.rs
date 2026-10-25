@@ -229,11 +229,13 @@ impl RenderOnce for InformationBar {
 /// tip.
 #[derive(IntoElement)]
 pub struct ListTips {
+    id: ElementId,
     items: Vec<SharedString>,
     last: bool,
 }
 
 impl Default for ListTips {
+    #[track_caller]
     fn default() -> Self {
         Self::new()
     }
@@ -241,11 +243,18 @@ impl Default for ListTips {
 
 impl ListTips {
     /// Creates an empty list styled as the last block, with no bottom padding.
+    #[track_caller]
     pub fn new() -> Self {
         Self {
+            id: ElementId::from(std::panic::Location::caller()),
             items: vec![],
             last: true,
         }
+    }
+    /// Sets a stable list id; use distinct ids for lists created in the same loop.
+    pub fn id(mut self, id: impl Into<ElementId>) -> Self {
+        self.id = id.into();
+        self
     }
     /// Appends a bulleted tip.
     pub fn item(mut self, text: impl Into<SharedString>) -> Self {
@@ -263,7 +272,10 @@ impl ListTips {
 impl RenderOnce for ListTips {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let count = self.items.len();
         div()
+            .id(self.id)
+            .role(Role::List)
             .relative()
             .pt(px(24.))
             .when(!self.last, |el| el.pb(px(24.)))
@@ -276,6 +288,8 @@ impl RenderOnce for ListTips {
                 div()
                     .id(ElementId::NamedInteger("list-tips-item".into(), i as u64))
                     .role(Role::ListItem)
+                    .aria_position_in_set(i + 1)
+                    .aria_size_of_set(count)
                     .aria_label(text.clone())
                     .relative()
                     .pl(px(15.))

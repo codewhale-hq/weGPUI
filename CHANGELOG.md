@@ -8,6 +8,11 @@ versioning once a release policy is decided. No version has been published.
 
 ### Added
 
+- `FormCell::label_for` associates a visible label with a text input and its row-focus target.
+- `component_states` example demonstrates loading/disabled actions, associated form labels,
+  independent radio choices and a verification-code countdown.
+- Website checks cover every recorded state in both themes and decode all 528 capture assets.
+
 - Final GitHub CI configuration with Linux/MSRV checks, mobile library type-checks, and
   Apple build-only jobs. Hosted results remain separate from runtime acceptance.
 
@@ -55,6 +60,16 @@ versioning once a release policy is decided. No version has been published.
 
 ### Fixed
 
+- Cell-style buttons honor loading state, show a spinner and reject repeat activation.
+- Verification-code countdowns start at their full duration and ignore duplicate starts.
+- Clickable small-app panels retain a visible keyboard-focus ring without a layout border.
+- Radio rows include their group ID; loading indicators and tip/preview lists use callsite
+  defaults with explicit IDs available for repeated helper/loop instances.
+- Standard and primary loading indicators use their corresponding upstream artwork.
+- Navigation arrows wrap within their own tab bar, with only the selected tab in Tab order.
+- Dialog headings/body text and individual form-preview/tip rows expose semantic nodes.
+- Website API documentation resolves Cargo’s configured target directory or an explicit path.
+
 - macOS AX dumps include raw `AXTitle`, retaining picker/select option names that System Events
   does not return through its `name` property.
 
@@ -77,6 +92,6 @@ versioning once a release policy is decided. No version has been published.
 
 ### Known gaps
 
-See `docs/STATUS.md`. Mobile platforms are not supported, Linux windows need the approved feature
-change to be applied, Windows runtime and screen-reader evidence are missing, and visual/behavioural parity is
+See `docs/STATUS.md`. Mobile platforms are not supported, Windows runtime and screen-reader evidence are missing,
+and visual/behavioural parity is
 sampled rather than complete.

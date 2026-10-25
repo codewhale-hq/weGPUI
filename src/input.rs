@@ -335,8 +335,11 @@ impl TextInput {
 
     /// Sets the accessible name, usually the visible form label of the cell.
     pub fn set_aria_label(&mut self, label: impl Into<SharedString>, cx: &mut Context<Self>) {
-        self.label = Some(label.into());
-        cx.notify();
+        let label = Some(label.into());
+        if self.label != label {
+            self.label = label;
+            cx.notify();
+        }
     }
 
     /// Overrides the accessibility role (for example `Role::SearchInput`); `None` uses the

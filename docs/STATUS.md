@@ -23,13 +23,19 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 
 | Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
 | --- | --- | --- | --- | --- | --- | --- |
-| macOS arm64 | Hosted arm64 build, seven tests and Clippy pass at `05cae89`; historical strict docs at `e4a2c87` | Historical minimal/gallery launches at `e4a2c87`; no current runtime requalification | Earlier 28 review pairs; new diagnostic images, paired recapture incomplete | Minimal dialog open/close/OK and focus restore; select-key attempts inconclusive | Modal isolation, option AXTitle labels, closed swipe actions hidden, article headings/lists; VoiceOver incomplete | Missing |
+| macOS arm64 | Current examples, nine tests, strict Clippy/rustdoc and packaged consumer pass | Current component sample; historical gallery/minimal receipts retained | Native dark component sample; historical parity pairs not recaptured | Loading/countdown guards, disabled Tab skip, panel focus/activation and independent choices | Current input label, spinner names and tip-list AX nodes; historical modal/list checks; VoiceOver incomplete | Crate package and separate consumer build pass; signed/fresh-machine distribution missing |
 | Linux x86_64 | Fresh build, clippy `-D warnings`, fmt, strict doc pass (Rust 1.99.1); 1.95 build and seven tests pass | Both examples pass with committed windowing features under isolated Xvfb | Software-rendered X11; 192 pairs swept against Linux Chromium (60 routes light and dark, 72 states light; contact-sheet review) | XTEST click/keys, fcitx5 Pinyin, GTK portal chooser | AT-SPI tree via pyatspi; no Orca | Missing |
-| Windows | Historical mingw cross-build links | Missing; Wine failure reported without a committed run log | Missing | Missing | Missing | Missing |
+| Windows ARM64 | Native MSVC gallery/component sample build, 9 tests and strict rustdoc pass on the October 24 component candidate | Gallery and component sample launch in Windows 11 ARM VM | Native VirtIO GPU rendering; sampled light components and dark dialog | Text entry, loading/disabled actions, countdown, panel focus, independent radios and navbar wrap | Screen-reader and native accessibility-tree acceptance still missing | Package archive built and used for guest compilation; distributable installation unqualified |
 | iOS | Fresh library type-checks pass; hosted app build fails in upstream iOS/core APIs | 0.3.9 scaffold wired; upstream compilation blocker, no launch | Missing | Missing | Missing; backend lacks AccessKit | Missing |
 | Android | Fresh 0.3.9 library type-check; no app build | Blocked: no backend upstream | Missing | Missing | Missing | Missing |
 
 ## Done
+
+- **Component continuation:** native macOS and Windows ARM builds, 9 tests each, strict Clippy
+  and rustdoc pass; a fresh packaged macOS consumer compiles. Runtime checks cover loading,
+  countdown, disabled focus, panel focus and independent choices. macOS AX confirms input
+  naming and tip-list structure. [Receipts](receipts/component-fixes-20261024/README.md).
+  Keyboard focus does not reliably reveal offscreen actions; this new gap remains open.
 
 - **Article list constructor:** `new(ListStyle::Inside)` now selects inline decimal
   markers, matching `inside()`. Focused constructor/inheritance contracts pass;
@@ -124,7 +130,7 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 | Icons | Untested | Assets reproduce from the tarball. |
 | Information bar | Matches sample | macOS close. Link/floating variants untested. |
 | List / swiped cell | Partly matches | Historical macOS drag. Linux AT-SPI and fresh macOS AX hide closed actions. Delete callback empty upstream and in the gallery. |
-| Loading | Untested | Timing and live reduced-motion changes unverified. All spinner kinds draw the same SVG. |
+| Loading | Partly tested | Standard/mask artwork now comes from the upstream SVG; primary uses the separate CSS-ring mask. Three simultaneous spinners render on Windows. Animation timing and live reduced-motion changes remain unverified. |
 | Loadmore | Untested | Presentation only. |
 | Message / LinkText | Partly tested | Probe: two links, separate focus and single activation. Message callbacks empty. |
 | Navbar / Tabbar | Matches samples | macOS arrow selection after fix. Not re-driven on Linux. |
@@ -151,18 +157,18 @@ including failed/incomplete attempts. It does not complete platform acceptance.
   Android still needs a backend decision. Neither path has a verified mobile AccessKit adapter.
 - **Screen readers:** VoiceOver was attempted, but announcement retrieval timed out and the
   pass was stopped; it ended disabled. No usable VoiceOver transcript or Narrator/NVDA, Orca
-  or TalkBack session exists. Text
-  inside dialogs (title/body) is not exposed as separate nodes; the dialog is named by its title.
+  or TalkBack session exists. Dialog title/body now have explicit heading/label nodes in source;
+  announcement order still needs screen-reader verification.
 - **Local date:** `picker::today()` is UTC. A local-time source needs a dependency (for example
   `chrono`, already in `Cargo.lock` transitively) or platform calls. That needs an owner decision.
 - **Linux XIM preedit** is drawn by the input method at the window's top-left, not inline at the
   caret. Not isolated between GPUI and fcitx5.
-- **Found during the documentation audit, unfixed** (rustdoc is not uniformly accurate): buttons in cell
-  mode ignore `loading`; a clickable small-appmsg panel has no visible focus ring; spinners share
-  the default id `weui-loading` unless given an id; all spinner kinds draw the same SVG;
-  `ListTips` items have no `List` parent; radio rows reuse ids across
-  groups that share a parent; `FormCell::label` does not name its input for assistive technology
-  (gallery inputs expose only the placeholder); `VcodeButton::start` restarts while counting.
+- **Documentation-audit fixes:** Windows runtime checks cover cell-button loading, clickable
+  small-appmsg focus, independent radio groups and duplicate countdown starts. Loading and
+  tip/preview list constructors use callsite IDs, with explicit IDs for repeated helper/loop
+  instances. `FormCell::label_for` names an associated input; gallery forms use it. List and
+  dialog semantic changes compile but still require native accessibility-tree/screen-reader
+  acceptance. Existing source-only claims must not be read as complete accessibility acceptance.
 - Public naming still mixes `Navbar`/`Tabbar` with `SearchBar` and terse `hd`/`bd`/`ft` helpers.
   The existing API is documented. Breaking renames await a versioning policy.
 - The input length counter counts UTF-16 units. Numeric `InputKind`s filter characters but do

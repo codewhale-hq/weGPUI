@@ -170,6 +170,9 @@ impl AssetSource for Assets {
             "layers_popout.png" => Some(Cow::Borrowed(
                 include_bytes!("../assets/layers_popout.png").as_slice(),
             )),
+            "loading-primary.svg" => Some(Cow::Borrowed(
+                include_bytes!("../assets/loading-primary.svg").as_slice(),
+            )),
             "loading.svg" => Some(Cow::Borrowed(
                 include_bytes!("../assets/loading.svg").as_slice(),
             )),

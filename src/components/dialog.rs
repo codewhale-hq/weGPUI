@@ -126,7 +126,14 @@ impl Dialog {
         if self.label.is_empty() {
             self.label = text.clone();
         }
-        self.body.push(text.into_any_element());
+        self.body.push(
+            div()
+                .id(("dialog-paragraph", self.body.len()))
+                .role(Role::Label)
+                .aria_label(text.clone())
+                .child(text)
+                .into_any_element(),
+        );
         self
     }
     /// Sets the accessible name explicitly; a later `title` call replaces it.
@@ -321,6 +328,10 @@ impl RenderOnce for Dialog {
             .when_some(self.title, |el, title| {
                 el.child(
                     div()
+                        .id("dialog-title")
+                        .role(Role::Heading)
+                        .aria_level(2)
+                        .aria_label(title.clone())
                         .flex_shrink_0()
                         .pt(px(32.))
                         .pb(px(16.))

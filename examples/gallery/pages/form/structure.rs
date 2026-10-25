@@ -1,4 +1,4 @@
-use super::{dismiss, focus_of, footer, input, primary_button, show_toast, toast, toast_presence};
+use super::{dismiss, footer, input, primary_button, show_toast, toast, toast_presence};
 use crate::chrome::PageFrame;
 use gpui::{prelude::*, *};
 use wegpui::{
@@ -101,12 +101,12 @@ impl Structure {
         input: &Entity<TextInput>,
         width: f32,
         primary: bool,
-        cx: &App,
+        _cx: &App,
     ) -> FormCell {
         FormCell::new(id)
             .label(label)
             .label_width(width)
-            .focus_target(focus_of(input, cx))
+            .label_for(input)
             .when(primary, |el| el.in_primary_group())
             .child(input.clone())
     }
@@ -144,7 +144,7 @@ impl Render for Structure {
                         .kind(CellKind::Primary)
                         .label("verification address")
                         .label_width(width)
-                        .focus_target(self.address.focus_handle(cx))
+                        .label_for(self.address.read(cx).input())
                         .child(div().min_h(px(80.)).child(self.address.clone())),
                 );
             }
@@ -185,7 +185,7 @@ impl Render for Structure {
                                 .label("手机号")
                                 .label_width(width)
                                 .in_primary_group()
-                                .focus_target(focus_of(&self.mobile, cx))
+                                .label_for(&self.mobile)
                                 .child(cell_control("+86"))
                                 .child(cell_control_flex(self.mobile.clone())),
                         ),

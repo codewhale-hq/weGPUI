@@ -47,7 +47,8 @@ missing evidence the project needs.
 - **Generated files.** `src/theme/palette.rs`, `src/assets.rs`, `docs/tokens.json` and the icon
   SVGs in `assets/` come from
   `python3 -I scripts/extract_weui.py "${CARGO_TARGET_DIR:-target}/weui-upstream/weui/package"`.
-  Keep the separately authored `assets/loading.svg`; the extractor does not generate it.
+  `assets/loading.svg` is extracted from the pinned upstream SVG with animation handled by
+  GPUI. Keep the separately authored CSS-ring mask `assets/loading-primary.svg`.
   Change the generator, not the output. Regenerating rewrites the eight `*-dark.png` files with
   identical pixels but different PNG bytes, depending on the Pillow version, so restore them with
   `git restore -- 'assets/*-dark.png'` only after verifying their pixels are unchanged and that

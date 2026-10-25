@@ -7,7 +7,7 @@
 //!
 //! # Using the library
 //!
-//! The library is platform-neutral: it depends on `gpui` only. An application chooses a GPUI
+//! The library is platform-neutral: it depends on `gpui` and `unicode-segmentation`. An application chooses a GPUI
 //! platform crate, for example `gpui_platform` (crates.io `gpui-pre-platform`, with the
 //! `font-kit` feature on macOS and `wayland`/`x11` on Linux), registers [`Assets`], and calls
 //! [`init`] once before opening windows:

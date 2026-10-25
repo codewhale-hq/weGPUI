@@ -2,8 +2,7 @@
 //! `src/example/preview/preview.html` and `src/example/msg/msg_custom_area_preview.html`).
 //! [`FormPreview`] is the read-only summary card with header, items and footer buttons;
 //! [`FormPreviewList`] is the `.weui-form-preview__list` block for msg page custom areas.
-//! Known limitations: rows are `ListItem` nodes without a `List` parent, and the card body is a
-//! single node whose name joins all of its items.
+//! Summary rows are exposed individually within a `List` node.
 
 use super::ClickHandler;
 use crate::Theme;
@@ -79,7 +78,7 @@ impl FormPreview {
         }
     }
     /// Sets the header (`.weui-form-preview__hd`): `label` in `fg_1` and `value` right-aligned at
-    /// 25.6px (1.6em), e.g. an amount, exposed as one `ListItem` named by label and value.
+    /// 25.6px (1.6em), e.g. an amount, exposed as one `Label` named by label and value.
     pub fn header(
         mut self,
         label: impl Into<SharedString>,
@@ -135,7 +134,7 @@ impl RenderOnce for FormPreview {
             let aria = SharedString::from(format!("{label} {value}"));
             div()
                 .id("form-preview-hd")
-                .role(Role::ListItem)
+                .role(Role::Label)
                 .aria_label(aria)
                 .relative()
                 .p(px(16.))
@@ -154,33 +153,37 @@ impl RenderOnce for FormPreview {
                 ))
                 .child(hairline(t.fg_3).bottom_0().left(px(16.)).right_0())
         });
-        let body_label = SharedString::from(
-            self.items
-                .iter()
-                .map(|(l, v)| format!("{l} {v}"))
-                .collect::<Vec<_>>()
-                .join("，"),
-        );
         let fg0 = t.fg_0;
         let fg1 = t.fg_1;
-        let body = (!self.items.is_empty()).then(|| {
+        let count = self.items.len();
+        let body = (count > 0).then(|| {
             div()
                 .id("form-preview-bd")
-                .role(Role::ListItem)
-                .aria_label(body_label)
+                .role(Role::List)
                 .p(px(16.))
                 .text_size(px(14.4))
                 .line_height(px(28.8))
                 .text_color(fg1)
-                .children(self.items.into_iter().map(move |(label, value)| {
-                    preview_item(
-                        label,
-                        div().text_right().text_color(fg0).child(value),
-                        60.48,
-                        14.4,
-                        fg1,
-                    )
-                }))
+                .children(
+                    self.items
+                        .into_iter()
+                        .enumerate()
+                        .map(move |(i, (label, value))| {
+                            let name = SharedString::from(format!("{label} {value}"));
+                            preview_item(
+                                label,
+                                div().text_right().text_color(fg0).child(value),
+                                60.48,
+                                14.4,
+                                fg1,
+                            )
+                            .id(("preview-item", i))
+                            .role(Role::ListItem)
+                            .aria_label(name)
+                            .aria_position_in_set(i + 1)
+                            .aria_size_of_set(count)
+                        }),
+                )
         });
         let line = t.dialog_line_color;
         let pressed = t.bg_color_active;
@@ -246,11 +249,13 @@ impl RenderOnce for FormPreview {
 /// 12px apart with an 84px (6em) `fg_1` label column, below a top hairline and 24px of padding.
 #[derive(IntoElement)]
 pub struct FormPreviewList {
+    id: ElementId,
     items: Vec<(SharedString, SharedString)>,
     last: bool,
 }
 
 impl Default for FormPreviewList {
+    #[track_caller]
     fn default() -> Self {
         Self::new()
     }
@@ -258,11 +263,18 @@ impl Default for FormPreviewList {
 
 impl FormPreviewList {
     /// Creates an empty list treated as the last block in its container (no bottom padding).
+    #[track_caller]
     pub fn new() -> Self {
         Self {
+            id: ElementId::from(std::panic::Location::caller()),
             items: vec![],
             last: true,
         }
+    }
+    /// Sets a stable list id; use distinct ids for lists created in the same loop.
+    pub fn id(mut self, id: impl Into<ElementId>) -> Self {
+        self.id = id.into();
+        self
     }
     /// Appends a row, exposed as a `ListItem` named by the label and value.
     pub fn item(mut self, label: impl Into<SharedString>, value: impl Into<SharedString>) -> Self {
@@ -281,7 +293,10 @@ impl RenderOnce for FormPreviewList {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
         let (fg0, fg1) = (t.fg_0, t.fg_1);
+        let count = self.items.len();
         div()
+            .id(self.id)
+            .role(Role::List)
             .relative()
             .pt(px(24.))
             .when(!self.last, |el| el.pb(px(24.)))
@@ -301,6 +316,8 @@ impl RenderOnce for FormPreviewList {
                                 i as u64,
                             ))
                             .role(Role::ListItem)
+                            .aria_position_in_set(i + 1)
+                            .aria_size_of_set(count)
                             .aria_label(SharedString::from(format!("{label} {value}")))
                             .child(preview_item(
                                 label,

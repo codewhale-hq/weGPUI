@@ -20,6 +20,12 @@ Chromium; all 38 commands exited 0. Native paired recapture and comparison were 
 so these files establish no new parity verdict. The separate `runtime/` images are diagnostic
 window captures, including failed input attempts, not replacements for the baseline pairs.
 
+## Component continuation
+
+The October 24 local component batch changes loading artwork and clickable-panel focus styling.
+The historical pairs above have not been recaptured for these changes. Windows runtime screenshots
+verify selected interactions and visible focus, not a new visual-parity sweep.
+
 ## Method
 
 - Native: `scripts/capture.py` launches `gallery --page ROUTE [--state S] --theme T --size 375x812 --reduce-motion`, captures the window with `screencapture`, crops the 375×812 pt content at @2x and converts the display profile to sRGB.

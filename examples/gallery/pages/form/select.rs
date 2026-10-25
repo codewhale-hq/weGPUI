@@ -1,4 +1,4 @@
-use super::{dismiss, focus_of, input, primary_button, show_toast, toast, toast_presence};
+use super::{dismiss, input, primary_button, show_toast, toast, toast_presence};
 use crate::chrome::PageFrame;
 use gpui::{prelude::*, *};
 use wegpui::{
@@ -220,7 +220,7 @@ impl Render for Select {
                     .kind(CellKind::Wrap)
                     .label("手机号")
                     .label_width(W)
-                    .focus_target(focus_of(&self.mobile, cx))
+                    .label_for(&self.mobile)
                     .child(cell_control("+86"))
                     .child(cell_control_flex(self.mobile.clone())),
             );

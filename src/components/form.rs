@@ -2,8 +2,8 @@
 //! and `.weui-cells__group_form` (`src/style/widget/weui-cell/weui-cells__group.less` and
 //! `weui-cell/weui-form/`). [`Form`] lays out the page areas, [`FormGroup`] a group of rows,
 //! [`FormCell`] a labelled row, [`TipsGroup`] stacked tips, [`ClearableInput`] the clear button.
-//! Known limitations: [`FormCell::label`] is visual only (it does not name the control as an HTML
-//! `<label for>` would), safe-area insets are not applied, and there is no submission/validation.
+//! Associate a visible label with a text control through [`FormCell::label_for`].
+//! Known limitations: safe-area insets are not applied, and there is no submission/validation.
 
 use super::ClickHandler;
 use crate::{Theme, accessibility::Semantics, input::TextInput};
@@ -156,6 +156,7 @@ pub struct FormCell {
     active: bool,
     press_radius: f32,
     focus_target: Option<FocusHandle>,
+    label_target: Option<Entity<TextInput>>,
     role: Option<Role>,
     aria_label: Option<SharedString>,
     on_tap: Option<ClickHandler>,
@@ -181,6 +182,7 @@ impl FormCell {
             active: true,
             press_radius: 8.,
             focus_target: None,
+            label_target: None,
             role: None,
             aria_label: None,
             on_tap: None,
@@ -192,9 +194,9 @@ impl FormCell {
         self.kind = kind;
         self
     }
-    /// Shows `label` as the row's [`form_label`] at the start of the header. Visual only: it does
-    /// not name the row or the body control for assistive technology (use [`FormCell::aria_label`]
-    /// or the control's own label). No label by default.
+    /// Shows `label` as the row's [`form_label`] at the start of the header. With
+    /// [`FormCell::label_for`], it also names the associated text control. Other controls need
+    /// their own accessible name. No label by default.
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = Some(label.into());
         self
@@ -265,6 +267,14 @@ impl FormCell {
         self.focus_target = Some(handle);
         self
     }
+    /// Associates the visible label with `input` and focuses it when the row is pressed.
+    /// The input may be nested in a wrapper such as `ClearableInput` or `TextArea`.
+    /// Place the control in the row separately; this does not change its enabled/read-only state.
+    /// The label is applied on render, and an explicit `focus_target` takes precedence.
+    pub fn label_for(mut self, input: &Entity<TextInput>) -> Self {
+        self.label_target = Some(input.clone());
+        self
+    }
     /// Sets the row's accessibility role. None by default.
     pub fn role(mut self, role: Role) -> Self {
         self.role = Some(role);
@@ -295,7 +305,15 @@ impl ParentElement for FormCell {
 }
 
 impl RenderOnce for FormCell {
-    fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
+    fn render(mut self, _: &mut Window, cx: &mut App) -> impl IntoElement {
+        if let Some(input) = &self.label_target {
+            if let Some(label) = &self.label {
+                input.update(cx, |input, cx| input.set_aria_label(label.clone(), cx));
+            }
+            if self.focus_target.is_none() {
+                self.focus_target = Some(input.read(cx).focus_handle(cx));
+            }
+        }
         let t = Theme::get(cx).clone();
         let kind = self.kind;
         let (py, px_) = match kind {

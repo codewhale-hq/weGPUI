@@ -1,0 +1,7 @@
+saves=1
+code sends=1
+countdown remaining=3
+code sends=2
+panel clicks=1
+delivery=1
+frequency=1

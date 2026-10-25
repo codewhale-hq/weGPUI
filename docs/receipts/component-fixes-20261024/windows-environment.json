@@ -1,0 +1,23 @@
+{
+  "vm": "Codewhale Windows 11 ARM",
+  "vm_uuid": "5E9E6B1D-E944-4787-9474-A9E53DF1C756",
+  "os": "Windows 11 Pro 10.0.26300 ARM64",
+  "rust": "1.99.0 b940084d7 2026-09-28",
+  "rust_host": "aarch64-pc-windows-msvc",
+  "visual_studio": "Build Tools 2022 17.14.41",
+  "visual_studio_path": "C:/BuildTools2022",
+  "msvc": "14.44.35207",
+  "initial_free_gib": 64.48,
+  "package_sha256": "f74f376a7742ac138e6465edc955228dfdc3ca481c4ca426b9b1d46cded9d03b",
+  "source": "dirty canonical candidate packaged by parent",
+  "guest_artifacts": "C:/CW/artifacts/wegpui-20261024",
+  "installation_performed": "official clippy component added to existing Rust1.99 toolchain; no compiler upgrade",
+  "build_status": "passed",
+  "runtime_verified": "scoped component/nav/dialog checks; preview focus reveal remains suspect",
+  "library_tests": {
+    "passed": 9,
+    "failed": 0
+  },
+  "strict_rustdoc": "passed",
+  "strict_clippy": "passed_after_adding_missing_component"
+}

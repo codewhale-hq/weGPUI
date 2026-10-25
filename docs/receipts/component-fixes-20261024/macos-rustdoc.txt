@@ -1,0 +1,29 @@
+cargo doc --no-deps --locked --offline
+   Compiling serde_core v1.0.229
+    Checking byteorder v1.5.0
+    Checking tracing v0.1.44
+    Checking rand v0.9.5
+   Compiling derive_more-impl v2.1.1
+   Compiling gpui-pre-derive-refineable v0.3.9
+    Checking objc2-core-foundation v0.3.2
+    Checking accesskit v0.24.1
+    Checking image v0.25.10
+    Checking hash32 v0.3.1
+    Checking heapless v0.9.3
+    Checking gpui-pre-ztracing v0.3.9
+    Checking objc2-core-video v0.3.2
+    Checking gpui-pre-scheduler v0.3.9
+    Checking gpui-pre-refineable v0.3.9
+    Checking gpui-pre-sum-tree v0.3.9
+    Checking derive_more v2.1.1
+   Compiling toml_datetime v1.1.2+spec-1.1.0
+   Compiling serde_spanned v1.1.2
+   Compiling toml v1.1.8+spec-1.1.0
+   Compiling toml_edit v0.25.17+spec-1.1.0
+   Compiling proc-macro-crate v3.5.0
+   Compiling embed-resource v3.0.11
+   Compiling gpui-pre-macros v0.3.9
+   Compiling gpui-pre v0.3.9
+ Documenting wegpui v0.1.0 (/Volumes/VIXinSSD/CW/weGPUI)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 9.40s
+   Generated /Volumes/VIXinSSD/cw-build-cache/target/wegpui/doc/wegpui/index.html

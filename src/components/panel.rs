@@ -350,7 +350,7 @@ impl RenderOnce for MediaBox {
                 .focusable()
                 .tab_stop(true)
                 .active(move |s| s.bg(pressed))
-                .focus_visible(move |s| s.border_color(brand))
+                .focus_visible(move |s| s.shadow(super::form::focus_ring(brand)))
                 .on_click(handler);
         }
         el

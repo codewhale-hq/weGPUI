@@ -3,7 +3,7 @@
 //! the bottom-fixed operation layout ([`BottomFixedOpr`], [`BottomFixedOprPage`]).
 //!
 //! Known limitations: the safe-area insets of the upstream bottom-fixed CSS are not applied, and a
-//! [`Button::cell`] button ignores size, width, overlay and loading settings.
+//! [`Button::cell`] button ignores size, width and overlay settings.
 
 use super::{ClickHandler, loading::Loading};
 use crate::Theme;
@@ -145,7 +145,7 @@ impl Button {
     }
     /// Shows a 20px [`Loading`] spinner before the label when `value` is true (default false), as
     /// `weui-btn_loading`. A loading button is not focusable, never calls `on_click`, and is
-    /// exposed as busy with the description "正在加载". Ignored in cell mode.
+    /// exposed as busy with the description "正在加载".
     pub fn loading(mut self, value: bool) -> Self {
         self.loading = value;
         self
@@ -169,7 +169,7 @@ impl Button {
     }
     /// Renders as a full-width cell button (`weui-btn_cell`): 17px text on theme `bg_5`, coloured
     /// by kind, with an optional 24px leading icon and a pressed background. Size, width, padding,
-    /// overlay and loading settings are ignored in this mode.
+    /// and overlay settings are ignored in this mode.
     pub fn cell(mut self) -> Self {
         self.cell = true;
         self
@@ -226,7 +226,7 @@ impl Button {
     }
     /// Sets the activation callback. It receives the click event on a pointer click, or on Enter or
     /// Space while the button is focused, and is not attached while the button is disabled or
-    /// (outside cell mode) loading.
+    /// loading.
     pub fn on_click(
         mut self,
         handler: impl Fn(&ClickEvent, &mut Window, &mut App) + 'static,
@@ -264,10 +264,19 @@ impl Button {
             ButtonKind::Warn => t.red,
         };
         let (bg, active, ring) = (t.bg_5, t.bg_color_active, t.brand);
+        let interactive = !self.disabled && !self.loading;
+        let label_only = self.label.is_empty();
+        let aria = self.title.unwrap_or_else(|| {
+            if label_only && self.loading {
+                "正在操作".into()
+            } else {
+                self.label.clone()
+            }
+        });
         let mut el = div()
             .id(self.id)
             .role(Role::Button)
-            .aria_label(self.title.unwrap_or_else(|| self.label.clone()))
+            .aria_label(aria)
             .relative()
             .w_full()
             .flex()
@@ -281,13 +290,21 @@ impl Button {
             .text_color(fg)
             .text_size(px(17.))
             .line_height(px(24.))
+            .when(self.loading, |el| {
+                el.child(
+                    div()
+                        .when(!label_only, |el| el.mr(px(4.)))
+                        .child(Loading::mask().size(20.).color(fg)),
+                )
+            })
             .when_some(self.icon, |el, icon| {
                 el.child(div().size(px(24.)).mr(px(17. * 0.34)).child(icon))
             })
             .child(self.label);
         if self.disabled {
             el = el.opacity(0.5);
-        } else {
+        }
+        if interactive {
             el = el
                 .focusable()
                 .tab_stop(true)
@@ -300,8 +317,16 @@ impl Button {
                 el = el.on_click(handler);
             }
         }
+        if !interactive {
+            el = el.aria_description(if self.loading {
+                "正在加载"
+            } else {
+                "不可用"
+            });
+        }
         crate::accessibility::Semantics::new(el)
             .disabled(self.disabled)
+            .busy(self.loading)
             .into_any_element()
     }
 }

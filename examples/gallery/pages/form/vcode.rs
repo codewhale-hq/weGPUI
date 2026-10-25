@@ -1,5 +1,5 @@
 use super::{
-    dismiss, focus_of, half_screen_dialog, info_button, input, primary_button, show_toast, toast,
+    dismiss, half_screen_dialog, info_button, input, primary_button, show_toast, toast,
     toast_presence,
 };
 use crate::chrome::PageFrame;
@@ -103,7 +103,7 @@ impl Vcode {
         FormCell::new(("cell-phone", i))
             .label("手机号")
             .label_width(width)
-            .focus_target(focus_of(phone, cx))
+            .label_for(phone)
             .child(phone.clone())
             .ft(info_button(
                 ("showIOSDialog1", i),
@@ -127,7 +127,7 @@ impl Render for Vcode {
                     .kind(CellKind::Vcode)
                     .label("验证码")
                     .label_width(W)
-                    .focus_target(focus_of(&self.code, cx))
+                    .label_for(&self.code)
                     .child(cell_control_flex(
                         div()
                             .text_size(px(17.))

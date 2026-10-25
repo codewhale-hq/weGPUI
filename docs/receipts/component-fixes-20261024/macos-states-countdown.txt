@@ -1,0 +1,5 @@
+The following is a diff from the previous accessibility tree for Window: "" with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+~		3 button Save profile
+~		5 button (disabled) 重新发送(3s)
+~		19 text Saved 1; sent 1; details 0
+The focused UI element is 0 standard window Secondary Actions: Raise

@@ -1,9 +1,9 @@
 //! Spinners from WeUI's `src/style/widget/weui-loading/` (`weui-loading`, `weui-primary-loading`
-//! and `weui-mask-loading`), rendered by [`Loading`] from the bundled `loading.svg`.
+//! and `weui-mask-loading`), rendered by [`Loading`] from bundled SVG masks.
 //!
-//! The ring turns once per second in 60 steps. While GPUI's `App::reduce_motion` is set it is drawn
-//! still; [`crate::init`] reads that preference once at startup, on macOS only. Known limitations:
-//! all three kinds draw the same ring, and live preference changes are not picked up.
+//! The ring turns once per second (in 60 steps for the primary CSS-style ring). While GPUI's
+//! `App::reduce_motion` is set it is drawn still. System preference changes after startup are
+//! not picked up automatically; hosts can update GPUI's preference themselves.
 
 use crate::Theme;
 use gpui::{prelude::*, *};
@@ -15,7 +15,7 @@ pub enum LoadingKind {
     /// `weui-loading`: drawn at 90% opacity, as the upstream SVG is.
     #[default]
     Default,
-    /// `weui-primary-loading`: upstream's CSS-drawn ring, here the same SVG at full opacity.
+    /// `weui-primary-loading`: upstream's CSS-drawn ring, represented by its own gradient mask.
     Primary,
     /// `weui-mask-loading`: the ring in the given colour at full opacity; used inside loading
     /// buttons.
@@ -25,7 +25,8 @@ pub enum LoadingKind {
 /// An animated loading spinner, 16px and `#606060` by default.
 ///
 /// Without [`Loading::label`] it is decorative; with a label it is exposed as an image with that
-/// name. Give spinners that share a parent distinct ids with [`Loading::id`].
+/// name. Defaults use their constructor's source location as an id. Give spinners created in
+/// the same loop or helper distinct stable ids with [`Loading::id`].
 #[derive(IntoElement)]
 pub struct Loading {
     id: ElementId,
@@ -38,16 +39,18 @@ pub struct Loading {
 }
 
 impl Default for Loading {
+    #[track_caller]
     fn default() -> Self {
         Self::new()
     }
 }
 
 impl Loading {
-    /// Creates a [`LoadingKind::Default`] spinner with the id `"weui-loading"`.
+    /// Creates a [`LoadingKind::Default`] spinner keyed by the caller's source location.
+    #[track_caller]
     pub fn new() -> Self {
         Self {
-            id: ElementId::Name("weui-loading".into()),
+            id: ElementId::from(std::panic::Location::caller()),
             kind: LoadingKind::Default,
             size: 16.,
             color: None,
@@ -57,10 +60,12 @@ impl Loading {
         }
     }
     /// Creates a [`LoadingKind::Primary`] spinner.
+    #[track_caller]
     pub fn primary() -> Self {
         Self::new().kind(LoadingKind::Primary)
     }
     /// Creates a [`LoadingKind::Mask`] spinner.
+    #[track_caller]
     pub fn mask() -> Self {
         Self::new().kind(LoadingKind::Mask)
     }
@@ -70,7 +75,7 @@ impl Loading {
         self
     }
     /// Sets the element id that keys the animation state and the accessibility node. Default:
-    /// `"weui-loading"`.
+    /// the constructor's source location.
     pub fn id(mut self, id: impl Into<ElementId>) -> Self {
         self.id = id.into();
         self
@@ -116,13 +121,13 @@ impl RenderOnce for Loading {
                 rgb(0x606060).into()
             }
         });
-        let color = if self.kind == LoadingKind::Default {
-            color.opacity(0.9)
-        } else {
-            color
-        };
+        let primary = self.kind == LoadingKind::Primary;
         let spinner = svg()
-            .path("loading.svg")
+            .path(if primary {
+                "loading-primary.svg"
+            } else {
+                "loading.svg"
+            })
             .size(px(self.size))
             .flex_shrink_0()
             .text_color(color)
@@ -131,7 +136,13 @@ impl RenderOnce for Loading {
                 Animation::new(Duration::from_secs(1))
                     .repeat()
                     .with_max_fps(60.)
-                    .with_easing(|phase| (phase * 60.).floor() / 60.),
+                    .with_easing(move |phase| {
+                        if primary {
+                            (phase * 60.).floor() / 60.
+                        } else {
+                            phase
+                        }
+                    }),
                 |icon, delta| icon.with_transformation(Transformation::rotate(percentage(delta))),
             );
         match self.label {
