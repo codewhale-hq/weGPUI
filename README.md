@@ -58,8 +58,8 @@ Until a crates.io release, depend on the Git repository and the same exact GPUI 
 ```toml
 [dependencies]
 wegpui = { git = "https://github.com/codewhale-hq/weGPUI" }
-gpui = { package = "gpui-pre", version = "=0.3.7" }
-gpui_platform = { package = "gpui-pre-platform", version = "=0.3.7", features = ["font-kit"] }
+gpui = { package = "gpui-pre", version = "=0.3.9" }
+gpui_platform = { package = "gpui-pre-platform", version = "=0.3.9", features = ["font-kit"] }
 ```
 
 On Linux, that application dependency also needs `"wayland"` or `"x11"` in `features`;
@@ -80,7 +80,7 @@ packaging all have receipts from that platform. Details and evidence are in
 | macOS | Build, Clippy and strict rustdoc pass at `e4a2c87` (Rust 1.99); minimal and gallery launch, with sampled AX evidence. VoiceOver attempt incomplete. Not packaged. |
 | Linux | Windowing features enabled. Both examples build and render under isolated Xvfb; sampled dialog/select XTEST input and AT-SPI trees verified. No Wayland runtime or Orca acceptance. Not packaged. |
 | Windows | Cross-compiles (mingw). No native run, accessibility or packaging evidence. |
-| iOS | Library type-checks only. No backend at the pinned GPUI. Not supported. |
+| iOS | 0.3.9 backend entry point and simulator bundle scaffold implemented. No Apple app build/runtime acceptance. Not supported. |
 | Android | Library type-checks only. No upstream backend. Not supported. |
 
 ## Documentation

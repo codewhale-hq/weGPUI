@@ -6,7 +6,8 @@ mappings. Visual, behavioural and accessibility parity is **sampled, not complet
 
 The target platforms are macOS, Windows, Linux, iOS and Android. **No platform is supported yet**
 in the sense of [PLATFORMS](PLATFORMS.md): every one still lacks at least one of the build,
-launch, rendering, interaction, accessibility or packaging receipts. Mobile is not implemented.
+launch, rendering, interaction, accessibility or packaging receipts. The iOS backend/bundle
+scaffold is implemented but unqualified; Android has no backend.
 
 Evidence sources: the macOS review of 2026-10-24 ([REVIEW](REVIEW-2026-10-24.md), receipts in
 `receipts/review-20261024/`), and the Linux cloud takeover of 2026-10-25 (receipts and their
@@ -21,12 +22,17 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 | Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
 | --- | --- | --- | --- | --- | --- | --- |
 | macOS arm64 | Build/fmt/Clippy/strict doc pass at `e4a2c87` (Rust 1.99) | Minimal and gallery, unchanged Rust source | Earlier 28 review pairs; new diagnostic images, paired recapture incomplete | Minimal dialog open/close/OK and focus restore; select-key attempts inconclusive | Modal isolation, option AXTitle labels, closed swipe actions hidden, article headings/lists; VoiceOver incomplete | Missing |
-| Linux x86_64 | Fresh build, clippy `-D warnings`, fmt, strict doc pass (Rust 1.99.1); historical 1.95/1.97 checks | Both examples pass with committed windowing features under isolated Xvfb | Software-rendered X11; 192 pairs swept against Linux Chromium (60 routes light and dark, 72 states light; contact-sheet review) | XTEST click/keys, fcitx5 Pinyin, GTK portal chooser | AT-SPI tree via pyatspi; no Orca | Missing |
+| Linux x86_64 | Fresh build, clippy `-D warnings`, fmt, strict doc pass (Rust 1.99.1); 1.95 build and seven tests pass | Both examples pass with committed windowing features under isolated Xvfb | Software-rendered X11; 192 pairs swept against Linux Chromium (60 routes light and dark, 72 states light; contact-sheet review) | XTEST click/keys, fcitx5 Pinyin, GTK portal chooser | AT-SPI tree via pyatspi; no Orca | Missing |
 | Windows | Historical mingw cross-build links | Missing; Wine failure reported without a committed run log | Missing | Missing | Missing | Missing |
-| iOS | Historical library type-checks at `0637c25`; no app build | No backend at current pin; upgrade approved, runtime installed only | Missing | Missing | Missing; planned backend lacks AccessKit | Missing |
-| Android | Library type-checks at the `0637c25` change | Blocked: no backend upstream | Missing | Missing | Missing | Missing |
+| iOS | Fresh 0.3.9 library type-checks for device/simulator; no app build | 0.3.9 backend wired; bundle scaffold present; no Apple app build/launch | Missing | Missing | Missing; backend lacks AccessKit | Missing |
+| Android | Fresh 0.3.9 library type-check; no app build | Blocked: no backend upstream | Missing | Missing | Missing | Missing |
 
 ## Done
+
+- **Approved iOS path:** exact 0.3.9 pins, shared target-specific example entry point, and
+  simulator bundle scaffold. Linux builds/tests, three mobile library type-checks, and
+  bundle-script fixture checks pass. Apple application build/runtime remains unqualified.
+  See [receipts](receipts/ios-path-20261024/README.md).
 
 - **macOS follow-up:** fetch, fmt, all-target build, Clippy `-D warnings`, and rustdoc with
   `-D warnings -W missing-docs` passed at `e4a2c87`. Rust sources and Cargo files remained
@@ -131,7 +137,8 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 
 - **Linux windowing:** approved `wayland`/`x11` features applied (34 added lock packages).
   Both examples launch under isolated Xvfb. Wayland runtime and Orca remain untested.
-- **Mobile:** the GPUI 0.3.9 plus `gpui-pre-ios` path is approved but not applied. Xcode 26.2
+- **Mobile:** the approved GPUI 0.3.9 plus target-specific `gpui-pre-ios` path and simulator
+  bundle scaffold are implemented. Linux checks do not qualify an Apple app. Xcode 26.2
   and an iOS 26.2 Simulator runtime were available during setup; no app was built or launched.
   Android still needs a backend decision. Neither path has a verified mobile AccessKit adapter.
 - **Screen readers:** VoiceOver was attempted, but announcement retrieval timed out and the
@@ -185,8 +192,8 @@ added.
 Approved October 24:
 
 - Linux `wayland`/`x11` features applied and verified under Xvfb (34 added lock packages).
-- Move both GPUI pins to 0.3.9 and add target-specific `gpui-pre-ios`, following macOS verification;
-  Simulator setup was also approved and reached runtime installation only.
+- GPUI 0.3.9 pins and target-specific `gpui-pre-ios` are applied with an example bundle
+  scaffold. Further Apple verification needs a separately authorized host.
 - Add focused tests. Final GitHub Actions setup is approved after implementation and local
   verification; the workflow is not enabled.
 
@@ -214,7 +221,7 @@ No branch was deleted here. Recheck current refs and working state before editin
   `probe-edges.rs.txt` are the manual probe apps behind the before/after receipts. Copy one to
   `examples/probe.rs` locally to run it; they are not part of the crate.
 - **Next verification:** extend the sampled isolated X11 checks to Wayland and Orca; finish the remaining macOS input, IME, reduced-motion and paired-capture
-  work on a separate Apple session; implement the approved iOS path and label every Simulator
+  work on a separate Apple session; verify the implemented iOS scaffold on that host and label every Simulator
   result; obtain native Windows and Android evidence separately. A Linux container cannot
   supply Apple Metal tooling or macOS/iOS runtime acceptance.
 - **Open defects:** the component audit findings above and the mobile work in

@@ -8,6 +8,9 @@ versioning once a release policy is decided. No version has been published.
 
 ### Added
 
+- Approved GPUI 0.3.9 dependency path, target-specific iOS example entry points, and an
+  evidence-preserving simulator bundle script. Apple build/runtime acceptance remains pending.
+
 - Seven focused regression tests for UTF-16 offsets, disabled picker defaults, Gregorian
   month lengths, and slider snapping/invalid bounds and steps.
 

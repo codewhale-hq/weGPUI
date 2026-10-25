@@ -132,8 +132,8 @@ not an interaction verdict.
   `PrintWindow`, and inspect accessibility with Accessibility Insights or Narrator/NVDA. Name the
   Windows version, scaling factor and screen reader in the report. A mingw cross-build is not a
   runtime receipt. The earlier Wine 9.0 failure is commit-reported without a committed run log.
-- **iOS/Android:** no backend exists at the pinned GPUI (`docs/PLATFORMS.md`). Once one does,
-  evidence must come from a labelled simulator/emulator or device, with OS version, device model,
+- **iOS/Android:** iOS has an unqualified backend/bundle scaffold; Android has no backend
+  (`docs/PLATFORMS.md`). Runtime evidence must come from a labelled simulator/emulator or device, with OS version, device model,
   orientation, safe-area insets, software keyboard/IME, lifecycle (background/foreground) and
   VoiceOver/TalkBack results. A narrow desktop window is not mobile evidence.
 

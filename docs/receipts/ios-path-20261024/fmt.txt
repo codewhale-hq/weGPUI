@@ -1,0 +1,179 @@
+Diff in /work/examples/gallery/main.rs:295:
+
+ fn main() {
+     let args = parse_args();
+-    platform::application()
+-        .with_assets(Assets)
+-        .run(move |cx| {
+-            wegpui::init(cx);
+-            if let Some(mode) = args.theme {
+-                Theme::set_mode(mode, cx);
+-            }
+-            if args.care {
+-                Theme::set_care(true, cx);
+-            }
+-            if args.brand.is_some() {
+-                Theme::set_brand(args.brand, cx);
+-            }
+-            if let Some(reduce) = args.reduce_motion {
+-                cx.set_reduce_motion(reduce);
+-            }
+-            cx.on_action(|_: &Quit, cx| cx.quit());
+-            cx.on_action(|_: &ThemeLight, cx| {
+-                Theme::set_mode(ThemeMode::Light, cx);
+-                set_menus(cx);
+-            });
+-            cx.on_action(|_: &ThemeDark, cx| {
+-                Theme::set_mode(ThemeMode::Dark, cx);
+-                set_menus(cx);
+-            });
+-            cx.on_action(|_: &ThemeSystem, cx| {
+-                Theme::set_mode(ThemeMode::System, cx);
+-                set_menus(cx);
+-            });
+-            cx.on_action(|_: &ToggleCare, cx| {
+-                let care = !Theme::get(cx).care;
+-                Theme::set_care(care, cx);
+-                set_menus(cx);
+-            });
+-            cx.on_action(|_: &ToggleBrand, cx| {
+-                let brand = match Theme::get(cx).brand_override {
+-                    Some(_) => None,
+-                    None => Some(rgb(CUSTOM_BRAND).into()),
+-                };
+-                Theme::set_brand(brand, cx);
+-                set_menus(cx);
+-            });
+-            cx.on_action(|_: &ToggleReduceMotion, cx| {
+-                let reduce = !cx.reduce_motion();
+-                cx.set_reduce_motion(reduce);
+-                set_menus(cx);
+-            });
+-            cx.bind_keys([
+-                KeyBinding::new("cmd-q", Quit, None),
+-                KeyBinding::new("cmd-[", Back, None),
+-                KeyBinding::new("alt-left", Back, None),
+-                KeyBinding::new("cmd-shift-h", Home, None),
+-            ]);
++    platform::application().with_assets(Assets).run(move |cx| {
++        wegpui::init(cx);
++        if let Some(mode) = args.theme {
++            Theme::set_mode(mode, cx);
++        }
++        if args.care {
++            Theme::set_care(true, cx);
++        }
++        if args.brand.is_some() {
++            Theme::set_brand(args.brand, cx);
++        }
++        if let Some(reduce) = args.reduce_motion {
++            cx.set_reduce_motion(reduce);
++        }
++        cx.on_action(|_: &Quit, cx| cx.quit());
++        cx.on_action(|_: &ThemeLight, cx| {
++            Theme::set_mode(ThemeMode::Light, cx);
+             set_menus(cx);
+-            let (w, h) = args.size.unwrap_or((375., 812.));
+-            let bounds = match args.position {
+-                Some((x, y)) => Bounds::new(point(px(x), px(y)), size(px(w), px(h))),
+-                None => Bounds::centered(None, size(px(w), px(h)), cx),
++        });
++        cx.on_action(|_: &ThemeDark, cx| {
++            Theme::set_mode(ThemeMode::Dark, cx);
++            set_menus(cx);
++        });
++        cx.on_action(|_: &ThemeSystem, cx| {
++            Theme::set_mode(ThemeMode::System, cx);
++            set_menus(cx);
++        });
++        cx.on_action(|_: &ToggleCare, cx| {
++            let care = !Theme::get(cx).care;
++            Theme::set_care(care, cx);
++            set_menus(cx);
++        });
++        cx.on_action(|_: &ToggleBrand, cx| {
++            let brand = match Theme::get(cx).brand_override {
++                Some(_) => None,
++                None => Some(rgb(CUSTOM_BRAND).into()),
+             };
+-            let window = cx
+-                .open_window(
+-                    WindowOptions {
+-                        window_bounds: Some(WindowBounds::Windowed(bounds)),
+-                        titlebar: Some(TitlebarOptions {
+-                            title: Some("weGPUI".into()),
+-                            ..Default::default()
+-                        }),
+-                        app_id: Some("weGPUI".into()),
++            Theme::set_brand(brand, cx);
++            set_menus(cx);
++        });
++        cx.on_action(|_: &ToggleReduceMotion, cx| {
++            let reduce = !cx.reduce_motion();
++            cx.set_reduce_motion(reduce);
++            set_menus(cx);
++        });
++        cx.bind_keys([
++            KeyBinding::new("cmd-q", Quit, None),
++            KeyBinding::new("cmd-[", Back, None),
++            KeyBinding::new("alt-left", Back, None),
++            KeyBinding::new("cmd-shift-h", Home, None),
++        ]);
++        set_menus(cx);
++        let (w, h) = args.size.unwrap_or((375., 812.));
++        let bounds = match args.position {
++            Some((x, y)) => Bounds::new(point(px(x), px(y)), size(px(w), px(h))),
++            None => Bounds::centered(None, size(px(w), px(h)), cx),
++        };
++        let window = cx
++            .open_window(
++                WindowOptions {
++                    window_bounds: Some(WindowBounds::Windowed(bounds)),
++                    titlebar: Some(TitlebarOptions {
++                        title: Some("weGPUI".into()),
+                         ..Default::default()
+-                    },
+-                    |window, cx| {
+-                        let view = cx.new(|cx| Gallery::new(&args, window, cx));
+-                        cx.set_global(Nav(view.downgrade()));
+-                        view
+-                    },
+-                )
+-                .expect("gallery window");
+-            window
+-                .update(cx, |_, window, cx| {
+-                    cx.observe_window_activation(window, |_, window, cx| {
+-                        if window.is_window_active() {
+-                            wegpui::motion::sync_reduce_motion(cx);
+-                        }
+-                    })
+-                    .detach();
++                    }),
++                    app_id: Some("weGPUI".into()),
++                    ..Default::default()
++                },
++                |window, cx| {
++                    let view = cx.new(|cx| Gallery::new(&args, window, cx));
++                    cx.set_global(Nav(view.downgrade()));
++                    view
++                },
++            )
++            .expect("gallery window");
++        window
++            .update(cx, |_, window, cx| {
++                cx.observe_window_activation(window, |_, window, cx| {
++                    if window.is_window_active() {
++                        wegpui::motion::sync_reduce_motion(cx);
++                    }
+                 })
+-                .ok();
+-            cx.on_window_closed(|cx, _| cx.quit()).detach();
+-            cx.activate(true);
+-        });
++                .detach();
++            })
++            .ok();
++        cx.on_window_closed(|cx, _| cx.quit()).detach();
++        cx.activate(true);
++    });
+ }

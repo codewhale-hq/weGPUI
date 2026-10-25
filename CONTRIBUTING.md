@@ -32,8 +32,8 @@ Respect `CARGO_TARGET_DIR` in any script you add.
 
 Platform notes: both examples enable `gpui_platform`'s `wayland`/`x11` features on Linux.
 Isolated X11 verification is recorded in [docs/PLATFORMS.md](docs/PLATFORMS.md); Wayland runtime
-acceptance remains outstanding. iOS and Android have no
-backend yet. Please report what you tried on Windows. Native Windows runtime results are
+acceptance remains outstanding. iOS has an unqualified backend/bundle scaffold; Android has no upstream
+backend. Please report what you tried on Windows. Native Windows runtime results are
 missing evidence the project needs.
 
 ## Project conventions

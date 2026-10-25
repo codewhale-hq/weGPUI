@@ -1,0 +1,140 @@
+    Updating crates.io index
+     Locking 24 packages to highest Rust 1.95 compatible versions
+    Updating gpui-pre v0.3.7 -> v0.3.9
+    Updating gpui-pre-apple v0.3.7 -> v0.3.9
+    Updating gpui-pre-collections v0.3.7 -> v0.3.9
+    Updating gpui-pre-derive-refineable v0.3.7 -> v0.3.9
+    Updating gpui-pre-http-client v0.3.7 -> v0.3.9
+      Adding gpui-pre-ios v0.3.9
+    Updating gpui-pre-linux v0.3.7 -> v0.3.9
+    Updating gpui-pre-macos v0.3.7 -> v0.3.9
+    Updating gpui-pre-macros v0.3.7 -> v0.3.9
+    Updating gpui-pre-platform v0.3.7 -> v0.3.9
+    Updating gpui-pre-refineable v0.3.7 -> v0.3.9
+    Updating gpui-pre-scheduler v0.3.7 -> v0.3.9
+    Updating gpui-pre-shared-string v0.3.7 -> v0.3.9
+    Updating gpui-pre-sum-tree v0.3.7 -> v0.3.9
+    Updating gpui-pre-util v0.3.7 -> v0.3.9
+    Updating gpui-pre-web v0.3.7 -> v0.3.9
+    Updating gpui-pre-wgpu v0.3.7 -> v0.3.9
+    Updating gpui-pre-windows v0.3.7 -> v0.3.9
+    Updating gpui-pre-ztracing v0.3.7 -> v0.3.9
+    Updating gpui-pre-ztracing-macro v0.3.7 -> v0.3.9
+    Updating mach2 v0.5.0 -> v0.6.0
+      Adding objc2-core-text v0.3.2
+      Adding objc2-security v0.3.2
+      Adding objc2-ui-kit v0.3.2
+ Downloading crates ...
+  Downloaded gpui-pre-util v0.3.9
+  Downloaded gpui-pre-shared-string v0.3.9
+  Downloaded gpui-pre-wgpu v0.3.9
+  Downloaded gpui-pre-derive-refineable v0.3.9
+  Downloaded gpui-pre-platform v0.3.9
+  Downloaded gpui-pre-refineable v0.3.9
+  Downloaded gpui-pre-linux v0.3.9
+  Downloaded gpui-pre-macros v0.3.9
+  Downloaded gpui-pre-scheduler v0.3.9
+  Downloaded gpui-pre-collections v0.3.9
+  Downloaded gpui-pre-ztracing-macro v0.3.9
+  Downloaded gpui-pre-http-client v0.3.9
+  Downloaded gpui-pre-ztracing v0.3.9
+  Downloaded gpui-pre-sum-tree v0.3.9
+  Downloaded gpui-pre v0.3.9
+    Checking log v0.4.34
+   Compiling serde_core v1.0.229
+   Compiling indexmap v2.14.2
+   Compiling serde v1.0.229
+    Checking fastrand v2.5.0
+    Checking tracing-core v0.1.36
+    Checking futures-lite v2.6.1
+    Checking tracing v0.1.44
+    Checking uuid v1.28.0
+    Checking wayland-sys v0.31.11
+    Checking piper v0.2.5
+    Checking wayland-backend v0.3.17
+    Checking async-io v2.6.0
+    Checking blocking v1.7.0
+    Checking async-executor v1.14.0
+    Checking async-signal v0.2.14
+    Checking async-process v2.5.0
+   Compiling naga v29.0.4
+    Checking fontdb v0.23.0
+    Checking wayland-client v0.31.15
+    Checking accesskit v0.24.1
+    Checking rand v0.9.5
+    Checking wgpu-types v29.0.4
+   Compiling wgpu-hal v29.0.4
+   Compiling toml_datetime v1.1.2+spec-1.1.0
+   Compiling toml_edit v0.25.17+spec-1.1.0
+   Compiling zvariant_utils v4.2.0
+   Compiling enumflags2 v0.7.12
+   Compiling proc-macro-crate v3.5.0
+   Compiling zcheapstr v1.1.0
+   Compiling serde_spanned v1.1.2
+   Compiling toml v1.1.8+spec-1.1.0
+   Compiling gpui-pre-ztracing v0.3.9
+    Checking rustybuzz v0.20.1
+   Compiling zvariant_derive v5.15.0
+   Compiling zvariant v5.15.0
+   Compiling embed-resource v3.0.11
+    Checking gpu-allocator v0.28.0
+    Checking simplecss v0.2.2
+    Checking smol_str v0.3.6
+   Compiling gpui-pre-ztracing-macro v0.3.9
+    Checking schemars v1.2.3
+   Compiling zbus_names v4.3.4
+    Checking wgpu-naga-bridge v29.0.4
+   Compiling zbus_xml v5.2.1
+   Compiling zbus_macros v5.19.0
+   Compiling zbus-lockstep v0.5.2
+   Compiling zbus-lockstep-macros v0.5.2
+    Checking usvg v0.46.0
+    Checking flume v0.12.0
+    Checking tiny-skia v0.11.4
+   Compiling derive_more-impl v2.1.1
+    Checking zbus v5.19.0
+   Compiling gpui-pre v0.3.9
+    Checking wayland-protocols v0.32.13
+    Checking gpui-pre-util v0.3.9
+   Compiling wgpu-core v29.0.4
+   Compiling gpui-pre-derive-refineable v0.3.9
+    Checking gpui-pre-scheduler v0.3.9
+    Checking gpui-pre-refineable v0.3.9
+    Checking resvg v0.46.0
+    Checking derive_more v2.1.1
+    Checking gpui-pre-collections v0.3.9
+    Checking wgpu-core-deps-windows-linux-android v29.0.4
+    Checking gpui-pre-http-client v0.3.9
+    Checking gpui-pre-sum-tree v0.3.9
+    Checking gpui-pre-shared-string v0.3.9
+   Compiling gpui-pre-macros v0.3.9
+    Checking taffy v0.13.0
+    Checking spin v0.10.1
+   Compiling wgpu v29.0.4
+   Compiling zed-font-kit v0.14.1-zed
+    Checking pathfinder_geometry v0.5.1
+    Checking accesskit_consumer v0.38.0
+    Checking atspi-common v0.13.0
+    Checking async-fs v2.2.0
+    Checking cosmic-text v0.19.0
+    Checking ashpd v0.13.13
+    Checking num-bigint-dig v0.9.1
+    Checking atspi-proxies v0.13.0
+    Checking accesskit_atspi_common v0.19.1
+    Checking async-net v2.0.0
+    Checking atspi v0.29.0
+    Checking calloop v0.14.4
+    Checking zed-xim v0.4.0-zed
+    Checking smol v2.0.2
+    Checking accesskit_unix v0.22.1
+    Checking calloop-wayland-source v0.4.1
+    Checking oo7 v0.6.0
+    Checking notify-rust v4.18.0
+    Checking wayland-protocols-plasma v0.3.12
+    Checking wayland-protocols-wlr v0.3.12
+    Checking wayland-cursor v0.31.14
+    Checking gpui-pre-wgpu v0.3.9
+    Checking wegpui v0.1.0 (/work)
+    Checking gpui-pre-linux v0.3.9
+    Checking gpui-pre-platform v0.3.9
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 47.88s

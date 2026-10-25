@@ -1,0 +1,2 @@
+An authorized Apple host with Xcode is required; Linux cannot build this bundle.
+exit=1

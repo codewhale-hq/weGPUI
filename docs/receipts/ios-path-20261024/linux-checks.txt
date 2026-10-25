@@ -1,0 +1,120 @@
+   Compiling log v0.4.34
+   Compiling fastrand v2.5.0
+   Compiling tracing-core v0.1.36
+   Compiling uuid v1.28.0
+   Compiling wayland-sys v0.31.11
+   Compiling futures-lite v2.6.1
+   Compiling piper v0.2.5
+   Compiling tracing v0.1.44
+   Compiling zvariant v5.15.0
+   Compiling wayland-backend v0.3.17
+   Compiling naga v29.0.4
+   Compiling async-io v2.6.0
+   Compiling blocking v1.7.0
+   Compiling async-signal v0.2.14
+   Compiling async-process v2.5.0
+   Compiling async-executor v1.14.0
+   Compiling wayland-client v0.31.15
+   Compiling fontdb v0.23.0
+   Compiling zbus_names v4.3.4
+   Compiling accesskit v0.24.1
+   Compiling zbus v5.19.0
+   Compiling zbus_xml v5.2.1
+   Compiling rand v0.9.5
+   Compiling wgpu-types v29.0.4
+   Compiling rustybuzz v0.20.1
+   Compiling gpu-allocator v0.28.0
+   Compiling zbus-lockstep v0.5.2
+   Compiling simplecss v0.2.2
+   Compiling smol_str v0.3.6
+   Compiling usvg v0.46.0
+   Compiling schemars v1.2.3
+   Compiling gpui-pre-ztracing v0.3.9
+   Compiling flume v0.12.0
+   Compiling tiny-skia v0.11.4
+   Compiling gpui-pre-util v0.3.9
+   Compiling wayland-protocols v0.32.13
+   Compiling wgpu-naga-bridge v29.0.4
+   Compiling wgpu-hal v29.0.4
+   Compiling atspi-common v0.13.0
+   Compiling gpui-pre-scheduler v0.3.9
+   Compiling gpui-pre-refineable v0.3.9
+   Compiling resvg v0.46.0
+   Compiling wgpu-core-deps-windows-linux-android v29.0.4
+   Compiling gpui-pre-collections v0.3.9
+   Compiling gpui-pre-http-client v0.3.9
+   Compiling derive_more v2.1.1
+   Compiling gpui-pre-sum-tree v0.3.9
+   Compiling gpui-pre-shared-string v0.3.9
+   Compiling taffy v0.13.0
+   Compiling spin v0.10.1
+   Compiling atspi-proxies v0.13.0
+   Compiling gpui-pre v0.3.9
+   Compiling pathfinder_geometry v0.5.1
+   Compiling wgpu-core v29.0.4
+   Compiling accesskit_consumer v0.38.0
+   Compiling async-fs v2.2.0
+   Compiling cosmic-text v0.19.0
+   Compiling zed-font-kit v0.14.1-zed
+   Compiling atspi v0.29.0
+   Compiling accesskit_atspi_common v0.19.1
+   Compiling num-bigint-dig v0.9.1
+   Compiling ashpd v0.13.13
+   Compiling async-net v2.0.0
+   Compiling calloop v0.14.4
+   Compiling zed-xim v0.4.0-zed
+   Compiling oo7 v0.6.0
+   Compiling wgpu v29.0.4
+   Compiling calloop-wayland-source v0.4.1
+   Compiling smol v2.0.2
+   Compiling accesskit_unix v0.22.1
+   Compiling wayland-cursor v0.31.14
+   Compiling wayland-protocols-wlr v0.3.12
+   Compiling wayland-protocols-plasma v0.3.12
+   Compiling notify-rust v4.18.0
+   Compiling gpui-pre-wgpu v0.3.9
+   Compiling wegpui v0.1.0 (/work)
+   Compiling gpui-pre-linux v0.3.9
+   Compiling gpui-pre-platform v0.3.9
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1m 11s
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.52s
+     Running unittests src/lib.rs (target/debug/deps/wegpui-359b22b00ef5d92b)
+
+running 7 tests
+test components::picker::tests::disabled_default_wraps_to_an_enabled_option ... ok
+test components::picker::tests::empty_and_all_disabled_columns_have_no_enabled_default ... ok
+test components::picker::tests::gregorian_centuries_and_month_lengths ... ok
+test components::slider::tests::invalid_steps_preserve_a_usable_keyboard_increment ... ok
+test components::slider::tests::invalid_ranges_cannot_replace_the_last_finite_range ... ok
+test input::tests::utf16_offsets_stay_on_utf8_boundaries ... ok
+test components::slider::tests::snapping_is_relative_to_minimum_and_clamped ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+    Checking wegpui v0.1.0 (/work)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 4.04s
+    Blocking waiting for file lock on build directory
+    Checking futures-io v0.3.34
+    Checking rustybuzz v0.20.1
+    Checking tracing v0.1.44
+    Checking schemars v1.2.3
+    Checking futures-util v0.3.34
+    Checking gpui-pre-ztracing v0.3.9
+    Checking flume v0.12.0
+    Checking uuid v1.28.0
+    Checking tiny-skia v0.11.4
+    Checking accesskit v0.24.1
+    Checking gpui-pre-shared-string v0.3.9
+    Checking async-channel v2.5.0
+   Compiling gpui-pre v0.3.9
+    Checking gpui-pre-sum-tree v0.3.9
+    Checking taffy v0.13.0
+    Checking usvg v0.46.0
+    Checking futures-executor v0.3.34
+    Checking futures v0.3.34
+    Checking gpui-pre-scheduler v0.3.9
+    Checking gpui-pre-http-client v0.3.9
+    Checking resvg v0.46.0
+ Documenting wegpui v0.1.0 (/work)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1m 11s
+   Generated /work/target/doc/wegpui/index.html

@@ -1,0 +1,37 @@
+dbus-daemon[18545]: [session uid=0 pid=18545 pidfd=5] org.freedesktop.DBus.Error.AccessDenied: Failed to set fd limit to 65536: Operation not permitted
+Defaulting to search window name, class, and classname
+## initial
+apps 1
+application 'minimal' [] DISABLED
+  frame '' ['focusable', 'showing']
+    panel '' ['showing']
+      list item 'Confirmed' ['showing']
+      button 'Open dialog' ['focusable', 'showing']
+## open (@190,126)
+apps 1
+application 'minimal' [] DISABLED
+  frame '' ['showing']
+    dialog 'weGPUI' ['focusable', 'modal', 'showing']
+      button 'Cancel' ['focusable', 'showing']
+      button 'OK' ['focusable', 'showing']
+## confirm (@267,396)
+apps 1
+application 'minimal' [] DISABLED
+  frame '' ['showing']
+    panel '' ['showing']
+      list item 'Confirmed' ['showing']
+      button 'Open dialog' ['focusable', 'showing']
+## reopen (@190,126)
+apps 1
+application 'minimal' [] DISABLED
+  frame '' ['showing']
+    dialog 'weGPUI' ['focusable', 'modal', 'showing']
+      button 'Cancel' ['focusable', 'showing']
+      button 'OK' ['focusable', 'showing']
+## dismiss (Escape)
+apps 1
+application 'minimal' [] DISABLED
+  frame '' ['showing']
+    panel '' ['showing']
+      list item 'Confirmed' ['showing']
+      button 'Open dialog' ['focusable', 'showing']
