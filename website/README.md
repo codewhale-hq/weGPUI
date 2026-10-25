@@ -72,9 +72,16 @@ the website. Native GPUI and actual screen-reader acceptance require separate ch
 
 ## Publication
 
+The gallery is published at <https://codewhale-hq.github.io/weGPUI/>. GitHub records a
+successful build and deployment of `e5b6996` in
+[run 40211664701](https://github.com/codewhale-hq/weGPUI/actions/runs/40211664701).
+The owner selected GitHub Actions in Pages settings and dispatched this publication.
+The cloud proxy blocks access to the published origin, so local browser results remain
+separate from deployed-origin rendering and interaction acceptance.
+
 Deploy the complete `website/dist/`, including `.nojekyll`, only after owner approval.
 [HOSTING.md](HOSTING.md) describes the manual-only GitHub Pages workflow, required
-settings, project-prefix behavior and Cloudflare alternative. Preparing or pushing
-the workflow does not enable Pages or publish the site. CI dispatch and deployment
+settings, project-prefix behavior and Cloudflare alternative. Subsequent source pushes
+do not trigger this manual-only workflow. CI dispatch and deployment
 remain separately authorized actions. Keep the developer-preview label until the
 [desktop release gates](../docs/RELEASE-READINESS.md) are complete.

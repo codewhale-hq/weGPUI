@@ -176,10 +176,14 @@ checked-in assets and local-only upload previews. This separate HTML/CSS/JavaScr
 implementation does not run native GPUI; historical native captures use `?view=native`,
 and native setup remains at `#native-guide`. All 40 native component rows remain unaccepted.
 
-The manual-only GitHub Pages workflow and [hosting steps](../website/HOSTING.md) are ready
-for review. Pages is not enabled and no live site is established. The original instruction
-against CI dispatch/deployment still requires final explicit owner authorization for the
-reviewed source, destination, Pages enablement and publication action.
+The owner configured Pages and dispatched the manual-only workflow. Build and deploy both
+succeeded for `e5b6996` in [run 40211664701](https://github.com/codewhale-hq/weGPUI/actions/runs/40211664701),
+returning <https://codewhale-hq.github.io/weGPUI/>. See the
+[publication receipt](receipts/pages-publication-20261025/README.md) and
+[hosting steps](../website/HOSTING.md). The agent's checks were read-only. Direct access
+to the public origin is blocked by the cloud proxy, so deployed-origin browser qualification
+is still open. Further workflow dispatches require owner authorization; source pushes do
+not publish automatically.
 
 ## Platform acceptance matrix
 
@@ -456,8 +460,9 @@ No branch was deleted here. Recheck current refs and working state before editin
 - **Reproduce behaviour probes:** `receipts/takeover-20261025/probe.rs.txt` and
   `probe-edges.rs.txt` are the manual probe apps behind the before/after receipts. Copy one to
   `examples/probe.rs` locally to run it; they are not part of the crate.
-- **Next verification:** review the verified interactive gallery and obtain final explicit
-  owner authorization before Pages enablement, CI dispatch or deployment. Preserve the separately verified native
+- **Next verification:** qualify rendering, deep links and interactions on the published
+  gallery from a host that can reach its origin. Further CI dispatch/deployment requires owner
+  authorization. Preserve the separately verified native
   batch and its extended guard receipts; qualify cache performance and remaining matrices. Further
   vendor changes beyond the approved scope require approval. Extend sampled theme/state,
   nested-Weston and Orca checks to full desktop/component qualification;

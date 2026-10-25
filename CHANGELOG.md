@@ -9,7 +9,7 @@ versioning once a release policy is decided. No version has been published.
 ### Added
 
 - Interactive browser gallery with 60 WeUI examples, 132 state presets, local file previews,
-  theme controls and portable Python-only builds. Manual GitHub Pages publication is prepared.
+  theme controls and portable Python-only builds, published on GitHub Pages through a manual workflow.
 - DateField typed ISO entry, read-only and validation APIs, optional-value change events and
   form-label/error association. Full-i32 year ranges use bounded lazy picker rows.
 - Semantic article paragraphs/headings, cell titles/tips, configurable progress announcements,

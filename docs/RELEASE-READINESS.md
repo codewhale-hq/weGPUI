@@ -118,9 +118,12 @@ The website source belongs in this repository. It must offer:
 - [ ] Qualify the live deployed host, additional browser engines and actual screen-reader
   behavior on the website. Local Chromium checks do not establish these results.
 - [x] Prepare the manual-only Pages workflow and [hosting steps](../website/HOSTING.md).
-- [ ] Obtain final owner authorization for the reviewed source and destination, enable Pages
-  and publish. Pages is not enabled and no live deployment is established. The original
-  no-CI-dispatch / no-deployment instruction still applies to the publication action.
+- [x] Publish the owner's reviewed source on GitHub Pages. The owner configured the source
+  and dispatched [run 40211664701](https://github.com/codewhale-hq/weGPUI/actions/runs/40211664701)
+  for `e5b6996`; build and deploy succeeded and returned <https://codewhale-hq.github.io/weGPUI/>.
+  [The receipt](receipts/pages-publication-20261025/README.md) distinguishes this GitHub
+  deployment result from public-origin browser qualification, blocked by the cloud proxy.
+  Further dispatches/publications still require owner authorization; source pushes do not deploy.
 
 The browser uses a separate HTML/CSS/JavaScript implementation. Historical native captures
 remain available with `?view=native`, and native setup at `#native-guide`. Browser checks do

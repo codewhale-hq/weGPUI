@@ -22,8 +22,8 @@ Updated 2026-10-25 by the Linux cloud agent. Each item says what unblocks it.
    reader acceptance remains incomplete, including Linux AT text replacement (the bridge lacks
    an EditableText interface).
 5. **Owner decisions still pending** (from STATUS): local-time source for `picker::today()`
-   (DateField defaults to UTC "today"), crates.io name/versioning, publication timing, website
-   deployment target, signing/notarization requirements for packaged galleries.
+   (DateField defaults to UTC "today"), crates.io name/versioning, package publication timing,
+   signing/notarization requirements for packaged galleries. GitHub Pages is the chosen website host.
 6. **Release authorization** before any crates.io publish, website deployment, tag, release
    or CI dispatch. The 60-route / 132-preset interactive gallery is built and locally verified
    in full candidate1 at root and `/weGPUI/`: 40 browser checks, including 360 route/viewport
@@ -31,11 +31,13 @@ Updated 2026-10-25 by the Linux cloud agent. Each item says what unblocks it.
    checks pass at both mounts; each legacy run verifies 264 historical views and 528 decoded
    images. Theme/native-theme pages pass at 375/390/768/1280px with retained palette routes
    and live iframe pointer/Space interaction; the final narrow theme capture was reviewed.
-   Live-host, additional-browser and actual screen-reader qualification for the website remain open. The
-   [manual Pages flow](../website/HOSTING.md) is prepared; Pages is not enabled and no live
-   deployment is established. The original no-CI-dispatch / no-deployment instruction still
-   requires final owner authorization for the reviewed source and chosen destination before
-   enabling Pages or running publication. Browser results leave all 40 native rows unaccepted.
+   The owner configured Pages and dispatched [successful run 40211664701](https://github.com/codewhale-hq/weGPUI/actions/runs/40211664701)
+   for `e5b6996`; the published URL is <https://codewhale-hq.github.io/weGPUI/>.
+   [Publication evidence](receipts/pages-publication-20261025/README.md) confirms build/deploy
+   success, while the cloud proxy prevents public-origin browser qualification. Live-host,
+   additional-browser and actual screen-reader checks remain open. Further publication uses
+   the [manual Pages flow](../website/HOSTING.md) with owner authorization; source pushes do
+   not publish updates. Browser results leave all 40 native rows unaccepted.
 7. **Upstream AccessKit report (optional):** `accesskit_atspi_common 0.19.1` never exports
    disabled for buttons in the original locked source (see `receipts/a11y-p1-20261024`).
    The approved local compatibility copy now fixes the sampled export. Filing an upstream issue is an

@@ -17,22 +17,29 @@ status visible until the desktop release gates are complete.
 
 ## GitHub Pages
 
+The published gallery is <https://codewhale-hq.github.io/weGPUI/>. The owner saved
+**GitHub Actions** as the Pages source, then dispatched
+[run 40211664701](https://github.com/codewhale-hq/weGPUI/actions/runs/40211664701)
+from `main` at `e5b6996ca29bba628386293220fe604c6e6acf7a`. Both build and deploy
+jobs succeeded. The deploy log returned that URL as its evaluated environment URL.
+See [the publication receipt](../docs/receipts/pages-publication-20261025/README.md).
+The cloud proxy blocks direct access to the public origin; deployed-origin rendering,
+deep links and interactions remain unqualified here.
+
 `.github/workflows/pages.yml` is prepared for **manual publication from `main`**.
 It has only a `workflow_dispatch` trigger. A push, pull request or ordinary CI run
 does not trigger it. It uses the artifact deployment API and does not need a
 `gh-pages` branch. Its configuration step has `enablement: 'false'`, so the workflow
 cannot create a Pages site automatically.
 
-Preparation of these files is not a deployment. Before changing settings or
-dispatching the workflow, obtain the owner's approval for the reviewed site,
-source commit, destination and publication action. The original takeover
-instructions require authorization before CI dispatch or deployment; the website
-destination remains an owner decision.
+Source pushes do not publish updates. Further workflow dispatches still require
+owner authorization under the original takeover instructions. The existing Pages
+source does not need to be configured again for each publication.
 
-After that approval:
+For an authorized update:
 
 1. In [repository Pages settings](https://github.com/codewhale-hq/weGPUI/settings/pages),
-   select **GitHub Actions** as the build and deployment source. Leave the custom
+   confirm **GitHub Actions** remains the build and deployment source. Leave the custom
    domain unset unless the owner has chosen one.
 2. Review the `github-pages` environment under repository Settings → Environments.
    Restrict deployment branches to `main`; configure an owner reviewer if desired.
@@ -46,12 +53,10 @@ After that approval:
    verification receipt. Open a component deep link directly, reload it, and
    verify theme switching and browser interactions on the published origin.
 
-The expected default project URL is
-`https://codewhale-hq.github.io/weGPUI/`; it is an expected destination, not a
-verified live deployment. The deployment step's `page_url` is authoritative after
-a successful run. Existing organization or custom-domain settings may change it.
-No custom domain, DNS change, Pages setting change or workflow run was performed
-as part of preparing this workflow.
+The deployment step's returned URL is authoritative for each successful run.
+Existing organization or custom-domain settings may change it. The agent did not
+change DNS, set a custom domain, enable Pages or dispatch the publication; the owner
+performed the GitHub configuration and workflow run.
 
 The `build` job has repository-content read and Pages read permissions. Only the
 `deploy` job receives Pages write and OIDC token permissions. Checkout does not
@@ -76,14 +81,14 @@ workflow pins these exact commits rather than moving tags:
 The connected GitHub tool reported this public repository's default branch as
 `main`, `has_pages: false`, an unset repository homepage and repository permissions
 including `admin: true` and `push: true` on 2026-10-25. Pages was therefore not
-enabled at that observation. Those metadata permissions do not establish that
-an Actions run will be permitted by organization policy. The available
+enabled at that earlier observation. The owner's subsequent configuration and
+successful run supersede that historical state. The available
 connector tools expose repository reads and source operations, but no Pages
 settings or workflow-dispatch operation. The cloud runtime reports no configured
 outbound identity or secret binding. Existing shell credential failures do not
-justify changing authentication or creating an account. Final enablement may
-therefore need the owner's authenticated GitHub browser or a separately
-authorized connection with the required operations.
+justify changing authentication or creating an account. Subsequent publication
+still needs the owner's authenticated GitHub session or an authorized connection
+with workflow-dispatch capability.
 
 ## Base paths and other static hosts
 

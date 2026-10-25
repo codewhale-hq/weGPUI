@@ -78,10 +78,14 @@ local upload demos have no transport. This is a separate HTML/CSS/JavaScript imp
 native captures remain available with `?view=native` and native setup at `#native-guide`.
 These browser results do not accept any of the 40 native component rows.
 
-The manual-only Pages workflow and [hosting steps](../website/HOSTING.md) are prepared.
-Pages is not enabled and no live deployment is established. The original no-CI-dispatch /
-no-deployment instruction still requires the owner's final explicit authorization for the
-reviewed source and destination before enabling Pages, dispatching the workflow or publishing.
+The owner configured GitHub Pages and dispatched the manual workflow. Both build and
+deploy succeeded for `e5b6996` in [run 40211664701](https://github.com/codewhale-hq/weGPUI/actions/runs/40211664701).
+The returned gallery URL is <https://codewhale-hq.github.io/weGPUI/>; see
+[the publication receipt](receipts/pages-publication-20261025/README.md) and
+[hosting steps](../website/HOSTING.md). The cloud proxy blocks access to that origin,
+so public rendering/deep-link/interaction qualification remains open. The agent only read
+GitHub evidence; it did not dispatch this run. Source pushes do not publish updates, and
+further dispatch/deployment actions still require owner authorization.
 The separately verified native fixes remain retained; cache performance with/without AT,
 arbitrary external topmost ordering, other hosts and complete reader acceptance remain open.
 

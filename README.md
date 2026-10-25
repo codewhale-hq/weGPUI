@@ -5,6 +5,8 @@ native Rust components for [GPUI](https://gpui.rs), the GPU-accelerated UI frame
 It renders WeUI's tokens, icons, components and overlays with GPUI primitives, without a WebView,
 and is written to stay close to upstream behaviour.
 
+**[Open the interactive browser gallery →](https://codewhale-hq.github.io/weGPUI/)**
+
 | Native GPUI (macOS) | Upstream WeUI in Chromium |
 | --- | --- |
 | <img src="https://raw.githubusercontent.com/codewhale-hq/weGPUI/main/docs/parity/half-screen-dialog-1-light-gpui.png" width="280" alt="weGPUI half-screen dialog"> | <img src="https://raw.githubusercontent.com/codewhale-hq/weGPUI/main/docs/parity/half-screen-dialog-1-light-weui.png" width="280" alt="WeUI half-screen dialog"> |
@@ -19,13 +21,20 @@ The website offers 60 live WeUI browser examples and 132 state presets, with lig
 dark, care contrast and custom brand controls. Forms, dialogs, pickers and local file
 previews run in HTML/CSS/JavaScript; the native Rust library remains a separate implementation.
 
+The gallery is published on GitHub Pages. The [successful deployment](https://github.com/codewhale-hq/weGPUI/actions/runs/40211664701)
+uses source revision `e5b6996`. Updates are published manually through
+[Publish gallery to GitHub Pages](https://github.com/codewhale-hq/weGPUI/actions/workflows/pages.yml):
+**Run workflow → Branch: main → Run workflow**. Pushing source alone does not publish it.
+
+To preview locally:
+
 ```sh
 python3 website/build.py
 python3 -m http.server 4173 --bind 127.0.0.1 --directory website/dist
 ```
 
 Open <http://127.0.0.1:4173/>. See [website setup and checks](website/README.md) and
-[GitHub Pages hosting](website/HOSTING.md). Publication is prepared but not enabled.
+[GitHub Pages hosting](website/HOSTING.md).
 Historical native captures and the native setup guide remain available in the gallery.
 
 ## Quick start

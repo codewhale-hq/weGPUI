@@ -1,0 +1,27 @@
+{
+  "result": "GitHub Actions build and Pages deployment succeeded",
+  "source_sha": "e5b6996ca29bba628386293220fe604c6e6acf7a",
+  "run_id": 40211664701,
+  "page_url": "https://codewhale-hq.github.io/weGPUI/",
+  "dispatch": "Owner-dispatched workflow_dispatch; this agent performed connector GET reads only.",
+  "sources": {
+    "run_collection": "https://api.github.com/repos/codewhale-hq/weGPUI/actions/runs?branch=main&per_page=100",
+    "run": "https://github.com/codewhale-hq/weGPUI/actions/runs/40211664701",
+    "jobs": "https://api.github.com/repos/codewhale-hq/weGPUI/actions/runs/40211664701/jobs?per_page=100",
+    "deploy_job": "https://github.com/codewhale-hq/weGPUI/actions/runs/40211664701/job/121224070447",
+    "decoded_log_endpoint": "https://api.github.com/repos/codewhale-hq/weGPUI/actions/jobs/121224070447/logs"
+  },
+  "retained_evidence_sha256": {
+    "parsed_run_canonical_json": "4e7e86f1deb025475b499110c9293d15481e3b233b815a42e5d5104b42609739",
+    "parsed_jobs_canonical_json": "ebf837d8708957d39d56a7a768ceb597df89c1d1e0133d324df183847b3ccf7a",
+    "complete_decoded_deploy_log_utf8": "cfe64653dbc4ab60ce298cecbe2845eb9c32ec521bccd66c22f72991cd244535",
+    "selected_log_lines_utf8": "86306d620c29ef79a32a78f125fae9110a784062d079d46f6e3efd4def4b4f22"
+  },
+  "hash_scope": "Raw HTTP response bytes were not retained. Parsed objects were canonicalized with sorted keys, compact separators and UTF-8; the log hash covers the exact complete decoded log string retained by the connector. Only normalized non-secret fields and selected public success/URL lines are persisted. No temporary signed download URL is persisted.",
+  "public_origin_qualification": {
+    "status": "unqualified",
+    "single_prior_probe_at": "2026-10-25T16:25:11.704483Z",
+    "result": "Inherited cloud proxy rejected CONNECT with 403 Forbidden before an origin HTTP response; no title or public rendering result obtained. No alternate-route probe or retry was made."
+  },
+  "mutation": "No agent source edit, build, CI dispatch, Pages enablement or deployment action performed for this collection."
+}

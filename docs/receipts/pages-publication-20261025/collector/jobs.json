@@ -1,0 +1,104 @@
+[
+  {
+    "id": 121224000525,
+    "name": "build",
+    "status": "completed",
+    "conclusion": "success",
+    "started_at": "2026-10-25T16:26:21Z",
+    "completed_at": "2026-10-25T16:26:37Z",
+    "html_url": "https://github.com/codewhale-hq/weGPUI/actions/runs/40211664701/job/121224000525",
+    "steps": [
+      {
+        "name": "Set up job",
+        "number": 1,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-25T16:26:22Z",
+        "completed_at": "2026-10-25T16:26:24Z"
+      },
+      {
+        "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+        "number": 2,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-25T16:26:24Z",
+        "completed_at": "2026-10-25T16:26:30Z"
+      },
+      {
+        "name": "Read existing Pages configuration",
+        "number": 3,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-25T16:26:30Z",
+        "completed_at": "2026-10-25T16:26:31Z"
+      },
+      {
+        "name": "Build static gallery",
+        "number": 4,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-25T16:26:31Z",
+        "completed_at": "2026-10-25T16:26:31Z"
+      },
+      {
+        "name": "Upload Pages artifact",
+        "number": 5,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-25T16:26:31Z",
+        "completed_at": "2026-10-25T16:26:34Z"
+      },
+      {
+        "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+        "number": 10,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-25T16:26:34Z",
+        "completed_at": "2026-10-25T16:26:34Z"
+      },
+      {
+        "name": "Complete job",
+        "number": 11,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-25T16:26:34Z",
+        "completed_at": "2026-10-25T16:26:34Z"
+      }
+    ]
+  },
+  {
+    "id": 121224070447,
+    "name": "deploy",
+    "status": "completed",
+    "conclusion": "success",
+    "started_at": "2026-10-25T16:26:40Z",
+    "completed_at": "2026-10-25T16:26:55Z",
+    "html_url": "https://github.com/codewhale-hq/weGPUI/actions/runs/40211664701/job/121224070447",
+    "steps": [
+      {
+        "name": "Set up job",
+        "number": 1,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-25T16:26:41Z",
+        "completed_at": "2026-10-25T16:26:42Z"
+      },
+      {
+        "name": "Deploy approved gallery",
+        "number": 2,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-25T16:26:42Z",
+        "completed_at": "2026-10-25T16:26:54Z"
+      },
+      {
+        "name": "Complete job",
+        "number": 3,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-25T16:26:54Z",
+        "completed_at": "2026-10-25T16:26:54Z"
+      }
+    ]
+  }
+]

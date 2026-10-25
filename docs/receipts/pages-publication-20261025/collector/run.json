@@ -1,0 +1,16 @@
+{
+  "id": 40211664701,
+  "name": "Publish gallery to GitHub Pages",
+  "path": ".github/workflows/pages.yml",
+  "event": "workflow_dispatch",
+  "head_branch": "main",
+  "head_sha": "e5b6996ca29bba628386293220fe604c6e6acf7a",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-10-25T16:26:18Z",
+  "updated_at": "2026-10-25T16:26:56Z",
+  "run_started_at": "2026-10-25T16:26:18Z",
+  "html_url": "https://github.com/codewhale-hq/weGPUI/actions/runs/40211664701",
+  "actor": "Hmbown",
+  "triggering_actor": "Hmbown"
+}
