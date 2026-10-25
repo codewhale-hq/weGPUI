@@ -23,7 +23,7 @@ cargo run --example component_states # loading, labels, countdown and keyboard c
 ```
 
 Rust 1.95 or newer is required. Linux needs GPUI's system libraries (see
-[CONTRIBUTING](CONTRIBUTING.md)). Both examples already enable `gpui_platform`'s
+[CONTRIBUTING](CONTRIBUTING.md)). The bundled examples already enable `gpui_platform`'s
 `wayland`/`x11` features ([docs/PLATFORMS.md](docs/PLATFORMS.md)).
 
 ## Using the library
@@ -84,9 +84,9 @@ packaging all have receipts from that platform. Details and evidence are in
 
 | Platform | Today |
 | --- | --- |
-| macOS | Hosted build/tests/Clippy pass at `05cae89`; historical runtime/AX samples at `e4a2c87`. Current runtime and VoiceOver acceptance incomplete. Not packaged. |
+| macOS | Native component builds, nine tests, strict Clippy/docs and a packaged consumer pass. Sampled loading, focus, labels and inline-link interactions verified. Full runtime and VoiceOver acceptance incomplete; signed distribution missing. |
 | Linux | Windowing features enabled. Both examples build and render under isolated Xvfb; sampled dialog/select XTEST input and AT-SPI trees verified. No Wayland runtime or Orca acceptance. Not packaged. |
-| Windows | Cross-compiles (mingw). No native run, accessibility or packaging evidence. |
+| Windows | Native Windows 11 ARM/MSVC builds, nine tests and strict Clippy/docs pass; sampled component and inline-link interactions verified. x64, screen-reader and distribution acceptance missing. |
 | iOS | 0.3.9 scaffold implemented; hosted simulator build fails on mismatched upstream APIs. No runtime acceptance. Not supported. |
 | Android | Library type-checks only. No upstream backend. Not supported. |
 

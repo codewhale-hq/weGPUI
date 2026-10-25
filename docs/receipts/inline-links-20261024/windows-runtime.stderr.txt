@@ -1,0 +1,6 @@
+guide clicks=1
+preferences clicks=1
+preferences clicks=2
+preferences clicks=3
+guide clicks=2
+guide clicks=3

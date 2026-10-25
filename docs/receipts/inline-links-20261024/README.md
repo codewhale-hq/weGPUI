@@ -18,9 +18,11 @@ The corrected log and focused screenshots preserve these results. AX contains th
 two named link nodes. No screen-reader acceptance is claimed.
 
 Windows11 ARM/Rust1.99/MSVC14.44: corrected package build, strict all-target Clippy
-and strict rustdoc passed. Native pointer/keyboard verification is still in progress
-at this checkpoint. Full guest logs are retained under the local Windows artifact
-folder; source remained unchanged during checks.
+and strict rustdoc passed. Native pointer/keyboard verification passed: Tab/Enter selected each link independently;
+clicking the short glyph or the second wrapped line and pressing Enter activated only
+the intended link. Each callback reached three activations. The exact event log is
+windows-runtime.stderr.txt. Source remained unchanged during checks. Windows x64,
+Narrator, IME and installer acceptance remain unqualified.
 
 The owner granted a one-time exception for the small cached macOS build while
 another chat held the shared build slot. The other build was not interrupted.
