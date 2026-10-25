@@ -1,0 +1,5 @@
+Command: python3 website/build.py --include-api
+Result: exit 1; PermissionError writing /workspace/weGPUI/target/website.
+The Rust target directory is owned by the isolated build container.
+Resolution: use the repository-owned, ignored website/dist directory by default.
+No package or display permissions were changed.

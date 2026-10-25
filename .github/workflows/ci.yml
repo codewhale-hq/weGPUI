@@ -43,6 +43,17 @@ jobs:
         run: cargo +stable doc --no-deps --locked --offline
         env:
           RUSTDOCFLAGS: -D warnings -W missing-docs
+      - name: Build complete showcase
+        run: |
+          node --check website/app.js
+          python3 website/build.py --include-api
+      - name: Preserve reviewable website
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: wegpui-website
+          path: website/dist/
+          if-no-files-found: error
+          retention-days: 7
       - name: Bundle script contracts (fake tools, no Apple runtime)
         run: |
           bash -n examples/ios/build-simulator.sh

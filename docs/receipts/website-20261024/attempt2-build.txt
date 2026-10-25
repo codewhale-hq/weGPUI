@@ -1,0 +1,3 @@
+Command: python3 website/build.py --include-api
+Result: exit 1; shutil.Error copying target/doc/.lock (permission denied).
+Resolution: exclude Cargo rustdoc lock files from copied public API documentation.

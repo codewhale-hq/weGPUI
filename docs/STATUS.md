@@ -4,7 +4,9 @@ weGPUI is an independent Rust library and gallery port of WeUI 2.6.26 for GPUI. 
 canonical contributor home; CNB is a mirror. All 61 upstream example files have gallery
 mappings. Visual, behavioural and accessibility parity is **sampled, not complete**.
 
-The target platforms are macOS, Windows, Linux, iOS and Android. **No platform is supported yet**
+The first public release targets macOS, Windows and Linux; iOS and Android remain
+experimental. See the [desktop release checklist](RELEASE-READINESS.md) and
+[website build guide](../website/README.md). **No platform is supported yet**
 in the sense of [PLATFORMS](PLATFORMS.md): every one still lacks at least one of the build,
 launch, rendering, interaction, accessibility or packaging receipts. The iOS backend/bundle
 scaffold is implemented but unqualified; Android has no backend.

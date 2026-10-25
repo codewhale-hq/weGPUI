@@ -114,3 +114,11 @@ Limited, a Tencent company. Its MIT notice is preserved in NOTICE and LICENSE-WE
 
 The text input adapts GPUI's `examples/input.rs`, Copyright Zed Industries, Apache-2.0. Its
 attribution is preserved in the source header and NOTICE.
+
+## Showcase and public release
+
+The first release targets desktop; mobile remains experimental. The
+[release checklist](docs/RELEASE-READINESS.md) tracks the remaining acceptance gates.
+The [website](website/README.md) includes all 60 gallery routes, 132 recorded states,
+light/dark comparisons, getting started, themes and API documentation. It can be
+built and served locally; a public deployment has not yet been configured.

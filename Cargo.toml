@@ -15,6 +15,7 @@ exclude = [
     "/docs/receipts/",
     "/docs/proposals/",
     "/scripts/",
+    "/website/",
     "/.cnb.yml",
     "/.github/",
 ]

@@ -1,0 +1,5 @@
+{
+  "browser": "154.0.8037.57",
+  "page_errors": [],
+  "title": "Familiar design.Native feel. \u2014 weGPUI"
+}
