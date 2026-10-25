@@ -1,0 +1,21 @@
+error: failed to run custom build command for `gpui-pre v0.3.7`
+note: To improve backtraces for build dependencies, set the CARGO_PROFILE_DEV_BUILD_OVERRIDE_DEBUG=true environment variable to enable debug information generation.
+Caused by:
+  process didn't exit successfully: `/home/user/weGPUI/target/debug/build/gpui-pre-395313bb1721bfcf/build-script-build` (exit status: 101)
+  --- stdout
+  cargo::rustc-check-cfg=cfg(gles)
+  cargo:rerun-if-changed=resources/windows/gpui.manifest.xml
+  cargo:rerun-if-changed=resources/windows/gpui.rc
+  --- stderr
+  thread 'main' (17812) panicked at /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-0.3.7/build.rs:23:10:
+  called `Result::unwrap()` on an `Err` value: NotAttempted("x86_64-w64-mingw32-windres")
+  stack backtrace:
+     0: __rustc::rust_begin_unwind
+     1: core::panicking::panic_fmt
+     2: core::result::unwrap_failed
+     3: build_script_build::embed_resource
+     4: build_script_build::main
+     5: <fn() as core::ops::function::FnOnce<()>>::call_once
+  note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+warning: build failed, waiting for other jobs to finish...
+lib exit=101

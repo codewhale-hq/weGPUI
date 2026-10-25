@@ -10,8 +10,10 @@ homepage = "https://github.com/codewhale-hq/weGPUI"
 
 [dependencies]
 gpui = { package = "gpui-pre", version = "=0.3.7" }
-gpui_platform = { package = "gpui-pre-platform", version = "=0.3.7", features = ["font-kit"] }
 unicode-segmentation = "1.12"
+
+[dev-dependencies]
+gpui_platform = { package = "gpui-pre-platform", version = "=0.3.7", features = ["font-kit"] }
 
 [profile.dev]
 debug = 1

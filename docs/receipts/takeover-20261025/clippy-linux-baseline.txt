@@ -1,0 +1,5 @@
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 26.54s
+real	0m26.754s
+user	1m6.841s
+sys	0m9.604s
+exit=0

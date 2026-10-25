@@ -1,0 +1,138 @@
+# Platform feasibility and acceptance — 2026-10-25
+
+The target is macOS, Windows, Linux, iOS and Android. This document records what the pinned
+dependencies can do, what was actually built or run, and the smallest maintainable path to the
+rest. A platform is **supported** only when every column in the acceptance matrix has a receipt
+from that platform. Nothing below reaches that bar yet.
+
+## Pinned dependency facts
+
+Sources: crates.io `gpui-pre =0.3.7` (a snapshot of `zed@1a28cff`) and `gpui-pre-platform =0.3.7`,
+read from the locked Cargo registry; upstream Zed `main` at
+`347f171a3fd00a3b672382d78348b37bd969d17c` (2026-10-24), read from a sparse clone of
+`crates/gpui*`.
+
+| Fact | Source |
+| --- | --- |
+| `gpui_platform::current_platform` has `macos`, `windows`, `linux`/`freebsd` and `wasm` branches only. On iOS/Android it has no tail expression, so the crate fails with `E0308` (expected `Rc<dyn Platform>`, found `()`). | `gpui-pre-platform-0.3.7/src/gpui_platform.rs:57`; receipts `check-lib-aarch64-*.txt` |
+| weGPUI's library code does not call `gpui_platform`; only the gallery's `main()` does. | `grep gpui_platform src examples` |
+| `gpui_platform` depends on `gpui_linux` with `default-features = false`. With only `font-kit` enabled, Linux compiles, but the windowed constructor reaches `unreachable!("At least one of the \"wayland\" or \"x11\" features must be enabled …")`. | `gpui-pre-linux-0.3.7/src/linux.rs:56`; receipt `run-linux-baseline-xvfb.txt` |
+| GPUI core already has the platform-neutral mobile vocabulary: `TouchEvent`, a gesture arena that turns taps/pans/pinches into `ClickEvent::Touch`, `ScrollWheelEvent` and `PinchEvent`, `WindowInsets { safe_area, ime }`, `request_virtual_keyboard`/`dismiss_virtual_keyboard`, and `AppLifecyclePhase` (`Background`/`Foreground`). | `gpui-pre-0.3.7/src/{gestures.rs,platform.rs:810-860,window.rs:2797}` |
+| GPUI core type-checks for `aarch64-apple-ios` and `aarch64-linux-android`. | receipts `check-gpui-core-*.txt` |
+| AccessKit adapters are wired for macOS, Windows and Linux (`accesskit_macos`, `accesskit_windows`, `accesskit_unix`). No mobile adapter is wired in the pinned crates. | `gpui-pre-{macos,windows,linux}-0.3.7/Cargo.toml` |
+| `gpui-pre-wgpu 0.3.7` (wgpu renderer plus cosmic-text/swash text system) type-checks for `aarch64-linux-android`. | receipt `check-gpui-wgpu-android.txt` |
+| Upstream Zed `main` has `crates/gpui_ios` (UIKit, CoreText, Metal through `gpui_apple`; lifecycle, safe-area and keyboard insets, native text input, raw touches) and `gpui_platform` now dispatches `target_os = "ios"` to it. It has no AccessKit adapter, and `prompt_for_paths`/save dialogs return "not yet implemented for iOS". | `zed/crates/gpui_ios/src/ios/platform.rs:313,328`; `zed/crates/gpui_platform/src/gpui_platform.rs:68` |
+| crates.io `gpui-pre-ios 0.3.9` (snapshot of `zed@b4ecc45`) requires `gpui-pre =0.3.9`. `gpui-pre-platform 0.3.9` does not yet contain the iOS branch. | crate manifests |
+| `gpui-pre-ios 0.3.9` cannot be type-checked from Linux: `gpui-pre-apple`'s build script produces Metal shader files only on an Apple host, with or without `runtime_shaders`. | receipts `check-gpui-pre-ios-039*.txt` |
+| Upstream Zed has no Android platform crate. | sparse clone listing of `zed/crates/gpui*` |
+| `gpui-pre-mobile 0.1.0` (`longbridge/gpui-mobile`) implements iOS and Android outside Zed, about 46,700 lines, pinned to `gpui-pre =0.3.4`. It has no AccessKit integration, and its README states IME composition, accessibility and lifecycle hooks are incomplete. | crate source and README |
+| weGPUI compiles unchanged against `gpui-pre =0.3.9`/`gpui-pre-platform =0.3.9` (`cargo check --all-targets`, Linux, in a scratch copy). | receipt `check-wegpui-on-gpui-039.txt` |
+| The `wasm32` path needs nightly: `wasm_thread` uses `#![feature(stdarch_wasm_atomic_wait)]`. | receipt `check-lib-wasm32-unknown-unknown.txt` |
+
+## What was run in this environment
+
+Linux x86_64 cloud container, Rust/Cargo 1.97.0, no GPU, no KVM, no Apple host and no physical
+devices.
+
+- **Linux, current manifest:** `cargo build --all-targets --locked --offline`,
+  `cargo clippy --all-targets --locked --offline -- -D warnings` and `cargo fmt --all -- --check`
+  all exited 0. Launching the gallery under Xvfb panicked with the `unreachable!` above.
+- **Linux, scratch copy with `features = ["font-kit", "wayland", "x11"]`:** the build added 34
+  packages to `Cargo.lock` (listed in `linux-features-lock-delta.txt`) and changed no existing
+  version. The gallery opened a real X11 window under Xvfb, rendered through Mesa's software
+  driver, navigated on an `xdotool` click and moved focus with `Tab` (screenshots in the receipts).
+  `accesskit_unix` exposed the tree to AT-SPI (`atspi-before-*.txt`, read with `pyatspi`). No Orca
+  session, Wayland compositor or physical display was used.
+- **Windows:** `cargo build --all-targets --target x86_64-pc-windows-gnu --locked --offline` exited
+  0 with mingw-w64 and linked `gallery.exe`. Wine 9.0 could not start it: `icuuc.dll`, a Windows
+  10 system library, is missing from Wine. No native Windows host was available.
+- **iOS/Android:** with the current manifest `cargo check --lib` fails in `gpui_platform` (E0308).
+  With `gpui_platform` as a dev-dependency (applied on `main`, see below), `cargo check --lib`
+  succeeds for `aarch64-apple-ios`, `aarch64-apple-ios-sim` and `aarch64-linux-android`. That only
+  proves that the library type-checks. Nothing was linked, packaged, launched or touched.
+
+## Acceptance matrix
+
+Each cell needs a receipt from that platform. Simulators and emulators count only when labelled
+as such. Current state:
+
+| Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
+| --- | --- | --- | --- | --- | --- | --- |
+| macOS | Earlier arm64 receipts (Rust 1.99, `51be7e3`); not rebuilt here | Earlier gallery runs | 28 fresh pairs in the 2026-10-24 review | Mouse/keyboard samples; one TextArea Pinyin commit | Whole-window AX dumps, 9 routes; no VoiceOver | Not done |
+| Linux | x86_64 build/clippy/fmt pass | **Fails** (no windowing feature); passes in scratch with `x11` under Xvfb | Software-rendered Xvfb screenshots in scratch | `xdotool` click and Tab in scratch | AT-SPI tree in scratch; no Orca | Not done |
+| Windows | mingw cross-build links | Wine failed (missing `icuuc.dll`); no native host | Missing | Missing | Missing (Narrator/NVDA) | Not done |
+| iOS | Library type-checks for device and simulator targets | Blocked: no iOS backend at the pin, no Apple host | Missing | Missing (touch, keyboard, IME, rotation, lifecycle) | Missing; upstream backend has no AccessKit | Not done |
+| Android | Library type-checks | Blocked: no Android backend anywhere upstream; no KVM for an emulator here | Missing | Missing | Missing (TalkBack) | Not done |
+
+Mobile interaction acceptance means touch taps, drags and scrolling; the software keyboard and
+IME composition; safe-area and keyboard insets; orientation changes; background/foreground
+lifecycle; and a screen-reader pass. Desktop acceptance means real windows, keyboard and focus,
+resizing and a screen-reader pass.
+
+## Applied without new dependencies
+
+`gpui_platform` moved from `[dependencies]` to `[dev-dependencies]`. The library never used it,
+`Cargo.lock` is unchanged, and the gallery and examples still use it. Consumers now pick their own
+platform crate (`gpui_platform` on desktop, a mobile backend on a phone). On macOS they must enable
+`gpui_platform`'s `font-kit` feature themselves, as the README shows. This is what makes the
+mobile library type-check above.
+
+## Proposals that need Hunter's decision
+
+### 1. Linux windowing features (recommended now)
+
+Change the gallery's dev-dependency to
+`gpui_platform = { package = "gpui-pre-platform", version = "=0.3.7", features = ["font-kit", "wayland", "x11"] }`.
+No pin changes. It adds 34 transitive packages, all already depended on by the pinned
+`gpui-pre-linux` crate's optional features (`wayland-client`, `x11rb`, `xkbcommon`, `zed-xim` and
+their helpers). Effect: the Linux gallery launches. Public API: none. Maintenance: CI needs
+`libxkbcommon-dev`, `libxkbcommon-x11-dev`, `libwayland-dev` and `libx11-xcb-dev`, which
+`.cnb.yml` already installs.
+
+### 2. iOS through upstream `gpui_ios`
+
+Move both GPUI pins to `=0.3.9` and add a target-specific dev-dependency,
+`[target.'cfg(target_os = "ios")'.dev-dependencies] gpui_ios = { package = "gpui-pre-ios", version = "=0.3.9" }`.
+The gallery's `main` then calls `gpui_ios::current_platform` on iOS (until a published
+`gpui-pre-platform` carries Zed's iOS branch), plus an Xcode/`Info.plist` bundle wrapper modelled
+on `zed/crates/gpui_ios/examples/ios`.
+
+- Public API: none expected. The library compiled unchanged on 0.3.9.
+- Renderer: Metal through `gpui_apple`, which is shared with macOS.
+- Input: UIKit touches feed GPUI's gesture arena. Native text input exists, but weGPUI's
+  `TextInput`/`TextArea` must also call `request_virtual_keyboard` on focus and honour
+  `WindowInsets::ime`. That is weGPUI work.
+- Accessibility: upstream has no AccessKit adapter for iOS. VoiceOver acceptance needs an
+  upstream contribution (`accesskit` has no UIKit adapter either, so this is substantial).
+- Maintenance: follow upstream; the `gpui-pre` snapshots move weekly.
+- Needs a macOS host with Xcode for building, the iOS Simulator, and a device for physical
+  receipts. None is available in this container.
+
+### 3. Android through an upstream `gpui_android` contribution
+
+No backend exists in Zed. The smallest maintainable path is to contribute one upstream, in the
+shape of `gpui_ios`/`gpui_linux`. Window, input and lifecycle would come from `android-activity`
+(GameActivity, for IME `InputConnection`). Rendering and text would reuse `gpui_wgpu`, which
+already type-checks for Android. Accessibility would use `accesskit_android` (0.9.0 on crates.io).
+That is a new crate outside weGPUI and a substantial project: multiple person-months judging by
+`gpui_ios` (about 3,500 lines without accessibility) and `gpui-pre-mobile` (about 46,700 lines).
+
+Alternatives considered and **not recommended**:
+
+- Adopting `gpui-pre-mobile` means a third-party fork-style platform pinned to `gpui-pre =0.3.4`,
+  with no accessibility. It would force a pin downgrade or a fork.
+- Running `gpui_web` in a WebView needs nightly Rust and a web host. It amounts to replacing the
+  native platform with a web runtime, which the brief excludes.
+- Forking GPUI is excluded unless approved.
+
+### Decision summary
+
+| Decision | Recommendation |
+| --- | --- |
+| Enable `wayland`/`x11` for the gallery | Yes, now |
+| Move to `gpui-pre =0.3.9` and add `gpui-pre-ios` | Yes, once a macOS/Xcode host and simulator are available for acceptance |
+| Fund or contribute `gpui_android` upstream | Required for any honest Android claim; scope separately |
+| iOS AccessKit/VoiceOver | Upstream contribution; without it, iOS fails the accessibility column |
+
+Until these land, weGPUI is a desktop-verified library that also type-checks for mobile targets.
+It is not a supported mobile library.

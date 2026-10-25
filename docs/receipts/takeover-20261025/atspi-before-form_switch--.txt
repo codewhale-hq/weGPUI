@@ -1,0 +1,8 @@
+apps 1
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['focusable', 'showing']
+    heading '开关样式展示' ['showing']
+    toggle button '标题文字' ['focusable', 'showing']
+    toggle button '标题文字' ['showing'] DISABLED
+    toggle button '兼容IE Edge的版本' ['focusable', 'showing']
+    push button '确定' ['focusable', 'showing']
