@@ -23,6 +23,7 @@ versioning once a release policy is decided. No version has been published.
 
 ### Fixed
 
+- Primary and warn buttons show a visible outer brand focus ring, not only a white inner border.
 - Accessible set positions were one too high (AccessKit positions are zero-based) for radios,
   select options, article lists, form-preview items and list tips.
 - Bottom-fixed pages reveal focused fields above the toolbar fade (`FocusScroll::inset_bottom`).

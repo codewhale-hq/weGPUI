@@ -416,6 +416,8 @@ impl RenderOnce for Button {
             (false, ButtonKind::Default) | (true, ButtonKind::Primary) => t.brand,
             _ => white(),
         };
+        let outer_ring = !self.overlay && self.kind != ButtonKind::Default;
+        let brand = t.brand;
         let spinner_color: Hsla = if self.kind == ButtonKind::Default && !self.overlay {
             rgb(0x606060).into()
         } else {
@@ -501,7 +503,20 @@ impl RenderOnce for Button {
                 )
                 .focusable()
                 .tab_stop(true)
-                .focus_visible(move |s| s.border_color(ring));
+                .focus_visible(move |s| {
+                    let s = s.border_color(ring);
+                    if outer_ring {
+                        s.shadow(vec![BoxShadow {
+                            color: brand,
+                            offset: point(px(0.), px(0.)),
+                            blur_radius: px(0.),
+                            spread_radius: px(2.),
+                            inset: false,
+                        }])
+                    } else {
+                        s
+                    }
+                });
             if let Some(focus) = self.focus {
                 el = el.track_focus(&focus);
             }

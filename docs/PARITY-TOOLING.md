@@ -119,6 +119,9 @@ not an interaction verdict.
   may ignore.
 - AccessKit reports the `focused` state only for an active window, which a bare Xvfb never has.
   Judge focus from screenshots.
+- Run a window manager (`openbox`) on the Xvfb display when focus matters: GPUI dispatches focus
+  events only to an active window, so without one `TextInput` draws no caret. Under openbox
+  capture with `import -window <id>`; root-window captures can come out black.
 - IME: `fcitx5` with `fcitx5-chinese-addons`, started inside the D-Bus session, and the gallery
   run with `XMODIFIERS=@im=fcitx`. Ctrl+Space switches to Pinyin.
 - File chooser: `xdg-desktop-portal` plus `xdg-desktop-portal-gtk` inside the D-Bus session
