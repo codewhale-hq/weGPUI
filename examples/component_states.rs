@@ -245,6 +245,10 @@ fn main() {
                         point(px(60.), px(60.)),
                         size(px(480.), px(900.)),
                     ))),
+                    titlebar: Some(TitlebarOptions {
+                        title: Some("weGPUI component states".into()),
+                        ..Default::default()
+                    }),
                     ..Default::default()
                 },
                 |window, cx| {

@@ -431,7 +431,9 @@ impl RenderOnce for Modal {
                 el.occlude()
             })
             .bg(mask_color)
-            .capture_key_down({
+            // Bubble phase, not capture: when one modal is rendered inside another, the
+            // innermost layer sees Tab first and stops it, so focus stays in the topmost modal.
+            .on_key_down({
                 let focus = focus.clone();
                 move |event, window, cx| {
                     if event.keystroke.key != "tab" {

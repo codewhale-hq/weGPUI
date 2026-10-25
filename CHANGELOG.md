@@ -23,6 +23,12 @@ versioning once a release policy is decided. No version has been published.
 
 ### Fixed
 
+- Nested modals: the Tab trap ran in the capture phase, so an outer modal took Tab from a modal
+  rendered inside it and focus reached controls behind the inner mask. The trap now runs in the
+  bubble phase and the innermost modal handles Tab first. New `examples/nested_modals.rs`.
+- Overlay primary buttons (white fill on brand) show a near-black focus ring instead of a brand
+  ring that was hard to see against the fill.
+
 - Information-bar link and close focus indicators use the bar text colour (2px), visible on
   every bar colour.
 - `TextInput`/`TextArea` undo: paste and cut are separate undo steps, and moving the caret ends

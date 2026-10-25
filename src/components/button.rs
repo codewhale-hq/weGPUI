@@ -46,8 +46,8 @@ pub enum ButtonKind {
 /// Defaults: [`ButtonKind::Default`], [`Size::Large`], enabled, horizontally centred, between 184px
 /// and 280px wide. The semibold label is clamped to two lines with an ellipsis. The button exposes
 /// `Role::Button`, is a Tab stop and activates on click, Enter or Space unless disabled or loading;
-/// keyboard focus shows a 2px ring, brand-coloured on default and overlay primary buttons and
-/// white otherwise. It holds no state: the owner rebuilds it each render with the current
+/// keyboard focus shows a 2px ring: brand on default buttons, near-black on overlay primary
+/// buttons, white otherwise, plus a 2px brand outer ring on non-overlay primary and warn buttons. It holds no state: the owner rebuilds it each render with the current
 /// `disabled`/`loading` values.
 #[derive(IntoElement)]
 pub struct Button {
@@ -413,7 +413,10 @@ impl RenderOnce for Button {
             .unwrap_or(if small || self.inline { 0. } else { 184. });
         let mask = t.btn_active_mask;
         let ring = match (self.overlay, self.kind) {
-            (false, ButtonKind::Default) | (true, ButtonKind::Primary) => t.brand,
+            (false, ButtonKind::Default) => t.brand,
+            // White fill on a brand page: a brand ring would sit at about 2.3:1 against the fill,
+            // so use the button's own near-black label colour.
+            (true, ButtonKind::Primary) => rgba(0x000000e6).into(),
             _ => white(),
         };
         let outer_ring = !self.overlay && self.kind != ButtonKind::Default;
