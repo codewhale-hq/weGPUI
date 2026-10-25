@@ -26,3 +26,12 @@ the test now targets the state selector directly. No product failure was hidden.
 The site has not been audited with an actual screen reader. Native application
 acceptance remains in PLATFORMS and RELEASE-READINESS. The existing hosted iOS
 upstream build failure remains visible; this website slice does not change that gate.
+
+Before push, remote main advanced to `7c9bb9e` with a host palette API. The site
+slice was rebased onto it. Strict rustdoc then caught missing documentation on
+`Theme::with_palette`; the method is now documented without changing behavior.
+`attempt4-rustdoc-path.txt` preserves an initial missing Cargo PATH;
+`attempt5-rustdoc-missing-docs.txt` preserves the strict documentation failure.
+`rustdoc.txt` is the subsequent passing strict build. The complete site and browser
+suite were rerun successfully after integration, along with fmt, JavaScript syntax,
+actionlint and whitespace checks. Hosted CI for this new slice remains separate.

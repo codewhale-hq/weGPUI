@@ -93,6 +93,10 @@ impl Theme {
     pub fn get(cx: &App) -> &Self {
         cx.global::<Self>()
     }
+    /// Replace this theme’s palette with colors supplied by the native host.
+    ///
+    /// Mode, care and brand setters rebuild the standard palette; the host must
+    /// reapply its mapping after those settings change.
     pub fn with_palette(mut self, palette: Palette) -> Self {
         self.palette = palette;
         self

@@ -1,0 +1,11 @@
+ Documenting wegpui v0.1.0 (/work)
+error: missing documentation for a method
+  --> src/theme.rs:96:5
+   |
+96 |     pub fn with_palette(mut self, palette: Palette) -> Self {
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `-D missing-docs` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(missing_docs)]`
+
+error: could not document `wegpui`
