@@ -54,3 +54,16 @@ break typing coalescing. After (`…-fixed.png`): undo → `12`, undo → empty,
 - `linux-x11-openbox-dialog-keyboard.png` (openbox, dialog): Tab to 样式一, Enter opens; focus
   goes to the dialog container (no ring), Tab/Tab cycle 辅助操作 ↔ 主操作 inside the dialog,
   Escape closes and focus returns to 样式一 with its ring; 样式二 opens the second dialog.
+
+## Forms, navbar, tabbar (verified, no change)
+
+`linux-x11-openbox-checkbox-switch-radio.png`: checkbox/switch Space toggles, disabled rows are
+skipped, radio Tab lands on the checked option. `linux-x11-openbox-navbar-tabbar-infobar.png`:
+navbar and tabbar Right arrows move selection with automatic activation (panel text changes);
+information-bar Enter on the focused close button removes the bar.
+
+## Information bar focus contrast (fixed)
+
+The link underline and close-button border used the brand green, 1px on the close button,
+which is faint on red/orange bars (`…-focus-before.png`). Both now use the bar's own text
+colour, and the close border is 2px (`…-focus-after.png`).

@@ -141,8 +141,8 @@ impl RenderOnce for InformationBar {
                     t.information_bar_tips_weak_link,
                 ),
             };
-            let focus = t.brand;
             let has_hd = self.icon.is_some();
+            let focus = fg;
             let has_ft = self.link.is_some() || self.close_label.is_some();
             let ft = has_ft.then(|| {
                 div()
@@ -173,11 +173,11 @@ impl RenderOnce for InformationBar {
                                 .id("information-bar-close")
                                 .role(Role::Button)
                                 .aria_label(label)
-                                .ml(px(7.))
-                                .my(px(-1.))
-                                .mr(px(-1.))
+                                .ml(px(6.))
+                                .my(px(-2.))
+                                .mr(px(-2.))
                                 .rounded(px(4.))
-                                .border_1()
+                                .border_2()
                                 .border_color(transparent_black())
                                 .cursor_pointer()
                                 .focusable()

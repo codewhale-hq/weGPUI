@@ -19,7 +19,7 @@ presentational.
 | `badge` | Badge | — | — | n/a | n/a | n/a | none | Static | None interactive; visual parity unsampled | P3 |
 | `button` | Size, ButtonKind, Button, ButtonArea, BottomFixedOpr, BottomFixedOprPage | on_click | disabled, loading, warn | yes | click (Enter/Space) | yes | role+name | Kinds/sizes, disabled, loading guard, cell variant, BottomFixedOpr | Primary/warn focus ring fixed 2026-10-24; Linux openbox Tab skips loading/disabled (button_default). Overlay/cell variants runtime open | P1 |
 | `cells` | CellsStyle, Cells, Cell | on_click | disabled, warn, selected | yes | click (Enter/Space) | yes | role+name | Clickable/link/disabled rows, track_focus | Access/arrow variants visual parity | P2 |
-| `checkbox` | Checkbox, CheckboxCell | on_change | disabled, checked | yes | click (Enter/Space) | yes | role+name | Controlled checked, disabled | Runtime checkbox matrix untested | P2 |
+| `checkbox` | Checkbox, CheckboxCell | on_change | disabled, checked | yes | click (Enter/Space) | yes | role+name | Controlled checked, disabled | Linux: Space toggle, disabled skipped 2026-10-24; mixed/indeterminate n/a upstream | P2 |
 | `date_field` | DateFieldMode, DateValue, DateFieldEvent, DateField | DateFieldEvent | disabled | yes | click (Enter/Space) | yes | role+name | New 2026-10-24: Date/DateTime, Change/Cancel events, value/range/disabled API | No typed entry, locale display, seconds; screen reader untested | P1 |
 | `dialog` | DialogButtonKind, DialogButton, Dialog | on_click, on_dismiss | disabled, warn | yes | click (Enter/Space) | overlay | role+name | Buttons, dismiss, focus restore (minimal example) | Announce order untested | P1 |
 | `flex` |  | — | — | n/a | n/a | n/a | none | Layout helper | Resize behaviour unsampled | P3 |
@@ -30,12 +30,12 @@ presentational.
 | `grid` | Grid, Grids | on_click | — | yes | click (Enter/Space) | yes | role+name | Clickable cells | Gallery callbacks empty | P3 |
 | `half_screen_dialog` | HdIconButton, HalfScreenDialog | on_click, on_dismiss | — | yes | click (Enter/Space) | overlay | role+name | Open/Tab/Escape/drag samples | Body FocusScroll wrapped 2026-10-24; nested-modal focus runtime | P1 |
 | `icons` | IconVariant, Icon, IconButton | on_click | disabled | yes | click (Enter/Space) | yes | role+name | 32 SVGs, IconButton disabled | No interaction contract beyond IconButton | P3 |
-| `information_bar` | InformationBarKind, InformationBar, ListTips | on_close | — | yes | click (Enter/Space) | yes | role+name | Close callback | Link/floating variants untested | P2 |
+| `information_bar` | InformationBarKind, InformationBar, ListTips | on_close | — | yes | click (Enter/Space) | yes | role+name | Close callback; Enter closes and focus contrast fixed 2026-10-24 (Linux) | Link/floating variants untested | P2 |
 | `loading` | LoadingKind, Loading | — | — | n/a | n/a | n/a | role+name | Kinds, busy role | Animation timing, live reduce-motion change | P3 |
 | `loadmore` | LoadMoreKind, LoadMore | — | loading | n/a | n/a | n/a | role+name | Presentation, loading state | None | P3 |
 | `modal` | Presence, MaskKind, Placement, Motion, Modal | on_dismiss | — | yes | custom | overlay | role+name | Presence, ModalScope, focus trap, Escape | Linux openbox: Tab trap, Escape close, focus restore passed 2026-10-24 (dialog). Nested modal stacking runtime open | P1 |
 | `msg` | LinkText, MsgIcon, Msg | — | — | yes | click (Enter/Space) | yes | role+name | LinkText shaped bounds, keyboard activation | Screen-reader acceptance | P2 |
-| `navbar` | Navbar | on_select | selected | yes | custom | no | role+name | Arrow-key selection, roving focus | Linux rerun; overflow scroller not FocusScroll-wrapped | P2 |
+| `navbar` | Navbar | on_select | selected | yes | custom | no | role+name | Arrow-key selection, roving focus; Linux openbox rerun passed 2026-10-24 | Linux rerun; overflow scroller not FocusScroll-wrapped | P2 |
 | `panel` | Panel, MediaBoxKind, MediaMeta, MediaBox | on_click | — | yes | click (Enter/Space) | yes | role+name | MediaBox click, focus styling | CJK punctuation/clamping differs | P2 |
 | `picker` | PickerItem, PickerEvent, Picker | PickerEvent | disabled, selected | yes | custom | overlay | role+name | Single/multi/cascade/date, keys, disabled rows; mid-animation key panic fixed 2026-10-24 | today() is UTC (owner decision); all-disabled diverges from weui.js by design | P1 |
 | `progress` | Progress | on_cancel | — | yes | click (Enter/Space) | yes | role+name | Cancel button | NaN fix source-only | P3 |
@@ -46,7 +46,7 @@ presentational.
 | `steps` | StepsLayout, Step, Steps | — | — | n/a | n/a | n/a | role+name | Static | None | P3 |
 | `swiped` | SwipedActionKind, SwipedAction, SwipedCell | on_click | warn | yes | custom | yes | role+name | Drag reveal, hidden actions, keyboard | Delete callback empty upstream | P2 |
 | `switch` | Switch | on_change | disabled, checked | yes | click (Enter/Space) | yes | role+name | Controlled checked, disabled, focus ring | — | P2 |
-| `tabbar` | TabbarItem, Tabbar | on_select | selected | yes | custom | no | role+name | Arrow selection | Linux rerun | P2 |
+| `tabbar` | TabbarItem, Tabbar | on_select | selected | yes | custom | no | role+name | Arrow selection; Linux openbox rerun passed 2026-10-24 | Linux rerun | P2 |
 | `textarea` | TextArea | — | disabled, warn | n/a | n/a | yes | role+name | Max length, counter, IME | UTF-16 counting vs upstream JS length | P2 |
 | `toast` | ToastKind, Toast | — | loading, warn | n/a | n/a | n/a | role+name | Kinds, passive focus, busy | Timing, alert subrole | P2 |
 | `toptips` | ToptipsState, Toptips | — | warn | n/a | n/a | n/a | role+name | Warn, overlay | Timing | P3 |

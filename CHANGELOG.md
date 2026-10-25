@@ -23,6 +23,8 @@ versioning once a release policy is decided. No version has been published.
 
 ### Fixed
 
+- Information-bar link and close focus indicators use the bar text colour (2px), visible on
+  every bar colour.
 - `TextInput`/`TextArea` undo: paste and cut are separate undo steps, and moving the caret ends
   typing coalescing.
 - Primary and warn buttons show a visible outer brand focus ring, not only a white inner border.
