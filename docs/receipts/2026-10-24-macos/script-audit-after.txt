@@ -1,0 +1,33 @@
+['bash', '-n', 'scripts/linux/session.sh', 'scripts/linux/sweep.sh']
+exit=0
+
+
+['bash', 'scripts/linux/sweep.sh', '<scratch>/sweep-after', 'not-a-route']
+exit=1
+FAIL not-a-route
+done: 0 ok, 1 failed
+
+
+['/opt/homebrew/bin/python3', '-I', 'scripts/contact_sheets.py', 'docs/receipts/takeover-20261025', '<scratch>/sheet-after', '--per', '0']
+exit=2
+
+usage: contact_sheets.py [-h] [--glob GLOB] [--prefix PREFIX] [--per PER]
+                         [--scale SCALE]
+                         pairs out
+contact_sheets.py: error: --per must be positive
+
+['/opt/homebrew/bin/python3', '-I', 'scripts/contact_sheets.py', 'docs/receipts/takeover-20261025', '<scratch>/sheet-after', '--scale', 'nan']
+exit=2
+
+usage: contact_sheets.py [-h] [--glob GLOB] [--prefix PREFIX] [--per PER]
+                         [--scale SCALE]
+                         pairs out
+contact_sheets.py: error: --scale must be finite and positive
+
+['/opt/homebrew/bin/python3', '-I', 'scripts/contact_sheets.py', 'docs/receipts/takeover-20261025', '<scratch>/sheet-after', '--glob', '*capture-pair*.png']
+exit=0
+1 pairs
+
+
+All Python scripts parse with ast.parse; bash -n passed.
+No Linux runtime or interaction verification is claimed.

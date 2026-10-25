@@ -43,6 +43,9 @@ versioning once a release policy is decided. No version has been published.
 
 ### Fixed
 
+- Evidence scripts fail on capture/traversal errors and invalid image dimensions. X11 capture
+  restricts its window search to the launched PID; contact sheets validate their arguments.
+
 - `Slider` no longer panics on non-finite ranges. Invalid steps and values fall back to the
   HTML defaults.
 - `SelectMenu` arrow keys stay within its options (Up/Down/Home/End stop at the ends).

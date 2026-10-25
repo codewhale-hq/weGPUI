@@ -60,3 +60,10 @@ Tooling defects confirmed before changes:
 
 These audit artifacts do not establish current macOS build, input or screen-reader success.
 Runtime and build receipts will identify their own source revision and commands.
+
+## Script repairs
+
+`script-audit-after.txt` retains syntax checks and command-level reproductions. A failed sweep
+now exits 1; invalid contact-sheet arguments exit 2; a real existing pair produces a sheet.
+The X11 PID matcher, process-liveness and AT-SPI error handling are source fixes; no Linux host
+was available for a new runtime check. Capture dimensions will also be exercised by the Mac run.

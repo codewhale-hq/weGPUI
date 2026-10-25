@@ -63,6 +63,7 @@ PAIR_DIR=/tmp/pairs python3 -I scripts/capture.py dialog --state ios1   # also w
   only the first 812 pt are compared.
 - **Brand/care** pass `--brand`/`--care` natively and set `--weui-BRAND` / `data-weui-mode` upstream.
 - Output names are `<route>[-<state>]-<theme>-{gpui,weui}.png` at device scale 2 (750 px wide).
+  Native captures with incorrect dimensions fail and retain an `-invalid.png` image for diagnosis.
 - The binary comes from `$CARGO_TARGET_DIR/debug/examples/gallery` (default `target/`).
 
 Compare pairs visually at full size, and use pixel statistics only as a pointer. Fonts, hinting and
@@ -108,7 +109,11 @@ python3 -I scripts/contact_sheets.py /tmp/sweep/pairs /tmp/sweep/sheets
 
 `session.sh` needs `at-spi2-core`, `python3-pyatspi`, `xdotool` and `dbus` (plus ImageMagick
 for screenshots). It picks the first distro Python that can import `pyatspi`, or set `PYTHON`.
-`sweep.sh` uses `PYTHON` (default `python3`) for Playwright and Pillow.
+`sweep.sh` uses `PYTHON` (default `python3`) for Playwright and Pillow. It returns nonzero if
+any capture fails, and its summary counts only that invocation; the appended log preserves prior
+runs. `session.sh` retains application output and fails if the process exits before capture.
+The AT-SPI dumper fails on an empty tree or traversal error. These failures are tooling evidence,
+not an interaction verdict.
 
 - Without a window manager, X keyboard focus reaches the gallery only after a real click inside
   it (`xdotool mousemove X Y click 1`). Routes opened with `--state` at startup do not receive
@@ -128,7 +133,7 @@ for screenshots). It picks the first distro Python that can import `pyatspi`, or
 - **Windows:** build natively (`cargo run --example gallery`), capture with the Snipping Tool or
   `PrintWindow`, and inspect accessibility with Accessibility Insights or Narrator/NVDA. Name the
   Windows version, scaling factor and screen reader in the report. A mingw cross-build is not a
-  runtime receipt, and Wine 9.0 could not start the gallery (missing `icuuc.dll`).
+  runtime receipt. The earlier Wine 9.0 failure is commit-reported without a committed run log.
 - **iOS/Android:** no backend exists at the pinned GPUI (`docs/PLATFORMS.md`). Once one does,
   evidence must come from a labelled simulator/emulator or device, with OS version, device model,
   orientation, safe-area insets, software keyboard/IME, lifecycle (background/foreground) and

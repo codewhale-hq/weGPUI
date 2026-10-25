@@ -11,6 +11,7 @@ labelled with its route, state and theme. Needs Pillow.
 
 import argparse
 import glob
+import math
 import os
 
 from PIL import Image, ImageDraw
@@ -25,7 +26,13 @@ def main():
     parser.add_argument('--per', type=int, default=6)
     parser.add_argument('--scale', type=float, default=0.5)
     args = parser.parse_args()
+    if args.per < 1:
+        parser.error('--per must be positive')
+    if not math.isfinite(args.scale) or args.scale <= 0:
+        parser.error('--scale must be finite and positive')
     pairs = sorted(glob.glob(os.path.join(args.pairs, args.glob)))
+    if not pairs:
+        parser.error('no pair images matched')
     os.makedirs(args.out, exist_ok=True)
     columns = 3
     for start in range(0, len(pairs), args.per):
@@ -33,6 +40,8 @@ def main():
         images = [Image.open(path).convert('RGB') for path in chunk]
         width = int(max(image.width for image in images) * args.scale)
         height = int(max(image.height for image in images) * args.scale)
+        if min(width, height) < 1:
+            parser.error('--scale produces an image smaller than one pixel')
         rows = (len(chunk) + columns - 1) // columns
         sheet = Image.new('RGB', (width * columns, (height + 18) * rows), (255, 255, 255))
         draw = ImageDraw.Draw(sheet)

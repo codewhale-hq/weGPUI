@@ -16,6 +16,7 @@
 set -euo pipefail
 
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+[[ $# -gt 0 ]] || { echo "usage: $0 OUTDIR [--theme light|dark] [--states] [ROUTE...]" >&2; exit 2; }
 out="$1"
 shift
 theme=light
@@ -23,15 +24,18 @@ states=0
 routes=()
 while (($#)); do
   case "$1" in
-    --theme) theme="$2"; shift 2 ;;
+    --theme) [[ $# -gt 1 ]] || { echo "--theme needs a value" >&2; exit 2; }; theme="$2"; shift 2 ;;
     --states) states=1; shift ;;
     *) routes+=("$1"); shift ;;
   esac
 done
+[[ $theme == light || $theme == dark ]] || { echo "theme must be light or dark" >&2; exit 2; }
 python="${PYTHON:-python3}"
 mkdir -p "$out/raw" "$out/pairs"
 export PAIR_DIR="$out/pairs"
 log="$out/sweep.log"
+ok=0
+failed=0
 
 capture() {
   local name="$1"
@@ -39,27 +43,33 @@ capture() {
   if timeout 90 "$python" -I "$root/scripts/capture.py" "$@" --theme "$theme" --out "$out/raw" \
     >/dev/null 2>"$out/err-$name.txt"; then
     echo "ok $name" | tee -a "$log"
+    ok=$((ok + 1))
   else
     echo "FAIL $name" | tee -a "$log"
+    failed=$((failed + 1))
   fi
 }
 
 if ((states)); then
-  "$python" -I -c '
+  keys=$("$python" -I -c '
 import glob, json, sys
 for path in sorted(glob.glob(sys.argv[1] + "/scripts/parity/*.json")):
     for key in json.load(open(path)):
         print(key)
-' "$root" | while IFS= read -r key || [[ -n $key ]]; do
+' "$root")
+  [[ -n $keys ]] || { echo "no states found" >&2; exit 1; }
+  while IFS= read -r key || [[ -n $key ]]; do
     capture "${key/:/-}" "${key%%:*}" --state "${key#*:}"
-  done
+  done <<< "$keys"
 else
   if ((${#routes[@]} == 0)); then
     mapfile -t routes < <(grep -oE '^\| `[^`]+` \| .* \| `[^`]+` \|' "$root/docs/UPSTREAM-COVERAGE.md" |
       sed -E 's/.*\| `([^`]+)` \|$/\1/' | awk '!seen[$0]++')
   fi
+  ((${#routes[@]} > 0)) || { echo "no routes found" >&2; exit 1; }
   for route in "${routes[@]}"; do
     capture "$route" "$route"
   done
 fi
-echo "done: $(grep -c '^ok' "$log") ok, $(grep -c '^FAIL' "$log" || true) failed"
+echo "done: $ok ok, $failed failed"
+((failed == 0))

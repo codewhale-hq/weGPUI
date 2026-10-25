@@ -90,6 +90,9 @@ def capture_gpui(args, out):
             scale = round(im.width / WIDTH)
             content_h = args.height * scale
             top = im.height - content_h
+            if scale != 2 or im.width != WIDTH * 2 or not 0 <= top <= 120:
+                im.save(out.with_name(out.stem + '-invalid.png'))
+                raise SystemExit(f'invalid native capture size {im.size}; expected 2x content plus titlebar')
             to_srgb(im).crop((0, top, im.width, im.height)).save(out)
     finally:
         proc.terminate()
@@ -133,7 +136,7 @@ def capture_gpui_x11(args, cmd, out):
         wid = None
         for _ in range(100):
             time.sleep(0.1)
-            found = subprocess.run(['xdotool', 'search', '--pid', str(proc.pid), '--name', 'weGPUI'],
+            found = subprocess.run(['xdotool', 'search', '--all', '--onlyvisible', '--pid', str(proc.pid), '--name', 'weGPUI'],
                                    capture_output=True, text=True)
             if found.stdout.strip():
                 wid = found.stdout.split()[0]
@@ -145,7 +148,11 @@ def capture_gpui_x11(args, cmd, out):
             raw = pathlib.Path(tmp) / 'raw.png'
             subprocess.run(['import', '-window', wid, str(raw)], check=True)
             from PIL import Image
-            Image.open(raw).convert('RGB').save(out)
+            im = Image.open(raw).convert('RGB')
+            if im.size != (WIDTH * 2, args.height * 2):
+                im.save(out.with_name(out.stem + '-invalid.png'))
+                raise SystemExit(f'invalid X11 capture size {im.size}; expected {(WIDTH * 2, args.height * 2)}')
+            im.save(out)
     finally:
         proc.terminate()
         try:

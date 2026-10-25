@@ -31,7 +31,15 @@ if [[ -z $python ]]; then
   done
 fi
 [[ -n $python ]] || { echo "no python with pyatspi found; set PYTHON" >&2; exit 1; }
-dump() { "$python" -I "$here/atspi_dump.py"; }
+dump() {
+  if ! kill -0 "$app" 2>/dev/null; then
+    status=0
+    wait "$app" || status=$?
+    echo "application exited before capture (status $status)" >&2
+    return 1
+  fi
+  "$python" -I "$here/atspi_dump.py"
+}
 
 /usr/libexec/at-spi-bus-launcher --launch-immediately >/dev/null 2>&1 &
 sleep 1
@@ -39,7 +47,7 @@ dbus-send --session --print-reply --dest=org.a11y.Bus /org/a11y/bus \
   org.freedesktop.DBus.Properties.Set string:org.a11y.Status string:IsEnabled \
   variant:boolean:true >/dev/null
 
-"$@" >/dev/null 2>&1 &
+"$@" &
 app=$!
 trap 'kill "$app" 2>/dev/null || true' EXIT
 sleep "${WAIT:-7}"
