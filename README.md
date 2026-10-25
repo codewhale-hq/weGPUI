@@ -9,8 +9,8 @@ and is written to stay close to upstream behaviour.
 | --- | --- |
 | <img src="docs/parity/half-screen-dialog-1-light-gpui.png" width="280" alt="weGPUI half-screen dialog"> | <img src="docs/parity/half-screen-dialog-1-light-weui.png" width="280" alt="WeUI half-screen dialog"> |
 
-The library is in development: **0.1.0, unreleased**. All 61 upstream example pages have gallery
-routes, but parity is sampled, not complete. [docs/STATUS.md](docs/STATUS.md) records what is
+The library is in development: **0.1.0, unreleased**. All 61 upstream example files map to the
+gallery (60 routes plus the index shell), but parity is sampled, not complete. [docs/STATUS.md](docs/STATUS.md) records what is
 verified, what differs, and what has not been tested.
 
 ## Quick start

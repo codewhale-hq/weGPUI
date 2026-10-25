@@ -59,7 +59,7 @@ as such. Current state:
 | Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
 | --- | --- | --- | --- | --- | --- | --- |
 | macOS | Earlier arm64 receipts (Rust 1.99, `51be7e3`); not rebuilt here | Earlier gallery runs | 28 fresh pairs in the 2026-10-24 review | Mouse/keyboard samples; one TextArea Pinyin commit | Whole-window AX dumps, 9 routes; no VoiceOver | Not done |
-| Linux | x86_64 build/clippy/fmt pass | **Fails** (no windowing feature); passes in scratch with `x11` under Xvfb | Software-rendered Xvfb screenshots in scratch | `xdotool` click and Tab in scratch | AT-SPI tree in scratch; no Orca | Not done |
+| Linux | x86_64 build/clippy/fmt pass | **Fails** (no windowing feature); passes in scratch with `x11` under Xvfb | Software-rendered Xvfb; 192 pairs (routes light+dark, states light) swept against Linux Chromium (scratch build) | XTEST mouse/keys, fcitx5 Pinyin, GTK portal chooser (scratch build) | AT-SPI tree in scratch; no Orca | Not done |
 | Windows | mingw cross-build links | Wine failed (missing `icuuc.dll`); no native host | Missing | Missing | Missing (Narrator/NVDA) | Not done |
 | iOS | Library type-checks for device and simulator targets | Blocked: no iOS backend at the pin, no Apple host | Missing | Missing (touch, keyboard, IME, rotation, lifecycle) | Missing; upstream backend has no AccessKit | Not done |
 | Android | Library type-checks | Blocked: no Android backend anywhere upstream; no KVM for an emulator here | Missing | Missing | Missing (TalkBack) | Not done |
@@ -68,6 +68,23 @@ Mobile interaction acceptance means touch taps, drags and scrolling; the softwar
 IME composition; safe-area and keyboard insets; orientation changes; background/foreground
 lifecycle; and a screen-reader pass. Desktop acceptance means real windows, keyboard and focus,
 resizing and a screen-reader pass.
+
+## weGPUI work required for mobile (independent of the backend choice)
+
+A backend alone would not make the components mobile-ready. Read against `gpui-pre 0.3.7`:
+
+| Area | What GPUI provides | What weGPUI does today | Needed |
+| --- | --- | --- | --- |
+| Taps | Recognised taps are delivered as synthesised mouse down/up (`gestures.rs`, `RecognizedTouchGesture::Tap`) | Click handlers | Likely works as is; unverified |
+| Drags | A touch becomes a pan (`ScrollWheelEvent` with `TouchPhase`) unless an element claims it by handling `TouchDragEvent` at `Started` and calling `prevent_default` (`window.rs`, `dispatch_recognized_touch_gesture`) | Swipe cells, slider, picker columns and the half-screen grab use mouse down/move/drag only | Claim and handle `TouchDragEvent` in those components; the picker should also accept the pan path |
+| Long press, pinch | `LongPressEvent`, `capture_long_press`; `on_pinch` | Not used | Gallery pinch-zoom (upstream has none) |
+| Software keyboard | `Window::request_virtual_keyboard`/`dismiss_virtual_keyboard`; the platform may require a user gesture | Never requested | Request on tap-to-focus in `TextInput` and dismiss on blur |
+| Safe area and keyboard occlusion | `Window::fully_visible_bounds`, `visual_viewport_bounds` (`WindowInsets::safe_area`/`ime`) | Not applied (bottom-fixed areas, tabbar, sheets, toasts) | Pad or position against the visible bounds; scroll the focused input into view |
+| Lifecycle | `Platform::on_app_lifecycle` (`Background`/`Foreground`) exists on the platform trait only; at 0.3.7 no `App` API forwards it | Not observed | Upstream plumbing or a newer GPUI, then pause timers and animations (toast, vcode countdown, spinners) |
+| Accessibility | AccessKit tree built in core | Roles, names and states as on desktop | Needs a mobile AccessKit adapter in the backend |
+
+These changes are safe on desktop, where insets are zero and the soft-keyboard calls are no-ops.
+They were not made in this pass because no mobile run could verify them.
 
 ## Applied without new dependencies
 

@@ -19,7 +19,7 @@ pending an owner decision.
 | Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
 | --- | --- | --- | --- | --- | --- | --- |
 | macOS arm64 | Pass at `51be7e3` (Rust 1.99). Not rebuilt after the takeover changes | Pass (earlier gallery runs) | 28 fresh pairs (review) | Mouse/keyboard samples; TextArea Pinyin | AX dumps, 9 routes; no VoiceOver | Missing |
-| Linux x86_64 | Pass: build, clippy `-D warnings`, fmt, doc (Rust 1.97 stable; build and clippy also on 1.95.0) | **Fails** with committed manifest; passes with `x11` (Xvfb) | Software-rendered X11; 60 routes swept against Linux Chromium (default state, light) | XTEST click/keys, fcitx5 Pinyin, GTK portal chooser | AT-SPI tree via pyatspi; no Orca | Missing |
+| Linux x86_64 | Pass: build, clippy `-D warnings`, fmt, doc (Rust 1.97 stable; build and clippy also on 1.95.0) | **Fails** with committed manifest; passes with `x11` (Xvfb) | Software-rendered X11; 192 pairs swept against Linux Chromium (60 routes light and dark, 72 states light; contact-sheet review) | XTEST click/keys, fcitx5 Pinyin, GTK portal chooser | AT-SPI tree via pyatspi; no Orca | Missing |
 | Windows | mingw cross-build links | Missing (Wine 9.0 cannot load; no host) | Missing | Missing | Missing | Missing |
 | iOS | Library type-checks (device and simulator targets) | Blocked: no backend at pin | Missing | Missing | Missing | Missing |
 | Android | Library type-checks | Blocked: no backend upstream | Missing | Missing | Missing | Missing |
@@ -157,7 +157,7 @@ added.
 - Packaging (app bundles, installers) on any platform. `cargo package --list` reviewed: 172 files,
   399 KiB compressed. Nothing published. The README's screenshot pair uses repository-relative
   paths that are excluded from the package, so it renders only where the repository is reachable.
-- Complete visual recapture of all 264 pairs. Care mode beyond one route. Long pages beyond 812 pt.
+- Complete macOS recapture of all 264 pairs (Linux has 192 sweep pairs, not comparable with macOS). Care mode beyond one route. Long pages beyond 812 pt.
 
 ## Owner decisions pending
 
