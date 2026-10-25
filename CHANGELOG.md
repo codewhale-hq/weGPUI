@@ -60,6 +60,9 @@ versioning once a release policy is decided. No version has been published.
 
 ### Fixed
 
+- Inline-link accessibility targets use shaped, wrapped text bounds. Pointer clicks focus the
+  actual clicked link, and assistive activation uses its handler directly.
+
 - Cell-style buttons honor loading state, show a spinner and reject repeat activation.
 - Verification-code countdowns start at their full duration and ignore duplicate starts.
 - Clickable small-app panels retain a visible keyboard-focus ring without a layout border.

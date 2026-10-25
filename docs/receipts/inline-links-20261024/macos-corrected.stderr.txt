@@ -1,0 +1,7 @@
+guide clicks=1
+2026-10-24 21:26:59.388 component_states[97334:10084082] TSM AdjustCapsLockLEDForKeyTransitionHandling - _ISSetPhysicalKeyboardCapsLockLED Inhibit
+guide clicks=2
+preferences clicks=1
+preferences clicks=2
+guide clicks=3
+preferences clicks=3

@@ -1,0 +1,32 @@
+Window: "", App: weGPUI Inline Links.
+0 standard window Secondary Actions: Raise
+	1 container
+		2 text field (settable) Display name, Placeholder: Enter a display name
+		3 button Save profile
+		4 button (disabled) Unavailable, Help: 不可用
+		5 button Send code
+		6 button Start countdown twice
+		7 link Profile details
+		8 container Delivery and frequency
+			9 radio button (selectable, settable, boolean) Email
+			10 radio button (selectable, settable, boolean) SMS
+			11 radio button (selectable, settable, boolean) Daily
+			12 radio button (selectable, settable, boolean) Weekly
+		13 container Read the profile guide or review the longer account preferences link that wraps onto another line before saving.
+			14 text (settable) Read the profile guide or review the longer account preferences link that wraps onto another line before saving.
+			15 link the profile guide
+			16 link review the longer account preferences link that wraps onto another line
+		17 image Standard spinner
+		18 image Primary spinner
+		19 image Brand spinner
+		20 list
+			21 container (selectable) Your profile stays on this computer.
+			22 container (selectable) Sending is simulated.
+		23 text Saved 0; sent 0; details 0
+	24 close button
+	25 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	26 minimize button
+27 menu bar
+	28 weGPUI Inline Links
+
+The focused UI element is 0 standard window Secondary Actions: Raise

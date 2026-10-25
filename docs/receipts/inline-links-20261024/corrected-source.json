@@ -1,0 +1,9 @@
+{
+  "base": "e5a8921df4ad3d4975a8f2a1c119879b72537020",
+  "sha256": {
+    "src/components/msg.rs": "6b63412eef377042623e4485d89e28b9bcd23034b34e5d739af38f66cf9362aa",
+    "src/components/loading.rs": "dfa0cc4c1f7b629ea71329bd11d72e8f64a750beda587087892f786ac0f9fa06",
+    "examples/component_states.rs": "49dff26472b4391b9d84b9ddd95d2c7dc4e83f180bd9a336f12a54691efbcb17"
+  },
+  "package_sha256": "d36b7030399667cb1a9b3a93d19fec30f80cc30a7ca377e512bef8a76850282f"
+}

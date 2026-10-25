@@ -17,8 +17,8 @@ pub enum LoadingKind {
     Default,
     /// `weui-primary-loading`: upstream's CSS-drawn ring, represented by its own gradient mask.
     Primary,
-    /// `weui-mask-loading`: the ring in the given colour at full opacity; used inside loading
-    /// buttons.
+    /// `weui-mask-loading`: the upstream ring mask in the given colour; used inside loading
+    /// buttons. The mask retains its embedded 90% opacity.
     Mask,
 }
 

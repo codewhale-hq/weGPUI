@@ -1,9 +1,8 @@
 //! WeUI result page (`weui-page/weui-msg.less`): icon, text, operation, tips and extra areas, plus
 //! [`LinkText`] for paragraphs with inline links.
 //!
-//! [`Msg`] lays its areas out in the order they are added. Known limitation: each [`LinkText`] link
-//! has its own focus stop and `Link` node, but that node has zero-size bounds, so assistive
-//! technology cannot locate it on screen.
+//! [`Msg`] lays its areas out in the order they are added. Inline links retain their text layout
+//! and expose individual keyboard targets with bounds derived from the shaped text.
 
 use super::Icon;
 use crate::Theme;
@@ -19,8 +18,8 @@ enum Segment {
 
 /// Paragraph mixing plain text and inline links, exposed as one `Paragraph` named by the full text.
 ///
-/// Each actionable link gets its own keyboard focus stop and `Link` accessibility node (with
-/// zero-size bounds). Enter or Space activates it through GPUI's keyboard click, and keyboard focus
+/// Each actionable link gets its own keyboard focus stop and `Link` accessibility node with
+/// bounds covering its wrapped text. Enter or Space activates it, and keyboard focus
 /// highlights the link text. Clicking the link text runs the same handler.
 #[derive(IntoElement)]
 pub struct LinkText {
@@ -96,42 +95,124 @@ impl RenderOnce for LinkText {
                     style.background_color = Some(focus_ring);
                 }
                 let click_handler = handler.clone();
-                targets.push(
-                    div()
-                        .id(("link-text-target", actionable_index))
-                        .role(Role::Link)
-                        .aria_label(label.clone())
-                        .absolute()
-                        .size_0()
-                        .track_focus(&handle)
-                        .tab_stop(true)
-                        .on_click(move |_, window, cx| click_handler(window, cx)),
-                );
+                targets.push((range.clone(), label.clone(), handle, click_handler));
                 actionable_index += 1;
             }
             highlights.push((range.clone(), style));
         }
         let full = SharedString::from(full);
         let ranges: Vec<_> = links.iter().map(|(range, _, _)| range.clone()).collect();
-        let handlers: Rc<Vec<Option<LinkHandler>>> =
-            Rc::new(links.into_iter().map(|(_, _, h)| h).collect());
-        let text = InteractiveText::new(
-            "link-text",
-            StyledText::new(full.clone()).with_highlights(highlights),
-        )
-        .on_click(ranges, move |ix, window, cx| {
-            if let Some(Some(handler)) = handlers.get(ix) {
-                handler(window, cx);
-            }
-        });
+        let mut focus_index = 0;
+        let handlers: Vec<_> = links
+            .into_iter()
+            .map(|(_, _, handler)| {
+                handler.map(|handler| {
+                    let focus = handles[focus_index].clone();
+                    focus_index += 1;
+                    (handler, focus)
+                })
+            })
+            .collect();
+        let styled = StyledText::new(full.clone()).with_highlights(highlights);
+        let layout = styled.layout().clone();
+        let text =
+            InteractiveText::new("link-text", styled).on_click(ranges, move |ix, window, cx| {
+                if let Some(Some((handler, focus))) = handlers.get(ix) {
+                    window.focus(focus, cx);
+                    handler(window, cx);
+                }
+            });
         div()
             .id(self.id)
             .relative()
             .role(Role::Paragraph)
             .aria_label(full)
-            .children(targets)
             .child(text)
+            .child(
+                canvas(
+                    move |_, window, cx| {
+                        targets
+                            .into_iter()
+                            .enumerate()
+                            .filter_map(|(index, (range, label, handle, handler))| {
+                                let bounds = link_bounds(&layout, range)?;
+                                let accessible_handler = handler.clone();
+                                let mut target = div()
+                                    .id(("link-text-target", index))
+                                    .role(Role::Link)
+                                    .aria_label(label)
+                                    .w(bounds.size.width)
+                                    .h(bounds.size.height)
+                                    .track_focus(&handle)
+                                    .tab_stop(true)
+                                    .on_mouse_down(MouseButton::Left, |_, window, _| {
+                                        window.prevent_default()
+                                    })
+                                    .on_a11y_action(
+                                        accesskit::Action::Click,
+                                        move |_, window, cx| {
+                                            accessible_handler(window, cx);
+                                        },
+                                    )
+                                    .on_click(move |event, window, cx| {
+                                        if matches!(event, ClickEvent::Keyboard(_)) {
+                                            handler(window, cx);
+                                        }
+                                    })
+                                    .into_any_element();
+                                target.prepaint_as_root(
+                                    bounds.origin,
+                                    bounds.size.map(AvailableSpace::Definite),
+                                    window,
+                                    cx,
+                                );
+                                Some(target)
+                            })
+                            .collect::<Vec<_>>()
+                    },
+                    |_, targets, window, cx| {
+                        for mut target in targets {
+                            target.paint(window, cx);
+                        }
+                    },
+                )
+                .absolute()
+                .size_full(),
+            )
     }
+}
+
+fn link_bounds(layout: &TextLayout, range: std::ops::Range<usize>) -> Option<Bounds<Pixels>> {
+    let mut result: Option<Bounds<Pixels>> = None;
+    let mut offset = 0;
+    let mut origin = layout.bounds().origin;
+    let height = layout.line_height();
+    for line in layout.line_layouts() {
+        let mut start = 0;
+        let ends = line
+            .wrap_boundaries
+            .iter()
+            .map(|boundary| {
+                line.unwrapped_layout.runs[boundary.run_ix].glyphs[boundary.glyph_ix].index
+            })
+            .chain([line.len()]);
+        for end in ends {
+            let from = range.start.max(offset + start);
+            let to = range.end.min(offset + end);
+            if from < to {
+                let left = line.unwrapped_layout.x_for_index(from - offset)
+                    - line.unwrapped_layout.x_for_index(start);
+                let right = line.unwrapped_layout.x_for_index(to - offset)
+                    - line.unwrapped_layout.x_for_index(start);
+                let bounds = Bounds::new(origin + point(left, px(0.)), size(right - left, height));
+                result = Some(result.map_or(bounds, |previous| previous.union(&bounds)));
+            }
+            start = end;
+            origin.y += height;
+        }
+        offset += line.len() + 1;
+    }
+    result
 }
 
 /// Standard 64 px icon for a [`Msg`] icon area, exposed as an `Image`.

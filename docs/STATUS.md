@@ -132,7 +132,7 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 | List / swiped cell | Partly matches | Historical macOS drag. Linux AT-SPI and fresh macOS AX hide closed actions. Delete callback empty upstream and in the gallery. |
 | Loading | Partly tested | Standard/mask artwork now comes from the upstream SVG; primary uses the separate CSS-ring mask. Three simultaneous spinners render on Windows. Animation timing and live reduced-motion changes remain unverified. |
 | Loadmore | Untested | Presentation only. |
-| Message / LinkText | Partly tested | Probe: two links, separate focus and single activation. Message callbacks empty. |
+| Message / LinkText | Partly tested | Current macOS sample: short/wrapped link clicks, separate Tab targets, Enter/Space and named-link activation pass. Bounds follow shaped text; [receipts](receipts/inline-links-20261024/README.md). Screen-reader acceptance remains open. Message callbacks empty. |
 | Navbar / Tabbar | Matches samples | macOS arrow selection after fix. Not re-driven on Linux. |
 | Panel | Untested | CJK punctuation and clamping differ. |
 | Picker | Partly matches; differs | Linux AT-SPI option names present; fresh macOS raw AXTitle contains the names omitted by the old dump. Disabled-default/all-disabled interaction evidence remains Linux-only. `today()` is UTC, while the example uses local time. weui.js throws on all-disabled columns; weGPUI disables Confirm. |
@@ -175,6 +175,10 @@ including failed/incomplete attempts. It does not complete platform acceptance.
   not validate.
 
 ## Documentation status
+
+GitHub private vulnerability reporting was verified enabled on October 24, 2026;
+[SECURITY](../SECURITY.md) now links to the private report form. A separate conduct-enforcement
+contact and maintainer/versioning policy still need owner decisions.
 
 The macOS follow-up ran `RUSTDOCFLAGS='-D warnings -W missing-docs' cargo doc --no-deps
 --locked --offline` at `e4a2c87`: exit 0, no rustdoc diagnostics. Cargo separately reports the

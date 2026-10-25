@@ -7,6 +7,7 @@ use wegpui::{
         form::{FormCell, FormGroup},
         information_bar::ListTips,
         loading::Loading,
+        msg::LinkText,
         panel::MediaBox,
         radio::RadioGroup,
         vcode::{VcodeButton, VcodeEvent},
@@ -21,6 +22,7 @@ struct States {
     saves: usize,
     sends: usize,
     panel_clicks: usize,
+    link_clicks: [usize; 2],
     first: usize,
     second: usize,
     _subscription: Subscription,
@@ -47,6 +49,7 @@ impl States {
             saves: 0,
             sends: 0,
             panel_clicks: 0,
+            link_clicks: [0; 2],
             first: 0,
             second: 0,
             _subscription: subscription,
@@ -163,6 +166,39 @@ impl Render for States {
                     .aria_label("Delivery and frequency")
                     .children(first)
                     .children(second),
+            )
+            .child(
+                LinkText::new("inline-actions")
+                    .text("Read ")
+                    .link("the profile guide", {
+                        let owner = cx.entity().downgrade();
+                        move |_, cx| {
+                            owner
+                                .update(cx, |this, cx| {
+                                    this.link_clicks[0] += 1;
+                                    eprintln!("guide clicks={}", this.link_clicks[0]);
+                                    cx.notify();
+                                })
+                                .ok();
+                        }
+                    })
+                    .text(" or ")
+                    .link(
+                        "review the longer account preferences link that wraps onto another line",
+                        {
+                            let owner = cx.entity().downgrade();
+                            move |_, cx| {
+                                owner
+                                    .update(cx, |this, cx| {
+                                        this.link_clicks[1] += 1;
+                                        eprintln!("preferences clicks={}", this.link_clicks[1]);
+                                        cx.notify();
+                                    })
+                                    .ok();
+                            }
+                        },
+                    )
+                    .text(" before saving."),
             )
             .child(div().flex().gap(px(16.)).children([
                 Loading::new().label("Standard spinner"),

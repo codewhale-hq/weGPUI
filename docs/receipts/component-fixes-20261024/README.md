@@ -26,7 +26,7 @@ spinner images, and a List containing the two tips. The diagnostic radio rows sh
 one parent to test ID isolation; they do not qualify grouped radio semantics.
 VoiceOver remained off. CUA's reported focused element stayed at the window, so
 focus evidence is the visible ring and observed activation, not that AX field.
-The purple UTM overlay in the screenshots is host chrome, not sample content.
+The purple overlay in the screenshots is host chrome, not sample content.
 
 ## Windows ARM64
 

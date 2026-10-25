@@ -1,0 +1,2 @@
+   Compiling wegpui v0.1.0 (C:\CW\artifacts\wegpui-inline-links-corrected-20261024\wegpui-0.1.0)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 19.97s

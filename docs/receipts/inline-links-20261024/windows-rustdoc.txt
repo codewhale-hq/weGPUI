@@ -1,0 +1,3 @@
+ Documenting wegpui v0.1.0 (C:\CW\artifacts\wegpui-inline-links-corrected-20261024\wegpui-0.1.0)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 6.86s
+   Generated C:\CW\artifacts\wegpui-20261024\target\doc\wegpui\index.html
