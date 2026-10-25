@@ -154,8 +154,9 @@ including failed/incomplete attempts. It does not complete platform acceptance.
   Receipts: [focus-date-20261024](receipts/focus-date-20261024/README.md).
 - **Date/datetime inputs** (fixed 2026-10-24, gallery-level): implemented with `Picker` in the
   input page. This is an adaptation of HTML `date`/`datetime-local`: fixed 1900–2100 range,
-  no typed entry, no locale formats, no seconds. A reusable `DateField` library component does
-  not exist yet.
+  no typed entry, no locale formats, no seconds. Now a reusable library entity,
+  `components::date_field::DateField`. Per-component acceptance lives in
+  [ACCEPTANCE](ACCEPTANCE.md).
 - **Linux windowing:** approved `wayland`/`x11` features applied (34 added lock packages).
   Both examples launch under isolated Xvfb. Wayland runtime and Orca remain untested.
 - **Mobile:** the approved GPUI 0.3.9 plus target-specific `gpui-pre-ios` path and simulator

@@ -13,6 +13,7 @@ pub mod badge;
 pub mod button;
 pub mod cells;
 pub mod checkbox;
+pub mod date_field;
 pub mod dialog;
 pub mod flex;
 pub mod footer;

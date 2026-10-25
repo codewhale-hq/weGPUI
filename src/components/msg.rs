@@ -59,126 +59,132 @@ impl LinkText {
 
 impl RenderOnce for LinkText {
     fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
-        let t = Theme::get(cx).clone();
-        let mut full = String::new();
-        let mut links: Vec<(std::ops::Range<usize>, SharedString, Option<LinkHandler>)> = vec![];
-        for segment in self.segments {
-            match segment {
-                Segment::Text(text) => full.push_str(&text),
-                Segment::Link(label, handler) => {
-                    let start = full.len();
-                    full.push_str(&label);
-                    links.push((start..full.len(), label, handler));
+        crate::scrolling::FocusTarget::new({
+            let t = Theme::get(cx).clone();
+            let mut full = String::new();
+            let mut links: Vec<(std::ops::Range<usize>, SharedString, Option<LinkHandler>)> =
+                vec![];
+            for segment in self.segments {
+                match segment {
+                    Segment::Text(text) => full.push_str(&text),
+                    Segment::Link(label, handler) => {
+                        let start = full.len();
+                        full.push_str(&label);
+                        links.push((start..full.len(), label, handler));
+                    }
                 }
             }
-        }
-        let actionable = links.iter().filter(|(_, _, h)| h.is_some()).count();
-        let handles = window.use_keyed_state(self.id.clone(), cx, |_, _| Vec::<FocusHandle>::new());
-        let handles = handles.update(cx, |v, cx| {
-            while v.len() < actionable {
-                v.push(cx.focus_handle().tab_stop(true));
-            }
-            v.clone()
-        });
-        let focus_ring = t.brand.opacity(0.15);
-        let mut actionable_index = 0;
-        let mut highlights = vec![];
-        let mut targets = vec![];
-        for (range, label, handler) in &links {
-            let mut style = HighlightStyle {
-                color: Some(t.link),
-                ..Default::default()
-            };
-            if let Some(handler) = handler {
-                let handle = handles[actionable_index].clone();
-                if handle.is_focused(window) && window.last_input_was_keyboard() {
-                    style.background_color = Some(focus_ring);
+            let actionable = links.iter().filter(|(_, _, h)| h.is_some()).count();
+            let handles =
+                window.use_keyed_state(self.id.clone(), cx, |_, _| Vec::<FocusHandle>::new());
+            let handles = handles.update(cx, |v, cx| {
+                while v.len() < actionable {
+                    v.push(cx.focus_handle().tab_stop(true));
                 }
-                let click_handler = handler.clone();
-                targets.push((range.clone(), label.clone(), handle, click_handler));
-                actionable_index += 1;
-            }
-            highlights.push((range.clone(), style));
-        }
-        let full = SharedString::from(full);
-        let ranges: Vec<_> = links.iter().map(|(range, _, _)| range.clone()).collect();
-        let mut focus_index = 0;
-        let handlers: Vec<_> = links
-            .into_iter()
-            .map(|(_, _, handler)| {
-                handler.map(|handler| {
-                    let focus = handles[focus_index].clone();
-                    focus_index += 1;
-                    (handler, focus)
-                })
-            })
-            .collect();
-        let styled = StyledText::new(full.clone()).with_highlights(highlights);
-        let layout = styled.layout().clone();
-        let text =
-            InteractiveText::new("link-text", styled).on_click(ranges, move |ix, window, cx| {
-                if let Some(Some((handler, focus))) = handlers.get(ix) {
-                    window.focus(focus, cx);
-                    handler(window, cx);
-                }
+                v.clone()
             });
-        div()
-            .id(self.id)
-            .relative()
-            .role(Role::Paragraph)
-            .aria_label(full)
-            .child(text)
-            .child(
-                canvas(
-                    move |_, window, cx| {
-                        targets
-                            .into_iter()
-                            .enumerate()
-                            .filter_map(|(index, (range, label, handle, handler))| {
-                                let bounds = link_bounds(&layout, range)?;
-                                let accessible_handler = handler.clone();
-                                let mut target = div()
-                                    .id(("link-text-target", index))
-                                    .role(Role::Link)
-                                    .aria_label(label)
-                                    .w(bounds.size.width)
-                                    .h(bounds.size.height)
-                                    .track_focus(&handle)
-                                    .tab_stop(true)
-                                    .on_mouse_down(MouseButton::Left, |_, window, _| {
-                                        window.prevent_default()
-                                    })
-                                    .on_a11y_action(
-                                        accesskit::Action::Click,
-                                        move |_, window, cx| {
-                                            accessible_handler(window, cx);
-                                        },
-                                    )
-                                    .on_click(move |event, window, cx| {
-                                        if matches!(event, ClickEvent::Keyboard(_)) {
-                                            handler(window, cx);
-                                        }
-                                    })
-                                    .into_any_element();
-                                target.prepaint_as_root(
-                                    bounds.origin,
-                                    bounds.size.map(AvailableSpace::Definite),
-                                    window,
-                                    cx,
-                                );
-                                Some(target)
-                            })
-                            .collect::<Vec<_>>()
-                    },
-                    |_, targets, window, cx| {
-                        for mut target in targets {
-                            target.paint(window, cx);
-                        }
-                    },
+            let focus_ring = t.brand.opacity(0.15);
+            let mut actionable_index = 0;
+            let mut highlights = vec![];
+            let mut targets = vec![];
+            for (range, label, handler) in &links {
+                let mut style = HighlightStyle {
+                    color: Some(t.link),
+                    ..Default::default()
+                };
+                if let Some(handler) = handler {
+                    let handle = handles[actionable_index].clone();
+                    if handle.is_focused(window) && window.last_input_was_keyboard() {
+                        style.background_color = Some(focus_ring);
+                    }
+                    let click_handler = handler.clone();
+                    targets.push((range.clone(), label.clone(), handle, click_handler));
+                    actionable_index += 1;
+                }
+                highlights.push((range.clone(), style));
+            }
+            let full = SharedString::from(full);
+            let ranges: Vec<_> = links.iter().map(|(range, _, _)| range.clone()).collect();
+            let mut focus_index = 0;
+            let handlers: Vec<_> = links
+                .into_iter()
+                .map(|(_, _, handler)| {
+                    handler.map(|handler| {
+                        let focus = handles[focus_index].clone();
+                        focus_index += 1;
+                        (handler, focus)
+                    })
+                })
+                .collect();
+            let styled = StyledText::new(full.clone()).with_highlights(highlights);
+            let layout = styled.layout().clone();
+            let text = InteractiveText::new("link-text", styled).on_click(
+                ranges,
+                move |ix, window, cx| {
+                    if let Some(Some((handler, focus))) = handlers.get(ix) {
+                        window.focus(focus, cx);
+                        handler(window, cx);
+                    }
+                },
+            );
+            div()
+                .id(self.id)
+                .relative()
+                .role(Role::Paragraph)
+                .aria_label(full)
+                .child(text)
+                .child(
+                    canvas(
+                        move |_, window, cx| {
+                            targets
+                                .into_iter()
+                                .enumerate()
+                                .filter_map(|(index, (range, label, handle, handler))| {
+                                    let bounds = link_bounds(&layout, range)?;
+                                    let accessible_handler = handler.clone();
+                                    let mut target = div()
+                                        .id(("link-text-target", index))
+                                        .role(Role::Link)
+                                        .aria_label(label)
+                                        .w(bounds.size.width)
+                                        .h(bounds.size.height)
+                                        .track_focus(&handle)
+                                        .tab_stop(true)
+                                        .on_mouse_down(MouseButton::Left, |_, window, _| {
+                                            window.prevent_default()
+                                        })
+                                        .on_a11y_action(
+                                            accesskit::Action::Click,
+                                            move |_, window, cx| {
+                                                accessible_handler(window, cx);
+                                            },
+                                        )
+                                        .on_click(move |event, window, cx| {
+                                            if matches!(event, ClickEvent::Keyboard(_)) {
+                                                handler(window, cx);
+                                            }
+                                        })
+                                        .into_any_element();
+                                    target.prepaint_as_root(
+                                        bounds.origin,
+                                        bounds.size.map(AvailableSpace::Definite),
+                                        window,
+                                        cx,
+                                    );
+                                    Some(target)
+                                })
+                                .collect::<Vec<_>>()
+                        },
+                        |_, targets, window, cx| {
+                            for mut target in targets {
+                                target.paint(window, cx);
+                            }
+                        },
+                    )
+                    .absolute()
+                    .size_full(),
                 )
-                .absolute()
-                .size_full(),
-            )
+        })
     }
 }
 

@@ -24,9 +24,9 @@ Both defects below are implemented from verified source on GitHub `main` (the Ma
 not available and was not used). See `docs/receipts/focus-date-20261024/` for the Linux X11
 runtime sequences, gates and the picker key-during-animation panic found and fixed on the way.
 Still open from this section: macOS/Windows reruns, unwrapped library scrollers (dialog,
-half-screen dialog, `BottomFixedOpr`, navbar), a reusable `DateField` component, and the home
-footer link focus from the candidate. Next: the component acceptance inventory
-(`docs/ACCEPTANCE.md`).
+half-screen dialog, `BottomFixedOpr`, navbar) and the home footer link focus from the
+candidate. `DateField` is now a library component. The acceptance inventory is
+`docs/ACCEPTANCE.md`; work its P1 rows first.
 
 ### First work: two unfinished defects
 

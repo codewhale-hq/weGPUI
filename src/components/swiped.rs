@@ -67,35 +67,37 @@ impl SwipedAction {
 
 impl RenderOnce for SwipedAction {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
-        let t = Theme::get(cx);
-        let bg = match self.kind {
-            SwipedActionKind::Default => t.bg_0,
-            SwipedActionKind::Warn => t.red,
-        };
-        let (mask, ring) = (t.btn_active_mask, white());
-        let exposed = self.tab_stop;
-        let el = div()
-            .id(self.id)
-            .role(Role::Button)
-            .aria_label(self.label.clone())
-            .flex()
-            .items_center()
-            .py(px(14.))
-            .px(px(15.))
-            .border_2()
-            .border_color(transparent_black())
-            .bg(bg)
-            .text_size(px(17.))
-            .line_height(px(24.))
-            .active(move |s| s.bg(bg.blend(mask)))
-            .when(self.tab_stop, |el| {
-                el.focusable()
-                    .tab_stop(true)
-                    .focus_visible(move |s| s.border_color(ring))
-            })
-            .when_some(self.on_click, |el, h| el.on_click(h))
-            .child(self.label);
-        Semantics::new(el).hidden(!exposed)
+        crate::scrolling::FocusTarget::new({
+            let t = Theme::get(cx);
+            let bg = match self.kind {
+                SwipedActionKind::Default => t.bg_0,
+                SwipedActionKind::Warn => t.red,
+            };
+            let (mask, ring) = (t.btn_active_mask, white());
+            let exposed = self.tab_stop;
+            let el = div()
+                .id(self.id)
+                .role(Role::Button)
+                .aria_label(self.label.clone())
+                .flex()
+                .items_center()
+                .py(px(14.))
+                .px(px(15.))
+                .border_2()
+                .border_color(transparent_black())
+                .bg(bg)
+                .text_size(px(17.))
+                .line_height(px(24.))
+                .active(move |s| s.bg(bg.blend(mask)))
+                .when(self.tab_stop, |el| {
+                    el.focusable()
+                        .tab_stop(true)
+                        .focus_visible(move |s| s.border_color(ring))
+                })
+                .when_some(self.on_click, |el, h| el.on_click(h))
+                .child(self.label);
+            Semantics::new(el).hidden(!exposed)
+        })
     }
 }
 
@@ -183,178 +185,180 @@ impl SwipedCell {
 
 impl RenderOnce for SwipedCell {
     fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
-        let t = Theme::get(cx);
-        let (bg, ring) = (t.bg_2, t.brand);
-        let initially_open = self.open;
-        let state = window.use_keyed_state(
-            SharedString::from(format!("swiped-{:?}", self.id)),
-            cx,
-            |_, cx| SwipeState {
-                offset: 0.,
-                width: 0.,
-                pending_open: initially_open,
-                drag_from: None,
-                moved: false,
-                anim: None,
-                focus: cx.focus_handle().tab_stop(true),
-            },
-        );
-        let offset = state.update(cx, |s, _| {
-            if let Some((from, to, at)) = s.anim {
-                let p = (at.elapsed().as_secs_f32() / SNAP.as_secs_f32()).min(1.);
-                s.offset = from + (to - from) * ease(p);
-                if p >= 1. {
-                    s.anim = None;
-                }
-            }
-            s.offset
-        });
-        if state.read(cx).anim.is_some() {
-            window.request_animation_frame();
-        }
-        let focus = state.read(cx).focus.clone();
-        let show_ring = focus.is_focused(window) && window.last_input_was_keyboard();
-        let open = state.read(cx).open();
-        let width_state = state.clone();
-        let actions_open = open;
-        let ft = div()
-            .absolute()
-            .top_0()
-            .bottom_0()
-            .right_0()
-            .flex()
-            .text_color(white())
-            .on_children_prepainted(move |bounds, _, cx| {
-                let w: f32 = bounds.iter().map(|b| f32::from(b.size.width)).sum();
-                width_state.update(cx, |s, cx| {
-                    if (s.width - w).abs() > 0.5 {
-                        s.width = w;
-                        if s.pending_open
-                            || s.offset < 0. && s.anim.is_none() && s.drag_from.is_none()
-                        {
-                            s.pending_open = false;
-                            s.offset = -w;
-                        }
-                        cx.notify();
+        crate::scrolling::FocusTarget::new({
+            let t = Theme::get(cx);
+            let (bg, ring) = (t.bg_2, t.brand);
+            let initially_open = self.open;
+            let state = window.use_keyed_state(
+                SharedString::from(format!("swiped-{:?}", self.id)),
+                cx,
+                |_, cx| SwipeState {
+                    offset: 0.,
+                    width: 0.,
+                    pending_open: initially_open,
+                    drag_from: None,
+                    moved: false,
+                    anim: None,
+                    focus: cx.focus_handle().tab_stop(true),
+                },
+            );
+            let offset = state.update(cx, |s, _| {
+                if let Some((from, to, at)) = s.anim {
+                    let p = (at.elapsed().as_secs_f32() / SNAP.as_secs_f32()).min(1.);
+                    s.offset = from + (to - from) * ease(p);
+                    if p >= 1. {
+                        s.anim = None;
                     }
-                });
-            })
-            .children(self.actions.into_iter().map(move |mut a| {
-                a.tab_stop = actions_open;
-                a
-            }));
-        let s_down = state.clone();
-        let s_move = state.clone();
-        let s_up = state.clone();
-        let s_up_out = state.clone();
-        let s_click = state.clone();
-        let s_key = state.clone();
-        let release = move |s: &Entity<SwipeState>, cx: &mut App| {
-            s.update(cx, |s, cx| {
-                if let Some((_, base)) = s.drag_from.take() {
-                    let to = if !s.moved {
-                        if base < 0. { 0. } else { s.offset }
-                    } else if s.offset < -s.width / 2. {
-                        -s.width
-                    } else {
-                        0.
-                    };
-                    s.snap_to(to, cx.reduce_motion());
-                    cx.notify();
                 }
+                s.offset
             });
-        };
-        let release_out = release;
-        let bd = div()
-            .id(self.id.clone())
-            .role(Role::ListItem)
-            .when_some(self.label, |el, l| el.aria_label(l))
-            .aria_expanded(open)
-            .aria_description("按左方向键或回车显示操作，右方向键或 Esc 隐藏")
-            .relative()
-            .left(px(offset))
-            .bg(bg)
-            .track_focus(&focus)
-            .tab_stop(true)
-            .on_mouse_down(MouseButton::Left, move |e, _, cx| {
-                let x = f32::from(e.position.x);
-                s_down.update(cx, |s, _| {
-                    s.anim = None;
-                    s.pending_open = false;
-                    s.drag_from = Some((x, s.offset));
-                    s.moved = false;
-                });
-            })
-            .on_drag(SwipeDrag, |_, _, _, cx| cx.new(|_| SwipeDrag))
-            .on_drag_move::<SwipeDrag>(move |e, _, cx| {
-                let x = f32::from(e.event.position.x);
-                s_move.update(cx, |s, cx| {
-                    if let Some((start, base)) = s.drag_from {
-                        let dx = x - start;
-                        if dx.abs() > 3. {
-                            s.moved = true;
+            if state.read(cx).anim.is_some() {
+                window.request_animation_frame();
+            }
+            let focus = state.read(cx).focus.clone();
+            let show_ring = focus.is_focused(window) && window.last_input_was_keyboard();
+            let open = state.read(cx).open();
+            let width_state = state.clone();
+            let actions_open = open;
+            let ft = div()
+                .absolute()
+                .top_0()
+                .bottom_0()
+                .right_0()
+                .flex()
+                .text_color(white())
+                .on_children_prepainted(move |bounds, _, cx| {
+                    let w: f32 = bounds.iter().map(|b| f32::from(b.size.width)).sum();
+                    width_state.update(cx, |s, cx| {
+                        if (s.width - w).abs() > 0.5 {
+                            s.width = w;
+                            if s.pending_open
+                                || s.offset < 0. && s.anim.is_none() && s.drag_from.is_none()
+                            {
+                                s.pending_open = false;
+                                s.offset = -w;
+                            }
+                            cx.notify();
                         }
-                        let raw = base + dx;
-                        s.offset = if raw > 0. {
-                            0.
-                        } else if raw < -s.width {
-                            -s.width + (raw + s.width) * 0.3
+                    });
+                })
+                .children(self.actions.into_iter().map(move |mut a| {
+                    a.tab_stop = actions_open;
+                    a
+                }));
+            let s_down = state.clone();
+            let s_move = state.clone();
+            let s_up = state.clone();
+            let s_up_out = state.clone();
+            let s_click = state.clone();
+            let s_key = state.clone();
+            let release = move |s: &Entity<SwipeState>, cx: &mut App| {
+                s.update(cx, |s, cx| {
+                    if let Some((_, base)) = s.drag_from.take() {
+                        let to = if !s.moved {
+                            if base < 0. { 0. } else { s.offset }
+                        } else if s.offset < -s.width / 2. {
+                            -s.width
                         } else {
-                            raw
+                            0.
                         };
+                        s.snap_to(to, cx.reduce_motion());
                         cx.notify();
                     }
                 });
-            })
-            .on_mouse_up(MouseButton::Left, move |_, _, cx| release(&s_up, cx))
-            .on_mouse_up_out(MouseButton::Left, move |_, _, cx| {
-                release_out(&s_up_out, cx)
-            })
-            .on_click(move |e, _, cx| {
-                if e.is_keyboard() {
-                    s_click.update(cx, |s, cx| {
-                        let to = if s.open() { 0. } else { -s.width };
+            };
+            let release_out = release;
+            let bd = div()
+                .id(self.id.clone())
+                .role(Role::ListItem)
+                .when_some(self.label, |el, l| el.aria_label(l))
+                .aria_expanded(open)
+                .aria_description("按左方向键或回车显示操作，右方向键或 Esc 隐藏")
+                .relative()
+                .left(px(offset))
+                .bg(bg)
+                .track_focus(&focus)
+                .tab_stop(true)
+                .on_mouse_down(MouseButton::Left, move |e, _, cx| {
+                    let x = f32::from(e.position.x);
+                    s_down.update(cx, |s, _| {
+                        s.anim = None;
+                        s.pending_open = false;
+                        s.drag_from = Some((x, s.offset));
+                        s.moved = false;
+                    });
+                })
+                .on_drag(SwipeDrag, |_, _, _, cx| cx.new(|_| SwipeDrag))
+                .on_drag_move::<SwipeDrag>(move |e, _, cx| {
+                    let x = f32::from(e.event.position.x);
+                    s_move.update(cx, |s, cx| {
+                        if let Some((start, base)) = s.drag_from {
+                            let dx = x - start;
+                            if dx.abs() > 3. {
+                                s.moved = true;
+                            }
+                            let raw = base + dx;
+                            s.offset = if raw > 0. {
+                                0.
+                            } else if raw < -s.width {
+                                -s.width + (raw + s.width) * 0.3
+                            } else {
+                                raw
+                            };
+                            cx.notify();
+                        }
+                    });
+                })
+                .on_mouse_up(MouseButton::Left, move |_, _, cx| release(&s_up, cx))
+                .on_mouse_up_out(MouseButton::Left, move |_, _, cx| {
+                    release_out(&s_up_out, cx)
+                })
+                .on_click(move |e, _, cx| {
+                    if e.is_keyboard() {
+                        s_click.update(cx, |s, cx| {
+                            let to = if s.open() { 0. } else { -s.width };
+                            s.snap_to(to, cx.reduce_motion());
+                            cx.notify();
+                        });
+                    }
+                })
+                .on_a11y_action(AccessibleAction::Expand, {
+                    let state = state.clone();
+                    move |_, _, cx| {
+                        state.update(cx, |s, cx| {
+                            let to = -s.width;
+                            s.snap_to(to, cx.reduce_motion());
+                            cx.notify();
+                        })
+                    }
+                })
+                .on_a11y_action(AccessibleAction::Collapse, {
+                    let state = state.clone();
+                    move |_, _, cx| {
+                        state.update(cx, |s, cx| {
+                            s.snap_to(0., cx.reduce_motion());
+                            cx.notify();
+                        })
+                    }
+                })
+                .on_key_down(move |e, _, cx| {
+                    let key = e.keystroke.key.as_str();
+                    s_key.update(cx, |s, cx| {
+                        let to = match key {
+                            "left" => -s.width,
+                            "right" | "escape" => 0.,
+                            _ => return,
+                        };
+                        cx.stop_propagation();
                         s.snap_to(to, cx.reduce_motion());
                         cx.notify();
                     });
-                }
-            })
-            .on_a11y_action(AccessibleAction::Expand, {
-                let state = state.clone();
-                move |_, _, cx| {
-                    state.update(cx, |s, cx| {
-                        let to = -s.width;
-                        s.snap_to(to, cx.reduce_motion());
-                        cx.notify();
-                    })
-                }
-            })
-            .on_a11y_action(AccessibleAction::Collapse, {
-                let state = state.clone();
-                move |_, _, cx| {
-                    state.update(cx, |s, cx| {
-                        s.snap_to(0., cx.reduce_motion());
-                        cx.notify();
-                    })
-                }
-            })
-            .on_key_down(move |e, _, cx| {
-                let key = e.keystroke.key.as_str();
-                s_key.update(cx, |s, cx| {
-                    let to = match key {
-                        "left" => -s.width,
-                        "right" | "escape" => 0.,
-                        _ => return,
-                    };
-                    cx.stop_propagation();
-                    s.snap_to(to, cx.reduce_motion());
-                    cx.notify();
+                })
+                .children(self.content)
+                .when(show_ring, |el| {
+                    el.child(div().absolute().inset_0().border_2().border_color(ring))
                 });
-            })
-            .children(self.content)
-            .when(show_ring, |el| {
-                el.child(div().absolute().inset_0().border_2().border_color(ring))
-            });
-        div().relative().overflow_hidden().child(ft).child(bd)
+            div().relative().overflow_hidden().child(ft).child(bd)
+        })
     }
 }

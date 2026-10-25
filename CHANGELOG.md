@@ -8,6 +8,11 @@ versioning once a release policy is decided. No version has been published.
 
 ### Added
 
+- `components::date_field::{DateField, DateFieldMode, DateValue, DateFieldEvent}`: reusable
+  date and date-time fields (HTML `date`/`datetime-local` equivalent) built on `Picker`,
+  with value/placeholder/disabled/year-range API, Change/Cancel events, Enter/Space opening,
+  focus restoration and reopen-at-current-value. The gallery input page uses it.
+- `docs/ACCEPTANCE.md`: per-component acceptance inventory.
 - `scrolling::{FocusScroll, FocusTarget, RevealFocus}` keep keyboard focus visible in ordinary
   vertical scrollers: a focus change scrolls the minimum needed, visible targets and manual
   scrolling are left alone. Built-in focusable controls register as targets; the gallery page
