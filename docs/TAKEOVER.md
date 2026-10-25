@@ -27,6 +27,14 @@ Still open from this section: macOS/Windows reruns, `navbar::tab_panel` (caller-
 `docs/ACCEPTANCE.md`; work its P1 rows first. Human/other-machine items are in
 `docs/HUMAN-TASKS.md`. Release-gate receipts done on Linux: `docs/receipts/release-gates-20261024/`.
 
+### Update — 2026-10-24 later (Linux cloud agent)
+
+P1 pass done on Linux: set positions fixed (off by one), filled-button focus ring, paste/undo
+grouping, information-bar focus contrast, footer link focus, bottom-fixed fade inset; select,
+dialog, forms, navbar/tabbar and a 15-page keyboard sweep recorded. Use openbox on Xvfb (see
+PARITY-TOOLING) or inputs never get focus events. Next: nested modals, toast timing, zero-step
+slider receipt, search-bar homepage variant, screen readers, other OSes.
+
 ### First work: two unfinished defects
 
 The previous Mac checkout contains an **uncommitted, uncompiled candidate**, not part of GitHub `main`. If using another machine, do not assume these changes arrived with `git pull`. Either obtain that candidate from the owner or implement these fixes from the verified source:

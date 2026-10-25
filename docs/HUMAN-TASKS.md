@@ -1,6 +1,6 @@
 # Tasks that need the owner or another machine
 
-Updated 2026-10-24 by the Linux cloud agent. Each item says what unblocks it.
+Updated 2026-10-24 (late) by the Linux cloud agent. Each item says what unblocks it.
 
 1. **Signed commits.** Commits `b58b6fa` onward were made on a Linux box with no signing key and
    show as unverified. To sign future agent commits, provide a signing key on that machine
@@ -19,3 +19,9 @@ Updated 2026-10-24 by the Linux cloud agent. Each item says what unblocks it.
    deployment target, signing/notarization requirements for packaged galleries.
 6. **Release authorization** before any crates.io publish, website deployment, tag, release
    or CI dispatch.
+7. **Upstream AccessKit report (optional):** `accesskit_atspi_common 0.19.1` never exports
+   disabled for buttons (see `receipts/a11y-p1-20261024`). Filing an upstream issue is an
+   external post and needs the owner's go-ahead.
+8. **Windows/macOS rerun of 2026-10-24 late fixes:** primary/warn focus ring, information-bar
+   focus, paste/undo grouping, set positions (check NVDA/VoiceOver-off AX inspector reports
+   "1 of 2" for the first radio), footer link focus.

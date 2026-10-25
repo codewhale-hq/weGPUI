@@ -14,3 +14,9 @@ buttons, page-footer link. Gallery viewer delete button has a white 2px ring on 
 not visible at 40% scale; caret drawing is verified separately at full scale.
 
 Not checked: activation results for every target, screen readers, dark/care themes.
+
+## Themes
+
+`themes-dark-care-form-select.png`: form_select in dark, care, dark+care. Pairs = (two Tabs:
+ring on the +86 select; four Tabs + Enter: country menu open with focused current option).
+Rings and menu focus are visible in all three.
