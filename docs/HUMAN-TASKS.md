@@ -21,7 +21,10 @@ Updated 2026-10-24 (late) by the Linux cloud agent. Each item says what unblocks
    or CI dispatch.
 7. **Upstream AccessKit report (optional):** `accesskit_atspi_common 0.19.1` never exports
    disabled for buttons (see `receipts/a11y-p1-20261024`). Filing an upstream issue is an
-   external post and needs the owner's go-ahead.
+   external post. Owner said not to file it (2026-10-24); kept here only as a record.
 8. **Windows/macOS rerun of 2026-10-24 late fixes:** primary/warn focus ring, information-bar
    focus, paste/undo grouping, set positions (check NVDA/VoiceOver-off AX inspector reports
-   "1 of 2" for the first radio), footer link focus.
+   "1 of 2" for the first radio), footer link focus, nested modals (`examples/nested_modals`),
+   overlay-primary ring, search-bar rings and swiped-action rings.
+9. **Linux items the cloud box cannot do:** Wayland session, Orca, live scale changes and
+   monitor moves (no compositor or Orca on the box).

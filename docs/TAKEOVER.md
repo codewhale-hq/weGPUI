@@ -35,6 +35,17 @@ dialog, forms, navbar/tabbar and a 15-page keyboard sweep recorded. Use openbox 
 PARITY-TOOLING) or inputs never get focus events. Next: nested modals, toast timing, zero-step
 slider receipt, search-bar homepage variant, screen readers, other OSes.
 
+### Update — 2026-10-24 night (Linux cloud agent)
+
+Fixed and verified on Linux: the nested-modal Tab trap (it was capture phase, so the outer modal
+stole Tab; now bubble phase), the overlay-primary ring, search-bar focus (homepage, back,
+clear, 取消) and swiped-action rings. Linux receipts cover button overlay/cell, form
+validation, toast and toptips timing (2s), the zero-step slider (unit test; the API sanitises
+the step), all P3 families (light/dark/care, AT-SPI and keyboard), the DateField AT-SPI tree,
+scaling 1.5/2 and resize, and the STATUS defect rechecks. `component_states` has no initial
+focus, so click a field before driving it with keys. Next: Orca/Wayland where a host allows,
+macOS/Windows reruns (HUMAN-TASKS 8), and the owner decision on a local date source.
+
 ### First work: two unfinished defects
 
 The previous Mac checkout contains an **uncommitted, uncompiled candidate**, not part of GitHub `main`. If using another machine, do not assume these changes arrived with `git pull`. Either obtain that candidate from the owner or implement these fixes from the verified source:
