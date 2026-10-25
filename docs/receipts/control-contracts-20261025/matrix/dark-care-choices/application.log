@@ -1,0 +1,22 @@
+CALL checkbox 1
+CALL checkbox 2
+CALL checkbox 3
+SNAP counts={"checkbox": 3} checked=[true, false, false, false] radio=0 second=0 remaining=[0, 0] offset=Point { x: 0px, y: 0px }
+CALL checkbox-row 1
+CALL checkbox-row 2
+CALL checkbox-row 3
+SNAP counts={"checkbox": 3, "checkbox-row": 3} checked=[true, true, false, false] radio=0 second=0 remaining=[0, 0] offset=Point { x: 0px, y: 0px }
+CALL switch 1
+CALL switch 2
+CALL switch 3
+SNAP counts={"checkbox": 3, "checkbox-row": 3, "switch": 3} checked=[true, true, true, false] radio=0 second=0 remaining=[0, 0] offset=Point { x: 0px, y: 0px }
+SNAP counts={"checkbox": 3, "checkbox-row": 3, "switch": 3} checked=[true, true, true, false] radio=0 second=0 remaining=[0, 0] offset=Point { x: 0px, y: 0px }
+CALL radio-0 1
+CALL radio-2 1
+CALL radio-0 2
+CALL radio-2 2
+CALL radio-2 3
+CALL radio-2 4
+SNAP counts={"checkbox": 3, "checkbox-row": 3, "radio-0": 2, "radio-2": 4, "switch": 3} checked=[true, true, true, false] radio=2 second=0 remaining=[0, 0] offset=Point { x: 0px, y: 0px }
+CALL second-radio-1 1
+SNAP counts={"checkbox": 3, "checkbox-row": 3, "radio-0": 2, "radio-2": 4, "second-radio-1": 1, "switch": 3} checked=[true, true, true, false] radio=2 second=1 remaining=[0, 0] offset=Point { x: 0px, y: 0px }

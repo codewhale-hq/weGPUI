@@ -1,0 +1,13 @@
+Supplemental API spot-check failed at the DateField heading locator after HTTP loading succeeded.
+The new Theme method anchors and source-link requests had already passed.
+
+AssertionError: Locator expected to be visible
+Actual value: None
+Error: element(s) not found
+Call log:
+  - Expect "to_be_visible" with timeout 5000ms
+  - waiting for get_by_role("heading", name="Struct DateField", exact=True)
+
+The exact accessible-name assumption was a checker error; it is not a missing API/link result.
+The retry locates the actual h1 and checks its DateField text. No website/source/API changes
+were made between these supplemental attempts. The independent complete website checker passed.

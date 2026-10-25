@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "source_commit_context": "a3ce3afca6417b7dd1b9d701456ae2d21d2150f4",
+  "source_dirty": true,
+  "api_manifest_sha256": "79f1a7578fc083f8c2e40bc8a71abadcebaf1400bd87946ddae6ea36ed3d2ccd",
+  "source_manifest_sha256": "ec02b991e153cc8d6e841c1fd9be25f42ced6b1b720bf2fb91f8816c31ffa65d",
+  "checked": "full existing website checker plus supplemental current API/source links",
+  "native_application_test": false,
+  "final_commit_attestation": false
+}

@@ -59,6 +59,7 @@ pub(crate) fn tab_keys(
 #[derive(IntoElement)]
 pub struct Navbar {
     id: ElementId,
+    label: SharedString,
     items: Vec<SharedString>,
     selected: usize,
     on_select: Option<SelectHandler>,
@@ -69,10 +70,17 @@ impl Navbar {
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
+            label: SharedString::default(),
             items: vec![],
             selected: 0,
             on_select: None,
         }
+    }
+    /// Sets the tab list's accessible name (default empty), for example when a window contains
+    /// more than one navigation bar.
+    pub fn label(mut self, label: impl Into<SharedString>) -> Self {
+        self.label = label.into();
+        self
     }
     /// Sets the tab labels, replacing any earlier ones.
     pub fn items(mut self, items: impl IntoIterator<Item = impl Into<SharedString>>) -> Self {
@@ -102,6 +110,7 @@ impl RenderOnce for Navbar {
         div()
             .id(self.id)
             .role(Role::TabList)
+            .aria_label(self.label)
             .relative()
             .flex()
             .flex_shrink_0()
@@ -128,7 +137,14 @@ impl RenderOnce for Navbar {
                     .cursor_pointer()
                     .when(on, |el| el.bg(t.bg_color_active))
                     .active(|s| s.bg(t.bg_color_active))
-                    .focus_visible(|s| s.border_color(t.brand))
+                    .focus_visible(|s| {
+                        let surface = if on {
+                            t.surface_color(t.bg_color_active, t.bg_2)
+                        } else {
+                            t.bg_2
+                        };
+                        s.border_color(t.focus_color(surface))
+                    })
                     .when(i + 1 < count, |el| {
                         el.child(
                             div()

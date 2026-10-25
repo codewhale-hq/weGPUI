@@ -1,0 +1,69 @@
+[
+  {
+    "role": "desktop frame",
+    "name": "main",
+    "states": []
+  },
+  {
+    "role": "application",
+    "name": "control_contracts",
+    "states": []
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI control contracts",
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Start matrix",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "check box",
+    "name": "Read Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms ",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ]
+  },
+  {
+    "role": "link",
+    "name": "Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms ",
+    "states": [
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "End matrix",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  }
+]

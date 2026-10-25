@@ -1,0 +1,27 @@
+2026-10-25T09:37:31Z
+a3ce3afca6417b7dd1b9d701456ae2d21d2150f4
+19287d1e00d419d438caf5241f4306e44649c54b1e14884d2726b4113cd80f61  -
+binary=/workspace/.wegpui-cloud/focus-integrated-20261025-build9/focus_contrast_probe
+source_root=/workspace/.wegpui-cloud/focus-integrated-20261025-build9
+ed82861cb4f12ebc62e3fc726cc999632f383a5fcc103a2d7d67179762c9d6c6  /workspace/.wegpui-cloud/focus-integrated-20261025-build9/focus_contrast_probe
+f5e9fcad82d33b1fd7df4d571e36caabd319ee99566f5eb99ed89c7ceb0a1cc6  docs/receipts/focus-contrast-20261025/probe-caret-corrected.rs.txt
+1e1e27b391bb3cc22428aeef02a3c558f8d521bda108e8cdb5f0bccea935fab5  docs/receipts/focus-contrast-20261025/caret-final-care/drive-used.py
+e3ee24a3ec5d15d044f0e879333731655ed2050f1f7213e829491d99cf22a88b  docs/receipts/focus-contrast-20261025/caret-final-care/run-used.sh
+rustc 1.98.1 (48a229cea 2026-09-01)
+binary: rustc
+commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+commit-date: 2026-09-01
+host: x86_64-unknown-linux-gnu
+release: 1.98.1
+LLVM version: 22.1.8
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+page=focus args= --care

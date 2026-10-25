@@ -1,0 +1,6 @@
+announcement listener ready
+{"time": "2026-10-25T08:27:16.580941+00:00", "type": "object:announcement", "detail1": 2, "detail2": 0, "text": "Floating data notice"}
+{"time": "2026-10-25T08:27:16.581225+00:00", "type": "object:announcement", "detail1": 2, "detail2": 0, "text": "Upload 25 percent"}
+{"time": "2026-10-25T08:27:16.581288+00:00", "type": "object:announcement", "detail1": 2, "detail2": 0, "text": "Loading data records"}
+{"time": "2026-10-25T08:27:30.657436+00:00", "type": "object:announcement", "detail1": 2, "detail2": 0, "text": "Upload 50 percent"}
+{"time": "2026-10-25T08:27:33.518282+00:00", "type": "object:announcement", "detail1": 2, "detail2": 0, "text": "Upload canceled"}

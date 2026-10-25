@@ -1,0 +1,458 @@
+[
+  {
+    "mode": "light",
+    "step": "grey-clear",
+    "point": [
+      589,
+      178
+    ],
+    "actual": [
+      0,
+      0,
+      0
+    ],
+    "surface": [
+      237,
+      237,
+      237
+    ],
+    "contrast": 17.93746463019716
+  },
+  {
+    "mode": "light",
+    "step": "grey-cancel",
+    "point": [
+      633,
+      178
+    ],
+    "actual": [
+      0,
+      0,
+      0
+    ],
+    "surface": [
+      255,
+      255,
+      255
+    ],
+    "contrast": 21.0
+  },
+  {
+    "mode": "light",
+    "step": "grey-back",
+    "point": [
+      35,
+      178
+    ],
+    "actual": [
+      0,
+      0,
+      0
+    ],
+    "surface": [
+      255,
+      255,
+      255
+    ],
+    "contrast": 21.0
+  },
+  {
+    "mode": "dark",
+    "step": "grey-clear",
+    "point": [
+      589,
+      178
+    ],
+    "actual": [
+      7,
+      193,
+      96
+    ],
+    "surface": [
+      56,
+      56,
+      56
+    ],
+    "contrast": 4.916971370786363
+  },
+  {
+    "mode": "dark",
+    "step": "grey-cancel",
+    "point": [
+      633,
+      178
+    ],
+    "actual": [
+      7,
+      193,
+      96
+    ],
+    "surface": [
+      25,
+      25,
+      25
+    ],
+    "contrast": 7.372526799921593
+  },
+  {
+    "mode": "dark",
+    "step": "grey-back",
+    "point": [
+      35,
+      178
+    ],
+    "actual": [
+      7,
+      193,
+      96
+    ],
+    "surface": [
+      25,
+      25,
+      25
+    ],
+    "contrast": 7.372526799921593
+  },
+  {
+    "mode": "care",
+    "step": "grey-clear",
+    "point": [
+      589,
+      178
+    ],
+    "actual": [
+      1,
+      137,
+      66
+    ],
+    "surface": [
+      237,
+      237,
+      237
+    ],
+    "contrast": 3.8507087208275332
+  },
+  {
+    "mode": "care",
+    "step": "grey-cancel",
+    "point": [
+      633,
+      178
+    ],
+    "actual": [
+      1,
+      137,
+      66
+    ],
+    "surface": [
+      255,
+      255,
+      255
+    ],
+    "contrast": 4.508155684457474
+  },
+  {
+    "mode": "care",
+    "step": "grey-back",
+    "point": [
+      35,
+      178
+    ],
+    "actual": [
+      1,
+      137,
+      66
+    ],
+    "surface": [
+      255,
+      255,
+      255
+    ],
+    "contrast": 4.508155684457474
+  },
+  {
+    "mode": "dark-care",
+    "step": "grey-clear",
+    "point": [
+      589,
+      178
+    ],
+    "actual": [
+      7,
+      193,
+      96
+    ],
+    "surface": [
+      56,
+      56,
+      56
+    ],
+    "contrast": 4.916971370786363
+  },
+  {
+    "mode": "dark-care",
+    "step": "grey-cancel",
+    "point": [
+      633,
+      178
+    ],
+    "actual": [
+      7,
+      193,
+      96
+    ],
+    "surface": [
+      25,
+      25,
+      25
+    ],
+    "contrast": 7.372526799921593
+  },
+  {
+    "mode": "dark-care",
+    "step": "grey-back",
+    "point": [
+      35,
+      178
+    ],
+    "actual": [
+      7,
+      193,
+      96
+    ],
+    "surface": [
+      25,
+      25,
+      25
+    ],
+    "contrast": 7.372526799921593
+  },
+  {
+    "mode": "brand",
+    "step": "grey-clear",
+    "point": [
+      589,
+      178
+    ],
+    "actual": [
+      124,
+      58,
+      237
+    ],
+    "surface": [
+      237,
+      237,
+      237
+    ],
+    "contrast": 4.8675327964377875
+  },
+  {
+    "mode": "brand",
+    "step": "grey-cancel",
+    "point": [
+      633,
+      178
+    ],
+    "actual": [
+      124,
+      58,
+      237
+    ],
+    "surface": [
+      255,
+      255,
+      255
+    ],
+    "contrast": 5.698586217871195
+  },
+  {
+    "mode": "brand",
+    "step": "grey-back",
+    "point": [
+      35,
+      178
+    ],
+    "actual": [
+      124,
+      58,
+      237
+    ],
+    "surface": [
+      255,
+      255,
+      255
+    ],
+    "contrast": 5.698586217871195
+  },
+  {
+    "mode": "dark-brand",
+    "step": "grey-clear",
+    "point": [
+      589,
+      178
+    ],
+    "actual": [
+      255,
+      255,
+      255
+    ],
+    "surface": [
+      56,
+      56,
+      56
+    ],
+    "contrast": 11.725786089779096
+  },
+  {
+    "mode": "dark-brand",
+    "step": "grey-cancel",
+    "point": [
+      633,
+      178
+    ],
+    "actual": [
+      124,
+      58,
+      237
+    ],
+    "surface": [
+      25,
+      25,
+      25
+    ],
+    "contrast": 3.0852724712505886
+  },
+  {
+    "mode": "dark-brand",
+    "step": "grey-back",
+    "point": [
+      35,
+      178
+    ],
+    "actual": [
+      124,
+      58,
+      237
+    ],
+    "surface": [
+      25,
+      25,
+      25
+    ],
+    "contrast": 3.0852724712505886
+  },
+  {
+    "mode": "care-brand",
+    "step": "grey-clear",
+    "point": [
+      589,
+      178
+    ],
+    "actual": [
+      124,
+      58,
+      237
+    ],
+    "surface": [
+      237,
+      237,
+      237
+    ],
+    "contrast": 4.8675327964377875
+  },
+  {
+    "mode": "care-brand",
+    "step": "grey-cancel",
+    "point": [
+      633,
+      178
+    ],
+    "actual": [
+      124,
+      58,
+      237
+    ],
+    "surface": [
+      255,
+      255,
+      255
+    ],
+    "contrast": 5.698586217871195
+  },
+  {
+    "mode": "care-brand",
+    "step": "grey-back",
+    "point": [
+      35,
+      178
+    ],
+    "actual": [
+      124,
+      58,
+      237
+    ],
+    "surface": [
+      255,
+      255,
+      255
+    ],
+    "contrast": 5.698586217871195
+  },
+  {
+    "mode": "dark-care-brand",
+    "step": "grey-clear",
+    "point": [
+      589,
+      178
+    ],
+    "actual": [
+      255,
+      255,
+      255
+    ],
+    "surface": [
+      56,
+      56,
+      56
+    ],
+    "contrast": 11.725786089779096
+  },
+  {
+    "mode": "dark-care-brand",
+    "step": "grey-cancel",
+    "point": [
+      633,
+      178
+    ],
+    "actual": [
+      124,
+      58,
+      237
+    ],
+    "surface": [
+      25,
+      25,
+      25
+    ],
+    "contrast": 3.0852724712505886
+  },
+  {
+    "mode": "dark-care-brand",
+    "step": "grey-back",
+    "point": [
+      35,
+      178
+    ],
+    "actual": [
+      124,
+      58,
+      237
+    ],
+    "surface": [
+      25,
+      25,
+      25
+    ],
+    "contrast": 3.0852724712505886
+  }
+]

@@ -1,0 +1,194 @@
+{
+  "dark-buttons-large": {
+    "heights": [
+      48
+    ],
+    "button_count": 18
+  },
+  "light-buttons-large": {
+    "heights": [
+      48
+    ],
+    "button_count": 18
+  },
+  "dark-care-brand-buttons-medium": {
+    "heights": [
+      40
+    ],
+    "button_count": 18
+  },
+  "care-buttons-xmini": {
+    "heights": [
+      28
+    ],
+    "button_count": 18
+  },
+  "care-buttons-large": {
+    "heights": [
+      48
+    ],
+    "button_count": 18
+  },
+  "light-buttons-mini": {
+    "heights": [
+      32
+    ],
+    "button_count": 18
+  },
+  "dark-care-brand-buttons-xmini": {
+    "heights": [
+      28
+    ],
+    "button_count": 18
+  },
+  "light-buttons-medium": {
+    "heights": [
+      40
+    ],
+    "button_count": 18
+  },
+  "dark-brand-buttons-large": {
+    "heights": [
+      48
+    ],
+    "button_count": 18
+  },
+  "care-brand-buttons-xmini": {
+    "heights": [
+      28
+    ],
+    "button_count": 18
+  },
+  "brand-buttons-mini": {
+    "heights": [
+      32
+    ],
+    "button_count": 18
+  },
+  "dark-care-buttons-mini": {
+    "heights": [
+      32
+    ],
+    "button_count": 18
+  },
+  "brand-buttons-large": {
+    "heights": [
+      48
+    ],
+    "button_count": 18
+  },
+  "dark-care-brand-buttons-large": {
+    "heights": [
+      48
+    ],
+    "button_count": 18
+  },
+  "dark-buttons-medium": {
+    "heights": [
+      40
+    ],
+    "button_count": 18
+  },
+  "brand-buttons-xmini": {
+    "heights": [
+      28
+    ],
+    "button_count": 18
+  },
+  "care-brand-buttons-large": {
+    "heights": [
+      48
+    ],
+    "button_count": 18
+  },
+  "dark-brand-buttons-xmini": {
+    "heights": [
+      28
+    ],
+    "button_count": 18
+  },
+  "dark-care-buttons-large": {
+    "heights": [
+      48
+    ],
+    "button_count": 18
+  },
+  "care-buttons-medium": {
+    "heights": [
+      40
+    ],
+    "button_count": 18
+  },
+  "care-buttons-mini": {
+    "heights": [
+      32
+    ],
+    "button_count": 18
+  },
+  "brand-buttons-medium": {
+    "heights": [
+      40
+    ],
+    "button_count": 18
+  },
+  "dark-brand-buttons-mini": {
+    "heights": [
+      32
+    ],
+    "button_count": 18
+  },
+  "dark-buttons-mini": {
+    "heights": [
+      32
+    ],
+    "button_count": 18
+  },
+  "care-brand-buttons-medium": {
+    "heights": [
+      40
+    ],
+    "button_count": 18
+  },
+  "care-brand-buttons-mini": {
+    "heights": [
+      32
+    ],
+    "button_count": 18
+  },
+  "dark-care-brand-buttons-mini": {
+    "heights": [
+      32
+    ],
+    "button_count": 18
+  },
+  "light-buttons-xmini": {
+    "heights": [
+      28
+    ],
+    "button_count": 18
+  },
+  "dark-care-buttons-medium": {
+    "heights": [
+      40
+    ],
+    "button_count": 18
+  },
+  "dark-buttons-xmini": {
+    "heights": [
+      28
+    ],
+    "button_count": 18
+  },
+  "dark-brand-buttons-medium": {
+    "heights": [
+      40
+    ],
+    "button_count": 18
+  },
+  "dark-care-buttons-xmini": {
+    "heights": [
+      28
+    ],
+    "button_count": 18
+  }
+}

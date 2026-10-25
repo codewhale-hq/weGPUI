@@ -1,0 +1,53 @@
+09:21:12.731139 - SPEECH OUTPUT: 'Screen reader on.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:15.953950 - SPEECH OUTPUT: 'weGPUI form contracts frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:16.104165 - SPEECH OUTPUT: 'Date entry 2024-02-29.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:21.336999 - SPEECH OUTPUT: 'left control' {'established': False}
+09:21:21.351069 - SPEECH OUTPUT: 'a' {'established': False}
+09:21:21.373184 - SPEECH OUTPUT: '2024-02-29' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:21.374858 - SPEECH OUTPUT: 'selected' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:23.377301 - SPEECH OUTPUT: '2' {'established': False}
+09:21:23.416699 - SPEECH OUTPUT: 'Text unselected.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:23.444330 - SPEECH OUTPUT: '0' {'established': False}
+09:21:23.495930 - SPEECH OUTPUT: '2' {'established': False}
+09:21:23.564416 - SPEECH OUTPUT: '4' {'established': False}
+09:21:23.623002 - SPEECH OUTPUT: '-' {'established': False}
+09:21:23.685273 - SPEECH OUTPUT: '0' {'established': False}
+09:21:23.746705 - SPEECH OUTPUT: '2' {'established': False}
+09:21:23.806580 - SPEECH OUTPUT: '-' {'established': False}
+09:21:23.867171 - SPEECH OUTPUT: '3' {'established': False}
+09:21:23.928049 - SPEECH OUTPUT: '0' {'established': False}
+09:21:26.002676 - SPEECH OUTPUT: 'return' {'established': False}
+09:21:26.023235 - SPEECH OUTPUT: 'Enter a valid calendar date.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:28.468094 - SPEECH OUTPUT: 'return' {'established': False}
+09:21:28.484863 - SPEECH OUTPUT: 'Enter a valid calendar date.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:30.835235 - SPEECH OUTPUT: 'return' {'established': False}
+09:21:30.856582 - SPEECH OUTPUT: 'Enter a valid calendar date.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:33.407669 - SPEECH OUTPUT: 'Date entry 2024-02-30.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:33.409574 - SPEECH OUTPUT: 'invalid entry.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:33.413629 - SPEECH OUTPUT: 'Enter a valid calendar date.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:35.742285 - SPEECH OUTPUT: 'left control' {'established': False}
+09:21:35.762440 - SPEECH OUTPUT: 'a' {'established': False}
+09:21:35.786073 - SPEECH OUTPUT: '2024-02-30' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:35.787724 - SPEECH OUTPUT: 'selected' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:37.786239 - SPEECH OUTPUT: '2' {'established': False}
+09:21:37.878122 - SPEECH OUTPUT: '0' {'established': False}
+09:21:37.899546 - SPEECH OUTPUT: 'Text unselected.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:37.934740 - SPEECH OUTPUT: '2' {'established': False}
+09:21:37.971043 - SPEECH OUTPUT: '4' {'established': False}
+09:21:38.028477 - SPEECH OUTPUT: '-' {'established': False}
+09:21:38.112163 - SPEECH OUTPUT: '0' {'established': False}
+09:21:38.179581 - SPEECH OUTPUT: '3' {'established': False}
+09:21:38.227022 - SPEECH OUTPUT: '-' {'established': False}
+09:21:38.291582 - SPEECH OUTPUT: '0' {'established': False}
+09:21:38.351293 - SPEECH OUTPUT: '1' {'established': False}
+09:21:40.422759 - SPEECH OUTPUT: 'return' {'established': False}
+09:21:42.835497 - SPEECH OUTPUT: 'Date entry 2024-03-01.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:45.260259 - SPEECH OUTPUT: 'left control' {'established': False}
+09:21:45.269243 - SPEECH OUTPUT: 'a' {'established': False}
+09:21:45.299430 - SPEECH OUTPUT: '2024-03-01' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:45.301350 - SPEECH OUTPUT: 'selected' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:47.304760 - SPEECH OUTPUT: 'backspace' {'established': False}
+09:21:47.327852 - SPEECH OUTPUT: '2024-03-01' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:47.344274 - SPEECH OUTPUT: 'Text unselected.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:21:49.315669 - SPEECH OUTPUT: 'return' {'established': False}
+09:21:51.752651 - SPEECH OUTPUT: 'Date entry 年/月/日.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}

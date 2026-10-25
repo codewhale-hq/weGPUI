@@ -1,0 +1,3 @@
+dbus-daemon[25437]: Activating service name='org.a11y.atspi.Registry' requested by ':1.0' (uid=1000 pid=25461 comm="/workspace/.wegpui-cloud/target-198/debug/examples" label="kernel")
+dbus-daemon[25437]: Successfully activated service 'org.a11y.atspi.Registry'
+SpiRegistry daemon is running with well-known name - org.a11y.atspi.Registry

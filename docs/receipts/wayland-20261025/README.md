@@ -4,6 +4,11 @@ These are real GPUI Wayland client runs under Weston 14.0.2 nested on Xvfb, on
 Debian 13.5 x86_64. They qualify the named samples only. They do not establish
 complete Wayland, component, platform, theme or screen-reader acceptance.
 
+The later owner-approved bridge state/bounds extension is verified separately in
+[bridge-followup](bridge-followup/README.md), including native expanded/collapsed,
+invalid/busy/heading properties and X11 coordinate checks. The original artifacts
+and earlier limitation statements below remain historical observations.
+
 ## Environment and source
 
 Rust/Cargo 1.98.1, exact locked `gpui-pre` / `gpui-pre-platform` 0.3.9,

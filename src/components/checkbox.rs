@@ -50,7 +50,7 @@ pub fn check_icon(checked: bool, size: f32, cx: &App) -> Div {
 }
 
 /// A standalone checkbox: a [`check_icon`] exposed as `Role::CheckBox` with a toggled state and
-/// a tinted circle on keyboard focus. Controlled; the caller stores the value.
+/// two contrasting 2px outer bands on keyboard focus. Controlled; the caller stores the value.
 #[derive(IntoElement)]
 pub struct Checkbox {
     id: ElementId,
@@ -104,9 +104,18 @@ impl Checkbox {
 }
 
 impl RenderOnce for Checkbox {
-    fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
-        let brand = Theme::get(cx).brand;
+    fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
         let checked = self.checked;
+        let focus = window
+            .use_keyed_state(
+                ElementId::NamedChild(std::sync::Arc::new(self.id.clone()), "focus".into()),
+                cx,
+                |_, cx| cx.focus_handle().tab_stop(true),
+            )
+            .read(cx)
+            .clone();
+        let show_focus =
+            !self.disabled && focus.is_focused(window) && window.last_input_was_keyboard();
         let mut el = div()
             .id(self.id)
             .role(Role::CheckBox)
@@ -122,19 +131,20 @@ impl RenderOnce for Checkbox {
             .child(
                 div()
                     .absolute()
-                    .top(px(-2.))
-                    .left(px(-2.))
-                    .size(px(self.size + 4.))
+                    .top(px(-4.))
+                    .left(px(-4.))
+                    .size(px(self.size + 8.))
                     .rounded_full()
-                    .border_2()
-                    .border_color(transparent_black()),
+                    // An empty overlay paints only its inset edges. Drop shadows underneath
+                    // the glyph would fill its transparent unchecked centre on keyboard focus.
+                    .when(show_focus, |el| el.shadow(super::form::dual_focus_ring())),
             );
         if !self.disabled {
             el = el
                 .focusable()
+                .track_focus(&focus)
                 .tab_stop(true)
-                .cursor_pointer()
-                .focus_visible(move |s| s.rounded_full().bg(brand.opacity(0.15)));
+                .cursor_pointer();
             if let Some(handler) = self.on_change {
                 el = el.on_click(move |_, w, cx| {
                     cx.stop_propagation();
@@ -148,7 +158,7 @@ impl RenderOnce for Checkbox {
 
 /// A checkbox row (`.weui-cells_checkbox .weui-check__label`): a 24px [`check_icon`] then the
 /// label. The whole row is one `Role::CheckBox` tab stop named by the label, with a pressed
-/// highlight and a brand focus border. Controlled. In a form group, add it with
+/// highlight and two contrasting inset focus bands. Controlled. In a form group, add it with
 /// [`crate::components::form::FormGroup::row_inset`] and 56 so separators align with the label.
 #[derive(IntoElement)]
 pub struct CheckboxCell {
@@ -196,7 +206,6 @@ impl RenderOnce for CheckboxCell {
         let checked = self.checked;
         let disabled = self.disabled;
         let pressed = t.fg_3;
-        let brand = t.brand;
         let mut el = super::form::cell_frame(self.id)
             .role(Role::CheckBox)
             .aria_label(self.label.clone())
@@ -218,7 +227,7 @@ impl RenderOnce for CheckboxCell {
                 .tab_stop(true)
                 .cursor_pointer()
                 .active(move |s| s.bg(pressed))
-                .focus_visible(move |s| s.border_color(brand));
+                .focus_visible(move |s| s.shadow(super::form::dual_focus_ring()));
             if let Some(handler) = self.on_change {
                 el = el.on_click(move |_, w, cx| handler(&!checked, w, cx));
             }

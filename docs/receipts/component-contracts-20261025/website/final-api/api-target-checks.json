@@ -1,0 +1,16 @@
+{
+  "checked": [
+    "api/wegpui/index.html",
+    "api/wegpui/theme/index.html",
+    "api/wegpui/theme/struct.Theme.html#method.focus_color",
+    "api/wegpui/theme/struct.Theme.html#method.focus_color_with",
+    "api/wegpui/components/date_field/struct.DateField.html"
+  ],
+  "http_status": 200,
+  "new_theme_method_anchors": [
+    "focus_color",
+    "focus_color_with"
+  ],
+  "date_field_reference_and_source_link": true,
+  "native_application_test": false
+}

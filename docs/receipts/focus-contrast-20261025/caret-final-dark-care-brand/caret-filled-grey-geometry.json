@@ -1,0 +1,21 @@
+{
+  "last_character": [
+    267,
+    166,
+    6,
+    24
+  ],
+  "field": [
+    177,
+    166,
+    405,
+    24
+  ],
+  "text": "Search text",
+  "focused": [
+    [
+      "entry",
+      "Outlined input"
+    ]
+  ]
+}

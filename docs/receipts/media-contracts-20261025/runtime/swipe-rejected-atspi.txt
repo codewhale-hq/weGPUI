@@ -1,0 +1,15 @@
+apps 1
+application 'media_contract_probe' [] DISABLED
+  frame 'weGPUI media contracts' ['showing']
+    panel '' ['showing']
+      list item 'Upload contract，0/2' ['showing']
+      list '' ['showing']
+        button 'Add image' ['focusable', 'showing']
+      button 'Fail upload' ['focusable', 'showing']
+      button 'Complete upload' ['focusable', 'showing']
+      button 'Reset uploads' ['focusable', 'showing']
+      button 'Toggle request acceptance' ['focusable', 'showing']
+      list item 'Controlled row' ['focusable', 'focused', 'showing'] description='按左方向键或回车显示操作，右方向键或 Esc 隐藏'
+        list item 'Controlled row' ['showing'] description='Actions'
+      list item 'No actions' ['showing']
+      label 'Files 0; swipe false; accept false. added Image 2: progress 20%; status error; status done; preview Image 1; gallery dismiss; preview Image 1; gallery dismiss; preview Image 1; gallery dismiss; preview Image 1; gallery delete; removed Image 1; preview Image 2; gallery delete; removed Image 2; added Image 3: progress 20%; status done; thumbnail delete; removed Image 3; swipe requested true; accepted true; swipe requested false; accepted true; swipe requested true; accepted true; archive callback; swipe requested true; accepted true; row delete callback; accept false; swipe requested true; accepted false' ['showing']

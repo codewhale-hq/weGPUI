@@ -1,0 +1,15 @@
+{
+  "artifact_sha256": "0823b696c37f2a861a4ea9da4ae5e291614dafb95823b8f2d5c3de56cf981326",
+  "error_speech_output_counts_by_action": {
+    "bad-date": 1,
+    "repeat-one": 1,
+    "repeat-two": 1,
+    "error-readback": 1,
+    "valid-date": 0,
+    "valid-readback": 0,
+    "clear": 0,
+    "empty-readback": 0
+  },
+  "result": "All expected first/repeated automatic feedback and manual readback counts matched.",
+  "review": "Reviewed Orca speech transcript and actual screen/tree observations. PCM is nonzero; audible intelligibility has not been listened to or human-qualified."
+}

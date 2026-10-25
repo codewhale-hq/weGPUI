@@ -10,7 +10,13 @@
 
 use crate::accessibility::Semantics;
 use gpui::{prelude::*, *};
-use std::time::{Duration, Instant};
+use std::{
+    sync::{
+        Arc,
+        atomic::{AtomicBool, Ordering},
+    },
+    time::{Duration, Instant},
+};
 
 /// Default open and close transition length, matching WeUI's 0.3 s animations.
 pub const TRANSITION: Duration = Duration::from_millis(300);
@@ -20,7 +26,8 @@ pub const TRANSITION: Duration = Duration::from_millis(300);
 /// Holds the open/closed target, a focus handle, the opener focus to restore, a generation counter
 /// and the transition timing. Keep one value in your view state, change it with [`Presence::show`]
 /// and [`Presence::hide`], and pass `&presence` to the overlay on every render. Components clone
-/// it, so changes must be made to your copy; clones share the focus handle. Under reduced motion
+/// it, so changes must be made to your copy; clones share the focus handle and immediate input
+/// guard, while rendering state remains owned by the caller. Under reduced motion
 /// (`App::reduce_motion`) every transition completes instantly.
 #[derive(Clone)]
 pub struct Presence {
@@ -33,6 +40,7 @@ pub struct Presence {
     generation: usize,
     duration: Duration,
     passive: bool,
+    interactive: Arc<AtomicBool>,
 }
 
 impl Presence {
@@ -48,6 +56,7 @@ impl Presence {
             generation: 0,
             duration: TRANSITION,
             passive: false,
+            interactive: Arc::new(AtomicBool::new(false)),
         }
     }
     /// Sets the length of a full open or close transition (default [`TRANSITION`]); zero disables
@@ -69,6 +78,9 @@ impl Presence {
     /// transition is still drawing; use [`Presence::progress`] for what is on screen.
     pub fn is_open(&self) -> bool {
         self.visible
+    }
+    pub(crate) fn accepts_input(&self) -> bool {
+        self.interactive.load(Ordering::Relaxed)
     }
     /// Counter incremented each time a closed presence is shown. Delayed tasks compare it to ignore
     /// a stale timer, as [`Presence::hide_after`] does.
@@ -97,6 +109,7 @@ impl Presence {
         self.from = current;
         self.span = self.duration.mul_f32((to - current).abs());
         self.visible = visible;
+        self.interactive.store(visible, Ordering::Relaxed);
         self.changed = Some(Instant::now());
     }
     /// Opens the overlay and moves focus into it.
@@ -356,6 +369,7 @@ impl RenderOnce for Modal {
         let focus = self.presence.focus.clone();
         let interactive = self.presence.visible;
         let passive = self.presence.passive;
+        let live = self.presence.interactive.clone();
         let hidden_flag = (interactive && !passive)
             .then(|| crate::accessibility::register_open_modal(window, cx));
         let panel_height = window
@@ -379,6 +393,22 @@ impl RenderOnce for Modal {
             .flex()
             .flex_col()
             .occlude()
+            .capture_any_mouse_down({
+                let live = live.clone();
+                move |_, _, cx| {
+                    if !passive && !live.load(Ordering::Relaxed) {
+                        cx.stop_propagation();
+                    }
+                }
+            })
+            .capture_any_mouse_up({
+                let live = live.clone();
+                move |_, _, cx| {
+                    if !passive && !live.load(Ordering::Relaxed) {
+                        cx.stop_propagation();
+                    }
+                }
+            })
             .on_click(|_, _, cx| cx.stop_propagation())
             .child({
                 let panel_height = panel_height.clone();
@@ -409,6 +439,8 @@ impl RenderOnce for Modal {
             content = content.h_full();
         }
         let dismiss_on_mask = self.dismiss_on_mask;
+        let dismiss_key_live = live.clone();
+        let dismiss_mask_live = live.clone();
         let layer = div()
             .id(self.id)
             .key_context("WeuiModal")
@@ -431,6 +463,19 @@ impl RenderOnce for Modal {
                 el.occlude()
             })
             .bg(mask_color)
+            .capture_any_mouse_down({
+                let live = live.clone();
+                move |_, _, cx| {
+                    if !passive && !live.load(Ordering::Relaxed) {
+                        cx.stop_propagation();
+                    }
+                }
+            })
+            .capture_any_mouse_up(move |_, _, cx| {
+                if !passive && !live.load(Ordering::Relaxed) {
+                    cx.stop_propagation();
+                }
+            })
             // Bubble phase, not capture: when one modal is rendered inside another, the
             // innermost layer sees Tab first and stops it, so focus stays in the topmost modal.
             .on_key_down({
@@ -456,7 +501,10 @@ impl RenderOnce for Modal {
                 }
             })
             .on_key_down(move |event, window, cx| {
-                if event.keystroke.key == "escape" && interactive {
+                if event.keystroke.key == "escape"
+                    && interactive
+                    && dismiss_key_live.load(Ordering::Relaxed)
+                {
                     if let Some(handler) = dismiss_key.as_ref() {
                         handler(window, cx);
                     }
@@ -466,6 +514,7 @@ impl RenderOnce for Modal {
             .on_click(move |_, window, cx| {
                 if dismiss_on_mask
                     && interactive
+                    && dismiss_mask_live.load(Ordering::Relaxed)
                     && let Some(handler) = dismiss.as_ref()
                 {
                     handler(window, cx);
@@ -491,5 +540,17 @@ impl RenderOnce for Modal {
         )
         .with_priority(1)
         .into_any_element()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::Presence;
+    use core::prelude::v1::test;
+
+    #[test]
+    fn presence_keeps_send_and_sync() {
+        fn assert_send_sync<T: Send + Sync>() {}
+        assert_send_sync::<Presence>();
     }
 }

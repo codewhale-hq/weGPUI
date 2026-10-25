@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/weGPUI/docs/receipts/data-contracts-20261025/article-20261025T085314Z-YyoYLd/article_geometry.py", line 25, in <module>
+    assert len(images) == 2, images
+           ^^^^^^^^^^^^^^^^
+AssertionError: []

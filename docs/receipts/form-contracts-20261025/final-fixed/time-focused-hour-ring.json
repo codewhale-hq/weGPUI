@@ -1,0 +1,2222 @@
+[
+  {
+    "role": "desktop frame",
+    "name": "main",
+    "depth": 0,
+    "states": [],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": false,
+    "description": "",
+    "bounds": [
+      0,
+      0,
+      1024,
+      768
+    ]
+  },
+  {
+    "role": "application",
+    "name": "forms_contracts_probe",
+    "depth": 1,
+    "states": [],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": false,
+    "description": ""
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI form contracts",
+    "depth": 2,
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      40,
+      700,
+      940
+    ]
+  },
+  {
+    "role": "dialog",
+    "name": "Date and time",
+    "depth": 3,
+    "states": [
+      "active",
+      "enabled",
+      "focusable",
+      "modal",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      40,
+      700,
+      940
+    ]
+  },
+  {
+    "role": "button",
+    "name": "关闭",
+    "depth": 4,
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      27,
+      478,
+      44,
+      44
+    ]
+  },
+  {
+    "role": "label",
+    "name": "选择时刻",
+    "depth": 4,
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      85,
+      503,
+      572,
+      14
+    ]
+  },
+  {
+    "role": "list box",
+    "name": "Date and time 05",
+    "depth": 4,
+    "states": [
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "vertical",
+      "visible"
+    ],
+    "focused": true,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      532,
+      350,
+      280
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "00",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      364,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "01",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      420,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "02",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      476,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "03",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      532,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "04",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      588,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "05",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "selected",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": true,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      644,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "06",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      700,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "07",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      756,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "08",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      812,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "09",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      868,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "10",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      924,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "11",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      980,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "12",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      1036,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "13",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      1092,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "14",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      1148,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "15",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      1204,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "16",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      1260,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "17",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      1316,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "18",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      1372,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "19",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      1428,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "20",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      1484,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "21",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      1540,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "22",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      1596,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "23",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      21,
+      1652,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list box",
+    "name": "Date and time 06",
+    "depth": 4,
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "vertical",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      532,
+      350,
+      280
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "00",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      308,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "01",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      364,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "02",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      420,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "03",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      476,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "04",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      532,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "05",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      588,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "06",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "selected",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": true,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      644,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "07",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      700,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "08",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      756,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "09",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      812,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "10",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      868,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "11",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      924,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "12",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      980,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "13",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1036,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "14",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1092,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "15",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1148,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "16",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1204,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "17",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1260,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "18",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1316,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "19",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1372,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "20",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1428,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "21",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1484,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "22",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1540,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "23",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1596,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "24",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1652,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "25",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1708,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "26",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1764,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "27",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1820,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "28",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1876,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "29",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1932,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "30",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      1988,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "31",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2044,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "32",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2100,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "33",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2156,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "34",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2212,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "35",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2268,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "36",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2324,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "37",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2380,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "38",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2436,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "39",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2492,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "40",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2548,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "41",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2604,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "42",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2660,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "43",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2716,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "44",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2772,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "45",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2828,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "46",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2884,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "47",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2940,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "48",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      2996,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "49",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      3052,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "50",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      3108,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "51",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      3164,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "52",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      3220,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "53",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      3276,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "54",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      3332,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "55",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      3388,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "56",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      3444,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "57",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      3500,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "58",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      3556,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "59",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      371,
+      3612,
+      350,
+      56
+    ]
+  },
+  {
+    "role": "button",
+    "name": "确定",
+    "depth": 4,
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      279,
+      868,
+      184,
+      48
+    ]
+  }
+]

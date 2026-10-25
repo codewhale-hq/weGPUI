@@ -1,0 +1,865 @@
+[
+  {
+    "label": "typed-invalid-date",
+    "actions": [
+      {
+        "key": "ctrl+a"
+      },
+      {
+        "text": "2024-02-30"
+      },
+      {
+        "key": "Return"
+      }
+    ],
+    "snapshot": [
+      "date=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 })",
+      "date-error=Some(Date)"
+    ],
+    "controls": [
+      {
+        "name": "Date",
+        "text": "2024-02-30",
+        "invalid": false
+      }
+    ],
+    "counts": {
+      "date:Change": 0,
+      "date:value=": 0,
+      "date:Cancel": 0
+    },
+    "bridge_limit": "AccessKit Invalid::True is not exported as AT-SPI invalid-entry by pinned accesskit_atspi_common 0.19.1; description/alert checked independently."
+  },
+  {
+    "label": "typed-valid-date",
+    "actions": [
+      {
+        "key": "ctrl+a"
+      },
+      {
+        "text": "2024-03-01"
+      },
+      {
+        "key": "Return"
+      }
+    ],
+    "snapshot": [
+      "date=Some(DateValue { year: 2024, month: 3, day: 1, hour: 0, minute: 0 })",
+      "date-editing=false",
+      "date-error=None"
+    ],
+    "controls": [
+      {
+        "name": "Date",
+        "text": "2024-03-01",
+        "invalid": false
+      }
+    ],
+    "counts": {
+      "date:Change": 1,
+      "date:value=": 1
+    }
+  },
+  {
+    "label": "duplicate-submit",
+    "actions": [
+      {
+        "key": "Return"
+      },
+      {
+        "key": "Return"
+      }
+    ],
+    "counts": {
+      "date:Change": 1,
+      "date:value=": 1,
+      "date:Cancel": 0
+    }
+  },
+  {
+    "label": "typed-clear",
+    "actions": [
+      {
+        "key": "ctrl+a"
+      },
+      {
+        "key": "BackSpace"
+      },
+      {
+        "key": "Return"
+      }
+    ],
+    "snapshot": [
+      "date=None",
+      "date-editing=false"
+    ],
+    "controls": [
+      {
+        "name": "Date",
+        "text": "",
+        "invalid": false
+      }
+    ],
+    "counts": {
+      "date:Change": 1,
+      "date:value=": 2
+    }
+  },
+  {
+    "label": "reset-after-clear",
+    "actions": [
+      {
+        "key": "F1"
+      }
+    ],
+    "snapshot": [
+      "date=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 })"
+    ]
+  },
+  {
+    "label": "typed-draft-escape",
+    "actions": [
+      {
+        "key": "ctrl+a"
+      },
+      {
+        "text": "2024-12-31"
+      },
+      {
+        "key": "Escape"
+      }
+    ],
+    "snapshot": [
+      "date=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 })",
+      "date-editing=false"
+    ],
+    "controls": [
+      {
+        "name": "Date",
+        "text": "2024-02-29"
+      }
+    ],
+    "counts": {
+      "date:Cancel": 1,
+      "date:Change": 1,
+      "date:value=": 2
+    }
+  },
+  {
+    "label": "owner-invalid-value",
+    "actions": [
+      {
+        "key": "F5"
+      }
+    ],
+    "snapshot": [
+      "date=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 })",
+      "date-error=None"
+    ],
+    "counts": {
+      "date:Cancel": 1,
+      "date:Change": 1
+    }
+  },
+  {
+    "label": "range-keeps-value",
+    "actions": [
+      {
+        "key": "F4"
+      }
+    ],
+    "snapshot": [
+      "date=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 })",
+      "date-error=Some(OutOfRange"
+    ],
+    "controls": [
+      {
+        "name": "Date",
+        "text": "2024-02-29",
+        "invalid": false
+      }
+    ],
+    "bridge_limit": "AccessKit Invalid::True is not exported as AT-SPI invalid-entry by pinned accesskit_atspi_common 0.19.1; description/alert checked independently."
+  },
+  {
+    "label": "reset-range",
+    "actions": [
+      {
+        "key": "F1"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Date",
+        "text": "2024-02-29",
+        "invalid": false
+      }
+    ]
+  },
+  {
+    "label": "readonly-date",
+    "actions": [
+      {
+        "key": "F13"
+      },
+      {
+        "key": "ctrl+a"
+      },
+      {
+        "text": "2026-04-05"
+      },
+      {
+        "key": "Return"
+      },
+      {
+        "key": "alt+Down"
+      }
+    ],
+    "snapshot": [
+      "date=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 })"
+    ],
+    "controls": [
+      {
+        "name": "Date",
+        "text": "2024-02-29",
+        "readonly": true
+      }
+    ],
+    "no_dialog": true
+  },
+  {
+    "label": "editable-date",
+    "actions": [
+      {
+        "key": "F13"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Date",
+        "readonly": false
+      }
+    ]
+  },
+  {
+    "label": "readonly-clear-hidden",
+    "actions": [
+      {
+        "label": "Read only"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Read only",
+        "text": "Locked",
+        "readonly": true,
+        "focused": true
+      }
+    ],
+    "absent": [
+      {
+        "role": "button",
+        "name": "清除"
+      }
+    ]
+  },
+  {
+    "label": "disabled-label-no-focus",
+    "actions": [
+      {
+        "label": "Disabled"
+      }
+    ],
+    "controls": [
+      {
+        "role": "entry",
+        "name": "Disabled",
+        "focused": false,
+        "sensitive": false
+      }
+    ],
+    "absent": [
+      {
+        "role": "button",
+        "name": "清除"
+      }
+    ]
+  },
+  {
+    "label": "readonly-tab-skips-disabled",
+    "actions": [
+      {
+        "key": "Tab"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Card",
+        "focused": true
+      },
+      {
+        "name": "Read only",
+        "text": "Locked"
+      }
+    ]
+  },
+  {
+    "label": "editable-clear-visible",
+    "actions": [
+      {
+        "key": "F7"
+      },
+      {
+        "focus": "Read only",
+        "role": "entry"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Read only",
+        "readonly": false
+      },
+      {
+        "name": "清除",
+        "role": "button"
+      }
+    ]
+  },
+  {
+    "label": "editable-clear-works",
+    "actions": [
+      {
+        "focus": "清除",
+        "role": "button"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Read only",
+        "text": "",
+        "focused": true
+      }
+    ]
+  },
+  {
+    "label": "reset-locked",
+    "actions": [
+      {
+        "key": "F1"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Read only",
+        "text": "Locked",
+        "readonly": true
+      }
+    ]
+  },
+  {
+    "label": "form-invalid-description",
+    "actions": [
+      {
+        "key": "F8"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Card",
+        "text": "1234",
+        "invalid": false,
+        "description": "16 digits required，Card must contain 16 digits"
+      }
+    ],
+    "bridge_limit": "AccessKit Invalid::True is not exported as AT-SPI invalid-entry by pinned accesskit_atspi_common 0.19.1; description/alert checked independently."
+  },
+  {
+    "label": "form-error-cleared",
+    "actions": [
+      {
+        "key": "F8"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Card",
+        "invalid": false,
+        "description": "16 digits required"
+      }
+    ]
+  },
+  {
+    "label": "legacy-button-open",
+    "actions": [
+      {
+        "focus": "Picker only，",
+        "role": "button"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Picker only 2024年",
+        "role": "list box",
+        "focused": true
+      }
+    ]
+  },
+  {
+    "label": "legacy-button-cancel",
+    "actions": [
+      {
+        "key": "Home"
+      },
+      {
+        "key": "Escape"
+      }
+    ],
+    "snapshot": [
+      "button=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 })"
+    ],
+    "counts": {
+      "button:Cancel": 1,
+      "button:Change": 0
+    },
+    "no_dialog": true
+  },
+  {
+    "label": "legacy-button-reopen-committed",
+    "actions": [
+      {
+        "focus": "Picker only，",
+        "role": "button"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Picker only 2024年",
+        "role": "list box",
+        "focused": true
+      }
+    ]
+  },
+  {
+    "label": "legacy-button-close-again",
+    "actions": [
+      {
+        "key": "Escape"
+      }
+    ],
+    "counts": {
+      "button:Cancel": 2
+    },
+    "no_dialog": true
+  },
+  {
+    "label": "date-open-for-disable",
+    "actions": [
+      {
+        "focus": "Date",
+        "role": "entry"
+      },
+      {
+        "key": "Tab"
+      },
+      {
+        "key": "Return"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Date 2024年",
+        "role": "list box",
+        "focused": true
+      }
+    ]
+  },
+  {
+    "label": "disable-date-closes-sheet",
+    "actions": [
+      {
+        "key": "F2"
+      }
+    ],
+    "snapshot": [
+      "date=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 })",
+      "date-editing=false"
+    ],
+    "controls": [
+      {
+        "name": "Date",
+        "sensitive": false
+      },
+      {
+        "role": "entry",
+        "name": "Date and time",
+        "focused": true
+      }
+    ],
+    "counts": {
+      "date:Cancel": 2
+    },
+    "no_dialog": true
+  },
+  {
+    "label": "reenable-date",
+    "actions": [
+      {
+        "key": "F2"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Date",
+        "sensitive": true
+      }
+    ]
+  },
+  {
+    "label": "date-reopen-after-disable",
+    "actions": [
+      {
+        "focus": "Date",
+        "role": "entry"
+      },
+      {
+        "key": "alt+Down"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Date 2024年",
+        "role": "list box"
+      }
+    ]
+  },
+  {
+    "label": "date-cancel-again",
+    "actions": [
+      {
+        "key": "Escape"
+      }
+    ],
+    "counts": {
+      "date:Cancel": 3
+    },
+    "no_dialog": true,
+    "controls": [
+      {
+        "role": "entry",
+        "name": "Date",
+        "focused": true
+      }
+    ]
+  },
+  {
+    "label": "time-date-stage",
+    "actions": [
+      {
+        "focus": "Date and time",
+        "role": "entry"
+      },
+      {
+        "key": "alt+Down"
+      }
+    ],
+    "snapshot": [
+      "time=Some(DateValue { year: 2024, month: 2, day: 29, hour: 5, minute: 6 })"
+    ],
+    "controls": [
+      {
+        "name": "Date and time 2024年",
+        "role": "list box",
+        "focused": true
+      }
+    ]
+  },
+  {
+    "label": "time-sequence-not-committed",
+    "actions": [
+      {
+        "key": "Return"
+      }
+    ],
+    "snapshot": [
+      "time=Some(DateValue { year: 2024, month: 2, day: 29, hour: 5, minute: 6 })",
+      "time-editing=true"
+    ],
+    "controls": [
+      {
+        "name": "Date and time 05",
+        "role": "list box",
+        "focused": true
+      }
+    ],
+    "counts": {
+      "time:Change": 0,
+      "time:Cancel": 0
+    }
+  },
+  {
+    "label": "time-final-confirm",
+    "actions": [
+      {
+        "key": "Down"
+      },
+      {
+        "key": "Return"
+      }
+    ],
+    "snapshot": [
+      "time=Some(DateValue { year: 2024, month: 2, day: 29, hour: 6, minute: 6 })",
+      "time-editing=false"
+    ],
+    "counts": {
+      "time:Change": 1,
+      "time:value=": 1,
+      "time:Cancel": 0
+    },
+    "no_dialog": true,
+    "controls": [
+      {
+        "role": "entry",
+        "name": "Date and time",
+        "focused": true
+      }
+    ]
+  },
+  {
+    "label": "time-duplicate-submit",
+    "actions": [
+      {
+        "key": "Return"
+      }
+    ],
+    "counts": {
+      "time:Change": 1,
+      "time:value=": 1
+    }
+  },
+  {
+    "label": "reset-time",
+    "actions": [
+      {
+        "key": "F1"
+      }
+    ],
+    "snapshot": [
+      "time=Some(DateValue { year: 2024, month: 2, day: 29, hour: 5, minute: 6 })"
+    ]
+  },
+  {
+    "label": "time-cancel-second-sheet",
+    "actions": [
+      {
+        "focus": "Date and time",
+        "role": "entry"
+      },
+      {
+        "key": "alt+Down"
+      },
+      {
+        "key": "Return"
+      },
+      {
+        "key": "Escape"
+      }
+    ],
+    "snapshot": [
+      "time=Some(DateValue { year: 2024, month: 2, day: 29, hour: 5, minute: 6 })",
+      "time-editing=false"
+    ],
+    "counts": {
+      "time:Cancel": 1,
+      "time:Change": 1
+    },
+    "no_dialog": true
+  },
+  {
+    "label": "owner-set-during-date-sheet",
+    "actions": [
+      {
+        "key": "alt+Down"
+      },
+      {
+        "key": "F3"
+      }
+    ],
+    "snapshot": [
+      "time=Some(DateValue { year: 2027, month: 3, day: 4, hour: 11, minute: 12 })",
+      "time-editing=false"
+    ],
+    "counts": {
+      "time:Cancel": 2,
+      "time:Change": 1
+    },
+    "no_dialog": true
+  },
+  {
+    "label": "reset-before-pending-interrupt",
+    "actions": [
+      {
+        "key": "F1"
+      }
+    ],
+    "snapshot": [
+      "time=Some(DateValue { year: 2024, month: 2, day: 29, hour: 5, minute: 6 })"
+    ]
+  },
+  {
+    "label": "pending-owner-interrupt",
+    "actions": [
+      {
+        "focus": "Date and time",
+        "role": "entry"
+      },
+      {
+        "key": "alt+Down"
+      },
+      {
+        "key": "F11"
+      },
+      {
+        "key": "Return"
+      }
+    ],
+    "snapshot": [
+      "time=Some(DateValue { year: 2027, month: 3, day: 4, hour: 11, minute: 12 })",
+      "time-editing=false"
+    ],
+    "counts": {
+      "time:Cancel": 3,
+      "time:Change": 1
+    },
+    "no_dialog": true
+  },
+  {
+    "label": "reset-before-time-disable",
+    "actions": [
+      {
+        "key": "F1"
+      }
+    ],
+    "snapshot": [
+      "time=Some(DateValue { year: 2024, month: 2, day: 29, hour: 5, minute: 6 })"
+    ]
+  },
+  {
+    "label": "disable-time-second-sheet",
+    "actions": [
+      {
+        "focus": "Date and time",
+        "role": "entry"
+      },
+      {
+        "key": "alt+Down"
+      },
+      {
+        "key": "Return"
+      },
+      {
+        "key": "F6"
+      }
+    ],
+    "snapshot": [
+      "time=Some(DateValue { year: 2024, month: 2, day: 29, hour: 5, minute: 6 })",
+      "time-editing=false",
+      "time-disabled=true"
+    ],
+    "counts": {
+      "time:Cancel": 4,
+      "time:Change": 1
+    },
+    "no_dialog": true
+  },
+  {
+    "label": "reenable-time",
+    "actions": [
+      {
+        "key": "F6"
+      }
+    ],
+    "snapshot": [
+      "time=Some(DateValue { year: 2024, month: 2, day: 29, hour: 5, minute: 6 })",
+      "time-disabled=false"
+    ]
+  },
+  {
+    "label": "typed-datetime-valid",
+    "actions": [
+      {
+        "focus": "Date and time",
+        "role": "entry"
+      },
+      {
+        "key": "ctrl+a"
+      },
+      {
+        "text": "2026-12-31T23:59"
+      },
+      {
+        "key": "Return"
+      }
+    ],
+    "snapshot": [
+      "time=Some(DateValue { year: 2026, month: 12, day: 31, hour: 23, minute: 59 })"
+    ],
+    "controls": [
+      {
+        "name": "Date and time",
+        "text": "2026-12-31 23:59",
+        "invalid": false
+      }
+    ],
+    "counts": {
+      "time:Change": 2,
+      "time:value=": 2
+    }
+  },
+  {
+    "label": "typed-datetime-invalid",
+    "actions": [
+      {
+        "key": "ctrl+a"
+      },
+      {
+        "text": "2026-12-31 24:00"
+      },
+      {
+        "key": "Return"
+      }
+    ],
+    "snapshot": [
+      "time=Some(DateValue { year: 2026, month: 12, day: 31, hour: 23, minute: 59 })"
+    ],
+    "controls": [
+      {
+        "name": "Date and time",
+        "text": "2026-12-31 24:00",
+        "invalid": false
+      }
+    ],
+    "counts": {
+      "time:Change": 2
+    },
+    "bridge_limit": "AccessKit Invalid::True is not exported as AT-SPI invalid-entry by pinned accesskit_atspi_common 0.19.1; description/alert checked independently."
+  },
+  {
+    "label": "datetime-escape-restores",
+    "actions": [
+      {
+        "key": "Escape"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Date and time",
+        "text": "2026-12-31 23:59",
+        "invalid": false
+      }
+    ],
+    "counts": {
+      "time:Cancel": 5
+    },
+    "no_dialog": true
+  }
+]

@@ -7,7 +7,7 @@
 use crate::scrolling::RevealFocus;
 
 use super::ClickHandler;
-use crate::{Theme, accessibility::Semantics, input::TextInput};
+use crate::{Theme, accessibility::Semantics, components::date_field::DateField, input::TextInput};
 use gpui::{prelude::*, *};
 
 /// Default form label width in logical pixels (WeUI `@weuiCellLabelWidth`, 105px).
@@ -17,7 +17,8 @@ pub const LABEL_WIDTH: f32 = 105.;
 pub const LABEL_MAX_WIDTH: f32 = 85.;
 
 /// The keyboard focus indicator used across weGPUI: a 2px inset ring of `color` with no blur.
-/// Pass it to `shadow` inside a `focus_visible` style; callers normally use the theme brand.
+/// Pass it to `shadow` inside a `focus_visible` style with a colour returned by
+/// [`Theme::focus_color`] for the control's actual painted surface.
 pub fn focus_ring(color: Hsla) -> Vec<BoxShadow> {
     vec![BoxShadow {
         color,
@@ -26,6 +27,31 @@ pub fn focus_ring(color: Hsla) -> Vec<BoxShadow> {
         spread_radius: px(2.),
         inset: true,
     }]
+}
+
+/// Two 2px inset bands for focus on inherited backgrounds or images of unknown colour.
+pub fn dual_focus_ring() -> Vec<BoxShadow> {
+    [(black(), 4.), (white(), 2.)]
+        .into_iter()
+        .map(|(color, spread)| BoxShadow {
+            color,
+            offset: point(px(0.), px(0.)),
+            blur_radius: px(0.),
+            spread_radius: px(spread),
+            inset: true,
+        })
+        .collect()
+}
+
+/// Two 2px outer bands for small controls whose fill and surrounding surface differ.
+pub fn dual_outer_focus_ring() -> Vec<BoxShadow> {
+    dual_focus_ring()
+        .into_iter()
+        .map(|shadow| BoxShadow {
+            inset: false,
+            ..shadow
+        })
+        .collect()
 }
 
 /// Base row for selectable form cells (checkbox and radio rows): a vertically centred flex row
@@ -86,7 +112,7 @@ pub fn form_tips(text: impl IntoElement, cx: &App) -> Div {
 }
 
 /// Inline link for tips and agreements: link-coloured `text`, semibold when `bold` (as in
-/// `.weui-cells__tips a`). It is a `Role::Link` tab stop named by `text` with a [`focus_ring`];
+/// `.weui-cells__tips a`). It is a `Role::Link` tab stop named by `text` with a [`dual_focus_ring`];
 /// `on_click` runs on click or Enter/Space and the click does not reach the enclosing row.
 /// Call [`RevealFocus::reveal_focus`] after styling it to reveal the link inside a
 /// [`crate::scrolling::FocusScroll`].
@@ -99,7 +125,6 @@ pub fn form_link(
 ) -> Stateful<Div> {
     let t = Theme::get(cx);
     let text = text.into();
-    let brand = t.brand;
     div()
         .id(id)
         .role(Role::Link)
@@ -109,7 +134,7 @@ pub fn form_link(
         .cursor_pointer()
         .focusable()
         .tab_stop(true)
-        .focus_visible(move |s| s.shadow(focus_ring(brand)))
+        .focus_visible(move |s| s.shadow(dual_focus_ring()))
         .active(|s| s.opacity(0.5))
         .on_click(move |e, w, cx| {
             cx.stop_propagation();
@@ -139,6 +164,11 @@ pub enum CellKind {
     Vertical,
 }
 
+enum LabelTarget {
+    Text(Entity<TextInput>),
+    Date(Entity<DateField>),
+}
+
 /// One labelled row of a form group (`.weui-cells__group_form .weui-cell`): a header (label,
 /// description, custom content), a body holding the children added through `ParentElement`,
 /// and an optional footer. Stateless; the caller owns any input entity placed in the body.
@@ -159,7 +189,8 @@ pub struct FormCell {
     active: bool,
     press_radius: f32,
     focus_target: Option<FocusHandle>,
-    label_target: Option<Entity<TextInput>>,
+    label_target: Option<LabelTarget>,
+    validation_error: Option<Option<SharedString>>,
     role: Option<Role>,
     aria_label: Option<SharedString>,
     on_tap: Option<ClickHandler>,
@@ -186,6 +217,7 @@ impl FormCell {
             press_radius: 8.,
             focus_target: None,
             label_target: None,
+            validation_error: None,
             role: None,
             aria_label: None,
             on_tap: None,
@@ -275,7 +307,22 @@ impl FormCell {
     /// Place the control in the row separately; this does not change its enabled/read-only state.
     /// The label is applied on render, and an explicit `focus_target` takes precedence.
     pub fn label_for(mut self, input: &Entity<TextInput>) -> Self {
-        self.label_target = Some(input.clone());
+        self.label_target = Some(LabelTarget::Text(input.clone()));
+        self
+    }
+    /// Associates the row label and focus target with a date field, in either button or typed
+    /// entry mode. The date field's enabled/read-only state remains owned by the caller.
+    pub fn label_for_date(mut self, input: &Entity<DateField>) -> Self {
+        self.label_target = Some(LabelTarget::Date(input.clone()));
+        self
+    }
+    /// Owns validation feedback for the associated control. `Some` shows warning styling and
+    /// marks the input invalid with an accessible error description; `None` clears this state.
+    /// Unlike [`FormCell::warn`], this updates semantic state on a `label_for`/`label_for_date`
+    /// control. It never changes text, disabled or read-only state.
+    pub fn validation_error(mut self, message: Option<SharedString>) -> Self {
+        self.warn = message.is_some();
+        self.validation_error = Some(message);
         self
     }
     /// Sets the row's accessibility role. None by default.
@@ -309,12 +356,42 @@ impl ParentElement for FormCell {
 
 impl RenderOnce for FormCell {
     fn render(mut self, _: &mut Window, cx: &mut App) -> impl IntoElement {
-        if let Some(input) = &self.label_target {
-            if let Some(label) = &self.label {
-                input.update(cx, |input, cx| input.set_aria_label(label.clone(), cx));
-            }
+        if let Some(target) = &self.label_target {
+            let focus = match target {
+                LabelTarget::Text(input) => {
+                    input.update(cx, |input, cx| {
+                        if let Some(label) = &self.label {
+                            input.set_aria_label(label.clone(), cx);
+                        }
+                        if let Some(message) = &self.validation_error {
+                            input.set_invalid(message.is_some(), cx);
+                            let description = match (&self.label_desc, message) {
+                                (Some(hint), Some(error)) => {
+                                    Some(format!("{hint}，{error}").into())
+                                }
+                                (hint, error) => error.clone().or_else(|| hint.clone()),
+                            };
+                            input.set_aria_description(description, cx);
+                        } else if let Some(hint) = &self.label_desc {
+                            input.set_aria_description(Some(hint.clone()), cx);
+                        }
+                    });
+                    input.read(cx).focus_handle(cx)
+                }
+                LabelTarget::Date(input) => {
+                    input.update(cx, |input, cx| {
+                        if let Some(label) = &self.label {
+                            input.set_label(label.clone(), cx);
+                        }
+                        if let Some(message) = &self.validation_error {
+                            input.set_validation_error(message.clone(), cx);
+                        }
+                    });
+                    input.read(cx).focus_handle(cx)
+                }
+            };
             if self.focus_target.is_none() {
-                self.focus_target = Some(input.read(cx).focus_handle(cx));
+                self.focus_target = Some(focus);
             }
         }
         let t = Theme::get(cx).clone();
@@ -851,7 +928,7 @@ impl RenderOnce for TipsGroup {
 }
 
 /// A [`TextInput`] plus the WeUI clear button (`.weui-btn_input-clear`), shown while the text is
-/// non-empty and either the input or the button has focus. The button is a `Role::Button` tab
+/// editable and non-empty and either the input or the button has focus. The button is a `Role::Button` tab
 /// stop named "清除"; activating it clears the text and refocuses the input.
 pub struct ClearableInput {
     input: Entity<TextInput>,
@@ -889,9 +966,10 @@ impl Render for ClearableInput {
         let t = Theme::get(cx).clone();
         let input = self.input.clone();
         let input_focus = input.read(cx).focus_handle(cx);
-        let show = !input.read(cx).text().is_empty()
+        let editable = !input.read(cx).is_disabled() && !input.read(cx).is_readonly();
+        let show = editable
+            && !input.read(cx).text().is_empty()
             && (input_focus.is_focused(window) || self.clear_focus.is_focused(window));
-        let brand = t.brand;
         let (rest, pressed) = (t.fg_2, t.fg_1);
         div()
             .flex()
@@ -913,10 +991,13 @@ impl Render for ClearableInput {
                         .flex()
                         .items_center()
                         .cursor_pointer()
-                        .focus_visible(move |s| s.shadow(focus_ring(brand)))
+                        .focus_visible(move |s| s.shadow(dual_focus_ring()))
                         .on_mouse_down(MouseButton::Left, |_, _, cx| cx.stop_propagation())
                         .on_click(move |_, window, cx| {
                             cx.stop_propagation();
+                            if input.read(cx).is_disabled() || input.read(cx).is_readonly() {
+                                return;
+                            }
                             input.update(cx, |input, cx| input.clear(cx));
                             window.focus(&input_focus, cx);
                         })

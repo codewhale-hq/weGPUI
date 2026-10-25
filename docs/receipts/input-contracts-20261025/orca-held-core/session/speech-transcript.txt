@@ -1,0 +1,35 @@
+09:04:48.210520 - SPEECH OUTPUT: 'Screen reader on.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:04:53.440637 - SPEECH OUTPUT: 'weGPUI input contracts probe frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:04:54.081339 - SPEECH OUTPUT: 'Word editing entry alpha é beta gamma.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:04:55.717784 - SPEECH OUTPUT: 'Word editing entry alpha é beta gamma.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:04:57.477412 - SPEECH OUTPUT: 'a' {'established': 'False'}
+09:04:58.908396 - SPEECH OUTPUT: 'left control' {'established': False}
+09:04:59.995231 - SPEECH OUTPUT: 'alpha' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:02.415819 - SPEECH OUTPUT: 'left control' {'established': False}
+09:05:03.520115 - SPEECH OUTPUT: 'é' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:06.004915 - SPEECH OUTPUT: 'blank' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:07.063552 - SPEECH OUTPUT: 'left control' {'established': False}
+09:05:08.049448 - SPEECH OUTPUT: 'left shift' {'established': False}
+09:05:09.154930 - SPEECH OUTPUT: 'gamma' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:09.158951 - SPEECH OUTPUT: 'selected' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:12.833270 - SPEECH OUTPUT: 'Word editing entry alpha é beta gamma.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:14.578886 - SPEECH OUTPUT: 'tab' {'established': False}
+09:05:14.699385 - SPEECH OUTPUT: 'Wrapped notes entry.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:15.586921 - SPEECH OUTPUT: 'left control' {'established': False}
+09:05:16.641977 - SPEECH OUTPUT: 'A wrapped paragraph with enough words to cross ' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:18.725570 - SPEECH OUTPUT: 'Wrapped notes entry A wrapped paragraph with enough words to cross ' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:20.065013 - SPEECH OUTPUT: 'tab' {'established': False}
+09:05:20.196283 - SPEECH OUTPUT: 'Read only read only entry read only text.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:21.217236 - SPEECH OUTPUT: 'tab' {'established': False}
+09:05:21.573339 - SPEECH OUTPUT: 'Password password text •••' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:22.315265 - SPEECH OUTPUT: 'Password password text •••' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:23.615903 - SPEECH OUTPUT: 'Read only read only entry read only text.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:24.639778 - SPEECH OUTPUT: 'Read only read only entry read only text.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:25.923400 - SPEECH OUTPUT: 'tab' {'established': False}
+09:05:25.990173 - SPEECH OUTPUT: 'Password password text •••' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:27.025612 - SPEECH OUTPUT: 'UTF16 limit entry A😀B.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:27.027990 - SPEECH OUTPUT: 'invalid entry.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:27.029883 - SPEECH OUTPUT: 'At most six UTF-16 units.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:28.066716 - SPEECH OUTPUT: 'UTF16 limit entry A😀B.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:28.067966 - SPEECH OUTPUT: 'invalid entry.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:05:28.070118 - SPEECH OUTPUT: 'At most six UTF-16 units.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}

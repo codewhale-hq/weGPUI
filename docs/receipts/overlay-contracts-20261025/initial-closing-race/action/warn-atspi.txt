@@ -1,0 +1,8 @@
+apps 1
+application 'overlays_contracts_probe' [] DISABLED
+  frame 'weGPUI overlay contracts' ['showing']
+    dialog 'Contract actions' ['focusable', 'modal', 'showing']
+      button 'Menu action' ['focusable', 'showing']
+      button 'Menu with tips Secondary line' ['focusable', 'showing']
+      button 'Warn action' ['focusable', 'focused', 'showing']
+      button 'Cancel action' ['focusable', 'showing']

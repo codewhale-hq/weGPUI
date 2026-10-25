@@ -1,0 +1,16 @@
+08:23:28.462515 - SPEECH OUTPUT: 'Screen reader on.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+08:23:32.047667 - SPEECH OUTPUT: 'frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+08:23:38.027940 - SPEECH OUTPUT: 'weGPUI dialog A WeUI dialog rendered by native GPUI components.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+08:23:39.273582 - SPEECH OUTPUT: 'tab' {'established': False}
+08:23:39.448696 - SPEECH OUTPUT: 'Cancel button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+08:23:40.640953 - SPEECH OUTPUT: 'tab' {'established': False}
+08:23:40.732242 - SPEECH OUTPUT: 'OK button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+08:23:42.030346 - SPEECH OUTPUT: 'tab' {'established': False}
+08:23:42.128618 - SPEECH OUTPUT: 'Cancel button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+08:23:43.440363 - SPEECH OUTPUT: 'escape' {'established': False}
+08:23:43.615872 - SPEECH OUTPUT: 'Open dialog button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+08:23:44.802864 - SPEECH OUTPUT: 'return' {'established': False}
+08:23:46.252308 - SPEECH OUTPUT: 'tab' {'established': False}
+08:23:47.642105 - SPEECH OUTPUT: 'tab' {'established': False}
+08:23:48.931349 - SPEECH OUTPUT: 'return' {'established': False}
+08:23:50.220498 - SPEECH OUTPUT: 'return' {'established': False}

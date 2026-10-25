@@ -11,7 +11,7 @@ use super::{
     half_screen_dialog::{HalfScreenDialog, HdIconButton},
     modal::{Presence, ease},
 };
-use crate::Theme;
+use crate::{Theme, accessibility::Semantics};
 use gpui::{prelude::*, *};
 use std::{
     cell::Cell,
@@ -84,6 +84,51 @@ enum Source {
         items: Vec<PickerItem>,
         depth: usize,
     },
+    Date {
+        start: i32,
+        end: i32,
+    },
+}
+
+enum ColumnItems {
+    Stored(Vec<PickerItem>),
+    Years { start: i32, end: i32 },
+}
+
+impl ColumnItems {
+    fn is_empty(&self) -> bool {
+        self.len() == 0
+    }
+    fn len(&self) -> usize {
+        match self {
+            Self::Stored(items) => items.len(),
+            Self::Years { start, end } => (i64::from(*end) - i64::from(*start) + 1)
+                .max(0)
+                .try_into()
+                .unwrap_or(usize::MAX),
+        }
+    }
+    fn get(&self, index: usize) -> Option<PickerItem> {
+        if index >= self.len() {
+            return None;
+        }
+        match self {
+            Self::Stored(items) => items.get(index).cloned(),
+            Self::Years { start, .. } => {
+                let year = i64::from(*start) + index as i64;
+                Some(PickerItem::new(format!("{year}年"), year.to_string()))
+            }
+        }
+    }
+    fn enabled_at(&self, index: usize) -> bool {
+        match self {
+            Self::Stored(items) => enabled_at(items, index),
+            Self::Years { .. } => index < self.len(),
+        }
+    }
+    fn years(&self) -> bool {
+        matches!(self, Self::Years { .. })
+    }
 }
 
 struct Drag {
@@ -94,7 +139,8 @@ struct Drag {
 }
 
 struct Column {
-    items: Vec<PickerItem>,
+    items: ColumnItems,
+    year_index: usize,
     offset: f32,
     from: f32,
     anim: Option<Instant>,
@@ -107,13 +153,25 @@ struct Column {
 
 impl Column {
     fn index(&self) -> usize {
-        (OFFSET - (self.offset / ROW_HEIGHT).round()).max(0.) as usize
+        if self.items.years() {
+            self.year_index
+        } else {
+            (OFFSET - (self.offset / ROW_HEIGHT).round()).max(0.) as usize
+        }
     }
     fn max_offset(&self) -> f32 {
-        OFFSET * ROW_HEIGHT
+        if self.items.years() {
+            (OFFSET + self.year_index as f32) * ROW_HEIGHT
+        } else {
+            OFFSET * ROW_HEIGHT
+        }
     }
     fn min_offset(&self) -> f32 {
-        -(ROW_HEIGHT * (self.items.len() as f32 - OFFSET - 1.))
+        if self.items.years() {
+            (OFFSET - self.items.len().saturating_sub(self.year_index + 1) as f32) * ROW_HEIGHT
+        } else {
+            -(ROW_HEIGHT * (self.items.len() as f32 - OFFSET - 1.))
+        }
     }
     fn current(&self, cx: &App) -> f32 {
         match self.anim {
@@ -226,20 +284,12 @@ impl Picker {
     /// Uses a year, month and day cascade over `start_year..=end_year`, labelled `"{y}年"`,
     /// `"{m}月"` and `"{d}日"` with unpadded numeric values, and makes `today`
     /// (`(year, month, day)`) the default value. Pass the user's local date; [`today`] is UTC.
+    /// Years are generated as visible rows, and months/days only for the current selection.
+    /// Reversed bounds produce an empty year column, as an empty inclusive Rust range does.
     pub fn date(mut self, start_year: i32, end_year: i32, today: (i32, u32, u32)) -> Self {
-        let years = (start_year..=end_year)
-            .map(|y| {
-                PickerItem::new(format!("{y}年"), y.to_string()).children((1..=12u32).map(|m| {
-                    PickerItem::new(format!("{m}月"), m.to_string()).children(
-                        (1..=days_in_month(y, m))
-                            .map(|d| PickerItem::new(format!("{d}日"), d.to_string())),
-                    )
-                }))
-            })
-            .collect();
-        self.source = Source::Cascade {
-            items: years,
-            depth: 3,
+        self.source = Source::Date {
+            start: start_year,
+            end: end_year,
         };
         self.default_value = vec![
             today.0.to_string().into(),
@@ -287,16 +337,12 @@ impl Picker {
         self.presence.is_open()
     }
     /// Items at each column's current row, omitting disabled ones, so the list can be shorter than
-    /// the column count. Empty before the first [`Picker::open`].
+    /// the column count. Empty before the first [`Picker::open`]. Date rows contain their label
+    /// and value without eagerly generated `children`; ordinary cascade rows retain theirs.
     pub fn selected(&self) -> Vec<PickerItem> {
         self.columns
             .iter()
-            .filter_map(|c| {
-                c.items
-                    .get(c.index())
-                    .filter(|item| !item.disabled)
-                    .cloned()
-            })
+            .filter_map(|c| c.items.get(c.index()).filter(|item| !item.disabled))
             .collect()
     }
     /// Current row index of every column, including rows that are disabled. Empty before the first
@@ -311,7 +357,7 @@ impl Picker {
             && self
                 .columns
                 .iter()
-                .all(|column| enabled_at(&column.items, column.index()))
+                .all(|column| column.items.enabled_at(column.index()))
     }
 
     /// Rebuilds the columns, slides the sheet up and focuses the first column. The previously
@@ -342,7 +388,7 @@ impl Picker {
         }
     }
     fn confirm(&mut self, window: &mut Window, cx: &mut Context<Self>) {
-        if !self.can_confirm() {
+        if !self.is_open() || !self.can_confirm() {
             return;
         }
         cx.emit(PickerEvent::Confirm(self.selected()));
@@ -371,20 +417,22 @@ impl Picker {
         }
         self.memory[level] = Some(index);
         let offset = (OFFSET - index as f32) * ROW_HEIGHT;
-        let (focus, bounds) = match self.columns.get(level) {
-            Some(c) => (c.focus.clone(), c.bounds.clone()),
+        let (focus, bounds, wheel) = match self.columns.get(level) {
+            Some(c) => (c.focus.clone(), c.bounds.clone(), c.wheel.wrapping_add(1)),
             None => (
                 cx.focus_handle().tab_stop(true),
                 Rc::new(Cell::new(Bounds::default())),
+                0,
             ),
         };
         Column {
-            items,
+            items: ColumnItems::Stored(items),
+            year_index: 0,
             offset,
             from: offset,
             anim: None,
             drag: None,
-            wheel: 0,
+            wheel,
             wheel_dir: 0.,
             focus,
             bounds,
@@ -407,10 +455,69 @@ impl Picker {
                 self.columns.push(col);
                 self.rebuild_from(0, cx);
             }
+            Source::Date { start, end } => {
+                let items = ColumnItems::Years { start, end };
+                let len = items.len();
+                let index = self
+                    .memory
+                    .first()
+                    .copied()
+                    .flatten()
+                    .filter(|i| *i < len)
+                    .or_else(|| {
+                        let year: i32 = self.default_value.first()?.parse().ok()?;
+                        (start..=end)
+                            .contains(&year)
+                            .then_some((i64::from(year) - i64::from(start)) as usize)
+                    })
+                    .unwrap_or(len / 2);
+                let mut column = self.make_column(0, vec![], cx);
+                column.items = items;
+                column.year_index = index;
+                column.offset = OFFSET * ROW_HEIGHT;
+                column.from = column.offset;
+                self.memory[0] = Some(index);
+                self.columns = vec![column];
+                self.rebuild_from(0, cx);
+            }
         }
     }
 
     fn rebuild_from(&mut self, level: usize, cx: &mut App) {
+        if matches!(self.source, Source::Date { .. }) {
+            let Some(year) = self.columns[0]
+                .items
+                .get(self.columns[0].index())
+                .and_then(|item| item.value.parse::<i32>().ok())
+            else {
+                self.columns.truncate(1);
+                return;
+            };
+            if level == 0 {
+                let months = (1..=12u32)
+                    .map(|month| PickerItem::new(format!("{month}月"), month.to_string()))
+                    .collect();
+                let column = self.make_column(1, months, cx);
+                if self.columns.len() > 1 {
+                    self.columns[1] = column;
+                } else {
+                    self.columns.push(column);
+                }
+            }
+            if level <= 1 {
+                let month = self.columns[1].index() as u32 + 1;
+                let days = (1..=days_in_month(year, month))
+                    .map(|day| PickerItem::new(format!("{day}日"), day.to_string()))
+                    .collect::<Vec<_>>();
+                if let Some(Some(day)) = self.memory.get_mut(2) {
+                    *day = (*day).min(days.len() - 1);
+                }
+                let column = self.make_column(2, days, cx);
+                self.columns.truncate(2);
+                self.columns.push(column);
+            }
+            return;
+        }
         let Source::Cascade { depth, .. } = self.source else {
             return;
         };
@@ -443,21 +550,30 @@ impl Picker {
         _window: &Window,
         cx: &mut Context<Self>,
     ) {
+        if !self.is_open() {
+            return;
+        }
         let Some(col) = self.columns.get_mut(level) else {
             return;
         };
         let before = col.index();
-        let visual = col.current(cx);
         let mut k = col.offset + delta;
         k = (k / ROW_HEIGHT).round() * ROW_HEIGHT;
         k = k.min(col.max_offset()).max(col.min_offset());
         let len = col.items.len() as isize;
-        let target = (OFFSET - k / ROW_HEIGHT).round() as isize;
+        if len == 0 {
+            return;
+        }
+        let target = if col.items.years() {
+            (before as isize + (OFFSET - k / ROW_HEIGHT).round() as isize).clamp(0, len - 1)
+        } else {
+            (OFFSET - k / ROW_HEIGHT).round() as isize
+        };
         let forward = if dir > 0. { -1 } else { 1 };
         let enabled_from = |step: isize| {
             let mut j = target;
             while j >= 0 && j < len {
-                if !col.items[j as usize].disabled {
+                if col.items.enabled_at(j as usize) {
                     return Some(j);
                 }
                 j += step;
@@ -467,10 +583,35 @@ impl Picker {
         let i = enabled_from(forward)
             .or_else(|| enabled_from(-forward))
             .unwrap_or(before as isize);
-        col.from = visual;
-        col.offset = (OFFSET - i as f32) * ROW_HEIGHT;
+        self.set_index(level, i as usize, cx);
+    }
+
+    fn set_index(&mut self, level: usize, after: usize, cx: &mut Context<Self>) {
+        if !self.is_open() {
+            return;
+        }
+        let Some(col) = self.columns.get_mut(level) else {
+            return;
+        };
+        if !col.items.enabled_at(after) {
+            return;
+        }
+        let before = col.index();
+        let visual = col.current(cx);
+        if col.items.years() {
+            let distance = after as i64 - before as i64;
+            col.from = if distance.unsigned_abs() <= VISIBLE_ROWS as u64 {
+                visual + distance as f32 * ROW_HEIGHT
+            } else {
+                OFFSET * ROW_HEIGHT
+            };
+            col.offset = OFFSET * ROW_HEIGHT;
+            col.year_index = after;
+        } else {
+            col.from = visual;
+            col.offset = (OFFSET - after as f32) * ROW_HEIGHT;
+        }
         col.anim = Some(Instant::now());
-        let after = i as usize;
         if after != before {
             self.memory[level] = Some(after);
             self.rebuild_from(level, cx);
@@ -484,6 +625,9 @@ impl Picker {
     }
 
     fn drag_start(&mut self, level: usize, y: f32, _window: &Window, cx: &mut Context<Self>) {
+        if !self.is_open() {
+            return;
+        }
         if let Some(col) = self.columns.get_mut(level) {
             let visual = col.current(cx);
             col.offset = visual;
@@ -498,6 +642,9 @@ impl Picker {
     }
 
     fn drag_move(&mut self, level: usize, y: f32, cx: &mut Context<Self>) {
+        if !self.is_open() {
+            return;
+        }
         if let Some(col) = self.columns.get_mut(level)
             && let Some(drag) = col.drag.as_mut()
         {
@@ -512,6 +659,9 @@ impl Picker {
     }
 
     fn drag_end(&mut self, level: usize, y: f32, window: &Window, cx: &mut Context<Self>) {
+        if !self.is_open() {
+            return;
+        }
         let Some(col) = self.columns.get_mut(level) else {
             return;
         };
@@ -549,6 +699,9 @@ impl Picker {
     }
 
     fn wheel(&mut self, level: usize, dy: f32, window: &mut Window, cx: &mut Context<Self>) {
+        if !self.is_open() {
+            return;
+        }
         let Some(col) = self.columns.get_mut(level) else {
             return;
         };
@@ -560,11 +713,14 @@ impl Picker {
         col.wheel += 1;
         col.wheel_dir = dy;
         let generation = col.wheel;
+        let opening = self.presence.generation();
         cx.notify();
         cx.spawn_in(window, async move |this, cx| {
             cx.background_executor().timer(WHEEL_IDLE).await;
             this.update_in(cx, |this, window, cx| {
-                if let Some(col) = this.columns.get(level)
+                if this.is_open()
+                    && this.presence.generation() == opening
+                    && let Some(col) = this.columns.get(level)
                     && col.wheel == generation
                 {
                     let dir = col.wheel_dir;
@@ -611,31 +767,49 @@ impl Picker {
             offset = col.offset + (drag.last - drag.start);
         }
         let index = col.index();
-        let selected = col
-            .items
-            .get(index)
-            .map(|it| it.label.clone())
-            .unwrap_or_default();
+        let selected = col.items.get(index).map(|it| it.label).unwrap_or_default();
         let bounds = col.bounds.clone();
         let focus = col.focus.clone();
+        let keyboard_focus = focus.is_focused(window) && window.last_input_was_keyboard();
         let first = level == 0;
         let last = level + 1 == count;
-        let brand = t.brand;
-        let items = col.items.iter().enumerate().map(|(i, item)| {
-            div()
-                .id(("weui-picker-item", i))
-                .role(Role::ListBoxOption)
-                .aria_label(item.label.clone())
-                .aria_selected(i == index)
-                .h(px(ROW_HEIGHT))
-                .line_height(px(ROW_HEIGHT))
-                .text_center()
-                .whitespace_nowrap()
-                .overflow_hidden()
-                .text_ellipsis()
-                .text_color(if item.disabled { t.fg_1 } else { t.fg_0 })
-                .child(item.label.clone())
-        });
+        let brand = t.focus_color(t.surface_color(t.bg_3, t.bg_2));
+        let row_range = if col.items.years() && !col.items.is_empty() {
+            let visual_index = (index as i64 + (OFFSET - offset / ROW_HEIGHT).round() as i64)
+                .clamp(0, col.items.len() as i64 - 1) as usize;
+            visual_index.saturating_sub(4)..(visual_index + 5).min(col.items.len())
+        } else {
+            0..col.items.len()
+        };
+        let render_offset = if col.items.years() {
+            offset + (row_range.start as i64 - index as i64) as f32 * ROW_HEIGHT
+        } else {
+            offset
+        };
+        let item_count = col.items.len();
+        let items: Vec<_> = row_range
+            .filter_map(|i| col.items.get(i).map(|item| (i, item)))
+            .map(|(i, item)| {
+                Semantics::new(
+                    div()
+                        .id(("weui-picker-item", i))
+                        .role(Role::ListBoxOption)
+                        .aria_label(item.label.clone())
+                        .aria_selected(i == index)
+                        .aria_position_in_set(i)
+                        .aria_size_of_set(item_count)
+                        .h(px(ROW_HEIGHT))
+                        .line_height(px(ROW_HEIGHT))
+                        .text_center()
+                        .whitespace_nowrap()
+                        .overflow_hidden()
+                        .text_ellipsis()
+                        .text_color(if item.disabled { t.fg_1 } else { t.fg_0 })
+                        .child(item.label),
+                )
+                .disabled(item.disabled)
+            })
+            .collect();
         div()
             .id(("weui-picker-group", level))
             .role(Role::ListBox)
@@ -666,7 +840,7 @@ impl Picker {
             .child(
                 div()
                     .absolute()
-                    .top(px(offset))
+                    .top(px(render_offset))
                     .left_0()
                     .w_full()
                     .flex()
@@ -710,7 +884,7 @@ impl Picker {
                     .when(last, |el| el.rounded_r(px(8.)))
                     .border_2()
                     .border_color(transparent_black())
-                    .focus_visible(move |s| s.border_color(brand)),
+                    .when(keyboard_focus, |s| s.border_color(brand)),
             )
             .on_mouse_down(
                 MouseButton::Left,
@@ -742,13 +916,26 @@ impl Picker {
                 cx.stop_propagation();
             }))
             .on_key_down(cx.listener(move |this, e: &KeyDownEvent, window, cx| {
+                if matches!(e.keystroke.key.as_str(), "home" | "end") {
+                    if let Some(column) = this.columns.get(level) {
+                        let mut indices = 0..column.items.len();
+                        let target = if e.keystroke.key == "home" {
+                            indices.find(|i| column.items.enabled_at(*i))
+                        } else {
+                            indices.rev().find(|i| column.items.enabled_at(*i))
+                        };
+                        if let Some(target) = target {
+                            this.set_index(level, target, cx);
+                        }
+                    }
+                    cx.stop_propagation();
+                    return;
+                }
                 let rows = match e.keystroke.key.as_str() {
                     "up" => -1.,
                     "down" => 1.,
                     "pageup" => -VISIBLE_ROWS,
                     "pagedown" => VISIBLE_ROWS,
-                    "home" => -10000.,
-                    "end" => 10000.,
                     "enter" => {
                         this.confirm(window, cx);
                         cx.stop_propagation();
@@ -863,6 +1050,41 @@ pub fn today() -> (i32, u32, u32) {
 mod tests {
     use super::*;
     use core::prelude::v1::test;
+
+    #[cfg(target_pointer_width = "64")]
+    #[test]
+    fn generated_years_cover_full_i32_range_without_a_year_vector() {
+        let years = ColumnItems::Years {
+            start: i32::MIN,
+            end: i32::MAX,
+        };
+        assert_eq!(years.len(), 1usize << 32);
+        assert_eq!(years.get(0).unwrap().value.as_ref(), "-2147483648");
+        assert_eq!(
+            years.get(years.len() - 1).unwrap().value.as_ref(),
+            "2147483647"
+        );
+        assert!(years.get(years.len()).is_none());
+        assert!(years.get(2_147_485_648).unwrap().children.is_empty());
+        assert_eq!(years.get(2_147_485_648).unwrap().value.as_ref(), "2000");
+    }
+
+    #[test]
+    fn generated_year_ranges_are_inclusive_and_reversed_ranges_are_empty() {
+        let years = ColumnItems::Years {
+            start: 1900,
+            end: 2100,
+        };
+        assert_eq!(years.len(), 201);
+        assert_eq!(years.get(200).unwrap().value.as_ref(), "2100");
+        assert!(
+            ColumnItems::Years {
+                start: 2100,
+                end: 1900
+            }
+            .is_empty()
+        );
+    }
 
     #[test]
     fn disabled_default_wraps_to_an_enabled_option() {

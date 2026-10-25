@@ -1,0 +1,9 @@
+2026-10-25T08:44:51Z summary:KP_Enter
+2026-10-25T08:44:52Z start:Home
+2026-10-25T08:44:53Z first-word:ctrl+Right
+2026-10-25T08:44:55Z second-word:ctrl+Right
+2026-10-25T08:44:56Z selected-word:End ctrl+shift+Left
+2026-10-25T08:44:59Z selection-summary:KP_Enter
+2026-10-25T08:45:00Z notes:Tab ctrl+Home KP_Enter
+2026-10-25T08:45:04Z password:Tab Tab KP_Enter
+2026-10-25T08:45:07Z readonly:shift+Tab KP_Enter

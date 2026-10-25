@@ -1,9 +1,9 @@
 //! Page footers from WeUI's `src/style/widget/weui-footer/`: [`Footer`] (`weui-footer`) with
 //! [`FooterLink`]s, 12px text lines and optional bottom placement.
 //!
-//! Known limitations: [`Footer::fixed_bottom`] positions the footer absolutely within the nearest
-//! positioned ancestor rather than the viewport, without safe-area insets, and links keep a
-//! text-sized hit area (no 44px `weui-wa-hotarea`).
+//! Fixed footers use window coordinates and are hidden from assistive technology when the
+//! surrounding [`crate::accessibility::ModalScope`] has an active modal. Safe-area insets are not
+//! applied, and links keep a text-sized hit area (no 44px `weui-wa-hotarea`).
 
 use super::ClickHandler;
 use crate::Theme;
@@ -47,7 +47,7 @@ impl RenderOnce for FooterLink {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         crate::scrolling::FocusTarget::new({
             let t = Theme::get(cx);
-            let (link, line, ring) = (t.link, t.fg_3, t.brand);
+            let (link, line) = (t.link, t.fg_3);
             div()
                 .relative()
                 .mx(px(8.))
@@ -75,7 +75,7 @@ impl RenderOnce for FooterLink {
                         .tab_stop(true)
                         .active(|s| s.opacity(0.5))
                         .child(self.text)
-                        .focus_visible(move |s| s.bg(ring.opacity(0.15)))
+                        .focus_visible(move |s| s.shadow(super::form::dual_focus_ring()))
                         .when_some(self.on_click, |el, h| el.on_click(h)),
                 )
         })
@@ -87,6 +87,7 @@ impl RenderOnce for FooterLink {
 /// It shows one row of links, then the text lines, then any children added through `ParentElement`.
 #[derive(IntoElement)]
 pub struct Footer {
+    id: ElementId,
     links: Vec<FooterLink>,
     texts: Vec<AnyElement>,
     extra: Vec<AnyElement>,
@@ -94,6 +95,7 @@ pub struct Footer {
 }
 
 impl Default for Footer {
+    #[track_caller]
     fn default() -> Self {
         Self::new()
     }
@@ -101,13 +103,21 @@ impl Default for Footer {
 
 impl Footer {
     /// Creates an empty footer in normal flow.
+    #[track_caller]
     pub fn new() -> Self {
         Self {
+            id: ElementId::from(std::panic::Location::caller()),
             links: vec![],
             texts: vec![],
             extra: vec![],
             fixed_bottom: false,
         }
+    }
+    /// Sets a stable footer id. Defaults to the constructor's caller location; use distinct ids
+    /// for sibling footers created in one helper or loop.
+    pub fn id(mut self, id: impl Into<ElementId>) -> Self {
+        self.id = id.into();
+        self
     }
     /// Appends a link to the links row; only the first link has no separator.
     pub fn link(mut self, mut link: FooterLink) -> Self {
@@ -115,13 +125,30 @@ impl Footer {
         self.links.push(link);
         self
     }
-    /// Appends a 12px text line with 16px side padding (`weui-footer__text`).
+    /// Appends a 12px content line with 16px side padding (`weui-footer__text`). Provide semantic
+    /// children such as GPUI [`Text`] for accessibility, or use [`Footer::text_line`] for plain text.
     pub fn text(mut self, text: impl IntoElement) -> Self {
         self.texts.push(text.into_any_element());
         self
     }
-    /// Pins the footer to the bottom of its positioned ancestor, full width, with 16px vertical
-    /// padding (`weui-footer_fixed-bottom`). Default: normal flow.
+    /// Appends an accessible plain-text line, with the same styling as [`Footer::text`].
+    pub fn text_line(mut self, text: impl Into<SharedString>) -> Self {
+        let text = text.into();
+        let index = self.texts.len();
+        self.texts.push(
+            div()
+                .id(("footer-text", index))
+                .role(Role::Paragraph)
+                .aria_label(text.clone())
+                .child(text)
+                .into_any_element(),
+        );
+        self
+    }
+    /// Fixes the footer to the bottom of the window, full width, with 16px vertical padding
+    /// (`weui-footer_fixed-bottom`), independently of parent padding, scrolling and clipping.
+    /// Wrap the application root in [`crate::accessibility::ModalScope`] so covered fixed-footer
+    /// links are hidden from assistive technology while a modal is open. Default: normal flow.
     pub fn fixed_bottom(mut self) -> Self {
         self.fixed_bottom = true;
         self
@@ -144,10 +171,12 @@ pub fn footer_color(cx: &App) -> Hsla {
 }
 
 impl RenderOnce for Footer {
-    fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
+    fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
         let color = footer_color(cx);
         let fixed = self.fixed_bottom;
-        div()
+        let footer = div()
+            .id(self.id)
+            .role(Role::Group)
             .flex()
             .flex_col()
             .items_center()
@@ -156,7 +185,7 @@ impl RenderOnce for Footer {
             .text_size(px(14.))
             .line_height(relative(1.4))
             .when(fixed, |el| {
-                el.absolute().bottom_0().left_0().right_0().py(px(16.))
+                el.w(window.viewport_size().width).py(px(16.)).occlude()
             })
             .when(!self.links.is_empty(), |el| {
                 el.child(div().flex().justify_center().children(self.links))
@@ -166,6 +195,18 @@ impl RenderOnce for Footer {
                     .into_iter()
                     .map(|t| div().px(px(16.)).text_size(px(12.)).child(t)),
             )
-            .children(self.extra)
+            .children(self.extra);
+        if fixed {
+            let hidden = crate::accessibility::background_hidden_flag(window, cx);
+            deferred(
+                anchored()
+                    .anchor(Anchor::BottomLeft)
+                    .position(point(px(0.), window.viewport_size().height))
+                    .child(crate::accessibility::Semantics::new(footer).hidden_flag(hidden)),
+            )
+            .into_any_element()
+        } else {
+            footer.into_any_element()
+        }
     }
 }

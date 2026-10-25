@@ -1,0 +1,181 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "states": [],
+  "attributes": [],
+  "children": [
+    {
+      "role": "application",
+      "name": "input_contracts_probe",
+      "description": "",
+      "states": [],
+      "attributes": [],
+      "children": [
+        {
+          "role": "frame",
+          "name": "weGPUI input contracts probe",
+          "description": "",
+          "states": [
+            "active",
+            "enabled",
+            "sensitive",
+            "showing",
+            "visible"
+          ],
+          "attributes": [],
+          "children": [
+            {
+              "role": "entry",
+              "name": "Word editing",
+              "description": "",
+              "states": [
+                "editable",
+                "enabled",
+                "focusable",
+                "focused",
+                "sensitive",
+                "showing",
+                "single line",
+                "visible",
+                "selectable text"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                221,
+                188,
+                440,
+                28
+              ]
+            },
+            {
+              "role": "entry",
+              "name": "Wrapped notes",
+              "description": "",
+              "states": [
+                "editable",
+                "enabled",
+                "focusable",
+                "multi line",
+                "sensitive",
+                "showing",
+                "visible",
+                "selectable text"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                221,
+                258,
+                440,
+                140
+              ]
+            },
+            {
+              "role": "entry",
+              "name": "Read only",
+              "description": "",
+              "states": [
+                "enabled",
+                "focusable",
+                "sensitive",
+                "showing",
+                "single line",
+                "visible",
+                "selectable text",
+                "read only"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                221,
+                440,
+                440,
+                28
+              ]
+            },
+            {
+              "role": "entry",
+              "name": "Disabled",
+              "description": "",
+              "states": [
+                "showing",
+                "single line",
+                "visible",
+                "selectable text"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                221,
+                510,
+                440,
+                28
+              ]
+            },
+            {
+              "role": "password text",
+              "name": "Password",
+              "description": "",
+              "states": [
+                "editable",
+                "enabled",
+                "focusable",
+                "sensitive",
+                "showing",
+                "single line",
+                "visible",
+                "selectable text"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                221,
+                580,
+                440,
+                28
+              ]
+            },
+            {
+              "role": "entry",
+              "name": "UTF16 limit",
+              "description": "At most six UTF-16 units",
+              "states": [
+                "editable",
+                "enabled",
+                "focusable",
+                "sensitive",
+                "showing",
+                "single line",
+                "visible",
+                "invalid entry",
+                "selectable text"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                221,
+                650,
+                440,
+                28
+              ]
+            }
+          ],
+          "bounds": [
+            201,
+            140,
+            480,
+            720
+          ]
+        }
+      ]
+    }
+  ],
+  "bounds": [
+    0,
+    0,
+    1024,
+    768
+  ]
+}

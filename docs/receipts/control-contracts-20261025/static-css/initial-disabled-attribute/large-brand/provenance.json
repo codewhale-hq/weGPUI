@@ -1,0 +1,11 @@
+{
+  "kind": "static verified CSS reference, not upstream JavaScript example",
+  "css": "/workspace/.wegpui-cloud/target-198/weui-upstream/weui/package/dist/style/weui.css",
+  "css_sha256": "8db42592f96d571568c49ae1b8484f55042e6a6dab25f8144460cd4a23530fd3",
+  "fixture_sha256": "5a2dcf5e4a832a71e4bde4e64404d2b23297d80e9ee987564f558b3aa59a7b8b",
+  "chromium_version": "156.0.8078.47",
+  "size": "large",
+  "dark": false,
+  "care": false,
+  "brand": "7C3AED"
+}

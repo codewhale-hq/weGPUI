@@ -1,0 +1,413 @@
+Read-only source evidence, 2026-10-25 UTC. No platform build or runtime.
+
+/workspace/weGPUI/src/input.rs
+sha256 79bd5a7de6480822f364b0a66a3463dc77a5913d68e0ef56de20e5a7d2ae2c7c
+453:     fn editable(&self) -> bool {
+454:         !self.disabled && !self.readonly
+455:     }
+456: 
+457:     fn sanitize(&self, text: &str) -> String {
+458:         let text = text.replace("\r\n", "\n").replace('\r', "\n");
+459:         let text = if self.multiline {
+460:             text
+461:         } else {
+462:             text.replace('\n', " ")
+463:         };
+464:         text.chars()
+465:             .filter(|ch| *ch == '\n' || !ch.is_control())
+466:             .filter(|ch| self.kind.accepts(*ch) || (*ch == '\n' && self.multiline))
+467:             .collect()
+468:     }
+469: 
+470:     fn limit(&self, text: &str, replaced: Range<usize>) -> String {
+471:         let Some(max) = self.max_len else {
+472:             return text.to_string();
+473:         };
+474:         let kept = self.content[..replaced.start].encode_utf16().count()
+475:             + self.content[replaced.end..].encode_utf16().count();
+476:         let mut budget = max.saturating_sub(kept);
+477:         text.graphemes(true)
+478:             .take_while(|grapheme| {
+479:                 let units = grapheme.encode_utf16().count();
+480:                 let fits = units <= budget;
+481:                 budget = budget.saturating_sub(units);
+482:                 fits
+483:             })
+484:             .collect()
+704:     fn set_accessible_value(&mut self, value: &str, window: &mut Window, cx: &mut Context<Self>) {
+705:         if !self.editable() {
+706:             return;
+707:         }
+708:         self.last_edit = None;
+709:         self.replace_text_in_range(Some(0..self.len()), value, window, cx);
+710:         self.last_edit = None;
+711:     }
+712: 
+713:     fn set_accessible_selection(
+714:         &mut self,
+715:         snapshot: &A11yTextSnapshot,
+716:         selection: &accesskit::TextSelection,
+717:         window: &mut Window,
+718:         cx: &mut Context<Self>,
+719:     ) {
+720:         if self.disabled || snapshot.text != self.display_text() {
+721:             return;
+722:         }
+723:         let Some((anchor, focus)) = snapshot.selection_offsets(selection) else {
+724:             return;
+725:         };
+726:         let anchor = self.display_to_content(anchor);
+727:         let focus = self.display_to_content(focus);
+728:         let Some((range, reversed)) = native_grapheme_selection(&self.content, anchor, focus)
+729:         else {
+730:             return;
+731:         };
+732:         self.unmark_text(window, cx);
+733:         if snapshot.text != self.display_text() {
+734:             return;
+735:         }
+736:         self.selected_range = range;
+737:         self.selection_reversed = reversed;
+738:         self.last_edit = None;
+739:         self.focus(window, cx);
+740:         self.after_cursor_change(cx);
+741:     }
+742: 
+743:     fn delete_to_line_start(
+744:         &mut self,
+745:         _: &DeleteToLineStart,
+746:         window: &mut Window,
+747:         cx: &mut Context<Self>,
+748:     ) {
+749:         if !self.editable() {
+858:     fn snapshot(&self) -> Snapshot {
+859:         Snapshot {
+860:             content: self.content.clone(),
+861:             selected_range: self.selected_range.clone(),
+862:             selection_reversed: self.selection_reversed,
+863:         }
+864:     }
+865: 
+866:     fn restore(&mut self, snapshot: Snapshot, cx: &mut Context<Self>) {
+867:         self.content = snapshot.content;
+868:         self.selected_range = snapshot.selected_range;
+869:         self.selection_reversed = snapshot.selection_reversed;
+870:         self.marked_range = None;
+871:         self.composition_base = None;
+872:         self.last_edit = None;
+873:         self.after_cursor_change(cx);
+874:         cx.emit(InputEvent::Changed);
+875:     }
+876: 
+877:     fn record_edit(&mut self, before: Snapshot, range: &Range<usize>, text: &str) {
+878:         let kind = match (range.is_empty(), text.is_empty()) {
+879:             (_, true) => EditKind::Delete,
+880:             (true, false) => EditKind::Insert,
+881:             (false, false) => EditKind::Replace,
+882:         };
+883:         let coalesce = match (self.last_edit, kind) {
+884:             (Some((EditKind::Insert, at)), EditKind::Insert) => {
+885:                 at == range.start && !text.chars().any(char::is_whitespace)
+886:             }
+887:             (Some((EditKind::Delete, at)), EditKind::Delete) => {
+888:                 at == range.start || at == range.end
+889:             }
+890:             _ => false,
+891:         };
+892:         if !coalesce {
+893:             self.undo_stack.push(before);
+894:             if self.undo_stack.len() > UNDO_LIMIT {
+895:                 self.undo_stack.remove(0);
+896:             }
+897:         }
+898:         self.redo_stack.clear();
+899:         self.last_edit = Some((kind, range.start + text.len()));
+900:     }
+901: 
+1204:     fn replace_text_in_range(
+1205:         &mut self,
+1206:         range_utf16: Option<Range<usize>>,
+1207:         new_text: &str,
+1208:         _: &mut Window,
+1209:         cx: &mut Context<Self>,
+1210:     ) {
+1211:         if !self.editable() {
+1212:             return;
+1213:         }
+1214:         let range = range_utf16
+1215:             .as_ref()
+1216:             .map(|range_utf16| self.range_from_utf16(range_utf16))
+1217:             .or(self.marked_range.clone())
+1218:             .unwrap_or(self.selected_range.clone());
+1219:         let text = self.sanitize(new_text);
+1220:         let text = self.limit(&text, range.clone());
+1221:         let had_marked = self.marked_range.take().is_some();
+1222:         let base = self.composition_base.take();
+1223:         if text.is_empty() && range.is_empty() && !had_marked {
+1224:             cx.notify();
+1225:             return;
+1226:         }
+1227:         let before = base.unwrap_or_else(|| self.snapshot());
+1228:         if *before.content
+1229:             == *format!(
+1230:                 "{}{}{}",
+1231:                 &self.content[..range.start],
+1232:                 text,
+1233:                 &self.content[range.end..]
+1234:             )
+1235:         {
+1236:             let inserted = self.replace(range, &text);
+1237:             self.selected_range = inserted.end..inserted.end;
+1238:             self.selection_reversed = false;
+1239:             self.after_cursor_change(cx);
+1240:             return;
+1241:         }
+1242:         self.record_edit(before, &range, &text);
+1243:         let inserted = self.replace(range, &text);
+1244:         self.selected_range = inserted.end..inserted.end;
+1245:         self.selection_reversed = false;
+1246:         self.after_cursor_change(cx);
+1247:         cx.emit(InputEvent::Changed);
+1248:     }
+1249: 
+1250:     fn replace_and_mark_text_in_range(
+1850:             let geometry_capture = geometry.clone();
+1851:             let selection_owner = cx.entity().downgrade();
+1852:             let value_owner = cx.entity().downgrade();
+1853:             let el = div()
+1854:                 .id("text-input")
+1855:                 .role(role)
+1928:                             },
+1929:                         )
+1930:                         .when(self.editable(), |el| {
+1931:                             el.on_a11y_action(
+1932:                                 AccessibleAction::SetValue,
+1933:                                 move |data, window, cx| {
+1934:                                     if let Some(accesskit::ActionData::Value(value)) = data {
+1935:                                         value_owner
+1936:                                             .update(cx, |input, cx| {
+1937:                                                 input.set_accessible_value(value, window, cx);
+1938:                                             })
+1939:                                             .ok();
+1940:                                     }
+1941:                                 },
+1942:                             )
+1943:                         })
+1944:                         .on_mouse_down(MouseButton::Left, cx.listener(Self::on_mouse_down))
+1945:                         .on_mouse_up(MouseButton::Left, cx.listener(Self::on_mouse_up))
+
+/workspace/weGPUI/Cargo.lock
+sha256 2c3891d2adb4163f61dbcd159a8a71b34442ee7f2a47738813138de433480deb
+35: ]
+36: 
+37: [[package]]
+38: name = "accesskit_macos"
+39: version = "0.26.3"
+40: source = "registry+https://github.com/rust-lang/crates.io-index"
+41: checksum = "ce02dc63b43f0c9296af9ac946312a2dc8814427d7a64d2d600971dac55b6076"
+42: dependencies = [
+43:  "accesskit",
+44:  "accesskit_consumer",
+45:  "hashbrown 0.16.1",
+46:  "objc2 0.5.2",
+47:  "objc2-app-kit 0.2.2",
+48:  "objc2-foundation 0.2.2",
+49: ]
+65: ]
+66: 
+67: [[package]]
+68: name = "accesskit_windows"
+69: version = "0.34.0"
+70: source = "registry+https://github.com/rust-lang/crates.io-index"
+71: checksum = "106c2b961215864d1c2e703ee63269c25c4e80a577ffb2c1017b9c17dcdf83a1"
+72: dependencies = [
+73:  "accesskit",
+74:  "accesskit_consumer",
+75:  "hashbrown 0.16.1",
+76:  "static_assertions",
+77:  "windows 0.62.2",
+78:  "windows-core 0.62.2",
+79: ]
+
+/workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/accesskit-0.24.1/src/lib.rs
+sha256 da99bad8c05747eee4c1cee0850488c4e61170f7f55cbf6b39e79cd4e4a1acbf
+309: 
+310:     /// Delete any selected text in the control's text value and
+311:     /// insert the specified value in its place, like when typing or pasting.
+312:     /// Requires [`ActionRequest::data`] to be set to [`ActionData::Value`].
+313:     ReplaceSelectedText,
+314: 
+342:     SetSequentialFocusNavigationStartingPoint,
+343: 
+344:     /// Replace the value of the control with the specified value and
+345:     /// reset the selection, if applicable. Requires [`ActionRequest::data`]
+346:     /// to be set to [`ActionData::Value`] or [`ActionData::NumericValue`].
+347:     SetValue,
+2920: 
+2921: #[derive(Clone, Debug, PartialEq)]
+2922: #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+2923: #[cfg_attr(feature = "schemars", derive(JsonSchema))]
+2924: #[cfg_attr(feature = "serde", serde(rename_all = "camelCase"))]
+2925: #[repr(C)]
+2926: pub enum ActionData {
+2927:     CustomAction(i32),
+2928:     Value(Box<str>),
+2929:     NumericValue(f64),
+2930:     ScrollUnit(ScrollUnit),
+2931:     /// Optional suggestion for [`Action::ScrollIntoView`], specifying
+2932:     /// the preferred position of the target node relative to the scrollable
+2933:     /// container's viewport.
+2934:     ScrollHint(ScrollHint),
+2935:     /// Target for [`Action::ScrollToPoint`], in platform-native coordinates
+2936:     /// relative to the origin of the tree's container (e.g. window).
+2937:     ScrollToPoint(Point),
+2938:     /// Target for [`Action::SetScrollOffset`], in the coordinate space
+2939:     /// of the action's target node.
+2940:     SetScrollOffset(Point),
+2941:     SetTextSelection(TextSelection),
+2942: }
+
+/workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/accesskit_macos-0.26.3/src/node.rs
+sha256 7fcbb84ed76e25d1ba4f69ef646a5b0cd83f96aaccfa7a0b500518da1ef43e91
+553:         }
+554: 
+555:         #[method(setAccessibilityValue:)]
+556:         fn set_value(&self, value: &NSObject) {
+557:             if let Some(string) = downcast_ref::<NSString>(value) {
+558:                 self.resolve_with_context(|node, tree, context| {
+559:                     if let Some((target_node, target_tree)) = tree.state().locate_node(node.id()) {
+560:                         context.do_action(ActionRequest {
+561:                             action: Action::SetValue,
+562:                             target_tree,
+563:                             target_node,
+564:                             data: Some(ActionData::Value(string.to_string().into())),
+565:                         });
+566:                     }
+567:                 });
+568:             } else if let Some(number) = downcast_ref::<NSNumber>(value) {
+569:                 self.resolve_with_context(|node, tree, context| {
+570:                     if let Some((target_node, target_tree)) = tree.state().locate_node(node.id()) {
+571:                         context.do_action(ActionRequest {
+572:                             action: Action::SetValue,
+573:                             target_tree,
+574:                             target_node,
+575:                             data: Some(ActionData::NumericValue(number.doubleValue())),
+576:                         });
+577:                     }
+578:                 });
+579:             }
+580:         }
+1006:         #[method(setAccessibilitySelectedTextRange:)]
+1007:         fn set_selected_text_range(&self, range: NSRange) {
+1008:             self.resolve_with_context(|node, tree, context| {
+1009:                 if node.supports_text_ranges() {
+1010:                     if let Some(range) = from_ns_range(node, range) {
+1011:                         if let Some((target_node, target_tree)) = tree.state().locate_node(node.id()) {
+1012:                             context.do_action(ActionRequest {
+1013:                                 action: Action::SetTextSelection,
+1014:                                 target_tree,
+1015:                                 target_node,
+1016:                                 data: Some(ActionData::SetTextSelection(range.to_text_selection())),
+1017:                             });
+1018:                         }
+1019:                     }
+1020:                 }
+1021:             });
+1022:         }
+1023: 
+1024:         #[method(isAccessibilityRequired)]
+1220:                     return node.supports_decrement(&filter);
+1221:                 }
+1222:                 if selector == sel!(accessibilityNumberOfCharacters)
+1223:                     || selector == sel!(accessibilitySelectedText)
+1224:                     || selector == sel!(accessibilitySelectedTextRange)
+1225:                     || selector == sel!(accessibilityInsertionPointLineNumber)
+1226:                     || selector == sel!(accessibilityRangeForLine:)
+1227:                     || selector == sel!(accessibilityRangeForPosition:)
+1228:                     || selector == sel!(accessibilityStringForRange:)
+1229:                     || selector == sel!(accessibilityAttributedStringForRange:)
+1230:                     || selector == sel!(accessibilityFrameForRange:)
+1231:                     || selector == sel!(accessibilityLineForIndex:)
+1232:                     || selector == sel!(accessibilityRangeForIndex:)
+1233:                     || selector == sel!(accessibilityStyleRangeForIndex:)
+1234:                     || selector == sel!(setAccessibilitySelectedTextRange:)
+1235:                 {
+1236:                     return node.supports_text_ranges();
+1237:                 }
+1238:                 if selector == sel!(setAccessibilityValue:) {
+1239:                     return (node.supports_text_ranges() && !node.is_read_only()) || node.supports_action(Action::SetValue, &filter);
+1240:                 }
+1241:                 if selector == sel!(isAccessibilitySelected) {
+
+/workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/accesskit_windows-0.34.0/src/node.rs
+sha256 3995a900afad8ba0ac9e68fd37d154a6cd17d18af8703d94a82cc145edcb9277
+1344:     (UIA_ValuePatternId, IValueProvider, IValueProvider_Impl, is_value_pattern_supported, (
+1345:         (UIA_ValueValuePropertyId, Value, value, BSTR),
+1346:         (UIA_ValueIsReadOnlyPropertyId, IsReadOnly, is_read_only, BOOL)
+1347:     ), (
+1348:         fn SetValue(&self, value: &PCWSTR) -> Result<()> {
+1349:             self.do_action(|| {
+1350:                 let value = unsafe { value.to_string() }.unwrap();
+1351:                 (Action::SetValue, Some(ActionData::Value(value.into())))
+1352:             })
+1353:         }
+1354:     )),
+1355:     (UIA_RangeValuePatternId, IRangeValueProvider, IRangeValueProvider_Impl, is_range_value_pattern_supported, (
+
+/workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/accesskit_windows-0.34.0/src/text.rs
+sha256 a8cee4eae55985cf68e1ade06a80101f65812ea7c1b4e8f2d5ac58b0efbbd1e1
+591:     }
+592: 
+593:     fn Select(&self) -> Result<()> {
+594:         self.do_action(|range, tree| {
+595:             let (target_node, target_tree) = tree.state().locate_node(range.node().id()).unwrap();
+596:             ActionRequest {
+597:                 action: Action::SetTextSelection,
+598:                 target_tree,
+599:                 target_node,
+600:                 data: Some(ActionData::SetTextSelection(range.to_text_selection())),
+601:             }
+602:         })
+603:     }
+604: 
+
+/workspace/weGPUI/vendor/gpui_pre/src/window.rs
+sha256 33e794852da7e4a7daa693ce60180937867ba1fe7ef7e74a9a3b3b60c4561f64
+7022:     pub fn on_a11y_action(
+7023:         &mut self,
+7024:         node_id: accesskit::NodeId,
+7025:         action: accesskit::Action,
+7026:         listener: impl FnMut(Option<&accesskit::ActionData>, &mut Window, &mut App) + 'static,
+7027:     ) {
+7028:         self.a11y
+7029:             .action_listeners
+7030:             .entry(node_id)
+7031:             .or_default()
+7032:             .push((action, Box::new(listener)));
+7033:     }
+7034: 
+7035:     #[cfg(not(target_family = "wasm"))]
+7036:     pub(crate) fn handle_a11y_action(&mut self, request: accesskit::ActionRequest, cx: &mut App) {
+7037:         // Take listeners out temporarily so the closures can borrow Window
+7038:         // mutably, then restore them afterward.
+7039:         if let Some(mut listeners) = self.a11y.action_listeners.remove(&request.target_node) {
+7040:             let extra_data = request.data.as_ref();
+7041:             let mut matched = false;
+7042:             for (action, listener) in &mut listeners {
+7043:                 if *action == request.action {
+7044:                     listener(extra_data, self, cx);
+7045:                     matched = true;
+7046:                 }
+7047:             }
+7048:             self.a11y
+7049:                 .action_listeners
+7050:                 .insert(request.target_node, listeners);
+7051:             if matched {
+7052:                 return;
+7053:             }
+7054:         }
+7055: 
+
+Recursive .rs source search accesskit_macos-0.26.3: ReplaceSelectedText -> 0 matches
+
+Recursive .rs source search accesskit_windows-0.34.0: ReplaceSelectedText -> 0 matches

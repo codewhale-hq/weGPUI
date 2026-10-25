@@ -20,7 +20,7 @@ enum Segment {
 ///
 /// Each actionable link gets its own keyboard focus stop and `Link` accessibility node with
 /// bounds covering its wrapped text. Enter or Space activates it, and keyboard focus
-/// highlights the link text. Clicking the link text runs the same handler.
+/// underlines the link text with a contrasting 2px stroke. Clicking the link text runs the same handler.
 #[derive(IntoElement)]
 pub struct LinkText {
     id: ElementId,
@@ -83,7 +83,7 @@ impl RenderOnce for LinkText {
                 }
                 v.clone()
             });
-            let focus_ring = t.brand.opacity(0.15);
+            let focus_ring = t.focus_color(t.bg_2);
             let mut actionable_index = 0;
             let mut highlights = vec![];
             let mut targets = vec![];
@@ -95,7 +95,11 @@ impl RenderOnce for LinkText {
                 if let Some(handler) = handler {
                     let handle = handles[actionable_index].clone();
                     if handle.is_focused(window) && window.last_input_was_keyboard() {
-                        style.background_color = Some(focus_ring);
+                        style.underline = Some(UnderlineStyle {
+                            thickness: px(2.),
+                            color: Some(focus_ring),
+                            wavy: false,
+                        });
                     }
                     let click_handler = handler.clone();
                     targets.push((range.clone(), label.clone(), handle, click_handler));
@@ -297,7 +301,7 @@ impl Msg {
         }
         self
     }
-    /// Adds a 22 px semibold title (`weui-msg__title`) to the current text area.
+    /// Adds a 22 px medium-weight title (`weui-msg__title`) to the current text area.
     pub fn title(self, title: impl Into<SharedString>) -> Self {
         let title: SharedString = title.into();
         self.push_text(TextKind::Title, title.into_any_element())
@@ -399,7 +403,7 @@ impl RenderOnce for Msg {
                                 TextKind::Title => div()
                                     .mb(px(16.))
                                     .text_size(px(22.))
-                                    .font_weight(FontWeight::SEMIBOLD)
+                                    .font_weight(FontWeight::MEDIUM)
                                     .text_color(t.fg_0),
                                 TextKind::Desc => {
                                     div().mb(px(16.)).text_size(px(17.)).text_color(t.fg_0)

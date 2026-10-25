@@ -1,0 +1,2 @@
+dbus-daemon[62322]: [session uid=1000 pid=62322 pidfd=5] Activating service name='ca.desrt.dconf' requested by ':1.1' (uid=1000 pid=62333 comm="/usr/libexec/at-spi-bus-launcher --launch-immediat" label="kernel")
+dbus-daemon[62322]: [session uid=1000 pid=62322 pidfd=5] Successfully activated service 'ca.desrt.dconf'

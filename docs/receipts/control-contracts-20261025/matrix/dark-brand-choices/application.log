@@ -1,0 +1,4 @@
+
+thread 'main' (41314) panicked at /workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-linux-0.3.9/src/linux/platform.rs:366:45:
+failed to connect to X server ":101": Unknown connection error
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

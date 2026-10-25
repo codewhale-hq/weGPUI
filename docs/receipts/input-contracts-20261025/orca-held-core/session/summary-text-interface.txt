@@ -1,0 +1,30 @@
+entry 'Word editing'
+  text: 'alpha é beta gamma'
+  character count: 19
+  caret: 19
+  selections: []
+entry 'Wrapped notes'
+  text: 'A wrapped paragraph with enough words to cross several visual rows. Combining é and family 👩\u200d👩\u200d👧\u200d👦 stay intact.\nSecond hard line.\n'
+  character count: 131
+  caret: 131
+  selections: []
+entry 'Read only'
+  text: 'read only text'
+  character count: 14
+  caret: 14
+  selections: []
+entry 'Disabled'
+  text: 'disabled text'
+  character count: 13
+  caret: 13
+  selections: []
+password text 'Password'
+  password character count: 3
+  password contains only mask characters: True
+  caret: 3
+  selections: []
+entry 'UTF16 limit'
+  text: 'A😀B'
+  character count: 3
+  caret: 3
+  selections: []

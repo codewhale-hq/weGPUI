@@ -1,0 +1,16 @@
+event 1 open
+snapshot open=true values=[] indices=[] opener_focus=false
+event 2 menu
+snapshot open=true values=[] indices=[] opener_focus=false
+event 3 tips
+snapshot open=true values=[] indices=[] opener_focus=false
+event 4 warn
+snapshot open=true values=[] indices=[] opener_focus=false
+event 5 cancel
+snapshot open=false values=[] indices=[] opener_focus=true
+event 6 open
+event 7 dismiss
+snapshot open=false values=[] indices=[] opener_focus=true
+event 8 open
+event 9 dismiss
+snapshot open=false values=[] indices=[] opener_focus=true

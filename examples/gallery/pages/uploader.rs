@@ -27,6 +27,8 @@ pub struct UploaderPage {
     preview_src: Option<ImageSource>,
     tips: ToptipsState,
     error: SharedString,
+    plain_add_focus: FocusHandle,
+    deletable_add_focus: FocusHandle,
 }
 
 const IMAGE_EXTENSIONS: [&str; 6] = ["png", "jpg", "jpeg", "gif", "webp", "bmp"];
@@ -99,6 +101,8 @@ pub fn build(route: &'static str, args: &Args, window: &mut Window, cx: &mut App
         preview_src: None,
         tips: ToptipsState::new(),
         error: SharedString::default(),
+        plain_add_focus: cx.focus_handle(),
+        deletable_add_focus: cx.focus_handle(),
     });
     if matches!(state.as_deref(), Some("viewer" | "preview")) {
         let weak = page.downgrade();
@@ -139,6 +143,7 @@ impl Render for UploaderPage {
         );
         let first = Uploader::new("uploader-plain", "图片上传，缩略图不带删除")
             .info("3/10")
+            .track_add_focus(&self.plain_add_focus)
             .files(self.plain.clone())
             .on_preview(cx.listener(|this, ix: &usize, window, cx| {
                 this.current = Some(*ix);
@@ -148,6 +153,7 @@ impl Render for UploaderPage {
             .on_add(cx.listener(|this, _, window, cx| this.choose(false, window, cx)));
         let second = Uploader::new("uploader-deletable", "图片上传，缩略图带删除")
             .info("3/10")
+            .track_add_focus(&self.deletable_add_focus)
             .deletable(true)
             .files(self.deletable.clone())
             .on_preview(cx.listener(|this, ix: &usize, window, cx| {
@@ -155,9 +161,10 @@ impl Render for UploaderPage {
                 this.preview.show(window, cx);
                 cx.notify();
             }))
-            .on_delete(cx.listener(|this, ix: &usize, _, cx| {
+            .on_delete(cx.listener(|this, ix: &usize, window, cx| {
                 if *ix < this.deletable.len() {
                     this.deletable.remove(*ix);
+                    window.focus(&this.deletable_add_focus, cx);
                     cx.notify();
                 }
             }))
@@ -196,6 +203,7 @@ impl Render for UploaderPage {
                             this.plain.remove(ix);
                         }
                         this.viewer.hide(window, cx);
+                        window.focus(&this.plain_add_focus, cx);
                         cx.notify();
                     }))
                     .on_dismiss(move |window, cx| {

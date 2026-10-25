@@ -1,0 +1,338 @@
+[
+  {
+    "role": "application",
+    "name": "focus_contrast_probe",
+    "states": [],
+    "bounds": null
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI focus contrast",
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      0,
+      0,
+      700,
+      850
+    ]
+  },
+  {
+    "role": "panel",
+    "name": "",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      0,
+      0,
+      700,
+      850
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Homepage search",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      54,
+      74,
+      571,
+      48
+    ]
+  },
+  {
+    "role": "button",
+    "name": "\u62cd\u7167",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      623,
+      86,
+      23,
+      24
+    ]
+  },
+  {
+    "role": "landmark",
+    "name": "",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      20,
+      150,
+      660,
+      56
+    ]
+  },
+  {
+    "role": "button",
+    "name": "\u8fd4\u56de",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      34,
+      158,
+      16,
+      40
+    ]
+  },
+  {
+    "role": "combo box",
+    "name": "",
+    "states": [
+      "enabled",
+      "expandable",
+      "expanded",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      60,
+      160,
+      562,
+      36
+    ]
+  },
+  {
+    "role": "label",
+    "name": "Keyword",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      96,
+      164,
+      73,
+      28
+    ]
+  },
+  {
+    "role": "entry",
+    "name": "Outlined input",
+    "states": [
+      "editable",
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "single line",
+      "visible",
+      "selectable text"
+    ],
+    "bounds": [
+      177,
+      166,
+      405,
+      24
+    ]
+  },
+  {
+    "role": "button",
+    "name": "\u6e05\u9664",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      588,
+      166,
+      24,
+      24
+    ]
+  },
+  {
+    "role": "button",
+    "name": "\u53d6\u6d88",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      632,
+      158,
+      38,
+      40
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Default",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      66,
+      222,
+      120,
+      48
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Primary",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      290,
+      222,
+      120,
+      48
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Warn",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      514,
+      222,
+      120,
+      48
+    ]
+  },
+  {
+    "role": "check box",
+    "name": "Standalone checkbox",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "bounds": [
+      20,
+      290,
+      24,
+      24
+    ]
+  },
+  {
+    "role": "toggle button",
+    "name": "Standalone switch",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      68,
+      286,
+      52,
+      32
+    ]
+  },
+  {
+    "role": "check box",
+    "name": "Checkbox row",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "bounds": [
+      20,
+      334,
+      660,
+      56
+    ]
+  },
+  {
+    "role": "radio button",
+    "name": "Radio first",
+    "states": [
+      "checked",
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "bounds": [
+      20,
+      406,
+      660,
+      56
+    ]
+  },
+  {
+    "role": "radio button",
+    "name": "Radio second",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "bounds": [
+      20,
+      478,
+      660,
+      56
+    ]
+  }
+]

@@ -1,0 +1,4 @@
+Add current wire signature: (so)(so)(so)iiassusau
+Add proposed wire signature: ((so)(so)(so)iiassusau)
+Remove current wire signature: so
+Remove proposed wire signature: (so)

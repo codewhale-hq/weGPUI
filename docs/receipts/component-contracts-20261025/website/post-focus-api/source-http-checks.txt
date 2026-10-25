@@ -1,0 +1,1 @@
+PASS: Checkbox and TextInput source pages serve HTTP200; decoded complete source matches the current files exactly.

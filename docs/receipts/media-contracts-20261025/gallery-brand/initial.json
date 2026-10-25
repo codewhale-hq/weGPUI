@@ -1,0 +1,493 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "states": [],
+  "children": [
+    {
+      "role": "application",
+      "name": "gallery",
+      "description": "",
+      "states": [],
+      "children": [
+        {
+          "role": "frame",
+          "name": "weGPUI",
+          "description": "",
+          "states": [
+            "active",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "visible"
+          ],
+          "children": [
+            {
+              "role": "panel",
+              "name": "",
+              "description": "",
+              "states": [
+                "enabled",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "children": [
+                {
+                  "role": "paragraph",
+                  "name": "上传组件，一般配合组件Gallery来使用。",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "children": [
+                    {
+                      "role": "label",
+                      "name": "上传组件，一般配合组件Gallery来使用。",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "children": [],
+                      "bounds": [
+                        40,
+                        76,
+                        295,
+                        22
+                      ]
+                    },
+                    {
+                      "role": "link",
+                      "name": "组件Gallery",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "focusable",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "children": [],
+                      "bounds": [
+                        166,
+                        76,
+                        78,
+                        22
+                      ]
+                    }
+                  ],
+                  "bounds": [
+                    40,
+                    76,
+                    295,
+                    22
+                  ]
+                },
+                {
+                  "role": "list item",
+                  "name": "",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "children": [
+                    {
+                      "role": "list item",
+                      "name": "图片上传，缩略图不带删除，3/10",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "children": [],
+                      "bounds": [
+                        16,
+                        162,
+                        343,
+                        36
+                      ]
+                    },
+                    {
+                      "role": "list",
+                      "name": "",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "children": [
+                        {
+                          "role": "image",
+                          "name": "图片标题",
+                          "description": "轻点两下查看大图",
+                          "states": [
+                            "enabled",
+                            "focusable",
+                            "sensitive",
+                            "showing",
+                            "visible"
+                          ],
+                          "children": [],
+                          "bounds": [
+                            16,
+                            198,
+                            96,
+                            96
+                          ]
+                        },
+                        {
+                          "role": "image",
+                          "name": "图片标题",
+                          "description": "轻点两下查看大图",
+                          "states": [
+                            "enabled",
+                            "focusable",
+                            "sensitive",
+                            "showing",
+                            "visible"
+                          ],
+                          "children": [],
+                          "bounds": [
+                            120,
+                            198,
+                            96,
+                            96
+                          ]
+                        },
+                        {
+                          "role": "image",
+                          "name": "图片标题",
+                          "description": "轻点两下查看大图",
+                          "states": [
+                            "enabled",
+                            "focusable",
+                            "sensitive",
+                            "showing",
+                            "visible"
+                          ],
+                          "children": [],
+                          "bounds": [
+                            224,
+                            198,
+                            96,
+                            96
+                          ]
+                        },
+                        {
+                          "role": "notification",
+                          "name": "错误",
+                          "description": "",
+                          "states": [
+                            "enabled",
+                            "sensitive",
+                            "showing",
+                            "visible"
+                          ],
+                          "children": [],
+                          "bounds": [
+                            52,
+                            338,
+                            24,
+                            24
+                          ]
+                        },
+                        {
+                          "role": "notification",
+                          "name": "50%",
+                          "description": "",
+                          "states": [
+                            "enabled",
+                            "sensitive",
+                            "showing",
+                            "visible"
+                          ],
+                          "children": [],
+                          "bounds": [
+                            149,
+                            338,
+                            38,
+                            24
+                          ]
+                        },
+                        {
+                          "role": "button",
+                          "name": "上传图片",
+                          "description": "",
+                          "states": [
+                            "enabled",
+                            "focusable",
+                            "sensitive",
+                            "showing",
+                            "visible"
+                          ],
+                          "children": [],
+                          "bounds": [
+                            224,
+                            302,
+                            96,
+                            96
+                          ]
+                        }
+                      ],
+                      "bounds": [
+                        16,
+                        198,
+                        343,
+                        200
+                      ]
+                    }
+                  ],
+                  "bounds": [
+                    0,
+                    146,
+                    375,
+                    276
+                  ]
+                },
+                {
+                  "role": "list item",
+                  "name": "",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "children": [
+                    {
+                      "role": "list item",
+                      "name": "图片上传，缩略图带删除，3/10",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "children": [],
+                      "bounds": [
+                        16,
+                        446,
+                        343,
+                        36
+                      ]
+                    },
+                    {
+                      "role": "list",
+                      "name": "",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "children": [
+                        {
+                          "role": "image",
+                          "name": "图片标题",
+                          "description": "轻点两下查看大图",
+                          "states": [
+                            "enabled",
+                            "focusable",
+                            "sensitive",
+                            "showing",
+                            "visible"
+                          ],
+                          "children": [],
+                          "bounds": [
+                            16,
+                            482,
+                            96,
+                            96
+                          ]
+                        },
+                        {
+                          "role": "button",
+                          "name": "删除",
+                          "description": "",
+                          "states": [
+                            "enabled",
+                            "focusable",
+                            "sensitive",
+                            "showing",
+                            "visible"
+                          ],
+                          "children": [],
+                          "bounds": [
+                            84,
+                            478,
+                            32,
+                            32
+                          ]
+                        },
+                        {
+                          "role": "image",
+                          "name": "图片标题",
+                          "description": "轻点两下查看大图",
+                          "states": [
+                            "enabled",
+                            "focusable",
+                            "sensitive",
+                            "showing",
+                            "visible"
+                          ],
+                          "children": [],
+                          "bounds": [
+                            120,
+                            482,
+                            96,
+                            96
+                          ]
+                        },
+                        {
+                          "role": "button",
+                          "name": "删除",
+                          "description": "",
+                          "states": [
+                            "enabled",
+                            "focusable",
+                            "sensitive",
+                            "showing",
+                            "visible"
+                          ],
+                          "children": [],
+                          "bounds": [
+                            188,
+                            478,
+                            32,
+                            32
+                          ]
+                        },
+                        {
+                          "role": "notification",
+                          "name": "错误",
+                          "description": "",
+                          "states": [
+                            "enabled",
+                            "sensitive",
+                            "showing",
+                            "visible"
+                          ],
+                          "children": [],
+                          "bounds": [
+                            260,
+                            518,
+                            24,
+                            24
+                          ]
+                        },
+                        {
+                          "role": "notification",
+                          "name": "50%",
+                          "description": "",
+                          "states": [
+                            "enabled",
+                            "sensitive",
+                            "showing",
+                            "visible"
+                          ],
+                          "children": [],
+                          "bounds": [
+                            45,
+                            622,
+                            38,
+                            24
+                          ]
+                        },
+                        {
+                          "role": "button",
+                          "name": "上传图片",
+                          "description": "",
+                          "states": [
+                            "enabled",
+                            "focusable",
+                            "sensitive",
+                            "showing",
+                            "visible"
+                          ],
+                          "children": [],
+                          "bounds": [
+                            120,
+                            586,
+                            96,
+                            96
+                          ]
+                        }
+                      ],
+                      "bounds": [
+                        16,
+                        482,
+                        343,
+                        200
+                      ]
+                    }
+                  ],
+                  "bounds": [
+                    0,
+                    430,
+                    375,
+                    276
+                  ]
+                },
+                {
+                  "role": "link",
+                  "name": "WeUI 首页",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "children": [],
+                  "bounds": [
+                    143,
+                    757,
+                    88,
+                    23
+                  ]
+                }
+              ],
+              "bounds": [
+                0,
+                0,
+                375,
+                812
+              ]
+            }
+          ],
+          "bounds": [
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        }
+      ]
+    }
+  ],
+  "bounds": [
+    0,
+    0,
+    1024,
+    768
+  ]
+}

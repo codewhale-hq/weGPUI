@@ -1,0 +1,241 @@
+//! Native focus contrast fixture: `--dark`, `--care`, `--brand RRGGBB`.
+//! F1/F2/F3 focus buttons, F4 opens Picker, F5 opens Gallery, F6 focuses Homepage search.
+use gpui::{prelude::*, *};
+use wegpui::{
+    Theme, ThemeMode,
+    accessibility::ModalScope,
+    components::{
+        button::Button,
+        checkbox::{Checkbox, CheckboxCell},
+        gallery::{Gallery, gallery_presence},
+        modal::Presence,
+        picker::{Picker, PickerItem},
+        radio::RadioGroup,
+        search_bar::{SearchBar, SearchBarVariant},
+        switch::Switch,
+    },
+};
+
+struct Probe {
+    buttons: [FocusHandle; 3],
+    home: Entity<SearchBar>,
+    search: Entity<SearchBar>,
+    picker: Entity<Picker>,
+    gallery: Presence,
+    checked: bool,
+    radio: usize,
+}
+
+impl Probe {
+    fn new(cx: &mut Context<Self>) -> Self {
+        Self {
+            buttons: std::array::from_fn(|_| cx.focus_handle().tab_stop(true)),
+            home: cx.new(|cx| {
+                let mut bar = SearchBar::new(cx).variant(SearchBarVariant::Homepage);
+                bar.set_placeholder("Homepage search", cx);
+                bar
+            }),
+            search: cx.new(|cx| {
+                let mut bar = SearchBar::new(cx)
+                    .variant(SearchBarVariant::Outlined)
+                    .words("Keyword");
+                bar.set_placeholder("Outlined input", cx);
+                bar.set_text("Search text", cx);
+                bar
+            }),
+            picker: cx.new(|cx| {
+                Picker::new("focus-picker", cx)
+                    .title("Focus picker")
+                    .columns(vec![vec![
+                        PickerItem::new("First", "first"),
+                        PickerItem::new("Second", "second"),
+                        PickerItem::new("Third", "third"),
+                    ]])
+            }),
+            gallery: gallery_presence(cx),
+            checked: false,
+            radio: 0,
+        }
+    }
+}
+
+impl Render for Probe {
+    fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let t = Theme::get(cx).clone();
+        let checked = self.checked;
+        let page_entity = cx.entity().downgrade();
+        let page = div()
+            .id("focus-contracts")
+            .size_full()
+            .bg(t.bg_2)
+            .text_color(t.fg_0)
+            .flex()
+            .flex_col()
+            .p(px(20.))
+            .gap(px(16.))
+            .on_key_down(cx.listener(|this, event: &KeyDownEvent, window, cx| {
+                match event.keystroke.key.as_str() {
+                    "tab" => {
+                        if event.keystroke.modifiers.shift {
+                            window.focus_prev(cx);
+                        } else {
+                            window.focus_next(cx);
+                        }
+                    }
+                    "f1" => window.focus(&this.buttons[0], cx),
+                    "f2" => window.focus(&this.buttons[1], cx),
+                    "f3" => window.focus(&this.buttons[2], cx),
+                    "f4" => this.picker.update(cx, |picker, cx| picker.open(window, cx)),
+                    "f5" => this.gallery.show(window, cx),
+                    "f6" => window.focus(&this.home.focus_handle(cx), cx),
+                    _ => return,
+                }
+                cx.stop_propagation();
+            }))
+            .child("Focus contrast: F1–F6; Tab reaches all choices and search actions")
+            .child(self.home.clone())
+            .child(self.search.clone())
+            .child(
+                div()
+                    .flex()
+                    .gap(px(12.))
+                    .child(
+                        Button::new("Default")
+                            .min_width(120.)
+                            .track_focus(&self.buttons[0]),
+                    )
+                    .child(
+                        Button::new("Primary")
+                            .primary()
+                            .min_width(120.)
+                            .track_focus(&self.buttons[1]),
+                    )
+                    .child(
+                        Button::new("Warn")
+                            .warn()
+                            .min_width(120.)
+                            .track_focus(&self.buttons[2]),
+                    ),
+            )
+            .child(
+                div()
+                    .flex()
+                    .items_center()
+                    .gap(px(24.))
+                    .child(
+                        Checkbox::new("standalone")
+                            .label("Standalone checkbox")
+                            .checked(checked)
+                            .on_change(cx.listener(|this, value, _, cx| {
+                                this.checked = *value;
+                                eprintln!("checkbox-change {}", *value);
+                                cx.notify();
+                            })),
+                    )
+                    .child(
+                        Switch::new("switch")
+                            .label("Standalone switch")
+                            .checked(checked)
+                            .on_change(cx.listener(|this, value, _, cx| {
+                                this.checked = *value;
+                                cx.notify();
+                            })),
+                    ),
+            )
+            .child(
+                CheckboxCell::new("row", "Checkbox row")
+                    .checked(checked)
+                    .on_change(cx.listener(|this, value, _, cx| {
+                        this.checked = *value;
+                        cx.notify();
+                    })),
+            )
+            .children(
+                RadioGroup::new("radios")
+                    .option("Radio first")
+                    .option("Radio second")
+                    .selected(Some(self.radio))
+                    .on_change(cx.listener(|this, value, _, cx| {
+                        this.radio = *value;
+                        cx.notify();
+                    }))
+                    .rows(window, cx),
+            )
+            .child(self.picker.clone())
+            .child(
+                Gallery::new("focus-gallery", &self.gallery)
+                    .src("pic_article.png")
+                    .label("Focus image")
+                    .on_dismiss(move |window, cx| {
+                        page_entity
+                            .update(cx, |this, cx| {
+                                this.gallery.hide(window, cx);
+                                cx.notify();
+                            })
+                            .ok();
+                    }),
+            );
+        ModalScope::new(page)
+    }
+}
+
+#[path = "support/platform.rs"]
+mod platform;
+
+fn main() {
+    let args: Vec<String> = std::env::args().collect();
+    let dark = args.iter().any(|s| s == "--dark");
+    let care = args.iter().any(|s| s == "--care");
+    let brand = args
+        .iter()
+        .position(|s| s == "--brand")
+        .and_then(|i| args.get(i + 1))
+        .map(|value| gpui::rgb(u32::from_str_radix(value, 16).expect("hex brand")).into());
+    platform::application()
+        .with_assets(wegpui::Assets)
+        .run(move |cx| {
+            wegpui::init(cx);
+            Theme::set_mode(
+                if dark {
+                    ThemeMode::Dark
+                } else {
+                    ThemeMode::Light
+                },
+                cx,
+            );
+            Theme::set_care(care, cx);
+            Theme::set_brand(brand, cx);
+            let t = Theme::get(cx);
+            for (name, surface) in [
+                ("bg2", t.bg_2),
+                ("bg3", t.bg_3),
+                ("brand", t.brand),
+                ("red", t.red_100),
+            ] {
+                eprintln!(
+                    "focus-color {name} surface={:?} selected={:?}",
+                    surface.to_rgb(),
+                    t.focus_color(surface).to_rgb()
+                );
+            }
+            cx.open_window(
+                WindowOptions {
+                    window_bounds: Some(WindowBounds::Windowed(Bounds::new(
+                        point(px(40.), px(40.)),
+                        size(px(700.), px(850.)),
+                    ))),
+                    titlebar: Some(TitlebarOptions {
+                        title: Some("weGPUI focus contrast".into()),
+                        ..Default::default()
+                    }),
+                    ..Default::default()
+                },
+                |window, cx| {
+                    Theme::observe(window);
+                    cx.new(Probe::new)
+                },
+            )
+            .expect("focus window");
+            cx.activate(true);
+        });
+}

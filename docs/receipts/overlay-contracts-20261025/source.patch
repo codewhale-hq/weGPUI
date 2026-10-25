@@ -1,0 +1,1568 @@
+diff --git a/src/accessibility.rs b/src/accessibility.rs
+index ba0475d..1e26251 100644
+--- a/src/accessibility.rs
++++ b/src/accessibility.rs
+@@ -58,6 +58,8 @@ impl Drop for ModalLayoutDepth {
+ pub struct Semantics<E: Element> {
+     inner: E,
+     disabled: bool,
++    read_only: bool,
++    live: Option<accesskit::Live>,
+     busy: bool,
+     modal: bool,
+     hidden: bool,
+@@ -70,6 +72,8 @@ impl<E: Element> Semantics<E> {
+         Self {
+             inner: inner.into_element(),
+             disabled: false,
++            read_only: false,
++            live: None,
+             busy: false,
+             modal: false,
+             hidden: false,
+@@ -82,6 +86,18 @@ impl<E: Element> Semantics<E> {
+         self.disabled = value;
+         self
+     }
++    /// Marks the node as read-only when `value` is true, while leaving it available for focus
++    /// and inspection.
++    pub fn read_only(mut self, value: bool) -> Self {
++        self.read_only = value;
++        self
++    }
++    /// Sets the live-region politeness explicitly. A role such as `Alert` alone does not set
++    /// this property in the pinned AccessKit adapter.
++    pub fn live(mut self, value: accesskit::Live) -> Self {
++        self.live = Some(value);
++        self
++    }
+     /// Marks the node busy, for example a loading button, when `value` is true.
+     pub fn busy(mut self, value: bool) -> Self {
+         self.busy = value;
+@@ -130,6 +146,12 @@ impl<E: Element> Element for Semantics<E> {
+         if self.disabled {
+             node.set_disabled();
+         }
++        if self.read_only {
++            node.set_read_only();
++        }
++        if let Some(live) = self.live {
++            node.set_live(live);
++        }
+         if self.busy {
+             node.set_busy();
+         }
+@@ -209,7 +231,37 @@ struct OpenModals(HashMap<WindowId, ModalLayers>);
+ 
+ impl Global for OpenModals {}
+ 
++struct ModalBackgrounds {
++    flags: HashMap<WindowId, Rc<Cell<bool>>>,
++    _cleanup: Subscription,
++}
++
++impl Global for ModalBackgrounds {}
++
++pub(crate) fn background_hidden_flag(window: &Window, cx: &mut App) -> Rc<Cell<bool>> {
++    if !cx.has_global::<ModalBackgrounds>() {
++        let cleanup = cx.on_window_closed(|cx, window| {
++            if cx.has_global::<ModalBackgrounds>() {
++                cx.global_mut::<ModalBackgrounds>().flags.remove(&window);
++            }
++            if cx.has_global::<OpenModals>() {
++                cx.global_mut::<OpenModals>().0.remove(&window);
++            }
++        });
++        cx.set_global(ModalBackgrounds {
++            flags: HashMap::new(),
++            _cleanup: cleanup,
++        });
++    }
++    cx.global_mut::<ModalBackgrounds>()
++        .flags
++        .entry(window.window_handle().window_id())
++        .or_insert_with(|| Rc::new(Cell::new(false)))
++        .clone()
++}
++
+ pub(crate) fn register_open_modal(window: &Window, cx: &mut App) -> Rc<Cell<bool>> {
++    background_hidden_flag(window, cx).set(true);
+     let window_id = window.window_handle().window_id();
+     let depth = MODAL_LAYOUT_DEPTH
+         .with(|depths| depths.borrow().get(&window_id).copied().unwrap_or_default());
+@@ -290,6 +342,7 @@ impl Element for ModalScope {
+         cx: &mut App,
+     ) -> (LayoutId, Self::RequestLayoutState) {
+         let window_id = window.window_handle().window_id();
++        background_hidden_flag(window, cx).set(false);
+         cx.default_global::<OpenModals>().0.remove(&window_id);
+         let result = Element::request_layout(&mut self.inner, id, inspector, window, cx);
+         self.hidden = cx.global::<OpenModals>().0.contains_key(&window_id);
+@@ -334,6 +387,18 @@ mod tests {
+     use super::*;
+     use core::prelude::v1::test;
+ 
++    #[test]
++    fn read_only_and_live_are_forwarded_without_disabling_the_node() {
++        let semantics = Semantics::new(div().id("status").role(Role::Slider))
++            .read_only(true)
++            .live(accesskit::Live::Assertive);
++        let mut node = accesskit::Node::new(Role::Slider);
++        semantics.write_a11y_info(&mut node);
++        assert!(node.is_read_only());
++        assert!(!node.is_disabled());
++        assert_eq!(node.live(), Some(accesskit::Live::Assertive));
++    }
++
+     #[test]
+     fn later_modal_hides_already_constructed_layers_at_a11y_write() {
+         let mut layers = ModalLayers::default();
+diff --git a/src/components/action_sheet.rs b/src/components/action_sheet.rs
+index 10c67b5..499e645 100644
+--- a/src/components/action_sheet.rs
++++ b/src/components/action_sheet.rs
+@@ -6,7 +6,7 @@
+ //! is not drawn, and the action group is omitted (upstream hides `weui-actionsheet__action` there).
+ 
+ use super::modal::{MaskKind, Modal, Motion, Placement, Presence};
+-use crate::Theme;
++use crate::{Theme, scrolling::RevealFocus};
+ use gpui::{prelude::*, *};
+ use std::rc::Rc;
+ 
+@@ -40,7 +40,8 @@ impl ActionSheetItem {
+         self.tips = Some(tips.into());
+         self
+     }
+-    /// Draws the label in the warning red (`weui-actionsheet__cell_warn`).
++    /// Draws the label in the warning red (`weui-actionsheet__cell_warn`) in iOS style.
++    /// The Android skin's cell colour overrides this modifier, matching upstream CSS.
+     pub fn warn(mut self) -> Self {
+         self.warn = true;
+         self
+@@ -141,8 +142,10 @@ fn cell(
+     first: bool,
+     android: bool,
+     t: &Theme,
++    presence: Option<&Presence>,
+ ) -> Stateful<Div> {
+     let handler = item.handler.clone();
++    let presence = presence.cloned();
+     let has_tips = item.tips.is_some();
+     let line = t.fg_3;
+     div()
+@@ -164,7 +167,7 @@ fn cell(
+         .text_size(px(17.))
+         .line_height(relative(24. / 17.))
+         .bg(t.bg_2)
+-        .text_color(if item.warn { t.red } else { t.fg_0 })
++        .text_color(if item.warn && !android { t.red } else { t.fg_0 })
+         .when(android, |el| el.text_left())
+         .when(!android, |el| el.text_center())
+         .cursor_pointer()
+@@ -192,7 +195,9 @@ fn cell(
+             )
+         })
+         .on_click(move |_, window, cx| {
+-            if let Some(handler) = handler.as_ref() {
++            if presence.as_ref().is_none_or(Presence::accepts_input)
++                && let Some(handler) = handler.as_ref()
++            {
+                 handler(window, cx);
+             }
+         })
+@@ -204,6 +209,7 @@ impl RenderOnce for ActionSheet {
+         let android = self.android;
+         let has_title = self.title.is_some();
+         let count = self.items.len();
++        let presence = self.presence.clone();
+         let menu = div()
+             .flex()
+             .flex_col()
+@@ -225,6 +231,7 @@ impl RenderOnce for ActionSheet {
+                     i == 0,
+                     android,
+                     &t,
++                    presence.as_ref(),
+                 )
+                 .when(i == 0, |el| {
+                     el.rounded_t(px(if android {
+@@ -236,6 +243,7 @@ impl RenderOnce for ActionSheet {
+                     }))
+                 })
+                 .when(android && i + 1 == count, |el| el.rounded_b(px(2.)))
++                .reveal_focus()
+             }));
+         let sheet = if android {
+             div().w(px(274.)).child(menu)
+@@ -285,7 +293,9 @@ impl RenderOnce for ActionSheet {
+                                 i == 0,
+                                 false,
+                                 &t,
++                                presence.as_ref(),
+                             )
++                            .reveal_focus()
+                         }),
+                     ))
+                 })
+diff --git a/src/components/dialog.rs b/src/components/dialog.rs
+index 390535c..129da75 100644
+--- a/src/components/dialog.rs
++++ b/src/components/dialog.rs
+@@ -7,7 +7,7 @@
+ //! only built-in dismissal.
+ 
+ use super::modal::{MaskKind, Modal, Motion, Placement, Presence};
+-use crate::{Theme, accessibility::Semantics};
++use crate::{Theme, accessibility::Semantics, scrolling::RevealFocus};
+ use gpui::{prelude::*, *};
+ use std::{rc::Rc, time::Duration};
+ 
+@@ -196,7 +196,9 @@ impl RenderOnce for Dialog {
+         let has_title = self.title.is_some();
+         let line = t.dialog_line_color;
+         let count = self.buttons.len();
++        let presence = self.presence.clone();
+         let buttons = self.buttons.into_iter().enumerate().map(|(i, button)| {
++            let presence = presence.clone();
+             let color = match button.kind {
+                 DialogButtonKind::Primary => t.link,
+                 DialogButtonKind::Default => t.fg_half,
+@@ -259,12 +261,14 @@ impl RenderOnce for Dialog {
+                     .active(|s| s.bg(t.bg_color_active))
+                     .focus_visible(|s| s.border_color(t.brand))
+                     .on_click(move |_, window, cx| {
+-                        if let Some(handler) = handler.as_ref() {
++                        if presence.as_ref().is_none_or(Presence::accepts_input)
++                            && let Some(handler) = handler.as_ref()
++                        {
+                             handler(window, cx);
+                         }
+                     })
+             };
+-            Semantics::new(el).disabled(disabled)
++            Semantics::new(el).disabled(disabled).reveal_focus()
+         });
+         let footer = if android {
+             div()
+diff --git a/src/components/half_screen_dialog.rs b/src/components/half_screen_dialog.rs
+index 7685f1b..a11f5dc 100644
+--- a/src/components/half_screen_dialog.rs
++++ b/src/components/half_screen_dialog.rs
+@@ -4,16 +4,16 @@
+ //!
+ //! [`HalfScreenDialog`] renders inside a sliding [`Modal`] when given a [`Presence`]. The helpers
+ //! [`HdIconButton`], [`action_group`], [`hd_link`] and [`attachment_area`] build header and footer
+-//! parts. Known limitation: a grab drag shorter than 56 px snaps back instantly, without the
+-//! upstream 0.3 s transition.
++//! parts. A short grab drag returns with the upstream 0.3 s transform transition; reduced motion
++//! returns it immediately.
+ 
+ use super::{
+     ClickHandler, Icon,
+-    modal::{MaskKind, Modal, Motion, Placement, Presence},
++    modal::{MaskKind, Modal, Motion, Placement, Presence, TRANSITION, ease},
+ };
+-use crate::Theme;
++use crate::{Theme, scrolling::RevealFocus};
+ use gpui::{prelude::*, *};
+-use std::rc::Rc;
++use std::{rc::Rc, time::Instant};
+ 
+ /// Shared callback invoked when the dialog asks to be dismissed.
+ pub type DismissHandler = Rc<dyn Fn(&mut Window, &mut App)>;
+@@ -85,7 +85,8 @@ impl RenderOnce for HdIconButton {
+                     .cursor_pointer()
+                     .focus_visible(|s| s.border_color(t.brand))
+                     .active(|s| s.bg(t.bg_2.opacity(0.5)))
+-                    .when_some(self.on_click, |el, handler| el.on_click(handler)),
++                    .when_some(self.on_click, |el, handler| el.on_click(handler))
++                    .reveal_focus(),
+             )
+     }
+ }
+@@ -103,6 +104,7 @@ pub fn action_group(children: impl IntoIterator<Item = AnyElement>) -> Div {
+ 
+ /// Text link for the header (`weui-link`): 15 px, link colour, `Link` role and focusable; `handler`
+ /// receives the click. Returns the element for further styling.
++/// Call [`RevealFocus::reveal_focus`] after styling when placing it in a scrolling body.
+ pub fn hd_link(
+     id: impl Into<ElementId>,
+     label: impl Into<SharedString>,
+@@ -145,14 +147,31 @@ pub fn attachment_area(child: impl IntoElement) -> Div {
+ struct GrabState {
+     start: Option<f32>,
+     offset: f32,
++    returning: Option<(Instant, f32)>,
++    generation: usize,
++}
++
++impl GrabState {
++    fn visual(&self, cx: &App) -> f32 {
++        match self.returning {
++            Some((at, from)) if !cx.reduce_motion() => {
++                from * (1. - ease(at.elapsed().as_secs_f32() / TRANSITION.as_secs_f32()))
++            }
++            Some(_) => 0.,
++            None => self.offset,
++        }
++    }
+ }
+ 
+ /// Bottom sheet with a header, scrolling body and optional footer; children go in the body.
+ ///
+-/// Unless `large`, its height ranges from 255 px to 75 % of the window. With
++/// Unless `large`, its height ranges from 255 px to 75 % of the window; windows at most 558 px
++/// tall allow the window height minus 16 px, matching the upstream short-screen rule. With
+ /// [`HalfScreenDialog::presence`] it renders in a [`Modal`] at the bottom with a dark mask and
+ /// slide-up motion, and Escape or a mask click calls `on_dismiss`. Without a presence it renders
+ /// inline with the `Dialog` role.
++/// Use [`HalfScreenDialog::body`] for readable plain text; arbitrary children must provide their
++/// own semantic roles and text values.
+ #[derive(IntoElement)]
+ pub struct HalfScreenDialog {
+     id: ElementId,
+@@ -260,6 +279,20 @@ impl HalfScreenDialog {
+         self.body_padding_bottom = Some(padding);
+         self
+     }
++    /// Appends a plain-text paragraph exposed as a labelled text node to assistive technology.
++    /// Arbitrary elements added through `ParentElement` keep responsibility for their semantics.
++    pub fn body(mut self, text: impl Into<SharedString>) -> Self {
++        let text = text.into();
++        self.body.push(
++            div()
++                .id(("half-screen-paragraph", self.body.len()))
++                .role(Role::Label)
++                .aria_value(text.clone())
++                .child(text)
++                .into_any_element(),
++        );
++        self
++    }
+     /// Sets the footer (`__ft`), drawn below the body with 64 px bottom padding.
+     pub fn footer(mut self, footer: impl IntoElement) -> Self {
+         self.footer = Some(footer.into_any_element());
+@@ -288,16 +321,44 @@ impl RenderOnce for HalfScreenDialog {
+     fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
+         let t = Theme::get(cx).clone();
+         let viewport = window.viewport_size();
++        let maximum_height = if viewport.height <= px(558.) {
++            (viewport.height - px(16.)).max(px(0.))
++        } else {
++            viewport.height * 0.75
++        };
+         let grab_state = window.use_keyed_state(
+             SharedString::from(format!("hsd-grab-{:?}", self.id)),
+             cx,
+             |_, _| GrabState::default(),
+         );
+-        if self.presence.as_ref().is_some_and(|p| !p.is_open()) {
+-            grab_state.update(cx, |s, _| *s = GrabState::default());
++        if let Some(presence) = &self.presence {
++            let hidden = presence.progress(window, cx).is_none();
++            let previous = grab_state.read(cx).clone();
++            if hidden || previous.generation != presence.generation() {
++                let offset = if hidden { 0. } else { previous.visual(cx) };
++                grab_state.update(cx, |s, _| {
++                    *s = GrabState {
++                        generation: presence.generation(),
++                        returning: (offset > 0.).then_some((Instant::now(), offset)),
++                        ..Default::default()
++                    };
++                });
++            }
+         }
+         let grab = grab_state.read(cx).clone();
+-        let pct = (grab.offset / GRAB_DISTANCE).clamp(0., 1.);
++        let grab_offset = grab.visual(cx);
++        if grab
++            .returning
++            .is_some_and(|(at, _)| at.elapsed() < TRANSITION)
++            && !cx.reduce_motion()
++        {
++            window.request_animation_frame();
++        }
++        let pct = if grab.start.is_some() {
++            (grab_offset / GRAB_DISTANCE).clamp(0., 1.)
++        } else {
++            0.
++        };
+         let inset = if self.flush || self.bottom_fixed {
+             px(24.)
+         } else {
+@@ -318,7 +379,15 @@ impl RenderOnce for HalfScreenDialog {
+                                 .child(title),
+                         )
+                         .when_some(self.subtitle.clone(), |el, sub| {
+-                            el.child(div().text_size(px(10.)).text_color(t.fg_1).child(sub))
++                            el.child(
++                                div()
++                                    .id("half-screen-subtitle")
++                                    .role(Role::Label)
++                                    .aria_value(sub.clone())
++                                    .text_size(px(10.))
++                                    .text_color(t.fg_1)
++                                    .child(sub),
++                            )
+                         })
+                         .into_any_element()
+                 })
+@@ -440,10 +509,12 @@ impl RenderOnce for HalfScreenDialog {
+             .relative()
+             .w_full()
+             .when(!self.large, |el| {
+-                el.min_h(px(255.)).max_h(viewport.height * 0.75)
++                el.min_h(px(255.).min(maximum_height)).max_h(maximum_height)
++            })
++            .when(self.large, |el| {
++                el.h((viewport.height - px(16.)).max(px(0.)))
+             })
+-            .when(self.large, |el| el.h(viewport.height - px(16.)))
+-            .top(px(grab.offset.max(0.)))
++            .top(px(grab_offset.max(0.)))
+             .line_height(relative(1.4))
+             .bg(t.bg_2)
+             .text_color(t.fg_0)
+@@ -453,7 +524,10 @@ impl RenderOnce for HalfScreenDialog {
+             .flex()
+             .flex_col()
+             .child(header)
+-            .child(crate::scrolling::FocusScroll::new(bd_key, &bd_scroll, body))
++            .child(
++                crate::scrolling::FocusScroll::new(bd_key, &bd_scroll, body)
++                    .inset_bottom(px(if self.bottom_fixed { 80. } else { 0. })),
++            )
+             .children(footer);
+         if self.grab {
+             let line_h = 4. + 12. * pct;
+@@ -503,6 +577,7 @@ impl RenderOnce for HalfScreenDialog {
+                     let close = s.offset >= GRAB_DISTANCE;
+                     s.start = None;
+                     if !close {
++                        s.returning = Some((Instant::now(), s.offset));
+                         s.offset = 0.;
+                     }
+                     cx.notify();
+@@ -517,8 +592,10 @@ impl RenderOnce for HalfScreenDialog {
+             dialog = dialog
+                 .on_mouse_down(MouseButton::Left, move |e, _, cx| {
+                     down.update(cx, |s, cx| {
+-                        s.start = Some(e.position.y.as_f32());
+-                        s.offset = 0.;
++                        let current = s.visual(cx);
++                        s.start = Some(e.position.y.as_f32() - current);
++                        s.offset = current;
++                        s.returning = None;
+                         cx.notify();
+                     });
+                 })
+diff --git a/src/components/modal.rs b/src/components/modal.rs
+index 4e5a453..aaa95e6 100644
+--- a/src/components/modal.rs
++++ b/src/components/modal.rs
+@@ -10,7 +10,13 @@
+ 
+ use crate::accessibility::Semantics;
+ use gpui::{prelude::*, *};
+-use std::time::{Duration, Instant};
++use std::{
++    sync::{
++        Arc,
++        atomic::{AtomicBool, Ordering},
++    },
++    time::{Duration, Instant},
++};
+ 
+ /// Default open and close transition length, matching WeUI's 0.3 s animations.
+ pub const TRANSITION: Duration = Duration::from_millis(300);
+@@ -20,7 +26,8 @@ pub const TRANSITION: Duration = Duration::from_millis(300);
+ /// Holds the open/closed target, a focus handle, the opener focus to restore, a generation counter
+ /// and the transition timing. Keep one value in your view state, change it with [`Presence::show`]
+ /// and [`Presence::hide`], and pass `&presence` to the overlay on every render. Components clone
+-/// it, so changes must be made to your copy; clones share the focus handle. Under reduced motion
++/// it, so changes must be made to your copy; clones share the focus handle and immediate input
++/// guard, while rendering state remains owned by the caller. Under reduced motion
+ /// (`App::reduce_motion`) every transition completes instantly.
+ #[derive(Clone)]
+ pub struct Presence {
+@@ -33,6 +40,7 @@ pub struct Presence {
+     generation: usize,
+     duration: Duration,
+     passive: bool,
++    interactive: Arc<AtomicBool>,
+ }
+ 
+ impl Presence {
+@@ -48,6 +56,7 @@ impl Presence {
+             generation: 0,
+             duration: TRANSITION,
+             passive: false,
++            interactive: Arc::new(AtomicBool::new(false)),
+         }
+     }
+     /// Sets the length of a full open or close transition (default [`TRANSITION`]); zero disables
+@@ -70,6 +79,9 @@ impl Presence {
+     pub fn is_open(&self) -> bool {
+         self.visible
+     }
++    pub(crate) fn accepts_input(&self) -> bool {
++        self.interactive.load(Ordering::Relaxed)
++    }
+     /// Counter incremented each time a closed presence is shown. Delayed tasks compare it to ignore
+     /// a stale timer, as [`Presence::hide_after`] does.
+     pub fn generation(&self) -> usize {
+@@ -97,6 +109,7 @@ impl Presence {
+         self.from = current;
+         self.span = self.duration.mul_f32((to - current).abs());
+         self.visible = visible;
++        self.interactive.store(visible, Ordering::Relaxed);
+         self.changed = Some(Instant::now());
+     }
+     /// Opens the overlay and moves focus into it.
+@@ -356,6 +369,7 @@ impl RenderOnce for Modal {
+         let focus = self.presence.focus.clone();
+         let interactive = self.presence.visible;
+         let passive = self.presence.passive;
++        let live = self.presence.interactive.clone();
+         let hidden_flag = (interactive && !passive)
+             .then(|| crate::accessibility::register_open_modal(window, cx));
+         let panel_height = window
+@@ -379,6 +393,22 @@ impl RenderOnce for Modal {
+             .flex()
+             .flex_col()
+             .occlude()
++            .capture_any_mouse_down({
++                let live = live.clone();
++                move |_, _, cx| {
++                    if !passive && !live.load(Ordering::Relaxed) {
++                        cx.stop_propagation();
++                    }
++                }
++            })
++            .capture_any_mouse_up({
++                let live = live.clone();
++                move |_, _, cx| {
++                    if !passive && !live.load(Ordering::Relaxed) {
++                        cx.stop_propagation();
++                    }
++                }
++            })
+             .on_click(|_, _, cx| cx.stop_propagation())
+             .child({
+                 let panel_height = panel_height.clone();
+@@ -409,6 +439,8 @@ impl RenderOnce for Modal {
+             content = content.h_full();
+         }
+         let dismiss_on_mask = self.dismiss_on_mask;
++        let dismiss_key_live = live.clone();
++        let dismiss_mask_live = live.clone();
+         let layer = div()
+             .id(self.id)
+             .key_context("WeuiModal")
+@@ -431,6 +463,19 @@ impl RenderOnce for Modal {
+                 el.occlude()
+             })
+             .bg(mask_color)
++            .capture_any_mouse_down({
++                let live = live.clone();
++                move |_, _, cx| {
++                    if !passive && !live.load(Ordering::Relaxed) {
++                        cx.stop_propagation();
++                    }
++                }
++            })
++            .capture_any_mouse_up(move |_, _, cx| {
++                if !passive && !live.load(Ordering::Relaxed) {
++                    cx.stop_propagation();
++                }
++            })
+             // Bubble phase, not capture: when one modal is rendered inside another, the
+             // innermost layer sees Tab first and stops it, so focus stays in the topmost modal.
+             .on_key_down({
+@@ -456,7 +501,10 @@ impl RenderOnce for Modal {
+                 }
+             })
+             .on_key_down(move |event, window, cx| {
+-                if event.keystroke.key == "escape" && interactive {
++                if event.keystroke.key == "escape"
++                    && interactive
++                    && dismiss_key_live.load(Ordering::Relaxed)
++                {
+                     if let Some(handler) = dismiss_key.as_ref() {
+                         handler(window, cx);
+                     }
+@@ -466,6 +514,7 @@ impl RenderOnce for Modal {
+             .on_click(move |_, window, cx| {
+                 if dismiss_on_mask
+                     && interactive
++                    && dismiss_mask_live.load(Ordering::Relaxed)
+                     && let Some(handler) = dismiss.as_ref()
+                 {
+                     handler(window, cx);
+@@ -493,3 +542,15 @@ impl RenderOnce for Modal {
+         .into_any_element()
+     }
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::Presence;
++    use core::prelude::v1::test;
++
++    #[test]
++    fn presence_keeps_send_and_sync() {
++        fn assert_send_sync<T: Send + Sync>() {}
++        assert_send_sync::<Presence>();
++    }
++}
+diff --git a/src/components/picker.rs b/src/components/picker.rs
+index c097bc9..d41a8fc 100644
+--- a/src/components/picker.rs
++++ b/src/components/picker.rs
+@@ -11,7 +11,7 @@ use super::{
+     half_screen_dialog::{HalfScreenDialog, HdIconButton},
+     modal::{Presence, ease},
+ };
+-use crate::Theme;
++use crate::{Theme, accessibility::Semantics};
+ use gpui::{prelude::*, *};
+ use std::{
+     cell::Cell,
+@@ -84,6 +84,51 @@ enum Source {
+         items: Vec<PickerItem>,
+         depth: usize,
+     },
++    Date {
++        start: i32,
++        end: i32,
++    },
++}
++
++enum ColumnItems {
++    Stored(Vec<PickerItem>),
++    Years { start: i32, end: i32 },
++}
++
++impl ColumnItems {
++    fn is_empty(&self) -> bool {
++        self.len() == 0
++    }
++    fn len(&self) -> usize {
++        match self {
++            Self::Stored(items) => items.len(),
++            Self::Years { start, end } => (i64::from(*end) - i64::from(*start) + 1)
++                .max(0)
++                .try_into()
++                .unwrap_or(usize::MAX),
++        }
++    }
++    fn get(&self, index: usize) -> Option<PickerItem> {
++        if index >= self.len() {
++            return None;
++        }
++        match self {
++            Self::Stored(items) => items.get(index).cloned(),
++            Self::Years { start, .. } => {
++                let year = i64::from(*start) + index as i64;
++                Some(PickerItem::new(format!("{year}年"), year.to_string()))
++            }
++        }
++    }
++    fn enabled_at(&self, index: usize) -> bool {
++        match self {
++            Self::Stored(items) => enabled_at(items, index),
++            Self::Years { .. } => index < self.len(),
++        }
++    }
++    fn years(&self) -> bool {
++        matches!(self, Self::Years { .. })
++    }
+ }
+ 
+ struct Drag {
+@@ -94,7 +139,8 @@ struct Drag {
+ }
+ 
+ struct Column {
+-    items: Vec<PickerItem>,
++    items: ColumnItems,
++    year_index: usize,
+     offset: f32,
+     from: f32,
+     anim: Option<Instant>,
+@@ -107,13 +153,25 @@ struct Column {
+ 
+ impl Column {
+     fn index(&self) -> usize {
+-        (OFFSET - (self.offset / ROW_HEIGHT).round()).max(0.) as usize
++        if self.items.years() {
++            self.year_index
++        } else {
++            (OFFSET - (self.offset / ROW_HEIGHT).round()).max(0.) as usize
++        }
+     }
+     fn max_offset(&self) -> f32 {
+-        OFFSET * ROW_HEIGHT
++        if self.items.years() {
++            (OFFSET + self.year_index as f32) * ROW_HEIGHT
++        } else {
++            OFFSET * ROW_HEIGHT
++        }
+     }
+     fn min_offset(&self) -> f32 {
+-        -(ROW_HEIGHT * (self.items.len() as f32 - OFFSET - 1.))
++        if self.items.years() {
++            (OFFSET - self.items.len().saturating_sub(self.year_index + 1) as f32) * ROW_HEIGHT
++        } else {
++            -(ROW_HEIGHT * (self.items.len() as f32 - OFFSET - 1.))
++        }
+     }
+     fn current(&self, cx: &App) -> f32 {
+         match self.anim {
+@@ -226,20 +284,12 @@ impl Picker {
+     /// Uses a year, month and day cascade over `start_year..=end_year`, labelled `"{y}年"`,
+     /// `"{m}月"` and `"{d}日"` with unpadded numeric values, and makes `today`
+     /// (`(year, month, day)`) the default value. Pass the user's local date; [`today`] is UTC.
++    /// Years are generated as visible rows, and months/days only for the current selection.
++    /// Reversed bounds produce an empty year column, as an empty inclusive Rust range does.
+     pub fn date(mut self, start_year: i32, end_year: i32, today: (i32, u32, u32)) -> Self {
+-        let years = (start_year..=end_year)
+-            .map(|y| {
+-                PickerItem::new(format!("{y}年"), y.to_string()).children((1..=12u32).map(|m| {
+-                    PickerItem::new(format!("{m}月"), m.to_string()).children(
+-                        (1..=days_in_month(y, m))
+-                            .map(|d| PickerItem::new(format!("{d}日"), d.to_string())),
+-                    )
+-                }))
+-            })
+-            .collect();
+-        self.source = Source::Cascade {
+-            items: years,
+-            depth: 3,
++        self.source = Source::Date {
++            start: start_year,
++            end: end_year,
+         };
+         self.default_value = vec![
+             today.0.to_string().into(),
+@@ -287,16 +337,12 @@ impl Picker {
+         self.presence.is_open()
+     }
+     /// Items at each column's current row, omitting disabled ones, so the list can be shorter than
+-    /// the column count. Empty before the first [`Picker::open`].
++    /// the column count. Empty before the first [`Picker::open`]. Date rows contain their label
++    /// and value without eagerly generated `children`; ordinary cascade rows retain theirs.
+     pub fn selected(&self) -> Vec<PickerItem> {
+         self.columns
+             .iter()
+-            .filter_map(|c| {
+-                c.items
+-                    .get(c.index())
+-                    .filter(|item| !item.disabled)
+-                    .cloned()
+-            })
++            .filter_map(|c| c.items.get(c.index()).filter(|item| !item.disabled))
+             .collect()
+     }
+     /// Current row index of every column, including rows that are disabled. Empty before the first
+@@ -311,7 +357,7 @@ impl Picker {
+             && self
+                 .columns
+                 .iter()
+-                .all(|column| enabled_at(&column.items, column.index()))
++                .all(|column| column.items.enabled_at(column.index()))
+     }
+ 
+     /// Rebuilds the columns, slides the sheet up and focuses the first column. The previously
+@@ -342,7 +388,7 @@ impl Picker {
+         }
+     }
+     fn confirm(&mut self, window: &mut Window, cx: &mut Context<Self>) {
+-        if !self.can_confirm() {
++        if !self.is_open() || !self.can_confirm() {
+             return;
+         }
+         cx.emit(PickerEvent::Confirm(self.selected()));
+@@ -371,20 +417,22 @@ impl Picker {
+         }
+         self.memory[level] = Some(index);
+         let offset = (OFFSET - index as f32) * ROW_HEIGHT;
+-        let (focus, bounds) = match self.columns.get(level) {
+-            Some(c) => (c.focus.clone(), c.bounds.clone()),
++        let (focus, bounds, wheel) = match self.columns.get(level) {
++            Some(c) => (c.focus.clone(), c.bounds.clone(), c.wheel.wrapping_add(1)),
+             None => (
+                 cx.focus_handle().tab_stop(true),
+                 Rc::new(Cell::new(Bounds::default())),
++                0,
+             ),
+         };
+         Column {
+-            items,
++            items: ColumnItems::Stored(items),
++            year_index: 0,
+             offset,
+             from: offset,
+             anim: None,
+             drag: None,
+-            wheel: 0,
++            wheel,
+             wheel_dir: 0.,
+             focus,
+             bounds,
+@@ -407,10 +455,69 @@ impl Picker {
+                 self.columns.push(col);
+                 self.rebuild_from(0, cx);
+             }
++            Source::Date { start, end } => {
++                let items = ColumnItems::Years { start, end };
++                let len = items.len();
++                let index = self
++                    .memory
++                    .first()
++                    .copied()
++                    .flatten()
++                    .filter(|i| *i < len)
++                    .or_else(|| {
++                        let year: i32 = self.default_value.first()?.parse().ok()?;
++                        (start..=end)
++                            .contains(&year)
++                            .then_some((i64::from(year) - i64::from(start)) as usize)
++                    })
++                    .unwrap_or(len / 2);
++                let mut column = self.make_column(0, vec![], cx);
++                column.items = items;
++                column.year_index = index;
++                column.offset = OFFSET * ROW_HEIGHT;
++                column.from = column.offset;
++                self.memory[0] = Some(index);
++                self.columns = vec![column];
++                self.rebuild_from(0, cx);
++            }
+         }
+     }
+ 
+     fn rebuild_from(&mut self, level: usize, cx: &mut App) {
++        if matches!(self.source, Source::Date { .. }) {
++            let Some(year) = self.columns[0]
++                .items
++                .get(self.columns[0].index())
++                .and_then(|item| item.value.parse::<i32>().ok())
++            else {
++                self.columns.truncate(1);
++                return;
++            };
++            if level == 0 {
++                let months = (1..=12u32)
++                    .map(|month| PickerItem::new(format!("{month}月"), month.to_string()))
++                    .collect();
++                let column = self.make_column(1, months, cx);
++                if self.columns.len() > 1 {
++                    self.columns[1] = column;
++                } else {
++                    self.columns.push(column);
++                }
++            }
++            if level <= 1 {
++                let month = self.columns[1].index() as u32 + 1;
++                let days = (1..=days_in_month(year, month))
++                    .map(|day| PickerItem::new(format!("{day}日"), day.to_string()))
++                    .collect::<Vec<_>>();
++                if let Some(Some(day)) = self.memory.get_mut(2) {
++                    *day = (*day).min(days.len() - 1);
++                }
++                let column = self.make_column(2, days, cx);
++                self.columns.truncate(2);
++                self.columns.push(column);
++            }
++            return;
++        }
+         let Source::Cascade { depth, .. } = self.source else {
+             return;
+         };
+@@ -443,21 +550,30 @@ impl Picker {
+         _window: &Window,
+         cx: &mut Context<Self>,
+     ) {
++        if !self.is_open() {
++            return;
++        }
+         let Some(col) = self.columns.get_mut(level) else {
+             return;
+         };
+         let before = col.index();
+-        let visual = col.current(cx);
+         let mut k = col.offset + delta;
+         k = (k / ROW_HEIGHT).round() * ROW_HEIGHT;
+         k = k.min(col.max_offset()).max(col.min_offset());
+         let len = col.items.len() as isize;
+-        let target = (OFFSET - k / ROW_HEIGHT).round() as isize;
++        if len == 0 {
++            return;
++        }
++        let target = if col.items.years() {
++            (before as isize + (OFFSET - k / ROW_HEIGHT).round() as isize).clamp(0, len - 1)
++        } else {
++            (OFFSET - k / ROW_HEIGHT).round() as isize
++        };
+         let forward = if dir > 0. { -1 } else { 1 };
+         let enabled_from = |step: isize| {
+             let mut j = target;
+             while j >= 0 && j < len {
+-                if !col.items[j as usize].disabled {
++                if col.items.enabled_at(j as usize) {
+                     return Some(j);
+                 }
+                 j += step;
+@@ -467,10 +583,35 @@ impl Picker {
+         let i = enabled_from(forward)
+             .or_else(|| enabled_from(-forward))
+             .unwrap_or(before as isize);
+-        col.from = visual;
+-        col.offset = (OFFSET - i as f32) * ROW_HEIGHT;
++        self.set_index(level, i as usize, cx);
++    }
++
++    fn set_index(&mut self, level: usize, after: usize, cx: &mut Context<Self>) {
++        if !self.is_open() {
++            return;
++        }
++        let Some(col) = self.columns.get_mut(level) else {
++            return;
++        };
++        if !col.items.enabled_at(after) {
++            return;
++        }
++        let before = col.index();
++        let visual = col.current(cx);
++        if col.items.years() {
++            let distance = after as i64 - before as i64;
++            col.from = if distance.unsigned_abs() <= VISIBLE_ROWS as u64 {
++                visual + distance as f32 * ROW_HEIGHT
++            } else {
++                OFFSET * ROW_HEIGHT
++            };
++            col.offset = OFFSET * ROW_HEIGHT;
++            col.year_index = after;
++        } else {
++            col.from = visual;
++            col.offset = (OFFSET - after as f32) * ROW_HEIGHT;
++        }
+         col.anim = Some(Instant::now());
+-        let after = i as usize;
+         if after != before {
+             self.memory[level] = Some(after);
+             self.rebuild_from(level, cx);
+@@ -484,6 +625,9 @@ impl Picker {
+     }
+ 
+     fn drag_start(&mut self, level: usize, y: f32, _window: &Window, cx: &mut Context<Self>) {
++        if !self.is_open() {
++            return;
++        }
+         if let Some(col) = self.columns.get_mut(level) {
+             let visual = col.current(cx);
+             col.offset = visual;
+@@ -498,6 +642,9 @@ impl Picker {
+     }
+ 
+     fn drag_move(&mut self, level: usize, y: f32, cx: &mut Context<Self>) {
++        if !self.is_open() {
++            return;
++        }
+         if let Some(col) = self.columns.get_mut(level)
+             && let Some(drag) = col.drag.as_mut()
+         {
+@@ -512,6 +659,9 @@ impl Picker {
+     }
+ 
+     fn drag_end(&mut self, level: usize, y: f32, window: &Window, cx: &mut Context<Self>) {
++        if !self.is_open() {
++            return;
++        }
+         let Some(col) = self.columns.get_mut(level) else {
+             return;
+         };
+@@ -549,6 +699,9 @@ impl Picker {
+     }
+ 
+     fn wheel(&mut self, level: usize, dy: f32, window: &mut Window, cx: &mut Context<Self>) {
++        if !self.is_open() {
++            return;
++        }
+         let Some(col) = self.columns.get_mut(level) else {
+             return;
+         };
+@@ -560,11 +713,14 @@ impl Picker {
+         col.wheel += 1;
+         col.wheel_dir = dy;
+         let generation = col.wheel;
++        let opening = self.presence.generation();
+         cx.notify();
+         cx.spawn_in(window, async move |this, cx| {
+             cx.background_executor().timer(WHEEL_IDLE).await;
+             this.update_in(cx, |this, window, cx| {
+-                if let Some(col) = this.columns.get(level)
++                if this.is_open()
++                    && this.presence.generation() == opening
++                    && let Some(col) = this.columns.get(level)
+                     && col.wheel == generation
+                 {
+                     let dir = col.wheel_dir;
+@@ -611,31 +767,49 @@ impl Picker {
+             offset = col.offset + (drag.last - drag.start);
+         }
+         let index = col.index();
+-        let selected = col
+-            .items
+-            .get(index)
+-            .map(|it| it.label.clone())
+-            .unwrap_or_default();
++        let selected = col.items.get(index).map(|it| it.label).unwrap_or_default();
+         let bounds = col.bounds.clone();
+         let focus = col.focus.clone();
++        let keyboard_focus = focus.is_focused(window) && window.last_input_was_keyboard();
+         let first = level == 0;
+         let last = level + 1 == count;
+         let brand = t.brand;
+-        let items = col.items.iter().enumerate().map(|(i, item)| {
+-            div()
+-                .id(("weui-picker-item", i))
+-                .role(Role::ListBoxOption)
+-                .aria_label(item.label.clone())
+-                .aria_selected(i == index)
+-                .h(px(ROW_HEIGHT))
+-                .line_height(px(ROW_HEIGHT))
+-                .text_center()
+-                .whitespace_nowrap()
+-                .overflow_hidden()
+-                .text_ellipsis()
+-                .text_color(if item.disabled { t.fg_1 } else { t.fg_0 })
+-                .child(item.label.clone())
+-        });
++        let row_range = if col.items.years() && !col.items.is_empty() {
++            let visual_index = (index as i64 + (OFFSET - offset / ROW_HEIGHT).round() as i64)
++                .clamp(0, col.items.len() as i64 - 1) as usize;
++            visual_index.saturating_sub(4)..(visual_index + 5).min(col.items.len())
++        } else {
++            0..col.items.len()
++        };
++        let render_offset = if col.items.years() {
++            offset + (row_range.start as i64 - index as i64) as f32 * ROW_HEIGHT
++        } else {
++            offset
++        };
++        let item_count = col.items.len();
++        let items: Vec<_> = row_range
++            .filter_map(|i| col.items.get(i).map(|item| (i, item)))
++            .map(|(i, item)| {
++                Semantics::new(
++                    div()
++                        .id(("weui-picker-item", i))
++                        .role(Role::ListBoxOption)
++                        .aria_label(item.label.clone())
++                        .aria_selected(i == index)
++                        .aria_position_in_set(i)
++                        .aria_size_of_set(item_count)
++                        .h(px(ROW_HEIGHT))
++                        .line_height(px(ROW_HEIGHT))
++                        .text_center()
++                        .whitespace_nowrap()
++                        .overflow_hidden()
++                        .text_ellipsis()
++                        .text_color(if item.disabled { t.fg_1 } else { t.fg_0 })
++                        .child(item.label),
++                )
++                .disabled(item.disabled)
++            })
++            .collect();
+         div()
+             .id(("weui-picker-group", level))
+             .role(Role::ListBox)
+@@ -666,7 +840,7 @@ impl Picker {
+             .child(
+                 div()
+                     .absolute()
+-                    .top(px(offset))
++                    .top(px(render_offset))
+                     .left_0()
+                     .w_full()
+                     .flex()
+@@ -710,7 +884,7 @@ impl Picker {
+                     .when(last, |el| el.rounded_r(px(8.)))
+                     .border_2()
+                     .border_color(transparent_black())
+-                    .focus_visible(move |s| s.border_color(brand)),
++                    .when(keyboard_focus, |s| s.border_color(brand)),
+             )
+             .on_mouse_down(
+                 MouseButton::Left,
+@@ -742,13 +916,26 @@ impl Picker {
+                 cx.stop_propagation();
+             }))
+             .on_key_down(cx.listener(move |this, e: &KeyDownEvent, window, cx| {
++                if matches!(e.keystroke.key.as_str(), "home" | "end") {
++                    if let Some(column) = this.columns.get(level) {
++                        let mut indices = 0..column.items.len();
++                        let target = if e.keystroke.key == "home" {
++                            indices.find(|i| column.items.enabled_at(*i))
++                        } else {
++                            indices.rev().find(|i| column.items.enabled_at(*i))
++                        };
++                        if let Some(target) = target {
++                            this.set_index(level, target, cx);
++                        }
++                    }
++                    cx.stop_propagation();
++                    return;
++                }
+                 let rows = match e.keystroke.key.as_str() {
+                     "up" => -1.,
+                     "down" => 1.,
+                     "pageup" => -VISIBLE_ROWS,
+                     "pagedown" => VISIBLE_ROWS,
+-                    "home" => -10000.,
+-                    "end" => 10000.,
+                     "enter" => {
+                         this.confirm(window, cx);
+                         cx.stop_propagation();
+@@ -864,6 +1051,41 @@ mod tests {
+     use super::*;
+     use core::prelude::v1::test;
+ 
++    #[cfg(target_pointer_width = "64")]
++    #[test]
++    fn generated_years_cover_full_i32_range_without_a_year_vector() {
++        let years = ColumnItems::Years {
++            start: i32::MIN,
++            end: i32::MAX,
++        };
++        assert_eq!(years.len(), 1usize << 32);
++        assert_eq!(years.get(0).unwrap().value.as_ref(), "-2147483648");
++        assert_eq!(
++            years.get(years.len() - 1).unwrap().value.as_ref(),
++            "2147483647"
++        );
++        assert!(years.get(years.len()).is_none());
++        assert!(years.get(2_147_485_648).unwrap().children.is_empty());
++        assert_eq!(years.get(2_147_485_648).unwrap().value.as_ref(), "2000");
++    }
++
++    #[test]
++    fn generated_year_ranges_are_inclusive_and_reversed_ranges_are_empty() {
++        let years = ColumnItems::Years {
++            start: 1900,
++            end: 2100,
++        };
++        assert_eq!(years.len(), 201);
++        assert_eq!(years.get(200).unwrap().value.as_ref(), "2100");
++        assert!(
++            ColumnItems::Years {
++                start: 2100,
++                end: 1900
++            }
++            .is_empty()
++        );
++    }
++
+     #[test]
+     fn disabled_default_wraps_to_an_enabled_option() {
+         let items = vec![
+diff --git a/src/components/select.rs b/src/components/select.rs
+index 95031b0..1969ea0 100644
+--- a/src/components/select.rs
++++ b/src/components/select.rs
+@@ -44,6 +44,7 @@ pub struct SelectCell {
+     label_width: f32,
+     body: Option<AnyElement>,
+     expanded: bool,
++    disabled: bool,
+     in_primary: bool,
+     on_click: Option<ClickHandler>,
+ }
+@@ -60,6 +61,7 @@ impl SelectCell {
+             label_width: LABEL_WIDTH,
+             body: None,
+             expanded: false,
++            disabled: false,
+             in_primary: false,
+             on_click: None,
+         }
+@@ -89,6 +91,12 @@ impl SelectCell {
+         self.expanded = expanded;
+         self
+     }
++    /// Disables trigger focus and activation and exposes it as disabled. In the `before`
++    /// layout, caller-supplied body controls keep their own enabled state. Default `false`.
++    pub fn disabled(mut self, disabled: bool) -> Self {
++        self.disabled = disabled;
++        self
++    }
+     /// Squares the pressed highlight's corners (0 instead of 8px) for rows inside a primary form
+     /// group.
+     pub fn in_primary_group(mut self) -> Self {
+@@ -112,6 +120,7 @@ impl RenderOnce for SelectCell {
+         let pressed = t.fg_3;
+         let brand = t.brand;
+         let radius = if self.in_primary { 0. } else { 8. };
++        let disabled = self.disabled;
+         let label_text = self
+             .label
+             .clone()
+@@ -123,7 +132,7 @@ impl RenderOnce for SelectCell {
+             .whitespace_nowrap()
+             .overflow_hidden()
+             .text_ellipsis()
+-            .text_color(t.fg_0)
++            .text_color(if disabled { t.fg_1 } else { t.fg_0 })
+             .child(self.value.clone());
+         let trigger = |el: Stateful<Div>, handler: Option<ClickHandler>| {
+             let el = el
+@@ -131,114 +140,118 @@ impl RenderOnce for SelectCell {
+                 .aria_label(label_text.clone())
+                 .aria_value(self.value.clone())
+                 .aria_expanded(self.expanded)
+-                .focusable()
+-                .tab_stop(true)
+-                .cursor_pointer()
+                 .border_2()
+                 .border_color(transparent_black())
+-                .focus_visible(move |s| s.border_color(brand))
+-                .active(move |s| s.bg(pressed).rounded(px(radius)));
+-            match handler {
++                .when(!disabled, |el| {
++                    el.focusable()
++                        .tab_stop(true)
++                        .cursor_pointer()
++                        .focus_visible(move |s| s.border_color(brand))
++                        .active(move |s| s.bg(pressed).rounded(px(radius)))
++                });
++            Semantics::new(match handler.filter(|_| !disabled) {
+                 Some(h) => el.on_click(h),
+                 None => el,
+-            }
++            })
++            .disabled(disabled)
++            .reveal_focus()
+         };
+-        match self.layout {
+-            SelectLayout::Plain => trigger(
+-                div()
+-                    .id(self.id)
+-                    .relative()
+-                    .flex()
+-                    .items_center()
+-                    .text_size(px(17.))
+-                    .child(
+-                        div()
+-                            .flex_1()
+-                            .min_w_0()
+-                            .pl(px(14.))
+-                            .pr(px(38.))
+-                            .child(value),
+-                    )
+-                    .child(
+-                        div()
+-                            .absolute()
+-                            .right(px(14.))
+-                            .top(px(14.))
+-                            .child(arrow(cx)),
+-                    ),
+-                self.on_click,
+-            )
+-            .into_any_element(),
+-            SelectLayout::After => trigger(
+-                div()
+-                    .id(self.id)
+-                    .relative()
+-                    .flex()
+-                    .items_center()
+-                    .text_size(px(17.))
+-                    .line_height(relative(24. / 17.))
+-                    .child(
+-                        div()
+-                            .pl(px(14.))
+-                            .pr(px(16.))
+-                            .text_color(t.fg_0)
+-                            .child(form_label(self.label.unwrap_or_default(), self.label_width)),
+-                    )
+-                    .child(div().flex_1().min_w_0().pr(px(38.)).child(value))
+-                    .child(
+-                        div()
+-                            .absolute()
+-                            .right(px(14.))
+-                            .top(px(14.))
+-                            .child(arrow(cx)),
+-                    ),
+-                self.on_click,
+-            )
+-            .into_any_element(),
+-            SelectLayout::Before => {
+-                let w = self.label_width.min(LABEL_MAX_WIDTH);
+-                div()
+-                    .id(self.id)
+-                    .relative()
+-                    .flex()
+-                    .items_center()
+-                    .text_size(px(17.))
+-                    .line_height(relative(24. / 17.))
+-                    .child(trigger(
++        let cell =
++            match self.layout {
++                SelectLayout::Plain => trigger(
++                    div()
++                        .id(self.id)
++                        .relative()
++                        .flex()
++                        .items_center()
++                        .text_size(px(17.))
++                        .child(
++                            div()
++                                .flex_1()
++                                .min_w_0()
++                                .pl(px(14.))
++                                .pr(px(38.))
++                                .child(value),
++                        )
++                        .child(
++                            div()
++                                .absolute()
++                                .right(px(14.))
++                                .top(px(14.))
++                                .child(arrow(cx)),
++                        ),
++                    self.on_click,
++                )
++                .into_any_element(),
++                SelectLayout::After => {
++                    trigger(
+                         div()
+-                            .id("select-before")
++                            .id(self.id)
+                             .relative()
+-                            .flex_shrink_0()
+-                            .child(div().w(px(w + 52.)).pl(px(14.)).pr(px(38.)).child(value))
++                            .flex()
++                            .items_center()
++                            .text_size(px(17.))
++                            .line_height(relative(24. / 17.))
++                            .child(div().pl(px(14.)).pr(px(16.)).text_color(t.fg_0).child(
++                                form_label(self.label.unwrap_or_default(), self.label_width),
++                            ))
++                            .child(div().flex_1().min_w_0().pr(px(38.)).child(value))
+                             .child(
+                                 div()
+                                     .absolute()
+                                     .right(px(14.))
+                                     .top(px(14.))
+                                     .child(arrow(cx)),
+-                            )
+-                            .child(
+-                                div()
+-                                    .absolute()
+-                                    .top(px(-2.))
+-                                    .bottom(px(-2.))
+-                                    .right(px(-2.))
+-                                    .w(px(0.5))
+-                                    .bg(t.fg_3),
+                             ),
+                         self.on_click,
+-                    ))
+-                    .child(
+-                        div()
+-                            .flex_1()
+-                            .min_w_0()
+-                            .pl(px(16.))
+-                            .pr(px(16.))
+-                            .children(self.body),
+                     )
+                     .into_any_element()
+-            }
+-        }
++                }
++                SelectLayout::Before => {
++                    let w = self.label_width.min(LABEL_MAX_WIDTH);
++                    div()
++                        .id(self.id)
++                        .relative()
++                        .flex()
++                        .items_center()
++                        .text_size(px(17.))
++                        .line_height(relative(24. / 17.))
++                        .child(trigger(
++                            div()
++                                .id("select-before")
++                                .relative()
++                                .flex_shrink_0()
++                                .child(div().w(px(w + 52.)).pl(px(14.)).pr(px(38.)).child(value))
++                                .child(
++                                    div()
++                                        .absolute()
++                                        .right(px(14.))
++                                        .top(px(14.))
++                                        .child(arrow(cx)),
++                                )
++                                .child(
++                                    div()
++                                        .absolute()
++                                        .top(px(-2.))
++                                        .bottom(px(-2.))
++                                        .right(px(-2.))
++                                        .w(px(0.5))
++                                        .bg(t.fg_3),
++                                ),
++                            self.on_click,
++                        ))
++                        .child(
++                            div()
++                                .flex_1()
++                                .min_w_0()
++                                .pl(px(16.))
++                                .pr(px(16.))
++                                .children(self.body),
++                        )
++                        .into_any_element()
++                }
++            };
++        cell.reveal_focus()
+     }
+ }
+ 
+@@ -251,7 +264,8 @@ type DismissHandler = Rc<dyn Fn(&mut Window, &mut App)>;
+ ///
+ /// Visibility is the caller's [`Presence`]; the menu never hides itself, so hide it from
+ /// `on_select` and `on_dismiss`. On opening, focus moves to the selected (or first enabled)
+-/// option; Up/Down/Home/End move between enabled options without wrapping.
++/// option; Up/Down/Home/End move between enabled options without wrapping. Long lists scroll
++/// within the available window height, revealing the focused option while Cancel stays visible.
+ #[derive(IntoElement)]
+ pub struct SelectMenu {
+     id: ElementId,
+@@ -339,12 +353,29 @@ impl RenderOnce for SelectMenu {
+                 .filter(|i| self.options.get(*i).is_some_and(|(_, d)| !d))
+                 .or_else(|| self.options.iter().position(|(_, d)| !d));
+             if let Some(h) = target.map(|i| handles[i].clone()) {
+-                window.defer(cx, move |window, cx| window.focus(&h, cx));
++                let modal_focus = self.presence.focus_handle().clone();
++                window.defer(cx, move |window, cx| {
++                    if modal_focus.is_focused(window) {
++                        window.focus(&h, cx);
++                    }
++                });
+             }
+         }
++        let scroll_key = ElementId::NamedChild(
++            std::sync::Arc::new(self.id.clone()),
++            "options-scroll".into(),
++        );
++        let scroll = window
++            .use_keyed_state(scroll_key.clone(), cx, |_, _| ScrollHandle::new())
++            .read(cx)
++            .clone();
++        let options_height = (window.viewport_size().height
++            - px(24. + 64. + if self.title.is_some() { 56. } else { 0. }))
++        .max(px(0.));
+         let enabled: Rc<Vec<bool>> = Rc::new(self.options.iter().map(|(_, d)| !d).collect());
+         let option_handles = Rc::new(handles.clone());
+         let dismiss = self.on_dismiss.clone();
++        let presence = self.presence.clone();
+         let rows = self
+             .options
+             .into_iter()
+@@ -352,6 +383,7 @@ impl RenderOnce for SelectMenu {
+             .map(|(i, (label, disabled))| {
+                 let selected = self.selected == Some(i);
+                 let on_select = self.on_select.clone();
++                let presence = presence.clone();
+                 let el = div()
+                     .id(ElementId::NamedInteger("select-option".into(), i as u64))
+                     .role(Role::ListBoxOption)
+@@ -361,6 +393,7 @@ impl RenderOnce for SelectMenu {
+                     .aria_size_of_set(n)
+                     .relative()
+                     .h(px(56.))
++                    .flex_shrink_0()
+                     .px(px(22.))
+                     .flex()
+                     .items_center()
+@@ -423,7 +456,9 @@ impl RenderOnce for SelectMenu {
+                             }
+                         })
+                         .on_click(move |_, window, cx| {
+-                            if let Some(h) = on_select.as_ref() {
++                            if presence.accepts_input()
++                                && let Some(h) = on_select.as_ref()
++                            {
+                                 h(&i, window, cx);
+                             }
+                         })
+@@ -431,6 +466,7 @@ impl RenderOnce for SelectMenu {
+                 Semantics::new(el).disabled(disabled).reveal_focus()
+             });
+         let cancel_dismiss = dismiss.clone();
++        let cancel_presence = self.presence.clone();
+         let mut modal = Modal::new(self.id, &self.presence)
+             .mask(MaskKind::Dark)
+             .placement(Placement::Bottom)
+@@ -442,6 +478,9 @@ impl RenderOnce for SelectMenu {
+         modal.child(
+             div()
+                 .w_full()
++                .flex()
++                .flex_col()
++                .max_h((window.viewport_size().height - px(24.)).max(px(0.)))
+                 .rounded_t(px(12.))
+                 .overflow_hidden()
+                 .bg(t.bg_2)
+@@ -450,6 +489,7 @@ impl RenderOnce for SelectMenu {
+                     el.child(
+                         div()
+                             .h(px(56.))
++                            .flex_shrink_0()
+                             .flex()
+                             .items_center()
+                             .justify_center()
+@@ -460,21 +500,28 @@ impl RenderOnce for SelectMenu {
+                             .child(title),
+                     )
+                 })
+-                .child(
++                .child(crate::scrolling::FocusScroll::new(
++                    scroll_key,
++                    &scroll,
+                     div()
+                         .id("select-listbox")
+                         .role(Role::ListBox)
++                        .track_scroll(&scroll)
++                        .max_h(options_height)
++                        .min_h_0()
++                        .overflow_y_scroll()
+                         .flex()
+                         .flex_col()
+                         .children(rows),
+-                )
+-                .child(div().h(px(8.)).bg(t.bg_0))
++                ))
++                .child(div().h(px(8.)).flex_shrink_0().bg(t.bg_0))
+                 .child(
+                     div()
+                         .id("select-cancel")
+                         .role(Role::Button)
+                         .aria_label("取消")
+                         .h(px(56.))
++                        .flex_shrink_0()
+                         .flex()
+                         .items_center()
+                         .justify_center()
+@@ -488,7 +535,9 @@ impl RenderOnce for SelectMenu {
+                         .active(move |s| s.bg(pressed))
+                         .focus_visible(move |s| s.border_color(brand))
+                         .on_click(move |_, w, cx| {
+-                            if let Some(d) = cancel_dismiss.as_ref() {
++                            if cancel_presence.accepts_input()
++                                && let Some(d) = cancel_dismiss.as_ref()
++                            {
+                                 d(w, cx);
+                             }
+                         })

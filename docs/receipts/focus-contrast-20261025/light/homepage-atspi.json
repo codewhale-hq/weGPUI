@@ -1,0 +1,355 @@
+[
+  {
+    "role": "application",
+    "name": "focus_contrast_probe",
+    "states": [],
+    "bounds": null
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI focus contrast",
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      0,
+      0,
+      700,
+      850
+    ]
+  },
+  {
+    "role": "panel",
+    "name": "",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      0,
+      0,
+      700,
+      850
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Homepage search",
+    "states": [
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      54,
+      74,
+      571,
+      48
+    ]
+  },
+  {
+    "role": "button",
+    "name": "\u62cd\u7167",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      623,
+      86,
+      23,
+      24
+    ]
+  },
+  {
+    "role": "landmark",
+    "name": "",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      20,
+      150,
+      660,
+      58
+    ]
+  },
+  {
+    "role": "button",
+    "name": "\u8fd4\u56de",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      34,
+      158,
+      16,
+      42
+    ]
+  },
+  {
+    "role": "combo box",
+    "name": "",
+    "states": [
+      "enabled",
+      "expandable",
+      "expanded",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      60,
+      160,
+      508,
+      38
+    ]
+  },
+  {
+    "role": "label",
+    "name": "Keyword",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      73,
+      165,
+      73,
+      28
+    ]
+  },
+  {
+    "role": "entry",
+    "name": "Outlined input",
+    "states": [
+      "editable",
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "single line",
+      "visible",
+      "selectable text"
+    ],
+    "bounds": [
+      154,
+      167,
+      374,
+      24
+    ]
+  },
+  {
+    "role": "button",
+    "name": "\u6e05\u9664",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      534,
+      167,
+      24,
+      24
+    ]
+  },
+  {
+    "role": "button",
+    "name": "\u641c\u7d22",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      568,
+      160,
+      54,
+      38
+    ]
+  },
+  {
+    "role": "button",
+    "name": "\u53d6\u6d88",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      632,
+      158,
+      34,
+      42
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Default",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      66,
+      224,
+      120,
+      48
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Primary",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      290,
+      224,
+      120,
+      48
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Warn",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      514,
+      224,
+      120,
+      48
+    ]
+  },
+  {
+    "role": "check box",
+    "name": "Standalone checkbox",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "bounds": [
+      20,
+      292,
+      24,
+      24
+    ]
+  },
+  {
+    "role": "toggle button",
+    "name": "Standalone switch",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      68,
+      288,
+      52,
+      32
+    ]
+  },
+  {
+    "role": "check box",
+    "name": "Checkbox row",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "bounds": [
+      20,
+      336,
+      660,
+      56
+    ]
+  },
+  {
+    "role": "radio button",
+    "name": "Radio first",
+    "states": [
+      "checked",
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "bounds": [
+      20,
+      408,
+      660,
+      56
+    ]
+  },
+  {
+    "role": "radio button",
+    "name": "Radio second",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "bounds": [
+      20,
+      480,
+      660,
+      56
+    ]
+  }
+]

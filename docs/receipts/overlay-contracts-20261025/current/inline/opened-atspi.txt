@@ -1,0 +1,14 @@
+apps 1
+application 'probe-current' [] DISABLED
+  frame 'weGPUI overlay contracts' ['showing']
+    panel '' ['showing']
+      button 'Open overlay' ['focusable', 'focused', 'showing']
+      dialog 'Inline actions' ['showing']
+        button 'Inline action' ['focusable', 'showing']
+      dialog 'Inline dialog' ['showing']
+        heading 'Inline dialog' ['showing'] ['level:2']
+        label 'An inline dialog.' ['showing']
+        button 'Inline dialog action' ['focusable', 'showing']
+      dialog 'Inline sheet' ['showing']
+        button 'Inline icon' ['focusable', 'showing']
+        label 'Inline sheet body' ['showing']

@@ -1,0 +1,23 @@
+[
+  {
+    "package": "accesskit_unix-0.22.1",
+    "changed_upstream_files": [
+      "src/atspi/bus.rs"
+    ],
+    "unexpected_missing_files": []
+  },
+  {
+    "package": "accesskit_atspi_common-0.19.1",
+    "changed_upstream_files": [
+      "src/node.rs"
+    ],
+    "unexpected_missing_files": []
+  },
+  {
+    "package": "gpui-pre-0.3.9",
+    "changed_upstream_files": [
+      "src/window.rs"
+    ],
+    "unexpected_missing_files": []
+  }
+]

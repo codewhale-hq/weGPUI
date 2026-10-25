@@ -1,0 +1,312 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "states": [],
+  "attributes": [],
+  "children": [
+    {
+      "role": "application",
+      "name": "input_contracts_probe",
+      "description": "",
+      "states": [],
+      "attributes": [],
+      "children": [
+        {
+          "role": "frame",
+          "name": "weGPUI input contracts probe",
+          "description": "",
+          "states": [
+            "active",
+            "enabled",
+            "sensitive",
+            "showing",
+            "visible"
+          ],
+          "attributes": [],
+          "children": [
+            {
+              "role": "entry",
+              "name": "Word editing",
+              "description": "",
+              "states": [
+                "editable",
+                "enabled",
+                "focusable",
+                "focused",
+                "sensitive",
+                "showing",
+                "single line",
+                "visible",
+                "selectable text"
+              ],
+              "attributes": [],
+              "children": [],
+              "interfaces": [
+                "Accessible",
+                "Component",
+                "Text"
+              ],
+              "text": "alpha é beta gamma",
+              "caret_offset": 19,
+              "selections": [],
+              "first_character_desktop": [
+                221,
+                188,
+                10,
+                28
+              ],
+              "first_character_window": [
+                20,
+                48,
+                10,
+                28
+              ],
+              "bounds": [
+                221,
+                188,
+                440,
+                28
+              ]
+            },
+            {
+              "role": "entry",
+              "name": "Wrapped notes",
+              "description": "",
+              "states": [
+                "editable",
+                "enabled",
+                "focusable",
+                "multi line",
+                "sensitive",
+                "showing",
+                "visible",
+                "selectable text"
+              ],
+              "attributes": [],
+              "children": [],
+              "interfaces": [
+                "Accessible",
+                "Component",
+                "Text"
+              ],
+              "text": "A wrapped paragraph with enough words to cross several visual rows. Combining é and family 👩‍👩‍👧‍👦 stay intact.\nSecond hard line.\n",
+              "caret_offset": 131,
+              "selections": [],
+              "first_character_desktop": [
+                221,
+                258,
+                11,
+                28
+              ],
+              "first_character_window": [
+                20,
+                118,
+                11,
+                28
+              ],
+              "bounds": [
+                221,
+                258,
+                440,
+                140
+              ]
+            },
+            {
+              "role": "entry",
+              "name": "Read only",
+              "description": "",
+              "states": [
+                "enabled",
+                "focusable",
+                "sensitive",
+                "showing",
+                "single line",
+                "visible",
+                "selectable text",
+                "read only"
+              ],
+              "attributes": [],
+              "children": [],
+              "interfaces": [
+                "Accessible",
+                "Component",
+                "Text"
+              ],
+              "text": "read only text",
+              "caret_offset": 14,
+              "selections": [],
+              "first_character_desktop": [
+                221,
+                440,
+                6,
+                28
+              ],
+              "first_character_window": [
+                20,
+                300,
+                6,
+                28
+              ],
+              "bounds": [
+                221,
+                440,
+                440,
+                28
+              ]
+            },
+            {
+              "role": "entry",
+              "name": "Disabled",
+              "description": "",
+              "states": [
+                "showing",
+                "single line",
+                "visible",
+                "selectable text"
+              ],
+              "attributes": [],
+              "children": [],
+              "interfaces": [
+                "Accessible",
+                "Component",
+                "Text"
+              ],
+              "text": "disabled text",
+              "caret_offset": 13,
+              "selections": [],
+              "first_character_desktop": [
+                221,
+                510,
+                10,
+                28
+              ],
+              "first_character_window": [
+                20,
+                370,
+                10,
+                28
+              ],
+              "bounds": [
+                221,
+                510,
+                440,
+                28
+              ]
+            },
+            {
+              "role": "password text",
+              "name": "Password",
+              "description": "",
+              "states": [
+                "editable",
+                "enabled",
+                "focusable",
+                "sensitive",
+                "showing",
+                "single line",
+                "visible",
+                "selectable text"
+              ],
+              "attributes": [],
+              "children": [],
+              "interfaces": [
+                "Accessible",
+                "Component",
+                "Text"
+              ],
+              "text": "•••",
+              "caret_offset": 3,
+              "selections": [],
+              "first_character_desktop": [
+                221,
+                580,
+                10,
+                28
+              ],
+              "first_character_window": [
+                20,
+                440,
+                10,
+                28
+              ],
+              "bounds": [
+                221,
+                580,
+                440,
+                28
+              ]
+            },
+            {
+              "role": "entry",
+              "name": "UTF16 limit",
+              "description": "At most six UTF-16 units",
+              "states": [
+                "editable",
+                "enabled",
+                "focusable",
+                "sensitive",
+                "showing",
+                "single line",
+                "visible",
+                "invalid entry",
+                "selectable text"
+              ],
+              "attributes": [],
+              "children": [],
+              "interfaces": [
+                "Accessible",
+                "Component",
+                "Text"
+              ],
+              "text": "A😀B",
+              "caret_offset": 3,
+              "selections": [],
+              "first_character_desktop": [
+                221,
+                650,
+                11,
+                28
+              ],
+              "first_character_window": [
+                20,
+                510,
+                11,
+                28
+              ],
+              "bounds": [
+                221,
+                650,
+                440,
+                28
+              ]
+            }
+          ],
+          "interfaces": [
+            "Accessible",
+            "Component"
+          ],
+          "bounds": [
+            201,
+            140,
+            480,
+            720
+          ]
+        }
+      ],
+      "interfaces": [
+        "Accessible"
+      ]
+    }
+  ],
+  "interfaces": [
+    "Accessible",
+    "Component"
+  ],
+  "bounds": [
+    0,
+    0,
+    1024,
+    768
+  ]
+}

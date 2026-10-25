@@ -1,0 +1,12 @@
+initial
+click Open overlay at 240 40
+opened
+click Menu action at 240 259
+menu
+click Menu with tips Secondary line at 240 319
+tips
+click Warn action at 240 380
+warn
+mask-dismiss
+click Open overlay at 240 40
+escape-dismiss

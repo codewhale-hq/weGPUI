@@ -1,0 +1,68 @@
+dbus-daemon[42515]: [session uid=1000 pid=42515 pidfd=5] Activating service name='org.a11y.Bus' requested by ':1.0' (uid=1000 pid=42552 comm="dbus-send --session --print-reply --dest=org.a11y." label="kernel")
+dbus-daemon[42515]: [session uid=1000 pid=42515 pidfd=5] Successfully activated service 'org.a11y.Bus'
+2026-10-25T08:27:22Z initial
+PASS: distinct duplicate headings/lists, accessible paragraph, named navbar, cancel visibility
+2026-10-25T08:27:25Z notice-position
+PASS: viewport notice escapes inset parent {"notice": {"x": 8, "y": 8, "width": 584, "height": 48}, "parent": {"x": 80, "y": 80, "width": 504, "height": 48}}
+2026-10-25T08:27:27Z footer-position
+PASS: fixed footer is below inset parent at viewport bottom {"footer": {"x": 253, "y": 867, "width": 93, "height": 17}, "parent": {"x": 80, "y": 80, "width": 504, "height": 48}}
+2026-10-25T08:27:30Z progress-advance
+AT action Advance progress click
+2026-10-25T08:27:33Z cancel-pointer
+pointer Cancel upload GPUI local AT bounds {'x': 550, 'y': 134, 'width': 44, 'height': 44} X root point 913 333
+2026-10-25T08:27:35Z cancel-hidden
+AT action Hide cancel click
+2026-10-25T08:27:38Z cancel-absent
+PASS: distinct duplicate headings/lists, accessible paragraph, named navbar, cancel visibility
+2026-10-25T08:27:40Z navbar-pointer
+pointer Details GPUI local AT bounds {'x': 205, 'y': 297, 'width': 190, 'height': 56} X root point 641 502
+2026-10-25T08:27:43Z navbar-arrow
+2026-10-25T08:27:45Z navbar-home
+2026-10-25T08:27:47Z navbar-at-action
+AT action History click
+2026-10-25T08:27:50Z tabbar-focus
+focus Home
+2026-10-25T08:27:52Z tabbar-key
+2026-10-25T08:27:54Z tabbar-at-action
+AT action Settings click
+2026-10-25T08:27:56Z slider-focus
+focus Step three slider
+2026-10-25T08:27:59Z slider-end
+2026-10-25T08:28:01Z slider-set-value
+AT set-value Step three slider 9.7 accepted True
+2026-10-25T08:28:03Z fractional-set-value
+AT set-value Fractional slider 0.375 accepted True
+2026-10-25T08:28:06Z fractional-focus
+focus Fractional slider
+2026-10-25T08:28:09Z fractional-key
+2026-10-25T08:28:11Z skip-disabled-and-readonly
+2026-10-25T08:28:13Z disabled-set-value
+AT set-value Disabled slider 80.0 accepted True
+2026-10-25T08:28:16Z readonly-set-value
+AT set-value Read-only slider 80.0 accepted True
+2026-10-25T08:28:18Z panel-focus
+focus Open record，Controlled reusable MediaBox callback
+2026-10-25T08:28:21Z panel-key
+2026-10-25T08:28:23Z panel-at-action
+AT action Open record，Controlled reusable MediaBox callback click
+2026-10-25T08:28:26Z cell-focus
+focus Open cell record
+2026-10-25T08:28:29Z cell-key
+2026-10-25T08:28:31Z cell-at-action
+AT action Open cell record click
+2026-10-25T08:28:33Z grid-focus
+focus Open grid record
+2026-10-25T08:28:35Z grid-key
+2026-10-25T08:28:37Z footer-focus
+focus Footer callback
+2026-10-25T08:28:40Z footer-key
+2026-10-25T08:28:42Z fixed-footer-at-action
+AT action Fixed footer callback click
+2026-10-25T08:28:43Z modal-open
+Traceback (most recent call last):
+  File "/workspace/weGPUI/docs/receipts/data-contracts-20261025/run-20261025T082712Z-94kMKg/action.py", line 71, in <module>
+    node = find(sys.argv[2])
+  File "/workspace/weGPUI/docs/receipts/data-contracts-20261025/run-20261025T082712Z-94kMKg/action.py", line 28, in find
+    assert len(matches) == 1, (name, len(matches))
+           ^^^^^^^^^^^^^^^^^
+AssertionError: ('Open data modal', 0)

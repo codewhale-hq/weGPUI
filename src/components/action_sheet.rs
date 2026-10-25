@@ -6,7 +6,7 @@
 //! is not drawn, and the action group is omitted (upstream hides `weui-actionsheet__action` there).
 
 use super::modal::{MaskKind, Modal, Motion, Placement, Presence};
-use crate::Theme;
+use crate::{Theme, scrolling::RevealFocus};
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
@@ -40,7 +40,8 @@ impl ActionSheetItem {
         self.tips = Some(tips.into());
         self
     }
-    /// Draws the label in the warning red (`weui-actionsheet__cell_warn`).
+    /// Draws the label in the warning red (`weui-actionsheet__cell_warn`) in iOS style.
+    /// The Android skin's cell colour overrides this modifier, matching upstream CSS.
     pub fn warn(mut self) -> Self {
         self.warn = true;
         self
@@ -141,8 +142,10 @@ fn cell(
     first: bool,
     android: bool,
     t: &Theme,
+    presence: Option<&Presence>,
 ) -> Stateful<Div> {
     let handler = item.handler.clone();
+    let presence = presence.cloned();
     let has_tips = item.tips.is_some();
     let line = t.fg_3;
     div()
@@ -164,12 +167,12 @@ fn cell(
         .text_size(px(17.))
         .line_height(relative(24. / 17.))
         .bg(t.bg_2)
-        .text_color(if item.warn { t.red } else { t.fg_0 })
+        .text_color(if item.warn && !android { t.red } else { t.fg_0 })
         .when(android, |el| el.text_left())
         .when(!android, |el| el.text_center())
         .cursor_pointer()
         .active(|s| s.bg(t.bg_color_active))
-        .focus_visible(|s| s.border_color(t.brand))
+        .focus_visible(|s| s.border_color(t.focus_color(t.bg_2)))
         .when(!first, |el| {
             el.child(
                 div()
@@ -192,7 +195,9 @@ fn cell(
             )
         })
         .on_click(move |_, window, cx| {
-            if let Some(handler) = handler.as_ref() {
+            if presence.as_ref().is_none_or(Presence::accepts_input)
+                && let Some(handler) = handler.as_ref()
+            {
                 handler(window, cx);
             }
         })
@@ -204,6 +209,7 @@ impl RenderOnce for ActionSheet {
         let android = self.android;
         let has_title = self.title.is_some();
         let count = self.items.len();
+        let presence = self.presence.clone();
         let menu = div()
             .flex()
             .flex_col()
@@ -225,6 +231,7 @@ impl RenderOnce for ActionSheet {
                     i == 0,
                     android,
                     &t,
+                    presence.as_ref(),
                 )
                 .when(i == 0, |el| {
                     el.rounded_t(px(if android {
@@ -236,6 +243,7 @@ impl RenderOnce for ActionSheet {
                     }))
                 })
                 .when(android && i + 1 == count, |el| el.rounded_b(px(2.)))
+                .reveal_focus()
             }));
         let sheet = if android {
             div().w(px(274.)).child(menu)
@@ -285,7 +293,9 @@ impl RenderOnce for ActionSheet {
                                 i == 0,
                                 false,
                                 &t,
+                                presence.as_ref(),
                             )
+                            .reveal_focus()
                         }),
                     ))
                 })

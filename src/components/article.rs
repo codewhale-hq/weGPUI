@@ -1,10 +1,10 @@
 //! Article typography from WeUI's `src/style/widget/weui-page/weui-article.less`: the [`Article`]
-//! container plus [`section`], heading ([`h1`] to [`h5`]), [`paragraph`] and [`ArticleList`]
+//! container plus [`section`], heading ([`h1`] to [`h6`]), [`paragraph`] and [`ArticleList`]
 //! builders.
 //!
-//! Known limitations: headings and list items hold plain text only, there is no `h6` shorthand, and
-//! safe-area insets are not applied. The independent review notes that heading and list semantics
-//! still need accessibility work.
+//! Headings and list items hold plain text only, and safe-area insets are not applied. Use
+//! [`paragraph_text`] for accessible plain-text paragraphs; the compositional [`paragraph`]
+//! container needs semantic children such as GPUI [`Text`] for assistive technology.
 
 use crate::Theme;
 use gpui::{prelude::*, *};
@@ -66,18 +66,30 @@ pub fn section(depth: usize) -> Div {
 /// A heading exposed as `Role::Heading` at `level`. Levels 1 to 4 follow WeUI's `h1`–`h4` styles;
 /// any other level uses the 17px regular `h5` style with no bottom margin.
 ///
-/// The element id is `h{level}-{text}`, so identical headings under one parent share an id.
+/// The element id comes from the caller's source location, so the identity survives text changes.
+/// For headings created in one loop or helper, use [`heading_with_id`] with distinct stable ids.
+#[track_caller]
 pub fn heading(level: usize, text: impl Into<SharedString>) -> Stateful<Div> {
+    heading_with_id(ElementId::from(std::panic::Location::caller()), level, text)
+}
+
+/// A heading with an explicit stable id, useful for repeated headings in loops or helpers.
+/// Styling and semantics are identical to [`heading`].
+pub fn heading_with_id(
+    id: impl Into<ElementId>,
+    level: usize,
+    text: impl Into<SharedString>,
+) -> Stateful<Div> {
     let text: SharedString = text.into();
     let (size, weight, mb) = match level {
-        1 => (22., FontWeight::SEMIBOLD, 48.),
-        2 => (20., FontWeight::SEMIBOLD, 16.),
-        3 => (17., FontWeight::SEMIBOLD, 8.),
+        1 => (22., FontWeight::MEDIUM, 48.),
+        2 => (20., FontWeight::MEDIUM, 16.),
+        3 => (17., FontWeight::MEDIUM, 8.),
         4 => (17., FontWeight::NORMAL, 4.),
         _ => (17., FontWeight::NORMAL, 0.),
     };
     div()
-        .id(SharedString::from(format!("h{level}-{text}")))
+        .id(id)
         .role(Role::Heading)
         .aria_label(text.clone())
         .aria_level(level)
@@ -89,30 +101,53 @@ pub fn heading(level: usize, text: impl Into<SharedString>) -> Stateful<Div> {
         .child(text)
 }
 
-/// Shorthand for `heading(1, text)`: 22px semibold, centred, 48px bottom margin.
+/// Shorthand for `heading(1, text)`: 22px medium, centred, 48px bottom margin.
+#[track_caller]
 pub fn h1(text: impl Into<SharedString>) -> Stateful<Div> {
     heading(1, text)
 }
-/// Shorthand for `heading(2, text)`: 20px semibold, 16px bottom margin.
+/// Shorthand for `heading(2, text)`: 20px medium, 16px bottom margin.
+#[track_caller]
 pub fn h2(text: impl Into<SharedString>) -> Stateful<Div> {
     heading(2, text)
 }
-/// Shorthand for `heading(3, text)`: 17px semibold, 8px bottom margin.
+/// Shorthand for `heading(3, text)`: 17px medium, 8px bottom margin.
+#[track_caller]
 pub fn h3(text: impl Into<SharedString>) -> Stateful<Div> {
     heading(3, text)
 }
 /// Shorthand for `heading(4, text)`: 17px regular, 4px bottom margin.
+#[track_caller]
 pub fn h4(text: impl Into<SharedString>) -> Stateful<Div> {
     heading(4, text)
 }
 /// Shorthand for `heading(5, text)`: 17px regular, no bottom margin.
+#[track_caller]
 pub fn h5(text: impl Into<SharedString>) -> Stateful<Div> {
     heading(5, text)
 }
+/// Shorthand for `heading(6, text)`: 17px regular, no bottom margin.
+#[track_caller]
+pub fn h6(text: impl Into<SharedString>) -> Stateful<Div> {
+    heading(6, text)
+}
 
-/// A paragraph block with WeUI's 24px bottom margin; add text with `child`.
+/// A compositional paragraph block with WeUI's 24px bottom margin. Add semantic children such as
+/// GPUI [`Text`], images or links; raw strings are visual only at the pinned GPUI version.
+/// For one plain-text paragraph with its own accessible name, use [`paragraph_text`].
 pub fn paragraph() -> Div {
     div().mb(px(24.))
+}
+
+/// An accessible plain-text paragraph with WeUI's 24px bottom margin, exposed as `Paragraph`
+/// named by `text`. The caller supplies a stable id, so repeated or changing text stays distinct.
+pub fn paragraph_text(id: impl Into<ElementId>, text: impl Into<SharedString>) -> Stateful<Div> {
+    let text = text.into();
+    paragraph()
+        .id(id)
+        .role(Role::Paragraph)
+        .aria_label(text.clone())
+        .child(text)
 }
 
 /// Marker style of an [`ArticleList`].
@@ -155,6 +190,7 @@ impl ListItem {
 /// its text, with its position and the set size; items are 0.5em apart.
 #[derive(IntoElement)]
 pub struct ArticleList {
+    id: ElementId,
     style: ListStyle,
     marker: ListStyle,
     nested: bool,
@@ -164,8 +200,10 @@ pub struct ArticleList {
 impl ArticleList {
     /// Creates an empty list in `style`. [`ListStyle::Inside`] uses inline numbers,
     /// equivalent to [`ArticleList::inside`].
+    #[track_caller]
     pub fn new(style: ListStyle) -> Self {
         Self {
+            id: ElementId::from(std::panic::Location::caller()),
             style,
             marker: if style == ListStyle::Inside {
                 ListStyle::Decimal
@@ -177,20 +215,30 @@ impl ArticleList {
         }
     }
     /// Creates a bulleted list ([`ListStyle::Disc`]).
+    #[track_caller]
     pub fn unordered() -> Self {
         Self::new(ListStyle::Disc)
     }
     /// Creates a numbered list ([`ListStyle::Decimal`]).
+    #[track_caller]
     pub fn ordered() -> Self {
         Self::new(ListStyle::Decimal)
     }
     /// Creates a numbered list with inline "1. " prefixes and no indent ([`ListStyle::Inside`]).
+    #[track_caller]
     pub fn inside() -> Self {
         Self::new(ListStyle::Inside)
     }
     /// Creates a list without markers or indent ([`ListStyle::None`]).
+    #[track_caller]
     pub fn none() -> Self {
         Self::new(ListStyle::None)
+    }
+    /// Sets a stable list id. Defaults to the constructor's caller location; provide distinct ids
+    /// for sibling lists created in one loop or helper. Text and item count do not change the id.
+    pub fn id(mut self, id: impl Into<ElementId>) -> Self {
+        self.id = id.into();
+        self
     }
     /// Appends an item; a `&'static str` converts into a plain [`ListItem`].
     pub fn item(mut self, item: impl Into<ListItem>) -> Self {
@@ -232,14 +280,8 @@ impl RenderOnce for ArticleList {
         let marker_kind = self.marker;
         let count = self.items.len();
         let nested_list = self.nested;
-        let list_id = SharedString::from(format!(
-            "article-list-{}-{}-{}",
-            style as u8,
-            count,
-            self.items.first().map_or("", |i| i.text.as_ref())
-        ));
         div()
-            .id(list_id)
+            .id(self.id)
             .role(Role::List)
             .flex()
             .flex_col()

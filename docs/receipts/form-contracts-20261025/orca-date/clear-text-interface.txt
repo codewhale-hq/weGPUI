@@ -1,0 +1,25 @@
+entry 'Date'
+  text: ''
+  character count: 0
+  caret: 0
+  selections: []
+entry 'Date and time'
+  text: '2024-02-29 05:06'
+  character count: 16
+  caret: 16
+  selections: []
+entry 'Read only'
+  text: 'Locked'
+  character count: 6
+  caret: 6
+  selections: []
+entry 'Disabled'
+  text: 'Disabled'
+  character count: 8
+  caret: 8
+  selections: []
+entry 'Card'
+  text: '1234'
+  character count: 4
+  caret: 4
+  selections: []

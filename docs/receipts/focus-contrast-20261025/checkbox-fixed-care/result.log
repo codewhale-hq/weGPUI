@@ -1,0 +1,6 @@
+{"step": "checkbox-unfocused", "focused": [["button", "Default"]]}
+{"step": "checkbox-pointer-on", "focused": [["check box", "Standalone checkbox"]]}
+{"step": "checkbox-keyboard-off", "focused": [["check box", "Standalone checkbox"]]}
+{"step": "checkbox-enter-on", "focused": [["check box", "Standalone checkbox"]]}
+{"step": "checkbox-at-off", "focused": [["check box", "Standalone checkbox"]]}
+PASS pointer/Space/Enter/AT toggle callbacks exactly once each; unchecked centre preserved; two 2px bands

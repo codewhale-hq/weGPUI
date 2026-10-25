@@ -1,0 +1,12 @@
+{
+  "callbacks": [
+    "true",
+    "false",
+    "true",
+    "false"
+  ],
+  "at_actions": [
+    "click"
+  ],
+  "final_checked": false
+}

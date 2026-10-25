@@ -1,0 +1,540 @@
+[
+  {
+    "role": "application",
+    "name": "data_contracts_probe",
+    "states": []
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI data contracts",
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "panel",
+    "name": "",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "panel",
+    "name": "Inset container",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "progress bar",
+    "name": "Controlled upload",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "value": 50.0,
+    "minimum": 0.0,
+    "maximum": 100.0,
+    "increment": 0.0
+  },
+  {
+    "role": "notification",
+    "name": "Upload canceled",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "notification",
+    "name": "Loading data records",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Advance progress",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Show cancel",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "page tab list",
+    "name": "Dataset navigation",
+    "states": [
+      "enabled",
+      "horizontal",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "page tab",
+    "name": "Overview",
+    "states": [
+      "enabled",
+      "focusable",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "page tab",
+    "name": "Details",
+    "states": [
+      "enabled",
+      "focusable",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "page tab",
+    "name": "History",
+    "states": [
+      "enabled",
+      "focusable",
+      "selectable",
+      "selected",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "page tab list",
+    "name": "Workspace navigation",
+    "states": [
+      "enabled",
+      "horizontal",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "page tab",
+    "name": "Home",
+    "states": [
+      "enabled",
+      "focusable",
+      "focused",
+      "selectable",
+      "selected",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "page tab",
+    "name": "Files",
+    "states": [
+      "enabled",
+      "focusable",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "page tab",
+    "name": "Settings",
+    "states": [
+      "enabled",
+      "focusable",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "slider",
+    "name": "Step three slider",
+    "states": [
+      "enabled",
+      "focusable",
+      "horizontal",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "value": 6.0,
+    "minimum": 0.0,
+    "maximum": 10.0,
+    "increment": 3.0
+  },
+  {
+    "role": "status bar",
+    "name": "6",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "slider",
+    "name": "Fractional slider",
+    "states": [
+      "enabled",
+      "focusable",
+      "horizontal",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "value": 0.125,
+    "minimum": -1.0,
+    "maximum": 1.0,
+    "increment": 0.125
+  },
+  {
+    "role": "status bar",
+    "name": "0.1",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "slider",
+    "name": "Disabled slider",
+    "states": [
+      "horizontal",
+      "showing",
+      "visible"
+    ],
+    "value": 60.0,
+    "minimum": 0.0,
+    "maximum": 100.0,
+    "increment": 1.0
+  },
+  {
+    "role": "slider",
+    "name": "Read-only slider",
+    "states": [
+      "enabled",
+      "horizontal",
+      "sensitive",
+      "showing",
+      "visible",
+      "read only"
+    ],
+    "value": 40.0,
+    "minimum": 0.0,
+    "maximum": 100.0,
+    "increment": 1.0
+  },
+  {
+    "role": "panel",
+    "name": "Panel callbacks",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "link",
+    "name": "Open record，Controlled reusable MediaBox callback",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "label",
+    "name": "Accessible record group",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Open cell record",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "paragraph",
+    "name": "Application-owned record actions",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "panel",
+    "name": "",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Open grid record",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "panel",
+    "name": "",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "link",
+    "name": "Footer callback",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "paragraph",
+    "name": "Application-owned data transport",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Open data modal",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "article",
+    "name": "",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "heading",
+    "name": "Repeated heading",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "heading",
+    "name": "Repeated heading",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "paragraph",
+    "name": "Accessible article paragraph.",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list",
+    "name": "",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "Repeated list entry",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list",
+    "name": "",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "Repeated list entry",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "status bar",
+    "name": "Events 7; progress 50; navbar 2; tabbar 0",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "panel",
+    "name": "",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "link",
+    "name": "Fixed footer callback",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "paragraph",
+    "name": "Viewport footer",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "notification",
+    "name": "Floating data notice",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "link",
+    "name": "Notice details",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Close notice",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  }
+]

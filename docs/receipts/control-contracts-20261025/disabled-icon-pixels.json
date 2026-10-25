@@ -1,0 +1,65 @@
+{
+  "brand-cells": {
+    "bounds": [
+      322,
+      314,
+      366,
+      358
+    ],
+    "identical": true
+  },
+  "care-brand-cells": {
+    "bounds": [
+      322,
+      314,
+      366,
+      358
+    ],
+    "identical": true
+  },
+  "care-cells": {
+    "bounds": [
+      322,
+      314,
+      366,
+      358
+    ],
+    "identical": true
+  },
+  "dark-brand-cells": {
+    "bounds": [
+      322,
+      314,
+      366,
+      358
+    ],
+    "identical": true
+  },
+  "dark-care-brand-cells": {
+    "bounds": [
+      322,
+      314,
+      366,
+      358
+    ],
+    "identical": true
+  },
+  "dark-care-cells": {
+    "bounds": [
+      322,
+      314,
+      366,
+      358
+    ],
+    "identical": true
+  },
+  "dark-cells": {
+    "bounds": [
+      322,
+      314,
+      366,
+      358
+    ],
+    "identical": true
+  }
+}

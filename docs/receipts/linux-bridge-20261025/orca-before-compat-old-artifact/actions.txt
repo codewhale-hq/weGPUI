@@ -1,0 +1,11 @@
+2026-10-25T08:23:37Z open:@190,110
+2026-10-25T08:23:39Z cancel:Tab
+2026-10-25T08:23:40Z ok:Tab
+2026-10-25T08:23:42Z wrap:Tab
+2026-10-25T08:23:43Z close:Escape
+2026-10-25T08:23:44Z reopen:Return
+2026-10-25T08:23:46Z cancel-again:Tab
+2026-10-25T08:23:47Z ok-again:Tab
+2026-10-25T08:23:48Z confirm:Return
+2026-10-25T08:23:50Z open-third:Return
+2026-10-25T08:23:51Z close-third:Escape

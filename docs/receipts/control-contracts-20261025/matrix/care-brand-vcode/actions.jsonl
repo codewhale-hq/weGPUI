@@ -1,0 +1,10 @@
+{"step": "vcode-0-guard", "counts": {"vcode-send-0": 1}, "focused": ["\u91cd\u65b0\u53d1\u9001(2s)"], "time": 1792916938.5055602}
+{"step": "vcode-0-tab-skip", "counts": {"vcode-send-0": 1}, "focused": ["Start twice 0"], "time": 1792916939.0305762}
+{"step": "vcode-0-restart", "counts": {"vcode-send-0": 2, "vcode-reset-0": 1}, "focused": ["Start twice 0"], "time": 1792916939.88912}
+{"step": "vcode-0-cancel-old-timer", "counts": {"vcode-send-0": 3, "vcode-reset-0": 2}, "focused": ["Start twice 0"], "time": 1792916941.5400028}
+{"step": "vcode-0-idle", "counts": {"vcode-send-0": 3, "vcode-reset-0": 2}, "focused": ["Start twice 0"], "time": 1792916945.164653}
+{"step": "vcode-1-guard", "counts": {"vcode-send-0": 4, "vcode-reset-0": 3, "vcode-send-1": 1}, "focused": ["\u91cd\u65b0\u53d1\u9001(2s)"], "time": 1792916946.8709526}
+{"step": "vcode-1-tab-skip", "counts": {"vcode-send-0": 4, "vcode-reset-0": 3, "vcode-send-1": 1}, "focused": ["Start twice 1"], "time": 1792916947.452282}
+{"step": "vcode-1-restart", "counts": {"vcode-send-0": 4, "vcode-reset-0": 3, "vcode-send-1": 2, "vcode-reset-1": 1}, "focused": ["Start twice 1"], "time": 1792916948.3687985}
+{"step": "vcode-1-cancel-old-timer", "counts": {"vcode-send-0": 4, "vcode-reset-0": 3, "vcode-send-1": 3, "vcode-reset-1": 2}, "focused": ["Start twice 1"], "time": 1792916950.0210502}
+{"step": "vcode-1-idle", "counts": {"vcode-send-0": 4, "vcode-reset-0": 3, "vcode-send-1": 3, "vcode-reset-1": 2}, "focused": ["Start twice 1"], "time": 1792916953.669383}

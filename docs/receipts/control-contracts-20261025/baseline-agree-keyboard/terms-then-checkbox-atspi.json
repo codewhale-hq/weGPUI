@@ -1,0 +1,160 @@
+[
+  {
+    "role": "desktop frame",
+    "name": "main",
+    "states": []
+  },
+  {
+    "role": "application",
+    "name": "control_contracts",
+    "states": []
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI control contracts",
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Start matrix",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "check box",
+    "name": "Agreement 0 Terms 0",
+    "states": [
+      "checked",
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ]
+  },
+  {
+    "role": "link",
+    "name": "Terms 0",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "check box",
+    "name": "Agreement 1 Terms 1",
+    "states": [
+      "showing",
+      "visible",
+      "checkable",
+      "read only"
+    ]
+  },
+  {
+    "role": "link",
+    "name": "Terms 1",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "check box",
+    "name": "Agreement 2 Terms 2",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ]
+  },
+  {
+    "role": "link",
+    "name": "Terms 2",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "check box",
+    "name": "Agreement 3 Terms 3",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ]
+  },
+  {
+    "role": "link",
+    "name": "Terms 3",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "check box",
+    "name": "Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Long terms",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ]
+  },
+  {
+    "role": "link",
+    "name": "Long terms",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "End matrix",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  }
+]

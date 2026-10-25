@@ -1,0 +1,21 @@
+   Compiling wegpui-preview-consumer v0.0.0 (/workspace/.wegpui-cloud/consumer-contracts)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.41s
+gpui-pre v0.3.9 (/workspace/weGPUI/vendor/gpui_pre)
+├── gpui-pre-linux v0.3.9
+│   └── gpui-pre-platform v0.3.9
+│       └── wegpui-preview-consumer v0.0.0 (/workspace/.wegpui-cloud/consumer-contracts)
+├── gpui-pre-platform v0.3.9 (*)
+├── gpui-pre-wgpu v0.3.9
+│   └── gpui-pre-linux v0.3.9 (*)
+├── wegpui v0.1.0 (/workspace/weGPUI)
+│   └── wegpui-preview-consumer v0.0.0 (/workspace/.wegpui-cloud/consumer-contracts)
+└── wegpui-preview-consumer v0.0.0 (/workspace/.wegpui-cloud/consumer-contracts)
+accesskit_atspi_common v0.19.1 (/workspace/weGPUI/vendor/accesskit_atspi_common)
+└── accesskit_unix v0.22.1 (/workspace/weGPUI/vendor/accesskit_unix)
+    └── gpui-pre-linux v0.3.9
+        └── gpui-pre-platform v0.3.9
+            └── wegpui-preview-consumer v0.0.0 (/workspace/.wegpui-cloud/consumer-contracts)
+accesskit_unix v0.22.1 (/workspace/weGPUI/vendor/accesskit_unix)
+└── gpui-pre-linux v0.3.9
+    └── gpui-pre-platform v0.3.9
+        └── wegpui-preview-consumer v0.0.0 (/workspace/.wegpui-cloud/consumer-contracts)

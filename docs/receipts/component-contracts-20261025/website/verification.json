@@ -1,0 +1,17 @@
+{
+  "website_only_verification": true,
+  "source_commit": "a3ce3afca6417b7dd1b9d701456ae2d21d2150f4",
+  "source_dirty": true,
+  "capture_commit": "2c8ed10",
+  "api_tree": "existing Rustdoc at /workspace/.wegpui-cloud/target-198/doc; final strict-doc rebuild required",
+  "api_index_sha256": "3f626c8c8b2e60cd9ede0f208ccd44d188da1c2f3c1983c960f5ac4a6c0ac7d8",
+  "python": "Python 3.12.14",
+  "node": "v24.19.0",
+  "fixture_tests": "10 passed (5 bundle fake-Apple-tool contracts; 5 Linux sweep fake-capture contracts)",
+  "syntax_checks": "11 Python files AST parsed; website/app.js node --check; 5 checked-in shell scripts bash -n",
+  "license_files": "four copied license/NOTICE files byte-equal to repository source; all served HTTP200",
+  "vendor_inventory": "unchanged package versions and LICENSE files present; package archive/consumer not checked here",
+  "visual_review": "new getting-started desktop/mobile screenshots reviewed",
+  "native_application_test": false,
+  "hosted_deployment": false
+}

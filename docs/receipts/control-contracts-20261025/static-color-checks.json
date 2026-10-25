@@ -1,0 +1,2108 @@
+{
+  "large-brand/button-0-false-0": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "large-brand/button-0-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "large-brand/button-0-false-2": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "large-brand/button-1-false-0": {
+    "expected": [
+      124,
+      58,
+      237
+    ],
+    "native": [
+      124,
+      58,
+      237
+    ],
+    "max_error": 0
+  },
+  "large-brand/button-1-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "large-brand/button-1-false-2": {
+    "expected": [
+      124,
+      58,
+      237
+    ],
+    "native": [
+      124,
+      58,
+      237
+    ],
+    "max_error": 0
+  },
+  "large-brand/button-2-false-0": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-brand/button-2-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "large-brand/button-2-false-2": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-brand/button-0-true-0": {
+    "expected": [
+      161,
+      115,
+      240
+    ],
+    "native": [
+      162,
+      115,
+      240
+    ],
+    "max_error": 1
+  },
+  "large-brand/button-0-true-1": {
+    "expected": [
+      163,
+      117,
+      242
+    ],
+    "native": [
+      164,
+      117,
+      242
+    ],
+    "max_error": 1
+  },
+  "large-brand/button-0-true-2": {
+    "expected": [
+      161,
+      115,
+      240
+    ],
+    "native": [
+      162,
+      115,
+      240
+    ],
+    "max_error": 1
+  },
+  "large-brand/button-1-true-0": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "large-brand/button-1-true-1": {
+    "expected": [
+      163,
+      117,
+      242
+    ],
+    "native": [
+      164,
+      117,
+      242
+    ],
+    "max_error": 1
+  },
+  "large-brand/button-1-true-2": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "large-brand/button-2-true-0": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-brand/button-2-true-1": {
+    "expected": [
+      163,
+      117,
+      242
+    ],
+    "native": [
+      164,
+      117,
+      242
+    ],
+    "max_error": 1
+  },
+  "large-brand/button-2-true-2": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-care/button-0-false-0": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "large-care/button-0-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "large-care/button-0-false-2": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "large-care/button-1-false-0": {
+    "expected": [
+      1,
+      137,
+      66
+    ],
+    "native": [
+      1,
+      137,
+      66
+    ],
+    "max_error": 0
+  },
+  "large-care/button-1-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "large-care/button-1-false-2": {
+    "expected": [
+      1,
+      137,
+      66
+    ],
+    "native": [
+      1,
+      137,
+      66
+    ],
+    "max_error": 0
+  },
+  "large-care/button-2-false-0": {
+    "expected": [
+      220,
+      54,
+      54
+    ],
+    "native": [
+      220,
+      54,
+      54
+    ],
+    "max_error": 0
+  },
+  "large-care/button-2-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "large-care/button-2-false-2": {
+    "expected": [
+      220,
+      54,
+      54
+    ],
+    "native": [
+      220,
+      54,
+      54
+    ],
+    "max_error": 0
+  },
+  "large-care/button-0-true-0": {
+    "expected": [
+      75,
+      170,
+      120
+    ],
+    "native": [
+      76,
+      171,
+      121
+    ],
+    "max_error": 1
+  },
+  "large-care/button-0-true-1": {
+    "expected": [
+      77,
+      172,
+      123
+    ],
+    "native": [
+      78,
+      173,
+      123
+    ],
+    "max_error": 1
+  },
+  "large-care/button-0-true-2": {
+    "expected": [
+      75,
+      170,
+      120
+    ],
+    "native": [
+      76,
+      171,
+      121
+    ],
+    "max_error": 1
+  },
+  "large-care/button-1-true-0": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "large-care/button-1-true-1": {
+    "expected": [
+      77,
+      172,
+      123
+    ],
+    "native": [
+      78,
+      173,
+      123
+    ],
+    "max_error": 1
+  },
+  "large-care/button-1-true-2": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "large-care/button-2-true-0": {
+    "expected": [
+      220,
+      54,
+      54
+    ],
+    "native": [
+      220,
+      54,
+      54
+    ],
+    "max_error": 0
+  },
+  "large-care/button-2-true-1": {
+    "expected": [
+      77,
+      172,
+      123
+    ],
+    "native": [
+      78,
+      173,
+      123
+    ],
+    "max_error": 1
+  },
+  "large-care/button-2-true-2": {
+    "expected": [
+      220,
+      54,
+      54
+    ],
+    "native": [
+      220,
+      54,
+      54
+    ],
+    "max_error": 0
+  },
+  "large-dark/button-0-false-0": {
+    "expected": [
+      48,
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48,
+      48
+    ],
+    "max_error": 0
+  },
+  "large-dark/button-0-false-1": {
+    "expected": [
+      48,
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48,
+      48
+    ],
+    "max_error": 0
+  },
+  "large-dark/button-0-false-2": {
+    "expected": [
+      48,
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48,
+      48
+    ],
+    "max_error": 0
+  },
+  "large-dark/button-1-false-0": {
+    "expected": [
+      7,
+      193,
+      96
+    ],
+    "native": [
+      7,
+      193,
+      96
+    ],
+    "max_error": 0
+  },
+  "large-dark/button-1-false-1": {
+    "expected": [
+      48,
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48,
+      48
+    ],
+    "max_error": 0
+  },
+  "large-dark/button-1-false-2": {
+    "expected": [
+      7,
+      193,
+      96
+    ],
+    "native": [
+      7,
+      193,
+      96
+    ],
+    "max_error": 0
+  },
+  "large-dark/button-2-false-0": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-dark/button-2-false-1": {
+    "expected": [
+      48,
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48,
+      48
+    ],
+    "max_error": 0
+  },
+  "large-dark/button-2-false-2": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-dark/button-0-true-0": {
+    "expected": [
+      79,
+      209,
+      141
+    ],
+    "native": [
+      80,
+      210,
+      142
+    ],
+    "max_error": 1
+  },
+  "large-dark/button-0-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "large-dark/button-0-true-2": {
+    "expected": [
+      79,
+      209,
+      141
+    ],
+    "native": [
+      80,
+      210,
+      142
+    ],
+    "max_error": 1
+  },
+  "large-dark/button-1-true-0": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "large-dark/button-1-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "large-dark/button-1-true-2": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "large-dark/button-2-true-0": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-dark/button-2-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "large-dark/button-2-true-2": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-dark-care/button-0-false-0": {
+    "expected": [
+      48,
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48,
+      48
+    ],
+    "max_error": 0
+  },
+  "large-dark-care/button-0-false-1": {
+    "expected": [
+      48,
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48,
+      48
+    ],
+    "max_error": 0
+  },
+  "large-dark-care/button-0-false-2": {
+    "expected": [
+      48,
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48,
+      48
+    ],
+    "max_error": 0
+  },
+  "large-dark-care/button-1-false-0": {
+    "expected": [
+      7,
+      193,
+      96
+    ],
+    "native": [
+      7,
+      193,
+      96
+    ],
+    "max_error": 0
+  },
+  "large-dark-care/button-1-false-1": {
+    "expected": [
+      48,
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48,
+      48
+    ],
+    "max_error": 0
+  },
+  "large-dark-care/button-1-false-2": {
+    "expected": [
+      7,
+      193,
+      96
+    ],
+    "native": [
+      7,
+      193,
+      96
+    ],
+    "max_error": 0
+  },
+  "large-dark-care/button-2-false-0": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-dark-care/button-2-false-1": {
+    "expected": [
+      48,
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48,
+      48
+    ],
+    "max_error": 0
+  },
+  "large-dark-care/button-2-false-2": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-dark-care/button-0-true-0": {
+    "expected": [
+      79,
+      209,
+      141
+    ],
+    "native": [
+      80,
+      210,
+      142
+    ],
+    "max_error": 1
+  },
+  "large-dark-care/button-0-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "large-dark-care/button-0-true-2": {
+    "expected": [
+      79,
+      209,
+      141
+    ],
+    "native": [
+      80,
+      210,
+      142
+    ],
+    "max_error": 1
+  },
+  "large-dark-care/button-1-true-0": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "large-dark-care/button-1-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "large-dark-care/button-1-true-2": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "large-dark-care/button-2-true-0": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-dark-care/button-2-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "large-dark-care/button-2-true-2": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-dark-care-brand/button-0-false-0": {
+    "expected": [
+      48,
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48,
+      48
+    ],
+    "max_error": 0
+  },
+  "large-dark-care-brand/button-0-false-1": {
+    "expected": [
+      48,
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48,
+      48
+    ],
+    "max_error": 0
+  },
+  "large-dark-care-brand/button-0-false-2": {
+    "expected": [
+      48,
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48,
+      48
+    ],
+    "max_error": 0
+  },
+  "large-dark-care-brand/button-1-false-0": {
+    "expected": [
+      124,
+      58,
+      237
+    ],
+    "native": [
+      124,
+      58,
+      237
+    ],
+    "max_error": 0
+  },
+  "large-dark-care-brand/button-1-false-1": {
+    "expected": [
+      48,
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48,
+      48
+    ],
+    "max_error": 0
+  },
+  "large-dark-care-brand/button-1-false-2": {
+    "expected": [
+      124,
+      58,
+      237
+    ],
+    "native": [
+      124,
+      58,
+      237
+    ],
+    "max_error": 0
+  },
+  "large-dark-care-brand/button-2-false-0": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-dark-care-brand/button-2-false-1": {
+    "expected": [
+      48,
+      48,
+      48
+    ],
+    "native": [
+      48,
+      48,
+      48
+    ],
+    "max_error": 0
+  },
+  "large-dark-care-brand/button-2-false-2": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-dark-care-brand/button-0-true-0": {
+    "expected": [
+      161,
+      115,
+      240
+    ],
+    "native": [
+      162,
+      115,
+      240
+    ],
+    "max_error": 1
+  },
+  "large-dark-care-brand/button-0-true-1": {
+    "expected": [
+      163,
+      117,
+      242
+    ],
+    "native": [
+      164,
+      117,
+      242
+    ],
+    "max_error": 1
+  },
+  "large-dark-care-brand/button-0-true-2": {
+    "expected": [
+      161,
+      115,
+      240
+    ],
+    "native": [
+      162,
+      115,
+      240
+    ],
+    "max_error": 1
+  },
+  "large-dark-care-brand/button-1-true-0": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "large-dark-care-brand/button-1-true-1": {
+    "expected": [
+      163,
+      117,
+      242
+    ],
+    "native": [
+      164,
+      117,
+      242
+    ],
+    "max_error": 1
+  },
+  "large-dark-care-brand/button-1-true-2": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "large-dark-care-brand/button-2-true-0": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-dark-care-brand/button-2-true-1": {
+    "expected": [
+      163,
+      117,
+      242
+    ],
+    "native": [
+      164,
+      117,
+      242
+    ],
+    "max_error": 1
+  },
+  "large-dark-care-brand/button-2-true-2": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-light/button-0-false-0": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "large-light/button-0-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "large-light/button-0-false-2": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "large-light/button-1-false-0": {
+    "expected": [
+      7,
+      193,
+      96
+    ],
+    "native": [
+      7,
+      193,
+      96
+    ],
+    "max_error": 0
+  },
+  "large-light/button-1-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "large-light/button-1-false-2": {
+    "expected": [
+      7,
+      193,
+      96
+    ],
+    "native": [
+      7,
+      193,
+      96
+    ],
+    "max_error": 0
+  },
+  "large-light/button-2-false-0": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-light/button-2-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "large-light/button-2-false-2": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-light/button-0-true-0": {
+    "expected": [
+      79,
+      209,
+      141
+    ],
+    "native": [
+      80,
+      210,
+      142
+    ],
+    "max_error": 1
+  },
+  "large-light/button-0-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "large-light/button-0-true-2": {
+    "expected": [
+      79,
+      209,
+      141
+    ],
+    "native": [
+      80,
+      210,
+      142
+    ],
+    "max_error": 1
+  },
+  "large-light/button-1-true-0": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "large-light/button-1-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "large-light/button-1-true-2": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "large-light/button-2-true-0": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "large-light/button-2-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "large-light/button-2-true-2": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "medium-light/button-0-false-0": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "medium-light/button-0-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "medium-light/button-0-false-2": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "medium-light/button-1-false-0": {
+    "expected": [
+      7,
+      193,
+      96
+    ],
+    "native": [
+      7,
+      193,
+      96
+    ],
+    "max_error": 0
+  },
+  "medium-light/button-1-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "medium-light/button-1-false-2": {
+    "expected": [
+      7,
+      193,
+      96
+    ],
+    "native": [
+      7,
+      193,
+      96
+    ],
+    "max_error": 0
+  },
+  "medium-light/button-2-false-0": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "medium-light/button-2-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "medium-light/button-2-false-2": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "medium-light/button-0-true-0": {
+    "expected": [
+      79,
+      209,
+      141
+    ],
+    "native": [
+      80,
+      210,
+      142
+    ],
+    "max_error": 1
+  },
+  "medium-light/button-0-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "medium-light/button-0-true-2": {
+    "expected": [
+      79,
+      209,
+      141
+    ],
+    "native": [
+      80,
+      210,
+      142
+    ],
+    "max_error": 1
+  },
+  "medium-light/button-1-true-0": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "medium-light/button-1-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "medium-light/button-1-true-2": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "medium-light/button-2-true-0": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "medium-light/button-2-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "medium-light/button-2-true-2": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "mini-light/button-0-false-0": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "mini-light/button-0-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "mini-light/button-0-false-2": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "mini-light/button-1-false-0": {
+    "expected": [
+      7,
+      193,
+      96
+    ],
+    "native": [
+      7,
+      193,
+      96
+    ],
+    "max_error": 0
+  },
+  "mini-light/button-1-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "mini-light/button-1-false-2": {
+    "expected": [
+      7,
+      193,
+      96
+    ],
+    "native": [
+      7,
+      193,
+      96
+    ],
+    "max_error": 0
+  },
+  "mini-light/button-2-false-0": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "mini-light/button-2-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "mini-light/button-2-false-2": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "mini-light/button-0-true-0": {
+    "expected": [
+      79,
+      209,
+      141
+    ],
+    "native": [
+      80,
+      210,
+      142
+    ],
+    "max_error": 1
+  },
+  "mini-light/button-0-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "mini-light/button-0-true-2": {
+    "expected": [
+      79,
+      209,
+      141
+    ],
+    "native": [
+      80,
+      210,
+      142
+    ],
+    "max_error": 1
+  },
+  "mini-light/button-1-true-0": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "mini-light/button-1-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "mini-light/button-1-true-2": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "mini-light/button-2-true-0": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "mini-light/button-2-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "mini-light/button-2-true-2": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "xmini-light/button-0-false-0": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "xmini-light/button-0-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "xmini-light/button-0-false-2": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "xmini-light/button-1-false-0": {
+    "expected": [
+      7,
+      193,
+      96
+    ],
+    "native": [
+      7,
+      193,
+      96
+    ],
+    "max_error": 0
+  },
+  "xmini-light/button-1-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "xmini-light/button-1-false-2": {
+    "expected": [
+      7,
+      193,
+      96
+    ],
+    "native": [
+      7,
+      193,
+      96
+    ],
+    "max_error": 0
+  },
+  "xmini-light/button-2-false-0": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "xmini-light/button-2-false-1": {
+    "expected": [
+      242,
+      242,
+      242
+    ],
+    "native": [
+      242,
+      242,
+      242
+    ],
+    "max_error": 0
+  },
+  "xmini-light/button-2-false-2": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "xmini-light/button-0-true-0": {
+    "expected": [
+      79,
+      209,
+      141
+    ],
+    "native": [
+      80,
+      210,
+      142
+    ],
+    "max_error": 1
+  },
+  "xmini-light/button-0-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "xmini-light/button-0-true-2": {
+    "expected": [
+      79,
+      209,
+      141
+    ],
+    "native": [
+      80,
+      210,
+      142
+    ],
+    "max_error": 1
+  },
+  "xmini-light/button-1-true-0": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "xmini-light/button-1-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "xmini-light/button-1-true-2": {
+    "expected": [
+      255,
+      255,
+      255
+    ],
+    "native": [
+      255,
+      255,
+      255
+    ],
+    "max_error": 0
+  },
+  "xmini-light/button-2-true-0": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  },
+  "xmini-light/button-2-true-1": {
+    "expected": [
+      81,
+      212,
+      144
+    ],
+    "native": [
+      82,
+      212,
+      144
+    ],
+    "max_error": 1
+  },
+  "xmini-light/button-2-true-2": {
+    "expected": [
+      250,
+      81,
+      81
+    ],
+    "native": [
+      250,
+      81,
+      81
+    ],
+    "max_error": 0
+  }
+}

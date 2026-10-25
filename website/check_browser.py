@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Exercise the built showcase with an isolated headless browser, not native GPUI."""
 import argparse
+from datetime import datetime, timezone
 import json
 from pathlib import Path
 from playwright.sync_api import sync_playwright, expect
@@ -8,7 +9,7 @@ from playwright.sync_api import sync_playwright, expect
 parser=argparse.ArgumentParser()
 parser.add_argument('--url',default='http://127.0.0.1:4173/')
 parser.add_argument('--browser',default='/usr/bin/chromium')
-parser.add_argument('--out',type=Path,default=Path('docs/receipts/website-20261024'))
+parser.add_argument('--out',type=Path,default=Path('target/website-browser') / datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ'))
 args=parser.parse_args();args.out.mkdir(parents=True,exist_ok=True)
 with sync_playwright() as p:
     options={'headless':True}
@@ -99,7 +100,7 @@ with sync_playwright() as p:
     page.goto(args.url+'#components/does-not-exist')
     expect(page.get_by_role('heading',level=1)).to_contain_text('isn’t in this gallery')
     assert errors==[],errors
-    result={'browser':browser.version,'native_application_test':False,'routes_checked':len(routes),'state_theme_routes_checked':state_themes,'captures_decoded':len(capture_paths),'api_links_checked':len(api_links),'viewport_routes':checked,'palettes':palettes,'page_errors':errors,'passed':['catalog search/empty state','state/theme deep links','native/reference comparison','clipboard','keyboard skip/focus','mobile navigation','responsive overflow','missing route']}
+    result={'browser':browser.version,'native_application_test':False,'source_commit':page.evaluate('WEGPUI.sourceCommit'),'source_dirty':page.evaluate('WEGPUI.sourceDirty'),'capture_commit':page.evaluate('WEGPUI.captureCommit'),'gpui_version':page.evaluate('WEGPUI.gpuiVersion'),'routes_checked':len(routes),'state_theme_routes_checked':state_themes,'captures_decoded':len(capture_paths),'api_links_checked':len(api_links),'viewport_routes':checked,'palettes':palettes,'page_errors':errors,'passed':['catalog search/empty state','state/theme deep links','native/reference comparison','clipboard','keyboard skip/focus','mobile navigation','responsive overflow','missing route']}
     (args.out/'browser-checks.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))
     browser.close()

@@ -1,0 +1,186 @@
+[
+  {
+    "mode": "light",
+    "point": [
+      251,
+      179
+    ],
+    "core": [
+      7,
+      193,
+      96
+    ],
+    "backing": [
+      0,
+      0,
+      0
+    ],
+    "a11y_rounded_end": 250,
+    "surface": [
+      255,
+      255,
+      255
+    ]
+  },
+  {
+    "mode": "dark",
+    "point": [
+      251,
+      179
+    ],
+    "core": [
+      7,
+      193,
+      96
+    ],
+    "backing": [
+      0,
+      0,
+      0
+    ],
+    "a11y_rounded_end": 250,
+    "surface": [
+      25,
+      25,
+      25
+    ]
+  },
+  {
+    "mode": "care",
+    "point": [
+      251,
+      179
+    ],
+    "core": [
+      1,
+      137,
+      66
+    ],
+    "backing": [
+      0,
+      0,
+      0
+    ],
+    "a11y_rounded_end": 250,
+    "surface": [
+      255,
+      255,
+      255
+    ]
+  },
+  {
+    "mode": "dark-care",
+    "point": [
+      251,
+      179
+    ],
+    "core": [
+      7,
+      193,
+      96
+    ],
+    "backing": [
+      0,
+      0,
+      0
+    ],
+    "a11y_rounded_end": 250,
+    "surface": [
+      25,
+      25,
+      25
+    ]
+  },
+  {
+    "mode": "brand",
+    "point": [
+      251,
+      179
+    ],
+    "core": [
+      124,
+      58,
+      237
+    ],
+    "backing": [
+      0,
+      0,
+      0
+    ],
+    "a11y_rounded_end": 250,
+    "surface": [
+      255,
+      255,
+      255
+    ]
+  },
+  {
+    "mode": "dark-brand",
+    "point": [
+      251,
+      179
+    ],
+    "core": [
+      124,
+      58,
+      237
+    ],
+    "backing": [
+      0,
+      0,
+      0
+    ],
+    "a11y_rounded_end": 250,
+    "surface": [
+      25,
+      25,
+      25
+    ]
+  },
+  {
+    "mode": "care-brand",
+    "point": [
+      251,
+      179
+    ],
+    "core": [
+      124,
+      58,
+      237
+    ],
+    "backing": [
+      0,
+      0,
+      0
+    ],
+    "a11y_rounded_end": 250,
+    "surface": [
+      255,
+      255,
+      255
+    ]
+  },
+  {
+    "mode": "dark-care-brand",
+    "point": [
+      251,
+      179
+    ],
+    "core": [
+      124,
+      58,
+      237
+    ],
+    "backing": [
+      0,
+      0,
+      0
+    ],
+    "a11y_rounded_end": 250,
+    "surface": [
+      25,
+      25,
+      25
+    ]
+  }
+]

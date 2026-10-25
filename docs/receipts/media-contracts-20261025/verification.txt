@@ -1,0 +1,6 @@
+PASS: AT-SPI default Click now toggles controlled state and focuses the row;
+      progress/error pointer activation does not preview.
+PASS: add/capacity/progress/error/done/empty, preview/dismiss/delete callbacks,
+      controlled swipe acceptance/rejection, logical Tab order, focus restoration and drag.
+PASS: actual uploader gallery dark+care and custom-brand thumbnail/keyboard/delete samples.
+Tree/input observations only; no screen-reader or full parity acceptance.

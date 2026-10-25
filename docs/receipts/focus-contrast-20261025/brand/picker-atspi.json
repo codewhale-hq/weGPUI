@@ -1,0 +1,149 @@
+[
+  {
+    "role": "application",
+    "name": "focus_contrast_probe",
+    "states": [],
+    "bounds": null
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI focus contrast",
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      0,
+      0,
+      700,
+      850
+    ]
+  },
+  {
+    "role": "dialog",
+    "name": "Focus picker",
+    "states": [
+      "active",
+      "enabled",
+      "focusable",
+      "modal",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      0,
+      0,
+      700,
+      850
+    ]
+  },
+  {
+    "role": "button",
+    "name": "\u5173\u95ed",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      6,
+      348,
+      44,
+      44
+    ]
+  },
+  {
+    "role": "list box",
+    "name": "Focus picker Second",
+    "states": [
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "vertical",
+      "visible"
+    ],
+    "bounds": [
+      0,
+      402,
+      700,
+      280
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "First",
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      0,
+      458,
+      700,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "Second",
+    "states": [
+      "enabled",
+      "selectable",
+      "selected",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      0,
+      514,
+      700,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "Third",
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      0,
+      570,
+      700,
+      56
+    ]
+  },
+  {
+    "role": "button",
+    "name": "\u786e\u5b9a",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      258,
+      738,
+      184,
+      48
+    ]
+  }
+]

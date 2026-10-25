@@ -1,0 +1,7 @@
+apps 2
+application 'orca' [] DISABLED
+application 'minimal' [] DISABLED
+  frame '' ['showing']
+    panel '' ['showing']
+      list item 'Confirmed' ['showing'] description='1'
+      button 'Open dialog' ['focusable', 'focused', 'showing']

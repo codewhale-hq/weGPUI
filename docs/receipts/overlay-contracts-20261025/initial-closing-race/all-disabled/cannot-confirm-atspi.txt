@@ -1,0 +1,8 @@
+apps 1
+application 'overlays_contracts_probe' [] DISABLED
+  frame 'weGPUI overlay contracts' ['showing']
+    dialog 'Contract picker' ['focusable', 'modal', 'showing']
+      button 'Cancel picker' ['focusable', 'showing']
+      list box 'Contract picker Unavailable' ['focusable', 'focused', 'showing']
+        list item 'Unavailable' ['selected', 'showing'] DISABLED ['posinset:1']
+      button 'Confirm picker' ['showing'] DISABLED description='不可用'

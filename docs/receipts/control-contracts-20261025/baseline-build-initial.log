@@ -1,0 +1,18 @@
+   Compiling wegpui v0.1.0 (/workspace/.wegpui-cloud/baseline-9c4515c)
+error[E0599]: no method named `on_click` found for struct `gpui::Div` in the current scope
+   --> examples/control_contracts.rs:189:15
+    |
+180 |               .child(div().flex().gap(px(32.)).items_center().child("Checkbox").child(
+    |  ____________________-
+181 | |                 Checkbox::new("checkbox")
+182 | |                     .label("Standalone checkbox")
+183 | |                     .checked(self.checked[0])
+...   |
+188 | |                     })),
+189 | |             ).on_click(move |_, _, _| record(&counts, "checkbox-parent")))
+    | |              -^^^^^^^^ method not found in `gpui::Div`
+    | |______________|
+    |
+
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `wegpui` (example "control_contracts") due to 1 previous error

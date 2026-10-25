@@ -1,0 +1,5 @@
+apps 1
+application 'overlays_contracts_probe' [] DISABLED
+  frame 'weGPUI overlay contracts' ['showing']
+    panel '' ['showing']
+      button 'Open overlay' ['focusable', 'focused', 'showing']

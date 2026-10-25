@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/workspace/weGPUI/docs/receipts/overlay-contracts-20261025/validate.py", line 29, in <module>
+    assert actual.count('confirm') == 2 and actual.count('disabled') == 0 and actual.count('dismiss') == 1, actual
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ['open', 'confirm', 'open', 'confirm', 'confirm', 'confirm', 'confirm', 'confirm', 'open', 'dismiss']
+Exit status 1

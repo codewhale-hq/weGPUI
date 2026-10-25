@@ -1,0 +1,82 @@
+[
+  {
+    "role": "application",
+    "name": "data_contracts_probe",
+    "states": [],
+    "attributes": []
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI data contracts",
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "dialog",
+    "name": "Data modal",
+    "states": [
+      "active",
+      "enabled",
+      "focusable",
+      "focused",
+      "modal",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "Close data modal",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "notification",
+    "name": "Floating data notice",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "link",
+    "name": "Notice details",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "Close notice",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  }
+]

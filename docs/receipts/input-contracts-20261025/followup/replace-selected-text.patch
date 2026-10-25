@@ -1,0 +1,52 @@
+--- a/src/input.rs
++++ b/src/input.rs
+@@ -710,6 +710,20 @@
+         self.last_edit = None;
+     }
+ 
++    fn replace_accessible_selected_text(
++        &mut self,
++        value: &str,
++        window: &mut Window,
++        cx: &mut Context<Self>,
++    ) {
++        if !self.editable() {
++            return;
++        }
++        self.last_edit = None;
++        self.replace_text_in_range(None, value, window, cx);
++        self.last_edit = None;
++    }
++
+     fn set_accessible_selection(
+         &mut self,
+         snapshot: &A11yTextSnapshot,
+@@ -1850,6 +1864,7 @@
+             let geometry_capture = geometry.clone();
+             let selection_owner = cx.entity().downgrade();
+             let value_owner = cx.entity().downgrade();
++            let replacement_owner = cx.entity().downgrade();
+             let el = div()
+                 .id("text-input")
+                 .role(role)
+@@ -1940,6 +1955,20 @@
+                                     }
+                                 },
+                             )
++                            .on_a11y_action(
++                                AccessibleAction::ReplaceSelectedText,
++                                move |data, window, cx| {
++                                    if let Some(accesskit::ActionData::Value(value)) = data {
++                                        replacement_owner
++                                            .update(cx, |input, cx| {
++                                                input.replace_accessible_selected_text(
++                                                    value, window, cx,
++                                                );
++                                            })
++                                            .ok();
++                                    }
++                                },
++                            )
+                         })
+                         .on_mouse_down(MouseButton::Left, cx.listener(Self::on_mouse_down))
+                         .on_mouse_up(MouseButton::Left, cx.listener(Self::on_mouse_up))

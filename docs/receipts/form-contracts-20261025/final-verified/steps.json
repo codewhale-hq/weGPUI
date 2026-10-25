@@ -1,0 +1,345 @@
+[
+  {
+    "label": "date-picker-same-confirm",
+    "actions": [
+      {
+        "focus": "Picker only，",
+        "role": "button"
+      },
+      {
+        "key": "Return"
+      }
+    ],
+    "snapshot": [
+      "button=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 })"
+    ],
+    "counts": {
+      "button:Change": 1,
+      "button:value=": 0,
+      "button:Cancel": 0
+    },
+    "no_dialog": true
+  },
+  {
+    "label": "date-picker-confirm",
+    "actions": [
+      {
+        "focus": "Picker only，",
+        "role": "button"
+      },
+      {
+        "key": "Down"
+      },
+      {
+        "key": "Return"
+      }
+    ],
+    "snapshot": [
+      "button=Some(DateValue { year: 2025, month: 2, day: 28, hour: 0, minute: 0 })"
+    ],
+    "counts": {
+      "button:Change": 2,
+      "button:value=": 1,
+      "button:Cancel": 0
+    },
+    "no_dialog": true
+  },
+  {
+    "label": "readonly-cancels-sheet",
+    "actions": [
+      {
+        "focus": "Date",
+        "role": "entry"
+      },
+      {
+        "key": "alt+Down"
+      },
+      {
+        "key": "F13"
+      }
+    ],
+    "snapshot": [
+      "date=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 })",
+      "date-editing=false"
+    ],
+    "controls": [
+      {
+        "name": "Date",
+        "readonly": true,
+        "focused": true,
+        "description": "只读"
+      },
+      {
+        "name": "Date，打开日期选择器",
+        "role": "button",
+        "description": "只读"
+      }
+    ],
+    "counts": {
+      "date:Cancel": 1
+    },
+    "no_dialog": true
+  },
+  {
+    "label": "readonly-blocks-edit",
+    "actions": [
+      {
+        "key": "ctrl+a"
+      },
+      {
+        "text": "2026-04-05"
+      },
+      {
+        "key": "Return"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Date",
+        "text": "2024-02-29",
+        "readonly": true,
+        "description": "只读"
+      }
+    ],
+    "counts": {
+      "date:Change": 0
+    },
+    "no_dialog": true
+  },
+  {
+    "label": "readonly-default-button",
+    "actions": [
+      {
+        "key": "F9"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Date，2024-02-29",
+        "role": "button",
+        "description": "只读",
+        "focused": true
+      }
+    ],
+    "counts": {
+      "date:Change": 0,
+      "date:Cancel": 1
+    },
+    "no_dialog": true
+  },
+  {
+    "label": "readonly-default-activation-blocked",
+    "actions": [
+      {
+        "key": "Return"
+      }
+    ],
+    "counts": {
+      "date:Change": 0,
+      "date:Cancel": 1
+    },
+    "no_dialog": true
+  },
+  {
+    "label": "typed-mode-focus-preserved",
+    "actions": [
+      {
+        "key": "F9"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Date",
+        "role": "entry",
+        "readonly": true,
+        "description": "只读",
+        "focused": true
+      }
+    ]
+  },
+  {
+    "label": "disabled-typed-appearance",
+    "actions": [
+      {
+        "key": "F13"
+      },
+      {
+        "key": "F2"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Date",
+        "sensitive": false,
+        "description": "不可用"
+      },
+      {
+        "name": "Date，打开日期选择器",
+        "role": "button",
+        "description": "不可用"
+      },
+      {
+        "name": "Date and time",
+        "role": "entry",
+        "focused": true
+      }
+    ],
+    "no_dialog": true
+  },
+  {
+    "label": "reenable-clears-description",
+    "actions": [
+      {
+        "key": "F2"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Date",
+        "sensitive": true,
+        "description": "",
+        "readonly": false
+      },
+      {
+        "name": "Date，打开日期选择器",
+        "role": "button",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "label": "date-format-error",
+    "actions": [
+      {
+        "focus": "Date",
+        "role": "entry"
+      },
+      {
+        "key": "ctrl+a"
+      },
+      {
+        "text": "2024/02/29"
+      },
+      {
+        "key": "Return"
+      }
+    ],
+    "snapshot": [
+      "date=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 })",
+      "date-error=Some(Format)"
+    ],
+    "controls": [
+      {
+        "name": "Date",
+        "text": "2024/02/29",
+        "description": "Use YYYY-MM-DD.",
+        "invalid": true
+      }
+    ],
+    "counts": {
+      "date:Change": 0
+    }
+  },
+  {
+    "label": "format-escape-restores",
+    "actions": [
+      {
+        "key": "Escape"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Date",
+        "text": "2024-02-29",
+        "description": ""
+      }
+    ],
+    "counts": {
+      "date:Cancel": 2
+    }
+  },
+  {
+    "label": "time-focused-hour-ring",
+    "actions": [
+      {
+        "focus": "Date and time",
+        "role": "entry"
+      },
+      {
+        "key": "alt+Down"
+      },
+      {
+        "key": "Return"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Date and time 05",
+        "role": "list box",
+        "focused": true
+      }
+    ]
+  },
+  {
+    "label": "time-focused-minute-ring",
+    "actions": [
+      {
+        "key": "Tab"
+      }
+    ],
+    "controls": [
+      {
+        "name": "Date and time 06",
+        "role": "list box",
+        "focused": true
+      }
+    ]
+  },
+  {
+    "label": "time-ring-sample-cancel",
+    "actions": [
+      {
+        "key": "Escape"
+      }
+    ],
+    "counts": {
+      "time:Cancel": 1,
+      "time:Change": 0
+    },
+    "no_dialog": true
+  },
+  {
+    "label": "pending-interrupt-focus",
+    "actions": [
+      {
+        "focus": "Date and time",
+        "role": "entry"
+      },
+      {
+        "key": "alt+Down"
+      },
+      {
+        "key": "F11"
+      },
+      {
+        "key": "Return"
+      }
+    ],
+    "snapshot": [
+      "time=Some(DateValue { year: 2027, month: 3, day: 4, hour: 11, minute: 12 })",
+      "time-editing=false"
+    ],
+    "controls": [
+      {
+        "name": "Date and time",
+        "text": "2027-03-04 11:12",
+        "focused": true
+      }
+    ],
+    "counts": {
+      "time:Cancel": 2,
+      "time:Change": 0
+    },
+    "no_dialog": true
+  }
+]

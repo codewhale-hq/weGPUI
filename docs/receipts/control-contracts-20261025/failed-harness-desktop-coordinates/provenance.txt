@@ -1,0 +1,23 @@
+2026-10-25T08:04:34Z
+9c4515c788bbacc42a166534e39dc393ddbcb30b
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  -
+f4e2d276595965a861cb7c1d9eb98bb9490b9f806dd1fc9493141857e9941736  /workspace/.wegpui-cloud/target-198/debug/examples/control_contracts
+872d6303a2e96c3a2c0720d40c498fc681766890cff942fb10e6b889f9680283  examples/control_contracts.rs
+rustc 1.98.1 (48a229cea 2026-09-01)
+binary: rustc
+commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+commit-date: 2026-09-01
+host: x86_64-unknown-linux-gnu
+release: 1.98.1
+LLVM version: 22.1.8
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+page=agree-regression args= ''

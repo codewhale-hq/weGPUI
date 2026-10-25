@@ -1,0 +1,2628 @@
+INFO: Cleaning up these PIDs: []
+08:23:28.407307 - INFO: Preparing to launch.
+08:23:28.407499 - INFO: About to activate settings manager.
+08:23:28.407510 - SETTINGS MANAGER: Activating
+08:23:28.408864 - SETTINGS MANAGER: Attempt to load orca-customizations from /tmp/wegpui-orca.F0dNvA/data/orca/orca-customizations.py failed. File not found.
+08:23:28.409916 - SETTINGS MANAGER: Activated
+08:23:28.409958 - SETTINGS MANAGER: Current profile is None
+08:23:28.409978 - SETTINGS MANAGER: Current profile is now default
+08:23:28.409994 - SETTINGS MANAGER: Setting profile to: default
+08:23:28.410024 - SETTINGS MANAGER: Loading settings for default profile
+08:23:28.410574 - SETTINGS MANAGER: Settings for default profile loaded
+08:23:28.410587 - SETTINGS MANAGER: Merging settings.
+08:23:28.410601 - SETTINGS MANAGER: Settings merged.
+08:23:28.410607 - SETTINGS MANAGER: Setting runtime settings.
+08:23:28.411158 - SETTINGS MANAGER: Attempt to load orca-customizations from /tmp/wegpui-orca.F0dNvA/data/orca/orca-customizations.py succeeded.
+08:23:28.411213 - SETTINGS MANAGER: Runtime settings set.
+08:23:28.420281 - INFO: About to launch Orca.
+08:23:28.420339 - DEBUGGING TOOLS MANAGER: Orca version 48.1, AT-SPI2 version: 2.56.2
+08:23:28.434899 - DEBUGGING TOOLS MANAGER: Desktop has 0 apps:
+08:23:28.434946 - ORCA: Enabling accessibility (if needed).
+08:23:28.434956 - SETTINGS MANAGER: Checking if accessibility is enabled.
+08:23:28.436021 - SETTINGS MANAGER: Accessibility enabled: True
+08:23:28.436042 - ORCA: Loading User Settings
+08:23:28.436324 - SPEECH AND VERBOSITY MANAGER: Speech server is None
+08:23:28.436335 - BRAILLE: Attempting braille shutdown.
+08:23:28.436339 - BRAILLE: Braille was not running.
+08:23:28.436399 - EVENT MANAGER: Pause queueing: True. Clear queue: True. Loading user settings.
+08:23:28.436776 - BOOKMARKS: Refreshing handlers. script.__init__:95 > script.get_bookmarks:285 > bookmarks.__init__:45 > bookmarks.get_handlers:65
+08:23:28.443839 - BOOKMARKS: Handlers set up.
+08:23:28.443872 - STRUCTURAL NAVIGATION: Refreshing handlers. script.__init__:97 > script.get_structural_navigation:202 > structural_navigation.__init__:512 > structural_navigation.get_handlers:593
+08:23:28.444770 - DEFAULT: Getting braille bindings.
+08:23:28.444792 - DEFAULT: Finished getting braille bindings.
+08:23:28.444797 - SCRIPT: default (module=orca.scripts.default) initialized
+08:23:28.444811 - SPEECH: Initializing
+08:23:28.449677 - SPEECH: Using speech server factory: speechdispatcherfactory
+08:23:28.449700 - SPEECH: Initialized
+08:23:28.449730 - BRAILLE: Initializing. Callback: InputEventManager.process_braille_event
+08:23:28.449752 - BRAILLE: WINDOWPATH= None
+08:23:28.449772 - BRAILLE: XDG_VTNR= None
+08:23:28.449779 - BRAILLE: Attempting connection with BrlAPI.
+08:23:28.451046 - WARNING: Braille initialization failed: couldn't connect to b':0' with key b'keyfile:/etc/brlapi.key+polkit': connect: No such file or directory
+                  (brlerrno 11, libcerrno 2, gaierrno 0)
+                  Is BRLTTY really running?
+08:23:28.451072 - ORCA MODIFIER MANAGER: Refreshing Orca modifiers: Loading user settings.
+08:23:28.451078 - ORCA MODIFIER MANAGER: Attempting to restore original xmodmap: Loading user settings.
+08:23:28.451081 - ORCA MODIFIER MANAGER: No stored xmodmap found
+08:23:28.457668 - ORCA MODIFIER MANAGER: Creating Orca xmodmap
+08:23:28.457710 - EVENT MANAGER: Pause queueing: False. Clear queue: False. User settings loaded.
+08:23:28.457719 - ORCA: User Settings Loaded
+08:23:28.458751 - ORCA: Connected to a11y applications gsetting: True
+08:23:28.458826 - SETTINGS MANAGER: Setting runtime settings.
+08:23:28.458841 - SETTINGS MANAGER: Runtime settings set.
+08:23:28.458885 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:28.462284 - SETTINGS MANAGER: Setting runtime settings.
+08:23:28.462300 - SETTINGS MANAGER: Runtime settings set.
+08:23:28.462325 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:28.462479 - SPEECH: Speak 'Screen reader on.' acss: {'established': False}
+08:23:28.462515 - SPEECH OUTPUT: 'Screen reader on.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+08:23:28.462522 - SPEECH DISPATCHER: Speaking 'Screen reader on.' as string
+08:23:28.462552 - SCRIPT MANAGER: Active script is: None
+08:23:28.463315 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:6"/>Screen <mark name="7:13"/>reader <mark name="14:17"/>on.</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: NONE
+                  SD rate 2, pitch 10, volume 100, language c
+08:23:28.463608 - SETTINGS MANAGER: Setting runtime settings.
+08:23:28.463619 - SETTINGS MANAGER: Runtime settings set.
+08:23:28.463644 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:28.463728 - SETTINGS MANAGER: Setting runtime settings.
+08:23:28.463736 - SETTINGS MANAGER: Runtime settings set.
+08:23:28.463755 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:28.463842 - BRAILLE: Display message: 'Screen reader on.' (flashTime: 5000)
+08:23:28.463850 - BRAILLE: Initializing flash: Source ID: 0
+08:23:28.463926 - BRAILLE: Not contracting 'Screen reader on.' because contracted braille is not enabled.
+08:23:28.464140 - BRAILLE: Refresh. Pan: True target: 0
+08:23:28.464162 - BRAILLE: Last text object: None (Caret: 0, Line: 0, Cell: 0)
+08:23:28.464179 - BRAILLE: Current text object: None (Caret: 0, Line: 0). On same line: False
+08:23:28.464195 - BRAILLE: Line 0: 'Screen reader on.' focusOffset: 0 [[0, 17]]
+08:23:28.464200 - BRAILLE: Cursor offset in line string is: -1
+08:23:28.464205 - BRAILLE: Current range: (0, 32). Target cell: 0
+08:23:28.464210 - BRAILLE LINE:  'Screen reader on.'
+08:23:28.464214 -      VISIBLE:  'Screen reader on.', cursor=0
+08:23:28.464226 - BRAILLE: Enabling braille. BrlAPI running: False
+08:23:28.464230 - BRAILLE: Need to initialize first.
+08:23:28.464243 - BRAILLE: Initializing. Callback: InputEventManager.process_braille_event
+08:23:28.464256 - BRAILLE: WINDOWPATH= None
+08:23:28.464265 - BRAILLE: XDG_VTNR= None
+08:23:28.464268 - BRAILLE: Attempting connection with BrlAPI.
+08:23:28.464439 - WARNING: Braille initialization failed: couldn't connect to b':0' with key b'keyfile:/etc/brlapi.key+polkit': connect: No such file or directory
+                  (brlerrno 11, libcerrno 2, gaierrno 0)
+                  Is BRLTTY really running?
+08:23:28.464457 - EVENT MANAGER: Activating <unknown>.<module>:280 > event_manager.activate:91
+08:23:28.465281 - INPUT EVENT MANAGER: Starting key watcher.
+08:23:28.481202 - EVENT MANAGER: Activated
+08:23:28.481769 - AXUtilities: Unable to find active window from []
+08:23:28.481789 - SCRIPT MANAGER: Activating <unknown>.<module>:280 > script_manager.activate:68
+08:23:28.482574 - EVENT MANAGER: Registering listeners for: default (module=orca.scripts.default)
+08:23:28.482590 - EVENT MANAGER: registering listener for: document:attributes-changed
+08:23:28.483130 - EVENT MANAGER: registering listener for: document:reload
+08:23:28.484517 - EVENT MANAGER: registering listener for: document:load-complete
+08:23:28.484798 - EVENT MANAGER: registering listener for: document:load-stopped
+08:23:28.485102 - EVENT MANAGER: registering listener for: document:page-changed
+08:23:28.485281 - EVENT MANAGER: registering listener for: mouse:button
+08:23:28.487836 - EVENT MANAGER: registering listener for: object:announcement
+08:23:28.488126 - EVENT MANAGER: registering listener for: object:active-descendant-changed
+08:23:28.488308 - EVENT MANAGER: registering listener for: object:attributes-changed
+08:23:28.488510 - EVENT MANAGER: registering listener for: object:children-changed:add
+08:23:28.488740 - EVENT MANAGER: registering listener for: object:children-changed:remove
+08:23:28.488971 - EVENT MANAGER: registering listener for: object:column-reordered
+08:23:28.489162 - EVENT MANAGER: registering listener for: object:property-change:accessible-description
+08:23:28.489527 - EVENT MANAGER: registering listener for: object:property-change:accessible-name
+08:23:28.489754 - EVENT MANAGER: registering listener for: object:property-change:accessible-value
+08:23:28.489976 - EVENT MANAGER: registering listener for: object:row-reordered
+08:23:28.490145 - EVENT MANAGER: registering listener for: object:selection-changed
+08:23:28.490352 - EVENT MANAGER: registering listener for: object:state-changed:active
+08:23:28.490678 - EVENT MANAGER: registering listener for: object:state-changed:busy
+08:23:28.490904 - EVENT MANAGER: registering listener for: object:state-changed:checked
+08:23:28.491125 - EVENT MANAGER: registering listener for: object:state-changed:expanded
+08:23:28.491645 - EVENT MANAGER: registering listener for: object:state-changed:focused
+08:23:28.491963 - EVENT MANAGER: registering listener for: object:state-changed:indeterminate
+08:23:28.492364 - EVENT MANAGER: registering listener for: object:state-changed:pressed
+08:23:28.492621 - EVENT MANAGER: registering listener for: object:state-changed:selected
+08:23:28.492844 - EVENT MANAGER: registering listener for: object:state-changed:sensitive
+08:23:28.493064 - EVENT MANAGER: registering listener for: object:state-changed:showing
+08:23:28.493285 - EVENT MANAGER: registering listener for: object:text-attributes-changed
+08:23:28.493484 - EVENT MANAGER: registering listener for: object:text-caret-moved
+08:23:28.493651 - EVENT MANAGER: registering listener for: object:text-changed:delete
+08:23:28.493896 - EVENT MANAGER: registering listener for: object:text-changed:insert
+08:23:28.494116 - EVENT MANAGER: registering listener for: object:text-selection-changed
+08:23:28.494331 - EVENT MANAGER: registering listener for: object:value-changed
+08:23:28.494523 - EVENT MANAGER: registering listener for: window:activate
+08:23:28.494791 - EVENT MANAGER: registering listener for: window:create
+08:23:28.494962 - EVENT MANAGER: registering listener for: window:deactivate
+08:23:28.495165 - EVENT MANAGER: registering listener for: window:destroy
+08:23:28.495408 - SCRIPT MANAGER: Setting active script to default (module=orca.scripts.default) reason: activate
+08:23:28.495453 - DEFAULT: Activating script for None
+08:23:28.495474 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:28.495626 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:28.495723 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:28.495819 - DEFAULT: Setting up key bindings
+08:23:28.495838 - DEFAULT: Getting keybindings for default (module=orca.scripts.default) script_manager.set_active_script:340 > default.activate:693 > default.add_key_grabs:568 > default.get_key_bindings:400
+08:23:28.496533 - BYPASS MODE MANAGER: Refreshing bindings. Is desktop: True
+08:23:28.496565 - SLEEP MODE MANAGER: Refreshing bindings. Is desktop: True
+08:23:28.496573 - SLEEP MODE MANAGER: Bindings set up.
+08:23:28.496581 - NOTIFICATION PRESENTER: Refreshing bindings. Is desktop: True
+08:23:28.496588 - NOTIFICATION PRESENTER: Bindings set up.
+08:23:28.496596 - CLIPBOARD PRESENTER: Refreshing bindings. Is desktop: True
+08:23:28.496608 - FLAT REVIEW FINDER: Refreshing bindings.
+08:23:28.496617 - FLAT REVIEW FINDER: Desktop bindings set up.
+08:23:28.496625 - FLAT REVIEW FINDER: Laptop bindings set up.
+08:23:28.496636 - FLAT REVIEW PRESENTER: Refreshing bindings.
+08:23:28.496675 - FLAT REVIEW PRESENTER: Desktop bindings set up.
+08:23:28.496709 - FLAT REVIEW PRESENTER: Laptop bindings set up.
+08:23:28.496739 - WHERE AM I PRESENTER: Refreshing bindings.
+08:23:28.496776 - WHERE AM I PRESENTER: Desktop bindings set up.
+08:23:28.496803 - WHERE AM I PRESENTER: Laptop bindings set up.
+08:23:28.496824 - LEARN MODE PRESENTER: Refreshing bindings. Is desktop: True
+08:23:28.496830 - LEARN MODE PRESENTER: Bindings set up.
+08:23:28.496838 - SPEECH AND VERBOSITY MANAGER: Refreshing bindings.  Is desktop: True
+08:23:28.496883 - SPEECH AND VERBOSITY MANAGER: Bindings set up.
+08:23:28.496899 - SYSTEM INFORMATION PRESENTER: Refreshing bindings. Is desktop: True
+08:23:28.496907 - SYSTEM INFORMATION PRESENTER: Bindings set up.
+08:23:28.496919 - OBJECT NAVIGATOR: Refreshing bindings. Is desktop: True
+08:23:28.496929 - OBJECT NAVIGATOR: Bindings set up.
+08:23:28.496953 - TABLE NAVIGATOR: Refreshing bindings. Is desktop: True default.add_key_grabs:568 > default.get_key_bindings:416 > default.getExtensionBindings:369 > table_navigator.get_bindings:81
+08:23:28.497969 - TABLE NAVIGATOR: Bindings set up. Suspended: False
+08:23:28.498035 - BOOKMARKS: Refreshing bindings. default.add_key_grabs:568 > default.get_key_bindings:416 > default.getExtensionBindings:374 > bookmarks.get_bindings:53
+08:23:28.498757 - BOOKMARKS: Bindings set up.
+08:23:28.498835 - MOUSE REVIEW: Refreshing bindings. Is desktop: True
+08:23:28.498843 - MOUSE REVIEW: Bindings set up.
+08:23:28.498850 - ACTION PRESENTER: Refreshing bindings. Is desktop: True
+08:23:28.498855 - ACTION PRESENTER: Bindings set up.
+08:23:28.498866 - DEBUGGING TOOLS MANAGER: Refreshing bindings. Is desktop: True
+08:23:28.499114 - KEYBINDINGS: Adding key grabs: script activation
+08:23:28.509801 - KEYBINDINGS: 117 key grabs out of 117 added.
+08:23:28.509973 - INPUT EVENT MANAGER: Grab id for Insert: 153
+08:23:28.510058 - INPUT EVENT MANAGER: Grab id for KP_Insert: 154
+08:23:28.510088 - DEFAULT: Script for None activated
+08:23:28.510097 - BRAILLE: Checking braille setting.
+08:23:28.510103 - BRAILLE: Setting up key ranges.
+08:23:28.510117 - BRAILLE: Initializing. Callback: InputEventManager.process_braille_event
+08:23:28.510132 - BRAILLE: WINDOWPATH= None
+08:23:28.510165 - BRAILLE: XDG_VTNR= None
+08:23:28.510169 - BRAILLE: Attempting connection with BrlAPI.
+08:23:28.510369 - WARNING: Braille initialization failed: couldn't connect to b':0' with key b'keyfile:/etc/brlapi.key+polkit': connect: No such file or directory
+                  (brlerrno 11, libcerrno 2, gaierrno 0)
+                  Is BRLTTY really running?
+08:23:28.510414 - BRAILLE: Not setting up key ranges: BrlAPI not running.
+08:23:28.510422 - SPEECH AND VERBOSITY MANAGER: Speech is enabled.
+08:23:28.510428 - SPEECH: Initializing
+08:23:28.510431 - SPEECH: Already initialized
+08:23:28.510436 - SCRIPT MANAGER: Activated
+08:23:28.510442 - CLIPBOARD PRESENTER: Activating
+08:23:28.512709 - CLIPBOARD PRESENTER: Could not access klipper interface: org.freedesktop.DBus.Error.ServiceUnknown: The name org.kde.klipper was not provided by any .service files
+08:23:28.512933 - CLIPBOARD PRESENTER: Could not access GPaste interface: org.freedesktop.DBus.Error.ServiceUnknown: The name org.gnome.GPaste was not provided by any .service files
+08:23:28.514124 - CLIPBOARD PRESENTER: Using Gtk.Clipboard as fallback.
+08:23:28.514146 - CLIPBOARD PRESENTER: Activated
+08:23:28.514169 - ORCA: Starting Atspi main event loop
+
+08:23:28.522931 - EVENT MANAGER: object:children-changed:add for [desktop frame: 'main'] in (0, 0, [application: 'orca'])
+08:23:28.523040 - FOCUS MANAGER: Locus of focus is None
+08:23:28.523250 - SCRIPT MANAGER: Active script is: default (module=orca.scripts.default)
+08:23:28.523301 - EVENT MANAGER: Queueing object:children-changed:add for [desktop frame: 'main'] in (0, 0, [application: 'orca'])
+08:23:28.523315 - EVENT MANAGER: App for event source is None
+08:23:28.523331 - SCRIPT MANAGER: Getting script for None [desktop frame: 'main']
+08:23:28.523501 - SCRIPT MANAGER: Script is app script default (module=orca.scripts.default)
+08:23:28.523548 - EVENT MANAGER: object:children-changed:add for [desktop frame: 'main'] in (0, 0, [application: 'orca']) has priority level: 5
+08:23:28.523589 - EVENT MANAGER: Queued object:children-changed:add for [desktop frame: 'main'] in (0, 0, [application: 'orca']) priority: 5, counter: 0
+08:23:28.523786 - EVENT MANAGER: Dequeueing object:children-changed:add for [desktop frame: 'main'] in (0, 0, [application: 'orca'])
+08:23:28.523897 - EVENT MANAGER: Dequeued object:children-changed:add for [desktop frame: 'main'] in (0, 0, [application: 'orca']) priority: 5, counter: 0
+
+vvvvv START PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD (queue size: 0) vvvvv
+08:23:28.525584 - EVENT SOURCE:
+                  app='' name='main' role='desktop frame' id='None'
+                  description=''
+                  help=''
+                  states=''
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1]
+                  
+                  EVENT ANY DATA:
+                  name='orca' role='application' id=''
+                  description=''
+                  help=''
+                  states=''
+                  relations=''
+                  actions=''
+                  interfaces='Collection'
+                  attributes=''
+                  text=''
+                  path=[-1]
+                  
+08:23:28.525647 - SCRIPT MANAGER: Active script is: default (module=orca.scripts.default)
+08:23:28.525673 - FOCUS MANAGER: Locus of focus is None
+08:23:28.525703 - EVENT MANAGER: Getting script for event for None [desktop frame: 'main']
+08:23:28.525719 - SCRIPT MANAGER: Getting script for None [desktop frame: 'main']
+08:23:28.525871 - SCRIPT MANAGER: Script is app script default (module=orca.scripts.default)
+08:23:28.525886 - EVENT MANAGER: Script for event is default (module=orca.scripts.default)
+08:23:28.525896 - EVENT MANAGER: Processing object:children-changed:add: script for event is active
+08:23:28.525907 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+08:23:28.525917 - AXObject: Clearing local cache. Reason: children-changed event.
+08:23:28.525925 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+08:23:28.525933 - AXUtilitiesEvent: Clearing local cache. Reason: children-changed event.
+TOTAL PROCESSING TIME: 0.0020
+^^^^^ FINISHED PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD ^^^^^
+
+08:23:30.304023 - GENERATOR: Clearing cache.
+INFO: Timeout cleaning up: []
+08:23:31.233977 - FOCUS MANAGER: Focus and window are unknown
+
+08:23:31.882364 - EVENT MANAGER: object:children-changed:add for [desktop frame: 'main'] in (1, 0, [application: 'minimal'])
+08:23:31.882602 - FOCUS MANAGER: Locus of focus is None
+08:23:31.882797 - SCRIPT MANAGER: Active script is: default (module=orca.scripts.default)
+08:23:31.882932 - EVENT MANAGER: Queueing object:children-changed:add for [desktop frame: 'main'] in (1, 0, [application: 'minimal'])
+08:23:31.882959 - EVENT MANAGER: App for event source is None
+08:23:31.882985 - SCRIPT MANAGER: Getting script for None [desktop frame: 'main']
+08:23:31.888887 - SCRIPT MANAGER: Script is app script default (module=orca.scripts.default)
+08:23:31.889046 - EVENT MANAGER: object:children-changed:add for [desktop frame: 'main'] in (1, 0, [application: 'minimal']) has priority level: 5
+08:23:31.889181 - EVENT MANAGER: Queued object:children-changed:add for [desktop frame: 'main'] in (1, 0, [application: 'minimal']) priority: 5, counter: 1
+
+08:23:31.898773 - EVENT MANAGER: object:children-changed:add for [application: 'minimal'] in minimal (AccessKit) (0, 0, [frame])
+08:23:31.898854 - FOCUS MANAGER: Locus of focus is None
+08:23:31.899573 - SCRIPT MANAGER: Active script is: default (module=orca.scripts.default)
+08:23:31.899597 - EVENT MANAGER: Ignoring object:children-changed:add because event is not from active app
+08:23:31.899967 - EVENT MANAGER: Dequeueing object:children-changed:add for [desktop frame: 'main'] in (1, 0, [application: 'minimal'])
+08:23:31.900006 - EVENT MANAGER: Dequeued object:children-changed:add for [desktop frame: 'main'] in (1, 0, [application: 'minimal']) priority: 5, counter: 1
+
+vvvvv START PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD (queue size: 0) vvvvv
+08:23:31.904185 - EVENT SOURCE:
+                  app='' name='main' role='desktop frame' id='None'
+                  description=''
+                  help=''
+                  states=''
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1]
+                  
+                  EVENT ANY DATA:
+                  name='minimal' role='application' id=''
+                  description=''
+                  help=''
+                  states=''
+                  relations=''
+                  actions=''
+                  interfaces=''
+                  attributes=''
+                  text=''
+                  path=[-1]
+                  
+08:23:31.904231 - SCRIPT MANAGER: Active script is: default (module=orca.scripts.default)
+08:23:31.904258 - FOCUS MANAGER: Locus of focus is None
+08:23:31.904291 - EVENT MANAGER: Getting script for event for None [desktop frame: 'main']
+08:23:31.904307 - SCRIPT MANAGER: Getting script for None [desktop frame: 'main']
+08:23:31.904499 - SCRIPT MANAGER: Script is app script default (module=orca.scripts.default)
+08:23:31.904517 - EVENT MANAGER: Script for event is default (module=orca.scripts.default)
+08:23:31.904553 - EVENT MANAGER: Processing object:children-changed:add: script for event is active
+08:23:31.904569 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+08:23:31.904648 - AXObject: Clearing local cache. Reason: children-changed event.
+08:23:31.904659 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+08:23:31.904682 - AXUtilitiesEvent: Clearing local cache. Reason: children-changed event.
+TOTAL PROCESSING TIME: 0.0047
+^^^^^ FINISHED PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD ^^^^^
+
+
+08:23:31.919839 - EVENT MANAGER: window:activate for [frame] in minimal (AccessKit) (0, 0,)
+08:23:31.919895 - EVENT MANAGER: Queueing window:activate for [frame] in minimal (AccessKit) (0, 0,)
+08:23:31.919916 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:31.919933 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:31.928816 - SCRIPT MANAGER: Mapped [application: 'minimal'] to minimal
+08:23:31.930320 - BOOKMARKS: Refreshing handlers. script.__init__:95 > script.get_bookmarks:285 > bookmarks.__init__:45 > bookmarks.get_handlers:65
+08:23:31.931227 - BOOKMARKS: Handlers set up.
+08:23:31.931260 - STRUCTURAL NAVIGATION: Refreshing handlers. script.__init__:97 > script.get_structural_navigation:202 > structural_navigation.__init__:512 > structural_navigation.get_handlers:593
+08:23:31.931989 - DEFAULT: Getting braille bindings.
+08:23:31.932011 - DEFAULT: Finished getting braille bindings.
+08:23:31.932017 - SCRIPT: minimal (module=orca.scripts.default) initialized
+08:23:31.932064 - SCRIPT MANAGER: Default script created for [application: 'minimal'] (obj: None)
+08:23:31.932085 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:31.932146 - EVENT MANAGER: window:activate for [frame] in minimal (AccessKit) (0, 0,) has priority level: 2
+08:23:31.932186 - EVENT MANAGER: Queued window:activate for [frame] in minimal (AccessKit) (0, 0,) priority: 2, counter: 2
+08:23:31.941863 - EVENT MANAGER: Dequeueing window:activate for [frame] in minimal (AccessKit) (0, 0,)
+08:23:31.941942 - EVENT MANAGER: Dequeued window:activate for [frame] in minimal (AccessKit) (0, 0,) priority: 2, counter: 2
+
+vvvvv START PRIORITY-2 OBJECT EVENT WINDOW:ACTIVATE (queue size: 0) vvvvv
+
+08:23:31.942929 - EVENT MANAGER: object:state-changed:active for [frame] in minimal (AccessKit) (1, 0, 0)
+08:23:31.942961 - EVENT_MANAGER: Not ignoring object:state-changed:active due to role
+08:23:31.942994 - EVENT MANAGER: Queueing object:state-changed:active for [frame] in minimal (AccessKit) (1, 0, 0)
+08:23:31.943011 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:31.943048 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:31.943814 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:31.943902 - EVENT MANAGER: object:state-changed:active for [frame] in minimal (AccessKit) (1, 0, 0) has priority level: 2
+08:23:31.943942 - EVENT MANAGER: Queued object:state-changed:active for [frame] in minimal (AccessKit) (1, 0, 0) priority: 2, counter: 3
+
+08:23:31.944040 - EVENT MANAGER: object:active-descendant-changed for [application: 'minimal'] in minimal (AccessKit) (0, 0, [frame])
+08:23:31.944070 - FOCUS MANAGER: Locus of focus is None
+08:23:31.944134 - EVENT MANAGER: Queueing object:active-descendant-changed for [application: 'minimal'] in minimal (AccessKit) (0, 0, [frame])
+08:23:31.944149 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:31.944165 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [application: 'minimal']
+08:23:31.946345 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:31.946473 - EVENT MANAGER: object:active-descendant-changed for [application: 'minimal'] in minimal (AccessKit) (0, 0, [frame]) has priority level: 3
+08:23:31.946534 - EVENT MANAGER: Queued object:active-descendant-changed for [application: 'minimal'] in minimal (AccessKit) (0, 0, [frame]) priority: 3, counter: 4
+
+08:23:31.946589 - EVENT MANAGER: object:state-changed:focused for [frame] in minimal (AccessKit) (1, 0, 0)
+08:23:31.946613 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to role
+08:23:31.946642 - EVENT MANAGER: Queueing object:state-changed:focused for [frame] in minimal (AccessKit) (1, 0, 0)
+08:23:31.946656 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:31.946671 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:31.947254 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:31.947294 - EVENT MANAGER: object:state-changed:focused for [frame] in minimal (AccessKit) (1, 0, 0) has priority level: 3
+08:23:31.947326 - EVENT MANAGER: Queued object:state-changed:focused for [frame] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 5
+
+08:23:31.948779 - EVENT MANAGER: object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [panel])
+08:23:31.948803 - EVENT_MANAGER: Not ignoring object:children-changed:add due to role
+08:23:31.948888 - EVENT MANAGER: Queueing object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [panel])
+08:23:31.948907 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:31.948922 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:31.949560 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:31.949604 - EVENT MANAGER: object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [panel]) has priority level: 5
+08:23:31.949642 - EVENT MANAGER: Queued object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [panel]) priority: 5, counter: 6
+08:23:31.951709 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='' role='frame' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, focusable, focused, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0]
+                  
+08:23:31.951739 - SCRIPT MANAGER: Active script is: default (module=orca.scripts.default)
+08:23:31.951755 - FOCUS MANAGER: Locus of focus is None
+08:23:31.951783 - EVENT MANAGER: Getting script for event for [application: 'minimal'] [frame]
+08:23:31.951797 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:31.952171 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:31.952182 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:31.955046 - FOCUS MANAGER: Active window is None event_manager._dequeue_object_event:552 > event_manager._process_object_event:799 > event_manager._is_activatable_event:703 > focus_manager.get_active_window:258
+08:23:31.956059 - EVENT MANAGER: Change active script: True (Window activation)
+08:23:31.956088 - SCRIPT MANAGER: Deactivating default (module=orca.scripts.default) reason: Window activation
+08:23:31.956165 - INPUT EVENT MANAGER: Grab id removed for Insert: 153
+08:23:31.956177 - INPUT EVENT MANAGER: Grab id removed for KP_Insert: 154
+08:23:31.956181 - ORCA MODIFIER MANAGER: Setting pressed state to False for grab removal
+08:23:31.956188 - KEYBINDINGS: Removing key grabs: script deactivation
+08:23:31.956354 - KEYBINDINGS: 84 key grabs out of 117 removed.
+08:23:31.956363 - DEFAULT: Clearing key bindings
+08:23:31.956383 - SCRIPT MANAGER: Setting active script to minimal (module=orca.scripts.default) reason: Window activation
+08:23:31.956428 - DEFAULT: Activating script for [application: 'minimal']
+08:23:31.956491 - SETTINGS MANAGER: Loading settings for None profile
+08:23:31.956869 - SETTINGS MANAGER: Settings for default profile loaded
+08:23:31.956879 - SETTINGS MANAGER: Merging settings.
+08:23:31.956891 - SETTINGS MANAGER: Settings merged.
+08:23:31.956895 - SETTINGS MANAGER: Setting runtime settings.
+08:23:31.956937 - SETTINGS MANAGER: Runtime settings set.
+08:23:31.956961 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:31.957228 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:31.957363 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:31.957486 - DEFAULT: Setting up key bindings
+08:23:31.957508 - DEFAULT: Getting keybindings for minimal (module=orca.scripts.default) script_manager.set_active_script:340 > default.activate:693 > default.add_key_grabs:568 > default.get_key_bindings:400
+08:23:31.958335 - BYPASS MODE MANAGER: Refreshing bindings. Is desktop: True
+08:23:31.958369 - SLEEP MODE MANAGER: Refreshing bindings. Is desktop: True
+08:23:31.958378 - SLEEP MODE MANAGER: Bindings set up.
+08:23:31.958415 - NOTIFICATION PRESENTER: Refreshing bindings. Is desktop: True
+08:23:31.958426 - NOTIFICATION PRESENTER: Bindings set up.
+08:23:31.958435 - CLIPBOARD PRESENTER: Refreshing bindings. Is desktop: True
+08:23:31.958466 - FLAT REVIEW FINDER: Refreshing bindings.
+08:23:31.958478 - FLAT REVIEW FINDER: Desktop bindings set up.
+08:23:31.958487 - FLAT REVIEW FINDER: Laptop bindings set up.
+08:23:31.958495 - FLAT REVIEW PRESENTER: Refreshing bindings.
+08:23:31.958553 - FLAT REVIEW PRESENTER: Desktop bindings set up.
+08:23:31.958607 - FLAT REVIEW PRESENTER: Laptop bindings set up.
+08:23:31.958640 - WHERE AM I PRESENTER: Refreshing bindings.
+08:23:31.958654 - WHERE AM I PRESENTER: Desktop bindings set up.
+08:23:31.958672 - WHERE AM I PRESENTER: Laptop bindings set up.
+08:23:31.958693 - LEARN MODE PRESENTER: Refreshing bindings. Is desktop: True
+08:23:31.958700 - LEARN MODE PRESENTER: Bindings set up.
+08:23:31.958707 - SPEECH AND VERBOSITY MANAGER: Refreshing bindings.  Is desktop: True
+08:23:31.958730 - SPEECH AND VERBOSITY MANAGER: Bindings set up.
+08:23:31.958746 - SYSTEM INFORMATION PRESENTER: Refreshing bindings. Is desktop: True
+08:23:31.958755 - SYSTEM INFORMATION PRESENTER: Bindings set up.
+08:23:31.958767 - OBJECT NAVIGATOR: Refreshing bindings. Is desktop: True
+08:23:31.958779 - OBJECT NAVIGATOR: Bindings set up.
+08:23:31.958805 - TABLE NAVIGATOR: Refreshing bindings. Is desktop: True default.add_key_grabs:568 > default.get_key_bindings:416 > default.getExtensionBindings:369 > table_navigator.get_bindings:81
+08:23:31.959539 - TABLE NAVIGATOR: Bindings set up. Suspended: False
+08:23:31.959617 - BOOKMARKS: Refreshing bindings. default.add_key_grabs:568 > default.get_key_bindings:416 > default.getExtensionBindings:374 > bookmarks.get_bindings:53
+08:23:31.960302 - BOOKMARKS: Bindings set up.
+08:23:31.960377 - MOUSE REVIEW: Refreshing bindings. Is desktop: True
+08:23:31.960385 - MOUSE REVIEW: Bindings set up.
+08:23:31.960414 - ACTION PRESENTER: Refreshing bindings. Is desktop: True
+08:23:31.960422 - ACTION PRESENTER: Bindings set up.
+08:23:31.960435 - DEBUGGING TOOLS MANAGER: Refreshing bindings. Is desktop: True
+08:23:31.960731 - KEYBINDINGS: Adding key grabs: script activation
+08:23:31.970091 - KEYBINDINGS: 117 key grabs out of 117 added.
+08:23:31.974481 - INPUT EVENT MANAGER: Grab id for Insert: 307
+08:23:31.974796 - INPUT EVENT MANAGER: Grab id for KP_Insert: 308
+08:23:31.974857 - DEFAULT: Script for [application: 'minimal'] activated
+08:23:31.974892 - BRAILLE: Checking braille setting.
+08:23:31.974904 - BRAILLE: Setting up key ranges.
+08:23:31.974930 - BRAILLE: Initializing. Callback: InputEventManager.process_braille_event
+08:23:31.974956 - BRAILLE: WINDOWPATH= None
+08:23:31.974970 - BRAILLE: XDG_VTNR= None
+08:23:31.974975 - BRAILLE: Attempting connection with BrlAPI.
+08:23:31.975736 - WARNING: Braille initialization failed: couldn't connect to b':0' with key b'keyfile:/etc/brlapi.key+polkit': connect: No such file or directory
+                  (brlerrno 11, libcerrno 2, gaierrno 0)
+                  Is BRLTTY really running?
+08:23:31.975755 - BRAILLE: Not setting up key ranges: BrlAPI not running.
+08:23:31.975766 - SPEECH AND VERBOSITY MANAGER: Speech is enabled.
+08:23:31.975775 - SPEECH: Initializing
+08:23:31.975781 - SPEECH: Already initialized
+08:23:31.975798 - EVENT MANAGER: Processing window:activate: script for event is active
+08:23:31.975856 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:31.996208 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:31.996266 - FOCUS MANAGER: Active window is None event_manager._dequeue_object_event:552 > event_manager._process_object_event:826 > default.on_window_activated:1637 > focus_manager.get_active_window:258
+08:23:31.997323 - FOCUS MANAGER: Request to set active window to [frame]
+08:23:31.997366 - FOCUS MANAGER: Focus None is not in [frame] event_manager._dequeue_object_event:552 > event_manager._process_object_event:826 > default.on_window_activated:1644 > focus_manager.set_active_window:287
+08:23:31.998444 - FOCUS MANAGER: Request to set locus of focus to [frame] event_manager._process_object_event:826 > default.on_window_activated:1644 > focus_manager.set_active_window:292 > focus_manager.set_locus_of_focus:188
+08:23:32.000191 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Setting locus of focus.
+08:23:32.000234 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:32.002986 - FOCUS MANAGER: Changing locus of focus from None to [frame]. Notify: True
+08:23:32.003117 - FOCUS MANAGER: Switching mode from None to focus-tracking
+08:23:32.004703 - FOCUS MANAGER: Region of interest: [frame] (0, 0)
+08:23:32.008495 - FOCUS MANAGER: Switching object of interest from None to [frame]
+08:23:32.011977 - SCRIPT UTILITIES: [frame] is top-level object for: [frame]
+08:23:32.012024 - FOCUS MANAGER: Request to set active window to [frame]
+08:23:32.012035 - FOCUS MANAGER: Setting active window to existing active window
+08:23:32.012072 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:32.012850 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:32.012917 - FOCUS MANAGER: Locus of focus is [frame]
+08:23:32.013081 - BRAILLE GENERATOR: BrailleGenerator._generate_frame for [frame] args: {'formatType': 'focused'}
+08:23:32.013113 - TABLE NAVIGATOR: Last navigation event (None) was last key event: False
+08:23:32.013220 - BRAILLE GENERATOR: _generate_ancestors: []
+08:23:32.013290 - FOCUS MANAGER: Locus of focus is [frame]
+08:23:32.013368 - AXUtilitiesRelation: [frame] is labelled by: []
+08:23:32.013444 - GENERATOR: _generate_accessible_label: []
+08:23:32.014160 - GENERATOR: _generate_accessible_name: []
+08:23:32.014277 - GENERATOR: _generate_accessible_label_and_name: []
+08:23:32.019608 - BRAILLE GENERATOR: _generate_accessible_role: [frame]
+08:23:32.019754 - AXUtilities: Unfocused alerts and dialogs for [frame]: []
+08:23:32.019778 - BRAILLE GENERATOR: _generate_alert_and_dialog_count: []
+08:23:32.019805 - BRAILLE: Not contracting 'frame' because contracted braille is not enabled.
+08:23:32.019861 - AXUtilitiesRelation: [frame] is described by: []
+08:23:32.019880 - GENERATOR: _generate_accessible_description: []
+08:23:32.019905 - BRAILLE GENERATOR: Results: [COMPONENT: 'frame', cursor offset:0]
+08:23:32.019989 - BRAILLE: Refresh. Pan: True target: 0
+08:23:32.019999 - BRAILLE: Kill flash message default.update_braille:724 > default.refreshBraille:2577 > braille.refresh:1273 > braille.killFlash:1510
+08:23:32.027308 - BRAILLE: Last text object: None (Caret: 0, Line: 0, Cell: 0)
+08:23:32.027356 - BRAILLE: Current text object: None (Caret: 0, Line: 0). On same line: False
+08:23:32.027563 - BRAILLE: Line 0: 'frame' focusOffset: 0 [[0, 5]]
+08:23:32.027579 - BRAILLE: Cursor offset in line string is: 0
+08:23:32.027587 - BRAILLE: Not adjusting offset 0. Cursor offset fits on display.
+08:23:32.027596 - BRAILLE: Current range: (0, 32). Target cell: 0
+08:23:32.027605 - BRAILLE LINE:  'frame'
+08:23:32.027612 -      VISIBLE:  'frame', cursor=1
+08:23:32.027639 - BRAILLE: Enabling braille. BrlAPI running: False
+08:23:32.027645 - BRAILLE: Need to initialize first.
+08:23:32.027662 - BRAILLE: Initializing. Callback: InputEventManager.process_braille_event
+08:23:32.027685 - BRAILLE: WINDOWPATH= None
+08:23:32.027698 - BRAILLE: XDG_VTNR= None
+08:23:32.027703 - BRAILLE: Attempting connection with BrlAPI.
+08:23:32.027978 - WARNING: Braille initialization failed: couldn't connect to b':0' with key b'keyfile:/etc/brlapi.key+polkit': connect: No such file or directory
+                  (brlerrno 11, libcerrno 2, gaierrno 0)
+                  Is BRLTTY really running?
+08:23:32.028174 - SPEECH GENERATOR: SpeechGenerator._generate_frame for [frame] args: {'formatType': 'unfocused', 'priorObj': '[frame]'}
+08:23:32.028225 - FOCUS MANAGER: Locus of focus is [frame]
+08:23:32.028255 - SPEECH GENERATOR: _generate_old_ancestors: []
+08:23:32.028281 - FOCUS MANAGER: Locus of focus is [frame]
+08:23:32.028300 - SPEECH GENERATOR: _generate_new_ancestors: []
+08:23:32.028366 - FOCUS MANAGER: Locus of focus is [frame]
+08:23:32.028427 - GENERATOR: _generate_accessible_label: []
+08:23:32.028444 - SPEECH GENERATOR: _generate_accessible_label: []
+08:23:32.028524 - GENERATOR: _generate_accessible_name: []
+08:23:32.028539 - SPEECH GENERATOR: _generate_accessible_name: []
+08:23:32.028557 - GENERATOR: _generate_accessible_label_and_name: []
+08:23:32.028589 - FOCUS MANAGER: Active mode: focus-tracking Object of interest: [frame]
+08:23:32.028612 - DEFAULT: Not in SayAll
+08:23:32.046269 - SPEECH GENERATOR: system voice requested with language='None', dialect=''
+08:23:32.046362 - SPEECH GENERATOR: _generate_accessible_role: [frame, {'established': 'False'}]
+08:23:32.046527 - AXUtilities: Unfocused alerts and dialogs for [frame]: []
+08:23:32.046554 - SPEECH GENERATOR: _generate_unfocused_dialog_count: []
+08:23:32.046581 - SPEECH GENERATOR: _generate_has_click_action: []
+08:23:32.046598 - SPEECH GENERATOR: _generate_has_details: []
+08:23:32.046613 - SPEECH GENERATOR: _generate_details_for: []
+08:23:32.046632 - SPEECH GENERATOR: _generate_accessible_description: []
+08:23:32.046668 - SPEECH GENERATOR: _generate_state_has_popup: []
+08:23:32.047435 - SPEECH GENERATOR: _generate_tutorial: []
+08:23:32.047540 - SPEECH GENERATOR: Results: [frame, {'established': 'False'}]
+08:23:32.047564 - SCRIPT UTILITIES: Not interrupting for locusOfFocus change: event is None
+08:23:32.047612 - SPEECH: Speak [frame, {'established': 'False'}], acss: None
+08:23:32.047667 - SPEECH OUTPUT: 'frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+08:23:32.047678 - SPEECH DISPATCHER: Speaking 'frame' as string
+08:23:32.047717 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:32.047754 - FOCUS MANAGER: Locus of focus is [frame]
+08:23:32.050111 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:5"/>frame</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: MOST
+                  SD rate 2, pitch 10, volume 100, language c
+08:23:32.050848 - FOCUS MANAGER: Active window is [frame] default.locus_of_focus_changed:678 > default._save_focused_object_info:624 > ax_utilities_event.save_object_info_for_events:163 > focus_manager.get_active_window:258
+08:23:32.053007 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:32.053895 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:32.060109 - FOCUS MANAGER: Request to set locus of focus to [frame] event_manager._dequeue_object_event:552 > event_manager._process_object_event:826 > default.on_window_activated:1651 > focus_manager.set_locus_of_focus:188
+08:23:32.061137 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Setting locus of focus.
+08:23:32.061161 - FOCUS MANAGER: Setting locus of focus to existing locus of focus
+TOTAL PROCESSING TIME: 0.1192
+^^^^^ FINISHED PRIORITY-2 OBJECT EVENT WINDOW:ACTIVATE ^^^^^
+
+08:23:32.066266 - EVENT MANAGER: Dequeueing object:state-changed:active for [frame] in minimal (AccessKit) (1, 0, 0)
+08:23:32.091318 - EVENT MANAGER: Dequeued object:state-changed:active for [frame] in minimal (AccessKit) (1, 0, 0) priority: 2, counter: 3
+
+vvvvv START PRIORITY-2 OBJECT EVENT OBJECT:STATE-CHANGED:ACTIVE (queue size: 3) vvvvv
+08:23:32.100428 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='' role='frame' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, focusable, focused, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0]
+                  
+08:23:32.100485 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:32.100525 - FOCUS MANAGER: Locus of focus is [frame]
+08:23:32.100547 - EVENT MANAGER: Script for event from locus of focus is minimal (module=orca.scripts.default)
+08:23:32.100558 - EVENT MANAGER: Processing object:state-changed:active: script for event is active
+08:23:32.100611 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:32.120916 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:32.120962 - FOCUS MANAGER: Active window is [frame] event_manager._dequeue_object_event:552 > event_manager._process_object_event:826 > default.on_active_changed:1052 > focus_manager.get_active_window:258
+TOTAL PROCESSING TIME: 0.0305
+^^^^^ FINISHED PRIORITY-2 OBJECT EVENT OBJECT:STATE-CHANGED:ACTIVE ^^^^^
+
+08:23:32.122015 - EVENT MANAGER: Dequeueing object:active-descendant-changed for [application: 'minimal'] in minimal (AccessKit) (0, 0, [frame])
+08:23:32.122074 - EVENT MANAGER: Dequeued object:active-descendant-changed for [application: 'minimal'] in minimal (AccessKit) (0, 0, [frame]) priority: 3, counter: 4
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:ACTIVE-DESCENDANT-CHANGED (queue size: 2) vvvvv
+08:23:32.137684 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='minimal' role='application' id=''
+                  description=''
+                  help=''
+                  states=''
+                  relations=''
+                  actions=''
+                  interfaces=''
+                  attributes=''
+                  text=''
+                  path=[-1]
+                  
+                  EVENT ANY DATA:
+                  name='' role='frame' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, focusable, focused, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0]
+                  
+08:23:32.137739 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:32.137782 - FOCUS MANAGER: Locus of focus is [frame]
+08:23:32.137827 - EVENT MANAGER: Getting script for event for [application: 'minimal'] [application: 'minimal']
+08:23:32.137855 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [application: 'minimal']
+08:23:32.142312 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:32.142349 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:32.142369 - EVENT MANAGER: Processing object:active-descendant-changed: script for event is active
+08:23:32.142490 - FOCUS MANAGER: Locus of focus is [frame]
+08:23:32.142507 - AXUtilitiesEvent: Event is presentable.
+08:23:32.142530 - FOCUS MANAGER: Request to set locus of focus to [frame] event_manager._dequeue_object_event:552 > event_manager._process_object_event:826 > default.on_active_descendant_changed:1079 > focus_manager.set_locus_of_focus:188
+08:23:32.143493 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Setting locus of focus.
+08:23:32.143518 - FOCUS MANAGER: Setting locus of focus to existing locus of focus
+TOTAL PROCESSING TIME: 0.0214
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:ACTIVE-DESCENDANT-CHANGED ^^^^^
+
+08:23:32.152541 - EVENT MANAGER: Dequeueing object:state-changed:focused for [frame] in minimal (AccessKit) (1, 0, 0)
+08:23:32.157837 - EVENT MANAGER: Dequeued object:state-changed:focused for [frame] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 5
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 1) vvvvv
+08:23:32.163058 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='' role='frame' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, focusable, focused, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0]
+                  
+08:23:32.163111 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:32.163147 - FOCUS MANAGER: Locus of focus is [frame]
+08:23:32.163168 - EVENT MANAGER: Script for event from locus of focus is minimal (module=orca.scripts.default)
+08:23:32.163178 - EVENT MANAGER: Processing object:state-changed:focused: script for event is active
+08:23:32.163246 - SCRIPT UTILITIES: [frame] is top-level object for: [frame]
+08:23:32.163307 - SCRIPT UTILITIES: [frame] is in frame [frame] and dialog None
+08:23:32.163336 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:32.168867 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:32.169860 - FOCUS MANAGER: Request to set locus of focus to [frame] event_manager._dequeue_object_event:552 > event_manager._process_object_event:826 > default.on_focused_changed:1376 > focus_manager.set_locus_of_focus:188
+08:23:32.170978 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Setting locus of focus.
+08:23:32.170999 - FOCUS MANAGER: Setting locus of focus to existing locus of focus
+TOTAL PROCESSING TIME: 0.0131
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:32.175221 - EVENT MANAGER: Dequeueing object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [panel])
+08:23:32.177672 - EVENT MANAGER: Dequeued object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [panel]) priority: 5, counter: 6
+
+vvvvv START PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD (queue size: 0) vvvvv
+08:23:32.191858 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='' role='frame' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, focusable, focused, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0]
+                  
+                  EVENT ANY DATA:
+                  name='' role='panel' id=''
+                  description=''
+                  help=''
+                  states='enabled, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0, 0]
+                  
+08:23:32.191914 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:32.192052 - FOCUS MANAGER: Locus of focus is [frame]
+08:23:32.192079 - EVENT MANAGER: Script for event from locus of focus is minimal (module=orca.scripts.default)
+08:23:32.192089 - EVENT MANAGER: Processing object:children-changed:add: script for event is active
+08:23:32.192103 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+08:23:32.192117 - AXObject: Clearing local cache. Reason: children-changed event.
+08:23:32.192126 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+08:23:32.192136 - AXUtilitiesEvent: Clearing local cache. Reason: children-changed event.
+TOTAL PROCESSING TIME: 0.0145
+^^^^^ FINISHED PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD ^^^^^
+
+08:23:32.310267 - GENERATOR: Clearing cache.
+08:23:34.310468 - GENERATOR: Clearing cache.
+08:23:34.406997 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:34.695235 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:36.314862 - GENERATOR: Clearing cache.
+
+08:23:37.767272 - EVENT MANAGER: mouse:button:1p for [desktop frame: 'main'] in (0, 0, 0)
+08:23:37.767356 - EVENT MANAGER: Queueing mouse:button:1p for [desktop frame: 'main'] in (0, 0, 0)
+08:23:37.767374 - EVENT MANAGER: App for event source is None
+08:23:37.767468 - SCRIPT MANAGER: Getting script for None [desktop frame: 'main']
+08:23:37.768500 - SCRIPT MANAGER: Script is app script default (module=orca.scripts.default)
+08:23:37.768627 - EVENT MANAGER: mouse:button:1p for [desktop frame: 'main'] in (0, 0, 0) has priority level: 4
+08:23:37.768718 - EVENT MANAGER: Queued mouse:button:1p for [desktop frame: 'main'] in (0, 0, 0) priority: 4, counter: 7
+08:23:37.769028 - EVENT MANAGER: Dequeueing mouse:button:1p for [desktop frame: 'main'] in (0, 0, 0)
+08:23:37.769061 - EVENT MANAGER: Dequeued mouse:button:1p for [desktop frame: 'main'] in (0, 0, 0) priority: 4, counter: 7
+
+vvvvv START PRIORITY-4 OBJECT EVENT MOUSE:BUTTON:1P (queue size: 0) vvvvv
+08:23:37.769124 - 
+08:23:37.769149 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:37.769186 - FOCUS MANAGER: Locus of focus is [frame]
+08:23:37.769232 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:37.769381 - FOCUS MANAGER: Active window is [frame] event_manager._process_object_event:792 > event_manager._get_script_for_event:649 > input_event.__init__:842 > focus_manager.get_active_window:258
+08:23:37.772307 - WARNING: Event coordinates (0, 0) may be bogus. Updating to (211, 150)
+08:23:37.772388 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+
+08:23:37.773276 - EVENT MANAGER: mouse:button:1r for [desktop frame: 'main'] in (211, 150, 0)
+08:23:37.773326 - EVENT MANAGER: Queueing mouse:button:1r for [desktop frame: 'main'] in (211, 150, 0)
+08:23:37.773341 - EVENT MANAGER: App for event source is None
+08:23:37.773358 - SCRIPT MANAGER: Getting script for None [desktop frame: 'main']
+08:23:37.773607 - SCRIPT MANAGER: Script is app script default (module=orca.scripts.default)
+08:23:37.773683 - EVENT MANAGER: mouse:button:1r for [desktop frame: 'main'] in (211, 150, 0) has priority level: 4
+08:23:37.773719 - EVENT MANAGER: Queued mouse:button:1r for [desktop frame: 'main'] in (211, 150, 0) priority: 4, counter: 8
+08:23:37.783619 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:37.783683 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:37.784653 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:37.784692 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:37.784715 - EVENT MANAGER: Processing mouse:button:1p: script for event is active
+08:23:37.784769 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:37.784799 - FOCUS MANAGER: Active window is [frame] default.on_mouse_button:1201 > input_event_manager.process_mouse_button_event:222 > input_event.__init__:842 > focus_manager.get_active_window:258
+08:23:37.790852 - WARNING: Event coordinates (0, 0) may be bogus. Updating to (211, 150)
+08:23:37.790916 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:37.796018 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+TOTAL PROCESSING TIME: 0.0270
+^^^^^ FINISHED PRIORITY-4 OBJECT EVENT MOUSE:BUTTON:1P ^^^^^
+
+08:23:37.796364 - EVENT MANAGER: Dequeueing mouse:button:1r for [desktop frame: 'main'] in (211, 150, 0)
+08:23:37.796401 - EVENT MANAGER: Dequeued mouse:button:1r for [desktop frame: 'main'] in (211, 150, 0) priority: 4, counter: 8
+
+vvvvv START PRIORITY-4 OBJECT EVENT MOUSE:BUTTON:1R (queue size: 0) vvvvv
+08:23:37.796475 - 
+08:23:37.796492 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:37.796509 - FOCUS MANAGER: Locus of focus is [frame]
+08:23:37.796535 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:37.796546 - FOCUS MANAGER: Active window is [frame] event_manager._process_object_event:792 > event_manager._get_script_for_event:649 > input_event.__init__:842 > focus_manager.get_active_window:258
+08:23:37.797161 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:37.801811 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:37.801858 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:37.802757 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:37.802793 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:37.802810 - EVENT MANAGER: Processing mouse:button:1r: script for event is active
+08:23:37.802877 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:37.802899 - FOCUS MANAGER: Active window is [frame] default.on_mouse_button:1201 > input_event_manager.process_mouse_button_event:222 > input_event.__init__:842 > focus_manager.get_active_window:258
+08:23:37.803578 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:37.827587 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+TOTAL PROCESSING TIME: 0.0312
+^^^^^ FINISHED PRIORITY-4 OBJECT EVENT MOUSE:BUTTON:1R ^^^^^
+
+
+08:23:37.831164 - EVENT MANAGER: object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI'])
+08:23:37.831211 - EVENT_MANAGER: Not ignoring object:children-changed:add due to role
+08:23:37.831260 - EVENT MANAGER: Queueing object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI'])
+08:23:37.831277 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:37.831295 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:37.832168 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:37.832315 - EVENT MANAGER: object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI']) has priority level: 5
+08:23:37.832367 - EVENT MANAGER: Queued object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI']) priority: 5, counter: 9
+
+08:23:37.832475 - EVENT MANAGER: object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel])
+08:23:37.832496 - EVENT_MANAGER: Not ignoring object:children-changed:remove due to role
+08:23:37.832526 - EVENT MANAGER: Queueing object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel])
+08:23:37.832540 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:37.832555 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:37.833181 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:37.833276 - EVENT MANAGER: object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel]) has priority level: 5
+08:23:37.833317 - EVENT MANAGER: Queued object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel]) priority: 5, counter: 10
+
+08:23:37.834755 - EVENT MANAGER: object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0)
+08:23:37.834825 - FOCUS MANAGER: Locus of focus is [frame]
+08:23:37.835395 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to source being focused
+08:23:37.835937 - EVENT MANAGER: Queueing object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0)
+08:23:37.835979 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:37.835999 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [dialog: 'weGPUI']
+08:23:37.836632 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:37.837176 - EVENT MANAGER: object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0) has priority level: 3
+08:23:37.837232 - EVENT MANAGER: Queued object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 11
+
+08:23:37.837287 - EVENT MANAGER: object:state-changed:focused for [frame] in minimal (AccessKit) (0, 0, 0)
+08:23:37.837306 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to role
+08:23:37.837336 - EVENT MANAGER: Queueing object:state-changed:focused for [frame] in minimal (AccessKit) (0, 0, 0)
+08:23:37.837351 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:37.837366 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:37.837948 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:37.838073 - EVENT MANAGER: object:state-changed:focused for [frame] in minimal (AccessKit) (0, 0, 0) has priority level: 3
+08:23:37.838613 - EVENT MANAGER: Queued object:state-changed:focused for [frame] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 12
+08:23:37.838788 - EVENT MANAGER: Dequeueing object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0)
+08:23:37.838844 - EVENT MANAGER: Dequeued object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 11
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 3) vvvvv
+08:23:37.858748 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='weGPUI' role='dialog' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, focusable, focused, modal, sensitive, showing, visible'
+                  relations=''
+                  actions='click'
+                  interfaces='Action, Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0, 0]
+                  
+08:23:37.858800 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:37.858840 - FOCUS MANAGER: Locus of focus is [frame]
+08:23:37.858892 - EVENT MANAGER: Getting script for event for [application: 'minimal'] [dialog: 'weGPUI']
+08:23:37.858919 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [dialog: 'weGPUI']
+08:23:37.859587 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:37.859626 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:37.859654 - EVENT MANAGER: Processing object:state-changed:focused: script for event is active
+08:23:37.867695 - SCRIPT UTILITIES: [frame] is top-level object for: [dialog: 'weGPUI']
+08:23:37.867744 - SCRIPT UTILITIES: [dialog: 'weGPUI'] is in frame [frame] and dialog [dialog: 'weGPUI']
+08:23:37.867769 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:37.886561 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:37.888104 - FOCUS MANAGER: Request to set locus of focus to [dialog: 'weGPUI'] event_manager._dequeue_object_event:552 > event_manager._process_object_event:826 > default.on_focused_changed:1376 > focus_manager.set_locus_of_focus:188
+08:23:37.888838 - AXObject: Clearing AT-SPI cache on [dialog: 'weGPUI'] Recursive: False. Reason: Setting locus of focus.
+08:23:37.888861 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:37.901473 - FOCUS MANAGER: Changing locus of focus from [frame] to [dialog: 'weGPUI']. Notify: True
+08:23:37.910292 - FOCUS MANAGER: Region of interest: [dialog: 'weGPUI'] (0, 0)
+08:23:37.918337 - FOCUS MANAGER: Switching object of interest from [frame] to [dialog: 'weGPUI']
+08:23:37.923840 - SCRIPT UTILITIES: [frame] is top-level object for: [dialog: 'weGPUI']
+08:23:37.923874 - FOCUS MANAGER: Request to set active window to [frame]
+08:23:37.923881 - FOCUS MANAGER: Setting active window to existing active window
+08:23:37.925216 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [dialog: 'weGPUI']
+08:23:37.926001 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:37.926072 - FOCUS MANAGER: Locus of focus is [dialog: 'weGPUI']
+08:23:37.926152 - BRAILLE GENERATOR: BrailleGenerator._generate_dialog for [dialog: 'weGPUI'] args: {'formatType': 'focused'}
+08:23:37.926232 - TABLE NAVIGATOR: Last navigation event (None) was last key event: False
+08:23:37.926294 - BRAILLE GENERATOR: _generate_ancestors: []
+08:23:37.926316 - FOCUS MANAGER: Locus of focus is [dialog: 'weGPUI']
+08:23:37.926351 - AXUtilitiesRelation: [dialog: 'weGPUI'] is labelled by: []
+08:23:37.926363 - GENERATOR: _generate_accessible_label: []
+08:23:37.926377 - GENERATOR: _generate_accessible_name: [weGPUI]
+08:23:37.926388 - GENERATOR: _generate_accessible_label_and_name: [weGPUI]
+08:23:37.939068 - BRAILLE GENERATOR: _generate_accessible_role: [dialog]
+08:23:37.939801 - AXUtilitiesRelation: [dialog: 'weGPUI'] is described by: []
+08:23:37.939832 - GENERATOR: _generate_accessible_description: []
+08:23:37.939917 - GENERATOR: _generate_text_expanding_embedded_objects: []
+08:23:37.980574 - AXObject: find_all_descendants: 1 matches found in 0.0406s
+08:23:37.982460 - GENERATOR: _generate_accessible_name: [A WeUI dialog rendered by native GPUI components.]
+08:23:37.982493 - GENERATOR: _generate_accessible_static_text: [A WeUI dialog rendered by native GPUI components.]
+08:23:37.982523 - BRAILLE: Not contracting 'weGPUI dialog A WeUI dialog rendered by native GPUI components.' because contracted braille is not enabled.
+08:23:37.982543 - GENERATOR: _generate_accessible_description: []
+08:23:37.982564 - BRAILLE GENERATOR: Results: [COMPONENT: 'weGPUI dialog A WeUI dialog rendered by native GPUI components.', cursor offset:0]
+08:23:37.982636 - BRAILLE: Refresh. Pan: True target: 0
+08:23:37.982647 - BRAILLE: Kill flash message default.update_braille:724 > default.refreshBraille:2577 > braille.refresh:1273 > braille.killFlash:1510
+08:23:37.983584 - BRAILLE: Last text object: None (Caret: 0, Line: 0, Cell: 0)
+08:23:37.983607 - BRAILLE: Current text object: None (Caret: 0, Line: 0). On same line: False
+08:23:37.983631 - BRAILLE: Line 0: 'weGPUI dialog A WeUI dialog rendered by native GPUI components.' focusOffset: 0 [[0, 28], [28, 52], [52, 63]]
+08:23:37.983636 - BRAILLE: Cursor offset in line string is: 0
+08:23:37.983658 - BRAILLE: Adjusting offset to 0 (unhandled condition)
+08:23:37.983664 - BRAILLE: Current range: (0, 32). Target cell: 0
+08:23:37.983669 - BRAILLE LINE:  'weGPUI dialog A WeUI dialog rendered by native GPUI components.'
+08:23:37.983674 -      VISIBLE:  'weGPUI dialog A WeUI dialog rend', cursor=1
+08:23:37.983686 - BRAILLE: Enabling braille. BrlAPI running: False
+08:23:37.983690 - BRAILLE: Need to initialize first.
+08:23:37.983700 - BRAILLE: Initializing. Callback: InputEventManager.process_braille_event
+08:23:37.983742 - BRAILLE: WINDOWPATH= None
+08:23:37.983760 - BRAILLE: XDG_VTNR= None
+08:23:37.983766 - BRAILLE: Attempting connection with BrlAPI.
+08:23:37.984244 - WARNING: Braille initialization failed: couldn't connect to b':0' with key b'keyfile:/etc/brlapi.key+polkit': connect: No such file or directory
+                  (brlerrno 11, libcerrno 2, gaierrno 0)
+                  Is BRLTTY really running?
+08:23:37.984384 - SPEECH GENERATOR: SpeechGenerator._generate_dialog for [dialog: 'weGPUI'] args: {'formatType': 'unfocused', 'priorObj': '[frame]'}
+08:23:37.984507 - FOCUS MANAGER: Locus of focus is [dialog: 'weGPUI']
+08:23:38.004497 - SPEECH GENERATOR: _generate_old_ancestors: []
+08:23:38.004563 - FOCUS MANAGER: Locus of focus is [dialog: 'weGPUI']
+08:23:38.004684 - AXObject: Looking for common ancestor of [frame] and [dialog: 'weGPUI']
+08:23:38.006146 - AXObject: Common ancestor of [frame] and [dialog: 'weGPUI'] is [frame]
+08:23:38.006176 - DEFAULT: Not in SayAll
+08:23:38.015483 - GENERATOR: _get_functional_role: frame
+08:23:38.020853 - GENERATOR: _get_functional_role: frame
+08:23:38.021363 - SPEECH GENERATOR: _generate_new_ancestors: []
+08:23:38.021534 - GENERATOR: _generate_text_expanding_embedded_objects: []
+08:23:38.021578 - FOCUS MANAGER: Locus of focus is [dialog: 'weGPUI']
+08:23:38.021607 - GENERATOR: _generate_accessible_label: []
+08:23:38.021622 - SPEECH GENERATOR: _generate_accessible_label: []
+08:23:38.021656 - GENERATOR: _generate_accessible_name: [weGPUI]
+08:23:38.021687 - SPEECH GENERATOR: default voice requested with language='None', dialect=''
+08:23:38.021756 - SPEECH GENERATOR: _generate_accessible_name: [weGPUI, {'established': 'False'}]
+08:23:38.021797 - GENERATOR: _generate_accessible_label_and_name: [weGPUI, {'established': 'False'}]
+08:23:38.021874 - FOCUS MANAGER: Active mode: focus-tracking Object of interest: [dialog: 'weGPUI']
+08:23:38.021894 - DEFAULT: Not in SayAll
+08:23:38.025494 - SPEECH GENERATOR: system voice requested with language='None', dialect=''
+08:23:38.025590 - SPEECH GENERATOR: _generate_accessible_role: [dialog, {'established': 'False'}]
+08:23:38.025625 - GENERATOR: _generate_accessible_static_text: [A WeUI dialog rendered by native GPUI components.]
+08:23:38.025650 - SPEECH GENERATOR: _generate_has_click_action: []
+08:23:38.025669 - SPEECH GENERATOR: _generate_has_details: []
+08:23:38.025686 - SPEECH GENERATOR: _generate_details_for: []
+08:23:38.025725 - GENERATOR: _generate_accessible_description: []
+08:23:38.025741 - SPEECH GENERATOR: _generate_accessible_description: []
+08:23:38.025782 - SPEECH GENERATOR: _generate_state_has_popup: []
+08:23:38.026446 - SPEECH GENERATOR: _generate_tutorial: []
+08:23:38.026542 - SPEECH GENERATOR: Results: [weGPUI, {'established': 'False'}, dialog, {'established': 'False'}, A WeUI dialog rendered by native GPUI components.]
+08:23:38.027766 - SCRIPT UTILITIES: Not interrupting for locusOfFocus change: old locusOfFocus is ancestor dialog or window of the new locusOfFocus
+08:23:38.027884 - SPEECH: Speak [weGPUI, {'established': 'False'}, dialog, {'established': 'False'}, A WeUI dialog rendered by native GPUI components.], acss: None
+08:23:38.027940 - SPEECH OUTPUT: 'weGPUI dialog A WeUI dialog rendered by native GPUI components.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+08:23:38.027950 - SPEECH DISPATCHER: Speaking 'weGPUI dialog A WeUI dialog rendered by native GPUI components.' as string
+08:23:38.027997 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:38.028031 - FOCUS MANAGER: Locus of focus is [dialog: 'weGPUI']
+08:23:38.029857 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:6"/>weGPUI <mark name="7:13"/>dialog <mark name="14:15"/>A <mark name="16:20"/>WeUI <mark name="21:27"/>dialog <mark name="28:36"/>rendered <mark name="37:39"/>by <mark name="40:46"/>native <mark name="47:51"/>GPUI <mark name="52:63"/>components.</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: MOST
+                  SD rate 2, pitch 10, volume 100, language c
+08:23:38.031825 - FOCUS MANAGER: Active window is [frame] default.locus_of_focus_changed:678 > default._save_focused_object_info:624 > ax_utilities_event.save_object_info_for_events:163 > focus_manager.get_active_window:258
+TOTAL PROCESSING TIME: 0.1953
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:38.038368 - EVENT MANAGER: Dequeueing object:state-changed:focused for [frame] in minimal (AccessKit) (0, 0, 0)
+08:23:38.038465 - EVENT MANAGER: Dequeued object:state-changed:focused for [frame] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 12
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 2) vvvvv
+08:23:38.048291 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='' role='frame' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0]
+                  
+08:23:38.048340 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:38.048374 - FOCUS MANAGER: Locus of focus is [dialog: 'weGPUI']
+08:23:38.048440 - EVENT MANAGER: Getting script for event for [application: 'minimal'] [frame]
+08:23:38.048468 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:38.048888 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:38.048907 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:38.048918 - EVENT MANAGER: Processing object:state-changed:focused: script for event is active
+TOTAL PROCESSING TIME: 0.0105
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:38.049035 - EVENT MANAGER: Dequeueing object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI'])
+08:23:38.049084 - EVENT MANAGER: Dequeued object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI']) priority: 5, counter: 9
+
+vvvvv START PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD (queue size: 1) vvvvv
+08:23:38.058805 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='' role='frame' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0]
+                  
+                  EVENT ANY DATA:
+                  name='weGPUI' role='dialog' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, focusable, focused, modal, sensitive, showing, visible'
+                  relations=''
+                  actions='click'
+                  interfaces='Action, Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0, 0]
+                  
+08:23:38.058849 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:38.058884 - FOCUS MANAGER: Locus of focus is [dialog: 'weGPUI']
+08:23:38.058913 - EVENT MANAGER: Getting script for event for [application: 'minimal'] [frame]
+08:23:38.058928 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:38.059333 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:38.059347 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:38.059356 - EVENT MANAGER: Processing object:children-changed:add: script for event is active
+08:23:38.059366 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+08:23:38.059376 - AXObject: Clearing local cache. Reason: children-changed event.
+08:23:38.059384 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+08:23:38.059391 - AXUtilitiesEvent: Clearing local cache. Reason: children-changed event.
+TOTAL PROCESSING TIME: 0.0103
+^^^^^ FINISHED PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD ^^^^^
+
+08:23:38.059522 - EVENT MANAGER: Dequeueing object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel])
+08:23:38.059554 - EVENT MANAGER: Dequeued object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel]) priority: 5, counter: 10
+
+vvvvv START PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:REMOVE (queue size: 0) vvvvv
+08:23:38.064235 - AXObject: [panel] has index -1 ; parent [frame] has 1 children
+08:23:38.064876 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='' role='frame' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0]
+                  
+                  EVENT ANY DATA:
+                  name='' role='panel' id='None'
+                  description=''
+                  help=''
+                  states='defunct, enabled, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0, -1]
+                  
+08:23:38.064907 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:38.064936 - FOCUS MANAGER: Locus of focus is [dialog: 'weGPUI']
+08:23:38.064968 - EVENT MANAGER: Getting script for event for [application: 'minimal'] [frame]
+08:23:38.064982 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:38.065691 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:38.065722 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:38.065741 - EVENT MANAGER: Processing object:children-changed:remove: script for event is active
+08:23:38.065755 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+08:23:38.065767 - AXObject: Clearing local cache. Reason: children-changed event.
+08:23:38.065774 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+08:23:38.065781 - AXUtilitiesEvent: Clearing local cache. Reason: children-changed event.
+TOTAL PROCESSING TIME: 0.0062
+^^^^^ FINISHED PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:REMOVE ^^^^^
+
+08:23:38.316093 - GENERATOR: Clearing cache.
+08:23:39.237184 - FOCUS MANAGER: Active window is [frame] <unknown>.<module>:280 > input_event_manager.process_keyboard_event:247 > focus_manager.get_active_window:258
+08:23:39.238092 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:39.244736 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:39.245385 - FOCUS MANAGER: Locus of focus is [dialog: 'weGPUI']
+08:23:39.245892 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_PRESSED_EVENT
+                 id=65289
+                 hw_code=23
+                 modifiers=0
+                 text=''
+                 keyval_name='Tab'
+                 timestamp=1792916619.2370033
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_PRESSED_EVENT: 'Tab' (23) vvvvv
+08:23:39.246532 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:39.246567 - WINDOW: [frame]
+08:23:39.246586 - LOCATION: [dialog: 'weGPUI']
+08:23:39.246654 - KEYBINDINGS: 'Tab' (23) mods: 0 key-pressed-event matches []
+08:23:39.246680 - KEYBINDINGS: 'Tab' (23) mods: 0 key-pressed-event fallback candidates []
+08:23:39.246700 - HANDLER: None
+08:23:39.246794 - DEFAULT: Interrupting presentation
+08:23:39.246830 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:39.248452 - BRAILLE: Kill flash message input_event.process:710 > input_event._present:625 > default.presentationInterrupt:2289 > braille.killFlash:1510
+08:23:39.249742 - FOCUS MANAGER: Locus of focus is [dialog: 'weGPUI']
+08:23:39.269357 - AXObject: find_descendant: found [dialog: 'weGPUI'] in 0.0058s
+08:23:39.269408 - FOCUS MANAGER: Focused object in [frame] is [dialog: 'weGPUI']
+08:23:39.269471 - FOCUS MANAGER: Request to set locus of focus to [dialog: 'weGPUI'] input_event.process:710 > input_event._present:630 > default.presentKeyboardEvent:2306 > focus_manager.set_locus_of_focus:188
+08:23:39.270523 - AXObject: Clearing AT-SPI cache on [dialog: 'weGPUI'] Recursive: False. Reason: Setting locus of focus.
+08:23:39.270546 - FOCUS MANAGER: Setting locus of focus to existing locus of focus
+08:23:39.273492 - KEYBOARD EVENT: Not character echoable, setting disabled.
+08:23:39.273514 - DEFAULT: Presenting keyboard event
+08:23:39.273550 - SPEECH GENERATOR: None voice requested with language='None', dialect=''
+08:23:39.273582 - SPEECH OUTPUT: 'tab' {'established': False}
+08:23:39.273598 - SPEECH DISPATCHER: Speaking 'tab' as string
+08:23:39.273603 - SPEECH DISPATCHER: Speaking 'tab' as string
+08:23:39.273636 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:39.275621 - FOCUS MANAGER: Locus of focus is [dialog: 'weGPUI']
+08:23:39.277995 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:3"/>tab</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: MOST
+                  SD rate 2, pitch 10, volume 100, language c
+08:23:39.278166 - TOTAL PROCESSING TIME: 0.0318
+^^^^^ PROCESS ATSPI_KEY_PRESSED_EVENT: 'Tab' (23) ^^^^^
+
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_RELEASED_EVENT
+                 id=65289
+                 hw_code=23
+                 modifiers=0
+                 text=''
+                 keyval_name='Tab'
+                 timestamp=1792916619.2785554
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_RELEASED_EVENT: 'Tab' (23) vvvvv
+08:23:39.280647 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:39.280690 - WINDOW: [frame]
+08:23:39.282339 - LOCATION: [dialog: 'weGPUI']
+08:23:39.283142 - KEYBINDINGS: 'Tab' (23) mods: 0 key-released-event matches []
+08:23:39.283997 - KEYBINDINGS: 'Tab' (23) mods: 0 key-released-event fallback candidates []
+08:23:39.284022 - HANDLER: None
+08:23:39.284947 - TOTAL PROCESSING TIME: 0.0054
+^^^^^ PROCESS ATSPI_KEY_RELEASED_EVENT: 'Tab' (23) ^^^^^
+
+
+08:23:39.291149 - EVENT MANAGER: object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0)
+08:23:39.292647 - FOCUS MANAGER: Locus of focus is [dialog: 'weGPUI']
+08:23:39.293231 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to source being focused
+08:23:39.298151 - EVENT MANAGER: Queueing object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0)
+08:23:39.304592 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:39.304655 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'Cancel']
+08:23:39.305208 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:39.309811 - EVENT MANAGER: object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0) has priority level: 3
+08:23:39.315742 - EVENT MANAGER: Queued object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 13
+
+08:23:39.319144 - EVENT MANAGER: object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (0, 0, 0)
+08:23:39.323234 - FOCUS MANAGER: Locus of focus is [dialog: 'weGPUI']
+08:23:39.323255 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to source being locus of focus
+08:23:39.326331 - EVENT MANAGER: Queueing object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (0, 0, 0)
+08:23:39.326949 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:39.328119 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [dialog: 'weGPUI']
+08:23:39.332033 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:39.348173 - EVENT MANAGER: object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (0, 0, 0) has priority level: 3
+08:23:39.350358 - EVENT MANAGER: Queued object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 14
+08:23:39.352909 - EVENT MANAGER: Dequeueing object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0)
+08:23:39.355324 - EVENT MANAGER: Dequeued object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 13
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 1) vvvvv
+08:23:39.371830 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='Cancel' role='button' id=''
+                  description=''
+                  help=''
+                  states='enabled, focusable, focused, sensitive, showing, visible'
+                  relations=''
+                  actions='click'
+                  interfaces='Action, Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0, 0, 2]
+                  
+08:23:39.371875 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:39.371904 - FOCUS MANAGER: Locus of focus is [dialog: 'weGPUI']
+08:23:39.371935 - EVENT MANAGER: Getting script for event for [application: 'minimal'] [button: 'Cancel']
+08:23:39.371952 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'Cancel']
+08:23:39.372567 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:39.372582 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:39.372592 - EVENT MANAGER: Processing object:state-changed:focused: script for event is active
+08:23:39.375360 - SCRIPT UTILITIES: [frame] is top-level object for: [button: 'Cancel']
+08:23:39.376797 - SCRIPT UTILITIES: [button: 'Cancel'] is in frame [frame] and dialog [dialog: 'weGPUI']
+08:23:39.376832 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:39.390907 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:39.391485 - FOCUS MANAGER: Request to set locus of focus to [button: 'Cancel'] event_manager._dequeue_object_event:552 > event_manager._process_object_event:826 > default.on_focused_changed:1376 > focus_manager.set_locus_of_focus:188
+08:23:39.392258 - AXObject: Clearing AT-SPI cache on [button: 'Cancel'] Recursive: False. Reason: Setting locus of focus.
+08:23:39.392281 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:39.396275 - FOCUS MANAGER: Changing locus of focus from [dialog: 'weGPUI'] to [button: 'Cancel']. Notify: True
+08:23:39.397579 - FOCUS MANAGER: Region of interest: [button: 'Cancel'] (0, 0)
+08:23:39.398691 - FOCUS MANAGER: Switching object of interest from [dialog: 'weGPUI'] to [button: 'Cancel']
+08:23:39.402107 - SCRIPT UTILITIES: [frame] is top-level object for: [button: 'Cancel']
+08:23:39.402140 - FOCUS MANAGER: Request to set active window to [frame]
+08:23:39.402146 - FOCUS MANAGER: Setting active window to existing active window
+08:23:39.403900 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'Cancel']
+08:23:39.404285 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:39.404345 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:39.404467 - BRAILLE GENERATOR: BrailleGenerator._generate_push_button for [button: 'Cancel'] args: {'formatType': 'focused'}
+08:23:39.404486 - TABLE NAVIGATOR: Last navigation event (None) was last key event: False
+08:23:39.404523 - BRAILLE GENERATOR: _generate_ancestors: []
+08:23:39.404542 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:39.404572 - AXUtilitiesRelation: [button: 'Cancel'] is labelled by: []
+08:23:39.404583 - GENERATOR: _generate_accessible_label: []
+08:23:39.404597 - GENERATOR: _generate_accessible_name: [Cancel]
+08:23:39.404614 - GENERATOR: _generate_accessible_label_and_name: [Cancel]
+08:23:39.404675 - GENERATOR: _generate_state_expanded: []
+08:23:39.408162 - BRAILLE GENERATOR: _generate_accessible_role: [button]
+08:23:39.408192 - BRAILLE: Not contracting 'Cancel button' because contracted braille is not enabled.
+08:23:39.408670 - AXUtilitiesRelation: [button: 'Cancel'] is described by: []
+08:23:39.408685 - GENERATOR: _generate_accessible_description: []
+08:23:39.408701 - BRAILLE GENERATOR: Results: [COMPONENT: 'Cancel button', cursor offset:0]
+08:23:39.408743 - BRAILLE: Refresh. Pan: True target: 0
+08:23:39.408749 - BRAILLE: Kill flash message default.update_braille:724 > default.refreshBraille:2577 > braille.refresh:1273 > braille.killFlash:1510
+08:23:39.409584 - BRAILLE: Last text object: None (Caret: 0, Line: 0, Cell: 0)
+08:23:39.409604 - BRAILLE: Current text object: None (Caret: 0, Line: 0). On same line: False
+08:23:39.409619 - BRAILLE: Line 0: 'Cancel button' focusOffset: 0 [[0, 13]]
+08:23:39.409624 - BRAILLE: Cursor offset in line string is: 0
+08:23:39.409629 - BRAILLE: Not adjusting offset 0. Cursor offset fits on display.
+08:23:39.409634 - BRAILLE: Current range: (0, 32). Target cell: 0
+08:23:39.409639 - BRAILLE LINE:  'Cancel button'
+08:23:39.409643 -      VISIBLE:  'Cancel button', cursor=1
+08:23:39.409654 - BRAILLE: Enabling braille. BrlAPI running: False
+08:23:39.409657 - BRAILLE: Need to initialize first.
+08:23:39.409668 - BRAILLE: Initializing. Callback: InputEventManager.process_braille_event
+08:23:39.409682 - BRAILLE: WINDOWPATH= None
+08:23:39.409690 - BRAILLE: XDG_VTNR= None
+08:23:39.409693 - BRAILLE: Attempting connection with BrlAPI.
+08:23:39.410222 - WARNING: Braille initialization failed: couldn't connect to b':0' with key b'keyfile:/etc/brlapi.key+polkit': connect: No such file or directory
+                  (brlerrno 11, libcerrno 2, gaierrno 0)
+                  Is BRLTTY really running?
+08:23:39.410322 - SPEECH GENERATOR: SpeechGenerator._generate_push_button for [button: 'Cancel'] args: {'formatType': 'unfocused', 'priorObj': "[dialog: 'weGPUI']"}
+08:23:39.410348 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:39.412045 - SPEECH GENERATOR: _generate_old_ancestors: []
+08:23:39.412086 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:39.412137 - AXObject: Looking for common ancestor of [dialog: 'weGPUI'] and [button: 'Cancel']
+08:23:39.415931 - AXObject: Common ancestor of [dialog: 'weGPUI'] and [button: 'Cancel'] is [dialog: 'weGPUI']
+08:23:39.415961 - DEFAULT: Not in SayAll
+08:23:39.421655 - GENERATOR: _get_functional_role: dialog
+08:23:39.436480 - GENERATOR: _get_functional_role: dialog
+08:23:39.437072 - SPEECH GENERATOR: _generate_new_ancestors: []
+08:23:39.437104 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:39.437121 - GENERATOR: _generate_accessible_label: []
+08:23:39.437131 - SPEECH GENERATOR: _generate_accessible_label: []
+08:23:39.437154 - GENERATOR: _generate_accessible_name: [Cancel]
+08:23:39.437175 - SPEECH GENERATOR: default voice requested with language='None', dialect=''
+08:23:39.437221 - SPEECH GENERATOR: _generate_accessible_name: [Cancel, {'established': 'False'}]
+08:23:39.437244 - GENERATOR: _generate_accessible_label_and_name: [Cancel, {'established': 'False'}]
+08:23:39.437281 - GENERATOR: _generate_state_expanded: []
+08:23:39.437289 - SPEECH GENERATOR: _generate_state_expanded: []
+08:23:39.437309 - FOCUS MANAGER: Active mode: focus-tracking Object of interest: [button: 'Cancel']
+08:23:39.437318 - DEFAULT: Not in SayAll
+08:23:39.444782 - SPEECH GENERATOR: system voice requested with language='None', dialect=''
+08:23:39.444854 - SPEECH GENERATOR: _generate_accessible_role: [button, {'established': 'False'}]
+08:23:39.444894 - GENERATOR: _generate_state_sensitive: []
+08:23:39.444906 - SPEECH GENERATOR: _generate_state_sensitive: []
+08:23:39.444955 - SPEECH GENERATOR: _generate_keyboard_mnemonic: []
+08:23:39.446889 - SPEECH GENERATOR: _generate_keyboard_accelerator: []
+08:23:39.446914 - SPEECH GENERATOR: _generate_has_click_action: []
+08:23:39.446925 - SPEECH GENERATOR: _generate_has_details: []
+08:23:39.446933 - SPEECH GENERATOR: _generate_details_for: []
+08:23:39.446959 - GENERATOR: _generate_accessible_description: []
+08:23:39.446968 - SPEECH GENERATOR: _generate_accessible_description: []
+08:23:39.446990 - SPEECH GENERATOR: _generate_state_has_popup: []
+08:23:39.447490 - SPEECH GENERATOR: _generate_tutorial: []
+08:23:39.447565 - SPEECH GENERATOR: Results: [Cancel, {'established': 'False'}, button, {'established': 'False'}, PAUSE, PAUSE]
+08:23:39.448570 - SCRIPT UTILITIES: Not interrupting for locusOfFocus change: old locusOfFocus is ancestor with name of new locusOfFocus
+08:23:39.448634 - SPEECH: Speak [Cancel, {'established': 'False'}, button, {'established': 'False'}, PAUSE, PAUSE], acss: None
+08:23:39.448696 - SPEECH OUTPUT: 'Cancel button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+08:23:39.448704 - SPEECH DISPATCHER: Speaking 'Cancel button.' as string
+08:23:39.448729 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:39.448748 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:39.449799 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:6"/>Cancel <mark name="7:14"/>button.</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: MOST
+                  SD rate 2, pitch 10, volume 100, language c
+08:23:39.451944 - FOCUS MANAGER: Active window is [frame] default.locus_of_focus_changed:678 > default._save_focused_object_info:624 > ax_utilities_event.save_object_info_for_events:163 > focus_manager.get_active_window:258
+TOTAL PROCESSING TIME: 0.0980
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:39.453405 - EVENT MANAGER: Dequeueing object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (0, 0, 0)
+08:23:39.453475 - EVENT MANAGER: Dequeued object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 14
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 0) vvvvv
+08:23:39.465187 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='weGPUI' role='dialog' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, focusable, modal, sensitive, showing, visible'
+                  relations=''
+                  actions='click'
+                  interfaces='Action, Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0, 0]
+                  
+08:23:39.465228 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:39.465257 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:39.465285 - EVENT MANAGER: Getting script for event for [application: 'minimal'] [dialog: 'weGPUI']
+08:23:39.465300 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [dialog: 'weGPUI']
+08:23:39.465995 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:39.466008 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:39.466016 - EVENT MANAGER: Processing object:state-changed:focused: script for event is active
+TOTAL PROCESSING TIME: 0.0125
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:40.316272 - GENERATOR: Clearing cache.
+08:23:40.328804 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:40.566026 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:40.631919 - FOCUS MANAGER: Active window is [frame] <unknown>.<module>:280 > input_event_manager.process_keyboard_event:247 > focus_manager.get_active_window:258
+08:23:40.632502 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:40.637769 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:40.638279 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:40.638622 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_PRESSED_EVENT
+                 id=65289
+                 hw_code=23
+                 modifiers=0
+                 text=''
+                 keyval_name='Tab'
+                 timestamp=1792916620.6317682
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_PRESSED_EVENT: 'Tab' (23) vvvvv
+08:23:40.638984 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:40.638999 - WINDOW: [frame]
+08:23:40.639011 - LOCATION: [button: 'Cancel']
+08:23:40.639057 - KEYBINDINGS: 'Tab' (23) mods: 0 key-pressed-event matches []
+08:23:40.639070 - KEYBINDINGS: 'Tab' (23) mods: 0 key-pressed-event fallback candidates []
+08:23:40.639081 - HANDLER: None
+08:23:40.639097 - DEFAULT: Interrupting presentation
+08:23:40.639116 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:40.640071 - BRAILLE: Kill flash message input_event.process:710 > input_event._present:625 > default.presentationInterrupt:2289 > braille.killFlash:1510
+08:23:40.640823 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:40.640859 - KEYBOARD EVENT: Not character echoable, setting disabled.
+08:23:40.640864 - DEFAULT: Presenting keyboard event
+08:23:40.640926 - SPEECH GENERATOR: None voice requested with language='None', dialect=''
+08:23:40.640953 - SPEECH OUTPUT: 'tab' {'established': False}
+08:23:40.640990 - SPEECH DISPATCHER: Speaking 'tab' as string
+08:23:40.640998 - SPEECH DISPATCHER: Speaking 'tab' as string
+08:23:40.641020 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:40.641046 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:40.643179 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:3"/>tab</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: MOST
+                  SD rate 2, pitch 10, volume 100, language c
+08:23:40.643471 - TOTAL PROCESSING TIME: 0.0045
+^^^^^ PROCESS ATSPI_KEY_PRESSED_EVENT: 'Tab' (23) ^^^^^
+
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_RELEASED_EVENT
+                 id=65289
+                 hw_code=23
+                 modifiers=0
+                 text=''
+                 keyval_name='Tab'
+                 timestamp=1792916620.6436467
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_RELEASED_EVENT: 'Tab' (23) vvvvv
+08:23:40.644796 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:40.644821 - WINDOW: [frame]
+08:23:40.644835 - LOCATION: [button: 'Cancel']
+08:23:40.644871 - KEYBINDINGS: 'Tab' (23) mods: 0 key-released-event matches []
+08:23:40.644884 - KEYBINDINGS: 'Tab' (23) mods: 0 key-released-event fallback candidates []
+08:23:40.644894 - HANDLER: None
+08:23:40.644915 - TOTAL PROCESSING TIME: 0.0002
+^^^^^ PROCESS ATSPI_KEY_RELEASED_EVENT: 'Tab' (23) ^^^^^
+
+
+08:23:40.650588 - EVENT MANAGER: object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (1, 0, 0)
+08:23:40.650675 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:40.652131 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to source being focused
+08:23:40.652232 - EVENT MANAGER: Queueing object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (1, 0, 0)
+08:23:40.652262 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:40.652346 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'OK']
+08:23:40.654859 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:40.654954 - EVENT MANAGER: object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (1, 0, 0) has priority level: 3
+08:23:40.655014 - EVENT MANAGER: Queued object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 15
+
+08:23:40.655103 - EVENT MANAGER: object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0)
+08:23:40.655149 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:40.655159 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to source being locus of focus
+08:23:40.655203 - EVENT MANAGER: Queueing object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0)
+08:23:40.655223 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:40.655245 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'Cancel']
+08:23:40.655793 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:40.655857 - EVENT MANAGER: object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0) has priority level: 3
+08:23:40.655908 - EVENT MANAGER: Queued object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 16
+08:23:40.655984 - EVENT MANAGER: Dequeueing object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (1, 0, 0)
+08:23:40.656068 - EVENT MANAGER: Dequeued object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 15
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 1) vvvvv
+08:23:40.667901 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='OK' role='button' id=''
+                  description=''
+                  help=''
+                  states='enabled, focusable, focused, sensitive, showing, visible'
+                  relations=''
+                  actions='click'
+                  interfaces='Action, Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0, 0, 3]
+                  
+08:23:40.667941 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:40.667969 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:40.667999 - EVENT MANAGER: Getting script for event for [application: 'minimal'] [button: 'OK']
+08:23:40.668015 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'OK']
+08:23:40.668709 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:40.668723 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:40.668732 - EVENT MANAGER: Processing object:state-changed:focused: script for event is active
+08:23:40.671794 - SCRIPT UTILITIES: [frame] is top-level object for: [button: 'OK']
+08:23:40.673129 - SCRIPT UTILITIES: [button: 'OK'] is in frame [frame] and dialog [dialog: 'weGPUI']
+08:23:40.673155 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:40.679557 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:40.680184 - FOCUS MANAGER: Request to set locus of focus to [button: 'OK'] event_manager._dequeue_object_event:552 > event_manager._process_object_event:826 > default.on_focused_changed:1376 > focus_manager.set_locus_of_focus:188
+08:23:40.680862 - AXObject: Clearing AT-SPI cache on [button: 'OK'] Recursive: False. Reason: Setting locus of focus.
+08:23:40.680883 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:40.683960 - FOCUS MANAGER: Changing locus of focus from [button: 'Cancel'] to [button: 'OK']. Notify: True
+08:23:40.690520 - FOCUS MANAGER: Region of interest: [button: 'OK'] (0, 0)
+08:23:40.691666 - FOCUS MANAGER: Switching object of interest from [button: 'Cancel'] to [button: 'OK']
+08:23:40.694853 - SCRIPT UTILITIES: [frame] is top-level object for: [button: 'OK']
+08:23:40.694892 - FOCUS MANAGER: Request to set active window to [frame]
+08:23:40.694899 - FOCUS MANAGER: Setting active window to existing active window
+08:23:40.699018 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'OK']
+08:23:40.699466 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:40.699504 - FOCUS MANAGER: Locus of focus is [button: 'OK']
+08:23:40.699582 - BRAILLE GENERATOR: BrailleGenerator._generate_push_button for [button: 'OK'] args: {'formatType': 'focused'}
+08:23:40.699601 - TABLE NAVIGATOR: Last navigation event (None) was last key event: False
+08:23:40.699635 - BRAILLE GENERATOR: _generate_ancestors: []
+08:23:40.699653 - FOCUS MANAGER: Locus of focus is [button: 'OK']
+08:23:40.699682 - AXUtilitiesRelation: [button: 'OK'] is labelled by: []
+08:23:40.699693 - GENERATOR: _generate_accessible_label: []
+08:23:40.699707 - GENERATOR: _generate_accessible_name: [OK]
+08:23:40.699724 - GENERATOR: _generate_accessible_label_and_name: [OK]
+08:23:40.699750 - GENERATOR: _generate_state_expanded: []
+08:23:40.705160 - BRAILLE GENERATOR: _generate_accessible_role: [button]
+08:23:40.705194 - BRAILLE: Not contracting 'OK button' because contracted braille is not enabled.
+08:23:40.705689 - AXUtilitiesRelation: [button: 'OK'] is described by: []
+08:23:40.705706 - GENERATOR: _generate_accessible_description: []
+08:23:40.705725 - BRAILLE GENERATOR: Results: [COMPONENT: 'OK button', cursor offset:0]
+08:23:40.705792 - BRAILLE: Refresh. Pan: True target: 0
+08:23:40.705799 - BRAILLE: Kill flash message default.update_braille:724 > default.refreshBraille:2577 > braille.refresh:1273 > braille.killFlash:1510
+08:23:40.706879 - BRAILLE: Last text object: None (Caret: 0, Line: 0, Cell: 0)
+08:23:40.706904 - BRAILLE: Current text object: None (Caret: 0, Line: 0). On same line: False
+08:23:40.706924 - BRAILLE: Line 0: 'OK button' focusOffset: 0 [[0, 9]]
+08:23:40.706952 - BRAILLE: Cursor offset in line string is: 0
+08:23:40.706958 - BRAILLE: Not adjusting offset 0. Cursor offset fits on display.
+08:23:40.706963 - BRAILLE: Current range: (0, 32). Target cell: 0
+08:23:40.706967 - BRAILLE LINE:  'OK button'
+08:23:40.706971 -      VISIBLE:  'OK button', cursor=1
+08:23:40.706983 - BRAILLE: Enabling braille. BrlAPI running: False
+08:23:40.706986 - BRAILLE: Need to initialize first.
+08:23:40.706998 - BRAILLE: Initializing. Callback: InputEventManager.process_braille_event
+08:23:40.707012 - BRAILLE: WINDOWPATH= None
+08:23:40.707020 - BRAILLE: XDG_VTNR= None
+08:23:40.707023 - BRAILLE: Attempting connection with BrlAPI.
+08:23:40.707201 - WARNING: Braille initialization failed: couldn't connect to b':0' with key b'keyfile:/etc/brlapi.key+polkit': connect: No such file or directory
+                  (brlerrno 11, libcerrno 2, gaierrno 0)
+                  Is BRLTTY really running?
+08:23:40.707298 - SPEECH GENERATOR: SpeechGenerator._generate_push_button for [button: 'OK'] args: {'formatType': 'unfocused', 'priorObj': "[button: 'Cancel']"}
+08:23:40.707324 - FOCUS MANAGER: Locus of focus is [button: 'OK']
+08:23:40.711581 - SCRIPT UTILITIES: [frame] is top-level object for: [button: 'OK']
+08:23:40.712911 - SCRIPT UTILITIES: [button: 'OK'] is in frame [frame] and dialog [dialog: 'weGPUI']
+08:23:40.712942 - SPEECH GENERATOR: _generate_old_ancestors: []
+08:23:40.712967 - FOCUS MANAGER: Locus of focus is [button: 'OK']
+08:23:40.713000 - SPEECH GENERATOR: _generate_new_ancestors: []
+08:23:40.713018 - FOCUS MANAGER: Locus of focus is [button: 'OK']
+08:23:40.713034 - GENERATOR: _generate_accessible_label: []
+08:23:40.713042 - SPEECH GENERATOR: _generate_accessible_label: []
+08:23:40.713058 - GENERATOR: _generate_accessible_name: [OK]
+08:23:40.713075 - SPEECH GENERATOR: default voice requested with language='None', dialect=''
+08:23:40.713119 - SPEECH GENERATOR: _generate_accessible_name: [OK, {'established': 'False'}]
+08:23:40.713143 - GENERATOR: _generate_accessible_label_and_name: [OK, {'established': 'False'}]
+08:23:40.713177 - GENERATOR: _generate_state_expanded: []
+08:23:40.713222 - SPEECH GENERATOR: _generate_state_expanded: []
+08:23:40.713242 - FOCUS MANAGER: Active mode: focus-tracking Object of interest: [button: 'OK']
+08:23:40.713254 - DEFAULT: Not in SayAll
+08:23:40.716659 - SPEECH GENERATOR: system voice requested with language='None', dialect=''
+08:23:40.716733 - SPEECH GENERATOR: _generate_accessible_role: [button, {'established': 'False'}]
+08:23:40.716815 - GENERATOR: _generate_state_sensitive: []
+08:23:40.716831 - SPEECH GENERATOR: _generate_state_sensitive: []
+08:23:40.716849 - SPEECH GENERATOR: _generate_keyboard_mnemonic: []
+08:23:40.726059 - SPEECH GENERATOR: _generate_keyboard_accelerator: []
+08:23:40.726108 - SPEECH GENERATOR: _generate_has_click_action: []
+08:23:40.726126 - SPEECH GENERATOR: _generate_has_details: []
+08:23:40.726140 - SPEECH GENERATOR: _generate_details_for: []
+08:23:40.726178 - GENERATOR: _generate_accessible_description: []
+08:23:40.726226 - SPEECH GENERATOR: _generate_accessible_description: []
+08:23:40.726266 - SPEECH GENERATOR: _generate_state_has_popup: []
+08:23:40.726753 - SPEECH GENERATOR: _generate_tutorial: []
+08:23:40.726833 - SPEECH GENERATOR: Results: [OK, {'established': 'False'}, button, {'established': 'False'}, PAUSE, PAUSE]
+08:23:40.728864 - AXUtilitiesRelation: [button: 'Cancel'] is controlled by [button: 'OK']: False
+08:23:40.728906 - AXUtilitiesRelation: [button: 'OK'] is controlled by [button: 'Cancel']: False
+08:23:40.728915 - DEFAULT: Interrupting presentation
+08:23:40.728939 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:40.730968 - BRAILLE: Kill flash message focus_manager.set_locus_of_focus:243 > default.locus_of_focus_changed:676 > default.presentationInterrupt:2289 > braille.killFlash:1510
+08:23:40.732192 - SPEECH: Speak [OK, {'established': 'False'}, button, {'established': 'False'}, PAUSE, PAUSE], acss: None
+08:23:40.732242 - SPEECH OUTPUT: 'OK button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+08:23:40.732250 - SPEECH DISPATCHER: Speaking 'OK button.' as string
+08:23:40.732280 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:40.732317 - FOCUS MANAGER: Locus of focus is [button: 'OK']
+08:23:40.734270 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:2"/>OK <mark name="3:10"/>button.</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: MOST
+                  SD rate 2, pitch 10, volume 100, language c
+08:23:40.736779 - FOCUS MANAGER: Active window is [frame] default.locus_of_focus_changed:678 > default._save_focused_object_info:624 > ax_utilities_event.save_object_info_for_events:163 > focus_manager.get_active_window:258
+TOTAL PROCESSING TIME: 0.0823
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:40.738604 - EVENT MANAGER: Dequeueing object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0)
+08:23:40.738676 - EVENT MANAGER: Dequeued object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 16
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 0) vvvvv
+08:23:40.746310 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='Cancel' role='button' id=''
+                  description=''
+                  help=''
+                  states='enabled, focusable, sensitive, showing, visible'
+                  relations=''
+                  actions='click'
+                  interfaces='Action, Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0, 0, 2]
+                  
+08:23:40.746363 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:40.746402 - FOCUS MANAGER: Locus of focus is [button: 'OK']
+08:23:40.746490 - EVENT MANAGER: Getting script for event for [application: 'minimal'] [button: 'Cancel']
+08:23:40.746519 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'Cancel']
+08:23:40.747066 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:40.747095 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:40.747112 - EVENT MANAGER: Processing object:state-changed:focused: script for event is active
+TOTAL PROCESSING TIME: 0.0084
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:41.966392 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:42.020322 - FOCUS MANAGER: Active window is [frame] <unknown>.<module>:280 > input_event_manager.process_keyboard_event:247 > focus_manager.get_active_window:258
+08:23:42.021314 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:42.026648 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:42.027171 - FOCUS MANAGER: Locus of focus is [button: 'OK']
+08:23:42.027684 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_PRESSED_EVENT
+                 id=65289
+                 hw_code=23
+                 modifiers=0
+                 text=''
+                 keyval_name='Tab'
+                 timestamp=1792916622.0201774
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_PRESSED_EVENT: 'Tab' (23) vvvvv
+08:23:42.028405 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:42.028475 - WINDOW: [frame]
+08:23:42.028495 - LOCATION: [button: 'OK']
+08:23:42.028549 - KEYBINDINGS: 'Tab' (23) mods: 0 key-pressed-event matches []
+08:23:42.028571 - KEYBINDINGS: 'Tab' (23) mods: 0 key-pressed-event fallback candidates []
+08:23:42.028589 - HANDLER: None
+08:23:42.028634 - DEFAULT: Interrupting presentation
+08:23:42.028664 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:42.028886 - BRAILLE: Kill flash message input_event.process:710 > input_event._present:625 > default.presentationInterrupt:2289 > braille.killFlash:1510
+08:23:42.030107 - FOCUS MANAGER: Locus of focus is [button: 'OK']
+08:23:42.030236 - KEYBOARD EVENT: Not character echoable, setting disabled.
+08:23:42.030267 - DEFAULT: Presenting keyboard event
+08:23:42.030299 - SPEECH GENERATOR: None voice requested with language='None', dialect=''
+08:23:42.030346 - SPEECH OUTPUT: 'tab' {'established': False}
+08:23:42.030366 - SPEECH DISPATCHER: Speaking 'tab' as string
+08:23:42.030372 - SPEECH DISPATCHER: Speaking 'tab' as string
+08:23:42.030406 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:42.030465 - FOCUS MANAGER: Locus of focus is [button: 'OK']
+08:23:42.032340 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:3"/>tab</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: MOST
+                  SD rate 2, pitch 10, volume 100, language c
+08:23:42.032784 - TOTAL PROCESSING TIME: 0.0045
+^^^^^ PROCESS ATSPI_KEY_PRESSED_EVENT: 'Tab' (23) ^^^^^
+
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_RELEASED_EVENT
+                 id=65289
+                 hw_code=23
+                 modifiers=0
+                 text=''
+                 keyval_name='Tab'
+                 timestamp=1792916622.0330791
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_RELEASED_EVENT: 'Tab' (23) vvvvv
+08:23:42.034772 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:42.034808 - WINDOW: [frame]
+08:23:42.034829 - LOCATION: [button: 'OK']
+08:23:42.034876 - KEYBINDINGS: 'Tab' (23) mods: 0 key-released-event matches []
+08:23:42.034897 - KEYBINDINGS: 'Tab' (23) mods: 0 key-released-event fallback candidates []
+08:23:42.034913 - HANDLER: None
+08:23:42.034968 - TOTAL PROCESSING TIME: 0.0003
+^^^^^ PROCESS ATSPI_KEY_RELEASED_EVENT: 'Tab' (23) ^^^^^
+
+
+08:23:42.035247 - EVENT MANAGER: object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0)
+08:23:42.035339 - FOCUS MANAGER: Locus of focus is [button: 'OK']
+08:23:42.035707 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to source being focused
+08:23:42.035778 - EVENT MANAGER: Queueing object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0)
+08:23:42.035829 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:42.035856 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'Cancel']
+08:23:42.040029 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:42.040121 - EVENT MANAGER: object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0) has priority level: 3
+08:23:42.040179 - EVENT MANAGER: Queued object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 17
+
+08:23:42.040303 - EVENT MANAGER: object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (0, 0, 0)
+08:23:42.040349 - FOCUS MANAGER: Locus of focus is [button: 'OK']
+08:23:42.040358 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to source being locus of focus
+08:23:42.040401 - EVENT MANAGER: Queueing object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (0, 0, 0)
+08:23:42.040447 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:42.040475 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'OK']
+08:23:42.041643 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:42.041710 - EVENT MANAGER: object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (0, 0, 0) has priority level: 3
+08:23:42.041763 - EVENT MANAGER: Queued object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 18
+08:23:42.043167 - EVENT MANAGER: Dequeueing object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0)
+08:23:42.043238 - EVENT MANAGER: Dequeued object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 17
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 1) vvvvv
+08:23:42.062316 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='Cancel' role='button' id=''
+                  description=''
+                  help=''
+                  states='enabled, focusable, focused, sensitive, showing, visible'
+                  relations=''
+                  actions='click'
+                  interfaces='Action, Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0, 0, 2]
+                  
+08:23:42.062359 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:42.062387 - FOCUS MANAGER: Locus of focus is [button: 'OK']
+08:23:42.062452 - EVENT MANAGER: Getting script for event for [application: 'minimal'] [button: 'Cancel']
+08:23:42.062473 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'Cancel']
+08:23:42.063075 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:42.063089 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:42.063099 - EVENT MANAGER: Processing object:state-changed:focused: script for event is active
+08:23:42.064886 - SCRIPT UTILITIES: [frame] is top-level object for: [button: 'Cancel']
+08:23:42.066759 - SCRIPT UTILITIES: [button: 'Cancel'] is in frame [frame] and dialog [dialog: 'weGPUI']
+08:23:42.066797 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:42.070757 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:42.071273 - FOCUS MANAGER: Request to set locus of focus to [button: 'Cancel'] event_manager._dequeue_object_event:552 > event_manager._process_object_event:826 > default.on_focused_changed:1376 > focus_manager.set_locus_of_focus:188
+08:23:42.071978 - AXObject: Clearing AT-SPI cache on [button: 'Cancel'] Recursive: False. Reason: Setting locus of focus.
+08:23:42.072001 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:42.074086 - FOCUS MANAGER: Changing locus of focus from [button: 'OK'] to [button: 'Cancel']. Notify: True
+08:23:42.075174 - FOCUS MANAGER: Region of interest: [button: 'Cancel'] (0, 0)
+08:23:42.076019 - FOCUS MANAGER: Switching object of interest from [button: 'OK'] to [button: 'Cancel']
+08:23:42.084530 - SCRIPT UTILITIES: [frame] is top-level object for: [button: 'Cancel']
+08:23:42.084572 - FOCUS MANAGER: Request to set active window to [frame]
+08:23:42.084580 - FOCUS MANAGER: Setting active window to existing active window
+08:23:42.090816 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'Cancel']
+08:23:42.092786 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:42.092841 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:42.092921 - BRAILLE GENERATOR: BrailleGenerator._generate_push_button for [button: 'Cancel'] args: {'formatType': 'focused'}
+08:23:42.092962 - TABLE NAVIGATOR: Last navigation event (None) was last key event: False
+08:23:42.093004 - BRAILLE GENERATOR: _generate_ancestors: []
+08:23:42.093022 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:42.093037 - GENERATOR: _generate_accessible_label: []
+08:23:42.093052 - GENERATOR: _generate_accessible_name: [Cancel]
+08:23:42.093064 - GENERATOR: _generate_accessible_label_and_name: [Cancel]
+08:23:42.093092 - GENERATOR: _generate_state_expanded: []
+08:23:42.099414 - BRAILLE GENERATOR: _generate_accessible_role: [button]
+08:23:42.099551 - BRAILLE: Not contracting 'Cancel button' because contracted braille is not enabled.
+08:23:42.100090 - GENERATOR: _generate_accessible_description: []
+08:23:42.100143 - BRAILLE GENERATOR: Results: [COMPONENT: 'Cancel button', cursor offset:0]
+08:23:42.100219 - BRAILLE: Refresh. Pan: True target: 0
+08:23:42.100226 - BRAILLE: Kill flash message default.update_braille:724 > default.refreshBraille:2577 > braille.refresh:1273 > braille.killFlash:1510
+08:23:42.101044 - BRAILLE: Last text object: None (Caret: 0, Line: 0, Cell: 0)
+08:23:42.101063 - BRAILLE: Current text object: None (Caret: 0, Line: 0). On same line: False
+08:23:42.101079 - BRAILLE: Line 0: 'Cancel button' focusOffset: 0 [[0, 13]]
+08:23:42.101084 - BRAILLE: Cursor offset in line string is: 0
+08:23:42.101087 - BRAILLE: Not adjusting offset 0. Cursor offset fits on display.
+08:23:42.101092 - BRAILLE: Current range: (0, 32). Target cell: 0
+08:23:42.101097 - BRAILLE LINE:  'Cancel button'
+08:23:42.101100 -      VISIBLE:  'Cancel button', cursor=1
+08:23:42.101110 - BRAILLE: Enabling braille. BrlAPI running: False
+08:23:42.101113 - BRAILLE: Need to initialize first.
+08:23:42.101124 - BRAILLE: Initializing. Callback: InputEventManager.process_braille_event
+08:23:42.101138 - BRAILLE: WINDOWPATH= None
+08:23:42.101146 - BRAILLE: XDG_VTNR= None
+08:23:42.101150 - BRAILLE: Attempting connection with BrlAPI.
+08:23:42.101363 - WARNING: Braille initialization failed: couldn't connect to b':0' with key b'keyfile:/etc/brlapi.key+polkit': connect: No such file or directory
+                  (brlerrno 11, libcerrno 2, gaierrno 0)
+                  Is BRLTTY really running?
+08:23:42.101485 - SPEECH GENERATOR: SpeechGenerator._generate_push_button for [button: 'Cancel'] args: {'formatType': 'unfocused', 'priorObj': "[button: 'OK']"}
+08:23:42.101529 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:42.105250 - SCRIPT UTILITIES: [frame] is top-level object for: [button: 'Cancel']
+08:23:42.106126 - SCRIPT UTILITIES: [button: 'Cancel'] is in frame [frame] and dialog [dialog: 'weGPUI']
+08:23:42.106149 - SPEECH GENERATOR: _generate_old_ancestors: []
+08:23:42.106173 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:42.106250 - SPEECH GENERATOR: _generate_new_ancestors: []
+08:23:42.106274 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:42.106295 - GENERATOR: _generate_accessible_label: []
+08:23:42.106304 - SPEECH GENERATOR: _generate_accessible_label: []
+08:23:42.106322 - GENERATOR: _generate_accessible_name: [Cancel]
+08:23:42.106338 - SPEECH GENERATOR: default voice requested with language='None', dialect=''
+08:23:42.106384 - SPEECH GENERATOR: _generate_accessible_name: [Cancel, {'established': 'False'}]
+08:23:42.106409 - GENERATOR: _generate_accessible_label_and_name: [Cancel, {'established': 'False'}]
+08:23:42.106473 - GENERATOR: _generate_state_expanded: []
+08:23:42.106483 - SPEECH GENERATOR: _generate_state_expanded: []
+08:23:42.106503 - FOCUS MANAGER: Active mode: focus-tracking Object of interest: [button: 'Cancel']
+08:23:42.106515 - DEFAULT: Not in SayAll
+08:23:42.109344 - SPEECH GENERATOR: system voice requested with language='None', dialect=''
+08:23:42.109403 - SPEECH GENERATOR: _generate_accessible_role: [button, {'established': 'False'}]
+08:23:42.109466 - GENERATOR: _generate_state_sensitive: []
+08:23:42.109478 - SPEECH GENERATOR: _generate_state_sensitive: []
+08:23:42.109493 - SPEECH GENERATOR: _generate_keyboard_mnemonic: []
+08:23:42.116969 - SPEECH GENERATOR: _generate_keyboard_accelerator: []
+08:23:42.117015 - SPEECH GENERATOR: _generate_has_click_action: []
+08:23:42.117032 - SPEECH GENERATOR: _generate_has_details: []
+08:23:42.117047 - SPEECH GENERATOR: _generate_details_for: []
+08:23:42.117087 - GENERATOR: _generate_accessible_description: []
+08:23:42.117100 - SPEECH GENERATOR: _generate_accessible_description: []
+08:23:42.117133 - SPEECH GENERATOR: _generate_state_has_popup: []
+08:23:42.117758 - SPEECH GENERATOR: _generate_tutorial: []
+08:23:42.117847 - SPEECH GENERATOR: Results: [Cancel, {'established': 'False'}, button, {'established': 'False'}, PAUSE, PAUSE]
+08:23:42.123237 - AXUtilitiesRelation: [button: 'OK'] is controlled by [button: 'Cancel']: False
+08:23:42.123280 - AXUtilitiesRelation: [button: 'Cancel'] is controlled by [button: 'OK']: False
+08:23:42.123321 - DEFAULT: Interrupting presentation
+08:23:42.123386 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:42.125442 - BRAILLE: Kill flash message focus_manager.set_locus_of_focus:243 > default.locus_of_focus_changed:676 > default.presentationInterrupt:2289 > braille.killFlash:1510
+08:23:42.128571 - SPEECH: Speak [Cancel, {'established': 'False'}, button, {'established': 'False'}, PAUSE, PAUSE], acss: None
+08:23:42.128618 - SPEECH OUTPUT: 'Cancel button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+08:23:42.128624 - SPEECH DISPATCHER: Speaking 'Cancel button.' as string
+08:23:42.128647 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:42.128675 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:42.130945 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:6"/>Cancel <mark name="7:14"/>button.</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: MOST
+                  SD rate 2, pitch 10, volume 100, language c
+08:23:42.135983 - FOCUS MANAGER: Active window is [frame] default.locus_of_focus_changed:678 > default._save_focused_object_info:624 > ax_utilities_event.save_object_info_for_events:163 > focus_manager.get_active_window:258
+TOTAL PROCESSING TIME: 0.0943
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:42.137640 - EVENT MANAGER: Dequeueing object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (0, 0, 0)
+08:23:42.137686 - EVENT MANAGER: Dequeued object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 18
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 0) vvvvv
+08:23:42.159154 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='OK' role='button' id=''
+                  description=''
+                  help=''
+                  states='enabled, focusable, sensitive, showing, visible'
+                  relations=''
+                  actions='click'
+                  interfaces='Action, Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0, 0, 3]
+                  
+08:23:42.159198 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:42.159230 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:42.159265 - EVENT MANAGER: Getting script for event for [application: 'minimal'] [button: 'OK']
+08:23:42.159280 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'OK']
+08:23:42.159909 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:42.159939 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:42.159955 - EVENT MANAGER: Processing object:state-changed:focused: script for event is active
+TOTAL PROCESSING TIME: 0.0223
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:42.316498 - GENERATOR: Clearing cache.
+08:23:43.247410 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:43.418012 - FOCUS MANAGER: Active window is [frame] <unknown>.<module>:280 > input_event_manager.process_keyboard_event:247 > focus_manager.get_active_window:258
+08:23:43.419186 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:43.433299 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:43.433895 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:43.435657 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_PRESSED_EVENT
+                 id=65307
+                 hw_code=9
+                 modifiers=0
+                 text=''
+                 keyval_name='Escape'
+                 timestamp=1792916623.4178333
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_PRESSED_EVENT: 'Escape' (9) vvvvv
+08:23:43.436354 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:43.436383 - WINDOW: [frame]
+08:23:43.436402 - LOCATION: [button: 'Cancel']
+08:23:43.436649 - KEYBINDINGS: 'Escape' (9) mods: 0 key-pressed-event matches []
+08:23:43.436677 - KEYBINDINGS: 'Escape' (9) mods: 0 key-pressed-event fallback candidates []
+08:23:43.436695 - HANDLER: None
+08:23:43.436733 - DEFAULT: Interrupting presentation
+08:23:43.436842 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:43.439211 - BRAILLE: Kill flash message input_event.process:710 > input_event._present:625 > default.presentationInterrupt:2289 > braille.killFlash:1510
+08:23:43.440192 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:43.440264 - KEYBOARD EVENT: Not character echoable, setting disabled.
+08:23:43.440270 - DEFAULT: Presenting keyboard event
+08:23:43.440340 - SPEECH GENERATOR: None voice requested with language='None', dialect=''
+08:23:43.440363 - SPEECH OUTPUT: 'escape' {'established': False}
+08:23:43.440373 - SPEECH DISPATCHER: Speaking 'escape' as string
+08:23:43.440378 - SPEECH DISPATCHER: Speaking 'escape' as string
+08:23:43.440414 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:43.440461 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:43.441830 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:6"/>escape</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: MOST
+                  SD rate 2, pitch 10, volume 100, language c
+08:23:43.442470 - TOTAL PROCESSING TIME: 0.0062
+^^^^^ PROCESS ATSPI_KEY_PRESSED_EVENT: 'Escape' (9) ^^^^^
+
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_RELEASED_EVENT
+                 id=65307
+                 hw_code=9
+                 modifiers=0
+                 text=''
+                 keyval_name='Escape'
+                 timestamp=1792916623.442636
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_RELEASED_EVENT: 'Escape' (9) vvvvv
+08:23:43.444114 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:43.444162 - WINDOW: [frame]
+08:23:43.444194 - LOCATION: [button: 'Cancel']
+08:23:43.444250 - KEYBINDINGS: 'Escape' (9) mods: 0 key-released-event matches []
+08:23:43.444282 - KEYBINDINGS: 'Escape' (9) mods: 0 key-released-event fallback candidates []
+08:23:43.444299 - HANDLER: None
+08:23:43.444331 - TOTAL PROCESSING TIME: 0.0003
+^^^^^ PROCESS ATSPI_KEY_RELEASED_EVENT: 'Escape' (9) ^^^^^
+
+
+08:23:43.446929 - EVENT MANAGER: object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (1, 0, 0)
+08:23:43.447040 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:43.447634 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to source being focused
+08:23:43.447704 - EVENT MANAGER: Queueing object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (1, 0, 0)
+08:23:43.447757 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:43.447784 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'Open dialog']
+08:23:43.448296 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:43.448391 - EVENT MANAGER: object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (1, 0, 0) has priority level: 3
+08:23:43.448496 - EVENT MANAGER: Queued object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 19
+
+08:23:43.448584 - EVENT MANAGER: object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0)
+08:23:43.448624 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:43.448633 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to source being locus of focus
+08:23:43.448679 - EVENT MANAGER: Queueing object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0)
+08:23:43.448707 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:43.448736 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'Cancel']
+08:23:43.449646 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:43.449835 - EVENT MANAGER: object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0) has priority level: 3
+08:23:43.449899 - EVENT MANAGER: Queued object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 20
+08:23:43.449989 - EVENT MANAGER: Dequeueing object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (1, 0, 0)
+08:23:43.450034 - EVENT MANAGER: Dequeued object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 19
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 1) vvvvv
+08:23:43.464632 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='Open dialog' role='button' id=''
+                  description=''
+                  help=''
+                  states='enabled, focusable, focused, sensitive, showing, visible'
+                  relations=''
+                  actions='click'
+                  interfaces='Action, Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0, 0, 1]
+                  
+08:23:43.464676 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:43.464730 - FOCUS MANAGER: Locus of focus is [button: 'Cancel']
+08:23:43.464762 - EVENT MANAGER: Getting script for event for [application: 'minimal'] [button: 'Open dialog']
+08:23:43.464778 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'Open dialog']
+08:23:43.465356 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:43.465371 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:43.465380 - EVENT MANAGER: Processing object:state-changed:focused: script for event is active
+08:23:43.468009 - SCRIPT UTILITIES: [frame] is top-level object for: [button: 'Open dialog']
+08:23:43.483156 - SCRIPT UTILITIES: [button: 'Open dialog'] is in frame [frame] and dialog None
+08:23:43.483209 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:43.491963 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:43.494342 - FOCUS MANAGER: Request to set locus of focus to [button: 'Open dialog'] event_manager._dequeue_object_event:552 > event_manager._process_object_event:826 > default.on_focused_changed:1376 > focus_manager.set_locus_of_focus:188
+08:23:43.495068 - AXObject: Clearing AT-SPI cache on [button: 'Open dialog'] Recursive: False. Reason: Setting locus of focus.
+08:23:43.495090 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:43.499933 - FOCUS MANAGER: Changing locus of focus from [button: 'Cancel'] to [button: 'Open dialog']. Notify: True
+08:23:43.510312 - FOCUS MANAGER: Region of interest: [button: 'Open dialog'] (0, 0)
+08:23:43.515603 - FOCUS MANAGER: Switching object of interest from [button: 'Cancel'] to [button: 'Open dialog']
+08:23:43.521566 - SCRIPT UTILITIES: [frame] is top-level object for: [button: 'Open dialog']
+08:23:43.521601 - FOCUS MANAGER: Request to set active window to [frame]
+08:23:43.521608 - FOCUS MANAGER: Setting active window to existing active window
+08:23:43.524337 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'Open dialog']
+08:23:43.525026 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:43.525102 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:43.525218 - BRAILLE GENERATOR: BrailleGenerator._generate_push_button for [button: 'Open dialog'] args: {'formatType': 'focused'}
+08:23:43.525254 - TABLE NAVIGATOR: Last navigation event (None) was last key event: False
+08:23:43.525307 - BRAILLE GENERATOR: _generate_ancestors: []
+08:23:43.525336 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:43.525375 - AXUtilitiesRelation: [button: 'Open dialog'] is labelled by: []
+08:23:43.525391 - GENERATOR: _generate_accessible_label: []
+08:23:43.525409 - GENERATOR: _generate_accessible_name: [Open dialog]
+08:23:43.525458 - GENERATOR: _generate_accessible_label_and_name: [Open dialog]
+08:23:43.525499 - GENERATOR: _generate_state_expanded: []
+08:23:43.530159 - BRAILLE GENERATOR: _generate_accessible_role: [button]
+08:23:43.530237 - BRAILLE: Not contracting 'Open dialog button' because contracted braille is not enabled.
+08:23:43.531014 - AXUtilitiesRelation: [button: 'Open dialog'] is described by: []
+08:23:43.531045 - GENERATOR: _generate_accessible_description: []
+08:23:43.531066 - BRAILLE GENERATOR: Results: [COMPONENT: 'Open dialog button', cursor offset:0]
+08:23:43.531121 - BRAILLE: Refresh. Pan: True target: 0
+08:23:43.531128 - BRAILLE: Kill flash message default.update_braille:724 > default.refreshBraille:2577 > braille.refresh:1273 > braille.killFlash:1510
+08:23:43.532004 - BRAILLE: Last text object: None (Caret: 0, Line: 0, Cell: 0)
+08:23:43.532024 - BRAILLE: Current text object: None (Caret: 0, Line: 0). On same line: False
+08:23:43.532040 - BRAILLE: Line 0: 'Open dialog button' focusOffset: 0 [[0, 18]]
+08:23:43.532044 - BRAILLE: Cursor offset in line string is: 0
+08:23:43.532048 - BRAILLE: Not adjusting offset 0. Cursor offset fits on display.
+08:23:43.532053 - BRAILLE: Current range: (0, 32). Target cell: 0
+08:23:43.532059 - BRAILLE LINE:  'Open dialog button'
+08:23:43.532063 -      VISIBLE:  'Open dialog button', cursor=1
+08:23:43.532074 - BRAILLE: Enabling braille. BrlAPI running: False
+08:23:43.532077 - BRAILLE: Need to initialize first.
+08:23:43.532089 - BRAILLE: Initializing. Callback: InputEventManager.process_braille_event
+08:23:43.532104 - BRAILLE: WINDOWPATH= None
+08:23:43.532113 - BRAILLE: XDG_VTNR= None
+08:23:43.532116 - BRAILLE: Attempting connection with BrlAPI.
+08:23:43.532460 - WARNING: Braille initialization failed: couldn't connect to b':0' with key b'keyfile:/etc/brlapi.key+polkit': connect: No such file or directory
+                  (brlerrno 11, libcerrno 2, gaierrno 0)
+                  Is BRLTTY really running?
+08:23:43.532557 - SPEECH GENERATOR: SpeechGenerator._generate_push_button for [button: 'Open dialog'] args: {'formatType': 'unfocused', 'priorObj': "[button: 'Cancel']"}
+08:23:43.532599 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:43.547110 - SCRIPT UTILITIES: [frame] is top-level object for: [button: 'Open dialog']
+08:23:43.550270 - SCRIPT UTILITIES: [button: 'Open dialog'] is in frame [frame] and dialog None
+08:23:43.551240 - AXObject: Looking for common ancestor of [button: 'Open dialog'] and [button: 'Cancel']
+08:23:43.555206 - AXObject: [button: 'Cancel'] has index -1 ; parent [dialog: 'weGPUI'] has -1 children
+08:23:43.556354 - AXObject: [dialog: 'weGPUI'] has index -1 ; parent [frame] has 1 children
+08:23:43.556450 - AXObject: Common ancestor of [button: 'Open dialog'] and [button: 'Cancel'] is [frame]
+08:23:43.556468 - DEFAULT: Not in SayAll
+08:23:43.557463 - AXObject: [button: 'Cancel'] has index -1 ; parent [dialog: 'weGPUI'] has -1 children
+08:23:43.561705 - GENERATOR: _get_functional_role: dialog
+08:23:43.562903 - AXObject: [dialog: 'weGPUI'] has index -1 ; parent [frame] has 1 children
+08:23:43.567953 - GENERATOR: _get_functional_role: frame
+08:23:43.567995 - SPEECH GENERATOR: _generate_old_ancestors: []
+08:23:43.568028 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:43.568075 - AXObject: Looking for common ancestor of [button: 'Cancel'] and [button: 'Open dialog']
+08:23:43.569125 - AXObject: [button: 'Cancel'] has index -1 ; parent [dialog: 'weGPUI'] has -1 children
+08:23:43.579159 - AXObject: [dialog: 'weGPUI'] has index -1 ; parent [frame] has 1 children
+08:23:43.582236 - AXObject: Common ancestor of [button: 'Cancel'] and [button: 'Open dialog'] is [frame]
+08:23:43.582288 - DEFAULT: Not in SayAll
+08:23:43.588521 - GENERATOR: _get_functional_role: frame
+08:23:43.595130 - GENERATOR: _get_functional_role: panel
+08:23:43.596290 - AXUtilitiesRelation: [panel] is labelled by: []
+08:23:43.596326 - AXUtilitiesRelation: [panel] is described by: []
+08:23:43.596346 - AXUtilities: [panel] believed to be layout only: True, lacks name, description, and relations
+08:23:43.602770 - GENERATOR: _get_functional_role: frame
+08:23:43.602821 - SPEECH GENERATOR: _generate_new_ancestors: []
+08:23:43.602850 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:43.602899 - GENERATOR: _generate_accessible_label: []
+08:23:43.602910 - SPEECH GENERATOR: _generate_accessible_label: []
+08:23:43.602930 - GENERATOR: _generate_accessible_name: [Open dialog]
+08:23:43.602950 - SPEECH GENERATOR: default voice requested with language='None', dialect=''
+08:23:43.603014 - SPEECH GENERATOR: _generate_accessible_name: [Open dialog, {'established': 'False'}]
+08:23:43.603039 - GENERATOR: _generate_accessible_label_and_name: [Open dialog, {'established': 'False'}]
+08:23:43.603074 - GENERATOR: _generate_state_expanded: []
+08:23:43.603082 - SPEECH GENERATOR: _generate_state_expanded: []
+08:23:43.603101 - FOCUS MANAGER: Active mode: focus-tracking Object of interest: [button: 'Open dialog']
+08:23:43.603111 - DEFAULT: Not in SayAll
+08:23:43.607162 - SPEECH GENERATOR: system voice requested with language='None', dialect=''
+08:23:43.607245 - SPEECH GENERATOR: _generate_accessible_role: [button, {'established': 'False'}]
+08:23:43.607282 - GENERATOR: _generate_state_sensitive: []
+08:23:43.607294 - SPEECH GENERATOR: _generate_state_sensitive: []
+08:23:43.607309 - SPEECH GENERATOR: _generate_keyboard_mnemonic: []
+08:23:43.610255 - SPEECH GENERATOR: _generate_keyboard_accelerator: []
+08:23:43.610297 - SPEECH GENERATOR: _generate_has_click_action: []
+08:23:43.610311 - SPEECH GENERATOR: _generate_has_details: []
+08:23:43.610321 - SPEECH GENERATOR: _generate_details_for: []
+08:23:43.610355 - GENERATOR: _generate_accessible_description: []
+08:23:43.610364 - SPEECH GENERATOR: _generate_accessible_description: []
+08:23:43.610388 - SPEECH GENERATOR: _generate_state_has_popup: []
+08:23:43.611087 - SPEECH GENERATOR: _generate_tutorial: []
+08:23:43.611186 - SPEECH GENERATOR: Results: [Open dialog, {'established': 'False'}, button, {'established': 'False'}, PAUSE, PAUSE]
+08:23:43.614286 - AXUtilitiesRelation: [button: 'Cancel'] is controlled by [button: 'Open dialog']: False
+08:23:43.614339 - AXUtilitiesRelation: [button: 'Open dialog'] is controlled by [button: 'Cancel']: False
+08:23:43.614351 - DEFAULT: Interrupting presentation
+08:23:43.614381 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:43.614602 - BRAILLE: Kill flash message focus_manager.set_locus_of_focus:243 > default.locus_of_focus_changed:676 > default.presentationInterrupt:2289 > braille.killFlash:1510
+08:23:43.615824 - SPEECH: Speak [Open dialog, {'established': 'False'}, button, {'established': 'False'}, PAUSE, PAUSE], acss: None
+08:23:43.615872 - SPEECH OUTPUT: 'Open dialog button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+08:23:43.615880 - SPEECH DISPATCHER: Speaking 'Open dialog button.' as string
+08:23:43.615912 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:43.615943 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:43.618811 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:4"/>Open <mark name="5:11"/>dialog <mark name="12:19"/>button.</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: MOST
+                  SD rate 2, pitch 10, volume 100, language c
+08:23:43.622939 - FOCUS MANAGER: Active window is [frame] default.locus_of_focus_changed:678 > default._save_focused_object_info:624 > ax_utilities_event.save_object_info_for_events:163 > focus_manager.get_active_window:258
+TOTAL PROCESSING TIME: 0.1752
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:43.625375 - EVENT MANAGER: Dequeueing object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0)
+08:23:43.625479 - EVENT MANAGER: Dequeued object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 20
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 0) vvvvv
+08:23:43.625538 - EVENT MANAGER: Ignoring defunct object: [button: 'Cancel']
+TOTAL PROCESSING TIME: 0.0001
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:44.316705 - GENERATOR: Clearing cache.
+08:23:44.660260 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:44.790900 - FOCUS MANAGER: Active window is [frame] <unknown>.<module>:280 > input_event_manager.process_keyboard_event:247 > focus_manager.get_active_window:258
+08:23:44.791526 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:44.800097 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:44.800548 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:44.800994 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_PRESSED_EVENT
+                 id=65293
+                 hw_code=36
+                 modifiers=0
+                 text=''
+                 keyval_name='Return'
+                 timestamp=1792916624.7907734
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_PRESSED_EVENT: 'Return' (36) vvvvv
+08:23:44.801437 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:44.801454 - WINDOW: [frame]
+08:23:44.801467 - LOCATION: [button: 'Open dialog']
+08:23:44.801521 - KEYBINDINGS: 'Return' (36) mods: 0 key-pressed-event matches []
+08:23:44.801536 - KEYBINDINGS: 'Return' (36) mods: 0 key-pressed-event fallback candidates []
+08:23:44.801546 - HANDLER: None
+08:23:44.801561 - DEFAULT: Interrupting presentation
+08:23:44.801579 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:44.801860 - BRAILLE: Kill flash message input_event.process:710 > input_event._present:625 > default.presentationInterrupt:2289 > braille.killFlash:1510
+08:23:44.802750 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:44.802800 - KEYBOARD EVENT: Not character echoable, setting disabled.
+08:23:44.802805 - DEFAULT: Presenting keyboard event
+08:23:44.802842 - SPEECH GENERATOR: None voice requested with language='None', dialect=''
+08:23:44.802864 - SPEECH OUTPUT: 'return' {'established': False}
+08:23:44.802874 - SPEECH DISPATCHER: Speaking 'return' as string
+08:23:44.802878 - SPEECH DISPATCHER: Speaking 'return' as string
+08:23:44.802912 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:44.802930 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:44.805158 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:6"/>return</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: MOST
+                  SD rate 2, pitch 10, volume 100, language c
+08:23:44.805332 - TOTAL PROCESSING TIME: 0.0040
+^^^^^ PROCESS ATSPI_KEY_PRESSED_EVENT: 'Return' (36) ^^^^^
+
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_RELEASED_EVENT
+                 id=65293
+                 hw_code=36
+                 modifiers=0
+                 text=''
+                 keyval_name='Return'
+                 timestamp=1792916624.805498
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_RELEASED_EVENT: 'Return' (36) vvvvv
+08:23:44.806646 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:44.806669 - WINDOW: [frame]
+08:23:44.806683 - LOCATION: [button: 'Open dialog']
+08:23:44.806719 - KEYBINDINGS: 'Return' (36) mods: 0 key-released-event matches []
+08:23:44.806732 - KEYBINDINGS: 'Return' (36) mods: 0 key-released-event fallback candidates []
+08:23:44.806744 - HANDLER: None
+08:23:44.806763 - TOTAL PROCESSING TIME: 0.0002
+^^^^^ PROCESS ATSPI_KEY_RELEASED_EVENT: 'Return' (36) ^^^^^
+
+
+08:23:44.809557 - EVENT MANAGER: object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI'])
+08:23:44.809590 - EVENT_MANAGER: Not ignoring object:children-changed:add due to role
+08:23:44.809627 - EVENT MANAGER: Queueing object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI'])
+08:23:44.809643 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:44.809745 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:44.812140 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:44.812220 - EVENT MANAGER: object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI']) has priority level: 5
+08:23:44.812266 - EVENT MANAGER: Queued object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI']) priority: 5, counter: 21
+08:23:44.812355 - EVENT MANAGER: Dequeueing object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI'])
+08:23:44.812383 - EVENT MANAGER: Dequeued object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI']) priority: 5, counter: 21
+
+vvvvv START PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD (queue size: 0) vvvvv
+
+08:23:44.818497 - EVENT MANAGER: object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel])
+08:23:44.818531 - EVENT_MANAGER: Not ignoring object:children-changed:remove due to role
+08:23:44.818565 - EVENT MANAGER: Queueing object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel])
+08:23:44.818583 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:44.818599 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:44.822692 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:44.822767 - EVENT MANAGER: object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel]) has priority level: 5
+08:23:44.822806 - EVENT MANAGER: Queued object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel]) priority: 5, counter: 22
+
+08:23:44.822855 - EVENT MANAGER: object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0)
+08:23:44.822890 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:44.822918 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to source being focused
+08:23:44.822947 - EVENT MANAGER: Queueing object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0)
+08:23:44.822962 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:44.822977 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [dialog: 'weGPUI']
+08:23:44.823639 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:44.823692 - EVENT MANAGER: object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0) has priority level: 3
+08:23:44.823728 - EVENT MANAGER: Queued object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 23
+
+08:23:44.823768 - EVENT MANAGER: object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (0, 0, 0)
+08:23:44.823793 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:44.823799 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to source being locus of focus
+08:23:44.823835 - EVENT MANAGER: Queueing object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (0, 0, 0)
+08:23:44.823850 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:44.823865 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'Open dialog']
+08:23:44.824354 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:44.824392 - EVENT MANAGER: object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (0, 0, 0) has priority level: 3
+08:23:44.824447 - EVENT MANAGER: Queued object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 24
+08:23:44.848738 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='' role='frame' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0]
+                  
+                  EVENT ANY DATA:
+                  name='weGPUI' role='dialog' id=''
+                  description=''
+                  help=''
+                  states='active, defunct, enabled, focusable, focused, modal, sensitive, showing, visible'
+                  relations=''
+                  actions='click'
+                  interfaces='Action, Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0, 0]
+                  
+08:23:44.848909 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:44.849055 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:44.849093 - EVENT MANAGER: Getting script for event for [application: 'minimal'] [frame]
+08:23:44.849108 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:44.849845 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:44.849871 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:44.849886 - EVENT MANAGER: Processing object:children-changed:add: script for event is active
+08:23:44.849938 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+08:23:44.849964 - AXObject: Clearing local cache. Reason: children-changed event.
+08:23:44.849973 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+08:23:44.849979 - AXUtilitiesEvent: Clearing local cache. Reason: children-changed event.
+TOTAL PROCESSING TIME: 0.0376
+^^^^^ FINISHED PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD ^^^^^
+
+08:23:44.850094 - EVENT MANAGER: Dequeueing object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0)
+08:23:44.850247 - EVENT MANAGER: Dequeued object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 23
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 2) vvvvv
+08:23:44.850341 - EVENT MANAGER: Ignoring defunct object: [dialog: 'weGPUI']
+TOTAL PROCESSING TIME: 0.0001
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:44.850402 - EVENT MANAGER: Dequeueing object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (0, 0, 0)
+08:23:44.850467 - EVENT MANAGER: Dequeued object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 24
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 1) vvvvv
+08:23:44.850506 - EVENT MANAGER: Ignoring defunct object: [button: 'Open dialog']
+TOTAL PROCESSING TIME: 0.0000
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:44.850551 - EVENT MANAGER: Dequeueing object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel])
+08:23:44.850579 - EVENT MANAGER: Dequeued object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel]) priority: 5, counter: 22
+
+vvvvv START PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:REMOVE (queue size: 0) vvvvv
+08:23:44.857631 - AXObject: [panel] has index -1 ; parent [frame] has 1 children
+08:23:44.858078 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='' role='frame' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0]
+                  
+                  EVENT ANY DATA:
+                  name='' role='panel' id='None'
+                  description=''
+                  help=''
+                  states='defunct, enabled, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0, -1]
+                  
+08:23:44.858116 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:44.858177 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:44.858260 - EVENT MANAGER: Getting script for event for [application: 'minimal'] [frame]
+08:23:44.858277 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:44.858819 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:44.858844 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:44.858858 - EVENT MANAGER: Processing object:children-changed:remove: script for event is active
+08:23:44.858869 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+08:23:44.858876 - AXObject: Clearing local cache. Reason: children-changed event.
+08:23:44.858881 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+08:23:44.858886 - AXUtilitiesEvent: Clearing local cache. Reason: children-changed event.
+TOTAL PROCESSING TIME: 0.0083
+^^^^^ FINISHED PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:REMOVE ^^^^^
+
+08:23:46.125941 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:46.244069 - FOCUS MANAGER: Active window is [frame] <unknown>.<module>:280 > input_event_manager.process_keyboard_event:247 > focus_manager.get_active_window:258
+08:23:46.244795 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:46.248640 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:46.249110 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:46.249443 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_PRESSED_EVENT
+                 id=65289
+                 hw_code=23
+                 modifiers=0
+                 text=''
+                 keyval_name='Tab'
+                 timestamp=1792916626.2439535
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_PRESSED_EVENT: 'Tab' (23) vvvvv
+08:23:46.249858 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:46.249873 - WINDOW: [frame]
+08:23:46.249885 - LOCATION: [button: 'Open dialog']
+08:23:46.249962 - KEYBINDINGS: 'Tab' (23) mods: 0 key-pressed-event matches []
+08:23:46.249976 - KEYBINDINGS: 'Tab' (23) mods: 0 key-pressed-event fallback candidates []
+08:23:46.250014 - HANDLER: None
+08:23:46.250041 - DEFAULT: Interrupting presentation
+08:23:46.250062 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:46.251540 - BRAILLE: Kill flash message input_event.process:710 > input_event._present:625 > default.presentationInterrupt:2289 > braille.killFlash:1510
+08:23:46.252228 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:46.252257 - KEYBOARD EVENT: Not character echoable, setting disabled.
+08:23:46.252261 - DEFAULT: Presenting keyboard event
+08:23:46.252285 - SPEECH GENERATOR: None voice requested with language='None', dialect=''
+08:23:46.252308 - SPEECH OUTPUT: 'tab' {'established': False}
+08:23:46.252319 - SPEECH DISPATCHER: Speaking 'tab' as string
+08:23:46.252323 - SPEECH DISPATCHER: Speaking 'tab' as string
+08:23:46.252343 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:46.252359 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:46.256878 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:3"/>tab</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: MOST
+                  SD rate 2, pitch 10, volume 100, language c
+08:23:46.257061 - TOTAL PROCESSING TIME: 0.0073
+^^^^^ PROCESS ATSPI_KEY_PRESSED_EVENT: 'Tab' (23) ^^^^^
+
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_RELEASED_EVENT
+                 id=65289
+                 hw_code=23
+                 modifiers=0
+                 text=''
+                 keyval_name='Tab'
+                 timestamp=1792916626.2571611
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_RELEASED_EVENT: 'Tab' (23) vvvvv
+08:23:46.258142 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:46.258164 - WINDOW: [frame]
+08:23:46.258177 - LOCATION: [button: 'Open dialog']
+08:23:46.258239 - KEYBINDINGS: 'Tab' (23) mods: 0 key-released-event matches []
+08:23:46.258256 - KEYBINDINGS: 'Tab' (23) mods: 0 key-released-event fallback candidates []
+08:23:46.258267 - HANDLER: None
+08:23:46.258285 - TOTAL PROCESSING TIME: 0.0002
+^^^^^ PROCESS ATSPI_KEY_RELEASED_EVENT: 'Tab' (23) ^^^^^
+
+
+08:23:46.258504 - EVENT MANAGER: object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0)
+08:23:46.258539 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:46.258568 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to source being focused
+08:23:46.258598 - EVENT MANAGER: Queueing object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0)
+08:23:46.258613 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:46.258628 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'Cancel']
+08:23:46.265950 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:46.266169 - EVENT MANAGER: object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0) has priority level: 3
+08:23:46.266252 - EVENT MANAGER: Queued object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 25
+
+08:23:46.266478 - EVENT MANAGER: object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (0, 0, 0)
+08:23:46.266521 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:46.266599 - EVENT MANAGER: Queueing object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (0, 0, 0)
+08:23:46.266621 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:46.266639 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [dialog: 'weGPUI']
+08:23:46.268030 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:46.268117 - EVENT MANAGER: object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (0, 0, 0) has priority level: 3
+08:23:46.268156 - EVENT MANAGER: Queued object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 26
+08:23:46.268240 - EVENT MANAGER: Dequeueing object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0)
+08:23:46.268268 - EVENT MANAGER: Dequeued object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 25
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 1) vvvvv
+08:23:46.268362 - EVENT MANAGER: Ignoring defunct object: [button: 'Cancel']
+TOTAL PROCESSING TIME: 0.0001
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:46.268437 - EVENT MANAGER: Dequeueing object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (0, 0, 0)
+08:23:46.268474 - EVENT MANAGER: Dequeued object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 26
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 0) vvvvv
+08:23:46.268501 - EVENT MANAGER: Ignoring defunct object: [dialog: 'weGPUI']
+TOTAL PROCESSING TIME: 0.0000
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:46.316942 - GENERATOR: Clearing cache.
+08:23:47.360299 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:47.635039 - FOCUS MANAGER: Active window is [frame] <unknown>.<module>:280 > input_event_manager.process_keyboard_event:247 > focus_manager.get_active_window:258
+08:23:47.635979 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:47.639302 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:47.639796 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:47.640110 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_PRESSED_EVENT
+                 id=65289
+                 hw_code=23
+                 modifiers=0
+                 text=''
+                 keyval_name='Tab'
+                 timestamp=1792916627.6348486
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_PRESSED_EVENT: 'Tab' (23) vvvvv
+08:23:47.640577 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:47.640594 - WINDOW: [frame]
+08:23:47.640607 - LOCATION: [button: 'Open dialog']
+08:23:47.640646 - KEYBINDINGS: 'Tab' (23) mods: 0 key-pressed-event matches []
+08:23:47.640661 - KEYBINDINGS: 'Tab' (23) mods: 0 key-pressed-event fallback candidates []
+08:23:47.640685 - HANDLER: None
+08:23:47.640713 - DEFAULT: Interrupting presentation
+08:23:47.640745 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:47.641135 - BRAILLE: Kill flash message input_event.process:710 > input_event._present:625 > default.presentationInterrupt:2289 > braille.killFlash:1510
+08:23:47.641906 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:47.641979 - KEYBOARD EVENT: Not character echoable, setting disabled.
+08:23:47.641986 - DEFAULT: Presenting keyboard event
+08:23:47.642067 - SPEECH GENERATOR: None voice requested with language='None', dialect=''
+08:23:47.642105 - SPEECH OUTPUT: 'tab' {'established': False}
+08:23:47.642116 - SPEECH DISPATCHER: Speaking 'tab' as string
+08:23:47.642121 - SPEECH DISPATCHER: Speaking 'tab' as string
+08:23:47.642160 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:47.642277 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:47.648261 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:3"/>tab</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: MOST
+                  SD rate 2, pitch 10, volume 100, language c
+08:23:47.648775 - TOTAL PROCESSING TIME: 0.0083
+^^^^^ PROCESS ATSPI_KEY_PRESSED_EVENT: 'Tab' (23) ^^^^^
+
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_RELEASED_EVENT
+                 id=65289
+                 hw_code=23
+                 modifiers=0
+                 text=''
+                 keyval_name='Tab'
+                 timestamp=1792916627.64955
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_RELEASED_EVENT: 'Tab' (23) vvvvv
+08:23:47.651202 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:47.651237 - WINDOW: [frame]
+08:23:47.651283 - LOCATION: [button: 'Open dialog']
+08:23:47.651332 - KEYBINDINGS: 'Tab' (23) mods: 0 key-released-event matches []
+08:23:47.651354 - KEYBINDINGS: 'Tab' (23) mods: 0 key-released-event fallback candidates []
+08:23:47.651370 - HANDLER: None
+08:23:47.651468 - TOTAL PROCESSING TIME: 0.0003
+^^^^^ PROCESS ATSPI_KEY_RELEASED_EVENT: 'Tab' (23) ^^^^^
+
+
+08:23:47.651705 - EVENT MANAGER: object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (1, 0, 0)
+08:23:47.651757 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:47.651799 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to source being focused
+08:23:47.651870 - EVENT MANAGER: Queueing object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (1, 0, 0)
+08:23:47.651894 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:47.651920 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'OK']
+08:23:47.659695 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:47.659827 - EVENT MANAGER: object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (1, 0, 0) has priority level: 3
+08:23:47.659892 - EVENT MANAGER: Queued object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 27
+
+08:23:47.661114 - EVENT MANAGER: object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0)
+08:23:47.662305 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:47.662441 - EVENT MANAGER: Queueing object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0)
+08:23:47.662472 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:47.662498 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'Cancel']
+08:23:47.663278 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:47.663384 - EVENT MANAGER: object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0) has priority level: 3
+08:23:47.663476 - EVENT MANAGER: Queued object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 28
+08:23:47.663568 - EVENT MANAGER: Dequeueing object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (1, 0, 0)
+08:23:47.663613 - EVENT MANAGER: Dequeued object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 27
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 1) vvvvv
+08:23:47.663705 - EVENT MANAGER: Ignoring defunct object: [button: 'OK']
+TOTAL PROCESSING TIME: 0.0001
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:47.663773 - EVENT MANAGER: Dequeueing object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0)
+08:23:47.663815 - EVENT MANAGER: Dequeued object:state-changed:focused for [button: 'Cancel'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 28
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 0) vvvvv
+08:23:47.663850 - EVENT MANAGER: Ignoring defunct object: [button: 'Cancel']
+TOTAL PROCESSING TIME: 0.0000
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:48.317968 - GENERATOR: Clearing cache.
+08:23:48.768782 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:48.924036 - FOCUS MANAGER: Active window is [frame] <unknown>.<module>:280 > input_event_manager.process_keyboard_event:247 > focus_manager.get_active_window:258
+08:23:48.924755 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:48.928678 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:48.929093 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:48.929543 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_PRESSED_EVENT
+                 id=65293
+                 hw_code=36
+                 modifiers=0
+                 text=''
+                 keyval_name='Return'
+                 timestamp=1792916628.923931
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_PRESSED_EVENT: 'Return' (36) vvvvv
+08:23:48.930242 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:48.930272 - WINDOW: [frame]
+08:23:48.930290 - LOCATION: [button: 'Open dialog']
+08:23:48.930335 - KEYBINDINGS: 'Return' (36) mods: 0 key-pressed-event matches []
+08:23:48.930349 - KEYBINDINGS: 'Return' (36) mods: 0 key-pressed-event fallback candidates []
+08:23:48.930361 - HANDLER: None
+08:23:48.930376 - DEFAULT: Interrupting presentation
+08:23:48.930395 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:48.930617 - BRAILLE: Kill flash message input_event.process:710 > input_event._present:625 > default.presentationInterrupt:2289 > braille.killFlash:1510
+08:23:48.931232 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:48.931258 - KEYBOARD EVENT: Not character echoable, setting disabled.
+08:23:48.931262 - DEFAULT: Presenting keyboard event
+08:23:48.931325 - SPEECH GENERATOR: None voice requested with language='None', dialect=''
+08:23:48.931349 - SPEECH OUTPUT: 'return' {'established': False}
+08:23:48.931360 - SPEECH DISPATCHER: Speaking 'return' as string
+08:23:48.931364 - SPEECH DISPATCHER: Speaking 'return' as string
+08:23:48.931398 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:48.931439 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:48.932612 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:6"/>return</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: MOST
+                  SD rate 2, pitch 10, volume 100, language c
+08:23:48.932899 - TOTAL PROCESSING TIME: 0.0028
+^^^^^ PROCESS ATSPI_KEY_PRESSED_EVENT: 'Return' (36) ^^^^^
+
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_RELEASED_EVENT
+                 id=65293
+                 hw_code=36
+                 modifiers=0
+                 text=''
+                 keyval_name='Return'
+                 timestamp=1792916628.9330678
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_RELEASED_EVENT: 'Return' (36) vvvvv
+08:23:48.934780 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:48.934814 - WINDOW: [frame]
+08:23:48.934832 - LOCATION: [button: 'Open dialog']
+08:23:48.934877 - KEYBINDINGS: 'Return' (36) mods: 0 key-released-event matches []
+08:23:48.934896 - KEYBINDINGS: 'Return' (36) mods: 0 key-released-event fallback candidates []
+08:23:48.934911 - HANDLER: None
+08:23:48.934948 - TOTAL PROCESSING TIME: 0.0004
+^^^^^ PROCESS ATSPI_KEY_RELEASED_EVENT: 'Return' (36) ^^^^^
+
+
+08:23:48.954336 - EVENT MANAGER: object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (1, 0, 0)
+08:23:48.954445 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:48.954459 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to source being locus of focus
+08:23:48.954511 - EVENT MANAGER: Queueing object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (1, 0, 0)
+08:23:48.954535 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:48.954560 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'Open dialog']
+08:23:48.955321 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:48.955476 - EVENT MANAGER: object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (1, 0, 0) has priority level: 3
+08:23:48.955538 - EVENT MANAGER: Queued object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 29
+08:23:48.955664 - EVENT MANAGER: Dequeueing object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (1, 0, 0)
+08:23:48.955711 - EVENT MANAGER: Dequeued object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 29
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 0) vvvvv
+08:23:48.955769 - EVENT MANAGER: Ignoring defunct object: [button: 'Open dialog']
+TOTAL PROCESSING TIME: 0.0001
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+
+08:23:48.955854 - EVENT MANAGER: object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (0, 0, 0)
+08:23:48.955900 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:48.955990 - EVENT MANAGER: Queueing object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (0, 0, 0)
+08:23:48.956012 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:48.956035 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'OK']
+08:23:48.956743 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:48.956862 - EVENT MANAGER: object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (0, 0, 0) has priority level: 3
+08:23:48.956923 - EVENT MANAGER: Queued object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 30
+08:23:48.957019 - EVENT MANAGER: Dequeueing object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (0, 0, 0)
+08:23:48.957103 - EVENT MANAGER: Dequeued object:state-changed:focused for [button: 'OK'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 30
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 0) vvvvv
+08:23:48.957156 - EVENT MANAGER: Ignoring defunct object: [button: 'OK']
+TOTAL PROCESSING TIME: 0.0001
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:50.164213 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:50.212446 - FOCUS MANAGER: Active window is [frame] <unknown>.<module>:280 > input_event_manager.process_keyboard_event:247 > focus_manager.get_active_window:258
+08:23:50.213083 - AXObject: Clearing AT-SPI cache on [frame] Recursive: False. Reason: Checking if window can be the active window
+08:23:50.217887 - AXUtilities: [frame] from [application: 'minimal'] can be active window
+08:23:50.218507 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:50.218846 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_PRESSED_EVENT
+                 id=65293
+                 hw_code=36
+                 modifiers=0
+                 text=''
+                 keyval_name='Return'
+                 timestamp=1792916630.2123015
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_PRESSED_EVENT: 'Return' (36) vvvvv
+08:23:50.219299 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:50.219319 - WINDOW: [frame]
+08:23:50.219331 - LOCATION: [button: 'Open dialog']
+08:23:50.219371 - KEYBINDINGS: 'Return' (36) mods: 0 key-pressed-event matches []
+08:23:50.219385 - KEYBINDINGS: 'Return' (36) mods: 0 key-pressed-event fallback candidates []
+08:23:50.219396 - HANDLER: None
+08:23:50.219456 - DEFAULT: Interrupting presentation
+08:23:50.219477 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fd004d42a50>
+08:23:50.219650 - BRAILLE: Kill flash message input_event.process:710 > input_event._present:625 > default.presentationInterrupt:2289 > braille.killFlash:1510
+08:23:50.220378 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:50.220445 - KEYBOARD EVENT: Not character echoable, setting disabled.
+08:23:50.220452 - DEFAULT: Presenting keyboard event
+08:23:50.220477 - SPEECH GENERATOR: None voice requested with language='None', dialect=''
+08:23:50.220498 - SPEECH OUTPUT: 'return' {'established': False}
+08:23:50.220508 - SPEECH DISPATCHER: Speaking 'return' as string
+08:23:50.220512 - SPEECH DISPATCHER: Speaking 'return' as string
+08:23:50.220547 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:50.220567 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:50.222116 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:6"/>return</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: MOST
+                  SD rate 2, pitch 10, volume 100, language c
+08:23:50.222381 - TOTAL PROCESSING TIME: 0.0031
+^^^^^ PROCESS ATSPI_KEY_PRESSED_EVENT: 'Return' (36) ^^^^^
+
+
+KEYBOARD_EVENT:  type=ATSPI_KEY_RELEASED_EVENT
+                 id=65293
+                 hw_code=36
+                 modifiers=0
+                 text=''
+                 keyval_name='Return'
+                 timestamp=1792916630.2225828
+                 clickCount=1
+
+vvvvv PROCESS ATSPI_KEY_RELEASED_EVENT: 'Return' (36) vvvvv
+08:23:50.224263 - SCRIPT: minimal (module=orca.scripts.default)
+08:23:50.224292 - WINDOW: [frame]
+08:23:50.224307 - LOCATION: [button: 'Open dialog']
+08:23:50.224342 - KEYBINDINGS: 'Return' (36) mods: 0 key-released-event matches []
+08:23:50.224355 - KEYBINDINGS: 'Return' (36) mods: 0 key-released-event fallback candidates []
+08:23:50.224366 - HANDLER: None
+08:23:50.224386 - TOTAL PROCESSING TIME: 0.0002
+^^^^^ PROCESS ATSPI_KEY_RELEASED_EVENT: 'Return' (36) ^^^^^
+
+
+08:23:50.231608 - EVENT MANAGER: object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI'])
+08:23:50.231658 - EVENT_MANAGER: Not ignoring object:children-changed:add due to role
+08:23:50.231714 - EVENT MANAGER: Queueing object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI'])
+08:23:50.231779 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:50.231805 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:50.232672 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:50.232798 - EVENT MANAGER: object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI']) has priority level: 5
+08:23:50.232861 - EVENT MANAGER: Queued object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI']) priority: 5, counter: 31
+
+08:23:50.232993 - EVENT MANAGER: object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel])
+08:23:50.233020 - EVENT_MANAGER: Not ignoring object:children-changed:remove due to role
+08:23:50.233066 - EVENT MANAGER: Queueing object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel])
+08:23:50.233133 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:50.233157 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:50.233989 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:50.234101 - EVENT MANAGER: object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel]) has priority level: 5
+08:23:50.234161 - EVENT MANAGER: Queued object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel]) priority: 5, counter: 32
+
+08:23:50.234371 - EVENT MANAGER: object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0)
+08:23:50.234463 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:50.234508 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to source being focused
+08:23:50.234565 - EVENT MANAGER: Queueing object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0)
+08:23:50.234588 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:50.234612 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [dialog: 'weGPUI']
+08:23:50.236281 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:50.236385 - EVENT MANAGER: object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0) has priority level: 3
+08:23:50.236542 - EVENT MANAGER: Queued object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 33
+08:23:50.236625 - EVENT MANAGER: Dequeueing object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0)
+08:23:50.236654 - EVENT MANAGER: Dequeued object:state-changed:focused for [dialog: 'weGPUI'] in minimal (AccessKit) (1, 0, 0) priority: 3, counter: 33
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 2) vvvvv
+08:23:50.236760 - EVENT MANAGER: Ignoring defunct object: [dialog: 'weGPUI']
+TOTAL PROCESSING TIME: 0.0001
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+
+08:23:50.236817 - EVENT MANAGER: object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (0, 0, 0)
+08:23:50.236848 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:50.236854 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to source being locus of focus
+08:23:50.236880 - EVENT MANAGER: Queueing object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (0, 0, 0)
+08:23:50.236895 - EVENT MANAGER: App for event source is [application: 'minimal']
+08:23:50.236909 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [button: 'Open dialog']
+08:23:50.238293 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:50.238383 - EVENT MANAGER: object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (0, 0, 0) has priority level: 3
+08:23:50.238454 - EVENT MANAGER: Queued object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 34
+08:23:50.238519 - EVENT MANAGER: Dequeueing object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (0, 0, 0)
+08:23:50.238547 - EVENT MANAGER: Dequeued object:state-changed:focused for [button: 'Open dialog'] in minimal (AccessKit) (0, 0, 0) priority: 3, counter: 34
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 2) vvvvv
+08:23:50.238610 - EVENT MANAGER: Ignoring defunct object: [button: 'Open dialog']
+TOTAL PROCESSING TIME: 0.0001
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+08:23:50.238660 - EVENT MANAGER: Dequeueing object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI'])
+08:23:50.238688 - EVENT MANAGER: Dequeued object:children-changed:add for [frame] in minimal (AccessKit) (0, 0, [dialog: 'weGPUI']) priority: 5, counter: 31
+
+vvvvv START PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD (queue size: 1) vvvvv
+08:23:50.265176 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='' role='frame' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0]
+                  
+                  EVENT ANY DATA:
+                  name='weGPUI' role='dialog' id=''
+                  description=''
+                  help=''
+                  states='active, defunct, enabled, focusable, focused, modal, sensitive, showing, visible'
+                  relations=''
+                  actions='click'
+                  interfaces='Action, Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0, 0]
+                  
+08:23:50.265221 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:50.265283 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:50.265317 - EVENT MANAGER: Getting script for event for [application: 'minimal'] [frame]
+08:23:50.265332 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:50.266073 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:50.266087 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:50.266096 - EVENT MANAGER: Processing object:children-changed:add: script for event is active
+08:23:50.266128 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+08:23:50.266146 - AXObject: Clearing local cache. Reason: children-changed event.
+08:23:50.266154 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+08:23:50.266177 - AXUtilitiesEvent: Clearing local cache. Reason: children-changed event.
+TOTAL PROCESSING TIME: 0.0275
+^^^^^ FINISHED PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD ^^^^^
+
+08:23:50.266304 - EVENT MANAGER: Dequeueing object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel])
+08:23:50.266336 - EVENT MANAGER: Dequeued object:children-changed:remove for [frame] in minimal (AccessKit) (-1, 0, [panel]) priority: 5, counter: 32
+
+vvvvv START PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:REMOVE (queue size: 0) vvvvv
+08:23:50.279762 - AXObject: [panel] has index -1 ; parent [frame] has 1 children
+08:23:50.280779 - EVENT SOURCE:
+                  app='minimal (AccessKit )' name='' role='frame' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0]
+                  
+                  EVENT ANY DATA:
+                  name='' role='panel' id='None'
+                  description=''
+                  help=''
+                  states='defunct, enabled, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0, -1]
+                  
+08:23:50.280859 - SCRIPT MANAGER: Active script is: minimal (module=orca.scripts.default)
+08:23:50.281013 - FOCUS MANAGER: Locus of focus is [button: 'Open dialog']
+08:23:50.281094 - EVENT MANAGER: Getting script for event for [application: 'minimal'] [frame]
+08:23:50.281122 - SCRIPT MANAGER: Getting script for [application: 'minimal'] [frame]
+08:23:50.281791 - SCRIPT MANAGER: Script is app script minimal (module=orca.scripts.default)
+08:23:50.281811 - EVENT MANAGER: Script for event is minimal (module=orca.scripts.default)
+08:23:50.281831 - EVENT MANAGER: Processing object:children-changed:remove: script for event is active
+08:23:50.281884 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+08:23:50.281919 - AXObject: Clearing local cache. Reason: children-changed event.
+08:23:50.281936 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.

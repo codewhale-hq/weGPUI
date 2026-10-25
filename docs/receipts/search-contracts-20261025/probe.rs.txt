@@ -1,0 +1,126 @@
+use gpui::{prelude::*, *};
+use wegpui::{
+    Theme,
+    components::search_bar::{SearchBar, SearchBarEvent, SearchBarVariant},
+};
+
+struct Probe {
+    home: Entity<SearchBar>,
+    outlined: Entity<SearchBar>,
+    filled: Entity<SearchBar>,
+    subscriptions: Vec<Subscription>,
+}
+
+impl Probe {
+    fn new(cx: &mut Context<Self>) -> Self {
+        let home = cx.new(|cx| {
+            let mut bar = SearchBar::new(cx).variant(SearchBarVariant::Homepage);
+            bar.set_placeholder("Home search", cx);
+            bar
+        });
+        let outlined = cx.new(|cx| {
+            let mut bar = SearchBar::new(cx)
+                .variant(SearchBarVariant::Outlined)
+                .words("Keyword")
+                .clear_on_cancel(false);
+            bar.set_placeholder("Outlined search", cx);
+            bar.set_text("preserved", cx);
+            bar.input()
+                .update(cx, |input, cx| input.set_readonly(true, cx));
+            bar
+        });
+        let filled = cx.new(|cx| {
+            let mut bar = SearchBar::new(cx).words("Scope");
+            bar.set_placeholder("Filled search", cx);
+            bar
+        });
+        let mut subscriptions = Vec::new();
+        for (name, bar) in [
+            ("home", &home),
+            ("outlined", &outlined),
+            ("filled", &filled),
+        ] {
+            subscriptions.push(cx.subscribe(bar, move |_, _, event: &SearchBarEvent, _| {
+                eprintln!("{name} event={event:?}");
+            }));
+        }
+        Self {
+            home,
+            outlined,
+            filled,
+            subscriptions,
+        }
+    }
+}
+
+impl Render for Probe {
+    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let t = Theme::get(cx).clone();
+        let _ = &self.subscriptions;
+        div().id("search-contracts").size_full().flex().flex_col().gap(px(24.)).p(px(20.)).bg(t.bg_0).text_color(t.fg_0)
+            .on_key_down(cx.listener(|this, event: &KeyDownEvent, window, cx| {
+                match event.keystroke.key.as_str() {
+                    "tab" => {
+                        if event.keystroke.modifiers.shift { window.focus_prev(cx); } else { window.focus_next(cx); }
+                    }
+                    "f1" => {
+                        let focus = this.home.focus_handle(cx);
+                        window.focus(&focus, cx);
+                    }
+                    "f2" => this.outlined.update(cx, |bar, cx| bar.cancel(window, cx)),
+                    "f3" => this.outlined.update(cx, |bar, cx| {
+                        bar.input().update(cx, |input, cx| input.set_readonly(false, cx));
+                        bar.set_text("editable", cx);
+                        bar.activate(window, cx);
+                    }),
+                    "f4" => this.outlined.update(cx, |bar, cx| {
+                        bar.input().update(cx, |input, cx| input.set_readonly(true, cx));
+                    }),
+                    "f5" => this.outlined.update(cx, |bar, cx| {
+                        bar.input().update(cx, |input, cx| input.set_readonly(false, cx));
+                        bar.activate(window, cx);
+                    }),
+                    "f8" => eprintln!("snapshot home_focused={} outlined_text={:?} outlined_readonly={} filled_text={:?}",
+                        this.home.focus_handle(cx).is_focused(window), this.outlined.read(cx).text(cx),
+                        this.outlined.read(cx).input().read(cx).is_readonly(), this.filled.read(cx).text(cx)),
+                    _ => return,
+                }
+                cx.stop_propagation();
+            }))
+            .child(div().id("title").role(Role::Heading).aria_label("Search contracts").child("F1 home focus; F2 outlined cancel; F3 edit; F4 readonly; F5 edit; F8 snapshot"))
+            .child(this_bar(self.home.clone()))
+            .child(this_bar(self.outlined.clone()))
+            .child(this_bar(self.filled.clone()))
+    }
+}
+
+fn this_bar(bar: Entity<SearchBar>) -> impl IntoElement {
+    bar
+}
+
+#[path = "support/platform.rs"]
+mod platform;
+fn main() {
+    platform::application()
+        .with_assets(wegpui::Assets)
+        .run(|cx| {
+            wegpui::init(cx);
+            let bounds = Bounds::new(point(px(40.), px(40.)), size(px(720.), px(650.)));
+            cx.open_window(
+                WindowOptions {
+                    window_bounds: Some(WindowBounds::Windowed(bounds)),
+                    titlebar: Some(TitlebarOptions {
+                        title: Some("weGPUI search contracts".into()),
+                        ..Default::default()
+                    }),
+                    ..Default::default()
+                },
+                |window, cx| {
+                    Theme::observe(window);
+                    cx.new(Probe::new)
+                },
+            )
+            .expect("search window");
+            cx.activate(true);
+        });
+}

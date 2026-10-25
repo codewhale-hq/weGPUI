@@ -1,0 +1,195 @@
+[
+  {
+    "role": "desktop frame",
+    "name": "main",
+    "states": []
+  },
+  {
+    "role": "application",
+    "name": "control_contracts",
+    "states": []
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI control contracts",
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Start matrix",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "check box",
+    "name": "Standalone checkbox",
+    "states": [
+      "checked",
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ]
+  },
+  {
+    "role": "check box",
+    "name": "Disabled checkbox",
+    "states": [
+      "checked",
+      "showing",
+      "visible",
+      "checkable",
+      "read only"
+    ]
+  },
+  {
+    "role": "check box",
+    "name": "Checkbox row",
+    "states": [
+      "checked",
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ]
+  },
+  {
+    "role": "check box",
+    "name": "Disabled checkbox row",
+    "states": [
+      "showing",
+      "visible",
+      "checkable",
+      "read only"
+    ]
+  },
+  {
+    "role": "toggle button",
+    "name": "Switch",
+    "states": [
+      "enabled",
+      "focusable",
+      "pressed",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "toggle button",
+    "name": "Disabled switch",
+    "states": [
+      "pressed",
+      "showing",
+      "visible",
+      "read only"
+    ]
+  },
+  {
+    "role": "panel",
+    "name": "First radio group",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "radio button",
+    "name": "Radio A",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ]
+  },
+  {
+    "role": "radio button",
+    "name": "Radio disabled",
+    "states": [
+      "showing",
+      "visible",
+      "checkable",
+      "read only"
+    ]
+  },
+  {
+    "role": "radio button",
+    "name": "Radio C",
+    "states": [
+      "checked",
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ]
+  },
+  {
+    "role": "panel",
+    "name": "Second radio group",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "radio button",
+    "name": "Second A",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ]
+  },
+  {
+    "role": "radio button",
+    "name": "Second B",
+    "states": [
+      "checked",
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "End matrix",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "source": "first Rust code block from root README.md",
+  "source_sha256": "f82777f5120d3f41b8fa7430cb5ec168b2ea366d93d75dce69bb322118c48157",
+  "binary_sha256": "33faa1b163e45a42a13b4ba6ce3ecc8c3094bbde542570826373024b8563cd60",
+  "result": "locked offline build passed with explicit root patches; no runtime claim"
+}

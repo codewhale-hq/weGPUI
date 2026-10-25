@@ -1,0 +1,18 @@
+event 1 open
+snapshot open=true values=["2000", "2", "29"] indices=[2147485648, 1, 28] opener_focus=false
+snapshot open=true values=["2000", "2", "29"] indices=[2147485648, 1, 28] opener_focus=false
+event 2 change=2000,3,29
+snapshot open=true values=["2000", "3", "29"] indices=[2147485648, 2, 28] opener_focus=false
+event 3 change=2000,3,31
+snapshot open=true values=["2000", "3", "31"] indices=[2147485648, 2, 30] opener_focus=false
+event 4 change=2000,2,29
+snapshot open=true values=["2000", "2", "29"] indices=[2147485648, 1, 28] opener_focus=false
+event 5 change=2147483647,2,28
+snapshot open=true values=["2147483647", "2", "28"] indices=[4294967295, 1, 27] opener_focus=false
+event 6 change=2147483646,2,28
+snapshot open=true values=["2147483646", "2", "28"] indices=[4294967294, 1, 27] opener_focus=false
+event 7 change=-2147483648,2,28
+snapshot open=true values=["-2147483648", "2", "28"] indices=[0, 1, 27] opener_focus=false
+event 8 confirm=-2147483648,2,28
+event 9 close
+snapshot open=false values=["-2147483648", "2", "28"] indices=[0, 1, 27] opener_focus=true

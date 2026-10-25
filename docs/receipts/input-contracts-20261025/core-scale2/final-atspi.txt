@@ -1,0 +1,9 @@
+apps 1
+application 'input_contracts_probe' [] DISABLED
+  frame 'weGPUI input contracts probe' ['showing']
+    entry 'Word editing' ['focusable', 'focused', 'showing']
+    entry 'Wrapped notes' ['focusable', 'showing']
+    entry 'Read only' ['focusable', 'showing']
+    entry 'Disabled' ['showing'] DISABLED
+    password text 'Password' ['focusable', 'showing']
+    entry 'UTF16 limit' ['focusable', 'showing'] description='At most six UTF-16 units'

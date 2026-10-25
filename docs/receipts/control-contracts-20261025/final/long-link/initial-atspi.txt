@@ -1,0 +1,7 @@
+apps 1
+application 'control_contracts' [] DISABLED
+  frame 'weGPUI control contracts' ['focusable', 'focused', 'showing']
+    button 'Start matrix' ['focusable', 'showing']
+    check box 'Read Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms ' ['focusable', 'showing']
+      link 'Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms Additional legal terms ' ['focusable', 'showing']
+    button 'End matrix' ['focusable', 'showing']

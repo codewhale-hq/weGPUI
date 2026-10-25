@@ -1,0 +1,6 @@
+{"step": "choice-standalone-checkbox", "counts": {"checkbox": 3}, "focused": ["Standalone checkbox"], "time": 1792916441.5154097}
+{"step": "choice-checkbox-row", "counts": {"checkbox": 3, "checkbox-row": 3}, "focused": ["Checkbox row"], "time": 1792916442.5399847}
+{"step": "choice-switch", "counts": {"checkbox": 3, "checkbox-row": 3, "switch": 3}, "focused": ["Switch"], "time": 1792916443.5610585}
+{"step": "choices-controlled", "counts": {"checkbox": 3, "checkbox-row": 3, "switch": 3}, "focused": ["Switch"], "time": 1792916445.0313642}
+{"step": "radio-wrap-skips-disabled", "counts": {"checkbox": 3, "checkbox-row": 3, "switch": 3, "radio-0": 2, "radio-2": 4}, "focused": ["Radio C"], "time": 1792916446.5737178}
+{"step": "radio-independent", "counts": {"checkbox": 3, "checkbox-row": 3, "switch": 3, "radio-0": 2, "radio-2": 4, "second-radio-1": 1}, "focused": ["Second B"], "time": 1792916447.3117118}

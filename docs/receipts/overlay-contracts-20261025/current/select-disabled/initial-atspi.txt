@@ -1,0 +1,6 @@
+apps 1
+application 'probe-current' [] DISABLED
+  frame 'weGPUI overlay contracts' ['focusable', 'focused', 'showing']
+    panel '' ['showing']
+      button 'Open overlay' ['focusable', 'showing']
+      combo box 'Disabled value' ['showing'] DISABLED

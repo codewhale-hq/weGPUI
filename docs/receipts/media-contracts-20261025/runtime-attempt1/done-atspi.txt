@@ -1,0 +1,17 @@
+apps 1
+application 'media_contract_probe' [] DISABLED
+  frame 'weGPUI media contracts' ['showing']
+    panel '' ['showing']
+      list item 'Upload contract，2/2' ['showing']
+      list '' ['showing']
+        image 'Image 1' ['focusable', 'showing'] description='Open this image preview'
+        button '删除' ['focusable', 'showing']
+        notification '20%' ['showing']
+      button 'Fail upload' ['focusable', 'focused', 'showing']
+      button 'Complete upload' ['focusable', 'showing']
+      button 'Reset uploads' ['focusable', 'showing']
+      button 'Toggle request acceptance' ['focusable', 'showing']
+      list item 'Controlled row' ['focusable', 'showing'] description='按左方向键或回车显示操作，右方向键或 Esc 隐藏'
+        list item 'Controlled row' ['showing'] description='Actions'
+      list item 'No actions' ['showing']
+      label 'Files 2; swipe false; accept true. added Image 2: progress 20%' ['showing']

@@ -21,40 +21,81 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 
 ## Linux continuation — 2026-10-25
 
-GitHub main was fetched and fast-forward checked at `52650f3`; the cloud checkout was clean.
-The later uncommitted Mac continuation was not available here and supplies no cloud evidence.
-The continuation uses Rust 1.98.1 and locked gpui-pre 0.3.9, without Cargo dependency changes.
-Integrated checks and source/artifact provenance are in
-[the continuation receipt](receipts/linux-continuation-20261025/README.md).
+The first cloud continuation fetched clean GitHub main `52650f3` and was committed as
+`9c4515c`. The later local Mac candidate was unavailable here and supplies no cloud validation.
+The separately green vertical-form label fix `a3ce3af` was then integrated into the second
+Linux batch. Every runtime receipt identifies its own source and executable; later dirty
+source is not retrospectively covered by an earlier executable.
 
-- Added missing focus-reveal targets and the article link ring; reusable controls and five
-  short-viewport gallery pages were driven ([focus receipt](receipts/focus-reveal-20261025/README.md)).
-- Captured and visually reviewed all 72 registered startup states in dark, light+care and
-  light+brand `7C3AED` (216 native images). This is [native-only evidence](receipts/native-states-20261025/README.md):
-  the pinned reference SDK fetch was blocked by the configured proxy, so no new paired parity pass.
-- Ran real GPUI Wayland clients under nested Weston with DISPLAY absent; sampled modal,
-  keyboard, clipboard/undo and output resizing behavior has [Wayland receipts](receipts/wayland-20261025/README.md).
-- Actual Orca speech exposed missing text readback, incorrectly grouped example radios,
-  unnamed text labels and lower-modal exposure. Source fixes and separate tree/speech
-  followups are linked in [the Orca receipt](receipts/orca-20261025/README.md) and
-  [text receipt](receipts/a11y-text-20261025/README.md).
-- Orca reopen/restoration remains blocked by malformed AccessKit cache signals and defunct
-  reader objects. Disabled-button export also remains unresolved upstream. Captured speech
-  transcripts and PCM were inspected, but audio intelligibility was not reviewed by listening.
-  Full screen-reader acceptance, all component/theme/state combinations, other desktop hosts
-  and hardware Linux qualification remain open. **No component row is accepted.**
+The first batch's Rust 1.98.1 checks and artifacts remain in
+[the continuation receipt](receipts/linux-continuation-20261025/README.md). It added focus
+reveal targets, text readback and semantic fixes, and depth-ranked nested-modal isolation.
+It also captured and visually reviewed 216 dark/care/brand startup images and ran actual GPUI
+Wayland clients under nested Weston. The pinned SDK fetch blocked a new paired upstream-shell
+sweep; native-only captures are explicitly labelled.
+
+The second batch implements and drives reusable APIs rather than counting gallery routes:
+
+- [Controls](receipts/control-contracts-20261025/README.md): button sizes/kinds/loading/disabled
+  callbacks in eight theme combinations, consent propagation/wrapping, verification-code timer
+  guards and sampled continuous switch reversal.
+- [Forms and dates](receipts/form-contracts-20261025/README.md): validated optional ISO entry,
+  range/owner-update rules, DateTime staging, read-only/disabled behavior and mode-change focus.
+  The final 15-step native rerun and actual Orca invalid/retry/correct/clear speech checks pass
+  separately; the earlier duplicate error speech remains preserved.
+- [Overlays](receipts/overlay-contracts-20261025/README.md): thirteen native cases cover dismissal,
+  exact callback counts during close, reentrant reopening, long selects, lazy full-range dates,
+  sheet dragging and inline focus reveal. The initial repeated-confirm failure is retained.
+- [Data and content](receipts/data-contracts-20261025/README.md): controlled navigation/Slider,
+  actual row/grid/footer callbacks, live events and viewport notice/footer occlusion. Semantic
+  article-image paint regressions are preserved; the final light/dark correction passes semantic
+  and native visual review with 184px images, 24px following gaps and no paint spill.
+- [Media](receipts/media-contracts-20261025/README.md): actual thumbnail previews and deletion,
+  uploader capacity/status APIs, controlled swipe requests, focus return and AT default actions.
+- [Search](receipts/search-contracts-20261025/README.md): actual Homepage/Outlined/Filled callbacks,
+  public focus, read-only clearing guards and input refocus. Disabled transitions/FilledGrey callback matrix and complete
+  theme/state qualification remain open.
+- [Input](receipts/input-contracts-20261025/README.md): native word editing, selection/undo,
+  composition-commit contracts and 31-step shaped-text/AT matrices at scales 1/2. Inserted-glyph
+  visibility and moved X11 origins pass; held-modifier Orca readback is recorded separately,
+  with service-teardown failures preserved.
+
+The owner approved local compatibility copies of GPUI/AccessKit without changing their package
+versions. [Actual Orca followups](receipts/linux-bridge-20261025/README.md) now read repeated
+reopened dialogs and restore their opener after the Cache AddAccessible correction. The
+[bridge/state/origin followup](receipts/wayland-20261025/bridge-followup/README.md) verifies
+Disabled, ReadOnly, Busy, InvalidEntry, Expanded/Collapsed, heading levels and X11 native origin
+updates; old unsupported-state/cache observations describe their old artifacts. Cargo patch
+propagation to downstream workspace roots is documented in [vendor/README](../vendor/README.md).
+
+The final source, including the checkbox/caret review corrections, passed all five gates on
+Rust 1.98.1: formatting, all-target build, 47 unit tests (one ignored doctest), Clippy with
+warnings denied and strict rustdoc, using locked/offline Cargo resolution where applicable.
+[The batch receipt](receipts/component-contracts-20261025/README.md) records the final source
+qualification. Article light/dark review and corrected checkbox eight-mode callback/interior
+pixel checks pass. Final Outlined/FilledGrey caret surfaces and FilledGrey action-focus pixels
+also pass their eight-mode native/visual checks
+([focus receipt](receipts/focus-contrast-20261025/README.md)). The earlier 2.226:1 Picker
+ring and the first contrast sweep's unchecked-checkbox fill defect remain historical failures.
+Actual Orca speech/PCM was collected, but audio intelligibility has not been accepted by
+listening. Other desktop hosts, hardware, complete theme/state/reference sweeps and full reader
+qualification remain open. **No component row is accepted.**
 
 ## Platform acceptance matrix
 
 | Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
 | --- | --- | --- | --- | --- | --- | --- |
-| macOS arm64 | Current examples, nine tests, strict Clippy/rustdoc and packaged consumer pass | Current component sample; historical gallery/minimal receipts retained | Native dark component sample; historical parity pairs not recaptured | Loading/countdown guards, disabled Tab skip, panel focus/activation and independent choices | Current input label, spinner names and tip-list AX nodes; historical modal/list checks; VoiceOver incomplete | Crate package and separate consumer build pass; signed/fresh-machine distribution missing |
-| Linux x86_64 | Rust 1.98.1 continuation gates/source recorded in receipt; historical MSRV checks separate | X11 and sampled real Wayland clients under nested Weston | Historical 192 pairs; new 216 native-only dark/care/brand captures reviewed | X11 focus reveal; Wayland modal, typing/clipboard/undo and resize samples; historical XIM/portal evidence | Actual Orca transcript/audio collection and Text/tree checks; cache/reopen and disabled-button blockers; no full reader acceptance | Historical crate/consumer checks; desktop distribution missing |
+| macOS arm64 | October 24 candidate examples, nine tests, strict Clippy/rustdoc and packaged consumer pass; current Linux continuation unqualified | Historical component/gallery/minimal launches | Historical native dark sample and parity pairs | Historical loading/countdown/disabled/panel/choice samples | Historical input/spinner/tip AX checks; VoiceOver off and incomplete | Historical crate/consumer pass; signed/fresh-machine distribution missing |
+| Linux x86_64 | Final five gates pass after checkbox/caret corrections on Rust 1.98.1, 47 tests/one ignored doctest; historical MSRV checks separate | X11 and real Wayland clients under nested Weston | Historical 192 pairs; 216 native-only states and targeted eight-mode control/data/media reviews; complete reference/theme parity open | Reusable callback/state/focus/transition matrices and Wayland regression samples; hardware/reduced-motion/IME coverage incomplete | Approved compatibility copies pass sampled cache/state/text/X11-origin checks and actual Orca reopen; full reader/listening acceptance missing | Separate path-consumer build and X11 runtime pass with explicit root patches; published-package/fresh-machine/distribution unqualified |
 | Windows ARM64 | Native MSVC gallery/component sample build, 9 tests and strict rustdoc pass on the October 24 component candidate | Gallery and component sample launch in Windows 11 ARM VM | Native VirtIO GPU rendering; sampled light components and dark dialog | Text entry, loading/disabled actions, countdown, panel focus, independent radios and navbar wrap | Screen-reader and native accessibility-tree acceptance still missing | Package archive built and used for guest compilation; distributable installation unqualified |
-| iOS | Fresh library type-checks pass; hosted app build fails in upstream iOS/core APIs | 0.3.9 scaffold wired; upstream compilation blocker, no launch | Missing | Missing | Missing; backend lacks AccessKit | Missing |
-| Android | Fresh 0.3.9 library type-check; no app build | Blocked: no backend upstream | Missing | Missing | Missing | Missing |
+| iOS | Historical library type-checks pass; hosted app build fails in upstream iOS/core APIs | 0.3.9 scaffold wired; upstream compilation blocker, no launch | Missing | Missing | Missing; backend lacks AccessKit | Missing |
+| Android | Historical 0.3.9 library type-check; no app build | Blocked: no backend upstream | Missing | Missing | Missing | Missing |
 
-## Done
+## Historical completed slices
+
+The entries below retain their original source/date scope. Current second-batch behavior and
+remaining gaps are recorded above and in the reconciled family table; historical source-only
+claims are superseded only by the specifically linked later receipts.
 
 - **Component continuation:** native macOS and Windows ARM builds, 9 tests each, strict Clippy
   and rustdoc pass; a fresh packaged macOS consumer compiles. Runtime checks cover loading,
@@ -136,82 +177,93 @@ Integrated checks and source/artifact provenance are in
 
 ## Behaviour by family
 
-"Matches" names the exercised behaviour only. The table retains historical samples; later
-Linux receipts are in ACCEPTANCE. Early X11 receipts used an uncommitted windowing feature
-change, which is now on GitHub main. Receipt source hashes determine the applicable source.
+Each result is a sampled contract, not whole-component acceptance. Historical macOS/Windows
+samples predate the current Linux source. New Linux callbacks, native captures, AT-SPI trees,
+bridge events and actual reader speech are separate evidence classes.
 
-| Family | Result | Evidence and remaining difference |
+| Family | Current sampled evidence | Remaining difference / qualification |
 | --- | --- | --- |
-| Action sheet | Partly matches | macOS open states and corner fix. Shares the Presence/ModalScope fixes. Dismissal matrix and timing untested. |
-| Article | Partly matches | Linux AT-SPI and fresh macOS AX: headings and list items exposed. Heading level is set, but `accesskit_atspi_common 0.19.1` does not forward it. Nested markers in `list_none` fixed in source. |
-| Badge | Untested | Static examples only. |
-| Button / Agree | Partly tested | Linux click on 普通型 navigates; Tab focus ring visible. Accessible-name fix is source-only. Loading/disabled/consent matrix not driven. |
-| Dialog | Partly matches | Linux AT-SPI and fresh macOS minimal-dialog isolation. Minimal real-input OK increments the counter and restores focus; gallery `--state 1` was an invalid probe, not an open-dialog check. |
-| Flex | Untested | Responsive resizing not exercised. |
-| Footer | Untested | Callbacks empty in the gallery. |
-| Form / input / textarea | Partly matches; differs | Linux real keys: typing, undo/redo, UTF-16 limit, Pinyin commit/cancel (single line and multiline). macOS TextArea Pinyin. Numeric filtering is not HTML validation. Preedit is not inline on Linux XIM. |
-| Form choices | Matches samples | macOS radio/switch samples; Linux AT-SPI switch tree. Checkbox/Agree matrix untested. |
-| Form select | Differs (adaptation) | HTML `<select>` is an overlay menu. Linux real-key bounded navigation and Escape focus restore verified. Fresh macOS AX isolation and option titles pass; attempted key sequence did not open the menu and is inconclusive. |
-| Gallery / image viewer | Matches samples | Historical macOS close/delete. Linux committed captures show `uploader:viewer` startup state; they do not prove a thumbnail click. Pinch/zoom untested. |
-| Grid | Untested | Example callbacks are empty. |
-| Half-screen dialog | Matches samples | Historical macOS open/Tab/Escape/drag; fresh macOS AX isolation. Linux AT-SPI isolation and interrupted-transition frames. |
-| Icons | Untested | Assets reproduce from the tarball. |
-| Information bar | Matches sample | macOS close. Link/floating variants untested. |
-| List / swiped cell | Partly matches | Historical macOS drag. Linux AT-SPI and fresh macOS AX hide closed actions. Delete callback empty upstream and in the gallery. |
-| Loading | Partly tested | Standard/mask artwork now comes from the upstream SVG; primary uses the separate CSS-ring mask. Three simultaneous spinners render on Windows. Animation timing and live reduced-motion changes remain unverified. |
-| Loadmore | Untested | Presentation only. |
-| Message / LinkText | Partly tested | Current macOS sample: short/wrapped link clicks, separate Tab targets, Enter/Space and named-link activation pass. Bounds follow shaped text; [receipts](receipts/inline-links-20261024/README.md). Screen-reader acceptance remains open. Message callbacks empty. |
-| Navbar / Tabbar | Matches samples | macOS arrow sample and later Linux X11 roving-arrow checks (`receipts/a11y-p1-20261024`). Full theme/state and screen-reader acceptance open. |
-| Panel | Untested | CJK punctuation and clamping differ. |
-| Picker | Partly matches; differs | Linux AT-SPI option names present; fresh macOS raw AXTitle contains the names omitted by the old dump. Disabled-default/all-disabled interaction evidence remains Linux-only. `today()` is UTC, while the example uses local time. weui.js throws on all-disabled columns; weGPUI disables Confirm. |
-| Preview | Untested | Callbacks empty. |
-| Progress | Untested | NaN fix is source-only. |
-| Search bar | Partly matches | Linux single-line Pinyin commit/cancel. macOS typing/results. |
-| Slider | Matches samples | Historical macOS drag/keys; Linux non-finite-input probe. Zero-step fallback is implemented and included in probe source, without a committed interaction receipt. |
-| Steps | Untested | Static rendering. |
-| Toast / toptips | Partly matches | Fresh macOS tree keeps page controls and one named toast node; alert subrole and typing not verified. Linux: passive toast keeps focus and the page tree (as upstream's `role="alert"`); uploader error tip. Timing untested. |
-| Uploader | Partly matches | Linux chooser lifecycle (picked, error, cancel, no portal). Transport is application-owned, as upstream. |
-| Home / layers / index | Untested | Gallery-specific surfaces. |
+| Action sheet | iOS/Android item callbacks, Cancel/mask/Escape and rapid-close guard; inline leaf reveal ([overlays](receipts/overlay-contracts-20261025/README.md)) | Full theme/timing/reader/host matrix; pinned upstream has no disabled-item state. |
+| Article | Text/heading/list helpers and stable IDs; repeated h6 level 6 forwarded ([data](receipts/data-contracts-20261025/README.md)) | Final light/dark image-wrapper semantics/bounds and no-spill visual review pass; earlier failures retained. Typography/list/reader parity incomplete. |
+| Badge | Historical light/dark/care rendering and accessible row names | Complete themes/states/readers/hosts. |
+| Button / Agree | 576 rendered button-state combinations with actual callbacks/guards; eight-mode terms/checkbox callbacks; long text and propagation regression fixed ([controls](receipts/control-contracts-20261025/README.md)) | Eight-mode focus samples pass separately; full focus appearance/reader/host acceptance remains open. |
+| Dialog / Modal | Five-click bursts emit once, disabled skip, focus return, raw child guard; depth-ranked three-layer isolation ([overlays](receipts/overlay-contracts-20261025/README.md), [nested](receipts/nested-modal-a11y-20261025/README.md)) | Saved custom AT actions during closing are untested; arbitrary external deferred ordering requires its own contract; full timing/reader/theme/host matrix. |
+| Flex | Historical light/dark/care layout; broader window resize samples | Complete responsive-layout/host coverage. |
+| Footer | Actual link callbacks, viewport placement, click occlusion and modal hidden/restored tree ([data](receipts/data-contracts-20261025/README.md)) | Safe-area API and text-sized link target/focus acceptance remain open. |
+| Form / DateField | Strict validation, optional ISO typing/clearing, range/owner/DateTime/focus/availability contracts; final 15/15 native steps and actual Orca invalid/retry feedback once each with valid/clear removing error ([forms](receipts/form-contracts-20261025/README.md)) | Default range 1900–2100 and UTC today unchanged; locale/seconds, full theme/reader/host coverage. |
+| Input / TextArea | 31-step native/AT matrices at scales 1/2 include word/UTF-16/undo, selection, password, inserted-glyph visibility, InvalidEntry and moved X11 bounds; held-modifier Orca speech ([input](receipts/input-contracts-20261025/README.md)) | Pinned adapter lacks EditableText; actual IME/reader/host matrix and Linux inline preedit open; reader service-teardown failures retained. |
+| Form choices | Controlled checkbox/row/switch, disabled guards, nested propagation, radio wrap/independence; one rapid-switch reversal frame sample ([controls](receipts/control-contracts-20261025/README.md)) | Complete motion/reader/theme/host matrix. |
+| Form select | Bounded long menu, disabled skip, initial selected reveal, commit/reopen/dismiss and restore ([overlays](receipts/overlay-contracts-20261025/README.md)) | Native overlay adaptation; complete state/reader/host matrix. |
+| Gallery / image viewer | Actual thumbnail open; image dismissal, full-bar deletion, focus restoration; dark+care/brand samples ([media](receipts/media-contracts-20261025/README.md)) | Pinned upstream has no pinch/zoom/paging requirement. Complete reader/theme/host coverage remains open. |
+| Grid / Cells / Panel | Actual keyboard callbacks, title/tips semantics and selected panel focus capture; disabled/loading cell states ([data](receipts/data-contracts-20261025/README.md), [controls](receipts/control-contracts-20261025/README.md)) | Panel CJK punctuation/clamping and complete visual/reader parity; caller generic slots own semantics. |
+| Half-screen dialog | Short/long drag, returning animation, interrupted reopen, short-window sizing, body/subtitle semantics and inline header focus ([overlays](receipts/overlay-contracts-20261025/README.md)) | Complete size/theme/touch/reader/host matrix. |
+| Icons | Historical named assets; enabled/disabled icon callbacks and pressed guards ([controls](receipts/control-contracts-20261025/README.md)) | Complete theme/state/reader/host coverage. |
+| Information bar | Viewport fixed placement while parent scrolls, native link/close, occlusion and live text events ([data](receipts/data-contracts-20261025/README.md)) | Bridge events are not speech; full variant/reader/theme/host matrix. |
+| List / swiped cell | Controlled accept/reject, drag, action callbacks, Tab/Escape restore and AT Click correction; bridge Expanded/Collapsed ([media](receipts/media-contracts-20261025/README.md), [bridge](receipts/wayland-20261025/bridge-followup/README.md)) | Neutral white-on-light action contrast and full touch/reader/theme/host matrix. |
+| Loading / Loadmore | Historical spinner artwork/light/dark/care; later loading text announcement event | Complete animation/live reduced-motion and actual reader qualification. |
+| Message / LinkText | Historical short/wrapped real-input links and shaped bounds; title weight corrected to 500 ([inline links](receipts/inline-links-20261024/README.md), [data](receipts/data-contracts-20261025/README.md)) | Full typography/theme/reader/host coverage. |
+| Navbar / Tabbar | Controlled native/AT selections and roving offscreen reveal ([data](receipts/data-contracts-20261025/README.md), [focus](receipts/focus-reveal-20261025/README.md)) | Caller wraps tab_panel in FocusScroll; full theme/state/reader/host matrix. |
+| Picker | Lazy full-i32 dates, exact Home/End, leap/day clamp, disabled/reentrant/wheel contracts and focused-column ring ([overlays](receipts/overlay-contracts-20261025/README.md)) | UTC policy unchanged; all-disabled Confirm intentionally disabled; full focus/reader/theme/touch/host coverage. |
+| Preview / Steps | Historical static light/dark/care trees and focus; title weights corrected | Full typography/state/reader/host coverage. |
+| Progress / Slider | Controlled value/cancel removal/live events; numeric AT/key updates, snapping and availability guards ([data](receipts/data-contracts-20261025/README.md)) | Complete pointer/geometry/live-reader/theme/host matrix. |
+| Search bar | Native Homepage/Outlined/Filled callback counts, public focus, read-only clear guards, keyword label, clearing/refocus and cancel rules ([search](receipts/search-contracts-20261025/README.md)) | Final eight-mode FilledGrey caret/action focus pixels pass separately; disabled transitions/FilledGrey callback matrix and complete theme/state/reader/host coverage remain open. |
+| Toast / toptips | Historical timed passive focus/page-tree behavior; explicit live metadata added | Full actual announcement/reader, reduced-motion/timing/theme/host matrix. |
+| Uploader | Actual capacity/add/status/preview/delete lifecycle and focus; historical native chooser lifecycle ([media](receipts/media-contracts-20261025/README.md)) | Transport/compression/retry application-owned; complete chooser/reader/theme/host coverage. |
+| Verification code | Repeated starts, guarded activation, reset/expiry/restart and canceled-old-timer check ([controls](receipts/control-contracts-20261025/README.md)) | Complete timing/theme/reader/host matrix. |
+| Home / layers / index | Focus-reveal samples and native startup captures | Gallery-specific; route coverage does not establish reusable component completion. |
 
 ## Known unresolved defects and gaps
 
-- **Focus scrolling** (fixed 2026-10-24, Linux X11 only): `scrolling::FocusScroll` reveals
-  offscreen focus in the gallery, `BottomFixedPage` and `component_states`. Dialog and
-  half-screen bodies and `BottomFixedOprPage` are wrapped too; `navbar::tab_panel` callers must
-  wrap it themselves. macOS/Windows reruns of the preview 480x650 sequence are still needed.
-  Receipts: [focus-date-20261024](receipts/focus-date-20261024/README.md).
-- **Date/datetime inputs** (fixed 2026-10-24): the reusable `DateField` entity uses `Picker`
-  and is wired into the input page. This is an adaptation of HTML `date`/`datetime-local`: fixed 1900–2100 range,
-  no typed entry, no locale formats, no seconds. Now a reusable library entity,
-  `components::date_field::DateField`. Per-component acceptance lives in
-  [ACCEPTANCE](ACCEPTANCE.md).
-- **Linux windowing:** approved `wayland`/`x11` features applied (34 added lock packages).
-  X11 and nested-Weston Wayland runtime samples now exist. Actual Orca collection and
-  remaining bridge/screen-reader gaps are linked in the continuation section above.
-- **Mobile:** the approved GPUI 0.3.9 plus target-specific `gpui-pre-ios` path and simulator
-  bundle scaffold are implemented. Hosted simulator compilation found six missing upstream
-  core APIs; see [the blocker](proposals/gpui-ios-039-incompatibility.md). No application linked.
-  Linux checks do not qualify an Apple app. Historically, Xcode 26.2
-  and an iOS 26.2 Simulator runtime were available during setup; no app was built or launched.
-  Android still needs a backend decision. Neither path has a verified mobile AccessKit adapter.
-- **Screen readers:** VoiceOver remains off. Historical attempted announcement retrieval
-  timed out; no VoiceOver pass is claimed. Actual Orca samples now exist, including input
-  readback and initial dialog announcements, but reopened/restored objects become defunct in
-  the reader cache. Narrator/NVDA and TalkBack sessions remain missing; no reader matrix passes.
-- **Local date:** `picker::today()` is UTC. A local-time source needs a dependency (for example
-  `chrono`, already in `Cargo.lock` transitively) or platform calls. That needs an owner decision.
-- **Linux XIM preedit** is drawn by the input method at the window's top-left, not inline at the
-  caret. Not isolated between GPUI and fcitx5.
-- **Documentation-audit fixes:** Windows runtime checks cover cell-button loading, clickable
-  small-appmsg focus, independent radio groups and duplicate countdown starts. Loading and
-  tip/preview list constructors use callsite IDs, with explicit IDs for repeated helper/loop
-  instances. `FormCell::label_for` names an associated input; gallery forms use it. List and
-  dialog semantic changes compile but still require native accessibility-tree/screen-reader
-  acceptance. Existing source-only claims must not be read as complete accessibility acceptance.
-- Public naming still mixes `Navbar`/`Tabbar` with `SearchBar` and terse `hd`/`bd`/`ft` helpers.
-  The existing API is documented. Breaking renames await a versioning policy.
-- The input length counter counts UTF-16 units. Numeric `InputKind`s filter characters but do
-  not validate.
+- **Focus appearance and target sizes:** shared contrast styling now has native eight-mode
+  samples. The earlier 2.226:1 Picker ring, filled unchecked-checkbox centre and insufficient
+  FilledGrey caret strategy remain preserved failures. Corrected checkbox callbacks/interiors,
+  16 final caret surfaces and 24 FilledGrey action-focus checks pass. Complete focus appearance,
+  arbitrary host palettes/images and minimum targets remain unqualified. Footer links remain
+  text-sized; the neutral swipe action inherits low-contrast upstream white-on-light colours.
+- **Complete parity:** per-component dark/care/brand/state reference checks, actual reader
+  announcements/order and current-source macOS/Windows runtime matrices are incomplete.
+  All inventory rows remain unaccepted. The final article image-wrapper light/dark correction
+  passes targeted screenshot/tree review; earlier visually failed evidence is retained.
+- **Separate consumer:** a new external path consumer explicitly selects all approved root
+  patches and passes actual X11 modal/counter/focus checks
+  ([receipt](receipts/component-contracts-20261025/consumer/README.md)). Its earlier styling
+  artifact does not qualify final focus colours or a published/fresh-machine package.
+- **Input:** numeric kinds filter characters rather than implement HTML validation. Linux XIM
+  preedit remains at the window top-left, not inline at the caret. The pinned AT-SPI adapter
+  does not expose EditableText; textual Value handling exists for adapters that deliver it.
+  The [EditableText proposal](proposals/linux-editable-text/README.md) records why advertising
+  only that interface would not supply its atomic range/replacement and clipboard contracts.
+  Geometry/replacement and held-modifier reader samples now pass their recorded contracts,
+  with Speech Dispatcher/Orca teardown failures retained; they do not establish clean shutdown
+  or complete reader acceptance.
+- **Reader acceptance:** VoiceOver remains off. Actual Orca repeated reopen works on the approved
+  compatibility stack, superseding old cache failures for those samples. Audio intelligibility
+  has not been accepted by listening; complete Orca, NVDA/Narrator and other-reader matrices
+  remain missing. Linux tree/event checks do not establish reader acceptance.
+- **Modal boundaries:** crate modal depth/order and passive behavior are sampled. Arbitrary
+  external deferred wrappers/priorities are outside that ordering contract; custom accessible
+  action handlers use a separate dispatch path from the Modal mouse/default-action guard.
+  Saved custom AT actions during closing have not been tested; the prepared fixture is not
+  evidence of a defect or pass. Application handlers still own their model checks.
+- **Date policy:** the owner still decides the source of local today. `picker::today()` remains
+  UTC; DateField defaults 1900–2100 with configurable Gregorian years 1–9999. Typed ISO entry
+  exists; locale display and seconds are not implemented.
+- **Windowing/hardware:** X11 scale/resize/origin and nested-Weston Wayland samples exist, using
+  software rendering. Hardware/compositor diversity, live scale changes and monitor moves are
+  unqualified. Wayland has no global window-origin hook.
+- **Mobile:** approved GPUI 0.3.9 iOS scaffolding still fails hosted application compilation on
+  missing core APIs ([blocker](proposals/gpui-ios-039-incompatibility.md)). No application linked;
+  Linux checks do not qualify Apple runtime. Android has no backend decision. Neither mobile
+  path has a verified AccessKit adapter.
+- **Composition/identity:** caller-supplied generic children own their semantics; plain-text
+  helpers are available for many slots. Repeated helper/loop instances need explicit stable IDs.
+  Footer safe-area handling remains absent.
+- **API/release policy:** public naming mixes Navbar/Tabbar and SearchBar with hd/bd/ft helpers.
+  Breaking naming, package/version policy and distribution authorization remain owner decisions.
+  Approved Cargo path patches must be adopted at downstream workspace roots; current Linux
+  qualification is for the recorded patched graph, not unmodified registry packages. A fresh
+  package listing includes licenses/NOTICE but excludes nested vendor packages, so patch
+  distribution remains unresolved for publication.
 
 ## Documentation status
 
@@ -238,23 +290,32 @@ added.
   Build/launch and sampled AX checks are now recorded; a complete overlay recapture is not.
 - Current-source Windows reruns beyond the historical Windows ARM component/inline-link
   samples; Windows x64; iOS/Android anything beyond type-checks; physical devices.
-- Hosted CI: Linux stable/MSRV, mobile library checks and macOS native checks pass;
+- Historical hosted CI: Linux stable/MSRV, mobile library checks and macOS native checks pass;
   simulator build fails inside published GPUI 0.3.9. See [CI receipt](receipts/ci-20261024/README.md).
   Default CodeQL also runs; no hosted CNB result is recorded.
-- Packaging (app bundles, installers) on any platform. `cargo package --list` reviewed: 172 files,
-  399 KiB compressed. Nothing published. The README's screenshot pair uses repository-relative
+- Packaging (app bundles, installers) on any platform. The historical package review listed
+  172 files, 399 KiB compressed; that count does not describe the current patched graph.
+  The new path-consumer build/runtime is separate from published-package qualification.
+  The current package-list check passes but nested vendor packages are excluded; that does not
+  supply a distributable patched crate. Nothing published. The README's screenshot pair uses repository-relative
   paths that are excluded from the package, so it renders only where the repository is reachable.
 - Complete macOS recapture of all 264 pairs (the earlier Linux run has 192 sweep pairs, not comparable with macOS). Care mode beyond one route. Long pages beyond 812 pt.
 
 ## Owner decisions
 
-Approved October 24:
+Approved October 24 (historical):
 
 - Linux `wayland`/`x11` features applied and verified under Xvfb (34 added lock packages).
 - GPUI 0.3.9 pins and target-specific `gpui-pre-ios` are applied with an example bundle
   scaffold. Further Apple verification needs a separately authorized host.
 - Seven focused Rust tests and five bundle-script fixture tests pass. The approved final
   GitHub workflow is configured after local verification; hosted results remain separate.
+
+Approved October 25:
+
+- Exact local AccessKit cache compatibility and additional state forwarding; GPUI 0.3.9 X11
+  origin-hook repairs. Implementation and sampled native/reader results are recorded separately
+  in the continuation receipts and vendor documentation. Package versions remain pinned.
 
 Still pending:
 
@@ -268,6 +329,9 @@ No platform support or publication decision follows from the approvals above.
 
 ## Picking up the work
 
+Read TAKEOVER first for the current handoff, worktree and final-gate state. The historical
+October 24 checkout details below are retained as provenance, not current main.
+
 At the October 24 macOS audit, the checkout was clean at `0c6555d` and GitHub advertised only
 `main`. The handover named `claude/youthful-fermi-y23wn0` at `e23436c`; that commit is an ancestor
 of `main`, but the branch was absent from `git ls-remote --heads origin` during this audit.
@@ -279,8 +343,9 @@ No branch was deleted here. Recheck current refs and working state before editin
 - **Reproduce behaviour probes:** `receipts/takeover-20261025/probe.rs.txt` and
   `probe-edges.rs.txt` are the manual probe apps behind the before/after receipts. Copy one to
   `examples/probe.rs` locally to run it; they are not part of the crate.
-- **Next verification:** extend the sampled nested-Weston/Orca checks to full desktop/component
-  qualification and resolve the recorded bridge blockers; finish the remaining macOS input, IME, reduced-motion and paired-capture
+- **Next verification:** test saved custom accessibility actions during closing, then extend
+  sampled native theme/state, nested-Weston and Orca checks to full desktop/component qualification;
+  finish the remaining macOS input, IME, reduced-motion and paired-capture
   work on a separate Apple session; verify the implemented iOS scaffold on that host and label every Simulator
   result; obtain native Windows and Android evidence separately. A Linux container cannot
   supply Apple Metal tooling or macOS/iOS runtime acceptance.

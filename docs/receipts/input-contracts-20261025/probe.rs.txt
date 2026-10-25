@@ -1,0 +1,228 @@
+use gpui::{prelude::*, *};
+use wegpui::{
+    Theme,
+    components::textarea::TextArea,
+    input::{InputEvent, InputKind, TextInput},
+};
+
+const WORDS: &str = "alpha e\u{301} beta gamma";
+const WRAPPED: &str = "A wrapped paragraph with enough words to cross several visual rows. Combining e\u{301} and family 👩‍👩‍👧‍👦 stay intact.\nSecond hard line.\n";
+
+struct Probe {
+    words: Entity<TextInput>,
+    notes: Entity<TextArea>,
+    readonly: Entity<TextInput>,
+    disabled: Entity<TextInput>,
+    password: Entity<TextInput>,
+    limited: Entity<TextInput>,
+    changes: usize,
+    _subscription: Subscription,
+}
+
+impl Probe {
+    fn new(cx: &mut Context<Self>) -> Self {
+        let words = cx.new(|cx| {
+            let mut input = TextInput::new("Word editing", cx);
+            input.set_aria_label("Word editing", cx);
+            input.set_text(WORDS, cx);
+            input
+        });
+        let notes = cx.new(|cx| {
+            let mut area = TextArea::new("Wrapped notes", cx);
+            area.set_aria_label("Wrapped notes", cx);
+            area.set_rows(5, cx);
+            area.set_text(WRAPPED, cx);
+            area
+        });
+        let readonly = cx.new(|cx| {
+            let mut input = TextInput::new("Read only", cx);
+            input.set_aria_label("Read only", cx);
+            input.set_text("read only text", cx);
+            input.set_readonly(true, cx);
+            input
+        });
+        let disabled = cx.new(|cx| {
+            let mut input = TextInput::new("Disabled", cx);
+            input.set_aria_label("Disabled", cx);
+            input.set_text("disabled text", cx);
+            input.set_disabled(true, cx);
+            input
+        });
+        let password = cx.new(|cx| {
+            let mut input = TextInput::new("Password", cx);
+            input.set_aria_label("Password", cx);
+            input.set_kind(InputKind::Password, cx);
+            input.set_text("A😀e\u{301}", cx);
+            input
+        });
+        let limited = cx.new(|cx| {
+            let mut input = TextInput::new("UTF16 limit", cx);
+            input.set_aria_label("UTF16 limit", cx);
+            input.set_max_len(Some(6), cx);
+            input.set_text("A😀B", cx);
+            input.set_aria_description(Some("At most six UTF-16 units".into()), cx);
+            input.set_invalid(true, cx);
+            input
+        });
+        let subscription = cx.subscribe(&words, |this, input, event: &InputEvent, cx| {
+            if *event == InputEvent::Changed {
+                this.changes += 1;
+                eprintln!(
+                    "words Changed={} value={:?}",
+                    this.changes,
+                    input.read(cx).text()
+                );
+            }
+        });
+        Self {
+            words,
+            notes,
+            readonly,
+            disabled,
+            password,
+            limited,
+            changes: 0,
+            _subscription: subscription,
+        }
+    }
+
+    fn reset(&mut self, cx: &mut Context<Self>) {
+        self.words.update(cx, |input, cx| input.set_text(WORDS, cx));
+        self.notes.update(cx, |area, cx| area.set_text(WRAPPED, cx));
+        self.limited
+            .update(cx, |input, cx| input.set_text("A😀B", cx));
+        eprintln!("reset requested; changes before delivery={}", self.changes);
+    }
+}
+
+impl Render for Probe {
+    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let theme = Theme::get(cx).clone();
+        div()
+            .id("input-contracts-probe")
+            .size_full()
+            .p(px(20.))
+            .flex()
+            .flex_col()
+            .gap(px(14.))
+            .bg(theme.bg_0)
+            .text_color(theme.fg_0)
+            .text_size(px(17.))
+            .on_key_down(cx.listener(|this, event: &KeyDownEvent, window, cx| {
+                match event.keystroke.key.as_str() {
+                    "tab" => {
+                        if event.keystroke.modifiers.shift {
+                            window.focus_prev(cx);
+                        } else {
+                            window.focus_next(cx);
+                        }
+                        cx.stop_propagation();
+                    }
+                    "f7" => {
+                        this.reset(cx);
+                        cx.stop_propagation();
+                    }
+                    "f5" => {
+                        this.words
+                            .update(cx, |input, cx| input.set_text("a ".repeat(300), cx));
+                        eprintln!("long word metadata sample seeded: 600 characters");
+                        cx.stop_propagation();
+                    }
+                    "f6" => {
+                        this.limited.update(cx, |input, cx| {
+                            input.replace_and_mark_text_in_range(None, "😀界", None, window, cx);
+                            input.unmark_text(window, cx);
+                            input.unmark_text(window, cx);
+                        });
+                        eprintln!("limited composition committed; expect A😀B😀 after F7");
+                        cx.stop_propagation();
+                    }
+                    "f8" => {
+                        this.words.update(cx, |input, cx| {
+                            input.replace_and_mark_text_in_range(None, "界", None, window, cx);
+                            input.unmark_text(window, cx);
+                            input.unmark_text(window, cx);
+                        });
+                        eprintln!("composition protocol committed twice; expect one Changed");
+                        cx.stop_propagation();
+                    }
+                    _ => {}
+                }
+            }))
+            .child(
+                div()
+                    .flex()
+                    .flex_col()
+                    .child("Word editing (F7 reset; F8 composition commit)")
+                    .child(self.words.clone()),
+            )
+            .child(
+                div()
+                    .flex()
+                    .flex_col()
+                    .child("Wrapped notes")
+                    .child(self.notes.clone()),
+            )
+            .child(
+                div()
+                    .flex()
+                    .flex_col()
+                    .child("Read only")
+                    .child(self.readonly.clone()),
+            )
+            .child(
+                div()
+                    .flex()
+                    .flex_col()
+                    .child("Disabled")
+                    .child(self.disabled.clone()),
+            )
+            .child(
+                div()
+                    .flex()
+                    .flex_col()
+                    .child("Password")
+                    .child(self.password.clone()),
+            )
+            .child(
+                div()
+                    .flex()
+                    .flex_col()
+                    .child("UTF16 limit / invalid")
+                    .child(self.limited.clone()),
+            )
+    }
+}
+
+#[path = "support/platform.rs"]
+mod platform;
+
+fn main() {
+    platform::application()
+        .with_assets(wegpui::Assets)
+        .run(|cx| {
+            wegpui::init(cx);
+            cx.open_window(
+                WindowOptions {
+                    window_bounds: Some(WindowBounds::Windowed(Bounds::new(
+                        point(px(60.), px(60.)),
+                        size(px(480.), px(720.)),
+                    ))),
+                    titlebar: Some(TitlebarOptions {
+                        title: Some("weGPUI input contracts probe".into()),
+                        ..Default::default()
+                    }),
+                    ..Default::default()
+                },
+                |window, cx| {
+                    Theme::observe(window);
+                    let view = cx.new(Probe::new);
+                    let first = view.read(cx).words.clone();
+                    first.update(cx, |input, cx| input.focus(window, cx));
+                    view
+                },
+            )
+            .expect("open input contracts probe");
+            cx.activate(true);
+        });
+}

@@ -1,0 +1,9 @@
+apps 2
+application 'orca' [] DISABLED
+application 'minimal' [] DISABLED
+  frame '' ['showing']
+    dialog 'weGPUI' ['focusable', 'modal', 'showing']
+      heading 'weGPUI' ['showing']
+      label 'A WeUI dialog rendered by native GPUI components.' ['showing']
+      button 'Cancel' ['focusable', 'showing']
+      button 'OK' ['focusable', 'focused', 'showing']

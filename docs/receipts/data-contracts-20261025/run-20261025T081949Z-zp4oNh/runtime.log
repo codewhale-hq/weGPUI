@@ -1,0 +1,8 @@
+dbus-daemon[32564]: [session uid=1000 pid=32564 pidfd=5] Activating service name='org.a11y.Bus' requested by ':1.0' (uid=1000 pid=32605 comm="dbus-send --session --print-reply --dest=org.a11y." label="kernel")
+dbus-daemon[32564]: [session uid=1000 pid=32564 pidfd=5] Successfully activated service 'org.a11y.Bus'
+2026-10-25T08:19:59Z initial
+Traceback (most recent call last):
+  File "/workspace/weGPUI/docs/receipts/data-contracts-20261025/run-20261025T081949Z-zp4oNh/action.py", line 78, in <module>
+    assert any(node.name == 'Accessible record group' for node in all_nodes)
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

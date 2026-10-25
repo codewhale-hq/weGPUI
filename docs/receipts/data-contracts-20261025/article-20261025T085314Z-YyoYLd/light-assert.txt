@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/weGPUI/docs/receipts/data-contracts-20261025/article-20261025T085314Z-YyoYLd/action.py", line 120, in <module>
+    assert sum(node.getRoleName() == 'image' and node.name == '配图' for node in all_nodes) == 2
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

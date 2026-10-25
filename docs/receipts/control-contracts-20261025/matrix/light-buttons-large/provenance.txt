@@ -1,0 +1,24 @@
+2026-10-25T08:15:09Z
+9c4515c788bbacc42a166534e39dc393ddbcb30b
+6f42e71e9727649d15a24d422665807259b72e96c74e45f2d238e28bb7db196f  -
+binary=/workspace/.wegpui-cloud/controls-candidate-9c/control_contracts
+90d9cb7af7a774d757098e6392469cd53135f080738062b40766663d5a7c30ec  /workspace/.wegpui-cloud/controls-candidate-9c/control_contracts
+c6f4e749292735e432c849daef40f7d510a9f574950b238f9a8f272cabad3f17  examples/control_contracts.rs
+rustc 1.98.1 (48a229cea 2026-09-01)
+binary: rustc
+commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+commit-date: 2026-09-01
+host: x86_64-unknown-linux-gnu
+release: 1.98.1
+LLVM version: 22.1.8
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+page=buttons args= --size large

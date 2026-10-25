@@ -179,7 +179,7 @@ impl RenderOnce for Icon {
 ///
 /// It exposes `Role::Button` with an accessible label, is a Tab stop and activates on click, Enter
 /// or Space. Pressing dims the icon to 50% (or recolours it in [`IconButton::btn_icon`] mode);
-/// keyboard focus shows a brand ring.
+/// keyboard focus shows two contrasting inset bands.
 #[derive(IntoElement)]
 pub struct IconButton {
     id: ElementId,
@@ -276,11 +276,13 @@ impl IconButton {
 impl RenderOnce for IconButton {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx);
-        let (pressed, ring) = (t.fg_1, t.brand);
+        let pressed = t.fg_1;
         let group = SharedString::from("weui-icon-btn");
         let mut icon = self.icon;
         if self.btn_icon {
-            icon = icon.group_active_color(group.clone(), pressed);
+            if !self.disabled {
+                icon = icon.group_active_color(group.clone(), pressed);
+            }
         } else if icon.color.is_none() {
             icon = icon.color(t.fg_0);
         }
@@ -310,7 +312,7 @@ impl RenderOnce for IconButton {
             hit = hit
                 .focusable()
                 .tab_stop(true)
-                .focus_visible(move |s| s.border_color(ring));
+                .focus_visible(move |s| s.shadow(super::form::dual_focus_ring()));
             if let Some(focus) = self.focus {
                 hit = hit.track_focus(&focus);
             }

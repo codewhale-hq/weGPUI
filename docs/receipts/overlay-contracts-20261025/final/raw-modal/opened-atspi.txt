@@ -1,0 +1,5 @@
+apps 1
+application 'probe' [] DISABLED
+  frame 'weGPUI overlay contracts' ['showing']
+    dialog 'Raw modal' ['focusable', 'focused', 'modal', 'showing']
+      button 'Raw confirm' ['focusable', 'showing']

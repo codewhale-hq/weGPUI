@@ -24,7 +24,7 @@ pub enum StepsLayout {
     HorizontalCenter,
 }
 
-/// One step: a semibold title, an optional description and a completion flag.
+/// One step: a medium-weight title, an optional description and a completion flag.
 ///
 /// A completed step highlights its outgoing line and the next step's dot. The vertical and plain
 /// horizontal layouts also highlight the first dot, as WeUI does.
@@ -142,7 +142,7 @@ fn text_block(step: &Step, c: &Ctx) -> Div {
         .flex_col()
         .child(
             div()
-                .font_weight(FontWeight::SEMIBOLD)
+                .font_weight(FontWeight::MEDIUM)
                 .child(step.title.clone()),
         )
         .when_some(step.desc.clone(), |el, desc| {

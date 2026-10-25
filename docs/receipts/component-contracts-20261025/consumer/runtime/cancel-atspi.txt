@@ -1,0 +1,8 @@
+apps 1
+application 'wegpui-preview-consumer' [] DISABLED
+  frame '' ['showing']
+    dialog 'weGPUI' ['focusable', 'modal', 'showing']
+      heading 'weGPUI' ['showing'] ['level:2']
+      label 'A WeUI dialog rendered by native GPUI components.' ['showing']
+      button 'Cancel' ['focusable', 'focused', 'showing']
+      button 'OK' ['focusable', 'showing']

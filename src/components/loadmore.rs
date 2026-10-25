@@ -101,13 +101,16 @@ impl RenderOnce for LoadMore {
             .line_height(px(lh))
             .text_color(fg);
         match self.kind {
-            LoadMoreKind::Loading => base
-                .role(Role::Alert)
-                .aria_label(self.text.clone())
-                .items_center()
-                .h(px(lh))
-                .child(div().mr(px(8.)).child(Loading::primary()))
-                .child(self.text),
+            LoadMoreKind::Loading => crate::accessibility::Semantics::new(
+                base.role(Role::Alert)
+                    .aria_label(self.text.clone())
+                    .items_center()
+                    .h(px(lh))
+                    .child(div().mr(px(8.)).child(Loading::primary()))
+                    .child(self.text),
+            )
+            .live(accesskit::Live::Assertive)
+            .into_any_element(),
             LoadMoreKind::Line => base
                 .role(Role::Paragraph)
                 .aria_label(self.text.clone())
@@ -130,7 +133,8 @@ impl RenderOnce for LoadMore {
                         .px(px(8.))
                         .bg(bg)
                         .child(self.text),
-                ),
+                )
+                .into_any_element(),
             LoadMoreKind::Dot => base
                 .role(Role::ListItem)
                 .aria_label(self.text)
@@ -160,7 +164,8 @@ impl RenderOnce for LoadMore {
                                 .rounded_full()
                                 .bg(line),
                         ),
-                ),
+                )
+                .into_any_element(),
         }
     }
 }

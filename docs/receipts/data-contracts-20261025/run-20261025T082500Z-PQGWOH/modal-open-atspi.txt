@@ -1,0 +1,8 @@
+apps 1
+application 'data_contracts_probe' [] DISABLED
+  frame 'weGPUI data contracts' ['showing']
+    dialog 'Data modal' ['focusable', 'modal', 'showing']
+      button 'Close data modal' ['focusable', 'showing']
+    notification 'Floating data notice' ['showing']
+      link 'Notice details' ['focusable', 'showing']
+      button 'Close notice' ['focusable', 'showing']

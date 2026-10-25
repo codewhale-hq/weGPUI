@@ -60,13 +60,28 @@ and selected AX trees were observed. Select keyboard attempts did not establish 
 pass. VoiceOver was attempted without a captured announcement transcript and ended disabled.
 iOS setup reached an installed runtime only. No platform has completed acceptance.
 
-## Current Linux follow-up
+## Historical Linux follow-up — October 24
 
 The approved patch is applied with exactly 34 added lock packages and no removed versions.
 Both examples build and render under isolated Xvfb on Debian 13 with Rust 1.99.1.
 XTEST confirms the minimal dialog counter and gallery select change/dismissal; AT-SPI
 confirms sampled modal isolation. Earlier failed probe attempts are retained.
 See [receipts](receipts/cloud-linux-20261024/README.md). No Wayland or Orca pass is claimed.
+
+## Current Linux continuation — October 25
+
+Rust/Cargo 1.98.1 and GPUI 0.3.9 are used for the current cloud source. Actual X11 component
+interaction/geometry and Orca transcript/audio samples are recorded in the October 25
+component receipts linked from [ACCEPTANCE](ACCEPTANCE.md). Actual Wayland clients run with
+DISPLAY absent under nested Weston; protocol, input, nested modal and text checks are in
+`receipts/wayland-20261025/`. The owner-approved compatibility copies in `vendor/` repair
+sampled cache/state export and X11 screen-origin failures. Root Cargo patches are required
+in downstream consumers; see [vendor guidance](../vendor/README.md).
+
+These samples do not complete a platform: hardware GPU/compositor, physical monitor/live
+scale changes, fresh installation, the complete state matrix and human speech listening
+remain open. Wayland does not expose a global desktop origin. Current-source macOS/Windows
+reruns require those hosts; their historical samples do not qualify the Linux changes.
 
 ## Acceptance matrix
 
@@ -76,8 +91,8 @@ as such. Current state:
 | Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
 | --- | --- | --- | --- | --- | --- | --- |
 | macOS | Hosted arm64 build/tests/Clippy pass at `05cae89`; historical strict docs at `e4a2c87` | Historical minimal/gallery launches; no current runtime requalification | Earlier 28 review pairs; new diagnostic images, no new parity verdict | Minimal dialog open/close/OK and focus restore; select-key attempts inconclusive | Modal isolation in minimal/picker/select/half-screen; closed swipe actions absent; article headings/lists; option labels in AXTitle; VoiceOver incomplete | Not done |
-| Linux | x86_64 build/clippy/fmt pass | Both examples launch with applied features under isolated Xvfb | Software-rendered Xvfb; 192 pairs (routes light+dark, states light) swept against Linux Chromium (scratch build) | XTEST mouse/keys, fcitx5 Pinyin, GTK portal chooser (scratch build) | AT-SPI tree in scratch; no Orca | Not done |
-| Windows | Historical mingw cross-build links | No native host; Wine failure reported without a committed run log | Missing | Missing | Missing (Narrator/NVDA) | Not done |
+| Linux | Rust 1.98.1 current-source gates recorded in continuation receipts | X11 plus actual Wayland clients under nested Weston | Historical 192 pairs; 216 reviewed native-only theme/state images and later targeted component reviews | Native keyboard/pointer callbacks, scale/move text geometry, sampled Wayland input; historical XIM/portal | Actual Orca transcript/audio samples and AT-SPI contracts; full reader/listening acceptance open | Historical consumer/package checks; current patched-consumer and distribution qualification separate |
+| Windows | Historical native ARM/MSVC component builds and mingw cross-build | Windows 11 ARM gallery/component samples; current-source rerun missing | Historical native VirtIO samples | Historical sampled controls/inline links; current-source rerun missing | Missing (Narrator/NVDA) | Historical package build; installation qualification missing |
 | iOS | Library type-checks pass; hosted simulator app compilation fails | Upstream 0.3.9 API mismatch; no launch | Missing | Missing (touch, keyboard, IME, rotation, lifecycle) | Missing; upstream backend has no AccessKit | Not done |
 | Android | Library type-checks | Blocked: no Android backend anywhere upstream; no KVM for an emulator here | Missing | Missing | Missing (TalkBack) | Not done |
 

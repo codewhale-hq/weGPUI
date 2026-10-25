@@ -1,0 +1,27 @@
+2026-10-25T08:59:16Z
+9c4515c788bbacc42a166534e39dc393ddbcb30b
+cf6d69d23742fffa974376ccfee4fc619172c8efd3d8cc06e69a95b82d6bea1f  -
+binary=/workspace/.wegpui-cloud/search-integrated-20261025-build5/search_contracts_probe
+source_root=/workspace/.wegpui-cloud/search-integrated-20261025-build5
+dc0b04951f3fe65c8f8f4202d36b4c7baffe09aa696466e401ff21c2a7626f50  /workspace/.wegpui-cloud/search-integrated-20261025-build5/search_contracts_probe
+dcf5fa03fe341946a205ed2f527929b9a86afd24931a9ff4c2d84143f9ff4ef9  examples/search_contracts_probe.rs
+bac29f630ff570142f91aa0d15cfc966621f7ef2228a28a99d4db49dbfbc0e8a  /workspace/weGPUI/docs/receipts/search-contracts-20261025/build5-runtime/drive-used.py
+d178d3736b96fcbc302d5145aca6770809db63d88f054d6a8dbaa40fb9db5bc4  /workspace/weGPUI/docs/receipts/search-contracts-20261025/build5-runtime/run-used.sh
+rustc 1.98.1 (48a229cea 2026-09-01)
+binary: rustc
+commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+commit-date: 2026-09-01
+host: x86_64-unknown-linux-gnu
+release: 1.98.1
+LLVM version: 22.1.8
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+page=search args= ''

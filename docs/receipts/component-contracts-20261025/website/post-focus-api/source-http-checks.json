@@ -1,0 +1,22 @@
+{
+  "checked": [
+    {
+      "source": "src/components/checkbox.rs",
+      "url": "api/src/wegpui/components/checkbox.rs.html",
+      "http_status": 200,
+      "decoded_source_exact_match": true,
+      "source_sha256": "68a45d02b4bff2df31e0754f83a7b7b2484d93fc27f6ca6ef0debb758260eb9d",
+      "served_html_sha256": "1de04a9ade389f40dd8a7b1c2ecd5ba9ee2aec4ad02b8427494243f52190ffb2"
+    },
+    {
+      "source": "src/input.rs",
+      "url": "api/src/wegpui/input.rs.html",
+      "http_status": 200,
+      "decoded_source_exact_match": true,
+      "source_sha256": "79bd5a7de6480822f364b0a66a3463dc77a5913d68e0ef56de20e5a7d2ae2c7c",
+      "served_html_sha256": "a85db1236a01e0570f8e17ce19ddc58f328d990c440b51b2c9c3bb0afc2420be"
+    }
+  ],
+  "browser": "Chromium154.0.8037.57",
+  "scope": "Served Rustdoc source equals entire current Rust file after stripping line numbers; no native caret/checkbox rendering check."
+}

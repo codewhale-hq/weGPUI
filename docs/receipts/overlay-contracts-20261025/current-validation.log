@@ -1,0 +1,2 @@
+PASS: overlay callbacks, dismissal/focus matrix, disabled selections, reentrant picker and bounded full-range date runtime.
+PASS: inline forward/backward focus, owned sheet/body/description text, and exactly one focused picker-column ring.

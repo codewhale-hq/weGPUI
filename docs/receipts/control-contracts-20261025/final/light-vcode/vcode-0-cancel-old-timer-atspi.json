@@ -1,0 +1,110 @@
+[
+  {
+    "role": "desktop frame",
+    "name": "main",
+    "states": []
+  },
+  {
+    "role": "application",
+    "name": "control_contracts",
+    "states": []
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI control contracts",
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Start matrix",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "\u91cd\u65b0\u53d1\u9001(3s)",
+    "states": [
+      "focusable",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Start twice 0",
+    "states": [
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Reset 0",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Send plain",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Start twice 1",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Reset 1",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "End matrix",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  }
+]

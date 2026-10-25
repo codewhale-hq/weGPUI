@@ -1,0 +1,64 @@
+PASS light buttons large
+PASS light buttons medium
+PASS light buttons mini
+PASS light buttons xmini
+PASS light cells
+PASS light choices
+PASS light agree
+PASS light vcode
+PASS dark buttons large
+PASS dark buttons medium
+PASS dark buttons mini
+PASS dark buttons xmini
+PASS dark cells
+PASS dark choices
+PASS dark agree
+PASS dark vcode
+PASS care buttons large
+FAIL care buttons medium
+PASS care buttons mini
+PASS care buttons xmini
+PASS care cells
+PASS care choices
+FAIL care agree
+PASS care vcode
+PASS dark-care buttons large
+PASS dark-care buttons medium
+PASS dark-care buttons mini
+PASS dark-care buttons xmini
+PASS dark-care cells
+PASS dark-care choices
+FAIL dark-care agree
+PASS dark-care vcode
+PASS brand buttons large
+PASS brand buttons medium
+PASS brand buttons mini
+PASS brand buttons xmini
+PASS brand cells
+PASS brand choices
+FAIL brand agree
+PASS brand vcode
+PASS dark-brand buttons large
+PASS dark-brand buttons medium
+PASS dark-brand buttons mini
+PASS dark-brand buttons xmini
+PASS dark-brand cells
+FAIL dark-brand choices
+FAIL dark-brand agree
+PASS dark-brand vcode
+PASS care-brand buttons large
+PASS care-brand buttons medium
+PASS care-brand buttons mini
+PASS care-brand buttons xmini
+PASS care-brand cells
+PASS care-brand choices
+FAIL care-brand agree
+PASS care-brand vcode
+PASS dark-care-brand buttons large
+PASS dark-care-brand buttons medium
+PASS dark-care-brand buttons mini
+PASS dark-care-brand buttons xmini
+PASS dark-care-brand cells
+PASS dark-care-brand choices
+FAIL dark-care-brand agree
+PASS dark-care-brand vcode

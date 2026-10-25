@@ -1,0 +1,6 @@
+{"step": "caret-outlined", "focused": [["entry", "Outlined input"]]}
+{"step": "caret-filled-grey", "focused": [["entry", "Outlined input"]]}
+{"step": "grey-clear", "focused": [["button", "\u6e05\u9664"]]}
+{"step": "grey-cancel", "focused": [["button", "\u53d6\u6d88"]]}
+{"step": "grey-back", "focused": [["button", "\u8fd4\u56de"]]}
+PASS final input carets Outlined/FilledGrey and FilledGrey action focus targets captured

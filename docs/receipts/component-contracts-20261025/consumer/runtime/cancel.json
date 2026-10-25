@@ -1,0 +1,183 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "states": [],
+  "attributes": [],
+  "children": [
+    {
+      "role": "application",
+      "name": "wegpui-preview-consumer",
+      "description": "",
+      "states": [],
+      "attributes": [],
+      "children": [
+        {
+          "role": "frame",
+          "name": "",
+          "description": "",
+          "states": [
+            "active",
+            "enabled",
+            "sensitive",
+            "showing",
+            "visible"
+          ],
+          "attributes": [],
+          "children": [
+            {
+              "role": "dialog",
+              "name": "weGPUI",
+              "description": "",
+              "states": [
+                "active",
+                "enabled",
+                "focusable",
+                "modal",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [
+                {
+                  "role": "heading",
+                  "name": "weGPUI",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [
+                    "level:2"
+                  ],
+                  "children": [],
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "bounds": [
+                    28,
+                    232,
+                    320,
+                    72
+                  ]
+                },
+                {
+                  "role": "label",
+                  "name": "A WeUI dialog rendered by native GPUI components.",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "bounds": [
+                    52,
+                    304,
+                    272,
+                    48
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Cancel",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "focused",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "bounds": [
+                    28,
+                    384,
+                    160,
+                    64
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "OK",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "bounds": [
+                    188,
+                    384,
+                    160,
+                    64
+                  ]
+                }
+              ],
+              "interfaces": [
+                "Accessible",
+                "Action",
+                "Component"
+              ],
+              "bounds": [
+                1,
+                20,
+                375,
+                640
+              ]
+            }
+          ],
+          "interfaces": [
+            "Accessible",
+            "Component"
+          ],
+          "bounds": [
+            1,
+            20,
+            375,
+            640
+          ]
+        }
+      ],
+      "interfaces": [
+        "Accessible"
+      ]
+    }
+  ],
+  "interfaces": [
+    "Accessible",
+    "Component"
+  ],
+  "bounds": [
+    0,
+    0,
+    1024,
+    768
+  ]
+}

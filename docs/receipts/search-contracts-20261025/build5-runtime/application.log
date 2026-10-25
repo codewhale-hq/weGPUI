@@ -1,0 +1,58 @@
+outlined event=Changed
+home event=Camera
+snapshot home_focused=false outlined_text="preserved" outlined_readonly=true filled_text=""
+snapshot home_focused=true outlined_text="preserved" outlined_readonly=true filled_text=""
+snapshot home_focused=true outlined_text="preserved" outlined_readonly=true filled_text=""
+home event=Open
+home event=Open
+home event=Open
+home event=Camera
+home event=Camera
+home event=Camera
+snapshot home_focused=false outlined_text="preserved" outlined_readonly=true filled_text=""
+outlined event=Cancel
+snapshot home_focused=false outlined_text="preserved" outlined_readonly=true filled_text=""
+outlined event=Cancel
+outlined event=Submit
+outlined event=Submit
+outlined event=Submit
+outlined event=Focus
+snapshot home_focused=false outlined_text="preserved" outlined_readonly=true filled_text=""
+outlined event=Changed
+outlined event=Changed
+outlined event=Changed
+outlined event=Changed
+outlined event=Changed
+outlined event=Changed
+snapshot home_focused=false outlined_text="alpha" outlined_readonly=false filled_text=""
+snapshot home_focused=false outlined_text="alpha" outlined_readonly=true filled_text=""
+outlined event=Clear
+outlined event=Changed
+snapshot home_focused=false outlined_text="" outlined_readonly=false filled_text=""
+outlined event=Submit
+outlined event=Back
+outlined event=Cancel
+outlined event=Blur
+outlined event=Back
+outlined event=Back
+outlined event=Cancel
+outlined event=Cancel
+outlined event=Cancel
+snapshot home_focused=false outlined_text="" outlined_readonly=false filled_text=""
+filled event=Focus
+filled event=Changed
+filled event=Changed
+filled event=Changed
+filled event=Changed
+filled event=Submit
+snapshot home_focused=false outlined_text="" outlined_readonly=false filled_text="beta"
+filled event=Clear
+filled event=Changed
+filled event=Changed
+filled event=Changed
+filled event=Changed
+filled event=Changed
+filled event=Changed
+filled event=Cancel
+filled event=Changed
+filled event=Blur

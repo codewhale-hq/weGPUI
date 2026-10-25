@@ -1,0 +1,2 @@
+{"step": "agree-enabled-disabled-warn", "counts": {"agree-0": 3, "agree-2": 3, "agree-3": 3, "terms-1": 3}, "focused": ["Terms 1"], "time": 1792915997.7820194}
+{"step": "agree-long-link-revealed", "counts": {"agree-0": 3, "agree-2": 3, "agree-3": 3, "terms-1": 3, "start": 1}, "focused": ["Long terms"], "time": 1792916000.3723006}

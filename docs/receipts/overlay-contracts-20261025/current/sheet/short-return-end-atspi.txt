@@ -1,0 +1,6 @@
+apps 1
+application 'probe-current' [] DISABLED
+  frame 'weGPUI overlay contracts' ['showing']
+    dialog 'Contract sheet' ['focusable', 'focused', 'modal', 'showing']
+      label 'Contract subtitle' ['showing']
+      label 'Drag down under 56px to return, or at least 56px to dismiss.' ['showing']

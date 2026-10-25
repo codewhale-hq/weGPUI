@@ -4,7 +4,7 @@
 //! With reduced motion the warn state shows without the shake.
 use crate::scrolling::RevealFocus;
 
-use super::{ChangeHandler, ClickHandler, checkbox::check_icon, form::focus_ring};
+use super::{ChangeHandler, ClickHandler, checkbox::check_icon, form::dual_focus_ring};
 use crate::{Theme, accessibility::Semantics};
 use gpui::{prelude::*, *};
 use std::time::Duration;
@@ -25,7 +25,7 @@ fn shake(delta: f32) -> f32 {
         let ((t0, x0), (t1, x1)) = (w[0], w[1]);
         if delta <= t1 {
             let p = ((delta - t0) / (t1 - t0)).clamp(0., 1.);
-            let p = p * p * (3. - 2. * p);
+            let p = super::modal::ease(p);
             return x0 + (x1 - x0) * p;
         }
     }
@@ -106,7 +106,6 @@ impl RenderOnce for Agree {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
         let checked = self.checked;
-        let brand = t.brand;
         let label = match &self.link {
             Some((link, _)) => SharedString::from(format!("{}{}", self.text, link)),
             None => self.text.clone(),
@@ -118,18 +117,23 @@ impl RenderOnce for Agree {
                 .id("agree-link")
                 .role(Role::Link)
                 .aria_label(text.clone())
+                .min_w_0()
+                .max_w_full()
                 .text_color(t.link)
                 .cursor_pointer()
                 .focusable()
                 .tab_stop(true)
-                .focus_visible(move |s| s.shadow(focus_ring(brand)))
+                .focus_visible(move |s| s.shadow(dual_focus_ring()))
                 .active(|s| s.opacity(0.5))
                 .on_click(move |e, w, cx| {
                     cx.stop_propagation();
                     link_flag.set(true);
+                    let flag = link_flag.clone();
+                    cx.defer(move |_| flag.set(false));
                     handler(e, w, cx)
                 })
                 .child(text)
+                .reveal_focus()
         });
         let mut el = div()
             .id(self.id.clone())
@@ -160,7 +164,7 @@ impl RenderOnce for Agree {
                     .flex()
                     .flex_wrap()
                     .text_color(if self.warn { t.red } else { t.fg_1 })
-                    .child(self.text)
+                    .child(div().min_w_0().max_w_full().child(self.text))
                     .children(link),
             );
         if !self.disabled {
@@ -168,7 +172,7 @@ impl RenderOnce for Agree {
                 .focusable()
                 .tab_stop(true)
                 .cursor_pointer()
-                .focus_visible(move |s| s.shadow(focus_ring(brand)));
+                .focus_visible(move |s| s.shadow(dual_focus_ring()));
             if let Some(handler) = self.on_change {
                 el = el.on_click(move |_, w, cx| {
                     if !link_hit.replace(false) {

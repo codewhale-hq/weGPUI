@@ -1,0 +1,10 @@
+event=progress-50 count=1
+event=cancel-hidden count=2
+event=navbar-2 count=3
+event=tabbar-2 count=4
+event=slider-integer-9 count=5
+event=slider-fractional-0.375 count=6
+event=panel-open count=7
+event=cell-open count=8
+event=fixed-footer-open count=9
+event=modal-open count=10

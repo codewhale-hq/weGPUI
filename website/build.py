@@ -54,6 +54,10 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
     output.mkdir(parents=True, exist_ok=True)
     for name in ('index.html', 'style.css', 'app.js', 'favicon.svg'):
         shutil.copyfile(ROOT / 'website' / name, output / name)
+    licenses = output / 'licenses'
+    licenses.mkdir(exist_ok=True)
+    for name in ('LICENSE-MIT', 'LICENSE-APACHE', 'LICENSE-WEUI', 'NOTICE'):
+        shutil.copyfile(ROOT / name, licenses / name)
     captures = output / 'captures'
     captures.mkdir(exist_ok=True)
     route_source = (ROOT / 'examples/gallery/pages/mod.rs').read_text()
@@ -102,8 +106,12 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
     manifest = tomllib.loads((ROOT / 'Cargo.toml').read_text())
     data = dict(routes=records, tokens=json.loads((ROOT / 'docs/tokens.json').read_text()),
                 sourceCommit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
+                sourceDirty=bool(subprocess.check_output(
+                    ['git', 'status', '--porcelain', '--untracked-files=no'], cwd=ROOT, text=True).strip()),
                 captureCommit='2c8ed10', gpuiVersion=manifest['dependencies']['gpui']['version'].removeprefix('='),
-                rustVersion=manifest['package']['rust-version'], apiIncluded=include_api)
+                rustVersion=manifest['package']['rust-version'], apiIncluded=include_api,
+                compatibilityPatches={name: entry['path'] for name, entry in
+                    manifest.get('patch', {}).get('crates-io', {}).items() if 'path' in entry})
     if include_api:
         if api_dir is None:
             metadata = json.loads(subprocess.check_output(

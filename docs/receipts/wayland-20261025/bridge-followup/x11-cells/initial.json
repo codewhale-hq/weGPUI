@@ -1,0 +1,332 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "states": [],
+  "attributes": [],
+  "children": [
+    {
+      "role": "application",
+      "name": "control_contracts",
+      "description": "",
+      "states": [],
+      "attributes": [],
+      "children": [
+        {
+          "role": "frame",
+          "name": "weGPUI control contracts",
+          "description": "",
+          "states": [
+            "active",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "visible"
+          ],
+          "attributes": [],
+          "children": [
+            {
+              "role": "button",
+              "name": "Start matrix",
+              "description": "",
+              "states": [
+                "enabled",
+                "focusable",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                25,
+                44,
+                280,
+                32
+              ]
+            },
+            {
+              "role": "button",
+              "name": "cell-0-0",
+              "description": "",
+              "states": [
+                "enabled",
+                "focusable",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                25,
+                100,
+                340,
+                56
+              ]
+            },
+            {
+              "role": "button",
+              "name": "cell-0-1",
+              "description": "不可用",
+              "states": [
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                25,
+                172,
+                340,
+                56
+              ]
+            },
+            {
+              "role": "button",
+              "name": "cell-0-2",
+              "description": "正在加载",
+              "states": [
+                "busy",
+                "enabled",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                25,
+                244,
+                340,
+                56
+              ]
+            },
+            {
+              "role": "button",
+              "name": "cell-1-0",
+              "description": "",
+              "states": [
+                "enabled",
+                "focusable",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                381,
+                100,
+                340,
+                56
+              ]
+            },
+            {
+              "role": "button",
+              "name": "cell-1-1",
+              "description": "不可用",
+              "states": [
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                381,
+                172,
+                340,
+                56
+              ]
+            },
+            {
+              "role": "button",
+              "name": "cell-1-2",
+              "description": "正在加载",
+              "states": [
+                "busy",
+                "enabled",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                381,
+                244,
+                340,
+                56
+              ]
+            },
+            {
+              "role": "button",
+              "name": "cell-2-0",
+              "description": "",
+              "states": [
+                "enabled",
+                "focusable",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                737,
+                100,
+                340,
+                56
+              ]
+            },
+            {
+              "role": "button",
+              "name": "cell-2-1",
+              "description": "不可用",
+              "states": [
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                737,
+                172,
+                340,
+                56
+              ]
+            },
+            {
+              "role": "button",
+              "name": "cell-2-2",
+              "description": "正在加载",
+              "states": [
+                "busy",
+                "enabled",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                737,
+                244,
+                340,
+                56
+              ]
+            },
+            {
+              "role": "button",
+              "name": "icon-0",
+              "description": "",
+              "states": [
+                "enabled",
+                "focusable",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                35,
+                334,
+                44,
+                44
+              ]
+            },
+            {
+              "role": "button",
+              "name": "icon-1",
+              "description": "",
+              "states": [
+                "enabled",
+                "focusable",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                131,
+                334,
+                44,
+                44
+              ]
+            },
+            {
+              "role": "button",
+              "name": "icon-2",
+              "description": "",
+              "states": [
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                227,
+                334,
+                44,
+                44
+              ]
+            },
+            {
+              "role": "button",
+              "name": "icon-3",
+              "description": "",
+              "states": [
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                323,
+                334,
+                44,
+                44
+              ]
+            },
+            {
+              "role": "button",
+              "name": "End matrix",
+              "description": "",
+              "states": [
+                "enabled",
+                "focusable",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [],
+              "bounds": [
+                25,
+                412,
+                280,
+                32
+              ]
+            }
+          ],
+          "bounds": [
+            1,
+            20,
+            1100,
+            900
+          ]
+        }
+      ]
+    }
+  ],
+  "bounds": [
+    0,
+    0,
+    1024,
+    768
+  ]
+}

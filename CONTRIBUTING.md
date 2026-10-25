@@ -21,18 +21,20 @@ libfreetype-dev libx11-xcb-dev libxcb1-dev libssl-dev pkg-config clang`.
 cargo fetch --locked                      # once, to fill the dependency cache
 cargo fmt --all -- --check
 cargo build --all-targets --locked --offline
+cargo test --locked --offline
 cargo clippy --all-targets --locked --offline -- -D warnings
 RUSTDOCFLAGS='-D warnings -W missing-docs' cargo doc --no-deps --locked --offline
 cargo run --example minimal               # small consumer app
 cargo run --example gallery               # every upstream example page
 ```
 
-These are the gates the CNB pipeline runs (fmt, build, clippy), plus the documentation check.
+These are the source gates (fmt, build, tests, strict Clippy and documentation).
 Respect `CARGO_TARGET_DIR` in any script you add.
 
 Platform notes: both examples enable `gpui_platform`'s `wayland`/`x11` features on Linux.
-Isolated X11 verification is recorded in [docs/PLATFORMS.md](docs/PLATFORMS.md); Wayland runtime
-acceptance remains outstanding. iOS has an unqualified backend/bundle scaffold; Android has no upstream
+Isolated X11 verification is recorded in [docs/PLATFORMS.md](docs/PLATFORMS.md); sampled actual
+Wayland runtime is recorded in `docs/receipts/wayland-20261025/`, with full acceptance outstanding.
+iOS has an unqualified backend/bundle scaffold; Android has no upstream
 backend. Please report what you tried on Windows. Native Windows runtime results are
 missing evidence the project needs.
 
@@ -41,6 +43,10 @@ missing evidence the project needs.
 - **Exact GPUI pins.** `gpui-pre` and `gpui-pre-platform` are pinned with `=`. Changing them,
   enabling dependency features that add packages to `Cargo.lock`, or adding dependencies needs a
   maintainer decision first. Open an issue with the reason and the `Cargo.lock` delta.
+- **Approved local compatibility copies.** The root manifest selects three exact locked
+  packages from `vendor/`; see [vendor guidance](vendor/README.md) for approved deltas and
+  provenance. Cargo patches are not inherited by downstream consumers: apply equivalent
+  configuration at the application workspace root. Further dependency changes need approval.
 - **Upstream is the reference.** Compare against the pinned package's CSS (`src/style/`), example
   HTML/JS (`src/example/`) and, for pickers, weui.js 1.2.17. Fetch them with
   `scripts/weui_upstream.py`. Do not copy unrelated upstream code.

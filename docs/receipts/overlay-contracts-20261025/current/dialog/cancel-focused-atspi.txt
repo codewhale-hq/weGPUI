@@ -1,0 +1,9 @@
+apps 1
+application 'probe-current' [] DISABLED
+  frame 'weGPUI overlay contracts' ['showing']
+    dialog 'Contract dialog' ['focusable', 'modal', 'showing']
+      heading 'Contract dialog' ['showing'] ['level:2']
+      label 'Mask clicks must leave this dialog open. Its disabled action must not activate.' ['showing']
+      button 'Cancel dialog' ['focusable', 'focused', 'showing']
+      button 'Disabled dialog' ['showing'] DISABLED
+      button 'Confirm dialog' ['focusable', 'showing']

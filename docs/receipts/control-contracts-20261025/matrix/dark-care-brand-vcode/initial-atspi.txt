@@ -1,0 +1,11 @@
+apps 1
+application 'control_contracts' [] DISABLED
+  frame 'weGPUI control contracts' ['focusable', 'focused', 'showing']
+    button 'Start matrix' ['focusable', 'showing']
+    button 'Send rounded' ['focusable', 'showing']
+    button 'Start twice 0' ['focusable', 'showing']
+    button 'Reset 0' ['focusable', 'showing']
+    button 'Send plain' ['focusable', 'showing']
+    button 'Start twice 1' ['focusable', 'showing']
+    button 'Reset 1' ['focusable', 'showing']
+    button 'End matrix' ['focusable', 'showing']

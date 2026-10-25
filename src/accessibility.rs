@@ -58,6 +58,8 @@ impl Drop for ModalLayoutDepth {
 pub struct Semantics<E: Element> {
     inner: E,
     disabled: bool,
+    read_only: bool,
+    live: Option<accesskit::Live>,
     busy: bool,
     modal: bool,
     hidden: bool,
@@ -70,6 +72,8 @@ impl<E: Element> Semantics<E> {
         Self {
             inner: inner.into_element(),
             disabled: false,
+            read_only: false,
+            live: None,
             busy: false,
             modal: false,
             hidden: false,
@@ -80,6 +84,18 @@ impl<E: Element> Semantics<E> {
     /// Marks the node disabled (unavailable to activate) when `value` is true.
     pub fn disabled(mut self, value: bool) -> Self {
         self.disabled = value;
+        self
+    }
+    /// Marks the node as read-only when `value` is true, while leaving it available for focus
+    /// and inspection.
+    pub fn read_only(mut self, value: bool) -> Self {
+        self.read_only = value;
+        self
+    }
+    /// Sets the live-region politeness explicitly. A role such as `Alert` alone does not set
+    /// this property in the pinned AccessKit adapter.
+    pub fn live(mut self, value: accesskit::Live) -> Self {
+        self.live = Some(value);
         self
     }
     /// Marks the node busy, for example a loading button, when `value` is true.
@@ -129,6 +145,12 @@ impl<E: Element> Element for Semantics<E> {
         self.inner.write_a11y_info(node);
         if self.disabled {
             node.set_disabled();
+        }
+        if self.read_only {
+            node.set_read_only();
+        }
+        if let Some(live) = self.live {
+            node.set_live(live);
         }
         if self.busy {
             node.set_busy();
@@ -209,7 +231,37 @@ struct OpenModals(HashMap<WindowId, ModalLayers>);
 
 impl Global for OpenModals {}
 
+struct ModalBackgrounds {
+    flags: HashMap<WindowId, Rc<Cell<bool>>>,
+    _cleanup: Subscription,
+}
+
+impl Global for ModalBackgrounds {}
+
+pub(crate) fn background_hidden_flag(window: &Window, cx: &mut App) -> Rc<Cell<bool>> {
+    if !cx.has_global::<ModalBackgrounds>() {
+        let cleanup = cx.on_window_closed(|cx, window| {
+            if cx.has_global::<ModalBackgrounds>() {
+                cx.global_mut::<ModalBackgrounds>().flags.remove(&window);
+            }
+            if cx.has_global::<OpenModals>() {
+                cx.global_mut::<OpenModals>().0.remove(&window);
+            }
+        });
+        cx.set_global(ModalBackgrounds {
+            flags: HashMap::new(),
+            _cleanup: cleanup,
+        });
+    }
+    cx.global_mut::<ModalBackgrounds>()
+        .flags
+        .entry(window.window_handle().window_id())
+        .or_insert_with(|| Rc::new(Cell::new(false)))
+        .clone()
+}
+
 pub(crate) fn register_open_modal(window: &Window, cx: &mut App) -> Rc<Cell<bool>> {
+    background_hidden_flag(window, cx).set(true);
     let window_id = window.window_handle().window_id();
     let depth = MODAL_LAYOUT_DEPTH
         .with(|depths| depths.borrow().get(&window_id).copied().unwrap_or_default());
@@ -290,6 +342,7 @@ impl Element for ModalScope {
         cx: &mut App,
     ) -> (LayoutId, Self::RequestLayoutState) {
         let window_id = window.window_handle().window_id();
+        background_hidden_flag(window, cx).set(false);
         cx.default_global::<OpenModals>().0.remove(&window_id);
         let result = Element::request_layout(&mut self.inner, id, inspector, window, cx);
         self.hidden = cx.global::<OpenModals>().0.contains_key(&window_id);
@@ -333,6 +386,18 @@ impl Element for ModalScope {
 mod tests {
     use super::*;
     use core::prelude::v1::test;
+
+    #[test]
+    fn read_only_and_live_are_forwarded_without_disabling_the_node() {
+        let semantics = Semantics::new(div().id("status").role(Role::Slider))
+            .read_only(true)
+            .live(accesskit::Live::Assertive);
+        let mut node = accesskit::Node::new(Role::Slider);
+        semantics.write_a11y_info(&mut node);
+        assert!(node.is_read_only());
+        assert!(!node.is_disabled());
+        assert_eq!(node.live(), Some(accesskit::Live::Assertive));
+    }
 
     #[test]
     fn later_modal_hides_already_constructed_layers_at_a11y_write() {

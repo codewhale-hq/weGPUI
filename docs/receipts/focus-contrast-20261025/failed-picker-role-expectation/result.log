@@ -1,0 +1,19 @@
+{"step": "default", "focused": [["button", "Default"]]}
+{"step": "primary", "focused": [["button", "Primary"]]}
+{"step": "warn", "focused": [["button", "Warn"]]}
+{"step": "homepage", "focused": [["button", "Homepage search"]]}
+{"step": "camera", "focused": [["button", "\u62cd\u7167"]]}
+{"step": "search-back", "focused": [["button", "\u8fd4\u56de"]]}
+{"step": "search-clear", "focused": [["button", "\u6e05\u9664"]]}
+{"step": "search-submit", "focused": [["button", "\u641c\u7d22"]]}
+{"step": "search-cancel", "focused": [["button", "\u53d6\u6d88"]]}
+{"step": "checkbox-off", "focused": [["check box", "Standalone checkbox"]]}
+{"step": "checkbox-on", "focused": [["check box", "Standalone checkbox"]]}
+{"step": "switch-on", "focused": [["toggle button", "Standalone switch"]]}
+{"step": "checkbox-row", "focused": [["check box", "Checkbox row"]]}
+{"step": "radio", "focused": [["radio button", "Radio first"]]}
+Traceback (most recent call last):
+  File "/workspace/weGPUI/docs/receipts/focus-contrast-20261025/light/drive-used.py", line 144, in <module>
+    assert any(node.getRoleName() == 'combo box' for node in focused_nodes()), names()
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [('list box', 'Focus picker Second')]

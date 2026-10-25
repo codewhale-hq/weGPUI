@@ -132,7 +132,7 @@ impl RenderOnce for Tabbar {
                     .flex_col()
                     .items_center()
                     .cursor_pointer()
-                    .focus_visible(|s| s.border_color(t.brand))
+                    .focus_visible(|s| s.border_color(t.focus_color(t.bg_1)))
                     .child(
                         div()
                             .relative()

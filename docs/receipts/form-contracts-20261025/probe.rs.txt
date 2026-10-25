@@ -1,0 +1,234 @@
+//! Deterministic native verification fixture; retained as receipt source before removal.
+use gpui::{prelude::*, *};
+use wegpui::{
+    Theme,
+    accessibility::ModalScope,
+    components::{
+        button::Button,
+        date_field::{DateField, DateFieldEvent, DateFieldMode, DateFieldValueChanged, DateValue},
+        form::{ClearableInput, FormCell, FormGroup},
+    },
+    input::TextInput,
+};
+
+fn day() -> DateValue {
+    DateValue::date(2024, 2, 29)
+}
+fn moment() -> DateValue {
+    DateValue {
+        hour: 5,
+        minute: 6,
+        ..day()
+    }
+}
+fn replacement() -> DateValue {
+    DateValue {
+        year: 2027,
+        month: 3,
+        day: 4,
+        hour: 11,
+        minute: 12,
+    }
+}
+
+struct Probe {
+    date: Entity<DateField>,
+    time: Entity<DateField>,
+    button: Entity<DateField>,
+    locked: Entity<TextInput>,
+    locked_clear: Entity<ClearableInput>,
+    disabled: Entity<TextInput>,
+    disabled_clear: Entity<ClearableInput>,
+    card: Entity<TextInput>,
+    error: bool,
+    typed: bool,
+    interrupt: bool,
+    log: Vec<String>,
+    _subscriptions: Vec<Subscription>,
+}
+impl Probe {
+    fn new(window: &mut Window, cx: &mut Context<Self>) -> Self {
+        let date = cx.new(|cx| {
+            let mut field = DateField::new("date", "Date", DateFieldMode::Date, cx);
+            field.set_year_range(2020, 2030, cx);
+            field.set_typed_entry(true, cx);
+            field.set_value(Some(day()), cx);
+            field
+        });
+        let time = cx.new(|cx| {
+            let mut field = DateField::new("time", "Date and time", DateFieldMode::DateTime, cx);
+            field.set_year_range(2020, 2030, cx);
+            field.set_typed_entry(true, cx);
+            field.set_value(Some(moment()), cx);
+            field
+        });
+        let button = cx.new(|cx| {
+            let mut field = DateField::new("button", "Picker only", DateFieldMode::Date, cx);
+            field.set_year_range(2020, 2030, cx);
+            field.set_value(Some(day()), cx);
+            field
+        });
+        let locked = cx.new(|cx| {
+            let mut input = TextInput::new("Read only", cx);
+            input.set_text("Locked", cx);
+            input.set_readonly(true, cx);
+            input
+        });
+        let locked_clear = cx.new(|cx| ClearableInput::new(locked.clone(), window, cx));
+        let disabled = cx.new(|cx| {
+            let mut input = TextInput::new("Disabled", cx);
+            input.set_text("Disabled", cx);
+            input.set_disabled(true, cx);
+            input
+        });
+        let disabled_clear = cx.new(|cx| ClearableInput::new(disabled.clone(), window, cx));
+        let card = cx.new(|cx| {
+            let mut input = TextInput::new("Card number", cx);
+            input.set_text("1234", cx);
+            input
+        });
+        let mut subscriptions = vec![];
+        for (label, field) in [("date", &date), ("time", &time), ("button", &button)] {
+            subscriptions.push(
+                cx.subscribe(field, move |this, _, event: &DateFieldEvent, cx| {
+                    this.record(format!("{label}:{event:?}"));
+                    cx.notify();
+                }),
+            );
+            subscriptions.push(cx.subscribe(
+                field,
+                move |this, _, event: &DateFieldValueChanged, cx| {
+                    this.record(format!("{label}:value={:?}", event.0));
+                    cx.notify();
+                },
+            ));
+        }
+        subscriptions.push(cx.observe(&time, |this, _, cx| {
+            if std::mem::take(&mut this.interrupt) {
+                let editing = this.time.read(cx).is_editing(cx);
+                this.time
+                    .update(cx, |field, cx| field.set_value(Some(replacement()), cx));
+                this.record(format!("interrupt-on-notify editing={editing}"));
+                cx.notify();
+            }
+        }));
+        Self {
+            date,
+            time,
+            button,
+            locked,
+            locked_clear,
+            disabled,
+            disabled_clear,
+            card,
+            error: false,
+            typed: true,
+            interrupt: false,
+            log: vec![],
+            _subscriptions: subscriptions,
+        }
+    }
+    fn record(&mut self, text: String) {
+        eprintln!("{text}");
+        self.log.push(text);
+    }
+    fn reset(&mut self, cx: &mut Context<Self>) {
+        self.interrupt = false;
+        self.error = false;
+        self.typed = true;
+        self.date.update(cx, |field, cx| {
+            field.set_disabled(false, cx);
+            field.set_readonly(false, cx);
+            field.set_year_range(2020, 2030, cx);
+            field.set_typed_entry(true, cx);
+            field.set_value(Some(day()), cx);
+        });
+        self.time.update(cx, |field, cx| {
+            field.set_disabled(false, cx);
+            field.set_readonly(false, cx);
+            field.set_year_range(2020, 2030, cx);
+            field.set_value(Some(moment()), cx);
+        });
+        self.button
+            .update(cx, |field, cx| field.set_value(Some(day()), cx));
+        self.locked.update(cx, |input, cx| {
+            input.set_text("Locked", cx);
+            input.set_readonly(true, cx);
+        });
+        self.card.update(cx, |input, cx| input.set_text("1234", cx));
+        self.record("reset".into());
+    }
+    fn keys(&mut self, event: &KeyDownEvent, window: &mut Window, cx: &mut Context<Self>) {
+        match event.keystroke.key.as_str() {
+            "f1" => self.reset(cx),
+            "f2" => self.date.update(cx,|field,cx| field.set_disabled(!field.is_disabled(),cx)),
+            "f3" => self.time.update(cx,|field,cx| field.set_value(Some(replacement()),cx)),
+            "f4" => self.date.update(cx,|field,cx| field.set_year_range(2025,2026,cx)),
+            "f5" => {
+                let result=self.date.update(cx,|field,cx| field.try_set_value(Some(DateValue::date(2024,2,30)),cx));
+                self.record(format!("invalid-set:{result:?}"));
+            }
+            "f6" => self.time.update(cx,|field,cx| field.set_disabled(!field.is_disabled(),cx)),
+            "f7" => self.locked.update(cx,|input,cx| input.set_readonly(!input.is_readonly(),cx)),
+            "f8" => self.error=!self.error,
+            "f9" => { self.typed=!self.typed; self.date.update(cx,|field,cx| field.set_typed_entry(self.typed,cx)); }
+            "f10" => self.time.update(cx,|field,cx| field.cancel(window,cx)),
+            "f11" => { self.interrupt=true; self.record("interrupt armed".into()); }
+            "f12" => self.record(format!("snapshot date={:?} date-editing={} date-error={:?} time={:?} time-editing={} time-disabled={} button={:?} locked={:?}", self.date.read(cx).value(),self.date.read(cx).is_editing(cx),self.date.read(cx).validation_error(),self.time.read(cx).value(),self.time.read(cx).is_editing(cx),self.time.read(cx).is_disabled(),self.button.read(cx).value(),self.locked.read(cx).text())),
+            "f13" => self.date.update(cx,|field,cx| field.set_readonly(!field.is_readonly(),cx)),
+            "tab" => { if event.keystroke.modifiers.shift { window.focus_prev(cx); } else { window.focus_next(cx); } }
+            _ => return,
+        }
+        cx.stop_propagation();
+        cx.notify();
+    }
+}
+impl Render for Probe {
+    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let t = Theme::get(cx).clone();
+        ModalScope::new(div().size_full().flex().flex_col().bg(t.bg_0).text_color(t.fg_0)
+            .on_key_down(cx.listener(Self::keys))
+            .child("F1 reset; F2 date disabled; F3 replace time; F4 range; F5 invalid set")
+            .child("F6 time disabled; F7 readonly; F8 error; F9 typed; F10 cancel; F11 interrupt; F12 snapshot")
+            .child(FormGroup::new("contract-fields").first()
+                .row(FormCell::new("date-row").label("Date").label_for_date(&self.date).child(self.date.clone()))
+                .row(FormCell::new("time-row").label("Date and time").label_for_date(&self.time).child(self.time.clone()))
+                .row(FormCell::new("button-row").label("Picker only").label_for_date(&self.button).child(self.button.clone()))
+                .row(FormCell::new("locked-row").label("Read only").readonly(self.locked.read(cx).is_readonly()).label_for(&self.locked).child(self.locked_clear.clone()))
+                .row(FormCell::new("disabled-row").label("Disabled").disabled(true).label_for(&self.disabled).child(self.disabled_clear.clone()))
+                .row(FormCell::new("card-row").label("Card").label_desc("16 digits required").label_for(&self.card).validation_error(self.error.then(|| "Card must contain 16 digits".into())).child(self.card.clone())))
+            .child(Button::new("After fields").id("after"))
+            .child(div().id("contract-events").role(Role::Label).aria_value(self.log.join("; ")).child(self.log.iter().rev().take(5).cloned().collect::<Vec<_>>().join("\n"))))
+    }
+}
+#[path = "support/platform.rs"]
+mod platform;
+fn main() {
+    platform::application()
+        .with_assets(wegpui::Assets)
+        .run(|cx| {
+            wegpui::init(cx);
+            cx.open_window(
+                WindowOptions {
+                    window_bounds: Some(WindowBounds::Windowed(Bounds::new(
+                        point(px(40.), px(40.)),
+                        size(px(700.), px(940.)),
+                    ))),
+                    titlebar: Some(TitlebarOptions {
+                        title: Some("weGPUI form contracts".into()),
+                        ..Default::default()
+                    }),
+                    ..Default::default()
+                },
+                |window, cx| {
+                    Theme::observe(window);
+                    let view = cx.new(|cx| Probe::new(window, cx));
+                    let date = view.read(cx).date.clone();
+                    date.update(cx, |field, cx| field.focus(window, cx));
+                    view
+                },
+            )
+            .expect("open form contracts probe");
+            cx.activate(true);
+        });
+}

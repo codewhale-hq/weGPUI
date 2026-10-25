@@ -1,0 +1,17 @@
+{
+  "steps": 13,
+  "failures": 11,
+  "errors": [
+    "Date sensitive: True != False",
+    "Date description: '\u53ea\u8bfb' != '\u4e0d\u53ef\u7528'",
+    "Date\uff0c\u6253\u5f00\u65e5\u671f\u9009\u62e9\u5668 description: '\u53ea\u8bfb' != '\u4e0d\u53ef\u7528'",
+    "Date description: '\u53ea\u8bfb' != ''",
+    "Date readonly: True != False",
+    "Date\uff0c\u6253\u5f00\u65e5\u671f\u9009\u62e9\u5668 description: '\u53ea\u8bfb' != ''",
+    "snapshot lacks 'date-error=Some(Format)': snapshot date=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 }) date-editing=false date-error=None time=Some(DateValue { year: 2024, month: 2, day: 29, hour: 5, minute: 6 }) time-editing=false time-disabled=false button=Some(DateValue { year: 2025, month: 2, day: 28, hour: 0, minute: 0 }) locked=\"Locked\"",
+    "Date text: '2024-02-29' != '2024/02/29'",
+    "Date description: '\u53ea\u8bfb' != 'Use YYYY-MM-DD.'",
+    "Date description: '\u53ea\u8bfb' != ''",
+    "date:Cancel callbacks 1 != 2"
+  ]
+}

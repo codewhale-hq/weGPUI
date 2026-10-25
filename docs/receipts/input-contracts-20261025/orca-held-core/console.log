@@ -1,0 +1,1 @@
+/workspace/weGPUI/docs/receipts/input-contracts-20261025/orca-held-core/harness/orca-session-held.sh: line 62: 61316 Segmentation fault      speech-dispatcher --run-single --communication-method=unix_socket --socket-path="$runtime/speechd.sock" --pid-file="$runtime/speechd.pid" --log-dir="$out/speech-dispatcher" --timeout=0 > "$out/speech-dispatcher.log" 2>&1

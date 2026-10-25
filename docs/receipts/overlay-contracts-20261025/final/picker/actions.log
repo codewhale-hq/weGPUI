@@ -1,0 +1,13 @@
+initial
+click Open overlay at 240 40
+opened
+skip-disabled
+last
+skip-back
+first
+confirmed
+click Open overlay at 240 40
+escape-cancel
+click Open overlay at 240 40
+wheel-close-reopen
+final-cancel

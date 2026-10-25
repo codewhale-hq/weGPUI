@@ -1,0 +1,59 @@
+/workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/atspi-common-0.13.0/xml/EditableText.xml
+SHA256 756bc60ddd41f1698da9f569fea60ac8cd2c9e7f4cc29d71f3aee12be18d09b5
+  5: <method name="SetTextContents">
+  10: <method name="InsertText">
+  17: <method name="CopyText">
+  22: <method name="CutText">
+  28: <method name="DeleteText">
+  34: <method name="PasteText">
+
+/workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/atspi-proxies-0.13.0/src/editable_text.rs
+SHA256 a0836e583d233dfd6d7ad42df2fbcefa12ff92bfced6b19e29c9d447a225e0a7
+
+/workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/accesskit-0.24.1/src/lib.rs
+SHA256 da99bad8c05747eee4c1cee0850488c4e61170f7f55cbf6b39e79cd4e4a1acbf
+  289: pub enum Action {
+  313: ReplaceSelectedText,
+  336: /// Requires [`ActionRequest::data`] to be set to [`ActionData::SetTextSelection`].
+  337: SetTextSelection,
+  347: SetValue,
+  373: 10 => Some(Action::ReplaceSelectedText),
+  381: 18 => Some(Action::SetTextSelection),
+  383: 20 => Some(Action::SetValue),
+  2941: SetTextSelection(TextSelection),
+  3043: assert_eq!(Action::n(10), Some(Action::ReplaceSelectedText));
+  3051: assert_eq!(Action::n(18), Some(Action::SetTextSelection));
+  3056: assert_eq!(Action::n(20), Some(Action::SetValue));
+  3136: assert_absent_action!(node, ReplaceSelectedText);
+  3144: assert_absent_action!(node, SetTextSelection);
+  3146: assert_absent_action!(node, SetValue);
+
+vendor/accesskit_atspi_common/src/node.rs
+SHA256 07b6bd357457d00b7c453128193b846670a6ba8c809d1c49e322ad5105b1fb74
+  470: pub(crate) fn interfaces(&self) -> InterfaceSet {
+  485: interfaces.insert(Interface::Text);
+  775: fn do_action_internal<F>(&self, target: NodeId, f: F) -> Result<()>
+  1010: pub fn interfaces(&self) -> Result<InterfaceSet> {
+  1365: action: Action::SetTextSelection,
+  1368: data: Some(ActionData::SetTextSelection(
+  1491: action: Action::SetTextSelection,
+  1494: data: Some(ActionData::SetTextSelection(
+  1518: action: Action::SetTextSelection,
+  1521: data: Some(ActionData::SetTextSelection(range.to_text_selection())),
+  1673: action: Action::SetValue,
+  1734: pub fn interfaces(&self) -> InterfaceSet {
+
+vendor/accesskit_atspi_common/src/util.rs
+SHA256 e831407f6e9b05e403fb4256f037e040d813168716bb1ae3d56f8f0441b58a52
+  59: pub(crate) fn text_position_from_offset<'a>(
+  64: node.text_position_from_global_usv_index(index)
+
+vendor/accesskit_unix/src/atspi/bus.rs
+SHA256 266d1c5fbd10aa97b4375997d6bd02170dafbcd4e16bec387a3196ab7cf5adf2
+  158: if new_interfaces.contains(Interface::Text) {
+  211: if old_interfaces.contains(Interface::Text) {
+
+vendor/accesskit_unix/src/atspi/interfaces/mod.rs
+SHA256 8c3351b0bc27e42dcb5436cb919530b6e14a67d9c5914665accdda3e2479b122
+  13: mod text;
+

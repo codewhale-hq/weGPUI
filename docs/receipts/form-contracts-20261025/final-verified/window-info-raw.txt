@@ -1,0 +1,24 @@
+
+xwininfo: Window id: 0x400001 "weGPUI form contracts"
+
+  Absolute upper-left X:  21
+  Absolute upper-left Y:  40
+  Relative upper-left X:  1
+  Relative upper-left Y:  20
+  Width: 700
+  Height: 940
+  Depth: 32
+  Visual: 0x40
+  Visual Class: TrueColor
+  Border width: 0
+  Class: InputOutput
+  Colormap: 0x400002 (not installed)
+  Bit Gravity State: ForgetGravity
+  Window Gravity State: NorthWestGravity
+  Backing Store State: NotUseful
+  Save Under State: no
+  Map State: IsViewable
+  Override Redirect State: no
+  Corners:  +21+40  -579+40  -579-220  +21-220
+  -geometry 700x940+20+20
+

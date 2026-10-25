@@ -1,0 +1,1010 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "states": [],
+  "attributes": [],
+  "children": [
+    {
+      "role": "application",
+      "name": "data_contracts_probe",
+      "description": "",
+      "states": [],
+      "attributes": [],
+      "children": [
+        {
+          "role": "frame",
+          "name": "weGPUI data contracts",
+          "description": "",
+          "states": [
+            "active",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "visible"
+          ],
+          "attributes": [],
+          "children": [
+            {
+              "role": "panel",
+              "name": "",
+              "description": "",
+              "states": [
+                "enabled",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [
+                {
+                  "role": "panel",
+                  "name": "Inset container",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    81,
+                    100,
+                    504,
+                    48
+                  ]
+                },
+                {
+                  "role": "progress bar",
+                  "name": "Controlled upload",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    17,
+                    174,
+                    529,
+                    3
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Cancel upload",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    551,
+                    154,
+                    44,
+                    44
+                  ]
+                },
+                {
+                  "role": "notification",
+                  "name": "Upload 25 percent",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    17,
+                    175,
+                    1,
+                    1
+                  ]
+                },
+                {
+                  "role": "notification",
+                  "name": "Loading data records",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    116,
+                    224,
+                    370,
+                    22
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Advance progress",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    64,
+                    282,
+                    184,
+                    40
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Hide cancel",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    354,
+                    282,
+                    184,
+                    40
+                  ]
+                },
+                {
+                  "role": "page tab list",
+                  "name": "Dataset navigation",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "horizontal",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [
+                    {
+                      "role": "page tab",
+                      "name": "Overview",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "focusable",
+                        "selectable",
+                        "selected",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [],
+                      "children": [],
+                      "bounds": [
+                        17,
+                        338,
+                        189,
+                        56
+                      ]
+                    },
+                    {
+                      "role": "page tab",
+                      "name": "Details",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "focusable",
+                        "selectable",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [],
+                      "children": [],
+                      "bounds": [
+                        206,
+                        338,
+                        190,
+                        56
+                      ]
+                    },
+                    {
+                      "role": "page tab",
+                      "name": "History",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "focusable",
+                        "selectable",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [],
+                      "children": [],
+                      "bounds": [
+                        396,
+                        338,
+                        189,
+                        56
+                      ]
+                    }
+                  ],
+                  "bounds": [
+                    17,
+                    338,
+                    568,
+                    56
+                  ]
+                },
+                {
+                  "role": "page tab list",
+                  "name": "Workspace navigation",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "horizontal",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [
+                    {
+                      "role": "page tab",
+                      "name": "Home",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "focusable",
+                        "selectable",
+                        "selected",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [],
+                      "children": [],
+                      "bounds": [
+                        17,
+                        410,
+                        189,
+                        60
+                      ]
+                    },
+                    {
+                      "role": "page tab",
+                      "name": "Files",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "focusable",
+                        "selectable",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [],
+                      "children": [],
+                      "bounds": [
+                        206,
+                        410,
+                        190,
+                        60
+                      ]
+                    },
+                    {
+                      "role": "page tab",
+                      "name": "Settings",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "focusable",
+                        "selectable",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [],
+                      "children": [],
+                      "bounds": [
+                        396,
+                        410,
+                        189,
+                        60
+                      ]
+                    }
+                  ],
+                  "bounds": [
+                    17,
+                    410,
+                    568,
+                    60
+                  ]
+                },
+                {
+                  "role": "slider",
+                  "name": "Step three slider",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "horizontal",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    322,
+                    488,
+                    28,
+                    28
+                  ]
+                },
+                {
+                  "role": "status bar",
+                  "name": "6",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    561,
+                    490,
+                    24,
+                    23
+                  ]
+                },
+                {
+                  "role": "slider",
+                  "name": "Fractional slider",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "horizontal",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    303,
+                    536,
+                    28,
+                    28
+                  ]
+                },
+                {
+                  "role": "status bar",
+                  "name": "0.1",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    561,
+                    538,
+                    24,
+                    23
+                  ]
+                },
+                {
+                  "role": "slider",
+                  "name": "Disabled slider",
+                  "description": "",
+                  "states": [
+                    "horizontal",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    340,
+                    584,
+                    28,
+                    28
+                  ]
+                },
+                {
+                  "role": "slider",
+                  "name": "Read-only slider",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "horizontal",
+                    "sensitive",
+                    "showing",
+                    "visible",
+                    "read only"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    234,
+                    632,
+                    28,
+                    28
+                  ]
+                },
+                {
+                  "role": "panel",
+                  "name": "Panel callbacks",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [
+                    {
+                      "role": "link",
+                      "name": "Open record，Controlled reusable MediaBox callback",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "focusable",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [],
+                      "children": [],
+                      "bounds": [
+                        17,
+                        731,
+                        568,
+                        80
+                      ]
+                    }
+                  ],
+                  "bounds": [
+                    17,
+                    678,
+                    568,
+                    133
+                  ]
+                },
+                {
+                  "role": "label",
+                  "name": "Accessible record group",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    33,
+                    843,
+                    536,
+                    20
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Open cell record",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    17,
+                    866,
+                    568,
+                    56
+                  ]
+                },
+                {
+                  "role": "paragraph",
+                  "name": "Application-owned record actions",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    33,
+                    930,
+                    536,
+                    20
+                  ]
+                },
+                {
+                  "role": "panel",
+                  "name": "",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [
+                    {
+                      "role": "button",
+                      "name": "Open grid record",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "focusable",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [],
+                      "children": [],
+                      "bounds": [
+                        17,
+                        966,
+                        189,
+                        62
+                      ]
+                    }
+                  ],
+                  "bounds": [
+                    17,
+                    966,
+                    568,
+                    62
+                  ]
+                },
+                {
+                  "role": "panel",
+                  "name": "",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [
+                    {
+                      "role": "link",
+                      "name": "Footer callback",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "focusable",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [],
+                      "children": [],
+                      "bounds": [
+                        247,
+                        1044,
+                        107,
+                        20
+                      ]
+                    },
+                    {
+                      "role": "paragraph",
+                      "name": "Application-owned data transport",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [],
+                      "children": [],
+                      "bounds": [
+                        200,
+                        1064,
+                        202,
+                        17
+                      ]
+                    }
+                  ],
+                  "bounds": [
+                    17,
+                    1044,
+                    568,
+                    37
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Open data modal",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    209,
+                    1097,
+                    184,
+                    40
+                  ]
+                },
+                {
+                  "role": "article",
+                  "name": "",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [
+                    {
+                      "role": "heading",
+                      "name": "Repeated heading",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [
+                        "level:6"
+                      ],
+                      "children": [],
+                      "bounds": [
+                        41,
+                        1201,
+                        520,
+                        24
+                      ]
+                    },
+                    {
+                      "role": "heading",
+                      "name": "Repeated heading",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [
+                        "level:6"
+                      ],
+                      "children": [],
+                      "bounds": [
+                        41,
+                        1225,
+                        520,
+                        24
+                      ]
+                    },
+                    {
+                      "role": "paragraph",
+                      "name": "Accessible article paragraph.",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [],
+                      "children": [],
+                      "bounds": [
+                        41,
+                        1249,
+                        520,
+                        27
+                      ]
+                    },
+                    {
+                      "role": "list",
+                      "name": "",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [],
+                      "children": [
+                        {
+                          "role": "list item",
+                          "name": "Repeated list entry",
+                          "description": "",
+                          "states": [
+                            "enabled",
+                            "sensitive",
+                            "showing",
+                            "visible"
+                          ],
+                          "attributes": [
+                            "posinset:1"
+                          ],
+                          "children": [],
+                          "bounds": [
+                            61,
+                            1308,
+                            500,
+                            27
+                          ]
+                        }
+                      ],
+                      "bounds": [
+                        61,
+                        1300,
+                        500,
+                        35
+                      ]
+                    },
+                    {
+                      "role": "list",
+                      "name": "",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [],
+                      "children": [
+                        {
+                          "role": "list item",
+                          "name": "Repeated list entry",
+                          "description": "",
+                          "states": [
+                            "enabled",
+                            "sensitive",
+                            "showing",
+                            "visible"
+                          ],
+                          "attributes": [
+                            "posinset:1"
+                          ],
+                          "children": [],
+                          "bounds": [
+                            61,
+                            1367,
+                            500,
+                            27
+                          ]
+                        }
+                      ],
+                      "bounds": [
+                        61,
+                        1359,
+                        500,
+                        35
+                      ]
+                    }
+                  ],
+                  "bounds": [
+                    17,
+                    1153,
+                    568,
+                    313
+                  ]
+                },
+                {
+                  "role": "status bar",
+                  "name": "Events 0; progress 25; navbar 0; tabbar 0",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    17,
+                    1482,
+                    568,
+                    26
+                  ]
+                }
+              ],
+              "bounds": [
+                1,
+                20,
+                600,
+                900
+              ]
+            },
+            {
+              "role": "panel",
+              "name": "",
+              "description": "",
+              "states": [
+                "enabled",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [
+                {
+                  "role": "link",
+                  "name": "Fixed footer callback",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    228,
+                    867,
+                    145,
+                    20
+                  ]
+                },
+                {
+                  "role": "paragraph",
+                  "name": "Viewport footer",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    254,
+                    887,
+                    93,
+                    17
+                  ]
+                }
+              ],
+              "bounds": [
+                1,
+                851,
+                600,
+                69
+              ]
+            },
+            {
+              "role": "notification",
+              "name": "Floating data notice",
+              "description": "",
+              "states": [
+                "enabled",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [
+                {
+                  "role": "link",
+                  "name": "Notice details",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    449,
+                    41,
+                    96,
+                    24
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Close notice",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "bounds": [
+                    551,
+                    38,
+                    28,
+                    28
+                  ]
+                }
+              ],
+              "bounds": [
+                9,
+                28,
+                584,
+                48
+              ]
+            }
+          ],
+          "bounds": [
+            1,
+            20,
+            600,
+            900
+          ]
+        }
+      ]
+    }
+  ],
+  "bounds": [
+    0,
+    0,
+    1024,
+    768
+  ]
+}

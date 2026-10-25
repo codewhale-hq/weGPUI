@@ -1,0 +1,4 @@
+PASS: new AT-SPI expanded/collapsed, invalid, busy, readonly/disabled and heading level.
+PASS: Wayland media actions, nested modal isolation/focus and Text/caret/selection regression.
+PASS: X11 frame and first-character desktop bounds match native client origin and window move.
+Scope: recorded Linux samples only; tree/interface observations are not screen-reader acceptance.

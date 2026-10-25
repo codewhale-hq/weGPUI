@@ -1,0 +1,15 @@
+apps 2
+application 'orca' [] DISABLED
+application 'forms-contracts-core7' [] DISABLED
+  frame 'weGPUI form contracts' ['showing']
+    panel '' ['showing']
+      entry 'Date' ['focusable', 'focused', 'showing']
+      button 'Date，打开日期选择器' ['focusable', 'showing']
+      entry 'Date and time' ['focusable', 'showing']
+      button 'Date and time，打开日期选择器' ['focusable', 'showing']
+      button 'Picker only，2024-02-29' ['focusable', 'showing']
+      entry 'Read only' ['focusable', 'showing']
+      entry 'Disabled' ['showing'] DISABLED
+      entry 'Card' ['focusable', 'showing'] description='16 digits required'
+      button 'After fields' ['focusable', 'showing']
+      label 'date:Change(DateValue { year: 2024, month: 3, day: 1, hour: 0, minute: 0 }); date:value=Some(DateValue { year: 2024, month: 3, day: 1, hour: 0, minute: 0 }); date:value=None' ['showing']

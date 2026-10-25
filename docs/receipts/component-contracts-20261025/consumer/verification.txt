@@ -1,0 +1,4 @@
+PASS: separate consumer launches, opens by pointer, traps Tab/Shift+Tab and confirms 0→1.
+PASS: focus restores; keyboard reopen/Escape preserves 1; pointer reopen/confirm updates 1→2.
+PASS: named dialog/body exposed; page hidden while modal; no application panic.
+Scope: exact pre-contrast binary, X11 and queried AT-SPI only; no screen-reader or final-source attestation.

@@ -1,0 +1,24 @@
+date-picker-same-confirm PASS
+date-picker-confirm PASS
+readonly-cancels-sheet PASS
+readonly-blocks-edit PASS
+readonly-default-button PASS
+disabled-typed-appearance FAIL
+Date sensitive: True != False
+Date description: '只读' != '不可用'
+Date，打开日期选择器 description: '只读' != '不可用'
+reenable-clears-description FAIL
+Date description: '只读' != ''
+Date readonly: True != False
+Date，打开日期选择器 description: '只读' != ''
+date-format-error FAIL
+snapshot lacks 'date-error=Some(Format)': snapshot date=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 }) date-editing=false date-error=None time=Some(DateValue { year: 2024, month: 2, day: 29, hour: 5, minute: 6 }) time-editing=false time-disabled=false button=Some(DateValue { year: 2025, month: 2, day: 28, hour: 0, minute: 0 }) locked="Locked"
+Date text: '2024-02-29' != '2024/02/29'
+Date description: '只读' != 'Use YYYY-MM-DD.'
+format-escape-restores FAIL
+Date description: '只读' != ''
+date:Cancel callbacks 1 != 2
+time-focused-hour-ring PASS
+time-focused-minute-ring PASS
+time-ring-sample-cancel PASS
+pending-interrupt-focus PASS

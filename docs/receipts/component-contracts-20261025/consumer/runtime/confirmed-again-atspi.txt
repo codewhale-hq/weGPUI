@@ -1,0 +1,6 @@
+apps 1
+application 'wegpui-preview-consumer' [] DISABLED
+  frame '' ['showing']
+    panel '' ['showing']
+      list item 'Confirmed' ['showing'] description='2'
+      button 'Open dialog' ['focusable', 'focused', 'showing']

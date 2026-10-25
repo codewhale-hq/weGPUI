@@ -1,0 +1,270 @@
+//! Manual contract probe: application-owned upload state, preview callbacks and controlled swipe.
+use gpui::{prelude::*, *};
+use wegpui::{
+    Theme,
+    accessibility::ModalScope,
+    components::{
+        Cell, Presence,
+        button::Button,
+        gallery::{Gallery, gallery_presence},
+        swiped::{SwipedAction, SwipedCell},
+        uploader::{Uploader, UploaderFile, UploaderStatus},
+    },
+};
+
+struct Probe {
+    files: Vec<UploaderFile>,
+    serial: usize,
+    viewer: Presence,
+    current: Option<usize>,
+    add_focus: FocusHandle,
+    swipe_open: bool,
+    accept_swipe: bool,
+    log: Vec<String>,
+}
+
+impl Probe {
+    fn note(&mut self, note: impl Into<String>) {
+        let note = note.into();
+        eprintln!("{note}");
+        self.log.push(note);
+    }
+
+    fn remove(&mut self, index: usize, window: &mut Window, cx: &mut Context<Self>) {
+        if index < self.files.len() {
+            let label = self.files.remove(index).label;
+            self.note(format!("removed {label}"));
+        }
+        window.focus(&self.add_focus, cx);
+        cx.notify();
+    }
+}
+
+impl Render for Probe {
+    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let theme = Theme::get(cx).clone();
+        let uploader = Uploader::new("contract-uploader", "Upload contract")
+            .info(format!("{}/2", self.files.len()))
+            .max_files(2)
+            .hint("Open this image preview")
+            .add_label("Add image")
+            .track_add_focus(&self.add_focus)
+            .files(self.files.clone())
+            .deletable(true)
+            .on_add(cx.listener(|this, _, _, cx| {
+                if this.files.len() < 2 {
+                    this.serial += 1;
+                    let label = format!("Image {}", this.serial);
+                    this.files.push(
+                        UploaderFile::new("pic_160.png")
+                            .label(label.clone())
+                            .progress("20%"),
+                    );
+                    this.note(format!("added {label}: progress 20%"));
+                    cx.notify();
+                }
+            }))
+            .on_preview(cx.listener(|this, index: &usize, window, cx| {
+                this.current = Some(*index);
+                this.note(format!("preview {}", this.files[*index].label));
+                this.viewer.show(window, cx);
+                cx.notify();
+            }))
+            .on_delete(cx.listener(|this, index: &usize, window, cx| {
+                this.note("thumbnail delete");
+                this.remove(*index, window, cx);
+            }));
+        let gallery_page = cx.entity().downgrade();
+        let gallery = Gallery::new("contract-gallery", &self.viewer)
+            .label("Image preview")
+            .when_some(
+                self.current
+                    .and_then(|index| self.files.get(index))
+                    .map(|file| file.src.clone()),
+                |g, src| g.src(src),
+            )
+            .delete_label("Delete preview image")
+            .on_delete(cx.listener(|this, _, window, cx| {
+                this.note("gallery delete");
+                this.viewer.hide(window, cx);
+                if let Some(index) = this.current.take() {
+                    this.remove(index, window, cx);
+                }
+            }))
+            .on_dismiss(move |window, cx| {
+                gallery_page
+                    .update(cx, |this, cx| {
+                        this.note("gallery dismiss");
+                        this.viewer.hide(window, cx);
+                        cx.notify();
+                    })
+                    .ok();
+            });
+        let swipe = SwipedCell::new("controlled-row")
+            .aria_label("Controlled row")
+            .open(self.swipe_open)
+            .on_open_change(cx.listener(|this, open: &bool, _, cx| {
+                this.note(format!(
+                    "swipe requested {open}; accepted {}",
+                    this.accept_swipe
+                ));
+                if this.accept_swipe {
+                    this.swipe_open = *open;
+                }
+                cx.notify();
+            }))
+            .content(
+                Cell::new("row-content")
+                    .title("Controlled row")
+                    .value("Actions"),
+            )
+            .action(
+                SwipedAction::new("archive", "Archive")
+                    .default_kind()
+                    .on_click(cx.listener(|this, _, _, cx| {
+                        this.note("archive callback");
+                        this.swipe_open = false;
+                        cx.notify();
+                    })),
+            )
+            .action(
+                SwipedAction::new("remove", "Delete row").on_click(cx.listener(
+                    |this, _, _, cx| {
+                        this.note("row delete callback");
+                        this.swipe_open = false;
+                        cx.notify();
+                    },
+                )),
+            );
+        let controls = div()
+            .flex()
+            .gap(px(8.))
+            .child(
+                Button::new("Fail upload")
+                    .id("fail")
+                    .mini()
+                    .on_click(cx.listener(|this, _, _, cx| {
+                        if let Some(file) = this.files.last_mut() {
+                            file.status = UploaderStatus::Error;
+                        }
+                        this.note("status error");
+                        cx.notify();
+                    })),
+            )
+            .child(
+                Button::new("Complete upload")
+                    .id("done")
+                    .mini()
+                    .on_click(cx.listener(|this, _, _, cx| {
+                        if let Some(file) = this.files.last_mut() {
+                            file.status = UploaderStatus::Done;
+                        }
+                        this.note("status done");
+                        cx.notify();
+                    })),
+            )
+            .child(
+                Button::new("Reset uploads")
+                    .id("reset")
+                    .mini()
+                    .on_click(cx.listener(|this, _, _, cx| {
+                        this.files.clear();
+                        this.note("uploads empty");
+                        cx.notify();
+                    })),
+            );
+        let summary = format!(
+            "Files {}; swipe {}; accept {}. {}",
+            self.files.len(),
+            self.swipe_open,
+            self.accept_swipe,
+            self.log.join("; ")
+        );
+        ModalScope::new(
+            div()
+                .size_full()
+                .flex()
+                .flex_col()
+                .gap(px(20.))
+                .p(px(20.))
+                .bg(theme.bg_0)
+                .text_color(theme.fg_0)
+                .on_key_down(|event, window, cx| {
+                    if event.keystroke.key == "tab" {
+                        if event.keystroke.modifiers.shift {
+                            window.focus_prev(cx);
+                        } else {
+                            window.focus_next(cx);
+                        }
+                        cx.stop_propagation();
+                    }
+                })
+                .child(uploader)
+                .child(controls)
+                .child(
+                    Button::new("Toggle request acceptance")
+                        .id("toggle-accept")
+                        .mini()
+                        .on_click(cx.listener(|this, _, _, cx| {
+                            this.accept_swipe = !this.accept_swipe;
+                            this.note(format!("accept {}", this.accept_swipe));
+                            cx.notify();
+                        })),
+                )
+                .child(swipe)
+                .child(
+                    SwipedCell::new("empty-actions")
+                        .aria_label("No actions")
+                        .content("Static row"),
+                )
+                .child(
+                    div()
+                        .id("summary")
+                        .role(Role::Label)
+                        .aria_value(summary.clone())
+                        .child(summary),
+                )
+                .child(gallery),
+        )
+    }
+}
+
+#[path = "support/platform.rs"]
+mod platform;
+
+fn main() {
+    platform::application()
+        .with_assets(wegpui::Assets)
+        .run(|cx| {
+            wegpui::init(cx);
+            cx.set_reduce_motion(true);
+            cx.open_window(
+                WindowOptions {
+                    window_bounds: Some(WindowBounds::Windowed(Bounds::new(
+                        point(px(0.), px(0.)),
+                        size(px(640.), px(800.)),
+                    ))),
+                    titlebar: Some(TitlebarOptions {
+                        title: Some("weGPUI media contracts".into()),
+                        ..Default::default()
+                    }),
+                    ..Default::default()
+                },
+                |window, cx| {
+                    Theme::observe(window);
+                    cx.new(|cx| Probe {
+                        files: vec![UploaderFile::new("pic_160.png").label("Image 1")],
+                        serial: 1,
+                        viewer: gallery_presence(cx),
+                        current: None,
+                        add_focus: cx.focus_handle(),
+                        swipe_open: false,
+                        accept_swipe: true,
+                        log: vec![],
+                    })
+                },
+            )
+            .expect("open media contracts");
+            cx.activate(true);
+        });
+}

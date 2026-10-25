@@ -31,6 +31,14 @@ API links fall back to Rust source. Output is ignored at `website/dist/` and exc
 from the crate. CI builds the full site after strict rustdoc and uploads it as the
 `wegpui-website` artifact; it does not deploy it.
 
+The builder also copies the code/WeUI licenses and NOTICE into `licenses/`. The setup
+page derives the required application-root compatibility patches from Cargo.toml;
+dependency-manifest patches are not inherited. Source links still identify HEAD when
+the working tree is dirty, and the setup page marks that local-preview limitation.
+Rebuild after committing before sharing revision-pinned setup instructions. Included
+rustdoc must come from that same source; copying an existing tree does not establish
+its freshness.
+
 ## Browser verification
 
 Install Playwright's Python package and a cloud/local Chromium browser, then:
@@ -45,6 +53,9 @@ all 264 recorded state/theme routes and decode all 528 capture assets, plus API 
 search/empty state, deep links, themes, comparison, copying,
 keyboard focus, mobile navigation, responsive overflow and missing routes.
 These tests exercise the website, not native GPUI or a screen reader.
+The default evidence directory is a fresh UTC-stamped subdirectory of
+`target/website-browser/`, so a normal invocation preserves earlier receipts.
+Its JSON records the source revision, dirty flag and historical capture revision.
 
 ## Publication
 

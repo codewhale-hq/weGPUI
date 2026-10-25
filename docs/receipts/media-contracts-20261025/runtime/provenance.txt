@@ -1,0 +1,24 @@
+2026-10-25T08:26:17Z
+Linux 6.18.55 x86_64 GNU/Linux
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+rustc 1.98.1 (48a229cea 2026-09-01)
+binary: rustc
+commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+commit-date: 2026-09-01
+host: x86_64-unknown-linux-gnu
+release: 1.98.1
+LLVM version: 22.1.8
+cargo 1.98.1 (797e8a9bc 2026-08-05)
+9c4515c788bbacc42a166534e39dc393ddbcb30b
+665bfe5d58256a098b640fc8a73c0543a8d8a1733280f94273da9000567edd3e  /workspace/.wegpui-cloud/artifacts/media-integrated/media_contract_probe
+616c99041c749fb7a944feb4af17ae08b1871fd155f11ecc42b5d14334e6180e  /workspace/weGPUI/Cargo.lock
+2a8d70e5ac87c5a85ed4a70b4d7ef74bc807eb855df269c260f71bf216809c88  /workspace/weGPUI/examples/media_contract_probe.rs

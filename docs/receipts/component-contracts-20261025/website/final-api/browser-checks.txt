@@ -1,0 +1,103 @@
+{
+  "browser": "154.0.8037.57",
+  "native_application_test": false,
+  "source_commit": "a3ce3afca6417b7dd1b9d701456ae2d21d2150f4",
+  "source_dirty": true,
+  "capture_commit": "2c8ed10",
+  "gpui_version": "0.3.9",
+  "routes_checked": 60,
+  "state_theme_routes_checked": 264,
+  "captures_decoded": 528,
+  "api_links_checked": 39,
+  "viewport_routes": [
+    [
+      390,
+      "overview"
+    ],
+    [
+      390,
+      "components/form_select"
+    ],
+    [
+      390,
+      "get-started"
+    ],
+    [
+      390,
+      "themes"
+    ],
+    [
+      390,
+      "platforms"
+    ],
+    [
+      390,
+      "roadmap"
+    ],
+    [
+      768,
+      "overview"
+    ],
+    [
+      768,
+      "components/form_select"
+    ],
+    [
+      768,
+      "get-started"
+    ],
+    [
+      768,
+      "themes"
+    ],
+    [
+      768,
+      "platforms"
+    ],
+    [
+      768,
+      "roadmap"
+    ],
+    [
+      1440,
+      "overview"
+    ],
+    [
+      1440,
+      "components/form_select"
+    ],
+    [
+      1440,
+      "get-started"
+    ],
+    [
+      1440,
+      "themes"
+    ],
+    [
+      1440,
+      "platforms"
+    ],
+    [
+      1440,
+      "roadmap"
+    ]
+  ],
+  "palettes": [
+    "light",
+    "dark",
+    "care_light",
+    "care_dark"
+  ],
+  "page_errors": [],
+  "passed": [
+    "catalog search/empty state",
+    "state/theme deep links",
+    "native/reference comparison",
+    "clipboard",
+    "keyboard skip/focus",
+    "mobile navigation",
+    "responsive overflow",
+    "missing route"
+  ]
+}

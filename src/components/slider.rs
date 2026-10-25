@@ -26,7 +26,8 @@ impl Render for SliderGhost {
 /// Without `on_change`, or when disabled, it is read-only: not focusable or draggable. While
 /// focused, Left/Down and Right/Up move one step, PageUp and PageDown a tenth of the range (at
 /// least one step), and Home and End jump to the ends. Increment and Decrement accessible actions
-/// are supported.
+/// and SetValue accessible actions are supported. Disabled sliders are exposed as disabled;
+/// sliders without a callback are exposed as read-only.
 #[derive(IntoElement)]
 pub struct Slider {
     id: ElementId,
@@ -105,8 +106,20 @@ impl Slider {
 }
 
 fn snap(value: f32, min: f32, max: f32, step: f32) -> f32 {
-    let snapped = min + ((value - min) / step).round() * step;
-    snapped.clamp(min, max)
+    let (value, min, max, step) = (value as f64, min as f64, max as f64, step as f64);
+    let snapped = min + ((value.clamp(min, max) - min) / step).round() * step;
+    let snapped = if snapped as f32 > max as f32 {
+        min + ((max - min) / step).floor() * step
+    } else {
+        snapped
+    };
+    snapped.clamp(min, max) as f32
+}
+
+fn requested_value(value: f64, min: f32, max: f32) -> Option<f32> {
+    value
+        .is_finite()
+        .then(|| value.clamp(min as f64, max as f64) as f32)
 }
 
 fn format_value(value: f32) -> SharedString {
@@ -130,6 +143,7 @@ impl RenderOnce for Slider {
             let span = (max - min).max(f32::EPSILON);
             let fraction = (value - min) / span;
             let brand = t.brand;
+            let focus = t.focus_color(white());
             let editable = !self.disabled && self.on_change.is_some();
             let on_change: Option<Rc<ChangeHandler<f32>>> = self.on_change.map(Rc::new);
             let emit = {
@@ -175,11 +189,12 @@ impl RenderOnce for Slider {
                 let key_emit = emit.clone();
                 let inc_emit = emit.clone();
                 let dec_emit = emit.clone();
+                let value_emit = emit.clone();
                 handler = handler
                     .focusable()
                     .tab_stop(true)
                     .cursor_grab()
-                    .focus_visible(move |s| s.border_color(brand))
+                    .focus_visible(move |s| s.border_color(focus))
                     .on_key_down(move |event, window, cx| {
                         let big = (span / 10.).max(step);
                         let next = match event.keystroke.key.as_str() {
@@ -199,6 +214,13 @@ impl RenderOnce for Slider {
                     })
                     .on_a11y_action(AccessibleAction::Decrement, move |_, window, cx| {
                         dec_emit(value - step, window, cx)
+                    })
+                    .on_a11y_action(AccessibleAction::SetValue, move |data, window, cx| {
+                        if let Some(accesskit::ActionData::NumericValue(value)) = data
+                            && let Some(value) = requested_value(*value, min, max)
+                        {
+                            value_emit(value, window, cx);
+                        }
                     })
                     .on_drag(SliderDrag(drag_id.clone()), |_, _, _, cx| {
                         cx.new(|_| SliderGhost)
@@ -222,7 +244,11 @@ impl RenderOnce for Slider {
                         move_emit(min + (x / w).clamp(0., 1.) * span, window, cx);
                     })
                 })
-                .child(handler);
+                .child(
+                    crate::accessibility::Semantics::new(handler)
+                        .disabled(self.disabled)
+                        .read_only(!editable && !self.disabled),
+                );
             let slider = div().flex_1().py(px(15.)).px(px(18.)).child(inner);
             let label_value = format_value(value);
             div()
@@ -262,11 +288,41 @@ mod tests {
     }
 
     #[test]
+    fn tiny_valid_steps_do_not_overflow_and_jump_to_the_maximum() {
+        for step in [f32::MIN_POSITIVE, f32::from_bits(1)] {
+            assert_eq!(snap(41., 0., 100., step), 41.);
+            assert_eq!(snap(-41., -100., 100., step), -41.);
+        }
+    }
+
+    #[test]
+    fn accessible_value_requests_reject_non_finite_values_before_narrowing() {
+        for value in [f64::NAN, f64::INFINITY, f64::NEG_INFINITY] {
+            assert_eq!(requested_value(value, 0., 100.), None);
+        }
+        assert_eq!(requested_value(f64::MAX, 0., 100.), Some(100.));
+        assert_eq!(requested_value(-f64::MAX, 0., 100.), Some(0.));
+        assert_eq!(
+            requested_value(14., 5., 25.).map(|v| snap(v, 5., 25., 5.)),
+            Some(15.)
+        );
+    }
+
+    #[test]
     fn snapping_is_relative_to_minimum_and_clamped() {
         assert_eq!(snap(14., 5., 25., 5.), 15.);
         assert_eq!(snap(-100., 5., 25., 5.), 5.);
         assert_eq!(snap(100., 5., 25., 5.), 25.);
         assert_eq!(snap(10., 5., 5., 1.), 5.);
+    }
+
+    #[test]
+    fn upper_endpoint_keeps_a_valid_step_without_losing_float_endpoints() {
+        assert_eq!(snap(10., 0., 10., 4.), 8.);
+        assert_eq!(snap(24., 5., 24., 5.), 20.);
+        assert_eq!(snap(8., 5., 8., 10.), 5.);
+        assert_eq!(snap(1., 0., 1., 0.1), 1.);
+        assert_eq!(snap(0.5, 0., 1., 0.125), 0.5);
     }
 
     #[test]

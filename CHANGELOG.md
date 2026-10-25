@@ -8,6 +8,13 @@ versioning once a release policy is decided. No version has been published.
 
 ### Added
 
+- DateField typed ISO entry, read-only and validation APIs, optional-value change events and
+  form-label/error association. Full-i32 year ranges use bounded lazy picker rows.
+- Semantic article paragraphs/headings, cell titles/tips, configurable progress announcements,
+  uploader capacity and controlled swipe-open callbacks.
+- Theme helpers for composited surface and focus contrast; two-colour focus indicators for
+  controls on inherited backgrounds and images.
+
 - `components::date_field::{DateField, DateFieldMode, DateValue, DateFieldEvent}`: reusable
   date and date-time fields (HTML `date`/`datetime-local` equivalent) built on `Picker`,
   with value/placeholder/disabled/year-range API, Change/Cancel events, Enter/Space opening,
@@ -23,6 +30,19 @@ versioning once a release policy is decided. No version has been published.
 
 ### Fixed
 
+- Vertical FormCell labels fill their header; horizontal labels retain the 85px cap.
+- Guard closing overlay callbacks, picker confirmation and delayed wheel work; reveal long
+  select choices, preserve short-sheet layout and interrupted drag/animation behavior.
+- Preserve Agree link/checkbox callback independence, Switch interruption continuity and
+  read-only clear-input values; expose outlined search keywords and the homepage focus handle.
+- Keep keyboard focus visible across light/dark/care/custom-brand fills, and announce each
+  invalid typed-date submission once in the sampled Linux reader sequence, including retries.
+- Export input visual-line text geometry, AT selection, word boundaries and current screen
+  origin; preserve IME suffixes, bounded undo and newly inserted text visibility.
+- Apply owner-approved local compatibility copies of the existing AccessKit crates and
+  GPUI 0.3.9 for cache signal encoding, disabled/read-only/state/heading export and the existing
+  window-bounds hook. Versions stay pinned; consumers need equivalent workspace-root patches.
+
 - Register focus-reveal targets on navigation tabs, clear-input actions and remaining raw
   gallery controls; add the article link keyboard ring.
 - Expose TextInput/TextArea text runs and caret/selection to assistive technology with masked
@@ -30,7 +50,8 @@ versioning once a release policy is decided. No version has been published.
 - Bind Ctrl+Home/End and Shift variants to existing document-boundary editing actions.
 - Give the two independent radio groups in `component_states` separate named group parents.
 - Hide covered modal layers from accessibility while retaining keyboard/visual restoration.
-  Actual Orca reopen/restoration remains blocked by pinned AccessKit cache-signal defects.
+  The later approved cache compatibility fix repairs the sampled Orca reopen/restoration failure;
+  full screen-reader acceptance remains incomplete.
 
 - Swiped-cell actions: the warn (删除) action's focus ring uses theme `fg_0` and default actions
   use brand. The white ring next to a white row was not visible as focus.

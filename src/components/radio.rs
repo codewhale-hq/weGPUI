@@ -87,7 +87,6 @@ impl RadioGroup {
             .filter(|i| enabled.get(*i) == Some(&true))
             .or_else(|| enabled.iter().position(|e| *e));
         let pressed = t.fg_3;
-        let brand = t.brand;
         self.options
             .into_iter()
             .enumerate()
@@ -123,7 +122,7 @@ impl RadioGroup {
                         .focusable()
                         .cursor_pointer()
                         .active(move |s| s.bg(pressed).rounded(px(8.)))
-                        .focus_visible(move |s| s.border_color(brand))
+                        .focus_visible(move |s| s.shadow(super::form::dual_focus_ring()))
                         .on_click(move |_, window, cx| {
                             if let Some(h) = on_change.as_ref() {
                                 h(&i, window, cx);

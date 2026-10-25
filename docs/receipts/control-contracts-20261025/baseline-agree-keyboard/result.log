@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/weGPUI/docs/receipts/control-contracts-20261025/baseline-agree-keyboard/drive-used.py", line 155, in <module>
+    assert first == 1 and second == 2, (first, second)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (0, 1)

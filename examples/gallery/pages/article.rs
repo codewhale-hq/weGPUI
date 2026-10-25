@@ -2,7 +2,9 @@ use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use wegpui::{
     Theme,
-    components::article::{Article, ArticleList, ListItem, h1, h2, h3, h4, h5, paragraph, section},
+    components::article::{
+        Article, ArticleList, ListItem, h1, h2, h3, h4, h5, paragraph, paragraph_text, section,
+    },
     scrolling::RevealFocus,
 };
 
@@ -113,21 +115,43 @@ impl Render for ArticlePage {
                             .child(
                                 section(2)
                                     .child(h4("四级标题"))
-                                    .child(paragraph().child(LOREM))
+                                    .child(paragraph_text("article-body", LOREM))
                                     .child(
                                         paragraph()
                                             .mb_0()
                                             .flex()
                                             .flex_col()
                                             .child(
-                                                img("pic_article.png")
+                                                div()
+                                                    .id("article-image-1")
+                                                    .role(Role::Image)
+                                                    .aria_label("配图")
+                                                    .flex()
+                                                    .flex_col()
                                                     .w_full()
-                                                    .h(px(327. * 389. / 690.)),
+                                                    .h(px(327. * 389. / 690.))
+                                                    .flex_shrink_0()
+                                                    .child(
+                                                        img("pic_article.png")
+                                                            .w_full()
+                                                            .h(px(327. * 389. / 690.)),
+                                                    ),
                                             )
                                             .child(
-                                                img("pic_article.png")
+                                                div()
+                                                    .id("article-image-2")
+                                                    .role(Role::Image)
+                                                    .aria_label("配图")
+                                                    .flex()
+                                                    .flex_col()
                                                     .w_full()
-                                                    .h(px(327. * 389. / 690.)),
+                                                    .h(px(327. * 389. / 690.))
+                                                    .flex_shrink_0()
+                                                    .child(
+                                                        img("pic_article.png")
+                                                            .w_full()
+                                                            .h(px(327. * 389. / 690.)),
+                                                    ),
                                             ),
                                     ),
                             )

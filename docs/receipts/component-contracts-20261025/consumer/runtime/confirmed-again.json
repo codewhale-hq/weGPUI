@@ -1,0 +1,129 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "states": [],
+  "attributes": [],
+  "children": [
+    {
+      "role": "application",
+      "name": "wegpui-preview-consumer",
+      "description": "",
+      "states": [],
+      "attributes": [],
+      "children": [
+        {
+          "role": "frame",
+          "name": "",
+          "description": "",
+          "states": [
+            "active",
+            "enabled",
+            "sensitive",
+            "showing",
+            "visible"
+          ],
+          "attributes": [],
+          "children": [
+            {
+              "role": "panel",
+              "name": "",
+              "description": "",
+              "states": [
+                "enabled",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [
+                {
+                  "role": "list item",
+                  "name": "Confirmed",
+                  "description": "2",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "bounds": [
+                    1,
+                    28,
+                    375,
+                    56
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Open dialog",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "focused",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "bounds": [
+                    48,
+                    108,
+                    280,
+                    48
+                  ]
+                }
+              ],
+              "interfaces": [
+                "Accessible",
+                "Component"
+              ],
+              "bounds": [
+                1,
+                20,
+                375,
+                640
+              ]
+            }
+          ],
+          "interfaces": [
+            "Accessible",
+            "Component"
+          ],
+          "bounds": [
+            1,
+            20,
+            375,
+            640
+          ]
+        }
+      ],
+      "interfaces": [
+        "Accessible"
+      ]
+    }
+  ],
+  "interfaces": [
+    "Accessible",
+    "Component"
+  ],
+  "bounds": [
+    0,
+    0,
+    1024,
+    768
+  ]
+}

@@ -1,0 +1,88 @@
+2026-10-25T09:04:43Z
+a3ce3afca6417b7dd1b9d701456ae2d21d2150f4
+ M Cargo.lock
+ M Cargo.toml
+ M NOTICE
+ M examples/gallery/pages/article.rs
+ M examples/gallery/pages/form/status.rs
+ M examples/gallery/pages/input.rs
+ M examples/gallery/pages/progress.rs
+ M examples/gallery/pages/uploader.rs
+ M scripts/linux/wayland-session.sh
+ M src/accessibility.rs
+ M src/components/action_sheet.rs
+ M src/components/agree.rs
+ M src/components/article.rs
+ M src/components/button.rs
+ M src/components/cells.rs
+ M src/components/checkbox.rs
+ M src/components/date_field.rs
+ M src/components/dialog.rs
+ M src/components/footer.rs
+ M src/components/form.rs
+ M src/components/gallery.rs
+ M src/components/half_screen_dialog.rs
+ M src/components/icons.rs
+ M src/components/information_bar.rs
+ M src/components/loadmore.rs
+ M src/components/modal.rs
+ M src/components/msg.rs
+ M src/components/navbar.rs
+ M src/components/panel.rs
+ M src/components/picker.rs
+ M src/components/progress.rs
+ M src/components/search_bar.rs
+ M src/components/select.rs
+ M src/components/slider.rs
+ M src/components/steps.rs
+ M src/components/swiped.rs
+ M src/components/switch.rs
+ M src/components/textarea.rs
+ M src/components/toast.rs
+ M src/components/toptips.rs
+ M src/components/uploader.rs
+ M src/components/vcode.rs
+ M src/input.rs
+?? docs/proposals/a11y-state-and-bounds/
+?? docs/proposals/accesskit-linux-compat/
+?? docs/receipts/control-contracts-20261025/
+?? docs/receipts/data-contracts-20261025/
+?? docs/receipts/form-contracts-20261025/
+?? docs/receipts/input-contracts-20261025/
+?? docs/receipts/linux-bridge-20261025/
+?? docs/receipts/media-contracts-20261025/
+?? docs/receipts/overlay-contracts-20261025/
+?? docs/receipts/search-contracts-20261025/
+?? docs/receipts/wayland-20261025/bridge-followup/
+?? examples/control_contracts.rs
+?? examples/data_contracts_probe.rs
+?? examples/forms_contracts_probe.rs
+?? examples/input_contracts_probe.rs
+?? examples/media_contract_probe.rs
+?? examples/search_contracts_probe.rs
+?? vendor/
+3fb46822a9d8b4596a479bca93ca872f0511ddf46c59113d7938b5ea137a0749  -
+4d0892735cbb65dcf9cdfa42a670f58455fbc9cbf2ba8be985d2ac42814e102e  /workspace/.wegpui-cloud/input-core-artifact/debug/examples/input_contracts_probe
+rustc 1.98.1 (48a229cea 2026-09-01)
+Linux 1df3d6caf486 6.18.55 #1 SMP Wed Oct 14 19:45:18 UTC 2026 x86_64 GNU/Linux
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+Orca version 48.1, AT-SPI2 version: 2.56.2
+speech-dispatcher 0.12.0
+Copyright (C) 2002-2012 Brailcom, o.p.s.
+This is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2, or (at your option)
+any later version. Please see COPYING for more details.
+
+pulseaudio 17.0
+eSpeak NG text-to-speech: 1.52.0  Data at: /usr/lib/x86_64-linux-gnu/espeak-ng-data
+command: /workspace/.wegpui-cloud/input-core-artifact/debug/examples/input_contracts_probe

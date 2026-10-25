@@ -32,7 +32,7 @@ impl EventEmitter<VcodeEvent> for VcodeButton {}
 
 impl VcodeButton {
     /// Creates an idle tab-stop button labelled "获取验证码" with a 60-second countdown, in the
-    /// form-group style: a 32px-high grey rounded button with 16px semibold text.
+    /// form-group style: a 32px-high grey rounded button with 16px medium-weight text.
     pub fn new(cx: &mut Context<Self>) -> Self {
         Self {
             label: "获取验证码".into(),
@@ -117,7 +117,6 @@ impl Render for VcodeButton {
         } else {
             self.label.clone()
         };
-        let brand = t.brand;
         let mask = t.btn_active_mask;
         let base = div()
             .id("vcode-btn")
@@ -163,13 +162,13 @@ impl Render for VcodeButton {
                 .bg(bg)
                 .text_size(px(16.))
                 .line_height(px(28.))
-                .font_weight(FontWeight::SEMIBOLD)
+                .font_weight(FontWeight::MEDIUM)
                 .text_color(if counting { t.fg_4 } else { t.fg_0 })
                 .when(!counting, |el| el.active(move |s| s.bg(bg.blend(mask))))
         };
         let el = el
             .track_focus(&self.focus.clone().tab_stop(!counting))
-            .focus_visible(move |s| s.border_color(brand))
+            .focus_visible(move |s| s.shadow(super::form::dual_focus_ring()))
             .on_click(cx.listener(|this, _, window, cx| {
                 cx.stop_propagation();
                 if this.remaining == 0 {

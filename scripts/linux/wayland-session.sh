@@ -93,7 +93,12 @@ def walk(node):
         'name': node.name,
         'description': node.description,
         'interfaces': interfaces,
+        'states': [pyatspi.stateToString(state) for state in node.getState().getStates()],
+        'attributes': list(node.getAttributes()),
     }
+    if any(interface.rsplit('.', 1)[-1] == 'Component' for interface in interfaces):
+        bounds = node.queryComponent().getExtents(pyatspi.DESKTOP_COORDS)
+        item['bounds'] = [bounds.x, bounds.y, bounds.width, bounds.height]
     if any(interface.rsplit('.', 1)[-1] == 'Text' for interface in interfaces):
         text = node.queryText()
         item['text'] = text.getText(0, text.characterCount)

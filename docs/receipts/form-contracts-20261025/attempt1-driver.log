@@ -1,0 +1,30 @@
+typed-invalid-date PASS
+typed-valid-date PASS
+duplicate-submit PASS
+typed-clear PASS
+reset-after-clear PASS
+typed-draft-escape PASS
+owner-invalid-value PASS
+range-keeps-value PASS
+reset-range PASS
+readonly-date PASS
+editable-date PASS
+readonly-clear-hidden FAIL
+Read only focused: False != True
+disabled-label-no-focus PASS
+readonly-tab-skips-disabled PASS
+editable-clear-visible FAIL
+no control '清除'
+Traceback (most recent call last):
+  File "/workspace/weGPUI/docs/receipts/form-contracts-20261025/drive.py", line 35, in <module>
+    item = fresh(action.get('role', 'entry'), action.get('focus', action.get('label')))
+  File "/workspace/weGPUI/docs/receipts/form-contracts-20261025/drive.py", line 18, in fresh
+    return json.loads(run('/usr/bin/python3', '-I', str(here / 'inspect.py'), *args))
+                      ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/weGPUI/docs/receipts/form-contracts-20261025/drive.py", line 15, in run
+    return subprocess.run(args, check=True, text=True, capture_output=True).stdout
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '('/usr/bin/python3', '-I', '/workspace/weGPUI/docs/receipts/form-contracts-20261025/inspect.py', 'button', '清除')' returned non-zero exit status 1.

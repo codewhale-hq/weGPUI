@@ -1,0 +1,57 @@
+{
+  "browser": "156.0.8078.47",
+  "platform": "Chromium Linux Debian trixie headless",
+  "samples": [
+    {
+      "keys": [
+        "Home",
+        "Control+ArrowRight"
+      ],
+      "text": "alpha beta gamma",
+      "start": 5,
+      "end": 5,
+      "direction": "forward"
+    },
+    {
+      "keys": [
+        "Home",
+        "Control+ArrowRight",
+        "Control+ArrowRight"
+      ],
+      "text": "alpha beta gamma",
+      "start": 10,
+      "end": 10,
+      "direction": "forward"
+    },
+    {
+      "keys": [
+        "End",
+        "Control+ArrowLeft"
+      ],
+      "text": "alpha beta gamma",
+      "start": 11,
+      "end": 11,
+      "direction": "forward"
+    },
+    {
+      "keys": [
+        "Home",
+        "Control+Delete"
+      ],
+      "text": " beta gamma",
+      "start": 0,
+      "end": 0,
+      "direction": "forward"
+    },
+    {
+      "keys": [
+        "End",
+        "Control+Backspace"
+      ],
+      "text": "alpha beta ",
+      "start": 11,
+      "end": 11,
+      "direction": "forward"
+    }
+  ]
+}

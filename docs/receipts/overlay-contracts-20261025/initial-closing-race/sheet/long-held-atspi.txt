@@ -1,0 +1,4 @@
+apps 1
+application 'overlays_contracts_probe' [] DISABLED
+  frame 'weGPUI overlay contracts' ['showing']
+    dialog 'Contract sheet' ['focusable', 'focused', 'modal', 'showing']

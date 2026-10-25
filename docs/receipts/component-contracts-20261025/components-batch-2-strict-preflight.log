@@ -1,0 +1,29 @@
+    Checking gpui-pre v0.3.9 (/workspace/weGPUI/vendor/gpui_pre)
+    Checking accesskit_atspi_common v0.19.1 (/workspace/weGPUI/vendor/accesskit_atspi_common)
+    Checking accesskit_unix v0.22.1 (/workspace/weGPUI/vendor/accesskit_unix)
+    Checking gpui-pre-wgpu v0.3.9
+    Checking wegpui v0.1.0 (/workspace/weGPUI)
+    Checking gpui-pre-linux v0.3.9
+    Checking gpui-pre-platform v0.3.9
+error: this looks like you are trying to use `.. != ..`, but you really are doing `.. = (! ..)`
+   --> examples/forms_contracts_probe.rs:173:31
+    |
+173 |             "f8" => self.error=!self.error,
+    |                               ^^
+    |
+    = note: to remove this lint, use either `!=` or `= !`
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#suspicious_assignment_formatting
+    = note: `-D clippy::suspicious-assignment-formatting` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::suspicious_assignment_formatting)]`
+
+error: this looks like you are trying to use `.. != ..`, but you really are doing `.. = (! ..)`
+   --> examples/forms_contracts_probe.rs:174:33
+    |
+174 |             "f9" => { self.typed=!self.typed; self.date.update(cx,|field,cx| field.set_typed_entry(self.typed,cx)); }
+    |                                 ^^
+    |
+    = note: to remove this lint, use either `!=` or `= !`
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#suspicious_assignment_formatting
+
+error: could not compile `wegpui` (example "forms_contracts_probe") due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...

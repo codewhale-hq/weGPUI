@@ -44,10 +44,10 @@ pub enum ButtonKind {
 /// A WeUI push button (`weui-btn`).
 ///
 /// Defaults: [`ButtonKind::Default`], [`Size::Large`], enabled, horizontally centred, between 184px
-/// and 280px wide. The semibold label is clamped to two lines with an ellipsis. The button exposes
+/// and 280px wide. The medium-weight label is clamped to two lines with an ellipsis. The button exposes
 /// `Role::Button`, is a Tab stop and activates on click, Enter or Space unless disabled or loading;
-/// keyboard focus shows a 2px ring: brand on default buttons, near-black on overlay primary
-/// buttons, white otherwise, plus a 2px brand outer ring on non-overlay primary and warn buttons. It holds no state: the owner rebuilds it each render with the current
+/// keyboard focus shows contrasting 2px bands. Opaque fills keep their preferred focus colour
+/// when its contrast reaches 3:1; translucent fills use black and white inset bands. It holds no state: the owner rebuilds it each render with the current
 /// `disabled`/`loading` values.
 #[derive(IntoElement)]
 pub struct Button {
@@ -264,7 +264,8 @@ impl Button {
             ButtonKind::Primary => t.link,
             ButtonKind::Warn => t.red,
         };
-        let (bg, active, ring) = (t.bg_5, t.bg_color_active, t.brand);
+        let (bg, active) = (t.bg_5, t.bg_color_active);
+        let ring = t.focus_color(bg);
         let interactive = !self.disabled && !self.loading;
         let label_only = self.label.is_empty();
         let aria = self.title.unwrap_or_else(|| {
@@ -412,16 +413,17 @@ impl RenderOnce for Button {
             .min_width
             .unwrap_or(if small || self.inline { 0. } else { 184. });
         let mask = t.btn_active_mask;
-        let ring = match (self.overlay, self.kind) {
+        let preferred_ring = match (self.overlay, self.kind) {
             (false, ButtonKind::Default) => t.brand,
             // White fill on a brand page: a brand ring would sit at about 2.3:1 against the fill,
             // so use the button's own near-black label colour.
             (true, ButtonKind::Primary) => rgba(0x000000e6).into(),
             _ => white(),
         };
-        let outer_ring = !self.overlay && self.kind != ButtonKind::Default;
-        let brand = t.brand;
-        let spinner_color: Hsla = if self.kind == ButtonKind::Default && !self.overlay {
+        let ring = t.focus_color_with(preferred_ring, bg);
+        let translucent = bg.a < 1.;
+        let backing = t.focus_color_with(white(), ring);
+        let spinner_color: Hsla = if self.kind == ButtonKind::Default {
             rgb(0x606060).into()
         } else {
             fg
@@ -429,7 +431,7 @@ impl RenderOnce for Button {
         let interactive = !self.disabled && !self.loading;
         let text_max =
             self.width.unwrap_or(280.).min(280.) - 2. * pad_x - if self.loading { 24. } else { 0. };
-        let label = clamp_lines(&self.label, font, FontWeight::SEMIBOLD, text_max, 2, window);
+        let label = clamp_lines(&self.label, font, FontWeight::MEDIUM, text_max, 2, window);
         let group = SharedString::from("weui-btn");
         let label_only = self.label.is_empty();
         let aria = self.title.clone().unwrap_or_else(|| {
@@ -462,7 +464,7 @@ impl RenderOnce for Button {
             .text_color(fg)
             .text_size(px(font))
             .line_height(px(lh))
-            .font_weight(FontWeight::SEMIBOLD)
+            .font_weight(FontWeight::MEDIUM)
             .when(
                 !small && !self.inline && !self.margin_reset && !self.flex_1,
                 |el| el.mx_auto(),
@@ -507,18 +509,16 @@ impl RenderOnce for Button {
                 .focusable()
                 .tab_stop(true)
                 .focus_visible(move |s| {
-                    let s = s.border_color(ring);
-                    if outer_ring {
-                        s.shadow(vec![BoxShadow {
-                            color: brand,
-                            offset: point(px(0.), px(0.)),
-                            blur_radius: px(0.),
-                            spread_radius: px(2.),
-                            inset: false,
-                        }])
-                    } else {
-                        s
+                    if translucent {
+                        return s.shadow(super::form::dual_focus_ring());
                     }
+                    s.border_color(ring).shadow(vec![BoxShadow {
+                        color: backing,
+                        offset: point(px(0.), px(0.)),
+                        blur_radius: px(0.),
+                        spread_radius: px(2.),
+                        inset: false,
+                    }])
                 });
             if let Some(focus) = self.focus {
                 el = el.track_focus(&focus);

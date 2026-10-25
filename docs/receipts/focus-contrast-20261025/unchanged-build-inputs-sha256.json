@@ -1,0 +1,7 @@
+{
+  "Cargo.toml": "c9524bf554878f7012af901b013e4fbbe9a8b5efbbce71632006de95e6acbdad",
+  "Cargo.lock": "2c3891d2adb4163f61dbcd159a8a71b34442ee7f2a47738813138de433480deb",
+  "src/theme/palette.rs": "5faf8572c3b960854ecad03ab82b14f8f07f91374e042c9dace83ccb54e358e3",
+  "examples/support/platform.rs": "d2ebf086a4d5833564e8dfbf468764fe7ef2b79ec28b1095097ae89f4fb7163c",
+  "assets/pic_article.png": "230d763f4eb8ad74559ca53601e140a057c02712484aa1e7379ed9709a0b0020"
+}

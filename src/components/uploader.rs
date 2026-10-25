@@ -3,8 +3,8 @@
 //!
 //! [`Uploader`] only renders [`UploaderFile`]s in their [`UploaderStatus`]. Choosing and
 //! transporting files is application-owned: open a chooser in `on_add` and update the statuses.
-//! Known limitations: there is no maximum count (the add box is always shown), and the preview hint
-//! "轻点两下查看大图" cannot be changed.
+//! [`Uploader::max_files`] can hide the add box at capacity without discarding supplied files.
+//! Transport, retry policy and status updates remain application-owned.
 
 use super::{ClickHandler, Icon};
 use crate::Theme;
@@ -48,6 +48,11 @@ impl UploaderFile {
         self.status = UploaderStatus::Error;
         self
     }
+    /// Sets the presentation status. The uploader does not initiate transport or mutate it.
+    pub fn status(mut self, status: UploaderStatus) -> Self {
+        self.status = status;
+        self
+    }
     /// Sets the status to [`UploaderStatus::Progress`] with `text`.
     pub fn progress(mut self, text: impl Into<SharedString>) -> Self {
         self.status = UploaderStatus::Progress(text.into());
@@ -72,6 +77,8 @@ pub struct Uploader {
     deletable: bool,
     hint: SharedString,
     add_label: SharedString,
+    max_files: Option<usize>,
+    add_focus: Option<FocusHandle>,
     on_preview: Option<IndexHandler>,
     on_delete: Option<IndexHandler>,
     on_add: Option<ClickHandler>,
@@ -88,6 +95,8 @@ impl Uploader {
             deletable: false,
             hint: "轻点两下查看大图".into(),
             add_label: "上传图片".into(),
+            max_files: None,
+            add_focus: None,
             on_preview: None,
             on_delete: None,
             on_add: None,
@@ -112,6 +121,27 @@ impl Uploader {
     /// Sets the add box's accessible label (default "上传图片").
     pub fn add_label(mut self, label: impl Into<SharedString>) -> Self {
         self.add_label = label.into();
+        self
+    }
+    /// Sets the accessible description of a done thumbnail (default "轻点两下查看大图").
+    pub fn hint(mut self, hint: impl Into<SharedString>) -> Self {
+        self.hint = hint.into();
+        self
+    }
+    /// Hides the add box when the supplied file count reaches `maximum`. All statuses count;
+    /// zero hides it even when empty. No files are removed and no chooser/transport limit is
+    /// enforced: the application must also bound files returned by its chooser. If a focused add
+    /// box disappears, focus advances to the next surviving stop (or blurs when none exists).
+    /// Unset by default.
+    pub fn max_files(mut self, maximum: usize) -> Self {
+        self.max_files = Some(maximum);
+        self
+    }
+    /// Tracks the add box with `focus` when it is shown and has `on_add`. A caller removing the
+    /// focused thumbnail can focus this handle after updating its files. Hidden add boxes are
+    /// not focus targets, so choose another surviving control while at capacity.
+    pub fn track_add_focus(mut self, focus: &FocusHandle) -> Self {
+        self.add_focus = Some(focus.clone());
         self
     }
     /// Makes done thumbnails focusable and calls the handler with the file index on click or
@@ -139,11 +169,32 @@ impl Uploader {
 const SIZE: f32 = 96.;
 
 impl RenderOnce for Uploader {
-    fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
+    fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
         crate::scrolling::FocusTarget::new({
+            let can_add = self
+                .max_files
+                .is_none_or(|maximum| self.files.len() < maximum);
+            let add_focus = self.add_focus.unwrap_or_else(|| {
+                window
+                    .use_keyed_state(
+                        ElementId::NamedChild(
+                            std::sync::Arc::new(self.id.clone()),
+                            "add-focus".into(),
+                        ),
+                        cx,
+                        |_, cx| cx.focus_handle(),
+                    )
+                    .read(cx)
+                    .clone()
+            });
+            if !can_add && add_focus.is_focused(window) {
+                window.focus_next(cx);
+                if add_focus.is_focused(window) {
+                    window.blur(cx);
+                }
+            }
             let t = Theme::get(cx).clone();
             let dark = Theme::get(cx).is_dark;
-            let brand = t.brand;
             let white = t.white;
             let red = t.red;
             let header_label = SharedString::from(match &self.info {
@@ -190,7 +241,7 @@ impl RenderOnce for Uploader {
                                 .focusable()
                                 .tab_stop(true)
                                 .cursor_pointer()
-                                .focus_visible(move |s| s.border_color(brand))
+                                .focus_visible(move |s| s.shadow(super::form::dual_focus_ring()))
                                 .on_click(move |_, window, cx| preview(&i, window, cx));
                         }
                         item = item.child(hit);
@@ -236,7 +287,9 @@ impl RenderOnce for Uploader {
                                                 .border_color(transparent_black())
                                                 .focusable()
                                                 .tab_stop(true)
-                                                .focus_visible(move |s| s.border_color(white))
+                                                .focus_visible(move |s| {
+                                                    s.shadow(super::form::dual_focus_ring())
+                                                })
                                                 .on_click(move |_, window, cx| {
                                                     cx.stop_propagation();
                                                     delete(&i, window, cx)
@@ -276,6 +329,7 @@ impl RenderOnce for Uploader {
             } else {
                 (rgb(0xededed), rgb(0xa3a3a3))
             };
+            let add_focus_color = t.focus_color(box_bg.into());
             let add = div()
                 .id("uploader-input-box")
                 .role(Role::Button)
@@ -286,10 +340,13 @@ impl RenderOnce for Uploader {
                 .bg(box_bg)
                 .border_2()
                 .border_color(transparent_black())
-                .cursor_pointer()
-                .focusable()
-                .tab_stop(true)
-                .focus_visible(move |s| s.border_color(brand))
+                .when(self.on_add.is_some(), |el| {
+                    el.track_focus(&add_focus)
+                        .focusable()
+                        .tab_stop(true)
+                        .cursor_pointer()
+                        .focus_visible(move |s| s.border_color(add_focus_color))
+                })
                 .child(
                     div()
                         .id("uploader-plus")
@@ -330,7 +387,7 @@ impl RenderOnce for Uploader {
                         .flex_wrap()
                         .gap(px(8.))
                         .children(files)
-                        .child(add),
+                        .when(can_add, |el| el.child(add)),
                 )
         })
     }

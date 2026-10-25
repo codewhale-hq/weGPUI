@@ -1,0 +1,44 @@
+--- a/vendor/accesskit_unix/src/atspi/bus.rs
++++ b/vendor/accesskit_unix/src/atspi/bus.rs
+@@ -396,7 +396,7 @@
+         let Ok(item) = cache_item_for_node(self.unique_name().inner(), &node) else {
+             return Ok(());
+         };
+-        self.emit_cache_signal("AddAccessible", &item).await
++        self.emit_cache_signal("AddAccessible", &(item,)).await
+     }
+ 
+     pub(crate) async fn emit_cache_remove(&self, adapter_id: usize, node_id: NodeId) -> Result<()> {
+@@ -407,7 +407,7 @@
+                 node: node_id,
+             },
+         );
+-        self.emit_cache_signal("RemoveAccessible", &reference).await
++        self.emit_cache_signal("RemoveAccessible", &(reference,)).await
+     }
+ 
+     async fn emit_cache_signal<B>(&self, signal_name: &str, body: &B) -> Result<()>
+--- a/vendor/accesskit_atspi_common/src/node.rs
++++ b/vendor/accesskit_atspi_common/src/node.rs
+@@ -309,7 +309,7 @@
+         {
+             atspi_state.insert(State::Active);
+         }
+-        if state.is_text_input() && !state.is_read_only() {
++        if state.is_text_input() && !state.is_read_only_or_disabled() {
+             atspi_state.insert(State::Editable);
+         }
+         // TODO: Focus and selection.
+@@ -370,9 +370,10 @@
+             _ => {}
+         }
+ 
+-        if state.is_read_only_supported() && state.is_read_only_or_disabled() {
++        if state.is_read_only_supported() && state.is_read_only() {
+             atspi_state.insert(State::ReadOnly);
+-        } else {
++        }
++        if !state.is_disabled() {
+             atspi_state.insert(State::Enabled | State::Sensitive);
+         }
+ 

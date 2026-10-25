@@ -34,7 +34,7 @@ impl Panel {
             children: vec![],
         }
     }
-    /// Sets the header (`weui-panel__hd`): 15px semibold text above an inset hairline. It also
+    /// Sets the header (`weui-panel__hd`): 15px medium text above an inset hairline. It also
     /// names the group for assistive technology. Default: none.
     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
         self.title = Some(title.into());
@@ -97,7 +97,7 @@ impl RenderOnce for Panel {
                             .pb(px(13.))
                             .text_size(px(15.))
                             .line_height(px(24.))
-                            .font_weight(FontWeight::SEMIBOLD)
+                            .font_weight(FontWeight::MEDIUM)
                             .text_color(t.fg_0)
                             .child(title)
                             .child(hairline(line).bottom_0().left(px(15.)).right_0()),
@@ -235,7 +235,7 @@ impl MediaBox {
         self.role = Some(role);
         self
     }
-    /// Makes the box interactive: a Tab stop with a pressed background and a brand focus ring. The
+    /// Makes the box interactive: a Tab stop with a pressed background and two contrasting inset focus bands. The
     /// callback receives the click event on a pointer click, or on Enter or Space while focused.
     pub fn on_click(
         mut self,
@@ -347,13 +347,12 @@ impl RenderOnce for MediaBox {
             el = el.children(self.children);
             if let Some(handler) = self.on_click {
                 let pressed = t.bg_color_active;
-                let brand = t.brand;
                 el = el
                     .cursor_pointer()
                     .focusable()
                     .tab_stop(true)
                     .active(move |s| s.bg(pressed))
-                    .focus_visible(move |s| s.shadow(super::form::focus_ring(brand)))
+                    .focus_visible(move |s| s.shadow(super::form::dual_focus_ring()))
                     .on_click(handler);
             }
             el

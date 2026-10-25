@@ -36,7 +36,7 @@ pub enum ToastKind {
 
 /// Toast message box, 132 to 320 px wide (text-only toasts have no minimum width).
 ///
-/// Exposed as an `Alert`, or a busy `Status` while loading, named by its text. With
+/// Exposed as an assertive `Alert`, or a polite, busy `Status` while loading, named by its text. With
 /// [`Toast::presence`] it renders centred in a [`Modal`] with a transparent mask and no dismissal;
 /// without one it renders inline.
 #[derive(IntoElement)]
@@ -167,7 +167,13 @@ impl RenderOnce for Toast {
                     .line_height(relative(1.4))
                     .child(self.text.clone()),
             );
-        let body = Semantics::new(body).busy(self.kind == ToastKind::Loading);
+        let body = Semantics::new(body)
+            .busy(self.kind == ToastKind::Loading)
+            .live(if self.kind == ToastKind::Loading {
+                accesskit::Live::Polite
+            } else {
+                accesskit::Live::Assertive
+            });
         match self.presence {
             Some(presence) => {
                 let viewport = window.viewport_size();

@@ -85,6 +85,7 @@ impl Render for ProgressPage {
             Progress::new(ElementId::NamedInteger("progress".into(), i as u64))
                 .label(format!("上传进度{}", i + 1))
                 .value(*v)
+                .when(i == 0, |bar| bar.announcement(self.announcement.clone()))
                 .on_cancel(cx.listener(|this, _, _, cx| this.cancel(cx)))
         });
         let mut body = div().flex().flex_col();
@@ -99,15 +100,6 @@ impl Render for ProgressPage {
             .desc("进度条")
             .spacing()
             .child(body)
-            .child(
-                div()
-                    .id("progress-announcement")
-                    .role(Role::Status)
-                    .aria_label(self.announcement.clone())
-                    .absolute()
-                    .size(px(1.))
-                    .opacity(0.),
-            )
             .child(
                 ButtonArea::new().button(
                     Button::new("上传")

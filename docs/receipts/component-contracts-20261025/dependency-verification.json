@@ -1,0 +1,21 @@
+{
+  "parent": "a3ce3afca6417b7dd1b9d701456ae2d21d2150f4",
+  "package_count": 654,
+  "changes": [
+    {
+      "package": "accesskit_atspi_common",
+      "version": "0.19.1",
+      "delta": "registry source/checksum replaced by approved local path; dependency edges unchanged"
+    },
+    {
+      "package": "accesskit_unix",
+      "version": "0.22.1",
+      "delta": "registry source/checksum replaced by approved local path; dependency edges unchanged"
+    },
+    {
+      "package": "gpui-pre",
+      "version": "0.3.9",
+      "delta": "registry source/checksum replaced by approved local path; dependency edges unchanged"
+    }
+  ]
+}

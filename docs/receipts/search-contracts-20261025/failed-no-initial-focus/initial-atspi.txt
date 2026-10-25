@@ -1,0 +1,18 @@
+apps 1
+application 'search_contracts_probe' [] DISABLED
+  frame 'weGPUI search contracts' ['focusable', 'focused', 'showing']
+    heading 'Search contracts' ['showing']
+    button 'Home search' ['focusable', 'showing']
+    button '拍照' ['focusable', 'showing']
+    landmark '' ['showing']
+      button '返回' ['focusable', 'showing']
+      combo box '' ['showing']
+        label 'Keyword' ['showing']
+        entry 'Outlined search' ['focusable', 'showing']
+      button '搜索' ['focusable', 'showing']
+      button '取消' ['focusable', 'showing']
+    landmark '' ['showing']
+      combo box '' ['showing']
+        label 'Scope' ['showing']
+        entry 'Filled search' ['focusable', 'showing']
+        button 'Filled search' ['focusable', 'showing']

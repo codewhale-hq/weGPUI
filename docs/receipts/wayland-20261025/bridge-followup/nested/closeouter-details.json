@@ -1,0 +1,130 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "interfaces": [
+    "Accessible",
+    "Component"
+  ],
+  "states": [],
+  "attributes": [],
+  "bounds": [
+    0,
+    0,
+    1024,
+    768
+  ],
+  "children": [
+    {
+      "role": "application",
+      "name": "nested_modals",
+      "description": "",
+      "interfaces": [
+        "Accessible"
+      ],
+      "states": [],
+      "attributes": [],
+      "children": [
+        {
+          "role": "frame",
+          "name": "weGPUI nested modals",
+          "description": "",
+          "interfaces": [
+            "Accessible",
+            "Component"
+          ],
+          "states": [
+            "active",
+            "enabled",
+            "sensitive",
+            "showing",
+            "visible"
+          ],
+          "attributes": [],
+          "bounds": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "children": [
+            {
+              "role": "panel",
+              "name": "",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Component"
+              ],
+              "states": [
+                "enabled",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "bounds": [
+                0,
+                0,
+                900,
+                800
+              ],
+              "children": [
+                {
+                  "role": "button",
+                  "name": "Open sheet",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "focused",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "bounds": [
+                    358,
+                    66,
+                    184,
+                    48
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "button",
+                  "name": "Background button",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "bounds": [
+                    344,
+                    138,
+                    211,
+                    48
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

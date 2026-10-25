@@ -1,0 +1,26 @@
+apps 1
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['showing']
+    panel '' ['showing']
+      paragraph '上传组件，一般配合组件Gallery来使用。' ['showing']
+        label '上传组件，一般配合组件Gallery来使用。' ['showing']
+        link '组件Gallery' ['focusable', 'showing']
+      list item '' ['showing']
+        list item '图片上传，缩略图不带删除，3/10' ['showing']
+        list '' ['showing']
+          image '图片标题' ['focusable', 'showing'] description='轻点两下查看大图'
+          image '图片标题' ['focusable', 'showing'] description='轻点两下查看大图'
+          notification '错误' ['showing']
+          notification '50%' ['showing']
+          button '上传图片' ['focusable', 'focused', 'showing']
+      list item '' ['showing']
+        list item '图片上传，缩略图带删除，3/10' ['showing']
+        list '' ['showing']
+          image '图片标题' ['focusable', 'showing'] description='轻点两下查看大图'
+          button '删除' ['focusable', 'showing']
+          image '图片标题' ['focusable', 'showing'] description='轻点两下查看大图'
+          button '删除' ['focusable', 'showing']
+          notification '错误' ['showing']
+          notification '50%' ['showing']
+          button '上传图片' ['focusable', 'showing']
+      link 'WeUI 首页' ['focusable', 'showing']

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/weGPUI/docs/receipts/control-contracts-20261025/matrix/dark-care-agree/drive-used.py", line 164, in <module>
+    assert all(actual.get(f'agree-{index}') == 3 for index in [0, 2, 3]), actual
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'terms-0': 3, 'agree-0': 3, 'terms-2': 3, 'agree-2': 2, 'terms-3': 3, 'agree-3': 2, 'terms-1': 3}

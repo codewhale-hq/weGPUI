@@ -1,0 +1,13 @@
+{
+  "timestamp_utc": "2026-10-25T09:22:55+00:00",
+  "source_commit": "a3ce3afca6417b7dd1b9d701456ae2d21d2150f4",
+  "source_dirty": true,
+  "capture_commit": "2c8ed10",
+  "gpui_version": "0.3.9",
+  "api_input": "/workspace/.wegpui-cloud/target-198/doc",
+  "api_files_hashed": 769,
+  "api_bytes_hashed": 16317333,
+  "python": "Python 3.12.14",
+  "node": "v24.19.0",
+  "scope": "Root-produced strict Rustdoc on build-7 source; no Cargo invocation by website collector, no final-commit attestation, no native screenshot refresh."
+}

@@ -1,0 +1,305 @@
+//! Native callback and keyboard fixture. Run with `--page buttons|cells|choices|agree|vcode`,
+//! `--size large|medium|mini|xmini`, `--dark` or `--care`. F8 prints callback/state receipts.
+use gpui::{prelude::*, *};
+use std::{cell::RefCell, collections::BTreeMap, rc::Rc};
+use wegpui::{
+    Theme, ThemeMode,
+    components::{
+        agree::Agree,
+        button::{Button, ButtonKind, Size},
+        checkbox::{Checkbox, CheckboxCell},
+        icons::{Icon, IconButton},
+        radio::RadioGroup,
+        switch::Switch,
+        vcode::{VcodeButton, VcodeEvent},
+    },
+    scrolling::FocusScroll,
+};
+
+type Counts = Rc<RefCell<BTreeMap<String, usize>>>;
+
+fn record(counts: &Counts, name: &str) {
+    let mut counts = counts.borrow_mut();
+    let count = counts.entry(name.into()).or_default();
+    *count += 1;
+    eprintln!("CALL {name} {count}");
+}
+
+struct Contracts {
+    page: String,
+    size: Size,
+    counts: Counts,
+    checked: [bool; 4],
+    radio: usize,
+    second_radio: usize,
+    codes: [Entity<VcodeButton>; 2],
+    scroll: ScrollHandle,
+    _subscriptions: Vec<Subscription>,
+}
+
+impl Contracts {
+    fn new(page: String, size: Size, cx: &mut Context<Self>) -> Self {
+        let counts = Counts::default();
+        let codes = [false, true].map(|plain| {
+            cx.new(|cx| {
+                let mut code = VcodeButton::new(cx);
+                code.set_label(if plain { "Send plain" } else { "Send rounded" }, cx);
+                code.set_plain(plain, cx);
+                code.set_seconds(3);
+                code
+            })
+        });
+        let subscriptions = codes
+            .iter()
+            .enumerate()
+            .map(|(index, code)| {
+                let counts = counts.clone();
+                cx.subscribe(code, move |_, _, _: &VcodeEvent, _| {
+                    record(&counts, &format!("vcode-send-{index}"));
+                })
+            })
+            .collect();
+        Self {
+            page,
+            size,
+            counts,
+            checked: [false, false, false, false],
+            radio: 0,
+            second_radio: 0,
+            codes,
+            scroll: ScrollHandle::new(),
+            _subscriptions: subscriptions,
+        }
+    }
+
+    fn callback(&self, name: impl Into<String>) -> impl Fn(&ClickEvent, &mut Window, &mut App) + 'static {
+        let counts = self.counts.clone();
+        let name = name.into();
+        move |_, _, _| record(&counts, &name)
+    }
+
+    fn buttons(&self, cx: &App) -> AnyElement {
+        let t = Theme::get(cx);
+        let rows = [false, true].map(|overlay| {
+            div().flex().gap(px(16.)).children(
+                [ButtonKind::Default, ButtonKind::Primary, ButtonKind::Warn]
+                    .into_iter()
+                    .enumerate()
+                    .map(|(kind_index, kind)| {
+                        div()
+                            .flex_1()
+                            .p(px(16.))
+                            .rounded(px(8.))
+                            .bg(if overlay { t.brand } else { t.bg_2 })
+                            .flex()
+                            .flex_col()
+                            .gap(px(16.))
+                            .child(format!("Kind {kind_index}; overlay {overlay}"))
+                            .children((0..3).map(|state| {
+                                let name = format!("button-{kind_index}-{overlay}-{state}");
+                                Button::new(["Active", "Disabled", "Loading"][state])
+                                    .id(name.clone())
+                                    .title(name.clone())
+                                    .size(self.size)
+                                    .kind(kind)
+                                    .disabled(state == 1)
+                                    .loading(state == 2)
+                                    .when(overlay, Button::overlay)
+                                    .on_click(self.callback(name))
+                            }))
+                    }),
+            )
+        });
+        div().flex().flex_col().gap(px(16.)).children(rows).into_any_element()
+    }
+
+    fn cells(&self) -> AnyElement {
+        let cells = [ButtonKind::Default, ButtonKind::Primary, ButtonKind::Warn]
+            .into_iter()
+            .enumerate()
+            .map(|(kind_index, kind)| {
+                div().flex_1().flex().flex_col().gap(px(16.)).children((0..3).map(|state| {
+                    let name = format!("cell-{kind_index}-{state}");
+                    Button::new(["Cell active", "Cell disabled", "Cell loading"][state])
+                        .id(name.clone())
+                        .title(name.clone())
+                        .cell()
+                        .icon(Icon::new("info-circle"))
+                        .kind(kind)
+                        .disabled(state == 1)
+                        .loading(state == 2)
+                        .on_click(self.callback(name))
+                }))
+            });
+        let icons = (0..4).map(|index| {
+            let name = format!("icon-{index}");
+            div().p(px(20.)).child(
+                IconButton::new(name.clone(), "info-circle")
+                    .label(name.clone())
+                    .disabled(index >= 2)
+                    .when(index % 2 == 1, IconButton::btn_icon)
+                    .on_click(self.callback(name)),
+            )
+        });
+        div()
+            .flex()
+            .flex_col()
+            .gap(px(24.))
+            .child(div().flex().gap(px(16.)).children(cells))
+            .child(div().flex().gap(px(32.)).children(icons))
+            .into_any_element()
+    }
+
+    fn choices(&self, window: &mut Window, cx: &mut Context<Self>) -> AnyElement {
+        let radios = RadioGroup::new("radio-contract")
+            .option("Radio A")
+            .disabled_option("Radio disabled")
+            .option("Radio C")
+            .selected(Some(self.radio))
+            .on_change(cx.listener(|this, value, _, cx| {
+                this.radio = *value;
+                record(&this.counts, &format!("radio-{value}"));
+                cx.notify();
+            }))
+            .rows(window, cx);
+        let second = RadioGroup::new("radio-independent")
+            .option("Second A")
+            .option("Second B")
+            .selected(Some(self.second_radio))
+            .on_change(cx.listener(|this, value, _, cx| {
+                this.second_radio = *value;
+                record(&this.counts, &format!("second-radio-{value}"));
+                cx.notify();
+            }))
+            .rows(window, cx);
+        let counts = self.counts.clone();
+        div()
+            .flex()
+            .flex_col()
+            .gap(px(16.))
+            .child(div().id("checkbox-parent").flex().gap(px(32.)).items_center().child("Checkbox").child(
+                Checkbox::new("checkbox")
+                    .label("Standalone checkbox")
+                    .checked(self.checked[0])
+                    .on_change(cx.listener(|this, value, _, cx| {
+                        this.checked[0] = *value;
+                        record(&this.counts, "checkbox");
+                        cx.notify();
+                    })),
+            ).on_click(move |_, _, _| record(&counts, "checkbox-parent")))
+            .child(Checkbox::new("checkbox-disabled").label("Disabled checkbox").checked(true).disabled(true)
+                .on_change({ let counts = self.counts.clone(); move |_, _, _| record(&counts, "checkbox-disabled") }))
+            .child(CheckboxCell::new("checkbox-row", "Checkbox row").checked(self.checked[1])
+                .on_change(cx.listener(|this, value, _, cx| { this.checked[1] = *value; record(&this.counts, "checkbox-row"); cx.notify(); })))
+            .child(CheckboxCell::new("checkbox-row-disabled", "Disabled checkbox row").disabled(true)
+                .on_change({ let counts = self.counts.clone(); move |_, _, _| record(&counts, "checkbox-row-disabled") }))
+            .child(Switch::new("switch").label("Switch").checked(self.checked[2])
+                .on_change(cx.listener(|this, value, _, cx| { this.checked[2] = *value; record(&this.counts, "switch"); cx.notify(); })))
+            .child(Switch::new("switch-disabled").label("Disabled switch").checked(true).disabled(true)
+                .on_change({ let counts = self.counts.clone(); move |_, _, _| record(&counts, "switch-disabled") }))
+            .child(div().id("radio-parent").role(Role::RadioGroup).aria_label("First radio group").children(radios))
+            .child(div().id("second-radio-parent").role(Role::RadioGroup).aria_label("Second radio group").children(second))
+            .into_any_element()
+    }
+
+    fn agreements(&self, cx: &mut Context<Self>) -> AnyElement {
+        let mut rows = div().flex().flex_col().gap(px(32.));
+        for index in 0..4 {
+            let counts = self.counts.clone();
+            rows = rows.child(
+                Agree::new(format!("agree-{index}"), format!("Agreement {index} "))
+                    .checked(self.checked[index])
+                    .disabled(index == 1)
+                    .warn(index >= 2)
+                    .shake(usize::from(index == 3))
+                    .link(format!("Terms {index}"), move |_, _, _| record(&counts, &format!("terms-{index}")))
+                    .on_change(cx.listener(move |this, value, _, cx| {
+                        this.checked[index] = *value;
+                        record(&this.counts, &format!("agree-{index}"));
+                        cx.notify();
+                    })),
+            );
+        }
+        rows.child(
+            div().w(px(260.)).child(
+                Agree::new("agree-long", "Read this long agreement carefully. ".repeat(70))
+                    .link("Long terms", self.callback("terms-long"))
+                    .on_change({ let counts = self.counts.clone(); move |_, _, _| record(&counts, "agree-long") }),
+            ),
+        ).into_any_element()
+    }
+
+    fn verification(&self, cx: &mut Context<Self>) -> AnyElement {
+        div().flex().flex_col().gap(px(24.)).children(self.codes.iter().enumerate().map(|(index, code)| {
+            div().flex().gap(px(24.)).items_center().child(code.clone()).child(
+                Button::new(format!("Start twice {index}")).medium().on_click(cx.listener(move |this, _, window, cx| {
+                    this.codes[index].update(cx, |code, cx| { code.start(window, cx); code.start(window, cx); });
+                })),
+            ).child(
+                Button::new(format!("Reset {index}")).medium().on_click(cx.listener(move |this, _, _, cx| {
+                    this.codes[index].update(cx, VcodeButton::reset);
+                    record(&this.counts, &format!("vcode-reset-{index}"));
+                })),
+            )
+        })).into_any_element()
+    }
+}
+
+impl Render for Contracts {
+    fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let content = match self.page.as_str() {
+            "buttons" => self.buttons(cx),
+            "cells" => self.cells(),
+            "choices" => self.choices(window, cx),
+            "agree" => self.agreements(cx),
+            "vcode" => self.verification(cx),
+            page => panic!("unknown contract page {page}"),
+        };
+        let theme = Theme::get(cx);
+        let page = div().id("control-contracts").size_full().overflow_y_scroll().track_scroll(&self.scroll)
+            .bg(theme.bg_0).text_color(theme.fg_0).p(px(24.)).flex().flex_col().gap(px(24.))
+            .on_key_down(cx.listener(|this, event: &KeyDownEvent, window, cx| {
+                if event.keystroke.key == "tab" {
+                    if event.keystroke.modifiers.shift { window.focus_prev(cx); } else { window.focus_next(cx); }
+                    cx.stop_propagation();
+                } else if event.keystroke.key == "f8" {
+                    eprintln!("SNAP counts={:?} checked={:?} radio={} second={} remaining={:?} offset={:?}",
+                        this.counts.borrow(), this.checked, this.radio, this.second_radio,
+                        this.codes.each_ref().map(|code| code.read(cx).remaining()), this.scroll.offset());
+                }
+            }))
+            .child(Button::new("Start matrix").id("start").mini().on_click(self.callback("start")))
+            .child(content)
+            .child(Button::new("End matrix").id("end").mini().on_click(self.callback("end")));
+        FocusScroll::new("control-contracts-focus", &self.scroll, page)
+    }
+}
+
+#[path = "support/platform.rs"]
+mod platform;
+
+fn main() {
+    let args: Vec<String> = std::env::args().collect();
+    let value = |flag| args.windows(2).find(|pair| pair[0] == flag).map(|pair| pair[1].clone());
+    let page = value("--page").unwrap_or_else(|| "buttons".into());
+    let button_size = match value("--size").as_deref().unwrap_or("large") {
+        "large" => Size::Large,
+        "medium" => Size::Medium,
+        "mini" => Size::Mini,
+        "xmini" => Size::XMini,
+        other => panic!("unknown button size {other}"),
+    };
+    let dark = args.iter().any(|arg| arg == "--dark");
+    let care = args.iter().any(|arg| arg == "--care");
+    platform::application().with_assets(wegpui::Assets).run(move |cx| {
+        wegpui::init(cx);
+        Theme::set_mode(if dark { ThemeMode::Dark } else { ThemeMode::Light }, cx);
+        Theme::set_care(care, cx);
+        cx.open_window(WindowOptions {
+            window_bounds: Some(WindowBounds::Windowed(Bounds::new(point(px(20.), px(20.)), size(px(1100.), px(900.))))),
+            titlebar: Some(TitlebarOptions { title: Some("weGPUI control contracts".into()), ..Default::default() }),
+            ..Default::default()
+        }, |window, cx| { Theme::observe(window); cx.new(|cx| Contracts::new(page, button_size, cx)) }).expect("open control contracts");
+        cx.activate(true);
+    });
+}

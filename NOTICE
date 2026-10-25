@@ -16,3 +16,15 @@ Adapted from gpui-pre 0.3.7 examples/input.rs.
 Copyright Zed Industries. Licensed under the Apache License, Version 2.0.
 Changes include public library API, WeUI styling, scoped key bindings,
 marked-text range correction, clipping and horizontal scrolling.
+
+Vendored Linux AccessKit compatibility copies
+accesskit_unix 0.22.1 and accesskit_atspi_common 0.19.1
+Copyright the AccessKit contributors. Licensed under MIT OR Apache-2.0.
+See vendor/accesskit_unix and vendor/accesskit_atspi_common for licenses.
+Local changes: AT-SPI cache signal argument encoding; disabled/read-only, invalid,
+busy and expanded/collapsed states; heading level attributes.
+
+Vendored GPUI 0.3.9 compatibility copy
+Copyright Zed Industries. Licensed under Apache-2.0.
+See vendor/gpui_pre/LICENSE-APACHE.
+Local change: invoke the existing accessibility window-bounds update hook.

@@ -1,0 +1,284 @@
+[
+  {
+    "role": "application",
+    "name": "search_contracts_probe",
+    "states": [],
+    "bounds": null
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI search contracts",
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      0,
+      0,
+      720,
+      650
+    ]
+  },
+  {
+    "role": "heading",
+    "name": "Search contracts",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      20,
+      20,
+      680,
+      26
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Home search",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      54,
+      82,
+      591,
+      48
+    ]
+  },
+  {
+    "role": "button",
+    "name": "\u62cd\u7167",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      643,
+      94,
+      23,
+      24
+    ]
+  },
+  {
+    "role": "landmark",
+    "name": "",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      20,
+      166,
+      680,
+      58
+    ]
+  },
+  {
+    "role": "button",
+    "name": "\u8fd4\u56de",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      34,
+      174,
+      16,
+      42
+    ]
+  },
+  {
+    "role": "combo box",
+    "name": "",
+    "states": [
+      "collapsed",
+      "enabled",
+      "expandable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      60,
+      176,
+      528,
+      38
+    ]
+  },
+  {
+    "role": "label",
+    "name": "Keyword",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      73,
+      181,
+      73,
+      28
+    ]
+  },
+  {
+    "role": "entry",
+    "name": "Outlined search",
+    "states": [
+      "editable",
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "single line",
+      "visible",
+      "selectable text"
+    ],
+    "bounds": [
+      154,
+      183,
+      434,
+      24
+    ]
+  },
+  {
+    "role": "button",
+    "name": "\u641c\u7d22",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      588,
+      176,
+      54,
+      38
+    ]
+  },
+  {
+    "role": "button",
+    "name": "\u53d6\u6d88",
+    "states": [
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      652,
+      174,
+      34,
+      42
+    ]
+  },
+  {
+    "role": "landmark",
+    "name": "",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      20,
+      248,
+      680,
+      56
+    ]
+  },
+  {
+    "role": "combo box",
+    "name": "",
+    "states": [
+      "collapsed",
+      "enabled",
+      "expandable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      32,
+      258,
+      656,
+      36
+    ]
+  },
+  {
+    "role": "label",
+    "name": "Scope",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      68,
+      262,
+      52,
+      28
+    ]
+  },
+  {
+    "role": "entry",
+    "name": "Filled search",
+    "states": [
+      "editable",
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "single line",
+      "visible",
+      "selectable text"
+    ],
+    "bounds": [
+      128,
+      264,
+      560,
+      24
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Filled search",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      32,
+      258,
+      656,
+      36
+    ]
+  }
+]

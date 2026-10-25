@@ -1,0 +1,5 @@
+Measured from current/date/month.png (immutable current artifact 6ec795d5...):
+Ring pixel (160,350): sRGB(7,193,96), #07c160
+Adjacent selected-row background pixel (200,350): sRGB(247,247,247), #f7f7f7
+WCAG relative-luminance contrast: 2.226025777509693:1
+This receipt verifies ring location/visibility, not full contrast acceptance. A global focus contrast pass remains open.

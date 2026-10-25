@@ -104,7 +104,7 @@ impl ToptipsState {
 }
 
 /// Top alert banner (`weui-toptips`): window width minus 16 px, 14 px white centred text, exposed
-/// as an `Alert`. Renders nothing once its state has faded out.
+/// as an assertive live `Alert`. Renders nothing once its state has faded out.
 #[derive(IntoElement)]
 pub struct Toptips {
     id: ElementId,
@@ -156,6 +156,7 @@ impl RenderOnce for Toptips {
             .when(self.warn, |el| el.bg(t.red))
             .opacity(opacity)
             .child(self.text);
+        let tips = crate::accessibility::Semantics::new(tips).live(accesskit::Live::Assertive);
         deferred(anchored().position(point(px(8.), px(8.))).child(tips))
             .with_priority(2)
             .into_any_element()

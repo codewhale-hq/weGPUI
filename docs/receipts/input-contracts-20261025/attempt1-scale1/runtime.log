@@ -1,0 +1,8 @@
+{"label": "01-initial", "field": "Word editing", "value": "alpha é beta gamma", "caret": 19, "selection": [], "description": "", "states": ["editable", "enabled", "focusable", "focused", "sensitive", "showing", "single line", "visible", "selectable text"], "interfaces": ["Accessible", "Component", "Text"]}
+Traceback (most recent call last):
+  File "/workspace/weGPUI/docs/receipts/input-contracts-20261025/runtime.py", line 59, in <module>
+    report['word_boundary_at_zero'] = list(field('Word editing').queryText().getTextAtOffset(0, pyatspi.TEXT_BOUNDARY_WORD_START))
+                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/pyatspi/text.py", line 469, in getTextAtOffset
+    ret = Atspi.Text.get_text_at_offset(self.obj, offset, type)
+gi.repository.GLib.GError: atspi_error: Unknown method 'GetTextAtOffset' (1)

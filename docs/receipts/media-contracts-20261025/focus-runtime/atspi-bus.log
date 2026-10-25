@@ -1,0 +1,4 @@
+dbus-daemon[44113]: Activating service name='org.a11y.atspi.Registry' requested by ':1.0' (uid=1000 pid=44167 comm="/workspace/.wegpui-cloud/artifacts/media-integrate" label="kernel")
+dbus-daemon[44113]: Successfully activated service 'org.a11y.atspi.Registry'
+SpiRegistry daemon is running with well-known name - org.a11y.atspi.Registry
+X connection to :104 broken (explicit kill or server shutdown).

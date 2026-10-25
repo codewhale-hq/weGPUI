@@ -1,0 +1,110 @@
+   Compiling wegpui v0.1.0 (/workspace/weGPUI)
+error[E0277]: the trait bound `gpui::ElementId: From<(gpui::SharedString, &str)>` is not satisfied
+   --> src/components/date_field.rs:714:21
+    |
+714 |                 .id((self.id.clone(), "calendar"))
+    |                  -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `From<(gpui::SharedString, &str)>` is not implemented for `gpui::ElementId`
+    |                  |
+    |                  required by a bound introduced by this call
+    |
+    = help: `gpui::ElementId` implements trait `From<T>`:
+              From<&gpui::FocusHandle>
+              From<&std::panic::Location<'_>>
+              From<&str>
+              From<(&str, EntityId)>
+              From<(&str, u32)>
+              From<(&str, u64)>
+              From<(&str, usize)>
+              From<(gpui::ElementId, T)>
+            and 10 others
+    = note: required for `(gpui::SharedString, &str)` to implement `Into<gpui::ElementId>`
+note: required by a bound in `gpui::InteractiveElement::id`
+   --> /workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-0.3.9/src/elements/div.rs:779:30
+    |
+779 |     fn id(mut self, id: impl Into<ElementId>) -> Stateful<Self> {
+    |                              ^^^^^^^^^^^^^^^ required by this bound in `InteractiveElement::id`
+
+error[E0277]: the trait bound `gpui::ElementId: From<(gpui::SharedString, &str)>` is not satisfied
+   --> src/components/date_field.rs:795:29
+    |
+795 |                         .id((self.id.clone(), "error"))
+    |                          -- ^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `From<(gpui::SharedString, &str)>` is not implemented for `gpui::ElementId`
+    |                          |
+    |                          required by a bound introduced by this call
+    |
+    = help: `gpui::ElementId` implements trait `From<T>`:
+              From<&gpui::FocusHandle>
+              From<&std::panic::Location<'_>>
+              From<&str>
+              From<(&str, EntityId)>
+              From<(&str, u32)>
+              From<(&str, u64)>
+              From<(&str, usize)>
+              From<(gpui::ElementId, T)>
+            and 10 others
+    = note: required for `(gpui::SharedString, &str)` to implement `Into<gpui::ElementId>`
+note: required by a bound in `gpui::InteractiveElement::id`
+   --> /workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-0.3.9/src/elements/div.rs:779:30
+    |
+779 |     fn id(mut self, id: impl Into<ElementId>) -> Stateful<Self> {
+    |                              ^^^^^^^^^^^^^^^ required by this bound in `InteractiveElement::id`
+
+error[E0616]: field `0` of struct `gpui::Pixels` is private
+    --> src/input.rs:1404:48
+     |
+1404 |                         x0: f64::from(origin.x.0 * scale),
+     |                                                ^ private field
+
+error[E0616]: field `0` of struct `gpui::Pixels` is private
+    --> src/input.rs:1405:48
+     |
+1405 |                         x1: f64::from(origin.x.0 * scale),
+     |                                                ^ private field
+
+error[E0616]: field `0` of struct `gpui::Pixels` is private
+    --> src/input.rs:1406:48
+     |
+1406 |                         y0: f64::from(origin.y.0 * scale),
+     |                                                ^ private field
+
+error[E0616]: field `0` of struct `gpui::Pixels` is private
+    --> src/input.rs:1407:69
+     |
+1407 |                         y1: f64::from((origin.y + self.line_height).0 * scale),
+     |                                                                     ^ private field
+
+error[E0616]: field `0` of struct `gpui::Pixels` is private
+    --> src/input.rs:1432:86
+     |
+1432 |                         (shaped.x_for_index((start + byte).min(line.len())) - row_x).0
+     |                                                                                      ^ private field
+
+error[E0616]: field `0` of struct `gpui::Pixels` is private
+    --> src/input.rs:1442:52
+     |
+1442 | ...                   x0: f64::from(origin.x.0 * scale),
+     |                                              ^ private field
+
+error[E0616]: field `0` of struct `gpui::Pixels` is private
+    --> src/input.rs:1443:53
+     |
+1443 | ...                   x1: f64::from((origin.x.0 + width) * scale),
+     |                                               ^ private field
+
+error[E0616]: field `0` of struct `gpui::Pixels` is private
+    --> src/input.rs:1444:47
+     |
+1444 | ...                   y0: f64::from(top.0 * scale),
+     |                                         ^ private field
+
+error[E0616]: field `0` of struct `gpui::Pixels` is private
+    --> src/input.rs:1445:68
+     |
+1445 | ...                   y1: f64::from((top + self.line_height).0 * scale),
+     |                                                              ^ private field
+
+Some errors have detailed explanations: E0277, E0616.
+For more information about an error, try `rustc --explain E0277`.
+error: could not compile `wegpui` (lib) due to 11 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `wegpui` (lib test) due to 11 previous errors

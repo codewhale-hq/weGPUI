@@ -1,0 +1,12 @@
+apps 1
+application 'probe' [] DISABLED
+  frame 'weGPUI overlay contracts' ['showing']
+    dialog 'Contract picker' ['focusable', 'modal', 'showing']
+      button 'Cancel picker' ['focusable', 'showing']
+      list box 'Contract picker Zero' ['focusable', 'focused', 'showing']
+        list item 'Zero' ['selected', 'showing'] ['posinset:1']
+        list item 'Unavailable one' ['showing'] DISABLED ['posinset:2']
+        list item 'Two' ['showing'] ['posinset:3']
+        list item 'Unavailable three' ['showing'] DISABLED ['posinset:4']
+        list item 'Four' ['showing'] ['posinset:5']
+      button 'Confirm picker' ['focusable', 'showing']

@@ -1,0 +1,68 @@
+dbus-daemon[39180]: [session uid=1000 pid=39180 pidfd=5] Activating service name='org.a11y.Bus' requested by ':1.0' (uid=1000 pid=39211 comm="dbus-send --session --print-reply --dest=org.a11y." label="kernel")
+dbus-daemon[39180]: [session uid=1000 pid=39180 pidfd=5] Successfully activated service 'org.a11y.Bus'
+2026-10-25T08:25:10Z initial
+PASS: distinct duplicate headings/lists, accessible paragraph, named navbar, cancel visibility
+2026-10-25T08:25:12Z notice-position
+PASS: viewport notice escapes inset parent {"notice": {"x": 8, "y": 8, "width": 584, "height": 48}, "parent": {"x": 80, "y": 80, "width": 504, "height": 48}}
+2026-10-25T08:25:14Z footer-position
+PASS: fixed footer is below inset parent at viewport bottom {"footer": {"x": 253, "y": 867, "width": 93, "height": 17}, "parent": {"x": 80, "y": 80, "width": 504, "height": 48}}
+2026-10-25T08:25:17Z progress-advance
+AT action Advance progress click
+2026-10-25T08:25:19Z cancel-pointer
+pointer Cancel upload {'x': 550, 'y': 134, 'width': 44, 'height': 44}
+2026-10-25T08:25:22Z cancel-hidden
+AT action Hide cancel click
+2026-10-25T08:25:25Z cancel-absent
+PASS: distinct duplicate headings/lists, accessible paragraph, named navbar, cancel visibility
+2026-10-25T08:25:28Z navbar-pointer
+pointer Details {'x': 205, 'y': 297, 'width': 190, 'height': 56}
+2026-10-25T08:25:31Z navbar-arrow
+2026-10-25T08:25:32Z navbar-home
+2026-10-25T08:25:34Z navbar-at-action
+AT action History click
+2026-10-25T08:25:37Z tabbar-focus
+focus Home
+2026-10-25T08:25:40Z tabbar-key
+2026-10-25T08:25:42Z tabbar-at-action
+AT action Settings click
+2026-10-25T08:25:45Z slider-focus
+focus Step three slider
+2026-10-25T08:25:47Z slider-end
+2026-10-25T08:25:49Z slider-set-value
+AT set-value Step three slider 9.7 accepted True
+2026-10-25T08:25:51Z fractional-set-value
+AT set-value Fractional slider 0.375 accepted True
+2026-10-25T08:25:54Z fractional-focus
+focus Fractional slider
+2026-10-25T08:25:56Z fractional-key
+2026-10-25T08:25:58Z skip-disabled-and-readonly
+2026-10-25T08:26:00Z disabled-set-value
+AT set-value Disabled slider 80.0 accepted True
+2026-10-25T08:26:03Z readonly-set-value
+AT set-value Read-only slider 80.0 accepted True
+2026-10-25T08:26:05Z panel-focus
+focus Open record，Controlled reusable MediaBox callback
+2026-10-25T08:26:08Z panel-key
+2026-10-25T08:26:10Z panel-at-action
+AT action Open record，Controlled reusable MediaBox callback click
+2026-10-25T08:26:12Z cell-focus
+focus Open cell record
+2026-10-25T08:26:15Z cell-key
+2026-10-25T08:26:17Z cell-at-action
+AT action Open cell record click
+2026-10-25T08:26:20Z grid-focus
+focus Open grid record
+2026-10-25T08:26:23Z grid-key
+2026-10-25T08:26:25Z footer-focus
+focus Footer callback
+2026-10-25T08:26:28Z footer-key
+2026-10-25T08:26:30Z fixed-footer-at-action
+AT action Fixed footer callback click
+2026-10-25T08:26:32Z modal-open
+Traceback (most recent call last):
+  File "/workspace/weGPUI/docs/receipts/data-contracts-20261025/run-20261025T082500Z-PQGWOH/action.py", line 60, in <module>
+    node = find(sys.argv[2])
+  File "/workspace/weGPUI/docs/receipts/data-contracts-20261025/run-20261025T082500Z-PQGWOH/action.py", line 28, in find
+    assert len(matches) == 1, (name, len(matches))
+           ^^^^^^^^^^^^^^^^^
+AssertionError: ('Open data modal', 0)

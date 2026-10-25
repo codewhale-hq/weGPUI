@@ -1,0 +1,3 @@
+dbus-daemon[48134]: Activating service name='org.a11y.atspi.Registry' requested by ':1.0' (uid=1000 pid=48140 comm="/workspace/.wegpui-cloud/evidence/overlay-immutabl" label="kernel")
+dbus-daemon[48134]: Successfully activated service 'org.a11y.atspi.Registry'
+SpiRegistry daemon is running with well-known name - org.a11y.atspi.Registry

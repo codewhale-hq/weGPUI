@@ -91,9 +91,16 @@ impl InputPage {
         }
         cx.observe(&textarea, |_, _, cx| cx.notify()).detach();
         let menus = [Presence::new(cx), Presence::new(cx), Presence::new(cx)];
-        let date = cx.new(|cx| DateField::new("input-date-field", "日期", DateFieldMode::Date, cx));
-        let time =
-            cx.new(|cx| DateField::new("input-time-field", "时间", DateFieldMode::DateTime, cx));
+        let date = cx.new(|cx| {
+            let mut field = DateField::new("input-date-field", "日期", DateFieldMode::Date, cx);
+            field.set_typed_entry(true, cx);
+            field
+        });
+        let time = cx.new(|cx| {
+            let mut field = DateField::new("input-time-field", "时间", DateFieldMode::DateTime, cx);
+            field.set_typed_entry(true, cx);
+            field
+        });
         match state {
             Some("focused") => text.update(cx, |input, cx| input.focus(window, cx)),
             Some("typed") => {

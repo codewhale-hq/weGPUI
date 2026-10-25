@@ -1,0 +1,1 @@
+PASS: gallery article exposes body paragraph and both upstream-alt images

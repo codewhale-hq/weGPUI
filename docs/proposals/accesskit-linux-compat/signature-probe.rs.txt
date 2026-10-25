@@ -1,0 +1,31 @@
+use atspi_common::{cache::CacheItem, ObjectRef};
+use zbus::Message;
+
+fn signature(message: &Message) -> String {
+    let bytes = message.data().bytes();
+    let end = 16 + u32::from_le_bytes(bytes[12..16].try_into().unwrap()) as usize;
+    let fields = &bytes[16..end];
+    let marker = [8, 1, b'g', 0];
+    let offset = fields.windows(marker.len()).position(|bytes| bytes == marker).unwrap() + marker.len();
+    let length = fields[offset] as usize;
+    String::from_utf8(fields[offset + 1..offset + 1 + length].to_vec()).unwrap()
+}
+
+fn main() {
+    let item = CacheItem::default();
+    let object = ObjectRef::Null;
+    let add = Message::signal("/org/a11y/atspi/cache", "org.a11y.atspi.Cache", "AddAccessible").unwrap();
+    let direct = add.clone().build(&item).unwrap();
+    let wrapped = add.build(&(item,)).unwrap();
+    let remove = Message::signal("/org/a11y/atspi/cache", "org.a11y.atspi.Cache", "RemoveAccessible").unwrap();
+    let remove_direct = remove.clone().build(&object).unwrap();
+    let remove_wrapped = remove.build(&(object,)).unwrap();
+    println!("Add current wire signature: {}", signature(&direct));
+    println!("Add proposed wire signature: {}", signature(&wrapped));
+    println!("Remove current wire signature: {}", signature(&remove_direct));
+    println!("Remove proposed wire signature: {}", signature(&remove_wrapped));
+    assert_eq!(signature(&direct), "(so)(so)(so)iiassusau");
+    assert_eq!(signature(&wrapped), "((so)(so)(so)iiassusau)");
+    assert_eq!(signature(&remove_direct), "so");
+    assert_eq!(signature(&remove_wrapped), "(so)");
+}

@@ -1,0 +1,13 @@
+words Changed=1 value=" e\u{301} beta gamma"
+words Changed=2 value="alpha e\u{301} beta gamma"
+words Changed=3 value="alpha e\u{301} beta "
+words Changed=4 value="alpha e\u{301} beta gamma"
+words Changed=5 value="alpha  beta gamma"
+words Changed=6 value="alpha e\u{301} beta gamma"
+words Changed=7 value="x e\u{301} beta gamma"
+words Changed=8 value="alpha e\u{301} beta gamma"
+composition protocol committed twice; expect one Changed
+words Changed=9 value="alpha e\u{301} beta gamma界"
+words Changed=10 value="alpha e\u{301} beta gamma"
+reset requested; changes before delivery=10
+limited composition committed; expect A😀B😀 after F7

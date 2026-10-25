@@ -1,0 +1,139 @@
+diff --git a/src/components/agree.rs b/src/components/agree.rs
+index e2de16d..22a18c4 100644
+--- a/src/components/agree.rs
++++ b/src/components/agree.rs
+@@ -130,6 +130,7 @@ impl RenderOnce for Agree {
+                     handler(e, w, cx)
+                 })
+                 .child(text)
++                .reveal_focus()
+         });
+         let mut el = div()
+             .id(self.id.clone())
+@@ -160,7 +161,7 @@ impl RenderOnce for Agree {
+                     .flex()
+                     .flex_wrap()
+                     .text_color(if self.warn { t.red } else { t.fg_1 })
+-                    .child(self.text)
++                    .child(div().min_w_0().max_w_full().child(self.text))
+                     .children(link),
+             );
+         if !self.disabled {
+diff --git a/src/components/button.rs b/src/components/button.rs
+index d62551c..e127c96 100644
+--- a/src/components/button.rs
++++ b/src/components/button.rs
+@@ -44,7 +44,7 @@ pub enum ButtonKind {
+ /// A WeUI push button (`weui-btn`).
+ ///
+ /// Defaults: [`ButtonKind::Default`], [`Size::Large`], enabled, horizontally centred, between 184px
+-/// and 280px wide. The semibold label is clamped to two lines with an ellipsis. The button exposes
++/// and 280px wide. The medium-weight label is clamped to two lines with an ellipsis. The button exposes
+ /// `Role::Button`, is a Tab stop and activates on click, Enter or Space unless disabled or loading;
+ /// keyboard focus shows a 2px ring: brand on default buttons, near-black on overlay primary
+ /// buttons, white otherwise, plus a 2px brand outer ring on non-overlay primary and warn buttons. It holds no state: the owner rebuilds it each render with the current
+@@ -421,7 +421,7 @@ impl RenderOnce for Button {
+         };
+         let outer_ring = !self.overlay && self.kind != ButtonKind::Default;
+         let brand = t.brand;
+-        let spinner_color: Hsla = if self.kind == ButtonKind::Default && !self.overlay {
++        let spinner_color: Hsla = if self.kind == ButtonKind::Default {
+             rgb(0x606060).into()
+         } else {
+             fg
+@@ -429,7 +429,7 @@ impl RenderOnce for Button {
+         let interactive = !self.disabled && !self.loading;
+         let text_max =
+             self.width.unwrap_or(280.).min(280.) - 2. * pad_x - if self.loading { 24. } else { 0. };
+-        let label = clamp_lines(&self.label, font, FontWeight::SEMIBOLD, text_max, 2, window);
++        let label = clamp_lines(&self.label, font, FontWeight::MEDIUM, text_max, 2, window);
+         let group = SharedString::from("weui-btn");
+         let label_only = self.label.is_empty();
+         let aria = self.title.clone().unwrap_or_else(|| {
+@@ -462,7 +462,7 @@ impl RenderOnce for Button {
+             .text_color(fg)
+             .text_size(px(font))
+             .line_height(px(lh))
+-            .font_weight(FontWeight::SEMIBOLD)
++            .font_weight(FontWeight::MEDIUM)
+             .when(
+                 !small && !self.inline && !self.margin_reset && !self.flex_1,
+                 |el| el.mx_auto(),
+diff --git a/src/components/checkbox.rs b/src/components/checkbox.rs
+index ecc9bfc..2b3bc36 100644
+--- a/src/components/checkbox.rs
++++ b/src/components/checkbox.rs
+@@ -50,7 +50,7 @@ pub fn check_icon(checked: bool, size: f32, cx: &App) -> Div {
+ }
+ 
+ /// A standalone checkbox: a [`check_icon`] exposed as `Role::CheckBox` with a toggled state and
+-/// a tinted circle on keyboard focus. Controlled; the caller stores the value.
++/// a contrasting 2px outer ring on keyboard focus. Controlled; the caller stores the value.
+ #[derive(IntoElement)]
+ pub struct Checkbox {
+     id: ElementId,
+@@ -105,8 +105,9 @@ impl Checkbox {
+ 
+ impl RenderOnce for Checkbox {
+     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
+-        let brand = Theme::get(cx).brand;
++        let t = Theme::get(cx);
+         let checked = self.checked;
++        let ring = if checked { t.fg_0 } else { t.brand };
+         let mut el = div()
+             .id(self.id)
+             .role(Role::CheckBox)
+@@ -134,7 +135,15 @@ impl RenderOnce for Checkbox {
+                 .focusable()
+                 .tab_stop(true)
+                 .cursor_pointer()
+-                .focus_visible(move |s| s.rounded_full().bg(brand.opacity(0.15)));
++                .focus_visible(move |s| {
++                    s.rounded_full().shadow(vec![BoxShadow {
++                        color: ring,
++                        offset: point(px(0.), px(0.)),
++                        blur_radius: px(0.),
++                        spread_radius: px(2.),
++                        inset: false,
++                    }])
++                });
+             if let Some(handler) = self.on_change {
+                 el = el.on_click(move |_, w, cx| {
+                     cx.stop_propagation();
+diff --git a/src/components/icons.rs b/src/components/icons.rs
+index cdf0849..e2fa76f 100644
+--- a/src/components/icons.rs
++++ b/src/components/icons.rs
+@@ -280,7 +280,9 @@ impl RenderOnce for IconButton {
+         let group = SharedString::from("weui-icon-btn");
+         let mut icon = self.icon;
+         if self.btn_icon {
+-            icon = icon.group_active_color(group.clone(), pressed);
++            if !self.disabled {
++                icon = icon.group_active_color(group.clone(), pressed);
++            }
+         } else if icon.color.is_none() {
+             icon = icon.color(t.fg_0);
+         }
+diff --git a/src/components/vcode.rs b/src/components/vcode.rs
+index 661af81..eabb209 100644
+--- a/src/components/vcode.rs
++++ b/src/components/vcode.rs
+@@ -32,7 +32,7 @@ impl EventEmitter<VcodeEvent> for VcodeButton {}
+ 
+ impl VcodeButton {
+     /// Creates an idle tab-stop button labelled "获取验证码" with a 60-second countdown, in the
+-    /// form-group style: a 32px-high grey rounded button with 16px semibold text.
++    /// form-group style: a 32px-high grey rounded button with 16px medium-weight text.
+     pub fn new(cx: &mut Context<Self>) -> Self {
+         Self {
+             label: "获取验证码".into(),
+@@ -163,7 +163,7 @@ impl Render for VcodeButton {
+                 .bg(bg)
+                 .text_size(px(16.))
+                 .line_height(px(28.))
+-                .font_weight(FontWeight::SEMIBOLD)
++                .font_weight(FontWeight::MEDIUM)
+                 .text_color(if counting { t.fg_4 } else { t.fg_0 })
+                 .when(!counting, |el| el.active(move |s| s.bg(bg.blend(mask))))
+         };

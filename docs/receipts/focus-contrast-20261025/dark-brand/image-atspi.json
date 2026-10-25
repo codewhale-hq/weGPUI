@@ -1,0 +1,62 @@
+[
+  {
+    "role": "application",
+    "name": "focus_contrast_probe",
+    "states": [],
+    "bounds": null
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI focus contrast",
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      0,
+      0,
+      700,
+      850
+    ]
+  },
+  {
+    "role": "dialog",
+    "name": "Focus image",
+    "states": [
+      "active",
+      "enabled",
+      "focusable",
+      "modal",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      0,
+      0,
+      700,
+      850
+    ]
+  },
+  {
+    "role": "image",
+    "name": "Focus image",
+    "states": [
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "bounds": [
+      0,
+      0,
+      700,
+      850
+    ]
+  }
+]

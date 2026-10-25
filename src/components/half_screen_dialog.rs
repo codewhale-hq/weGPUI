@@ -4,16 +4,16 @@
 //!
 //! [`HalfScreenDialog`] renders inside a sliding [`Modal`] when given a [`Presence`]. The helpers
 //! [`HdIconButton`], [`action_group`], [`hd_link`] and [`attachment_area`] build header and footer
-//! parts. Known limitation: a grab drag shorter than 56 px snaps back instantly, without the
-//! upstream 0.3 s transition.
+//! parts. A short grab drag returns with the upstream 0.3 s transform transition; reduced motion
+//! returns it immediately.
 
 use super::{
     ClickHandler, Icon,
-    modal::{MaskKind, Modal, Motion, Placement, Presence},
+    modal::{MaskKind, Modal, Motion, Placement, Presence, TRANSITION, ease},
 };
-use crate::Theme;
+use crate::{Theme, scrolling::RevealFocus};
 use gpui::{prelude::*, *};
-use std::rc::Rc;
+use std::{rc::Rc, time::Instant};
 
 /// Shared callback invoked when the dialog asks to be dismissed.
 pub type DismissHandler = Rc<dyn Fn(&mut Window, &mut App)>;
@@ -83,9 +83,10 @@ impl RenderOnce for HdIconButton {
                     .border_2()
                     .border_color(transparent_black())
                     .cursor_pointer()
-                    .focus_visible(|s| s.border_color(t.brand))
+                    .focus_visible(|s| s.shadow(super::form::dual_focus_ring()))
                     .active(|s| s.bg(t.bg_2.opacity(0.5)))
-                    .when_some(self.on_click, |el, handler| el.on_click(handler)),
+                    .when_some(self.on_click, |el, handler| el.on_click(handler))
+                    .reveal_focus(),
             )
     }
 }
@@ -103,6 +104,7 @@ pub fn action_group(children: impl IntoIterator<Item = AnyElement>) -> Div {
 
 /// Text link for the header (`weui-link`): 15 px, link colour, `Link` role and focusable; `handler`
 /// receives the click. Returns the element for further styling.
+/// Call [`RevealFocus::reveal_focus`] after styling when placing it in a scrolling body.
 pub fn hd_link(
     id: impl Into<ElementId>,
     label: impl Into<SharedString>,
@@ -111,7 +113,6 @@ pub fn hd_link(
 ) -> Stateful<Div> {
     let t = Theme::get(cx);
     let label = label.into();
-    let brand = t.brand;
     div()
         .id(id)
         .role(Role::Link)
@@ -125,7 +126,7 @@ pub fn hd_link(
         .text_color(t.link)
         .cursor_pointer()
         .active(|s| s.opacity(0.5))
-        .focus_visible(move |s| s.border_color(brand))
+        .focus_visible(move |s| s.shadow(super::form::dual_focus_ring()))
         .on_click(handler)
         .child(label)
 }
@@ -145,14 +146,31 @@ pub fn attachment_area(child: impl IntoElement) -> Div {
 struct GrabState {
     start: Option<f32>,
     offset: f32,
+    returning: Option<(Instant, f32)>,
+    generation: usize,
+}
+
+impl GrabState {
+    fn visual(&self, cx: &App) -> f32 {
+        match self.returning {
+            Some((at, from)) if !cx.reduce_motion() => {
+                from * (1. - ease(at.elapsed().as_secs_f32() / TRANSITION.as_secs_f32()))
+            }
+            Some(_) => 0.,
+            None => self.offset,
+        }
+    }
 }
 
 /// Bottom sheet with a header, scrolling body and optional footer; children go in the body.
 ///
-/// Unless `large`, its height ranges from 255 px to 75 % of the window. With
+/// Unless `large`, its height ranges from 255 px to 75 % of the window; windows at most 558 px
+/// tall allow the window height minus 16 px, matching the upstream short-screen rule. With
 /// [`HalfScreenDialog::presence`] it renders in a [`Modal`] at the bottom with a dark mask and
 /// slide-up motion, and Escape or a mask click calls `on_dismiss`. Without a presence it renders
 /// inline with the `Dialog` role.
+/// Use [`HalfScreenDialog::body`] for readable plain text; arbitrary children must provide their
+/// own semantic roles and text values.
 #[derive(IntoElement)]
 pub struct HalfScreenDialog {
     id: ElementId,
@@ -260,6 +278,20 @@ impl HalfScreenDialog {
         self.body_padding_bottom = Some(padding);
         self
     }
+    /// Appends a plain-text paragraph exposed as a labelled text node to assistive technology.
+    /// Arbitrary elements added through `ParentElement` keep responsibility for their semantics.
+    pub fn body(mut self, text: impl Into<SharedString>) -> Self {
+        let text = text.into();
+        self.body.push(
+            div()
+                .id(("half-screen-paragraph", self.body.len()))
+                .role(Role::Label)
+                .aria_value(text.clone())
+                .child(text)
+                .into_any_element(),
+        );
+        self
+    }
     /// Sets the footer (`__ft`), drawn below the body with 64 px bottom padding.
     pub fn footer(mut self, footer: impl IntoElement) -> Self {
         self.footer = Some(footer.into_any_element());
@@ -288,16 +320,44 @@ impl RenderOnce for HalfScreenDialog {
     fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
         let viewport = window.viewport_size();
+        let maximum_height = if viewport.height <= px(558.) {
+            (viewport.height - px(16.)).max(px(0.))
+        } else {
+            viewport.height * 0.75
+        };
         let grab_state = window.use_keyed_state(
             SharedString::from(format!("hsd-grab-{:?}", self.id)),
             cx,
             |_, _| GrabState::default(),
         );
-        if self.presence.as_ref().is_some_and(|p| !p.is_open()) {
-            grab_state.update(cx, |s, _| *s = GrabState::default());
+        if let Some(presence) = &self.presence {
+            let hidden = presence.progress(window, cx).is_none();
+            let previous = grab_state.read(cx).clone();
+            if hidden || previous.generation != presence.generation() {
+                let offset = if hidden { 0. } else { previous.visual(cx) };
+                grab_state.update(cx, |s, _| {
+                    *s = GrabState {
+                        generation: presence.generation(),
+                        returning: (offset > 0.).then_some((Instant::now(), offset)),
+                        ..Default::default()
+                    };
+                });
+            }
         }
         let grab = grab_state.read(cx).clone();
-        let pct = (grab.offset / GRAB_DISTANCE).clamp(0., 1.);
+        let grab_offset = grab.visual(cx);
+        if grab
+            .returning
+            .is_some_and(|(at, _)| at.elapsed() < TRANSITION)
+            && !cx.reduce_motion()
+        {
+            window.request_animation_frame();
+        }
+        let pct = if grab.start.is_some() {
+            (grab_offset / GRAB_DISTANCE).clamp(0., 1.)
+        } else {
+            0.
+        };
         let inset = if self.flush || self.bottom_fixed {
             px(24.)
         } else {
@@ -318,7 +378,15 @@ impl RenderOnce for HalfScreenDialog {
                                 .child(title),
                         )
                         .when_some(self.subtitle.clone(), |el, sub| {
-                            el.child(div().text_size(px(10.)).text_color(t.fg_1).child(sub))
+                            el.child(
+                                div()
+                                    .id("half-screen-subtitle")
+                                    .role(Role::Label)
+                                    .aria_value(sub.clone())
+                                    .text_size(px(10.))
+                                    .text_color(t.fg_1)
+                                    .child(sub),
+                            )
                         })
                         .into_any_element()
                 })
@@ -440,10 +508,12 @@ impl RenderOnce for HalfScreenDialog {
             .relative()
             .w_full()
             .when(!self.large, |el| {
-                el.min_h(px(255.)).max_h(viewport.height * 0.75)
+                el.min_h(px(255.).min(maximum_height)).max_h(maximum_height)
             })
-            .when(self.large, |el| el.h(viewport.height - px(16.)))
-            .top(px(grab.offset.max(0.)))
+            .when(self.large, |el| {
+                el.h((viewport.height - px(16.)).max(px(0.)))
+            })
+            .top(px(grab_offset.max(0.)))
             .line_height(relative(1.4))
             .bg(t.bg_2)
             .text_color(t.fg_0)
@@ -453,7 +523,10 @@ impl RenderOnce for HalfScreenDialog {
             .flex()
             .flex_col()
             .child(header)
-            .child(crate::scrolling::FocusScroll::new(bd_key, &bd_scroll, body))
+            .child(
+                crate::scrolling::FocusScroll::new(bd_key, &bd_scroll, body)
+                    .inset_bottom(px(if self.bottom_fixed { 80. } else { 0. })),
+            )
             .children(footer);
         if self.grab {
             let line_h = 4. + 12. * pct;
@@ -503,6 +576,7 @@ impl RenderOnce for HalfScreenDialog {
                     let close = s.offset >= GRAB_DISTANCE;
                     s.start = None;
                     if !close {
+                        s.returning = Some((Instant::now(), s.offset));
                         s.offset = 0.;
                     }
                     cx.notify();
@@ -517,8 +591,10 @@ impl RenderOnce for HalfScreenDialog {
             dialog = dialog
                 .on_mouse_down(MouseButton::Left, move |e, _, cx| {
                     down.update(cx, |s, cx| {
-                        s.start = Some(e.position.y.as_f32());
-                        s.offset = 0.;
+                        let current = s.visual(cx);
+                        s.start = Some(e.position.y.as_f32() - current);
+                        s.offset = current;
+                        s.returning = None;
                         cx.notify();
                     });
                 })

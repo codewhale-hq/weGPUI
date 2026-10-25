@@ -1,0 +1,1 @@
+PASS: progress values/cancel/live events, controlled nav, slider snapping/guards, callbacks, fixed-footer isolation; gallery explicitly skipped

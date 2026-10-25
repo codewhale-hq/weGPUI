@@ -77,6 +77,7 @@ impl Status {
         let text = self.card.read(cx).text().to_string();
         if text.chars().count() < 16 {
             self.warn_text = Some(text);
+            self.card.update(cx, |input, cx| input.focus(window, cx));
             self.tips.show(window);
             self.tips
                 .hide_after(Duration::from_secs(2), window, cx, |t| &mut t.tips);
@@ -105,6 +106,7 @@ impl Render for Status {
                             .label("卡号")
                             .label_width(W)
                             .warn(warn)
+                            .validation_error(warn.then(|| "请输入16位数卡号".into()))
                             .bd_flex()
                             .label_for(&self.card)
                             .child(self.card_field.clone()),
@@ -127,15 +129,17 @@ impl Render for Status {
                             .label_width(W)
                             .bd_flex()
                             .label_for(&self.amount)
+                            .validation_error(amount_tips.then(|| "最多支持8位数".into()))
                             .child(self.amount.clone()),
                     )
                     .when(amount_tips, |g| {
                         g.tips(
-                            div()
+                            wegpui::accessibility::Semantics::new(div()
                                 .id("js_current_tips")
                                 .role(Role::Alert)
                                 .aria_label("最多支持8位数")
-                                .child("最多支持8位数"),
+                                .child("最多支持8位数"))
+                                .live(accesskit::Live::Assertive),
                         )
                         .tips_warn(true)
                     }),

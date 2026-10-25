@@ -1,0 +1,400 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "interfaces": [
+    "Accessible",
+    "Component"
+  ],
+  "states": [],
+  "attributes": [],
+  "bounds": [
+    0,
+    0,
+    1024,
+    768
+  ],
+  "children": [
+    {
+      "role": "application",
+      "name": "media_contract_probe",
+      "description": "",
+      "interfaces": [
+        "Accessible"
+      ],
+      "states": [],
+      "attributes": [],
+      "children": [
+        {
+          "role": "frame",
+          "name": "weGPUI media contracts",
+          "description": "",
+          "interfaces": [
+            "Accessible",
+            "Component"
+          ],
+          "states": [
+            "active",
+            "enabled",
+            "sensitive",
+            "showing",
+            "visible"
+          ],
+          "attributes": [],
+          "bounds": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "children": [
+            {
+              "role": "panel",
+              "name": "",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Component"
+              ],
+              "states": [
+                "enabled",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "bounds": [
+                0,
+                0,
+                900,
+                800
+              ],
+              "children": [
+                {
+                  "role": "list item",
+                  "name": "Upload contract，1/2",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "bounds": [
+                    20,
+                    20,
+                    860,
+                    38
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "list",
+                  "name": "",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "bounds": [
+                    20,
+                    58,
+                    860,
+                    96
+                  ],
+                  "children": [
+                    {
+                      "role": "image",
+                      "name": "Image 1",
+                      "description": "Open this image preview",
+                      "interfaces": [
+                        "Accessible",
+                        "Action",
+                        "Component"
+                      ],
+                      "states": [
+                        "enabled",
+                        "focusable",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [],
+                      "bounds": [
+                        20,
+                        58,
+                        96,
+                        96
+                      ],
+                      "children": []
+                    },
+                    {
+                      "role": "button",
+                      "name": "删除",
+                      "description": "",
+                      "interfaces": [
+                        "Accessible",
+                        "Action",
+                        "Component"
+                      ],
+                      "states": [
+                        "enabled",
+                        "focusable",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [],
+                      "bounds": [
+                        88,
+                        54,
+                        32,
+                        32
+                      ],
+                      "children": []
+                    },
+                    {
+                      "role": "button",
+                      "name": "Add image",
+                      "description": "",
+                      "interfaces": [
+                        "Accessible",
+                        "Action",
+                        "Component"
+                      ],
+                      "states": [
+                        "enabled",
+                        "focusable",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [],
+                      "bounds": [
+                        124,
+                        58,
+                        96,
+                        96
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Fail upload",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "bounds": [
+                    20,
+                    508,
+                    100,
+                    32
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "button",
+                  "name": "Complete upload",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "bounds": [
+                    128,
+                    508,
+                    144,
+                    32
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "button",
+                  "name": "Reset uploads",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "bounds": [
+                    280,
+                    508,
+                    123,
+                    32
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "button",
+                  "name": "Toggle request acceptance",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "bounds": [
+                    20,
+                    560,
+                    280,
+                    32
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "list item",
+                  "name": "Controlled row",
+                  "description": "操作已收起，按左方向键或回车显示操作",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "states": [
+                    "collapsed",
+                    "enabled",
+                    "expandable",
+                    "focusable",
+                    "focused",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "bounds": [
+                    20,
+                    612,
+                    860,
+                    56
+                  ],
+                  "children": [
+                    {
+                      "role": "list item",
+                      "name": "Controlled row",
+                      "description": "Actions",
+                      "interfaces": [
+                        "Accessible",
+                        "Component"
+                      ],
+                      "states": [
+                        "enabled",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "attributes": [],
+                      "bounds": [
+                        20,
+                        612,
+                        860,
+                        56
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "role": "list item",
+                  "name": "No actions",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "bounds": [
+                    20,
+                    688,
+                    860,
+                    26
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "label",
+                  "name": "Files 1; swipe false; accept true. ",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "bounds": [
+                    20,
+                    734,
+                    860,
+                    26
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

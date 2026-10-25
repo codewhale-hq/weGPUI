@@ -1,0 +1,883 @@
+{
+  "scale": "1",
+  "actions": [
+    {
+      "label": "01-initial",
+      "field": "Word editing",
+      "value": "alpha é beta gamma",
+      "caret": 19,
+      "selection": [],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "02-ctrl-right",
+      "field": "Word editing",
+      "value": "alpha é beta gamma",
+      "caret": 5,
+      "selection": [],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "03-ctrl-right-unicode",
+      "field": "Word editing",
+      "value": "alpha é beta gamma",
+      "caret": 8,
+      "selection": [],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "04-select-word",
+      "field": "Word editing",
+      "value": "alpha é beta gamma",
+      "caret": 14,
+      "selection": [
+        [
+          14,
+          19
+        ]
+      ],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "05-delete-word-forward",
+      "field": "Word editing",
+      "value": " é beta gamma",
+      "caret": 0,
+      "selection": [],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "06-undo-forward-delete",
+      "field": "Word editing",
+      "value": "alpha é beta gamma",
+      "caret": 5,
+      "selection": [
+        [
+          0,
+          5
+        ]
+      ],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "07-delete-word-backward",
+      "field": "Word editing",
+      "value": "alpha é beta ",
+      "caret": 14,
+      "selection": [],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "08-undo-backward-delete",
+      "field": "Word editing",
+      "value": "alpha é beta gamma",
+      "caret": 14,
+      "selection": [
+        [
+          14,
+          19
+        ]
+      ],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "09-at-caret",
+      "field": "Word editing",
+      "value": "alpha é beta gamma",
+      "caret": 6,
+      "selection": [],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "10-delete-combining-grapheme",
+      "field": "Word editing",
+      "value": "alpha  beta gamma",
+      "caret": 6,
+      "selection": [],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "11-undo-grapheme",
+      "field": "Word editing",
+      "value": "alpha é beta gamma",
+      "caret": 8,
+      "selection": [
+        [
+          6,
+          8
+        ]
+      ],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "12-at-select",
+      "field": "Word editing",
+      "value": "alpha é beta gamma",
+      "caret": 5,
+      "selection": [
+        [
+          0,
+          5
+        ]
+      ],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "13-replace-at-selection",
+      "field": "Word editing",
+      "value": "x é beta gamma",
+      "caret": 1,
+      "selection": [],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "14-undo-at-replacement",
+      "field": "Word editing",
+      "value": "alpha é beta gamma",
+      "caret": 5,
+      "selection": [
+        [
+          0,
+          5
+        ]
+      ],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "15-composition-commit",
+      "field": "Word editing",
+      "value": "alpha é beta gamma界",
+      "caret": 20,
+      "selection": [],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "16-undo-composition",
+      "field": "Word editing",
+      "value": "alpha é beta gamma",
+      "caret": 19,
+      "selection": [],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "17-readonly-caret",
+      "field": "Read only",
+      "value": "read only text",
+      "caret": 4,
+      "selection": [],
+      "description": "",
+      "states": [
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text",
+        "read only"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "18-readonly-edit-guard",
+      "field": "Read only",
+      "value": "read only text",
+      "caret": 4,
+      "selection": [],
+      "description": "",
+      "states": [
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text",
+        "read only"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "19-disabled-caret-guard",
+      "field": "Disabled",
+      "value": "disabled text",
+      "caret": 13,
+      "selection": [],
+      "description": "",
+      "states": [
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "20-password-safe",
+      "field": "Password",
+      "value": "•••",
+      "caret": 3,
+      "selection": [],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "21-password-delete",
+      "field": "Password",
+      "value": "••",
+      "caret": 0,
+      "selection": [],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "22-password-undo",
+      "field": "Password",
+      "value": "•••",
+      "caret": 0,
+      "selection": [
+        [
+          0,
+          1
+        ]
+      ],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "23-utf16-limit-invalid",
+      "field": "UTF16 limit",
+      "value": "A😀BXY",
+      "caret": 5,
+      "selection": [],
+      "description": "At most six UTF-16 units",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "invalid entry",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "23b-composition-utf16-limit",
+      "field": "UTF16 limit",
+      "value": "A😀B😀",
+      "caret": 4,
+      "selection": [],
+      "description": "At most six UTF-16 units",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "invalid entry",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "23c-undo-limited-composition",
+      "field": "UTF16 limit",
+      "value": "A😀B",
+      "caret": 3,
+      "selection": [],
+      "description": "At most six UTF-16 units",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "invalid entry",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "24-wrapped-geometry",
+      "field": "Wrapped notes",
+      "value": "A wrapped paragraph with enough words to cross several visual rows. Combining é and family 👩‍👩‍👧‍👦 stay intact.\nSecond hard line.\n",
+      "caret": 0,
+      "selection": [],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "multi line",
+        "sensitive",
+        "showing",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "25-long-word-line",
+      "field": "Word editing",
+      "value": "a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a ",
+      "caret": 300,
+      "selection": [],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "26-cross-chunk-selection",
+      "field": "Word editing",
+      "value": "a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a ",
+      "caret": 520,
+      "selection": [
+        [
+          250,
+          520
+        ]
+      ],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "27-cross-chunk-replacement",
+      "field": "Word editing",
+      "value": "a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a xa a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a ",
+      "caret": 251,
+      "selection": [],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "28-cross-chunk-undo",
+      "field": "Word editing",
+      "value": "a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a ",
+      "caret": 520,
+      "selection": [
+        [
+          250,
+          520
+        ]
+      ],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    },
+    {
+      "label": "29-window-move",
+      "field": "Wrapped notes",
+      "value": "A wrapped paragraph with enough words to cross several visual rows. Combining é and family 👩‍👩‍👧‍👦 stay intact.\nSecond hard line.\n",
+      "caret": 0,
+      "selection": [],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "multi line",
+        "sensitive",
+        "showing",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    }
+  ],
+  "word_boundary_at_zero": [
+    "alpha ",
+    0,
+    6
+  ],
+  "disabled_request_returned": true,
+  "invalid_state_exported": true,
+  "geometry": {
+    "first_visual_line": "A wrapped paragraph with enough words to cross ",
+    "start": 0,
+    "end": 47,
+    "x_window_geometry": "WINDOW=4194305\nX=561\nY=567\nWIDTH=480\nHEIGHT=720\nSCREEN=0\n",
+    "window_character_extents": [
+      20,
+      118,
+      11,
+      28
+    ],
+    "character_extents": [
+      580,
+      665,
+      11,
+      28
+    ],
+    "offset_at_point": 0
+  },
+  "initial_screen_origin": {
+    "desktop": [
+      580,
+      665,
+      11,
+      28
+    ],
+    "window": [
+      20,
+      118,
+      11,
+      28
+    ],
+    "x_client_origin": [
+      560,
+      547
+    ]
+  },
+  "long_metadata": {
+    "word": [
+      "a ",
+      300,
+      302
+    ],
+    "line": [
+      "a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a ",
+      0,
+      600
+    ],
+    "character_extents": [
+      25,
+      48,
+      10,
+      28
+    ]
+  },
+  "inserted_grapheme_extents": [
+    20,
+    48,
+    10,
+    28
+  ],
+  "word_control_extents": [
+    20,
+    48,
+    440,
+    28
+  ],
+  "moved_screen_origin": {
+    "desktop": [
+      121,
+      218,
+      11,
+      28
+    ],
+    "window": [
+      20,
+      118,
+      11,
+      28
+    ],
+    "x_client_origin": [
+      101,
+      100
+    ]
+  },
+  "passed": true
+}

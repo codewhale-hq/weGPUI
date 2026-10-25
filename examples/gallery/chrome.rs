@@ -142,10 +142,7 @@ pub fn page_ft(cx: &App) -> impl IntoElement {
             .rounded(px(4.))
             .border_2()
             .border_color(transparent_black())
-            .focus_visible({
-                let ring = Theme::get(cx).brand;
-                move |s| s.border_color(ring)
-            })
+            .focus_visible(|s| s.shadow(wegpui::components::form::dual_focus_ring()))
             .active(|s| s.opacity(0.5))
             .on_click(|_, w, cx| crate::home(w, cx))
             .child(

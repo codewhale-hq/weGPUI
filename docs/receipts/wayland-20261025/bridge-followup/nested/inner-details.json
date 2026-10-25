@@ -1,0 +1,183 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "interfaces": [
+    "Accessible",
+    "Component"
+  ],
+  "states": [],
+  "attributes": [],
+  "bounds": [
+    0,
+    0,
+    1024,
+    768
+  ],
+  "children": [
+    {
+      "role": "application",
+      "name": "nested_modals",
+      "description": "",
+      "interfaces": [
+        "Accessible"
+      ],
+      "states": [],
+      "attributes": [],
+      "children": [
+        {
+          "role": "frame",
+          "name": "weGPUI nested modals",
+          "description": "",
+          "interfaces": [
+            "Accessible",
+            "Component"
+          ],
+          "states": [
+            "active",
+            "enabled",
+            "sensitive",
+            "showing",
+            "visible"
+          ],
+          "attributes": [],
+          "bounds": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "children": [
+            {
+              "role": "dialog",
+              "name": "Inner dialog",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Action",
+                "Component"
+              ],
+              "states": [
+                "active",
+                "enabled",
+                "focusable",
+                "focused",
+                "modal",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "bounds": [
+                0,
+                0,
+                900,
+                800
+              ],
+              "children": [
+                {
+                  "role": "heading",
+                  "name": "Inner dialog",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [
+                    "level:2"
+                  ],
+                  "bounds": [
+                    290,
+                    292,
+                    320,
+                    72
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "label",
+                  "name": "Opened from inside the half-screen dialog.",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "bounds": [
+                    314,
+                    364,
+                    272,
+                    48
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "button",
+                  "name": "Cancel",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "bounds": [
+                    290,
+                    444,
+                    160,
+                    64
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "button",
+                  "name": "OK",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "bounds": [
+                    450,
+                    444,
+                    160,
+                    64
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

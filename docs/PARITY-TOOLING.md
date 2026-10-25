@@ -156,6 +156,15 @@ not an interaction verdict.
   (`XDG_RUNTIME_DIR` must exist). Without a portal, `prompt_for_paths` returns an error, which the
   uploader page shows.
 - Transitions: `ffmpeg -f x11grab -framerate 50` records frames you can measure.
+- Text screen coordinates: compare AT-SPI SCREEN minus WINDOW extents with raw `xwininfo`
+  absolute client origin or direct `XTranslateCoordinates`. In this openbox setup,
+  `xdotool getwindowgeometry` double-counts decorations and gives a misleading offset.
+- Orca word-driving: hold modifiers through both key-down and key-up. An xdotool command
+  that releases Ctrl before Right key-up can make Orca interpret a different readback command;
+  preserve that driver failure separately from component behavior.
+- Current root Cargo patches are part of build provenance. Hash the selected vendored sources
+  as well as `src/`, examples, Cargo files and the executable. A runtime working-tree hash is
+  not proof that an older copied executable was built from those bytes.
 
 ## Other platforms
 

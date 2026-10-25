@@ -1,0 +1,8 @@
+focus-color bg2 surface=rgba(0xffffffff) selected=rgba(0x000000ff)
+focus-color bg3 surface=rgba(0xf7f7f7ff) selected=rgba(0x000000ff)
+focus-color brand surface=rgba(0x06c160ff) selected=rgba(0x000000ff)
+focus-color red surface=rgba(0xfa5050ff) selected=rgba(0x000000ff)
+checkbox-change true
+checkbox-change false
+checkbox-change true
+checkbox-change false

@@ -14,15 +14,19 @@ Updated 2026-10-25 by the Linux cloud agent. Each item says what unblocks it.
    form_bottom_fixed sequence at 480x420.
 4. **Screen-reader acceptance** (NVDA or Narrator on Windows, Orca on Linux; VoiceOver stays off
    unless the owner changes that instruction). Needed for every ACCEPTANCE row. October 25
-   cloud Orca samples are partial: reopen/restoration hits malformed AccessKit cache signals,
-   and synthesized audio still needs human intelligibility review. See receipts/orca-20261025.
+   cloud Orca samples are partial. The owner-approved compatibility patches repair the sampled
+   cache/reopen failure; recorded synthesized audio still needs human intelligibility review.
+   See receipts/orca-20261025, linux-bridge-20261025 and input-contracts-20261025. Full per-family
+   reader acceptance remains incomplete, including Linux AT text replacement (the bridge lacks
+   an EditableText interface).
 5. **Owner decisions still pending** (from STATUS): local-time source for `picker::today()`
    (DateField defaults to UTC "today"), crates.io name/versioning, publication timing, website
    deployment target, signing/notarization requirements for packaged galleries.
 6. **Release authorization** before any crates.io publish, website deployment, tag, release
    or CI dispatch.
 7. **Upstream AccessKit report (optional):** `accesskit_atspi_common 0.19.1` never exports
-   disabled for buttons (see `receipts/a11y-p1-20261024`). Filing an upstream issue is an
+   disabled for buttons in the original locked source (see `receipts/a11y-p1-20261024`).
+   The approved local compatibility copy now fixes the sampled export. Filing an upstream issue is an
    external post. Owner said not to file it (2026-10-24); kept here only as a record.
 8. **Windows/macOS rerun of 2026-10-24 late fixes:** primary/warn focus ring, information-bar
    focus, paste/undo grouping, set positions (check NVDA/VoiceOver-off AX inspector reports
@@ -37,7 +41,12 @@ Updated 2026-10-25 by the Linux cloud agent. Each item says what unblocks it.
     managed cloud network policy (or provide an already verified cached artifact) to complete
     `scripts/weui_upstream.py fetch` and rerun paired dark/care/brand comparisons. October 25
     native-only captures are reviewed but do not replace this comparison.
-11. **AccessKit cache compatibility:** actual Orca reopen/restoration fails with malformed
-    AddAccessible/RemoveAccessible signatures in the locked stack. See
-    `receipts/orca-20261025/cache-investigation.md`. Dependency changes/forks/registry patches
-    require owner approval; no such change or external report was made.
+11. **Downstream accessibility patch integration:** the owner approved local copies of the
+    existing AccessKit crates and GPUI 0.3.9, with narrowly scoped cache/state/window-origin
+    fixes. The sampled Orca reopen and X11 state/origin checks pass; see `vendor/README.md`
+    and both proposals. Cargo patches are not inherited by applications: downstream workspace
+    roots must adopt equivalent configuration to receive these fixes. Publication/hosted forks
+    remain unauthorized. No external report was made. Additional Linux EditableText support
+    needs atomic host range-edit and clipboard contracts, beyond a contained bridge patch;
+    see [the feasibility note](proposals/linux-editable-text/README.md). Advertising a partial
+    interface is not a safe substitute.

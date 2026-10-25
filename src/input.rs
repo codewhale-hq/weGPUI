@@ -17,11 +17,14 @@
 //! [`TextInput::set_text`]. Linux XIM preedit was observed in the input method's own window
 //! rather than inline at the caret. Accessibility exposes the displayed text and keyboard
 //! selection through synthetic text runs; passwords expose only masking bullets. Text runs
-//! follow hard line breaks. Character geometry, soft-wrap line boundaries and assistive-
-//! technology editing actions are not yet exported. AccessKit's 255-byte character-length
+//! follow visual rows, retaining hard newlines. Character geometry comes from the current
+//! shaped layout where glyph positions are monotonic; uncertain bidi geometry is omitted.
+//! Assistive technology can set selections and, where the platform
+//! adapter provides it, replace the value through the same filtering/undo path as native edits.
+//! Disabled fields reject both; read-only fields permit selection only. AccessKit's 255-byte character-length
 //! limit requires scalar boundaries for the rare grapheme exceeding that size.
 
-use std::{ops::Range, time::Duration};
+use std::{cell::RefCell, ops::Range, rc::Rc, time::Duration};
 
 use crate::Theme;
 use gpui::{prelude::*, *};
@@ -36,6 +39,8 @@ actions!(
         Delete,
         /// Deletes the selection, or back to the previous word boundary.
         DeleteWordLeft,
+        /// Deletes the selection, or forward to the next word boundary.
+        DeleteWordRight,
         /// Deletes the selection, or back to the start of the current line.
         DeleteToLineStart,
         /// Moves the caret one grapheme left, collapsing any selection.
@@ -173,6 +178,8 @@ pub struct TextInput {
     placeholder: SharedString,
     placeholder_color: Option<Hsla>,
     label: Option<SharedString>,
+    description: Option<SharedString>,
+    invalid: bool,
     role: Option<Role>,
     kind: InputKind,
     max_len: Option<usize>,
@@ -208,6 +215,8 @@ impl TextInput {
             placeholder: placeholder.into(),
             placeholder_color: None,
             label: None,
+            description: None,
+            invalid: false,
             role: None,
             kind: InputKind::Text,
             max_len: None,
@@ -342,6 +351,28 @@ impl TextInput {
         let label = Some(label.into());
         if self.label != label {
             self.label = label;
+            cx.notify();
+        }
+    }
+
+    /// Sets explanatory or validation text for assistive technology. `None` removes the
+    /// description. This does not alter the field's visible text or accessible name.
+    pub fn set_aria_description(
+        &mut self,
+        description: Option<SharedString>,
+        cx: &mut Context<Self>,
+    ) {
+        if self.description != description {
+            self.description = description;
+            cx.notify();
+        }
+    }
+
+    /// Marks the field invalid for assistive technology. Defaults to `false`; the caller owns
+    /// validation and visible error styling. This does not alter the value or emit a change event.
+    pub fn set_invalid(&mut self, invalid: bool, cx: &mut Context<Self>) {
+        if self.invalid != invalid {
+            self.invalid = invalid;
             cx.notify();
         }
     }
@@ -653,6 +684,60 @@ impl TextInput {
             self.select_to(self.previous_word(self.cursor_offset()), cx);
         }
         self.replace_text_in_range(None, "", window, cx)
+    }
+
+    fn delete_word_right(
+        &mut self,
+        _: &DeleteWordRight,
+        window: &mut Window,
+        cx: &mut Context<Self>,
+    ) {
+        if !self.editable() {
+            return;
+        }
+        if self.selected_range.is_empty() {
+            self.select_to(self.next_word(self.cursor_offset()), cx);
+        }
+        self.replace_text_in_range(None, "", window, cx)
+    }
+
+    fn set_accessible_value(&mut self, value: &str, window: &mut Window, cx: &mut Context<Self>) {
+        if !self.editable() {
+            return;
+        }
+        self.last_edit = None;
+        self.replace_text_in_range(Some(0..self.len()), value, window, cx);
+        self.last_edit = None;
+    }
+
+    fn set_accessible_selection(
+        &mut self,
+        snapshot: &A11yTextSnapshot,
+        selection: &accesskit::TextSelection,
+        window: &mut Window,
+        cx: &mut Context<Self>,
+    ) {
+        if self.disabled || snapshot.text != self.display_text() {
+            return;
+        }
+        let Some((anchor, focus)) = snapshot.selection_offsets(selection) else {
+            return;
+        };
+        let anchor = self.display_to_content(anchor);
+        let focus = self.display_to_content(focus);
+        let Some((range, reversed)) = native_grapheme_selection(&self.content, anchor, focus)
+        else {
+            return;
+        };
+        self.unmark_text(window, cx);
+        if snapshot.text != self.display_text() {
+            return;
+        }
+        self.selected_range = range;
+        self.selection_reversed = reversed;
+        self.last_edit = None;
+        self.focus(window, cx);
+        self.after_cursor_change(cx);
     }
 
     fn delete_to_line_start(
@@ -1016,23 +1101,21 @@ impl TextInput {
     }
 
     fn previous_word(&self, offset: usize) -> usize {
-        if self.kind == InputKind::Password {
-            return 0;
-        }
-        self.content[..offset]
-            .unicode_word_indices()
-            .next_back()
-            .map_or(0, |(i, _)| i)
+        word_offset(
+            &self.content,
+            offset,
+            false,
+            self.kind == InputKind::Password,
+        )
     }
 
     fn next_word(&self, offset: usize) -> usize {
-        if self.kind == InputKind::Password {
-            return self.content.len();
-        }
-        self.content[offset..]
-            .unicode_word_indices()
-            .next()
-            .map_or(self.content.len(), |(i, word)| offset + i + word.len())
+        word_offset(
+            &self.content,
+            offset,
+            true,
+            self.kind == InputKind::Password,
+        )
     }
 
     fn word_range(&self, offset: usize) -> Range<usize> {
@@ -1091,15 +1174,31 @@ impl EntityInputHandler for TextInput {
             .map(|range| self.range_to_utf16(range))
     }
 
-    fn unmark_text(&mut self, _window: &mut Window, _cx: &mut Context<Self>) {
-        self.marked_range = None;
+    fn unmark_text(&mut self, _window: &mut Window, cx: &mut Context<Self>) {
+        if let Some(range) = self.marked_range.take() {
+            let marked = self.content[range.clone()].to_owned();
+            let limited = self.limit(&marked, range.clone());
+            if limited != marked {
+                self.replace(range.clone(), &limited);
+                self.selected_range =
+                    offset_after_replacement(self.selected_range.start, &range, limited.len())
+                        ..offset_after_replacement(self.selected_range.end, &range, limited.len());
+                self.preferred_x = None;
+                self.autoscroll = true;
+            }
+        }
         if let Some(base) = self.composition_base.take()
             && *base.content != *self.content
         {
             self.undo_stack.push(base);
+            if self.undo_stack.len() > UNDO_LIMIT {
+                self.undo_stack.remove(0);
+            }
             self.redo_stack.clear();
             self.last_edit = None;
+            cx.emit(InputEvent::Changed);
         }
+        cx.notify();
     }
 
     fn replace_text_in_range(
@@ -1308,6 +1407,97 @@ impl TextLayout {
                     .unwrap_or(self.lines[line].len())
     }
 
+    fn a11y_geometry(
+        &self,
+        text: &str,
+        scroll: Point<Pixels>,
+        scale: f32,
+    ) -> Option<Vec<A11yRunGeometry>> {
+        let origin = self.bounds.origin - scroll;
+        if text.is_empty() {
+            return Some(vec![A11yRunGeometry {
+                range: 0..0,
+                extents: Some(A11yRunExtents {
+                    bounds: accesskit::Rect {
+                        x0: f64::from(origin.x.as_f32() * scale),
+                        x1: f64::from(origin.x.as_f32() * scale),
+                        y0: f64::from(origin.y.as_f32() * scale),
+                        y1: f64::from((origin.y + self.line_height).as_f32() * scale),
+                    },
+                    positions: Vec::new(),
+                    widths: Vec::new(),
+                }),
+            }]);
+        }
+        let mut result = Vec::new();
+        for (line_index, line) in self.lines.iter().enumerate() {
+            let base = self.starts[line_index];
+            let starts = Self::row_starts(line);
+            let shaped = &line.unwrapped_layout;
+            let glyphs: Vec<_> = shaped
+                .runs
+                .iter()
+                .flat_map(|run| &run.glyphs)
+                .map(|glyph| (glyph.index, glyph.position.x.as_f32()))
+                .collect();
+            let ordered = glyphs.windows(2).all(|pair| pair[0].0 <= pair[1].0);
+            let x_for_index = |index| a11y_glyph_x(&glyphs, shaped.width.as_f32(), index);
+            for (row, start) in starts.iter().copied().enumerate() {
+                let end = starts.get(row + 1).copied().unwrap_or(line.len());
+                let mut range = base + start..base + end;
+                if row + 1 == starts.len() && text.as_bytes().get(range.end) == Some(&b'\n') {
+                    range.end += 1;
+                }
+                let run_text = text.get(range.clone())?;
+                let lengths = a11y_character_lengths(run_text);
+                let row_x = x_for_index(start);
+                let mut byte = 0;
+                let positions: Vec<_> = if ordered {
+                    std::iter::once(0.)
+                        .chain(lengths.iter().map(|length| {
+                            byte += usize::from(*length);
+                            x_for_index((start + byte).min(line.len())) - row_x
+                        }))
+                        .collect()
+                } else {
+                    Vec::new()
+                };
+                let monotonic = ordered
+                    && positions.iter().all(|x| x.is_finite())
+                    && positions.windows(2).all(|pair| pair[1] >= pair[0]);
+                let extents = monotonic.then(|| {
+                    let width = positions.last().copied().unwrap_or(0.);
+                    let top = origin.y + self.tops[line_index] + self.line_height * row as f32;
+                    A11yRunExtents {
+                        bounds: accesskit::Rect {
+                            x0: f64::from(origin.x.as_f32() * scale),
+                            x1: f64::from((origin.x.as_f32() + width) * scale),
+                            y0: f64::from(top.as_f32() * scale),
+                            y1: f64::from((top + self.line_height).as_f32() * scale),
+                        },
+                        widths: positions
+                            .windows(2)
+                            .map(|pair| (pair[1] - pair[0]) * scale)
+                            .collect(),
+                        positions: positions[..lengths.len()]
+                            .iter()
+                            .map(|x| x * scale)
+                            .collect(),
+                    }
+                });
+                result.push(A11yRunGeometry { range, extents });
+            }
+        }
+        let mut end = 0;
+        for run in &result {
+            if run.range.start != end {
+                return None;
+            }
+            end = run.range.end;
+        }
+        (end == text.len() && !result.is_empty()).then_some(result)
+    }
+
     fn selection_rects(&self, range: Range<usize>, newline_width: Pixels) -> Vec<Bounds<Pixels>> {
         let mut rects = Vec::new();
         for (i, line) in self.lines.iter().enumerate() {
@@ -1349,6 +1539,7 @@ impl TextLayout {
 
 struct TextElement {
     input: Entity<TextInput>,
+    a11y_geometry: A11yGeometry,
 }
 
 struct PrepaintState {
@@ -1509,7 +1700,8 @@ impl Element for TextElement {
             scroll.y = px(0.);
             if input.autoscroll {
                 if cursor_pos.x < scroll.x {
-                    scroll.x = cursor_pos.x;
+                    let previous = input.to_display(input.previous_boundary(input.cursor_offset()));
+                    scroll.x = layout.position(previous).x.min(cursor_pos.x);
                 }
                 if cursor_pos.x > scroll.x + bounds.size.width - px(1.) {
                     scroll.x = cursor_pos.x - bounds.size.width + px(1.);
@@ -1542,14 +1734,30 @@ impl Element for TextElement {
             && input.cursor_visible
             && !input.disabled)
             .then(|| {
-                fill(
+                // The input inherits its surface from its host. Black and white bands keep
+                // the caret visible without assuming the host's painted background colour.
+                quad(
                     Bounds::new(
-                        origin + cursor_pos + point(px(0.), (line_height - caret_height) / 2.),
-                        size(px(1.), caret_height),
+                        origin + cursor_pos + point(px(-1.), (line_height - caret_height) / 2.),
+                        size(px(3.), caret_height),
                     ),
-                    brand,
+                    px(0.),
+                    black(),
+                    Edges {
+                        top: px(0.),
+                        bottom: px(0.),
+                        left: px(1.),
+                        right: px(1.),
+                    },
+                    white(),
+                    BorderStyle::default(),
                 )
             });
+        *self.a11y_geometry.borrow_mut() = if window.is_a11y_active() {
+            layout.a11y_geometry(&input.display_text(), scroll, window.scale_factor())
+        } else {
+            None
+        };
         PrepaintState {
             layout: Some(layout),
             cursor,
@@ -1633,14 +1841,32 @@ impl Render for TextInput {
             let a11y_selection = self.to_display(self.selected_range.start)
                 ..self.to_display(self.selected_range.end);
             let selection_reversed = self.selection_reversed;
+            let a11y_snapshot = Rc::new(RefCell::new(A11yTextSnapshot {
+                text: a11y_text.clone(),
+                runs: Vec::new(),
+            }));
+            let capture = a11y_snapshot.clone();
+            let geometry = Rc::new(RefCell::new(None));
+            let geometry_capture = geometry.clone();
+            let selection_owner = cx.entity().downgrade();
+            let value_owner = cx.entity().downgrade();
             let el = div()
                 .id("text-input")
                 .role(role)
                 .aria_label(label)
                 .aria_placeholder(self.placeholder.clone())
+                .when_some(self.description.clone(), |el, description| {
+                    el.aria_description(description)
+                })
                 .aria_value(a11y_text.clone())
                 .a11y_synthetic_children(move |builder| {
-                    push_a11y_text(builder, &a11y_text, a11y_selection, selection_reversed);
+                    capture.borrow_mut().runs = push_a11y_text(
+                        builder,
+                        &a11y_text,
+                        a11y_selection,
+                        selection_reversed,
+                        geometry_capture.borrow().as_deref(),
+                    );
                 })
                 .flex()
                 .w_full()
@@ -1654,6 +1880,7 @@ impl Render for TextInput {
                         .on_action(cx.listener(Self::backspace))
                         .on_action(cx.listener(Self::delete))
                         .on_action(cx.listener(Self::delete_word_left))
+                        .on_action(cx.listener(Self::delete_word_right))
                         .on_action(cx.listener(Self::delete_to_line_start))
                         .on_action(cx.listener(Self::left))
                         .on_action(cx.listener(Self::right))
@@ -1681,6 +1908,39 @@ impl Render for TextInput {
                         .on_action(cx.listener(Self::paste))
                         .on_action(cx.listener(Self::cut))
                         .on_action(cx.listener(Self::copy))
+                        .on_a11y_action(
+                            AccessibleAction::SetTextSelection,
+                            move |data, window, cx| {
+                                if let Some(accesskit::ActionData::SetTextSelection(selection)) =
+                                    data
+                                {
+                                    selection_owner
+                                        .update(cx, |input, cx| {
+                                            input.set_accessible_selection(
+                                                &a11y_snapshot.borrow(),
+                                                selection,
+                                                window,
+                                                cx,
+                                            );
+                                        })
+                                        .ok();
+                                }
+                            },
+                        )
+                        .when(self.editable(), |el| {
+                            el.on_a11y_action(
+                                AccessibleAction::SetValue,
+                                move |data, window, cx| {
+                                    if let Some(accesskit::ActionData::Value(value)) = data {
+                                        value_owner
+                                            .update(cx, |input, cx| {
+                                                input.set_accessible_value(value, window, cx);
+                                            })
+                                            .ok();
+                                    }
+                                },
+                            )
+                        })
                         .on_mouse_down(MouseButton::Left, cx.listener(Self::on_mouse_down))
                         .on_mouse_up(MouseButton::Left, cx.listener(Self::on_mouse_up))
                         .on_mouse_up_out(MouseButton::Left, cx.listener(Self::on_mouse_up))
@@ -1689,11 +1949,15 @@ impl Render for TextInput {
                             el.on_scroll_wheel(cx.listener(Self::on_scroll_wheel))
                         })
                 })
-                .child(TextElement { input: cx.entity() });
+                .child(TextElement {
+                    input: cx.entity(),
+                    a11y_geometry: geometry,
+                });
             FieldSemantics {
                 inner: el,
                 disabled: self.disabled,
                 readonly: self.readonly,
+                invalid: self.invalid,
             }
         })
     }
@@ -1711,6 +1975,7 @@ pub(crate) struct FieldSemantics<E: Element> {
     pub(crate) inner: E,
     pub(crate) disabled: bool,
     pub(crate) readonly: bool,
+    pub(crate) invalid: bool,
 }
 
 impl<E: Element> IntoElement for FieldSemantics<E> {
@@ -1739,6 +2004,9 @@ impl<E: Element> Element for FieldSemantics<E> {
         }
         if self.readonly {
             node.set_read_only();
+        }
+        if self.invalid {
+            node.set_invalid(accesskit::Invalid::True);
         }
     }
     fn a11y_synthetic_children(
@@ -1784,6 +2052,48 @@ impl<E: Element> Element for FieldSemantics<E> {
     }
 }
 
+fn native_grapheme_selection(
+    text: &str,
+    anchor: usize,
+    focus: usize,
+) -> Option<(Range<usize>, bool)> {
+    let boundary = |offset| {
+        offset == text.len()
+            || text
+                .grapheme_indices(true)
+                .any(|(index, _)| index == offset)
+    };
+    (boundary(anchor) && boundary(focus))
+        .then_some((anchor.min(focus)..anchor.max(focus), focus < anchor))
+}
+
+fn offset_after_replacement(offset: usize, range: &Range<usize>, replacement_len: usize) -> usize {
+    if offset <= range.start {
+        offset
+    } else if offset >= range.end {
+        range.start + replacement_len + offset - range.end
+    } else {
+        range.start + (offset - range.start).min(replacement_len)
+    }
+}
+
+fn word_offset(text: &str, offset: usize, forward: bool, password: bool) -> usize {
+    if password {
+        return if forward { text.len() } else { 0 };
+    }
+    if forward {
+        text[offset..]
+            .unicode_word_indices()
+            .next()
+            .map_or(text.len(), |(i, word)| offset + i + word.len())
+    } else {
+        text[..offset]
+            .unicode_word_indices()
+            .next_back()
+            .map_or(0, |(i, _)| i)
+    }
+}
+
 fn input_display_text(content: &SharedString, password: bool) -> SharedString {
     if password {
         BULLET
@@ -1813,10 +2123,13 @@ fn a11y_line_ranges(text: &str) -> Vec<Range<usize>> {
 
 fn a11y_text_position(text: &str, lines: &[Range<usize>], offset: usize) -> (usize, usize) {
     let offset = offset.min(text.len());
-    let line = lines
+    let mut line = lines
         .iter()
         .rposition(|line| line.start <= offset)
         .unwrap_or(0);
+    if line > 0 && lines[line].start == offset && !text[..offset].ends_with('\n') {
+        line -= 1;
+    }
     let range = &lines[line];
     let relative_offset = offset.saturating_sub(range.start);
     let mut boundary = 0;
@@ -1864,22 +2177,162 @@ fn a11y_text_run(text: &str) -> accesskit::Node {
     run
 }
 
+fn a11y_glyph_x(glyphs: &[(usize, f32)], width: f32, index: usize) -> f32 {
+    let next = glyphs.partition_point(|(byte, _)| *byte < index);
+    glyphs.get(next).map_or(width, |(_, x)| *x)
+}
+
+struct A11yRunSlice {
+    range: Range<usize>,
+    row: usize,
+    characters: Range<usize>,
+}
+
+fn a11y_run_slices(text: &str, rows: &[Range<usize>]) -> Vec<A11yRunSlice> {
+    let mut result = Vec::new();
+    for (row, range) in rows.iter().enumerate() {
+        let lengths = a11y_character_lengths(&text[range.clone()]);
+        if lengths.is_empty() {
+            result.push(A11yRunSlice {
+                range: range.clone(),
+                row,
+                characters: 0..0,
+            });
+        }
+        let mut start = range.start;
+        for (index, chunk) in lengths.chunks(usize::from(u8::MAX)).enumerate() {
+            let end = start
+                + chunk
+                    .iter()
+                    .map(|length| usize::from(*length))
+                    .sum::<usize>();
+            let character = index * usize::from(u8::MAX);
+            result.push(A11yRunSlice {
+                range: start..end,
+                row,
+                characters: character..character + chunk.len(),
+            });
+            start = end;
+        }
+    }
+    result
+}
+
+fn a11y_word_starts(text: &str, range: &Range<usize>, words: &[usize]) -> Vec<u8> {
+    let from = words.partition_point(|word| *word < range.start);
+    let to = words.partition_point(|word| *word < range.end);
+    let mut byte = 0;
+    let boundaries: Vec<_> = a11y_character_lengths(&text[range.clone()])
+        .into_iter()
+        .map(|length| {
+            let start = byte;
+            byte += usize::from(length);
+            start
+        })
+        .collect();
+    words[from..to]
+        .iter()
+        .map(|word| {
+            let relative = word - range.start;
+            let character = boundaries.partition_point(|byte| *byte < relative);
+            u8::try_from(character).expect("accessibility runs contain at most 255 characters")
+        })
+        .collect()
+}
+
+type A11yGeometry = Rc<RefCell<Option<Vec<A11yRunGeometry>>>>;
+
+struct A11yRunGeometry {
+    range: Range<usize>,
+    extents: Option<A11yRunExtents>,
+}
+
+struct A11yRunExtents {
+    bounds: accesskit::Rect,
+    positions: Vec<f32>,
+    widths: Vec<f32>,
+}
+
+struct A11yTextSnapshot {
+    text: SharedString,
+    runs: Vec<(accesskit::NodeId, Range<usize>)>,
+}
+
+impl A11yTextSnapshot {
+    fn position_offset(&self, position: accesskit::TextPosition) -> Option<usize> {
+        let (_, range) = self.runs.iter().find(|(id, _)| *id == position.node)?;
+        let lengths = a11y_character_lengths(&self.text[range.clone()]);
+        let prefix = lengths.get(..position.character_index)?;
+        Some(
+            range.start
+                + prefix
+                    .iter()
+                    .map(|length| usize::from(*length))
+                    .sum::<usize>(),
+        )
+    }
+
+    fn selection_offsets(&self, selection: &accesskit::TextSelection) -> Option<(usize, usize)> {
+        Some((
+            self.position_offset(selection.anchor)?,
+            self.position_offset(selection.focus)?,
+        ))
+    }
+}
+
 fn push_a11y_text(
     builder: &mut A11ySubtreeBuilder,
     text: &str,
     selection: Range<usize>,
     reversed: bool,
-) {
-    let lines = a11y_line_ranges(text);
+    geometry: Option<&[A11yRunGeometry]>,
+) -> Vec<(accesskit::NodeId, Range<usize>)> {
+    let rows = geometry.map_or_else(
+        || a11y_line_ranges(text),
+        |runs| runs.iter().map(|run| run.range.clone()).collect(),
+    );
+    let slices = a11y_run_slices(text, &rows);
+    let lines: Vec<_> = slices.iter().map(|slice| slice.range.clone()).collect();
     let ids: Vec<_> = lines
         .iter()
-        .enumerate()
-        .map(|(index, line)| {
-            let id = builder.synthetic_node_id(("text-run", index));
-            builder.push_child(id, a11y_text_run(&text[line.clone()]));
-            id
-        })
+        .map(|line| builder.synthetic_node_id(("text-run", line.start)))
         .collect();
+    let words: Vec<_> = text
+        .unicode_word_indices()
+        .map(|(offset, _)| offset)
+        .collect();
+    for (index, slice) in slices.iter().enumerate() {
+        let mut run = a11y_text_run(&text[slice.range.clone()]);
+        run.set_word_starts(a11y_word_starts(text, &slice.range, &words));
+        if index > 0 && slices[index - 1].row == slice.row {
+            run.set_previous_on_line(ids[index - 1]);
+        }
+        if index + 1 < slices.len() && slices[index + 1].row == slice.row {
+            run.set_next_on_line(ids[index + 1]);
+        }
+        if let Some(extents) = geometry.and_then(|runs| runs[slice.row].extents.as_ref()) {
+            let characters = slice.characters.clone();
+            let origin = extents
+                .positions
+                .get(characters.start)
+                .copied()
+                .unwrap_or(0.);
+            let positions = &extents.positions[characters.clone()];
+            let widths = &extents.widths[characters];
+            let end = positions
+                .last()
+                .zip(widths.last())
+                .map_or(origin, |(x, width)| x + width);
+            let mut bounds = extents.bounds;
+            bounds.x0 += f64::from(origin);
+            bounds.x1 = extents.bounds.x0 + f64::from(end);
+            run.set_bounds(bounds);
+            run.set_character_positions(positions.iter().map(|x| x - origin).collect::<Vec<_>>());
+            run.set_character_widths(widths.to_vec());
+            run.set_text_direction(accesskit::TextDirection::LeftToRight);
+        }
+        builder.push_child(ids[index], run);
+    }
     let position = |(line, character_index)| accesskit::TextPosition {
         node: ids[line],
         character_index,
@@ -1888,6 +2341,7 @@ fn push_a11y_text(
     builder
         .parent_node()
         .set_text_selection(accesskit::TextSelection { anchor, focus });
+    ids.into_iter().zip(lines).collect()
 }
 
 fn utf16_offset(text: &str, offset: usize) -> usize {
@@ -1903,9 +2357,20 @@ fn utf16_offset(text: &str, offset: usize) -> usize {
 
 /// Installs the text-editing key bindings for the `TextInput` key context. Both `ctrl-` and
 /// `cmd-` variants are bound for clipboard, select-all and undo/redo. Ctrl+Home/End and their
-/// Shift variants move or select to document boundaries. Called by [`crate::init`].
+/// Shift variants move or select to document boundaries. On Linux and Windows, Ctrl+arrows
+/// move by words, Ctrl+Shift+arrows select words, and Ctrl+Backspace/Delete delete words.
+/// Called by [`crate::init`].
 pub fn init(cx: &mut App) {
     let ctx = Some("TextInput");
+    #[cfg(not(target_os = "macos"))]
+    cx.bind_keys([
+        KeyBinding::new("ctrl-left", WordLeft, ctx),
+        KeyBinding::new("ctrl-right", WordRight, ctx),
+        KeyBinding::new("ctrl-shift-left", SelectWordLeft, ctx),
+        KeyBinding::new("ctrl-shift-right", SelectWordRight, ctx),
+        KeyBinding::new("ctrl-backspace", DeleteWordLeft, ctx),
+        KeyBinding::new("ctrl-delete", DeleteWordRight, ctx),
+    ]);
     cx.bind_keys([
         KeyBinding::new("backspace", Backspace, ctx),
         KeyBinding::new("shift-backspace", Backspace, ctx),
@@ -1961,8 +2426,10 @@ pub fn init(cx: &mut App) {
 #[cfg(test)]
 mod tests {
     use super::{
-        a11y_line_ranges, a11y_selection_positions, a11y_text_position, a11y_text_run,
-        input_display_text, utf16_offset,
+        A11yTextSnapshot, FieldSemantics, a11y_glyph_x, a11y_line_ranges, a11y_run_slices,
+        a11y_selection_positions, a11y_text_position, a11y_text_run, a11y_word_starts,
+        input_display_text, native_grapheme_selection, offset_after_replacement, utf16_offset,
+        word_offset,
     };
     use core::prelude::v1::test;
 
@@ -2051,6 +2518,16 @@ mod tests {
     }
 
     #[test]
+    fn accessible_soft_wrap_caret_affinity_matches_native_previous_row() {
+        let text = "e\u{301} ab";
+        let lines = vec![0..4, 4..6];
+        assert_eq!(a11y_text_position(text, &lines, 4), (0, 2));
+        assert_eq!(a11y_text_position(text, &lines, 5), (1, 1));
+        let hard = "e\u{301}\nab";
+        assert_eq!(a11y_text_position(hard, &lines, 4), (1, 0));
+    }
+
+    #[test]
     fn accessible_password_runs_only_contain_displayed_masking_bullets() {
         let secret = "A😀e\u{301}".into();
         let masked = input_display_text(&secret, true);
@@ -2058,6 +2535,167 @@ mod tests {
         assert_eq!(run.value(), Some("•••"));
         assert_eq!(run.character_lengths(), &[3, 3, 3]);
         assert_eq!(input_display_text(&secret, false), secret);
+    }
+
+    #[test]
+    fn accessible_edit_positions_map_known_runs_and_reject_stale_nodes() {
+        use gpui::accesskit::{NodeId, TextPosition, TextSelection};
+        let snapshot = A11yTextSnapshot {
+            text: "e\u{301}\n👩‍💻".into(),
+            runs: vec![(NodeId(11), 0..4), (NodeId(12), 4..15)],
+        };
+        let first = TextPosition {
+            node: NodeId(11),
+            character_index: 1,
+        };
+        let last = TextPosition {
+            node: NodeId(12),
+            character_index: 1,
+        };
+        assert_eq!(snapshot.position_offset(first), Some(3));
+        assert_eq!(
+            snapshot.selection_offsets(&TextSelection {
+                anchor: last,
+                focus: first
+            }),
+            Some((15, 3))
+        );
+        assert_eq!(
+            snapshot.position_offset(TextPosition {
+                node: NodeId(99),
+                character_index: 0
+            }),
+            None
+        );
+        assert_eq!(
+            snapshot.position_offset(TextPosition {
+                node: NodeId(12),
+                character_index: 2
+            }),
+            None
+        );
+        let password = A11yTextSnapshot {
+            text: "•••".into(),
+            runs: std::iter::once((NodeId(20), 0..9)).collect(),
+        };
+        assert_eq!(
+            password.position_offset(TextPosition {
+                node: NodeId(20),
+                character_index: 2
+            }),
+            Some(6)
+        );
+    }
+
+    #[test]
+    fn input_semantics_export_invalid_without_changing_readonly_or_disabled() {
+        use gpui::{Element, InteractiveElement, StatefulInteractiveElement, div};
+        let field = FieldSemantics {
+            inner: div().id("field").role(gpui::Role::TextInput),
+            disabled: true,
+            readonly: true,
+            invalid: true,
+        };
+        let mut node = gpui::accesskit::Node::new(gpui::Role::TextInput);
+        field.write_a11y_info(&mut node);
+        assert!(node.is_disabled());
+        assert!(node.is_read_only());
+        assert_eq!(node.invalid(), Some(gpui::accesskit::Invalid::True));
+    }
+
+    #[test]
+    fn word_navigation_and_deletion_match_linux_browser_boundaries() {
+        let text = "alpha beta gamma";
+        assert_eq!(word_offset(text, 0, true, false), 5);
+        assert_eq!(word_offset(text, 5, true, false), 10);
+        assert_eq!(word_offset(text, text.len(), false, false), 11);
+        assert_eq!(&text[word_offset(text, 0, true, false)..], " beta gamma");
+        assert_eq!(
+            &text[..word_offset(text, text.len(), false, false)],
+            "alpha beta "
+        );
+        let unicode = "alpha e\u{301} beta";
+        assert_eq!(word_offset(unicode, 6, true, false), 9);
+        assert_eq!(word_offset(unicode, 9, false, false), 6);
+        assert_eq!(word_offset(unicode, 6, true, true), unicode.len());
+        assert_eq!(word_offset(unicode, 9, false, true), 0);
+    }
+
+    #[test]
+    fn composition_truncation_keeps_suffix_and_selection_on_valid_boundaries() {
+        let original = "A中😀Z";
+        let range = 1..8;
+        let replacement = "中";
+        let committed = format!(
+            "{}{}{}",
+            &original[..range.start],
+            replacement,
+            &original[range.end..]
+        );
+        assert_eq!(committed, "A中Z");
+        for (before, after) in [(0, 0), (1, 1), (4, 4), (8, 4), (9, 5)] {
+            let adjusted = offset_after_replacement(before, &range, replacement.len());
+            assert_eq!(adjusted, after);
+            assert!(committed.is_char_boundary(adjusted));
+        }
+    }
+
+    #[test]
+    fn assistive_selection_rejects_endpoints_inside_native_graphemes() {
+        let text = "e\u{301}👩‍💻";
+        assert_eq!(native_grapheme_selection(text, 1, text.len()), None);
+        assert_eq!(
+            native_grapheme_selection(text, 3, text.len()),
+            Some((3..text.len(), false))
+        );
+        assert_eq!(
+            native_grapheme_selection(text, text.len(), 0),
+            Some((0..text.len(), true))
+        );
+        let oversized = format!("e{}", "\u{301}".repeat(128));
+        assert_eq!(
+            native_grapheme_selection(&oversized, 1, oversized.len()),
+            None
+        );
+    }
+
+    #[test]
+    fn accessible_word_starts_preserve_unicode_and_large_run_boundaries() {
+        use unicode_segmentation::UnicodeSegmentation;
+        let text = "a e\u{301} beta";
+        let words: Vec<_> = text.unicode_word_indices().map(|(byte, _)| byte).collect();
+        assert_eq!(
+            a11y_word_starts(text, &(0..text.len()), &words),
+            vec![0, 2, 4]
+        );
+        let long = "a ".repeat(300);
+        let rows: Vec<_> = std::iter::once(0..long.len()).collect();
+        let slices = a11y_run_slices(&long, &rows);
+        assert_eq!(slices.len(), 3);
+        let offsets: Vec<_> = long.unicode_word_indices().map(|(byte, _)| byte).collect();
+        let mut exported = Vec::new();
+        for slice in slices {
+            let value = &long[slice.range.clone()];
+            assert!(a11y_text_run(value).character_lengths().len() <= usize::from(u8::MAX));
+            assert_eq!(slice.row, 0);
+            for word in a11y_word_starts(&long, &slice.range, &offsets) {
+                let byte: usize = a11y_text_run(value).character_lengths()[..usize::from(word)]
+                    .iter()
+                    .map(|length| usize::from(*length))
+                    .sum();
+                exported.push(slice.range.start + byte);
+            }
+        }
+        assert_eq!(exported, offsets);
+    }
+
+    #[test]
+    fn accessible_glyph_lookup_matches_native_first_matching_glyph() {
+        let glyphs = [(0, 0.), (0, 0.), (1, 9.), (3, 18.)];
+        assert_eq!(a11y_glyph_x(&glyphs, 27., 0), 0.);
+        assert_eq!(a11y_glyph_x(&glyphs, 27., 1), 9.);
+        assert_eq!(a11y_glyph_x(&glyphs, 27., 2), 18.);
+        assert_eq!(a11y_glyph_x(&glyphs, 27., 4), 27.);
     }
 
     #[test]

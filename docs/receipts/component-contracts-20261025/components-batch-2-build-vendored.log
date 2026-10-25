@@ -1,0 +1,273 @@
+      Adding accesskit_atspi_common v0.19.1 (/workspace/weGPUI/vendor/accesskit_atspi_common)
+    Removing accesskit_atspi_common v0.19.1
+      Adding accesskit_unix v0.22.1 (/workspace/weGPUI/vendor/accesskit_unix)
+    Removing accesskit_unix v0.22.1
+Diff in /workspace/weGPUI/examples/control_contracts.rs:391:
+         "xmini" => Size::XMini,
+         other => panic!("unknown button size {other}"),
+     };
+-    let brand = value("--brand").map(|value| rgb(u32::from_str_radix(&value, 16).expect("brand is RRGGBB")).into());
++    let brand = value("--brand")
++        .map(|value| rgb(u32::from_str_radix(&value, 16).expect("brand is RRGGBB")).into());
+     let dark = args.iter().any(|arg| arg == "--dark");
+     let care = args.iter().any(|arg| arg == "--care");
+     platform::application()
+Diff in /workspace/weGPUI/examples/control_contracts.rs:407:
+                 cx,
+             );
+             Theme::set_care(care, cx);
+-        Theme::set_brand(brand, cx);
++            Theme::set_brand(brand, cx);
+             cx.open_window(
+                 WindowOptions {
+                     window_bounds: Some(WindowBounds::Windowed(Bounds::new(
+Diff in /workspace/weGPUI/examples/overlays_contracts_probe.rs:1:
+ use gpui::{prelude::*, *};
++use std::time::Duration;
+ use wegpui::{
+     Theme,
+     accessibility::ModalScope,
+Diff in /workspace/weGPUI/examples/overlays_contracts_probe.rs:12:
+         select::SelectMenu,
+     },
+ };
+-use std::time::Duration;
+ 
+ struct Probe {
+     case: String,
+Diff in /workspace/weGPUI/examples/overlays_contracts_probe.rs:35:
+             if case == "date" {
+                 picker.date(i32::MIN, i32::MAX, (2000, 2, 29))
+             } else if case == "all-disabled" {
+-                picker.columns(vec![vec![PickerItem::new("Unavailable", "x").disabled(true)]])
+-            } else {
+                 picker.columns(vec![vec![
+-                    PickerItem::new("Zero", "0"),
+-                    PickerItem::new("Unavailable one", "1").disabled(true),
+-                    PickerItem::new("Two", "2"),
+-                    PickerItem::new("Unavailable three", "3").disabled(true),
+-                    PickerItem::new("Four", "4"),
+-                ]]).default_value(["0"])
++                    PickerItem::new("Unavailable", "x").disabled(true),
++                ]])
++            } else {
++                picker
++                    .columns(vec![vec![
++                        PickerItem::new("Zero", "0"),
++                        PickerItem::new("Unavailable one", "1").disabled(true),
++                        PickerItem::new("Two", "2"),
++                        PickerItem::new("Unavailable three", "3").disabled(true),
++                        PickerItem::new("Four", "4"),
++                    ]])
++                    .default_value(["0"])
+             }
+         });
+-        let subscription = cx.subscribe_in(&picker, window, |this: &mut Probe, picker, event: &PickerEvent, window, cx| {
+-            let kind = match event {
+-                PickerEvent::Change(items) => format!("change={}", items.iter().map(|i| i.value.as_ref()).collect::<Vec<_>>().join(",")),
+-                PickerEvent::Confirm(items) => format!("confirm={}", items.iter().map(|i| i.value.as_ref()).collect::<Vec<_>>().join(",")),
+-                PickerEvent::Close => "close".to_string(),
+-            };
+-            this.record(kind);
+-            if matches!(event, PickerEvent::Confirm(_)) && this.reopen {
+-                this.reopen = false;
+-                picker.update(cx, |picker, cx| picker.open(window, cx));
+-                this.record("reopened-from-confirm".into());
+-            }
+-            cx.notify();
+-        });
++        let subscription = cx.subscribe_in(
++            &picker,
++            window,
++            |this: &mut Probe, picker, event: &PickerEvent, window, cx| {
++                let kind = match event {
++                    PickerEvent::Change(items) => format!(
++                        "change={}",
++                        items
++                            .iter()
++                            .map(|i| i.value.as_ref())
++                            .collect::<Vec<_>>()
++                            .join(",")
++                    ),
++                    PickerEvent::Confirm(items) => format!(
++                        "confirm={}",
++                        items
++                            .iter()
++                            .map(|i| i.value.as_ref())
++                            .collect::<Vec<_>>()
++                            .join(",")
++                    ),
++                    PickerEvent::Close => "close".to_string(),
++                };
++                this.record(kind);
++                if matches!(event, PickerEvent::Confirm(_)) && this.reopen {
++                    this.reopen = false;
++                    picker.update(cx, |picker, cx| picker.open(window, cx));
++                    this.record("reopened-from-confirm".into());
++                }
++                cx.notify();
++            },
++        );
+         Self {
+             reopen: case == "reentrant",
+             case,
+Diff in /workspace/weGPUI/examples/overlays_contracts_probe.rs:78:
+     }
+ 
+     fn open(&mut self, window: &mut Window, cx: &mut Context<Self>) {
+-        if matches!(self.case.as_str(), "picker" | "date" | "all-disabled" | "reentrant") {
++        if matches!(
++            self.case.as_str(),
++            "picker" | "date" | "all-disabled" | "reentrant"
++        ) {
+             self.picker.update(cx, |picker, cx| picker.open(window, cx));
+         } else {
+             self.presence.show(window, cx);
+Diff in /workspace/weGPUI/examples/overlays_contracts_probe.rs:97:
+             move |window: &mut Window, cx: &mut App| {
+                 page.update(cx, |this, cx| {
+                     this.record(name.to_string());
+-                    if hide { this.presence.hide(window, cx); }
++                    if hide {
++                        this.presence.hide(window, cx);
++                    }
+                     cx.notify();
+-                }).ok();
++                })
++                .ok();
+             }
+         };
+         let overlay = match self.case.as_str() {
+Diff in /workspace/weGPUI/examples/overlays_contracts_probe.rs:152:
+             _ => self.picker.clone().into_any_element(),
+         };
+         ModalScope::new(
+-            div().size_full().bg(t.bg_0).text_color(t.fg_0).p(px(16.))
++            div()
++                .size_full()
++                .bg(t.bg_0)
++                .text_color(t.fg_0)
++                .p(px(16.))
+                 .on_key_down(cx.listener(|this, key: &KeyDownEvent, window, cx| {
+                     match key.keystroke.key.as_str() {
+                         "tab" => {
+Diff in /workspace/weGPUI/examples/overlays_contracts_probe.rs:159:
+-                            if key.keystroke.modifiers.shift { window.focus_prev(cx); }
+-                            else { window.focus_next(cx); }
++                            if key.keystroke.modifiers.shift {
++                                window.focus_prev(cx);
++                            } else {
++                                window.focus_next(cx);
++                            }
+                             cx.stop_propagation();
+                         }
+                         "f8" => {
+Diff in /workspace/weGPUI/examples/overlays_contracts_probe.rs:164:
+-                            eprintln!("snapshot open={} values={:?} indices={:?} opener_focus={}",
++                            eprintln!(
++                                "snapshot open={} values={:?} indices={:?} opener_focus={}",
+                                 this.picker.read(cx).is_open() || this.presence.is_open(),
+-                                this.picker.read(cx).selected().iter().map(|i| i.value.to_string()).collect::<Vec<_>>(),
+-                                this.picker.read(cx).indices(), this.opener.is_focused(window));
++                                this.picker
++                                    .read(cx)
++                                    .selected()
++                                    .iter()
++                                    .map(|i| i.value.to_string())
++                                    .collect::<Vec<_>>(),
++                                this.picker.read(cx).indices(),
++                                this.opener.is_focused(window)
++                            );
+                         }
+-                        "f9" => this.picker.update(cx, |picker, cx| picker.close(window, cx)),
++                        "f9" => this
++                            .picker
++                            .update(cx, |picker, cx| picker.close(window, cx)),
+                         "f10" => this.picker.update(cx, |picker, cx| picker.open(window, cx)),
+                         _ => {}
+                     }
+Diff in /workspace/weGPUI/examples/overlays_contracts_probe.rs:173:
+                 }))
+-                .child(Button::new("Open overlay").id("opener").track_focus(&self.opener)
+-                    .on_click(cx.listener(|this, _, window, cx| this.open(window, cx))))
+-                .child(div().mt(px(24.)).child(format!("case={} events={}", self.case, self.events.join("; "))))
++                .child(
++                    Button::new("Open overlay")
++                        .id("opener")
++                        .track_focus(&self.opener)
++                        .on_click(cx.listener(|this, _, window, cx| this.open(window, cx))),
++                )
++                .child(div().mt(px(24.)).child(format!(
++                    "case={} events={}",
++                    self.case,
++                    self.events.join("; ")
++                )))
+                 .child(overlay),
+         )
+     }
+Diff in /workspace/weGPUI/examples/overlays_contracts_probe.rs:184:
+ 
+ fn main() {
+     let case = std::env::args().nth(1).unwrap_or_else(|| "picker".into());
+-    platform::application().with_assets(wegpui::Assets).run(move |cx| {
+-        wegpui::init(cx);
+-        cx.open_window(WindowOptions {
+-            window_bounds: Some(WindowBounds::Windowed(Bounds::new(point(px(0.), px(0.)), size(px(480.), px(640.))))),
+-            titlebar: Some(TitlebarOptions { title: Some("weGPUI overlay contracts".into()), ..Default::default() }),
+-            ..Default::default()
+-        }, |window, cx| {
+-            Theme::observe(window);
+-            cx.new(|cx| Probe::new(case, window, cx))
+-        }).expect("open probe window");
+-        cx.activate(true);
+-    });
++    platform::application()
++        .with_assets(wegpui::Assets)
++        .run(move |cx| {
++            wegpui::init(cx);
++            cx.open_window(
++                WindowOptions {
++                    window_bounds: Some(WindowBounds::Windowed(Bounds::new(
++                        point(px(0.), px(0.)),
++                        size(px(480.), px(640.)),
++                    ))),
++                    titlebar: Some(TitlebarOptions {
++                        title: Some("weGPUI overlay contracts".into()),
++                        ..Default::default()
++                    }),
++                    ..Default::default()
++                },
++                |window, cx| {
++                    Theme::observe(window);
++                    cx.new(|cx| Probe::new(case, window, cx))
++                },
++            )
++            .expect("open probe window");
++            cx.activate(true);
++        });
+ }
+ 
+Diff in /workspace/weGPUI/src/components/half_screen_dialog.rs:482:
+             .when(!self.large, |el| {
+                 el.min_h(px(255.).min(maximum_height)).max_h(maximum_height)
+             })
+-            .when(self.large, |el| el.h((viewport.height - px(16.)).max(px(0.))))
++            .when(self.large, |el| {
++                el.h((viewport.height - px(16.)).max(px(0.)))
++            })
+             .top(px(grab_offset.max(0.)))
+             .line_height(relative(1.4))
+             .bg(t.bg_2)
+Diff in /workspace/weGPUI/src/components/half_screen_dialog.rs:493:
+             .flex()
+             .flex_col()
+             .child(header)
+-            .child(crate::scrolling::FocusScroll::new(bd_key, &bd_scroll, body)
+-                .inset_bottom(px(if self.bottom_fixed { 80. } else { 0. })))
++            .child(
++                crate::scrolling::FocusScroll::new(bd_key, &bd_scroll, body)
++                    .inset_bottom(px(if self.bottom_fixed { 80. } else { 0. })),
++            )
+             .children(footer);
+         if self.grab {
+             let line_h = 4. + 12. * pct;

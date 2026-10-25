@@ -1,0 +1,48 @@
+--- a/vendor/accesskit_atspi_common/src/node.rs
++++ b/vendor/accesskit_atspi_common/src/node.rs
+@@ -312,7 +312,16 @@
+         if state.is_text_input() && !state.is_read_only_or_disabled() {
+             atspi_state.insert(State::Editable);
+         }
+-        // TODO: Focus and selection.
++        if state.is_busy() {
++            atspi_state.insert(State::Busy);
++        }
++        if state.data().invalid().is_some() {
++            atspi_state.insert(State::InvalidEntry);
++        }
++        if let Some(expanded) = state.data().is_expanded() {
++            atspi_state.insert(State::Expandable);
++            atspi_state.insert(if expanded { State::Expanded } else { State::Collapsed });
++        }
+         if state.is_focusable(&filter) {
+             atspi_state.insert(State::Focusable);
+         }
+@@ -416,6 +425,9 @@
+         }
+         if let Some(size_of_set) = self.size_of_set() {
+             attributes.insert("setsize", size_of_set);
++        }
++        if let Some(level) = self.0.level() {
++            attributes.insert("level", level.to_string());
+         }
+         if let Some(label) = self.braille_label() {
+             attributes.insert("braillelabel", label.to_string());
+--- a/vendor/gpui_pre/src/window.rs
++++ b/vendor/gpui_pre/src/window.rs
+@@ -2792,6 +2792,7 @@
+         self.scale_factor = self.platform_window.scale_factor();
+         self.viewport_size = self.platform_window.content_size();
+         self.mouse_position = self.platform_window.mouse_position();
++        self.platform_window.a11y_update_window_bounds();
+ 
+         self.refresh();
+ 
+@@ -3792,6 +3793,7 @@
+                     "Sending a11y tree update: {} nodes",
+                     tree_update.nodes.len()
+                 );
++                self.platform_window.a11y_update_window_bounds();
+                 self.platform_window.a11y_tree_update(tree_update);
+             }
+         }

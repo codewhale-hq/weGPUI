@@ -1,0 +1,6 @@
+apps 1
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['showing']
+    dialog '大图' ['focusable', 'modal', 'showing']
+      image '大图' ['focusable', 'focused', 'showing'] description='按回车或空格关闭图片预览'
+      button '删除' ['focusable', 'showing']

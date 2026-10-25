@@ -1,0 +1,3 @@
+PASS: site rebuilt from post-review strict Rustdoc; source/API manifests archived.
+PASS: served Checkbox and TextInput Rustdoc source exactly matches current full Rust files.
+Scope: documentation freshness only; prior complete website checks remain in final-api.

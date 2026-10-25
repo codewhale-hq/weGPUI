@@ -1,0 +1,4 @@
+CALL start 1
+CALL switch 1
+CALL switch 2
+SNAP counts={"start": 1, "switch": 2} checked=[false, false, false, false] radio=0 second=0 remaining=[0, 0] offset=Point { x: 0px, y: 0px }

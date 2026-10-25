@@ -1,0 +1,31 @@
+{
+  "scale": "1",
+  "actions": [
+    {
+      "label": "01-initial",
+      "field": "Word editing",
+      "value": "alpha é beta gamma",
+      "caret": 19,
+      "selection": [],
+      "description": "",
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ],
+      "interfaces": [
+        "Accessible",
+        "Component",
+        "Text"
+      ]
+    }
+  ],
+  "passed": false,
+  "error": "GLib.Error('Unknown method 'GetTextAtOffset'', 'atspi_error', 1)"
+}

@@ -12,7 +12,7 @@ use gpui::{prelude::*, *};
 /// 28px icon above a 14px label.
 ///
 /// It exposes `Role::Button` named by the label, is a Tab stop and activates on click, Enter or
-/// Space. Pressing shows theme `bg_color_active`; keyboard focus tints it with the brand colour.
+/// Space. Pressing shows theme `bg_color_active`; keyboard focus shows two contrasting inset bands.
 #[derive(IntoElement)]
 pub struct Grid {
     id: ElementId,
@@ -65,7 +65,7 @@ impl RenderOnce for Grid {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         crate::scrolling::FocusTarget::new({
             let t = Theme::get(cx);
-            let (line, active, ring, fg) = (t.fg_3, t.bg_color_active, t.brand, t.fg_0);
+            let (line, active, fg) = (t.fg_3, t.bg_color_active, t.fg_0);
             let has_icon = self.icon.is_some();
             div()
                 .id(self.id)
@@ -112,7 +112,7 @@ impl RenderOnce for Grid {
                         .h(px(0.5))
                         .bg(line),
                 )
-                .focus_visible(move |s| s.bg(ring.opacity(0.1)))
+                .focus_visible(move |s| s.shadow(super::form::dual_focus_ring()))
                 .when_some(self.on_click, |el, h| el.on_click(h))
         })
     }

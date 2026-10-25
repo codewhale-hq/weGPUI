@@ -1,14 +1,13 @@
 //! Progress bars from WeUI's `src/style/widget/weui-progress/`: [`Progress`] draws a 3px bar
-//! followed by a cancel icon button (`weui-progress__opr`).
-//!
-//! Known limitations: the cancel button is always shown, and progress changes are exposed as the
-//! indicator's value rather than announced through a live region as the upstream example does.
+//! followed by an optional cancel icon button (`weui-progress__opr`). The caller owns progress,
+//! cancellation and the timing of optional live announcements, as in the upstream example.
 
 use super::{ClickHandler, Icon};
 use crate::Theme;
 use gpui::{prelude::*, *};
 
-/// A horizontal progress bar filled with the brand colour, followed by a red `cancel` [`Icon`].
+/// A horizontal progress bar filled with the brand colour, optionally followed by a red cancel
+/// [`Icon`].
 ///
 /// The bar is exposed as `Role::ProgressIndicator` with a 0–100 value and "N%" value text; the
 /// cancel icon is a Tab-stop button with a 44px hit area. It holds no state: re-render it with the
@@ -19,6 +18,8 @@ pub struct Progress {
     value: f32,
     label: SharedString,
     cancel_label: SharedString,
+    cancelable: bool,
+    announcement: Option<SharedString>,
     on_cancel: Option<ClickHandler>,
 }
 
@@ -31,6 +32,8 @@ impl Progress {
             value: 0.,
             label: "进度".into(),
             cancel_label: "取消".into(),
+            cancelable: true,
+            announcement: None,
             on_cancel: None,
         }
     }
@@ -51,6 +54,20 @@ impl Progress {
     /// Sets the cancel button's accessible name. Default: "取消" (cancel).
     pub fn cancel_label(mut self, label: impl Into<SharedString>) -> Self {
         self.cancel_label = label.into();
+        self
+    }
+    /// Shows or removes the cancel icon and button (default `true`). When `false`, no cancel
+    /// control is drawn, focusable or exposed to assistive technology; the bar fills its width.
+    pub fn cancelable(mut self, cancelable: bool) -> Self {
+        self.cancelable = cancelable;
+        self
+    }
+    /// Adds an invisible alert with caller-controlled announcement text, for example
+    /// "已上传百分之50". Default: none. Keep this text unchanged between milestones to avoid
+    /// announcing every animation frame; an empty string keeps the alert available silently.
+    /// The numeric indicator value always remains available independently of this text.
+    pub fn announcement(mut self, text: impl Into<SharedString>) -> Self {
+        self.announcement = Some(text.into());
         self
     }
     /// Sets the cancel callback. It receives the click event when the cancel button is clicked, or
@@ -103,15 +120,30 @@ impl RenderOnce for Progress {
                         .cursor_pointer()
                         .focusable()
                         .tab_stop(true)
-                        .focus_visible(move |s| s.border_color(brand))
+                        .focus_visible(move |s| s.shadow(super::form::dual_focus_ring()))
                         .when_some(self.on_cancel, |el, h| el.on_click(h)),
                 );
             div()
                 .id(self.id)
+                .relative()
                 .flex()
                 .items_center()
                 .child(bar)
-                .child(opr)
+                .when(self.cancelable, |el| el.child(opr))
+                .when_some(self.announcement, |el, text| {
+                    el.child(
+                        crate::accessibility::Semantics::new(
+                            div()
+                                .id("progress-announcement")
+                                .role(Role::Alert)
+                                .aria_label(text)
+                                .absolute()
+                                .size(px(1.))
+                                .opacity(0.),
+                        )
+                        .live(accesskit::Live::Assertive),
+                    )
+                })
         })
     }
 }

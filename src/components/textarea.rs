@@ -91,6 +91,24 @@ impl TextArea {
             .update(cx, |input, cx| input.set_aria_label(label, cx));
     }
 
+    /// Sets or removes explanatory or validation text for assistive technology, without
+    /// changing the visible text or accessible name.
+    pub fn set_aria_description(
+        &mut self,
+        description: Option<SharedString>,
+        cx: &mut Context<Self>,
+    ) {
+        self.input
+            .update(cx, |input, cx| input.set_aria_description(description, cx));
+    }
+
+    /// Marks or clears an invalid state for assistive technology. Validation and visible
+    /// error styling remain caller-owned; the value and change events are unchanged.
+    pub fn set_invalid(&mut self, invalid: bool, cx: &mut Context<Self>) {
+        self.input
+            .update(cx, |input, cx| input.set_invalid(invalid, cx));
+    }
+
     /// Disables or re-enables the field; a disabled field is not focusable or editable.
     pub fn set_disabled(&mut self, disabled: bool, cx: &mut Context<Self>) {
         self.input

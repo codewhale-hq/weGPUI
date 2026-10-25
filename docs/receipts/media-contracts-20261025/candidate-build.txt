@@ -1,0 +1,93 @@
+   Compiling wegpui v0.1.0 (/workspace/.wegpui-cloud/candidates/media)
+error[E0599]: no method named `max_files` found for struct `Uploader` in the current scope
+  --> examples/media_contract_probe.rs:48:14
+   |
+46 |           let uploader = Uploader::new("contract-uploader", "Upload contract")
+   |  ________________________-
+47 | |             .info(format!("{}/2", self.files.len()))
+48 | |             .max_files(2)
+   | |_____________-^^^^^^^^^
+   |
+help: there is a method `files` with a similar name
+   |
+48 -             .max_files(2)
+48 +             .files(2)
+   |
+
+error[E0599]: no method named `open` found for struct `SwipedCell` in the current scope
+   --> examples/media_contract_probe.rs:105:14
+    |
+103 |           let swipe = SwipedCell::new("controlled-row")
+    |  _____________________-
+104 | |             .aria_label("Controlled row")
+105 | |             .open(self.swipe_open)
+    | |             -^^^^ private field, not a method
+    | |_____________|
+    |
+
+error[E0599]: no method named `small` found for struct `wegpui::components::button::Button` in the current scope
+   --> examples/media_contract_probe.rs:145:22
+    |
+143 | /                 Button::new("Fail upload")
+144 | |                     .id("fail")
+145 | |                     .small()
+    | |                     -^^^^^ method not found in `wegpui::components::button::Button`
+    | |_____________________|
+    |
+
+error[E0599]: no method named `small` found for struct `wegpui::components::button::Button` in the current scope
+   --> examples/media_contract_probe.rs:157:22
+    |
+155 | /                 Button::new("Complete upload")
+156 | |                     .id("done")
+157 | |                     .small()
+    | |                     -^^^^^ method not found in `wegpui::components::button::Button`
+    | |_____________________|
+    |
+
+error[E0599]: no method named `small` found for struct `wegpui::components::button::Button` in the current scope
+   --> examples/media_contract_probe.rs:169:22
+    |
+167 | /                 Button::new("Reset uploads")
+168 | |                     .id("reset")
+169 | |                     .small()
+    | |                     -^^^^^ method not found in `wegpui::components::button::Button`
+    | |_____________________|
+    |
+
+error[E0599]: no method named `small` found for struct `wegpui::components::button::Button` in the current scope
+   --> examples/media_contract_probe.rs:207:26
+    |
+205 | /                     Button::new("Toggle request acceptance")
+206 | |                         .id("toggle-accept")
+207 | |                         .small()
+    | |                         -^^^^^ method not found in `wegpui::components::button::Button`
+    | |_________________________|
+    |
+
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `wegpui` (example "media_contract_probe") due to 6 previous errors
+warning: build failed, waiting for other jobs to finish...
+error[E0599]: no method named `track_add_focus` found for struct `Uploader` in the current scope
+   --> examples/gallery/pages/uploader.rs:146:14
+    |
+144 |           let first = Uploader::new("uploader-plain", "图片上传，缩略图不带删除")
+    |  _____________________-
+145 | |             .info("3/10")
+146 | |             .track_add_focus(&self.plain_add_focus)
+    | |             -^^^^^^^^^^^^^^^ method not found in `Uploader`
+    | |_____________|
+    |
+
+error[E0599]: no method named `track_add_focus` found for struct `Uploader` in the current scope
+   --> examples/gallery/pages/uploader.rs:156:14
+    |
+154 |           let second = Uploader::new("uploader-deletable", "图片上传，缩略图带删除")
+    |  ______________________-
+155 | |             .info("3/10")
+156 | |             .track_add_focus(&self.deletable_add_focus)
+    | |             -^^^^^^^^^^^^^^^ method not found in `Uploader`
+    | |_____________|
+    |
+
+error: could not compile `wegpui` (example "gallery") due to 2 previous errors

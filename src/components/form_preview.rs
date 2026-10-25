@@ -188,7 +188,7 @@ impl RenderOnce for FormPreview {
         });
         let line = t.dialog_line_color;
         let pressed = t.bg_color_active;
-        let brand = t.brand;
+        let brand = t.focus_color(t.bg_2);
         let footer = (!self.buttons.is_empty()).then(|| {
             div()
                 .relative()

@@ -1,0 +1,6 @@
+{"step": "caret", "focused": [["entry", "Outlined input"]]}
+Traceback (most recent call last):
+  File "/workspace/weGPUI/docs/receipts/focus-contrast-20261025/caret-light/drive-used.py", line 130, in <module>
+    'last_character': [last.x-origin.x, last.y-origin.y, last.width, last.height],
+                       ^^^^^^
+AttributeError: 'tuple' object has no attribute 'x'

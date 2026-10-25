@@ -92,8 +92,9 @@ impl InformationBar {
         self.on_close = Some(Box::new(handler));
         self
     }
-    /// Positions the bar absolutely, 8 px from the top, left and right of its parent (default
-    /// `false`).
+    /// Fixes the bar 8 px from the window's top, left and right edges (default `false`). It is a
+    /// deferred overlay above ordinary modal layers, matching the upstream notice's high z-index;
+    /// parent padding, scrolling and clipping do not move it. Without this option it stays in flow.
     pub fn floating(mut self, floating: bool) -> Self {
         self.floating = floating;
         self
@@ -106,8 +107,10 @@ impl InformationBar {
 }
 
 impl RenderOnce for InformationBar {
-    fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
-        crate::scrolling::FocusTarget::new({
+    fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
+        let floating = self.floating;
+        let floating_width = (window.viewport_size().width - px(16.)).max(px(0.));
+        let bar = crate::scrolling::FocusTarget::new({
             let t = Theme::get(cx).clone();
             let (fg, bg, icon, link) = match self.kind {
                 InformationBarKind::WarnStrong => (
@@ -142,7 +145,7 @@ impl RenderOnce for InformationBar {
                 ),
             };
             let has_hd = self.icon.is_some();
-            let focus = fg;
+            let focus = t.focus_color_with(fg, bg);
             let has_ft = self.link.is_some() || self.close_label.is_some();
             let ft = has_ft.then(|| {
                 div()
@@ -150,46 +153,52 @@ impl RenderOnce for InformationBar {
                     .items_center()
                     .when_some(self.link, |el, (label, handler)| {
                         el.child(
-                            div()
-                                .id("information-bar-link")
-                                .role(Role::Link)
-                                .aria_label(label.clone())
-                                .border_b_2()
-                                .border_color(transparent_black())
-                                .mb(px(-2.))
-                                .text_color(link)
-                                .cursor_pointer()
-                                .focusable()
-                                .tab_stop(true)
-                                .active(|s| s.opacity(0.5))
-                                .focus_visible(move |s| s.border_color(focus))
-                                .when_some(handler, |el, h| el.on_click(h))
-                                .child(label),
+                            crate::accessibility::Semantics::new(
+                                div()
+                                    .id("information-bar-link")
+                                    .role(Role::Link)
+                                    .aria_label(label.clone())
+                                    .border_b_2()
+                                    .border_color(transparent_black())
+                                    .mb(px(-2.))
+                                    .text_color(link)
+                                    .cursor_pointer()
+                                    .focusable()
+                                    .tab_stop(true)
+                                    .active(|s| s.opacity(0.5))
+                                    .focus_visible(move |s| s.border_color(focus))
+                                    .when_some(handler, |el, h| el.on_click(h))
+                                    .child(label),
+                            )
+                            .live(accesskit::Live::Off),
                         )
                     })
                     .when_some(self.close_label, |el, label| {
                         el.child(
-                            div()
-                                .id("information-bar-close")
-                                .role(Role::Button)
-                                .aria_label(label)
-                                .ml(px(6.))
-                                .my(px(-2.))
-                                .mr(px(-2.))
-                                .rounded(px(4.))
-                                .border_2()
-                                .border_color(transparent_black())
-                                .cursor_pointer()
-                                .focusable()
-                                .tab_stop(true)
-                                .active(|s| s.opacity(0.5))
-                                .focus_visible(move |s| s.border_color(focus))
-                                .when_some(self.on_close, |el, h| el.on_click(h))
-                                .child(Icon::new("close-thin").size(24.).color(fg)),
+                            crate::accessibility::Semantics::new(
+                                div()
+                                    .id("information-bar-close")
+                                    .role(Role::Button)
+                                    .aria_label(label)
+                                    .ml(px(6.))
+                                    .my(px(-2.))
+                                    .mr(px(-2.))
+                                    .rounded(px(4.))
+                                    .border_2()
+                                    .border_color(transparent_black())
+                                    .cursor_pointer()
+                                    .focusable()
+                                    .tab_stop(true)
+                                    .active(|s| s.opacity(0.5))
+                                    .focus_visible(move |s| s.border_color(focus))
+                                    .when_some(self.on_close, |el, h| el.on_click(h))
+                                    .child(Icon::new("close-thin").size(24.).color(fg)),
+                            )
+                            .live(accesskit::Live::Off),
                         )
                     })
             });
-            div()
+            let notice = div()
                 .id(self.id)
                 .role(Role::Alert)
                 .aria_label(self.text.clone())
@@ -203,9 +212,7 @@ impl RenderOnce for InformationBar {
                 .text_color(fg)
                 .bg(bg)
                 .opacity(self.opacity)
-                .when(self.floating, |el| {
-                    el.absolute().top(px(8.)).left(px(8.)).right(px(8.))
-                })
+                .when(floating, |el| el.w(floating_width).occlude())
                 .when_some(self.icon, |el, name| {
                     el.child(
                         div().flex().items_center().child(
@@ -222,8 +229,16 @@ impl RenderOnce for InformationBar {
                         .when(!has_hd && !has_ft, |el| el.text_center())
                         .child(self.text),
                 )
-                .children(ft)
-        })
+                .children(ft);
+            crate::accessibility::Semantics::new(notice).live(accesskit::Live::Assertive)
+        });
+        if floating {
+            deferred(anchored().position(point(px(8.), px(8.))).child(bar))
+                .with_priority(2)
+                .into_any_element()
+        } else {
+            bar.into_any_element()
+        }
     }
 }
 

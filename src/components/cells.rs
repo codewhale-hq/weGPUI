@@ -78,11 +78,34 @@ impl Cells {
         self.title = Some(title.into_any_element());
         self
     }
+    /// Sets an accessible plain-text title with the same styling as [`Cells::title`]. Raw strings
+    /// passed to the compositional `title` slot are visual only at the pinned GPUI version.
+    pub fn title_text(self, title: impl Into<SharedString>) -> Self {
+        let title = title.into();
+        self.title(
+            div()
+                .id("cells-title-text")
+                .role(Role::Label)
+                .aria_value(title.clone())
+                .child(title),
+        )
+    }
     /// Sets the tips under the group (`.weui-cells__tips`): 14px text 8px below the rows, in
     /// `fg_1` with 16px side padding, or `fg_2` with 32px for form styles. None by default.
     pub fn tips(mut self, tips: impl IntoElement) -> Self {
         self.tips = Some(tips.into_any_element());
         self
+    }
+    /// Sets an accessible plain-text tip with the same styling as [`Cells::tips`].
+    pub fn tips_text(self, tips: impl Into<SharedString>) -> Self {
+        let tips = tips.into();
+        self.tips(
+            div()
+                .id("cells-tips-text")
+                .role(Role::Paragraph)
+                .aria_label(tips.clone())
+                .child(tips),
+        )
     }
     /// Shows the tips in red. Off by default.
     pub fn tips_warn(mut self, warn: bool) -> Self {
@@ -253,7 +276,7 @@ fn hairline(color: Hsla) -> Div {
 
 /// One list row (`.weui-cell`): an optional header, a flexible body with an optional
 /// description, and an optional right-aligned footer. It has 16px padding (including a 2px
-/// transparent border that turns brand-coloured on keyboard focus) and 17px text on a 24px line.
+/// transparent border and two contrasting inset bands on keyboard focus) and 17px text on a 24px line.
 #[derive(IntoElement)]
 pub struct Cell {
     id: ElementId,
@@ -427,7 +450,7 @@ impl Cell {
         self
     }
     /// Calls `handler` on click or, while focused, on Enter/Space. Unless disabled, the row
-    /// becomes a tab stop with a brand-coloured focus border. None by default.
+    /// becomes a tab stop with two contrasting inset focus bands. None by default.
     pub fn on_click(
         mut self,
         handler: impl Fn(&ClickEvent, &mut Window, &mut App) + 'static,
@@ -512,7 +535,6 @@ impl RenderOnce for Cell {
                 })
         });
         let pressed = t.fg_3;
-        let brand = t.brand;
         let radius = if self.form { 8. } else { 0. };
         let mut el = div()
             .id(self.id)
@@ -549,7 +571,7 @@ impl RenderOnce for Cell {
                 })
                 .focusable()
                 .tab_stop(true)
-                .focus_visible(move |s| s.border_color(brand))
+                .focus_visible(move |s| s.shadow(super::form::dual_focus_ring()))
                 .on_click(handler);
         } else if self.active && !self.disabled {
             el = el.active(move |s| s.bg(pressed).rounded(px(radius)));

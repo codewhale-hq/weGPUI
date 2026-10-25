@@ -1,0 +1,10 @@
+2026-10-25T09:04:55Z summary:KP_Enter
+2026-10-25T09:04:57Z start:Home
+2026-10-25T09:04:58Z first-word:down=Control_L plain=Right up=Control_L
+2026-10-25T09:05:02Z second-word:down=Control_L plain=Right up=Control_L
+2026-10-25T09:05:05Z selected-word:End down=Control_L down=Shift_L plain=Left up=Shift_L up=Control_L
+2026-10-25T09:05:12Z selection-summary:KP_Enter
+2026-10-25T09:05:14Z notes:Tab down=Control_L plain=Home up=Control_L KP_Enter
+2026-10-25T09:05:20Z password:Tab Tab KP_Enter
+2026-10-25T09:05:23Z readonly:shift+Tab KP_Enter
+2026-10-25T09:05:25Z invalid:Tab Tab KP_Enter

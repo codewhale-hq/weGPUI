@@ -66,6 +66,21 @@ gpui_platform = { package = "gpui-pre-platform", version = "=0.3.9", features = 
 On Linux, that application dependency also needs `"wayland"` or `"x11"` in `features`;
 `font-kit` alone builds but panics when opening a window. The bundled examples already enable both.
 
+This preview includes approved compatibility copies of GPUI 0.3.9 and the existing Linux
+AccessKit crates. **Cargo patches in a dependency are not inherited.** To reproduce the
+repository's accessibility fixes, keep a matching local checkout and add these entries to
+your application's workspace-root manifest (adjust the checkout path):
+
+```toml
+[patch.crates-io]
+gpui-pre = { path = "../weGPUI/vendor/gpui_pre" }
+accesskit_unix = { path = "../weGPUI/vendor/accesskit_unix" }
+accesskit_atspi_common = { path = "../weGPUI/vendor/accesskit_atspi_common" }
+```
+
+All three package versions stay unchanged. See [vendor provenance and limits](vendor/README.md).
+Published replacement packages and a release distribution policy have not been authorized.
+
 [`examples/minimal.rs`](examples/minimal.rs) is the compiled, complete version, including
 `ModalScope` (hides the page from screen readers while a modal is open), Tab navigation and a
 `Presence`-driven dialog. Public items carry rustdoc: run `cargo doc --open`.
@@ -85,7 +100,7 @@ packaging all have receipts from that platform. Details and evidence are in
 | Platform | Today |
 | --- | --- |
 | macOS | Native component builds, nine tests, strict Clippy/docs and a packaged consumer pass. Sampled loading, focus, labels and inline-link interactions verified. Full runtime and VoiceOver acceptance incomplete; signed distribution missing. |
-| Linux | Windowing features enabled. Both examples build and render under isolated Xvfb; sampled dialog/select XTEST input and AT-SPI trees verified. No Wayland runtime or Orca acceptance. Not packaged. |
+| Linux | Rust 1.98.1 X11 builds and native interaction, state/theme and accessibility samples; actual Wayland clients under nested Weston and Orca transcript/audio collection. Full screen-reader, hardware desktop and distribution acceptance remain incomplete. |
 | Windows | Native Windows 11 ARM/MSVC builds, nine tests and strict Clippy/docs pass; sampled component and inline-link interactions verified. x64, screen-reader and distribution acceptance missing. |
 | iOS | 0.3.9 scaffold implemented; hosted simulator build fails on mismatched upstream APIs. No runtime acceptance. Not supported. |
 | Android | Library type-checks only. No upstream backend. Not supported. |

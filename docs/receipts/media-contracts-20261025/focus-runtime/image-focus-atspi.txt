@@ -1,0 +1,6 @@
+apps 1
+application 'media_contract_probe' [] DISABLED
+  frame 'weGPUI media contracts' ['showing']
+    dialog 'Image preview' ['focusable', 'modal', 'showing']
+      image 'Image preview' ['focusable', 'focused', 'showing'] description='按回车或空格关闭图片预览'
+      button 'Delete preview image' ['focusable', 'showing']

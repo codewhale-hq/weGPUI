@@ -1,0 +1,4 @@
+dbus-daemon[67170]: Activating service name='org.a11y.atspi.Registry' requested by ':1.0' (uid=1000 pid=67195 comm="/workspace/.wegpui-cloud/focus-integrated-20261025" label="kernel")
+dbus-daemon[67170]: Successfully activated service 'org.a11y.atspi.Registry'
+SpiRegistry daemon is running with well-known name - org.a11y.atspi.Registry
+X connection to :110 broken (explicit kill or server shutdown).

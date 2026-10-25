@@ -1,0 +1,324 @@
+use gpui::{prelude::*, *};
+use std::time::Duration;
+use wegpui::{
+    Theme,
+    accessibility::ModalScope,
+    components::{
+        action_sheet::{ActionSheet, ActionSheetItem},
+        button::Button,
+        dialog::{Dialog, DialogButton},
+        half_screen_dialog::{HalfScreenDialog, HdIconButton},
+        modal::{Modal, Presence},
+        picker::{Picker, PickerEvent, PickerItem},
+        select::{SelectCell, SelectMenu},
+    },
+    scrolling::FocusScroll,
+};
+
+struct Probe {
+    case: String,
+    presence: Presence,
+    picker: Entity<Picker>,
+    selected: Option<usize>,
+    opener: FocusHandle,
+    scroll: ScrollHandle,
+    events: Vec<String>,
+    reopen: bool,
+    _subscription: Subscription,
+}
+
+impl Probe {
+    fn new(case: String, window: &mut Window, cx: &mut Context<Self>) -> Self {
+        let picker = cx.new(|cx| {
+            let picker = Picker::new("contracts-picker", cx)
+                .title("Contract picker")
+                .desc("Picker instructions")
+                .confirm_text("Confirm picker")
+                .close_text("Cancel picker");
+            if case == "date" {
+                picker.date(i32::MIN, i32::MAX, (2000, 2, 29))
+            } else if case == "all-disabled" {
+                picker.columns(vec![vec![
+                    PickerItem::new("Unavailable", "x").disabled(true),
+                ]])
+            } else {
+                picker
+                    .columns(vec![vec![
+                        PickerItem::new("Zero", "0"),
+                        PickerItem::new("Unavailable one", "1").disabled(true),
+                        PickerItem::new("Two", "2"),
+                        PickerItem::new("Unavailable three", "3").disabled(true),
+                        PickerItem::new("Four", "4"),
+                    ]])
+                    .default_value(["0"])
+            }
+        });
+        let subscription = cx.subscribe_in(
+            &picker,
+            window,
+            |this: &mut Probe, picker, event: &PickerEvent, window, cx| {
+                let kind = match event {
+                    PickerEvent::Change(items) => format!(
+                        "change={}",
+                        items
+                            .iter()
+                            .map(|i| i.value.as_ref())
+                            .collect::<Vec<_>>()
+                            .join(",")
+                    ),
+                    PickerEvent::Confirm(items) => format!(
+                        "confirm={}",
+                        items
+                            .iter()
+                            .map(|i| i.value.as_ref())
+                            .collect::<Vec<_>>()
+                            .join(",")
+                    ),
+                    PickerEvent::Close => "close".to_string(),
+                };
+                this.record(kind);
+                if matches!(event, PickerEvent::Confirm(_)) && this.reopen {
+                    this.reopen = false;
+                    picker.update(cx, |picker, cx| picker.open(window, cx));
+                    this.record("reopened-from-confirm".into());
+                }
+                cx.notify();
+            },
+        );
+        Self {
+            reopen: case == "reentrant",
+            case,
+            presence: Presence::new(cx).duration(Duration::from_secs(1)),
+            picker,
+            selected: Some(20),
+            opener: cx.focus_handle().tab_stop(true),
+            scroll: ScrollHandle::new(),
+            events: vec![],
+            _subscription: subscription,
+        }
+    }
+
+    fn record(&mut self, event: String) {
+        eprintln!("event {} {event}", self.events.len() + 1);
+        self.events.push(event);
+    }
+
+    fn open(&mut self, window: &mut Window, cx: &mut Context<Self>) {
+        if matches!(self.case.as_str(), "select-disabled" | "inline") {
+            self.record("open".into());
+            cx.notify();
+            return;
+        }
+        if matches!(
+            self.case.as_str(),
+            "picker" | "date" | "all-disabled" | "reentrant"
+        ) {
+            self.picker.update(cx, |picker, cx| picker.open(window, cx));
+        } else {
+            self.presence.show(window, cx);
+        }
+        self.record("open".into());
+        cx.notify();
+    }
+}
+
+impl Render for Probe {
+    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let t = Theme::get(cx).clone();
+        let page = cx.entity().downgrade();
+        let event = move |name: &'static str, hide: bool| {
+            let page = page.clone();
+            move |window: &mut Window, cx: &mut App| {
+                page.update(cx, |this, cx| {
+                    this.record(name.to_string());
+                    if hide {
+                        this.presence.hide(window, cx);
+                    }
+                    cx.notify();
+                })
+                .ok();
+            }
+        };
+        let overlay = match self.case.as_str() {
+            "inline" => div().flex().flex_col()
+                .child(div().h(px(600.)).flex_shrink_0())
+                .child(ActionSheet::new("inline-actions").title("Inline actions")
+                    .item(ActionSheetItem::new("Inline action").on_click(event("inline-action", false))))
+                .child(div().h(px(600.)).flex_shrink_0())
+                .child(Dialog::new("inline-dialog").title("Inline dialog").body("An inline dialog.")
+                    .button(DialogButton::new("Inline dialog action").on_click(event("inline-dialog", false))))
+                .child(div().h(px(600.)).flex_shrink_0())
+                .child(HalfScreenDialog::new("inline-sheet").title("Inline sheet")
+                    .left(HdIconButton::new("inline-icon", "close-thin", "Inline icon")
+                        .on_click({ let action = event("inline-icon", false); move |_, w, cx| action(w, cx) }))
+                    .body("Inline sheet body"))
+                .into_any_element(),
+            "select-disabled" => SelectCell::new("disabled-select", "Disabled value")
+                .disabled(true)
+                .on_click({
+                    let blocked = event("disabled-select", false);
+                    move |_, window, cx| blocked(window, cx)
+                })
+                .into_any_element(),
+            "raw-modal" => Modal::new("raw-modal", &self.presence)
+                .label("Raw modal")
+                .on_dismiss(event("dismiss", true))
+                .child(div().w(px(320.)).p(px(24.)).bg(t.bg_2).child(
+                    Button::new("Raw confirm").id("raw-confirm").on_click({
+                        let confirm = event("confirm", true);
+                        move |_, window, cx| confirm(window, cx)
+                    }),
+                ))
+                .into_any_element(),
+            "action" | "android" => ActionSheet::new("contract-actions")
+                .title("Contract actions")
+                .android(self.case == "android")
+                .item(ActionSheetItem::new("Menu action").on_click(event("menu", false)))
+                .item(ActionSheetItem::new("Menu with tips").tips("Secondary line").on_click(event("tips", false)))
+                .item(ActionSheetItem::new("Warn action").warn().on_click(event("warn", false)))
+                .action(ActionSheetItem::new("Cancel action").on_click(event("cancel", true)))
+                .presence(&self.presence)
+                .on_dismiss(event("dismiss", true))
+                .into_any_element(),
+            "dialog" => Dialog::new("contract-dialog")
+                .title("Contract dialog")
+                .body("Mask clicks must leave this dialog open. Its disabled action must not activate.")
+                .button(DialogButton::new("Cancel dialog").default_style().on_click(event("cancel", true)))
+                .button(DialogButton::new("Disabled dialog").disabled().on_click(event("disabled", true)))
+                .button(DialogButton::new("Confirm dialog").primary().on_click(event("confirm", true)))
+                .presence(&self.presence)
+                .on_dismiss(event("dismiss", true))
+                .into_any_element(),
+            "sheet" | "sheet-short" => HalfScreenDialog::new("contract-sheet")
+                .title("Contract sheet")
+                .subtitle("Contract subtitle")
+                .grab(true)
+                .body("Drag down under 56px to return, or at least 56px to dismiss.")
+                .child(div().h(px(if self.case == "sheet-short" { 1000. } else { 60. })))
+                .presence(&self.presence)
+                .on_dismiss(event("dismiss", true))
+                .into_any_element(),
+            "select" => {
+                let mut menu = SelectMenu::new("contract-select", &self.presence)
+                    .title("Contract options")
+                    .selected(self.selected)
+                    .on_select(cx.listener(|this, selected: &usize, window, cx| {
+                        this.selected = Some(*selected);
+                        this.record(format!("select={selected}"));
+                        this.presence.hide(window, cx);
+                        cx.notify();
+                    }))
+                    .on_dismiss(event("dismiss", true));
+                for i in 0..32 {
+                    menu = if matches!(i, 0 | 5 | 31) {
+                        menu.disabled_option(format!("Option {i} disabled"))
+                    } else {
+                        menu.option(format!("Option {i}"))
+                    };
+                }
+                menu.into_any_element()
+            }
+            _ => self.picker.clone().into_any_element(),
+        };
+        let page = div()
+            .w_full()
+            .when(self.case == "inline", |el| {
+                el.min_h_full().flex().flex_col()
+            })
+            .when(self.case != "inline", |el| el.h_full())
+            .bg(t.bg_0)
+            .text_color(t.fg_0)
+            .p(px(16.))
+            .on_key_down(cx.listener(|this, key: &KeyDownEvent, window, cx| {
+                match key.keystroke.key.as_str() {
+                    "tab" => {
+                        if key.keystroke.modifiers.shift {
+                            window.focus_prev(cx);
+                        } else {
+                            window.focus_next(cx);
+                        }
+                        cx.stop_propagation();
+                    }
+                    "f8" => {
+                        eprintln!(
+                            "snapshot open={} values={:?} indices={:?} opener_focus={}",
+                            this.picker.read(cx).is_open() || this.presence.is_open(),
+                            this.picker
+                                .read(cx)
+                                .selected()
+                                .iter()
+                                .map(|i| i.value.to_string())
+                                .collect::<Vec<_>>(),
+                            this.picker.read(cx).indices(),
+                            this.opener.is_focused(window)
+                        );
+                    }
+                    "f9" => this
+                        .picker
+                        .update(cx, |picker, cx| picker.close(window, cx)),
+                    "f10" => this.open(window, cx),
+                    _ => {}
+                }
+            }))
+            .child(
+                Button::new("Open overlay")
+                    .id("opener")
+                    .track_focus(&self.opener)
+                    .on_click(cx.listener(|this, _, window, cx| this.open(window, cx))),
+            )
+            .child(div().mt(px(24.)).child(format!(
+                "case={} events={}",
+                self.case,
+                self.events.join("; ")
+            )))
+            .child(overlay);
+        let page = if self.case == "inline" {
+            FocusScroll::new(
+                "inline-focus",
+                &self.scroll,
+                div()
+                    .id("inline-scroll")
+                    .size_full()
+                    .overflow_y_scroll()
+                    .track_scroll(&self.scroll)
+                    .child(page),
+            )
+            .into_any_element()
+        } else {
+            page.into_any_element()
+        };
+        ModalScope::new(page)
+    }
+}
+
+#[path = "support/platform.rs"]
+mod platform;
+
+fn main() {
+    let case = std::env::args().nth(1).unwrap_or_else(|| "picker".into());
+    let height = if case == "sheet-short" { 420. } else { 640. };
+    platform::application()
+        .with_assets(wegpui::Assets)
+        .run(move |cx| {
+            wegpui::init(cx);
+            cx.open_window(
+                WindowOptions {
+                    window_bounds: Some(WindowBounds::Windowed(Bounds::new(
+                        point(px(0.), px(0.)),
+                        size(px(480.), px(height)),
+                    ))),
+                    titlebar: Some(TitlebarOptions {
+                        title: Some("weGPUI overlay contracts".into()),
+                        ..Default::default()
+                    }),
+                    ..Default::default()
+                },
+                |window, cx| {
+                    Theme::observe(window);
+                    cx.new(|cx| Probe::new(case, window, cx))
+                },
+            )
+            .expect("open probe window");
+            cx.activate(true);
+        });
+}

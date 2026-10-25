@@ -1,0 +1,58 @@
+{
+  "brand-agree": {
+    "result": "PASS agree {'terms-0': 3, 'agree-0': 3, 'terms-2': 3, 'agree-2': 3, 'terms-3': 3, 'agree-3': 3, 'terms-1': 3, 'start': 1}",
+    "provenance": "final/brand-agree/provenance.txt"
+  },
+  "care-agree": {
+    "result": "PASS agree {'terms-0': 3, 'agree-0': 3, 'terms-2': 3, 'agree-2': 3, 'terms-3': 3, 'agree-3': 3, 'terms-1': 3, 'start': 1}",
+    "provenance": "final/care-agree/provenance.txt"
+  },
+  "care-brand-agree": {
+    "result": "PASS agree {'terms-0': 3, 'agree-0': 3, 'terms-2': 3, 'agree-2': 3, 'terms-3': 3, 'agree-3': 3, 'terms-1': 3, 'start': 1}",
+    "provenance": "final/care-brand-agree/provenance.txt"
+  },
+  "care-buttons-medium": {
+    "result": "PASS buttons {'button-0-false-0': 3, 'button-0-true-0': 3, 'button-1-false-0': 3, 'button-1-true-0': 3, 'button-2-false-0': 3, 'button-2-true-0': 3, 'start': 1}",
+    "provenance": "final/care-buttons-medium/provenance.txt"
+  },
+  "dark-agree": {
+    "result": "PASS agree {'terms-0': 3, 'agree-0': 3, 'terms-2': 3, 'agree-2': 3, 'terms-3': 3, 'agree-3': 3, 'terms-1': 3, 'start': 1}",
+    "provenance": "final/dark-agree/provenance.txt"
+  },
+  "dark-brand-agree": {
+    "result": "PASS agree {'terms-0': 3, 'agree-0': 3, 'terms-2': 3, 'agree-2': 3, 'terms-3': 3, 'agree-3': 3, 'terms-1': 3, 'start': 1}",
+    "provenance": "final/dark-brand-agree/provenance.txt"
+  },
+  "dark-brand-choices": {
+    "result": "PASS choices {'checkbox': 3, 'checkbox-row': 3, 'switch': 3, 'radio-0': 2, 'radio-2': 4, 'second-radio-1': 1}",
+    "provenance": "final/dark-brand-choices/provenance.txt"
+  },
+  "dark-care-agree": {
+    "result": "PASS agree {'terms-0': 3, 'agree-0': 3, 'terms-2': 3, 'agree-2': 3, 'terms-3': 3, 'agree-3': 3, 'terms-1': 3, 'start': 1}",
+    "provenance": "final/dark-care-agree/provenance.txt"
+  },
+  "dark-care-brand-agree": {
+    "result": "PASS agree {'terms-0': 3, 'agree-0': 3, 'terms-2': 3, 'agree-2': 3, 'terms-3': 3, 'agree-3': 3, 'terms-1': 3, 'start': 1}",
+    "provenance": "final/dark-care-brand-agree/provenance.txt"
+  },
+  "dark-care-brand-long-link": {
+    "result": "PASS agree-link {'long-link': 3}",
+    "provenance": "final/dark-care-brand-long-link/provenance.txt"
+  },
+  "light-agree": {
+    "result": "PASS agree {'terms-0': 3, 'agree-0': 3, 'terms-2': 3, 'agree-2': 3, 'terms-3': 3, 'agree-3': 3, 'terms-1': 3, 'start': 1}",
+    "provenance": "final/light-agree/provenance.txt"
+  },
+  "light-vcode": {
+    "result": "PASS vcode {'vcode-send-0': 4, 'vcode-reset-0': 3, 'vcode-send-1': 4, 'vcode-reset-1': 3}",
+    "provenance": "final/light-vcode/provenance.txt"
+  },
+  "long-link": {
+    "result": "PASS agree-link {'long-link': 3}",
+    "provenance": "final/long-link/provenance.txt"
+  },
+  "switch-motion": {
+    "result": "PASS switch-motion {'start': 1, 'switch': 2}",
+    "provenance": "final/switch-motion/provenance.txt"
+  }
+}

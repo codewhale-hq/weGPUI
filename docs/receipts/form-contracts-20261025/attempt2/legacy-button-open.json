@@ -1,0 +1,1409 @@
+[
+  {
+    "role": "desktop frame",
+    "name": "main",
+    "depth": 0,
+    "states": [],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": false,
+    "description": "",
+    "bounds": [
+      0,
+      0,
+      1024,
+      768
+    ]
+  },
+  {
+    "role": "application",
+    "name": "forms_contracts_probe",
+    "depth": 1,
+    "states": [],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": false,
+    "description": ""
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI form contracts",
+    "depth": 2,
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      -1,
+      -1,
+      -1,
+      -1
+    ]
+  },
+  {
+    "role": "dialog",
+    "name": "Picker only",
+    "depth": 3,
+    "states": [
+      "active",
+      "enabled",
+      "focusable",
+      "modal",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      0,
+      0,
+      700,
+      940
+    ]
+  },
+  {
+    "role": "button",
+    "name": "关闭",
+    "depth": 4,
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      6,
+      438,
+      44,
+      44
+    ]
+  },
+  {
+    "role": "list box",
+    "name": "Picker only 2024年",
+    "depth": 4,
+    "states": [
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "vertical",
+      "visible"
+    ],
+    "focused": true,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      0,
+      492,
+      233,
+      280
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "2020年",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      0,
+      380,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "2021年",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      0,
+      436,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "2022年",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      0,
+      492,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "2023年",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      0,
+      548,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "2024年",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "selected",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": true,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      0,
+      604,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "2025年",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      0,
+      660,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "2026年",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      0,
+      716,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "2027年",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      0,
+      772,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "2028年",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      0,
+      828,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list box",
+    "name": "Picker only 2月",
+    "depth": 4,
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "vertical",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      233,
+      492,
+      234,
+      280
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "1月",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      233,
+      548,
+      234,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "2月",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "selected",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": true,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      233,
+      604,
+      234,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "3月",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      233,
+      660,
+      234,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "4月",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      233,
+      716,
+      234,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "5月",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      233,
+      772,
+      234,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "6月",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      233,
+      828,
+      234,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "7月",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      233,
+      884,
+      234,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "8月",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      233,
+      940,
+      234,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "9月",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      233,
+      996,
+      234,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "10月",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      233,
+      1052,
+      234,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "11月",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      233,
+      1108,
+      234,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "12月",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      233,
+      1164,
+      234,
+      56
+    ]
+  },
+  {
+    "role": "list box",
+    "name": "Picker only 29日",
+    "depth": 4,
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "vertical",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      492,
+      233,
+      280
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "1日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -964,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "2日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -908,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "3日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -852,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "4日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -796,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "5日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -740,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "6日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -684,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "7日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -628,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "8日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -572,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "9日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -516,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "10日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -460,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "11日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -404,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "12日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -348,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "13日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -292,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "14日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -236,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "15日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -180,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "16日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -124,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "17日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -68,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "18日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      -12,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "19日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      44,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "20日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      100,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "21日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      156,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "22日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      212,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "23日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      268,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "24日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      324,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "25日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      380,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "26日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      436,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "27日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      492,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "28日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      548,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "29日",
+    "depth": 5,
+    "states": [
+      "enabled",
+      "selectable",
+      "selected",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": true,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      467,
+      604,
+      233,
+      56
+    ]
+  },
+  {
+    "role": "button",
+    "name": "确定",
+    "depth": 4,
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      258,
+      828,
+      184,
+      48
+    ]
+  }
+]

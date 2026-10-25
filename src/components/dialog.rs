@@ -7,7 +7,7 @@
 //! only built-in dismissal.
 
 use super::modal::{MaskKind, Modal, Motion, Placement, Presence};
-use crate::{Theme, accessibility::Semantics};
+use crate::{Theme, accessibility::Semantics, scrolling::RevealFocus};
 use gpui::{prelude::*, *};
 use std::{rc::Rc, time::Duration};
 
@@ -196,7 +196,9 @@ impl RenderOnce for Dialog {
         let has_title = self.title.is_some();
         let line = t.dialog_line_color;
         let count = self.buttons.len();
+        let presence = self.presence.clone();
         let buttons = self.buttons.into_iter().enumerate().map(|(i, button)| {
+            let presence = presence.clone();
             let color = match button.kind {
                 DialogButtonKind::Primary => t.link,
                 DialogButtonKind::Default => t.fg_half,
@@ -257,14 +259,16 @@ impl RenderOnce for Dialog {
                 el.focusable()
                     .tab_stop(true)
                     .active(|s| s.bg(t.bg_color_active))
-                    .focus_visible(|s| s.border_color(t.brand))
+                    .focus_visible(|s| s.border_color(t.focus_color(t.bg_2)))
                     .on_click(move |_, window, cx| {
-                        if let Some(handler) = handler.as_ref() {
+                        if presence.as_ref().is_none_or(Presence::accepts_input)
+                            && let Some(handler) = handler.as_ref()
+                        {
                             handler(window, cx);
                         }
                     })
             };
-            Semantics::new(el).disabled(disabled)
+            Semantics::new(el).disabled(disabled).reveal_focus()
         });
         let footer = if android {
             div()

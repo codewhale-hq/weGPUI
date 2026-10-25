@@ -3,7 +3,7 @@
 //!
 //! [`SearchBar`] is a GPUI entity wrapping a [`TextInput`] and emitting [`SearchBarEvent`]s;
 //! [`SearchResults`] renders result strings as cells. Known limitations: searching, filtering and
-//! history are application-owned, and `words` is not drawn in the outlined variant.
+//! history are application-owned.
 
 use super::{Cell, Cells, Icon};
 use crate::{
@@ -58,10 +58,12 @@ pub enum SearchBarEvent {
 /// subscribe to [`SearchBarEvent`].
 ///
 /// Unfocused, it shows a centred placeholder label; activating it enters the focusing state with
-/// back and 取消 buttons, plus a clear button while there is text. Blurring with empty text
-/// cancels automatically. Its focus handle is the inner input's.
+/// back and 取消 buttons, plus a clear button while there is editable text. Blurring with empty
+/// text cancels automatically. Its focus handle is the homepage opener's for that variant,
+/// and the inner input's otherwise.
 pub struct SearchBar {
     input: Entity<TextInput>,
+    homepage_focus: FocusHandle,
     variant: SearchBarVariant,
     placeholder: SharedString,
     words: Option<SharedString>,
@@ -98,6 +100,7 @@ impl SearchBar {
         });
         Self {
             input,
+            homepage_focus: cx.focus_handle().tab_stop(true),
             variant: SearchBarVariant::Filled,
             placeholder: "搜索".into(),
             words: None,
@@ -114,7 +117,7 @@ impl SearchBar {
     }
 
     /// Shows a brand-coloured keyword before the input (`weui-search-bar__words`), such as "微信".
-    /// Default none; not drawn in the outlined variant.
+    /// Default none. All input variants support the keyword; the homepage has no input.
     pub fn words(mut self, words: impl Into<SharedString>) -> Self {
         self.words = Some(words.into());
         self
@@ -198,9 +201,14 @@ impl SearchBar {
     }
 
     /// Leaves the focusing state, clearing the text if `clear_on_cancel`, emitting `Cancel` if it
-    /// was focusing, and blurring the input if it has focus.
+    /// was focusing (or an outlined bar requested cancellation), and blurring the input if it
+    /// has focus.
     pub fn cancel(&mut self, window: &mut Window, cx: &mut Context<Self>) {
+        let outlined_request = self.variant == SearchBarVariant::Outlined && !self.focusing;
         self.finish_cancel(cx);
+        if outlined_request {
+            cx.emit(SearchBarEvent::Cancel);
+        }
         if self.input.read(cx).is_focused(window) {
             window.blur(cx);
         }
@@ -230,7 +238,7 @@ impl SearchBar {
 
     fn render_homepage(&mut self, cx: &mut Context<Self>) -> Div {
         let t = Theme::get(cx).clone();
-        let brand = t.brand;
+        let brand = t.focus_color(t.bg_2);
         div()
             .flex()
             .w_full()
@@ -251,6 +259,7 @@ impl SearchBar {
                             .id("search-bar-open")
                             .role(Role::Button)
                             .aria_label(self.placeholder.clone())
+                            .track_focus(&self.homepage_focus)
                             .focusable()
                             .tab_stop(true)
                             .flex_1()
@@ -298,7 +307,11 @@ impl EventEmitter<SearchBarEvent> for SearchBar {}
 
 impl Focusable for SearchBar {
     fn focus_handle(&self, cx: &App) -> FocusHandle {
-        self.input.focus_handle(cx)
+        if self.variant == SearchBarVariant::Homepage {
+            self.homepage_focus.clone()
+        } else {
+            self.input.focus_handle(cx)
+        }
     }
 }
 
@@ -327,10 +340,20 @@ impl Render for SearchBar {
             let input = self.input.read(cx);
             let empty = input.is_empty();
             let input_focused = input.is_focused(window);
+            let editable = !input.is_disabled() && !input.is_readonly();
             let form_bg = self.form_bg(cx);
             let mask_bg = if outlined { t.bg_2 } else { form_bg };
             let action_size = if outlined { 15. } else { 17. };
             let brand = t.brand;
+            let bar_bg = if variant == SearchBarVariant::Filled {
+                t.bg_0
+            } else {
+                t.bg_2
+            };
+            let bar_focus = t.focus_color(bar_bg);
+            let field_focus = t.focus_color(t.surface_color(form_bg, bar_bg));
+            let clear_focus = t.focus_color(t.surface_color(mask_bg, bar_bg));
+            let search_focus = t.focus_color(brand);
 
             let back = div()
                 .id("search-bar-back")
@@ -348,7 +371,7 @@ impl Render for SearchBar {
                 .ml(px(-2.))
                 .mr(px(10.))
                 .my(px(-2.))
-                .focus_visible(move |s| s.border_color(brand))
+                .focus_visible(move |s| s.border_color(bar_focus))
                 .active(|s| s.opacity(0.5))
                 .child(Icon::new("back-arrow-thin").w(12.).h(24.).color(t.fg_0))
                 .child(hot_area(44., 44.))
@@ -380,7 +403,7 @@ impl Render for SearchBar {
                     )
                 });
 
-            let clear = (!empty).then(|| {
+            let clear = (!empty && editable).then(|| {
                 div()
                     .id("search-bar-clear")
                     .role(Role::Button)
@@ -399,10 +422,15 @@ impl Render for SearchBar {
                     .ml(px(6.))
                     .mr(px(10.))
                     .my(px(-2.))
-                    .focus_visible(move |s| s.border_color(brand))
+                    .focus_visible(move |s| s.border_color(clear_focus))
                     .child(Icon::new("clear").size(20.).color(t.fg_2))
                     .child(hot_area(44., 36.))
-                    .on_click(cx.listener(|this, _, window, cx| this.clear(window, cx)))
+                    .on_click(cx.listener(|this, _, window, cx| {
+                        let input = this.input.read(cx);
+                        if !input.is_disabled() && !input.is_readonly() {
+                            this.clear(window, cx);
+                        }
+                    }))
             });
 
             let box_ = div()
@@ -419,16 +447,19 @@ impl Render for SearchBar {
                             .flex_shrink_0()
                             .child(Icon::new("search").size(24.).color(t.fg_2)),
                     )
-                    .when_some(self.words.clone(), |el, words| {
-                        el.child(
-                            div()
-                                .flex_shrink_0()
-                                .mr(px(8.))
-                                .text_size(px(17.))
-                                .text_color(t.brand)
-                                .child(words),
-                        )
-                    })
+                })
+                .when_some(self.words.clone(), |el, words| {
+                    el.child(
+                        div()
+                            .id("search-bar-keyword")
+                            .role(Role::Label)
+                            .aria_value(words.clone())
+                            .flex_shrink_0()
+                            .mr(px(8.))
+                            .text_size(px(17.))
+                            .text_color(t.brand)
+                            .child(words),
+                    )
                 })
                 .child(field)
                 .children(clear);
@@ -452,7 +483,7 @@ impl Render for SearchBar {
                     .tab_stop(true)
                     .border_2()
                     .border_color(transparent_black())
-                    .focus_visible(move |s| s.border_color(brand))
+                    .focus_visible(move |s| s.border_color(field_focus))
                     .child(
                         div()
                             .mr(px(4.))
@@ -502,7 +533,7 @@ impl Render for SearchBar {
                     .bg(brand)
                     .rounded_r(px(6.))
                     .active(move |s| s.bg(brand.blend(mask)))
-                    .focus_visible(move |s| s.bg(brand.blend(mask)))
+                    .focus_visible(move |s| s.shadow(super::form::focus_ring(search_focus)))
                     .child("搜索")
                     .on_click(cx.listener(|_, _, _, cx| cx.emit(SearchBarEvent::Submit)))
             });
@@ -526,7 +557,7 @@ impl Render for SearchBar {
                     .ml(px(10.))
                     .mr(px(-2.))
                     .my(px(-2.))
-                    .focus_visible(move |s| s.border_color(brand))
+                    .focus_visible(move |s| s.border_color(bar_focus))
                     .active(|s| s.opacity(0.5))
                     .child("取消")
                     .on_click(cx.listener(|this, _, window, cx| this.cancel(window, cx)))

@@ -1,0 +1,6 @@
+2026-10-25T09:07:33Z bad-date:ctrl+a text=2024-02-30 Return
+2026-10-25T09:07:40Z error-readback:KP_Enter
+2026-10-25T09:07:43Z valid-date:ctrl+a text=2024-03-01 Return
+2026-10-25T09:07:50Z valid-readback:KP_Enter
+2026-10-25T09:07:52Z clear:ctrl+a BackSpace Return
+2026-10-25T09:07:59Z empty-readback:KP_Enter

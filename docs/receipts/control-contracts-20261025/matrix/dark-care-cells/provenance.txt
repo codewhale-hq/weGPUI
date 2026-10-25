@@ -1,0 +1,26 @@
+2026-10-25T08:22:23Z
+9c4515c788bbacc42a166534e39dc393ddbcb30b
+6f42e71e9727649d15a24d422665807259b72e96c74e45f2d238e28bb7db196f  -
+binary=/workspace/.wegpui-cloud/controls-candidate-9c/control_contracts
+90d9cb7af7a774d757098e6392469cd53135f080738062b40766663d5a7c30ec  /workspace/.wegpui-cloud/controls-candidate-9c/control_contracts
+bd2099129e7f11195477b2f161e5c38694c90f0b4a8dc492119efb30040737c1  examples/control_contracts.rs
+1a8826a8674223e6b933262477f56b2ec6499cd99512b5f97a981cbb3f457b9b  /workspace/weGPUI/docs/receipts/control-contracts-20261025/matrix/dark-care-cells/drive-used.py
+1b6c23228616160c0f5f111c55d32d35377bcc6adc77d5d9233736541d054feb  /workspace/weGPUI/docs/receipts/control-contracts-20261025/matrix/dark-care-cells/run-used.sh
+rustc 1.98.1 (48a229cea 2026-09-01)
+binary: rustc
+commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+commit-date: 2026-09-01
+host: x86_64-unknown-linux-gnu
+release: 1.98.1
+LLVM version: 22.1.8
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+page=cells args= --dark --care

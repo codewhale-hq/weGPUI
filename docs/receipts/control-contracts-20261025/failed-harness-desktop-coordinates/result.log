@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/weGPUI/docs/receipts/control-contracts-20261025/drive.py", line 140, in <module>
+    assert first == 1 and second == 2, (first, second)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (0, 0)

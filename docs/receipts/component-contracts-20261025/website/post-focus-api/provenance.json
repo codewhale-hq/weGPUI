@@ -1,0 +1,11 @@
+{
+  "timestamp_utc": "2026-10-25T09:38:55+00:00",
+  "source_commit_context": "a3ce3afca6417b7dd1b9d701456ae2d21d2150f4",
+  "source_dirty": true,
+  "capture_commit": "2c8ed10",
+  "api_files_hashed": 888,
+  "api_bytes_hashed": 17201769,
+  "api_manifest_sha256": "deb2232aa5292d0c596e8cf3b10b9e2c7343231bfbf79b70999fb32bd76ca1d9",
+  "source_manifest_sha256": "df84faa7210a940fadb46ed1c27e6ba98e9b08aabc777ec87589d9cfc1f75843",
+  "scope": "Copied root-produced post-review strict Rustdoc; root reported all five gates and 47 tests passed. No Cargo invocation by collector; no final commit attestation."
+}

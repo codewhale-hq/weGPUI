@@ -1,0 +1,268 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "states": [],
+  "children": [
+    {
+      "role": "application",
+      "name": "media_contract_probe",
+      "description": "",
+      "states": [],
+      "children": [
+        {
+          "role": "frame",
+          "name": "weGPUI media contracts",
+          "description": "",
+          "states": [
+            "active",
+            "enabled",
+            "sensitive",
+            "showing",
+            "visible"
+          ],
+          "children": [
+            {
+              "role": "panel",
+              "name": "",
+              "description": "",
+              "states": [
+                "enabled",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "children": [
+                {
+                  "role": "list item",
+                  "name": "Upload contract，0/2",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "children": [],
+                  "bounds": [
+                    20,
+                    20,
+                    600,
+                    38
+                  ]
+                },
+                {
+                  "role": "list",
+                  "name": "",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "children": [
+                    {
+                      "role": "button",
+                      "name": "Add image",
+                      "description": "",
+                      "states": [
+                        "enabled",
+                        "focusable",
+                        "focused",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "children": [],
+                      "bounds": [
+                        20,
+                        58,
+                        96,
+                        96
+                      ]
+                    }
+                  ],
+                  "bounds": [
+                    20,
+                    58,
+                    600,
+                    96
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Fail upload",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "children": [],
+                  "bounds": [
+                    20,
+                    404,
+                    100,
+                    32
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Complete upload",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "children": [],
+                  "bounds": [
+                    128,
+                    404,
+                    144,
+                    32
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Reset uploads",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "children": [],
+                  "bounds": [
+                    280,
+                    404,
+                    123,
+                    32
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "Toggle request acceptance",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "children": [],
+                  "bounds": [
+                    20,
+                    456,
+                    280,
+                    32
+                  ]
+                },
+                {
+                  "role": "list item",
+                  "name": "Controlled row",
+                  "description": "按左方向键或回车显示操作，右方向键或 Esc 隐藏",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "children": [
+                    {
+                      "role": "list item",
+                      "name": "Controlled row",
+                      "description": "Actions",
+                      "states": [
+                        "enabled",
+                        "sensitive",
+                        "showing",
+                        "visible"
+                      ],
+                      "children": [],
+                      "bounds": [
+                        20,
+                        508,
+                        600,
+                        56
+                      ]
+                    }
+                  ],
+                  "bounds": [
+                    20,
+                    508,
+                    600,
+                    56
+                  ]
+                },
+                {
+                  "role": "list item",
+                  "name": "No actions",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "children": [],
+                  "bounds": [
+                    20,
+                    584,
+                    600,
+                    26
+                  ]
+                },
+                {
+                  "role": "label",
+                  "name": "Files 0; swipe false; accept true. added Image 2: progress 20%; status error; status done; preview Image 1; gallery dismiss; preview Image 1; gallery dismiss; preview Image 1; gallery dismiss; preview Image 1; gallery delete; removed Image 1; preview Image 2; gallery delete; removed Image 2",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "children": [],
+                  "bounds": [
+                    20,
+                    630,
+                    600,
+                    130
+                  ]
+                }
+              ],
+              "bounds": [
+                0,
+                0,
+                640,
+                800
+              ]
+            }
+          ],
+          "bounds": [
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        }
+      ]
+    }
+  ],
+  "bounds": [
+    0,
+    0,
+    1024,
+    768
+  ]
+}

@@ -1,0 +1,33 @@
+2026-10-25T08:56:58Z
+Source tree: /workspace/weGPUI
+Theme: light; probe args: 
+Skip gallery: 1
+9c4515c788bbacc42a166534e39dc393ddbcb30b
+a3153c36795b947c593a609a200ff07b53eaefa8b224062bd57dde48e8db3f6f  -
+d8c77dca812fc307cae9bb1f5e72537b892258ad3cb060ce6a00b2add8465186  /workspace/.wegpui-cloud/target-198/debug/examples/data_contracts_probe
+54426c7fdfdb16b4917fbcf9c24bd3bf3f0e54bfba29bbbc953bf378ce69d678  /workspace/.wegpui-cloud/target-198/debug/examples/gallery
+rustc 1.98.1 (48a229cea 2026-09-01)
+binary: rustc
+commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+commit-date: 2026-09-01
+host: x86_64-unknown-linux-gnu
+release: 1.98.1
+LLVM version: 22.1.8
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+Openbox 3.6.1
+Copyright (c) 2004   Mikael Magnusson
+Copyright (c) 2002   Dana Jansens
+
+This program comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to redistribute it
+under certain conditions. See the file COPYING for details.
+

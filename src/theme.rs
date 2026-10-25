@@ -10,7 +10,7 @@ mod palette;
 
 pub use palette::Palette;
 
-use gpui::{App, Global, Hsla, Window, WindowAppearance};
+use gpui::{App, Global, Hsla, Window, WindowAppearance, black, white};
 use std::ops::Deref;
 
 /// Which appearance the [`Theme`] follows.
@@ -60,6 +60,38 @@ impl Default for Theme {
 }
 
 impl Theme {
+    /// Resolves a translucent surface over `backdrop` and the theme's opaque canvas.
+    ///
+    /// Pass the colours in paint order. A host supplying translucent palette backgrounds must
+    /// supply its actual backdrop here; an unspecified window canvas is white in light mode and
+    /// black in dark mode.
+    pub fn surface_color(&self, surface: Hsla, backdrop: Hsla) -> Hsla {
+        let canvas = if self.is_dark { black() } else { white() };
+        canvas.blend(backdrop).blend(surface)
+    }
+
+    /// A keyboard focus colour with at least 3:1 contrast against `surface`.
+    ///
+    /// Keeps the brand colour when its painted contrast is sufficient, otherwise selects opaque
+    /// black or white. Pass the actual painted surface, using [`Self::surface_color`] for layered
+    /// fills. Images and controls spanning unknown surfaces need a two-colour indicator instead.
+    pub fn focus_color(&self, surface: Hsla) -> Hsla {
+        self.focus_color_with(self.brand, surface)
+    }
+
+    /// Like [`Self::focus_color`], preserving a component's preferred colour when it passes.
+    pub fn focus_color_with(&self, preferred: Hsla, surface: Hsla) -> Hsla {
+        let canvas = if self.is_dark { black() } else { white() };
+        let surface = canvas.blend(surface);
+        if contrast_ratio(surface.blend(preferred), surface) >= 3. {
+            preferred
+        } else if contrast_ratio(black(), surface) >= contrast_ratio(white(), surface) {
+            black()
+        } else {
+            white()
+        }
+    }
+
     /// Builds a theme from explicit settings without touching the global. `dark` selects the
     /// dark palette regardless of `mode`, which is recorded for later `System` resolution.
     pub fn build(mode: ThemeMode, dark: bool, care: bool, brand: Option<Hsla>) -> Self {
@@ -146,5 +178,77 @@ impl Theme {
                 }
             })
             .detach();
+    }
+}
+
+/// WCAG relative luminance contrast for two opaque, rendered colours.
+fn contrast_ratio(a: Hsla, b: Hsla) -> f32 {
+    let luminance = |color: Hsla| {
+        let color = color.to_rgb();
+        let linear = |value: f32| {
+            if value <= 0.04045 {
+                value / 12.92
+            } else {
+                ((value + 0.055) / 1.055).powf(2.4)
+            }
+        };
+        0.2126 * linear(color.r) + 0.7152 * linear(color.g) + 0.0722 * linear(color.b)
+    };
+    let a = luminance(a);
+    let b = luminance(b);
+    (a.max(b) + 0.05) / (a.min(b) + 0.05)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use gpui::{rgb, rgba};
+
+    #[test]
+    fn focus_contrast_covers_themes_fills_and_custom_brands() {
+        for dark in [false, true] {
+            for care in [false, true] {
+                for brand in [
+                    None,
+                    Some(rgb(0x7c3aed).into()),
+                    Some(rgba(0xffffff20).into()),
+                ] {
+                    let theme = Theme::build(ThemeMode::Light, dark, care, brand);
+                    for surface in [
+                        theme.bg_0,
+                        theme.bg_1,
+                        theme.bg_2,
+                        theme.bg_3,
+                        theme.bg_5,
+                        theme.brand,
+                        theme.red,
+                        theme.surface_color(theme.fg_5, theme.bg_2),
+                    ] {
+                        let surface = if dark { black() } else { white() }.blend(surface);
+                        let color = theme.focus_color(surface);
+                        assert!(contrast_ratio(surface.blend(color), surface) >= 3.);
+                        if contrast_ratio(surface.blend(theme.brand), surface) >= 3. {
+                            assert_eq!(color, theme.brand);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn custom_palette_and_translucent_surfaces_use_painted_colours() {
+        let mut palette = Palette::light();
+        palette.brand = rgba(0xffffff20).into();
+        palette.bg_2 = rgb(0x7c3aed).into();
+        let theme = Theme::light().with_palette(palette);
+        let surface = theme.surface_color(rgba(0xffffff4d).into(), theme.bg_2);
+        let color = theme.focus_color(surface);
+        assert!(contrast_ratio(surface.blend(color), surface) >= 3.);
+        assert_ne!(color, theme.brand);
+        let preferred = black();
+        assert_eq!(theme.focus_color_with(preferred, white()), preferred);
+        assert!((contrast_ratio(black(), white()) - 21.).abs() < 0.0001);
+        assert!((contrast_ratio(rgb(0x07c160).into(), white()) - 2.385).abs() < 0.001);
     }
 }

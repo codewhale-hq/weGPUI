@@ -1,0 +1,16 @@
+event 1 open
+snapshot open=true values=["0"] indices=[0] opener_focus=false
+event 2 change=2
+snapshot open=true values=["2"] indices=[2] opener_focus=false
+event 3 change=4
+snapshot open=true values=["4"] indices=[4] opener_focus=false
+event 4 change=2
+snapshot open=true values=["2"] indices=[2] opener_focus=false
+event 5 change=0
+snapshot open=true values=["0"] indices=[0] opener_focus=false
+event 6 confirm=0
+event 7 reopened-from-confirm
+event 8 close
+snapshot open=true values=["0"] indices=[0] opener_focus=false
+event 9 close
+snapshot open=false values=["0"] indices=[0] opener_focus=true

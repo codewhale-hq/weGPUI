@@ -1,0 +1,345 @@
+[
+  {
+    "role": "desktop frame",
+    "name": "main",
+    "depth": 0,
+    "states": [],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": false,
+    "description": "",
+    "bounds": [
+      0,
+      0,
+      1024,
+      768
+    ]
+  },
+  {
+    "role": "application",
+    "name": "forms_contracts_probe",
+    "depth": 1,
+    "states": [],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": false,
+    "description": ""
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI form contracts",
+    "depth": 2,
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      -1,
+      -1,
+      -1,
+      -1
+    ]
+  },
+  {
+    "role": "panel",
+    "name": "",
+    "depth": 3,
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      0,
+      0,
+      700,
+      940
+    ]
+  },
+  {
+    "role": "entry",
+    "name": "Date",
+    "depth": 4,
+    "states": [
+      "editable",
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "single line",
+      "visible",
+      "selectable text"
+    ],
+    "focused": true,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      141,
+      102,
+      495,
+      24
+    ],
+    "text": "",
+    "caret": 0,
+    "selections": []
+  },
+  {
+    "role": "button",
+    "name": "Date，打开日期选择器",
+    "depth": 4,
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      644,
+      102,
+      24,
+      24
+    ]
+  },
+  {
+    "role": "entry",
+    "name": "Date and time",
+    "depth": 4,
+    "states": [
+      "editable",
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "single line",
+      "visible",
+      "selectable text"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      141,
+      170,
+      495,
+      24
+    ],
+    "text": "2024-02-29 05:06",
+    "caret": 16,
+    "selections": []
+  },
+  {
+    "role": "button",
+    "name": "Date and time，打开日期选择器",
+    "depth": 4,
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      644,
+      170,
+      24,
+      24
+    ]
+  },
+  {
+    "role": "button",
+    "name": "Picker only，2024-02-29",
+    "depth": 4,
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      141,
+      250,
+      527,
+      24
+    ]
+  },
+  {
+    "role": "entry",
+    "name": "Read only",
+    "depth": 4,
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "single line",
+      "visible",
+      "selectable text",
+      "read only"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": true,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      141,
+      318,
+      527,
+      24
+    ],
+    "text": "Locked",
+    "caret": 6,
+    "selections": []
+  },
+  {
+    "role": "entry",
+    "name": "Disabled",
+    "depth": 4,
+    "states": [
+      "showing",
+      "single line",
+      "visible",
+      "selectable text"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": false,
+    "description": "",
+    "bounds": [
+      141,
+      374,
+      527,
+      24
+    ],
+    "text": "Disabled",
+    "caret": 8,
+    "selections": []
+  },
+  {
+    "role": "entry",
+    "name": "Card",
+    "depth": 4,
+    "states": [
+      "editable",
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "single line",
+      "visible",
+      "selectable text"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "16 digits required",
+    "bounds": [
+      155,
+      440,
+      513,
+      24
+    ],
+    "text": "1234",
+    "caret": 4,
+    "selections": []
+  },
+  {
+    "role": "button",
+    "name": "After fields",
+    "depth": 4,
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      258,
+      491,
+      184,
+      48
+    ]
+  },
+  {
+    "role": "label",
+    "name": "snapshot date=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 }) date-editing=false date-error=None time=Some(DateValue { year: 2024, month: 2, day: 29, hour: 5, minute: 6 }) time-editing=false time-disabled=false button=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 }) locked=\"Locked\"; snapshot date=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 }) date-editing=true date-error=Some(Date) time=Some(DateValue { year: 2024, month: 2, day: 29, hour: 5, minute: 6 }) time-editing=false time-disabled=false button=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 }) locked=\"Locked\"; date:Change(DateValue { year: 2024, month: 3, day: 1, hour: 0, minute: 0 }); date:value=Some(DateValue { year: 2024, month: 3, day: 1, hour: 0, minute: 0 }); snapshot date=Some(DateValue { year: 2024, month: 3, day: 1, hour: 0, minute: 0 }) date-editing=false date-error=None time=Some(DateValue { year: 2024, month: 2, day: 29, hour: 5, minute: 6 }) time-editing=false time-disabled=false button=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 }) locked=\"Locked\"; snapshot date=Some(DateValue { year: 2024, month: 3, day: 1, hour: 0, minute: 0 }) date-editing=false date-error=None time=Some(DateValue { year: 2024, month: 2, day: 29, hour: 5, minute: 6 }) time-editing=false time-disabled=false button=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 }) locked=\"Locked\"; date:value=None; snapshot date=None date-editing=false date-error=None time=Some(DateValue { year: 2024, month: 2, day: 29, hour: 5, minute: 6 }) time-editing=false time-disabled=false button=Some(DateValue { year: 2024, month: 2, day: 29, hour: 0, minute: 0 }) locked=\"Locked\"",
+    "depth": 4,
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "focused": false,
+    "selected": false,
+    "invalid": false,
+    "readonly": false,
+    "sensitive": true,
+    "description": "",
+    "bounds": [
+      0,
+      539,
+      700,
+      364
+    ]
+  }
+]

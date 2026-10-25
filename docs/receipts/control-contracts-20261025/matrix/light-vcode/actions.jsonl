@@ -1,0 +1,6 @@
+{"step": "vcode-0-guard", "counts": {"vcode-send-0": 1}, "focused": ["\u91cd\u65b0\u53d1\u9001(2s)"], "time": 1792916207.5195444}
+{"step": "vcode-0-restart", "counts": {"vcode-send-0": 2, "vcode-reset-0": 1}, "focused": ["Start twice 0"], "time": 1792916208.363264}
+{"step": "vcode-0-idle", "counts": {"vcode-send-0": 2, "vcode-reset-0": 1}, "focused": ["Start twice 0"], "time": 1792916211.9398649}
+{"step": "vcode-1-guard", "counts": {"vcode-send-0": 3, "vcode-reset-0": 2, "vcode-send-1": 1}, "focused": ["\u91cd\u65b0\u53d1\u9001(2s)"], "time": 1792916213.625861}
+{"step": "vcode-1-restart", "counts": {"vcode-send-0": 3, "vcode-reset-0": 2, "vcode-send-1": 2, "vcode-reset-1": 1}, "focused": ["Start twice 1"], "time": 1792916214.429013}
+{"step": "vcode-1-idle", "counts": {"vcode-send-0": 3, "vcode-reset-0": 2, "vcode-send-1": 2, "vcode-reset-1": 1}, "focused": ["Start twice 1"], "time": 1792916217.9994729}

@@ -1,0 +1,117 @@
+2026-10-25T09:19:01Z
+Linux 6.18.55 x86_64 GNU/Linux
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+rustc 1.98.1 (48a229cea 2026-09-01)
+binary: rustc
+commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+commit-date: 2026-09-01
+host: x86_64-unknown-linux-gnu
+release: 1.98.1
+LLVM version: 22.1.8
+cargo 1.98.1 (797e8a9bc 2026-08-05)
+libgl1-mesa-dri:amd64	25.0.7-2+deb13u1
+mesa-vulkan-drivers:amd64	25.0.7-2+deb13u1
+openbox	3.6.1-12+b2
+python3-pyatspi	2.46.1-1
+xvfb	2:21.1.16-1.3+deb13u4
+Runtime: X11 DISPLAY=:111 GPUI_X11_SCALE_FACTOR=1; no WAYLAND_DISPLAY
+Command: /workspace/.wegpui-cloud/artifacts/consumer-contracts/wegpui-preview-consumer
+a3ce3afca6417b7dd1b9d701456ae2d21d2150f4
+ M CHANGELOG.md
+ M CONTRIBUTING.md
+ M Cargo.lock
+ M Cargo.toml
+ M NOTICE
+ M README.md
+ M docs/ACCEPTANCE.md
+ M docs/HUMAN-TASKS.md
+ M docs/PARITY-TOOLING.md
+ M docs/PLATFORMS.md
+ M docs/RELEASE-READINESS.md
+ M docs/STATUS.md
+ M docs/TAKEOVER.md
+ M docs/receipts/wayland-20261025/README.md
+ M examples/gallery/chrome.rs
+ M examples/gallery/pages/article.rs
+ M examples/gallery/pages/form/status.rs
+ M examples/gallery/pages/input.rs
+ M examples/gallery/pages/progress.rs
+ M examples/gallery/pages/uploader.rs
+ M scripts/linux/wayland-session.sh
+ M src/accessibility.rs
+ M src/components/action_sheet.rs
+ M src/components/agree.rs
+ M src/components/article.rs
+ M src/components/button.rs
+ M src/components/cells.rs
+ M src/components/checkbox.rs
+ M src/components/date_field.rs
+ M src/components/dialog.rs
+ M src/components/footer.rs
+ M src/components/form.rs
+ M src/components/form_preview.rs
+ M src/components/gallery.rs
+ M src/components/grid.rs
+ M src/components/half_screen_dialog.rs
+ M src/components/icons.rs
+ M src/components/information_bar.rs
+ M src/components/loadmore.rs
+ M src/components/modal.rs
+ M src/components/msg.rs
+ M src/components/navbar.rs
+ M src/components/panel.rs
+ M src/components/picker.rs
+ M src/components/progress.rs
+ M src/components/radio.rs
+ M src/components/search_bar.rs
+ M src/components/select.rs
+ M src/components/slider.rs
+ M src/components/steps.rs
+ M src/components/swiped.rs
+ M src/components/switch.rs
+ M src/components/tabbar.rs
+ M src/components/textarea.rs
+ M src/components/toast.rs
+ M src/components/toptips.rs
+ M src/components/uploader.rs
+ M src/components/vcode.rs
+ M src/input.rs
+ M src/theme.rs
+ M website/README.md
+ M website/app.js
+ M website/build.py
+ M website/check_browser.py
+ M website/index.html
+?? docs/proposals/a11y-state-and-bounds/
+?? docs/proposals/accesskit-linux-compat/
+?? docs/receipts/component-contracts-20261025/
+?? docs/receipts/control-contracts-20261025/
+?? docs/receipts/data-contracts-20261025/
+?? docs/receipts/form-contracts-20261025/
+?? docs/receipts/input-contracts-20261025/
+?? docs/receipts/linux-bridge-20261025/
+?? docs/receipts/media-contracts-20261025/
+?? docs/receipts/overlay-contracts-20261025/
+?? docs/receipts/search-contracts-20261025/
+?? docs/receipts/wayland-20261025/bridge-followup/
+?? examples/control_contracts.rs
+?? examples/data_contracts_probe.rs
+?? examples/focus_contrast_probe.rs
+?? examples/forms_contracts_probe.rs
+?? examples/search_contracts_probe.rs
+?? vendor/
+cefd3ea1d4187670c68c17907b39d1f9325ecfee098dae93ac1df001b6817c43  /workspace/.wegpui-cloud/artifacts/consumer-contracts/wegpui-preview-consumer
+c3cd1536ea04e54f718d9f58b917ec9a6a2ddb82963eec5b54721089ed7f60be  /workspace/weGPUI/docs/receipts/component-contracts-20261025/consumer/runtime/../Cargo.toml.txt
+511c46ab8d54801c8ca712f566df7e0b305c1d99a82ad5ec74e01f0d001dc544  /workspace/weGPUI/docs/receipts/component-contracts-20261025/consumer/runtime/../Cargo.lock.txt
+9ef67a8f2aec62f53e1f30100f8fdabbfcc94aa7b3b52f90067b59ee05e0c963  /workspace/weGPUI/docs/receipts/component-contracts-20261025/consumer/runtime/../src/main.rs.txt
+d2ebf086a4d5833564e8dfbf468764fe7ef2b79ec28b1095097ae89f4fb7163c  /workspace/weGPUI/docs/receipts/component-contracts-20261025/consumer/runtime/../src/support/platform.rs.txt
+The binary predates the pending focus/contrast source edits; current working-tree state is diagnostic only.

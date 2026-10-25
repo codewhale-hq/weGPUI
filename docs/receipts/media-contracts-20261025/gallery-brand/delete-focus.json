@@ -1,0 +1,103 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "states": [],
+  "children": [
+    {
+      "role": "application",
+      "name": "gallery",
+      "description": "",
+      "states": [],
+      "children": [
+        {
+          "role": "frame",
+          "name": "weGPUI",
+          "description": "",
+          "states": [
+            "active",
+            "enabled",
+            "sensitive",
+            "showing",
+            "visible"
+          ],
+          "children": [
+            {
+              "role": "dialog",
+              "name": "大图",
+              "description": "",
+              "states": [
+                "active",
+                "enabled",
+                "focusable",
+                "modal",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "children": [
+                {
+                  "role": "image",
+                  "name": "大图",
+                  "description": "按回车或空格关闭图片预览",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "children": [],
+                  "bounds": [
+                    0,
+                    0,
+                    375,
+                    752
+                  ]
+                },
+                {
+                  "role": "button",
+                  "name": "删除",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "focused",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "children": [],
+                  "bounds": [
+                    0,
+                    752,
+                    375,
+                    60
+                  ]
+                }
+              ],
+              "bounds": [
+                0,
+                0,
+                375,
+                812
+              ]
+            }
+          ],
+          "bounds": [
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        }
+      ]
+    }
+  ],
+  "bounds": [
+    0,
+    0,
+    1024,
+    768
+  ]
+}

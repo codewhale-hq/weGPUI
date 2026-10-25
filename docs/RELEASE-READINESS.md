@@ -25,8 +25,10 @@ and rely on the supported behavior. A website is one part of that promise.
   parity is still open.
 - [ ] Verify modal isolation, names, values and focus restoration with an actual
   screen reader on each supported desktop OS. Tree snapshots alone do not pass. Actual
-  Orca samples now exist, with a cache-signal/reopen blocker and no listening review; see
-  [receipt](receipts/orca-20261025/README.md).
+  Orca samples now exist. Approved local compatibility fixes repair the sampled cache/reopen
+  failure; audio listening review and complete reader acceptance remain open. See
+  [original receipt](receipts/orca-20261025/README.md),
+  `receipts/linux-bridge-20261025/` and `receipts/input-contracts-20261025/`.
 - [ ] Verify input selection, clipboard, undo/redo, UTF-16 limits and IME composition.
 - [ ] Reconcile public rustdoc with observed behavior; document intentional differences.
 
@@ -53,6 +55,8 @@ VoiceOver remains off under the owner’s existing instruction.
 - [ ] Confirm the crates.io package name, versioning and dependency-upgrade policy.
 - [ ] Test the README installation flow in a new consumer project with locked pins.
   Linux X11 pass on 2026-10-24 ([receipt](receipts/release-gates-20261024/README.md));
+  current source must additionally verify the approved root Cargo patches in a new consumer.
+  Dependency-manifest patches are not inherited; see [vendor guidance](../vendor/README.md).
   macOS and Windows consumers still needed.
 - [ ] Ship complete small examples: application setup, forms, controlled state,
   overlays/focus, theming and application-owned upload handling.
