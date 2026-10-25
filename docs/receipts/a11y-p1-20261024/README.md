@@ -45,3 +45,12 @@ last insert ended and was coalesced with it (observed on screen during the run; 
 after run and is not retained). Fix: paste and cut always start and end their own undo step, and caret moves
 break typing coalescing. After (`…-fixed.png`): undo → `12`, undo → empty, redo → `12`, redo →
 `1212`.
+
+## Select and dialog keyboard (verified, no change)
+
+- `linux-x11-form-select-keyboard.png` (bare Xvfb, form_select): Tab to 国家, Enter opens the
+  menu with the current option checked, Down moves, Enter selects 英国 and closes, focus returns
+  to the row. (At 50% scale 英国 resembles 美国.)
+- `linux-x11-openbox-dialog-keyboard.png` (openbox, dialog): Tab to 样式一, Enter opens; focus
+  goes to the dialog container (no ring), Tab/Tab cycle 辅助操作 ↔ 主操作 inside the dialog,
+  Escape closes and focus returns to 样式一 with its ring; 样式二 opens the second dialog.

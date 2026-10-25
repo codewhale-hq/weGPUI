@@ -33,7 +33,7 @@ presentational.
 | `information_bar` | InformationBarKind, InformationBar, ListTips | on_close | — | yes | click (Enter/Space) | yes | role+name | Close callback | Link/floating variants untested | P2 |
 | `loading` | LoadingKind, Loading | — | — | n/a | n/a | n/a | role+name | Kinds, busy role | Animation timing, live reduce-motion change | P3 |
 | `loadmore` | LoadMoreKind, LoadMore | — | loading | n/a | n/a | n/a | role+name | Presentation, loading state | None | P3 |
-| `modal` | Presence, MaskKind, Placement, Motion, Modal | on_dismiss | — | yes | custom | overlay | role+name | Presence, ModalScope, focus trap, Escape | Nested modal stacking runtime | P1 |
+| `modal` | Presence, MaskKind, Placement, Motion, Modal | on_dismiss | — | yes | custom | overlay | role+name | Presence, ModalScope, focus trap, Escape | Linux openbox: Tab trap, Escape close, focus restore passed 2026-10-24 (dialog). Nested modal stacking runtime open | P1 |
 | `msg` | LinkText, MsgIcon, Msg | — | — | yes | click (Enter/Space) | yes | role+name | LinkText shaped bounds, keyboard activation | Screen-reader acceptance | P2 |
 | `navbar` | Navbar | on_select | selected | yes | custom | no | role+name | Arrow-key selection, roving focus | Linux rerun; overflow scroller not FocusScroll-wrapped | P2 |
 | `panel` | Panel, MediaBoxKind, MediaMeta, MediaBox | on_click | — | yes | click (Enter/Space) | yes | role+name | MediaBox click, focus styling | CJK punctuation/clamping differs | P2 |
@@ -41,7 +41,7 @@ presentational.
 | `progress` | Progress | on_cancel | — | yes | click (Enter/Space) | yes | role+name | Cancel button | NaN fix source-only | P3 |
 | `radio` | RadioGroup | on_change | selected | yes | custom | yes | role+name | Roving arrows, scoped IDs, disabled | — | P2 |
 | `search_bar` | SearchBarVariant, SearchBarEvent, SearchBar, SearchResults | on_select, SearchBarEvent | — | yes | click (Enter/Space) | yes | role+name | Variants, events, results, IME commit/cancel | Homepage variant runtime | P2 |
-| `select` | SelectLayout, SelectCell, SelectMenu | on_click, on_dismiss, on_select | selected | yes | custom | yes | role+name | Overlay menu adaptation, keys, Escape restore | macOS key sequence inconclusive | P1 |
+| `select` | SelectLayout, SelectCell, SelectMenu | on_click, on_dismiss, on_select | selected | yes | custom | yes | role+name | Overlay menu adaptation, keys, Escape restore | Linux keyboard open/move/select/focus-return passed 2026-10-24; macOS key sequence inconclusive | P1 |
 | `slider` | Slider | on_change | disabled | yes | custom | yes | role+name | Drag/keys, step snapping, disabled | Zero-step runtime receipt | P2 |
 | `steps` | StepsLayout, Step, Steps | — | — | n/a | n/a | n/a | role+name | Static | None | P3 |
 | `swiped` | SwipedActionKind, SwipedAction, SwipedCell | on_click | warn | yes | custom | yes | role+name | Drag reveal, hidden actions, keyboard | Delete callback empty upstream | P2 |
