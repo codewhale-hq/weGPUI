@@ -1,0 +1,4 @@
+58feea87a0f1e150d8d733886fe9601d5afcd37f91b00c80d6717d5e9b7272ed  gpui-pre-0.3.9/src/text_system/line_wrapper.rs [locked registry source; identical to the vendored copy before this change]
+a670eafc621cd774a6d1874f91a2105110d79a3e3b31247c2fd6d58a81e9c87d  vendor/gpui_pre/src/text_system/line_wrapper.rs [patched]
+80d6a2e148d5383572fb4f953a4c3040baa017ef813eca0b913987700898ed7b  word-break.patch
+34f61c1cfd36fc9c436af09308c963822ae27a45a84feb21a77ba5c9e051f1c0  gpui-pre-0.3.9.crate [registry archive]

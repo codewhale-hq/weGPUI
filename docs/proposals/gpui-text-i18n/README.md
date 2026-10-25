@@ -1,18 +1,20 @@
 # Proposal: script-aware line breaking in the vendored GPUI
 
-**Status: proposal. Nothing here has been applied.** The change is to `vendor/gpui_pre`, which
-the vendor guidance reserves for owner approval ([vendor/README](../../../vendor/README.md)).
+**Status.** Step 1 was approved by the owner on 2026-10-25 (in chat: no new dependency, Hangul
+left as is) and is applied to `vendor/gpui_pre`; the delta is [word-break.patch](word-break.patch)
+and the evidence is the [receipt](../../receipts/gpui-word-break-20261025/README.md). Steps 2
+and 3 are still proposals and need approval. Vendor guidance: [vendor/README](../../../vendor/README.md).
 The localisation work ([I18N](../../I18N.md)) worked around everything that could be worked
-around in weGPUI itself; this is what remains.
+around in weGPUI itself; this is what remained.
 
-## What is wrong
+## What was wrong
 
-Both problems show on the *Languages* page, in English, with no right-to-left layout involved
-([capture](../../receipts/i18n-20261025/images/languages-page-en-scrolled.png)):
+Both problems showed on the *Languages* page, in English, with no right-to-left layout involved
+([capture before step 1](../../receipts/i18n-20261025/images/languages-page-en-scrolled.png)):
 
-1. **Words are split in scripts GPUI does not know as word characters.** The Hindi description
-   breaks inside `सर्वनाश` (`…सर्वना` / `श करने…`), the Arabic one inside `وذو`, the Thai one in the
-   middle of `สัตว์`. English, Latin-script, Cyrillic and Bengali text breaks only at spaces.
+1. **Words were split in scripts GPUI did not know as word characters.** The Hindi description
+   broke inside `सर्वनाश` (`…सर्वना` / `श करने…`), the Arabic one inside `وذو`, the Thai one in the
+   middle of `สัตว์`. English, Latin-script, Cyrillic and Bengali text broke only at spaces.
 2. **A wrapped right-to-left paragraph breaks in visual order.** The two-line Arabic description
    starts with the end of its sentence (`…مكتوب على ثوب أخضر ومغلف بجلد أزرق.`) and carries the
    beginning (`نص حكيم له سر قاطع وذ`) on the second line, so it reads backwards.
@@ -23,10 +25,10 @@ caret, hit testing and selection through the glyph runs instead, for lines that 
 
 ## Where it comes from
 
-- `vendor/gpui_pre/src/text_system/line_wrapper.rs`, `LineWrapper::is_word_char` (line 501):
-  an allow-list of ASCII, Latin-1, Latin Extended A/B, Cyrillic, Vietnamese, combining marks and
-  Bengali. Every other character counts as a break opportunity, as CJK does. Arabic, Hebrew,
-  Devanagari, Thai, Hangul and Greek are not on it.
+- `vendor/gpui_pre/src/text_system/line_wrapper.rs`, `LineWrapper::is_word_char`: an allow-list
+  of ASCII, Latin-1, Latin Extended A/B, Cyrillic, Vietnamese, combining marks and Bengali. Every
+  other character counts as a break opportunity, as CJK does. It is used by `wrap_line`,
+  `truncate_line` and `LineLayout::compute_wrap_boundaries`.
 - `vendor/gpui_pre/src/text_system/line_layout.rs`, `LineLayout::compute_wrap_boundaries`
   (line 193): walks `runs[..].glyphs[..]` in the order the shaper returns them. For a
   right-to-left run that is visual order, so "the previous character", the candidate break and
@@ -35,30 +37,41 @@ caret, hit testing and selection through the glyph runs instead, for lines that 
 - `LineLayout::x_for_index` (line 108) returns the first glyph whose `index >= index`, which
   assumes left-to-right.
 
-## Proposed change
+## Step 1 — applied
 
-1. **Extend `is_word_char`** with the ranges of Arabic (`0600–06FF`, `0750–077F`, `08A0–08FF`,
-   `FB50–FDFF`, `FE70–FEFF`), Hebrew (`0590–05FF`), Devanagari (`0900–097F`), Greek
-   (`0370–03FF`, `1F00–1FFF`) and Hangul syllables and jamo (`1100–11FF`, `AC00–D7AF`). It is a
-   dozen lines, adds no dependency, and fixes the Hindi and Arabic word splits. Thai has no
-   spaces, so breaking it correctly needs a word dictionary (ICU or `unicode-linebreak` plus
-   data); that would be a dependency and is **not** part of this proposal.
+`is_word_char` now also accepts Arabic (`0600–06FF`, `0750–077F`, `08A0–08FF`, `FB50–FDFF`,
+`FE70–FEFF`), Hebrew (`0590–05FF`), Devanagari (`0900–097F`) and Greek (`0370–03FF`,
+`1F00–1FFF`). Four `matches!` clauses, no dependency, no change to any other function. Wrapping
+and ellipsis truncation of those scripts therefore break only at spaces (and before the
+characters that were already break opportunities), as they do for Latin text.
+
+Left alone on purpose: **Hangul** (the owner's decision), **Thai** (no spaces between words;
+correct breaking needs a word dictionary, which would be a dependency), Arabic Extended-B
+(`0870–089F`, not in the approved list) and the other scripts that were never on the list.
+
+Seven unit tests cover it ([word-break.patch](word-break.patch)): the existing
+`test_is_word_char`, one test per script for the new ranges, one that the neighbouring scripts
+(Armenian, Syriac, Thai, Hangul, Han) did not change, and a `wrap_line` test asserting that every
+boundary of an Arabic, Hebrew, Devanagari and Greek sentence falls just after a space. The
+vendored test target cannot compile from the packaged crate, so
+[verify-word-break.py](verify-word-break.py) compiles the unmodified non-test source of
+`line_wrapper.rs` against a small stand-in for GPUI's `Pixels`, `FontId`, `SharedString`,
+`TextRun` and `TextSystem` (every character 9.6 px wide) and runs the tests extracted verbatim
+from the file. Against the unpatched registry source, five of the seven fail, including the
+wrapping test, with the mid-word split seen in the capture (`نص حكيم له سر قاطع وذ`); against the
+patched source all seven pass ([logs](../../receipts/gpui-word-break-20261025/verification/)).
+
+## Steps 2 and 3 — still proposals
+
 2. **Wrap in logical order.** Compute candidates and boundaries from the text in byte order,
    measuring with the glyph advances, then resolve each resulting line's visual order on its own.
    Touch points: `layout_wrapped_line`, `WrappedLineLayout`, and the consumers of
    `WrapBoundary` (`position_for_index`, `index_for_position`, `closest_index_for_x`, and
    `WrappedLine::paint`). I have not prototyped this one; it needs the per-platform shapers'
-   run output reviewed, and it is the larger and riskier half.
+   run output reviewed, and it is the larger and riskier half. It is what makes the first line of
+   a wrapped Arabic or Hebrew paragraph hold the start of the sentence.
 3. **Make `x_for_index`/`index_for_x` bidi-aware**, so `src/bidi.rs` can be deleted. It would
    also extend caret and selection to wrapped lines, which `TextArea` cannot do today.
-
-## How it would be verified
-
-- Unit tests in `line_wrapper.rs` for each added range (the file already tests `is_word_char`).
-- Re-capture the *Languages* page: Arabic must start `نص حكيم`, Hindi must keep `सर्वनाश`
-  together, Latin and CJK wrapping must be pixel-identical to today. Compare the 8 routes whose
-  stored `docs/parity` image matches with no differing pixel now ([pixel table](../../receipts/i18n-20261025/pixdiff-zh-hans.tsv)).
-- The five gates, and the Linux and Windows shapers, which have not been exercised by this work.
 
 ## Not proposed
 

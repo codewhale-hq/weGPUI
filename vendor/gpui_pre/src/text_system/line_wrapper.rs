@@ -521,6 +521,10 @@ impl LineWrapper {
 
         // Bengali (https://en.wikipedia.org/wiki/Bengali_(Unicode_block))
         matches!(c, '\u{0980}'..='\u{09FF}') ||
+        matches!(c, '\u{0600}'..='\u{06FF}' | '\u{0750}'..='\u{077F}' | '\u{08A0}'..='\u{08FF}' | '\u{FB50}'..='\u{FDFF}' | '\u{FE70}'..='\u{FEFF}') ||
+        matches!(c, '\u{0590}'..='\u{05FF}') ||
+        matches!(c, '\u{0900}'..='\u{097F}') ||
+        matches!(c, '\u{0370}'..='\u{03FF}' | '\u{1F00}'..='\u{1FFF}') ||
 
         // Some other known special characters that should be treated as word characters,
         // e.g. `a-b`, `var_name`, `I'm`/`won’t`, '@mention`, `#hashtag`, `100%`, `3.1415`,
@@ -1273,6 +1277,116 @@ mod tests {
         assert_word("\u{202F}"); // NNBSP " "
         assert_word("\u{00A0}"); // NBSP " "
         assert_word("\u{2011}"); // NBH "‑"
+    }
+
+    #[test]
+    fn test_is_word_char_arabic() {
+        for word in [
+            "مرحبا",
+            "بالعالم،",
+            "ٱلْكِتَابُ",
+            "١٢٣",
+            "ݐݑݒ",
+            "ࢠࢡࢢ",
+            "ﭐﭑﭒ",
+            "ﷲ",
+            "ﺎﺏ",
+        ] {
+            for c in word.chars() {
+                assert!(
+                    LineWrapper::is_word_char(c),
+                    "assertion failed for '{}' (unicode 0x{:x}) in {:?}",
+                    c,
+                    c as u32,
+                    word
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn test_is_word_char_hebrew() {
+        for word in ["שלום", "שָׁלוֹם", "דג־סקרן", "צ׳יפס"] {
+            for c in word.chars() {
+                assert!(
+                    LineWrapper::is_word_char(c),
+                    "assertion failed for '{}' (unicode 0x{:x}) in {:?}",
+                    c,
+                    c as u32,
+                    word
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn test_is_word_char_devanagari() {
+        for word in ["नमस्ते", "सर्वनाश।", "श्रीराम॥", "१२३", "ॐ"] {
+            for c in word.chars() {
+                assert!(
+                    LineWrapper::is_word_char(c),
+                    "assertion failed for '{}' (unicode 0x{:x}) in {:?}",
+                    c,
+                    c as u32,
+                    word
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn test_is_word_char_greek() {
+        for word in ["Καλημέρα", "ἄνθρωπος", "ῥῆμα", "σοφίας;"] {
+            for c in word.chars() {
+                assert!(
+                    LineWrapper::is_word_char(c),
+                    "assertion failed for '{}' (unicode 0x{:x}) in {:?}",
+                    c,
+                    c as u32,
+                    word
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn test_is_word_char_neighbouring_scripts_are_unchanged() {
+        for c in ['\u{058F}', '\u{0700}', '\u{0E01}', '\u{1100}', '\u{AC00}', '\u{4F60}'] {
+            assert!(
+                !LineWrapper::is_word_char(c),
+                "'{}' (unicode 0x{:x}) became a word character",
+                c,
+                c as u32
+            );
+        }
+    }
+
+    #[test]
+    fn test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek() {
+        let mut wrapper = build_wrapper();
+        for text in [
+            "نص حكيم له سر قاطع وذو شأن عظيم مكتوب على ثوب أخضر ومغلف بجلد أزرق",
+            "דג סקרן שט בים מאוכזב ולפתע מצא חברה",
+            "ऋषियों को सताने वाले दुष्ट राक्षसों के राजा रावण का सर्वनाश करने वाले",
+            "Ταχίστη αλώπηξ βαφής ψημένη γη δρασκελίζει υπέρ νωθρού κυνός",
+        ] {
+            let boundaries = wrapper
+                .wrap_line(
+                    &[LineFragment::text(text)],
+                    px(220.),
+                    IndentAdjustment::NoIndent,
+                )
+                .collect::<Vec<_>>();
+            assert!(!boundaries.is_empty(), "{text:?} did not wrap");
+            for boundary in boundaries {
+                assert_eq!(
+                    text[..boundary.ix].chars().last(),
+                    Some(' '),
+                    "wrapped inside a word: {:?}",
+                    &text[..boundary.ix]
+                );
+            }
+        }
     }
 
     // For compatibility with the test macro
