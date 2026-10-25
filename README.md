@@ -69,6 +69,12 @@ On Linux, that application dependency also needs `"wayland"` or `"x11"` in `feat
 `ModalScope` (hides the page from screen readers while a modal is open), Tab navigation and a
 `Presence`-driven dialog. Public items carry rustdoc: run `cargo doc --open`.
 
+A native host can map its existing design tokens into a `Palette`, then install
+`Theme::build(mode, dark, care, None).with_palette(palette)` as the GPUI global.
+The host owns reapplying that mapping when its appearance changes; the standard
+mode/care/brand setters rebuild the upstream palette. This changes presentation
+only and keeps the controls and accessibility behavior in weGPUI.
+
 ## Platform support
 
 Nothing is called supported until build, launch, rendering, interaction, accessibility and

@@ -93,6 +93,10 @@ impl Theme {
     pub fn get(cx: &App) -> &Self {
         cx.global::<Self>()
     }
+    pub fn with_palette(mut self, palette: Palette) -> Self {
+        self.palette = palette;
+        self
+    }
     fn apply(mode: ThemeMode, care: bool, brand: Option<Hsla>, cx: &mut App) {
         let dark = match mode {
             ThemeMode::Dark => true,
