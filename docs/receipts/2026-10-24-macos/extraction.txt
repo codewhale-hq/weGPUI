@@ -1,0 +1,6 @@
+exit=0
+180 light variables, 180 dark variables, 180 care_light variables, 180 care_dark variables, 32 WeUI SVG icons extracted
+
+
+src/assets.rs: byte_difference
+generated_files=64With separately authored loading.svg retained: 65 output files, byte differences: []

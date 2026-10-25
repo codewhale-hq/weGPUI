@@ -11,8 +11,8 @@ versioning once a release policy is decided. No version has been published.
 - WeUI 2.6.26 tokens generated from `dist/style/weui.css`: four 180-field palettes (light,
   dark, care-light, care-dark) with per-field rustdoc, plus 32 SVG icons and the example images.
 - `Theme` global with system/light/dark modes, care mode and brand-colour override.
-- Components for every WeUI widget family, with a gallery route for each of the 61 upstream
-  example files (`docs/UPSTREAM-COVERAGE.md`).
+- Components for every WeUI widget family. The 61 upstream example files map to 60 gallery
+  routes plus the index shell (`docs/UPSTREAM-COVERAGE.md`).
 - `TextInput`/`TextArea` adapted from GPUI's input example, with IME marked-text support.
 - Accessibility helpers: `Semantics` (disabled, busy, modal, hidden) and `ModalScope`, which
   hides application content from assistive technology while a modal is open.
@@ -20,14 +20,18 @@ versioning once a release policy is decided. No version has been published.
 - Undo/redo in text inputs (ctrl/cmd-z, ctrl/cmd-shift-z, ctrl-y).
 - `examples/minimal.rs`, a small consumer application.
 - Tooling: `scripts/weui_upstream.py` (verified download/serve of the upstream example and its
-  pinned weui.js/WeChat SDK scripts), and an X11 path in `scripts/capture.py`.
+  pinned weui.js/WeChat SDK scripts), an X11 path in `scripts/capture.py`, the Linux session and
+  sweep helpers, `scripts/contact_sheets.py`, and a proposed Linux windowing patch.
 - Contributor documentation: platform feasibility (`docs/PLATFORMS.md`), parity tooling guide,
   contributing guide, code of conduct, security policy, issue and PR templates.
 
 ### Changed
 
-- `gpui-pre-platform` is now a dev-dependency. The library depends on `gpui` only and type-checks
-  for iOS and Android targets. Applications choose their own platform crate.
+- `gpui-pre-platform` is now a dev-dependency. The library depends on `gpui` and
+  `unicode-segmentation`, without a platform crate. The library type-checked for iOS and Android
+  at the `0637c25` change; applications choose their own platform crate.
+- Documentation distinguishes historical checks, source inspection and committed runtime
+  receipts; corrected mobile gesture descriptions and contributor reproduction instructions.
 - Text length limits count UTF-16 code units, as HTML `maxlength` does.
 - `UploaderFile::src` and `Gallery::src` take `ImageSource` (asset, URI or file path).
 - The gallery uploader opens the native file chooser instead of inserting a bundled image.

@@ -18,8 +18,10 @@ body:
     id: state
     attributes:
       label: State
-      description: The --state / scripts/parity key, or the steps that reach the state.
+      description: The --state / scripts/parity key, default, or the steps that reach the state.
       placeholder: "e.g. 2, or: open, press Tab twice"
+    validations:
+      required: true
   - type: dropdown
     id: theme
     attributes:
@@ -27,6 +29,11 @@ body:
       options: [light, dark, light + care, dark + care, custom brand]
     validations:
       required: true
+  - type: input
+    id: brand
+    attributes:
+      label: Custom brand colour
+      description: If custom brand is selected, give the RRGGBB value.
   - type: textarea
     id: pair
     attributes:
@@ -46,7 +53,7 @@ body:
     id: platform
     attributes:
       label: Platform and version
-      description: OS, version, scale, browser and version for the upstream side, weGPUI commit.
+      description: OS, version, scale, browser and version for the upstream side, weGPUI commit and build profile.
     validations:
       required: true
   - type: textarea

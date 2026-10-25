@@ -1,0 +1,17 @@
+['bash', 'scripts/linux/sweep.sh', '<scratch>/sweep-failure', 'not-a-route']
+exit=0
+FAIL not-a-route
+done: 0 ok, 1 failed
+
+
+['/opt/homebrew/bin/python3', '-I', 'scripts/contact_sheets.py', 'docs/receipts/takeover-20261025', '<scratch>/invalid-sheet', '--per', '0']
+exit=1
+
+Traceback (most recent call last):
+  File "<repo>/scripts/contact_sheets.py", line 51, in <module>
+    main()
+    ~~~~^^
+  File "<repo>/scripts/contact_sheets.py", line 31, in main
+    for start in range(0, len(pairs), args.per):
+                 ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: range() arg 3 must not be zero

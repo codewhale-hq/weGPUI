@@ -22,7 +22,7 @@ cargo fetch --locked                      # once, to fill the dependency cache
 cargo fmt --all -- --check
 cargo build --all-targets --locked --offline
 cargo clippy --all-targets --locked --offline -- -D warnings
-RUSTDOCFLAGS='-W missing-docs' cargo doc --no-deps --locked --offline
+RUSTDOCFLAGS='-D warnings -W missing-docs' cargo doc --no-deps --locked --offline
 cargo run --example minimal               # small consumer app
 cargo run --example gallery               # every upstream example page
 ```
@@ -30,7 +30,7 @@ cargo run --example gallery               # every upstream example page
 These are the gates the CNB pipeline runs (fmt, build, clippy), plus the documentation check.
 Respect `CARGO_TARGET_DIR` in any script you add.
 
-Platform notes: on Linux the gallery currently needs a local change enabling
+Platform notes: on Linux both the gallery and minimal example currently need a change enabling
 `gpui_platform`'s `wayland`/`x11` features before it can open a window. That change is a pending
 maintainer decision, described in [docs/PLATFORMS.md](docs/PLATFORMS.md). iOS and Android have no
 backend yet. Please report what you tried on Windows. Native Windows runtime results are
@@ -45,10 +45,13 @@ missing evidence the project needs.
   HTML/JS (`src/example/`) and, for pickers, weui.js 1.2.17. Fetch them with
   `scripts/weui_upstream.py`. Do not copy unrelated upstream code.
 - **Generated files.** `src/theme/palette.rs`, `src/assets.rs`, `docs/tokens.json` and the icon
-  SVGs in `assets/` come from `python3 -I scripts/extract_weui.py target/weui-upstream/weui/package`.
+  icon SVGs in `assets/` come from
+  `python3 -I scripts/extract_weui.py "${CARGO_TARGET_DIR:-target}/weui-upstream/weui/package"`.
+  Keep the separately authored `assets/loading.svg`; the extractor does not generate it.
   Change the generator, not the output. Regenerating rewrites the eight `*-dark.png` files with
   identical pixels but different PNG bytes, depending on the Pillow version, so restore them with
-  `git checkout -- assets/` unless the pixels changed.
+  `git restore -- 'assets/*-dark.png'` only after verifying their pixels are unchanged and that
+  those files contain no intended edits. Do not restore the whole assets directory.
 - **Public API docs.** Every public item has rustdoc that states behaviour, defaults, units
   (lengths are logical pixels), ownership of state and callbacks, and accessibility behaviour.
   Module docs name the upstream source and known limitations.
@@ -69,8 +72,10 @@ A parity report always includes:
 1. **Route** (gallery page or upstream `#hash`) and **state** (`--state` / `scripts/parity` key).
 2. **Theme**: light/dark, plus brand colour or care mode if used.
 3. **Screenshot pair**: native and upstream at the same size, scale and scroll position.
-4. **Platform**: OS and version, display scale, and how the app was built (commit, profile).
-5. What you compared (visual, input sequence, accessibility tree, screen reader) and the result.
+4. **Platform**: OS and version, display scale, how the app was built (commit, profile), and
+   upstream browser and version.
+5. What you compared (visual, input sequence, animation timing, accessibility tree, screen reader
+   or IME), the result, the relevant upstream CSS/JS, and what you did not check.
 
 [docs/PARITY-TOOLING.md](docs/PARITY-TOOLING.md) explains how to produce pairs on macOS and Linux.
 The issue templates ask for exactly these fields.

@@ -15,9 +15,9 @@ read from the locked Cargo registry; upstream Zed `main` at
 | Fact | Source |
 | --- | --- |
 | `gpui_platform::current_platform` has `macos`, `windows`, `linux`/`freebsd` and `wasm` branches only. On iOS/Android it has no tail expression, so the crate fails with `E0308` (expected `Rc<dyn Platform>`, found `()`). | `gpui-pre-platform-0.3.7/src/gpui_platform.rs:57`; receipts `check-lib-aarch64-*.txt` |
-| weGPUI's library code does not call `gpui_platform`; only the gallery's `main()` does. | `grep gpui_platform src examples` |
+| weGPUI's library code does not call `gpui_platform`; the gallery and minimal example do. | `rg gpui_platform src examples` |
 | `gpui_platform` depends on `gpui_linux` with `default-features = false`. With only `font-kit` enabled, Linux compiles, but the windowed constructor reaches `unreachable!("At least one of the \"wayland\" or \"x11\" features must be enabled …")`. | `gpui-pre-linux-0.3.7/src/linux.rs:56`; receipt `run-linux-baseline-xvfb.txt` |
-| GPUI core already has the platform-neutral mobile vocabulary: `TouchEvent`, a gesture arena that turns taps/pans/pinches into `ClickEvent::Touch`, `ScrollWheelEvent` and `PinchEvent`, `WindowInsets { safe_area, ime }`, `request_virtual_keyboard`/`dismiss_virtual_keyboard`, and `AppLifecyclePhase` (`Background`/`Foreground`). | `gpui-pre-0.3.7/src/{gestures.rs,platform.rs:810-860,window.rs:2797}` |
+| GPUI core has `TouchEvent`; its gesture arena delivers taps as synthesized mouse down/up and pans as `ScrollWheelEvent`. At 0.3.7 the arena has no pinch recognizer, despite the module's introductory rustdoc. `PinchEvent` exists separately. Core also has `WindowInsets { safe_area, ime }`, virtual-keyboard requests and `AppLifecyclePhase`. | `gpui-pre-0.3.7/src/gestures.rs`, `window.rs::dispatch_recognized_touch_gesture`, `platform.rs` |
 | GPUI core type-checks for `aarch64-apple-ios` and `aarch64-linux-android`. | receipts `check-gpui-core-*.txt` |
 | AccessKit adapters are wired for macOS, Windows and Linux (`accesskit_macos`, `accesskit_windows`, `accesskit_unix`). No mobile adapter is wired in the pinned crates. | `gpui-pre-{macos,windows,linux}-0.3.7/Cargo.toml` |
 | `gpui-pre-wgpu 0.3.7` (wgpu renderer plus cosmic-text/swash text system) type-checks for `aarch64-linux-android`. | receipt `check-gpui-wgpu-android.txt` |
@@ -44,12 +44,13 @@ devices.
   `accesskit_unix` exposed the tree to AT-SPI (`atspi-before-*.txt`, read with `pyatspi`). No Orca
   session, Wayland compositor or physical display was used.
 - **Windows:** `cargo build --all-targets --target x86_64-pc-windows-gnu --locked --offline` exited
-  0 with mingw-w64 and linked `gallery.exe`. Wine 9.0 could not start it: `icuuc.dll`, a Windows
-  10 system library, is missing from Wine. No native Windows host was available.
-- **iOS/Android:** with the current manifest `cargo check --lib` fails in `gpui_platform` (E0308).
-  With `gpui_platform` as a dev-dependency (applied on `main`, see below), `cargo check --lib`
+  0 with mingw-w64 and linked `gallery.exe`. Commit `0637c25` reports a Wine 9.0 startup failure
+  involving `icuuc.dll`, but no Wine stdout/stderr receipt was committed. No native Windows host was available.
+- **iOS/Android:** before `0637c25`, `cargo check --lib` failed in `gpui_platform` (E0308).
+  With `gpui_platform` as a dev-dependency (applied in `0637c25`, see below), `cargo check --lib`
   succeeds for `aarch64-apple-ios`, `aarch64-apple-ios-sim` and `aarch64-linux-android`. That only
-  proves that the library type-checks. Nothing was linked, packaged, launched or touched.
+  proves the library type-checked at that change, not at every later revision. Nothing was linked,
+  packaged, launched or touched.
 
 ## Acceptance matrix
 
@@ -60,7 +61,7 @@ as such. Current state:
 | --- | --- | --- | --- | --- | --- | --- |
 | macOS | Earlier arm64 receipts (Rust 1.99, `51be7e3`); not rebuilt here | Earlier gallery runs | 28 fresh pairs in the 2026-10-24 review | Mouse/keyboard samples; one TextArea Pinyin commit | Whole-window AX dumps, 9 routes; no VoiceOver | Not done |
 | Linux | x86_64 build/clippy/fmt pass | **Fails** (no windowing feature); passes in scratch with `x11` under Xvfb | Software-rendered Xvfb; 192 pairs (routes light+dark, states light) swept against Linux Chromium (scratch build) | XTEST mouse/keys, fcitx5 Pinyin, GTK portal chooser (scratch build) | AT-SPI tree in scratch; no Orca | Not done |
-| Windows | mingw cross-build links | Wine failed (missing `icuuc.dll`); no native host | Missing | Missing | Missing (Narrator/NVDA) | Not done |
+| Windows | Historical mingw cross-build links | No native host; Wine failure reported without a committed run log | Missing | Missing | Missing (Narrator/NVDA) | Not done |
 | iOS | Library type-checks for device and simulator targets | Blocked: no iOS backend at the pin, no Apple host | Missing | Missing (touch, keyboard, IME, rotation, lifecycle) | Missing; upstream backend has no AccessKit | Not done |
 | Android | Library type-checks | Blocked: no Android backend anywhere upstream; no KVM for an emulator here | Missing | Missing | Missing (TalkBack) | Not done |
 
@@ -76,8 +77,8 @@ A backend alone would not make the components mobile-ready. Read against `gpui-p
 | Area | What GPUI provides | What weGPUI does today | Needed |
 | --- | --- | --- | --- |
 | Taps | Recognised taps are delivered as synthesised mouse down/up (`gestures.rs`, `RecognizedTouchGesture::Tap`) | Click handlers | Likely works as is; unverified |
-| Drags | A touch becomes a pan (`ScrollWheelEvent` with `TouchPhase`) unless an element claims it by handling `TouchDragEvent` at `Started` and calling `prevent_default` (`window.rs`, `dispatch_recognized_touch_gesture`) | Swipe cells, slider, picker columns and the half-screen grab use mouse down/move/drag only | Claim and handle `TouchDragEvent` in those components; the picker should also accept the pan path |
-| Long press, pinch | `LongPressEvent`, `capture_long_press`; `on_pinch` | Not used | Gallery pinch-zoom (upstream has none) |
+| Drags | A touch becomes a pan (`ScrollWheelEvent` with `TouchPhase`) unless an element claims `TouchDragEvent` at `Started` with `prevent_default` | Swipe cells, slider and half-screen grab use mouse events; picker columns also handle `on_scroll_wheel` already | Handle touch drags where needed and verify the picker's existing pan path on a phone |
+| Long press, pinch | `LongPressEvent`, `capture_long_press`; `on_pinch` exists but the 0.3.7 touch arena does not recognize pinches | Not used | Backend/recognizer work before any optional gallery pinch-zoom (upstream has none) |
 | Software keyboard | `Window::request_virtual_keyboard`/`dismiss_virtual_keyboard`; the platform may require a user gesture | Never requested | Request on tap-to-focus in `TextInput` and dismiss on blur |
 | Safe area and keyboard occlusion | `Window::fully_visible_bounds`, `visual_viewport_bounds` (`WindowInsets::safe_area`/`ime`) | Not applied (bottom-fixed areas, tabbar, sheets, toasts) | Pad or position against the visible bounds; scroll the focused input into view |
 | Lifecycle | `Platform::on_app_lifecycle` (`Background`/`Foreground`) exists on the platform trait only; at 0.3.7 no `App` API forwards it | Not observed | Upstream plumbing or a newer GPUI, then pause timers and animations (toast, vcode countdown, spinners) |
@@ -151,5 +152,5 @@ Alternatives considered and **not recommended**:
 | Fund or contribute `gpui_android` upstream | Required for any honest Android claim; scope separately |
 | iOS AccessKit/VoiceOver | Upstream contribution; without it, iOS fails the accessibility column |
 
-Until these land, weGPUI is a desktop-verified library that also type-checks for mobile targets.
-It is not a supported mobile library.
+weGPUI has historical macOS samples, Linux X11 experiment receipts, a Windows cross-build and
+mobile library type-checks. None of these qualifies all desktop platforms or mobile support.

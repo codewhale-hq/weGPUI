@@ -1,6 +1,6 @@
 # Upstream example coverage
 
-Inventory of WeUI 2.6.26: **61 HTML files — 58 within 29 component directories plus `home.html`, `index.html` and `layers.html`**. Every file maps to a gallery route built from the public library components; no route is a placeholder. Capture states are the `--state` values registered in `scripts/parity/*.json`, each with a replay that drives the official page into the same state.
+Inventory of WeUI 2.6.26: **61 HTML files — 58 within 29 component directories plus `home.html`, `index.html` and `layers.html`**. These map to 60 routes plus the index shell. Family routes use the public components; home, layers and the shell also contain gallery-specific implementations. Capture states are the `--state` values registered in `scripts/parity/*.json`, each with a replay that drives the official page into the same state.
 
 Visual results are in [PARITY](PARITY.md). Mapping a file here records implementation, not parity.
 

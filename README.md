@@ -27,7 +27,8 @@ Rust 1.95 or newer is required. Linux needs GPUI's system libraries (see
 
 ## Using the library
 
-weGPUI depends on `gpui` only. Your application picks the GPUI platform crate:
+weGPUI depends on `gpui` and `unicode-segmentation`, with no platform crate in the library's
+dependencies. Your application picks the GPUI platform crate:
 
 ```rust
 use gpui::{prelude::*, *};
@@ -61,6 +62,9 @@ gpui = { package = "gpui-pre", version = "=0.3.7" }
 gpui_platform = { package = "gpui-pre-platform", version = "=0.3.7", features = ["font-kit"] }
 ```
 
+On Linux, that application dependency also needs `"wayland"` or `"x11"` in `features`;
+`font-kit` alone builds but panics when opening a window. This applies to both examples too.
+
 [`examples/minimal.rs`](examples/minimal.rs) is the compiled, complete version, including
 `ModalScope` (hides the page from screen readers while a modal is open), Tab navigation and a
 `Presence`-driven dialog. Public items carry rustdoc: run `cargo doc --open`.
@@ -73,7 +77,7 @@ packaging all have receipts from that platform. Details and evidence are in
 
 | Platform | Today |
 | --- | --- |
-| macOS | Builds and runs. Gallery screenshots, mouse/keyboard and AX-tree samples on arm64. No VoiceOver pass. Not packaged. |
+| macOS | Build verified at `51be7e3`; later gallery review samples exist, but the Linux takeover changes have not yet been rebuilt here. No VoiceOver pass. Not packaged. |
 | Linux | Builds. The window needs the pending `x11`/`wayland` feature decision; with it, an X11 window renders, takes input and exposes an AT-SPI tree (Xvfb, no Orca). Not packaged. |
 | Windows | Cross-compiles (mingw). No native run, accessibility or packaging evidence. |
 | iOS | Library type-checks only. No backend at the pinned GPUI. Not supported. |

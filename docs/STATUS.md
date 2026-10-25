@@ -20,21 +20,23 @@ pending an owner decision.
 | --- | --- | --- | --- | --- | --- | --- |
 | macOS arm64 | Pass at `51be7e3` (Rust 1.99). Not rebuilt after the takeover changes | Pass (earlier gallery runs) | 28 fresh pairs (review) | Mouse/keyboard samples; TextArea Pinyin | AX dumps, 9 routes; no VoiceOver | Missing |
 | Linux x86_64 | Pass: build, clippy `-D warnings`, fmt, doc (Rust 1.97 stable; build and clippy also on 1.95.0) | **Fails** with committed manifest; passes with `x11` (Xvfb) | Software-rendered X11; 192 pairs swept against Linux Chromium (60 routes light and dark, 72 states light; contact-sheet review) | XTEST click/keys, fcitx5 Pinyin, GTK portal chooser | AT-SPI tree via pyatspi; no Orca | Missing |
-| Windows | mingw cross-build links | Missing (Wine 9.0 cannot load; no host) | Missing | Missing | Missing | Missing |
-| iOS | Library type-checks (device and simulator targets) | Blocked: no backend at pin | Missing | Missing | Missing | Missing |
-| Android | Library type-checks | Blocked: no backend upstream | Missing | Missing | Missing | Missing |
+| Windows | Historical mingw cross-build links | Missing; Wine failure reported without a committed run log | Missing | Missing | Missing | Missing |
+| iOS | Library type-checks at the `0637c25` change (device and simulator targets) | Blocked: no backend at pin | Missing | Missing | Missing | Missing |
+| Android | Library type-checks at the `0637c25` change | Blocked: no backend upstream | Missing | Missing | Missing | Missing |
 
 ## Done
 
 - **Linux baseline:** `cargo build --all-targets`, `cargo clippy --all-targets -- -D warnings`
   and `cargo fmt --all -- --check` (`--locked --offline`) pass on Linux x86_64 with Rust 1.97.0.
 - **Platform-neutral library:** `gpui-pre-platform` is a dev-dependency, so the library depends
-  on `gpui` only and `cargo check --lib` passes for `aarch64-apple-ios`, `aarch64-apple-ios-sim`
-  and `aarch64-linux-android`. That is a type-check, not support.
+  on `gpui` and `unicode-segmentation`, without a platform crate. `cargo check --lib` passed for
+  `aarch64-apple-ios`, `aarch64-apple-ios-sim` and `aarch64-linux-android` at the `0637c25` change.
+  That is a historical type-check, not support or a check of later HEADs.
 - **Platform feasibility:** [PLATFORMS](PLATFORMS.md), source-backed against the pinned crates
   and upstream Zed `347f171a`, with proposals for Linux features, iOS (`gpui-pre-ios 0.3.9`) and
   an upstream Android backend.
-- **Measured MSRV:** 1.95.0. Build and clippy pass on 1.95.0. 1.93.0 and 1.94.0 fail
+- **Measured MSRV at `1ea95a5`:** 1.95.0. Build and clippy passed on 1.95.0. Later source was not
+  rechecked on that compiler. 1.93.0 and 1.94.0 fail
   (`std::hint::cold_path` in `gpui-pre`), and 1.92 fails (`slice::as_array` in `gpui-pre-util`).
   The dependency manifests alone declare at most 1.92 (`oo7`).
 - **Defect fixes, verified on Linux unless noted:**
@@ -56,8 +58,8 @@ pending an owner decision.
     single-line search bar and a TextArea through fcitx5/XIM.
   - Uploader: the native chooser adds picked images; non-images become error items; cancel adds
     nothing; a chooser failure shows a warning tip (GTK portal and no-portal runs).
-  - Picker Home/End with disabled edge rows lands on the nearest enabled row (probe; before,
-    the selection stayed put).
+  - Picker Home/End with disabled edge rows: the source fix and probe are committed. `b563ed2`
+    reports Home→B and End→C, but there is no committed stdout receipt of that sequence.
   - Toasts use a passive `Presence`: focus stays put, Tab and typing keep working behind the
     toast, the page stays in the AT-SPI tree, and the toast is one alert (before: focus moved into
     an empty layer that trapped Tab and hid the page). Toptips reverse mid-fade instead of
@@ -94,7 +96,7 @@ pending an owner decision.
 | Form / input / textarea | Partly matches; differs | Linux real keys: typing, undo/redo, UTF-16 limit, Pinyin commit/cancel (single line and multiline). macOS TextArea Pinyin. Numeric filtering is not HTML validation. Preedit is not inline on Linux XIM. |
 | Form choices | Matches samples | macOS radio/switch samples; Linux AT-SPI switch tree. Checkbox/Agree matrix untested. |
 | Form select | Differs (adaptation) | HTML `<select>` is an overlay menu. Linux real-key bounded navigation and Escape focus restore verified. |
-| Gallery / image viewer | Matches samples | macOS close/delete. Linux: a thumbnail click opened the viewer. Pinch/zoom untested. |
+| Gallery / image viewer | Matches samples | Historical macOS close/delete. Linux committed captures show `uploader:viewer` startup state; they do not prove a thumbnail click. Pinch/zoom untested. |
 | Grid | Untested | Example callbacks are empty. |
 | Half-screen dialog | Matches samples | macOS open/Tab/Escape/drag. Linux AT-SPI isolation and interrupted-transition frames. |
 | Icons | Untested | Assets reproduce from the tarball. |
@@ -109,7 +111,7 @@ pending an owner decision.
 | Preview | Untested | Callbacks empty. |
 | Progress | Untested | NaN fix is source-only. |
 | Search bar | Partly matches | Linux single-line Pinyin commit/cancel. macOS typing/results. |
-| Slider | Matches samples | macOS drag/keys. Probe: non-finite inputs, zero step falls back to 1. |
+| Slider | Matches samples | Historical macOS drag/keys; Linux non-finite-input probe. Zero-step fallback is implemented and included in probe source, without a committed interaction receipt. |
 | Steps | Untested | Static rendering. |
 | Toast / toptips | Partly matches | macOS success toast. Linux: passive toast keeps focus and the page tree (as upstream's `role="alert"`); uploader error tip. Timing untested. |
 | Uploader | Partly matches | Linux chooser lifecycle (picked, error, cancel, no portal). Transport is application-owned, as upstream. |
@@ -127,7 +129,7 @@ pending an owner decision.
   `chrono`, already in `Cargo.lock` transitively) or platform calls. That needs an owner decision.
 - **Linux XIM preedit** is drawn by the input method at the window's top-left, not inline at the
   caret. Not isolated between GPUI and fcitx5.
-- **Found during the documentation audit, unfixed** (documented in rustdoc): buttons in cell
+- **Found during the documentation audit, unfixed** (rustdoc is not uniformly accurate): buttons in cell
   mode ignore `loading`; a clickable small-appmsg panel has no visible focus ring; spinners share
   the default id `weui-loading` unless given an id; all spinner kinds draw the same SVG;
   `ArticleList::new(ListStyle::Inside)` draws no markers while `inside()` numbers inline;
@@ -141,8 +143,9 @@ pending an owner decision.
 
 ## Documentation status
 
-`RUSTDOCFLAGS='-W missing-docs' cargo doc --no-deps --locked --offline` on Linux reports **0
-warnings**, including broken intra-doc links, and also passes with `-D warnings`. The baseline
+`RUSTDOCFLAGS='-W missing-docs' cargo doc --no-deps --locked --offline` after the `b563ed2`
+documentation work reported **0 warnings**. That commit also reports a `-D warnings` pass, but
+the committed log covers only the `-W` run and does not identify a final HEAD. The baseline
 review counted 1,019 missing-docs warnings. Palette field docs are emitted by
 `scripts/extract_weui.py`, so regeneration preserves them. Doc examples are marked `ignore` and
 point to `examples/minimal.rs`, which `cargo build --all-targets` compiles. No doctests were
@@ -174,7 +177,10 @@ added.
 
 ## Picking up the work
 
-Everything is on `main`; there are no other branches of record and no uncommitted state.
+At the October 24 macOS audit, the checkout was clean at `0c6555d` and GitHub advertised only
+`main`. The handover named `claude/youthful-fermi-y23wn0` at `e23436c`; that commit is an ancestor
+of `main`, but the branch was absent from `git ls-remote --heads origin` during this audit.
+No branch was deleted here. Recheck current refs and working state before editing.
 
 - **Run Linux locally:** `git apply docs/proposals/linux-windowing.patch` (do not commit it until
   decision 1 is made), then use `scripts/linux/session.sh`, `scripts/linux/sweep.sh` and

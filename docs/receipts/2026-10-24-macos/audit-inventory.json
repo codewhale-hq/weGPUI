@@ -1,0 +1,15 @@
+{
+  "head": "0c6555d82ee0e13211591b16eb5ab2dcbfc8015d",
+  "status": "",
+  "tracked_count": 853,
+  "parity_pngs": 534,
+  "palette_counts": {
+    "light": 180,
+    "dark": 180,
+    "care_light": 180,
+    "care_dark": 180
+  },
+  "svgs": 33,
+  "states": 72,
+  "remote_heads": "0c6555d82ee0e13211591b16eb5ab2dcbfc8015d\trefs/heads/main\n"
+}

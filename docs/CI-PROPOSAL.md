@@ -6,7 +6,7 @@ first hosted run will be the first receipt.
 
 ## Existing gate
 
-`.cnb.yml` runs on CNB for pushes to `main`, in a `rust:1` container: Linux system packages,
+`.cnb.yml` configures a CNB push-to-`main` pipeline in a `rust:1` container: Linux system packages,
 `cargo fmt --all -- --check`, `cargo build --all-targets --locked` and
 `cargo clippy --all-targets --locked -- -D warnings`. No hosted CNB result has been recorded in
 this repository.
@@ -93,8 +93,8 @@ jobs:
 Before enabling, decide:
 
 - whether to pin actions by commit SHA (recommended for a public repository) instead of `@v4`;
-- whether the `-D warnings` doc job should block until the missing-docs work is finished.
-  It passed locally on 2026-10-25, recorded in `docs/STATUS.md`;
+- whether the strict documentation job should block. The historical committed receipt uses
+  `-W missing-docs`; the separate `-D warnings` result is commit-reported only;
 - cache use (`Swatinem/rust-cache`). It adds a third-party action, so it is left out of the draft;
 - whether macOS minutes are acceptable on every pull request, or only on `main`.
 
@@ -108,7 +108,8 @@ be labelled that way. It is not mobile support.
 2. Run the gallery manually on a real Windows 10/11 machine. Record launch, rendering (two scale
    factors), keyboard/focus, IME (Microsoft Pinyin), resizing, and a Narrator or NVDA pass, using
    the platform report template.
-3. Only after step 2 passes may the README list Windows as supported for those areas.
+3. Record those sampled areas separately. Windows is supported only after its build, launch,
+   rendering, interaction, accessibility and packaging columns all have receipts.
 
 ## Mobile qualification plan
 
