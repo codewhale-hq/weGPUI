@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'">
+  <title>weGPUI browser gallery — toast</title>
+  <link rel="stylesheet" href="vendor/weui.css">
+  <link rel="stylesheet" href="vendor/example.css">
+  <link rel="stylesheet" href="bridge.css">
+  <link rel="stylesheet" href="shell.css">
+  <script src="vendor/zepto.min.js" defer=""></script>
+  <script src="vendor/weui.min.js" defer=""></script>
+  <script src="vendor/routes.js" defer=""></script>
+  <script src="bridge.js" defer=""></script>
+  <script src="router.js" defer=""></script>
+</head>
+<body data-weui-theme="light" data-ready="true" data-route="toast" data-state="default" style="--weui-BRAND: #07c160; --weui-BRAND-100: #07c160; --weui-BRAND-80: #069a4d; --weui-BRAND-90: #06ae56; --weui-BRAND-120: #39cd80; --weui-BRAND-170: #b5eccf; --weui-BRAND-BG-100: #07c160; --weui-BRAND-BG-90: #06ae56; --weui-BRAND-BG-110: #20c770; --weui-BRAND-BG-130: #51d490;">
+  <span aria-hidden="true" id="js_a11y_comma" class="weui-hidden_abs">，</span>
+  <div id="playground-status" role="status" aria-live="polite" aria-atomic="true">已完成</div>
+  <div id="playground-loading" role="status" hidden="">Loading interactive example…</div>
+  <div class="container" id="container"><div class="page toast js_show" data-route="toast" data-action-count="1">
+    <div class="page__hd">
+        <h1 class="page__title">Toast</h1>
+        <p class="page__desc">弹出式提示</p>
+    </div>
+    <div class="page__bd page__bd_spacing">
+        <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_default" id="showToast" tabindex="0">成功提示</a>
+        <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_default" id="showWarnToast" tabindex="0">失败提示</a>
+        <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_default" id="showTextMoreToast" tabindex="0">长文案提示</a>
+        <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_default" id="showLoadingToast" tabindex="0">正在加载提示</a>
+        <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_default" id="showTextToast" tabindex="0">文字提示</a>
+    </div>
+
+    <!--BEGIN toast-->
+    <div role="status" id="toast" style="display: none;" aria-hidden="true" aria-live="off">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast__wrp">
+          <div class="weui-toast">
+              <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+              <p class="weui-toast__content">已完成</p>
+          </div>
+        </div>
+    </div>
+
+    <!--BEGIN toast-->
+    <div role="alert" id="textMoreToast" style="display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast__wrp">
+          <div class="weui-toast weui-toast_text-more">
+              <i class="weui-icon-warn weui-icon_toast"></i>
+              <p class="weui-toast__content">长文案提示详情，长文案提示详情，长文案提示详情</p>
+          </div>
+        </div>
+    </div>
+
+    <!--BEGIN toast-->
+    <div role="alert" id="warnToast" style="display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast__wrp">
+          <div class="weui-toast">
+              <i class="weui-icon-warn weui-icon_toast"></i>
+              <p class="weui-toast__content">获取链接失败</p>
+          </div>
+        </div>
+    </div>
+
+    <!-- loading toast -->
+    <div role="alert" id="loadingToast" style="display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast__wrp">
+          <div class="weui-toast">
+              <span class="weui-primary-loading weui-icon_toast">
+                <span class="weui-primary-loading__dot"></span>
+              </span>
+              <p class="weui-toast__content">正在加载</p>
+          </div>
+        </div>
+    </div>
+
+    <!-- text toast -->
+    <div role="alert" id="textToast" style="display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast__wrp">
+          <div class="weui-toast weui-toast_text">
+              <p class="weui-toast__content">文字提示</p>
+          </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+</body></html>

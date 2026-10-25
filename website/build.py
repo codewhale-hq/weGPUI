@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Build the dependency-free showcase from repository coverage and native captures."""
+"""Build the static browser gallery and separate recorded native showcase."""
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -54,6 +55,20 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
     output.mkdir(parents=True, exist_ok=True)
     for name in ('index.html', 'style.css', 'app.js', 'favicon.svg'):
         shutil.copyfile(ROOT / 'website' / name, output / name)
+    playground_source = ROOT / 'website/playground'
+    provenance = json.loads((playground_source / 'vendor/PROVENANCE.json').read_text())
+    route_bundle = (playground_source / 'vendor/routes.js').read_text()
+    browser_routes = json.loads(route_bundle.removeprefix('window.WEGPUI_ROUTES = ').removesuffix(';\n'))
+    for name, info in provenance['files'].items():
+        if hashlib.sha256((playground_source / 'vendor' / name).read_bytes()).hexdigest() != info['sha256']:
+            raise ValueError(f'Vendored browser asset changed without provenance update: {name}')
+    for required in ('index.html', 'router.js', 'bridge.js', 'bridge.css', 'shell.css',
+                     'vendor/routes.js', 'vendor/weui.css', 'vendor/example.css',
+                     'vendor/zepto.min.js', 'vendor/weui.min.js'):
+        if not (playground_source / required).is_file():
+            raise ValueError(f'Missing interactive browser asset: {required}')
+    shutil.copytree(playground_source, output / 'playground', dirs_exist_ok=True,
+                    ignore=shutil.ignore_patterns('vendor_upstream.py', '.gitattributes', '__pycache__', '*.pyc'))
     licenses = output / 'licenses'
     licenses.mkdir(exist_ok=True)
     for name in ('LICENSE-MIT', 'LICENSE-APACHE', 'LICENSE-WEUI', 'NOTICE'):
@@ -101,8 +116,17 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
         title = TITLES.get(route, label if route == family else route.replace('_', ' ').replace('-', ' ').capitalize())
         records.append(dict(id=route, family=family, familyLabel=label, category=category,
                             title=title, description=description, states=states, images=images,
-                            source=page_source, modules=api_modules))
+                            source=page_source, modules=api_modules,
+                            playground='playground/index.html#' + route,
+                            browserSource='playground/source/' + route + '.html.txt'))
     assert {r['id'] for r in records} == set(route_map), 'Coverage differs from the Rust gallery'
+    assert {r['id'] for r in provenance['routes']} == set(route_map), 'Browser inventory differs from the 60 routes'
+    assert len(provenance['routes']) == 60
+    assert set(browser_routes) == set(route_map), 'Browser route bundle differs from the inventory'
+    for record in records:
+        assert set(browser_routes[record['id']]['states']) == set(record['states']), record['id']
+        source = playground_source / 'source' / (record['id'] + '.html.txt')
+        assert hashlib.sha256(source.read_bytes()).hexdigest() == browser_routes[record['id']]['sha256'], record['id']
     manifest = tomllib.loads((ROOT / 'Cargo.toml').read_text())
     data = dict(routes=records, tokens=json.loads((ROOT / 'docs/tokens.json').read_text()),
                 sourceCommit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
@@ -110,6 +134,11 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
                     ['git', 'status', '--porcelain', '--untracked-files=no'], cwd=ROOT, text=True).strip()),
                 captureCommit='2c8ed10', gpuiVersion=manifest['dependencies']['gpui']['version'].removeprefix('='),
                 rustVersion=manifest['package']['rust-version'], apiIncluded=include_api,
+                playground=dict(entry='playground/index.html', engine='WeUI HTML/CSS/JavaScript browser examples',
+                                weuiVersion=provenance['weuiVersion'], weuiJsVersion=provenance['weuiJsVersion'],
+                                zeptoVersion=provenance['zeptoVersion'], routeCount=len(provenance['routes']),
+                                states={record['id']: record['states'] for record in records},
+                                provenance='playground/vendor/PROVENANCE.json'),
                 compatibilityPatches={name: entry['path'] for name, entry in
                     manifest.get('patch', {}).get('crates-io', {}).items() if 'path' in entry})
     if include_api:

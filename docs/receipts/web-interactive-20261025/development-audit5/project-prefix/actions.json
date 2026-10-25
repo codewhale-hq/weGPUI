@@ -1,0 +1,1631 @@
+[
+  {
+    "case": "all-routes-responsive:actionsheet:375",
+    "label": "route",
+    "route": "actionsheet",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:article:375",
+    "label": "route",
+    "route": "article",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:badge:375",
+    "label": "route",
+    "route": "badge",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:button:375",
+    "label": "route",
+    "route": "button",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:button_bottom_fixed:375",
+    "label": "route",
+    "route": "button_bottom_fixed",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:button_default:375",
+    "label": "route",
+    "route": "button_default",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:dialog:375",
+    "label": "route",
+    "route": "dialog",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:flex:375",
+    "label": "route",
+    "route": "flex",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:footer:375",
+    "label": "route",
+    "route": "footer",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form:375",
+    "label": "route",
+    "route": "form",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_access:375",
+    "label": "route",
+    "route": "form_access",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_bottom_fixed:375",
+    "label": "route",
+    "route": "form_bottom_fixed",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_checkbox:375",
+    "label": "route",
+    "route": "form_checkbox",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_input_status:375",
+    "label": "route",
+    "route": "form_input_status",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_page:375",
+    "label": "route",
+    "route": "form_page",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_page_old:375",
+    "label": "route",
+    "route": "form_page_old",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_primary:375",
+    "label": "route",
+    "route": "form_primary",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_radio:375",
+    "label": "route",
+    "route": "form_radio",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_select:375",
+    "label": "route",
+    "route": "form_select",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_select_primary:375",
+    "label": "route",
+    "route": "form_select_primary",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_switch:375",
+    "label": "route",
+    "route": "form_switch",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_textarea:375",
+    "label": "route",
+    "route": "form_textarea",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_vcode:375",
+    "label": "route",
+    "route": "form_vcode",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_vertical:375",
+    "label": "route",
+    "route": "form_vertical",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:gallery:375",
+    "label": "route",
+    "route": "gallery",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:grid:375",
+    "label": "route",
+    "route": "grid",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:half-screen-dialog:375",
+    "label": "route",
+    "route": "half-screen-dialog",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:home:375",
+    "label": "route",
+    "route": "home",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:icons:375",
+    "label": "route",
+    "route": "icons",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:information-bar:375",
+    "label": "route",
+    "route": "information-bar",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:input:375",
+    "label": "route",
+    "route": "input",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:layers:375",
+    "label": "route",
+    "route": "layers",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:list:375",
+    "label": "route",
+    "route": "list",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:loading:375",
+    "label": "route",
+    "route": "loading",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:loadmore:375",
+    "label": "route",
+    "route": "loadmore",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg:375",
+    "label": "route",
+    "route": "msg",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_custom_area_cell:375",
+    "label": "route",
+    "route": "msg_custom_area_cell",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_custom_area_preview:375",
+    "label": "route",
+    "route": "msg_custom_area_preview",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_custom_area_tips:375",
+    "label": "route",
+    "route": "msg_custom_area_tips",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_success:375",
+    "label": "route",
+    "route": "msg_success",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_text:375",
+    "label": "route",
+    "route": "msg_text",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_text_primary:375",
+    "label": "route",
+    "route": "msg_text_primary",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_warn:375",
+    "label": "route",
+    "route": "msg_warn",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:navbar:375",
+    "label": "route",
+    "route": "navbar",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:panel:375",
+    "label": "route",
+    "route": "panel",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:picker:375",
+    "label": "route",
+    "route": "picker",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:preview:375",
+    "label": "route",
+    "route": "preview",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:progress:375",
+    "label": "route",
+    "route": "progress",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:searchbar:375",
+    "label": "route",
+    "route": "searchbar",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:searchbar_filled:375",
+    "label": "route",
+    "route": "searchbar_filled",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:searchbar_grey:375",
+    "label": "route",
+    "route": "searchbar_grey",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:searchbar_homepage:375",
+    "label": "route",
+    "route": "searchbar_homepage",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:searchbar_outlined:375",
+    "label": "route",
+    "route": "searchbar_outlined",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:slider:375",
+    "label": "route",
+    "route": "slider",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:steps:375",
+    "label": "route",
+    "route": "steps",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:steps_horizonal:375",
+    "label": "route",
+    "route": "steps_horizonal",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:steps_vertical:375",
+    "label": "route",
+    "route": "steps_vertical",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:tabbar:375",
+    "label": "route",
+    "route": "tabbar",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:toast:375",
+    "label": "route",
+    "route": "toast",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:uploader:375",
+    "label": "route",
+    "route": "uploader",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:actionsheet:768",
+    "label": "route",
+    "route": "actionsheet",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:article:768",
+    "label": "route",
+    "route": "article",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:badge:768",
+    "label": "route",
+    "route": "badge",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:button:768",
+    "label": "route",
+    "route": "button",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:button_bottom_fixed:768",
+    "label": "route",
+    "route": "button_bottom_fixed",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:button_default:768",
+    "label": "route",
+    "route": "button_default",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:dialog:768",
+    "label": "route",
+    "route": "dialog",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:flex:768",
+    "label": "route",
+    "route": "flex",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:footer:768",
+    "label": "route",
+    "route": "footer",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form:768",
+    "label": "route",
+    "route": "form",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_access:768",
+    "label": "route",
+    "route": "form_access",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_bottom_fixed:768",
+    "label": "route",
+    "route": "form_bottom_fixed",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_checkbox:768",
+    "label": "route",
+    "route": "form_checkbox",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_input_status:768",
+    "label": "route",
+    "route": "form_input_status",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_page:768",
+    "label": "route",
+    "route": "form_page",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_page_old:768",
+    "label": "route",
+    "route": "form_page_old",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_primary:768",
+    "label": "route",
+    "route": "form_primary",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_radio:768",
+    "label": "route",
+    "route": "form_radio",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_select:768",
+    "label": "route",
+    "route": "form_select",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_select_primary:768",
+    "label": "route",
+    "route": "form_select_primary",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_switch:768",
+    "label": "route",
+    "route": "form_switch",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_textarea:768",
+    "label": "route",
+    "route": "form_textarea",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_vcode:768",
+    "label": "route",
+    "route": "form_vcode",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_vertical:768",
+    "label": "route",
+    "route": "form_vertical",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:gallery:768",
+    "label": "route",
+    "route": "gallery",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:grid:768",
+    "label": "route",
+    "route": "grid",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:half-screen-dialog:768",
+    "label": "route",
+    "route": "half-screen-dialog",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:home:768",
+    "label": "route",
+    "route": "home",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:icons:768",
+    "label": "route",
+    "route": "icons",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:information-bar:768",
+    "label": "route",
+    "route": "information-bar",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:input:768",
+    "label": "route",
+    "route": "input",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:layers:768",
+    "label": "route",
+    "route": "layers",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:list:768",
+    "label": "route",
+    "route": "list",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:loading:768",
+    "label": "route",
+    "route": "loading",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:loadmore:768",
+    "label": "route",
+    "route": "loadmore",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg:768",
+    "label": "route",
+    "route": "msg",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_custom_area_cell:768",
+    "label": "route",
+    "route": "msg_custom_area_cell",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_custom_area_preview:768",
+    "label": "route",
+    "route": "msg_custom_area_preview",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_custom_area_tips:768",
+    "label": "route",
+    "route": "msg_custom_area_tips",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_success:768",
+    "label": "route",
+    "route": "msg_success",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_text:768",
+    "label": "route",
+    "route": "msg_text",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_text_primary:768",
+    "label": "route",
+    "route": "msg_text_primary",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_warn:768",
+    "label": "route",
+    "route": "msg_warn",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:navbar:768",
+    "label": "route",
+    "route": "navbar",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:panel:768",
+    "label": "route",
+    "route": "panel",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:picker:768",
+    "label": "route",
+    "route": "picker",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:preview:768",
+    "label": "route",
+    "route": "preview",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:progress:768",
+    "label": "route",
+    "route": "progress",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:searchbar:768",
+    "label": "route",
+    "route": "searchbar",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:searchbar_filled:768",
+    "label": "route",
+    "route": "searchbar_filled",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:searchbar_grey:768",
+    "label": "route",
+    "route": "searchbar_grey",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:searchbar_homepage:768",
+    "label": "route",
+    "route": "searchbar_homepage",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:searchbar_outlined:768",
+    "label": "route",
+    "route": "searchbar_outlined",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:slider:768",
+    "label": "route",
+    "route": "slider",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:steps:768",
+    "label": "route",
+    "route": "steps",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:steps_horizonal:768",
+    "label": "route",
+    "route": "steps_horizonal",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:steps_vertical:768",
+    "label": "route",
+    "route": "steps_vertical",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:tabbar:768",
+    "label": "route",
+    "route": "tabbar",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:toast:768",
+    "label": "route",
+    "route": "toast",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:uploader:768",
+    "label": "route",
+    "route": "uploader",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:actionsheet:1280",
+    "label": "route",
+    "route": "actionsheet",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:article:1280",
+    "label": "route",
+    "route": "article",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:badge:1280",
+    "label": "route",
+    "route": "badge",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:button:1280",
+    "label": "route",
+    "route": "button",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:button_bottom_fixed:1280",
+    "label": "route",
+    "route": "button_bottom_fixed",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:button_default:1280",
+    "label": "route",
+    "route": "button_default",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:dialog:1280",
+    "label": "route",
+    "route": "dialog",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:flex:1280",
+    "label": "route",
+    "route": "flex",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:footer:1280",
+    "label": "route",
+    "route": "footer",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form:1280",
+    "label": "route",
+    "route": "form",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_access:1280",
+    "label": "route",
+    "route": "form_access",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_bottom_fixed:1280",
+    "label": "route",
+    "route": "form_bottom_fixed",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_checkbox:1280",
+    "label": "route",
+    "route": "form_checkbox",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_input_status:1280",
+    "label": "route",
+    "route": "form_input_status",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_page:1280",
+    "label": "route",
+    "route": "form_page",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_page_old:1280",
+    "label": "route",
+    "route": "form_page_old",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_primary:1280",
+    "label": "route",
+    "route": "form_primary",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_radio:1280",
+    "label": "route",
+    "route": "form_radio",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_select:1280",
+    "label": "route",
+    "route": "form_select",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_select_primary:1280",
+    "label": "route",
+    "route": "form_select_primary",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_switch:1280",
+    "label": "route",
+    "route": "form_switch",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_textarea:1280",
+    "label": "route",
+    "route": "form_textarea",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_vcode:1280",
+    "label": "route",
+    "route": "form_vcode",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:form_vertical:1280",
+    "label": "route",
+    "route": "form_vertical",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:gallery:1280",
+    "label": "route",
+    "route": "gallery",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:grid:1280",
+    "label": "route",
+    "route": "grid",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:half-screen-dialog:1280",
+    "label": "route",
+    "route": "half-screen-dialog",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:home:1280",
+    "label": "route",
+    "route": "home",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:icons:1280",
+    "label": "route",
+    "route": "icons",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:information-bar:1280",
+    "label": "route",
+    "route": "information-bar",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:input:1280",
+    "label": "route",
+    "route": "input",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:layers:1280",
+    "label": "route",
+    "route": "layers",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:list:1280",
+    "label": "route",
+    "route": "list",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:loading:1280",
+    "label": "route",
+    "route": "loading",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:loadmore:1280",
+    "label": "route",
+    "route": "loadmore",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg:1280",
+    "label": "route",
+    "route": "msg",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_custom_area_cell:1280",
+    "label": "route",
+    "route": "msg_custom_area_cell",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_custom_area_preview:1280",
+    "label": "route",
+    "route": "msg_custom_area_preview",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_custom_area_tips:1280",
+    "label": "route",
+    "route": "msg_custom_area_tips",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_success:1280",
+    "label": "route",
+    "route": "msg_success",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_text:1280",
+    "label": "route",
+    "route": "msg_text",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_text_primary:1280",
+    "label": "route",
+    "route": "msg_text_primary",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:msg_warn:1280",
+    "label": "route",
+    "route": "msg_warn",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:navbar:1280",
+    "label": "route",
+    "route": "navbar",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:panel:1280",
+    "label": "route",
+    "route": "panel",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:picker:1280",
+    "label": "route",
+    "route": "picker",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:preview:1280",
+    "label": "route",
+    "route": "preview",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:progress:1280",
+    "label": "route",
+    "route": "progress",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:searchbar:1280",
+    "label": "route",
+    "route": "searchbar",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:searchbar_filled:1280",
+    "label": "route",
+    "route": "searchbar_filled",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:searchbar_grey:1280",
+    "label": "route",
+    "route": "searchbar_grey",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:searchbar_homepage:1280",
+    "label": "route",
+    "route": "searchbar_homepage",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:searchbar_outlined:1280",
+    "label": "route",
+    "route": "searchbar_outlined",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:slider:1280",
+    "label": "route",
+    "route": "slider",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:steps:1280",
+    "label": "route",
+    "route": "steps",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:steps_horizonal:1280",
+    "label": "route",
+    "route": "steps_horizonal",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:steps_vertical:1280",
+    "label": "route",
+    "route": "steps_vertical",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:tabbar:1280",
+    "label": "route",
+    "route": "tabbar",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:toast:1280",
+    "label": "route",
+    "route": "toast",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive:uploader:1280",
+    "label": "route",
+    "route": "uploader",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "appearance-preserves-draft",
+    "label": "route",
+    "route": "form_primary",
+    "theme": "light",
+    "care": false,
+    "brand": "",
+    "state": "default"
+  }
+]

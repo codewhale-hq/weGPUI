@@ -1,0 +1,36 @@
+{
+  "result": "PASS",
+  "native_gpui_test": false,
+  "checker_sha256": "1992b0736475aebe15528a9621aabdc12d6044b8cb4aa328070887b49967ba55",
+  "site": "/workspace/.wegpui-cloud/web-main-candidate-3",
+  "results": [
+    {
+      "mount": "root",
+      "command": [
+        "/opt/parity-python/bin/python",
+        "/workspace/weGPUI/website/check_browser.py",
+        "--url",
+        "http://127.0.0.1:45847/",
+        "--browser",
+        "/usr/bin/chromium",
+        "--out",
+        "/workspace/weGPUI/docs/receipts/web-interactive-20261025/legacy-candidate3/root"
+      ],
+      "exit_code": 0
+    },
+    {
+      "mount": "project-prefix",
+      "command": [
+        "/opt/parity-python/bin/python",
+        "/workspace/weGPUI/website/check_browser.py",
+        "--url",
+        "http://127.0.0.1:32781/weGPUI/",
+        "--browser",
+        "/usr/bin/chromium",
+        "--out",
+        "/workspace/weGPUI/docs/receipts/web-interactive-20261025/legacy-candidate3/project-prefix"
+      ],
+      "exit_code": 0
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'">
+  <title>weGPUI browser gallery — half-screen-dialog</title>
+  <link rel="stylesheet" href="vendor/weui.css">
+  <link rel="stylesheet" href="vendor/example.css">
+  <link rel="stylesheet" href="bridge.css">
+  <link rel="stylesheet" href="shell.css">
+  <script src="vendor/zepto.min.js" defer=""></script>
+  <script src="vendor/weui.min.js" defer=""></script>
+  <script src="vendor/routes.js" defer=""></script>
+  <script src="bridge.js" defer=""></script>
+  <script src="router.js" defer=""></script>
+</head>
+<body data-weui-theme="light" data-ready="true" data-route="half-screen-dialog" data-state="default" style="--weui-BRAND: #07c160; --weui-BRAND-100: #07c160; --weui-BRAND-80: #069a4d; --weui-BRAND-90: #06ae56; --weui-BRAND-120: #39cd80; --weui-BRAND-170: #b5eccf; --weui-BRAND-BG-100: #07c160; --weui-BRAND-BG-90: #06ae56; --weui-BRAND-BG-110: #20c770; --weui-BRAND-BG-130: #51d490;">
+  <span aria-hidden="true" id="js_a11y_comma" class="weui-hidden_abs">，</span>
+  <div id="playground-status" role="status" aria-live="polite" aria-atomic="true"></div>
+  <div id="playground-loading" role="status" hidden="">Loading interactive example…</div>
+  <div class="container" id="container"><div class="page half-screen-dialog js_show" data-route="half-screen-dialog">
+    <div class="page__hd" inert="">
+        <h1 class="page__title">Half-screen Dialog</h1>
+        <p class="page__desc">半屏组件</p>
+    </div>
+    <div class="page__bd page__bd_spacing" inert="">
+        <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_default" id="showDialog1" tabindex="0">样式一</a>
+        <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_default" id="showDialog2" tabindex="0">样式二</a>
+        <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_default" id="showDialog3" tabindex="0">样式三</a>
+        <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_default" id="showDialog4" tabindex="0">样式四</a>
+        <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_default" id="showDialog5" tabindex="0">样式五</a>
+    </div>
+
+    <div id="dialogs">
+        <div id="dialogWrap1" class="js_dialog_wrap playground-overlay-open" ref="showDialog1" aria-labelledby="js_title1" role="dialog" aria-modal="true" aria-hidden="false" style="display: block;" tabindex="-1">
+            <div id="mask1" class="js_close weui-mask"></div>
+            <div id="js_dialog_1" class="js_dialog weui-half-screen-dialog weui-half-screen-dialog_show">
+                <div class="weui-half-screen-dialog__hd">
+                  <div class="weui-half-screen-dialog__hd__side">
+                    <button class="js_close weui-btn_icon weui-wa-hotarea" type="button">关闭<i class="weui-icon-close-thin"></i></button>
+                  </div>
+                  <div class="weui-half-screen-dialog__hd__main">
+                    <strong class="weui-half-screen-dialog__title" id="js_title1">标题</strong>
+                    <span class="weui-half-screen-dialog__subtitle">副标题</span>
+                  </div>
+                  <div class="weui-half-screen-dialog__hd__side">
+                    <div class="weui-half-screen-dialog__hd__action-group">
+                      <button class="weui-half-screen-dialog__hd__action weui-btn_icon weui-wa-hotarea" type="button">搜索<i class="weui-icon-search"></i></button>
+                      <button class="weui-half-screen-dialog__hd__action weui-btn_icon weui-wa-hotarea" type="button">更多<i class="weui-icon-more"></i></button>
+                      <a href="#" class="weui-half-screen-dialog__hd__action weui-link weui-wa-hotarea">完成</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="weui-half-screen-dialog__bd">
+                  <br>
+                  <br>
+                  可放自定义内容
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                </div>
+            </div>
+        </div>
+        <div id="dialogWrap2" class="js_dialog_wrap" ref="showDialog2" aria-labelledby="js_title2" role="dialog" aria-modal="false" aria-hidden="true" style="display: none;" inert="">
+            <div id="mask2" class="js_close weui-mask"></div>
+            <div id="js_dialog_2" class="js_dialog weui-half-screen-dialog weui-bottom-fixed-opr-page">
+              <div class="weui-half-screen-dialog__hd">
+                <div class="weui-half-screen-dialog__hd__side">
+                  <button class="js_close weui-btn_icon weui-wa-hotarea" type="button">关闭<i class="weui-icon-slide-down"></i></button>
+                  <button style="display: none;" class="weui-btn_icon weui-wa-hotarea" type="button">返回<i class="weui-icon-back-arrow-thin"></i></button>
+                  <button style="display: none;" class="js_close weui-btn_icon weui-wa-hotarea" type="button">关闭<i class="weui-icon-close-thin"></i></button>
+                </div>
+                <div class="weui-half-screen-dialog__hd__main">
+                  <strong class="weui-half-screen-dialog__title" id="js_title2">标题</strong>
+                </div>
+                <div class="weui-half-screen-dialog__hd__side">
+                  <button class="weui-btn_icon weui-wa-hotarea" type="button">更多<i class="weui-icon-more"></i></button>
+                </div>
+              </div>
+              <div class="weui-half-screen-dialog__bd weui-bottom-fixed-opr-page__content" id="js_wrap_content">
+                <p class="weui-half-screen-dialog__desc">
+                辅助描述内容，可根据实际需要安排
+                </p>
+                <p class="weui-half-screen-dialog__tips" role="option">
+                辅助提示内容，可根据实际需要安排
+                Dolor adipisci quidem consequuntur similique consequuntur doloribus modi possimus sunt voluptas qui Aspernatur natus error quisquam quidem ipsa corrupti! Dignissimos quasi quis natus fugiat odio in? Mollitia molestias error earum.
+                Dolor adipisci quidem consequuntur similique consequuntur doloribus modi possimus sunt voluptas qui Aspernatur natus error quisquam quidem ipsa corrupti! Dignissimos quasi quis natus fugiat odio in? Mollitia molestias error earum.
+                Dolor adipisci quidem consequuntur similique consequuntur doloribus modi possimus sunt voluptas qui Aspernatur natus error quisquam quidem ipsa corrupti! Dignissimos quasi quis natus fugiat odio in? Mollitia molestias error earum.
+                Dolor adipisci quidem consequuntur similique consequuntur doloribus modi possimus sunt voluptas qui Aspernatur natus error quisquam quidem ipsa corrupti! Dignissimos quasi quis natus fugiat odio in? Mollitia molestias error earum.
+                Dolor adipisci quidem consequuntur similique consequuntur doloribus modi possimus sunt voluptas qui Aspernatur natus error quisquam quidem ipsa corrupti! Dignissimos quasi quis natus fugiat odio in? Mollitia molestias error earum.
+                </p>
+              </div>
+              <div class="weui-half-screen-dialog__ft weui-bottom-fixed-opr-page__tool">
+                <div class="weui-half-screen-dialog__btn-area">
+                  <a data-original-href="javascript:" href="#" id="js_wrap_btn" class="js_close weui-btn weui-btn_default">次要操作</a>
+                  <a data-original-href="javascript:" href="#" class="js_close weui-btn weui-btn_primary">同意下一步</a>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div id="dialogWrap3" class="js_dialog_wrap" ref="showDialog3" aria-label="弹窗标题" role="dialog" aria-modal="false" aria-hidden="true" style="display: none;" inert="">
+            <div aria-label="关闭" role="button" class="js_close weui-mask" tabindex="0"></div>
+            <div id="js_dialog_3" class="js_dialog weui-half-screen-dialog weui-half-screen-dialog_large">
+                <div class="weui-half-screen-dialog__hd">
+                  <div class="weui-half-screen-dialog__hd__main">
+                    <div class="weui-flex" style="align-items: center; font-size: 14px;">
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="" style="width: 24px; margin-right: 8px; border-radius: 50%; display: block;">
+                      昵称
+                    </div>
+                  </div>
+                </div>
+                <div class="weui-half-screen-dialog__bd">
+                  <br>
+                  可放自定义内容
+                  <br>
+                </div>
+                <div class="weui-half-screen-dialog__ft">
+                  <div class="weui-half-screen-dialog__btn-area">
+                    <a data-original-href="javascript:" href="#" class="js_close weui-btn weui-btn_default">次要操作</a>
+                    <a data-original-href="javascript:" href="#" class="js_close weui-btn weui-btn_primary">主要操作</a>
+                  </div>
+                  <div class="weui-half-screen-dialog__attachment-area">
+                    <a class="weui-link" href="javacript:;">附加操作</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div id="dialogWrap4" class="js_dialog_wrap" ref="showDialog4" aria-label="弹窗标题" role="dialog" aria-modal="false" aria-hidden="true" style="display: none;" inert="">
+            <div aria-label="关闭" role="button" class="js_close weui-mask" tabindex="0"></div>
+            <div id="js_dialog_4" class="js_dialog weui-half-screen-dialog">
+                <div class="weui-half-screen-dialog__hd">
+                  <div class="weui-half-screen-dialog__hd__main">
+                    <div class="weui-flex" style="align-items: center; font-size: 14px;">
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="" style="width: 24px; margin-right: 8px; border-radius: 50%; display: block;">
+                      昵称
+                    </div>
+                  </div>
+                </div>
+                <div class="weui-half-screen-dialog__bd">
+                  <div class="weui-form__tips__group">
+                    <div class="weui-form__tips__wrp">
+                      <label id="weuiAgree1" for="weuiAgreeCheckbox1" class="weui-agree weui-wa-hotarea">
+                        <input id="weuiAgreeCheckbox1" type="checkbox" class="weui-agree__checkbox" style=""><span class="weui-agree__text">阅读并同意<a href="/example/">《相关条款》</a>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="weui-form__tips__wrp">
+                      <label id="weuiAgree0" for="weuiAgreeCheckbox0" class="weui-agree weui-wa-hotarea">
+                        <input id="weuiAgreeCheckbox0" type="checkbox" class="weui-agree__checkbox" style=""><span class="weui-agree__text">以上信息用于核对账号绑定的身份</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="weui-half-screen-dialog__ft">
+                  <div id="js_wrap_btn_area" class="weui-half-screen-dialog__btn-area">
+                    <a id="js_wrap_btn_1" data-original-href="javascript:" href="#" class="js_close weui-btn weui-btn_default">非主要操作</a>
+                    <a data-original-href="javascript:" href="#" class="js_close weui-btn weui-btn_primary">主要操作</a>
+                  </div>
+                  <div class="weui-half-screen-dialog__attachment-area">
+                    <a class="weui-link" href="javacript:;">附加操作</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div id="dialogWrap5" class="js_dialog_wrap" ref="showDialog5" aria-labelledby="js_title5" role="dialog" aria-modal="false" aria-hidden="true" style="display: none;" inert="">
+            <div id="js_close" class="js_close weui-mask"></div>
+            <div id="js_dialog_5" class="js_dialog weui-half-screen-dialog weui-half-screen-dialog_grab">
+                <div class="weui-half-screen-dialog__hd">
+                  <div class="weui-half-screen-dialog__hd__grab" role="button" aria-label="下拉关闭对话框" tabindex="0">
+                    <div id="js_line" class="weui-half-screen-dialog__slide-icon">
+                      <i id="js_arrow" class="weui-icon-arrow"></i>
+                    </div>
+                  </div>
+
+                  <div class="weui-half-screen-dialog__hd__nav">
+                    <div class="weui-half-screen-dialog__hd__side">
+                      <button class="js_close weui-btn_icon weui-wa-hotarea" type="button">关闭<i class="weui-icon-slide-down"></i></button>
+                    </div>
+                    <div class="weui-half-screen-dialog__hd__main">
+                      <strong class="weui-half-screen-dialog__title" id="js_title2">标题</strong>
+                    </div>
+                    <div class="weui-half-screen-dialog__hd__side">
+                      <div class="weui-half-screen-dialog__hd__action-group">
+                        <button class="weui-half-screen-dialog__hd__action weui-btn_icon weui-wa-hotarea" type="button">搜索<i class="weui-icon-search"></i></button>
+                        <button class="weui-half-screen-dialog__hd__action weui-btn_icon weui-wa-hotarea" type="button">更多<i class="weui-icon-more"></i></button>
+                        <button class="weui-half-screen-dialog__hd__action weui-btn weui-btn_primary weui-btn_xmini" type="button">完成</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="weui-half-screen-dialog__bd">
+                  <br>
+                  <br>
+                  可放自定义内容
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+</body></html>

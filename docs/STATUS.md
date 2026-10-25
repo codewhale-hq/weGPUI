@@ -116,6 +116,10 @@ result is recorded below.
 
 ### Approved modal/cache and X11 focus compatibility
 
+This native compatibility batch is pushed and remote-verified as
+`f7d41a534b02c15c6dbf3d0b216c9becc3925bcd`; its fresh five source gates pass with
+47 root tests and one ignored doctest. The browser follow-up is separate.
+
 The owner approved and applied the [central dispatch/cached-frame guard](proposals/modal-a11y-action-guard/README.md)
 and [X11 grab-focus filter](proposals/x11-grab-focus/README.md). Their additional scope is now
 implemented: three GPUI framework files plus library Semantics/Modal integration, and a fourth
@@ -158,10 +162,24 @@ workspace-root patches selecting `vendor/gpui_pre`, `vendor/gpui_pre_linux`,
 dependency-manifest patches are not inherited. See [vendor setup](../vendor/README.md).
 No component row is accepted.
 
-The current user priority is the interactive browser gallery and a reviewable GitHub Pages
-hosting path. Website implementation/browser checks are in progress separately from this
-native batch. Hosting preparation belongs to that [website work](../website/README.md);
-it does not enable Pages, dispatch CI or authorize deployment.
+The [interactive browser gallery](../website/README.md) is built with 60 live routes and
+132 state presets from pinned WeUI 2.6.26 / WeUI.js 1.2.17. The full `final-candidate1-rerun`
+suite passes at site root and `/weGPUI/`: 40 browser checks, including 360 route/viewport
+observations. Final candidate 3 passes three targeted checks per mount plus the complete
+legacy checker: each mount verifies 264 historical state/theme views and 528 decoded images.
+The theme/native-theme checks cover 375/390/768/1280px, retained palette routes and live iframe
+pointer/Space interaction; the final 390px theme capture was reviewed. Candidate 3 changes
+only the palette handler and CSS minimum width relative to candidate 1; all other built
+files match. The complete suite remains attributed to candidate 1
+([exact scope and receipts](receipts/web-interactive-20261025/README.md)). It uses a Python-only normal build with
+checked-in assets and local-only upload previews. This separate HTML/CSS/JavaScript
+implementation does not run native GPUI; historical native captures use `?view=native`,
+and native setup remains at `#native-guide`. All 40 native component rows remain unaccepted.
+
+The manual-only GitHub Pages workflow and [hosting steps](../website/HOSTING.md) are ready
+for review. Pages is not enabled and no live site is established. The original instruction
+against CI dispatch/deployment still requires final explicit owner authorization for the
+reviewed source, destination, Pages enablement and publication action.
 
 ## Platform acceptance matrix
 
@@ -438,8 +456,8 @@ No branch was deleted here. Recheck current refs and working state before editin
 - **Reproduce behaviour probes:** `receipts/takeover-20261025/probe.rs.txt` and
   `probe-edges.rs.txt` are the manual probe apps behind the before/after receipts. Copy one to
   `examples/probe.rs` locally to run it; they are not part of the crate.
-- **Next verification:** finish the interactive browser gallery and obtain explicit owner
-  authorization before hosting/CI dispatch/deployment. Preserve the separately verified native
+- **Next verification:** review the verified interactive gallery and obtain final explicit
+  owner authorization before Pages enablement, CI dispatch or deployment. Preserve the separately verified native
   batch and its extended guard receipts; qualify cache performance and remaining matrices. Further
   vendor changes beyond the approved scope require approval. Extend sampled theme/state,
   nested-Weston and Orca checks to full desktop/component qualification;

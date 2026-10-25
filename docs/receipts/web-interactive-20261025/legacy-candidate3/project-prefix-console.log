@@ -1,0 +1,139 @@
+{
+  "browser": "156.0.8078.47",
+  "native_application_test": false,
+  "source_commit": "3840b47370f8defa925cbff7d3bf12ccf6250722",
+  "source_dirty": true,
+  "capture_commit": "2c8ed10",
+  "gpui_version": "0.3.9",
+  "routes_checked": 60,
+  "state_theme_routes_checked": 264,
+  "captures_decoded": 528,
+  "api_links_checked": 0,
+  "viewport_routes": [
+    [
+      390,
+      "overview"
+    ],
+    [
+      390,
+      "components/form_select?view=native"
+    ],
+    [
+      390,
+      "get-started"
+    ],
+    [
+      390,
+      "themes"
+    ],
+    [
+      390,
+      "native"
+    ],
+    [
+      390,
+      "native-guide"
+    ],
+    [
+      390,
+      "native-themes"
+    ],
+    [
+      390,
+      "platforms"
+    ],
+    [
+      390,
+      "roadmap"
+    ],
+    [
+      768,
+      "overview"
+    ],
+    [
+      768,
+      "components/form_select?view=native"
+    ],
+    [
+      768,
+      "get-started"
+    ],
+    [
+      768,
+      "themes"
+    ],
+    [
+      768,
+      "native"
+    ],
+    [
+      768,
+      "native-guide"
+    ],
+    [
+      768,
+      "native-themes"
+    ],
+    [
+      768,
+      "platforms"
+    ],
+    [
+      768,
+      "roadmap"
+    ],
+    [
+      1440,
+      "overview"
+    ],
+    [
+      1440,
+      "components/form_select?view=native"
+    ],
+    [
+      1440,
+      "get-started"
+    ],
+    [
+      1440,
+      "themes"
+    ],
+    [
+      1440,
+      "native"
+    ],
+    [
+      1440,
+      "native-guide"
+    ],
+    [
+      1440,
+      "native-themes"
+    ],
+    [
+      1440,
+      "platforms"
+    ],
+    [
+      1440,
+      "roadmap"
+    ]
+  ],
+  "palettes": [
+    "light",
+    "dark",
+    "care_light",
+    "care_dark"
+  ],
+  "page_errors": [],
+  "passed": [
+    "catalog search/empty state",
+    "state/theme deep links",
+    "native/reference comparison",
+    "clipboard",
+    "keyboard skip/focus",
+    "mobile navigation",
+    "responsive overflow",
+    "missing route"
+  ]
+}

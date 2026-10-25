@@ -1,0 +1,14 @@
+{
+  "utc": "2026-10-25T11:21:11.040352+00:00",
+  "canonical_parent": "3840b47370f8defa925cbff7d3bf12ccf6250722",
+  "working_tree": "Uncommitted integration source; full host/source hash manifests in browser validator receipt and per-capture metadata",
+  "source_sha256": {
+    "website/playground/bridge.js": "8e8ebb8cac666ae6f1ae007f3d31259c90158231a87c2c1bd098c84bf7b9a62f",
+    "website/playground/bridge.css": "bd66d7bdc6e6ef3220395ad40abc48adbccd1d201b54464f6a1caf40d850e442",
+    "docs/receipts/web-playground-20261025/bridge/flows.py": "eb1a1d9ef850526c3ea44fe65c3421f27f55f49c49b0e65d5cc6ea1d3241cefd",
+    "docs/receipts/web-playground-20261025/bridge/smoke.py": "189a64e5c6d6261a70faa683890aa97fbf9ea39a010148c24ee15876182ee10c",
+    "docs/receipts/web-playground-20261025/bridge/capture_review.py": "8ae5659e5cb6b807f7ba4bc77aeb2709c7e51f2c182bd8468c0c941bfbddcd26"
+  },
+  "final_source_utc": "2026-10-25T11:23:50.591120+00:00",
+  "capture_scope_note": "Corrected32 captures predate one routing-only Footer Home fix; their exact bridge bodies are archived in captures-corrected/tested-bridge.*.txt. Final132-case smoke and actual Footer Home check include it."
+}

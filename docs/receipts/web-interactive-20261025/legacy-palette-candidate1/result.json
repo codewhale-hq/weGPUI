@@ -1,0 +1,14 @@
+{
+  "result": "REPRODUCED_NATIVE_PAGE_NAVIGATION_DEFECT",
+  "before": {
+    "url": "http://127.0.0.1:43515/weGPUI/#native-themes",
+    "heading": "A shared visual language."
+  },
+  "after": {
+    "url": "http://127.0.0.1:43515/weGPUI/#themes?palette=dark",
+    "heading": "Make it feel like yours."
+  },
+  "app_sha256": "719eb46ed44fcabe1818f5bb9ca70daed198f47ef1195229393cfc7bbe73b100",
+  "browser": "156.0.8078.47",
+  "native_gpui_test": false
+}

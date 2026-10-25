@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "native_gpui_test": false,
+  "complete_suite": true,
+  "build_changed_during_run": false,
+  "reports": [
+    "root/browser-checks.json",
+    "project-prefix/browser-checks.json"
+  ]
+}

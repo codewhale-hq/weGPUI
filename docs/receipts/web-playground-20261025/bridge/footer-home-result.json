@@ -1,0 +1,5 @@
+{
+  "legacy_footer_home_navigation": "PASS",
+  "route": "home",
+  "note": "Checked actual Footer link; first ad-hoc attempt incorrectly looked for it on Article and timed out without invoking a control."
+}

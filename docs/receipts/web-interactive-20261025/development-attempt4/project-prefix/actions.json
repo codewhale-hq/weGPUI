@@ -1,0 +1,587 @@
+[
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "actionsheet",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "article",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "badge",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "button",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "button_bottom_fixed",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "button_default",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "dialog",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "flex",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "footer",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "form",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "form_access",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "form_bottom_fixed",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "form_checkbox",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "form_input_status",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "form_page",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "form_page_old",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "form_primary",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "form_radio",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "form_select",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "form_select_primary",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "form_switch",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "form_textarea",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "form_vcode",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "form_vertical",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "gallery",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "grid",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "half-screen-dialog",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "home",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "icons",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "information-bar",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "input",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "layers",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "list",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "loading",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "loadmore",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "msg",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "msg_custom_area_cell",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "msg_custom_area_preview",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "msg_custom_area_tips",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "msg_success",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "msg_text",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "msg_text_primary",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "msg_warn",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "navbar",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "panel",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "picker",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "preview",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "progress",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "searchbar",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "searchbar_filled",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "searchbar_grey",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "searchbar_homepage",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "searchbar_outlined",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "slider",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "steps",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "all-routes-responsive",
+    "label": "route",
+    "route": "steps_horizonal",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "links-content",
+    "label": "route",
+    "route": "footer",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "links-content",
+    "label": "route",
+    "route": "grid",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "links-content",
+    "label": "route",
+    "route": "preview",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "links-content",
+    "label": "route",
+    "route": "panel",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "links-content",
+    "label": "route",
+    "route": "msg_success",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "links-content",
+    "label": "route",
+    "route": "article",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "links-content",
+    "label": "route",
+    "route": "home",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "links-content",
+    "label": "route",
+    "route": "layers",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "appearance-preserves-draft",
+    "label": "route",
+    "route": "form_primary",
+    "theme": "light",
+    "care": false,
+    "brand": "",
+    "state": "default"
+  }
+]

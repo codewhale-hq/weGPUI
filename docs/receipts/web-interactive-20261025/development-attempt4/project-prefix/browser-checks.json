@@ -1,0 +1,45 @@
+{
+  "browser": "156.0.8078.47",
+  "base": "http://127.0.0.1:33633/weGPUI/",
+  "native_gpui_test": false,
+  "complete_suite": false,
+  "checks": [
+    {
+      "name": "all-routes-responsive",
+      "result": "FAIL",
+      "error": "AssertionError(('empty route', 'steps_horizonal', 375))",
+      "problems": []
+    },
+    {
+      "name": "links-content",
+      "result": "PASS",
+      "detail": {
+        "footer": "actual action feedback",
+        "grid": "actual action feedback",
+        "preview": "actual action feedback",
+        "panel": "actual action feedback",
+        "msg_success": "actual action feedback",
+        "article": "real scroll/content/images",
+        "home": "keyboard expansion and local navigation",
+        "layers": "keyboard selection",
+        "presentational_families": [
+          "badge",
+          "icons",
+          "flex",
+          "loading",
+          "loadmore",
+          "steps"
+        ]
+      }
+    },
+    {
+      "name": "appearance-preserves-draft",
+      "result": "PASS",
+      "detail": {
+        "partial_configurations": 3,
+        "same_input_dom_value_selection_focus": true
+      }
+    }
+  ],
+  "result": "FAIL"
+}

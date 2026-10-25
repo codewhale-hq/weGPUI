@@ -1,0 +1,20 @@
+{
+  "found": [
+    {
+      "file": "playground/index.html",
+      "trace": "docs/receipts/web-interactive-20261025/development-attempt1/project-prefix/trace.zip",
+      "resource": "resources/c2fa2f7b9e01f2456952a320eb868bbeaf8ba029.html",
+      "sha256": "bd64e2d02dec762627ae0069bc14736ea2ec63603aa49724304fdef4e556f30d"
+    },
+    {
+      "file": "playground/bridge.css",
+      "trace": "docs/receipts/web-interactive-20261025/development-attempt1/project-prefix/trace.zip",
+      "resource": "resources/f67bf1d26ee86a26446428aa36097edabe74fcce.css",
+      "sha256": "47591d941dcf76dcd5b16f21c9fad6d733105058e11f7c2da06926dacc94663f"
+    }
+  ],
+  "unrecovered": {
+    "5972b9b88e9a16e577c37d080aa94bc71ca4f500a7c3aa8695d5b4e7b71bc344": "playground/bridge.js",
+    "6771061128f004d272680ce00d867eae8f198c87c7007a6270cad9465a1be587": "playground/router.js"
+  }
+}

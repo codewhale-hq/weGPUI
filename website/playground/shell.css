@@ -1,0 +1,6 @@
+html, body { min-width: 240px; }
+#playground-loading { padding: 24px; color: var(--weui-FG-1); }
+.playground-error { padding: 32px 24px; color: var(--weui-FG-0); }
+.playground-error p { margin-top: 12px; color: var(--weui-FG-1); }
+.page { opacity: 1; }
+.container > .page { animation: none; }

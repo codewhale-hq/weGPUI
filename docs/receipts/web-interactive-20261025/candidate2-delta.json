@@ -1,0 +1,11 @@
+{
+  "candidate1": "/workspace/.wegpui-cloud/web-main-candidate-1",
+  "candidate2": "/workspace/.wegpui-cloud/web-main-candidate-2",
+  "changed": {
+    "app.js": {
+      "before": "719eb46ed44fcabe1818f5bb9ca70daed198f47ef1195229393cfc7bbe73b100",
+      "after": "9eb728841869d86aa15152a4fa74c37ff79a5dfddd91b1674422e06c5a767879"
+    }
+  },
+  "candidate2_files": 634
+}

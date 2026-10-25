@@ -1,0 +1,135 @@
+{
+  "browser": "156.0.8078.47",
+  "base": "http://127.0.0.1:39187/weGPUI/",
+  "native_gpui_test": false,
+  "complete_suite": false,
+  "checks": [
+    {
+      "name": "dialog-keyboard",
+      "result": "FAIL",
+      "error": "AssertionError('Locator expected to be visible\\nActual value: hidden \\nCall log:\\n  - Expect \"to_be_visible\" locator(\"#iosDialog1\") with timeout 5000ms\\n  - waiting for locator(\"#iosDialog1\")\\n    14 × locator resolved to <div role=\"dialog\" tabindex=\"-1\" id=\"iosDialog1\" aria-modal=\"true\" aria-hidden=\"false\" aria-labelledby=\"js_title1\" class=\"js_dialog playground-overlay-open\">…</div>\\n       - unexpected value \"hidden\"\\n\\nAria snapshot:\\n- heading \"Dialog\" [level=1]\\n- paragraph: 对话框\\n- button \"样式一\"\\n- button \"样式二\"\\n- button \"样式三\"\\n- button \"Android 样式一\"\\n- button \"Android 样式二\"\\n- dialog \"弹窗标题\":\\n  - strong: 弹窗标题\\n  - text: 弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内\\n  - button \"辅助操作\"\\n  - button \"主操作\"')",
+      "problems": []
+    },
+    {
+      "name": "half-dialog-keyboard",
+      "result": "FAIL",
+      "error": "AssertionError('Locator expected to be visible\\nActual value: hidden \\nCall log:\\n  - Expect \"to_be_visible\" locator(\"#dialogWrap1\") with timeout 5000ms\\n  - waiting for locator(\"#dialogWrap1\")\\n    14 × locator resolved to <div role=\"dialog\" tabindex=\"-1\" id=\"dialogWrap1\" ref=\"showDialog1\" aria-modal=\"true\" aria-hidden=\"false\" aria-labelledby=\"js_title1\" class=\"js_dialog_wrap playground-overlay-open\">…</div>\\n       - unexpected value \"hidden\"\\n\\nAria snapshot:\\n- heading \"Half-screen Dialog\" [level=1]\\n- paragraph: 半屏组件\\n- button \"样式一\"\\n- button \"样式二\"\\n- button \"样式三\"\\n- button \"样式四\"\\n- button \"样式五\"\\n- dialog \"标题\":\\n  - button \"关闭\"\\n  - strong: 标题\\n  - text: 副标题\\n  - button \"搜索\"\\n  - button \"更多\"\\n  - link \"完成\":\\n    - /url: \"#\"\\n  - text: 可放自定义内容')",
+      "problems": []
+    },
+    {
+      "name": "action-sheet-keyboard",
+      "result": "PASS",
+      "detail": {
+        "route": "actionsheet",
+        "tab_trap": true,
+        "escape_restore": true
+      }
+    },
+    {
+      "name": "button-guards",
+      "result": "PASS",
+      "detail": {
+        "pointer": 1,
+        "keyboard": 1,
+        "disabled_loading_callbacks": 0
+      }
+    },
+    {
+      "name": "html-input-editing",
+      "result": "FAIL",
+      "error": "AssertionError('Locator expected to have Value \\'\\'\\nActual value: 1234567890123456 \\nCall log:\\n  - Expect \"to_have_value\" locator(\"#js_input1\") with timeout 5000ms\\n  - waiting for locator(\"#js_input1\")\\n    14 × locator resolved to <input type=\"text\" id=\"js_input1\" maxlength=\"16\" pattern=\"[0-9]*\" class=\"weui-input\" placeholder=\"请输入16位数卡号\"/>\\n       - unexpected value \"1234567890123456\"\\n\\nAria snapshot:\\n- textbox \"卡号\":\\n  - /placeholder: 请输入16位数卡号\\n  - text: \"1234567890123456\"')",
+      "problems": []
+    },
+    {
+      "name": "choices",
+      "result": "FAIL",
+      "error": "AssertionError()",
+      "problems": []
+    },
+    {
+      "name": "agreement-vcode",
+      "result": "FAIL",
+      "error": "TimeoutError('Locator.click: Timeout 6000ms exceeded.\\nCall log:\\n  - waiting for locator(\"#weuiAgree a\")\\n    - locator resolved to <a href=\"/example/\">《相关条款》</a>\\n  - attempting click action\\n    2 × waiting for element to be visible, enabled and stable\\n      - element is not visible\\n    - retrying click action\\n    - waiting 20ms\\n    2 × waiting for element to be visible, enabled and stable\\n      - element is not visible\\n    - retrying click action\\n      - waiting 100ms\\n    11 × waiting for element to be visible, enabled and stable\\n       - element is not visible\\n     - retrying click action\\n       - waiting 500ms\\n')",
+      "problems": []
+    },
+    {
+      "name": "tabs",
+      "result": "PASS",
+      "detail": {
+        "navbar": {
+          "tabs": 3,
+          "pointer_and_keys": true
+        },
+        "tabbar": {
+          "tabs": 4,
+          "pointer_and_keys": true
+        }
+      }
+    },
+    {
+      "name": "search",
+      "result": "PASS",
+      "detail": {
+        "activate_type_submit_clear_cancel": true
+      }
+    },
+    {
+      "name": "pickers",
+      "result": "FAIL",
+      "error": "TimeoutError('Locator.click: Timeout 6000ms exceeded.\\nCall log:\\n  - waiting for get_by_role(\"dialog\").get_by_role(\"button\", name=\"取消\", exact=True)\\n    - locator resolved to <button type=\"button\" aria-label=\"取消\" class=\"weui-btn_icon weui-wa-hotarea\">取消</button>\\n  - attempting click action\\n    - waiting for element to be visible, enabled and stable\\n    - element is visible, enabled and stable\\n    - scrolling into view if needed\\n    - done scrolling\\n    - <div role=\"option\" id=\"web-picker-1-0-1\" aria-disabled=\"false\" aria-selected=\"false\" class=\"weui-picker__item\">火车票</div> from <div class=\"weui-picker__bd\">…</div> subtree intercepts pointer events\\n  - retrying click action\\n    - waiting for element to be visible, enabled and stable\\n    - element is visible, enabled and stable\\n    - scrolling into view if needed\\n    - done scrolling\\n    - <div role=\"option\" aria-selected=\"true\" id=\"web-picker-1-0-2\" aria-disabled=\"false\" class=\"weui-picker__item\">的士票</div> from <div class=\"weui-picker__bd\">…</div> subtree intercepts pointer events\\n  - retrying click action\\n    - waiting 20ms\\n    2 × waiting for element to be visible, enabled and stable\\n      - element is visible, enabled and stable\\n      - scrolling into view if needed\\n      - done scrolling\\n      - <div role=\"option\" aria-selected=\"true\" id=\"web-picker-1-0-2\" aria-disabled=\"false\" class=\"weui-picker__item\">的士票</div> from <div class=\"weui-picker__bd\">…</div> subtree intercepts pointer events\\n    - retrying click action\\n      - waiting 100ms\\n    11 × waiting for element to be visible, enabled and stable\\n       - element is visible, enabled and stable\\n       - scrolling into view if needed\\n       - done scrolling\\n       - <div role=\"option\" aria-selected=\"true\" id=\"web-picker-1-0-2\" aria-disabled=\"false\" class=\"weui-picker__item\">的士票</div> from <div class=\"weui-picker__bd\">…</div> subtree intercepts pointer events\\n     - retrying click action\\n       - waiting 500ms\\n')",
+      "problems": []
+    },
+    {
+      "name": "slider-progress",
+      "result": "PASS",
+      "detail": {
+        "slider_keys_pointer": true,
+        "unavailable_slider": true,
+        "progress_start_cancel": true
+      }
+    },
+    {
+      "name": "local-media",
+      "result": "PASS",
+      "detail": {
+        "local_blob_preview": true,
+        "keyboard_open_escape": true,
+        "delete": true,
+        "external_uploads": 0
+      }
+    },
+    {
+      "name": "swipe",
+      "result": "FAIL",
+      "error": "TimeoutError('Locator.bounding_box: Timeout 6000ms exceeded.\\nCall log:\\n  - waiting for get_by_role(\"button\", name=\"滑动列表项，向左显示操作\", exact=True)\\n')",
+      "problems": []
+    },
+    {
+      "name": "notices",
+      "result": "PASS",
+      "detail": {
+        "actual_notice_dismiss": true,
+        "restore": true
+      }
+    },
+    {
+      "name": "toast",
+      "result": "FAIL",
+      "error": "AssertionError('Locator expected to be visible\\nActual value: hidden \\nCall log:\\n  - Expect \"to_be_visible\" locator(\"#toast\") with timeout 5000ms\\n  - waiting for locator(\"#toast\")\\n    8 × locator resolved to <div id=\"toast\" role=\"status\" aria-live=\"polite\" aria-hidden=\"false\">…</div>\\n      - unexpected value \"hidden\"\\n    6 × locator resolved to <div id=\"toast\" role=\"status\" aria-live=\"off\" aria-hidden=\"true\">…</div>\\n      - unexpected value \"hidden\"\\n\\nAria snapshot:\\n- status: 已完成\\n- heading \"Toast\" [level=1]\\n- paragraph: 弹出式提示\\n- button \"成功提示\"\\n- button \"失败提示\"\\n- button \"长文案提示\"\\n- button \"正在加载提示\"\\n- button \"文字提示\"')",
+      "problems": []
+    },
+    {
+      "name": "links-content",
+      "result": "FAIL",
+      "error": "Error('Page.wait_for_function: EvalError: Evaluating a string as JavaScript violates the following Content Security Policy directive because \\'unsafe-eval\\' is not an allowed source of script: script-src \\'self\\'\".\\n\\n    at eval (<anonymous>)\\n    at predicate (eval at evaluate (:370:30), <anonymous>:4:60)\\n    at next (eval at evaluate (:370:30), <anonymous>:29:33)')",
+      "problems": []
+    },
+    {
+      "name": "themes",
+      "result": "FAIL",
+      "error": "AssertionError(({'width': 375, 'theme': 'dark', 'care': False, 'config': {'route': 'button_default', 'state': 'default', 'theme': 'dark', 'care': False, 'brand': '07c160'}, 'background': 'rgb(17, 17, 17)', 'primary': 'rgb(7, 193, 96)', 'font': 17, 'overflow': False}, {'width': 375, 'theme': 'dark', 'care': True, 'config': {'route': 'button_default', 'state': 'default', 'theme': 'dark', 'care': True, 'brand': '805ad5'}, 'background': 'rgb(17, 17, 17)', 'primary': 'rgb(128, 90, 213)', 'font': 17, 'overflow': False}))",
+      "problems": []
+    }
+  ],
+  "result": "FAIL"
+}

@@ -1,0 +1,14 @@
+"GET /weGPUI/playground/index.html HTTP/1.1" 200 -
+"GET /weGPUI/playground/vendor/example.css HTTP/1.1" 200 -
+"GET /weGPUI/playground/shell.css HTTP/1.1" 200 -
+"GET /weGPUI/playground/vendor/weui.css HTTP/1.1" 200 -
+"GET /weGPUI/playground/bridge.css HTTP/1.1" 200 -
+"GET /weGPUI/playground/vendor/zepto.min.js HTTP/1.1" 200 -
+"GET /weGPUI/playground/vendor/weui.min.js HTTP/1.1" 200 -
+"GET /weGPUI/playground/vendor/routes.js HTTP/1.1" 200 -
+"GET /weGPUI/playground/bridge.js HTTP/1.1" 200 -
+"GET /weGPUI/playground/router.js HTTP/1.1" 200 -
+"GET /weGPUI/playground/vendor/images/icon_tabbar.png HTTP/1.1" 200 -
+"GET /weGPUI/playground/vendor/images/pic_160.png HTTP/1.1" 200 -
+"GET /weGPUI/playground/vendor/images/pic_article.png HTTP/1.1" 200 -
+"GET /weGPUI/playground/vendor/images/icon_tabbar.png HTTP/1.1" 200 -

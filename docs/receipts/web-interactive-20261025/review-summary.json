@@ -1,0 +1,41 @@
+{
+  "result": "PASS",
+  "native_gpui_test": false,
+  "browser": "Chromium156.0.8078.47",
+  "final_site": "/workspace/.wegpui-cloud/web-main-candidate-3",
+  "checks": [
+    {
+      "mount": "root",
+      "full_candidate1_checks": 20,
+      "candidate1_route_width_observations": 180,
+      "legacy_candidate3_routes": 60,
+      "legacy_candidate3_state_theme_views": 264,
+      "legacy_candidate3_unique_captures": 528,
+      "legacy_candidate3_viewport_pages": 27,
+      "legacy_candidate3_page_errors": [],
+      "candidate3_targeted_checks": 3,
+      "candidate3_theme_page_width_observations": 8
+    },
+    {
+      "mount": "project-prefix",
+      "full_candidate1_checks": 20,
+      "candidate1_route_width_observations": 180,
+      "legacy_candidate3_routes": 60,
+      "legacy_candidate3_state_theme_views": 264,
+      "legacy_candidate3_unique_captures": 528,
+      "legacy_candidate3_viewport_pages": 27,
+      "legacy_candidate3_page_errors": [],
+      "candidate3_targeted_checks": 3,
+      "candidate3_theme_page_width_observations": 8
+    }
+  ],
+  "current_source_sha256": {
+    "website/app.js": "9eb728841869d86aa15152a4fa74c37ff79a5dfddd91b1674422e06c5a767879",
+    "website/style.css": "27d70324b31e50c573a5e26d821d11bcfb6946313dac973f03f0b86cc6cd9bff",
+    "website/check_interactive.py": "a51c7796674cfcfae94e2b6a7e2795aad1083eb9a3d2e30d8cb9c11b65cc08e6",
+    "website/check_browser.py": "1992b0736475aebe15528a9621aabdc12d6044b8cb4aa328070887b49967ba55"
+  },
+  "candidate1_manifest_sha256": "1228030425e2683a9b320ac06bc4beb500f26bfa721a65046bc2ea622eb9dd94",
+  "candidate3_manifest_sha256": "69ce36eab1d3be76cbeb833eea98094d7de37b08bc15b2dd6e4e54e36bf5eea3",
+  "qualification": "Candidate1 full360+40 checks; Candidate3 exact app/style deltas, full historical checks and targeted affected surfaces at both mounts. No full360 relabeling."
+}

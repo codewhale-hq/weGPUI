@@ -1,0 +1,294 @@
+[
+  {
+    "case": "dialog-keyboard",
+    "label": "route",
+    "route": "dialog",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "half-dialog-keyboard",
+    "label": "route",
+    "route": "half-screen-dialog",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "html-input-editing",
+    "label": "route",
+    "route": "form_input_status",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "html-input-editing",
+    "label": "route",
+    "route": "form_textarea",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "html-input-editing",
+    "label": "route",
+    "route": "input",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "choices",
+    "label": "route",
+    "route": "form_checkbox",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "choices",
+    "label": "choice-pointer",
+    "route": "form_checkbox",
+    "before": true,
+    "after": false,
+    "id": "s11"
+  },
+  {
+    "case": "choices",
+    "label": "choice-keyboard",
+    "route": "form_checkbox",
+    "after": true
+  },
+  {
+    "case": "choices",
+    "label": "route",
+    "route": "form_radio",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "choices",
+    "label": "choice-pointer",
+    "route": "form_radio",
+    "before": false,
+    "after": false,
+    "id": "x12"
+  },
+  {
+    "case": "agreement-vcode",
+    "label": "route",
+    "route": "form_vcode",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "pickers",
+    "label": "route",
+    "route": "picker",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "swipe",
+    "label": "route",
+    "route": "list",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "swipe",
+    "label": "route",
+    "route": "list",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "toast",
+    "label": "route",
+    "route": "toast",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "links-content",
+    "label": "route",
+    "route": "footer",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "links-content",
+    "label": "route",
+    "route": "grid",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "links-content",
+    "label": "route",
+    "route": "preview",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "links-content",
+    "label": "route",
+    "route": "panel",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "links-content",
+    "label": "route",
+    "route": "msg_success",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "links-content",
+    "label": "route",
+    "route": "article",
+    "theme": "light",
+    "care": false,
+    "brand": "07c160",
+    "state": "default"
+  },
+  {
+    "case": "themes",
+    "label": "route",
+    "route": "button_default",
+    "theme": "light",
+    "care": false,
+    "brand": "",
+    "state": "default"
+  },
+  {
+    "case": "themes",
+    "label": "route",
+    "route": "button_default",
+    "theme": "light",
+    "care": true,
+    "brand": "",
+    "state": "default"
+  },
+  {
+    "case": "themes",
+    "label": "route",
+    "route": "button_default",
+    "theme": "dark",
+    "care": false,
+    "brand": "",
+    "state": "default"
+  },
+  {
+    "case": "themes",
+    "label": "route",
+    "route": "button_default",
+    "theme": "dark",
+    "care": true,
+    "brand": "805ad5",
+    "state": "default"
+  },
+  {
+    "case": "themes",
+    "label": "route",
+    "route": "button_default",
+    "theme": "light",
+    "care": false,
+    "brand": "",
+    "state": "default"
+  },
+  {
+    "case": "themes",
+    "label": "route",
+    "route": "button_default",
+    "theme": "light",
+    "care": true,
+    "brand": "",
+    "state": "default"
+  },
+  {
+    "case": "themes",
+    "label": "route",
+    "route": "button_default",
+    "theme": "dark",
+    "care": false,
+    "brand": "",
+    "state": "default"
+  },
+  {
+    "case": "themes",
+    "label": "route",
+    "route": "button_default",
+    "theme": "dark",
+    "care": true,
+    "brand": "805ad5",
+    "state": "default"
+  },
+  {
+    "case": "themes",
+    "label": "route",
+    "route": "button_default",
+    "theme": "light",
+    "care": false,
+    "brand": "",
+    "state": "default"
+  },
+  {
+    "case": "themes",
+    "label": "route",
+    "route": "button_default",
+    "theme": "light",
+    "care": true,
+    "brand": "",
+    "state": "default"
+  },
+  {
+    "case": "themes",
+    "label": "route",
+    "route": "button_default",
+    "theme": "dark",
+    "care": false,
+    "brand": "",
+    "state": "default"
+  },
+  {
+    "case": "themes",
+    "label": "route",
+    "route": "button_default",
+    "theme": "dark",
+    "care": true,
+    "brand": "805ad5",
+    "state": "default"
+  }
+]

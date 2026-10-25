@@ -25,7 +25,17 @@ Updated 2026-10-25 by the Linux cloud agent. Each item says what unblocks it.
    (DateField defaults to UTC "today"), crates.io name/versioning, publication timing, website
    deployment target, signing/notarization requirements for packaged galleries.
 6. **Release authorization** before any crates.io publish, website deployment, tag, release
-   or CI dispatch.
+   or CI dispatch. The 60-route / 132-preset interactive gallery is built and locally verified
+   in full candidate1 at root and `/weGPUI/`: 40 browser checks, including 360 route/viewport
+   observations. Final candidate 3's three targeted checks per mount and complete legacy
+   checks pass at both mounts; each legacy run verifies 264 historical views and 528 decoded
+   images. Theme/native-theme pages pass at 375/390/768/1280px with retained palette routes
+   and live iframe pointer/Space interaction; the final narrow theme capture was reviewed.
+   Live-host, additional-browser and actual screen-reader qualification for the website remain open. The
+   [manual Pages flow](../website/HOSTING.md) is prepared; Pages is not enabled and no live
+   deployment is established. The original no-CI-dispatch / no-deployment instruction still
+   requires final owner authorization for the reviewed source and chosen destination before
+   enabling Pages or running publication. Browser results leave all 40 native rows unaccepted.
 7. **Upstream AccessKit report (optional):** `accesskit_atspi_common 0.19.1` never exports
    disabled for buttons in the original locked source (see `receipts/a11y-p1-20261024`).
    The approved local compatibility copy now fixes the sampled export. Filing an upstream issue is an

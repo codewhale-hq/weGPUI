@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/weGPUI/website/check_browser.py", line 87, in <module>
+    assert not overflow,(width,path)
+           ^^^^^^^^^^^^
+AssertionError: (390, 'themes')

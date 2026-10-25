@@ -1,0 +1,3 @@
+# Preserve verified third-party bytes, including their original whitespace.
+vendor/** -whitespace
+source/** -whitespace

@@ -1,0 +1,26 @@
+[
+  {
+    "case": "dialog-trap-escape-restore",
+    "pass": true
+  },
+  {
+    "case": "picker-keyboard-disabled-date-cancel",
+    "pass": true
+  },
+  {
+    "case": "buttons-disabled-loading-space",
+    "pass": true
+  },
+  {
+    "case": "local-file-keyboard-preview-delete-focus",
+    "pass": true
+  },
+  {
+    "case": "swipe-real-pointer-reveal-delete",
+    "pass": true
+  },
+  {
+    "case": "infobar-scoped-close-restore",
+    "pass": true
+  }
+]

@@ -1,0 +1,54 @@
+{
+  "before": {
+    "rootScroll": 0,
+    "iframe": {
+      "x": 296,
+      "y": 563.015625,
+      "width": 766,
+      "height": 760
+    },
+    "action": {
+      "x": 519,
+      "y": 987.609375,
+      "width": 160,
+      "height": 64
+    },
+    "buttonLocal": {
+      "x": 223,
+      "y": 424.59375,
+      "width": 160,
+      "height": 64,
+      "viewport": [
+        766,
+        760
+      ]
+    }
+  },
+  "initialClick": "Locator.click: Timeout 1000ms exceeded.\nCall log:\n  - waiting for locator(\"#iosDialog1 .weui-dialog__btn\").first\n    - locator resolved to <a href=\"#\" tabindex=\"0\" role=\"button\" data-original-href=\"javascript:\" class=\"weui-dialog__btn weui-dialog__btn_default\">\u8f85\u52a9\u64cd\u4f5c</a>\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - element is outside of the viewport\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - element is outside of the viewport\n    - retrying click action\n      - waiting 100ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - element is outside of the viewport\n    - retrying click action\n      - waiting 500ms\n",
+  "afterIframeScroll": {
+    "rootScroll": 423,
+    "iframe": {
+      "x": 277,
+      "y": 140.015625,
+      "width": 766,
+      "height": 760
+    },
+    "action": {
+      "x": 500,
+      "y": 564.609375,
+      "width": 160,
+      "height": 64
+    },
+    "buttonLocal": {
+      "x": 223,
+      "y": 424.59375,
+      "width": 160,
+      "height": 64,
+      "viewport": [
+        766,
+        760
+      ]
+    }
+  },
+  "afterScrollClick": "PASS"
+}

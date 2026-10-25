@@ -1,0 +1,12 @@
+{
+  "website/app.js": "9eb728841869d86aa15152a4fa74c37ff79a5dfddd91b1674422e06c5a767879",
+  "website/index.html": "3ed04d02e89251089da1f9e3136338b9ade062eba6f0deea741f545659689668",
+  "website/style.css": "27d70324b31e50c573a5e26d821d11bcfb6946313dac973f03f0b86cc6cd9bff",
+  "website/build.py": "d959db1b6e96b44004b680506c2969be5a78544d56b2649347b72fda0b08e514",
+  "website/playground/bridge.js": "8e8ebb8cac666ae6f1ae007f3d31259c90158231a87c2c1bd098c84bf7b9a62f",
+  "website/playground/bridge.css": "bd66d7bdc6e6ef3220395ad40abc48adbccd1d201b54464f6a1caf40d850e442",
+  "website/playground/router.js": "843c3811792cfe7cdf80523acf077203c42aa80c4ef785634262f59d06bc6a67",
+  "website/playground/index.html": "bd64e2d02dec762627ae0069bc14736ea2ec63603aa49724304fdef4e556f30d",
+  "website/playground/vendor/PROVENANCE.json": "edcd3606b517ca8d7afc1ea93c51366416e33d4d29c2b2290eb664501b14322c",
+  ".github/workflows/pages.yml": "d5cbd6723a28d46cdf272abdcb535f82e8f4ee8aa350bec37956fab56d6de5fa"
+}

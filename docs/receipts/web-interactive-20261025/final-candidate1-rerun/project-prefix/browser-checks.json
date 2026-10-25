@@ -1,0 +1,1707 @@
+{
+  "browser": "156.0.8078.47",
+  "base": "http://127.0.0.1:35683/weGPUI/",
+  "native_gpui_test": false,
+  "complete_suite": true,
+  "checks": [
+    {
+      "name": "all-routes-responsive",
+      "result": "PASS",
+      "detail": {
+        "routes": 60,
+        "widths": [
+          375,
+          768,
+          1280
+        ],
+        "observations": [
+          {
+            "route": "actionsheet",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "article",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "badge",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "button",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "button_bottom_fixed",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "button_default",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "dialog",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "flex",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "footer",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "form",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "form_access",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "form_bottom_fixed",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "form_checkbox",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "form_input_status",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "form_page",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "form_page_old",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "form_primary",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "form_radio",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "form_select",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "form_select_primary",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "form_switch",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "form_textarea",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "form_vcode",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "form_vertical",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "gallery",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "grid",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "half-screen-dialog",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "home",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "icons",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "information-bar",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "input",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "layers",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "list",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "loading",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "loadmore",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "msg",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "msg_custom_area_cell",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "msg_custom_area_preview",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "msg_custom_area_tips",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "msg_success",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "msg_text",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "msg_text_primary",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "msg_warn",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "navbar",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "panel",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "picker",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "preview",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "progress",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "searchbar",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "searchbar_filled",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "searchbar_grey",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "searchbar_homepage",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "searchbar_outlined",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "slider",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "steps",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "steps_horizonal",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "steps_vertical",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "tabbar",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "toast",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "uploader",
+            "width": 375,
+            "result": "PASS",
+            "scrollWidth": 375,
+            "pageScrollWidth": 375
+          },
+          {
+            "route": "actionsheet",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "article",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "badge",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "button",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "button_bottom_fixed",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "button_default",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "dialog",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "flex",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "footer",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "form",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "form_access",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "form_bottom_fixed",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "form_checkbox",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "form_input_status",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "form_page",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "form_page_old",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "form_primary",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "form_radio",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "form_select",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "form_select_primary",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "form_switch",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "form_textarea",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "form_vcode",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "form_vertical",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "gallery",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "grid",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "half-screen-dialog",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "home",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "icons",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "information-bar",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "input",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "layers",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "list",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "loading",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "loadmore",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "msg",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "msg_custom_area_cell",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "msg_custom_area_preview",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "msg_custom_area_tips",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "msg_success",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "msg_text",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "msg_text_primary",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "msg_warn",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "navbar",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "panel",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "picker",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "preview",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "progress",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "searchbar",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "searchbar_filled",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "searchbar_grey",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "searchbar_homepage",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "searchbar_outlined",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "slider",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "steps",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "steps_horizonal",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "steps_vertical",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "tabbar",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "toast",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "uploader",
+            "width": 768,
+            "result": "PASS",
+            "scrollWidth": 768,
+            "pageScrollWidth": 768
+          },
+          {
+            "route": "actionsheet",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "article",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "badge",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "button",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "button_bottom_fixed",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "button_default",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "dialog",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "flex",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "footer",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "form",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "form_access",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "form_bottom_fixed",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "form_checkbox",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "form_input_status",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "form_page",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "form_page_old",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "form_primary",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "form_radio",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "form_select",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "form_select_primary",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "form_switch",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "form_textarea",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "form_vcode",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "form_vertical",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "gallery",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "grid",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "half-screen-dialog",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "home",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "icons",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "information-bar",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "input",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "layers",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "list",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "loading",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "loadmore",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "msg",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "msg_custom_area_cell",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "msg_custom_area_preview",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "msg_custom_area_tips",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "msg_success",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "msg_text",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "msg_text_primary",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "msg_warn",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "navbar",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "panel",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "picker",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "preview",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "progress",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "searchbar",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "searchbar_filled",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "searchbar_grey",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "searchbar_homepage",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "searchbar_outlined",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "slider",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "steps",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "steps_horizonal",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "steps_vertical",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "tabbar",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "toast",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          },
+          {
+            "route": "uploader",
+            "width": 1280,
+            "result": "PASS",
+            "scrollWidth": 1280,
+            "pageScrollWidth": 1280
+          }
+        ]
+      }
+    },
+    {
+      "name": "dialog-keyboard",
+      "result": "PASS",
+      "detail": {
+        "route": "dialog",
+        "tab_trap": true,
+        "escape_restore": true,
+        "pointer_close": true
+      }
+    },
+    {
+      "name": "half-dialog-keyboard",
+      "result": "PASS",
+      "detail": {
+        "route": "half-screen-dialog",
+        "tab_trap": true,
+        "escape_restore": true,
+        "pointer_close": true
+      }
+    },
+    {
+      "name": "action-sheet-keyboard",
+      "result": "PASS",
+      "detail": {
+        "route": "actionsheet",
+        "tab_trap": true,
+        "escape_restore": true,
+        "pointer_close": true
+      }
+    },
+    {
+      "name": "button-guards",
+      "result": "PASS",
+      "detail": {
+        "pointer": 1,
+        "keyboard": 1,
+        "disabled_loading_callbacks": 0
+      }
+    },
+    {
+      "name": "html-input-editing",
+      "result": "PASS",
+      "detail": {
+        "maxlength": 16,
+        "readonly_disabled": true,
+        "browser_composition_protocol": "CDP Input.imeSetComposition/insertText; not an OS IME",
+        "unicode_multiline": true
+      }
+    },
+    {
+      "name": "choices",
+      "result": "PASS",
+      "detail": {
+        "form_checkbox": {
+          "pointer": true,
+          "keyboard": true
+        },
+        "form_radio": {
+          "pointer": true,
+          "keyboard": false
+        },
+        "form_switch": {
+          "pointer": true,
+          "keyboard": true
+        }
+      }
+    },
+    {
+      "name": "agreement-vcode",
+      "result": "PASS",
+      "detail": {
+        "terms_did_not_toggle": true,
+        "consent_keyboard": true,
+        "guarded_send_count": 1
+      }
+    },
+    {
+      "name": "tabs",
+      "result": "PASS",
+      "detail": {
+        "navbar": {
+          "tabs": 3,
+          "pointer_and_keys": true
+        },
+        "tabbar": {
+          "tabs": 4,
+          "pointer_and_keys": true
+        }
+      }
+    },
+    {
+      "name": "search",
+      "result": "PASS",
+      "detail": {
+        "activate_type_submit_clear_cancel": true
+      }
+    },
+    {
+      "name": "pickers",
+      "result": "PASS",
+      "detail": {
+        "staging_cancel": true,
+        "disabled_skip": true,
+        "confirm": true,
+        "cascade": true
+      }
+    },
+    {
+      "name": "slider-progress",
+      "result": "PASS",
+      "detail": {
+        "slider_keys_pointer": true,
+        "unavailable_slider": true,
+        "progress_start_cancel": true
+      }
+    },
+    {
+      "name": "local-media",
+      "result": "PASS",
+      "detail": {
+        "local_blob_preview": true,
+        "keyboard_open_escape": true,
+        "delete": true,
+        "external_uploads": 0
+      }
+    },
+    {
+      "name": "swipe",
+      "result": "PASS",
+      "detail": {
+        "keyboard_disclose_delete": true,
+        "real_pointer_drag_both_directions": true
+      }
+    },
+    {
+      "name": "notices",
+      "result": "PASS",
+      "detail": {
+        "actual_notice_dismiss": true,
+        "restore": true
+      }
+    },
+    {
+      "name": "toast",
+      "result": "PASS",
+      "detail": {
+        "passive_focus": true,
+        "visible_then_expires": true
+      }
+    },
+    {
+      "name": "links-content",
+      "result": "PASS",
+      "detail": {
+        "footer": "actual action feedback",
+        "grid": "actual action feedback",
+        "preview": "actual action feedback",
+        "panel": "actual action feedback",
+        "msg_success": "actual action feedback",
+        "article": "real scroll/content/images",
+        "home": "keyboard expansion and local navigation",
+        "layers": "keyboard selection",
+        "presentational_families": [
+          "badge",
+          "icons",
+          "flex",
+          "loading",
+          "loadmore",
+          "steps"
+        ]
+      }
+    },
+    {
+      "name": "themes",
+      "result": "PASS",
+      "detail": [
+        {
+          "width": 375,
+          "theme": "light",
+          "care": false,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "light",
+            "care": false,
+            "brand": ""
+          },
+          "background": "rgb(237, 237, 237)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(7, 193, 96)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 375,
+          "theme": "light",
+          "care": true,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "light",
+            "care": true,
+            "brand": ""
+          },
+          "background": "rgb(237, 237, 237)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(1, 137, 66)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 375,
+          "theme": "dark",
+          "care": false,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "dark",
+            "care": false,
+            "brand": ""
+          },
+          "background": "rgb(17, 17, 17)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(7, 193, 96)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 375,
+          "theme": "dark",
+          "care": true,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "dark",
+            "care": true,
+            "brand": "805ad5"
+          },
+          "background": "rgb(17, 17, 17)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(128, 90, 213)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 768,
+          "theme": "light",
+          "care": false,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "light",
+            "care": false,
+            "brand": ""
+          },
+          "background": "rgb(237, 237, 237)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(7, 193, 96)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 768,
+          "theme": "light",
+          "care": true,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "light",
+            "care": true,
+            "brand": ""
+          },
+          "background": "rgb(237, 237, 237)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(1, 137, 66)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 768,
+          "theme": "dark",
+          "care": false,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "dark",
+            "care": false,
+            "brand": ""
+          },
+          "background": "rgb(17, 17, 17)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(7, 193, 96)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 768,
+          "theme": "dark",
+          "care": true,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "dark",
+            "care": true,
+            "brand": "805ad5"
+          },
+          "background": "rgb(17, 17, 17)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(128, 90, 213)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 1280,
+          "theme": "light",
+          "care": false,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "light",
+            "care": false,
+            "brand": ""
+          },
+          "background": "rgb(237, 237, 237)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(7, 193, 96)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 1280,
+          "theme": "light",
+          "care": true,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "light",
+            "care": true,
+            "brand": ""
+          },
+          "background": "rgb(237, 237, 237)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(1, 137, 66)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 1280,
+          "theme": "dark",
+          "care": false,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "dark",
+            "care": false,
+            "brand": ""
+          },
+          "background": "rgb(17, 17, 17)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(7, 193, 96)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 1280,
+          "theme": "dark",
+          "care": true,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "dark",
+            "care": true,
+            "brand": "805ad5"
+          },
+          "background": "rgb(17, 17, 17)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(128, 90, 213)",
+          "font": 17,
+          "overflow": false
+        }
+      ]
+    },
+    {
+      "name": "appearance-preserves-draft",
+      "result": "PASS",
+      "detail": {
+        "partial_configurations": 3,
+        "same_input_dom_value_selection_focus": true,
+        "same_origin_wrong_window_message_ignored": true
+      }
+    },
+    {
+      "name": "shell-integration",
+      "result": "PASS",
+      "detail": [
+        {
+          "width": 375,
+          "deep_link_config_reload": true,
+          "live_dialog": true
+        },
+        {
+          "width": 768,
+          "deep_link_config_reload": true,
+          "live_dialog": true
+        },
+        {
+          "width": 1280,
+          "deep_link_config_reload": true,
+          "live_dialog": true
+        },
+        {
+          "toolbar_draft_dom_preserved": true,
+          "colour_control": "programmatic HTML color-input event; native picker popup not exercised",
+          "brand_reset": true,
+          "wide_inner_horizontal_scroll_on_phone": true,
+          "native_capture_mode": true,
+          "keyboard_catalog": true,
+          "prefs_across_routes": true,
+          "example_state": "ios1",
+          "history": true,
+          "wide_inner_preview": 768
+        }
+      ]
+    }
+  ],
+  "result": "PASS"
+}

@@ -1,0 +1,294 @@
+{
+  "browser": "156.0.8078.47",
+  "base": "http://127.0.0.1:45199/weGPUI/",
+  "native_gpui_test": false,
+  "complete_suite": false,
+  "checks": [
+    {
+      "name": "dialog-keyboard",
+      "result": "PASS",
+      "detail": {
+        "route": "dialog",
+        "tab_trap": true,
+        "escape_restore": true,
+        "pointer_close": true
+      }
+    },
+    {
+      "name": "half-dialog-keyboard",
+      "result": "PASS",
+      "detail": {
+        "route": "half-screen-dialog",
+        "tab_trap": true,
+        "escape_restore": true,
+        "pointer_close": true
+      }
+    },
+    {
+      "name": "html-input-editing",
+      "result": "PASS",
+      "detail": {
+        "maxlength": 16,
+        "readonly_disabled": true,
+        "browser_composition_protocol": "CDP Input.imeSetComposition/insertText; not an OS IME",
+        "unicode_multiline": true
+      }
+    },
+    {
+      "name": "choices",
+      "result": "FAIL",
+      "error": "AssertionError(('form_radio', 'pointer did not change', False))",
+      "problems": []
+    },
+    {
+      "name": "agreement-vcode",
+      "result": "PASS",
+      "detail": {
+        "terms_did_not_toggle": true,
+        "consent_keyboard": true,
+        "guarded_send_count": 1
+      }
+    },
+    {
+      "name": "pickers",
+      "result": "PASS",
+      "detail": {
+        "staging_cancel": true,
+        "disabled_skip": true,
+        "confirm": true,
+        "cascade": true
+      }
+    },
+    {
+      "name": "swipe",
+      "result": "FAIL",
+      "error": "TimeoutError('Locator.bounding_box: Timeout 6000ms exceeded.\\nCall log:\\n  - waiting for get_by_role(\"button\", name=\"滑动列表项，向左显示操作\", exact=True)\\n')",
+      "problems": []
+    },
+    {
+      "name": "toast",
+      "result": "PASS",
+      "detail": {
+        "passive_focus": true,
+        "visible_then_expires": true
+      }
+    },
+    {
+      "name": "links-content",
+      "result": "FAIL",
+      "error": "TimeoutError('Page.wait_for_function: Timeout 6000ms exceeded.')",
+      "problems": []
+    },
+    {
+      "name": "themes",
+      "result": "PASS",
+      "detail": [
+        {
+          "width": 375,
+          "theme": "light",
+          "care": false,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "light",
+            "care": false,
+            "brand": ""
+          },
+          "background": "rgb(237, 237, 237)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(7, 193, 96)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 375,
+          "theme": "light",
+          "care": true,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "light",
+            "care": true,
+            "brand": ""
+          },
+          "background": "rgb(237, 237, 237)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(1, 137, 66)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 375,
+          "theme": "dark",
+          "care": false,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "dark",
+            "care": false,
+            "brand": ""
+          },
+          "background": "rgb(17, 17, 17)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(7, 193, 96)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 375,
+          "theme": "dark",
+          "care": true,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "dark",
+            "care": true,
+            "brand": "805ad5"
+          },
+          "background": "rgb(17, 17, 17)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(128, 90, 213)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 768,
+          "theme": "light",
+          "care": false,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "light",
+            "care": false,
+            "brand": ""
+          },
+          "background": "rgb(237, 237, 237)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(7, 193, 96)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 768,
+          "theme": "light",
+          "care": true,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "light",
+            "care": true,
+            "brand": ""
+          },
+          "background": "rgb(237, 237, 237)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(1, 137, 66)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 768,
+          "theme": "dark",
+          "care": false,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "dark",
+            "care": false,
+            "brand": ""
+          },
+          "background": "rgb(17, 17, 17)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(7, 193, 96)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 768,
+          "theme": "dark",
+          "care": true,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "dark",
+            "care": true,
+            "brand": "805ad5"
+          },
+          "background": "rgb(17, 17, 17)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(128, 90, 213)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 1280,
+          "theme": "light",
+          "care": false,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "light",
+            "care": false,
+            "brand": ""
+          },
+          "background": "rgb(237, 237, 237)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(7, 193, 96)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 1280,
+          "theme": "light",
+          "care": true,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "light",
+            "care": true,
+            "brand": ""
+          },
+          "background": "rgb(237, 237, 237)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(1, 137, 66)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 1280,
+          "theme": "dark",
+          "care": false,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "dark",
+            "care": false,
+            "brand": ""
+          },
+          "background": "rgb(17, 17, 17)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(7, 193, 96)",
+          "font": 17,
+          "overflow": false
+        },
+        {
+          "width": 1280,
+          "theme": "dark",
+          "care": true,
+          "config": {
+            "route": "button_default",
+            "state": "default",
+            "theme": "dark",
+            "care": true,
+            "brand": "805ad5"
+          },
+          "background": "rgb(17, 17, 17)",
+          "foreground": "rgb(0, 0, 0)",
+          "primary": "rgb(128, 90, 213)",
+          "font": 17,
+          "overflow": false
+        }
+      ]
+    }
+  ],
+  "result": "FAIL"
+}

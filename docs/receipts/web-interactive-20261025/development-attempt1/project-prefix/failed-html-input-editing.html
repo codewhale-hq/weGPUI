@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'">
+  <title>weGPUI browser gallery — form_input_status</title>
+  <link rel="stylesheet" href="vendor/weui.css">
+  <link rel="stylesheet" href="vendor/example.css">
+  <link rel="stylesheet" href="bridge.css">
+  <link rel="stylesheet" href="shell.css">
+  <script src="vendor/zepto.min.js" defer=""></script>
+  <script src="vendor/weui.min.js" defer=""></script>
+  <script src="vendor/routes.js" defer=""></script>
+  <script src="bridge.js" defer=""></script>
+  <script src="router.js" defer=""></script>
+</head>
+<body data-weui-theme="light" data-ready="true" data-route="form_input_status" data-state="default" style="--weui-BRAND: #07c160; --weui-BRAND-100: #07c160; --weui-BRAND-80: #069a4d; --weui-BRAND-90: #06ae56; --weui-BRAND-120: #39cd80; --weui-BRAND-170: #b5eccf; --weui-BRAND-BG-100: #07c160; --weui-BRAND-BG-90: #06ae56; --weui-BRAND-BG-110: #20c770; --weui-BRAND-BG-130: #51d490;">
+  <span aria-hidden="true" id="js_a11y_comma" class="weui-hidden_abs">，</span>
+  <div id="playground-status" role="status" aria-live="polite" aria-atomic="true">已选择：1234567890123456</div>
+  <div id="playground-loading" role="status" hidden="">Loading interactive example…</div>
+  <div class="container" id="container"><div class="page form_input_status js_show" data-route="form_input_status" data-action-count="3">
+  <div class="weui-form">
+    <div class="weui-form__bd">
+      <div class="weui-form__text-area">
+        <h2 class="weui-form__title">输入框状态</h2>
+        <div class="weui-form__desc">可体验表单输入的反馈状态。显示报错信息有两种类型，一种是超过1个输入项的时候，用置顶tipsbar报错信息，告知错误原因，页面聚焦到对应的报错区域，内容标红色，另一种是在当前输入项位置报错，适用于只有1个输入项的时候，用户焦点主要是输入区域。</div>
+      </div>
+      <div class="weui-form__control-area">
+        <div class="weui-cells__group weui-cells__group_form">
+          <div class="weui-cells__title">表单报错：置顶tipsbar报错信息</div>
+          <div class="weui-cells">
+            <label for="js_input1" class="weui-cell weui-cell_active" id="js_cell">
+              <div class="weui-cell__hd"><span class="weui-label">卡号</span></div>
+              <div class="weui-cell__bd weui-flex">
+                  <input id="js_input1" class="weui-input" type="text" pattern="[0-9]*" placeholder="请输入16位数卡号" maxlength="16" style="">
+                  <button id="js_input_clear" class="weui-btn_reset weui-btn_icon weui-btn_input-clear" type="button">
+                    <i class="weui-icon-clear"></i>
+                  </button>
+              </div>
+            </label>
+            <label for="js_input2" class="weui-cell weui-cell_active">
+              <div class="weui-cell__hd"><span class="weui-label">持卡人</span></div>
+              <div class="weui-cell__bd weui-flex">
+                  <input id="js_input2" class="weui-input" type="text" placeholder="请输入持卡人姓名" style="">
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="weui-cells__group weui-cells__group_form">
+          <div class="weui-cells__title">表单报错：当前项位置报错</div>
+          <div class="weui-cells">
+            <label for="js_current_input" class="weui-cell weui-cell_active">
+              <div class="weui-cell__hd"><span class="weui-label">金额</span></div>
+              <div class="weui-cell__bd weui-flex">
+                  <input id="js_current_input" class="weui-input" type="text" placeholder="请输入金额" style="">
+              </div>
+            </label>
+          </div>
+          <div role="alert" id="js_current_tips" style="display: none;" class="weui-cells__tips weui-cells__tips_warn">最多支持8位数</div>
+        </div>
+        <div class="weui-cells__group weui-cells__group_form">
+          <div class="weui-cells__title">表单只读、置灰</div>
+          <div class="weui-cells">
+            <label for="js_input3" class="weui-cell weui-cell_active weui-cell_readonly">
+              <div class="weui-cell__hd"><span class="weui-label">EMail</span></div>
+              <div class="weui-cell__bd">
+                  <input id="js_input3" class="weui-input" placeholder="请输入EMail" value="1234567" readonly="" style="">
+              </div>
+            </label>
+            <label for="js_input4" class="weui-cell weui-cell_active weui-cell_disabled">
+              <div class="weui-cell__hd"><span class="weui-label">微信号</span></div>
+              <div class="weui-cell__bd">
+                  <input id="js_input4" class="weui-input" placeholder="请输入微信号" value="WeUI" disabled="" style="">
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="weui-form__ft">
+      <div class="weui-form__opr-area">
+        <a role="button" aria-disabled="false" class="weui-btn weui-btn_primary" data-original-href="javascript:" href="#" id="showTooltips" tabindex="0">确定</a>
+      </div>
+    </div>
+  </div>
+  <div role="alert" id="js_toast" style="display: none;">
+      <div class="weui-mask_transparent"></div>
+      <div class="weui-toast">
+          <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+          <p class="weui-toast__content">已完成</p>
+      </div>
+  </div>
+</div>
+
+
+</div>
+
+
+</body></html>

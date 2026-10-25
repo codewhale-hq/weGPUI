@@ -1,0 +1,27 @@
+[
+  {
+    "case": "dialog-trap-escape-restore",
+    "pass": true
+  },
+  {
+    "case": "picker-keyboard-disabled-date-cancel",
+    "pass": true
+  },
+  {
+    "case": "buttons-disabled-loading-space",
+    "pass": true
+  },
+  {
+    "case": "local-file-keyboard-preview-delete-focus",
+    "pass": true
+  },
+  {
+    "case": "swipe-real-pointer-reveal-delete",
+    "pass": true
+  },
+  {
+    "case": "infobar-scoped-close-restore",
+    "pass": false,
+    "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\".weui-information-bar\").nth(1).get_by_role(\"button\", name=\"\u5173\u95ed\", exact=True)\n    - locator resolved to <button type=\"button\" class=\"weui-btn_icon\">\u2026</button>\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <i class=\"weui-icon-close-thin\"></i> from <div role=\"alert\" id=\"js_informationBar\" class=\"weui-information-bar weui-information-bar_tips-weak\">\u2026</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <i class=\"weui-icon-close-thin\"></i> from <div role=\"alert\" id=\"js_informationBar\" class=\"weui-information-bar weui-information-bar_tips-weak\">\u2026</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    58 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <i class=\"weui-icon-close-thin\"></i> from <div role=\"alert\" id=\"js_informationBar\" class=\"weui-information-bar weui-information-bar_tips-weak\">\u2026</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n"
+  }
+]

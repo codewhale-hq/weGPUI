@@ -1,0 +1,677 @@
+/* Local, browser-only adapters for Tencent WeUI 2.6.26 example markup.
+ * Native GPUI behavior is demonstrated by the Rust gallery, not this iframe.
+ * No template scripts, SDK, network transport or analytics are executed here.
+ */
+(() => {
+  'use strict';
+  let session;
+  const focusable = 'a[href],button,input,select,textarea,[tabindex]';
+  const visible = node => !!node && !node.hidden && !node.closest('[hidden],[inert],[aria-hidden="true"]') && node.getClientRects().length > 0;
+  const disabled = node => !!node && (node.matches(':disabled,[disabled],[aria-disabled="true"],.weui-btn_disabled,.weui-btn_loading') || !!node.closest('[inert]'));
+  const text = node => (node?.getAttribute('aria-label') || node?.textContent || node?.title || '').trim().replace(/\s+/g, ' ');
+  const el = (tag, attributes = {}, content) => {
+    const node = document.createElement(tag);
+    Object.entries(attributes).forEach(([key, value]) => node.setAttribute(key, value));
+    if (content !== undefined) node.textContent = content;
+    return node;
+  };
+
+  function mount(options) {
+    cleanup();
+    const { route, page, config = {}, announce = () => {}, navigate = () => {} } = options;
+    const controller = new AbortController();
+    const timers = new Set(), urls = new Set(), overlays = [];
+    const $ = selector => page.querySelector(selector);
+    const $$ = selector => [...page.querySelectorAll(selector)];
+    const on = (node, type, callback, extra = {}) => node?.addEventListener(type, callback, { ...extra, signal: controller.signal });
+    const later = (callback, delay) => {
+      const timer = setTimeout(() => { timers.delete(timer); callback(); }, delay);
+      timers.add(timer); return timer;
+    };
+    let eventNumber = 0, progressTimer, progress = 0, currentImage;
+    const feedback = message => {
+      page.dataset.actionCount = String(++eventNumber);
+      announce(message);
+    };
+    const setDisabled = (node, value) => {
+      if (!node) return;
+      node.classList.toggle('weui-btn_disabled', value);
+      node.setAttribute('aria-disabled', String(value));
+      node.toggleAttribute('disabled', value);
+      if (node.tagName !== 'BUTTON') node.tabIndex = value ? -1 : 0;
+    };
+    const show = node => {
+      if (!node) return;
+      node.hidden = false; node.style.display = 'block'; node.setAttribute('aria-hidden', 'false');
+    };
+    const hide = node => {
+      if (!node) return;
+      node.style.display = 'none'; node.setAttribute('aria-hidden', 'true');
+    };
+
+    function openOverlay(node, opener = document.activeElement) {
+      if (!node || overlays.some(item => item.node === node)) return;
+      const previousInert = new Map();
+      // Inert only siblings along the overlay's path. The iframe parent is never touched.
+      let branch = node;
+      while (branch.parentElement && branch !== page) {
+        [...branch.parentElement.children].forEach(sibling => {
+          if (sibling === branch || sibling.matches('script,[role="status"],[aria-live]') || sibling.id === 'iosMask') return;
+          previousInert.set(sibling, sibling.inert); sibling.inert = true;
+        });
+        branch = branch.parentElement;
+      }
+      show(node);
+      node.setAttribute('role', 'dialog'); node.setAttribute('aria-modal', 'true'); node.tabIndex = -1;
+      if (!node.hasAttribute('aria-label') && !node.hasAttribute('aria-labelledby')) {
+        const heading = node.querySelector('.weui-dialog__title,.weui-half-screen-dialog__title,.weui-actionsheet__title-text');
+        node.setAttribute('aria-label', text(heading) || (node.classList.contains('weui-gallery') ? '图片预览' : '对话框'));
+      }
+      node.classList.add('playground-overlay-open');
+      if (node.id === 'iosActionsheet') { node.classList.add('weui-actionsheet_toggle'); show($('#iosMask')); }
+      node.querySelectorAll('.weui-half-screen-dialog').forEach(panel => panel.classList.add('weui-half-screen-dialog_show'));
+      const item = { node, opener, previousInert };
+      overlays.push(item);
+      const target = [...node.querySelectorAll(focusable)].find(candidate => candidate.tabIndex >= 0 && visible(candidate) && !disabled(candidate));
+      (target || node).focus({ preventScroll: true });
+    }
+
+    function closeOverlay(node = overlays.at(-1)?.node, message) {
+      const index = overlays.findIndex(item => item.node === node);
+      if (index < 0) return;
+      // Close child modals before restoring a parent's inert/focus state.
+      while (overlays.length - 1 > index) closeOverlay(overlays.at(-1).node);
+      const item = overlays.pop();
+      node.classList.remove('playground-overlay-open', 'weui-actionsheet_toggle');
+      node.querySelectorAll('.weui-half-screen-dialog').forEach(panel => { panel.classList.remove('weui-half-screen-dialog_show'); panel.style.removeProperty('transform'); });
+      hide(node); node.setAttribute('aria-modal', 'false');
+      if (node.id === 'iosActionsheet') hide($('#iosMask'));
+      item.previousInert.forEach((value, sibling) => { sibling.inert = value; });
+      if (node.dataset.temporary === 'true') node.remove();
+      const target = item.opener?.isConnected && !disabled(item.opener) && visible(item.opener) ? item.opener : page.querySelector('h1,h2');
+      if (target) { if (!target.matches(focusable)) target.tabIndex = -1; target.focus({ preventScroll: true }); }
+      if (message) feedback(message);
+    }
+
+    on(document, 'keydown', event => {
+      const current = overlays.at(-1)?.node;
+      if (current && event.key === 'Escape') { event.preventDefault(); closeOverlay(current, '已关闭'); return; }
+      if (current && event.key === 'Tab') {
+        const targets = [...current.querySelectorAll(focusable)].filter(candidate => candidate.tabIndex >= 0 && visible(candidate) && !disabled(candidate));
+        const first = targets[0] || current, last = targets.at(-1) || current;
+        if (event.shiftKey && (document.activeElement === first || document.activeElement === current)) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && (document.activeElement === last || !current.contains(document.activeElement))) { event.preventDefault(); first.focus(); }
+      }
+      // Anchor-role buttons and upstream div buttons need Space activation too.
+      const target = event.target.closest('[role="button"],a');
+      if (target && page.contains(target) && target.tagName !== 'BUTTON' && (event.key === ' ' || event.key === 'Enter') && !target.matches('input,textarea,select')) {
+        if (event.key === 'Enter' && target.tagName === 'A' && target.hasAttribute('href')) return;
+        event.preventDefault(); if (!disabled(target)) target.click();
+      }
+    });
+    on(document, 'focusin', event => {
+      const current = overlays.at(-1)?.node;
+      if (current && !current.contains(event.target)) current.focus({ preventScroll: true });
+    });
+    on(page, 'click', event => {
+      const target = event.target.closest('button,a,[role="button"],input,select');
+      if (disabled(target)) { event.preventDefault(); event.stopImmediatePropagation(); }
+    }, { capture: true });
+
+    // Normalize the upstream anchor buttons without altering their WeUI styles.
+    $$('a,[role="button"],.weui-btn').forEach(node => {
+      if (node.matches('.weui-btn_loading')) node.setAttribute('aria-busy', 'true');
+      if (node.matches('.weui-btn_disabled,.weui-btn_loading,[disabled],[aria-disabled="true"]')) {
+        node.setAttribute('aria-disabled', 'true'); node.tabIndex = -1;
+      } else if (node.matches('[role="button"],a:not([href])')) node.tabIndex = 0;
+      if (!text(node) && node.title) node.setAttribute('aria-label', node.title);
+      if (!text(node) && !node.getAttribute('aria-labelledby')) {
+        const icon = node.querySelector('[aria-label],[alt]');
+        const label = icon?.getAttribute('aria-label') || icon?.getAttribute('alt'); if (label) node.setAttribute('aria-label', label);
+      }
+    });
+    $$('input,textarea,select').forEach((input, index) => {
+      if (!input.getAttribute('aria-label') && !input.getAttribute('aria-labelledby')) {
+        const label = input.closest('.weui-cell')?.querySelector('.weui-label,.weui-cell__bd');
+        if (!input.labels?.length || !text(input.labels[0])) input.setAttribute('aria-label', text(label) || input.placeholder || (input.type === 'file' ? '选择图片' : `输入 ${index + 1}`));
+      }
+    });
+    $$('button:not([type])').forEach(button => { button.type = 'button'; });
+    $$('input.weui-switch,input.weui-switch-cp__input').forEach(input => input.setAttribute('role', 'switch'));
+
+    function toast(id = 'js_toast') {
+      const node = $(`#${id}`);
+      if (!node) { feedback('已完成'); return; }
+      show(node); node.setAttribute('role', 'status'); node.setAttribute('aria-live', 'polite');
+      feedback(text(node));
+      later(() => { hide(node); node.setAttribute('aria-live', 'off'); }, 2200);
+    }
+    const click = (selector, callback) => $$(selector).forEach(node => on(node, 'click', event => {
+      event.preventDefault(); event.stopPropagation(); if (!disabled(node)) callback(node, event);
+    }));
+    const appendButton = (id, label, callback) => {
+      if ($(`#${id}`)) return;
+      const button = el('button', { id, type: 'button', class: 'weui-btn weui-btn_default' }, label);
+      ($('.page__bd') || page).append(button); on(button, 'click', () => callback(button));
+    };
+
+    // The examples include Android markup but omit its launchers on the iOS page.
+    if (route === 'dialog') {
+      appendButton('showAndroidDialog1', 'Android 样式一', button => openOverlay($('#androidDialog1'), button));
+      appendButton('showAndroidDialog2', 'Android 样式二', button => openOverlay($('#androidDialog2'), button));
+    }
+    if (route === 'actionsheet') appendButton('showAndroidActionSheet', 'Android ActionSheet', button => openOverlay($('#androidActionsheet'), button));
+    click('[id^="showIOSDialog"],[id^="showAndroidDialog"]', button => {
+      const target = $(`#${button.id.replace(/^showIOS/, 'ios').replace(/^showAndroid/, 'android')}`);
+      openOverlay(target, button);
+    });
+    click('[id^="showDialog"]', button => openOverlay($(`#dialogWrap${button.id.replace('showDialog', '')}`), button));
+    click('#showIOSActionSheet', button => openOverlay($('#iosActionsheet'), button));
+    click('.js_close,#dialogClose,#iosActionsheetCancel,#androidClose,#iosMask,.weui-dialog__btn', button => {
+      closeOverlay(overlays.at(-1)?.node, `${text(button) || '关闭'}：已完成`);
+    });
+    click('.weui-actionsheet__menu .weui-actionsheet__cell', button => closeOverlay(overlays.at(-1)?.node, `已选择：${text(button)}`));
+    click('.weui-mask', mask => {
+      if (overlays.at(-1)?.node.contains(mask)) closeOverlay(overlays.at(-1).node, '已取消');
+    });
+    $$('.weui-half-screen-dialog__hd__grab').forEach(handle => {
+      const panel = handle.closest('.weui-half-screen-dialog');
+      handle.setAttribute('role', 'button'); handle.setAttribute('aria-label', '下拉关闭对话框'); handle.tabIndex = 0;
+      let startY, dragged = false;
+      on(handle, 'pointerdown', event => { startY = event.clientY; handle.setPointerCapture(event.pointerId); });
+      on(handle, 'pointermove', event => { if (handle.hasPointerCapture(event.pointerId)) panel.style.transform = `translateY(${Math.max(0, event.clientY - startY)}px)`; });
+      on(handle, 'pointerup', event => {
+        const distance = event.clientY - startY; dragged = Math.abs(distance) > 10;
+        panel.style.removeProperty('transform');
+        if (distance >= 56) closeOverlay(overlays.at(-1)?.node, '已关闭');
+        later(() => { dragged = false; }, 0);
+      });
+      on(handle, 'click', event => { event.preventDefault(); if (!dragged) closeOverlay(overlays.at(-1)?.node, '已关闭'); });
+    });
+    const toastButtons = { showToast: 'toast', showWarnToast: 'warnToast', showTextMoreToast: 'textMoreToast', showLoadingToast: 'loadingToast', showTextToast: 'textToast' };
+    Object.entries(toastButtons).forEach(([button, target]) => click(`#${button}`, () => toast(target)));
+
+    // Picker wheels use the pinned WeUI structure/CSS with desktop pointer,
+    // touch, wheel and keyboard input. Values are staged until confirmation.
+    const tickets = [
+      { label: '飞机票', value: 0 }, { label: '火车票', value: 1 }, { label: '的士票', value: 2 },
+      { label: '公交票 (disabled)', value: 3, disabled: true }, { label: '其他', value: 4 }
+    ];
+    const regions = [
+      { label: '广东', children: [{ label: '广州', children: [{ label: '海珠' }, { label: '番禺' }] }, { label: '佛山', children: [{ label: '禅城' }, { label: '南海' }] }] },
+      { label: '广西', children: [{ label: '南宁', children: [{ label: '青秀' }, { label: '兴宁' }] }, { label: '桂林', children: [{ label: '象山' }, { label: '秀峰' }] }] }
+    ];
+    let pickerSerial = 0;
+    function picker(kind, opener = document.activeElement) {
+      const names = { single: '单列选择器', date: '多列选择器', multi: '多列选择器', cascade: '级联选择器', phone: '单列选择器' };
+      const wrapper = el('div', { class: 'playground-picker-wrap', 'data-temporary': 'true' });
+      const mask = el('div', { class: 'weui-mask' });
+      const panel = el('div', { class: 'weui-half-screen-dialog weui-picker playground-picker' });
+      const heading = el('div', { class: 'weui-half-screen-dialog__hd' });
+      const cancel = el('button', { type: 'button', class: 'weui-btn_icon weui-wa-hotarea', 'aria-label': '取消' }, '取消');
+      const side = el('div', { class: 'weui-half-screen-dialog__hd__side' }); side.append(cancel);
+      const main = el('div', { class: 'weui-half-screen-dialog__hd__main' }); main.append(el('strong', { class: 'weui-half-screen-dialog__title' }, names[kind]));
+      heading.append(side, main);
+      const body = el('div', { class: 'weui-picker__bd' });
+      const foot = el('div', { class: 'weui-half-screen-dialog__ft' });
+      const confirm = el('button', { type: 'button', class: 'weui-btn weui-btn_primary' }, '确定');
+      foot.append(confirm); panel.append(heading, body, foot); wrapper.append(mask, panel); page.append(wrapper);
+      wrapper.setAttribute('aria-label', names[kind]);
+      const selected = [], groups = [], serial = ++pickerSerial;
+      const today = new Date(); // Web-only date example; native DateField's UTC policy is untouched.
+      const columns = kind === 'date' ? [Array.from({ length: today.getFullYear() - 1989 }, (_, index) => ({ label: `${1990 + index}年`, value: 1990 + index })), Array.from({ length: 12 }, (_, index) => ({ label: `${index + 1}月`, value: index + 1 })), []]
+        : kind === 'multi' ? [[1, 2, 3].map(value => ({ label: String(value), value })), ['A', 'B', 'C'].map(value => ({ label: value, value }))]
+        : kind === 'cascade' ? [regions, regions[0].children, regions[0].children[0].children]
+        : [kind === 'phone' ? ['+86', '+80', '+84', '+87'].map(value => ({ label: value, value })) : tickets];
+      const defaults = kind === 'date' ? [today.getFullYear() - 1990, today.getMonth(), today.getDate() - 1] : kind === 'multi' ? [2, 0] : columns.map(() => 0);
+      function fillColumn(level, items, wanted = 0) {
+        columns[level] = items;
+        const group = groups[level], content = group.querySelector('.weui-picker__content');
+        content.replaceChildren();
+        let index = Math.max(0, Math.min(items.length - 1, wanted));
+        if (items[index]?.disabled) index = items.findIndex(item => !item.disabled);
+        selected[level] = Math.max(0, index);
+        items.forEach((item, itemIndex) => {
+          const option = el('div', { class: `weui-picker__item${item.disabled ? ' weui-picker__item_disabled' : ''}`, role: 'option', id: `web-picker-${serial}-${level}-${itemIndex}`, 'aria-disabled': String(!!item.disabled), 'aria-selected': String(itemIndex === selected[level]) }, item.label);
+          content.append(option); on(option, 'click', () => { if (!item.disabled) choose(level, itemIndex); });
+        });
+        paint(level);
+      }
+      function paint(level) {
+        const group = groups[level], index = selected[level];
+        group.querySelector('.weui-picker__content').style.transform = `translateY(${112 - index * 56}px)`;
+        group.setAttribute('aria-activedescendant', `web-picker-${serial}-${level}-${index}`);
+        group.querySelectorAll('[role="option"]').forEach((option, at) => option.setAttribute('aria-selected', String(at === index)));
+      }
+      function choose(level, index) {
+        if (!columns[level][index] || columns[level][index].disabled) return;
+        selected[level] = index; paint(level);
+        if (kind === 'cascade' && level < 2) {
+          fillColumn(level + 1, columns[level][index].children, 0);
+          if (level === 0) fillColumn(2, columns[1][0].children, 0);
+        }
+        if (kind === 'date' && level < 2) updateDays();
+        groups[level].focus({ preventScroll: true });
+      }
+      function updateDays(initial = false) {
+        const year = columns[0][selected[0]].value, month = columns[1][selected[1]].value;
+        const count = new Date(year, month, 0).getDate();
+        fillColumn(2, Array.from({ length: count }, (_, index) => ({ label: `${index + 1}日`, value: index + 1 })), initial ? defaults[2] : selected[2]);
+      }
+      function move(level, delta) {
+        let index = Math.max(0, Math.min(columns[level].length - 1, selected[level] + delta));
+        while (columns[level][index]?.disabled) index += Math.sign(delta) || 1;
+        if (columns[level][index]) choose(level, index);
+      }
+      columns.forEach((items, level) => {
+        const label = kind === 'date' ? ['年', '月', '日'][level] : `第 ${level + 1} 列`;
+        const group = el('div', { class: 'weui-picker__group', role: 'listbox', tabindex: '0', 'aria-label': label });
+        group.append(el('div', { class: 'weui-picker__mask' }), el('div', { class: 'weui-picker__indicator' }), el('div', { class: 'weui-picker__content' }));
+        body.append(group); groups.push(group); fillColumn(level, items, defaults[level]);
+        on(group, 'keydown', event => {
+          const keys = ['ArrowUp', 'ArrowDown', 'Home', 'End', 'PageUp', 'PageDown'];
+          if (!keys.includes(event.key)) return;
+          event.preventDefault();
+          if (event.key === 'Home' || event.key === 'End') {
+            const candidates = columns[level].map((item, index) => !item.disabled ? index : -1).filter(index => index >= 0);
+            choose(level, event.key === 'Home' ? candidates[0] : candidates.at(-1));
+          } else move(level, (event.key.includes('Up') ? -1 : 1) * (event.key.startsWith('Page') ? 3 : 1));
+        });
+        let pointerY;
+        on(group, 'pointerdown', event => { pointerY = event.clientY; group.setPointerCapture(event.pointerId); });
+        on(group, 'pointerup', event => {
+          const delta = pointerY - event.clientY;
+          if (Math.abs(delta) > 14) move(level, Math.round(delta / 56) || Math.sign(delta));
+          else {
+            const offset = event.clientY - group.getBoundingClientRect().top - 140;
+            move(level, Math.round(offset / 56));
+          }
+          pointerY = undefined;
+        });
+        on(group, 'wheel', event => { event.preventDefault(); move(level, Math.sign(event.deltaY)); }, { passive: false });
+      });
+      if (kind === 'date') updateDays(true);
+      on(cancel, 'click', () => closeOverlay(wrapper, '已取消选择'));
+      on(mask, 'click', () => closeOverlay(wrapper, '已取消选择'));
+      on(confirm, 'click', () => {
+        const values = columns.map((items, level) => items[selected[level]].label);
+        if (route === 'form_select_primary' && opener?.querySelector('.weui-select,.weui-cell__bd,.weui-cell__ft')) {
+          const valueNode = opener.querySelector('.weui-select') || opener.querySelector('.weui-cell__ft') || opener.querySelector('.weui-cell__bd'); valueNode.textContent = values.join(' ');
+        }
+        closeOverlay(wrapper, `已选择：${values.join(' ')}`);
+      });
+      openOverlay(wrapper, opener); groups[0].focus({ preventScroll: true });
+    }
+    click('#showPicker', button => picker('single', button));
+    click('#showDatePicker', button => picker('date', button));
+    click('#showPhone', button => picker('phone', button));
+    if (route === 'picker') {
+      appendButton('showMultiPicker', '多列选择器', button => picker('multi', button));
+      appendButton('showCascadePicker', '级联选择器', button => picker('cascade', button));
+    }
+
+    // Tabs: one tab stop, native selected state and controlled panel visibility.
+    $$('.weui-navbar,.weui-tabbar').forEach(tablist => {
+      tablist.setAttribute('role', 'tablist');
+      const tabs = [...tablist.querySelectorAll('[role="tab"],.weui-navbar__item,.weui-tabbar__item')];
+      const select = (tab, focus = false) => {
+        tabs.forEach(item => {
+          const active = item === tab; item.setAttribute('role', 'tab'); item.setAttribute('aria-selected', String(active));
+          item.classList.toggle('weui-bar__item_on', active); item.tabIndex = active ? 0 : -1;
+          const panel = document.getElementById(item.getAttribute('aria-controls'));
+          if (panel && page.contains(panel)) { panel.hidden = !active; panel.style.display = active ? 'block' : 'none'; }
+        });
+        if (focus) tab.focus();
+      };
+      tabs.forEach((tab, index) => {
+        on(tab, 'click', event => { event.preventDefault(); select(tab); feedback(`已切换：${text(tab)}`); });
+        on(tab, 'keydown', event => {
+          const next = { ArrowLeft: (index + tabs.length - 1) % tabs.length, ArrowRight: (index + 1) % tabs.length, Home: 0, End: tabs.length - 1 }[event.key];
+          if (next !== undefined) { event.preventDefault(); select(tabs[next], true); feedback(`已切换：${text(tabs[next])}`); }
+        });
+      });
+      if (tabs.length) select(tabs.find(tab => tab.getAttribute('aria-selected') === 'true') || tabs[0]);
+    });
+
+    // Search preserves the distinct outlined, filled/grey and homepage surfaces.
+    const search = $('#searchInput'), searchBar = $('#searchBar'), searchBox = $('#searchBox'), searchText = $('#searchText');
+    function updateSearch() {
+      if (!search) return;
+      const hasValue = !!search.value;
+      const expanded = hasValue && !!$('#searchResult');
+      $('#searchForm')?.setAttribute('aria-expanded', String(expanded));
+      search.setAttribute('aria-expanded', String(expanded));
+      if ($('#searchResult')) $('#searchResult').style.display = expanded ? 'block' : 'none';
+      if ($('#searchClear')) $('#searchClear').hidden = !hasValue || search.readOnly || search.disabled;
+    }
+    function focusSearch() {
+      searchBar?.classList.add('weui-search-bar_focusing');
+      searchText?.setAttribute('aria-hidden', 'true'); if (searchText) searchText.style.display = 'none';
+      searchBox?.setAttribute('aria-hidden', 'false'); search?.focus();
+      updateSearch();
+    }
+    function cancelSearch() {
+      if (!search || search.disabled) return;
+      if (!search.readOnly && route === 'searchbar_filled') search.value = '';
+      searchBar?.classList.remove('weui-search-bar_focusing');
+      searchText?.setAttribute('aria-hidden', 'false'); if (searchText) searchText.style.display = '';
+      if (searchBox && !search.value) searchBox.setAttribute('aria-hidden', 'true');
+      search.blur(); updateSearch(); feedback('已取消搜索');
+      if (searchText) searchText.focus();
+    }
+    if (search) {
+      search.setAttribute('aria-label', '搜索');
+      const suggestions = $$('#searchResult [role="option"]');
+      let activeSuggestion = -1;
+      if (suggestions.length) {
+        search.setAttribute('role', 'combobox'); search.setAttribute('aria-autocomplete', 'list'); search.setAttribute('aria-haspopup', 'listbox');
+        suggestions.forEach((option, index) => {
+          if (!option.id) option.id = `search-suggestion-${index}`;
+          option.tabIndex = 0; option.setAttribute('aria-selected', 'false');
+          on(option, 'keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); option.click(); } });
+        });
+        on(search, 'keydown', event => {
+          if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            if (!search.value) return;
+            event.preventDefault();
+            activeSuggestion = (activeSuggestion + (event.key === 'ArrowDown' ? 1 : -1) + suggestions.length) % suggestions.length;
+            suggestions.forEach((option, index) => option.setAttribute('aria-selected', String(index === activeSuggestion)));
+            search.setAttribute('aria-activedescendant', suggestions[activeSuggestion].id);
+          } else if (event.key === 'Enter' && activeSuggestion >= 0) {
+            event.preventDefault(); suggestions[activeSuggestion].click();
+          } else if (event.key === 'Escape') { event.preventDefault(); cancelSearch(); }
+        });
+      }
+      on(search, 'input', () => { activeSuggestion = -1; search.removeAttribute('aria-activedescendant'); updateSearch(); }); on(search, 'focus', focusSearch);
+      if (searchText) { searchText.tabIndex = 0; searchText.setAttribute('role', 'button'); on(searchText, 'click', focusSearch); }
+      click('#searchClear', () => { if (!search.readOnly && !search.disabled) { search.value = ''; focusSearch(); updateSearch(); feedback('已清除搜索'); } });
+      click('#searchCancel,.weui-search-bar__back-btn', cancelSearch);
+      click('#searchBtn', () => feedback(`搜索：${search.value || '请输入搜索内容'}`));
+      on($('#searchForm'), 'submit', event => { event.preventDefault(); feedback(`搜索：${search.value || '请输入搜索内容'}`); });
+      updateSearch();
+      click('#searchResult [role="option"]', option => {
+        if (search.readOnly || search.disabled) return;
+        search.value = text(option); activeSuggestion = -1; search.removeAttribute('aria-activedescendant');
+        updateSearch(); feedback(`已选择：${search.value}`);
+      });
+    }
+    if (route === 'searchbar_homepage') {
+      const opener = $('.weui-search-bar__input_text');
+      opener?.setAttribute('role', 'button'); if (opener) opener.tabIndex = 0;
+      click('.weui-search-bar__input_text', () => navigate('searchbar_outlined'));
+      click('.weui-icon-camera', () => feedback('拍照：请使用上传组件选择本地图片'));
+      on($('#searchForm'), 'submit', event => event.preventDefault());
+    }
+
+    // Form input, consent, errors and verification-code timers are all local.
+    const primaryInput = $('#js_input1') || $('#js_input');
+    function updateForm() {
+      if (primaryInput && ['form_page', 'form_page_old', 'form_primary', 'form_input_status', 'form_vcode', 'form_bottom_fixed'].includes(route)) $$('#showTooltips').forEach(submit => setDisabled(submit, !primaryInput.value.trim()));
+    }
+    $$('input:not([type="file"]),select,textarea').forEach(input => {
+      on(input, 'input', () => {
+        input.removeAttribute('aria-invalid'); input.closest('.weui-cell')?.classList.remove('weui-cell_warn'); updateForm();
+        if (input.id === 'js_current_input') {
+          const invalid = input.value.replace(/\D/g, '').length > 8;
+          input.setAttribute('aria-invalid', String(invalid)); if ($('#js_current_tips')) $('#js_current_tips').style.display = invalid ? 'block' : 'none';
+        }
+        const counter = input.closest('.weui-cell')?.querySelector('.weui-textarea-counter span'); if (counter) counter.textContent = String(input.value.length);
+      });
+      on(input, 'change', () => { updateForm(); feedback(input.type === 'checkbox' || input.type === 'radio' ? `${text(input.labels?.[0]) || input.getAttribute('aria-label') || '选择'}：${input.checked ? '已选中' : '未选中'}` : `已选择：${input.value}`); });
+    });
+    $$('#js_input_clear').forEach(button => {
+      button.setAttribute('aria-label', '清除');
+      // Pinned CSS displays Clear only while its input is focused. Keep that
+      // focus through pointerup so the browser does not hide the click target.
+      on(button, 'pointerdown', event => event.preventDefault());
+    });
+    click('#js_input_clear', button => {
+      const input = button.closest('.weui-cell')?.querySelector('input') || primaryInput;
+      if (input && !input.readOnly && !input.disabled) { input.value = ''; input.dispatchEvent(new Event('input', { bubbles: true })); input.focus(); feedback('已清除'); }
+    });
+    function submitForm() {
+      if (route === 'form_input_status' && primaryInput && !/^\d{16}$/.test(primaryInput.value)) {
+        primaryInput.setAttribute('aria-invalid', 'true'); primaryInput.closest('.weui-cell')?.classList.add('weui-cell_warn');
+        feedback('请输入16位数卡号'); primaryInput.focus(); return;
+      }
+      const agreements = $$('.weui-agree input[type="checkbox"]').filter(input => visible(input) && !input.disabled);
+      const missing = agreements.filter(agreement => !agreement.checked);
+      if (missing.length) {
+        missing.forEach(agreement => { agreement.setAttribute('aria-invalid', 'true'); agreement.closest('.weui-agree')?.classList.add('weui-agree_warn'); });
+        if ($('#js_agree_msg')) { show($('#js_agree_msg')); later(() => hide($('#js_agree_msg')), 2200); }
+        feedback('请阅读并同意相关条款'); missing[0].focus(); return;
+      }
+      agreements.forEach(agreement => { agreement.removeAttribute('aria-invalid'); agreement.closest('.weui-agree')?.classList.remove('weui-agree_warn'); }); toast();
+    }
+    click('#showTooltips', submitForm);
+    click('#js_btn', submitForm);
+    updateForm();
+    click('#js_btn_vcode,.weui-vcode-btn', button => {
+      if (button.dataset.counting) return;
+      const original = button.textContent; let remaining = 60;
+      button.dataset.counting = 'true'; setDisabled(button, true); feedback('验证码已发送（本地演示）');
+      const tick = () => {
+        remaining--; button.textContent = remaining > 0 ? `重新发送(${remaining}s)` : original;
+        if (remaining > 0) later(tick, 1000);
+        else { delete button.dataset.counting; setDisabled(button, false); feedback('可以重新发送验证码'); }
+      };
+      button.textContent = `重新发送(${remaining}s)`; later(tick, 1000);
+    });
+
+    // Both sliders retain the upstream adjustable/non-adjustable distinction.
+    $$('.weui-slider__handler').forEach(handler => {
+      const adjustable = handler.id === 'sliderHandler';
+      handler.setAttribute('aria-valuemin', '0'); handler.setAttribute('aria-valuemax', '100'); handler.setAttribute('aria-valuenow', adjustable ? '50' : '0');
+      handler.tabIndex = adjustable ? 0 : -1; if (!adjustable) { handler.setAttribute('aria-disabled', 'true'); return; }
+      const inner = handler.parentElement, track = inner.querySelector('.weui-slider__track');
+      const set = value => {
+        value = Math.round(Math.max(0, Math.min(100, value))); handler.style.left = `${value}%`; if (track) track.style.width = `${value}%`;
+        handler.setAttribute('aria-valuenow', String(value)); if ($('#sliderValue')) $('#sliderValue').textContent = String(value);
+      };
+      const pointer = event => { const rect = inner.getBoundingClientRect(); set((event.clientX - rect.left) / rect.width * 100); };
+      on(inner, 'pointerdown', event => { if (disabled(handler)) return; handler.focus(); inner.setPointerCapture(event.pointerId); pointer(event); });
+      on(inner, 'pointermove', event => { if (inner.hasPointerCapture(event.pointerId)) pointer(event); });
+      on(inner, 'pointerup', event => { if (inner.hasPointerCapture(event.pointerId)) { pointer(event); inner.releasePointerCapture(event.pointerId); feedback(`滑块：${handler.getAttribute('aria-valuenow')}`); } });
+      on(handler, 'keydown', event => {
+        const current = +handler.getAttribute('aria-valuenow');
+        const value = { ArrowLeft: current - 1, ArrowDown: current - 1, ArrowRight: current + 1, ArrowUp: current + 1, Home: 0, End: 100, PageDown: current - 10, PageUp: current + 10 }[event.key];
+        if (value !== undefined) { event.preventDefault(); set(value); }
+      });
+    });
+
+    // Uploads never leave the browser. Revoke object URLs when removed/unmounted.
+    function removeImage(image) {
+      const item = image?.closest('li'); if (!item) return;
+      const restore = item.nextElementSibling?.querySelector('[tabindex="0"],button') || item.previousElementSibling?.querySelector('[tabindex="0"],button') || item.parentElement.closest('.weui-uploader')?.querySelector('input[type="file"]');
+      const hadFocus = item.contains(document.activeElement);
+      const url = item.dataset.objectUrl; if (url) { URL.revokeObjectURL(url); urls.delete(url); }
+      const list = item.parentElement; item.remove(); updateUploadCount(list); feedback('已删除图片');
+      if (hadFocus && !overlays.length) restore?.focus();
+      return restore;
+    }
+    function updateUploadCount(list) {
+      const info = list?.closest('.weui-uploader')?.querySelector('.weui-uploader__info');
+      if (info) info.textContent = `${list.children.length} 张图片`;
+    }
+    function openImage(image) {
+      currentImage = image;
+      const deletable = image.closest('#uploaderFiles');
+      const wrapper = deletable ? $('#galleryOpr') : $('#gallery');
+      const target = deletable ? $('#galleryImgOpr') : $('#galleryImg');
+      if (!wrapper || !target) return;
+      target.style.backgroundImage = image.style.backgroundImage;
+      target.setAttribute('role', 'img'); target.setAttribute('aria-label', image.getAttribute('aria-label') || '图片详情');
+      openOverlay(wrapper, image);
+    }
+    $$('input[type="file"]').forEach(input => {
+      input.setAttribute('aria-label', input.id.includes('WithDelete') ? '添加可删除图片' : '添加图片');
+      on(input, 'change', () => {
+        const list = $(input.id.includes('WithDelete') ? '#uploaderFilesWithDelete' : '#uploaderFiles'); if (!list) return;
+        [...input.files].forEach(file => {
+          if (!file.type.startsWith('image/')) { feedback(`不支持的图片：${file.name}`); return; }
+          const url = URL.createObjectURL(file); urls.add(url);
+          const item = el('li', { class: 'weui-uploader__file' }); item.dataset.objectUrl = url;
+          const image = input.id.includes('WithDelete') ? el('span', { class: 'weui-uploader__file__thumb' }) : item;
+          image.style.backgroundImage = `url("${url}")`; image.setAttribute('role', 'button'); image.setAttribute('aria-label', `预览 ${file.name}`); image.tabIndex = 0;
+          if (image !== item) {
+            const remove = el('button', { type: 'button', class: 'weui-uploader__file__delete', 'aria-label': `删除 ${file.name}` }); remove.append(el('i', { class: 'weui-icon-close' })); item.append(image, remove);
+          }
+          list.append(item); updateUploadCount(list); feedback(`已添加：${file.name}，图片仅在当前浏览器预览`);
+        });
+        input.value = '';
+      });
+    });
+    $$('.weui-uploader__file__delete').forEach(remove => { remove.tabIndex = 0; remove.setAttribute('role', 'button'); if (!remove.getAttribute('aria-label')) remove.setAttribute('aria-label', '删除图片'); });
+    on(page, 'click', event => {
+      const remove = event.target.closest('.weui-uploader__file__delete');
+      if (remove) { event.preventDefault(); event.stopPropagation(); removeImage(remove); return; }
+      const image = event.target.closest('#uploaderFiles li:not(.weui-uploader__file_status),#uploaderFilesWithDelete .weui-uploader__file__thumb');
+      if (image) { event.preventDefault(); openImage(image); }
+    });
+    $$('#uploaderFiles li:not(.weui-uploader__file_status),#uploaderFilesWithDelete .weui-uploader__file__thumb').forEach(image => { image.setAttribute('role', 'button'); image.tabIndex = 0; });
+    click('#galleryDel,.weui-gallery__del', () => {
+      const current = overlays.at(-1), target = current?.node;
+      if (currentImage) { const restore = removeImage(currentImage); if (restore && current) current.opener = restore; }
+      closeOverlay(target, currentImage ? undefined : '已删除图片'); currentImage = undefined;
+    });
+    $$('.weui-gallery').forEach(gallery => {
+      gallery.setAttribute('aria-label', '图片预览');
+      const close = el('button', { class: 'playground-gallery-close weui-btn_icon', type: 'button', 'aria-label': '关闭图片预览' }, '关闭');
+      gallery.append(close); on(close, 'click', () => closeOverlay(gallery, '已关闭图片预览'));
+      on(gallery, 'click', event => { if (event.target.matches('.weui-gallery,.weui-gallery__img')) closeOverlay(gallery, '已关闭图片预览'); });
+    });
+    if (route === 'gallery') {
+      appendButton('showGallery', '打开图片', button => openOverlay($('#gallery'), button));
+      openOverlay($('#gallery'), $('#showGallery'));
+    }
+
+    // A bounded local timer demonstrates progress and cancellation without upload.
+    const setProgress = value => {
+      progress = value; $$('.js_progress').forEach(bar => { bar.style.width = `${value}%`; bar.parentElement.setAttribute('role', 'progressbar'); bar.parentElement.setAttribute('aria-label', '本地演示进度'); bar.parentElement.setAttribute('aria-valuemin', '0'); bar.parentElement.setAttribute('aria-valuemax', '100'); bar.parentElement.setAttribute('aria-valuenow', String(value)); });
+    };
+    const cancelProgress = () => { if (progressTimer) { clearTimeout(progressTimer); timers.delete(progressTimer); progressTimer = undefined; } setDisabled($('#btnUpload'), false); feedback('已取消上传演示'); };
+    click('#btnUpload', button => {
+      if (progressTimer) return; setDisabled(button, true); setProgress(0); feedback('开始本地上传演示');
+      const next = () => {
+        setProgress(Math.min(100, progress + 2));
+        if (progress < 100) progressTimer = later(next, 60);
+        else { progressTimer = undefined; setDisabled(button, false); if ($('#js_current')) $('#js_current').textContent = '已上传百分之100'; feedback('本地上传演示已完成'); }
+      }; progressTimer = later(next, 60);
+    });
+    click('.weui-progress__opr', cancelProgress);
+
+    // Swiped cell: horizontal pointer gesture and explicit keyboard disclosure.
+    $$('.weui-cell_swiped').forEach(row => {
+      const body = row.querySelector(':scope > .weui-cell__bd'), action = row.querySelector('.weui-swiped-btn');
+      if (!body || !action) return;
+      body.tabIndex = 0; body.setAttribute('role', 'button'); body.setAttribute('aria-label', '滑动列表项，向左显示操作');
+      if (!action.id) action.id = 'swiped-delete'; body.setAttribute('aria-controls', action.id);
+      function reveal(open) { body.style.transform = open ? 'translateX(-68px)' : 'none'; body.setAttribute('aria-expanded', String(open)); action.tabIndex = open ? 0 : -1; action.setAttribute('aria-hidden', String(!open)); }
+      reveal(true);
+      on(body, 'keydown', event => { if (['ArrowLeft', 'ArrowRight', 'Escape'].includes(event.key)) { event.preventDefault(); reveal(event.key === 'ArrowLeft'); } });
+      let startX, dragged = false;
+      on(body, 'pointerdown', event => { startX = event.clientX; body.setPointerCapture(event.pointerId); });
+      on(body, 'pointerup', event => { dragged = Math.abs(event.clientX - startX) > 20; if (dragged) reveal(event.clientX < startX); later(() => { dragged = false; }, 0); });
+      on(body, 'click', event => { if (dragged) { event.preventDefault(); return; } reveal(body.getAttribute('aria-expanded') !== 'true'); });
+      on(action, 'click', event => { event.preventDefault(); row.remove(); feedback('已删除列表项'); });
+    });
+    click('#js_hideInformationBar', () => { hide($('#js_informationBar')); feedback('已关闭信息栏'); });
+    click('#js_showInformationBar', () => { show($('#js_informationBar')); feedback('已显示信息栏'); });
+    click('.weui-information-bar .weui-btn_icon', button => { hide(button.closest('.weui-information-bar')); feedback('已关闭信息栏'); $('#restoreInformationBars')?.focus(); });
+    if (route === 'information-bar') appendButton('restoreInformationBars', '恢复信息栏', () => { $$('.weui-information-bar').forEach(show); feedback('已恢复信息栏'); });
+
+    // Home/layers remain navigable with a keyboard and never use the old SDK.
+    $$('.js_category').forEach(category => {
+      category.setAttribute('role', 'button'); category.tabIndex = 0;
+      category.setAttribute('aria-expanded', String(category.parentElement.classList.contains('js_show')));
+      on(category, 'click', () => {
+        const parent = category.parentElement, open = !parent.classList.contains('js_show');
+        $$('.js_category').forEach(other => {
+          const active = other === category && open; other.parentElement.classList.toggle('js_show', active); other.setAttribute('aria-expanded', String(active));
+          const inner = other.parentElement.querySelector('.js_categoryInner'); if (inner) { inner.setAttribute('aria-hidden', String(!active)); inner.querySelectorAll('.js_item').forEach(item => { item.tabIndex = active ? 0 : -1; }); }
+        });
+      });
+    });
+    $$('.js_item').forEach(item => { item.setAttribute('role', 'button'); });
+    $$('.layers__layer').forEach(layer => {
+      layer.classList.add('j_transform'); layer.tabIndex = 0; layer.setAttribute('role', 'button');
+      layer.setAttribute('aria-label', layer.dataset.name || '图层');
+      on(layer, 'click', () => {
+        const selected = layer.classList.contains('j_transform');
+        $$('.layers__layer').forEach(other => { other.classList.toggle('j_transform', !selected || other !== layer); other.classList.toggle('j_hide', selected && other !== layer); });
+        $$('.j_info').forEach(info => { info.style.display = info.dataset.for === (selected ? layer.dataset.name : 'normal') ? 'block' : 'none'; });
+      });
+    });
+
+    // Generic example actions produce visible callback feedback. Route links
+    // stay inside the playground; upstream terms never open an external tab.
+    on(page, 'click', event => {
+      const link = event.target.closest('a,.js_item'); if (!link || disabled(link)) return;
+      const original = link.dataset.originalHref || link.getAttribute('href') || '';
+      if (/^javascript:\s*home\s*\(\s*\)\s*;?\s*$/i.test(original)) { event.preventDefault(); navigate('home'); return; }
+      const target = link.dataset.id || (original.startsWith('#') ? original.slice(1) : '');
+      if (target && /^[a-z][a-z0-9_-]*$/.test(target)) { event.preventDefault(); navigate(target); return; }
+      if (link.closest('.weui-agree') && original) {
+        event.preventDefault(); event.stopPropagation(); feedback('相关条款：这是本地组件交互示例'); return;
+      }
+      if (link.matches('a') && original && !original.startsWith('#')) event.preventDefault();
+      if (link.matches('.weui-btn,.weui-btn_cell,.weui-link,.weui-footer__link,.weui-cell_access,.weui-grid,.weui-form-preview__btn,.weui-media-box')) feedback(`${text(link) || '操作'}：已触发`);
+    });
+    // Most specific handlers stop propagation, so generic feedback is not doubled.
+    click('.weui-half-screen-dialog__hd__action,.weui-half-screen-dialog__hd__action-group button', button => feedback(`${text(button) || '操作'}：已触发`));
+    session = { route, page, config, $, $$, feedback, toast, picker, openOverlay, closeOverlay, setProgress, cancelProgress, focusSearch, updateSearch,
+      cleanup: () => {
+        controller.abort(); timers.forEach(timer => clearTimeout(timer)); urls.forEach(url => URL.revokeObjectURL(url));
+        while (overlays.length) { const item = overlays.pop(); item.previousInert.forEach((value, sibling) => { sibling.inert = value; }); }
+      }
+    };
+  }
+
+  // The state selector drives the same mounted controls, without evaluating
+  // arbitrary replay strings from the historical screenshot tooling.
+  function applyState(state) {
+    if (!session || !state || state === 'default') return;
+    const { route, $, $$, picker, openOverlay, closeOverlay, toast, setProgress, focusSearch, updateSearch } = session;
+    const click = selector => $(selector)?.click();
+    const fill = (selector, value) => { const input = $(selector); if (input && !input.disabled && !input.readOnly) { input.value = value; input.dispatchEvent(new Event('input', { bubbles: true })); } };
+    if (route === 'dialog') openOverlay($(`#${({ ios1: 'iosDialog1', ios2: 'iosDialog2', ios3: 'iosDialog5', android1: 'androidDialog1', android2: 'androidDialog2' })[state]}`));
+    else if (route === 'actionsheet') openOverlay($(state === 'android' ? '#androidActionsheet' : '#iosActionsheet'));
+    else if (route === 'half-screen-dialog') click(`#showDialog${state}`);
+    else if (route === 'picker') picker(state);
+    else if (route === 'toast') toast(({ success: 'toast', fail: 'warnToast', longtext: 'textMoreToast', loading: 'loadingToast', text: 'textToast' })[state]);
+    else if (route === 'navbar' || route === 'tabbar') click(`#${state}`);
+    else if (route === 'slider' && state === 'value80') {
+      $('#sliderTrack').style.width = '80%'; $('#sliderHandler').style.left = '80%'; $('#sliderHandler').setAttribute('aria-valuenow', '80'); $('#sliderValue').textContent = '80';
+    } else if (route === 'progress' && state === 'uploading') click('#btnUpload');
+    else if (route === 'gallery' && state === 'closed') closeOverlay($('#gallery'));
+    else if (route === 'uploader') click(state === 'preview' ? '#uploaderFilesWithDelete .weui-uploader__file__thumb' : '#uploaderFiles li');
+    else if (route === 'information-bar' && state === 'closed') click('.weui-information-bar .weui-btn_icon');
+    else if (route === 'list' && state === 'closed') { const body = $('.weui-cell_swiped > .weui-cell__bd'); body?.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true })); }
+    else if (route === 'home' && state.startsWith('category-')) $$('.js_category')[+state.split('-')[1]]?.click();
+    else if (route === 'layers' && state !== '3d') click(`.layers__layer_${state}`);
+    else if (route.startsWith('searchbar_')) {
+      if (state === 'focused') focusSearch();
+      if (state === 'typed' || state === 'filled') { fill('#searchInput', 'weui'); updateSearch(); if (state === 'typed') focusSearch(); else $('#searchInput')?.blur(); }
+    } else if (route === 'button_bottom_fixed' && state === 'agreed') click('#weuiAgreeCheckbox');
+    else if (route.startsWith('form_')) {
+      if (state === 'filled') fill('#js_input1', 'weui');
+      else if (state === 'error') { fill('#js_input1', '1234'); click('#showTooltips'); }
+      else if (state === 'amount') fill('#js_current_input', '123456789');
+      else if (state === 'switch') click('#cb');
+      else if (state.startsWith('select')) click(({ select1: '#showDatePicker', select2: '#showPhone', select3: '#showPicker' })[state]);
+      else if (state === 'dialog') click('#showIOSDialog1');
+      else if (state === 'countdown') click('#js_btn_vcode');
+      else if (state === 'warn') { const agree = $('#weuiAgree1') || $('#weuiAgree'); agree?.classList.add('weui-agree_warn'); agree?.querySelector('input')?.setAttribute('aria-invalid', 'true'); }
+      else if (state === 'checked') {
+        const choices = route === 'form_vcode' ? ['#weuiAgreeCheckbox1', '#weuiAgreeCheckbox0'] : route === 'form_switch' ? ['#cb', '#switchCP'] : route === 'form_checkbox' ? ['#s11', '#s12'] : route === 'form_radio' ? ['#x11'] : ['#weuiAgreeCheckbox'];
+        choices.forEach(click);
+      } else if (state === 'toast') {
+        fill('#js_input1', route === 'form_input_status' ? '1234567890123456' : 'weui');
+        $$('.weui-agree input[type="checkbox"]').filter(visible).forEach(input => { input.checked = true; });
+        click('#showTooltips');
+      }
+    }
+  }
+  function cleanup() { session?.cleanup(); session = undefined; }
+  window.WeGPUIPlayground = Object.freeze({ mount, applyState, cleanup });
+})();

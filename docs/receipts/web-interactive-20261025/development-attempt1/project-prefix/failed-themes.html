@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'">
+  <title>weGPUI browser gallery — button_default</title>
+  <link rel="stylesheet" href="vendor/weui.css">
+  <link rel="stylesheet" href="vendor/example.css">
+  <link rel="stylesheet" href="bridge.css">
+  <link rel="stylesheet" href="shell.css">
+  <script src="vendor/zepto.min.js" defer=""></script>
+  <script src="vendor/weui.min.js" defer=""></script>
+  <script src="vendor/routes.js" defer=""></script>
+  <script src="bridge.js" defer=""></script>
+  <script src="router.js" defer=""></script>
+</head>
+<body data-weui-theme="dark" data-ready="true" data-route="button_default" data-state="default" style="--weui-BRAND: #805ad5; --weui-BRAND-100: #805ad5; --weui-BRAND-80: #997bdd; --weui-BRAND-90: #8d6bd9; --weui-BRAND-120: #6648aa; --weui-BRAND-170: #261b40; --weui-BRAND-BG-100: #805ad5; --weui-BRAND-BG-90: #8d6bd9; --weui-BRAND-BG-110: #7351c0; --weui-BRAND-BG-130: #5a3f95;" data-weui-mode="care">
+  <span aria-hidden="true" id="js_a11y_comma" class="weui-hidden_abs">，</span>
+  <div id="playground-status" role="status" aria-live="polite" aria-atomic="true">推荐操作：已触发</div>
+  <div id="playground-loading" role="status" hidden="">Loading interactive example…</div>
+  <div class="container" id="container"><div class="page button_default js_show" data-route="button_default">
+    <div class="page__hd">
+        <h1 class="page__title">Button</h1>
+        <p class="page__desc">按钮</p>
+    </div>
+    <div class="page__bd">
+
+        <div class="button-sp-area">
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_primary" tabindex="0">主要操作</a>
+          <a data-original-href="javascript:" href="#" role="button" title="正在操作" class="weui-btn weui-btn_primary weui-btn_loading" aria-busy="true" aria-disabled="true" tabindex="-1"><i class="weui-mask-loading weui-mask-loading_only"></i></a>
+          <a data-original-href="javascript:" href="#" role="button" title="正在操作" class="weui-btn weui-btn_primary weui-btn_loading" aria-busy="true" aria-disabled="true" tabindex="-1"><i class="weui-mask-loading"></i>主要操作</a>
+          <a data-original-href="javascript:" href="#" role="button" aria-disabled="true" disabled="" class="weui-btn weui-btn_disabled weui-btn_primary" tabindex="-1">主要操作</a>
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_default" tabindex="0">次要操作</a>
+          <a data-original-href="javascript:" href="#" role="button" title="正在操作" class="weui-btn weui-btn_default weui-btn_loading" aria-busy="true" aria-disabled="true" tabindex="-1"><i class="weui-mask-loading weui-mask-loading_only"></i></a>
+          <a data-original-href="javascript:" href="#" role="button" title="正在操作" class="weui-btn weui-btn_default weui-btn_loading" aria-busy="true" aria-disabled="true" tabindex="-1"><i class="weui-mask-loading"></i>次要操作</a>
+          <a data-original-href="javascript:" href="#" role="button" aria-disabled="true" disabled="" class="weui-btn weui-btn_disabled weui-btn_default" tabindex="-1">次要操作</a>
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_warn" tabindex="0">警示操作</a>
+          <a data-original-href="javascript:" href="#" role="button" title="正在操作" class="weui-btn weui-btn_warn weui-btn_loading" aria-busy="true" aria-disabled="true" tabindex="-1"><i class="weui-mask-loading weui-mask-loading_only"></i></a>
+          <a data-original-href="javascript:" href="#" role="button" title="正在操作" class="weui-btn weui-btn_warn weui-btn_loading" aria-busy="true" aria-disabled="true" tabindex="-1"><i class="weui-mask-loading"></i>警示操作</a>
+          <a data-original-href="javascript:" href="#" role="button" aria-disabled="true" disabled="" class="weui-btn weui-btn_disabled weui-btn_warn" tabindex="-1">警示操作</a>
+        </div>
+
+        <div class="button-sp-area">
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_primary" tabindex="0"><span class="weui-btn__inner">按钮宽度</span></a>
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_primary" tabindex="0"><span class="weui-btn__inner">按钮宽度自适应内容</span></a>
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_primary" tabindex="0"><span class="weui-btn__inner">按钮宽度自适应内容，达到最大值后折行，最大行数两行的示例</span></a>
+          <a data-original-href="javascript:" href="#" role="button" title="正在操作" class="weui-btn weui-btn_primary weui-btn_loading" aria-busy="true" aria-disabled="true" tabindex="-1"><span class="weui-btn__inner"><i class="weui-mask-loading"></i>按钮宽度自适应内容</span></a>
+          <a data-original-href="javascript:" href="#" role="button" title="正在操作" class="weui-btn weui-btn_primary weui-btn_loading" aria-busy="true" aria-disabled="true" tabindex="-1"><span class="weui-btn__inner"><i class="weui-mask-loading"></i>按钮宽度自适应内容，达到最大值后折行，最大行数两行的示例</span></a>
+        </div>
+
+        <div class="button-sp-area">
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_primary weui-btn_medium" tabindex="0">medium 按钮</a>
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_default weui-btn_medium" tabindex="0">medium 按钮</a>
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_warn weui-btn_medium" tabindex="0">medium 按钮</a>
+        </div>
+
+        <div class="button-sp-area overlay">
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_primary weui-btn_overlay" tabindex="0">overlay 按钮</a>
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_default weui-btn_overlay" tabindex="0">overlay 按钮</a>
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_warn weui-btn_overlay" tabindex="0">overlay 按钮</a>
+        </div>
+        <div class="button-sp-area overlay">
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_primary weui-btn_overlay weui-btn_disabled" aria-disabled="true" tabindex="-1">overlay 按钮</a>
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_default weui-btn_overlay weui-btn_disabled" aria-disabled="true" tabindex="-1">overlay 按钮</a>
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_warn weui-btn_overlay weui-btn_disabled" aria-disabled="true" tabindex="-1">overlay 按钮</a>
+        </div>
+
+        <div class="button-sp-area cell">
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn_cell weui-btn_cell-default" tabindex="0">普通行按钮</a>
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn_cell weui-btn_cell-primary" tabindex="0">强调行按钮</a>
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn_cell weui-btn_cell-primary" tabindex="0">
+            <img alt="icon" class="weui-btn_cell__icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=">
+            强调行按钮
+          </a>
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn_cell weui-btn_cell-warn" tabindex="0">警示行按钮</a>
+        </div>
+
+        <div class="button-sp-area">
+            <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_mini weui-btn_primary weui-wa-hotarea" tabindex="0">按钮</a>
+            <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_mini weui-btn_default weui-wa-hotarea" tabindex="0">按钮</a>
+            <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_mini weui-btn_warn weui-wa-hotarea" tabindex="0">按钮</a>
+        </div>
+
+        <div class="button-sp-area margin">
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_mini weui-btn_margin-reset weui-btn_default weui-wa-hotarea" tabindex="0">按钮</a>
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_mini weui-btn_margin-reset weui-btn_primary weui-wa-hotarea" tabindex="0">按钮</a>
+          <a data-original-href="javascript:" href="#" role="button" class="weui-btn weui-btn_mini weui-btn_margin-reset weui-btn_warn weui-wa-hotarea" tabindex="0">按钮</a>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</body></html>

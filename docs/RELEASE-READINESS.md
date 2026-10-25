@@ -104,11 +104,28 @@ The website source belongs in this repository. It must offer:
   tested links and no required analytics/accounts for reading the docs.
 - A stable public URL and a repeatable deployment from the reviewed repository.
 
-The current user priority is an interactive browser gallery. That source and local browser
-verification are being completed separately from the approved native compatibility batch.
-Browser demonstrations, historical captures and native runtime acceptance must stay distinct.
-The [website work](../website/README.md) also prepares a manual Pages workflow and hosting
-steps for review; they do not authorize CI dispatch, hosting enablement or deployment.
+- [x] Build the interactive browser gallery: 60 live routes and 132 state presets using
+  pinned WeUI 2.6.26 / WeUI.js 1.2.17, with local-only upload previews and a Python-only
+  normal build from checked-in assets.
+- [x] Verify full `final-candidate1-rerun` at site root and `/weGPUI/`: 40 browser checks,
+  including 360 route/viewport observations ([receipts](receipts/web-interactive-20261025/)).
+- [x] Verify final candidate 3's three affected-surface checks per mount and complete legacy
+  suite at both mounts; each legacy run checks 264 historical state/theme views and 528
+  decoded images. Theme/native-theme pages pass at 375/390/768/1280px with palette retention
+  and live iframe pointer/Space interaction. The final 390px theme capture was reviewed.
+  Candidate 3 changes only the palette handler and CSS minimum width relative to candidate 1;
+  the full 40-check result remains attributed to candidate 1.
+- [ ] Qualify the live deployed host, additional browser engines and actual screen-reader
+  behavior on the website. Local Chromium checks do not establish these results.
+- [x] Prepare the manual-only Pages workflow and [hosting steps](../website/HOSTING.md).
+- [ ] Obtain final owner authorization for the reviewed source and destination, enable Pages
+  and publish. Pages is not enabled and no live deployment is established. The original
+  no-CI-dispatch / no-deployment instruction still applies to the publication action.
+
+The browser uses a separate HTML/CSS/JavaScript implementation. Historical native captures
+remain available with `?view=native`, and native setup at `#native-guide`. Browser checks do
+not establish native GPUI acceptance; all 40 component rows remain unaccepted. The separately
+verified native batch is committed as `f7d41a534b02c15c6dbf3d0b216c9becc3925bcd`.
 
 ## 5. Experimental mobile work
 

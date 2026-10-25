@@ -1,0 +1,800 @@
+{
+  "weuiVersion": "2.6.26",
+  "weuiJsVersion": "1.2.17",
+  "zeptoVersion": "1.2.0",
+  "packages": {
+    "weui": {
+      "url": "https://registry.npmjs.org/weui/-/weui-2.6.26.tgz",
+      "sha256": "f88a8f1d22ceb94e802bf423bd477a4a0cfad4cf9d70a77eedbc3cb17511b435"
+    },
+    "weui.js": {
+      "url": "https://registry.npmjs.org/weui.js/-/weui.js-1.2.17.tgz",
+      "sha256": "62aa1d4538bb81ac5d77aeee2b3cdbe03bfca1d28e619ed0641caa74e791182a"
+    }
+  },
+  "zeptoLicenseUrl": "https://raw.githubusercontent.com/madrobby/zepto/v1.2.0/MIT-LICENSE",
+  "omitted": [
+    "Official index shell and contact/registration footer",
+    "example.js",
+    "wah.js",
+    "WeChat JS SDK",
+    "All inline example scripts and on* handlers",
+    "External demo navigation/transport"
+  ],
+  "files": {
+    "weui.css": {
+      "sha256": "8db42592f96d571568c49ae1b8484f55042e6a6dab25f8144460cd4a23530fd3",
+      "source": "dist/style/weui.css"
+    },
+    "example.css": {
+      "sha256": "8b605466ed3689be1d5ce0ef53143b320b9d84531625986b32c690eba007d2ce",
+      "source": "dist/example/example.css"
+    },
+    "zepto.min.js": {
+      "sha256": "7be1a2a2f283785dfff8fb760b048d27ab9411c2c8a9ca7a42ab914ab3653e86",
+      "source": "src/example/zepto.min.js"
+    },
+    "weui.min.js": {
+      "sha256": "87707d2d625c95f247e1957d5eee8c43bbe0c056983336990868f325d9b0c6fe",
+      "source": "weui.js/dist/weui.min.js"
+    },
+    "LICENSE-WEUI.txt": {
+      "sha256": "1725719c248e2c80941f92c0681fc8177ce32e3fe33224f0ee3f9b9ea4424d43",
+      "source": "LICENSE.txt"
+    },
+    "LICENSE-WEUI-JS.txt": {
+      "sha256": "44ec3b1fd2abcd425831acc31d07ad4e604ebf0c5cbf9019e4cb45821c7d52aa",
+      "source": "weui.js/LICENSE.txt"
+    },
+    "LICENSE-ZEPTO.txt": {
+      "sha256": "07d40711d07b1f0d6ce7b40b3d1ebb8987c039f098509e539685cf146cbdb7a1",
+      "source": "Zepto v1.2.0 MIT-LICENSE"
+    },
+    "images/icon_footer.png": {
+      "sha256": "da970ab7bd9094998ccf23f9ec6ef7bca3d2463678f989870fff8204cdb649b1",
+      "source": "src/example/images/icon_footer.png"
+    },
+    "images/icon_footer_link.png": {
+      "sha256": "da970ab7bd9094998ccf23f9ec6ef7bca3d2463678f989870fff8204cdb649b1",
+      "source": "src/example/images/icon_footer_link.png"
+    },
+    "images/icon_intro.png": {
+      "sha256": "e8978f6e2da230e3d40e4e477198f12c20da62265e768ebb517fc07bfff54fac",
+      "source": "src/example/images/icon_intro.png"
+    },
+    "images/icon_nav_feedback.png": {
+      "sha256": "e443d0e997274820932ecc160dd75e9505822fb5cecef365634faba63995202a",
+      "source": "src/example/images/icon_nav_feedback.png"
+    },
+    "images/icon_nav_form.png": {
+      "sha256": "a5f2414ad13e8cafe13b83a827b29c0850530e2d398b186d1405b66d2627183c",
+      "source": "src/example/images/icon_nav_form.png"
+    },
+    "images/icon_nav_layout.png": {
+      "sha256": "c83252d9efb40bbb3b544fd9313d127fc18642f8990e2326d9ff2bc3b631284a",
+      "source": "src/example/images/icon_nav_layout.png"
+    },
+    "images/icon_nav_nav.png": {
+      "sha256": "230cb28ab380fc214f01d6324907a60faef35a2f6f390e40c249d421bf2a6f8b",
+      "source": "src/example/images/icon_nav_nav.png"
+    },
+    "images/icon_nav_search.png": {
+      "sha256": "ae59deede75f43e94342fce8fffee96350b8c451d729b989f1ded402fdc5c93e",
+      "source": "src/example/images/icon_nav_search.png"
+    },
+    "images/icon_nav_special.png": {
+      "sha256": "10bd5cf8d298a4110f3550dc97291edf911d7101f2438b9ea433ecafbe6a9785",
+      "source": "src/example/images/icon_nav_special.png"
+    },
+    "images/icon_nav_z-index.png": {
+      "sha256": "1157f6ae6ad48283e2411578fa3c8a03243a7e0fd551d3634805c1a4a9c31ccf",
+      "source": "src/example/images/icon_nav_z-index.png"
+    },
+    "images/icon_tabbar.png": {
+      "sha256": "f75c7057e601883566868da730b3c35dd1f3fbe7fb7231afef5397ad24b37232",
+      "source": "src/example/images/icon_tabbar.png"
+    },
+    "images/layers/content.png": {
+      "sha256": "4438729c1cbfcd10c39512e1cb46ee5e3fcc493b8509d559d41e92f893c2c138",
+      "source": "src/example/images/layers/content.png"
+    },
+    "images/layers/navigation.png": {
+      "sha256": "92368314e42cdda02f92485e11ab5789ac763675f7b3c7756b3444a0afe82103",
+      "source": "src/example/images/layers/navigation.png"
+    },
+    "images/layers/popout.png": {
+      "sha256": "4df883a4cb19b3f42eb3777255af6d93afbb495fd211997fd889ac41ca438284",
+      "source": "src/example/images/layers/popout.png"
+    },
+    "images/layers/transparent.gif": {
+      "sha256": "ed92eb24b564a36ce3a44bb543678452da05a12edc23a631fee0149c24194d30",
+      "source": "src/example/images/layers/transparent.gif"
+    },
+    "images/logo.png": {
+      "sha256": "9f2a4a525e5038915bdf61442bfacb595c1a2f3045b4701e2a91cd214560c4aa",
+      "source": "src/example/images/logo.png"
+    },
+    "images/pic_160.png": {
+      "sha256": "8fe44f2ea599ec93a832a956eb551c0144704a7246e6e0114ffbc8d8c5dbe9dd",
+      "source": "src/example/images/pic_160.png"
+    },
+    "images/pic_article.png": {
+      "sha256": "230d763f4eb8ad74559ca53601e140a057c02712484aa1e7379ed9709a0b0020",
+      "source": "src/example/images/pic_article.png"
+    },
+    "images/pic_gongan.png": {
+      "sha256": "39864183f12bc46f8ab91504ebee75d21dac74efaac45f3479d7cef7e0ce5e03",
+      "source": "src/example/images/pic_gongan.png"
+    },
+    "images/vcode.jpg": {
+      "sha256": "6762c9af49e536ce8786a2479560468849a1501cc37fb47ea5788d68455115e8",
+      "source": "src/example/images/vcode.jpg"
+    },
+    "routes.js": {
+      "sha256": "1adf192fe329e7d6148d3f92727555817e9dbab1e328dc3f807b81fda10d9a87",
+      "source": "Sanitized route markup generated by vendor_upstream.py"
+    }
+  },
+  "routes": [
+    {
+      "id": "home",
+      "source": "src/example/home.html",
+      "sha256": "83deb226f1849f7221758d55273813a12440a3b5bb63d6d2254da53af2147140",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "layers",
+      "source": "src/example/layers.html",
+      "sha256": "d8c2769015329704c060c1921b4b1e596dfb742e55e890426f9fc80d960bea84",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "button",
+      "source": "src/example/button/button.html",
+      "sha256": "0ac96ac6bec486e5f29b453c94b4bc72ae67467bd7de557e2226e5c2c4add3c9",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "button_default",
+      "source": "src/example/button/button_default.html",
+      "sha256": "949985e5ab96cef96466c2491736d5cde98c62523ac35ed4af55ce2d71bf68b9",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "button_bottom_fixed",
+      "source": "src/example/button/button_bottom_fixed.html",
+      "sha256": "4997171dce715161a14ba3852d85aa07096e097414162403b55d765f216abd37",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "list",
+      "source": "src/example/list/list.html",
+      "sha256": "9b504515038c2956ea53cf32543b180e1f462b5b9165eaca6c6d0ac6acd2615a",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "input",
+      "source": "src/example/input/input.html",
+      "sha256": "22511dcc5572e6aaf74df3cae40cf872fcf1b8e3187e55c07763172fd5fdb339",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "form",
+      "source": "src/example/form/form.html",
+      "sha256": "9eb1a764896d9cba992cc1990f2921dc779cf4aa60d1fa9d9faf048f090df43f",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "form_primary",
+      "source": "src/example/form/form_primary.html",
+      "sha256": "0481c74ebe20c6054f6d6bea6b13291a9ec6ba21bc1b85d08b405ee03e9a40bb",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "form_page",
+      "source": "src/example/form/form_page.html",
+      "sha256": "7cfc7280d502aeaae64dc9f84af2df5cd7441d8ab4701f679d666ff8cbd4a19b",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "form_page_old",
+      "source": "src/example/form/form_page_old.html",
+      "sha256": "e0e129e3ca6fccd5f2c7fd212acbbec5e5ecd88d66386dd164ba7e5ae0c6d5d0",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "form_input_status",
+      "source": "src/example/form/form_input_status.html",
+      "sha256": "faab0f2452e93cb2fd6afb6b691bb9a5e70825461453ae667e1137fba6aef8fe",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "form_vcode",
+      "source": "src/example/form/form_vcode.html",
+      "sha256": "88aa879aba2d59e4a8ac01cd966eedb316042fd7dfa7fc481c4927bb0e5bf81c",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "form_bottom_fixed",
+      "source": "src/example/form/form_bottom_fixed.html",
+      "sha256": "94d922f23f7a5ff602ca7c6a66c94a8c6dd4421f3a1c3e7a90079e87f70e4267",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "form_access",
+      "source": "src/example/form/form_access.html",
+      "sha256": "7a3d6c87be83ba1f67a77af925b5d968aa78982ba8714e820962ee640ad66ab8",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "form_checkbox",
+      "source": "src/example/form/form_checkbox.html",
+      "sha256": "b1febc7247eec6769ea82b35af4ad9cda4e86fa1a3263198aced86c524f9a1da",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "form_radio",
+      "source": "src/example/form/form_radio.html",
+      "sha256": "e173e4734db7332a6fea7761b34fd9bcf926d60313c49e9e9a44d4964261968d",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "form_switch",
+      "source": "src/example/form/form_switch.html",
+      "sha256": "217cad0ff986d4a2161c48dee2885ee9eeb3e5e60e1566d3c040fdd0af08628f",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "form_select",
+      "source": "src/example/form/form_select.html",
+      "sha256": "3a9328dd894cd364bba22f9dc48308768058334093c4f78144bc5e1280488207",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "form_select_primary",
+      "source": "src/example/form/form_select_primary.html",
+      "sha256": "23930115edc43372fc7f9521b9160bb68507b47f0798964c1ca9462a46021de4",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "form_textarea",
+      "source": "src/example/form/form_textarea.html",
+      "sha256": "7eca9946556d7a27939994d418728b5432bbd44407f4d493cd83c9ba1f1395fd",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "form_vertical",
+      "source": "src/example/form/form_vertical.html",
+      "sha256": "59e5c3485bbaed93d18547dbc6425bff6617090aa86253a24a9aaa15f0a54d19",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "toast",
+      "source": "src/example/toast/toast.html",
+      "sha256": "1afac96b1c9360b34b77debb0c0d93a7ac2d45ab98e05cce681922f4070f2b72",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "dialog",
+      "source": "src/example/dialog/dialog.html",
+      "sha256": "dd4e003fe3522db6ca86e2ffb87f59ac82adacc1fe12260f226f3ca229e09b66",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "half-screen-dialog",
+      "source": "src/example/half-screen-dialog/half-screen-dialog.html",
+      "sha256": "fabee78c06ba0190ae8ff602d960fe73b1dbc2a880431d86681499fc715b596e",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "progress",
+      "source": "src/example/progress/progress.html",
+      "sha256": "0f25e763f4e4b10a3683371f3b9bbed17244e5ab114e7644fdcc0a9647bbdaa9",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "steps",
+      "source": "src/example/steps/steps.html",
+      "sha256": "8fb4fb8945f310f62cb78ba4661af9c91f6c2ba0e2f13f23ed18785a348f87bd",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "steps_vertical",
+      "source": "src/example/steps/steps_vertical.html",
+      "sha256": "f90287da1309deeed1a41f66dc8825b9106194d8a1e1e54990b78d90622b5ff9",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "steps_horizonal",
+      "source": "src/example/steps/steps_horizonal.html",
+      "sha256": "fca6eda01387f66abe4364dd2c43d651f9b933cc6f7a676891cfcddfd2fc1bff",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "msg",
+      "source": "src/example/msg/msg.html",
+      "sha256": "03b15293552d924a36e46d0f8738d5471317038379c99070aec5cf5e7d9d42b4",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "msg_success",
+      "source": "src/example/msg/msg_success.html",
+      "sha256": "017dcbd7c5c7a94bbd53262242d50831c58f776e6bf77cbf4d991bdd393e5cec",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "msg_warn",
+      "source": "src/example/msg/msg_warn.html",
+      "sha256": "732184627ddbce4497956e5fd83968ccdde0525c514ac3b4a7ddc4334aa63657",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "msg_text",
+      "source": "src/example/msg/msg_text.html",
+      "sha256": "4c53c327e7172bd88795fb0f83ba29289c6294554d6873879be4b64926b5f311",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "msg_text_primary",
+      "source": "src/example/msg/msg_text_primary.html",
+      "sha256": "7556c331cc0c0ee4b89feaeabb6f9455c701aacf97d52f8ab9b91c6b98b31f58",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "msg_custom_area_preview",
+      "source": "src/example/msg/msg_custom_area_preview.html",
+      "sha256": "2cd8e91140c85583da8efa5b5bb4933e55c308c2efddbc1f51f2f49f2f97fadc",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "msg_custom_area_tips",
+      "source": "src/example/msg/msg_custom_area_tips.html",
+      "sha256": "5309e82c2ce75f6022dd4cb3408cd4782d90fd18784c185f5cd25ef02eef2e50",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "msg_custom_area_cell",
+      "source": "src/example/msg/msg_custom_area_cell.html",
+      "sha256": "2565f375b366e327bf07783b02e254d3044b261399ec40e72b24174a8bc5ca11",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "article",
+      "source": "src/example/article/article.html",
+      "sha256": "47cb143a02c5a5344b4a215bf1bc908981cdacbf8357fa05ca4433088127a900",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "navbar",
+      "source": "src/example/navbar/navbar.html",
+      "sha256": "adf487d3f63353069d04ba54691c6559e0944da0af8bd20a3ff686c56b967d1f",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "tabbar",
+      "source": "src/example/tabbar/tabbar.html",
+      "sha256": "759fb77675d562a6a05778a2930e0ecf2d2e9027bdadf53dde6e53275ff23c16",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "panel",
+      "source": "src/example/panel/panel.html",
+      "sha256": "a39b4815dccc431db0eedf3746aa070d58c86234d98afc4760b3622609e0bde2",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "actionsheet",
+      "source": "src/example/actionsheet/actionsheet.html",
+      "sha256": "e0a1d08688d8f0c3064cd32ce36c7a9524144ffb1254be5710c380fae469366b",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "icons",
+      "source": "src/example/icons/icons.html",
+      "sha256": "bfee453dfdda193bfe5ecd10eea921bdfaebd7079fbb4aea9ee989f56718d5a9",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "searchbar",
+      "source": "src/example/searchbar/searchbar.html",
+      "sha256": "c6c09aa4165406cf6f3119902f51801d626c90b778d85cce5c976f85ecc7c04c",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "searchbar_filled",
+      "source": "src/example/searchbar/searchbar_filled.html",
+      "sha256": "17084651e2c3c31a7b4f755a7ca9a1545226e74c23429aa8403582c923be079e",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "searchbar_grey",
+      "source": "src/example/searchbar/searchbar_grey.html",
+      "sha256": "56c086135f99def1947ec68730bc37dcc95a383f1f9c6616c4da780577a445d3",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "searchbar_outlined",
+      "source": "src/example/searchbar/searchbar_outlined.html",
+      "sha256": "2becd8c07132f1e244e852a5791cdc969ece137b16ecfab90f623838699bf66c",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "searchbar_homepage",
+      "source": "src/example/searchbar/searchbar_homepage.html",
+      "sha256": "dce1cd6ea82f32b1e8d7f3865153b842413a46335d39a10b1119a6f7b94f5c55",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "picker",
+      "source": "src/example/picker/picker.html",
+      "sha256": "a2794856e99242c511aa7d681de49eccde659b71d7f2c30842e099099610a063",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "footer",
+      "source": "src/example/footer/footer.html",
+      "sha256": "9a1b28321989bd0f6757ec40c7c9fc3c6cbf733a649d1b736143e306b7d7861e",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 1
+      }
+    },
+    {
+      "id": "gallery",
+      "source": "src/example/gallery/gallery.html",
+      "sha256": "6ba88ece3a401a6aedbc4e3782b012df32ce602c616c77d703745a3a69d418a4",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "flex",
+      "source": "src/example/flex/flex.html",
+      "sha256": "6204a194231a4f13ea6c03e7612e0fe07c3c86568a2779b35b4e82e316316f86",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "loading",
+      "source": "src/example/loading/loading.html",
+      "sha256": "5cb3c6f1f00a9f7dda82b709d8e3d1f44707797d2c6e7e457288f56c0dc30769",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "loadmore",
+      "source": "src/example/loadmore/loadmore.html",
+      "sha256": "79fc28589f7b2d190725841afd652351eb3f961115402e5c105721bd05335f70",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "uploader",
+      "source": "src/example/uploader/uploader.html",
+      "sha256": "7c2cae710bfc578ca227e88717034d77c3d077cc7c2b791bf630a19d440c688a",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "preview",
+      "source": "src/example/preview/preview.html",
+      "sha256": "02fd2ad020707be3e5ea29137c13e853163bc79b6a971ad57a8d52feccaeb541",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "grid",
+      "source": "src/example/grid/grid.html",
+      "sha256": "bf13fb8a724b4d5ecd9f4d2a8e1d285868f60d3ba827336ef9763e27d4fa0a63",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "badge",
+      "source": "src/example/badge/badge.html",
+      "sha256": "7cce0c9582d4229946c078ace43959d1afbb93768f2de8b541d0ccd138524215",
+      "changes": {
+        "scriptsRemoved": 0,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "slider",
+      "source": "src/example/slider/slider.html",
+      "sha256": "e53d33f331f2645c1fa34f443e9d021fa018701c5e42637309f0b82bf08f4ba2",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    },
+    {
+      "id": "information-bar",
+      "source": "src/example/information-bar/information-bar.html",
+      "sha256": "089694732254282ac83d3ecec30ed220510c3981b99e625470115c3e215b673c",
+      "changes": {
+        "scriptsRemoved": 1,
+        "inlineHandlersRemoved": 0,
+        "externalReferencesRemoved": 0,
+        "registrationFootersRemoved": 0
+      }
+    }
+  ]
+}

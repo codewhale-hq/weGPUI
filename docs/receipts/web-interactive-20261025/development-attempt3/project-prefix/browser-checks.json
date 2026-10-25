@@ -1,0 +1,50 @@
+{
+  "browser": "156.0.8078.47",
+  "base": "http://127.0.0.1:35041/weGPUI/",
+  "native_gpui_test": false,
+  "complete_suite": false,
+  "checks": [
+    {
+      "name": "choices",
+      "result": "PASS",
+      "detail": {
+        "form_checkbox": {
+          "pointer": true,
+          "keyboard": true
+        },
+        "form_radio": {
+          "pointer": true,
+          "keyboard": false
+        },
+        "form_switch": {
+          "pointer": true,
+          "keyboard": true
+        }
+      }
+    },
+    {
+      "name": "agreement-vcode",
+      "result": "PASS",
+      "detail": {
+        "terms_did_not_toggle": true,
+        "consent_keyboard": true,
+        "guarded_send_count": 1
+      }
+    },
+    {
+      "name": "swipe",
+      "result": "PASS",
+      "detail": {
+        "keyboard_disclose_delete": true,
+        "real_pointer_drag_both_directions": true
+      }
+    },
+    {
+      "name": "links-content",
+      "result": "FAIL",
+      "error": "TimeoutError('Page.wait_for_function: Timeout 6000ms exceeded.')",
+      "problems": []
+    }
+  ],
+  "result": "FAIL"
+}

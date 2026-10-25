@@ -1,0 +1,662 @@
+[
+  {
+    "route": "actionsheet",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "actionsheet",
+    "state": "ios",
+    "pass": true
+  },
+  {
+    "route": "actionsheet",
+    "state": "android",
+    "pass": true
+  },
+  {
+    "route": "article",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "badge",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "button",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "button_bottom_fixed",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "button_bottom_fixed",
+    "state": "agreed",
+    "pass": true
+  },
+  {
+    "route": "button_default",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "dialog",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "dialog",
+    "state": "ios1",
+    "pass": true
+  },
+  {
+    "route": "dialog",
+    "state": "ios2",
+    "pass": true
+  },
+  {
+    "route": "dialog",
+    "state": "ios3",
+    "pass": true
+  },
+  {
+    "route": "dialog",
+    "state": "android1",
+    "pass": true
+  },
+  {
+    "route": "dialog",
+    "state": "android2",
+    "pass": true
+  },
+  {
+    "route": "flex",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "footer",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "form",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "form_access",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "form_bottom_fixed",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "form_bottom_fixed",
+    "state": "dialog",
+    "pass": true
+  },
+  {
+    "route": "form_bottom_fixed",
+    "state": "checked",
+    "pass": true
+  },
+  {
+    "route": "form_bottom_fixed",
+    "state": "toast",
+    "pass": true
+  },
+  {
+    "route": "form_checkbox",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "form_checkbox",
+    "state": "toast",
+    "pass": true
+  },
+  {
+    "route": "form_checkbox",
+    "state": "checked",
+    "pass": true
+  },
+  {
+    "route": "form_input_status",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "form_input_status",
+    "state": "error",
+    "pass": true
+  },
+  {
+    "route": "form_input_status",
+    "state": "amount",
+    "pass": true
+  },
+  {
+    "route": "form_input_status",
+    "state": "toast",
+    "pass": true
+  },
+  {
+    "route": "form_page",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "form_page",
+    "state": "filled",
+    "pass": true
+  },
+  {
+    "route": "form_page",
+    "state": "toast",
+    "pass": true
+  },
+  {
+    "route": "form_page_old",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "form_page_old",
+    "state": "filled",
+    "pass": true
+  },
+  {
+    "route": "form_primary",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "form_primary",
+    "state": "switch",
+    "pass": true
+  },
+  {
+    "route": "form_primary",
+    "state": "filled",
+    "pass": true
+  },
+  {
+    "route": "form_radio",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "form_radio",
+    "state": "toast",
+    "pass": true
+  },
+  {
+    "route": "form_radio",
+    "state": "checked",
+    "pass": true
+  },
+  {
+    "route": "form_select",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "form_select",
+    "state": "toast",
+    "pass": true
+  },
+  {
+    "route": "form_select_primary",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "form_select_primary",
+    "state": "select1",
+    "pass": true
+  },
+  {
+    "route": "form_select_primary",
+    "state": "select2",
+    "pass": true
+  },
+  {
+    "route": "form_select_primary",
+    "state": "select3",
+    "pass": true
+  },
+  {
+    "route": "form_switch",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "form_switch",
+    "state": "toast",
+    "pass": true
+  },
+  {
+    "route": "form_switch",
+    "state": "checked",
+    "pass": true
+  },
+  {
+    "route": "form_textarea",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "form_vcode",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "form_vcode",
+    "state": "dialog",
+    "pass": true
+  },
+  {
+    "route": "form_vcode",
+    "state": "checked",
+    "pass": true
+  },
+  {
+    "route": "form_vcode",
+    "state": "toast",
+    "pass": true
+  },
+  {
+    "route": "form_vcode",
+    "state": "warn",
+    "pass": true
+  },
+  {
+    "route": "form_vcode",
+    "state": "countdown",
+    "pass": true
+  },
+  {
+    "route": "form_vertical",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "gallery",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "gallery",
+    "state": "closed",
+    "pass": true
+  },
+  {
+    "route": "grid",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "half-screen-dialog",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "half-screen-dialog",
+    "state": "1",
+    "pass": true
+  },
+  {
+    "route": "half-screen-dialog",
+    "state": "2",
+    "pass": true
+  },
+  {
+    "route": "half-screen-dialog",
+    "state": "3",
+    "pass": true
+  },
+  {
+    "route": "half-screen-dialog",
+    "state": "4",
+    "pass": true
+  },
+  {
+    "route": "half-screen-dialog",
+    "state": "5",
+    "pass": true
+  },
+  {
+    "route": "home",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "home",
+    "state": "category-1",
+    "pass": true
+  },
+  {
+    "route": "icons",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "information-bar",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "information-bar",
+    "state": "closed",
+    "pass": true
+  },
+  {
+    "route": "input",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "layers",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "layers",
+    "state": "popout",
+    "pass": true
+  },
+  {
+    "route": "layers",
+    "state": "mask",
+    "pass": true
+  },
+  {
+    "route": "layers",
+    "state": "navigation",
+    "pass": true
+  },
+  {
+    "route": "layers",
+    "state": "content",
+    "pass": true
+  },
+  {
+    "route": "layers",
+    "state": "3d",
+    "pass": true
+  },
+  {
+    "route": "list",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "list",
+    "state": "closed",
+    "pass": true
+  },
+  {
+    "route": "loading",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "loadmore",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "msg",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "msg_custom_area_cell",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "msg_custom_area_preview",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "msg_custom_area_tips",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "msg_success",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "msg_text",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "msg_text_primary",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "msg_warn",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "navbar",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "navbar",
+    "state": "tab2",
+    "pass": true
+  },
+  {
+    "route": "navbar",
+    "state": "tab3",
+    "pass": true
+  },
+  {
+    "route": "panel",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "picker",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "picker",
+    "state": "single",
+    "pass": true
+  },
+  {
+    "route": "picker",
+    "state": "date",
+    "pass": true
+  },
+  {
+    "route": "picker",
+    "state": "multi",
+    "pass": true
+  },
+  {
+    "route": "picker",
+    "state": "cascade",
+    "pass": true
+  },
+  {
+    "route": "preview",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "progress",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "progress",
+    "state": "uploading",
+    "pass": true
+  },
+  {
+    "route": "searchbar",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "searchbar_filled",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "searchbar_filled",
+    "state": "focused",
+    "pass": true
+  },
+  {
+    "route": "searchbar_filled",
+    "state": "typed",
+    "pass": true
+  },
+  {
+    "route": "searchbar_grey",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "searchbar_grey",
+    "state": "focused",
+    "pass": true
+  },
+  {
+    "route": "searchbar_grey",
+    "state": "typed",
+    "pass": true
+  },
+  {
+    "route": "searchbar_homepage",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "searchbar_outlined",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "searchbar_outlined",
+    "state": "focused",
+    "pass": true
+  },
+  {
+    "route": "searchbar_outlined",
+    "state": "typed",
+    "pass": true
+  },
+  {
+    "route": "searchbar_outlined",
+    "state": "filled",
+    "pass": true
+  },
+  {
+    "route": "slider",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "slider",
+    "state": "value80",
+    "pass": true
+  },
+  {
+    "route": "steps",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "steps_horizonal",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "steps_vertical",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "tabbar",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "tabbar",
+    "state": "tab2",
+    "pass": true
+  },
+  {
+    "route": "tabbar",
+    "state": "tab3",
+    "pass": true
+  },
+  {
+    "route": "toast",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "toast",
+    "state": "success",
+    "pass": true
+  },
+  {
+    "route": "toast",
+    "state": "fail",
+    "pass": true
+  },
+  {
+    "route": "toast",
+    "state": "longtext",
+    "pass": true
+  },
+  {
+    "route": "toast",
+    "state": "loading",
+    "pass": true
+  },
+  {
+    "route": "toast",
+    "state": "text",
+    "pass": true
+  },
+  {
+    "route": "uploader",
+    "state": "",
+    "pass": true
+  },
+  {
+    "route": "uploader",
+    "state": "viewer",
+    "pass": true
+  },
+  {
+    "route": "uploader",
+    "state": "preview",
+    "pass": true
+  }
+]

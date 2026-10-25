@@ -10,6 +10,11 @@ Read `docs/STATUS.md`, `docs/UPSTREAM-COVERAGE.md`, `docs/RELEASE-READINESS.md`,
 
 ### Handoff state — 2026-10-25 approved native fixes and browser gallery
 
+The approved native compatibility batch is pushed and remote-verified as
+`f7d41a534b02c15c6dbf3d0b216c9becc3925bcd`. Fresh fmt, locked all-target build,
+47 root tests/one ignored doctest, strict Clippy and strict rustdoc pass on Rust 1.98.1.
+The browser gallery and its publication preparation are a separate follow-up.
+
 The component-contract batch was pushed as `49268de7bb78a69cb56b96f6cff02a2d9284e71d`.
 The ordinary Linux followup is committed as `3840b47370f8defa925cbff7d3bf12ccf6250722`,
 with all five Rust 1.98.1 gates green and 47 tests passing (one doctest ignored).
@@ -59,10 +64,25 @@ and `proposals/x11-grab-focus/`; their original failure receipts remain historic
   saved AT requests may return true when queued, so callback/focus/tree results establish
   rejection. See the `contracts-*` runs in the fixed-guard receipt.
 
-Current user priority is the interactive browser gallery and a reviewable GitHub Pages
-hosting path. Website work is in progress separately; these bounded approved native fixes
-are retained and verified in parallel. Do not dispatch CI, enable hosting or deploy before
-the owner's explicit publication authorization. Cache performance with/without AT,
+The interactive browser gallery is built with 60 live routes and 132 state presets using
+pinned WeUI 2.6.26 / WeUI.js 1.2.17. The full `final-candidate1-rerun` suite passes at site
+root and `/weGPUI/`: 40 browser checks, including 360 route/viewport observations.
+Candidate 3's three targeted checks per mount and complete legacy checks also pass; each
+legacy mount verifies 264 historical state/theme views and 528 decoded images. The final
+theme/native-theme checks cover 375/390/768/1280px, palette retention and live iframe
+pointer/Space interaction. The two later changes are confined to the palette handler and
+CSS minimum width; the complete 40-check result remains attributed to candidate 1.
+See `receipts/web-interactive-20261025/README.md`; the final 390px theme capture was reviewed.
+The Python-only normal build uses checked-in assets;
+local upload demos have no transport. This is a separate HTML/CSS/JavaScript implementation;
+native captures remain available with `?view=native` and native setup at `#native-guide`.
+These browser results do not accept any of the 40 native component rows.
+
+The manual-only Pages workflow and [hosting steps](../website/HOSTING.md) are prepared.
+Pages is not enabled and no live deployment is established. The original no-CI-dispatch /
+no-deployment instruction still requires the owner's final explicit authorization for the
+reviewed source and destination before enabling Pages, dispatching the workflow or publishing.
+The separately verified native fixes remain retained; cache performance with/without AT,
 arbitrary external topmost ordering, other hosts and complete reader acceptance remain open.
 
 The canonical checkout is `/workspace/weGPUI` on GitHub `main`. The first cloud continuation

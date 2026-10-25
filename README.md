@@ -13,6 +13,21 @@ The library is in development: **0.1.0, unreleased**. All 61 upstream example fi
 gallery (60 routes plus the index shell), but parity is sampled, not complete. [docs/STATUS.md](docs/STATUS.md) records what is
 verified, what differs, and what has not been tested.
 
+## Interactive browser gallery
+
+The website offers 60 live WeUI browser examples and 132 state presets, with light,
+dark, care contrast and custom brand controls. Forms, dialogs, pickers and local file
+previews run in HTML/CSS/JavaScript; the native Rust library remains a separate implementation.
+
+```sh
+python3 website/build.py
+python3 -m http.server 4173 --bind 127.0.0.1 --directory website/dist
+```
+
+Open <http://127.0.0.1:4173/>. See [website setup and checks](website/README.md) and
+[GitHub Pages hosting](website/HOSTING.md). Publication is prepared but not enabled.
+Historical native captures and the native setup guide remain available in the gallery.
+
 ## Quick start
 
 ```sh

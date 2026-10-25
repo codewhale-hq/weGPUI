@@ -1,0 +1,53 @@
+/* Browser input/accessibility adapters; component appearance comes from pinned WeUI. */
+[hidden] { display: none !important; }
+[inert] { pointer-events: none; }
+#playground-status {
+  position: fixed;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  z-index: 9000;
+  width: max-content;
+  max-width: calc(100% - 32px);
+  box-sizing: border-box;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--weui-BG-2);
+  color: var(--weui-FG-0);
+  font: 14px/1.4 system-ui, sans-serif;
+  box-shadow: 0 2px 18px #0004, 0 0 0 1px var(--weui-FG-3);
+  overflow-wrap: anywhere;
+  pointer-events: none;
+}
+#playground-status:empty { display: none; }
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px #000;
+}
+.playground-overlay-open { z-index: 6000; }
+.playground-overlay-open > .weui-half-screen-dialog,
+.playground-overlay-open.weui-actionsheet,
+.playground-overlay-open .weui-skin_android .weui-actionsheet,
+.playground-overlay-open.weui-skin_android .weui-actionsheet { transform: translate3d(0, 0, 0); }
+.playground-overlay-open .weui-half-screen-dialog { z-index: 6001; }
+.playground-overlay-open .weui-mask { z-index: 6000; }
+.playground-picker-wrap { position: fixed; inset: 0; z-index: 6000; }
+.playground-picker { transform: translate3d(0, 0, 0); z-index: 6001; }
+.playground-picker .weui-half-screen-dialog__hd { display: flex; align-items: center; gap: 16px; }
+.playground-picker .weui-btn_icon { font-size: 16px; width: auto; text-indent: 0; color: var(--weui-FG-1); }
+.playground-picker .weui-picker__mask,
+.playground-picker .weui-picker__indicator { pointer-events: none; }
+.playground-picker .weui-picker__group { touch-action: none; cursor: ns-resize; }
+.playground-picker .weui-picker__group:focus-visible { outline-offset: -4px; box-shadow: inset 0 0 0 6px #000; z-index: 4; }
+.playground-picker .weui-picker__content { transition: transform 140ms ease-out; }
+.playground-picker .weui-picker__item[aria-disabled="true"] { cursor: not-allowed; }
+.playground-gallery-close { position: absolute; top: 12px; right: 12px; z-index: 7000; color: white; background: #222; font-size: 16px; padding: 8px 12px; width: auto; height: auto; text-indent: 0; border-radius: 8px; }
+.weui-gallery__img:focus-visible { outline-offset: -8px; }
+.weui-slider__inner { touch-action: none; }
+.weui-cell_swiped > .weui-cell__bd { touch-action: pan-y; transition: transform 180ms ease-out; }
+.weui-uploader__file__delete { border: 0; padding: 0; cursor: pointer; }
+.weui-search-bar__input_text[role="button"], .js_item[role="button"], .js_category[role="button"] { cursor: pointer; }
+@media (prefers-reduced-motion: reduce) {
+  .playground-picker .weui-picker__content, .weui-cell_swiped > .weui-cell__bd { transition: none; }
+}

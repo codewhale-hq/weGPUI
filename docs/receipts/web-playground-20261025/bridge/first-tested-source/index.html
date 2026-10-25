@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'">
+  <title>weGPUI interactive browser gallery</title>
+  <link rel="stylesheet" href="vendor/weui.css">
+  <link rel="stylesheet" href="vendor/example.css">
+  <link rel="stylesheet" href="bridge.css">
+  <link rel="stylesheet" href="shell.css">
+  <script src="vendor/zepto.min.js" defer></script>
+  <script src="vendor/weui.min.js" defer></script>
+  <script src="vendor/routes.js" defer></script>
+  <script src="bridge.js" defer></script>
+  <script src="router.js" defer></script>
+</head>
+<body>
+  <span aria-hidden="true" id="js_a11y_comma" class="weui-hidden_abs">，</span>
+  <div id="playground-status" role="status" aria-live="polite" aria-atomic="true"></div>
+  <div id="playground-loading" role="status">Loading interactive example…</div>
+  <div class="container" id="container"></div>
+</body>
+</html>
