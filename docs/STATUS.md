@@ -148,9 +148,9 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 ## Known unresolved defects and gaps
 
 - **Focus scrolling** (fixed 2026-10-24, Linux X11 only): `scrolling::FocusScroll` reveals
-  offscreen focus in the gallery, `BottomFixedPage` and `component_states`. Dialog,
-  half-screen dialog, `BottomFixedOpr` page and navbar scrollers have no `ScrollHandle` yet and
-  are not wrapped. macOS/Windows reruns of the preview 480x650 sequence are still needed.
+  offscreen focus in the gallery, `BottomFixedPage` and `component_states`. Dialog and
+  half-screen bodies and `BottomFixedOprPage` are wrapped too; `navbar::tab_panel` callers must
+  wrap it themselves. macOS/Windows reruns of the preview 480x650 sequence are still needed.
   Receipts: [focus-date-20261024](receipts/focus-date-20261024/README.md).
 - **Date/datetime inputs** (fixed 2026-10-24, gallery-level): implemented with `Picker` in the
   input page. This is an adaptation of HTML `date`/`datetime-local`: fixed 1900–2100 range,

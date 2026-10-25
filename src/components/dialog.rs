@@ -292,8 +292,14 @@ impl RenderOnce for Dialog {
                 )
                 .children(buttons)
         };
+        let bd_key = SharedString::from(format!("{:?}-bd-scroll", self.id));
+        let bd_scroll = window
+            .use_keyed_state(bd_key.clone(), cx, |_, _| ScrollHandle::new())
+            .read(cx)
+            .clone();
         let body = div()
             .id("weui-dialog-bd")
+            .track_scroll(&bd_scroll)
             .min_h_0()
             .overflow_y_scroll()
             .px(px(24.))
@@ -344,7 +350,7 @@ impl RenderOnce for Dialog {
                         .child(title),
                 )
             })
-            .child(body)
+            .child(crate::scrolling::FocusScroll::new(bd_key, &bd_scroll, body))
             .child(footer.flex_shrink_0());
         match self.presence {
             Some(presence) => {

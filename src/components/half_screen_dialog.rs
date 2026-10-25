@@ -379,8 +379,14 @@ impl RenderOnce for HalfScreenDialog {
         let body_pb = self
             .body_padding_bottom
             .unwrap_or(if self.bottom_fixed { 80. } else { 56. });
+        let bd_key = SharedString::from(format!("{:?}-bd-scroll", self.id));
+        let bd_scroll = window
+            .use_keyed_state(bd_key.clone(), cx, |_, _| ScrollHandle::new())
+            .read(cx)
+            .clone();
         let body = div()
             .id("weui-half-screen-dialog-bd")
+            .track_scroll(&bd_scroll)
             .flex_1()
             .min_h_0()
             .overflow_y_scroll()
@@ -447,7 +453,7 @@ impl RenderOnce for HalfScreenDialog {
             .flex()
             .flex_col()
             .child(header)
-            .child(body)
+            .child(crate::scrolling::FocusScroll::new(bd_key, &bd_scroll, body))
             .children(footer);
         if self.grab {
             let line_h = 4. + 12. * pct;

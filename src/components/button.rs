@@ -718,7 +718,12 @@ impl ParentElement for BottomFixedOprPage {
 }
 
 impl RenderOnce for BottomFixedOprPage {
-    fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
+    fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
+        let key = SharedString::from(format!("{:?}-focus-scroll", self.id));
+        let scroll = window
+            .use_keyed_state(key.clone(), cx, |_, _| ScrollHandle::new())
+            .read(cx)
+            .clone();
         let solid: Hsla = self.tool_bg.unwrap_or_else(|| {
             if Theme::get(cx).is_dark {
                 rgb(0x191919).into()
@@ -730,14 +735,17 @@ impl RenderOnce for BottomFixedOprPage {
             .size_full()
             .flex()
             .flex_col()
-            .child(
+            .child(crate::scrolling::FocusScroll::new(
+                key,
+                &scroll,
                 div()
                     .id(self.id)
                     .flex_1()
                     .min_h_0()
                     .overflow_y_scroll()
+                    .track_scroll(&scroll)
                     .child(div().pb(px(80.)).children(self.content)),
-            )
+            ))
             .child(
                 div()
                     .relative()

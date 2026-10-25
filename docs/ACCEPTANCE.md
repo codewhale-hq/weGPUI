@@ -17,18 +17,18 @@ presentational.
 | `agree` | Agree | on_change | disabled, warn, checked | yes | click (Enter/Space) | yes | role+name | Checked/disabled/warn + shake, link callback | Disabled/warn matrix not driven at runtime | P2 |
 | `article` | Article, ListStyle, ListItem, ArticleList | — | — | n/a | n/a | n/a | role+name | Static content, heading/list roles | Heading level not forwarded by AT-SPI 0.19.1 | P3 |
 | `badge` | Badge | — | — | n/a | n/a | n/a | none | Static | None interactive; visual parity unsampled | P3 |
-| `button` | Size, ButtonKind, Button, ButtonArea, BottomFixedOpr, BottomFixedOprPage | on_click | disabled, loading, warn | yes | click (Enter/Space) | yes | role+name | Kinds/sizes, disabled, loading guard, cell variant, BottomFixedOpr | Runtime matrix of disabled/loading per size; BottomFixedOpr scroller not FocusScroll-wrapped | P1 |
+| `button` | Size, ButtonKind, Button, ButtonArea, BottomFixedOpr, BottomFixedOprPage | on_click | disabled, loading, warn | yes | click (Enter/Space) | yes | role+name | Kinds/sizes, disabled, loading guard, cell variant, BottomFixedOpr | Runtime matrix of disabled/loading per size; — | P1 |
 | `cells` | CellsStyle, Cells, Cell | on_click | disabled, warn, selected | yes | click (Enter/Space) | yes | role+name | Clickable/link/disabled rows, track_focus | Access/arrow variants visual parity | P2 |
 | `checkbox` | Checkbox, CheckboxCell | on_change | disabled, checked | yes | click (Enter/Space) | yes | role+name | Controlled checked, disabled | Runtime checkbox matrix untested | P2 |
 | `date_field` | DateFieldMode, DateValue, DateFieldEvent, DateField | DateFieldEvent | disabled | yes | click (Enter/Space) | yes | role+name | New 2026-10-24: Date/DateTime, Change/Cancel events, value/range/disabled API | No typed entry, locale display, seconds; screen reader untested | P1 |
-| `dialog` | DialogButtonKind, DialogButton, Dialog | on_click, on_dismiss | disabled, warn | yes | click (Enter/Space) | overlay | role+name | Buttons, dismiss, focus restore (minimal example) | Body scroller not FocusScroll-wrapped; announce order untested | P1 |
+| `dialog` | DialogButtonKind, DialogButton, Dialog | on_click, on_dismiss | disabled, warn | yes | click (Enter/Space) | overlay | role+name | Buttons, dismiss, focus restore (minimal example) | Announce order untested | P1 |
 | `flex` |  | — | — | n/a | n/a | n/a | none | Layout helper | Resize behaviour unsampled | P3 |
 | `footer` | FooterLink, Footer | on_click | — | yes | click (Enter/Space) | yes | role+name | Links clickable/focusable | Gallery callbacks empty; home footer link focus from Mac candidate not ported | P2 |
 | `form` | CellKind, FormCell, FormGroup, Form, TipsGroup, ClearableInput | on_tap | disabled, warn | yes | click (Enter/Space) | yes | role+name | FormCell/Group/Form/TipsGroup/ClearableInput, label_for, BottomFixedPage FocusScroll | Validation states vs upstream JS; vertical layout parity | P1 |
 | `form_preview` | FormPreviewButtonKind, FormPreviewButton, FormPreview, FormPreviewList | on_click | — | yes | click (Enter/Space) | yes | role+name | Buttons focusable, reveal_focus | Callbacks empty in gallery (static upstream) | P3 |
 | `gallery` | Gallery | on_delete, on_dismiss | — | yes | click (Enter/Space) | overlay | role+name | Viewer open/delete/dismiss | Pinch/zoom, thumbnail-click proof | P2 |
 | `grid` | Grid, Grids | on_click | — | yes | click (Enter/Space) | yes | role+name | Clickable cells | Gallery callbacks empty | P3 |
-| `half_screen_dialog` | HdIconButton, HalfScreenDialog | on_click, on_dismiss | — | yes | click (Enter/Space) | overlay | role+name | Open/Tab/Escape/drag samples | Body scroller not FocusScroll-wrapped | P1 |
+| `half_screen_dialog` | HdIconButton, HalfScreenDialog | on_click, on_dismiss | — | yes | click (Enter/Space) | overlay | role+name | Open/Tab/Escape/drag samples | Body FocusScroll wrapped 2026-10-24; nested-modal focus runtime | P1 |
 | `icons` | IconVariant, Icon, IconButton | on_click | disabled | yes | click (Enter/Space) | yes | role+name | 32 SVGs, IconButton disabled | No interaction contract beyond IconButton | P3 |
 | `information_bar` | InformationBarKind, InformationBar, ListTips | on_close | — | yes | click (Enter/Space) | yes | role+name | Close callback | Link/floating variants untested | P2 |
 | `loading` | LoadingKind, Loading | — | — | n/a | n/a | n/a | role+name | Kinds, busy role | Animation timing, live reduce-motion change | P3 |
@@ -58,7 +58,7 @@ presentational.
 
 | Item | State |
 | --- | --- |
-| Offscreen focus reveal | Implemented (`scrolling`), Linux X11 runtime only. Dialog, half-screen dialog, `BottomFixedOpr`, navbar scrollers still unwrapped. |
+| Offscreen focus reveal | Implemented (`scrolling`), Linux X11 runtime only. Dialog body, half-screen body, `BottomFixedOprPage` and `BottomFixedPage` wrapped. `navbar::tab_panel` returns `Stateful<Div>`, so callers wrap it in `FocusScroll` themselves. In bottom-fixed pages a revealed field can sit under the 80px fade above the toolbar. |
 | Light / dark / care layouts | Website checks cover 264 state/theme selections of captures; native per-component care-mode runtime unsampled. |
 | Screen readers | None accepted (VoiceOver stays off per owner; NVDA/Narrator/Orca not run). |
 | IME / selection / clipboard / undo | `TextInput`/`TextArea` sampled on Linux XIM and macOS Pinyin; Windows IME not run. |
