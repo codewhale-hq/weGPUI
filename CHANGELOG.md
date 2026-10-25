@@ -6,8 +6,38 @@ versioning once a release policy is decided. No version has been published.
 
 ## [0.1.0] - Unreleased
 
+### Changed (breaking default)
+
+- **Library defaults are now English.** Every default label, accessible name, hint and validation
+  message the library supplies comes from the active `I18n` catalog, and `I18n` starts as English.
+  Applications that relied on the original WeUI wording (多选, 开关, 确定, 取消, 正在加载 …) call
+  `I18n::set_locale(Locale::zh_hans(), cx)`, which reproduces it exactly. The date field's
+  validation messages and placeholders were previously English-only or WeUI-browser style and
+  are now localised with the rest.
+
 ### Added
 
+- `wegpui::i18n` (`Locale`, `Direction`, `Messages`, `I18n`, `fill`): BCP 47 locale tags,
+  text direction inferred from script/language, runtime language switching,
+  and 14 built-in catalogs (English, Simplified and Traditional Chinese, Japanese, Korean,
+  Spanish, French, German, Portuguese, Russian, Arabic, Hebrew, Hindi, Thai; all but English and
+  Simplified Chinese are starter translations awaiting native review). Any other language is
+  supplied as a `Messages` value. See `docs/I18N.md`.
+- `TextInput`/`TextArea` caret, click placement and selection painting follow bidirectional
+  text on unwrapped lines containing right-to-left glyphs.
+- Right-to-left layout: components read `I18n::direction` and mirror (rows, padding and margins,
+  arrows, switch and slider travel, swipe actions and keys, steps, picker columns, half-screen
+  header slots, forms, search, dialogs and more; the list is in `docs/I18N.md`).
+  `wegpui::logical::Logical` gives application code the same `row`/`ps`/`pe`/`ms`/`me`/
+  `inset_s`/`inset_e`/`text_start`/`text_end` vocabulary. The *Limits* section of the guide lists
+  what is not mirrored.
+- Gallery: opens in English (`--lang zh-Hans` reproduces the upstream wording and is what the
+  parity scripts pass), `--lang <tag>`, `--dir ltr|rtl`, a Language menu, English text for every
+  page next to the upstream Chinese, and a Languages page with samples in every built-in script,
+  mixed-direction lines, the active catalog and editable fields with scripted selection states
+  (`--state type:<field>:<ops>`).
+- `scripts/i18n_sweep.py` captures every route per language and, where macOS Automation is
+  allowed, scans the accessibility tree for Chinese that survived translation.
 - Interactive browser gallery with 60 WeUI examples, 132 state presets, local file previews,
   theme controls and portable Python-only builds, published on GitHub Pages through a manual workflow.
 - DateField typed ISO entry, read-only and validation APIs, optional-value change events and

@@ -50,7 +50,7 @@ instead of serving a different script.
 ```sh
 cargo build --example gallery
 python3 -I scripts/capture.py ROUTE [--state S] [--theme light|dark] [--scroll Y] \
-    [--brand RRGGBB] [--care] [--out DIR] [--only gpui|weui]
+    [--brand RRGGBB] [--care] [--lang TAG] [--dir ltr|rtl] [--out DIR] [--only gpui|weui]
 PAIR_DIR=/tmp/pairs python3 -I scripts/capture.py dialog --state ios1   # also writes a pair
 ```
 
@@ -62,12 +62,31 @@ PAIR_DIR=/tmp/pairs python3 -I scripts/capture.py dialog --state ios1   # also w
 - **Scroll** sets `--scroll Y` natively and `scrollTop` on the last `.page` upstream. Without it
   only the first 812 pt are compared.
 - **Brand/care** pass `--brand`/`--care` natively and set `--weui-BRAND` / `data-weui-mode` upstream.
+- **Language** is `--lang` (default `zh-Hans`, because the upstream reference is Chinese and the
+  stored `docs/parity` images use it; the gallery itself now opens in English). `--dir rtl|ltr`
+  forces the layout direction. Mirrored-layout captures such as `--lang ar` have no upstream
+  counterpart, so pass `--only gpui`.
+- **Scripted typing** for the *Languages* page: `--state type:<field index>:<ops>` focuses a field
+  and dispatches the editing actions in the comma list `all`, `left`, `right`, `selleft`,
+  `selright`, so selection and caret movement can be captured without synthetic input events.
 - Output names are `<route>[-<state>]-<theme>-{gpui,weui}.png` at device scale 2 (750 px wide).
   Native captures with incorrect dimensions fail and retain an `-invalid.png` image for diagnosis.
 - The binary comes from `$CARGO_TARGET_DIR/debug/examples/gallery` (default `target/`).
 
 Compare pairs visually at full size, and use pixel statistics only as a pointer. Fonts, hinting and
 spinner phases legitimately differ (see `docs/PARITY.md`, "Differences common to every pair").
+
+## Language sweep
+
+```sh
+python3 -I scripts/i18n_sweep.py --langs en,ar --routes all --out DIR [--no-scan] [--settle 1.0]
+```
+
+Launches the gallery on every route in each language, captures the window and, unless
+`--no-scan`, dumps the accessibility tree with `scripts/ax_dump.js` and reports Chinese characters
+that survive in a non-Chinese language (the *Languages* page is exempt). The scan needs macOS
+Automation permission for System Events; without it use `--no-scan` and read the captures. See
+[I18N](I18N.md) and [receipts/i18n-20261025](receipts/i18n-20261025/README.md).
 
 ## Platform limits
 

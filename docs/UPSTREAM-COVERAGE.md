@@ -35,7 +35,7 @@ Visual results are in [PARITY](PARITY.md). Mapping a file here records implement
 | `half-screen-dialog/half-screen-dialog.html` | `components::{half_screen_dialog, modal}` | `half-screen-dialog` | 1, 2, 3, 4, 5 |
 | `home.html` | `home` route: grouped categories with expanding lists (`pages/home.rs`) | `home` | category-1 |
 | `icons/icons.html` | `components::{icons}` | `icons` | — |
-| `index.html` | gallery shell (`examples/gallery/main.rs`, `chrome.rs`): grouped home, page navigation, back, light/dark/system, care mode, brand and reduced-motion menus | `home` route | — |
+| `index.html` | gallery shell (`examples/gallery/main.rs`, `chrome.rs`): grouped home, page navigation, back, light/dark/system, care mode, brand, reduced-motion and language menus | `home` route | — |
 | `information-bar/information-bar.html` | `components::{information_bar}` | `information-bar` | closed |
 | `input/input.html` | `components::{input, textarea, cells, checkbox, radio, vcode}` | `input` | — |
 | `layers.html` | `layers` route (`pages/layers.rs`): 3D layer stack, click/keyboard isolation | `layers` | popout, mask, navigation, content, 3d |
@@ -69,6 +69,10 @@ Visual results are in [PARITY](PARITY.md). Mapping a file here records implement
 | `uploader/uploader.html` | `components::{uploader, gallery, toptips}`; add opens the native file chooser (upstream `<input type=file accept="image/*" multiple>`); non-image files become error items; transport is application-owned | `uploader` | viewer, preview |
 
 Total: 61 files.
+
+The gallery also has a `languages` route with no upstream counterpart: it shows every built-in
+language, the active catalog and editable fields for each script ([I18N](I18N.md)). It is not
+counted in the 60 mapped routes.
 
 ## CSS families without their own example
 

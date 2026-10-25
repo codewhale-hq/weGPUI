@@ -1,0 +1,5 @@
+fmt rc=0 seconds=1  cmd: cargo fmt --all -- --check
+build rc=0 seconds=3  cmd: cargo build --all-targets --locked --offline
+test rc=0 seconds=1  cmd: cargo test --locked --offline
+clippy rc=0 seconds=1  cmd: cargo clippy --all-targets --locked --offline -- -D warnings
+doc rc=0 seconds=1  cmd: cargo doc --no-deps --locked --offline

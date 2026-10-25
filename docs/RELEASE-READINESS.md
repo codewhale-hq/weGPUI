@@ -46,6 +46,15 @@ and rely on the supported behavior. A website is one part of that promise.
   The extracted NodeBuilder harness passes two supplemental metadata regressions with
   existing locked rlibs ([scope](receipts/overlay-contracts-20261025/action-guard-fixed-20261025/metadata-extraction.json));
   this does not establish a full vendor-suite or 49-root-test pass.
+- [x] Work in English and other languages: message catalogs, mirrored layouts, bidirectional
+  `TextInput` and an English-first gallery. macOS source gates pass with 59 tests
+  ([receipt](receipts/i18n-20261025/README.md), [guide](I18N.md)).
+- [ ] Finish localisation acceptance: native-speaker review of the 12 starter catalogs;
+  screen-reader output in each language; real keyboard/IME input and caret in a right-to-left
+  field; `TextArea` right alignment; owner decision on the
+  [GPUI line-breaking proposal](proposals/gpui-text-i18n/README.md); locale-aware dates; Linux and
+  Windows runs. Earlier Chinese-name accessibility samples need re-running under the English
+  default.
 - [ ] Verify input selection, clipboard, undo/redo, UTF-16 limits and IME composition.
 - [ ] Reconcile public rustdoc with observed behavior; document intentional differences.
 

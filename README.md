@@ -115,6 +115,21 @@ The host owns reapplying that mapping when its appearance changes; the standard
 mode/care/brand setters rebuild the upstream palette. This changes presentation
 only and keeps the controls and accessibility behavior in weGPUI.
 
+## Languages and right-to-left
+
+Every string the library draws or announces comes from a message catalog, so it works in English
+and in any other language: 14 catalogs are built in (English, Simplified and Traditional Chinese,
+Japanese, Korean, Spanish, French, German, Portuguese, Russian, Hindi, Thai, Arabic and Hebrew;
+twelve are unreviewed starter translations) and any other language is a `Messages` value.
+Layouts mirror under a right-to-left locale and text inputs follow bidirectional text.
+
+```rust
+wegpui::I18n::set_locale(wegpui::Locale::parse("ar").unwrap(), cx);
+```
+
+`cargo run --example gallery -- --lang ar` shows it. Known gaps (wrapped Arabic and Indic text,
+multi-line input, dates) are in [docs/I18N.md](docs/I18N.md). The browser gallery is unchanged.
+
 ## Platform support
 
 Nothing is called supported until build, launch, rendering, interaction, accessibility and
@@ -132,6 +147,7 @@ packaging all have receipts from that platform. Details and evidence are in
 ## Documentation
 
 - [STATUS](docs/STATUS.md): done, partial, and not done, with missing receipts
+- [Localisation and right-to-left](docs/I18N.md): catalogs, mirroring, limits
 - [Independent review](docs/REVIEW-2026-10-24.md): per-family behaviour table
 - [Visual parity](docs/PARITY.md) and [parity tooling](docs/PARITY-TOOLING.md)
 - [Upstream coverage](docs/UPSTREAM-COVERAGE.md) and [sources](docs/SOURCES.md)

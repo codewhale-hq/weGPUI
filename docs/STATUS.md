@@ -19,6 +19,22 @@ README in `receipts/takeover-20261025/`). Linux runtime results came from a loca
 [macOS follow-up](receipts/2026-10-24-macos/README.md) adds fresh build and sampled runtime evidence,
 including failed/incomplete attempts. It does not complete platform acceptance.
 
+## Localisation and right-to-left — 2026-10-25
+
+The owner's instruction that the library "work in English and all other languages" settles the
+scope question that was open here. Every string the library supplies comes from a message catalog
+(14 built-in; any other language by supplying a `Messages`), layouts mirror under a right-to-left
+locale, and `TextInput` follows bidirectional runs. The gallery opens in English with a Language
+menu; `--lang zh-Hans` still reproduces the upstream wording. Guide: [I18N](I18N.md); receipt:
+[i18n-20261025](receipts/i18n-20261025/README.md) (macOS only, five gates pass with 59 tests).
+
+Not done, and said plainly: no native-speaker review of the 12 starter catalogs; no screen-reader
+check in another language; no real keyboard/IME input or caret capture in a right-to-left field;
+Linux and Windows not run; `TextArea` does not right-align; wrapped Arabic, Hebrew, Devanagari and
+Thai text breaks wrongly because of the vendored GPUI (a
+[proposal](proposals/gpui-text-i18n/README.md) awaits approval); dates stay ISO and the picker's
+column order stays year-month-day.
+
 ## Linux continuation — 2026-10-25
 
 The first cloud continuation fetched clean GitHub main `52650f3` and was committed as
@@ -439,8 +455,8 @@ Still pending:
 - An upstream Android backend plan.
 - crates.io name, publication timing, versioning and ongoing GPUI upgrade policy.
 - Keeping the historical roughly 34 MB parity corpus in Git (excluded from the package).
-- Localisation/RTL scope; private conduct/security contacts; a local-time source for
-  `picker::today()`; the wider weui.js imperative API scope.
+- Private conduct/security contacts; a local-time source for `picker::today()`; the wider
+  weui.js imperative API scope; approval for the [GPUI text-breaking proposal](proposals/gpui-text-i18n/README.md).
 
 No platform support or publication decision follows from the approvals above.
 

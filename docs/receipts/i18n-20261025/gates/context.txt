@@ -1,0 +1,103 @@
+host: Darwin 25.1.0 arm64  macOS 26.1
+rustc: rustc 1.99.0 (b940084d7 2026-09-28)
+cargo: cargo 1.99.0 (5f94df478 2026-08-27)
+source: 9266bb9769dd7d79e05ed1dc84e4450100b6f947
+started: 2026-10-25 13:41:07 PDT
+dirty inventory (git status --short):
+ M CHANGELOG.md
+ M README.md
+ M docs/ACCEPTANCE.md
+ M docs/PARITY-TOOLING.md
+ M docs/RELEASE-READINESS.md
+ M docs/STATUS.md
+ M docs/UPSTREAM-COVERAGE.md
+ M examples/gallery/chrome.rs
+ M examples/gallery/main.rs
+ M examples/gallery/pages/actionsheet.rs
+ M examples/gallery/pages/article.rs
+ M examples/gallery/pages/badge.rs
+ M examples/gallery/pages/button.rs
+ M examples/gallery/pages/dialog.rs
+ M examples/gallery/pages/flex.rs
+ M examples/gallery/pages/footer.rs
+ M examples/gallery/pages/form/choice.rs
+ M examples/gallery/pages/form/mod.rs
+ M examples/gallery/pages/form/select.rs
+ M examples/gallery/pages/form/status.rs
+ M examples/gallery/pages/form/structure.rs
+ M examples/gallery/pages/form/text.rs
+ M examples/gallery/pages/form/vcode.rs
+ M examples/gallery/pages/gallery.rs
+ M examples/gallery/pages/grid.rs
+ M examples/gallery/pages/half_screen_dialog.rs
+ M examples/gallery/pages/home.rs
+ M examples/gallery/pages/icons.rs
+ M examples/gallery/pages/information_bar.rs
+ M examples/gallery/pages/input.rs
+ M examples/gallery/pages/layers.rs
+ M examples/gallery/pages/list.rs
+ M examples/gallery/pages/loading.rs
+ M examples/gallery/pages/loadmore.rs
+ M examples/gallery/pages/mod.rs
+ M examples/gallery/pages/msg.rs
+ M examples/gallery/pages/navbar.rs
+ M examples/gallery/pages/panel.rs
+ M examples/gallery/pages/picker.rs
+ M examples/gallery/pages/preview.rs
+ M examples/gallery/pages/progress.rs
+ M examples/gallery/pages/searchbar.rs
+ M examples/gallery/pages/slider.rs
+ M examples/gallery/pages/steps.rs
+ M examples/gallery/pages/tabbar.rs
+ M examples/gallery/pages/toast.rs
+ M examples/gallery/pages/uploader.rs
+ M scripts/capture.py
+ M scripts/drive.py
+ M src/components/action_sheet.rs
+ M src/components/agree.rs
+ M src/components/article.rs
+ M src/components/badge.rs
+ M src/components/button.rs
+ M src/components/cells.rs
+ M src/components/checkbox.rs
+ M src/components/date_field.rs
+ M src/components/dialog.rs
+ M src/components/footer.rs
+ M src/components/form.rs
+ M src/components/form_preview.rs
+ M src/components/gallery.rs
+ M src/components/grid.rs
+ M src/components/half_screen_dialog.rs
+ M src/components/icons.rs
+ M src/components/information_bar.rs
+ M src/components/loadmore.rs
+ M src/components/msg.rs
+ M src/components/navbar.rs
+ M src/components/panel.rs
+ M src/components/picker.rs
+ M src/components/progress.rs
+ M src/components/radio.rs
+ M src/components/search_bar.rs
+ M src/components/select.rs
+ M src/components/slider.rs
+ M src/components/steps.rs
+ M src/components/swiped.rs
+ M src/components/switch.rs
+ M src/components/tabbar.rs
+ M src/components/textarea.rs
+ M src/components/uploader.rs
+ M src/components/vcode.rs
+ M src/input.rs
+ M src/lib.rs
+?? docs/I18N.md
+?? docs/proposals/gpui-text-i18n/
+?? docs/receipts/i18n-20261025/
+?? examples/gallery/pages/languages.rs
+?? examples/gallery/text.rs
+?? scripts/i18n_sweep.py
+?? src/bidi.rs
+?? src/i18n.rs
+?? src/i18n/
+?? src/logical.rs
+(end dirty inventory)
+finished: 2026-10-25 13:41:14 PDT
