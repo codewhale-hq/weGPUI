@@ -1,0 +1,128 @@
+[
+  {
+    "route": "click",
+    "requested_delay_ms": 0,
+    "after_command_return_ms": 0.001767,
+    "after_command_start_ms": 3.469481,
+    "saved_result": true,
+    "saved_error": null,
+    "callbacks_while_presence_false": [
+      [
+        "3655",
+        "3",
+        "true",
+        "false"
+      ]
+    ],
+    "focused_after_close": [
+      "Saved overlay action probe"
+    ],
+    "late_action_ms": 2359.409771,
+    "late_error": "GLib.Error('The application no longer exists', 'atspi_error', 0)",
+    "reopen_click": true,
+    "closing_safety": "FAIL: model callback/focus loss"
+  },
+  {
+    "route": "click",
+    "requested_delay_ms": 1,
+    "after_command_return_ms": 1.082582,
+    "after_command_start_ms": 4.198374,
+    "saved_result": true,
+    "saved_error": null,
+    "callbacks_while_presence_false": [
+      [
+        "3769",
+        "3",
+        "true",
+        "false"
+      ]
+    ],
+    "focused_after_close": [
+      "Saved overlay action probe"
+    ],
+    "late_action_ms": 2384.654216,
+    "late_error": "GLib.Error('The application no longer exists', 'atspi_error', 0)",
+    "reopen_click": true,
+    "closing_safety": "FAIL: model callback/focus loss"
+  },
+  {
+    "route": "click",
+    "requested_delay_ms": 20,
+    "after_command_return_ms": 20.088046,
+    "after_command_start_ms": 23.074231,
+    "saved_result": null,
+    "saved_error": "GLib.Error('Unknown object '/org/a11y/atspi/accessible/0/336229189971035769522815485675447517184'', 'atspi_error', 1)",
+    "callbacks_while_presence_false": [],
+    "focused_after_close": [
+      "Open slow modal"
+    ],
+    "late_action_ms": 2518.478146,
+    "late_error": "GLib.Error('The application no longer exists', 'atspi_error', 0)",
+    "reopen_click": true,
+    "closing_safety": "no violation observed"
+  },
+  {
+    "route": "click",
+    "requested_delay_ms": 100,
+    "after_command_return_ms": 100.089151,
+    "after_command_start_ms": 103.47391,
+    "saved_result": null,
+    "saved_error": "GLib.Error('Unknown object '/org/a11y/atspi/accessible/0/336229189971035769522815485675447517184'', 'atspi_error', 1)",
+    "callbacks_while_presence_false": [],
+    "focused_after_close": [
+      "Open slow modal"
+    ],
+    "late_action_ms": 2513.103062,
+    "late_error": "GLib.Error('The application no longer exists', 'atspi_error', 0)",
+    "reopen_click": true,
+    "closing_safety": "no violation observed"
+  },
+  {
+    "route": "click",
+    "requested_delay_ms": 500,
+    "after_command_return_ms": 500.163597,
+    "after_command_start_ms": 503.286,
+    "saved_result": null,
+    "saved_error": "GLib.Error('Unknown object '/org/a11y/atspi/accessible/0/336229189971035769522815485675447517184'', 'atspi_error', 1)",
+    "callbacks_while_presence_false": [],
+    "focused_after_close": [
+      "Open slow modal"
+    ],
+    "late_action_ms": 2911.049111,
+    "late_error": "GLib.Error('The application no longer exists', 'atspi_error', 0)",
+    "reopen_click": true,
+    "closing_safety": "no violation observed"
+  },
+  {
+    "route": "focus",
+    "requested_delay_ms": 0,
+    "after_command_return_ms": 0.001697,
+    "after_command_start_ms": 3.161644,
+    "saved_result": true,
+    "saved_error": null,
+    "callbacks_while_presence_false": [],
+    "focused_after_close": [
+      "Saved overlay action probe"
+    ],
+    "late_action_ms": 2457.483281,
+    "late_error": "GLib.Error('The application no longer exists', 'atspi_error', 0)",
+    "reopen_click": true,
+    "closing_safety": "FAIL: focus loss"
+  },
+  {
+    "route": "focus",
+    "requested_delay_ms": 1,
+    "after_command_return_ms": 1.095885,
+    "after_command_start_ms": 8.553291,
+    "saved_result": true,
+    "saved_error": null,
+    "callbacks_while_presence_false": [],
+    "focused_after_close": [
+      "Saved overlay action probe"
+    ],
+    "late_action_ms": 2792.720743,
+    "late_error": "GLib.Error('The application no longer exists', 'atspi_error', 0)",
+    "reopen_click": true,
+    "closing_safety": "FAIL: focus loss"
+  }
+]

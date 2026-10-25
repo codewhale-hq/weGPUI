@@ -1,0 +1,36 @@
+2026-10-25T09:59:20.395638+00:00 XTEST click 'Start matrix' window-local=164,40
+2026-10-25T09:59:21.501164+00:00 XTEST key KP_Enter
+2026-10-25T09:59:25.146792+00:00 capture start focused=[('button', 'Start matrix')]
+2026-10-25T09:59:25.169912+00:00 XTEST key Tab
+2026-10-25T09:59:25.819200+00:00 XTEST key KP_Enter
+2026-10-25T09:59:29.478411+00:00 capture agreement-unchecked focused=[('check box', 'Agreement 0 Terms 0')]
+2026-10-25T09:59:29.478492+00:00 XTEST key space
+2026-10-25T09:59:30.495791+00:00 XTEST key KP_Enter
+2026-10-25T09:59:34.181690+00:00 capture agreement-checked focused=[('check box', 'Agreement 0 Terms 0')]
+2026-10-25T09:59:34.234849+00:00 XTEST key Tab
+2026-10-25T09:59:34.886651+00:00 XTEST key KP_Enter
+2026-10-25T09:59:38.853900+00:00 capture terms-link focused=[('link', 'Terms 0')]
+2026-10-25T09:59:38.854107+00:00 XTEST key Return
+2026-10-25T09:59:40.664637+00:00 capture terms-activated focused=[('link', 'Terms 0')]
+2026-10-25T09:59:40.664707+00:00 XTEST held Shift_L + Tab
+2026-10-25T09:59:41.873545+00:00 XTEST key space
+2026-10-25T09:59:42.891392+00:00 XTEST key KP_Enter
+2026-10-25T09:59:46.641766+00:00 capture agreement-unchecked-again focused=[('check box', 'Agreement 0 Terms 0')]
+2026-10-25T09:59:46.700093+00:00 XTEST key Tab
+2026-10-25T09:59:47.354850+00:00 XTEST key Tab
+2026-10-25T09:59:48.001277+00:00 XTEST key KP_Enter
+2026-10-25T09:59:52.102071+00:00 capture disabled-agreement-terms-link focused=[('link', 'Terms 1')]
+2026-10-25T09:59:52.102150+00:00 XTEST key Return
+2026-10-25T09:59:53.727575+00:00 capture disabled-agreement-terms-activated focused=[('link', 'Terms 1')]
+2026-10-25T09:59:53.753076+00:00 XTEST key Tab
+2026-10-25T09:59:54.408178+00:00 XTEST key KP_Enter
+2026-10-25T09:59:58.046219+00:00 capture warn-agreement focused=[('check box', 'Agreement 2 Terms 2')]
+2026-10-25T09:59:58.068789+00:00 XTEST key Tab
+2026-10-25T09:59:58.708706+00:00 XTEST key KP_Enter
+2026-10-25T10:00:02.691645+00:00 capture warn-terms-link focused=[('link', 'Terms 2')]
+2026-10-25T10:00:02.771404+00:00 XTEST key Tab
+2026-10-25T10:00:03.444671+00:00 XTEST key KP_Enter
+2026-10-25T10:00:07.374180+00:00 capture shake-agreement focused=[('check box', 'Agreement 3 Terms 3')]
+2026-10-25T10:00:07.375595+00:00 XTEST key F8
+2026-10-25T10:00:08.664297+00:00 capture final focused=[('check box', 'Agreement 3 Terms 3')]
+2026-10-25T10:00:08.664429+00:00 driver completed; speech/audio interpretation remains separate

@@ -1,0 +1,1318 @@
+{
+  "actions": [
+    {
+      "at": 1792921745.4931576,
+      "kind": "launch",
+      "route": "form_input_status"
+    },
+    {
+      "at": 1792921748.383108,
+      "kind": "click",
+      "field": "卡号",
+      "desktop": [
+        539,
+        435
+      ]
+    },
+    {
+      "at": 1792921749.1446023,
+      "kind": "ime",
+      "active": false
+    },
+    {
+      "at": 1792921749.805222,
+      "kind": "type",
+      "text": "ABCD"
+    },
+    {
+      "at": 1792921750.6971831,
+      "kind": "key",
+      "key": "Home"
+    },
+    {
+      "at": 1792921751.3693974,
+      "kind": "key",
+      "key": "Right"
+    },
+    {
+      "at": 1792921752.042948,
+      "kind": "ime",
+      "active": true
+    },
+    {
+      "at": 1792921752.710269,
+      "kind": "type",
+      "text": "nihao"
+    },
+    {
+      "at": 1792921754.470946,
+      "kind": "key",
+      "key": "space"
+    },
+    {
+      "at": 1792921755.8291333,
+      "kind": "type",
+      "text": "shijie"
+    },
+    {
+      "at": 1792921757.3483293,
+      "kind": "key",
+      "key": "Escape"
+    },
+    {
+      "at": 1792921758.5788739,
+      "kind": "ime",
+      "active": false
+    },
+    {
+      "at": 1792921759.2412207,
+      "kind": "key",
+      "key": "ctrl+z"
+    },
+    {
+      "at": 1792921760.5017319,
+      "kind": "key",
+      "key": "ctrl+shift+z"
+    },
+    {
+      "at": 1792921762.2400198,
+      "kind": "key",
+      "key": "ctrl+a"
+    },
+    {
+      "at": 1792921762.9404907,
+      "kind": "type",
+      "text": "ABCDEFGHIJKLMNO"
+    },
+    {
+      "at": 1792921764.6736803,
+      "kind": "key",
+      "key": "Home"
+    },
+    {
+      "at": 1792921765.3566654,
+      "kind": "key",
+      "key": "Right"
+    },
+    {
+      "at": 1792921766.02676,
+      "kind": "ime",
+      "active": true
+    },
+    {
+      "at": 1792921766.6898959,
+      "kind": "type",
+      "text": "nihao"
+    },
+    {
+      "at": 1792921768.0375245,
+      "kind": "key",
+      "key": "space"
+    },
+    {
+      "at": 1792921769.1973126,
+      "kind": "ime",
+      "active": false
+    },
+    {
+      "at": 1792921769.8564665,
+      "kind": "key",
+      "key": "ctrl+z"
+    }
+  ],
+  "observations": [
+    {
+      "label": "01-status-initial",
+      "fields": [
+        {
+          "name": "卡号",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            423,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "持卡人",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            479,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "金额",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            587,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "EMail",
+          "role": "entry",
+          "value": "1234567",
+          "caret": 7,
+          "selection": [],
+          "bounds": [
+            519,
+            695,
+            639,
+            24
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "微信号",
+          "role": "entry",
+          "value": "WeUI",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            519,
+            751,
+            639,
+            24
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "",
+      "activation": "0"
+    },
+    {
+      "label": "02-card-preedit",
+      "fields": [
+        {
+          "name": "卡号",
+          "role": "entry",
+          "value": "ABCD",
+          "caret": 1,
+          "selection": [],
+          "bounds": [
+            519,
+            423,
+            613,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "持卡人",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            479,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "金额",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            587,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "EMail",
+          "role": "entry",
+          "value": "1234567",
+          "caret": 7,
+          "selection": [],
+          "bounds": [
+            519,
+            695,
+            639,
+            24
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "微信号",
+          "role": "entry",
+          "value": "WeUI",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            519,
+            751,
+            639,
+            24
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "pinyin",
+      "activation": "2"
+    },
+    {
+      "label": "03-card-commit",
+      "fields": [
+        {
+          "name": "卡号",
+          "role": "entry",
+          "value": "A你好BCD",
+          "caret": 3,
+          "selection": [],
+          "bounds": [
+            519,
+            423,
+            613,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "持卡人",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            479,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "金额",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            587,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "EMail",
+          "role": "entry",
+          "value": "1234567",
+          "caret": 7,
+          "selection": [],
+          "bounds": [
+            519,
+            695,
+            639,
+            24
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "微信号",
+          "role": "entry",
+          "value": "WeUI",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            519,
+            751,
+            639,
+            24
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "pinyin",
+      "activation": "2"
+    },
+    {
+      "label": "04-card-cancel-preedit",
+      "fields": [
+        {
+          "name": "卡号",
+          "role": "entry",
+          "value": "A你好BCD",
+          "caret": 3,
+          "selection": [],
+          "bounds": [
+            519,
+            423,
+            613,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "持卡人",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            479,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "金额",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            587,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "EMail",
+          "role": "entry",
+          "value": "1234567",
+          "caret": 7,
+          "selection": [],
+          "bounds": [
+            519,
+            695,
+            639,
+            24
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "微信号",
+          "role": "entry",
+          "value": "WeUI",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            519,
+            751,
+            639,
+            24
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "pinyin",
+      "activation": "2"
+    },
+    {
+      "label": "05-card-canceled",
+      "fields": [
+        {
+          "name": "卡号",
+          "role": "entry",
+          "value": "A你好BCD",
+          "caret": 3,
+          "selection": [],
+          "bounds": [
+            519,
+            423,
+            613,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "持卡人",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            479,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "金额",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            587,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "EMail",
+          "role": "entry",
+          "value": "1234567",
+          "caret": 7,
+          "selection": [],
+          "bounds": [
+            519,
+            695,
+            639,
+            24
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "微信号",
+          "role": "entry",
+          "value": "WeUI",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            519,
+            751,
+            639,
+            24
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "pinyin",
+      "activation": "2"
+    },
+    {
+      "label": "06-card-undo",
+      "fields": [
+        {
+          "name": "卡号",
+          "role": "entry",
+          "value": "ABCD",
+          "caret": 1,
+          "selection": [],
+          "bounds": [
+            519,
+            423,
+            613,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "持卡人",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            479,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "金额",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            587,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "EMail",
+          "role": "entry",
+          "value": "1234567",
+          "caret": 7,
+          "selection": [],
+          "bounds": [
+            519,
+            695,
+            639,
+            24
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "微信号",
+          "role": "entry",
+          "value": "WeUI",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            519,
+            751,
+            639,
+            24
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "keyboard-us",
+      "activation": "1"
+    },
+    {
+      "label": "07-card-redo",
+      "fields": [
+        {
+          "name": "卡号",
+          "role": "entry",
+          "value": "A你好BCD",
+          "caret": 3,
+          "selection": [],
+          "bounds": [
+            519,
+            423,
+            613,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "持卡人",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            479,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "金额",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            587,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "EMail",
+          "role": "entry",
+          "value": "1234567",
+          "caret": 7,
+          "selection": [],
+          "bounds": [
+            519,
+            695,
+            639,
+            24
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "微信号",
+          "role": "entry",
+          "value": "WeUI",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            519,
+            751,
+            639,
+            24
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "keyboard-us",
+      "activation": "1"
+    },
+    {
+      "label": "08-maxlength-preedit",
+      "fields": [
+        {
+          "name": "卡号",
+          "role": "entry",
+          "value": "ABCDEFGHIJKLMNO",
+          "caret": 1,
+          "selection": [],
+          "bounds": [
+            519,
+            423,
+            613,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "持卡人",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            479,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "金额",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            587,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "EMail",
+          "role": "entry",
+          "value": "1234567",
+          "caret": 7,
+          "selection": [],
+          "bounds": [
+            519,
+            695,
+            639,
+            24
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "微信号",
+          "role": "entry",
+          "value": "WeUI",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            519,
+            751,
+            639,
+            24
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "pinyin",
+      "activation": "2"
+    },
+    {
+      "label": "09-maxlength-commit",
+      "fields": [
+        {
+          "name": "卡号",
+          "role": "entry",
+          "value": "A你BCDEFGHIJKLMNO",
+          "caret": 2,
+          "selection": [],
+          "bounds": [
+            519,
+            423,
+            613,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "持卡人",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            479,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "金额",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            587,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "EMail",
+          "role": "entry",
+          "value": "1234567",
+          "caret": 7,
+          "selection": [],
+          "bounds": [
+            519,
+            695,
+            639,
+            24
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "微信号",
+          "role": "entry",
+          "value": "WeUI",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            519,
+            751,
+            639,
+            24
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "pinyin",
+      "activation": "2"
+    },
+    {
+      "label": "10-maxlength-undo",
+      "fields": [
+        {
+          "name": "卡号",
+          "role": "entry",
+          "value": "ABCDEFGHIJKLMNO",
+          "caret": 1,
+          "selection": [],
+          "bounds": [
+            519,
+            423,
+            613,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "持卡人",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            479,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "金额",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            519,
+            587,
+            639,
+            24
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "EMail",
+          "role": "entry",
+          "value": "1234567",
+          "caret": 7,
+          "selection": [],
+          "bounds": [
+            519,
+            695,
+            639,
+            24
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "微信号",
+          "role": "entry",
+          "value": "WeUI",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            519,
+            751,
+            639,
+            24
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "keyboard-us",
+      "activation": "1"
+    }
+  ],
+  "failures": [
+    "StopIteration()"
+  ],
+  "result": "FAIL"
+}

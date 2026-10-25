@@ -1,0 +1,77 @@
+[
+  {
+    "role": "frame",
+    "name": "weGPUI Agree warning contracts",
+    "bounds": [
+      0,
+      0,
+      650,
+      360
+    ],
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "Start warning sample",
+    "bounds": [
+      32,
+      32,
+      280,
+      32
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "check box",
+    "name": "Read and accept Terms",
+    "bounds": [
+      32,
+      88,
+      586,
+      20
+    ],
+    "states": [
+      "checked",
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "link",
+    "name": "Terms",
+    "bounds": [
+      178,
+      88,
+      42,
+      20
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  }
+]

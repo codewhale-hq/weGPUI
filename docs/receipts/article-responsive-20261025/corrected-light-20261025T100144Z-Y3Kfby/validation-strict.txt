@@ -1,0 +1,1 @@
+700: native painted boxes [{'x': 24, 'y': 390, 'width': 652, 'height': 368}, {'x': 25, 'y': 758, 'width': 650, 'height': 367}], expected left 24 width 652

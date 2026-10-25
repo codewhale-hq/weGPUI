@@ -1,0 +1,4 @@
+PASS: Escape on initially collapsed focused row dismisses Modal and restores opener focus.
+PASS: Escape from open row action closes only row/restores row focus; second Escape dismisses Modal.
+PASS: exactly one controlled open and close callback, both while Modal open; two modal hides, no panic.
+Scope: native X11 keys/pointer plus queried AT-SPI; no screen-reader, all-theme or cross-host acceptance.

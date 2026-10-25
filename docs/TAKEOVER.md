@@ -10,6 +10,31 @@ Read `docs/STATUS.md`, `docs/UPSTREAM-COVERAGE.md`, `docs/RELEASE-READINESS.md`,
 
 ### Handoff state — 2026-10-25 component-contract continuation
 
+The component-contract batch was pushed as `49268de7bb78a69cb56b96f6cff02a2d9284e71d`.
+The next ordinary Linux followup changes five source files, with all five Rust 1.98.1 gates
+green and 47 tests passing (one doctest ignored). Its exact gated source and examples are in
+`receipts/linux-runtime-followup-20261025/`:
+
+- Real fcitx5 Pinyin found and verified the selected-text cancellation repair: 35 observer
+  snapshots, including silent forward/reversed restore, commit/Undo/Redo, UTF-16 suffix and
+  state/limit handling. Inline preedit works with `UseOnTheSpot=True`; the default False
+  configuration uses external preedit. The older categorical inline limitation is historical.
+- Collapsed SwipedCell Escape bubbles to its Modal. Responsive article images match the
+  static exact-CSS reference at four widths, cap at 690px and keep the 24px following gap.
+- `Semantics::invalid` and `Agree::warn` expose actual warning state; real Orca speaks and
+  clears it. More control reader samples now exist, including general and cell-style buttons;
+  these are not generic `cells::Cell` reader acceptance.
+
+Two **new, confirmed P1 framework issues** remain outside the earlier approvals. Saved AT
+Click/Focus requests at requested 0/1ms during close can mutate owner state or steal restored
+focus. X11 temporary keyboard-grab events are treated as normal window focus changes and
+disturb Orca flat review. Exact **unapplied** proposals and source/runtime proof are in
+`proposals/modal-a11y-action-guard/` and `proposals/x11-grab-focus/`. They require additional
+approval before changing the GPUI copy or adding a same-version local Linux-backend copy.
+Existing public APIs cannot safely intercept these paths before framework dispatch/reset.
+Keep the narrower closed/reopened-scope, cache/performance, topmost ordering and host limits
+explicit. Do not claim either proposal is applied or passing while approval is pending.
+
 The canonical checkout is `/workspace/weGPUI` on GitHub `main`. The first cloud continuation
 was pushed as `9c4515c`. The separately requested vertical FormCell label-width fix was
 verified and pushed as `a3ce3afca6417b7dd1b9d701456ae2d21d2150f4`: all five Rust 1.98.1 gates

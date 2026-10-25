@@ -1,0 +1,53 @@
+2026-10-25T10:11:12Z
+49268de7bb78a69cb56b96f6cff02a2d9284e71d
+ M examples/gallery/pages/article.rs
+ M src/components/swiped.rs
+ M src/input.rs
+?? docs/receipts/article-responsive-20261025/
+?? docs/receipts/ime-x11-20261025/
+?? docs/receipts/orca-controls-20261025/
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/compiled-accessibility-49268de.rs.txt
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/compiled-modal-49268de.rs.txt
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/compiled-source-git-tree.txt
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/compiled-swiped-49268de.rs.txt
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/drive.py
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/focus-fast-0ms/
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/focus-fast-1ms/
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/initial-20ms/
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/mask-20ms/
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/mask-fast-0ms/
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/mask-fast-100ms/
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/mask-fast-1ms/
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/mask-fast-20ms/
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/mask-fast-500ms/
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/observations-summary.json
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/run-session.sh
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/runtime-packages.txt
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/verification.txt
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/verify-observations.py
+?? docs/receipts/overlay-contracts-20261025/swiped-escape-followup/
+fb0f558a5a4191b6e6a0cd214a66722b6692d9fe9ec47f5dba198d024a512625  -
+efaea6abfdb20a155230aa3b0501830dfa84b182a6ab463deaad648334dea1d7  /workspace/.wegpui-cloud/orca-controls-49268de/wegpui-orca-controls-probe
+rustc 1.98.1 (48a229cea 2026-09-01)
+Linux 1df3d6caf486 6.18.55 #1 SMP Wed Oct 14 19:45:18 UTC 2026 x86_64 GNU/Linux
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+Orca version 48.1, AT-SPI2 version: 2.56.2
+speech-dispatcher 0.12.0
+Copyright (C) 2002-2012 Brailcom, o.p.s.
+This is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2, or (at your option)
+any later version. Please see COPYING for more details.
+
+pulseaudio 17.0
+eSpeak NG text-to-speech: 1.52.0  Data at: /usr/lib/x86_64-linux-gnu/espeak-ng-data
+command: /workspace/.wegpui-cloud/orca-controls-49268de/wegpui-orca-controls-probe --page cells

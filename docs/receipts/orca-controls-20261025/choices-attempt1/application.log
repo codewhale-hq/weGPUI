@@ -1,0 +1,9 @@
+CALL start 1
+CALL checkbox 1
+CALL checkbox 2
+CALL checkbox-row 1
+CALL switch 1
+CALL switch 2
+CALL radio-2 1
+CALL second-radio-1 1
+SNAP counts={"checkbox": 2, "checkbox-row": 1, "radio-2": 1, "second-radio-1": 1, "start": 1, "switch": 2} checked=[false, true, false, false] radio=2 second=1 remaining=[0, 0] offset=Point { x: 0px, y: 0px }

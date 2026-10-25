@@ -1,0 +1,3 @@
+PASS: same-client Grab/Ungrab focus pairs coincide with held reader command; no Normal in interval.
+PASS: sampled app AT-SPI focus remains icon-0; Orca activation/focus pulses and flat-review reset are recorded.
+Scope: observed unpatched failure and source trace; proposal uncompiled/unapplied, no causal or reader-acceptance pass.

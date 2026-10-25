@@ -1,0 +1,6 @@
+channels: 1
+sample_width: 2
+sample_rate: 16000
+duration_seconds: 31.256625
+peak: 32768
+rms: 4199.354773467366

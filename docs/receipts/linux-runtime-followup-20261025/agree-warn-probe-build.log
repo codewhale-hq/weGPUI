@@ -1,0 +1,3 @@
+     Locking 652 packages to latest Rust 1.98.1 compatible versions
+   Compiling wegpui-agree-warn-consumer v0.0.0 (/workspace/.wegpui-cloud/agree-warn-consumer)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.77s

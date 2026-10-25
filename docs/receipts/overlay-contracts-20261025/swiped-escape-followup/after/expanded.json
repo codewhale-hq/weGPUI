@@ -1,0 +1,136 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "states": [],
+  "attributes": [],
+  "children": [
+    {
+      "role": "application",
+      "name": "probe-fixed",
+      "description": "",
+      "states": [],
+      "attributes": [],
+      "children": [
+        {
+          "role": "frame",
+          "name": "Saved overlay action probe",
+          "description": "",
+          "states": [
+            "active",
+            "enabled",
+            "sensitive",
+            "showing",
+            "visible"
+          ],
+          "attributes": [],
+          "children": [
+            {
+              "role": "dialog",
+              "name": "Slow modal",
+              "description": "",
+              "states": [
+                "active",
+                "enabled",
+                "focusable",
+                "modal",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [
+                {
+                  "role": "button",
+                  "name": "Archive",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "bounds": [
+                    299,
+                    311,
+                    98,
+                    58
+                  ]
+                },
+                {
+                  "role": "list item",
+                  "name": "Saved custom action row",
+                  "description": "操作已展开，按右方向键或 Esc 隐藏",
+                  "states": [
+                    "enabled",
+                    "expandable",
+                    "expanded",
+                    "focusable",
+                    "focused",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "bounds": [
+                    -13,
+                    311,
+                    312,
+                    58
+                  ]
+                }
+              ],
+              "interfaces": [
+                "Accessible",
+                "Action",
+                "Component"
+              ],
+              "bounds": [
+                1,
+                20,
+                480,
+                640
+              ]
+            }
+          ],
+          "interfaces": [
+            "Accessible",
+            "Component"
+          ],
+          "bounds": [
+            1,
+            20,
+            480,
+            640
+          ]
+        }
+      ],
+      "interfaces": [
+        "Accessible"
+      ]
+    }
+  ],
+  "interfaces": [
+    "Accessible",
+    "Component"
+  ],
+  "bounds": [
+    0,
+    0,
+    1024,
+    768
+  ]
+}

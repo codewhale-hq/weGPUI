@@ -1,0 +1,39 @@
+key {'key': 'F3'}
+action-interface {'name': 'Cached child action', 'actions': ['click']}
+action-interface {'name': 'Live child action', 'actions': ['click']}
+key {'key': 'F3'}
+snapshot {'label': 'initial', 'names': ['main', 'probe-unchanged-gpui', 'Cached accessibility action probe', 'Cached child action', 'Live child action']}
+baseline-cached-click {'result': True}
+baseline-cached-focus {'result': True}
+baseline-live-focus {'result': True}
+key {'key': 'F3'}
+snapshot {'label': 'baseline-positive-controls', 'names': ['main', 'probe-unchanged-gpui', 'Cached accessibility action probe', 'Cached child action', 'Live child action']}
+key {'key': 'F1'}
+key {'key': 'F3'}
+snapshot {'label': 'parent-only-first', 'names': ['main', 'probe-unchanged-gpui', 'Cached accessibility action probe', 'Live child action']}
+saved-cached-click-after-parent {'error': "GLib.Error('Unknown object '/org/a11y/atspi/accessible/0/94353779064919379020227666271872745472'', 'atspi_error', 1)"}
+key {'key': 'F3'}
+snapshot {'label': 'saved-cached-click-result', 'names': ['main', 'probe-unchanged-gpui', 'Cached accessibility action probe', 'Live child action']}
+live-click-after-parent {'result': True}
+key {'key': 'F3'}
+snapshot {'label': 'live-click-result', 'names': ['main', 'probe-unchanged-gpui', 'Cached accessibility action probe', 'Live child action']}
+key {'key': 'F2'}
+key {'key': 'F3'}
+snapshot {'label': 'cached-notify-rescue', 'names': ['main', 'probe-unchanged-gpui', 'Cached accessibility action probe', 'Cached child action', 'Live child action']}
+cached-click-after-rescue {'error': "GLib.Error('The application no longer exists', 'atspi_error', 0)"}
+live-focus-before-second-parent {'result': True}
+key {'key': 'F3'}
+snapshot {'label': 'before-second-parent', 'names': ['main', 'probe-unchanged-gpui', 'Cached accessibility action probe', 'Cached child action', 'Live child action']}
+key {'key': 'F1'}
+key {'key': 'F3'}
+snapshot {'label': 'parent-only-second', 'names': ['main', 'probe-unchanged-gpui', 'Cached accessibility action probe', 'Live child action']}
+saved-cached-focus-after-parent {'error': "GLib.Error('The application no longer exists', 'atspi_error', 0)"}
+key {'key': 'F3'}
+snapshot {'label': 'saved-cached-focus-result', 'names': ['main', 'probe-unchanged-gpui', 'Cached accessibility action probe', 'Live child action']}
+key {'key': 'F4'}
+key {'key': 'F3'}
+snapshot {'label': 'full-refresh-rescue', 'names': ['main', 'probe-unchanged-gpui', 'Cached accessibility action probe', 'Cached child action', 'Live child action']}
+cached-focus-after-full-refresh {'error': "GLib.Error('The application no longer exists', 'atspi_error', 0)"}
+key {'key': 'F3'}
+snapshot {'label': 'final-focus-control', 'names': ['main', 'probe-unchanged-gpui', 'Cached accessibility action probe', 'Cached child action', 'Live child action']}
+finished {}

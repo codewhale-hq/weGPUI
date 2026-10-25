@@ -1,0 +1,4 @@
+  File "/workspace/weGPUI/docs/receipts/orca-controls-20261025/agree-warn-final1/harness/drive.py", line 113
+    assert 'invalid entry'not[pyatspi.stateToString(x)for x in find(label).getState().getStates()]
+                             ^
+SyntaxError: invalid syntax

@@ -1,0 +1,11 @@
+1335:     pub fn set_active(&self, focus: bool) {
+1336:         let callback = self.callbacks.borrow_mut().active_status_change.take();
+1337:         if let Some(mut fun) = callback {
+1338:             fun(focus);
+1339:             self.callbacks.borrow_mut().active_status_change = Some(fun);
+1340:         }
+1341:         if let Some(adapter) = self.state.borrow_mut().accesskit_adapter.as_mut() {
+1342:             adapter.update_window_focus_state(focus);
+1343:         }
+1344:     }
+1345: 

@@ -1,0 +1,163 @@
+[
+  {
+    "role": "frame",
+    "name": "weGPUI control contracts",
+    "bounds": [
+      0,
+      0,
+      1100,
+      900
+    ],
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "Start matrix",
+    "bounds": [
+      24,
+      24,
+      280,
+      32
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "Send rounded",
+    "bounds": [
+      24,
+      84,
+      136,
+      32
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "Start twice 0",
+    "bounds": [
+      309,
+      80,
+      184,
+      40
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "Reset 0",
+    "bounds": [
+      767,
+      80,
+      184,
+      40
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "\u91cd\u65b0\u53d1\u9001(3s)",
+    "bounds": [
+      29,
+      144,
+      123,
+      56
+    ],
+    "states": [
+      "focusable",
+      "focused",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "Start twice 1",
+    "bounds": [
+      303,
+      152,
+      184,
+      40
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "Reset 1",
+    "bounds": [
+      765,
+      152,
+      184,
+      40
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "End matrix",
+    "bounds": [
+      24,
+      224,
+      280,
+      32
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  }
+]

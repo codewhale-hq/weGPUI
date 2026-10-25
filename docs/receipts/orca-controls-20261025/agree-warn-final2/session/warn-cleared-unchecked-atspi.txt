@@ -1,0 +1,7 @@
+apps 2
+application 'orca' [] DISABLED
+application 'wegpui-agree-warn-consumer' [] DISABLED
+  frame 'weGPUI Agree warning contracts' ['showing']
+    button 'Start warning sample' ['focusable', 'showing']
+    check box 'Read and accept Terms' ['focusable', 'focused', 'showing']
+      link 'Terms' ['focusable', 'showing']

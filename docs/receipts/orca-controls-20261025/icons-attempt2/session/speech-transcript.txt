@@ -1,0 +1,16 @@
+10:07:29.571449 - SPEECH OUTPUT: 'Screen reader on.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:07:32.807069 - SPEECH OUTPUT: 'weGPUI control contracts frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:07:36.525239 - SPEECH OUTPUT: 'Start matrix button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:07:37.611555 - SPEECH OUTPUT: 'Start matrix button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:07:41.730840 - SPEECH OUTPUT: 'icon-0 button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:07:42.750401 - SPEECH OUTPUT: 'icon-0 button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:07:46.827762 - SPEECH OUTPUT: 'Entering flat review.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:07:46.832824 - SPEECH OUTPUT: 'icon-0' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:07:48.760322 - SPEECH OUTPUT: 'icon-0 icon-1 icon-2 icon-3' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:07:51.946698 - SPEECH OUTPUT: 'icon-1' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:07:52.132180 - SPEECH OUTPUT: 'icon-2' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:07:52.290735 - SPEECH OUTPUT: 'weGPUI control contracts frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:07:52.355750 - SPEECH OUTPUT: 'insert' {'established': False}
+10:07:52.463520 - SPEECH OUTPUT: 'icon-0 button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:07:52.707890 - SPEECH OUTPUT: 'weGPUI control contracts frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:07:52.884566 - SPEECH OUTPUT: 'icon-0 button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}

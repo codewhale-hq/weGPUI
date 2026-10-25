@@ -1,0 +1,119 @@
+{
+  "label": "05-card-canceled",
+  "fields": [
+    {
+      "name": "卡号",
+      "role": "entry",
+      "value": "A你好BCD",
+      "caret": 3,
+      "selection": [],
+      "bounds": [
+        519,
+        423,
+        613,
+        24
+      ],
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ]
+    },
+    {
+      "name": "持卡人",
+      "role": "entry",
+      "value": "",
+      "caret": 0,
+      "selection": [],
+      "bounds": [
+        519,
+        479,
+        639,
+        24
+      ],
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ]
+    },
+    {
+      "name": "金额",
+      "role": "entry",
+      "value": "",
+      "caret": 0,
+      "selection": [],
+      "bounds": [
+        519,
+        587,
+        639,
+        24
+      ],
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ]
+    },
+    {
+      "name": "EMail",
+      "role": "entry",
+      "value": "1234567",
+      "caret": 7,
+      "selection": [],
+      "bounds": [
+        519,
+        695,
+        639,
+        24
+      ],
+      "states": [
+        "enabled",
+        "focusable",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text",
+        "read only"
+      ]
+    },
+    {
+      "name": "微信号",
+      "role": "entry",
+      "value": "WeUI",
+      "caret": 4,
+      "selection": [],
+      "bounds": [
+        519,
+        751,
+        639,
+        24
+      ],
+      "states": [
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ]
+    }
+  ],
+  "input_method": "pinyin",
+  "activation": "2"
+}

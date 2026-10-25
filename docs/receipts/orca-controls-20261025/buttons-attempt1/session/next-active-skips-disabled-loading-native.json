@@ -1,0 +1,363 @@
+[
+  {
+    "role": "frame",
+    "name": "weGPUI control contracts",
+    "bounds": [
+      0,
+      0,
+      1100,
+      900
+    ],
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "Start matrix",
+    "bounds": [
+      24,
+      24,
+      280,
+      32
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-0-false-0",
+    "bounds": [
+      102,
+      138,
+      184,
+      48
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-0-false-1",
+    "bounds": [
+      102,
+      202,
+      184,
+      48
+    ],
+    "states": [
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-0-false-2",
+    "bounds": [
+      102,
+      266,
+      184,
+      48
+    ],
+    "states": [
+      "busy",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-1-false-0",
+    "bounds": [
+      458,
+      138,
+      184,
+      48
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-1-false-1",
+    "bounds": [
+      458,
+      202,
+      184,
+      48
+    ],
+    "states": [
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-1-false-2",
+    "bounds": [
+      458,
+      266,
+      184,
+      48
+    ],
+    "states": [
+      "busy",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-2-false-0",
+    "bounds": [
+      814,
+      138,
+      184,
+      48
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-2-false-1",
+    "bounds": [
+      814,
+      202,
+      184,
+      48
+    ],
+    "states": [
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-2-false-2",
+    "bounds": [
+      814,
+      266,
+      184,
+      48
+    ],
+    "states": [
+      "busy",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-0-true-0",
+    "bounds": [
+      102,
+      404,
+      184,
+      48
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-0-true-1",
+    "bounds": [
+      102,
+      468,
+      184,
+      48
+    ],
+    "states": [
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-0-true-2",
+    "bounds": [
+      102,
+      532,
+      184,
+      48
+    ],
+    "states": [
+      "busy",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-1-true-0",
+    "bounds": [
+      458,
+      404,
+      184,
+      48
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-1-true-1",
+    "bounds": [
+      458,
+      468,
+      184,
+      48
+    ],
+    "states": [
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-1-true-2",
+    "bounds": [
+      458,
+      532,
+      184,
+      48
+    ],
+    "states": [
+      "busy",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-2-true-0",
+    "bounds": [
+      814,
+      404,
+      184,
+      48
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-2-true-1",
+    "bounds": [
+      814,
+      468,
+      184,
+      48
+    ],
+    "states": [
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "button-2-true-2",
+    "bounds": [
+      814,
+      532,
+      184,
+      48
+    ],
+    "states": [
+      "busy",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "End matrix",
+    "bounds": [
+      24,
+      620,
+      280,
+      32
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  }
+]

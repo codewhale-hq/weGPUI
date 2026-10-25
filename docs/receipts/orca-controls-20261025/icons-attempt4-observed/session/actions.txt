@@ -1,0 +1,16 @@
+2026-10-25T10:11:21.302052+00:00 XTEST click 'Start matrix' window-local=164,40
+2026-10-25T10:11:22.414779+00:00 XTEST key KP_Enter
+2026-10-25T10:11:26.516192+00:00 capture start focused=[('button', 'Start matrix')]
+2026-10-25T10:11:26.607936+00:00 XTEST click 'icon-0' window-local=56,336
+2026-10-25T10:11:27.712264+00:00 XTEST key KP_Enter
+2026-10-25T10:11:31.838587+00:00 capture icon-enabled focused=[('button', 'icon-0')]
+2026-10-25T10:11:31.838662+00:00 XTEST key KP_Subtract
+2026-10-25T10:11:33.855396+00:00 XTEST key KP_Up
+2026-10-25T10:11:37.092609+00:00 capture flat-icon-line focused=[('button', 'icon-0')]
+2026-10-25T10:11:37.092702+00:00 XTEST key KP_Right
+2026-10-25T10:11:37.259346+00:00 XTEST key KP_Right
+2026-10-25T10:11:37.437198+00:00 XTEST held Insert + KP_Begin
+2026-10-25T10:11:41.868008+00:00 capture flat-disabled-icon-two focused=[('button', 'icon-0')]
+2026-10-25T10:11:41.868084+00:00 XTEST key F8
+2026-10-25T10:11:43.472891+00:00 capture final focused=[('button', 'icon-0')]
+2026-10-25T10:11:43.472965+00:00 driver completed; speech/audio interpretation remains separate

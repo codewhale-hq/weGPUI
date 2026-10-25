@@ -1,0 +1,30 @@
+2026-10-25T09:57:53.503872+00:00 XTEST click 'Start matrix' window-local=164,40
+2026-10-25T09:57:54.620855+00:00 XTEST key KP_Enter
+2026-10-25T09:57:59.726482+00:00 capture start focused=[('button', 'Start matrix')]
+2026-10-25T09:57:59.793942+00:00 XTEST key Tab
+2026-10-25T09:58:00.484271+00:00 XTEST key KP_Enter
+2026-10-25T09:58:05.410788+00:00 capture active focused=[('button', 'button-0-false-0')]
+2026-10-25T09:58:05.410870+00:00 XTEST key Tab
+2026-10-25T09:58:06.429918+00:00 XTEST key KP_Enter
+2026-10-25T09:58:11.343685+00:00 capture next-active-skips-disabled-loading focused=[('button', 'button-1-false-0')]
+2026-10-25T09:58:11.407746+00:00 XTEST held Shift_L + Tab
+2026-10-25T09:58:12.629009+00:00 XTEST key KP_Enter
+2026-10-25T09:58:17.734006+00:00 capture previous-active-skips-disabled-loading focused=[('button', 'button-0-false-0')]
+2026-10-25T09:58:17.734092+00:00 XTEST key KP_Subtract
+2026-10-25T09:58:21.647991+00:00 capture flat-review-on focused=[('button', 'button-0-false-0')]
+2026-10-25T09:58:21.648076+00:00 XTEST key KP_Up
+2026-10-25T09:58:25.596054+00:00 capture flat-active-line focused=[('button', 'button-0-false-0')]
+2026-10-25T09:58:25.596179+00:00 XTEST key KP_Page_Up
+2026-10-25T09:58:29.890401+00:00 capture flat-disabled-line focused=[('button', 'button-0-false-0')]
+2026-10-25T09:58:29.890524+00:00 XTEST held Insert + KP_Begin
+2026-10-25T09:58:34.918017+00:00 capture flat-disabled-object focused=[('button', 'button-0-false-0')]
+2026-10-25T09:58:34.918222+00:00 XTEST key KP_Page_Up
+2026-10-25T09:58:39.541256+00:00 capture flat-loading-line focused=[('button', 'button-0-false-0')]
+2026-10-25T09:58:39.541398+00:00 XTEST held Insert + KP_Begin
+2026-10-25T09:58:45.174316+00:00 capture flat-loading-object focused=[('button', 'button-0-false-0')]
+2026-10-25T09:58:45.174500+00:00 XTEST key KP_Subtract
+2026-10-25T09:58:47.203009+00:00 XTEST key KP_Enter
+2026-10-25T09:58:52.950120+00:00 capture flat-review-off focused=[('button', 'button-0-false-0')]
+2026-10-25T09:58:52.950251+00:00 XTEST key F8
+2026-10-25T09:58:55.042288+00:00 capture final focused=[('button', 'button-0-false-0')]
+2026-10-25T09:58:55.042400+00:00 driver completed; speech/audio interpretation remains separate

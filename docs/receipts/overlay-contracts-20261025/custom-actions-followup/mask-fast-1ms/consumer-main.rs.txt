@@ -1,0 +1,119 @@
+use gpui::{prelude::*, *};
+use std::time::{Duration, Instant};
+use wegpui::{
+    Theme,
+    accessibility::ModalScope,
+    components::{
+        button::Button,
+        modal::{Modal, Presence},
+        swiped::{SwipedAction, SwipedCell},
+    },
+};
+
+struct Probe {
+    presence: Presence,
+    row_open: bool,
+    requests: usize,
+    started: Instant,
+}
+
+impl Render for Probe {
+    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let t = Theme::get(cx).clone();
+        let close = cx.entity().downgrade();
+        ModalScope::new(
+            div()
+                .size_full()
+                .bg(t.bg_0)
+                .text_color(t.fg_0)
+                .p(px(24.))
+                .on_key_down(|event, window, cx| {
+                    if event.keystroke.key == "tab" {
+                        if event.keystroke.modifiers.shift {
+                            window.focus_prev(cx);
+                        } else {
+                            window.focus_next(cx);
+                        }
+                        cx.stop_propagation();
+                    }
+                })
+                .child(Button::new("Open slow modal").id("open").on_click(
+                    cx.listener(|this, _, window, cx| {
+                        this.row_open = false;
+                        this.presence.show(window, cx);
+                        eprintln!("{} open", this.started.elapsed().as_millis());
+                        cx.notify();
+                    }),
+                ))
+                .child(
+                    Modal::new("custom-action-modal", &self.presence)
+                        .label("Slow modal")
+                        .on_dismiss(move |window, cx| {
+                            close.update(cx, |this, cx| {
+                                this.presence.hide(window, cx);
+                                eprintln!("{} hide", this.started.elapsed().as_millis());
+                                cx.notify();
+                            }).ok();
+                        })
+                        .child(
+                            div()
+                                .w(px(360.))
+                                .p(px(24.))
+                                .bg(t.bg_2)
+                                .child(
+                                    SwipedCell::new("saved-row")
+                                        .aria_label("Saved custom action row")
+                                        .content(div().p(px(16.)).child("Saved custom action row"))
+                                        .action(SwipedAction::new("archive", "Archive"))
+                                        .open(self.row_open)
+                                        .on_open_change(cx.listener(|this, open, _, cx| {
+                                            this.requests += 1;
+                                            this.row_open = *open;
+                                            eprintln!(
+                                                "{} request={} open={} presence_open={}",
+                                                this.started.elapsed().as_millis(),
+                                                this.requests,
+                                                open,
+                                                this.presence.is_open(),
+                                            );
+                                            cx.notify();
+                                        })),
+                                ),
+                        ),
+                ),
+        )
+    }
+}
+
+#[path = "support/platform.rs"]
+mod platform;
+
+fn main() {
+    platform::application()
+        .with_assets(wegpui::Assets)
+        .run(|cx| {
+            wegpui::init(cx);
+            let bounds = Bounds::centered(None, size(px(480.), px(640.)), cx);
+            cx.open_window(
+                WindowOptions {
+                    window_bounds: Some(WindowBounds::Windowed(bounds)),
+                    titlebar: Some(TitlebarOptions {
+                        title: Some("Saved overlay action probe".into()),
+                        ..Default::default()
+                    }),
+                    ..Default::default()
+                },
+                |window, cx| {
+                    Theme::observe(window);
+                    cx.new(|cx| Probe {
+                        presence: Presence::new(cx).duration(Duration::from_secs(2)),
+                        row_open: false,
+                        requests: 0,
+                        started: Instant::now(),
+                    })
+                },
+            )
+            .expect("open window");
+            cx.activate(true);
+        });
+}

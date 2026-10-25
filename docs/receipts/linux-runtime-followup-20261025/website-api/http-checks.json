@@ -1,0 +1,44 @@
+{
+  "browser": "154.0.8037.57",
+  "semantics_invalid": {
+    "url": "api/wegpui/accessibility/struct.Semantics.html#method.invalid",
+    "http_status": 200,
+    "anchor_present": true,
+    "html_sha256": "77d0dc452d2e93eb8e21ec4a51cfc3c3b7d87ad6d889ad5a43e1faa30dd3d49b"
+  },
+  "source_pages": [
+    {
+      "source": "src/input.rs",
+      "url": "api/src/wegpui/input.rs.html",
+      "http_status": 200,
+      "decoded_complete_source_exact_match": true,
+      "source_sha256": "2e54e3517015d2f90a78bf9fec91bfdafd7ac79f5a0c70870931f00bddeb1cf1",
+      "served_html_sha256": "dbc2353dd13c47dbc3e1e7955f5f28d5b8c8e8f6cca496168a5d335f024dfacb"
+    },
+    {
+      "source": "src/components/agree.rs",
+      "url": "api/src/wegpui/components/agree.rs.html",
+      "http_status": 200,
+      "decoded_complete_source_exact_match": true,
+      "source_sha256": "d3994f9ea656fea60e1d2ebe1fc893624a1d4bf1439ea7ddd68123ebf9e289bf",
+      "served_html_sha256": "44e03302fd9cf9e8c7e4177b5e829c04043b99df3783bd7602c3991406cfe58b"
+    },
+    {
+      "source": "src/components/swiped.rs",
+      "url": "api/src/wegpui/components/swiped.rs.html",
+      "http_status": 200,
+      "decoded_complete_source_exact_match": true,
+      "source_sha256": "3048307b00ca32ccb5b1a17ccd3b9c3178655c6d011d42ed75c5bc82e285108f",
+      "served_html_sha256": "f368b36290d75079bc6d48a40673fb547139759e0c41bd2844353b5b4af14ef3"
+    },
+    {
+      "source": "src/accessibility.rs",
+      "url": "api/src/wegpui/accessibility.rs.html",
+      "http_status": 200,
+      "decoded_complete_source_exact_match": true,
+      "source_sha256": "feebf02e7e72d7ac2db836abb816cd593dca55e58a8c35318d85a1a2cdb04af1",
+      "served_html_sha256": "545fbe19d915da0bedb65437e0c8a2c0c14f681f8edd01c6d61892b711d4222f"
+    }
+  ],
+  "scope": "Local copied API HTTP/anchor/full decoded-source checks only; no native runtime test and no full site-suite rerun."
+}

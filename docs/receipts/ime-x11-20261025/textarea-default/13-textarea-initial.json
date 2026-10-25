@@ -1,0 +1,30 @@
+{
+  "label": "13-textarea-initial",
+  "fields": [
+    {
+      "name": "问题描述",
+      "role": "entry",
+      "value": "",
+      "caret": 0,
+      "selection": [],
+      "bounds": [
+        442,
+        375,
+        716,
+        80
+      ],
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "multi line",
+        "sensitive",
+        "showing",
+        "visible",
+        "selectable text"
+      ]
+    }
+  ],
+  "input_method": "",
+  "activation": "0"
+}

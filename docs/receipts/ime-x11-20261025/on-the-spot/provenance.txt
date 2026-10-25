@@ -1,0 +1,31 @@
+2026-10-25T09:52:21Z
+49268de7bb78a69cb56b96f6cff02a2d9284e71d
+0966e1f0bc0a12d4e1ab6b028ce8bd4559e90a9baf6aa050d865182fba19c83f  /workspace/.wegpui-cloud/ime-gallery-49268de7
+fcitx5	5.1.12-2
+fcitx5-modules:amd64	5.1.12-2
+fcitx5-pinyin:amd64	5.1.8-1
+libime-data	1.1.10+dict20250327-1
+libimepinyin0:amd64	1.1.10+dict20250327-1
+Linux 1df3d6caf486 6.18.55 #1 SMP Wed Oct 14 19:45:18 UTC 2026 x86_64 GNU/Linux
+LANG=
+LANGUAGE=
+LC_CTYPE="C.UTF-8"
+LC_NUMERIC="C.UTF-8"
+LC_TIME="C.UTF-8"
+LC_COLLATE="C.UTF-8"
+LC_MONETARY="C.UTF-8"
+LC_MESSAGES="C.UTF-8"
+LC_PAPER="C.UTF-8"
+LC_NAME="C.UTF-8"
+LC_ADDRESS="C.UTF-8"
+LC_TELEPHONE="C.UTF-8"
+LC_MEASUREMENT="C.UTF-8"
+LC_IDENTIFICATION="C.UTF-8"
+LC_ALL=C.UTF-8
+DISPLAY=:102
+GPUI_X11_SCALE_FACTOR=1
+XDG_CACHE_HOME=/tmp/wegpui-xim.bcDCr0/cache
+XDG_CONFIG_HOME=/tmp/wegpui-xim.bcDCr0/config
+XDG_DATA_HOME=/tmp/wegpui-xim.bcDCr0/data
+XDG_RUNTIME_DIR=/tmp/wegpui-xim.bcDCr0/runtime
+XMODIFIERS=@im=fcitx

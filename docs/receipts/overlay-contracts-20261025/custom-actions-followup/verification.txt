@@ -1,0 +1,4 @@
+Archived observations are internally consistent across all seven fresh sessions.
+Closing safety FAILED: custom Click at0/1ms; builtin Focus at0/1ms.
+Click at20/100/500ms: proxy rejected, no closed-model callback, opener restored.
+All seven reopen controls passed. This checker does not report the bug fixed.

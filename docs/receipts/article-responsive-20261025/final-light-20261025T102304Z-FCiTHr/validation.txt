@@ -1,0 +1,1 @@
+PASS: static pinned-CSS and native image widths, ratios, intrinsic cap, left alignment, following-heading gap and painted extents at 375, 480, 700, 900

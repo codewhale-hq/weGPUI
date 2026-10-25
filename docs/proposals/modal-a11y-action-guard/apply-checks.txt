@@ -1,0 +1,3 @@
+PASS: git apply --check compat.patch
+PASS: git apply --check library-integration.patch
+Both patches remain unapplied; production vendor/modal sources were not changed by this proposal.

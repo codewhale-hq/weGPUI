@@ -1,0 +1,139 @@
+{
+  "phases": [
+    {
+      "phase": "warn-false-unchecked",
+      "from": "2026-10-25T10:21:29.177478+00:00",
+      "to": "2026-10-25T10:21:32.406467+00:00",
+      "invalid": false,
+      "checked": false,
+      "actual_reader_phrases": [
+        "Read and accept Terms check box not checked."
+      ],
+      "native_states": [
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "visible",
+        "checkable"
+      ]
+    },
+    {
+      "phase": "warn-true-unchecked",
+      "from": "2026-10-25T10:21:32.740290+00:00",
+      "to": "2026-10-25T10:21:35.977074+00:00",
+      "invalid": true,
+      "checked": false,
+      "actual_reader_phrases": [
+        "Read and accept Terms check box not checked.",
+        "invalid entry."
+      ],
+      "native_states": [
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "visible",
+        "invalid entry",
+        "checkable"
+      ]
+    },
+    {
+      "phase": "warn-cleared-unchecked",
+      "from": "2026-10-25T10:21:36.303805+00:00",
+      "to": "2026-10-25T10:21:39.577593+00:00",
+      "invalid": false,
+      "checked": false,
+      "actual_reader_phrases": [
+        "Read and accept Terms check box not checked."
+      ],
+      "native_states": [
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "visible",
+        "checkable"
+      ]
+    },
+    {
+      "phase": "warn-false-checked",
+      "from": "2026-10-25T10:21:40.610481+00:00",
+      "to": "2026-10-25T10:21:43.859489+00:00",
+      "invalid": false,
+      "checked": true,
+      "actual_reader_phrases": [
+        "Read and accept Terms check box checked."
+      ],
+      "native_states": [
+        "checked",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "visible",
+        "checkable"
+      ]
+    },
+    {
+      "phase": "warn-true-checked",
+      "from": "2026-10-25T10:21:49.842448+00:00",
+      "to": "2026-10-25T10:21:53.072324+00:00",
+      "invalid": true,
+      "checked": true,
+      "actual_reader_phrases": [
+        "Read and accept Terms check box checked.",
+        "invalid entry."
+      ],
+      "native_states": [
+        "checked",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "visible",
+        "invalid entry",
+        "checkable"
+      ]
+    },
+    {
+      "phase": "warn-cleared-checked",
+      "from": "2026-10-25T10:21:53.407663+00:00",
+      "to": "2026-10-25T10:21:56.635100+00:00",
+      "invalid": false,
+      "checked": true,
+      "actual_reader_phrases": [
+        "Read and accept Terms check box checked."
+      ],
+      "native_states": [
+        "checked",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "visible",
+        "checkable"
+      ]
+    }
+  ],
+  "audio": {
+    "duration_seconds": 41.9306875,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_width": 2,
+    "peak": 32768,
+    "rms": 4592.849613923196
+  },
+  "callbacks": {
+    "change": 1,
+    "terms": 1
+  },
+  "transcript_sha256": "0e0cd3e77714d8cdb13cd34f2c3f3d27a5382d0a558bd1db4787490cd5bbe2a9",
+  "pcm_sha256": "607aa7fadde23d73f25e740348dc44556e98325c751d0d4a260cb9b024ddc4cf"
+}

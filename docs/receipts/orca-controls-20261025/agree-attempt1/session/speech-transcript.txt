@@ -1,0 +1,35 @@
+09:59:13.158905 - SPEECH OUTPUT: 'Screen reader on.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:16.549519 - SPEECH OUTPUT: 'weGPUI control contracts frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:20.493704 - SPEECH OUTPUT: 'Start matrix button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:21.545230 - SPEECH OUTPUT: 'Start matrix button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:25.201794 - SPEECH OUTPUT: 'tab' {'established': False}
+09:59:25.290269 - SPEECH OUTPUT: 'Agreement 0 Terms 0 check box not checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:25.867743 - SPEECH OUTPUT: 'Agreement 0 Terms 0 check box not checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:29.496561 - SPEECH OUTPUT: 'space' {'established': False}
+09:59:29.591913 - SPEECH OUTPUT: 'checked' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:30.613841 - SPEECH OUTPUT: 'Agreement 0 Terms 0 check box checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:34.254135 - SPEECH OUTPUT: 'tab' {'established': False}
+09:59:34.381772 - SPEECH OUTPUT: 'Terms 0 link.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:34.936585 - SPEECH OUTPUT: 'link.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:38.906696 - SPEECH OUTPUT: 'return' {'established': False}
+09:59:40.683653 - SPEECH OUTPUT: 'left shift' {'established': False}
+09:59:40.884104 - SPEECH OUTPUT: 'Agreement 0 Terms 0 check box checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:41.885048 - SPEECH OUTPUT: 'space' {'established': False}
+09:59:41.920043 - SPEECH OUTPUT: 'not checked' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:42.969477 - SPEECH OUTPUT: 'Agreement 0 Terms 0 check box not checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:46.721420 - SPEECH OUTPUT: 'tab' {'established': False}
+09:59:46.849694 - SPEECH OUTPUT: 'Terms 0 link.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:47.371745 - SPEECH OUTPUT: 'tab' {'established': False}
+09:59:47.462769 - SPEECH OUTPUT: 'not checked' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:47.467769 - SPEECH OUTPUT: 'Terms 1 link.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:48.043493 - SPEECH OUTPUT: 'link.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:52.154114 - SPEECH OUTPUT: 'return' {'established': False}
+09:59:53.790907 - SPEECH OUTPUT: 'tab' {'established': False}
+09:59:53.919462 - SPEECH OUTPUT: 'Agreement 2 Terms 2 check box not checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:54.466321 - SPEECH OUTPUT: 'Agreement 2 Terms 2 check box not checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:58.100283 - SPEECH OUTPUT: 'tab' {'established': False}
+09:59:58.224897 - SPEECH OUTPUT: 'Terms 2 link.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:59:58.747399 - SPEECH OUTPUT: 'link.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:00:02.831353 - SPEECH OUTPUT: 'tab' {'established': False}
+10:00:03.027567 - SPEECH OUTPUT: 'Agreement 3 Terms 3 check box not checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:00:03.498713 - SPEECH OUTPUT: 'Agreement 3 Terms 3 check box not checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}

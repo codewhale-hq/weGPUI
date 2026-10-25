@@ -1,0 +1,239 @@
+[
+  {
+    "role": "frame",
+    "name": "weGPUI control contracts",
+    "bounds": [
+      0,
+      0,
+      1100,
+      900
+    ],
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "Start matrix",
+    "bounds": [
+      24,
+      24,
+      280,
+      32
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "check box",
+    "name": "Agreement 0 Terms 0",
+    "bounds": [
+      24,
+      80,
+      1052,
+      20
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "link",
+    "name": "Terms 0",
+    "bounds": [
+      144,
+      80,
+      55,
+      20
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "check box",
+    "name": "Agreement 1 Terms 1",
+    "bounds": [
+      24,
+      132,
+      1052,
+      20
+    ],
+    "states": [
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "link",
+    "name": "Terms 1",
+    "bounds": [
+      144,
+      132,
+      55,
+      20
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "check box",
+    "name": "Agreement 2 Terms 2",
+    "bounds": [
+      24,
+      184,
+      1052,
+      20
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "link",
+    "name": "Terms 2",
+    "bounds": [
+      144,
+      184,
+      55,
+      20
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "check box",
+    "name": "Agreement 3 Terms 3",
+    "bounds": [
+      24,
+      236,
+      1052,
+      20
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "link",
+    "name": "Terms 3",
+    "bounds": [
+      144,
+      236,
+      55,
+      20
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "check box",
+    "name": "Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Long terms",
+    "bounds": [
+      24,
+      288,
+      260,
+      1780
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "link",
+    "name": "Long terms",
+    "bounds": [
+      48,
+      2048,
+      79,
+      20
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "End matrix",
+    "bounds": [
+      24,
+      2092,
+      280,
+      32
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  }
+]

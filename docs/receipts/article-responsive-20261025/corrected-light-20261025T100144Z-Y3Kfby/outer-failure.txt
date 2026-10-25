@@ -1,0 +1,3 @@
+Tool-observed outer exit_code: 127
+Trailing stderr after completed capture/paint output:
+docs/receipts/article-responsive-20261025/run.sh: line 50: e: command not found

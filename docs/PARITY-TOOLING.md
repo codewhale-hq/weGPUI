@@ -152,6 +152,11 @@ not an interaction verdict.
   capture with `import -window <id>`; root-window captures can come out black.
 - IME: `fcitx5` with `fcitx5-chinese-addons`, started inside the D-Bus session, and the gallery
   run with `XMODIFIERS=@im=fcitx`. Ctrl+Space switches to Pinyin.
+  The smaller `fcitx5-pinyin` package is sufficient for the recorded Pinyin runs. Fcitx's
+  default `UseOnTheSpot=False` shows external preedit; a private profile with True exercises
+  inline preedit and caret-adjacent candidates. Record the queried setting and use a private
+  session. Real selected-text cancellation, callback and state/limit sequences are in
+  `receipts/ime-x11-20261025/`; direct handler calls are separate protocol evidence.
 - File chooser: `xdg-desktop-portal` plus `xdg-desktop-portal-gtk` inside the D-Bus session
   (`XDG_RUNTIME_DIR` must exist). Without a portal, `prompt_for_paths` returns an error, which the
   uploader page shows.

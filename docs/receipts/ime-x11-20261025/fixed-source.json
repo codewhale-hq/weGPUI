@@ -1,0 +1,6 @@
+{
+  "base_commit": "49268de7bb78a69cb56b96f6cff02a2d9284e71d",
+  "input_sha256": "2e54e3517015d2f90a78bf9fec91bfdafd7ac79f5a0c70870931f00bddeb1cf1",
+  "observer_source_sha256": "d17e43b60566b8a6118f8dd464b7db1f31540723bd70f7fe5d6f0b2435ca31cb",
+  "working_tree_patch_sha256": "0375c495a3d902a620e78e8f178c1583dbbf0d067fb661df0822128f0e92d037"
+}

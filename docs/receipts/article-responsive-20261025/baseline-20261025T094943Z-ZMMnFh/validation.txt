@@ -1,0 +1,14 @@
+480: native image 0 height 184 expected 243.54782608695652
+480: native image 1 height 184 expected 243.54782608695652
+480: native painted boxes [{'x': 77, 'y': 444, 'width': 326, 'height': 368}], expected left 24 width 432
+480: native total painted height 368 expected 487.09565217391304
+700: native image 0 height 184 expected 367.5768115942029
+700: native image 1 height 184 expected 367.5768115942029
+700: native painted boxes [{'x': 187, 'y': 390, 'width': 326, 'height': 368}], expected left 24 width 652
+700: native total painted height 368 expected 735.1536231884058
+900: native image 0 width 852 expected 690
+900: native image 0 height 184 expected 389.0
+900: native image 1 width 852 expected 690
+900: native image 1 height 184 expected 389.0
+900: native painted boxes [{'x': 287, 'y': 363, 'width': 326, 'height': 368}], expected left 24 width 690
+900: native total painted height 368 expected 778.0

@@ -1,0 +1,90 @@
+dbus-daemon[83089]: [session uid=1000 pid=83089 pidfd=5] Activating service name='org.a11y.Bus' requested by ':1.1' (uid=1000 pid=83103 comm="/usr/lib/chromium/chromium --show-component-extens" label="kernel")
+dbus-daemon[83089]: [session uid=1000 pid=83089 pidfd=5] Successfully activated service 'org.a11y.Bus'
+dbus-daemon[83203]: Activating service name='org.a11y.atspi.Registry' requested by ':1.0' (uid=1000 pid=83103 comm="/usr/lib/chromium/chromium --show-component-extens" label="kernel")
+dbus-daemon[83203]: Successfully activated service 'org.a11y.atspi.Registry'
+SpiRegistry daemon is running with well-known name - org.a11y.atspi.Registry
+method return time=1792923790.044867 sender=:1.2 -> destination=:1.5 serial=9 reply_serial=2
+captured 375
+captured 480
+captured 700
+captured 900
+{
+  "375": {
+    "native": [
+      {
+        "x": 24,
+        "y": 498,
+        "width": 327,
+        "height": 369
+      }
+    ],
+    "weui-static": [
+      {
+        "x": 24,
+        "y": 499,
+        "width": 327,
+        "height": 369
+      }
+    ]
+  },
+  "480": {
+    "native": [
+      {
+        "x": 24,
+        "y": 444,
+        "width": 432,
+        "height": 487
+      }
+    ],
+    "weui-static": [
+      {
+        "x": 24,
+        "y": 445,
+        "width": 432,
+        "height": 487
+      }
+    ]
+  },
+  "700": {
+    "native": [
+      {
+        "x": 24,
+        "y": 390,
+        "width": 652,
+        "height": 368
+      },
+      {
+        "x": 25,
+        "y": 758,
+        "width": 650,
+        "height": 367
+      }
+    ],
+    "weui-static": [
+      {
+        "x": 24,
+        "y": 390,
+        "width": 652,
+        "height": 735
+      }
+    ]
+  },
+  "900": {
+    "native": [
+      {
+        "x": 24,
+        "y": 363,
+        "width": 690,
+        "height": 778
+      }
+    ],
+    "weui-static": [
+      {
+        "x": 24,
+        "y": 363,
+        "width": 690,
+        "height": 778
+      }
+    ]
+  }
+}

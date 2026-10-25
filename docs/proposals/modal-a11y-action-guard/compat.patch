@@ -1,0 +1,367 @@
+--- a/vendor/gpui_pre/src/window.rs
++++ b/vendor/gpui_pre/src/window.rs
+@@ -1024,6 +1024,7 @@
+     current_view: EntityId,
+     priority: usize,
+     parent_node: DispatchNodeId,
++    a11y_action_guards: Vec<Rc<dyn Fn() -> bool>>,
+     element_id_stack: ElementIdStack,
+     text_style_stack: Vec<TextStyleRefinement>,
+     content_mask: Option<ContentMask<Pixels>>,
+@@ -3897,7 +3898,15 @@
+             traversal_order.sort_by_key(|ix| self.next_frame.deferred_draws[*ix].priority);
+ 
+             for deferred_draw_ix in traversal_order {
+-                let (element, parent_node, current_view, rem_size, absolute_offset, prepaint_range) = {
++                let (
++                    element,
++                    parent_node,
++                    current_view,
++                    rem_size,
++                    absolute_offset,
++                    prepaint_range,
++                    a11y_action_guards,
++                ) = {
+                     let deferred_draw = &mut self.next_frame.deferred_draws[deferred_draw_ix];
+                     self.element_id_stack
+                         .clone_from(&deferred_draw.element_id_stack);
+@@ -3910,23 +3919,26 @@
+                         deferred_draw.rem_size,
+                         deferred_draw.absolute_offset,
+                         deferred_draw.prepaint_range.clone(),
++                        deferred_draw.a11y_action_guards.clone(),
+                     )
+                 };
+                 self.next_frame.dispatch_tree.set_active_node(parent_node);
+ 
+                 let prepaint_start = self.prepaint_index();
+-                if let Some(mut element) = element {
+-                    self.with_rendered_view(current_view, |window| {
+-                        window.with_rem_size(Some(rem_size), |window| {
+-                            window.with_absolute_element_offset(absolute_offset, |window| {
+-                                element.prepaint(window, cx);
++                self.with_a11y_action_guards(a11y_action_guards, |window| {
++                    if let Some(mut element) = element {
++                        window.with_rendered_view(current_view, |window| {
++                            window.with_rem_size(Some(rem_size), |window| {
++                                window.with_absolute_element_offset(absolute_offset, |window| {
++                                    element.prepaint(window, cx);
++                                });
+                             });
+                         });
+-                    });
+-                    self.next_frame.deferred_draws[deferred_draw_ix].element = Some(element);
+-                } else {
+-                    self.reuse_prepaint(prepaint_range);
+-                }
++                        window.next_frame.deferred_draws[deferred_draw_ix].element = Some(element);
++                    } else {
++                        window.reuse_prepaint(prepaint_range);
++                    }
++                });
+                 let prepaint_end = self.prepaint_index();
+                 self.next_frame.deferred_draws[deferred_draw_ix].prepaint_range =
+                     prepaint_start..prepaint_end;
+@@ -3959,17 +3971,19 @@
+ 
+             let paint_start = self.paint_index();
+             let content_mask = deferred_draw.content_mask;
+-            if let Some(element) = deferred_draw.element.as_mut() {
+-                self.with_rendered_view(deferred_draw.current_view, |window| {
+-                    window.with_content_mask(content_mask, |window| {
+-                        window.with_rem_size(Some(deferred_draw.rem_size), |window| {
+-                            element.paint(window, cx);
+-                        });
++            self.with_a11y_action_guards(deferred_draw.a11y_action_guards.clone(), |window| {
++                if let Some(element) = deferred_draw.element.as_mut() {
++                    window.with_rendered_view(deferred_draw.current_view, |window| {
++                        window.with_content_mask(content_mask, |window| {
++                            window.with_rem_size(Some(deferred_draw.rem_size), |window| {
++                                element.paint(window, cx);
++                            });
++                        })
+                     })
+-                })
+-            } else {
+-                self.reuse_paint(deferred_draw.paint_range.clone());
+-            }
++                } else {
++                    window.reuse_paint(deferred_draw.paint_range.clone());
++                }
++            });
+             let paint_end = self.paint_index();
+             deferred_draw.paint_range = paint_start..paint_end;
+         }
+@@ -4033,6 +4047,7 @@
+                 .map(|deferred_draw| DeferredDraw {
+                     current_view: deferred_draw.current_view,
+                     parent_node: reused_subtree.refresh_node_id(deferred_draw.parent_node),
++                    a11y_action_guards: deferred_draw.a11y_action_guards.clone(),
+                     element_id_stack: deferred_draw.element_id_stack.clone(),
+                     text_style_stack: deferred_draw.text_style_stack.clone(),
+                     content_mask: deferred_draw.content_mask,
+@@ -4515,6 +4530,7 @@
+         self.next_frame.deferred_draws.push(DeferredDraw {
+             current_view: self.current_view(),
+             parent_node,
++            a11y_action_guards: self.a11y.nodes.action_guard_context(),
+             element_id_stack: self.element_id_stack.clone(),
+             text_style_stack: self.text_style_stack.clone(),
+             content_mask,
+@@ -7014,6 +7030,35 @@
+         self.a11y.debug_tree_json()
+     }
+ 
++    /// Associates live predicates with accessibility targets and listeners produced in `f`.
++    ///
++    /// Every inherited predicate must return true before an action can run. Predicates must
++    /// be side-effect-free and may be evaluated more than once per request. They are retained
++    /// by reference, so changing their underlying model blocks already-painted callbacks and
++    /// built-in Focus/Blur/Click handling before a later tree update removes the targets.
++    /// Deferred elements inherit the scope that scheduled them. Call this around both the
++    /// prepaint and paint of an id/role-less element wrapper so its child's root is included.
++    pub fn with_a11y_action_guard<R>(
++        &mut self,
++        guard: Rc<dyn Fn() -> bool>,
++        f: impl FnOnce(&mut Self) -> R,
++    ) -> R {
++        let mut guards = self.a11y.nodes.action_guard_context();
++        guards.push(guard);
++        self.with_a11y_action_guards(guards, f)
++    }
++
++    fn with_a11y_action_guards<R>(
++        &mut self,
++        guards: Vec<Rc<dyn Fn() -> bool>>,
++        f: impl FnOnce(&mut Self) -> R,
++    ) -> R {
++        let previous = self.a11y.nodes.replace_action_guard_context(guards);
++        let result = f(self);
++        let _ = self.a11y.nodes.replace_action_guard_context(previous);
++        result
++    }
++
+     /// Register a listener for an accessibility action on a specific node.
+     /// The listener will be called when a screen reader requests the given
+     /// action on the node identified by `node_id`.
+@@ -7025,15 +7070,28 @@
+         action: accesskit::Action,
+         listener: impl FnMut(Option<&accesskit::ActionData>, &mut Window, &mut App) + 'static,
+     ) {
++        let guards = self.a11y.nodes.action_guard_context();
++        let mut listener = listener;
+         self.a11y
+             .action_listeners
+             .entry(node_id)
+             .or_default()
+-            .push((action, Box::new(listener)));
++            .push((
++                action,
++                Box::new(move |data, window, cx| {
++                    if guards.iter().all(|guard| guard()) {
++                        listener(data, window, cx);
++                    }
++                }),
++            ));
+     }
+ 
+     #[cfg(not(target_family = "wasm"))]
+     pub(crate) fn handle_a11y_action(&mut self, request: accesskit::ActionRequest, cx: &mut App) {
++        // Reject removed or logically inactive targets before callbacks or built-in fallback.
++        if !self.a11y.nodes.action_allowed(request.target_node) {
++            return;
++        }
+         // Take listeners out temporarily so the closures can borrow Window
+         // mutably, then restore them afterward.
+         if let Some(mut listeners) = self.a11y.action_listeners.remove(&request.target_node) {
+@@ -7041,8 +7099,12 @@
+             let mut matched = false;
+             for (action, listener) in &mut listeners {
+                 if *action == request.action {
++                    matched = true;
++                    // An earlier matching callback may have closed or replaced its scope.
++                    if !self.a11y.nodes.action_allowed(request.target_node) {
++                        break;
++                    }
+                     listener(extra_data, self, cx);
+-                    matched = true;
+                 }
+             }
+             self.a11y
+@@ -7053,6 +7115,10 @@
+             }
+         }
+ 
++        // A rejected action is consumed; it must never become a synthetic click or Focus.
++        if !self.a11y.nodes.action_allowed(request.target_node) {
++            return;
++        }
+         // Fall back to built-in action handling.
+         match request.action {
+             accesskit::Action::Click => {
+--- a/vendor/gpui_pre/src/window/a11y.rs
++++ b/vendor/gpui_pre/src/window/a11y.rs
+@@ -107,6 +107,7 @@
+ use collections::{FxHashMap, FxHashSet};
+ use smallvec::SmallVec;
+ use std::hash::{Hash, Hasher};
++use std::rc::Rc;
+ use std::sync::{
+     Arc,
+     atomic::{AtomicBool, Ordering},
+@@ -375,6 +376,10 @@
+     /// `HashMap<NodeId, Node>` to remove the need for `seen_ids`
+     all_nodes: Vec<(NodeId, accesskit::Node)>,
+     seen_ids: FxHashSet<NodeId>,
++    /// Dynamic predicates inherited by nodes created in the current element scope.
++    action_guard_stack: Vec<Rc<dyn Fn() -> bool>>,
++    /// Guards retained with each exposed target until the next frame replaces its metadata.
++    action_guards: FxHashMap<NodeId, Vec<Rc<dyn Fn() -> bool>>>,
+     /// The node that GPUI considers focused. Note that this may be different to
+     /// what is reported to accesskit - see [`Self::active_descendant`]
+     focus: Option<NodeId>,
+@@ -394,10 +399,38 @@
+             nodes_stack: SmallVec::new(),
+             all_nodes: Vec::new(),
+             seen_ids: FxHashSet::default(),
++            action_guard_stack: Vec::new(),
++            action_guards: FxHashMap::default(),
+             focus: None,
+             active_descendant: None,
+             #[cfg(debug_assertions)]
+             node_info: FxHashMap::default(),
++        }
++    }
++
++    pub(crate) fn action_guard_context(&self) -> Vec<Rc<dyn Fn() -> bool>> {
++        self.action_guard_stack.clone()
++    }
++
++    pub(crate) fn replace_action_guard_context(
++        &mut self,
++        guards: Vec<Rc<dyn Fn() -> bool>>,
++    ) -> Vec<Rc<dyn Fn() -> bool>> {
++        std::mem::replace(&mut self.action_guard_stack, guards)
++    }
++
++    pub(crate) fn action_allowed(&self, target: NodeId) -> bool {
++        self.has_node(target)
++            && self
++                .action_guards
++                .get(&target)
++                .is_none_or(|guards| guards.iter().all(|guard| guard()))
++    }
++
++    fn capture_action_guards(&mut self, id: NodeId) {
++        if !self.action_guard_stack.is_empty() {
++            self.action_guards
++                .insert(id, self.action_guard_stack.clone());
+         }
+     }
+ 
+@@ -431,6 +464,7 @@
+             return false;
+         }
+ 
++        self.capture_action_guards(id);
+         if let Some(parent) = self.nodes_stack.last_mut() {
+             parent.push_child(id);
+         }
+@@ -449,6 +483,7 @@
+             return false;
+         }
+ 
++        self.capture_action_guards(id);
+         if let Some(parent) = self.nodes_stack.last_mut() {
+             parent.push_child(id);
+         }
+@@ -476,6 +511,8 @@
+         self.ids_stack.clear();
+         self.nodes_stack.clear();
+         self.seen_ids.clear();
++        self.action_guard_stack.clear();
++        self.action_guards.clear();
+         #[cfg(debug_assertions)]
+         self.node_info.clear();
+         let mut root_node = accesskit::Node::new(accesskit::Role::Window);
+@@ -635,6 +672,7 @@
+ 
+ #[cfg(test)]
+ mod tests {
++    use std::rc::Rc;
+     // Import specific items rather than glob-importing `super`, which would pull
+     // in gpui's own `test` attribute macro and shadow the standard one.
+     use super::{A11y, A11yNodeBuilder, ROOT_NODE_ID};
+@@ -644,6 +682,50 @@
+ 
+     fn test_node() -> accesskit::Node {
+         accesskit::Node::new(Role::GenericContainer)
++    }
++
++    #[test]
++    fn action_guards_track_live_state_for_real_and_synthetic_nodes() {
++        let mut builder = new_builder();
++        let live = Rc::new(std::cell::Cell::new(true));
++        let predicate = live.clone();
++        builder.replace_action_guard_context(vec![Rc::new(move || predicate.get())]);
++        assert!(builder.push(NodeId(100), test_node()));
++        assert!(builder.push_leaf(NodeId(101), test_node()));
++        builder.pop();
++        assert!(builder.action_allowed(NodeId(100)));
++        assert!(builder.action_allowed(NodeId(101)));
++        live.set(false);
++        assert!(!builder.action_allowed(NodeId(100)));
++        assert!(!builder.action_allowed(NodeId(101)));
++        assert!(!builder.action_allowed(NodeId(999)));
++        assert!(builder.action_allowed(ROOT_NODE_ID));
++    }
++
++    #[test]
++    fn action_guard_contexts_compose_without_mutating_saved_scopes() {
++        let mut builder = new_builder();
++        let outer = Rc::new(std::cell::Cell::new(true));
++        let inner = Rc::new(std::cell::Cell::new(true));
++        let first = outer.clone();
++        let second = inner.clone();
++        builder.replace_action_guard_context(vec![
++            Rc::new(move || first.get()),
++            Rc::new(move || second.get()),
++        ]);
++        assert!(builder.push_leaf(NodeId(100), test_node()));
++        builder.replace_action_guard_context(Vec::new());
++        assert!(builder.push_leaf(NodeId(101), test_node()));
++        outer.set(false);
++        assert!(!builder.action_allowed(NodeId(100)));
++        assert!(builder.action_allowed(NodeId(101)));
++        outer.set(true);
++        inner.set(false);
++        assert!(!builder.action_allowed(NodeId(100)));
++        builder.begin_frame(None);
++        assert!(!builder.action_allowed(NodeId(100)));
++        assert!(builder.push_leaf(NodeId(100), test_node()));
++        assert!(builder.action_allowed(NodeId(100)));
+     }
+ 
+     fn new_builder() -> A11yNodeBuilder {
+--- a/vendor/gpui_pre/src/view.rs
++++ b/vendor/gpui_pre/src/view.rs
+@@ -473,7 +473,8 @@
+     render: &mut dyn FnMut(&mut Window, &mut App) -> AnyElement,
+ ) -> (LayoutId, Option<AnyElement>) {
+     window.with_rendered_view(entity_id, |window| {
+-        let caching_disabled = window.is_inspector_picking(cx);
++        // Cached replay does not reconstruct accessibility nodes/listeners or their guards.
++        let caching_disabled = window.is_inspector_picking(cx) || window.is_a11y_active();
+         match cached_style {
+             Some(style) if !caching_disabled => {
+                 let mut root_style = Style::default();
+@@ -597,7 +598,8 @@
+     cx: &mut App,
+ ) {
+     window.with_rendered_view(entity_id, |window| {
+-        let caching_disabled = window.is_inspector_picking(cx);
++        // Cached replay does not reconstruct accessibility nodes/listeners or their guards.
++        let caching_disabled = window.is_inspector_picking(cx) || window.is_a11y_active();
+         if cached && !caching_disabled {
+             window.with_element_state::<ViewElementState, _>(
+                 global_id.unwrap(),

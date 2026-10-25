@@ -29,6 +29,9 @@ and rely on the supported behavior. A website is one part of that promise.
   failure; audio listening review and complete reader acceptance remain open. See
   [original receipt](receipts/orca-20261025/README.md),
   `receipts/linux-bridge-20261025/` and `receipts/input-contracts-20261025/`.
+- [ ] Resolve the later confirmed saved-action closing race and X11 keyboard-grab focus
+  disturbance. Exact additional dependency proposals remain unapplied pending approval;
+  see [the runtime followup](receipts/linux-runtime-followup-20261025/README.md).
 - [ ] Verify input selection, clipboard, undo/redo, UTF-16 limits and IME composition.
 - [ ] Reconcile public rustdoc with observed behavior; document intentional differences.
 

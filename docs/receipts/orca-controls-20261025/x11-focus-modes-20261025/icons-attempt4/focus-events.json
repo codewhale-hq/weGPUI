@@ -1,0 +1,242 @@
+[
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:22.419548+00:00",
+    "received_monotonic_ns": 10754473366393,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:22.419582+00:00",
+    "received_monotonic_ns": 10754473398428,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:22.426306+00:00",
+    "received_monotonic_ns": 10754480124744,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:22.426348+00:00",
+    "received_monotonic_ns": 10754480166223,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:27.727068+00:00",
+    "received_monotonic_ns": 10759780888451,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:27.727125+00:00",
+    "received_monotonic_ns": 10759780943135,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:27.733041+00:00",
+    "received_monotonic_ns": 10759786858180,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:27.733065+00:00",
+    "received_monotonic_ns": 10759786881576,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:31.841787+00:00",
+    "received_monotonic_ns": 10763895604929,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:31.841818+00:00",
+    "received_monotonic_ns": 10763895635100,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:31.848270+00:00",
+    "received_monotonic_ns": 10763902087839,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:31.848299+00:00",
+    "received_monotonic_ns": 10763902115319,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:33.859066+00:00",
+    "received_monotonic_ns": 10765912885655,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:33.859115+00:00",
+    "received_monotonic_ns": 10765912932793,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:33.865113+00:00",
+    "received_monotonic_ns": 10765918930442,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:33.865136+00:00",
+    "received_monotonic_ns": 10765918952360,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:37.096778+00:00",
+    "received_monotonic_ns": 10769150598063,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:37.096821+00:00",
+    "received_monotonic_ns": 10769150639166,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:37.106031+00:00",
+    "received_monotonic_ns": 10769159848834,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:37.106059+00:00",
+    "received_monotonic_ns": 10769159875369,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:37.274265+00:00",
+    "received_monotonic_ns": 10769328088755,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:37.274308+00:00",
+    "received_monotonic_ns": 10769328124441,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:37.280188+00:00",
+    "received_monotonic_ns": 10769334007782,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:37.280230+00:00",
+    "received_monotonic_ns": 10769334047821,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:37.440443+00:00",
+    "received_monotonic_ns": 10769494262056,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:37.440472+00:00",
+    "received_monotonic_ns": 10769494288568,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:37.641732+00:00",
+    "received_monotonic_ns": 10769695553506,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:37.641817+00:00",
+    "received_monotonic_ns": 10769695635203,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:46.507991+00:00",
+    "received_monotonic_ns": 10778561811987,
+    "mode": "NotifyNormal",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "received_utc": "2026-10-25T10:11:46.508073+00:00",
+    "received_monotonic_ns": 10778561890507,
+    "mode": "NotifyNormal",
+    "detail": "NotifyPointer"
+  }
+]

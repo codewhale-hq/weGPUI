@@ -1,0 +1,19 @@
+apps 2
+application 'orca' [] DISABLED
+application 'wegpui-orca-controls-probe' [] DISABLED
+  frame 'weGPUI control contracts' ['showing']
+    button 'Start matrix' ['focusable', 'showing']
+    button 'cell-0-0' ['focusable', 'focused', 'showing']
+    button 'cell-0-1' ['showing'] DISABLED description='不可用'
+    button 'cell-0-2' ['showing'] description='正在加载'
+    button 'cell-1-0' ['focusable', 'showing']
+    button 'cell-1-1' ['showing'] DISABLED description='不可用'
+    button 'cell-1-2' ['showing'] description='正在加载'
+    button 'cell-2-0' ['focusable', 'showing']
+    button 'cell-2-1' ['showing'] DISABLED description='不可用'
+    button 'cell-2-2' ['showing'] description='正在加载'
+    button 'icon-0' ['focusable', 'showing']
+    button 'icon-1' ['focusable', 'showing']
+    button 'icon-2' ['showing'] DISABLED
+    button 'icon-3' ['showing'] DISABLED
+    button 'End matrix' ['focusable', 'showing']

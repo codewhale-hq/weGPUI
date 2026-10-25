@@ -1,0 +1,19 @@
+{
+  "commit": "49268de7bb78a69cb56b96f6cff02a2d9284e71d",
+  "files": {
+    "/workspace/weGPUI/src/input.rs": "79bd5a7de6480822f364b0a66a3463dc77a5913d68e0ef56de20e5a7d2ae2c7c",
+    "/workspace/weGPUI/src/components/textarea.rs": "0d9f2644a4b2d38288a56b25f581c9d32c9c0d4375b1f6fc2e8b6845393efa13",
+    "/workspace/weGPUI/examples/gallery/pages/input.rs": "c4b32ff1ca81336f74b94f522b7ee89539aa50c191cb2da173df57432c7606ca",
+    "/workspace/weGPUI/examples/gallery/pages/form/status.rs": "791bd6dac06da5ace87152727c05eebeec12cd6ea75d707c5f3c2a1c4dd6018d",
+    "/workspace/weGPUI/examples/gallery/pages/form/text.rs": "fd60b0614b4c67fc49c5a21f69bb408db3d62e741758d98414aa62d7be3ec380",
+    "/workspace/weGPUI/Cargo.lock": "2c3891d2adb4163f61dbcd159a8a71b34442ee7f2a47738813138de433480deb",
+    "/workspace/weGPUI/Cargo.toml": "c9524bf554878f7012af901b013e4fbbe9a8b5efbbce71632006de95e6acbdad",
+    "/workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-linux-0.3.9/src/linux/x11/client.rs": "9dc83361d502a8d0ed1729276f0d5f4eff97b584eb73acf233968016aa7b1057",
+    "/workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-linux-0.3.9/src/linux/x11/window.rs": "87b737ecda518123196c3f60369120c6a8fb8021b43a4830cc21bf7834eda438",
+    "/workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-linux-0.3.9/src/linux/x11/xim_handler.rs": "5a1f5b1a6a436a82c6bbbf9222a7470d537c5fac6b06da4e898aca497ee2adf2"
+  },
+  "binary": {
+    "path": "/workspace/.wegpui-cloud/ime-gallery-49268de7",
+    "sha256": "0966e1f0bc0a12d4e1ab6b028ce8bd4559e90a9baf6aa050d865182fba19c83f"
+  }
+}

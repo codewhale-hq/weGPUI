@@ -1,0 +1,35 @@
+2026-10-25T10:08:12Z
+49268de7bb78a69cb56b96f6cff02a2d9284e71d
+0e706422ad7e7b219e9083e98aa1056aafa3c06471e721acf0b0647caef08cfe  /workspace/.wegpui-cloud/ime-observer-fixed-2e54e351
+2e54e3517015d2f90a78bf9fec91bfdafd7ac79f5a0c70870931f00bddeb1cf1  src/input.rs
+fcitx5	5.1.12-2
+fcitx5-modules:amd64	5.1.12-2
+fcitx5-pinyin:amd64	5.1.8-1
+libime-data	1.1.10+dict20250327-1
+libimepinyin0:amd64	1.1.10+dict20250327-1
+Linux 1df3d6caf486 6.18.55 #1 SMP Wed Oct 14 19:45:18 UTC 2026 x86_64 GNU/Linux
+LANG=
+LANGUAGE=
+LC_CTYPE="C.UTF-8"
+LC_NUMERIC="C.UTF-8"
+LC_TIME="C.UTF-8"
+LC_COLLATE="C.UTF-8"
+LC_MONETARY="C.UTF-8"
+LC_MESSAGES="C.UTF-8"
+LC_PAPER="C.UTF-8"
+LC_NAME="C.UTF-8"
+LC_ADDRESS="C.UTF-8"
+LC_TELEPHONE="C.UTF-8"
+LC_MEASUREMENT="C.UTF-8"
+LC_IDENTIFICATION="C.UTF-8"
+LC_ALL=C.UTF-8
+DISPLAY=:102
+GPUI_X11_SCALE_FACTOR=1
+IME_BINARY=/workspace/.wegpui-cloud/ime-observer-fixed-2e54e351
+IME_DRIVER=docs/receipts/ime-x11-20261025/observer-driver.py
+XDG_CACHE_HOME=/tmp/wegpui-xim.OcZfYV/cache
+XDG_CONFIG_HOME=/tmp/wegpui-xim.OcZfYV/config
+XDG_DATA_HOME=/tmp/wegpui-xim.OcZfYV/data
+XDG_RUNTIME_DIR=/tmp/wegpui-xim.OcZfYV/runtime
+XIM_ON_THE_SPOT=1
+XMODIFIERS=@im=fcitx

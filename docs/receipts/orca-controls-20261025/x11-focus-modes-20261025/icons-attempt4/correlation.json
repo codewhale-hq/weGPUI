@@ -1,0 +1,79 @@
+{
+  "reader_command": "2026-10-25T10:11:37.437198+00:00 XTEST held Insert + KP_Begin",
+  "observer_window": "10485761 (0xa00001)",
+  "events_within_command_plus_800ms": [
+    {
+      "kind": "FocusOut",
+      "window": "0xa00001",
+      "received_utc": "2026-10-25T10:11:37.440443+00:00",
+      "received_monotonic_ns": 10769494262056,
+      "mode": "NotifyGrab",
+      "detail": "NotifyNonlinear"
+    },
+    {
+      "kind": "FocusIn",
+      "window": "0xa00001",
+      "received_utc": "2026-10-25T10:11:37.440472+00:00",
+      "received_monotonic_ns": 10769494288568,
+      "mode": "NotifyGrab",
+      "detail": "NotifyNonlinear"
+    },
+    {
+      "kind": "FocusOut",
+      "window": "0xa00001",
+      "received_utc": "2026-10-25T10:11:37.641732+00:00",
+      "received_monotonic_ns": 10769695553506,
+      "mode": "NotifyUngrab",
+      "detail": "NotifyNonlinear"
+    },
+    {
+      "kind": "FocusIn",
+      "window": "0xa00001",
+      "received_utc": "2026-10-25T10:11:37.641817+00:00",
+      "received_monotonic_ns": 10769695635203,
+      "mode": "NotifyUngrab",
+      "detail": "NotifyNonlinear"
+    }
+  ],
+  "normal_events_within_interval": [],
+  "correlation_limit": "Observer receive times and Orca queue/process times differ; earlier KP_Right grabs overlap queued events, so no one-to-one causal mapping is claimed.",
+  "cleanup_normal_events": [
+    {
+      "kind": "FocusOut",
+      "window": "0xa00001",
+      "received_utc": "2026-10-25T10:11:46.507991+00:00",
+      "received_monotonic_ns": 10778561811987,
+      "mode": "NotifyNormal",
+      "detail": "NotifyNonlinear"
+    },
+    {
+      "kind": "FocusIn",
+      "window": "0xa00001",
+      "received_utc": "2026-10-25T10:11:46.508073+00:00",
+      "received_monotonic_ns": 10778561890507,
+      "mode": "NotifyNormal",
+      "detail": "NotifyPointer"
+    }
+  ],
+  "app_atspi_focused_snapshots": {
+    "flat-icon-line": [
+      {
+        "role": "button",
+        "name": "icon-0"
+      }
+    ],
+    "flat-disabled-icon-two": [
+      {
+        "role": "button",
+        "name": "icon-0"
+      }
+    ],
+    "final": [
+      {
+        "role": "button",
+        "name": "icon-0"
+      }
+    ]
+  },
+  "snapshot_limit": "These sampled focus flags come from the native app AT-SPI nodes, not a continuous XGetInputFocus or GPUI FocusHandle trace."
+}

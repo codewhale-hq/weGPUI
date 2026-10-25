@@ -1,0 +1,105 @@
+diff --git a/src/input.rs b/src/input.rs
+index d3b183c..98ca9c3 100644
+--- a/src/input.rs
++++ b/src/input.rs
+@@ -14,8 +14,9 @@
+ //! Known limitations: `maxlength` counts UTF-16 code units, as HTML does, but IME composition text
+ //! is only limited on commit. [`InputKind`] filters characters and is not HTML form validation.
+ //! There is no spell checking or context menu. Undo history is cleared by
+-//! [`TextInput::set_text`]. Linux XIM preedit was observed in the input method's own window
+-//! rather than inline at the caret. Accessibility exposes the displayed text and keyboard
++//! [`TextInput::set_text`]. Linux XIM preedit follows the input method's configured style;
++//! fcitx5's on-the-spot setting enables inline preedit. Canceling preedit restores the original
++//! text and selection without emitting a change. Accessibility exposes the displayed text and keyboard
+ //! selection through synthetic text runs; passwords expose only masking bullets. Text runs
+ //! follow visual rows, retaining hard newlines. Character geometry comes from the current
+ //! shaped layout where glyph positions are monotonic; uncertain bidi geometry is omitted.
+@@ -385,22 +386,28 @@ impl TextInput {
+     }
+ 
+     /// Enables or disables the input. Disabling removes it from the tab order, ends any
+-    /// selection drag or composition, and stops the caret blink.
++    /// selection drag or composition, and stops the caret blink. A state change cancels pending
++    /// preedit, restoring its original text and selection without emitting a change event.
+     pub fn set_disabled(&mut self, disabled: bool, cx: &mut Context<Self>) {
++        if self.disabled != disabled {
++            self.cancel_composition(cx);
++        }
+         self.disabled = disabled;
+         self.focus_handle = self.focus_handle.clone().tab_stop(!disabled);
+         if disabled {
+             self.is_selecting = false;
+-            self.marked_range = None;
+             self.stop_blink();
+         }
+         cx.notify();
+     }
+ 
+     /// Makes the input read-only or editable. Read-only inputs keep focus and selection.
++    /// A state change cancels pending preedit silently, restoring its original text/selection.
+     pub fn set_readonly(&mut self, readonly: bool, cx: &mut Context<Self>) {
++        if self.readonly != readonly {
++            self.cancel_composition(cx);
++        }
+         self.readonly = readonly;
+-        self.marked_range = None;
+         cx.notify();
+     }
+ 
+@@ -408,8 +415,13 @@ impl TextInput {
+     ///
+     /// Longer existing text is truncated at a grapheme boundary and emits
+     /// [`InputEvent::Changed`]. Later edits that would exceed the limit insert only the graphemes
+-    /// that fit.
++    /// that fit. Changing the limit first cancels pending preedit silently, then applies the new
++    /// limit to the restored committed text. Setting the same limit leaves composition intact.
+     pub fn set_max_len(&mut self, max_len: Option<usize>, cx: &mut Context<Self>) {
++        if self.max_len == max_len {
++            return;
++        }
++        self.cancel_composition(cx);
+         self.max_len = max_len;
+         if let Some(max) = max_len
+             && self.len() > max
+@@ -863,6 +875,18 @@ impl TextInput {
+         }
+     }
+ 
++    fn cancel_composition(&mut self, cx: &mut Context<Self>) {
++        let had_marked = self.marked_range.take().is_some();
++        let base = self.composition_base.take();
++        if had_marked && let Some(base) = base {
++            self.content = base.content;
++            self.selected_range = base.selected_range;
++            self.selection_reversed = base.selection_reversed;
++            self.last_edit = None;
++            self.after_cursor_change(cx);
++        }
++    }
++
+     fn restore(&mut self, snapshot: Snapshot, cx: &mut Context<Self>) {
+         self.content = snapshot.content;
+         self.selected_range = snapshot.selected_range;
+@@ -1258,6 +1282,10 @@ impl EntityInputHandler for TextInput {
+         if !self.editable() {
+             return;
+         }
++        if new_text.is_empty() {
++            self.cancel_composition(cx);
++            return;
++        }
+         let range = range_utf16
+             .as_ref()
+             .map(|range_utf16| self.range_from_utf16(range_utf16))
+@@ -1272,10 +1300,7 @@ impl EntityInputHandler for TextInput {
+             self.composition_base = Some(self.snapshot());
+         }
+         let inserted = self.replace(range, &new_text);
+-        self.marked_range = (!new_text.is_empty()).then_some(inserted.clone());
+-        if new_text.is_empty() {
+-            self.composition_base = None;
+-        }
++        self.marked_range = Some(inserted.clone());
+         self.selected_range = new_selected_range_utf16
+             .as_ref()
+             .map(|range_utf16| {

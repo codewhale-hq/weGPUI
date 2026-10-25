@@ -119,6 +119,7 @@ impl Render for ArticlePage {
                                     .child(
                                         paragraph()
                                             .mb_0()
+                                            .max_w(px(690.))
                                             .flex()
                                             .flex_col()
                                             .child(
@@ -126,15 +127,18 @@ impl Render for ArticlePage {
                                                     .id("article-image-1")
                                                     .role(Role::Image)
                                                     .aria_label("配图")
+                                                    .relative()
                                                     .flex()
                                                     .flex_col()
                                                     .w_full()
-                                                    .h(px(327. * 389. / 690.))
+                                                    .max_w(px(690.))
+                                                    .aspect_ratio(690. / 389.)
                                                     .flex_shrink_0()
                                                     .child(
                                                         img("pic_article.png")
-                                                            .w_full()
-                                                            .h(px(327. * 389. / 690.)),
+                                                            .absolute()
+                                                            .inset_0()
+                                                            .size_full(),
                                                     ),
                                             )
                                             .child(
@@ -142,15 +146,18 @@ impl Render for ArticlePage {
                                                     .id("article-image-2")
                                                     .role(Role::Image)
                                                     .aria_label("配图")
+                                                    .relative()
                                                     .flex()
                                                     .flex_col()
                                                     .w_full()
-                                                    .h(px(327. * 389. / 690.))
+                                                    .max_w(px(690.))
+                                                    .aspect_ratio(690. / 389.)
                                                     .flex_shrink_0()
                                                     .child(
                                                         img("pic_article.png")
-                                                            .w_full()
-                                                            .h(px(327. * 389. / 690.)),
+                                                            .absolute()
+                                                            .inset_0()
+                                                            .size_full(),
                                                     ),
                                             ),
                                     ),

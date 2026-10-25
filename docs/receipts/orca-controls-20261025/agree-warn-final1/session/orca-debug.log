@@ -1,0 +1,695 @@
+INFO: Cleaning up these PIDs: []
+10:18:28.789164 - INFO: Preparing to launch.
+10:18:28.789286 - INFO: About to activate settings manager.
+10:18:28.789294 - SETTINGS MANAGER: Activating
+10:18:28.789678 - SETTINGS MANAGER: Attempt to load orca-customizations from /tmp/wegpui-orca.ZDOCp4/data/orca/orca-customizations.py failed. File not found.
+10:18:28.790521 - SETTINGS MANAGER: Activated
+10:18:28.790559 - SETTINGS MANAGER: Current profile is None
+10:18:28.790573 - SETTINGS MANAGER: Current profile is now default
+10:18:28.790583 - SETTINGS MANAGER: Setting profile to: default
+10:18:28.790602 - SETTINGS MANAGER: Loading settings for default profile
+10:18:28.790890 - SETTINGS MANAGER: Settings for default profile loaded
+10:18:28.790898 - SETTINGS MANAGER: Merging settings.
+10:18:28.790908 - SETTINGS MANAGER: Settings merged.
+10:18:28.790911 - SETTINGS MANAGER: Setting runtime settings.
+10:18:28.791214 - SETTINGS MANAGER: Attempt to load orca-customizations from /tmp/wegpui-orca.ZDOCp4/data/orca/orca-customizations.py succeeded.
+10:18:28.791254 - SETTINGS MANAGER: Runtime settings set.
+10:18:28.795046 - INFO: About to launch Orca.
+10:18:28.795084 - DEBUGGING TOOLS MANAGER: Orca version 48.1, AT-SPI2 version: 2.56.2
+10:18:28.804014 - DEBUGGING TOOLS MANAGER: Desktop has 0 apps:
+10:18:28.804057 - ORCA: Enabling accessibility (if needed).
+10:18:28.804065 - SETTINGS MANAGER: Checking if accessibility is enabled.
+10:18:28.805144 - SETTINGS MANAGER: Accessibility enabled: True
+10:18:28.805165 - ORCA: Loading User Settings
+10:18:28.805423 - SPEECH AND VERBOSITY MANAGER: Speech server is None
+10:18:28.805435 - BRAILLE: Attempting braille shutdown.
+10:18:28.805440 - BRAILLE: Braille was not running.
+10:18:28.805467 - EVENT MANAGER: Pause queueing: True. Clear queue: True. Loading user settings.
+10:18:28.805792 - BOOKMARKS: Refreshing handlers. script.__init__:95 > script.get_bookmarks:285 > bookmarks.__init__:45 > bookmarks.get_handlers:65
+10:18:28.812702 - BOOKMARKS: Handlers set up.
+10:18:28.812734 - STRUCTURAL NAVIGATION: Refreshing handlers. script.__init__:97 > script.get_structural_navigation:202 > structural_navigation.__init__:512 > structural_navigation.get_handlers:593
+10:18:28.813909 - DEFAULT: Getting braille bindings.
+10:18:28.813932 - DEFAULT: Finished getting braille bindings.
+10:18:28.813939 - SCRIPT: default (module=orca.scripts.default) initialized
+10:18:28.813951 - SPEECH: Initializing
+10:18:28.817509 - SPEECH: Using speech server factory: speechdispatcherfactory
+10:18:28.817532 - SPEECH: Initialized
+10:18:28.817571 - BRAILLE: Initializing. Callback: InputEventManager.process_braille_event
+10:18:28.817591 - BRAILLE: WINDOWPATH= None
+10:18:28.817601 - BRAILLE: XDG_VTNR= None
+10:18:28.817606 - BRAILLE: Attempting connection with BrlAPI.
+10:18:28.818447 - WARNING: Braille initialization failed: couldn't connect to b':0' with key b'keyfile:/etc/brlapi.key+polkit': connect: No such file or directory
+                  (brlerrno 11, libcerrno 2, gaierrno 0)
+                  Is BRLTTY really running?
+10:18:28.818473 - ORCA MODIFIER MANAGER: Refreshing Orca modifiers: Loading user settings.
+10:18:28.818478 - ORCA MODIFIER MANAGER: Attempting to restore original xmodmap: Loading user settings.
+10:18:28.818482 - ORCA MODIFIER MANAGER: No stored xmodmap found
+10:18:28.824713 - ORCA MODIFIER MANAGER: Creating Orca xmodmap
+10:18:28.824767 - EVENT MANAGER: Pause queueing: False. Clear queue: False. User settings loaded.
+10:18:28.824774 - ORCA: User Settings Loaded
+10:18:28.825612 - ORCA: Connected to a11y applications gsetting: True
+10:18:28.825673 - SETTINGS MANAGER: Setting runtime settings.
+10:18:28.825683 - SETTINGS MANAGER: Runtime settings set.
+10:18:28.825716 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fa2340f2a50>
+10:18:28.825840 - SETTINGS MANAGER: Setting runtime settings.
+10:18:28.825849 - SETTINGS MANAGER: Runtime settings set.
+10:18:28.825866 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fa2340f2a50>
+10:18:28.825947 - SPEECH: Speak 'Screen reader on.' acss: {'established': False}
+10:18:28.825975 - SPEECH OUTPUT: 'Screen reader on.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:18:28.825982 - SPEECH DISPATCHER: Speaking 'Screen reader on.' as string
+10:18:28.826027 - SCRIPT MANAGER: Active script is: None
+10:18:28.826686 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:6"/>Screen <mark name="7:13"/>reader <mark name="14:17"/>on.</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: NONE
+                  SD rate 2, pitch 10, volume 100, language c
+10:18:28.828467 - SETTINGS MANAGER: Setting runtime settings.
+10:18:28.828498 - SETTINGS MANAGER: Runtime settings set.
+10:18:28.828539 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fa2340f2a50>
+10:18:28.828636 - SETTINGS MANAGER: Setting runtime settings.
+10:18:28.828647 - SETTINGS MANAGER: Runtime settings set.
+10:18:28.828671 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fa2340f2a50>
+10:18:28.828754 - BRAILLE: Display message: 'Screen reader on.' (flashTime: 5000)
+10:18:28.828764 - BRAILLE: Initializing flash: Source ID: 0
+10:18:28.828823 - BRAILLE: Not contracting 'Screen reader on.' because contracted braille is not enabled.
+10:18:28.829061 - BRAILLE: Refresh. Pan: True target: 0
+10:18:28.829091 - BRAILLE: Last text object: None (Caret: 0, Line: 0, Cell: 0)
+10:18:28.829109 - BRAILLE: Current text object: None (Caret: 0, Line: 0). On same line: False
+10:18:28.829126 - BRAILLE: Line 0: 'Screen reader on.' focusOffset: 0 [[0, 17]]
+10:18:28.829132 - BRAILLE: Cursor offset in line string is: -1
+10:18:28.829137 - BRAILLE: Current range: (0, 32). Target cell: 0
+10:18:28.829142 - BRAILLE LINE:  'Screen reader on.'
+10:18:28.829146 -      VISIBLE:  'Screen reader on.', cursor=0
+10:18:28.829158 - BRAILLE: Enabling braille. BrlAPI running: False
+10:18:28.829161 - BRAILLE: Need to initialize first.
+10:18:28.829174 - BRAILLE: Initializing. Callback: InputEventManager.process_braille_event
+10:18:28.829189 - BRAILLE: WINDOWPATH= None
+10:18:28.829197 - BRAILLE: XDG_VTNR= None
+10:18:28.829201 - BRAILLE: Attempting connection with BrlAPI.
+10:18:28.829341 - WARNING: Braille initialization failed: couldn't connect to b':0' with key b'keyfile:/etc/brlapi.key+polkit': connect: No such file or directory
+                  (brlerrno 11, libcerrno 2, gaierrno 0)
+                  Is BRLTTY really running?
+10:18:28.829405 - EVENT MANAGER: Activating <unknown>.<module>:280 > event_manager.activate:91
+10:18:28.829959 - INPUT EVENT MANAGER: Starting key watcher.
+10:18:28.835268 - EVENT MANAGER: Activated
+10:18:28.835558 - AXUtilities: Unable to find active window from []
+10:18:28.835578 - SCRIPT MANAGER: Activating <unknown>.<module>:280 > script_manager.activate:68
+10:18:28.836125 - EVENT MANAGER: Registering listeners for: default (module=orca.scripts.default)
+10:18:28.836136 - EVENT MANAGER: registering listener for: document:attributes-changed
+10:18:28.836486 - EVENT MANAGER: registering listener for: document:reload
+10:18:28.836867 - EVENT MANAGER: registering listener for: document:load-complete
+10:18:28.837145 - EVENT MANAGER: registering listener for: document:load-stopped
+10:18:28.837802 - EVENT MANAGER: registering listener for: document:page-changed
+10:18:28.838152 - EVENT MANAGER: registering listener for: mouse:button
+10:18:28.838593 - EVENT MANAGER: registering listener for: object:announcement
+10:18:28.838858 - EVENT MANAGER: registering listener for: object:active-descendant-changed
+10:18:28.839089 - EVENT MANAGER: registering listener for: object:attributes-changed
+10:18:28.839548 - EVENT MANAGER: registering listener for: object:children-changed:add
+10:18:28.839852 - EVENT MANAGER: registering listener for: object:children-changed:remove
+10:18:28.840148 - EVENT MANAGER: registering listener for: object:column-reordered
+10:18:28.840431 - EVENT MANAGER: registering listener for: object:property-change:accessible-description
+10:18:28.840895 - EVENT MANAGER: registering listener for: object:property-change:accessible-name
+10:18:28.841195 - EVENT MANAGER: registering listener for: object:property-change:accessible-value
+10:18:28.841512 - EVENT MANAGER: registering listener for: object:row-reordered
+10:18:28.841738 - EVENT MANAGER: registering listener for: object:selection-changed
+10:18:28.841963 - EVENT MANAGER: registering listener for: object:state-changed:active
+10:18:28.842320 - EVENT MANAGER: registering listener for: object:state-changed:busy
+10:18:28.842656 - EVENT MANAGER: registering listener for: object:state-changed:checked
+10:18:28.842943 - EVENT MANAGER: registering listener for: object:state-changed:expanded
+10:18:28.843229 - EVENT MANAGER: registering listener for: object:state-changed:focused
+10:18:28.843609 - EVENT MANAGER: registering listener for: object:state-changed:indeterminate
+10:18:28.843913 - EVENT MANAGER: registering listener for: object:state-changed:pressed
+10:18:28.844201 - EVENT MANAGER: registering listener for: object:state-changed:selected
+10:18:28.844512 - EVENT MANAGER: registering listener for: object:state-changed:sensitive
+10:18:28.844861 - EVENT MANAGER: registering listener for: object:state-changed:showing
+10:18:28.845154 - EVENT MANAGER: registering listener for: object:text-attributes-changed
+10:18:28.845401 - EVENT MANAGER: registering listener for: object:text-caret-moved
+10:18:28.845639 - EVENT MANAGER: registering listener for: object:text-changed:delete
+10:18:28.845916 - EVENT MANAGER: registering listener for: object:text-changed:insert
+10:18:28.846159 - EVENT MANAGER: registering listener for: object:text-selection-changed
+10:18:28.846476 - EVENT MANAGER: registering listener for: object:value-changed
+10:18:28.846668 - EVENT MANAGER: registering listener for: window:activate
+10:18:28.846857 - EVENT MANAGER: registering listener for: window:create
+10:18:28.847049 - EVENT MANAGER: registering listener for: window:deactivate
+10:18:28.847237 - EVENT MANAGER: registering listener for: window:destroy
+10:18:28.847541 - SCRIPT MANAGER: Setting active script to default (module=orca.scripts.default) reason: activate
+10:18:28.847565 - DEFAULT: Activating script for None
+10:18:28.847585 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fa2340f2a50>
+10:18:28.847705 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fa2340f2a50>
+10:18:28.847781 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fa2340f2a50>
+10:18:28.847841 - DEFAULT: Setting up key bindings
+10:18:28.847854 - DEFAULT: Getting keybindings for default (module=orca.scripts.default) script_manager.set_active_script:340 > default.activate:693 > default.add_key_grabs:568 > default.get_key_bindings:400
+10:18:28.848419 - BYPASS MODE MANAGER: Refreshing bindings. Is desktop: True
+10:18:28.848445 - SLEEP MODE MANAGER: Refreshing bindings. Is desktop: True
+10:18:28.848452 - SLEEP MODE MANAGER: Bindings set up.
+10:18:28.848458 - NOTIFICATION PRESENTER: Refreshing bindings. Is desktop: True
+10:18:28.848465 - NOTIFICATION PRESENTER: Bindings set up.
+10:18:28.848472 - CLIPBOARD PRESENTER: Refreshing bindings. Is desktop: True
+10:18:28.848481 - FLAT REVIEW FINDER: Refreshing bindings.
+10:18:28.848489 - FLAT REVIEW FINDER: Desktop bindings set up.
+10:18:28.848496 - FLAT REVIEW FINDER: Laptop bindings set up.
+10:18:28.848504 - FLAT REVIEW PRESENTER: Refreshing bindings.
+10:18:28.848547 - FLAT REVIEW PRESENTER: Desktop bindings set up.
+10:18:28.848583 - FLAT REVIEW PRESENTER: Laptop bindings set up.
+10:18:28.848614 - WHERE AM I PRESENTER: Refreshing bindings.
+10:18:28.848626 - WHERE AM I PRESENTER: Desktop bindings set up.
+10:18:28.848662 - WHERE AM I PRESENTER: Laptop bindings set up.
+10:18:28.848685 - LEARN MODE PRESENTER: Refreshing bindings. Is desktop: True
+10:18:28.848691 - LEARN MODE PRESENTER: Bindings set up.
+10:18:28.848698 - SPEECH AND VERBOSITY MANAGER: Refreshing bindings.  Is desktop: True
+10:18:28.848728 - SPEECH AND VERBOSITY MANAGER: Bindings set up.
+10:18:28.848744 - SYSTEM INFORMATION PRESENTER: Refreshing bindings. Is desktop: True
+10:18:28.848766 - SYSTEM INFORMATION PRESENTER: Bindings set up.
+10:18:28.848778 - OBJECT NAVIGATOR: Refreshing bindings. Is desktop: True
+10:18:28.848787 - OBJECT NAVIGATOR: Bindings set up.
+10:18:28.848812 - TABLE NAVIGATOR: Refreshing bindings. Is desktop: True default.add_key_grabs:568 > default.get_key_bindings:416 > default.getExtensionBindings:369 > table_navigator.get_bindings:81
+10:18:28.849738 - TABLE NAVIGATOR: Bindings set up. Suspended: False
+10:18:28.849806 - BOOKMARKS: Refreshing bindings. default.add_key_grabs:568 > default.get_key_bindings:416 > default.getExtensionBindings:374 > bookmarks.get_bindings:53
+10:18:28.850537 - BOOKMARKS: Bindings set up.
+10:18:28.850616 - MOUSE REVIEW: Refreshing bindings. Is desktop: True
+10:18:28.850623 - MOUSE REVIEW: Bindings set up.
+10:18:28.850629 - ACTION PRESENTER: Refreshing bindings. Is desktop: True
+10:18:28.850635 - ACTION PRESENTER: Bindings set up.
+10:18:28.850645 - DEBUGGING TOOLS MANAGER: Refreshing bindings. Is desktop: True
+10:18:28.850895 - KEYBINDINGS: Adding key grabs: script activation
+10:18:28.860117 - KEYBINDINGS: 117 key grabs out of 117 added.
+10:18:28.860278 - INPUT EVENT MANAGER: Grab id for Insert: 153
+10:18:28.860383 - INPUT EVENT MANAGER: Grab id for KP_Insert: 154
+10:18:28.860412 - DEFAULT: Script for None activated
+10:18:28.860420 - BRAILLE: Checking braille setting.
+10:18:28.860426 - BRAILLE: Setting up key ranges.
+10:18:28.860440 - BRAILLE: Initializing. Callback: InputEventManager.process_braille_event
+10:18:28.860455 - BRAILLE: WINDOWPATH= None
+10:18:28.860464 - BRAILLE: XDG_VTNR= None
+10:18:28.860467 - BRAILLE: Attempting connection with BrlAPI.
+10:18:28.860613 - WARNING: Braille initialization failed: couldn't connect to b':0' with key b'keyfile:/etc/brlapi.key+polkit': connect: No such file or directory
+                  (brlerrno 11, libcerrno 2, gaierrno 0)
+                  Is BRLTTY really running?
+10:18:28.860623 - BRAILLE: Not setting up key ranges: BrlAPI not running.
+10:18:28.860631 - SPEECH AND VERBOSITY MANAGER: Speech is enabled.
+10:18:28.860636 - SPEECH: Initializing
+10:18:28.860640 - SPEECH: Already initialized
+10:18:28.860644 - SCRIPT MANAGER: Activated
+10:18:28.860649 - CLIPBOARD PRESENTER: Activating
+10:18:28.861550 - CLIPBOARD PRESENTER: Could not access klipper interface: org.freedesktop.DBus.Error.ServiceUnknown: The name org.kde.klipper was not provided by any .service files
+10:18:28.861716 - CLIPBOARD PRESENTER: Could not access GPaste interface: org.freedesktop.DBus.Error.ServiceUnknown: The name org.gnome.GPaste was not provided by any .service files
+10:18:28.862007 - CLIPBOARD PRESENTER: Using Gtk.Clipboard as fallback.
+10:18:28.862021 - CLIPBOARD PRESENTER: Activated
+10:18:28.862038 - ORCA: Starting Atspi main event loop
+
+10:18:28.864303 - EVENT MANAGER: object:children-changed:add for [desktop frame: 'main'] in (0, 0, [application: 'orca'])
+10:18:28.864416 - FOCUS MANAGER: Locus of focus is None
+10:18:28.864630 - SCRIPT MANAGER: Active script is: default (module=orca.scripts.default)
+10:18:28.864677 - EVENT MANAGER: Queueing object:children-changed:add for [desktop frame: 'main'] in (0, 0, [application: 'orca'])
+10:18:28.864699 - EVENT MANAGER: App for event source is None
+10:18:28.864810 - SCRIPT MANAGER: Getting script for None [desktop frame: 'main']
+10:18:28.865004 - SCRIPT MANAGER: Script is app script default (module=orca.scripts.default)
+10:18:28.865167 - EVENT MANAGER: object:children-changed:add for [desktop frame: 'main'] in (0, 0, [application: 'orca']) has priority level: 5
+10:18:28.865219 - EVENT MANAGER: Queued object:children-changed:add for [desktop frame: 'main'] in (0, 0, [application: 'orca']) priority: 5, counter: 0
+10:18:28.865334 - EVENT MANAGER: Dequeueing object:children-changed:add for [desktop frame: 'main'] in (0, 0, [application: 'orca'])
+10:18:28.865400 - EVENT MANAGER: Dequeued object:children-changed:add for [desktop frame: 'main'] in (0, 0, [application: 'orca']) priority: 5, counter: 0
+
+vvvvv START PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD (queue size: 0) vvvvv
+10:18:28.867066 - EVENT SOURCE:
+                  app='' name='main' role='desktop frame' id='None'
+                  description=''
+                  help=''
+                  states=''
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1]
+                  
+                  EVENT ANY DATA:
+                  name='orca' role='application' id=''
+                  description=''
+                  help=''
+                  states=''
+                  relations=''
+                  actions=''
+                  interfaces='Collection'
+                  attributes=''
+                  text=''
+                  path=[-1]
+                  
+10:18:28.867098 - SCRIPT MANAGER: Active script is: default (module=orca.scripts.default)
+10:18:28.867117 - FOCUS MANAGER: Locus of focus is None
+10:18:28.867143 - EVENT MANAGER: Getting script for event for None [desktop frame: 'main']
+10:18:28.867158 - SCRIPT MANAGER: Getting script for None [desktop frame: 'main']
+10:18:28.867323 - SCRIPT MANAGER: Script is app script default (module=orca.scripts.default)
+10:18:28.867338 - EVENT MANAGER: Script for event is default (module=orca.scripts.default)
+10:18:28.867347 - EVENT MANAGER: Processing object:children-changed:add: script for event is active
+10:18:28.867383 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+10:18:28.867394 - AXObject: Clearing local cache. Reason: children-changed event.
+10:18:28.867401 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+10:18:28.867408 - AXUtilitiesEvent: Clearing local cache. Reason: children-changed event.
+TOTAL PROCESSING TIME: 0.0020
+^^^^^ FINISHED PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD ^^^^^
+
+10:18:30.727319 - GENERATOR: Clearing cache.
+INFO: Timeout cleaning up: []
+10:18:31.372888 - FOCUS MANAGER: Focus and window are unknown
+
+10:18:31.923603 - AXObject: Exception in get_role_name: atspi_error: Unknown interface 'org.a11y.atspi.Accessible' (1)
+10:18:31.924478 - EVENT MANAGER: object:children-changed:add for [desktop frame: 'main'] in (1, 0, [: 'wegpui-agree-warn-consumer'])
+10:18:31.924588 - FOCUS MANAGER: Locus of focus is None
+10:18:31.927204 - SCRIPT MANAGER: Active script is: default (module=orca.scripts.default)
+10:18:31.927299 - EVENT MANAGER: Queueing object:children-changed:add for [desktop frame: 'main'] in (1, 0, [application: 'wegpui-agree-warn-consumer'])
+10:18:31.927319 - EVENT MANAGER: App for event source is None
+10:18:31.927337 - SCRIPT MANAGER: Getting script for None [desktop frame: 'main']
+10:18:31.928397 - SCRIPT MANAGER: Script is app script default (module=orca.scripts.default)
+10:18:31.928485 - EVENT MANAGER: object:children-changed:add for [desktop frame: 'main'] in (1, 0, [application: 'wegpui-agree-warn-consumer']) has priority level: 5
+10:18:31.928537 - EVENT MANAGER: Queued object:children-changed:add for [desktop frame: 'main'] in (1, 0, [application: 'wegpui-agree-warn-consumer']) priority: 5, counter: 1
+10:18:31.928708 - EVENT MANAGER: Dequeueing object:children-changed:add for [desktop frame: 'main'] in (1, 0, [application: 'wegpui-agree-warn-consumer'])
+10:18:31.928742 - EVENT MANAGER: Dequeued object:children-changed:add for [desktop frame: 'main'] in (1, 0, [application: 'wegpui-agree-warn-consumer']) priority: 5, counter: 1
+
+vvvvv START PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD (queue size: 0) vvvvv
+
+10:18:31.937245 - EVENT MANAGER: object:children-changed:add for [application: 'wegpui-agree-warn-consumer'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, [frame: 'weGPUI Agree warning contracts'])
+10:18:31.937307 - FOCUS MANAGER: Locus of focus is None
+10:18:31.937925 - SCRIPT MANAGER: Active script is: default (module=orca.scripts.default)
+10:18:31.937947 - EVENT MANAGER: Ignoring object:children-changed:add because event is not from active app
+10:18:31.954010 - EVENT SOURCE:
+                  app='' name='main' role='desktop frame' id='None'
+                  description=''
+                  help=''
+                  states=''
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1]
+                  
+                  EVENT ANY DATA:
+                  name='wegpui-agree-warn-consumer' role='application' id=''
+                  description=''
+                  help=''
+                  states=''
+                  relations=''
+                  actions=''
+                  interfaces=''
+                  attributes=''
+                  text=''
+                  path=[-1]
+                  
+10:18:31.954062 - SCRIPT MANAGER: Active script is: default (module=orca.scripts.default)
+10:18:31.954092 - FOCUS MANAGER: Locus of focus is None
+10:18:31.954128 - EVENT MANAGER: Getting script for event for None [desktop frame: 'main']
+10:18:31.954144 - SCRIPT MANAGER: Getting script for None [desktop frame: 'main']
+10:18:31.955838 - SCRIPT MANAGER: Script is app script default (module=orca.scripts.default)
+10:18:31.955870 - EVENT MANAGER: Script for event is default (module=orca.scripts.default)
+10:18:31.955919 - EVENT MANAGER: Processing object:children-changed:add: script for event is active
+10:18:31.955936 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+10:18:31.955947 - AXObject: Clearing local cache. Reason: children-changed event.
+10:18:31.955957 - AXUtilitiesRelation: Clearing local cache. Reason: children-changed event.
+10:18:31.955967 - AXUtilitiesEvent: Clearing local cache. Reason: children-changed event.
+TOTAL PROCESSING TIME: 0.0272
+^^^^^ FINISHED PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD ^^^^^
+
+
+10:18:31.964628 - EVENT MANAGER: window:activate for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, weGPUI Agree warning contracts)
+10:18:31.964689 - EVENT MANAGER: Queueing window:activate for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, weGPUI Agree warning contracts)
+10:18:31.964708 - EVENT MANAGER: App for event source is [application: 'wegpui-agree-warn-consumer']
+10:18:31.964726 - SCRIPT MANAGER: Getting script for [application: 'wegpui-agree-warn-consumer'] [frame: 'weGPUI Agree warning contracts']
+10:18:31.965411 - SCRIPT MANAGER: Mapped [application: 'wegpui-agree-warn-consumer'] to wegpui-agree-warn-consumer
+10:18:31.966661 - BOOKMARKS: Refreshing handlers. script.__init__:95 > script.get_bookmarks:285 > bookmarks.__init__:45 > bookmarks.get_handlers:65
+10:18:31.967635 - BOOKMARKS: Handlers set up.
+10:18:31.967683 - STRUCTURAL NAVIGATION: Refreshing handlers. script.__init__:97 > script.get_structural_navigation:202 > structural_navigation.__init__:512 > structural_navigation.get_handlers:593
+10:18:31.968751 - DEFAULT: Getting braille bindings.
+10:18:31.968789 - DEFAULT: Finished getting braille bindings.
+10:18:31.968798 - SCRIPT: wegpui-agree-warn-consumer (module=orca.scripts.default) initialized
+10:18:31.968865 - SCRIPT MANAGER: Default script created for [application: 'wegpui-agree-warn-consumer'] (obj: None)
+10:18:31.968893 - SCRIPT MANAGER: Script is app script wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:31.968983 - EVENT MANAGER: window:activate for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, weGPUI Agree warning contracts) has priority level: 2
+10:18:31.969047 - EVENT MANAGER: Queued window:activate for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, weGPUI Agree warning contracts) priority: 2, counter: 2
+
+10:18:31.974023 - EVENT MANAGER: object:state-changed:active for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, 0)
+10:18:31.974070 - EVENT_MANAGER: Not ignoring object:state-changed:active due to role
+10:18:31.974126 - EVENT MANAGER: Queueing object:state-changed:active for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, 0)
+10:18:31.974228 - EVENT MANAGER: App for event source is [application: 'wegpui-agree-warn-consumer']
+10:18:31.974268 - SCRIPT MANAGER: Getting script for [application: 'wegpui-agree-warn-consumer'] [frame: 'weGPUI Agree warning contracts']
+10:18:31.975031 - SCRIPT MANAGER: Script is app script wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:31.975138 - EVENT MANAGER: object:state-changed:active for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, 0) has priority level: 2
+10:18:31.975203 - EVENT MANAGER: Queued object:state-changed:active for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, 0) priority: 2, counter: 3
+
+10:18:31.975280 - EVENT MANAGER: object:active-descendant-changed for [application: 'wegpui-agree-warn-consumer'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, [frame: 'weGPUI Agree warning contracts'])
+10:18:31.975322 - FOCUS MANAGER: Locus of focus is None
+10:18:31.975786 - EVENT MANAGER: Queueing object:active-descendant-changed for [application: 'wegpui-agree-warn-consumer'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, [frame: 'weGPUI Agree warning contracts'])
+10:18:31.975824 - EVENT MANAGER: App for event source is [application: 'wegpui-agree-warn-consumer']
+10:18:31.975851 - SCRIPT MANAGER: Getting script for [application: 'wegpui-agree-warn-consumer'] [application: 'wegpui-agree-warn-consumer']
+10:18:31.976469 - SCRIPT MANAGER: Script is app script wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:31.976604 - EVENT MANAGER: object:active-descendant-changed for [application: 'wegpui-agree-warn-consumer'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, [frame: 'weGPUI Agree warning contracts']) has priority level: 3
+10:18:31.976671 - EVENT MANAGER: Queued object:active-descendant-changed for [application: 'wegpui-agree-warn-consumer'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, [frame: 'weGPUI Agree warning contracts']) priority: 3, counter: 4
+
+10:18:31.976744 - EVENT MANAGER: object:state-changed:focused for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, 0)
+10:18:31.976769 - EVENT_MANAGER: Not ignoring object:state-changed:focused due to role
+10:18:31.976816 - EVENT MANAGER: Queueing object:state-changed:focused for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, 0)
+10:18:31.976839 - EVENT MANAGER: App for event source is [application: 'wegpui-agree-warn-consumer']
+10:18:31.976865 - SCRIPT MANAGER: Getting script for [application: 'wegpui-agree-warn-consumer'] [frame: 'weGPUI Agree warning contracts']
+10:18:31.977496 - SCRIPT MANAGER: Script is app script wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:31.977593 - EVENT MANAGER: object:state-changed:focused for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, 0) has priority level: 3
+10:18:31.977648 - EVENT MANAGER: Queued object:state-changed:focused for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, 0) priority: 3, counter: 5
+10:18:31.977767 - EVENT MANAGER: Dequeueing window:activate for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, weGPUI Agree warning contracts)
+10:18:31.977975 - EVENT MANAGER: Dequeued window:activate for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, weGPUI Agree warning contracts) priority: 2, counter: 2
+
+vvvvv START PRIORITY-2 OBJECT EVENT WINDOW:ACTIVATE (queue size: 3) vvvvv
+
+10:18:31.979182 - EVENT MANAGER: object:children-changed:add for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, [button: 'Start warning sample'])
+10:18:31.979218 - EVENT_MANAGER: Not ignoring object:children-changed:add due to role
+10:18:31.979272 - EVENT MANAGER: Queueing object:children-changed:add for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, [button: 'Start warning sample'])
+10:18:31.979295 - EVENT MANAGER: App for event source is [application: 'wegpui-agree-warn-consumer']
+10:18:31.979321 - SCRIPT MANAGER: Getting script for [application: 'wegpui-agree-warn-consumer'] [frame: 'weGPUI Agree warning contracts']
+10:18:31.980066 - SCRIPT MANAGER: Script is app script wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:31.980173 - EVENT MANAGER: object:children-changed:add for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, [button: 'Start warning sample']) has priority level: 5
+10:18:31.980236 - EVENT MANAGER: Queued object:children-changed:add for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, [button: 'Start warning sample']) priority: 5, counter: 6
+
+10:18:31.980534 - EVENT MANAGER: object:children-changed:add for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, [check box: 'Read and accept Terms'])
+10:18:31.980567 - EVENT_MANAGER: Not ignoring object:children-changed:add due to role
+10:18:31.980619 - EVENT MANAGER: Queueing object:children-changed:add for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, [check box: 'Read and accept Terms'])
+10:18:31.980642 - EVENT MANAGER: App for event source is [application: 'wegpui-agree-warn-consumer']
+10:18:31.980667 - SCRIPT MANAGER: Getting script for [application: 'wegpui-agree-warn-consumer'] [frame: 'weGPUI Agree warning contracts']
+10:18:31.981240 - SCRIPT MANAGER: Script is app script wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:31.981332 - EVENT MANAGER: object:children-changed:add for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, [check box: 'Read and accept Terms']) has priority level: 5
+10:18:31.981427 - EVENT MANAGER: Queued object:children-changed:add for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, [check box: 'Read and accept Terms']) priority: 5, counter: 7
+10:18:31.984103 - EVENT SOURCE:
+                  app='wegpui-agree-warn-consumer (AccessKit )' name='weGPUI Agree warning contracts' role='frame' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, focusable, focused, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0]
+                  
+10:18:31.984155 - SCRIPT MANAGER: Active script is: default (module=orca.scripts.default)
+10:18:31.984183 - FOCUS MANAGER: Locus of focus is None
+10:18:31.984236 - EVENT MANAGER: Getting script for event for [application: 'wegpui-agree-warn-consumer'] [frame: 'weGPUI Agree warning contracts']
+10:18:31.984261 - SCRIPT MANAGER: Getting script for [application: 'wegpui-agree-warn-consumer'] [frame: 'weGPUI Agree warning contracts']
+10:18:31.984883 - SCRIPT MANAGER: Script is app script wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:31.984918 - EVENT MANAGER: Script for event is wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:31.986161 - FOCUS MANAGER: Active window is None event_manager._dequeue_object_event:552 > event_manager._process_object_event:799 > event_manager._is_activatable_event:703 > focus_manager.get_active_window:258
+10:18:31.987629 - EVENT MANAGER: Change active script: True (Window activation)
+10:18:31.987678 - SCRIPT MANAGER: Deactivating default (module=orca.scripts.default) reason: Window activation
+10:18:31.987787 - INPUT EVENT MANAGER: Grab id removed for Insert: 153
+10:18:31.987807 - INPUT EVENT MANAGER: Grab id removed for KP_Insert: 154
+10:18:31.987813 - ORCA MODIFIER MANAGER: Setting pressed state to False for grab removal
+10:18:31.987823 - KEYBINDINGS: Removing key grabs: script deactivation
+10:18:31.988063 - KEYBINDINGS: 84 key grabs out of 117 removed.
+10:18:31.988076 - DEFAULT: Clearing key bindings
+10:18:31.988109 - SCRIPT MANAGER: Setting active script to wegpui-agree-warn-consumer (module=orca.scripts.default) reason: Window activation
+10:18:31.988177 - DEFAULT: Activating script for [application: 'wegpui-agree-warn-consumer']
+10:18:31.988265 - SETTINGS MANAGER: Loading settings for None profile
+10:18:31.988695 - SETTINGS MANAGER: Settings for default profile loaded
+10:18:31.988710 - SETTINGS MANAGER: Merging settings.
+10:18:31.988727 - SETTINGS MANAGER: Settings merged.
+10:18:31.988734 - SETTINGS MANAGER: Setting runtime settings.
+10:18:31.988786 - SETTINGS MANAGER: Runtime settings set.
+10:18:31.988857 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fa2340f2a50>
+10:18:31.989094 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fa2340f2a50>
+10:18:31.989227 - SPEECH AND VERBOSITY MANAGER: Speech server is <orca.speechdispatcherfactory.SpeechServer object at 0x7fa2340f2a50>
+10:18:31.989322 - DEFAULT: Setting up key bindings
+10:18:31.989344 - DEFAULT: Getting keybindings for wegpui-agree-warn-consumer (module=orca.scripts.default) script_manager.set_active_script:340 > default.activate:693 > default.add_key_grabs:568 > default.get_key_bindings:400
+10:18:31.990576 - BYPASS MODE MANAGER: Refreshing bindings. Is desktop: True
+10:18:31.990622 - SLEEP MODE MANAGER: Refreshing bindings. Is desktop: True
+10:18:31.990635 - SLEEP MODE MANAGER: Bindings set up.
+10:18:31.990645 - NOTIFICATION PRESENTER: Refreshing bindings. Is desktop: True
+10:18:31.990659 - NOTIFICATION PRESENTER: Bindings set up.
+10:18:31.990669 - CLIPBOARD PRESENTER: Refreshing bindings. Is desktop: True
+10:18:31.990684 - FLAT REVIEW FINDER: Refreshing bindings.
+10:18:31.990702 - FLAT REVIEW FINDER: Desktop bindings set up.
+10:18:31.990715 - FLAT REVIEW FINDER: Laptop bindings set up.
+10:18:31.990727 - FLAT REVIEW PRESENTER: Refreshing bindings.
+10:18:31.990805 - FLAT REVIEW PRESENTER: Desktop bindings set up.
+10:18:31.990866 - FLAT REVIEW PRESENTER: Laptop bindings set up.
+10:18:31.990917 - WHERE AM I PRESENTER: Refreshing bindings.
+10:18:31.990938 - WHERE AM I PRESENTER: Desktop bindings set up.
+10:18:31.990957 - WHERE AM I PRESENTER: Laptop bindings set up.
+10:18:31.990989 - LEARN MODE PRESENTER: Refreshing bindings. Is desktop: True
+10:18:31.990999 - LEARN MODE PRESENTER: Bindings set up.
+10:18:31.991014 - SPEECH AND VERBOSITY MANAGER: Refreshing bindings.  Is desktop: True
+10:18:31.991041 - SPEECH AND VERBOSITY MANAGER: Bindings set up.
+10:18:31.991066 - SYSTEM INFORMATION PRESENTER: Refreshing bindings. Is desktop: True
+10:18:31.991079 - SYSTEM INFORMATION PRESENTER: Bindings set up.
+10:18:31.991098 - OBJECT NAVIGATOR: Refreshing bindings. Is desktop: True
+10:18:31.991116 - OBJECT NAVIGATOR: Bindings set up.
+10:18:31.991157 - TABLE NAVIGATOR: Refreshing bindings. Is desktop: True default.add_key_grabs:568 > default.get_key_bindings:416 > default.getExtensionBindings:369 > table_navigator.get_bindings:81
+10:18:31.992677 - TABLE NAVIGATOR: Bindings set up. Suspended: False
+10:18:31.992792 - BOOKMARKS: Refreshing bindings. default.add_key_grabs:568 > default.get_key_bindings:416 > default.getExtensionBindings:374 > bookmarks.get_bindings:53
+10:18:31.994044 - BOOKMARKS: Bindings set up.
+10:18:31.994167 - MOUSE REVIEW: Refreshing bindings. Is desktop: True
+10:18:31.994183 - MOUSE REVIEW: Bindings set up.
+10:18:31.994236 - ACTION PRESENTER: Refreshing bindings. Is desktop: True
+10:18:31.994245 - ACTION PRESENTER: Bindings set up.
+10:18:31.994263 - DEBUGGING TOOLS MANAGER: Refreshing bindings. Is desktop: True
+10:18:31.994670 - KEYBINDINGS: Adding key grabs: script activation
+10:18:32.004918 - KEYBINDINGS: 117 key grabs out of 117 added.
+10:18:32.005120 - INPUT EVENT MANAGER: Grab id for Insert: 307
+10:18:32.005233 - INPUT EVENT MANAGER: Grab id for KP_Insert: 308
+10:18:32.005296 - DEFAULT: Script for [application: 'wegpui-agree-warn-consumer'] activated
+10:18:32.005310 - BRAILLE: Checking braille setting.
+10:18:32.005319 - BRAILLE: Setting up key ranges.
+10:18:32.005341 - BRAILLE: Initializing. Callback: InputEventManager.process_braille_event
+10:18:32.005400 - BRAILLE: WINDOWPATH= None
+10:18:32.005415 - BRAILLE: XDG_VTNR= None
+10:18:32.005420 - BRAILLE: Attempting connection with BrlAPI.
+10:18:32.005698 - WARNING: Braille initialization failed: couldn't connect to b':0' with key b'keyfile:/etc/brlapi.key+polkit': connect: No such file or directory
+                  (brlerrno 11, libcerrno 2, gaierrno 0)
+                  Is BRLTTY really running?
+10:18:32.005716 - BRAILLE: Not setting up key ranges: BrlAPI not running.
+10:18:32.005728 - SPEECH AND VERBOSITY MANAGER: Speech is enabled.
+10:18:32.005735 - SPEECH: Initializing
+10:18:32.005741 - SPEECH: Already initialized
+10:18:32.005760 - EVENT MANAGER: Processing window:activate: script for event is active
+10:18:32.005831 - AXObject: Clearing AT-SPI cache on [frame: 'weGPUI Agree warning contracts'] Recursive: False. Reason: Checking if window can be the active window
+10:18:32.010811 - AXUtilities: [frame: 'weGPUI Agree warning contracts'] from [application: 'wegpui-agree-warn-consumer'] can be active window
+10:18:32.010868 - FOCUS MANAGER: Active window is None event_manager._dequeue_object_event:552 > event_manager._process_object_event:826 > default.on_window_activated:1637 > focus_manager.get_active_window:258
+10:18:32.011837 - FOCUS MANAGER: Request to set active window to [frame: 'weGPUI Agree warning contracts']
+10:18:32.011879 - FOCUS MANAGER: Focus None is not in [frame: 'weGPUI Agree warning contracts'] event_manager._dequeue_object_event:552 > event_manager._process_object_event:826 > default.on_window_activated:1644 > focus_manager.set_active_window:287
+10:18:32.013341 - FOCUS MANAGER: Request to set locus of focus to [frame: 'weGPUI Agree warning contracts'] event_manager._process_object_event:826 > default.on_window_activated:1644 > focus_manager.set_active_window:292 > focus_manager.set_locus_of_focus:188
+10:18:32.014512 - AXObject: Clearing AT-SPI cache on [frame: 'weGPUI Agree warning contracts'] Recursive: False. Reason: Setting locus of focus.
+10:18:32.014554 - SCRIPT MANAGER: Active script is: wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:32.021527 - FOCUS MANAGER: Changing locus of focus from None to [frame: 'weGPUI Agree warning contracts']. Notify: True
+10:18:32.021660 - FOCUS MANAGER: Switching mode from None to focus-tracking
+10:18:32.025454 - FOCUS MANAGER: Region of interest: [frame: 'weGPUI Agree warning contracts'] (0, 0)
+10:18:32.026553 - FOCUS MANAGER: Switching object of interest from None to [frame: 'weGPUI Agree warning contracts']
+10:18:32.028286 - SCRIPT UTILITIES: [frame: 'weGPUI Agree warning contracts'] is top-level object for: [frame: 'weGPUI Agree warning contracts']
+10:18:32.028333 - FOCUS MANAGER: Request to set active window to [frame: 'weGPUI Agree warning contracts']
+10:18:32.028342 - FOCUS MANAGER: Setting active window to existing active window
+10:18:32.028416 - SCRIPT MANAGER: Getting script for [application: 'wegpui-agree-warn-consumer'] [frame: 'weGPUI Agree warning contracts']
+10:18:32.028946 - SCRIPT MANAGER: Script is app script wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:32.029008 - FOCUS MANAGER: Locus of focus is [frame: 'weGPUI Agree warning contracts']
+10:18:32.029123 - BRAILLE GENERATOR: BrailleGenerator._generate_frame for [frame: 'weGPUI Agree warning contracts'] args: {'formatType': 'focused'}
+10:18:32.029149 - TABLE NAVIGATOR: Last navigation event (None) was last key event: False
+10:18:32.029208 - BRAILLE GENERATOR: _generate_ancestors: []
+10:18:32.029280 - FOCUS MANAGER: Locus of focus is [frame: 'weGPUI Agree warning contracts']
+10:18:32.029328 - AXUtilitiesRelation: [frame: 'weGPUI Agree warning contracts'] is labelled by: []
+10:18:32.029347 - GENERATOR: _generate_accessible_label: []
+10:18:32.029416 - GENERATOR: _generate_accessible_name: [weGPUI Agree warning contracts]
+10:18:32.029439 - GENERATOR: _generate_accessible_label_and_name: [weGPUI Agree warning contracts]
+10:18:32.034404 - BRAILLE GENERATOR: _generate_accessible_role: [frame]
+10:18:32.034549 - AXUtilities: Unfocused alerts and dialogs for [frame: 'weGPUI Agree warning contracts']: []
+10:18:32.034574 - BRAILLE GENERATOR: _generate_alert_and_dialog_count: []
+10:18:32.034638 - BRAILLE: Not contracting 'weGPUI Agree warning contracts frame' because contracted braille is not enabled.
+10:18:32.035502 - AXUtilitiesRelation: [frame: 'weGPUI Agree warning contracts'] is described by: []
+10:18:32.035543 - GENERATOR: _generate_accessible_description: []
+10:18:32.035577 - BRAILLE GENERATOR: Results: [COMPONENT: 'weGPUI Agree warning contracts frame', cursor offset:0]
+10:18:32.035644 - BRAILLE: Refresh. Pan: True target: 0
+10:18:32.035655 - BRAILLE: Kill flash message default.update_braille:724 > default.refreshBraille:2577 > braille.refresh:1273 > braille.killFlash:1510
+10:18:32.037859 - BRAILLE: Last text object: None (Caret: 0, Line: 0, Cell: 0)
+10:18:32.037903 - BRAILLE: Current text object: None (Caret: 0, Line: 0). On same line: False
+10:18:32.037937 - BRAILLE: Line 0: 'weGPUI Agree warning contracts frame' focusOffset: 0 [[0, 31], [31, 36]]
+10:18:32.037946 - BRAILLE: Cursor offset in line string is: 0
+10:18:32.037969 - BRAILLE: Adjusting offset to 0 (unhandled condition)
+10:18:32.037979 - BRAILLE: Current range: (0, 32). Target cell: 0
+10:18:32.037987 - BRAILLE LINE:  'weGPUI Agree warning contracts frame'
+10:18:32.037994 -      VISIBLE:  'weGPUI Agree warning contracts f', cursor=1
+10:18:32.038015 - BRAILLE: Enabling braille. BrlAPI running: False
+10:18:32.038021 - BRAILLE: Need to initialize first.
+10:18:32.038039 - BRAILLE: Initializing. Callback: InputEventManager.process_braille_event
+10:18:32.038061 - BRAILLE: WINDOWPATH= None
+10:18:32.038076 - BRAILLE: XDG_VTNR= None
+10:18:32.038082 - BRAILLE: Attempting connection with BrlAPI.
+10:18:32.038503 - WARNING: Braille initialization failed: couldn't connect to b':0' with key b'keyfile:/etc/brlapi.key+polkit': connect: No such file or directory
+                  (brlerrno 11, libcerrno 2, gaierrno 0)
+                  Is BRLTTY really running?
+10:18:32.038709 - SPEECH GENERATOR: SpeechGenerator._generate_frame for [frame: 'weGPUI Agree warning contracts'] args: {'formatType': 'unfocused', 'priorObj': "[frame: 'weGPUI Agree warning contracts']"}
+10:18:32.038762 - FOCUS MANAGER: Locus of focus is [frame: 'weGPUI Agree warning contracts']
+10:18:32.038794 - SPEECH GENERATOR: _generate_old_ancestors: []
+10:18:32.038823 - FOCUS MANAGER: Locus of focus is [frame: 'weGPUI Agree warning contracts']
+10:18:32.038844 - SPEECH GENERATOR: _generate_new_ancestors: []
+10:18:32.038869 - FOCUS MANAGER: Locus of focus is [frame: 'weGPUI Agree warning contracts']
+10:18:32.038894 - GENERATOR: _generate_accessible_label: []
+10:18:32.038907 - SPEECH GENERATOR: _generate_accessible_label: []
+10:18:32.038948 - GENERATOR: _generate_accessible_name: [weGPUI Agree warning contracts]
+10:18:32.039009 - SPEECH GENERATOR: default voice requested with language='None', dialect=''
+10:18:32.039098 - SPEECH GENERATOR: _generate_accessible_name: [weGPUI Agree warning contracts, {'established': 'False'}]
+10:18:32.039144 - GENERATOR: _generate_accessible_label_and_name: [weGPUI Agree warning contracts, {'established': 'False'}]
+10:18:32.039185 - FOCUS MANAGER: Active mode: focus-tracking Object of interest: [frame: 'weGPUI Agree warning contracts']
+10:18:32.039206 - DEFAULT: Not in SayAll
+10:18:32.044298 - SPEECH GENERATOR: system voice requested with language='None', dialect=''
+10:18:32.044441 - SPEECH GENERATOR: _generate_accessible_role: [frame, {'established': 'False'}]
+10:18:32.044575 - AXUtilities: Unfocused alerts and dialogs for [frame: 'weGPUI Agree warning contracts']: []
+10:18:32.044599 - SPEECH GENERATOR: _generate_unfocused_dialog_count: []
+10:18:32.044629 - SPEECH GENERATOR: _generate_has_click_action: []
+10:18:32.044646 - SPEECH GENERATOR: _generate_has_details: []
+10:18:32.044660 - SPEECH GENERATOR: _generate_details_for: []
+10:18:32.044677 - SPEECH GENERATOR: _generate_accessible_description: []
+10:18:32.044710 - SPEECH GENERATOR: _generate_state_has_popup: []
+10:18:32.045284 - SPEECH GENERATOR: _generate_tutorial: []
+10:18:32.045421 - SPEECH GENERATOR: Results: [weGPUI Agree warning contracts, {'established': 'False'}, frame, {'established': 'False'}]
+10:18:32.045447 - SCRIPT UTILITIES: Not interrupting for locusOfFocus change: event is None
+10:18:32.045504 - SPEECH: Speak [weGPUI Agree warning contracts, {'established': 'False'}, frame, {'established': 'False'}], acss: None
+10:18:32.045562 - SPEECH OUTPUT: 'weGPUI Agree warning contracts frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:18:32.045573 - SPEECH DISPATCHER: Speaking 'weGPUI Agree warning contracts frame' as string
+10:18:32.045616 - SCRIPT MANAGER: Active script is: wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:32.045657 - FOCUS MANAGER: Locus of focus is [frame: 'weGPUI Agree warning contracts']
+10:18:32.047060 - SPEECH DISPATCHER: Speaking '<speak><mark name="0:6"/>weGPUI <mark name="7:12"/>Agree <mark name="13:20"/>warning <mark name="21:30"/>contracts <mark name="31:36"/>frame</speak>' 
+                  ORCA rate 5.0, pitch 5.0, volume 5.0, language C, punctuation: MOST
+                  SD rate 2, pitch 10, volume 100, language c
+10:18:32.047707 - FOCUS MANAGER: Active window is [frame: 'weGPUI Agree warning contracts'] default.locus_of_focus_changed:678 > default._save_focused_object_info:624 > ax_utilities_event.save_object_info_for_events:163 > focus_manager.get_active_window:258
+10:18:32.049476 - SCRIPT MANAGER: Getting script for [application: 'wegpui-agree-warn-consumer'] [frame: 'weGPUI Agree warning contracts']
+10:18:32.050177 - SCRIPT MANAGER: Script is app script wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:32.053686 - FOCUS MANAGER: Request to set locus of focus to [frame: 'weGPUI Agree warning contracts'] event_manager._dequeue_object_event:552 > event_manager._process_object_event:826 > default.on_window_activated:1651 > focus_manager.set_locus_of_focus:188
+10:18:32.054795 - AXObject: Clearing AT-SPI cache on [frame: 'weGPUI Agree warning contracts'] Recursive: False. Reason: Setting locus of focus.
+10:18:32.054822 - FOCUS MANAGER: Setting locus of focus to existing locus of focus
+TOTAL PROCESSING TIME: 0.0768
+^^^^^ FINISHED PRIORITY-2 OBJECT EVENT WINDOW:ACTIVATE ^^^^^
+
+10:18:32.063008 - EVENT MANAGER: Dequeueing object:state-changed:active for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, 0)
+10:18:32.069762 - EVENT MANAGER: Dequeued object:state-changed:active for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, 0) priority: 2, counter: 3
+
+vvvvv START PRIORITY-2 OBJECT EVENT OBJECT:STATE-CHANGED:ACTIVE (queue size: 4) vvvvv
+10:18:32.077408 - EVENT SOURCE:
+                  app='wegpui-agree-warn-consumer (AccessKit )' name='weGPUI Agree warning contracts' role='frame' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, focusable, focused, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0]
+                  
+10:18:32.077463 - SCRIPT MANAGER: Active script is: wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:32.077505 - FOCUS MANAGER: Locus of focus is [frame: 'weGPUI Agree warning contracts']
+10:18:32.077526 - EVENT MANAGER: Script for event from locus of focus is wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:32.077535 - EVENT MANAGER: Processing object:state-changed:active: script for event is active
+10:18:32.077587 - AXObject: Clearing AT-SPI cache on [frame: 'weGPUI Agree warning contracts'] Recursive: False. Reason: Checking if window can be the active window
+10:18:32.082088 - AXUtilities: [frame: 'weGPUI Agree warning contracts'] from [application: 'wegpui-agree-warn-consumer'] can be active window
+10:18:32.082136 - FOCUS MANAGER: Active window is [frame: 'weGPUI Agree warning contracts'] event_manager._dequeue_object_event:552 > event_manager._process_object_event:826 > default.on_active_changed:1052 > focus_manager.get_active_window:258
+TOTAL PROCESSING TIME: 0.0133
+^^^^^ FINISHED PRIORITY-2 OBJECT EVENT OBJECT:STATE-CHANGED:ACTIVE ^^^^^
+
+10:18:32.083278 - EVENT MANAGER: Dequeueing object:active-descendant-changed for [application: 'wegpui-agree-warn-consumer'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, [frame: 'weGPUI Agree warning contracts'])
+10:18:32.083341 - EVENT MANAGER: Dequeued object:active-descendant-changed for [application: 'wegpui-agree-warn-consumer'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, [frame: 'weGPUI Agree warning contracts']) priority: 3, counter: 4
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:ACTIVE-DESCENDANT-CHANGED (queue size: 3) vvvvv
+10:18:32.089139 - EVENT SOURCE:
+                  app='wegpui-agree-warn-consumer (AccessKit )' name='wegpui-agree-warn-consumer' role='application' id=''
+                  description=''
+                  help=''
+                  states=''
+                  relations=''
+                  actions=''
+                  interfaces=''
+                  attributes=''
+                  text=''
+                  path=[-1]
+                  
+                  EVENT ANY DATA:
+                  name='weGPUI Agree warning contracts' role='frame' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, focusable, focused, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0]
+                  
+10:18:32.089196 - SCRIPT MANAGER: Active script is: wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:32.089240 - FOCUS MANAGER: Locus of focus is [frame: 'weGPUI Agree warning contracts']
+10:18:32.089287 - EVENT MANAGER: Getting script for event for [application: 'wegpui-agree-warn-consumer'] [application: 'wegpui-agree-warn-consumer']
+10:18:32.089312 - SCRIPT MANAGER: Getting script for [application: 'wegpui-agree-warn-consumer'] [application: 'wegpui-agree-warn-consumer']
+10:18:32.089852 - SCRIPT MANAGER: Script is app script wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:32.089879 - EVENT MANAGER: Script for event is wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:32.089895 - EVENT MANAGER: Processing object:active-descendant-changed: script for event is active
+10:18:32.089961 - FOCUS MANAGER: Locus of focus is [frame: 'weGPUI Agree warning contracts']
+10:18:32.089975 - AXUtilitiesEvent: Event is presentable.
+10:18:32.089999 - FOCUS MANAGER: Request to set locus of focus to [frame: 'weGPUI Agree warning contracts'] event_manager._dequeue_object_event:552 > event_manager._process_object_event:826 > default.on_active_descendant_changed:1079 > focus_manager.set_locus_of_focus:188
+10:18:32.090994 - AXObject: Clearing AT-SPI cache on [frame: 'weGPUI Agree warning contracts'] Recursive: False. Reason: Setting locus of focus.
+10:18:32.091018 - FOCUS MANAGER: Setting locus of focus to existing locus of focus
+TOTAL PROCESSING TIME: 0.0077
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:ACTIVE-DESCENDANT-CHANGED ^^^^^
+
+10:18:32.095052 - EVENT MANAGER: Dequeueing object:state-changed:focused for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, 0)
+10:18:32.097332 - EVENT MANAGER: Dequeued object:state-changed:focused for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, 0) priority: 3, counter: 5
+
+vvvvv START PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED (queue size: 2) vvvvv
+10:18:32.101601 - EVENT SOURCE:
+                  app='wegpui-agree-warn-consumer (AccessKit )' name='weGPUI Agree warning contracts' role='frame' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, focusable, focused, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0]
+                  
+10:18:32.101653 - SCRIPT MANAGER: Active script is: wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:32.101689 - FOCUS MANAGER: Locus of focus is [frame: 'weGPUI Agree warning contracts']
+10:18:32.101709 - EVENT MANAGER: Script for event from locus of focus is wegpui-agree-warn-consumer (module=orca.scripts.default)
+10:18:32.101718 - EVENT MANAGER: Processing object:state-changed:focused: script for event is active
+10:18:32.101786 - SCRIPT UTILITIES: [frame: 'weGPUI Agree warning contracts'] is top-level object for: [frame: 'weGPUI Agree warning contracts']
+10:18:32.101849 - SCRIPT UTILITIES: [frame: 'weGPUI Agree warning contracts'] is in frame [frame: 'weGPUI Agree warning contracts'] and dialog None
+10:18:32.101885 - AXObject: Clearing AT-SPI cache on [frame: 'weGPUI Agree warning contracts'] Recursive: False. Reason: Checking if window can be the active window
+10:18:32.105501 - AXUtilities: [frame: 'weGPUI Agree warning contracts'] from [application: 'wegpui-agree-warn-consumer'] can be active window
+10:18:32.106545 - FOCUS MANAGER: Request to set locus of focus to [frame: 'weGPUI Agree warning contracts'] event_manager._dequeue_object_event:552 > event_manager._process_object_event:826 > default.on_focused_changed:1376 > focus_manager.set_locus_of_focus:188
+10:18:32.107519 - AXObject: Clearing AT-SPI cache on [frame: 'weGPUI Agree warning contracts'] Recursive: False. Reason: Setting locus of focus.
+10:18:32.107538 - FOCUS MANAGER: Setting locus of focus to existing locus of focus
+TOTAL PROCESSING TIME: 0.0101
+^^^^^ FINISHED PRIORITY-3 OBJECT EVENT OBJECT:STATE-CHANGED:FOCUSED ^^^^^
+
+10:18:32.114231 - EVENT MANAGER: Dequeueing object:children-changed:add for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, [button: 'Start warning sample'])
+10:18:32.117150 - EVENT MANAGER: Dequeued object:children-changed:add for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, [button: 'Start warning sample']) priority: 5, counter: 6
+
+vvvvv START PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD (queue size: 1) vvvvv
+10:18:32.121672 - EVENT MANAGER: object:children-changed:add for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (0, 0, [button: 'Start warning sample']) obsoleted by object:children-changed:add for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, [check box: 'Read and accept Terms']) more recent event of same type for same object
+TOTAL PROCESSING TIME: 0.0045
+^^^^^ FINISHED PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD ^^^^^
+
+10:18:32.124136 - EVENT MANAGER: Dequeueing object:children-changed:add for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, [check box: 'Read and accept Terms'])
+10:18:32.126477 - EVENT MANAGER: Dequeued object:children-changed:add for [frame: 'weGPUI Agree warning contracts'] in wegpui-agree-warn-consumer (AccessKit) (1, 0, [check box: 'Read and accept Terms']) priority: 5, counter: 7
+
+vvvvv START PRIORITY-5 OBJECT EVENT OBJECT:CHILDREN-CHANGED:ADD (queue size: 0) vvvvv
+10:18:32.139136 - EVENT SOURCE:
+                  app='wegpui-agree-warn-consumer (AccessKit )' name='weGPUI Agree warning contracts' role='frame' id=''
+                  description=''
+                  help=''
+                  states='active, enabled, focusable, focused, sensitive, showing, visible'
+                  relations=''
+                  actions=''
+                  interfaces='Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0]
+                  
+                  EVENT ANY DATA:
+                  name='Read and accept Terms' role='check box' id=''
+                  description=''
+                  help=''
+                  states='enabled, focusable, sensitive, showing, visible, checkable'
+                  relations=''
+                  actions='click'
+                  interfaces='Action, Component'
+                  attributes=''
+                  text=''
+                  path=[-1, 0, 1]
+                  

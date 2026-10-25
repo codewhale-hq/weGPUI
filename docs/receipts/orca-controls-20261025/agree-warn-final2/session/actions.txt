@@ -1,0 +1,30 @@
+2026-10-25T10:21:24.168858+00:00 XTEST click 'Start warning sample' window-local=172,48
+2026-10-25T10:21:25.272595+00:00 XTEST key KP_Enter
+2026-10-25T10:21:28.537780+00:00 capture start focused=[('button', 'Start warning sample')]
+2026-10-25T10:21:28.546321+00:00 XTEST key Tab
+2026-10-25T10:21:29.177478+00:00 XTEST key KP_Enter
+2026-10-25T10:21:32.406467+00:00 capture warn-false-unchecked focused=[('check box', 'Read and accept Terms')]
+2026-10-25T10:21:32.425097+00:00 XTEST key F1
+2026-10-25T10:21:32.740290+00:00 XTEST key KP_Enter
+2026-10-25T10:21:35.977074+00:00 capture warn-true-unchecked focused=[('check box', 'Read and accept Terms')]
+2026-10-25T10:21:35.988075+00:00 XTEST key F2
+2026-10-25T10:21:36.303805+00:00 XTEST key KP_Enter
+2026-10-25T10:21:39.577593+00:00 capture warn-cleared-unchecked focused=[('check box', 'Read and accept Terms')]
+2026-10-25T10:21:39.588508+00:00 XTEST key space
+2026-10-25T10:21:40.610481+00:00 XTEST key KP_Enter
+2026-10-25T10:21:43.859489+00:00 capture warn-false-checked focused=[('check box', 'Read and accept Terms')]
+2026-10-25T10:21:43.879223+00:00 XTEST key Tab
+2026-10-25T10:21:44.511770+00:00 XTEST key KP_Enter
+2026-10-25T10:21:47.761198+00:00 capture warn-terms-link focused=[('link', 'Terms')]
+2026-10-25T10:21:47.761278+00:00 XTEST key Return
+2026-10-25T10:21:49.011204+00:00 capture warn-terms-activated focused=[('link', 'Terms')]
+2026-10-25T10:21:49.011321+00:00 XTEST held Shift_L + Tab
+2026-10-25T10:21:49.525765+00:00 XTEST key F1
+2026-10-25T10:21:49.842448+00:00 XTEST key KP_Enter
+2026-10-25T10:21:53.072324+00:00 capture warn-true-checked focused=[('check box', 'Read and accept Terms')]
+2026-10-25T10:21:53.091546+00:00 XTEST key F2
+2026-10-25T10:21:53.407663+00:00 XTEST key KP_Enter
+2026-10-25T10:21:56.635100+00:00 capture warn-cleared-checked focused=[('check box', 'Read and accept Terms')]
+2026-10-25T10:21:56.652291+00:00 XTEST key F8
+2026-10-25T10:21:57.377146+00:00 capture final focused=[('check box', 'Read and accept Terms')]
+2026-10-25T10:21:57.377214+00:00 driver completed; speech/audio interpretation remains separate

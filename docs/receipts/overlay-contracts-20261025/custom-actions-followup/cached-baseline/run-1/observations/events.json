@@ -1,0 +1,274 @@
+[
+  {
+    "kind": "key",
+    "monotonic_ns": 12547751493169,
+    "key": "F3"
+  },
+  {
+    "kind": "action-interface",
+    "monotonic_ns": 12548772090541,
+    "name": "Cached child action",
+    "actions": [
+      "click"
+    ]
+  },
+  {
+    "kind": "action-interface",
+    "monotonic_ns": 12548773744485,
+    "name": "Live child action",
+    "actions": [
+      "click"
+    ]
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 12548960498374,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 12549460975018,
+    "label": "initial",
+    "names": [
+      "main",
+      "probe-unchanged-gpui",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "baseline-cached-click",
+    "monotonic_ns": 12549462768598,
+    "result": true
+  },
+  {
+    "kind": "baseline-cached-focus",
+    "monotonic_ns": 12549864606960,
+    "result": true
+  },
+  {
+    "kind": "baseline-live-focus",
+    "monotonic_ns": 12550266314682,
+    "result": true
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 12550902574488,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 12551403583618,
+    "label": "baseline-positive-controls",
+    "names": [
+      "main",
+      "probe-unchanged-gpui",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 12551420262732,
+    "key": "F1"
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 12552108851725,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 12552609279425,
+    "label": "parent-only-first",
+    "names": [
+      "main",
+      "probe-unchanged-gpui",
+      "Cached accessibility action probe",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "saved-cached-click-after-parent",
+    "monotonic_ns": 12552611485706,
+    "error": "GLib.Error('Unknown object '/org/a11y/atspi/accessible/0/94353779064919379020227666271872745472'', 'atspi_error', 1)"
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 12553179152889,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 12553679617788,
+    "label": "saved-cached-click-result",
+    "names": [
+      "main",
+      "probe-unchanged-gpui",
+      "Cached accessibility action probe",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "live-click-after-parent",
+    "monotonic_ns": 12553681516358,
+    "result": true
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 12554255444053,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 12554755875326,
+    "label": "live-click-result",
+    "names": [
+      "main",
+      "probe-unchanged-gpui",
+      "Cached accessibility action probe",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 12554772632657,
+    "key": "F2"
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 12555452571741,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 12555953054284,
+    "label": "cached-notify-rescue",
+    "names": [
+      "main",
+      "probe-unchanged-gpui",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "cached-click-after-rescue",
+    "monotonic_ns": 12555953518402,
+    "error": "GLib.Error('The application no longer exists', 'atspi_error', 0)"
+  },
+  {
+    "kind": "live-focus-before-second-parent",
+    "monotonic_ns": 12556355151983,
+    "result": true
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 12556930608308,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 12557431073223,
+    "label": "before-second-parent",
+    "names": [
+      "main",
+      "probe-unchanged-gpui",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 12557449260279,
+    "key": "F1"
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 12558121241103,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 12558621755752,
+    "label": "parent-only-second",
+    "names": [
+      "main",
+      "probe-unchanged-gpui",
+      "Cached accessibility action probe",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "saved-cached-focus-after-parent",
+    "monotonic_ns": 12558622279524,
+    "error": "GLib.Error('The application no longer exists', 'atspi_error', 0)"
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 12559190497128,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 12559690963170,
+    "label": "saved-cached-focus-result",
+    "names": [
+      "main",
+      "probe-unchanged-gpui",
+      "Cached accessibility action probe",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 12559707507500,
+    "key": "F4"
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 12560434584341,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 12560935762533,
+    "label": "full-refresh-rescue",
+    "names": [
+      "main",
+      "probe-unchanged-gpui",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "cached-focus-after-full-refresh",
+    "monotonic_ns": 12560936496523,
+    "error": "GLib.Error('The application no longer exists', 'atspi_error', 0)"
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 12561519906810,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 12562020442755,
+    "label": "final-focus-control",
+    "names": [
+      "main",
+      "probe-unchanged-gpui",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "finished",
+    "monotonic_ns": 12562020839693
+  }
+]

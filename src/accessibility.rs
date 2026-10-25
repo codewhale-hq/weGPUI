@@ -1,7 +1,7 @@
 //! Accessibility helpers layered on GPUI's AccessKit integration.
 //!
 //! [`Semantics`] adds AccessKit states that GPUI's element builders do not expose (disabled,
-//! busy, modal, hidden) to an existing element. [`ModalScope`] hides application content from
+//! busy, invalid, modal, hidden) to an existing element. [`ModalScope`] hides application content from
 //! assistive technology while a [`crate::components::Modal`] is open.
 //!
 //! Known limitations: these nodes only reach platforms whose GPUI backend wires an AccessKit
@@ -61,6 +61,7 @@ pub struct Semantics<E: Element> {
     read_only: bool,
     live: Option<accesskit::Live>,
     busy: bool,
+    invalid: bool,
     modal: bool,
     hidden: bool,
     hidden_flag: Option<Rc<Cell<bool>>>,
@@ -75,6 +76,7 @@ impl<E: Element> Semantics<E> {
             read_only: false,
             live: None,
             busy: false,
+            invalid: false,
             modal: false,
             hidden: false,
             hidden_flag: None,
@@ -101,6 +103,11 @@ impl<E: Element> Semantics<E> {
     /// Marks the node busy, for example a loading button, when `value` is true.
     pub fn busy(mut self, value: bool) -> Self {
         self.busy = value;
+        self
+    }
+    /// Marks the node's value invalid when `value` is true, without disabling interaction.
+    pub fn invalid(mut self, value: bool) -> Self {
+        self.invalid = value;
         self
     }
     /// Marks the node as a modal dialog.
@@ -154,6 +161,9 @@ impl<E: Element> Element for Semantics<E> {
         }
         if self.busy {
             node.set_busy();
+        }
+        if self.invalid {
+            node.set_invalid(accesskit::Invalid::True);
         }
         if self.modal {
             node.set_modal();

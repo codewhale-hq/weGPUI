@@ -81,12 +81,51 @@ Actual Orca speech/PCM was collected, but audio intelligibility has not been acc
 listening. Other desktop hosts, hardware, complete theme/state/reference sweeps and full reader
 qualification remain open. **No component row is accepted.**
 
+### Runtime follow-up after `49268de`
+
+The preceding batch was committed as `49268de`. The next five-source continuation passes all
+five gates again on Rust 1.98.1 with 47 unit tests and one ignored doctest; its exact source,
+artifacts and log are in [the runtime follow-up receipt](receipts/linux-runtime-followup-20261025/README.md).
+Runtime observations retain their own executable/source provenance:
+
+- [Actual XIM/Pinyin](receipts/ime-x11-20261025/README.md) exposes and fixes cancellation that
+  deleted selected committed text. The fixed observer passes 35 snapshots: real forward/reversed
+  cancellation emits zero Changed, commit/Undo/Redo each emit one, and multiline, state changes,
+  UTF-16/grapheme/suffix limits pass. Direct event-order protocol checks are labeled separately.
+  fcitx's UseOnTheSpot=True enables inline preedit and caret-adjacent candidates; default False
+  uses an external preedit window. The old external-only observation is not a blanket GPUI limit.
+- [Responsive Article](receipts/article-responsive-20261025/README.md) passes 375/480/700/900px
+  light and 480px dark native/static-CSS comparisons, including the 690px image cap and 24px
+  following-heading gap. All ten raw captures were reviewed. Earlier size/gap failures and a
+  disclosed one-pixel Contain rounding difference remain; full SDK/JS or exact raster parity
+  is not established.
+- [Swiped Escape](receipts/overlay-contracts-20261025/swiped-escape-followup/README.md) now lets
+  Escape on a collapsed row reach its Modal. An open row still closes itself first, restores row
+  focus and lets the next Escape dismiss the modal; native callback counts and trees pass.
+- [Agreement warning](receipts/orca-controls-20261025/README.md) adds/removes InvalidEntry through
+  Semantics::invalid and Agree::warn. Actual Orca says invalid entry only while warning is true,
+  for both checked and unchecked cases. Checkbox/terms callbacks are unchanged by flag updates.
+
+Additional real Orca samples on the separate committed `49268de` consumer cover checked/pressed
+choices, independent radio positions, Agreement/terms, Vcode countdown/restoration and disabled
+default/`Button::cell()` grayed speech plus loading descriptions. Busy is a tree state in these
+samples. No audio has been accepted by human listening; disabled IconButton current-object
+availability remains unqualified because X11 reader grabs reset Orca's review context.
+
+A separate **P1 closing defect remains reproduced**: saved custom AT Click and built-in Focus
+at requested 0/1ms can reach a logically closed modal and lose restored opener focus
+([actual requests](receipts/overlay-contracts-20261025/custom-actions-followup/README.md)). The
+[central dispatch/cached-frame proposal](proposals/modal-a11y-action-guard/README.md) and
+[X11 grab-focus proposal](proposals/x11-grab-focus/README.md) are unapplied and require additional
+owner approval. The actual cached/live fixture remains pending. No new vendored change is
+included in the ordinary five-source follow-up, and no component row is accepted.
+
 ## Platform acceptance matrix
 
 | Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
 | --- | --- | --- | --- | --- | --- | --- |
 | macOS arm64 | October 24 candidate examples, nine tests, strict Clippy/rustdoc and packaged consumer pass; current Linux continuation unqualified | Historical component/gallery/minimal launches | Historical native dark sample and parity pairs | Historical loading/countdown/disabled/panel/choice samples | Historical input/spinner/tip AX checks; VoiceOver off and incomplete | Historical crate/consumer pass; signed/fresh-machine distribution missing |
-| Linux x86_64 | Final five gates pass after checkbox/caret corrections on Rust 1.98.1, 47 tests/one ignored doctest; historical MSRV checks separate | X11 and real Wayland clients under nested Weston | Historical 192 pairs; 216 native-only states and targeted eight-mode control/data/media reviews; complete reference/theme parity open | Reusable callback/state/focus/transition matrices and Wayland regression samples; hardware/reduced-motion/IME coverage incomplete | Approved compatibility copies pass sampled cache/state/text/X11-origin checks and actual Orca reopen; full reader/listening acceptance missing | Separate path-consumer build and X11 runtime pass with explicit root patches; published-package/fresh-machine/distribution unqualified |
+| Linux x86_64 | The five-source runtime follow-up passes all five gates on Rust 1.98.1, 47 tests/one ignored doctest; earlier source/MSRV receipts stay separate | X11 and real Wayland clients under nested Weston | Historical 192 pairs; 216 native-only states and targeted eight-mode control/data/media reviews; complete reference/theme parity open | Reusable callback/state/focus/transition matrices and Wayland regression samples; hardware/reduced-motion/IME coverage incomplete | Approved compatibility copies pass sampled cache/state/text/X11-origin checks and Orca reopen/input/date/control speech; full reader/listening acceptance missing | Separate path-consumer build and X11 runtime pass with explicit root patches; published-package/fresh-machine/distribution unqualified |
 | Windows ARM64 | Native MSVC gallery/component sample build, 9 tests and strict rustdoc pass on the October 24 component candidate | Gallery and component sample launch in Windows 11 ARM VM | Native VirtIO GPU rendering; sampled light components and dark dialog | Text entry, loading/disabled actions, countdown, panel focus, independent radios and navbar wrap | Screen-reader and native accessibility-tree acceptance still missing | Package archive built and used for guest compilation; distributable installation unqualified |
 | iOS | Historical library type-checks pass; hosted app build fails in upstream iOS/core APIs | 0.3.9 scaffold wired; upstream compilation blocker, no launch | Missing | Missing | Missing; backend lacks AccessKit | Missing |
 | Android | Historical 0.3.9 library type-check; no app build | Blocked: no backend upstream | Missing | Missing | Missing | Missing |
@@ -184,22 +223,22 @@ bridge events and actual reader speech are separate evidence classes.
 | Family | Current sampled evidence | Remaining difference / qualification |
 | --- | --- | --- |
 | Action sheet | iOS/Android item callbacks, Cancel/mask/Escape and rapid-close guard; inline leaf reveal ([overlays](receipts/overlay-contracts-20261025/README.md)) | Full theme/timing/reader/host matrix; pinned upstream has no disabled-item state. |
-| Article | Text/heading/list helpers and stable IDs; repeated h6 level 6 forwarded ([data](receipts/data-contracts-20261025/README.md)) | Final light/dark image-wrapper semantics/bounds and no-spill visual review pass; earlier failures retained. Typography/list/reader parity incomplete. |
+| Article | Semantic text/heading/list helpers and repeated h6 level; responsive gallery images at four light widths and 480px dark, 690px cap and 24px following gap pass native/static-CSS review ([responsive](receipts/article-responsive-20261025/README.md)) | Earlier paint/gap failures and one-pixel Contain rounding retained; full typography/list/reader parity incomplete. |
 | Badge | Historical light/dark/care rendering and accessible row names | Complete themes/states/readers/hosts. |
-| Button / Agree | 576 rendered button-state combinations with actual callbacks/guards; eight-mode terms/checkbox callbacks; long text and propagation regression fixed ([controls](receipts/control-contracts-20261025/README.md)) | Eight-mode focus samples pass separately; full focus appearance/reader/host acceptance remains open. |
-| Dialog / Modal | Five-click bursts emit once, disabled skip, focus return, raw child guard; depth-ranked three-layer isolation ([overlays](receipts/overlay-contracts-20261025/README.md), [nested](receipts/nested-modal-a11y-20261025/README.md)) | Saved custom AT actions during closing are untested; arbitrary external deferred ordering requires its own contract; full timing/reader/theme/host matrix. |
+| Button / Agree | Eight-mode callback/guards and focus samples; real Orca disabled default/`Button::cell()` grayed and loading descriptions; Agree warning invalid-entry additions/clears preserve checkbox/terms counts ([controls](receipts/control-contracts-20261025/README.md), [reader](receipts/orca-controls-20261025/README.md)) | No human audio listening; Busy tree-only in these speech samples; full motion/theme/state/reader/host acceptance remains open. |
+| Dialog / Modal | Native five-click/disabled/focus/closing guards and depth-ranked isolation; actual saved AT Click/Focus boundary now tested ([overlays](receipts/overlay-contracts-20261025/README.md), [closing](receipts/overlay-contracts-20261025/custom-actions-followup/README.md)) | **P1:** saved custom Click/Focus at requested 0/1ms can reach closed scope/steal restored focus; guard proposal unapplied and cached/live fixture pending. Full timing/reader/theme/host matrix. |
 | Flex | Historical light/dark/care layout; broader window resize samples | Complete responsive-layout/host coverage. |
 | Footer | Actual link callbacks, viewport placement, click occlusion and modal hidden/restored tree ([data](receipts/data-contracts-20261025/README.md)) | Safe-area API and text-sized link target/focus acceptance remain open. |
 | Form / DateField | Strict validation, optional ISO typing/clearing, range/owner/DateTime/focus/availability contracts; final 15/15 native steps and actual Orca invalid/retry feedback once each with valid/clear removing error ([forms](receipts/form-contracts-20261025/README.md)) | Default range 1900–2100 and UTC today unchanged; locale/seconds, full theme/reader/host coverage. |
-| Input / TextArea | 31-step native/AT matrices at scales 1/2 include word/UTF-16/undo, selection, password, inserted-glyph visibility, InvalidEntry and moved X11 bounds; held-modifier Orca speech ([input](receipts/input-contracts-20261025/README.md)) | Pinned adapter lacks EditableText; actual IME/reader/host matrix and Linux inline preedit open; reader service-teardown failures retained. |
-| Form choices | Controlled checkbox/row/switch, disabled guards, nested propagation, radio wrap/independence; one rapid-switch reversal frame sample ([controls](receipts/control-contracts-20261025/README.md)) | Complete motion/reader/theme/host matrix. |
+| Input / TextArea | Scale 1/2 native/AT text/selection/geometry and held-modifier Orca; real inline XIM selected/reversed cancellation fix, callback/undo/state/maxlength and multiline contracts in 35-snapshot observer ([input](receipts/input-contracts-20261025/README.md), [IME](receipts/ime-x11-20261025/README.md)) | Pinned adapter lacks EditableText; full IME/reader/theme/host matrix and preedit cursor modes remain open. Historical reader teardown failures retained. |
+| Form choices | Controlled/disabled/propagation/motion samples; real Orca checkbox checked/unchecked, Switch pressed/not-pressed and independent radio positions with disabled skip and callback counts ([controls](receipts/control-contracts-20261025/README.md), [reader](receipts/orca-controls-20261025/README.md)) | Complete motion/reader/theme/host matrix and human audio listening remain open. |
 | Form select | Bounded long menu, disabled skip, initial selected reveal, commit/reopen/dismiss and restore ([overlays](receipts/overlay-contracts-20261025/README.md)) | Native overlay adaptation; complete state/reader/host matrix. |
 | Gallery / image viewer | Actual thumbnail open; image dismissal, full-bar deletion, focus restoration; dark+care/brand samples ([media](receipts/media-contracts-20261025/README.md)) | Pinned upstream has no pinch/zoom/paging requirement. Complete reader/theme/host coverage remains open. |
-| Grid / Cells / Panel | Actual keyboard callbacks, title/tips semantics and selected panel focus capture; disabled/loading cell states ([data](receipts/data-contracts-20261025/README.md), [controls](receipts/control-contracts-20261025/README.md)) | Panel CJK punctuation/clamping and complete visual/reader parity; caller generic slots own semantics. |
+| Grid / Cells / Panel | Actual keyboard callbacks, title/tips group semantics and selected panel focus capture ([data](receipts/data-contracts-20261025/README.md)) | Generic Cell state/reader coverage, panel CJK punctuation/clamping and complete visual parity remain open; caller generic slots own semantics. Button::cell() reader samples are recorded in the Button family. |
 | Half-screen dialog | Short/long drag, returning animation, interrupted reopen, short-window sizing, body/subtitle semantics and inline header focus ([overlays](receipts/overlay-contracts-20261025/README.md)) | Complete size/theme/touch/reader/host matrix. |
-| Icons | Historical named assets; enabled/disabled icon callbacks and pressed guards ([controls](receipts/control-contracts-20261025/README.md)) | Complete theme/state/reader/host coverage. |
+| Icons | Historical named assets and native enabled/disabled callback guards; reader item navigation reaches disabled icon line ([controls](receipts/control-contracts-20261025/README.md), [reader](receipts/orca-controls-20261025/README.md)) | Disabled IconButton current-object availability remains unqualified: X11 grabs reset flat review; focus-filter proposal unapplied. Full theme/state/reader/host coverage open. |
 | Information bar | Viewport fixed placement while parent scrolls, native link/close, occlusion and live text events ([data](receipts/data-contracts-20261025/README.md)) | Bridge events are not speech; full variant/reader/theme/host matrix. |
-| List / swiped cell | Controlled accept/reject, drag, action callbacks, Tab/Escape restore and AT Click correction; bridge Expanded/Collapsed ([media](receipts/media-contracts-20261025/README.md), [bridge](receipts/wayland-20261025/bridge-followup/README.md)) | Neutral white-on-light action contrast and full touch/reader/theme/host matrix. |
+| List / swiped cell | Controlled drag/AT callbacks and Expanded/Collapsed; native collapsed-row Escape reaches Modal, open-row Escape closes row first and restores focus ([media](receipts/media-contracts-20261025/README.md), [Escape](receipts/overlay-contracts-20261025/swiped-escape-followup/README.md)) | Generic saved-AT modal closing P1 remains separate; neutral action contrast and full touch/reader/theme/host matrix. |
 | Loading / Loadmore | Historical spinner artwork/light/dark/care; later loading text announcement event | Complete animation/live reduced-motion and actual reader qualification. |
 | Message / LinkText | Historical short/wrapped real-input links and shaped bounds; title weight corrected to 500 ([inline links](receipts/inline-links-20261024/README.md), [data](receipts/data-contracts-20261025/README.md)) | Full typography/theme/reader/host coverage. |
 | Navbar / Tabbar | Controlled native/AT selections and roving offscreen reveal ([data](receipts/data-contracts-20261025/README.md), [focus](receipts/focus-reveal-20261025/README.md)) | Caller wraps tab_panel in FocusScroll; full theme/state/reader/host matrix. |
@@ -209,7 +248,7 @@ bridge events and actual reader speech are separate evidence classes.
 | Search bar | Native Homepage/Outlined/Filled callback counts, public focus, read-only clear guards, keyword label, clearing/refocus and cancel rules ([search](receipts/search-contracts-20261025/README.md)) | Final eight-mode FilledGrey caret/action focus pixels pass separately; disabled transitions/FilledGrey callback matrix and complete theme/state/reader/host coverage remain open. |
 | Toast / toptips | Historical timed passive focus/page-tree behavior; explicit live metadata added | Full actual announcement/reader, reduced-motion/timing/theme/host matrix. |
 | Uploader | Actual capacity/add/status/preview/delete lifecycle and focus; historical native chooser lifecycle ([media](receipts/media-contracts-20261025/README.md)) | Transport/compression/retry application-owned; complete chooser/reader/theme/host coverage. |
-| Verification code | Repeated starts, guarded activation, reset/expiry/restart and canceled-old-timer check ([controls](receipts/control-contracts-20261025/README.md)) | Complete timing/theme/reader/host matrix. |
+| Verification code | Native timer/activation guards; real Orca rounded/plain countdown names, grayed state, reset/restoration/restart and callback counts ([controls](receipts/control-contracts-20261025/README.md), [reader](receipts/orca-controls-20261025/README.md)) | Complete timing/theme/reader/host matrix; no read-only API exists. |
 | Home / layers / index | Focus-reveal samples and native startup captures | Gallery-specific; route coverage does not establish reusable component completion. |
 
 ## Known unresolved defects and gaps
@@ -228,23 +267,34 @@ bridge events and actual reader speech are separate evidence classes.
   patches and passes actual X11 modal/counter/focus checks
   ([receipt](receipts/component-contracts-20261025/consumer/README.md)). Its earlier styling
   artifact does not qualify final focus colours or a published/fresh-machine package.
-- **Input:** numeric kinds filter characters rather than implement HTML validation. Linux XIM
-  preedit remains at the window top-left, not inline at the caret. The pinned AT-SPI adapter
-  does not expose EditableText; textual Value handling exists for adapters that deliver it.
+- **Input:** numeric kinds filter characters rather than implement HTML validation. Real XIM
+  inline preedit works with fcitx UseOnTheSpot=True; its default False selects external preedit.
+  The selected-text cancellation defect is fixed with actual callback/undo/state evidence
+  ([IME receipt](receipts/ime-x11-20261025/README.md)); complete IME/host/preedit-cursor coverage
+  remains open. The pinned AT-SPI adapter does not expose EditableText; textual Value handling
+  exists for adapters that deliver it.
   The [EditableText proposal](proposals/linux-editable-text/README.md) records why advertising
   only that interface would not supply its atomic range/replacement and clipboard contracts.
   Geometry/replacement and held-modifier reader samples now pass their recorded contracts,
   with Speech Dispatcher/Orca teardown failures retained; they do not establish clean shutdown
   or complete reader acceptance.
-- **Reader acceptance:** VoiceOver remains off. Actual Orca repeated reopen works on the approved
-  compatibility stack, superseding old cache failures for those samples. Audio intelligibility
-  has not been accepted by listening; complete Orca, NVDA/Narrator and other-reader matrices
-  remain missing. Linux tree/event checks do not establish reader acceptance.
-- **Modal boundaries:** crate modal depth/order and passive behavior are sampled. Arbitrary
-  external deferred wrappers/priorities are outside that ordering contract; custom accessible
-  action handlers use a separate dispatch path from the Modal mouse/default-action guard.
-  Saved custom AT actions during closing have not been tested; the prepared fixture is not
-  evidence of a defect or pass. Application handlers still own their model checks.
+- **Reader acceptance:** VoiceOver remains off. Actual Orca reopen/input/date/control speech
+  samples work on their named artifacts, including Agree invalid-state changes. Audio has not
+  been accepted by listening; full Orca/NVDA/Narrator matrices remain missing. Disabled IconButton
+  current-object readback remains unqualified: a passive observer correlates same-client
+  NotifyGrab/NotifyUngrab events with window/focus pulses and flat-review reset. The proposed
+  [X11 mode filter](proposals/x11-grab-focus/README.md) is unapplied and needs approval. Downstream
+  default/`Button::cell()` disabled speech does not establish resolution of the upstream AccessKit
+  issue.
+  Linux tree/event checks alone do not establish reader acceptance.
+- **Modal boundaries — P1:** saved custom AT Click and built-in Focus at requested 0/1ms after
+  native close reach the closed model or steal restored focus. Later 20/100/500ms Click calls
+  reject removed objects; they do not supply an immediate guard. The
+  [actual-request receipt](receipts/overlay-contracts-20261025/custom-actions-followup/README.md)
+  preserves the failures. The [central guard proposal](proposals/modal-a11y-action-guard/README.md)
+  is unapplied, requires approval and still needs actual cached/live qualification. Existing
+  modal depth/order/passive samples do not cover this dispatch path; arbitrary external
+  deferred priorities remain outside their ordering contract.
 - **Date policy:** the owner still decides the source of local today. `picker::today()` remains
   UTC; DateField defaults 1900–2100 with configurable Gregorian years 1–9999. Typed ISO entry
   exists; locale display and seconds are not implemented.
@@ -319,6 +369,8 @@ Approved October 25:
 
 Still pending:
 
+- The unapplied modal accessibility-action/cached-frame guard and X11 grab-focus compatibility
+  proposals; the existing approvals do not cover these additional backend changes.
 - An upstream Android backend plan.
 - crates.io name, publication timing, versioning and ongoing GPUI upgrade policy.
 - Keeping the historical roughly 34 MB parity corpus in Git (excluded from the package).
@@ -343,8 +395,9 @@ No branch was deleted here. Recheck current refs and working state before editin
 - **Reproduce behaviour probes:** `receipts/takeover-20261025/probe.rs.txt` and
   `probe-edges.rs.txt` are the manual probe apps behind the before/after receipts. Copy one to
   `examples/probe.rs` locally to run it; they are not part of the crate.
-- **Next verification:** test saved custom accessibility actions during closing, then extend
-  sampled native theme/state, nested-Weston and Orca checks to full desktop/component qualification;
+- **Next verification:** complete the cached/live fixture and review the unapplied saved-AT
+  closing and X11 grab-focus proposals; any additional vendor change needs owner approval.
+  Extend sampled theme/state, nested-Weston and Orca checks to full desktop/component qualification;
   finish the remaining macOS input, IME, reduced-motion and paired-capture
   work on a separate Apple session; verify the implemented iOS scaffold on that host and label every Simulator
   result; obtain native Windows and Android evidence separately. A Linux container cannot

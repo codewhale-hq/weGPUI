@@ -1,0 +1,365 @@
+snapshot field="Primary" changes=0 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=0 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=0 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+snapshot field="Primary" changes=0 text="Ashi jieB e\u{301} 👩\u{200d}💻 C" selection=8..8 reversed=false marked=Some(1..8) readonly=false disabled=false max=None
+snapshot field="Limited" changes=0 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=0 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+snapshot field="Primary" changes=0 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=1..3 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=0 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=0 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+snapshot field="Primary" changes=0 text="Ashi jieB e\u{301} 👩\u{200d}💻 C" selection=8..8 reversed=false marked=Some(1..8) readonly=false disabled=false max=None
+snapshot field="Limited" changes=0 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=0 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+snapshot field="Primary" changes=0 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=1..3 reversed=true marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=0 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=0 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+snapshot field="Primary" changes=0 text="Ashi jieB e\u{301} 👩\u{200d}💻 C" selection=8..8 reversed=false marked=Some(1..8) readonly=false disabled=false max=None
+snapshot field="Limited" changes=0 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=0 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Primary" change=1 text="A世界B e\u{301} 👩\u{200d}💻 C"
+snapshot field="Primary" changes=1 text="A世界B e\u{301} 👩\u{200d}💻 C" selection=3..3 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=0 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=0 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Primary" change=2 text="A你好B e\u{301} 👩\u{200d}💻 C"
+snapshot field="Primary" changes=2 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=1..3 reversed=true marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=0 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=0 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Primary" change=3 text="A世界B e\u{301} 👩\u{200d}💻 C"
+snapshot field="Primary" changes=3 text="A世界B e\u{301} 👩\u{200d}💻 C" selection=3..3 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=0 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=0 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+operation key="f5"
+before operation primary marked=None
+snapshot field="Primary" changes=3 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=0 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=0 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Primary" change=4 text="A你好B e\u{301} 👩\u{200d}💻 C"
+snapshot field="Primary" changes=4 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=0 text="Ani hao😀BC" selection=7..7 reversed=false marked=Some(1..7) readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=0 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+operation key="f11"
+before operation primary marked=None
+snapshot field="Primary" changes=4 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=0 text="Ani hao😀BC" selection=7..7 reversed=false marked=Some(1..7) readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=0 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+snapshot field="Primary" changes=4 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=0 text="Ani hao😀BC" selection=7..7 reversed=false marked=Some(1..7) readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=0 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Limited" change=1 text="A你😀BC"
+snapshot field="Primary" changes=4 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=1 text="A你😀BC" selection=2..2 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=0 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Limited" change=2 text="A😀BC"
+snapshot field="Primary" changes=4 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=1..1 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=0 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+snapshot field="Primary" changes=4 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=1..1 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=0 text="first e\u{301}\nAshi jieafter" selection=17..17 reversed=false marked=Some(10..17) readonly=false disabled=false max=Some(200)
+snapshot field="Primary" changes=4 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=1..1 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=0 text="first e\u{301}\nA你好after" selection=10..12 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Notes" change=1 text="first e\u{301}\nA世界after"
+snapshot field="Primary" changes=4 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=1..1 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=1 text="first e\u{301}\nA世界after" selection=12..12 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Notes" change=2 text="first e\u{301}\nA你好after"
+snapshot field="Primary" changes=4 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=1..1 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=2 text="first e\u{301}\nA你好after" selection=10..12 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Notes" change=3 text="first e\u{301}\nA世界after"
+snapshot field="Primary" changes=4 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=1..1 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=3 text="first e\u{301}\nA世界after" selection=12..12 reversed=false marked=None readonly=false disabled=false max=Some(200)
+operation key="f5"
+before operation primary marked=None
+snapshot field="Primary" changes=4 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=3 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Notes" change=4 text="first e\u{301}\nA你好after"
+snapshot field="Primary" changes=4 text="Ashi jieB e\u{301} 👩\u{200d}💻 C" selection=8..8 reversed=false marked=Some(1..8) readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+operation key="f1"
+before operation primary marked=Some(1..8)
+snapshot field="Primary" changes=4 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=1..3 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+snapshot field="Primary" changes=4 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=1..3 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+operation key="f1"
+before operation primary marked=None
+snapshot field="Primary" changes=4 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=1..3 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+snapshot field="Primary" changes=4 text="Ashi jieB e\u{301} 👩\u{200d}💻 C" selection=8..8 reversed=false marked=Some(1..8) readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+operation key="f2"
+before operation primary marked=Some(1..8)
+snapshot field="Primary" changes=4 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=1..3 reversed=true marked=None readonly=false disabled=true max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+operation key="f2"
+before operation primary marked=None
+snapshot field="Primary" changes=4 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=1..3 reversed=true marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=1..1 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+snapshot field="Primary" changes=4 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=1..3 reversed=true marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=1..1 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+snapshot field="Primary" changes=4 text="Ashi jieB e\u{301} 👩\u{200d}💻 C" selection=8..8 reversed=false marked=Some(1..8) readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=1..1 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+operation key="f3"
+before operation primary marked=Some(1..8)
+snapshot field="Primary" changes=4 text="A你好B e\u{301}" selection=7..7 reversed=false marked=None readonly=false disabled=false max=Some(7)
+snapshot field="Limited" changes=2 text="A😀BC" selection=1..1 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Primary" change=5 text="A你好B e\u{301}"
+snapshot field="Primary" changes=5 text="A你好B e\u{301}" selection=7..7 reversed=false marked=None readonly=false disabled=false max=Some(7)
+snapshot field="Limited" changes=2 text="A😀BC" selection=1..1 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+snapshot field="Primary" changes=5 text="A你好B e\u{301}" selection=7..7 reversed=false marked=None readonly=false disabled=false max=Some(7)
+snapshot field="Limited" changes=2 text="A😀BC" selection=1..1 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+operation key="f5"
+before operation primary marked=None
+snapshot field="Primary" changes=5 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Primary" change=6 text="A你好B e\u{301} 👩\u{200d}💻 C"
+operation key="f6"
+before operation primary marked=None
+snapshot field="Primary" changes=6 text="A世界B e\u{301} 👩\u{200d}💻 C" selection=3..3 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Primary" change=7 text="A世界B e\u{301} 👩\u{200d}💻 C"
+snapshot field="Primary" changes=7 text="A世界B e\u{301} 👩\u{200d}💻 C" selection=3..3 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Primary" change=8 text="A你好B e\u{301} 👩\u{200d}💻 C"
+snapshot field="Primary" changes=8 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=1..3 reversed=true marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+operation key="f5"
+before operation primary marked=None
+snapshot field="Primary" changes=8 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+operation key="f7"
+before operation primary marked=None
+snapshot field="Primary" changes=8 text="A世界B e\u{301} 👩\u{200d}💻 C" selection=3..3 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Primary" change=9 text="A世界B e\u{301} 👩\u{200d}💻 C"
+snapshot field="Primary" changes=9 text="A世界B e\u{301} 👩\u{200d}💻 C" selection=3..3 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Primary" change=10 text="A你好B e\u{301} 👩\u{200d}💻 C"
+snapshot field="Primary" changes=10 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=1..3 reversed=true marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+operation key="f5"
+before operation primary marked=None
+snapshot field="Primary" changes=10 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+operation key="f8"
+before operation primary marked=None
+snapshot field="Primary" changes=10 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=1..3 reversed=true marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+snapshot field="Primary" changes=10 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=1..3 reversed=true marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+operation key="f9"
+before operation primary marked=None
+snapshot field="Primary" changes=10 text="AB e\u{301} 👩\u{200d}💻 C" selection=1..1 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Primary" change=11 text="AB e\u{301} 👩\u{200d}💻 C"
+snapshot field="Primary" changes=11 text="AB e\u{301} 👩\u{200d}💻 C" selection=1..1 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Primary" change=12 text="A你好B e\u{301} 👩\u{200d}💻 C"
+snapshot field="Primary" changes=12 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=1..3 reversed=true marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+operation key="f5"
+before operation primary marked=None
+snapshot field="Primary" changes=12 text="A你好B e\u{301} 👩\u{200d}💻 C" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+operation key="f10"
+before operation primary marked=None
+snapshot field="Primary" changes=12 text="A你好" selection=3..3 reversed=false marked=None readonly=false disabled=false max=Some(3)
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+event field="Primary" change=13 text="A你好"
+snapshot field="Primary" changes=13 text="A你好" selection=3..3 reversed=false marked=None readonly=false disabled=false max=Some(3)
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+snapshot field="Primary" changes=13 text="A你好" selection=3..3 reversed=false marked=None readonly=false disabled=false max=Some(3)
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)
+snapshot field="Primary" changes=13 text="A你好" selection=3..3 reversed=false marked=None readonly=false disabled=false max=Some(3)
+snapshot field="Limited" changes=2 text="A😀BC" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)
+snapshot field="Password" changes=0 text="A😀e\u{301}" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None
+snapshot field="Read only" changes=0 text="readonly" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None
+snapshot field="Disabled" changes=0 text="disabled" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None
+snapshot field="Notes" changes=4 text="first e\u{301}\nA你好after" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)

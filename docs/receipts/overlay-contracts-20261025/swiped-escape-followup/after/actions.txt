@@ -1,0 +1,8 @@
+2026-10-25T09:53:07Z pointer Open slow modal @240,48
+2026-10-25T09:53:09Z keys Tab
+2026-10-25T09:53:10Z keys Escape
+2026-10-25T09:53:12Z keys Return
+2026-10-25T09:53:15Z keys Tab Left
+2026-10-25T09:53:16Z keys Tab
+2026-10-25T09:53:17Z keys Escape
+2026-10-25T09:53:17Z keys Escape

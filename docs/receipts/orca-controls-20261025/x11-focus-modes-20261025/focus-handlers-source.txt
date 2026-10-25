@@ -1,0 +1,33 @@
+1057:                     .context("X11: Failed to handle property notify")
+1058:                     .log_err();
+1059:             }
+1060:             Event::FocusIn(event) => {
+1061:                 let window = self.get_window(event.event)?;
+1062:                 window.set_active(true);
+1063:                 let mut state = self.0.borrow_mut();
+1064:                 state.keyboard_focused_window = Some(event.event);
+1065:                 if let Some(handler) = state.xim_handler.as_mut() {
+1066:                     handler.window = event.event;
+1067:                 }
+1068:                 drop(state);
+1069:                 self.enable_ime();
+1070:             }
+1071:             Event::FocusOut(event) => {
+1072:                 let window = self.get_window(event.event)?;
+1073:                 window.set_active(false);
+1074:                 let mut state = self.0.borrow_mut();
+1075:                 // Set last scroll values to `None` so that a large delta isn't created if scrolling is done outside the window (the valuator is global)
+1076:                 reset_all_pointer_device_scroll_positions(&mut state.pointer_device_states);
+1077:                 state.keyboard_focused_window = None;
+1078:                 if let Some(compose_state) = state.compose_state.as_mut() {
+1079:                     compose_state.reset();
+1080:                 }
+1081:                 state.pre_edit_text.take();
+1082:                 state.restore_cursor_after_hide();
+1083:                 drop(state);
+1084:                 self.reset_ime();
+1085:                 window.handle_ime_delete();
+1086:             }
+1087:             Event::XkbNewKeyboardNotify(_) | Event::XkbMapNotify(_) => {
+1088:                 let mut state = self.0.borrow_mut();
+1089:                 let xkb_state = {

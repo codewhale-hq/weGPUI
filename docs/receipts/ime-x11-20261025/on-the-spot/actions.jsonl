@@ -1,0 +1,21 @@
+{"at": 1792921941.3334332, "kind": "launch", "route": "form_input_status"}
+{"at": 1792921944.40196, "kind": "click", "field": "卡号", "desktop": [539, 435]}
+{"at": 1792921945.160512, "kind": "ime", "active": false}
+{"at": 1792921945.8195562, "kind": "type", "text": "ABCD"}
+{"at": 1792921946.7074823, "kind": "key", "key": "Home"}
+{"at": 1792921947.3750534, "kind": "key", "key": "Right"}
+{"at": 1792921948.043377, "kind": "ime", "active": true}
+{"at": 1792921948.7049925, "kind": "type", "text": "nihao"}
+{"at": 1792921950.021921, "kind": "key", "key": "space"}
+{"at": 1792921951.1010928, "kind": "type", "text": "shijie"}
+{"at": 1792921952.5136147, "kind": "key", "key": "Escape"}
+{"at": 1792921953.606698, "kind": "ime", "active": false}
+{"at": 1792921954.2628262, "kind": "key", "key": "ctrl+z"}
+{"at": 1792921955.3782785, "kind": "key", "key": "ctrl+shift+z"}
+{"at": 1792921956.4926198, "kind": "key", "key": "Home"}
+{"at": 1792921957.1585217, "kind": "key", "key": "Right"}
+{"at": 1792921957.8365037, "kind": "key", "key": "shift+Right"}
+{"at": 1792921958.5285106, "kind": "key", "key": "shift+Right"}
+{"at": 1792921959.2081118, "kind": "ime", "active": true}
+{"at": 1792921959.866446, "kind": "type", "text": "shijie"}
+{"at": 1792921961.3367274, "kind": "key", "key": "Escape"}

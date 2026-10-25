@@ -1,0 +1,42 @@
+[package]
+name = "wegpui"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+description = "WeUI 2.6.26 design system as native GPUI components"
+readme = "README.md"
+repository = "https://github.com/codewhale-hq/weGPUI"
+homepage = "https://github.com/codewhale-hq/weGPUI"
+rust-version = "1.95"
+keywords = ["weui", "gpui", "ui", "components", "design-system"]
+categories = ["gui"]
+exclude = [
+    "/docs/parity/",
+    "/docs/receipts/",
+    "/docs/proposals/",
+    "/scripts/",
+    "/website/",
+    "/.cnb.yml",
+    "/.github/",
+]
+
+[dependencies]
+gpui = { package = "gpui-pre", version = "=0.3.9" }
+unicode-segmentation = "1.12"
+
+[target.'cfg(not(target_os = "ios"))'.dev-dependencies]
+gpui_platform = { package = "gpui-pre-platform", version = "=0.3.9", features = ["font-kit", "wayland", "x11"] }
+
+[target.'cfg(target_os = "ios")'.dev-dependencies]
+gpui_ios = { package = "gpui-pre-ios", version = "=0.3.9" }
+
+[profile.dev]
+debug = 1
+
+[profile.dev.package."*"]
+debug = 0
+
+[patch.crates-io]
+accesskit_unix = { path = "vendor/accesskit_unix" }
+accesskit_atspi_common = { path = "vendor/accesskit_atspi_common" }
+gpui-pre = { path = "vendor/gpui_pre" }

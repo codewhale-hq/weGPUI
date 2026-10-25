@@ -1,0 +1,2 @@
+10:18:28.825975 - SPEECH OUTPUT: 'Screen reader on.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:18:32.045562 - SPEECH OUTPUT: 'weGPUI Agree warning contracts frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}

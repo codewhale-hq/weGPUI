@@ -50,3 +50,12 @@ Updated 2026-10-25 by the Linux cloud agent. Each item says what unblocks it.
     needs atomic host range-edit and clipboard contracts, beyond a contained bridge patch;
     see [the feasibility note](proposals/linux-editable-text/README.md). Advertising a partial
     interface is not a safe substitute.
+12. **Additional compatibility approval:** real saved AT Click/Focus requests at requested
+    0/1ms after modal hide can invoke a callback or steal restored focus; X11 Grab/Ungrab
+    events also disturb Orca window/focus and flat review. The exact
+    [modal dispatch](proposals/modal-a11y-action-guard/README.md) and
+    [X11 focus filter](proposals/x11-grab-focus/README.md) proposals are unapplied. They extend
+    the earlier approved patch scope, including a local copy of existing `gpui-pre-linux
+    0.3.9`, and require additional owner approval. No package/version change, hosted fork,
+    publication or external report is proposed. New source gates and native regressions
+    remain necessary after approval; preparation checks are not patched runtime results.

@@ -1,0 +1,28 @@
+--- a/vendor/gpui_pre_linux/src/linux/x11/client.rs
++++ b/vendor/gpui_pre_linux/src/linux/x11/client.rs
+@@ -1058,6 +1058,12 @@
+                     .log_err();
+             }
+             Event::FocusIn(event) => {
++                if matches!(
++                    event.mode,
++                    xproto::NotifyMode::GRAB | xproto::NotifyMode::UNGRAB
++                ) {
++                    return Some(());
++                }
+                 let window = self.get_window(event.event)?;
+                 window.set_active(true);
+                 let mut state = self.0.borrow_mut();
+@@ -1069,6 +1075,12 @@
+                 self.enable_ime();
+             }
+             Event::FocusOut(event) => {
++                if matches!(
++                    event.mode,
++                    xproto::NotifyMode::GRAB | xproto::NotifyMode::UNGRAB
++                ) {
++                    return Some(());
++                }
+                 let window = self.get_window(event.event)?;
+                 window.set_active(false);
+                 let mut state = self.0.borrow_mut();

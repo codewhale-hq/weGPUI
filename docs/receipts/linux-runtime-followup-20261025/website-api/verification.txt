@@ -1,0 +1,4 @@
+PASS: site rebuilt from current root-produced strict Rustdoc; source/API manifests archived.
+PASS: Semantics::invalid method anchor exists and serves HTTP200.
+PASS: full served Input, Agree, SwipedCell and Semantics source text exactly matches current files.
+Scope: local documentation freshness only; historical captures and complete browser suite were not rerun.

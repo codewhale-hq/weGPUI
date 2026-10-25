@@ -83,7 +83,8 @@ impl Agree {
         self
     }
     /// Shows the description in red (`weui-agree_warn`), e.g. after submitting without consent;
-    /// the link keeps its colour. Default `false`.
+    /// the link keeps its colour. Also marks the checkbox invalid for assistive technology.
+    /// The owner clears this validation state with `warn(false)`. Default `false`.
     pub fn warn(mut self, value: bool) -> Self {
         self.warn = value;
         self
@@ -181,7 +182,10 @@ impl RenderOnce for Agree {
                 });
             }
         }
-        let el = Semantics::new(el).disabled(self.disabled).reveal_focus();
+        let el = Semantics::new(el)
+            .disabled(self.disabled)
+            .invalid(self.warn)
+            .reveal_focus();
         if self.shake > 0 && !cx.reduce_motion() {
             div()
                 .relative()

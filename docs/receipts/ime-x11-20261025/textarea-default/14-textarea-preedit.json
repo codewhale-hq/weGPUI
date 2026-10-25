@@ -1,0 +1,31 @@
+{
+  "label": "14-textarea-preedit",
+  "fields": [
+    {
+      "name": "问题描述",
+      "role": "entry",
+      "value": "before\nafter",
+      "caret": 7,
+      "selection": [],
+      "bounds": [
+        442,
+        375,
+        716,
+        80
+      ],
+      "states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "multi line",
+        "sensitive",
+        "showing",
+        "visible",
+        "selectable text"
+      ]
+    }
+  ],
+  "input_method": "pinyin",
+  "activation": "2"
+}

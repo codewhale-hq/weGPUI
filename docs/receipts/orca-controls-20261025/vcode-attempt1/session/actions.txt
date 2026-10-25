@@ -1,0 +1,38 @@
+2026-10-25T10:01:35.560013+00:00 XTEST click 'Start matrix' window-local=164,40
+2026-10-25T10:01:36.666517+00:00 XTEST key KP_Enter
+2026-10-25T10:01:40.200337+00:00 capture start focused=[('button', 'Start matrix')]
+2026-10-25T10:01:40.227878+00:00 XTEST key Tab
+2026-10-25T10:01:40.869491+00:00 XTEST key KP_Enter
+2026-10-25T10:01:45.154183+00:00 capture rounded-ready focused=[('button', 'Send rounded')]
+2026-10-25T10:01:45.154452+00:00 XTEST key Return
+2026-10-25T10:01:45.996829+00:00 capture rounded-countdown-start focused=[('button', '重新发送(3s)')]
+2026-10-25T10:01:45.996921+00:00 XTEST key KP_Enter
+2026-10-25T10:01:46.655707+00:00 capture rounded-countdown-readback focused=[('button', '重新发送(2s)')]
+2026-10-25T10:01:46.655774+00:00 XTEST key Tab
+2026-10-25T10:01:47.421262+00:00 capture rounded-tab-skips-countdown focused=[('button', 'Start twice 0')]
+2026-10-25T10:01:50.643775+00:00 XTEST held Shift_L + Tab
+2026-10-25T10:01:51.368262+00:00 XTEST key KP_Enter
+2026-10-25T10:01:55.038583+00:00 capture rounded-restored focused=[('button', 'Send rounded')]
+2026-10-25T10:01:55.038654+00:00 XTEST key Return
+2026-10-25T10:01:55.160894+00:00 XTEST key Return
+2026-10-25T10:01:56.501596+00:00 capture rounded-restart-guard focused=[('button', '重新发送(2s)')]
+2026-10-25T10:01:56.621651+00:00 XTEST click 'Reset 0' window-local=855,100
+2026-10-25T10:01:57.732385+00:00 XTEST key KP_Enter
+2026-10-25T10:02:01.233753+00:00 capture rounded-reset-button focused=[('button', 'Reset 0')]
+2026-10-25T10:02:01.233834+00:00 XTEST held Shift_L + Tab
+2026-10-25T10:02:01.742946+00:00 XTEST held Shift_L + Tab
+2026-10-25T10:02:02.250484+00:00 XTEST key KP_Enter
+2026-10-25T10:02:05.726682+00:00 capture rounded-after-reset focused=[('button', 'Send rounded')]
+2026-10-25T10:02:05.751628+00:00 XTEST key Tab
+2026-10-25T10:02:06.402291+00:00 XTEST key Tab
+2026-10-25T10:02:07.053863+00:00 XTEST key Tab
+2026-10-25T10:02:07.703453+00:00 XTEST key KP_Enter
+2026-10-25T10:02:11.218138+00:00 capture plain-ready focused=[('button', 'Send plain')]
+2026-10-25T10:02:11.218245+00:00 XTEST key space
+2026-10-25T10:02:11.357063+00:00 XTEST key KP_Enter
+2026-10-25T10:02:12.084090+00:00 capture plain-countdown-readback focused=[('button', '重新发送(3s)')]
+2026-10-25T10:02:15.284949+00:00 XTEST key KP_Enter
+2026-10-25T10:02:18.887520+00:00 capture plain-restored focused=[('button', 'Send plain')]
+2026-10-25T10:02:18.887605+00:00 XTEST key F8
+2026-10-25T10:02:20.213383+00:00 capture final focused=[('button', 'Send plain')]
+2026-10-25T10:02:20.213942+00:00 driver completed; speech/audio interpretation remains separate

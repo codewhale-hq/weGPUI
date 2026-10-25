@@ -1,0 +1,8 @@
+{
+  "src/accessibility.rs": "feebf02e7e72d7ac2db836abb816cd593dca55e58a8c35318d85a1a2cdb04af1",
+  "src/components/agree.rs": "d3994f9ea656fea60e1d2ebe1fc893624a1d4bf1439ea7ddd68123ebf9e289bf",
+  "/workspace/.wegpui-cloud/agree-warn-current-20261025/wegpui-agree-warn-consumer": "c9a7f6a70541241250ddf41fcec9a193d2af54a73cb7d363bc023a569ae8425f",
+  "/workspace/.wegpui-cloud/agree-warn-consumer/Cargo.toml": "e59c86d4f79ed9a1ffd9bc216776609729bbfe8e2139efd84c5ac8d6e11928b6",
+  "/workspace/.wegpui-cloud/agree-warn-consumer/Cargo.lock": "3886d0f72f6b7f23972b541fc3fa5765ea3ca3656e2ebae177632a9f5d3abb92",
+  "/workspace/.wegpui-cloud/agree-warn-consumer/src/main.rs": "6cd7a551907420dba51898cf37a21e3b6c4439015d140b1e5ffd7682ea05d856"
+}

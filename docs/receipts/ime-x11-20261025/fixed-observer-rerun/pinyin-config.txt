@@ -1,0 +1,1172 @@
+method return time=1792923015.356461 sender=:1.3 -> destination=:1.10 serial=26 reply_serial=2
+   variant       array [
+         dict entry(
+            string "ShuangpinProfile"
+            variant                string "Ziranma"
+         )
+         dict entry(
+            string "ShowShuangpinMode"
+            variant                string "True"
+         )
+         dict entry(
+            string "PageSize"
+            variant                string "7"
+         )
+         dict entry(
+            string "SpellEnabled"
+            variant                string "True"
+         )
+         dict entry(
+            string "SymbolsEnabled"
+            variant                string "True"
+         )
+         dict entry(
+            string "ChaiziEnabled"
+            variant                string "True"
+         )
+         dict entry(
+            string "ExtBEnabled"
+            variant                string "True"
+         )
+         dict entry(
+            string "CloudPinyinEnabled"
+            variant                string "False"
+         )
+         dict entry(
+            string "CloudPinyinIndex"
+            variant                string "2"
+         )
+         dict entry(
+            string "CloudPinyinAnimation"
+            variant                string "True"
+         )
+         dict entry(
+            string "KeepCloudPinyinPlaceHolder"
+            variant                string "False"
+         )
+         dict entry(
+            string "PreeditMode"
+            variant                string "Composing pinyin"
+         )
+         dict entry(
+            string "PreeditCursorPositionAtBeginning"
+            variant                string "True"
+         )
+         dict entry(
+            string "PinyinInPreedit"
+            variant                string "False"
+         )
+         dict entry(
+            string "Prediction"
+            variant                string "False"
+         )
+         dict entry(
+            string "PredictionSize"
+            variant                string "49"
+         )
+         dict entry(
+            string "SwitchInputMethodBehavior"
+            variant                string "Commit current preedit"
+         )
+         dict entry(
+            string "ForgetWord"
+            variant                array [
+                  dict entry(
+                     string "0"
+                     variant                         string "Control+7"
+                  )
+               ]
+         )
+         dict entry(
+            string "PrevPage"
+            variant                array [
+                  dict entry(
+                     string "0"
+                     variant                         string "minus"
+                  )
+                  dict entry(
+                     string "1"
+                     variant                         string "Up"
+                  )
+                  dict entry(
+                     string "2"
+                     variant                         string "KP_Up"
+                  )
+                  dict entry(
+                     string "3"
+                     variant                         string "Page_Up"
+                  )
+               ]
+         )
+         dict entry(
+            string "NextPage"
+            variant                array [
+                  dict entry(
+                     string "0"
+                     variant                         string "equal"
+                  )
+                  dict entry(
+                     string "1"
+                     variant                         string "Down"
+                  )
+                  dict entry(
+                     string "2"
+                     variant                         string "KP_Down"
+                  )
+                  dict entry(
+                     string "3"
+                     variant                         string "Next"
+                  )
+               ]
+         )
+         dict entry(
+            string "PrevCandidate"
+            variant                array [
+                  dict entry(
+                     string "0"
+                     variant                         string "Shift+Tab"
+                  )
+               ]
+         )
+         dict entry(
+            string "NextCandidate"
+            variant                array [
+                  dict entry(
+                     string "0"
+                     variant                         string "Tab"
+                  )
+               ]
+         )
+         dict entry(
+            string "CurrentCandidate"
+            variant                array [
+                  dict entry(
+                     string "0"
+                     variant                         string "space"
+                  )
+                  dict entry(
+                     string "1"
+                     variant                         string "KP_Space"
+                  )
+               ]
+         )
+         dict entry(
+            string "CommitRawInput"
+            variant                array [
+                  dict entry(
+                     string "0"
+                     variant                         string "Return"
+                  )
+                  dict entry(
+                     string "1"
+                     variant                         string "KP_Enter"
+                  )
+                  dict entry(
+                     string "2"
+                     variant                         string "Control+Return"
+                  )
+                  dict entry(
+                     string "3"
+                     variant                         string "Control+KP_Enter"
+                  )
+                  dict entry(
+                     string "4"
+                     variant                         string "Shift+Return"
+                  )
+                  dict entry(
+                     string "5"
+                     variant                         string "Shift+KP_Enter"
+                  )
+                  dict entry(
+                     string "6"
+                     variant                         string "Control+Shift+Return"
+                  )
+                  dict entry(
+                     string "7"
+                     variant                         string "Control+Shift+KP_Enter"
+                  )
+               ]
+         )
+         dict entry(
+            string "SecondCandidate"
+            variant                string ""
+         )
+         dict entry(
+            string "ThirdCandidate"
+            variant                string ""
+         )
+         dict entry(
+            string "UseKeypadAsSelection"
+            variant                string "False"
+         )
+         dict entry(
+            string "ChooseCharFromPhrase"
+            variant                array [
+                  dict entry(
+                     string "0"
+                     variant                         string "bracketleft"
+                  )
+                  dict entry(
+                     string "1"
+                     variant                         string "bracketright"
+                  )
+               ]
+         )
+         dict entry(
+            string "BackSpaceToUnselect"
+            variant                string "True"
+         )
+         dict entry(
+            string "FilterByStroke"
+            variant                array [
+                  dict entry(
+                     string "0"
+                     variant                         string "grave"
+                  )
+               ]
+         )
+         dict entry(
+            string "Number of sentence"
+            variant                string "2"
+         )
+         dict entry(
+            string "LongWordLengthLimit"
+            variant                string "4"
+         )
+         dict entry(
+            string "QuickPhraseKey"
+            variant                string "semicolon"
+         )
+         dict entry(
+            string "VAsQuickphrase"
+            variant                string "True"
+         )
+         dict entry(
+            string "QuickPhraseTriggerRegex"
+            variant                array [
+                  dict entry(
+                     string "0"
+                     variant                         string ".(/|@)$"
+                  )
+                  dict entry(
+                     string "1"
+                     variant                         string "^(www|bbs|forum|mail|bbs)\."
+                  )
+                  dict entry(
+                     string "2"
+                     variant                         string "^(http|https|ftp|telnet|mailto):"
+                  )
+               ]
+         )
+         dict entry(
+            string "Fuzzy"
+            variant                array [
+                  dict entry(
+                     string "VE_UE"
+                     variant                         string "True"
+                  )
+                  dict entry(
+                     string "NG_GN"
+                     variant                         string "True"
+                  )
+                  dict entry(
+                     string "Inner"
+                     variant                         string "True"
+                  )
+                  dict entry(
+                     string "InnerShort"
+                     variant                         string "True"
+                  )
+                  dict entry(
+                     string "PartialFinal"
+                     variant                         string "True"
+                  )
+                  dict entry(
+                     string "PartialSp"
+                     variant                         string "False"
+                  )
+                  dict entry(
+                     string "V_U"
+                     variant                         string "False"
+                  )
+                  dict entry(
+                     string "AN_ANG"
+                     variant                         string "False"
+                  )
+                  dict entry(
+                     string "EN_ENG"
+                     variant                         string "False"
+                  )
+                  dict entry(
+                     string "IAN_IANG"
+                     variant                         string "False"
+                  )
+                  dict entry(
+                     string "IN_ING"
+                     variant                         string "False"
+                  )
+                  dict entry(
+                     string "U_OU"
+                     variant                         string "False"
+                  )
+                  dict entry(
+                     string "UAN_UANG"
+                     variant                         string "False"
+                  )
+                  dict entry(
+                     string "C_CH"
+                     variant                         string "False"
+                  )
+                  dict entry(
+                     string "F_H"
+                     variant                         string "False"
+                  )
+                  dict entry(
+                     string "L_N"
+                     variant                         string "False"
+                  )
+                  dict entry(
+                     string "S_SH"
+                     variant                         string "False"
+                  )
+                  dict entry(
+                     string "Z_ZH"
+                     variant                         string "False"
+                  )
+                  dict entry(
+                     string "Correction"
+                     variant                         string "None"
+                  )
+               ]
+         )
+         dict entry(
+            string "FirstRun"
+            variant                string "False"
+         )
+      ]
+   array [
+      struct {
+         string "PinyinEngineConfig"
+         array [
+            struct {
+               string "PageSize"
+               string "Integer"
+               string "Page size"
+               variant                   string "7"
+               array [
+                  dict entry(
+                     string "IntMin"
+                     variant                         string "3"
+                  )
+                  dict entry(
+                     string "IntMax"
+                     variant                         string "10"
+                  )
+               ]
+            }
+            struct {
+               string "SpellEnabled"
+               string "Boolean"
+               string "Enable Spell"
+               variant                   string "True"
+               array [
+               ]
+            }
+            struct {
+               string "SymbolsEnabled"
+               string "Boolean"
+               string "Enable Symbols"
+               variant                   string "True"
+               array [
+               ]
+            }
+            struct {
+               string "ChaiziEnabled"
+               string "Boolean"
+               string "Enable Chaizi"
+               variant                   string "True"
+               array [
+               ]
+            }
+            struct {
+               string "ExtBEnabled"
+               string "Boolean"
+               string "Enable Characters in Unicode CJK Extension B"
+               variant                   string "True"
+               array [
+               ]
+            }
+            struct {
+               string "PreeditMode"
+               string "Enum"
+               string "Preedit Mode"
+               variant                   string "Composing pinyin"
+               array [
+                  dict entry(
+                     string "EnumI18n"
+                     variant                         array [
+                           dict entry(
+                              string "0"
+                              variant                                  string "Do not show"
+                           )
+                           dict entry(
+                              string "1"
+                              variant                                  string "Composing pinyin"
+                           )
+                           dict entry(
+                              string "2"
+                              variant                                  string "Commit preview"
+                           )
+                        ]
+                  )
+                  dict entry(
+                     string "Enum"
+                     variant                         array [
+                           dict entry(
+                              string "0"
+                              variant                                  string "Do not show"
+                           )
+                           dict entry(
+                              string "1"
+                              variant                                  string "Composing pinyin"
+                           )
+                           dict entry(
+                              string "2"
+                              variant                                  string "Commit preview"
+                           )
+                        ]
+                  )
+               ]
+            }
+            struct {
+               string "PreeditCursorPositionAtBeginning"
+               string "Boolean"
+               string "Fix embedded preedit cursor at the beginning of the preedit"
+               variant                   string "True"
+               array [
+               ]
+            }
+            struct {
+               string "PinyinInPreedit"
+               string "Boolean"
+               string "Show complete pinyin in preedit"
+               variant                   string "False"
+               array [
+               ]
+            }
+            struct {
+               string "Prediction"
+               string "Boolean"
+               string "Enable Prediction"
+               variant                   string "False"
+               array [
+               ]
+            }
+            struct {
+               string "PredictionSize"
+               string "Integer"
+               string "Prediction Size"
+               variant                   string "49"
+               array [
+                  dict entry(
+                     string "IntMin"
+                     variant                         string "3"
+                  )
+                  dict entry(
+                     string "IntMax"
+                     variant                         string "100"
+                  )
+               ]
+            }
+            struct {
+               string "SwitchInputMethodBehavior"
+               string "Enum"
+               string "Action when switching input method"
+               variant                   string "Commit current preedit"
+               array [
+                  dict entry(
+                     string "EnumI18n"
+                     variant                         array [
+                           dict entry(
+                              string "0"
+                              variant                                  string "Clear"
+                           )
+                           dict entry(
+                              string "1"
+                              variant                                  string "Commit current preedit"
+                           )
+                           dict entry(
+                              string "2"
+                              variant                                  string "Commit default selection"
+                           )
+                        ]
+                  )
+                  dict entry(
+                     string "Enum"
+                     variant                         array [
+                           dict entry(
+                              string "0"
+                              variant                                  string "Clear"
+                           )
+                           dict entry(
+                              string "1"
+                              variant                                  string "Commit current preedit"
+                           )
+                           dict entry(
+                              string "2"
+                              variant                                  string "Commit default selection"
+                           )
+                        ]
+                  )
+               ]
+            }
+            struct {
+               string "ForgetWord"
+               string "List|Key"
+               string "Forget word"
+               variant                   array [
+                     dict entry(
+                        string "0"
+                        variant                            string "Control+7"
+                     )
+                  ]
+               array [
+                  dict entry(
+                     string "ListConstrain"
+                     variant                         string ""
+                  )
+               ]
+            }
+            struct {
+               string "PrevPage"
+               string "List|Key"
+               string "Previous Page"
+               variant                   array [
+                     dict entry(
+                        string "0"
+                        variant                            string "minus"
+                     )
+                     dict entry(
+                        string "1"
+                        variant                            string "Up"
+                     )
+                     dict entry(
+                        string "2"
+                        variant                            string "KP_Up"
+                     )
+                     dict entry(
+                        string "3"
+                        variant                            string "Page_Up"
+                     )
+                  ]
+               array [
+                  dict entry(
+                     string "ListConstrain"
+                     variant                         array [
+                           dict entry(
+                              string "AllowModifierLess"
+                              variant                                  string "True"
+                           )
+                        ]
+                  )
+               ]
+            }
+            struct {
+               string "NextPage"
+               string "List|Key"
+               string "Next Page"
+               variant                   array [
+                     dict entry(
+                        string "0"
+                        variant                            string "equal"
+                     )
+                     dict entry(
+                        string "1"
+                        variant                            string "Down"
+                     )
+                     dict entry(
+                        string "2"
+                        variant                            string "KP_Down"
+                     )
+                     dict entry(
+                        string "3"
+                        variant                            string "Next"
+                     )
+                  ]
+               array [
+                  dict entry(
+                     string "ListConstrain"
+                     variant                         array [
+                           dict entry(
+                              string "AllowModifierLess"
+                              variant                                  string "True"
+                           )
+                        ]
+                  )
+               ]
+            }
+            struct {
+               string "PrevCandidate"
+               string "List|Key"
+               string "Previous Candidate"
+               variant                   array [
+                     dict entry(
+                        string "0"
+                        variant                            string "Shift+Tab"
+                     )
+                  ]
+               array [
+                  dict entry(
+                     string "ListConstrain"
+                     variant                         array [
+                           dict entry(
+                              string "AllowModifierLess"
+                              variant                                  string "True"
+                           )
+                        ]
+                  )
+               ]
+            }
+            struct {
+               string "NextCandidate"
+               string "List|Key"
+               string "Next Candidate"
+               variant                   array [
+                     dict entry(
+                        string "0"
+                        variant                            string "Tab"
+                     )
+                  ]
+               array [
+                  dict entry(
+                     string "ListConstrain"
+                     variant                         array [
+                           dict entry(
+                              string "AllowModifierLess"
+                              variant                                  string "True"
+                           )
+                        ]
+                  )
+               ]
+            }
+            struct {
+               string "CurrentCandidate"
+               string "List|Key"
+               string "Select Current Candidate"
+               variant                   array [
+                     dict entry(
+                        string "0"
+                        variant                            string "space"
+                     )
+                     dict entry(
+                        string "1"
+                        variant                            string "KP_Space"
+                     )
+                  ]
+               array [
+                  dict entry(
+                     string "ListConstrain"
+                     variant                         array [
+                           dict entry(
+                              string "AllowModifierLess"
+                              variant                                  string "True"
+                           )
+                        ]
+                  )
+               ]
+            }
+            struct {
+               string "CommitRawInput"
+               string "List|Key"
+               string "Commit Raw Input"
+               variant                   array [
+                     dict entry(
+                        string "0"
+                        variant                            string "Return"
+                     )
+                     dict entry(
+                        string "1"
+                        variant                            string "KP_Enter"
+                     )
+                     dict entry(
+                        string "2"
+                        variant                            string "Control+Return"
+                     )
+                     dict entry(
+                        string "3"
+                        variant                            string "Control+KP_Enter"
+                     )
+                     dict entry(
+                        string "4"
+                        variant                            string "Shift+Return"
+                     )
+                     dict entry(
+                        string "5"
+                        variant                            string "Shift+KP_Enter"
+                     )
+                     dict entry(
+                        string "6"
+                        variant                            string "Control+Shift+Return"
+                     )
+                     dict entry(
+                        string "7"
+                        variant                            string "Control+Shift+KP_Enter"
+                     )
+                  ]
+               array [
+                  dict entry(
+                     string "ListConstrain"
+                     variant                         array [
+                           dict entry(
+                              string "AllowModifierLess"
+                              variant                                  string "True"
+                           )
+                        ]
+                  )
+               ]
+            }
+            struct {
+               string "SecondCandidate"
+               string "List|Key"
+               string "Select 2nd Candidate"
+               variant                   string ""
+               array [
+                  dict entry(
+                     string "ListConstrain"
+                     variant                         array [
+                           dict entry(
+                              string "AllowModifierLess"
+                              variant                                  string "True"
+                           )
+                           dict entry(
+                              string "AllowModifierOnly"
+                              variant                                  string "True"
+                           )
+                        ]
+                  )
+               ]
+            }
+            struct {
+               string "ThirdCandidate"
+               string "List|Key"
+               string "Select 3rd Candidate"
+               variant                   string ""
+               array [
+                  dict entry(
+                     string "ListConstrain"
+                     variant                         array [
+                           dict entry(
+                              string "AllowModifierLess"
+                              variant                                  string "True"
+                           )
+                           dict entry(
+                              string "AllowModifierOnly"
+                              variant                                  string "True"
+                           )
+                        ]
+                  )
+               ]
+            }
+            struct {
+               string "UseKeypadAsSelection"
+               string "Boolean"
+               string "Use Keypad as Selection key"
+               variant                   string "False"
+               array [
+               ]
+            }
+            struct {
+               string "ChooseCharFromPhrase"
+               string "List|Key"
+               string "Choose Character from Phrase"
+               variant                   array [
+                     dict entry(
+                        string "0"
+                        variant                            string "bracketleft"
+                     )
+                     dict entry(
+                        string "1"
+                        variant                            string "bracketright"
+                     )
+                  ]
+               array [
+                  dict entry(
+                     string "ListConstrain"
+                     variant                         array [
+                           dict entry(
+                              string "AllowModifierLess"
+                              variant                                  string "True"
+                           )
+                        ]
+                  )
+               ]
+            }
+            struct {
+               string "BackSpaceToUnselect"
+               string "Boolean"
+               string "Use BackSpace to cancel the selection"
+               variant                   string "True"
+               array [
+               ]
+            }
+            struct {
+               string "FilterByStroke"
+               string "List|Key"
+               string "Filter by stroke"
+               variant                   array [
+                     dict entry(
+                        string "0"
+                        variant                            string "grave"
+                     )
+                  ]
+               array [
+                  dict entry(
+                     string "ListConstrain"
+                     variant                         array [
+                           dict entry(
+                              string "AllowModifierLess"
+                              variant                                  string "True"
+                           )
+                        ]
+                  )
+               ]
+            }
+            struct {
+               string "Number of sentence"
+               string "Integer"
+               string "Number of Sentences"
+               variant                   string "2"
+               array [
+                  dict entry(
+                     string "IntMin"
+                     variant                         string "1"
+                  )
+                  dict entry(
+                     string "IntMax"
+                     variant                         string "3"
+                  )
+               ]
+            }
+            struct {
+               string "LongWordLengthLimit"
+               string "Integer"
+               string "Prompt long word length when input length over (0 for disable)"
+               variant                   string "4"
+               array [
+                  dict entry(
+                     string "IntMin"
+                     variant                         string "0"
+                  )
+                  dict entry(
+                     string "IntMax"
+                     variant                         string "10"
+                  )
+               ]
+            }
+            struct {
+               string "DictManager"
+               string "External"
+               string "Manage Dictionaries"
+               variant                   string ""
+               array [
+                  dict entry(
+                     string "External"
+                     variant                         string "fcitx://config/addon/pinyin/dictmanager"
+                  )
+               ]
+            }
+            struct {
+               string "CustomPhrase"
+               string "External"
+               string "Manage Custom Phrase"
+               variant                   string ""
+               array [
+                  dict entry(
+                     string "External"
+                     variant                         string "fcitx://config/addon/pinyin/customphrase"
+                  )
+               ]
+            }
+            struct {
+               string "Punctuation"
+               string "External"
+               string "Punctuation"
+               variant                   string ""
+               array [
+                  dict entry(
+                     string "External"
+                     variant                         string "fcitx://config/addon/punctuation/punctuationmap/zh_CN"
+                  )
+                  dict entry(
+                     string "LaunchSubConfig"
+                     variant                         string "True"
+                  )
+               ]
+            }
+            struct {
+               string "Chttrans"
+               string "External"
+               string "Simplified and Traditional Chinese Translation"
+               variant                   string ""
+               array [
+                  dict entry(
+                     string "External"
+                     variant                         string "fcitx://config/addon/chttrans"
+                  )
+                  dict entry(
+                     string "LaunchSubConfig"
+                     variant                         string "True"
+                  )
+               ]
+            }
+            struct {
+               string "QuickPhraseKey"
+               string "Key"
+               string "Key to trigger quickphrase"
+               variant                   string "semicolon"
+               array [
+                  dict entry(
+                     string "AllowModifierLess"
+                     variant                         string "True"
+                  )
+               ]
+            }
+            struct {
+               string "VAsQuickphrase"
+               string "Boolean"
+               string "Use V to trigger quickphrase"
+               variant                   string "True"
+               array [
+               ]
+            }
+            struct {
+               string "QuickPhrase"
+               string "External"
+               string "Quick Phrase"
+               variant                   string ""
+               array [
+                  dict entry(
+                     string "External"
+                     variant                         string "fcitx://config/addon/quickphrase/editor"
+                  )
+               ]
+            }
+            struct {
+               string "QuickPhraseTriggerRegex"
+               string "List|String"
+               string "Regular expression to trigger quick phrase"
+               variant                   array [
+                     dict entry(
+                        string "0"
+                        variant                            string ".(/|@)$"
+                     )
+                     dict entry(
+                        string "1"
+                        variant                            string "^(www|bbs|forum|mail|bbs)\."
+                     )
+                     dict entry(
+                        string "2"
+                        variant                            string "^(http|https|ftp|telnet|mailto):"
+                     )
+                  ]
+               array [
+                  dict entry(
+                     string "Tooltip"
+                     variant                         string "Enter quickphrase mode when current input matches any regular expression from the list."
+                  )
+               ]
+            }
+            struct {
+               string "Fuzzy"
+               string "Fuzzy$FuzzyConfig"
+               string "Fuzzy Pinyin Settings"
+               variant                   string ""
+               array [
+               ]
+            }
+         ]
+      }
+      struct {
+         string "Fuzzy$FuzzyConfig"
+         array [
+            struct {
+               string "VE_UE"
+               string "Boolean"
+               string "ue -> ve"
+               variant                   string "True"
+               array [
+               ]
+            }
+            struct {
+               string "NG_GN"
+               string "Boolean"
+               string "Common Typo"
+               variant                   string "True"
+               array [
+               ]
+            }
+            struct {
+               string "Inner"
+               string "Boolean"
+               string "Inner Segment (xian -> xi'an)"
+               variant                   string "True"
+               array [
+               ]
+            }
+            struct {
+               string "InnerShort"
+               string "Boolean"
+               string "Inner Segment for Short Pinyin (qie -> qi'e)"
+               variant                   string "True"
+               array [
+               ]
+            }
+            struct {
+               string "PartialFinal"
+               string "Boolean"
+               string "Match partial finals (e -> en, eng, ei)"
+               variant                   string "True"
+               array [
+               ]
+            }
+            struct {
+               string "PartialSp"
+               string "Boolean"
+               string "Match partial shuangpin if input length is longer than 4"
+               variant                   string "False"
+               array [
+               ]
+            }
+            struct {
+               string "V_U"
+               string "Boolean"
+               string "u <-> v"
+               variant                   string "False"
+               array [
+               ]
+            }
+            struct {
+               string "AN_ANG"
+               string "Boolean"
+               string "an <-> ang"
+               variant                   string "False"
+               array [
+               ]
+            }
+            struct {
+               string "EN_ENG"
+               string "Boolean"
+               string "en <-> eng"
+               variant                   string "False"
+               array [
+               ]
+            }
+            struct {
+               string "IAN_IANG"
+               string "Boolean"
+               string "ian <-> iang"
+               variant                   string "False"
+               array [
+               ]
+            }
+            struct {
+               string "IN_ING"
+               string "Boolean"
+               string "in <-> ing"
+               variant                   string "False"
+               array [
+               ]
+            }
+            struct {
+               string "U_OU"
+               string "Boolean"
+               string "u <-> ou"
+               variant                   string "False"
+               array [
+               ]
+            }
+            struct {
+               string "UAN_UANG"
+               string "Boolean"
+               string "uan <-> uang"
+               variant                   string "False"
+               array [
+               ]
+            }
+            struct {
+               string "C_CH"
+               string "Boolean"
+               string "c <-> ch"
+               variant                   string "False"
+               array [
+               ]
+            }
+            struct {
+               string "F_H"
+               string "Boolean"
+               string "f <-> h"
+               variant                   string "False"
+               array [
+               ]
+            }
+            struct {
+               string "L_N"
+               string "Boolean"
+               string "l <-> n"
+               variant                   string "False"
+               array [
+               ]
+            }
+            struct {
+               string "S_SH"
+               string "Boolean"
+               string "s <-> sh"
+               variant                   string "False"
+               array [
+               ]
+            }
+            struct {
+               string "Z_ZH"
+               string "Boolean"
+               string "z <-> zh"
+               variant                   string "False"
+               array [
+               ]
+            }
+            struct {
+               string "Correction"
+               string "Enum"
+               string "Correction Layout"
+               variant                   string "None"
+               array [
+                  dict entry(
+                     string "EnumI18n"
+                     variant                         array [
+                           dict entry(
+                              string "0"
+                              variant                                  string "None"
+                           )
+                           dict entry(
+                              string "1"
+                              variant                                  string "QWERTY"
+                           )
+                        ]
+                  )
+                  dict entry(
+                     string "Enum"
+                     variant                         array [
+                           dict entry(
+                              string "0"
+                              variant                                  string "None"
+                           )
+                           dict entry(
+                              string "1"
+                              variant                                  string "QWERTY"
+                           )
+                        ]
+                  )
+               ]
+            }
+         ]
+      }
+   ]

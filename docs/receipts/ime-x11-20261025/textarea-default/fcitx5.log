@@ -1,0 +1,198 @@
+I2026-10-25 09:51:47.591685 instance.cpp:1394] Override Enabled Addons: {}
+I2026-10-25 09:51:47.591777 instance.cpp:1395] Override Disabled Addons: {}
+E2026-10-25 09:51:47.595243 waylandmodule.cpp:239] Failed to open wayland connection
+I2026-10-25 09:51:47.595273 addonmanager.cpp:205] Loaded addon wayland
+I2026-10-25 09:51:47.597994 xcbconnection.cpp:179] Set XFIXES client disconnect mode to TERMINATE
+I2026-10-25 09:51:47.598297 xcbconnection.cpp:199] Connecting to X11 display, display name::102.
+I2026-10-25 09:51:47.598688 addonmanager.cpp:205] Loaded addon xcb
+I2026-10-25 09:51:47.599988 addonmanager.cpp:205] Loaded addon quickphrase
+I2026-10-25 09:51:47.600136 addonmanager.cpp:205] Loaded addon imselector
+I2026-10-25 09:51:47.604678 addonmanager.cpp:205] Loaded addon keyboard
+I2026-10-25 09:51:47.605446 addonmanager.cpp:205] Loaded addon clipboard
+I2026-10-25 09:51:47.605728 addonmanager.cpp:205] Loaded addon waylandim
+I2026-10-25 09:51:47.605893 addonmanager.cpp:205] Loaded addon unicode
+I2026-10-25 09:51:47.607237 addonmanager.cpp:205] Loaded addon dbus
+I2026-10-25 09:51:47.607746 addonmanager.cpp:205] Loaded addon dbusfrontend
+I2026-10-25 09:51:47.615522 addonmanager.cpp:205] Loaded addon fcitx4frontend
+I2026-10-25 09:51:47.616397 addonmanager.cpp:205] Loaded addon ibusfrontend
+I2026-10-25 09:51:47.617039 addonmanager.cpp:205] Loaded addon xim
+I2026-10-25 09:51:47.648346 inputmethodmanager.cpp:209] Found 738 input method(s) in addon keyboard
+I2026-10-25 09:51:47.666432 addonmanager.cpp:205] Loaded addon kimpanel
+I2026-10-25 09:51:47.666776 addonmanager.cpp:205] Loaded addon virtualkeyboard
+I2026-10-25 09:51:47.691905 classicui.cpp:88] Created classicui for x11 display::102
+I2026-10-25 09:51:47.691936 addonmanager.cpp:205] Loaded addon classicui
+I2026-10-25 09:51:47.696240 addonmanager.cpp:205] Loaded addon notificationitem
+I2026-10-25 09:51:47.697046 addonmanager.cpp:205] Loaded addon notifications
+I2026-10-25 09:51:47.706386 dbusmodule.cpp:790] Service name change: org.fcitx.Fcitx5  :1.3
+I2026-10-25 09:51:47.706604 kimpanel.cpp:116] Kimpanel new owner: 
+I2026-10-25 09:51:47.706662 virtualkeyboard.cpp:218] VirtualKeyboard new owner: 
+E2026-10-25 09:51:47.706769 portalsettingmonitor.cpp:121] DBus call error: org.freedesktop.DBus.Error.ServiceUnknown The name org.freedesktop.portal.Desktop was not provided by any .service files
+I2026-10-25 09:51:48.843499 addonmanager.cpp:205] Loaded addon punctuation
+E2026-10-25 09:51:49.140966 pinyin.cpp:737] Failed to load pinyin history: io fail: iostream error
+I2026-10-25 09:51:49.147074 addonmanager.cpp:205] Loaded addon pinyin
+D2026-10-25 09:51:55.289645 instance.cpp:930] KeyEvent: Key(b states=0) rawKey: Key(b states=0) origKey: Key(b states=0) Release:0 keycode: 56 program: ime-gallery-49268de7
+D2026-10-25 09:51:55.290507 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:55.344178 instance.cpp:930] KeyEvent: Key(b states=0) rawKey: Key(b states=0) origKey: Key(b states=0) Release:1 keycode: 56 program: ime-gallery-49268de7
+D2026-10-25 09:51:55.344253 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:55.344954 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:0 keycode: 26 program: ime-gallery-49268de7
+D2026-10-25 09:51:55.345084 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:55.404447 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:1 keycode: 26 program: ime-gallery-49268de7
+D2026-10-25 09:51:55.404491 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:55.404754 instance.cpp:930] KeyEvent: Key(f states=0) rawKey: Key(f states=0) origKey: Key(f states=0) Release:0 keycode: 41 program: ime-gallery-49268de7
+D2026-10-25 09:51:55.404926 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:55.452979 instance.cpp:930] KeyEvent: Key(f states=0) rawKey: Key(f states=0) origKey: Key(f states=0) Release:1 keycode: 41 program: ime-gallery-49268de7
+D2026-10-25 09:51:55.453019 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:55.458082 instance.cpp:930] KeyEvent: Key(o states=0) rawKey: Key(o states=0) origKey: Key(o states=0) Release:0 keycode: 32 program: ime-gallery-49268de7
+D2026-10-25 09:51:55.458236 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:55.524654 instance.cpp:930] KeyEvent: Key(o states=0) rawKey: Key(o states=0) origKey: Key(o states=0) Release:1 keycode: 32 program: ime-gallery-49268de7
+D2026-10-25 09:51:55.524697 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:55.525003 instance.cpp:930] KeyEvent: Key(r states=0) rawKey: Key(r states=0) origKey: Key(r states=0) Release:0 keycode: 27 program: ime-gallery-49268de7
+D2026-10-25 09:51:55.525122 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:55.587979 instance.cpp:930] KeyEvent: Key(r states=0) rawKey: Key(r states=0) origKey: Key(r states=0) Release:1 keycode: 27 program: ime-gallery-49268de7
+D2026-10-25 09:51:55.588018 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:55.588267 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:0 keycode: 26 program: ime-gallery-49268de7
+D2026-10-25 09:51:55.588410 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:55.649114 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:1 keycode: 26 program: ime-gallery-49268de7
+D2026-10-25 09:51:55.649151 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:56.287641 instance.cpp:930] KeyEvent: Key(Return states=0) rawKey: Key(Return states=0) origKey: Key(Return states=0) Release:0 keycode: 36 program: ime-gallery-49268de7
+D2026-10-25 09:51:56.287825 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:56.293590 instance.cpp:930] KeyEvent: Key(Return states=0) rawKey: Key(Return states=0) origKey: Key(Return states=0) Release:1 keycode: 36 program: ime-gallery-49268de7
+D2026-10-25 09:51:56.293640 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:56.956547 instance.cpp:930] KeyEvent: Key(a states=0) rawKey: Key(a states=0) origKey: Key(a states=0) Release:0 keycode: 38 program: ime-gallery-49268de7
+D2026-10-25 09:51:56.962284 inputcontext.cpp:321] KeyEvent handling time: 5ms result:0
+D2026-10-25 09:51:57.021039 instance.cpp:930] KeyEvent: Key(a states=0) rawKey: Key(a states=0) origKey: Key(a states=0) Release:1 keycode: 38 program: ime-gallery-49268de7
+D2026-10-25 09:51:57.021098 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:57.021724 instance.cpp:930] KeyEvent: Key(f states=0) rawKey: Key(f states=0) origKey: Key(f states=0) Release:0 keycode: 41 program: ime-gallery-49268de7
+D2026-10-25 09:51:57.026255 inputcontext.cpp:321] KeyEvent handling time: 4ms result:0
+D2026-10-25 09:51:57.106631 instance.cpp:930] KeyEvent: Key(f states=0) rawKey: Key(f states=0) origKey: Key(f states=0) Release:1 keycode: 41 program: ime-gallery-49268de7
+D2026-10-25 09:51:57.106893 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:57.118291 instance.cpp:930] KeyEvent: Key(t states=0) rawKey: Key(t states=0) origKey: Key(t states=0) Release:0 keycode: 28 program: ime-gallery-49268de7
+D2026-10-25 09:51:57.118735 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:57.124754 instance.cpp:930] KeyEvent: Key(t states=0) rawKey: Key(t states=0) origKey: Key(t states=0) Release:1 keycode: 28 program: ime-gallery-49268de7
+D2026-10-25 09:51:57.124802 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:57.185905 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:0 keycode: 26 program: ime-gallery-49268de7
+D2026-10-25 09:51:57.187839 inputcontext.cpp:321] KeyEvent handling time: 1ms result:0
+D2026-10-25 09:51:57.188298 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:1 keycode: 26 program: ime-gallery-49268de7
+D2026-10-25 09:51:57.188403 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:57.248450 instance.cpp:930] KeyEvent: Key(r states=0) rawKey: Key(r states=0) origKey: Key(r states=0) Release:0 keycode: 27 program: ime-gallery-49268de7
+D2026-10-25 09:51:57.248617 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:57.250654 instance.cpp:930] KeyEvent: Key(r states=0) rawKey: Key(r states=0) origKey: Key(r states=0) Release:1 keycode: 27 program: ime-gallery-49268de7
+D2026-10-25 09:51:57.250681 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:57.943302 instance.cpp:930] KeyEvent: Key(Home states=0) rawKey: Key(Home states=0) origKey: Key(Home states=0) Release:0 keycode: 110 program: ime-gallery-49268de7
+D2026-10-25 09:51:57.943525 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:57.948988 instance.cpp:930] KeyEvent: Key(Home states=0) rawKey: Key(Home states=0) origKey: Key(Home states=0) Release:1 keycode: 110 program: ime-gallery-49268de7
+D2026-10-25 09:51:57.949013 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+I2026-10-25 09:51:58.624547 addonmanager.cpp:205] Loaded addon spell
+D2026-10-25 09:51:59.290586 instance.cpp:930] KeyEvent: Key(n states=0) rawKey: Key(n states=0) origKey: Key(n states=0) Release:0 keycode: 57 program: ime-gallery-49268de7
+D2026-10-25 09:51:59.301098 inputcontext.cpp:321] KeyEvent handling time: 10ms result:1
+D2026-10-25 09:51:59.316703 instance.cpp:930] KeyEvent: Key(n states=0) rawKey: Key(n states=0) origKey: Key(n states=0) Release:1 keycode: 57 program: ime-gallery-49268de7
+D2026-10-25 09:51:59.316759 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:59.344479 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-gallery-49268de7
+D2026-10-25 09:51:59.349254 inputcontext.cpp:321] KeyEvent handling time: 4ms result:1
+D2026-10-25 09:51:59.372287 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-gallery-49268de7
+D2026-10-25 09:51:59.372337 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:59.400185 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:0 keycode: 43 program: ime-gallery-49268de7
+D2026-10-25 09:51:59.409119 inputcontext.cpp:321] KeyEvent handling time: 8ms result:1
+D2026-10-25 09:51:59.427979 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:1 keycode: 43 program: ime-gallery-49268de7
+D2026-10-25 09:51:59.428023 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:59.455892 instance.cpp:930] KeyEvent: Key(a states=0) rawKey: Key(a states=0) origKey: Key(a states=0) Release:0 keycode: 38 program: ime-gallery-49268de7
+D2026-10-25 09:51:59.460227 inputcontext.cpp:321] KeyEvent handling time: 4ms result:1
+D2026-10-25 09:51:59.485588 instance.cpp:930] KeyEvent: Key(a states=0) rawKey: Key(a states=0) origKey: Key(a states=0) Release:1 keycode: 38 program: ime-gallery-49268de7
+D2026-10-25 09:51:59.485792 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:51:59.512300 instance.cpp:930] KeyEvent: Key(o states=0) rawKey: Key(o states=0) origKey: Key(o states=0) Release:0 keycode: 32 program: ime-gallery-49268de7
+D2026-10-25 09:51:59.515940 inputcontext.cpp:321] KeyEvent handling time: 3ms result:1
+D2026-10-25 09:51:59.540072 instance.cpp:930] KeyEvent: Key(o states=0) rawKey: Key(o states=0) origKey: Key(o states=0) Release:1 keycode: 32 program: ime-gallery-49268de7
+D2026-10-25 09:51:59.540112 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:52:00.611478 instance.cpp:930] KeyEvent: Key(space states=0) rawKey: Key(space states=0) origKey: Key(space states=0) Release:0 keycode: 65 program: ime-gallery-49268de7
+D2026-10-25 09:52:00.612203 inputcontext.cpp:321] KeyEvent handling time: 0ms result:1
+D2026-10-25 09:52:00.618307 instance.cpp:930] KeyEvent: Key(space states=0) rawKey: Key(space states=0) origKey: Key(space states=0) Release:1 keycode: 65 program: ime-gallery-49268de7
+D2026-10-25 09:52:00.618415 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:52:01.706295 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:0 keycode: 39 program: ime-gallery-49268de7
+D2026-10-25 09:52:01.719668 inputcontext.cpp:321] KeyEvent handling time: 13ms result:1
+D2026-10-25 09:52:01.730272 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:1 keycode: 39 program: ime-gallery-49268de7
+D2026-10-25 09:52:01.730334 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:52:01.755457 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:0 keycode: 43 program: ime-gallery-49268de7
+D2026-10-25 09:52:01.763046 inputcontext.cpp:321] KeyEvent handling time: 7ms result:1
+D2026-10-25 09:52:01.783239 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:1 keycode: 43 program: ime-gallery-49268de7
+D2026-10-25 09:52:01.783285 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:52:01.814290 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-gallery-49268de7
+D2026-10-25 09:52:01.816872 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 09:52:01.838930 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-gallery-49268de7
+D2026-10-25 09:52:01.838976 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:52:01.866964 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:0 keycode: 44 program: ime-gallery-49268de7
+D2026-10-25 09:52:01.874116 inputcontext.cpp:321] KeyEvent handling time: 7ms result:1
+D2026-10-25 09:52:01.895035 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:1 keycode: 44 program: ime-gallery-49268de7
+D2026-10-25 09:52:01.895081 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:52:01.922842 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-gallery-49268de7
+D2026-10-25 09:52:01.927778 inputcontext.cpp:321] KeyEvent handling time: 4ms result:1
+D2026-10-25 09:52:01.950843 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-gallery-49268de7
+D2026-10-25 09:52:01.950888 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:52:01.978765 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:0 keycode: 26 program: ime-gallery-49268de7
+D2026-10-25 09:52:01.987450 inputcontext.cpp:321] KeyEvent handling time: 8ms result:1
+D2026-10-25 09:52:02.006772 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:1 keycode: 26 program: ime-gallery-49268de7
+D2026-10-25 09:52:02.006815 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:52:03.120121 instance.cpp:930] KeyEvent: Key(Escape states=0) rawKey: Key(Escape states=0) origKey: Key(Escape states=0) Release:0 keycode: 9 program: ime-gallery-49268de7
+D2026-10-25 09:52:03.122387 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 09:52:03.126339 instance.cpp:930] KeyEvent: Key(Escape states=0) rawKey: Key(Escape states=0) origKey: Key(Escape states=0) Release:1 keycode: 9 program: ime-gallery-49268de7
+D2026-10-25 09:52:03.126422 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:52:04.902660 instance.cpp:930] KeyEvent: Key(Control_L states=0) rawKey: Key(Control_L states=0) origKey: Key(Control_L states=0) Release:0 keycode: 37 program: ime-gallery-49268de7
+D2026-10-25 09:52:04.903935 inputcontext.cpp:321] KeyEvent handling time: 1ms result:0
+D2026-10-25 09:52:04.905667 instance.cpp:930] KeyEvent: Key(Control+Z states=4) rawKey: Key(Control+z states=4) origKey: Key(Control+z states=4) Release:0 keycode: 52 program: ime-gallery-49268de7
+D2026-10-25 09:52:04.905816 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:52:04.978300 instance.cpp:930] KeyEvent: Key(Control+Control_L states=4) rawKey: Key(Control+Control_L states=4) origKey: Key(Control+Control_L states=4) Release:1 keycode: 37 program: ime-gallery-49268de7
+D2026-10-25 09:52:04.978505 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:52:04.979160 instance.cpp:930] KeyEvent: Key(z states=0) rawKey: Key(z states=0) origKey: Key(z states=0) Release:1 keycode: 52 program: ime-gallery-49268de7
+D2026-10-25 09:52:04.979191 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:52:06.069181 instance.cpp:930] KeyEvent: Key(Control_L states=0) rawKey: Key(Control_L states=0) origKey: Key(Control_L states=0) Release:0 keycode: 37 program: ime-gallery-49268de7
+D2026-10-25 09:52:06.069529 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:52:06.075087 instance.cpp:930] KeyEvent: Key(Control+Shift_L states=4) rawKey: Key(Control+Shift_L states=4) origKey: Key(Control+Shift_L states=4) Release:0 keycode: 50 program: ime-gallery-49268de7
+D2026-10-25 09:52:06.075137 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:52:06.082716 instance.cpp:930] KeyEvent: Key(Control+Shift+Z states=5) rawKey: Key(Control+Shift+Z states=5) origKey: Key(Control+Shift+Z states=5) Release:0 keycode: 52 program: ime-gallery-49268de7
+D2026-10-25 09:52:06.083036 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:52:06.090922 instance.cpp:930] KeyEvent: Key(Control+Shift+Shift_L states=5) rawKey: Key(Control+Shift+Shift_L states=5) origKey: Key(Control+Shift+Shift_L states=5) Release:1 keycode: 50 program: ime-gallery-49268de7
+D2026-10-25 09:52:06.090961 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:52:06.099695 instance.cpp:930] KeyEvent: Key(Control+Control_L states=4) rawKey: Key(Control+Control_L states=4) origKey: Key(Control+Control_L states=4) Release:1 keycode: 37 program: ime-gallery-49268de7
+D2026-10-25 09:52:06.099724 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 09:52:06.185018 instance.cpp:930] KeyEvent: Key(z states=0) rawKey: Key(z states=0) origKey: Key(z states=0) Release:1 keycode: 52 program: ime-gallery-49268de7
+D2026-10-25 09:52:06.185060 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+=========================
+Fcitx 5.1.12 -- Get Signal No.: 15
+Date: try "date -d @1792921927" if you are using GNU date ***
+ProcessID: 73691
+fcitx5(+0x113b2) [0x555cca3443b2]
+/lib/x86_64-linux-gnu/libc.so.6(+0x3fdf0) [0x7f8ca7fc7df0]
+/lib/x86_64-linux-gnu/libc.so.6(+0x9a9ee) [0x7f8ca80229ee]
+/lib/x86_64-linux-gnu/libc.so.6(+0x8f668) [0x7f8ca8017668]
+/lib/x86_64-linux-gnu/libc.so.6(+0x8f6ad) [0x7f8ca80176ad]
+/lib/x86_64-linux-gnu/libc.so.6(epoll_wait+0x1d) [0x7f8ca8098aad]
+/lib/x86_64-linux-gnu/libsystemd.so.0(sd_event_wait+0x178) [0x7f8ca7ea9b38]
+/lib/x86_64-linux-gnu/libsystemd.so.0(sd_event_run+0x14b) [0x7f8ca7eaadfb]
+/lib/x86_64-linux-gnu/libsystemd.so.0(sd_event_loop+0x57) [0x7f8ca7eaaf87]
+/lib/x86_64-linux-gnu/libFcitx5Utils.so.2(+0x4a3d1) [0x7f8ca84e83d1]
+/lib/x86_64-linux-gnu/libFcitx5Core.so.7(_ZN5fcitx8Instance4execEv+0x59) [0x7f8ca85e4cb9]
+fcitx5(+0x1008f) [0x555cca34308f]
+/lib/x86_64-linux-gnu/libc.so.6(+0x29ca8) [0x7f8ca7fb1ca8]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x7f8ca7fb1d65]
+fcitx5(+0x106b1) [0x555cca3436b1]
+W2026-10-25 09:52:07.287472 xcbeventreader.cpp:51] XCB connection ":102" got error: 1
+I2026-10-25 09:52:07.316120 addonmanager.cpp:308] Unloading addon spell
+I2026-10-25 09:52:07.316404 addonmanager.cpp:308] Unloading addon pinyin
+I2026-10-25 09:52:07.319407 addonmanager.cpp:308] Unloading addon punctuation
+I2026-10-25 09:52:07.319553 addonmanager.cpp:308] Unloading addon notifications
+I2026-10-25 09:52:07.319594 addonmanager.cpp:308] Unloading addon notificationitem
+I2026-10-25 09:52:07.319628 addonmanager.cpp:308] Unloading addon classicui
+I2026-10-25 09:52:07.328498 addonmanager.cpp:308] Unloading addon virtualkeyboard
+I2026-10-25 09:52:07.328535 addonmanager.cpp:308] Unloading addon kimpanel
+I2026-10-25 09:52:07.328551 addonmanager.cpp:308] Unloading addon xim
+I2026-10-25 09:52:07.328572 addonmanager.cpp:308] Unloading addon ibusfrontend
+I2026-10-25 09:52:07.328632 addonmanager.cpp:308] Unloading addon fcitx4frontend
+I2026-10-25 09:52:07.328675 addonmanager.cpp:308] Unloading addon dbusfrontend
+I2026-10-25 09:52:07.328707 addonmanager.cpp:308] Unloading addon dbus
+I2026-10-25 09:52:07.328752 addonmanager.cpp:308] Unloading addon unicode
+I2026-10-25 09:52:07.328767 addonmanager.cpp:308] Unloading addon waylandim
+I2026-10-25 09:52:07.328784 addonmanager.cpp:308] Unloading addon clipboard
+I2026-10-25 09:52:07.328806 addonmanager.cpp:308] Unloading addon keyboard
+I2026-10-25 09:52:07.328920 addonmanager.cpp:308] Unloading addon imselector
+I2026-10-25 09:52:07.328933 addonmanager.cpp:308] Unloading addon quickphrase
+I2026-10-25 09:52:07.329115 addonmanager.cpp:308] Unloading addon xcb
+I2026-10-25 09:52:07.329215 addonmanager.cpp:308] Unloading addon wayland

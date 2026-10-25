@@ -1,0 +1,4 @@
+     Locking 652 packages to latest Rust 1.98.1 compatible versions
+   Compiling wegpui v0.1.0 (/workspace/weGPUI)
+   Compiling wegpui-closing-actions-probe v0.0.0 (/workspace/.wegpui-cloud/closing-actions-consumer)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 8.65s

@@ -1,0 +1,12 @@
+{
+  "timestamp_utc": "2026-10-25T10:27:32+00:00",
+  "source_commit_context": "49268de7bb78a69cb56b96f6cff02a2d9284e71d",
+  "source_dirty": true,
+  "capture_commit": "2c8ed10",
+  "api_files_hashed": 1014,
+  "api_bytes_hashed": 18272754,
+  "api_manifest_sha256": "c0059c2da18acca76ab4c9c08a1480c60346b4d9610dcaa7647d906d01142e63",
+  "source_manifest_sha256": "2edb41e2e35ec6b06bff94592d6973128d14d5d4c3307eeea76d18793811ccc3",
+  "python": "Python 3.12.14",
+  "scope": "Root-produced current strict Rustdoc after ordinary five-source-file follow-up; no Cargo by collector, no final commit or native runtime attestation."
+}

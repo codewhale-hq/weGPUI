@@ -1,0 +1,22 @@
+{
+  "article.html": {
+    "path": "/workspace/.wegpui-cloud/target-198/weui-upstream/weui/package/src/example/article/article.html",
+    "sha256": "47cb143a02c5a5344b4a215bf1bc908981cdacbf8357fa05ca4433088127a900"
+  },
+  "article.less": {
+    "path": "/workspace/.wegpui-cloud/target-198/weui-upstream/weui/package/src/style/widget/weui-page/weui-article.less",
+    "sha256": "34b713def66a65c0da7ba42f18823e6f612cf38f9a58537078bb2e4f3446afc9"
+  },
+  "weui.css": {
+    "path": "/workspace/.wegpui-cloud/target-198/weui-upstream/weui/package/dist/style/weui.css",
+    "sha256": "8db42592f96d571568c49ae1b8484f55042e6a6dab25f8144460cd4a23530fd3"
+  },
+  "example.css": {
+    "path": "/workspace/.wegpui-cloud/target-198/weui-upstream/weui/package/dist/example/example.css",
+    "sha256": "8b605466ed3689be1d5ce0ef53143b320b9d84531625986b32c690eba007d2ce"
+  },
+  "pic_article.png": {
+    "path": "/workspace/.wegpui-cloud/target-198/weui-upstream/weui/package/src/example/images/pic_article.png",
+    "sha256": "230d763f4eb8ad74559ca53601e140a057c02712484aa1e7379ed9709a0b0020"
+  }
+}

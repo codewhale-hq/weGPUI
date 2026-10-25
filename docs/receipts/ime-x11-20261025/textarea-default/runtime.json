@@ -1,0 +1,303 @@
+{
+  "actions": [
+    {
+      "at": 1792921911.0290396,
+      "kind": "launch",
+      "route": "form_textarea"
+    },
+    {
+      "at": 1792921913.8735557,
+      "kind": "click",
+      "field": "问题描述",
+      "desktop": [
+        462,
+        415
+      ]
+    },
+    {
+      "at": 1792921914.6273305,
+      "kind": "ime",
+      "active": false
+    },
+    {
+      "at": 1792921915.2851973,
+      "kind": "type",
+      "text": "before"
+    },
+    {
+      "at": 1792921916.284041,
+      "kind": "key",
+      "key": "Return"
+    },
+    {
+      "at": 1792921916.950251,
+      "kind": "type",
+      "text": "after"
+    },
+    {
+      "at": 1792921917.937907,
+      "kind": "key",
+      "key": "Home"
+    },
+    {
+      "at": 1792921918.6068535,
+      "kind": "ime",
+      "active": true
+    },
+    {
+      "at": 1792921919.283655,
+      "kind": "type",
+      "text": "nihao"
+    },
+    {
+      "at": 1792921920.6074324,
+      "kind": "key",
+      "key": "space"
+    },
+    {
+      "at": 1792921921.6952908,
+      "kind": "type",
+      "text": "shijie"
+    },
+    {
+      "at": 1792921923.1164548,
+      "kind": "key",
+      "key": "Escape"
+    },
+    {
+      "at": 1792921924.2256944,
+      "kind": "ime",
+      "active": false
+    },
+    {
+      "at": 1792921924.885253,
+      "kind": "key",
+      "key": "ctrl+z"
+    },
+    {
+      "at": 1792921926.062846,
+      "kind": "key",
+      "key": "ctrl+shift+z"
+    }
+  ],
+  "observations": [
+    {
+      "label": "13-textarea-initial",
+      "fields": [
+        {
+          "name": "问题描述",
+          "role": "entry",
+          "value": "",
+          "caret": 0,
+          "selection": [],
+          "bounds": [
+            442,
+            375,
+            716,
+            80
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "multi line",
+            "sensitive",
+            "showing",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "",
+      "activation": "0"
+    },
+    {
+      "label": "14-textarea-preedit",
+      "fields": [
+        {
+          "name": "问题描述",
+          "role": "entry",
+          "value": "before\nafter",
+          "caret": 7,
+          "selection": [],
+          "bounds": [
+            442,
+            375,
+            716,
+            80
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "multi line",
+            "sensitive",
+            "showing",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "pinyin",
+      "activation": "2"
+    },
+    {
+      "label": "15-textarea-commit",
+      "fields": [
+        {
+          "name": "问题描述",
+          "role": "entry",
+          "value": "before\n你好after",
+          "caret": 9,
+          "selection": [],
+          "bounds": [
+            442,
+            375,
+            716,
+            80
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "multi line",
+            "sensitive",
+            "showing",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "pinyin",
+      "activation": "2"
+    },
+    {
+      "label": "16-textarea-cancel-preedit",
+      "fields": [
+        {
+          "name": "问题描述",
+          "role": "entry",
+          "value": "before\n你好after",
+          "caret": 9,
+          "selection": [],
+          "bounds": [
+            442,
+            375,
+            716,
+            80
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "multi line",
+            "sensitive",
+            "showing",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "pinyin",
+      "activation": "2"
+    },
+    {
+      "label": "17-textarea-canceled",
+      "fields": [
+        {
+          "name": "问题描述",
+          "role": "entry",
+          "value": "before\n你好after",
+          "caret": 9,
+          "selection": [],
+          "bounds": [
+            442,
+            375,
+            716,
+            80
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "multi line",
+            "sensitive",
+            "showing",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "pinyin",
+      "activation": "2"
+    },
+    {
+      "label": "18-textarea-undo",
+      "fields": [
+        {
+          "name": "问题描述",
+          "role": "entry",
+          "value": "before\nafter",
+          "caret": 7,
+          "selection": [],
+          "bounds": [
+            442,
+            375,
+            716,
+            80
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "multi line",
+            "sensitive",
+            "showing",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "keyboard-us",
+      "activation": "1"
+    },
+    {
+      "label": "19-textarea-redo",
+      "fields": [
+        {
+          "name": "问题描述",
+          "role": "entry",
+          "value": "before\n你好after",
+          "caret": 9,
+          "selection": [],
+          "bounds": [
+            442,
+            375,
+            716,
+            80
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "multi line",
+            "sensitive",
+            "showing",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "keyboard-us",
+      "activation": "1"
+    }
+  ],
+  "failures": [],
+  "result": "PASS"
+}

@@ -1,0 +1,301 @@
+[
+  {
+    "role": "frame",
+    "name": "weGPUI control contracts",
+    "bounds": [
+      0,
+      0,
+      1100,
+      900
+    ],
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "Start matrix",
+    "bounds": [
+      24,
+      24,
+      280,
+      32
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "check box",
+    "name": "Standalone checkbox",
+    "bounds": [
+      135,
+      81,
+      24,
+      24
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "check box",
+    "name": "Disabled checkbox",
+    "bounds": [
+      24,
+      122,
+      1052,
+      24
+    ],
+    "states": [
+      "checked",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "check box",
+    "name": "Checkbox row",
+    "bounds": [
+      24,
+      162,
+      1052,
+      56
+    ],
+    "states": [
+      "checked",
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "check box",
+    "name": "Disabled checkbox row",
+    "bounds": [
+      24,
+      234,
+      1052,
+      56
+    ],
+    "states": [
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "toggle button",
+    "name": "Switch",
+    "bounds": [
+      24,
+      306,
+      52,
+      32
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "toggle button",
+    "name": "Disabled switch",
+    "bounds": [
+      24,
+      354,
+      52,
+      32
+    ],
+    "states": [
+      "pressed",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "panel",
+    "name": "First radio group",
+    "bounds": [
+      24,
+      402,
+      1052,
+      168
+    ],
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "radio button",
+    "name": "Radio A",
+    "bounds": [
+      24,
+      402,
+      1052,
+      56
+    ],
+    "states": [
+      "checked",
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "attributes": [
+      "posinset:1"
+    ]
+  },
+  {
+    "role": "radio button",
+    "name": "Radio disabled",
+    "bounds": [
+      24,
+      458,
+      1052,
+      56
+    ],
+    "states": [
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "attributes": [
+      "posinset:2"
+    ]
+  },
+  {
+    "role": "radio button",
+    "name": "Radio C",
+    "bounds": [
+      24,
+      514,
+      1052,
+      56
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "attributes": [
+      "posinset:3"
+    ]
+  },
+  {
+    "role": "panel",
+    "name": "Second radio group",
+    "bounds": [
+      24,
+      586,
+      1052,
+      112
+    ],
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "radio button",
+    "name": "Second A",
+    "bounds": [
+      24,
+      586,
+      1052,
+      56
+    ],
+    "states": [
+      "checked",
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "attributes": [
+      "posinset:1"
+    ]
+  },
+  {
+    "role": "radio button",
+    "name": "Second B",
+    "bounds": [
+      24,
+      642,
+      1052,
+      56
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible",
+      "checkable"
+    ],
+    "attributes": [
+      "posinset:2"
+    ]
+  },
+  {
+    "role": "button",
+    "name": "End matrix",
+    "bounds": [
+      24,
+      722,
+      280,
+      32
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  }
+]

@@ -1,0 +1,294 @@
+Read-only pinned source inspection; actual observations are recorded separately.
+
+/workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-linux-0.3.9/src/linux/x11/xim_handler.rs
+sha256 5a1f5b1a6a436a82c6bbbf9222a7470d537c5fac6b06da4e898aca497ee2adf2
+30: }
+31: 
+32: impl<C: Client<XEvent = xproto::KeyPressEvent>> ClientHandler<C> for XimHandler {
+33:     fn handle_connect(&mut self, client: &mut C) -> Result<(), ClientError> {
+34:         client.open("C")
+35:     }
+36: 
+37:     fn handle_open(&mut self, client: &mut C, input_method_id: u16) -> Result<(), ClientError> {
+38:         self.im_id = input_method_id;
+39: 
+40:         client.get_im_values(input_method_id, &[AttributeName::QueryInputStyle])
+41:     }
+42: 
+43:     fn handle_get_im_values(
+44:         &mut self,
+45:         client: &mut C,
+46:         input_method_id: u16,
+47:         _attributes: AHashMap<AttributeName, Vec<u8>>,
+48:     ) -> Result<(), ClientError> {
+49:         let ic_attributes = client
+50:             .build_ic_attributes()
+51:             .push(AttributeName::InputStyle, InputStyle::PREEDIT_CALLBACKS)
+52:             .push(AttributeName::ClientWindow, self.window)
+53:             .push(AttributeName::FocusWindow, self.window)
+54:             .build();
+55:         client.create_ic(input_method_id, ic_attributes)
+108:     fn handle_preedit_draw(
+109:         &mut self,
+110:         _client: &mut C,
+111:         _input_method_id: u16,
+112:         _input_context_id: u16,
+113:         _caret: i32,
+114:         _chg_first: i32,
+115:         _chg_len: i32,
+116:         _status: xim::PreeditDrawStatus,
+117:         preedit_string: &str,
+118:         _feedbacks: Vec<xim::Feedback>,
+119:     ) -> Result<(), ClientError> {
+120:         // XIMReverse: 1, XIMPrimary: 8, XIMTertiary: 32: selected text
+121:         // XIMUnderline: 2, XIMSecondary: 16: underlined text
+122:         // XIMHighlight: 4: normal text
+123:         // XIMVisibleToForward: 64, XIMVisibleToBackward: 128, XIMVisibleCenter: 256: text align position
+124:         // XIMPrimary, XIMHighlight, XIMSecondary, XIMTertiary are not specified,
+125:         // but interchangeable as above
+126:         // Currently there's no way to support these.
+127:         self.last_callback_event = Some(XimCallbackEvent::XimPreeditEvent(
+128:             self.window,
+129:             String::from(preedit_string),
+130:         ));
+131:         Ok(())
+132:     }
+133: }
+
+/workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-linux-0.3.9/src/linux/x11/client.rs
+sha256 9dc83361d502a8d0ed1729276f0d5f4eff97b584eb73acf233968016aa7b1057
+268:         if state.keyboard_focused_window == Some(x_window) {
+269:             state.keyboard_focused_window = None;
+270:         }
+271:         if state.cursor_hidden_window == Some(x_window) {
+272:             state.cursor_hidden_window = None;
+273:         }
+274:         state.cursor_styles.remove(&x_window);
+275:     }
+276: 
+277:     pub fn update_ime_position(&self, bounds: Bounds<Pixels>) {
+278:         let Some(client) = self.get_client() else {
+279:             return;
+280:         };
+281:         let mut state = client.0.borrow_mut();
+282:         if state.composing || state.ximc.is_none() {
+283:             return;
+284:         }
+285: 
+286:         let Some(mut ximc) = state.ximc.take() else {
+287:             log::error!("bug: xim connection not set");
+288:             return;
+289:         };
+290:         let Some(xim_handler) = state.xim_handler.take() else {
+291:             log::error!("bug: xim handler not set");
+292:             state.ximc = Some(ximc);
+293:             return;
+294:         };
+295:         let scaled_bounds = bounds.scale(state.scale_factor);
+296:         let ic_attributes = ximc
+297:             .build_ic_attributes()
+298:             .push(
+299:                 xim::AttributeName::InputStyle,
+300:                 xim::InputStyle::PREEDIT_CALLBACKS,
+301:             )
+302:             .push(xim::AttributeName::ClientWindow, xim_handler.window)
+303:             .push(xim::AttributeName::FocusWindow, xim_handler.window)
+816: 
+817:     pub fn enable_ime(&self) {
+818:         let mut state = self.0.borrow_mut();
+819:         if !state.has_xim() {
+820:             return;
+821:         }
+822: 
+823:         let Some((mut ximc, xim_handler)) = state.take_xim() else {
+824:             return;
+825:         };
+826:         let mut ic_attributes = ximc
+827:             .build_ic_attributes()
+828:             .push(AttributeName::InputStyle, InputStyle::PREEDIT_CALLBACKS)
+829:             .push(AttributeName::ClientWindow, xim_handler.window)
+830:             .push(AttributeName::FocusWindow, xim_handler.window);
+831: 
+832:         let window_id = state.keyboard_focused_window;
+833:         drop(state);
+834:         if let Some(window_id) = window_id {
+835:             let Some(window) = self.get_window(window_id) else {
+836:                 log::error!("Failed to get window for IME positioning");
+837:                 let mut state = self.0.borrow_mut();
+838:                 state.ximc = Some(ximc);
+839:                 state.xim_handler = Some(xim_handler);
+840:                 return;
+841:             };
+842:             if let Some(scaled_area) = window.get_ime_area() {
+843:                 ic_attributes =
+844:                     ic_attributes.nested_list(xim::AttributeName::PreeditAttributes, |b| {
+845:                         b.push(
+846:                             xim::AttributeName::SpotLocation,
+847:                             xim::Point {
+848:                                 x: u32::from(scaled_area.origin.x + scaled_area.size.width) as i16,
+849:                                 y: u32::from(scaled_area.origin.y + scaled_area.size.height) as i16,
+850:                             },
+851:                         );
+852:                     });
+853:             }
+854:         }
+855:         ximc.create_ic(xim_handler.im_id, ic_attributes.build())
+856:             .ok();
+857:         let mut state = self.0.borrow_mut();
+858:         state.restore_xim(ximc, xim_handler);
+859:     }
+860: 
+1053:             Event::PropertyNotify(event) => {
+1054:                 let window = self.get_window(event.window)?;
+1055:                 window
+1056:                     .property_notify(event)
+1057:                     .context("X11: Failed to handle property notify")
+1058:                     .log_err();
+1059:             }
+1060:             Event::FocusIn(event) => {
+1061:                 let window = self.get_window(event.event)?;
+1062:                 window.set_active(true);
+1063:                 let mut state = self.0.borrow_mut();
+1064:                 state.keyboard_focused_window = Some(event.event);
+1065:                 if let Some(handler) = state.xim_handler.as_mut() {
+1066:                     handler.window = event.event;
+1067:                 }
+1068:                 drop(state);
+1069:                 self.enable_ime();
+1070:             }
+1071:             Event::FocusOut(event) => {
+1072:                 let window = self.get_window(event.event)?;
+1073:                 window.set_active(false);
+1074:                 let mut state = self.0.borrow_mut();
+1075:                 // Set last scroll values to `None` so that a large delta isn't created if scrolling is done outside the window (the valuator is global)
+1076:                 reset_all_pointer_device_scroll_positions(&mut state.pointer_device_states);
+1077:                 state.keyboard_focused_window = None;
+1078:                 if let Some(compose_state) = state.compose_state.as_mut() {
+1079:                     compose_state.reset();
+1080:                 }
+1081:                 state.pre_edit_text.take();
+1082:                 state.restore_cursor_after_hide();
+1555:     fn xim_handle_commit(&self, window: xproto::Window, text: String) -> Option<()> {
+1556:         let Some(window) = self.get_window(window) else {
+1557:             log::error!("bug: Failed to get window for XIM commit");
+1558:             return None;
+1559:         };
+1560:         let mut state = self.0.borrow_mut();
+1561:         state.composing = false;
+1562:         drop(state);
+1563:         window.handle_ime_commit(text);
+1564:         Some(())
+1565:     }
+1566: 
+1567:     fn xim_handle_preedit(&self, window: xproto::Window, text: String) -> Option<()> {
+1568:         let Some(window) = self.get_window(window) else {
+1569:             log::error!("bug: Failed to get window for XIM preedit");
+1570:             return None;
+1571:         };
+1572: 
+1573:         let mut state = self.0.borrow_mut();
+1574:         let (mut ximc, xim_handler) = state.take_xim()?;
+1575:         state.composing = !text.is_empty();
+1576:         drop(state);
+1577:         window.handle_ime_preedit(text);
+1578: 
+1579:         if let Some(scaled_area) = window.get_ime_area() {
+1580:             let ic_attributes = ximc
+1581:                 .build_ic_attributes()
+1582:                 .push(
+1583:                     xim::AttributeName::InputStyle,
+1584:                     xim::InputStyle::PREEDIT_CALLBACKS,
+1585:                 )
+1586:                 .push(xim::AttributeName::ClientWindow, xim_handler.window)
+1587:                 .push(xim::AttributeName::FocusWindow, xim_handler.window)
+1588:                 .nested_list(xim::AttributeName::PreeditAttributes, |b| {
+1589:                     b.push(
+1590:                         xim::AttributeName::SpotLocation,
+1591:                         xim::Point {
+1592:                             x: u32::from(scaled_area.origin.x + scaled_area.size.width) as i16,
+1593:                             y: u32::from(scaled_area.origin.y + scaled_area.size.height) as i16,
+1594:                         },
+1595:                     );
+
+/workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-linux-0.3.9/src/linux/x11/window.rs
+sha256 87b737ecda518123196c3f60369120c6a8fb8021b43a4830cc21bf7834eda438
+1220:             }
+1221:         }
+1222:     }
+1223: 
+1224:     pub fn handle_ime_commit(&self, text: String) {
+1225:         if self.is_blocked() {
+1226:             return;
+1227:         }
+1228:         let mut state = self.state.borrow_mut();
+1229:         if let Some(mut input_handler) = state.input_handler.take() {
+1230:             drop(state);
+1231:             input_handler.replace_text_in_range(None, &text);
+1232:             let mut state = self.state.borrow_mut();
+1233:             state.input_handler = Some(input_handler);
+1234:         }
+1235:     }
+1236: 
+1237:     pub fn handle_ime_preedit(&self, text: String) {
+1238:         if self.is_blocked() {
+1239:             return;
+1240:         }
+1241:         let mut state = self.state.borrow_mut();
+1242:         if let Some(mut input_handler) = state.input_handler.take() {
+1243:             drop(state);
+1244:             input_handler.replace_and_mark_text_in_range(None, &text, None);
+1245:             let mut state = self.state.borrow_mut();
+1246:             state.input_handler = Some(input_handler);
+1247:         }
+1248:     }
+1249: 
+1250:     pub fn handle_ime_unmark(&self) {
+1251:         if self.is_blocked() {
+1252:             return;
+1253:         }
+1254:         let mut state = self.state.borrow_mut();
+1255:         if let Some(mut input_handler) = state.input_handler.take() {
+
+/workspace/weGPUI/vendor/gpui_pre/src/window.rs
+sha256 33e794852da7e4a7daa693ce60180937867ba1fe7ef7e74a9a3b3b60c4561f64
+6650:     pub fn toggle_simple_fullscreen(&self) {
+6651:         self.platform_window.toggle_simple_fullscreen();
+6652:     }
+6653: 
+6654:     /// Updates the IME panel position suggestions for languages like japanese, chinese.
+6655:     pub fn invalidate_character_coordinates(&self) {
+6656:         self.on_next_frame(|window, cx| {
+6657:             if let Some(mut input_handler) = window.platform_window.take_input_handler() {
+6658:                 if let Some(bounds) = input_handler.selected_bounds(window, cx) {
+6659:                     window.platform_window.update_ime_position(bounds);
+6660:                 }
+6661:                 window.platform_window.set_input_handler(input_handler);
+6662:             }
+6663:         });
+6664:     }
+6665: 
+6666:     /// Present a platform dialog.
+6667:     /// The provided message will be presented, along with buttons for each answer.
+6668:     /// When a button is clicked, the returned Receiver will receive the index of the clicked button.
+6669:     pub fn prompt<T>(
+6670:         &mut self,
+6671:         level: PromptLevel,
+6672:         message: &str,
+6673:         detail: Option<&str>,
+6674:         answers: &[T],
+6675:         cx: &mut App,
+6676:     ) -> oneshot::Receiver<usize>
+6677:     where
+6678:         T: Clone + Into<PromptButton>,
+6679:     {
+6680:         let prompt_builder = cx.prompt_builder.take();
+6681:         let Some(prompt_builder) = prompt_builder else {
+6682:             unreachable!("Re-entrant window prompting is not supported by GPUI");
+6683:         };
+6684: 
+6685:         let answers = answers
+6686:             .iter()
+6687:             .map(|answer| answer.clone().into())
+6688:             .collect::<Vec<_>>();
+6689: 
+6690:         let receiver = match &prompt_builder {

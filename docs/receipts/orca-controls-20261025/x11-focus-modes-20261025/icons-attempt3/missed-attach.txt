@@ -1,0 +1,1 @@
+The first title-polling observer did not attach before the short reader session ended. It exited with "No existing GPUI client found; no observer attached." No X focus-mode evidence was collected for that attempt. The prepared observer was started before attempt4, which attached successfully.

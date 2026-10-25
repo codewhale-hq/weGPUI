@@ -1,0 +1,33 @@
+2026-10-25T09:52:58Z
+Linux 6.18.55 x86_64 GNU/Linux
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+rustc 1.98.1 (48a229cea 2026-09-01)
+binary: rustc
+commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+commit-date: 2026-09-01
+host: x86_64-unknown-linux-gnu
+release: 1.98.1
+LLVM version: 22.1.8
+cargo 1.98.1 (797e8a9bc 2026-08-05)
+libgl1-mesa-dri:amd64	25.0.7-2+deb13u1
+mesa-vulkan-drivers:amd64	25.0.7-2+deb13u1
+openbox	3.6.1-12+b2
+python3-pyatspi	2.46.1-1
+xvfb	2:21.1.16-1.3+deb13u4
+49268de7bb78a69cb56b96f6cff02a2d9284e71d
+ca7d02cb6385bec9395b79778a20e900dcc24ebd1944ce9fae6451aa995375e9  /workspace/.wegpui-cloud/artifacts/swiped-escape/probe-fixed
+a156aceb7681f68086ef70096ccb00e7ab4bc27e07b111f8546db046674e18b4  /workspace/.wegpui-cloud/closing-actions-consumer/Cargo.lock
+2e1c1ed944ab405d6c6f7972bcdc9282de4bd96b1b2a568469b9d765cc935f12  /workspace/.wegpui-cloud/closing-actions-consumer/Cargo.toml
+099c1bf32a42b57739dc1821a9746231d7f7e33e2b6d601b8081fd64f2f4e32b  /workspace/.wegpui-cloud/closing-actions-consumer/src/main.rs
+3048307b00ca32ccb5b1a17ccd3b9c3178655c6d011d42ed75c5bc82e285108f  /workspace/weGPUI/src/components/swiped.rs
+7277e3301bc24b51d856ed4582e2bb6295b1d283fb8b81fda304b0b84049782f  /workspace/weGPUI/src/components/modal.rs
+X11 DISPLAY=:114 GPUI_X11_SCALE_FACTOR=1, private D-Bus/Openbox, no WAYLAND_DISPLAY

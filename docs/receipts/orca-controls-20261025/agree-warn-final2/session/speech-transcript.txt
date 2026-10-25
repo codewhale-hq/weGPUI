@@ -1,0 +1,26 @@
+10:21:17.504903 - SPEECH OUTPUT: 'Screen reader on.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:21:20.792260 - SPEECH OUTPUT: 'weGPUI Agree warning contracts frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:21:24.237777 - SPEECH OUTPUT: 'Start warning sample button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:21:25.321999 - SPEECH OUTPUT: 'Start warning sample button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:21:28.567851 - SPEECH OUTPUT: 'tab' {'established': False}
+10:21:28.672419 - SPEECH OUTPUT: 'Read and accept Terms check box not checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:21:29.211362 - SPEECH OUTPUT: 'Read and accept Terms check box not checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:21:32.445579 - SPEECH OUTPUT: 'F1' {'established': False}
+10:21:32.787082 - SPEECH OUTPUT: 'Read and accept Terms check box not checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:21:32.789375 - SPEECH OUTPUT: 'invalid entry.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:21:36.011359 - SPEECH OUTPUT: 'F2' {'established': False}
+10:21:36.356115 - SPEECH OUTPUT: 'Read and accept Terms check box not checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:21:39.617308 - SPEECH OUTPUT: 'space' {'established': False}
+10:21:39.699237 - SPEECH OUTPUT: 'checked' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:21:40.659525 - SPEECH OUTPUT: 'Read and accept Terms check box checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:21:43.919007 - SPEECH OUTPUT: 'tab' {'established': False}
+10:21:44.029665 - SPEECH OUTPUT: 'Terms link.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:21:44.543297 - SPEECH OUTPUT: 'link.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:21:47.797008 - SPEECH OUTPUT: 'return' {'established': False}
+10:21:49.027844 - SPEECH OUTPUT: 'left shift' {'established': False}
+10:21:49.385684 - SPEECH OUTPUT: 'Read and accept Terms check box checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:21:49.540817 - SPEECH OUTPUT: 'F1' {'established': False}
+10:21:49.894281 - SPEECH OUTPUT: 'Read and accept Terms check box checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:21:49.900463 - SPEECH OUTPUT: 'invalid entry.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+10:21:53.112172 - SPEECH OUTPUT: 'F2' {'established': False}
+10:21:53.461958 - SPEECH OUTPUT: 'Read and accept Terms check box checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}

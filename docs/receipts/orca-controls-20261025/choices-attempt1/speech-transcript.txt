@@ -1,0 +1,66 @@
+09:54:40.908526 - SPEECH OUTPUT: 'Screen reader on.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:54:44.170887 - SPEECH OUTPUT: 'weGPUI control contracts frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:54:47.789615 - SPEECH OUTPUT: 'Start matrix button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:54:48.837836 - SPEECH OUTPUT: 'Start matrix button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:54:52.630513 - SPEECH OUTPUT: 'tab' {'established': False}
+09:54:52.727829 - SPEECH OUTPUT: 'Standalone checkbox check box not checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:54:53.292635 - SPEECH OUTPUT: 'Standalone checkbox check box not checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:54:57.110843 - SPEECH OUTPUT: 'space' {'established': False}
+09:54:57.154678 - SPEECH OUTPUT: 'checked' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:54:58.141316 - SPEECH OUTPUT: 'Standalone checkbox check box checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:02.026380 - SPEECH OUTPUT: 'space' {'established': False}
+09:55:02.085548 - SPEECH OUTPUT: 'not checked' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:03.064637 - SPEECH OUTPUT: 'Standalone checkbox check box not checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:06.902765 - SPEECH OUTPUT: 'tab' {'established': False}
+09:55:06.980668 - SPEECH OUTPUT: 'Checkbox row check box not checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:07.563591 - SPEECH OUTPUT: 'Checkbox row check box not checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:11.323257 - SPEECH OUTPUT: 'return' {'established': False}
+09:55:11.381547 - SPEECH OUTPUT: 'checked' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:12.362299 - SPEECH OUTPUT: 'Checkbox row check box checked.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:16.115282 - SPEECH OUTPUT: 'tab' {'established': False}
+09:55:16.228105 - SPEECH OUTPUT: 'Switch toggle button not pressed.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:16.809803 - SPEECH OUTPUT: 'Switch toggle button not pressed.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:20.481118 - SPEECH OUTPUT: 'space' {'established': False}
+09:55:20.581778 - SPEECH OUTPUT: 'pressed' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:21.518930 - SPEECH OUTPUT: 'Switch toggle button pressed.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:25.272039 - SPEECH OUTPUT: 'space' {'established': False}
+09:55:25.352612 - SPEECH OUTPUT: 'not pressed' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:26.318643 - SPEECH OUTPUT: 'Switch toggle button not pressed.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:30.014430 - SPEECH OUTPUT: 'tab' {'established': False}
+09:55:30.118822 - SPEECH OUTPUT: 'First radio group panel' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:30.119423 - SPEECH OUTPUT: 'First radio group.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:30.119792 - SPEECH OUTPUT: 'Radio A selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:30.670627 - SPEECH OUTPUT: 'First radio group.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:30.673941 - SPEECH OUTPUT: 'Radio A selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:30.675078 - SPEECH OUTPUT: '1 of 3' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:34.684295 - SPEECH OUTPUT: 'First radio group.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:34.685266 - SPEECH OUTPUT: 'Radio C selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:35.620761 - SPEECH OUTPUT: 'First radio group.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:35.621814 - SPEECH OUTPUT: 'Radio C selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:35.622912 - SPEECH OUTPUT: '3 of 3' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:39.625524 - SPEECH OUTPUT: 'tab' {'established': False}
+09:55:39.748458 - SPEECH OUTPUT: 'Second radio group panel' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:39.749669 - SPEECH OUTPUT: 'Second radio group.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:39.750464 - SPEECH OUTPUT: 'Second A selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:40.293898 - SPEECH OUTPUT: 'Second radio group.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:40.295043 - SPEECH OUTPUT: 'Second A selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:40.295685 - SPEECH OUTPUT: '1 of 2' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:44.088440 - SPEECH OUTPUT: 'Second radio group.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:44.089313 - SPEECH OUTPUT: 'Second B selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:45.013427 - SPEECH OUTPUT: 'Second radio group.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:45.018400 - SPEECH OUTPUT: 'Second B selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:45.027041 - SPEECH OUTPUT: '2 of 2' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:49.250093 - SPEECH OUTPUT: 'left shift' {'established': False}
+09:55:49.455177 - SPEECH OUTPUT: 'First radio group panel' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:49.456464 - SPEECH OUTPUT: 'First radio group.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:49.458996 - SPEECH OUTPUT: 'Radio C selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:50.497152 - SPEECH OUTPUT: 'First radio group.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:50.501141 - SPEECH OUTPUT: 'Radio C selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:50.504544 - SPEECH OUTPUT: '3 of 3' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:54.432965 - SPEECH OUTPUT: 'tab' {'established': False}
+09:55:54.587793 - SPEECH OUTPUT: 'Second radio group panel' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:54.589153 - SPEECH OUTPUT: 'Second radio group.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:54.594890 - SPEECH OUTPUT: 'Second B selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:55.479818 - SPEECH OUTPUT: 'Second radio group.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:55.481034 - SPEECH OUTPUT: 'Second B selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+09:55:55.483538 - SPEECH OUTPUT: '2 of 2' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}

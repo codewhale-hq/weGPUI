@@ -1,0 +1,53 @@
+[
+  {
+    "kind": "pointer",
+    "monotonic_ns": 9328154115049,
+    "name": "Open slow modal"
+  },
+  {
+    "kind": "action-interface",
+    "monotonic_ns": 9330381411035,
+    "name": "Saved custom action row",
+    "actions": [
+      "click"
+    ]
+  },
+  {
+    "kind": "baseline-open",
+    "monotonic_ns": 9330386356737,
+    "result": true
+  },
+  {
+    "kind": "baseline-close",
+    "monotonic_ns": 9330845408562,
+    "result": true
+  },
+  {
+    "kind": "action-interface",
+    "monotonic_ns": 9331186442153,
+    "name": "Saved custom action row",
+    "actions": [
+      "click"
+    ]
+  },
+  {
+    "kind": "saved-click",
+    "monotonic_ns": 9331223851769,
+    "result": true,
+    "delay_ms": 20.0,
+    "escape_command_started_ns": 9331186729224,
+    "escape_command_returned_ns": 9331202215152,
+    "action_invoked_ns": 9331222304735
+  },
+  {
+    "kind": "saved-click-after-closed",
+    "monotonic_ns": 9333748803031,
+    "result": true,
+    "action_invoked_ns": 9333747939644,
+    "elapsed_since_escape_ms": 2545.724492
+  },
+  {
+    "kind": "driver-finished",
+    "monotonic_ns": 9334014849734
+  }
+]

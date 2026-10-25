@@ -1,0 +1,276 @@
+[
+  {
+    "role": "frame",
+    "name": "weGPUI control contracts",
+    "bounds": [
+      0,
+      0,
+      1100,
+      900
+    ],
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "Start matrix",
+    "bounds": [
+      24,
+      24,
+      280,
+      32
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "cell-0-0",
+    "bounds": [
+      24,
+      80,
+      340,
+      56
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "cell-0-1",
+    "bounds": [
+      24,
+      152,
+      340,
+      56
+    ],
+    "states": [
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "cell-0-2",
+    "bounds": [
+      24,
+      224,
+      340,
+      56
+    ],
+    "states": [
+      "busy",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "cell-1-0",
+    "bounds": [
+      380,
+      80,
+      340,
+      56
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "cell-1-1",
+    "bounds": [
+      380,
+      152,
+      340,
+      56
+    ],
+    "states": [
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "cell-1-2",
+    "bounds": [
+      380,
+      224,
+      340,
+      56
+    ],
+    "states": [
+      "busy",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "cell-2-0",
+    "bounds": [
+      736,
+      80,
+      340,
+      56
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "cell-2-1",
+    "bounds": [
+      736,
+      152,
+      340,
+      56
+    ],
+    "states": [
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "cell-2-2",
+    "bounds": [
+      736,
+      224,
+      340,
+      56
+    ],
+    "states": [
+      "busy",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "icon-0",
+    "bounds": [
+      34,
+      314,
+      44,
+      44
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "icon-1",
+    "bounds": [
+      130,
+      314,
+      44,
+      44
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "icon-2",
+    "bounds": [
+      226,
+      314,
+      44,
+      44
+    ],
+    "states": [
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "icon-3",
+    "bounds": [
+      322,
+      314,
+      44,
+      44
+    ],
+    "states": [
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  },
+  {
+    "role": "button",
+    "name": "End matrix",
+    "bounds": [
+      24,
+      392,
+      280,
+      32
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "attributes": []
+  }
+]

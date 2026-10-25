@@ -1,0 +1,670 @@
+I2026-10-25 10:08:09.443627 instance.cpp:1394] Override Enabled Addons: {}
+I2026-10-25 10:08:09.443810 instance.cpp:1395] Override Disabled Addons: {}
+E2026-10-25 10:08:09.447940 waylandmodule.cpp:239] Failed to open wayland connection
+I2026-10-25 10:08:09.447971 addonmanager.cpp:205] Loaded addon wayland
+I2026-10-25 10:08:09.451048 xcbconnection.cpp:179] Set XFIXES client disconnect mode to TERMINATE
+I2026-10-25 10:08:09.451209 xcbconnection.cpp:199] Connecting to X11 display, display name::102.
+I2026-10-25 10:08:09.451543 addonmanager.cpp:205] Loaded addon xcb
+I2026-10-25 10:08:09.453242 addonmanager.cpp:205] Loaded addon quickphrase
+I2026-10-25 10:08:09.453612 addonmanager.cpp:205] Loaded addon imselector
+I2026-10-25 10:08:09.460388 addonmanager.cpp:205] Loaded addon keyboard
+I2026-10-25 10:08:09.461309 addonmanager.cpp:205] Loaded addon clipboard
+I2026-10-25 10:08:09.462102 addonmanager.cpp:205] Loaded addon waylandim
+I2026-10-25 10:08:09.462694 addonmanager.cpp:205] Loaded addon unicode
+I2026-10-25 10:08:09.464738 addonmanager.cpp:205] Loaded addon dbus
+I2026-10-25 10:08:09.465679 addonmanager.cpp:205] Loaded addon dbusfrontend
+I2026-10-25 10:08:09.469696 addonmanager.cpp:205] Loaded addon fcitx4frontend
+I2026-10-25 10:08:09.470811 addonmanager.cpp:205] Loaded addon ibusfrontend
+I2026-10-25 10:08:09.472344 addonmanager.cpp:205] Loaded addon xim
+I2026-10-25 10:08:09.511295 inputmethodmanager.cpp:209] Found 738 input method(s) in addon keyboard
+I2026-10-25 10:08:09.526796 addonmanager.cpp:205] Loaded addon kimpanel
+I2026-10-25 10:08:09.527395 addonmanager.cpp:205] Loaded addon virtualkeyboard
+I2026-10-25 10:08:09.542867 classicui.cpp:88] Created classicui for x11 display::102
+I2026-10-25 10:08:09.542890 addonmanager.cpp:205] Loaded addon classicui
+I2026-10-25 10:08:09.543571 addonmanager.cpp:205] Loaded addon notificationitem
+I2026-10-25 10:08:09.544439 addonmanager.cpp:205] Loaded addon notifications
+I2026-10-25 10:08:09.549022 dbusmodule.cpp:790] Service name change: org.fcitx.Fcitx5  :1.3
+I2026-10-25 10:08:09.549242 kimpanel.cpp:116] Kimpanel new owner: 
+I2026-10-25 10:08:09.549303 virtualkeyboard.cpp:218] VirtualKeyboard new owner: 
+E2026-10-25 10:08:09.549438 portalsettingmonitor.cpp:121] DBus call error: org.freedesktop.DBus.Error.ServiceUnknown The name org.freedesktop.portal.Desktop was not provided by any .service files
+I2026-10-25 10:08:10.593698 addonmanager.cpp:205] Loaded addon punctuation
+E2026-10-25 10:08:10.855871 pinyin.cpp:737] Failed to load pinyin history: io fail: iostream error
+I2026-10-25 10:08:10.861823 addonmanager.cpp:205] Loaded addon pinyin
+D2026-10-25 10:08:15.165379 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:15.166428 inputcontext.cpp:321] KeyEvent handling time: 1ms result:0
+D2026-10-25 10:08:15.171599 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:15.171637 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:17.068544 instance.cpp:930] KeyEvent: Key(Home states=0) rawKey: Key(Home states=0) origKey: Key(Home states=0) Release:0 keycode: 110 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:17.069030 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:17.088784 instance.cpp:930] KeyEvent: Key(Home states=0) rawKey: Key(Home states=0) origKey: Key(Home states=0) Release:1 keycode: 110 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:17.088839 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:17.740323 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:17.740552 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:17.762265 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:17.762335 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:18.410020 instance.cpp:930] KeyEvent: Key(Shift_L states=0) rawKey: Key(Shift_L states=0) origKey: Key(Shift_L states=0) Release:0 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:18.410094 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:18.416021 instance.cpp:930] KeyEvent: Key(Shift+Right states=1) rawKey: Key(Shift+Right states=1) origKey: Key(Shift+Right states=1) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:18.416132 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:18.422634 instance.cpp:930] KeyEvent: Key(Shift+Shift_L states=1) rawKey: Key(Shift+Shift_L states=1) origKey: Key(Shift+Shift_L states=1) Release:1 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:18.422680 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:18.428855 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:18.428878 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:19.094923 instance.cpp:930] KeyEvent: Key(Shift_L states=0) rawKey: Key(Shift_L states=0) origKey: Key(Shift_L states=0) Release:0 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:19.094996 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:19.100855 instance.cpp:930] KeyEvent: Key(Shift+Right states=1) rawKey: Key(Shift+Right states=1) origKey: Key(Shift+Right states=1) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:19.101010 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:19.119411 instance.cpp:930] KeyEvent: Key(Shift+Shift_L states=1) rawKey: Key(Shift+Shift_L states=1) origKey: Key(Shift+Shift_L states=1) Release:1 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:19.119456 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:19.119778 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:19.119828 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+I2026-10-25 10:08:19.827433 addonmanager.cpp:205] Loaded addon spell
+D2026-10-25 10:08:20.494444 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:0 keycode: 39 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:20.513693 inputcontext.cpp:321] KeyEvent handling time: 19ms result:1
+D2026-10-25 10:08:20.518948 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:1 keycode: 39 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:20.519001 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:20.653729 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:0 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:20.660845 inputcontext.cpp:321] KeyEvent handling time: 7ms result:1
+D2026-10-25 10:08:20.661275 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:1 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:20.661315 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:20.666679 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:20.670655 inputcontext.cpp:321] KeyEvent handling time: 3ms result:1
+D2026-10-25 10:08:20.670893 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:20.670942 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:20.678549 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:0 keycode: 44 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:20.685037 inputcontext.cpp:321] KeyEvent handling time: 6ms result:1
+D2026-10-25 10:08:20.694682 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:1 keycode: 44 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:20.694734 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:20.716722 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:20.719480 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 10:08:20.744783 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:20.744832 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:20.774404 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:0 keycode: 26 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:20.778320 inputcontext.cpp:321] KeyEvent handling time: 3ms result:1
+D2026-10-25 10:08:20.814232 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:1 keycode: 26 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:20.814272 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:21.490270 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:21.490393 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:21.493797 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:21.493822 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:22.550333 instance.cpp:930] KeyEvent: Key(Escape states=0) rawKey: Key(Escape states=0) origKey: Key(Escape states=0) Release:0 keycode: 9 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:22.551130 inputcontext.cpp:321] KeyEvent handling time: 0ms result:1
+D2026-10-25 10:08:22.553837 instance.cpp:930] KeyEvent: Key(Escape states=0) rawKey: Key(Escape states=0) origKey: Key(Escape states=0) Release:1 keycode: 9 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:22.553891 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:23.218268 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:23.218378 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:23.220345 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:23.220400 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:25.754470 instance.cpp:930] KeyEvent: Key(Home states=0) rawKey: Key(Home states=0) origKey: Key(Home states=0) Release:0 keycode: 110 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:25.754733 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:25.762240 instance.cpp:930] KeyEvent: Key(Home states=0) rawKey: Key(Home states=0) origKey: Key(Home states=0) Release:1 keycode: 110 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:25.762289 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:26.422511 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:26.422753 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:26.430289 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:26.430343 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:27.088158 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:27.088334 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:27.103606 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:27.103665 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:27.754941 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:27.755116 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:27.760919 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:27.760971 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:28.424204 instance.cpp:930] KeyEvent: Key(Shift_L states=0) rawKey: Key(Shift_L states=0) origKey: Key(Shift_L states=0) Release:0 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:28.424277 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:28.429994 instance.cpp:930] KeyEvent: Key(Shift+Left states=1) rawKey: Key(Shift+Left states=1) origKey: Key(Shift+Left states=1) Release:0 keycode: 113 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:28.430136 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:28.446436 instance.cpp:930] KeyEvent: Key(Shift+Shift_L states=1) rawKey: Key(Shift+Shift_L states=1) origKey: Key(Shift+Shift_L states=1) Release:1 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:28.446486 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:28.446805 instance.cpp:930] KeyEvent: Key(Left states=0) rawKey: Key(Left states=0) origKey: Key(Left states=0) Release:1 keycode: 113 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:28.446857 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:29.105238 instance.cpp:930] KeyEvent: Key(Shift_L states=0) rawKey: Key(Shift_L states=0) origKey: Key(Shift_L states=0) Release:0 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:29.105312 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:29.111281 instance.cpp:930] KeyEvent: Key(Shift+Left states=1) rawKey: Key(Shift+Left states=1) origKey: Key(Shift+Left states=1) Release:0 keycode: 113 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:29.111449 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:29.118444 instance.cpp:930] KeyEvent: Key(Shift+Shift_L states=1) rawKey: Key(Shift+Shift_L states=1) origKey: Key(Shift+Shift_L states=1) Release:1 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:29.118496 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:29.131056 instance.cpp:930] KeyEvent: Key(Left states=0) rawKey: Key(Left states=0) origKey: Key(Left states=0) Release:1 keycode: 113 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:29.131107 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:30.488276 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:0 keycode: 39 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:30.497473 inputcontext.cpp:321] KeyEvent handling time: 9ms result:1
+D2026-10-25 10:08:30.543535 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:1 keycode: 39 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:30.543615 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:30.546529 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:0 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:30.553617 inputcontext.cpp:321] KeyEvent handling time: 7ms result:1
+D2026-10-25 10:08:30.582853 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:1 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:30.582904 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:30.602097 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:30.604093 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 10:08:30.630401 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:30.630452 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:30.658239 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:0 keycode: 44 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:30.663209 inputcontext.cpp:321] KeyEvent handling time: 4ms result:1
+D2026-10-25 10:08:30.695300 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:1 keycode: 44 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:30.695349 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:30.713704 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:30.715900 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 10:08:30.742767 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:30.742822 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:30.770304 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:0 keycode: 26 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:30.773259 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 10:08:30.806447 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:1 keycode: 26 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:30.806495 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:31.480474 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:31.480569 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:31.490251 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:31.490300 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:32.482272 instance.cpp:930] KeyEvent: Key(Escape states=0) rawKey: Key(Escape states=0) origKey: Key(Escape states=0) Release:0 keycode: 9 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:32.482982 inputcontext.cpp:321] KeyEvent handling time: 0ms result:1
+D2026-10-25 10:08:32.485270 instance.cpp:930] KeyEvent: Key(Escape states=0) rawKey: Key(Escape states=0) origKey: Key(Escape states=0) Release:1 keycode: 9 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:32.485318 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:33.146320 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:33.146458 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:33.151751 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:33.151795 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:34.242284 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:0 keycode: 39 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:34.250742 inputcontext.cpp:321] KeyEvent handling time: 8ms result:1
+D2026-10-25 10:08:34.284979 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:1 keycode: 39 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:34.285059 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:34.298254 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:0 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:34.305131 inputcontext.cpp:321] KeyEvent handling time: 6ms result:1
+D2026-10-25 10:08:34.346864 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:1 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:34.346912 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:34.354255 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:34.356166 inputcontext.cpp:321] KeyEvent handling time: 1ms result:1
+D2026-10-25 10:08:34.398261 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:34.398306 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:34.410242 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:0 keycode: 44 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:34.414847 inputcontext.cpp:321] KeyEvent handling time: 4ms result:1
+D2026-10-25 10:08:34.441655 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:1 keycode: 44 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:34.441698 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:34.466274 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:34.468376 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 10:08:34.506287 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:34.506330 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:34.521893 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:0 keycode: 26 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:34.524793 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 10:08:34.554278 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:1 keycode: 26 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:34.554318 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:35.234336 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:35.234466 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:35.238427 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:35.238520 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:36.218302 instance.cpp:930] KeyEvent: Key(space states=0) rawKey: Key(space states=0) origKey: Key(space states=0) Release:0 keycode: 65 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:36.219046 inputcontext.cpp:321] KeyEvent handling time: 0ms result:1
+D2026-10-25 10:08:36.221421 instance.cpp:930] KeyEvent: Key(space states=0) rawKey: Key(space states=0) origKey: Key(space states=0) Release:1 keycode: 65 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:36.221469 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:36.882400 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:36.882508 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:36.888239 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:36.888272 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:38.582766 instance.cpp:930] KeyEvent: Key(Control_L states=0) rawKey: Key(Control_L states=0) origKey: Key(Control_L states=0) Release:0 keycode: 37 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:38.583072 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:38.590271 instance.cpp:930] KeyEvent: Key(Control+Z states=4) rawKey: Key(Control+z states=4) origKey: Key(Control+z states=4) Release:0 keycode: 52 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:38.590419 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:38.628219 instance.cpp:930] KeyEvent: Key(Control+Control_L states=4) rawKey: Key(Control+Control_L states=4) origKey: Key(Control+Control_L states=4) Release:1 keycode: 37 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:38.628273 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:38.637537 instance.cpp:930] KeyEvent: Key(z states=0) rawKey: Key(z states=0) origKey: Key(z states=0) Release:1 keycode: 52 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:38.637586 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:39.265198 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:39.265609 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:39.271316 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:39.271397 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:40.294299 instance.cpp:930] KeyEvent: Key(Control_L states=0) rawKey: Key(Control_L states=0) origKey: Key(Control_L states=0) Release:0 keycode: 37 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:40.294463 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:40.297848 instance.cpp:930] KeyEvent: Key(Control+Shift_L states=4) rawKey: Key(Control+Shift_L states=4) origKey: Key(Control+Shift_L states=4) Release:0 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:40.297882 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:40.308770 instance.cpp:930] KeyEvent: Key(Control+Shift+Z states=5) rawKey: Key(Control+Shift+Z states=5) origKey: Key(Control+Shift+Z states=5) Release:0 keycode: 52 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:40.308864 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:40.315655 instance.cpp:930] KeyEvent: Key(Control+Shift+Shift_L states=5) rawKey: Key(Control+Shift+Shift_L states=5) origKey: Key(Control+Shift+Shift_L states=5) Release:1 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:40.315685 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:40.330629 instance.cpp:930] KeyEvent: Key(Control+Control_L states=4) rawKey: Key(Control+Control_L states=4) origKey: Key(Control+Control_L states=4) Release:1 keycode: 37 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:40.330673 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:40.337908 instance.cpp:930] KeyEvent: Key(z states=0) rawKey: Key(z states=0) origKey: Key(z states=0) Release:1 keycode: 52 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:40.337948 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:40.992826 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:40.992981 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:40.998062 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:40.998110 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:42.680972 instance.cpp:930] KeyEvent: Key(F5 states=0) rawKey: Key(F5 states=0) origKey: Key(F5 states=0) Release:0 keycode: 71 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:42.681205 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:42.687046 instance.cpp:930] KeyEvent: Key(F5 states=0) rawKey: Key(F5 states=0) origKey: Key(F5 states=0) Release:1 keycode: 71 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:42.687089 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:44.160598 instance.cpp:930] KeyEvent: Key(Home states=0) rawKey: Key(Home states=0) origKey: Key(Home states=0) Release:0 keycode: 110 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:44.160765 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:44.182278 instance.cpp:930] KeyEvent: Key(Home states=0) rawKey: Key(Home states=0) origKey: Key(Home states=0) Release:1 keycode: 110 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:44.182334 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:44.829162 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:44.829301 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:44.846088 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:44.846144 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:46.155796 instance.cpp:930] KeyEvent: Key(n states=0) rawKey: Key(n states=0) origKey: Key(n states=0) Release:0 keycode: 57 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:46.162295 inputcontext.cpp:321] KeyEvent handling time: 6ms result:1
+D2026-10-25 10:08:46.192289 instance.cpp:930] KeyEvent: Key(n states=0) rawKey: Key(n states=0) origKey: Key(n states=0) Release:1 keycode: 57 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:46.192381 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:46.214442 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:46.224552 inputcontext.cpp:321] KeyEvent handling time: 10ms result:1
+D2026-10-25 10:08:46.272475 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:46.272529 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:46.273176 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:0 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:46.281568 inputcontext.cpp:321] KeyEvent handling time: 8ms result:1
+D2026-10-25 10:08:46.315454 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:1 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:46.315503 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:46.329728 instance.cpp:930] KeyEvent: Key(a states=0) rawKey: Key(a states=0) origKey: Key(a states=0) Release:0 keycode: 38 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:46.335057 inputcontext.cpp:321] KeyEvent handling time: 5ms result:1
+D2026-10-25 10:08:46.371226 instance.cpp:930] KeyEvent: Key(a states=0) rawKey: Key(a states=0) origKey: Key(a states=0) Release:1 keycode: 38 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:46.371708 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:46.391099 instance.cpp:930] KeyEvent: Key(o states=0) rawKey: Key(o states=0) origKey: Key(o states=0) Release:0 keycode: 32 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:46.393094 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 10:08:46.433989 instance.cpp:930] KeyEvent: Key(o states=0) rawKey: Key(o states=0) origKey: Key(o states=0) Release:1 keycode: 32 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:46.434031 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:47.103321 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:47.103443 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:47.109189 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:47.109214 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:48.083945 instance.cpp:930] KeyEvent: Key(F11 states=0) rawKey: Key(F11 states=0) origKey: Key(F11 states=0) Release:0 keycode: 95 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:48.084036 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:48.089944 instance.cpp:930] KeyEvent: Key(F11 states=0) rawKey: Key(F11 states=0) origKey: Key(F11 states=0) Release:1 keycode: 95 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:48.089985 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:48.750517 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:48.750598 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:48.756230 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:48.756261 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:50.072993 instance.cpp:930] KeyEvent: Key(space states=0) rawKey: Key(space states=0) origKey: Key(space states=0) Release:0 keycode: 65 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:50.073655 inputcontext.cpp:321] KeyEvent handling time: 0ms result:1
+D2026-10-25 10:08:50.078863 instance.cpp:930] KeyEvent: Key(space states=0) rawKey: Key(space states=0) origKey: Key(space states=0) Release:1 keycode: 65 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:50.078903 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:50.739789 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:50.739904 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:50.745722 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:50.745771 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:52.404155 instance.cpp:930] KeyEvent: Key(Control_L states=0) rawKey: Key(Control_L states=0) origKey: Key(Control_L states=0) Release:0 keycode: 37 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:52.404378 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:52.414253 instance.cpp:930] KeyEvent: Key(Control+Z states=4) rawKey: Key(Control+z states=4) origKey: Key(Control+z states=4) Release:0 keycode: 52 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:52.414402 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:52.416634 instance.cpp:930] KeyEvent: Key(Control+Control_L states=4) rawKey: Key(Control+Control_L states=4) origKey: Key(Control+Control_L states=4) Release:1 keycode: 37 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:52.416684 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:52.434288 instance.cpp:930] KeyEvent: Key(z states=0) rawKey: Key(z states=0) origKey: Key(z states=0) Release:1 keycode: 52 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:52.434328 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:53.090180 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:53.090409 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:53.096044 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:53.096068 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:54.911858 instance.cpp:930] KeyEvent: Key(Control_L states=0) rawKey: Key(Control_L states=0) origKey: Key(Control_L states=0) Release:0 keycode: 37 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:54.911931 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:54.922238 instance.cpp:930] KeyEvent: Key(Control+End states=4) rawKey: Key(Control+End states=4) origKey: Key(Control+End states=4) Release:0 keycode: 115 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:54.922385 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:54.926300 instance.cpp:930] KeyEvent: Key(Control+Control_L states=4) rawKey: Key(Control+Control_L states=4) origKey: Key(Control+Control_L states=4) Release:1 keycode: 37 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:54.926331 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:54.939298 instance.cpp:930] KeyEvent: Key(End states=0) rawKey: Key(End states=0) origKey: Key(End states=0) Release:1 keycode: 115 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:54.939342 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:55.598289 instance.cpp:930] KeyEvent: Key(Home states=0) rawKey: Key(Home states=0) origKey: Key(Home states=0) Release:0 keycode: 110 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:55.598504 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:55.601207 instance.cpp:930] KeyEvent: Key(Home states=0) rawKey: Key(Home states=0) origKey: Key(Home states=0) Release:1 keycode: 110 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:55.601256 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:56.265006 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:56.266444 inputcontext.cpp:321] KeyEvent handling time: 1ms result:0
+D2026-10-25 10:08:56.270990 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:56.271036 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:56.938306 instance.cpp:930] KeyEvent: Key(Shift_L states=0) rawKey: Key(Shift_L states=0) origKey: Key(Shift_L states=0) Release:0 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:56.938430 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:56.946266 instance.cpp:930] KeyEvent: Key(Shift+Right states=1) rawKey: Key(Shift+Right states=1) origKey: Key(Shift+Right states=1) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:56.946479 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:56.950263 instance.cpp:930] KeyEvent: Key(Shift+Shift_L states=1) rawKey: Key(Shift+Shift_L states=1) origKey: Key(Shift+Shift_L states=1) Release:1 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:56.950300 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:56.954848 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:56.954882 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:57.617058 instance.cpp:930] KeyEvent: Key(Shift_L states=0) rawKey: Key(Shift_L states=0) origKey: Key(Shift_L states=0) Release:0 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:57.617133 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:57.623328 instance.cpp:930] KeyEvent: Key(Shift+Right states=1) rawKey: Key(Shift+Right states=1) origKey: Key(Shift+Right states=1) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:57.623458 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:57.630304 instance.cpp:930] KeyEvent: Key(Shift+Shift_L states=1) rawKey: Key(Shift+Shift_L states=1) origKey: Key(Shift+Shift_L states=1) Release:1 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:57.630333 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:57.643278 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:57.643323 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:58.958655 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:0 keycode: 39 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:58.967577 inputcontext.cpp:321] KeyEvent handling time: 8ms result:1
+D2026-10-25 10:08:58.991606 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:1 keycode: 39 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:58.991659 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:59.014311 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:0 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:59.021124 inputcontext.cpp:321] KeyEvent handling time: 6ms result:1
+D2026-10-25 10:08:59.042073 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:1 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:59.042115 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:59.069935 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:59.072023 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 10:08:59.097562 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:59.097604 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:59.125146 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:0 keycode: 44 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:59.130464 inputcontext.cpp:321] KeyEvent handling time: 5ms result:1
+D2026-10-25 10:08:59.153020 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:1 keycode: 44 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:59.153061 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:59.180710 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:59.182949 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 10:08:59.208302 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:59.208341 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:59.235948 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:0 keycode: 26 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:59.238931 inputcontext.cpp:321] KeyEvent handling time: 3ms result:1
+D2026-10-25 10:08:59.263740 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:1 keycode: 26 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:59.263779 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:59.946235 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:59.946330 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:08:59.952057 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:08:59.952099 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:01.041707 instance.cpp:930] KeyEvent: Key(Escape states=0) rawKey: Key(Escape states=0) origKey: Key(Escape states=0) Release:0 keycode: 9 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:01.042515 inputcontext.cpp:321] KeyEvent handling time: 0ms result:1
+D2026-10-25 10:09:01.050323 instance.cpp:930] KeyEvent: Key(Escape states=0) rawKey: Key(Escape states=0) origKey: Key(Escape states=0) Release:1 keycode: 9 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:01.050408 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:01.710452 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:01.710542 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:01.715591 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:01.715628 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:02.922315 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:0 keycode: 39 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:02.931544 inputcontext.cpp:321] KeyEvent handling time: 9ms result:1
+D2026-10-25 10:09:02.960804 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:1 keycode: 39 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:02.960859 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:02.976762 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:0 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:02.983533 inputcontext.cpp:321] KeyEvent handling time: 6ms result:1
+D2026-10-25 10:09:03.008520 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:1 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:03.008564 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:03.032666 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:03.034814 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 10:09:03.060377 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:03.060416 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:03.090254 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:0 keycode: 44 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:03.095095 inputcontext.cpp:321] KeyEvent handling time: 4ms result:1
+D2026-10-25 10:09:03.118280 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:1 keycode: 44 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:03.118319 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:03.143822 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:03.146821 inputcontext.cpp:321] KeyEvent handling time: 3ms result:1
+D2026-10-25 10:09:03.172335 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:03.172408 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:03.202256 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:0 keycode: 26 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:03.205199 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 10:09:03.234272 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:1 keycode: 26 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:03.234317 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:03.911481 instance.cpp:930] KeyEvent: Key(space states=0) rawKey: Key(space states=0) origKey: Key(space states=0) Release:0 keycode: 65 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:03.914335 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 10:09:03.922291 instance.cpp:930] KeyEvent: Key(space states=0) rawKey: Key(space states=0) origKey: Key(space states=0) Release:1 keycode: 65 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:03.922346 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:04.577491 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:04.577582 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:04.583212 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:04.583248 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:06.247830 instance.cpp:930] KeyEvent: Key(Control_L states=0) rawKey: Key(Control_L states=0) origKey: Key(Control_L states=0) Release:0 keycode: 37 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:06.248034 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:06.254450 instance.cpp:930] KeyEvent: Key(Control+Z states=4) rawKey: Key(Control+z states=4) origKey: Key(Control+z states=4) Release:0 keycode: 52 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:06.254622 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:06.274261 instance.cpp:930] KeyEvent: Key(Control+Control_L states=4) rawKey: Key(Control+Control_L states=4) origKey: Key(Control+Control_L states=4) Release:1 keycode: 37 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:06.274313 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:06.275292 instance.cpp:930] KeyEvent: Key(z states=0) rawKey: Key(z states=0) origKey: Key(z states=0) Release:1 keycode: 52 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:06.275322 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:06.929394 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:06.929576 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:06.935152 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:06.935185 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:07.943815 instance.cpp:930] KeyEvent: Key(Control_L states=0) rawKey: Key(Control_L states=0) origKey: Key(Control_L states=0) Release:0 keycode: 37 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:07.943887 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:07.949869 instance.cpp:930] KeyEvent: Key(Control+Shift_L states=4) rawKey: Key(Control+Shift_L states=4) origKey: Key(Control+Shift_L states=4) Release:0 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:07.949901 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:07.956314 instance.cpp:930] KeyEvent: Key(Control+Shift+Z states=5) rawKey: Key(Control+Shift+Z states=5) origKey: Key(Control+Shift+Z states=5) Release:0 keycode: 52 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:07.956451 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:07.962686 instance.cpp:930] KeyEvent: Key(Control+Shift+Shift_L states=5) rawKey: Key(Control+Shift+Shift_L states=5) origKey: Key(Control+Shift+Shift_L states=5) Release:1 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:07.962710 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:07.966820 instance.cpp:930] KeyEvent: Key(Control+Control_L states=4) rawKey: Key(Control+Control_L states=4) origKey: Key(Control+Control_L states=4) Release:1 keycode: 37 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:07.966857 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:07.982730 instance.cpp:930] KeyEvent: Key(z states=0) rawKey: Key(z states=0) origKey: Key(z states=0) Release:1 keycode: 52 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:07.982836 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:08.639621 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:08.639788 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:08.645525 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:08.645551 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:10.331919 instance.cpp:930] KeyEvent: Key(F5 states=0) rawKey: Key(F5 states=0) origKey: Key(F5 states=0) Release:0 keycode: 71 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:10.332147 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:10.355690 instance.cpp:930] KeyEvent: Key(F5 states=0) rawKey: Key(F5 states=0) origKey: Key(F5 states=0) Release:1 keycode: 71 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:10.355750 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:11.806049 instance.cpp:930] KeyEvent: Key(Home states=0) rawKey: Key(Home states=0) origKey: Key(Home states=0) Release:0 keycode: 110 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:11.806274 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:11.823862 instance.cpp:930] KeyEvent: Key(Home states=0) rawKey: Key(Home states=0) origKey: Key(Home states=0) Release:1 keycode: 110 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:11.823938 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:12.474006 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:12.474288 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:12.482259 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:12.482310 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:13.139685 instance.cpp:930] KeyEvent: Key(Shift_L states=0) rawKey: Key(Shift_L states=0) origKey: Key(Shift_L states=0) Release:0 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:13.139758 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:13.145812 instance.cpp:930] KeyEvent: Key(Shift+Right states=1) rawKey: Key(Shift+Right states=1) origKey: Key(Shift+Right states=1) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:13.145924 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:13.152018 instance.cpp:930] KeyEvent: Key(Shift+Shift_L states=1) rawKey: Key(Shift+Shift_L states=1) origKey: Key(Shift+Shift_L states=1) Release:1 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:13.152066 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:13.169604 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:13.169645 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:13.820711 instance.cpp:930] KeyEvent: Key(Shift_L states=0) rawKey: Key(Shift_L states=0) origKey: Key(Shift_L states=0) Release:0 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:13.820786 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:13.826038 instance.cpp:930] KeyEvent: Key(Shift+Right states=1) rawKey: Key(Shift+Right states=1) origKey: Key(Shift+Right states=1) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:13.826167 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:13.832178 instance.cpp:930] KeyEvent: Key(Shift+Shift_L states=1) rawKey: Key(Shift+Shift_L states=1) origKey: Key(Shift+Shift_L states=1) Release:1 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:13.832212 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:13.838406 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:13.838444 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:15.198655 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:0 keycode: 39 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:15.207341 inputcontext.cpp:321] KeyEvent handling time: 8ms result:1
+D2026-10-25 10:09:15.243851 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:1 keycode: 39 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:15.243907 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:15.253633 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:0 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:15.260773 inputcontext.cpp:321] KeyEvent handling time: 7ms result:1
+D2026-10-25 10:09:15.297186 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:1 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:15.297244 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:15.309151 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:15.311108 inputcontext.cpp:321] KeyEvent handling time: 1ms result:1
+D2026-10-25 10:09:15.337189 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:15.337231 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:15.364946 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:0 keycode: 44 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:15.369674 inputcontext.cpp:321] KeyEvent handling time: 4ms result:1
+D2026-10-25 10:09:15.401114 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:1 keycode: 44 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:15.401154 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:15.420630 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:15.422712 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 10:09:15.448636 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:15.448676 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:15.476719 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:0 keycode: 26 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:15.479678 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 10:09:15.511424 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:1 keycode: 26 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:15.511464 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:16.191961 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:16.192057 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:16.197916 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:16.197968 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:17.204921 instance.cpp:930] KeyEvent: Key(F1 states=0) rawKey: Key(F1 states=0) origKey: Key(F1 states=0) Release:0 keycode: 67 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:17.205014 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:17.210971 instance.cpp:930] KeyEvent: Key(F1 states=0) rawKey: Key(F1 states=0) origKey: Key(F1 states=0) Release:1 keycode: 67 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:17.211023 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:17.871252 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:17.871367 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:17.877192 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:17.877239 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:18.889049 instance.cpp:930] KeyEvent: Key(Escape states=0) rawKey: Key(Escape states=0) origKey: Key(Escape states=0) Release:0 keycode: 9 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:18.889864 inputcontext.cpp:321] KeyEvent handling time: 0ms result:1
+D2026-10-25 10:09:18.895093 instance.cpp:930] KeyEvent: Key(Escape states=0) rawKey: Key(Escape states=0) origKey: Key(Escape states=0) Release:1 keycode: 9 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:18.895148 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:20.225573 instance.cpp:930] KeyEvent: Key(F1 states=0) rawKey: Key(F1 states=0) origKey: Key(F1 states=0) Release:0 keycode: 67 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:20.226385 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:20.226829 instance.cpp:930] KeyEvent: Key(F1 states=0) rawKey: Key(F1 states=0) origKey: Key(F1 states=0) Release:1 keycode: 67 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:20.226877 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:21.682163 instance.cpp:930] KeyEvent: Key(Home states=0) rawKey: Key(Home states=0) origKey: Key(Home states=0) Release:0 keycode: 110 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:21.686317 inputcontext.cpp:321] KeyEvent handling time: 4ms result:0
+D2026-10-25 10:09:21.694057 instance.cpp:930] KeyEvent: Key(Home states=0) rawKey: Key(Home states=0) origKey: Key(Home states=0) Release:1 keycode: 110 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:21.694110 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:22.355650 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:22.355793 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:22.361628 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:22.361657 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:23.026308 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:23.026547 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:23.030330 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:23.030411 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:23.690298 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:23.690510 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:23.698251 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:23.698291 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:24.359941 instance.cpp:930] KeyEvent: Key(Shift_L states=0) rawKey: Key(Shift_L states=0) origKey: Key(Shift_L states=0) Release:0 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:24.360052 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:24.362934 instance.cpp:930] KeyEvent: Key(Shift+Left states=1) rawKey: Key(Shift+Left states=1) origKey: Key(Shift+Left states=1) Release:0 keycode: 113 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:24.363122 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:24.373162 instance.cpp:930] KeyEvent: Key(Shift+Shift_L states=1) rawKey: Key(Shift+Shift_L states=1) origKey: Key(Shift+Shift_L states=1) Release:1 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:24.373225 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:24.386248 instance.cpp:930] KeyEvent: Key(Left states=0) rawKey: Key(Left states=0) origKey: Key(Left states=0) Release:1 keycode: 113 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:24.386300 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:25.046311 instance.cpp:930] KeyEvent: Key(Shift_L states=0) rawKey: Key(Shift_L states=0) origKey: Key(Shift_L states=0) Release:0 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:25.046438 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:25.047584 instance.cpp:930] KeyEvent: Key(Shift+Left states=1) rawKey: Key(Shift+Left states=1) origKey: Key(Shift+Left states=1) Release:0 keycode: 113 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:25.047720 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:25.054028 instance.cpp:930] KeyEvent: Key(Shift+Shift_L states=1) rawKey: Key(Shift+Shift_L states=1) origKey: Key(Shift+Shift_L states=1) Release:1 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:25.054089 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:25.069107 instance.cpp:930] KeyEvent: Key(Left states=0) rawKey: Key(Left states=0) origKey: Key(Left states=0) Release:1 keycode: 113 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:25.069172 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:26.425276 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:0 keycode: 39 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:26.435310 inputcontext.cpp:321] KeyEvent handling time: 10ms result:1
+D2026-10-25 10:09:26.488409 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:1 keycode: 39 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:26.488485 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:26.490675 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:0 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:26.502962 inputcontext.cpp:321] KeyEvent handling time: 12ms result:1
+D2026-10-25 10:09:26.511415 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:1 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:26.511478 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:26.552703 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:26.555049 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 10:09:26.571004 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:26.571049 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:26.616824 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:0 keycode: 44 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:26.623582 inputcontext.cpp:321] KeyEvent handling time: 6ms result:1
+D2026-10-25 10:09:26.628707 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:1 keycode: 44 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:26.628764 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:26.660831 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:26.663476 inputcontext.cpp:321] KeyEvent handling time: 2ms result:1
+D2026-10-25 10:09:26.696916 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:26.696974 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:26.716834 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:0 keycode: 26 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:26.720068 inputcontext.cpp:321] KeyEvent handling time: 3ms result:1
+D2026-10-25 10:09:26.743646 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:1 keycode: 26 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:26.743705 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:27.425078 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:27.425172 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:27.431010 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:27.431064 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:28.521533 instance.cpp:930] KeyEvent: Key(F2 states=0) rawKey: Key(F2 states=0) origKey: Key(F2 states=0) Release:0 keycode: 68 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:28.521657 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:28.527490 instance.cpp:930] KeyEvent: Key(F2 states=0) rawKey: Key(F2 states=0) origKey: Key(F2 states=0) Release:1 keycode: 68 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:28.527532 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:29.188163 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:29.188301 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:29.194026 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:29.194066 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:30.453138 instance.cpp:930] KeyEvent: Key(Escape states=0) rawKey: Key(Escape states=0) origKey: Key(Escape states=0) Release:0 keycode: 9 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:30.454345 inputcontext.cpp:321] KeyEvent handling time: 1ms result:1
+D2026-10-25 10:09:30.461471 instance.cpp:930] KeyEvent: Key(Escape states=0) rawKey: Key(Escape states=0) origKey: Key(Escape states=0) Release:1 keycode: 9 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:30.461543 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:31.782708 instance.cpp:930] KeyEvent: Key(F2 states=0) rawKey: Key(F2 states=0) origKey: Key(F2 states=0) Release:0 keycode: 68 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:31.784247 inputcontext.cpp:321] KeyEvent handling time: 1ms result:0
+D2026-10-25 10:09:31.788498 instance.cpp:930] KeyEvent: Key(F2 states=0) rawKey: Key(F2 states=0) origKey: Key(F2 states=0) Release:1 keycode: 68 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:31.788534 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:33.284907 instance.cpp:930] KeyEvent: Key(Home states=0) rawKey: Key(Home states=0) origKey: Key(Home states=0) Release:0 keycode: 110 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:33.285205 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:33.290753 instance.cpp:930] KeyEvent: Key(Home states=0) rawKey: Key(Home states=0) origKey: Key(Home states=0) Release:1 keycode: 110 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:33.290786 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:33.953181 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:33.953464 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:33.956865 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:33.956911 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:34.619282 instance.cpp:930] KeyEvent: Key(Shift_L states=0) rawKey: Key(Shift_L states=0) origKey: Key(Shift_L states=0) Release:0 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:34.619392 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:34.625804 instance.cpp:930] KeyEvent: Key(Shift+Right states=1) rawKey: Key(Shift+Right states=1) origKey: Key(Shift+Right states=1) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:34.625970 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:34.632034 instance.cpp:930] KeyEvent: Key(Shift+Shift_L states=1) rawKey: Key(Shift+Shift_L states=1) origKey: Key(Shift+Shift_L states=1) Release:1 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:34.632075 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:34.638562 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:34.638614 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:35.298910 instance.cpp:930] KeyEvent: Key(Shift_L states=0) rawKey: Key(Shift_L states=0) origKey: Key(Shift_L states=0) Release:0 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:35.299015 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:35.305190 instance.cpp:930] KeyEvent: Key(Shift+Right states=1) rawKey: Key(Shift+Right states=1) origKey: Key(Shift+Right states=1) Release:0 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:35.305392 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:35.311802 instance.cpp:930] KeyEvent: Key(Shift+Shift_L states=1) rawKey: Key(Shift+Shift_L states=1) origKey: Key(Shift+Shift_L states=1) Release:1 keycode: 50 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:35.311858 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:35.318226 instance.cpp:930] KeyEvent: Key(Right states=0) rawKey: Key(Right states=0) origKey: Key(Right states=0) Release:1 keycode: 114 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:35.318268 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:36.683225 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:0 keycode: 39 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:36.693179 inputcontext.cpp:321] KeyEvent handling time: 9ms result:1
+D2026-10-25 10:09:36.710871 instance.cpp:930] KeyEvent: Key(s states=0) rawKey: Key(s states=0) origKey: Key(s states=0) Release:1 keycode: 39 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:36.710925 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:36.742275 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:0 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:36.749035 inputcontext.cpp:321] KeyEvent handling time: 6ms result:1
+D2026-10-25 10:09:36.769703 instance.cpp:930] KeyEvent: Key(h states=0) rawKey: Key(h states=0) origKey: Key(h states=0) Release:1 keycode: 43 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:36.769748 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:36.797345 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:36.802773 inputcontext.cpp:321] KeyEvent handling time: 5ms result:1
+D2026-10-25 10:09:36.825010 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:36.825053 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:36.853033 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:0 keycode: 44 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:36.858592 inputcontext.cpp:321] KeyEvent handling time: 5ms result:1
+D2026-10-25 10:09:36.880754 instance.cpp:930] KeyEvent: Key(j states=0) rawKey: Key(j states=0) origKey: Key(j states=0) Release:1 keycode: 44 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:36.880808 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:36.908670 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:0 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:36.914902 inputcontext.cpp:321] KeyEvent handling time: 6ms result:1
+D2026-10-25 10:09:36.936468 instance.cpp:930] KeyEvent: Key(i states=0) rawKey: Key(i states=0) origKey: Key(i states=0) Release:1 keycode: 31 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:36.936522 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:36.966869 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:0 keycode: 26 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:36.970393 inputcontext.cpp:321] KeyEvent handling time: 3ms result:1
+D2026-10-25 10:09:36.994699 instance.cpp:930] KeyEvent: Key(e states=0) rawKey: Key(e states=0) origKey: Key(e states=0) Release:1 keycode: 26 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:36.994753 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:37.677701 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:37.677796 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:37.685406 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:37.685479 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:38.956891 instance.cpp:930] KeyEvent: Key(F3 states=0) rawKey: Key(F3 states=0) origKey: Key(F3 states=0) Release:0 keycode: 69 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:38.957004 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:38.962784 instance.cpp:930] KeyEvent: Key(F3 states=0) rawKey: Key(F3 states=0) origKey: Key(F3 states=0) Release:1 keycode: 69 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:38.962813 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:39.629707 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:0 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:39.630010 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+D2026-10-25 10:09:39.640484 instance.cpp:930] KeyEvent: Key(F12 states=0) rawKey: Key(F12 states=0) origKey: Key(F12 states=0) Release:1 keycode: 96 program: ime-observer-fixed-2e54e351
+D2026-10-25 10:09:39.640538 inputcontext.cpp:321] KeyEvent handling time: 0ms result:0
+=========================
+Fcitx 5.1.12 -- Get Signal No.: 15
+Date: try "date -d @1792922980" if you are using GNU date ***
+ProcessID: 79741
+W2026-10-25 10:09:40.789147 xcbeventreader.cpp:51] XCB connection ":102" got error: 1
+fcitx5(+0x113b2) [0x55dbd77343b2]
+/lib/x86_64-linux-gnu/libc.so.6(+0x3fdf0) [0x7fabdda7adf0]
+/lib/x86_64-linux-gnu/libc.so.6(+0x9a9ee) [0x7fabddad59ee]
+/lib/x86_64-linux-gnu/libc.so.6(+0x8f668) [0x7fabddaca668]
+/lib/x86_64-linux-gnu/libc.so.6(+0x8f6ad) [0x7fabddaca6ad]
+/lib/x86_64-linux-gnu/libc.so.6(epoll_wait+0x1d) [0x7fabddb4baad]
+/lib/x86_64-linux-gnu/libsystemd.so.0(sd_event_wait+0x178) [0x7fabdd95cb38]
+/lib/x86_64-linux-gnu/libsystemd.so.0(sd_event_run+0x14b) [0x7fabdd95ddfb]
+/lib/x86_64-linux-gnu/libsystemd.so.0(sd_event_loop+0x57) [0x7fabdd95df87]
+/lib/x86_64-linux-gnu/libFcitx5Utils.so.2(+0x4a3d1) [0x7fabddf9b3d1]
+/lib/x86_64-linux-gnu/libFcitx5Core.so.7(_ZN5fcitx8Instance4execEv+0x59) [0x7fabde097cb9]
+fcitx5(+0x1008f) [0x55dbd773308f]
+/lib/x86_64-linux-gnu/libc.so.6(+0x29ca8) [0x7fabdda64ca8]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x7fabdda64d65]
+fcitx5(+0x106b1) [0x55dbd77336b1]
+I2026-10-25 10:09:40.811430 addonmanager.cpp:308] Unloading addon spell
+I2026-10-25 10:09:40.812129 addonmanager.cpp:308] Unloading addon pinyin
+I2026-10-25 10:09:40.814862 addonmanager.cpp:308] Unloading addon punctuation
+I2026-10-25 10:09:40.815156 addonmanager.cpp:308] Unloading addon notifications
+I2026-10-25 10:09:40.815232 addonmanager.cpp:308] Unloading addon notificationitem
+I2026-10-25 10:09:40.815275 addonmanager.cpp:308] Unloading addon classicui
+I2026-10-25 10:09:40.818616 addonmanager.cpp:308] Unloading addon virtualkeyboard
+I2026-10-25 10:09:40.818697 addonmanager.cpp:308] Unloading addon kimpanel
+I2026-10-25 10:09:40.818728 addonmanager.cpp:308] Unloading addon xim
+I2026-10-25 10:09:40.818753 addonmanager.cpp:308] Unloading addon ibusfrontend
+I2026-10-25 10:09:40.818845 addonmanager.cpp:308] Unloading addon fcitx4frontend
+I2026-10-25 10:09:40.818897 addonmanager.cpp:308] Unloading addon dbusfrontend
+I2026-10-25 10:09:40.818936 addonmanager.cpp:308] Unloading addon dbus
+I2026-10-25 10:09:40.819016 addonmanager.cpp:308] Unloading addon unicode
+I2026-10-25 10:09:40.819039 addonmanager.cpp:308] Unloading addon waylandim
+I2026-10-25 10:09:40.819083 addonmanager.cpp:308] Unloading addon clipboard
+I2026-10-25 10:09:40.819138 addonmanager.cpp:308] Unloading addon keyboard
+I2026-10-25 10:09:40.819487 addonmanager.cpp:308] Unloading addon imselector
+I2026-10-25 10:09:40.819508 addonmanager.cpp:308] Unloading addon quickphrase
+I2026-10-25 10:09:40.819806 addonmanager.cpp:308] Unloading addon xcb
+I2026-10-25 10:09:40.820138 addonmanager.cpp:308] Unloading addon wayland

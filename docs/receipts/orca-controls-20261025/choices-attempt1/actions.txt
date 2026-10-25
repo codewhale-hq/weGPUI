@@ -1,0 +1,48 @@
+2026-10-25T09:54:47.688279+00:00 XTEST click 'Start matrix' window-local=164,40
+2026-10-25T09:54:48.792642+00:00 XTEST key KP_Enter
+2026-10-25T09:54:52.562504+00:00 capture start focused=[('button', 'Start matrix')]
+2026-10-25T09:54:52.596740+00:00 XTEST key Tab
+2026-10-25T09:54:53.247100+00:00 XTEST key KP_Enter
+2026-10-25T09:54:57.091027+00:00 capture checkbox-unchecked focused=[('check box', 'Standalone checkbox')]
+2026-10-25T09:54:57.091105+00:00 XTEST key space
+2026-10-25T09:54:58.107947+00:00 XTEST key KP_Enter
+2026-10-25T09:55:01.969631+00:00 capture checkbox-checked focused=[('check box', 'Standalone checkbox')]
+2026-10-25T09:55:02.006874+00:00 XTEST key space
+2026-10-25T09:55:03.024859+00:00 XTEST key KP_Enter
+2026-10-25T09:55:06.804641+00:00 capture checkbox-unchecked-again focused=[('check box', 'Standalone checkbox')]
+2026-10-25T09:55:06.866244+00:00 XTEST key Tab
+2026-10-25T09:55:07.521078+00:00 XTEST key KP_Enter
+2026-10-25T09:55:11.306006+00:00 capture checkbox-row-unchecked focused=[('check box', 'Checkbox row')]
+2026-10-25T09:55:11.306089+00:00 XTEST key Return
+2026-10-25T09:55:12.322793+00:00 XTEST key KP_Enter
+2026-10-25T09:55:16.034273+00:00 capture checkbox-row-checked focused=[('check box', 'Checkbox row')]
+2026-10-25T09:55:16.096758+00:00 XTEST key Tab
+2026-10-25T09:55:16.768188+00:00 XTEST key KP_Enter
+2026-10-25T09:55:20.454996+00:00 capture switch-off focused=[('toggle button', 'Switch')]
+2026-10-25T09:55:20.455145+00:00 XTEST key space
+2026-10-25T09:55:21.475418+00:00 XTEST key KP_Enter
+2026-10-25T09:55:25.240841+00:00 capture switch-on focused=[('toggle button', 'Switch')]
+2026-10-25T09:55:25.240925+00:00 XTEST key space
+2026-10-25T09:55:26.263769+00:00 XTEST key KP_Enter
+2026-10-25T09:55:29.964701+00:00 capture switch-off-again focused=[('toggle button', 'Switch')]
+2026-10-25T09:55:29.992487+00:00 XTEST key Tab
+2026-10-25T09:55:30.639705+00:00 XTEST key KP_Enter
+2026-10-25T09:55:34.580970+00:00 capture first-radio-one focused=[('radio button', 'Radio A')]
+2026-10-25T09:55:34.581107+00:00 XTEST key Down
+2026-10-25T09:55:35.598036+00:00 XTEST key KP_Enter
+2026-10-25T09:55:39.483029+00:00 capture first-radio-three focused=[('radio button', 'Radio C')]
+2026-10-25T09:55:39.593172+00:00 XTEST key Tab
+2026-10-25T09:55:40.245051+00:00 XTEST key KP_Enter
+2026-10-25T09:55:43.972183+00:00 capture second-radio-one focused=[('radio button', 'Second A')]
+2026-10-25T09:55:43.972258+00:00 XTEST key Down
+2026-10-25T09:55:44.989206+00:00 XTEST key KP_Enter
+2026-10-25T09:55:49.145446+00:00 capture second-radio-two focused=[('radio button', 'Second B')]
+2026-10-25T09:55:49.218779+00:00 XTEST held Shift_L + Tab
+2026-10-25T09:55:50.436350+00:00 XTEST key KP_Enter
+2026-10-25T09:55:54.399678+00:00 capture first-radio-still-three focused=[('radio button', 'Radio C')]
+2026-10-25T09:55:54.399944+00:00 XTEST key Tab
+2026-10-25T09:55:55.424766+00:00 XTEST key KP_Enter
+2026-10-25T09:55:59.389273+00:00 capture second-radio-still-two focused=[('radio button', 'Second B')]
+2026-10-25T09:55:59.389357+00:00 XTEST key F8
+2026-10-25T09:56:00.771955+00:00 capture final focused=[('radio button', 'Second B')]
+2026-10-25T09:56:00.772043+00:00 driver completed; speech/audio interpretation remains separate

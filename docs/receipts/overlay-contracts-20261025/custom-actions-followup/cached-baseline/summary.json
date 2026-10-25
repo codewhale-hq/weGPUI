@@ -1,0 +1,61 @@
+{
+  "binary_sha256": "26eda739b3a8444f33c688a9a76c466a4ef37817fe067fbb4642ef44d57d53fb",
+  "source": "unchanged approved GPUI; modal guard proposal unapplied",
+  "result": "Existing cache replay loses accessibility target/actions while cached pixels remain visible; live control and fresh-process rescue controls succeed.",
+  "parent_only_redraw_observations": [
+    {
+      "before": {
+        "parent": 0,
+        "cached_clicks": 1,
+        "cached_renders": 7,
+        "cached_focused": false,
+        "live_clicks": 0,
+        "live_renders": 7,
+        "live_focused": true
+      },
+      "after": {
+        "parent": 1,
+        "cached_clicks": 1,
+        "cached_renders": 7,
+        "cached_focused": false,
+        "live_clicks": 0,
+        "live_renders": 8,
+        "live_focused": true
+      }
+    },
+    {
+      "before": {
+        "parent": 1,
+        "cached_clicks": 2,
+        "cached_renders": 9,
+        "cached_focused": false,
+        "live_clicks": 1,
+        "live_renders": 11,
+        "live_focused": true
+      },
+      "after": {
+        "parent": 2,
+        "cached_clicks": 2,
+        "cached_renders": 9,
+        "cached_focused": false,
+        "live_clicks": 1,
+        "live_renders": 12,
+        "live_focused": true
+      }
+    }
+  ],
+  "final_native_snapshot": {
+    "parent": 2,
+    "cached_clicks": 2,
+    "cached_renders": 11,
+    "cached_focused": true,
+    "live_clicks": 1,
+    "live_renders": 14,
+    "live_focused": false
+  },
+  "limitations": [
+    "Long-lived saved proxies stay defunct after target reappearance; fresh clients establish rescue behavior separately.",
+    "No proposed guard implementation was compiled/applied/qualified by these runs.",
+    "Linux X11 AT-SPI interface and native state observations, not screen-reader speech acceptance."
+  ]
+}

@@ -1,0 +1,34 @@
+2026-10-25T10:06:25Z
+49268de7bb78a69cb56b96f6cff02a2d9284e71d
+Expected binary source: /workspace/.wegpui-cloud/artifacts/article-expected.7ZLAVK
+Runtime working tree is not a build attestation; integrating build logs identify compiled source.
+93921e856355d44c0a385000af847f773ab5ce3d30fc6e676ebb2549a49dbe6a  /workspace/.wegpui-cloud/artifacts/article-responsive.eOsfWS/gallery
+rustc 1.98.1 (48a229cea 2026-09-01)
+binary: rustc
+commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+commit-date: 2026-09-01
+host: x86_64-unknown-linux-gnu
+release: 1.98.1
+LLVM version: 22.1.8
+Chromium 156.0.8078.47 built on Debian GNU/Linux 13 (trixie)
+Name: playwright
+Version: 1.64.1
+Summary: A high-level API to automate web browsers
+Home-page: https://github.com/Microsoft/playwright-python
+Author: Microsoft Corporation
+Author-email: 
+License-Expression: Apache-2.0
+Location: /opt/parity-python/lib/python3.13/site-packages
+Requires: greenlet, pyee
+Required-by: 
+---
+Name: pillow
+Version: 13.0.0
+Summary: Python Imaging Library (fork)
+Home-page: https://python-pillow.org
+Author: 
+Author-email: Jeffrey 'Alex' Clark <aclark@aclark.net>
+License-Expression: MIT-CMU
+Location: /opt/parity-python/lib/python3.13/site-packages
+Requires: 
+Required-by: 

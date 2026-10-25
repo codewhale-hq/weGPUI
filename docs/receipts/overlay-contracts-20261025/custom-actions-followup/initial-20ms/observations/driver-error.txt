@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/workspace/weGPUI/docs/receipts/overlay-contracts-20261025/custom-actions-followup/initial-20ms/drive-used.py", line 135, in <module>
+    pointer("Open slow modal")
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/workspace/weGPUI/docs/receipts/overlay-contracts-20261025/custom-actions-followup/initial-20ms/drive-used.py", line 71, in pointer
+    node = find(name)
+  File "/workspace/weGPUI/docs/receipts/overlay-contracts-20261025/custom-actions-followup/initial-20ms/drive-used.py", line 45, in find
+    raise RuntimeError(f"No accessible target named {name!r}")
+RuntimeError: No accessible target named 'Open slow modal'

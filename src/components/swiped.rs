@@ -199,6 +199,7 @@ impl Render for SwipeDrag {
 /// row requests closing. Left opens, Right or Escape closes (including from a focused action),
 /// and Enter/Space on the row toggles. Tab from an open row reaches its first action; Shift+Tab
 /// returns to the row. Closing with Right/Escape returns focus to the row.
+/// Escape on an already closed row propagates to its enclosing control or modal.
 /// The accessibility default Click action toggles too; explicit Expand/Collapse request their
 /// corresponding state. Snaps take 200 ms with CSS `ease`, or are instant under reduced motion.
 #[derive(IntoElement)]
@@ -492,6 +493,7 @@ impl RenderOnce for SwipedCell {
                     }
                     let open = match event.keystroke.key.as_str() {
                         "left" => true,
+                        "escape" if !control.state.read(cx).open => return,
                         "right" | "escape" => false,
                         _ => return,
                     };

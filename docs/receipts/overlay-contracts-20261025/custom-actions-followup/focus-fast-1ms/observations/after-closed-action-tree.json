@@ -1,0 +1,46 @@
+[
+  {
+    "name": "main",
+    "role": "desktop frame",
+    "states": []
+  },
+  {
+    "name": "probe-49268de",
+    "role": "application",
+    "states": []
+  },
+  {
+    "name": "Saved overlay action probe",
+    "role": "frame",
+    "states": [
+      "<enum ATSPI_STATE_ACTIVE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_ENABLED of type Atspi.StateType>",
+      "<enum ATSPI_STATE_FOCUSABLE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_FOCUSED of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SENSITIVE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SHOWING of type Atspi.StateType>",
+      "<enum ATSPI_STATE_VISIBLE of type Atspi.StateType>"
+    ]
+  },
+  {
+    "name": "",
+    "role": "panel",
+    "states": [
+      "<enum ATSPI_STATE_ENABLED of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SENSITIVE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SHOWING of type Atspi.StateType>",
+      "<enum ATSPI_STATE_VISIBLE of type Atspi.StateType>"
+    ]
+  },
+  {
+    "name": "Open slow modal",
+    "role": "button",
+    "states": [
+      "<enum ATSPI_STATE_ENABLED of type Atspi.StateType>",
+      "<enum ATSPI_STATE_FOCUSABLE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SENSITIVE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SHOWING of type Atspi.StateType>",
+      "<enum ATSPI_STATE_VISIBLE of type Atspi.StateType>"
+    ]
+  }
+]

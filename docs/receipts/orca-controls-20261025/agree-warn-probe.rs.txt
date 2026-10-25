@@ -1,0 +1,40 @@
+//! Orca warning-state fixture. F1 sets warn, F2 clears it, F8 logs owner state.
+use gpui::{prelude::*, *};
+use wegpui::{Theme, components::{agree::Agree, button::Button}};
+
+struct Probe { warn: bool, checked: bool, changes: usize, links: usize }
+impl Render for Probe {
+    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let t = Theme::get(cx);
+        div().id("warning-probe").size_full().p(px(32.)).bg(t.bg_2).text_color(t.fg_0)
+            .flex().flex_col().gap(px(24.))
+            .on_key_down(cx.listener(|this, event: &KeyDownEvent, window, cx| {
+                match event.keystroke.key.as_str() {
+                    "tab" => { if event.keystroke.modifiers.shift { window.focus_prev(cx); } else { window.focus_next(cx); } }
+                    "f1" => { this.warn = true; cx.notify(); }
+                    "f2" => { this.warn = false; cx.notify(); }
+                    "f8" => eprintln!("WARN SNAP warn={} checked={} changes={} links={}", this.warn, this.checked, this.changes, this.links),
+                    _ => return,
+                }
+                cx.stop_propagation();
+            }))
+            .child(Button::new("Start warning sample").mini())
+            .child(Agree::new("consent", "Read and accept ")
+                .checked(self.checked).warn(self.warn)
+                .link("Terms", cx.listener(|this, _, _, cx| { this.links += 1; eprintln!("WARN terms {}", this.links); cx.notify(); }))
+                .on_change(cx.listener(|this, value, _, cx| { this.checked = *value; this.changes += 1; eprintln!("WARN change {} checked={}", this.changes, this.checked); cx.notify(); })))
+    }
+}
+#[path = "support/platform.rs"]
+mod platform;
+fn main() {
+    platform::application().with_assets(wegpui::Assets).run(|cx| {
+        wegpui::init(cx);
+        cx.open_window(WindowOptions {
+            window_bounds: Some(WindowBounds::Windowed(Bounds::new(point(px(20.), px(20.)), size(px(650.), px(360.))))),
+            titlebar: Some(TitlebarOptions { title: Some("weGPUI Agree warning contracts".into()), ..Default::default() }),
+            ..Default::default()
+        }, |window, cx| { Theme::observe(window); cx.new(|_| Probe { warn: false, checked: false, changes: 0, links: 0 }) }).expect("warning window");
+        cx.activate(true);
+    });
+}

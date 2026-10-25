@@ -1,0 +1,51 @@
+0 PARENT_RENDER redraws=0
+0 CHILD_RENDER name="Live child action" renders=1 clicks=0
+9 CHILD_RENDER name="Cached child action" renders=1 clicks=0
+24 PARENT_RENDER redraws=0
+24 CHILD_RENDER name="Live child action" renders=2 clicks=0
+25 CHILD_RENDER name="Cached child action" renders=2 clicks=0
+84 PARENT_RENDER redraws=0
+84 CHILD_RENDER name="Live child action" renders=3 clicks=0
+84 CHILD_RENDER name="Cached child action" renders=3 clicks=0
+1301 PARENT_RENDER redraws=0
+1302 CHILD_RENDER name="Live child action" renders=4 clicks=0
+1303 CHILD_RENDER name="Cached child action" renders=4 clicks=0
+1305 SNAPSHOT parent=0 cached_clicks=0 cached_renders=4 cached_focused=false live_clicks=0 live_renders=4 live_focused=true
+2512 SNAPSHOT parent=0 cached_clicks=0 cached_renders=4 cached_focused=false live_clicks=0 live_renders=4 live_focused=true
+3027 CUSTOM_AT_CLICK name="Cached child action" clicks=1 focused=false
+3032 PARENT_RENDER redraws=0
+3033 CHILD_RENDER name="Live child action" renders=5 clicks=0
+3033 CHILD_RENDER name="Cached child action" renders=5 clicks=1
+3432 PARENT_RENDER redraws=0
+3433 CHILD_RENDER name="Live child action" renders=6 clicks=0
+3433 CHILD_RENDER name="Cached child action" renders=6 clicks=1
+3832 PARENT_RENDER redraws=0
+3833 CHILD_RENDER name="Live child action" renders=7 clicks=0
+3833 CHILD_RENDER name="Cached child action" renders=7 clicks=1
+4455 SNAPSHOT parent=0 cached_clicks=1 cached_renders=7 cached_focused=false live_clicks=0 live_renders=7 live_focused=true
+4972 PARENT_NOTIFY redraws=1
+4978 PARENT_RENDER redraws=1
+4979 CHILD_RENDER name="Live child action" renders=8 clicks=0
+5660 SNAPSHOT parent=1 cached_clicks=1 cached_renders=7 cached_focused=false live_clicks=0 live_renders=8 live_focused=true
+6731 SNAPSHOT parent=1 cached_clicks=1 cached_renders=7 cached_focused=false live_clicks=0 live_renders=8 live_focused=true
+7245 CUSTOM_AT_CLICK name="Live child action" clicks=1 focused=true
+7256 PARENT_RENDER redraws=1
+7257 CHILD_RENDER name="Live child action" renders=9 clicks=1
+7807 SNAPSHOT parent=1 cached_clicks=1 cached_renders=7 cached_focused=false live_clicks=1 live_renders=9 live_focused=true
+8324 CACHED_NOTIFY
+8328 PARENT_RENDER redraws=1
+8329 CHILD_RENDER name="Live child action" renders=10 clicks=1
+8329 CHILD_RENDER name="Cached child action" renders=8 clicks=1
+9004 SNAPSHOT parent=1 cached_clicks=1 cached_renders=8 cached_focused=false live_clicks=1 live_renders=10 live_focused=true
+10482 SNAPSHOT parent=1 cached_clicks=1 cached_renders=8 cached_focused=false live_clicks=1 live_renders=10 live_focused=true
+11001 PARENT_NOTIFY redraws=2
+11007 PARENT_RENDER redraws=2
+11007 CHILD_RENDER name="Live child action" renders=11 clicks=1
+11673 SNAPSHOT parent=2 cached_clicks=1 cached_renders=8 cached_focused=false live_clicks=1 live_renders=11 live_focused=true
+12742 SNAPSHOT parent=2 cached_clicks=1 cached_renders=8 cached_focused=false live_clicks=1 live_renders=11 live_focused=true
+13259 WINDOW_REFRESH
+13265 PARENT_RENDER redraws=2
+13265 CHILD_RENDER name="Live child action" renders=12 clicks=1
+13266 CHILD_RENDER name="Cached child action" renders=9 clicks=1
+13987 SNAPSHOT parent=2 cached_clicks=1 cached_renders=9 cached_focused=false live_clicks=1 live_renders=12 live_focused=true
+15072 SNAPSHOT parent=2 cached_clicks=1 cached_renders=9 cached_focused=false live_clicks=1 live_renders=12 live_focused=true

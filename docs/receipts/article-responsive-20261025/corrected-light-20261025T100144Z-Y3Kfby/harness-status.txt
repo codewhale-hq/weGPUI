@@ -1,0 +1,10 @@
+All four capture steps and paint extraction completed. The outer Bash harness exited 127
+afterward because its source file was edited while the running shell waited for its child;
+the shifted file offset caused Bash to read a trailing command incorrectly. This is a harness
+failure, not a native application exit or an accepted complete run.
+
+The separate strict validator output is retained in validation-strict.txt. Its only remaining
+failure is the 700px second image's exact-background paint width: integer height rounding plus
+Contain produces a one-pixel inset per side. Wrapper geometry, responsive size and the 690px
+cap are correct. A later clean run records the documented two-pixel total painted-width
+tolerance; semantic bounds still have one-pixel tolerance.

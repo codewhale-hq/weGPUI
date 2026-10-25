@@ -1,0 +1,27 @@
+dbus-daemon[79186]: [session uid=1000 pid=79186 pidfd=5] Activating service name='org.a11y.Bus' requested by ':1.1' (uid=1000 pid=79200 comm="/usr/lib/chromium/chromium --show-component-extens" label="kernel")
+dbus-daemon[79186]: [session uid=1000 pid=79186 pidfd=5] Successfully activated service 'org.a11y.Bus'
+dbus-daemon[79302]: Activating service name='org.a11y.atspi.Registry' requested by ':1.0' (uid=1000 pid=79200 comm="/usr/lib/chromium/chromium --show-component-extens" label="kernel")
+dbus-daemon[79302]: Successfully activated service 'org.a11y.atspi.Registry'
+SpiRegistry daemon is running with well-known name - org.a11y.atspi.Registry
+method return time=1792922789.541420 sender=:1.2 -> destination=:1.5 serial=9 reply_serial=2
+captured 480
+{
+  "480": {
+    "native": [
+      {
+        "x": 24,
+        "y": 444,
+        "width": 432,
+        "height": 487
+      }
+    ],
+    "weui-static": [
+      {
+        "x": 24,
+        "y": 445,
+        "width": 432,
+        "height": 487
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+9dc83361d502a8d0ed1729276f0d5f4eff97b584eb73acf233968016aa7b1057  gpui-pre-linux-0.3.9/src/linux/x11/client.rs
+87b737ecda518123196c3f60369120c6a8fb8021b43a4830cc21bf7834eda438  gpui-pre-linux-0.3.9/src/linux/x11/window.rs
+fc5c773a854fd5e0e51e7450a334a52692eed470e2be669e95919bb05be68bf9  gpui-pre-linux-0.3.9/Cargo.toml
+4c63dbe2608c36cdea499cfa23fb4d61bf74362604cb0a200e037ed0952289b8  gpui-pre-linux-0.3.9/Cargo.toml.orig
+752daf2fb234ca4a1fa372c073fe127f44b7b90fd2529ae44273a64f9d53da7a  gpui-pre-linux-0.3.9/LICENSE-APACHE
+e28213c3fde6f13e91ba0b74b90cbaadec9373e36a031eda98561d31059870f3  gpui-pre-linux-0.3.9.crate [matches Cargo.lock]
+5f7ae89fac0192dbbe8d177d344e706e32f0ddeb5d63473a5d070eef7d262aa3  proposed-modified-client.rs [not installed]
+97b04f9e733ff205adaf6c9ce69d77b19f814a30cfbf830526869fa5a93c7ed4  compat.patch
+647e1a96be981679f4c17ccc729c010f816cfd82d7b169bebbaac183e6b91af9  libX11-CH10.xml [external response, retained outside repo]
+5ea728b66584ddb373e8ceeb52a34a3b3fb001260bab17c647a9239f5d07dfe1  protocol-excerpts.txt

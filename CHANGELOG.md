@@ -14,6 +14,7 @@ versioning once a release policy is decided. No version has been published.
   uploader capacity and controlled swipe-open callbacks.
 - Theme helpers for composited surface and focus contrast; two-colour focus indicators for
   controls on inherited backgrounds and images.
+- `Semantics::invalid(bool)` exposes controlled validation state; `Agree::warn` uses it.
 
 - `components::date_field::{DateField, DateFieldMode, DateValue, DateFieldEvent}`: reusable
   date and date-time fields (HTML `date`/`datetime-local` equivalent) built on `Picker`,
@@ -30,6 +31,12 @@ versioning once a release policy is decided. No version has been published.
 
 ### Fixed
 
+- Canceling inline IME composition restores selected committed text and selection direction
+  without a Changed event. State/maxlength changes settle preedit without stale restoration.
+- Escape on an already collapsed SwipedCell reaches its containing modal; an open row still
+  closes first.
+- Gallery article images resize proportionally up to their intrinsic width and preserve the
+  following content gap in wide windows.
 - Vertical FormCell labels fill their header; horizontal labels retain the 85px cap.
 - Guard closing overlay callbacks, picker confirmation and delayed wheel work; reveal long
   select choices, preserve short-sheet layout and interrupted drag/animation behavior.

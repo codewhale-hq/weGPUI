@@ -1,0 +1,28 @@
+{
+  "frame": {
+    "x": 400,
+    "y": 107,
+    "width": 480,
+    "height": 1800
+  },
+  "images": [
+    {
+      "x": 424,
+      "y": 551,
+      "width": 432,
+      "height": 184
+    },
+    {
+      "x": 424,
+      "y": 735,
+      "width": 432,
+      "height": 184
+    }
+  ],
+  "following_heading": {
+    "x": 424,
+    "y": 943,
+    "width": 432,
+    "height": 24
+  }
+}

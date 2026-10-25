@@ -1,0 +1,15 @@
+{"at": 1792922029.7016678, "kind": "launch", "route": "form_textarea"}
+{"at": 1792922032.6747932, "kind": "click", "field": "问题描述", "desktop": [462, 415]}
+{"at": 1792922033.4340966, "kind": "ime", "active": false}
+{"at": 1792922034.0923917, "kind": "type", "text": "before"}
+{"at": 1792922035.1247504, "kind": "key", "key": "Return"}
+{"at": 1792922035.7947319, "kind": "type", "text": "after"}
+{"at": 1792922036.766408, "kind": "key", "key": "Home"}
+{"at": 1792922037.4331882, "kind": "ime", "active": true}
+{"at": 1792922038.0993264, "kind": "type", "text": "nihao"}
+{"at": 1792922039.455852, "kind": "key", "key": "space"}
+{"at": 1792922040.4900186, "kind": "type", "text": "shijie"}
+{"at": 1792922041.8626878, "kind": "key", "key": "Escape"}
+{"at": 1792922042.9106767, "kind": "ime", "active": false}
+{"at": 1792922043.5678277, "kind": "key", "key": "ctrl+z"}
+{"at": 1792922044.612784, "kind": "key", "key": "ctrl+shift+z"}

@@ -1,0 +1,2 @@
+PASS: rustfmt --edition 2024 --check --config skip_children=true on the five separate candidate files.
+No production source was formatted or patched. This is syntax/format evidence, not compilation or runtime verification.

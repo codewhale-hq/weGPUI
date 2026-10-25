@@ -1,0 +1,71 @@
+[
+  {
+    "kind": "pointer",
+    "monotonic_ns": 9525509231122,
+    "name": "Open slow modal"
+  },
+  {
+    "kind": "action-interface",
+    "monotonic_ns": 9527727848599,
+    "name": "Saved custom action row",
+    "actions": [
+      "click"
+    ]
+  },
+  {
+    "kind": "baseline-open",
+    "monotonic_ns": 9527728862382,
+    "result": true
+  },
+  {
+    "kind": "baseline-close",
+    "monotonic_ns": 9528062231609,
+    "result": true
+  },
+  {
+    "kind": "action-interface",
+    "monotonic_ns": 9528381657604,
+    "name": "Saved custom action row",
+    "actions": [
+      "click"
+    ]
+  },
+  {
+    "kind": "saved-click-error",
+    "monotonic_ns": 9528408313731,
+    "error": "GLib.Error('Unknown object '/org/a11y/atspi/accessible/0/336229189971035769522815485675447517184'', 'atspi_error', 1)",
+    "delay_ms": 20.0,
+    "close_command_started_ns": 9528381924886,
+    "close_command_returned_ns": 9528384911071,
+    "action_invoked_ns": 9528404999117
+  },
+  {
+    "kind": "saved-click-after-closed-error",
+    "monotonic_ns": 9530903437439,
+    "error": "GLib.Error('The application no longer exists', 'atspi_error', 0)",
+    "action_invoked_ns": 9530903389217,
+    "elapsed_since_close_ms": 2518.478146
+  },
+  {
+    "kind": "pointer",
+    "monotonic_ns": 9531441445503,
+    "name": "Open slow modal"
+  },
+  {
+    "kind": "action-interface",
+    "monotonic_ns": 9533698554233,
+    "name": "Saved custom action row",
+    "actions": [
+      "click"
+    ]
+  },
+  {
+    "kind": "reopened-click",
+    "monotonic_ns": 9533700553053,
+    "result": true
+  },
+  {
+    "kind": "driver-finished",
+    "monotonic_ns": 9534064876551
+  }
+]

@@ -1,0 +1,107 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "states": [],
+  "attributes": [],
+  "children": [
+    {
+      "role": "application",
+      "name": "probe-fixed",
+      "description": "",
+      "states": [],
+      "attributes": [],
+      "children": [
+        {
+          "role": "frame",
+          "name": "Saved overlay action probe",
+          "description": "",
+          "states": [
+            "active",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "visible"
+          ],
+          "attributes": [],
+          "children": [
+            {
+              "role": "panel",
+              "name": "",
+              "description": "",
+              "states": [
+                "enabled",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "children": [
+                {
+                  "role": "button",
+                  "name": "Open slow modal",
+                  "description": "",
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "children": [],
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "bounds": [
+                    101,
+                    44,
+                    280,
+                    48
+                  ]
+                }
+              ],
+              "interfaces": [
+                "Accessible",
+                "Component"
+              ],
+              "bounds": [
+                1,
+                20,
+                480,
+                640
+              ]
+            }
+          ],
+          "interfaces": [
+            "Accessible",
+            "Component"
+          ],
+          "bounds": [
+            1,
+            20,
+            480,
+            640
+          ]
+        }
+      ],
+      "interfaces": [
+        "Accessible"
+      ]
+    }
+  ],
+  "interfaces": [
+    "Accessible",
+    "Component"
+  ],
+  "bounds": [
+    0,
+    0,
+    1024,
+    768
+  ]
+}

@@ -1,0 +1,18 @@
+ M examples/gallery/pages/article.rs
+ M src/components/swiped.rs
+?? docs/receipts/article-responsive-20261025/
+?? docs/receipts/ime-x11-20261025/
+?? docs/receipts/orca-controls-20261025/
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/compiled-accessibility-49268de.rs.txt
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/compiled-modal-49268de.rs.txt
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/compiled-source-git-tree.txt
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/compiled-swiped-49268de.rs.txt
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/drive.py
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/initial-20ms/
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/mask-20ms/
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/mask-fast-0ms/
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/mask-fast-100ms/
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/mask-fast-20ms/
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/mask-fast-500ms/
+?? docs/receipts/overlay-contracts-20261025/custom-actions-followup/run-session.sh
+?? docs/receipts/overlay-contracts-20261025/swiped-escape-followup/

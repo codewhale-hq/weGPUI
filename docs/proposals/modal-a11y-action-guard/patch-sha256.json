@@ -1,0 +1,4 @@
+{
+  "compat.patch": "b6c0e38be71096e125aac1a0b5aac260707c9cdbb04dd0412759908f969a1aaf",
+  "library-integration.patch": "85c40d4d5b575862b49643d12f125869cec7d0449b9e8fcb045e19b501c22463"
+}

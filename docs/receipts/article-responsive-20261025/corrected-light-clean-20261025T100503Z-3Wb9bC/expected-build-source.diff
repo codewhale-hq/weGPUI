@@ -1,0 +1,68 @@
+diff --git a/examples/gallery/pages/article.rs b/examples/gallery/pages/article.rs
+index e87ca4b..ae8ddc2 100644
+--- a/examples/gallery/pages/article.rs
++++ b/examples/gallery/pages/article.rs
+@@ -126,15 +126,18 @@ impl Render for ArticlePage {
+                                                     .id("article-image-1")
+                                                     .role(Role::Image)
+                                                     .aria_label("配图")
++                                                    .relative()
+                                                     .flex()
+                                                     .flex_col()
+                                                     .w_full()
+-                                                    .h(px(327. * 389. / 690.))
++                                                    .max_w(px(690.))
++                                                    .aspect_ratio(690. / 389.)
+                                                     .flex_shrink_0()
+                                                     .child(
+                                                         img("pic_article.png")
+-                                                            .w_full()
+-                                                            .h(px(327. * 389. / 690.)),
++                                                            .absolute()
++                                                            .inset_0()
++                                                            .size_full(),
+                                                     ),
+                                             )
+                                             .child(
+@@ -142,15 +145,18 @@ impl Render for ArticlePage {
+                                                     .id("article-image-2")
+                                                     .role(Role::Image)
+                                                     .aria_label("配图")
++                                                    .relative()
+                                                     .flex()
+                                                     .flex_col()
+                                                     .w_full()
+-                                                    .h(px(327. * 389. / 690.))
++                                                    .max_w(px(690.))
++                                                    .aspect_ratio(690. / 389.)
+                                                     .flex_shrink_0()
+                                                     .child(
+                                                         img("pic_article.png")
+-                                                            .w_full()
+-                                                            .h(px(327. * 389. / 690.)),
++                                                            .absolute()
++                                                            .inset_0()
++                                                            .size_full(),
+                                                     ),
+                                             ),
+                                     ),
+diff --git a/src/components/swiped.rs b/src/components/swiped.rs
+index 7bac807..c197f13 100644
+--- a/src/components/swiped.rs
++++ b/src/components/swiped.rs
+@@ -199,6 +199,7 @@ impl Render for SwipeDrag {
+ /// row requests closing. Left opens, Right or Escape closes (including from a focused action),
+ /// and Enter/Space on the row toggles. Tab from an open row reaches its first action; Shift+Tab
+ /// returns to the row. Closing with Right/Escape returns focus to the row.
++/// Escape on an already closed row propagates to its enclosing control or modal.
+ /// The accessibility default Click action toggles too; explicit Expand/Collapse request their
+ /// corresponding state. Snaps take 200 ms with CSS `ease`, or are instant under reduced motion.
+ #[derive(IntoElement)]
+@@ -492,6 +493,7 @@ impl RenderOnce for SwipedCell {
+                     }
+                     let open = match event.keystroke.key.as_str() {
+                         "left" => true,
++                        "escape" if !control.state.read(cx).open => return,
+                         "right" | "escape" => false,
+                         _ => return,
+                     };

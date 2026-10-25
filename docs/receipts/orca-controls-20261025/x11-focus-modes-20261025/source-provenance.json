@@ -1,0 +1,9 @@
+{
+  "package": "gpui-pre-linux",
+  "version": "0.3.9",
+  "registry_source": "/workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-linux-0.3.9/src/linux/x11/client.rs",
+  "client_rs_sha256": "9dc83361d502a8d0ed1729276f0d5f4eff97b584eb73acf233968016aa7b1057",
+  "crate_manifest_sha256": "fc5c773a854fd5e0e51e7450a334a52692eed470e2be669e95919bb05be68bf9",
+  "mode_check": "Neither Event::FocusIn nor Event::FocusOut checks event.mode or event.detail before activation/focus/IME handling.",
+  "scope": "Read-only registry source; no patch or build."
+}

@@ -1,0 +1,16 @@
+apps 2
+application 'orca' [] DISABLED
+application 'wegpui-orca-controls-probe' [] DISABLED
+  frame 'weGPUI control contracts' ['showing']
+    button 'Start matrix' ['focusable', 'showing']
+    check box 'Agreement 0 Terms 0' ['focusable', 'showing']
+      link 'Terms 0' ['focusable', 'showing']
+    check box 'Agreement 1 Terms 1' ['showing'] DISABLED
+      link 'Terms 1' ['focusable', 'focused', 'showing']
+    check box 'Agreement 2 Terms 2' ['focusable', 'showing']
+      link 'Terms 2' ['focusable', 'showing']
+    check box 'Agreement 3 Terms 3' ['focusable', 'showing']
+      link 'Terms 3' ['focusable', 'showing']
+    check box 'Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Read this long agreement carefully. Long terms' ['focusable', 'showing']
+      link 'Long terms' ['focusable', 'showing']
+    button 'End matrix' ['focusable', 'showing']

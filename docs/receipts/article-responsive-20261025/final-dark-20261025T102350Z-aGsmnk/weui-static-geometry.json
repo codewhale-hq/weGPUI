@@ -1,0 +1,43 @@
+{
+  "480": {
+    "viewport": 480,
+    "article": {
+      "x": 0,
+      "y": 0,
+      "width": 480,
+      "height": 2412.78125
+    },
+    "images": [
+      {
+        "bounds": {
+          "x": 24,
+          "y": 444.703125,
+          "width": 431.984375,
+          "height": 243.546875
+        },
+        "naturalWidth": 690,
+        "naturalHeight": 389,
+        "maxWidth": "100%",
+        "height": "243.547px"
+      },
+      {
+        "bounds": {
+          "x": 24,
+          "y": 688.25,
+          "width": 431.984375,
+          "height": 243.546875
+        },
+        "naturalWidth": 690,
+        "naturalHeight": 389,
+        "maxWidth": "100%",
+        "height": "243.547px"
+      }
+    ],
+    "following_heading": {
+      "x": 24,
+      "y": 955.796875,
+      "width": 432,
+      "height": 23.796875
+    }
+  }
+}
