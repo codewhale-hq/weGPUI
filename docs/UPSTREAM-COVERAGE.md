@@ -66,7 +66,7 @@ Visual results are in [PARITY](PARITY.md). Mapping a file here records implement
 | `steps/steps_vertical.html` | `components::{steps}` | `steps_vertical` | — |
 | `tabbar/tabbar.html` | `components::{tabbar, badge}` | `tabbar` | tab2, tab3 |
 | `toast/toast.html` | `components::{toast, modal}` | `toast` | success, fail, longtext, loading, text |
-| `uploader/uploader.html` | `components::{uploader, gallery}` | `uploader` | viewer, preview |
+| `uploader/uploader.html` | `components::{uploader, gallery, toptips}`; add opens the native file chooser (upstream `<input type=file accept="image/*" multiple>`); non-image files become error items; transport is application-owned | `uploader` | viewer, preview |
 
 Total: 61 files.
 

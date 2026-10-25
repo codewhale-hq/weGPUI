@@ -1,5 +1,5 @@
 error[E0308]: mismatched types
-  --> /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-platform-0.3.7/src/gpui_platform.rs:57:44
+  --> ~/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-platform-0.3.7/src/gpui_platform.rs:57:44
    |
 57 | pub fn current_platform(headless: bool) -> Rc<dyn Platform> {
    |        ----------------                    ^^^^^^^^^^^^^^^^ expected `Rc<dyn Platform>`, found `()`

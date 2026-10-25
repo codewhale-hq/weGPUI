@@ -4,11 +4,14 @@ use wegpui::components::{
     msg::LinkText,
     picker::{Picker, PickerEvent, PickerItem},
     slider::Slider,
+    textarea::TextArea,
 };
+use wegpui::input::InputEvent;
 
 struct Probe {
     all_disabled: Entity<Picker>,
     disabled_default: Entity<Picker>,
+    area: Entity<TextArea>,
     _subs: Vec<Subscription>,
 }
 
@@ -49,7 +52,19 @@ impl Probe {
                 }
             }));
         }
-        Self { all_disabled, disabled_default, _subs: subs }
+        let area = cx.new(|cx| {
+            let mut a = TextArea::new("max 5", cx);
+            a.set_max_len(Some(5), cx);
+            a.set_show_count(true, cx);
+            a
+        });
+        subs.push(cx.subscribe(&area, |_, area, e: &InputEvent, cx| {
+            if matches!(e, InputEvent::Changed) {
+                let a = area.read(cx);
+                println!("PROBE area {:?} len={}", a.text(cx), a.len(cx));
+            }
+        }));
+        Self { all_disabled, disabled_default, area, _subs: subs }
     }
 }
 
@@ -88,6 +103,7 @@ impl Render for Probe {
                 .child(Slider::new("zero-step").step(0.).value(5.).label("zero step").show_value(true).on_change(|v, _, _| println!("PROBE zero-step change {v}")))
                 .child(Button::new("open all-disabled").id("open-a").on_click(move |_, w, cx| a.update(cx, |p, cx| p.open(w, cx))))
                 .child(Button::new("open disabled-default").id("open-d").on_click(move |_, w, cx| d.update(cx, |p, cx| p.open(w, cx))))
+                .child(self.area.clone())
                 .child(self.all_disabled.clone())
                 .child(self.disabled_default.clone()),
         )

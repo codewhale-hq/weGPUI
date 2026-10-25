@@ -1,5 +1,5 @@
 error[E0554]: `#![feature]` may not be used on the stable release channel
- --> /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasm_thread-0.3.3/src/lib.rs:1:37
+ --> ~/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasm_thread-0.3.3/src/lib.rs:1:37
   |
 1 | #![cfg_attr(target_arch = "wasm32", feature(stdarch_wasm_atomic_wait))]
   |                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

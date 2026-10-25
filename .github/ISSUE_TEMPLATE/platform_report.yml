@@ -1,0 +1,37 @@
+name: Platform report
+description: Build, launch, rendering, input, accessibility or packaging results on a platform.
+labels: [platform]
+body:
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options: [macOS, Windows, Linux (X11), Linux (Wayland), iOS simulator, iOS device, Android emulator, Android device]
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: OS version, hardware, display scale
+    validations:
+      required: true
+  - type: textarea
+    id: results
+    attributes:
+      label: Results per area
+      description: For each of build, launch, rendering, interaction (keyboard/mouse/touch/IME), accessibility (screen reader used), packaging, give pass/fail/untested and the evidence.
+      value: |
+        - Build:
+        - Launch:
+        - Rendering:
+        - Interaction:
+        - Accessibility:
+        - Packaging:
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: weGPUI commit and toolchain
+    validations:
+      required: true

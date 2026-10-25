@@ -1,5 +1,5 @@
-error: couldn't read `/tmp/claude-0/-home-user/be9922da-1c49-505e-933a-f64d7031ddca/scratchpad/iosprobe/target/aarch64-apple-ios-sim/debug/build/gpui-pre-apple-bcba003c068a3d97/out/stitched_shaders.metal`: No such file or directory (os error 2)
-  --> /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-apple-0.3.9/src/metal_renderer.rs:34:35
+error: couldn't read `<scratch>/iosprobe/target/aarch64-apple-ios-sim/debug/build/gpui-pre-apple-bcba003c068a3d97/out/stitched_shaders.metal`: No such file or directory (os error 2)
+  --> ~/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-apple-0.3.9/src/metal_renderer.rs:34:35
    |
 34 | const SHADERS_SOURCE_FILE: &str = include_str!(concat!(env!("OUT_DIR"), "/stitched_shaders.metal"));
    |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

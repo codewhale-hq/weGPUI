@@ -7,6 +7,16 @@ description = "WeUI 2.6.26 design system as native GPUI components"
 readme = "README.md"
 repository = "https://github.com/codewhale-hq/weGPUI"
 homepage = "https://github.com/codewhale-hq/weGPUI"
+rust-version = "1.95"
+keywords = ["weui", "gpui", "ui", "components", "design-system"]
+categories = ["gui"]
+exclude = [
+    "/docs/parity/",
+    "/docs/receipts/",
+    "/scripts/",
+    "/.cnb.yml",
+    "/.github/",
+]
 
 [dependencies]
 gpui = { package = "gpui-pre", version = "=0.3.7" }

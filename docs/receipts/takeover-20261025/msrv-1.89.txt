@@ -1,0 +1,6 @@
+error: rustc 1.89.0 is not supported by the following package:
+  oo7@0.6.0 requires rustc 1.92
+Either upgrade rustc or select compatible dependency versions with
+`cargo update <name>@<current-ver> --precise <compatible-ver>`
+where `<compatible-ver>` is the latest version supporting rustc 1.89.0
+exit=101

@@ -1,0 +1,21 @@
+name: Feature or scope request
+description: Propose a component, API change, or scope decision (for example weui.js APIs).
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Need
+      description: What you are trying to build and why the current API does not cover it.
+    validations:
+      required: true
+  - type: textarea
+    id: upstream
+    attributes:
+      label: Upstream reference
+      description: The WeUI CSS/example or weui.js behaviour this relates to, if any.
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: API sketch, dependency or pin changes it would require, and accessibility considerations.

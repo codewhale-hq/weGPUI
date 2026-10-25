@@ -1,0 +1,58 @@
+name: Parity report
+description: A visual or behavioural difference from the WeUI 2.6.26 example.
+labels: [parity]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        See docs/PARITY-TOOLING.md for capturing pairs. "Matches" and "differs" should name the exact behaviour compared.
+  - type: input
+    id: route
+    attributes:
+      label: Route
+      description: Gallery route / upstream URL hash.
+      placeholder: "e.g. half-screen-dialog"
+    validations:
+      required: true
+  - type: input
+    id: state
+    attributes:
+      label: State
+      description: The --state / scripts/parity key, or the steps that reach the state.
+      placeholder: "e.g. 2, or: open, press Tab twice"
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Theme
+      options: [light, dark, light + care, dark + care, custom brand]
+    validations:
+      required: true
+  - type: textarea
+    id: pair
+    attributes:
+      label: Screenshot pair
+      description: Native and upstream at the same size, scale and scroll position.
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What was compared
+      multiple: true
+      options: [visual, interaction, animation timing, accessibility tree, screen reader, IME]
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Platform and version
+      description: OS, version, scale, browser and version for the upstream side, weGPUI commit.
+    validations:
+      required: true
+  - type: textarea
+    id: difference
+    attributes:
+      label: Difference
+      description: What differs, what upstream CSS/JS says, and what you did not check.
+    validations:
+      required: true

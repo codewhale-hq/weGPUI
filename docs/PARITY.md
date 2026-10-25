@@ -6,6 +6,10 @@ Historical evidence for the candidate at commit `2c8ed10` (gallery binary built 
 
 The [2026-10-24 review](REVIEW-2026-10-24.md) rechecked 28 pairs across 13 routes. The table below preserves earlier verdicts and must not be read as independent proof of every state. Additional form-description wrapping and native-window clipping differences were found. Action-sheet corners were corrected after the baseline captures. Complete behaviour, animation and accessibility parity remain unverified.
 
+## Linux and tooling update (2026-10-25)
+
+The upstream page is now fetched, verified and served by `scripts/weui_upstream.py`, and `scripts/capture.py` can capture natively on X11 Linux ([PARITY-TOOLING](PARITY-TOOLING.md)). One Linux pair (`dialog:ios1`, light) was produced to validate the pipeline (`receipts/takeover-20261025/linux-x11-capture-pair-dialog-ios1-light.png`). Linux pairs use Noto CJK fonts on both sides and are not comparisons against the macOS images below. The table below was not recaptured. Behaviour fixes made after the baseline (Presence transitions, LinkText focus, uploader chooser) do not change these static first-frame captures, except where noted in [STATUS](STATUS.md).
+
 ## Method
 
 - Native: `scripts/capture.py` launches `gallery --page ROUTE [--state S] --theme T --size 375x812 --reduce-motion`, captures the window with `screencapture`, crops the 375×812 pt content at @2x and converts the display profile to sRGB.

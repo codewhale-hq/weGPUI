@@ -1,0 +1,17 @@
+error[E0658]: use of unstable library feature `cold_path`
+   --> ~/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-0.3.7/src/profiler.rs:473:13
+    |
+473 |             std::hint::cold_path(); // most tasks are not the worst, optimize for that
+    |             ^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: see issue #136873 <https://github.com/rust-lang/rust/issues/136873> for more information
+error[E0658]: use of unstable library feature `cold_path`
+   --> ~/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-0.3.7/src/profiler.rs:494:13
+    |
+494 |             std::hint::cold_path(); // most tasks are not the worst, optimize for that
+    |             ^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: see issue #136873 <https://github.com/rust-lang/rust/issues/136873> for more information
+For more information about this error, try `rustc --explain E0658`.
+error: could not compile `gpui-pre` (lib) due to 2 previous errors
+exit=101

@@ -1,52 +1,174 @@
-# Status — 2026-10-24
+# Status — 2026-10-25
 
-weGPUI is an independent Rust library and gallery port of WeUI 2.6.26. GitHub is the canonical contributor home; CNB is a mirror. All 61 upstream example files have gallery mappings, but complete visual, behavioural and accessibility parity is **not verified**. See the [independent review and per-family table](REVIEW-2026-10-24.md).
+weGPUI is an independent Rust library and gallery port of WeUI 2.6.26 for GPUI. GitHub is the
+canonical contributor home; CNB is a mirror. All 61 upstream example files have gallery
+mappings. Visual, behavioural and accessibility parity is **sampled, not complete**.
 
-The requested platform target is macOS, Windows, Linux, iOS and Android. Only macOS arm64 has local build and interaction evidence. Mobile support is not implemented or verified.
+The target platforms are macOS, Windows, Linux, iOS and Android. **No platform is supported yet**
+in the sense of [PLATFORMS](PLATFORMS.md): every one still lacks at least one of the build,
+launch, rendering, interaction, accessibility or packaging receipts. Mobile is not implemented.
+
+Evidence sources: the macOS review of 2026-10-24 ([REVIEW](REVIEW-2026-10-24.md), receipts in
+`receipts/review-20261024/`), and the Linux cloud takeover of 2026-10-25 (receipts and their
+README in `receipts/takeover-20261025/`). Linux runtime results came from a local build with
+`gpui_platform`'s `x11`/`wayland` features enabled. That feature change is not committed and is
+pending an owner decision.
+
+## Platform acceptance matrix
+
+| Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
+| --- | --- | --- | --- | --- | --- | --- |
+| macOS arm64 | Pass at `51be7e3` (Rust 1.99). Not rebuilt after the takeover changes | Pass (earlier gallery runs) | 28 fresh pairs (review) | Mouse/keyboard samples; TextArea Pinyin | AX dumps, 9 routes; no VoiceOver | Missing |
+| Linux x86_64 | Pass: build, clippy `-D warnings`, fmt, doc (Rust 1.97 stable; build and clippy also on 1.95.0) | **Fails** with committed manifest; passes with `x11` (Xvfb) | Software-rendered X11; one capture pair | XTEST click/keys, fcitx5 Pinyin, GTK portal chooser | AT-SPI tree via pyatspi; no Orca | Missing |
+| Windows | mingw cross-build links | Missing (Wine 9.0 cannot load; no host) | Missing | Missing | Missing | Missing |
+| iOS | Library type-checks (device and simulator targets) | Blocked: no backend at pin | Missing | Missing | Missing | Missing |
+| Android | Library type-checks | Blocked: no backend upstream | Missing | Missing | Missing | Missing |
 
 ## Done
 
-- Frozen `51be7e3`: macOS `cargo build --all-targets --locked --offline`, `cargo clippy --all-targets --locked --offline -- -D warnings`, and `cargo fmt --all -- --check` passed. Only the upstream `block v0.1.6` future-incompatibility notice remained.
-- Coverage inventory: all 61 HTML filenames match [UPSTREAM-COVERAGE](UPSTREAM-COVERAGE.md). Home/layers are gallery-specific; index is the shell. Public components cover the component families.
-- A scratch extraction reproduced 65 generated files, including 32 SVG icons and four 180-field palettes.
-- Independent recapture: 28 pairs across 13 routes, light and dark, including overlays and single/date pickers. 52 of 56 images reproduced committed files exactly. Residuals and limitations are in [PARITY](PARITY.md).
-- Fixed navbar/tabbar arrow navigation to follow the focused tab, and action-sheet child corners. Fresh native input and light/dark screenshots cover these changes.
-- Fixed the AX dumper to walk the whole first window. Nine routes were dumped.
-- Real Pinyin marked-text composition and candidate commit succeeded in TextArea. This is limited evidence, not general IME qualification.
-- Removed the internal takeover brief and machine-specific paths from the current public tree. Capture tooling defaults to Cargo's normal target directory and respects `CARGO_TARGET_DIR`. Git history was preserved.
-- Package repository/homepage and contributor links point to GitHub. Remaining package metadata and onboarding work are listed below.
+- **Linux baseline:** `cargo build --all-targets`, `cargo clippy --all-targets -- -D warnings`
+  and `cargo fmt --all -- --check` (`--locked --offline`) pass on Linux x86_64 with Rust 1.97.0.
+- **Platform-neutral library:** `gpui-pre-platform` is a dev-dependency, so the library depends
+  on `gpui` only and `cargo check --lib` passes for `aarch64-apple-ios`, `aarch64-apple-ios-sim`
+  and `aarch64-linux-android`. That is a type-check, not support.
+- **Platform feasibility:** [PLATFORMS](PLATFORMS.md), source-backed against the pinned crates
+  and upstream Zed `347f171a`, with proposals for Linux features, iOS (`gpui-pre-ios 0.3.9`) and
+  an upstream Android backend.
+- **Measured MSRV:** 1.95.0. Build and clippy pass on 1.95.0. 1.93.0 and 1.94.0 fail
+  (`std::hint::cold_path` in `gpui-pre`), and 1.92 fails (`slice::as_array` in `gpui-pre-util`).
+  The dependency manifests alone declare at most 1.92 (`oo7`).
+- **Defect fixes, verified on Linux unless noted:**
+  - Modal accessibility isolation (`ModalScope`): AT-SPI shows only the dialog subtree while a
+    dialog, picker or half-screen dialog is open, and the page again when closed.
+  - SelectMenu: real-key sequence; Up/Down/Home/End stay within the options and Escape restores
+    the trigger focus.
+  - Slider: non-finite inputs no longer panic (baseline `range(NaN, 10.)` panicked). Probe
+    screenshots before and after.
+  - Picker: disabled defaults fall back to an enabled item; all-disabled columns cannot confirm
+    (baseline confirmed disabled items). Probe stdout before and after.
+  - Presence: an interrupted transition reverses from its current value (frame-sampled; baseline
+    jumped to fully open); hide easing follows CSS; panels slide by their own height; hide
+    without an opener blurs a focused child (source change, not separately driven).
+  - LinkText: each link is a separate focus stop and activates once (probe).
+  - Swipe cells: closed actions are hidden from AT-SPI. Article list items are exposed with
+    `posinset`.
+  - Text input: undo/redo and UTF-16 `maxlength` (real keys); Pinyin commit and cancel in a
+    single-line search bar and a TextArea through fcitx5/XIM.
+  - Uploader: the native chooser adds picked images; non-images become error items; cancel adds
+    nothing; a chooser failure shows a warning tip (GTK portal and no-portal runs).
+  - Picker Home/End with disabled edge rows lands on the nearest enabled row (probe; before,
+    the selection stayed put).
+  - Source-only (built and linted, not driven): Progress ignores NaN values. A loading-only
+    button keeps the "正在操作" name, and an empty-label non-loading button no longer gets it.
+    Nested lists inside `ArticleList::none()` drop their markers, as WeUI's `__list_none li`
+    rule does. Disabled cells drop the pressed highlight. The Agree shake respects reduced
+    motion. Slider values snap to the nearest step, as HTML range does.
+- **Tooling:** `scripts/weui_upstream.py` verifies and serves the upstream example, pinning the
+  weui.js 1.2.17 and WeChat SDK scripts it loads. `scripts/capture.py` has an X11 path.
+  [PARITY-TOOLING](PARITY-TOOLING.md) documents setup and procedures.
+- **OSS readiness:** README with screenshot pair, usage example and platform table;
+  `examples/minimal.rs`; CONTRIBUTING, Contributor Covenant 2.1, SECURITY, CHANGELOG
+  (0.1.0, unreleased), issue/PR templates, and a CI draft ([CI-PROPOSAL](CI-PROPOSAL.md)) that is
+  not enabled. Cargo metadata (rust-version, keywords, categories, exclusions).
+- **Rustdoc:** every public item is documented, including generated palette fields (the
+  generator emits the docs) and text-input actions. See *Documentation status* below for the
+  warning count.
 
-## Partly done
+## Behaviour by family
 
-- **Behaviour:** see the per-family review table. Static examples and empty sample callbacks do not prove working product flows.
-- **Accessibility:** roles, values and selected states are sampled; modal background controls remain exposed and picker/select option labels are missing from AX dumps. No VoiceOver session has been run.
-- **Input:** ordinary typing/selection and textarea Return/count have evidence. Single-line Pinyin composition was attempted but not confirmed; cancellation, selection replacement and composition at length limits remain untested.
-- **Rustdoc:** `cargo doc --no-deps --locked --offline` succeeds, but the missing-docs audit reports 1,019 warnings. API rustdoc and generator preservation are approved; implementation remains outstanding.
-- **Reduced motion/animations:** startup preference support exists. Live setting changes and frame-by-frame timing are unverified. Modal slide distance uses the viewport height rather than the panel height, and reverse easing differs from CSS.
-- **Visual parity:** the archive contains 264 regular pairs plus three brand/care pairs. The independent review only sampled 28 pairs. Long-page content and care mode across every family remain unverified.
+"Matches" names the exercised behaviour only. Linux rows used the uncommitted X11 build.
+
+| Family | Result | Evidence and remaining difference |
+| --- | --- | --- |
+| Action sheet | Partly matches | macOS open states and corner fix. Shares the Presence/ModalScope fixes. Dismissal matrix and timing untested. |
+| Article | Partly matches | Linux AT-SPI: headings and list items exposed. Heading level is set, but `accesskit_atspi_common 0.19.1` does not forward it. Nested markers in `list_none` fixed in source. |
+| Badge | Untested | Static examples only. |
+| Button / Agree | Partly tested | Linux click on 普通型 navigates; Tab focus ring visible. Accessible-name fix is source-only. Loading/disabled/consent matrix not driven. |
+| Dialog | Partly matches | Linux AT-SPI modal isolation. Historical macOS Tab/Escape evidence. |
+| Flex | Untested | Responsive resizing not exercised. |
+| Footer | Untested | Callbacks empty in the gallery. |
+| Form / input / textarea | Partly matches; differs | Linux real keys: typing, undo/redo, UTF-16 limit, Pinyin commit/cancel (single line and multiline). macOS TextArea Pinyin. Numeric filtering is not HTML validation. Preedit is not inline on Linux XIM. |
+| Form choices | Matches samples | macOS radio/switch samples; Linux AT-SPI switch tree. Checkbox/Agree matrix untested. |
+| Form select | Differs (adaptation) | HTML `<select>` is an overlay menu. Linux real-key bounded navigation and Escape focus restore verified. |
+| Gallery / image viewer | Matches samples | macOS close/delete. Linux: a thumbnail click opened the viewer. Pinch/zoom untested. |
+| Grid | Untested | Example callbacks are empty. |
+| Half-screen dialog | Matches samples | macOS open/Tab/Escape/drag. Linux AT-SPI isolation and interrupted-transition frames. |
+| Icons | Untested | Assets reproduce from the tarball. |
+| Information bar | Matches sample | macOS close. Link/floating variants untested. |
+| List / swiped cell | Partly matches | macOS drag. Linux AT-SPI hides closed actions. Delete callback empty upstream and in the gallery. |
+| Loading | Untested | Timing and live reduced-motion changes unverified. All spinner kinds draw the same SVG. |
+| Loadmore | Untested | Presentation only. |
+| Message / LinkText | Partly tested | Probe: two links, separate focus and single activation. Message callbacks empty. |
+| Navbar / Tabbar | Matches samples | macOS arrow selection after fix. Not re-driven on Linux. |
+| Panel | Untested | CJK punctuation and clamping differ. |
+| Picker | Partly matches; differs | Linux AT-SPI option names present; probe disabled-default and all-disabled cases. `today()` is UTC, while the example uses local time. weui.js throws on all-disabled columns; weGPUI disables Confirm. |
+| Preview | Untested | Callbacks empty. |
+| Progress | Untested | NaN fix is source-only. |
+| Search bar | Partly matches | Linux single-line Pinyin commit/cancel. macOS typing/results. |
+| Slider | Matches samples | macOS drag/keys. Probe: non-finite inputs, zero step falls back to 1. |
+| Steps | Untested | Static rendering. |
+| Toast / toptips | Partly matches | macOS success toast. Linux uploader error tip. Timing untested. |
+| Uploader | Partly matches | Linux chooser lifecycle (picked, error, cancel, no portal). Transport is application-owned, as upstream. |
+| Home / layers / index | Untested | Gallery-specific surfaces. |
 
 ## Known unresolved defects and gaps
 
-- `SelectMenu`: option arrows use global focus traversal; real-input probes showed focus reaching a background trigger. Focus initialization, containment and disabled-option traversal need a verified fix.
-- `Slider::range`: non-finite caller values can reach `f32::clamp` or invalid layout arithmetic. Inputs/range/step need validation.
-- `Picker::initial_index`: remembered/default values can select disabled items; all-disabled/empty columns need an explicit confirm contract. `today()` uses UTC, unlike the browser example's local date.
-- `Presence`: hide without an opener only blurs the root focus handle, not a focused child; interrupted transitions and exact easing/travel need review.
-- `LinkText`: multiple mouse links share a single keyboard target/first handler. Article heading levels/list-item semantics and hidden swipe actions need accessibility work.
-- Text input length counts graphemes rather than HTML UTF-16 units; numeric character filtering is not complete input validation; undo/redo is absent.
-- Uploader gallery add uses a bundled image. A native chooser and honest file/error lifecycle demonstration are outstanding; transport remains application-owned.
-- Public naming mixes `Navbar`/`Tabbar` with `SearchBar`, and terse `hd`/`bd`/`ft` helpers. Document the existing API before deciding on breaking changes.
-- **Linux:** no desktop backend feature is enabled (`font-kit` only). The pinned backend requires `wayland` or `x11`. Compilation and a displayed, interactive gallery must both be qualified.
-- **iOS/Android:** no native platform branch exists in the pinned `gpui-pre-platform` constructor. Resolve feasibility before promising support or changing dependencies.
+- **Linux windowing** needs `gpui_platform` `wayland`/`x11` (34 added lock packages). Awaiting
+  owner decision. Until then the committed gallery panics on Linux.
+- **Mobile:** iOS needs a GPUI pin move to 0.3.9 plus `gpui-pre-ios`, and a macOS/Xcode host.
+  Android needs a new backend. Neither has an AccessKit adapter.
+- **Screen readers:** no VoiceOver, Narrator/NVDA, Orca or TalkBack session has been run. Text
+  inside dialogs (title/body) is not exposed as separate nodes; the dialog is named by its title.
+- **Local date:** `picker::today()` is UTC. A local-time source needs a dependency (for example
+  `chrono`, already in `Cargo.lock` transitively) or platform calls. That needs an owner decision.
+- **Linux XIM preedit** is drawn by the input method at the window's top-left, not inline at the
+  caret. Not isolated between GPUI and fcitx5.
+- **Found during the documentation audit, unfixed** (documented in rustdoc): buttons in cell
+  mode ignore `loading`; a clickable small-appmsg panel has no visible focus ring; spinners share
+  the default id `weui-loading` unless given an id; all spinner kinds draw the same SVG;
+  `ArticleList::new(ListStyle::Inside)` draws no markers while `inside()` numbers inline; showing
+  a toast moves focus into an empty layer that traps Tab and ignores Escape (upstream does not
+  move focus); hiding Toptips during fade-in jumps to full opacity; Android-style action sheets
+  do not draw their title; `ListTips` items have no `List` parent; radio rows reuse ids across
+  groups that share a parent; `FormCell::label` does not name its input for assistive technology
+  (gallery inputs expose only the placeholder); `VcodeButton::start` restarts while counting.
+- Public naming still mixes `Navbar`/`Tabbar` with `SearchBar` and terse `hd`/`bd`/`ft` helpers.
+  The existing API is documented. Breaking renames await a versioning policy.
+- The input length counter counts UTF-16 units. Numeric `InputKind`s filter characters but do
+  not validate.
+
+## Documentation status
+
+`RUSTDOCFLAGS='-W missing-docs' cargo doc --no-deps --locked --offline` on Linux reports **0
+warnings**, including broken intra-doc links, and also passes with `-D warnings`. The baseline
+review counted 1,019 missing-docs warnings. Palette field docs are emitted by
+`scripts/extract_weui.py`, so regeneration preserves them. Doc examples are marked `ignore` and
+point to `examples/minimal.rs`, which `cargo build --all-targets` compiles. No doctests were
+added.
 
 ## Not done / missing receipts
 
-- Native Windows/Linux/iOS/Android builds and runtime evidence; mobile safe areas, touch, software keyboards, rotation and lifecycle.
-- Hosted CNB CI result; GitHub Actions approval and configuration. No new workflow has been enabled.
-- VoiceOver and other screen-reader sessions; comprehensive single-line and multiline IME coverage.
-- Reproducible upstream download/serve tooling, contributor parity guide, README usage example, contribution/security/conduct/changelog documents and templates.
-- Measured MSRV and package-content review. Rust 1.99.0 is verified; the resolved graph declares a 1.89 lower bound, which is not yet a measured project MSRV.
-- Complete public API docs; a test suite requires owner approval.
-- Release policy, crates.io name/publication, screenshot storage policy, and localisation/RTL scope. No release or publication occurred.
-- GitCode mirror update requires owner credentials; do not infer its state from other mirrors.
+- macOS rebuild, gallery run and AX re-check of the takeover commits. The environment had no Apple
+  host.
+- Native Windows build/run; iOS/Android anything beyond type-checks; physical devices.
+- Hosted CI of any kind (CNB result not recorded; GitHub Actions not approved).
+- Packaging (app bundles, installers) on any platform. `cargo package --list` reviewed: 172 files,
+  399 KiB compressed. Nothing published. The README's screenshot pair uses repository-relative
+  paths that are excluded from the package, so it renders only where the repository is reachable.
+- Complete visual recapture of all 264 pairs. Care mode beyond one route. Long pages beyond 812 pt.
 
-[Sources](SOURCES.md) · [Coverage](UPSTREAM-COVERAGE.md) · [Visual evidence](PARITY.md) · [Independent review](REVIEW-2026-10-24.md)
+## Owner decisions pending
+
+1. Enable `wayland`/`x11` for the gallery (recommended now).
+2. Mobile backend and dependency path: GPUI 0.3.9 plus `gpui-pre-ios`; an upstream Android backend.
+3. Enabling the GitHub Actions workflow in [CI-PROPOSAL](CI-PROPOSAL.md).
+4. Allowing a test suite.
+5. crates.io name, publication timing, versioning and the GPUI upgrade policy.
+6. Keeping about 34 MB of parity screenshots in Git (they are excluded from the package).
+7. Localisation/RTL scope; the WeUI defaults are Chinese strings.
+8. Private conduct and security contacts (placeholders explain the interim process).
+9. A local-time source for `picker::today()`.
+10. Scope of the wider weui.js imperative API. Only behaviour the examples invoke is ported.
+
+[Sources](SOURCES.md) · [Coverage](UPSTREAM-COVERAGE.md) · [Visual evidence](PARITY.md) ·
+[Review](REVIEW-2026-10-24.md) · [Platforms](PLATFORMS.md) · [Parity tooling](PARITY-TOOLING.md)

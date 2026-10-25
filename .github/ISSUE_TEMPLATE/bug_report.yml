@@ -1,0 +1,45 @@
+name: Bug report
+description: A component behaves incorrectly, crashes, or is inaccessible.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: input
+    id: component
+    attributes:
+      label: Component or gallery route
+      placeholder: "e.g. picker, form_select:select1"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Input sequence (mouse, keys, touch, IME) or a minimal code snippet.
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Platform
+      description: OS and version, display scale, input method or screen reader if relevant.
+      placeholder: "e.g. macOS 15.4 arm64 @2x, VoiceOver"
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: weGPUI commit and Rust version
+      placeholder: "e.g. 1ea95a5, rustc 1.97.0"
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots, logs or accessibility output
+      description: Attach images or paste logs. Panics should include the backtrace.
