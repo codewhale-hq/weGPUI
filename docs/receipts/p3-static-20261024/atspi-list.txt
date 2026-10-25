@@ -1,0 +1,19 @@
+## initial
+apps 2
+application 'xdg-desktop-portal-gtk' [] DISABLED
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['focusable', 'focused', 'showing']
+    panel '' ['showing']
+      list item '标题文字' ['showing']
+      button '删除' ['focusable', 'showing']
+      list item '标题文字 说明文字' ['focusable', 'showing']
+        list item '标题文字' ['showing']
+      list item '标题文字' ['showing']
+      list item '标题文字' ['showing']
+      button 'cell standard' ['focusable', 'showing']
+      button 'cell standard' ['focusable', 'showing']
+      button 'cell standard 说明文字' ['focusable', 'showing']
+      button 'cell standard 说明文字' ['focusable', 'showing']
+      button 'cell standard 说明文字' ['focusable', 'showing']
+      button 'cell standard 说明文字' ['focusable', 'showing']
+      link 'WeUI 首页' ['focusable', 'showing']

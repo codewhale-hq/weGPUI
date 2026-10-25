@@ -1,0 +1,15 @@
+## initial
+apps 2
+application 'xdg-desktop-portal-gtk' [] DISABLED
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['focusable', 'focused', 'showing']
+    panel '' ['showing']
+      progress bar '上传进度1' ['showing']
+      button '取消' ['focusable', 'showing']
+      progress bar '上传进度2' ['showing']
+      button '取消' ['focusable', 'showing']
+      progress bar '上传进度3' ['showing']
+      button '取消' ['focusable', 'showing']
+      status bar '' ['showing']
+      button '上传' ['focusable', 'showing']
+      link 'WeUI 首页' ['focusable', 'showing']

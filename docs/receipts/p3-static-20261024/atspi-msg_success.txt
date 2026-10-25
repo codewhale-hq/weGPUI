@@ -1,0 +1,15 @@
+## initial
+apps 2
+application 'xdg-desktop-portal-gtk' [] DISABLED
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['focusable', 'focused', 'showing']
+    panel '' ['showing']
+      image '成功' ['showing']
+      paragraph '内容详情，可根据实际需要安排，如果换行则不超过规定长度，居中展现文字链接' ['showing']
+        label '内容详情，可根据实际需要安排，如果换行则不超过规定长度，居中展现文字链接' ['showing']
+        link '文字链接' ['focusable', 'showing']
+      button '推荐操作' ['focusable', 'showing']
+      paragraph '提示详情，可根据实际需要安排，如果换行则不超过规定长度，居中展现文字链接' ['showing']
+        label '提示详情，可根据实际需要安排，如果换行则不超过规定长度，居中展现文字链接' ['showing']
+        link '文字链接' ['focusable', 'showing']
+      link '底部链接文本' ['focusable', 'showing']

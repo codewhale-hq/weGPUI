@@ -1,0 +1,12 @@
+## initial
+apps 2
+application 'xdg-desktop-portal-gtk' [] DISABLED
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['focusable', 'focused', 'showing']
+    panel '' ['showing']
+      link '单行列表 详细信息，有更新' ['focusable', 'showing']
+      list item '联系人名称，8个新通知' ['focusable', 'showing']
+      link '单行列表，8个新通知' ['focusable', 'showing']
+      link '单行列表 详细信息，8个新通知' ['focusable', 'showing']
+      link '单行列表，New' ['focusable', 'showing']
+      link 'WeUI 首页' ['focusable', 'showing']

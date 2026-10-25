@@ -1,0 +1,21 @@
+## initial
+apps 2
+application 'xdg-desktop-portal-gtk' [] DISABLED
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['focusable', 'focused', 'showing']
+    panel '' ['showing']
+      panel '图文组合列表' ['showing']
+        link '标题一，由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。' ['focusable', 'showing']
+        link '标题二，由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。' ['focusable', 'showing']
+        link '查看更多' ['focusable', 'showing']
+      panel '文字组合列表' ['showing']
+        list item '标题一，由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。' ['showing']
+        list item '标题二，由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。' ['showing']
+        link '查看更多' ['focusable', 'showing']
+      panel '小图文组合列表' ['showing']
+        list item '' ['showing']
+          button '文字标题' ['focusable', 'showing']
+          button '文字标题' ['focusable', 'showing']
+      panel '文字列表附来源' ['showing']
+        link '标题一，由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。' ['showing']
+      link 'WeUI 首页' ['focusable', 'showing']

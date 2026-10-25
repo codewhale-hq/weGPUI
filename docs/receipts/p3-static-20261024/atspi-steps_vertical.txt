@@ -1,0 +1,27 @@
+## initial
+apps 2
+application 'xdg-desktop-portal-gtk' [] DISABLED
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['focusable', 'focused', 'showing']
+    panel '' ['showing']
+      list '步骤条' ['showing']
+        list item '第1步，共4步，标题，描述内容详情' ['showing']
+        list item '第2步，共4步，标题，描述内容详情' ['showing']
+        list item '第3步，共4步，标题，描述内容详情' ['showing']
+        list item '第4步，共4步，标题，描述内容详情' ['showing']
+      list '步骤条' ['showing']
+        list item '第1步，共4步，标题，描述内容详情，已完成' ['showing']
+        list item '第2步，共4步，标题，描述内容详情' ['showing']
+        list item '第3步，共4步，标题，描述内容详情' ['showing']
+        list item '第4步，共4步，标题，描述内容详情' ['showing']
+      list '步骤条' ['showing']
+        list item '第1步，共4步，标题，描述内容详情，已完成' ['showing']
+        list item '第2步，共4步，标题，描述内容详情，已完成' ['showing']
+        list item '第3步，共4步，标题，描述内容详情' ['showing']
+        list item '第4步，共4步，标题，描述内容详情' ['showing']
+      list '步骤条' ['showing']
+        list item '第1步，共4步，标题，描述内容详情，已完成' ['showing']
+        list item '第2步，共4步，标题，描述内容详情，已完成' ['showing']
+        list item '第3步，共4步，标题，描述内容详情，已完成' ['showing']
+        list item '第4步，共4步，标题，描述内容详情，已完成' ['showing']
+      link 'WeUI 首页' ['focusable', 'showing']

@@ -1,0 +1,20 @@
+## initial
+apps 2
+application 'xdg-desktop-portal-gtk' [] DISABLED
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['focusable', 'focused', 'showing']
+    panel '' ['showing']
+      label '' ['showing']
+      list '' ['showing']
+        list item '商品 电动打蛋机' ['showing'] ['posinset:1']
+        list item '标题标题 名字名字名字' ['showing'] ['posinset:2']
+        list item '标题标题 很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字' ['showing'] ['posinset:3']
+      button '操作' ['focusable', 'showing']
+      label '' ['showing']
+      list '' ['showing']
+        list item '商品 电动打蛋机' ['showing'] ['posinset:1']
+        list item '标题标题 名字名字名字' ['showing'] ['posinset:2']
+        list item '标题标题 很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字' ['showing'] ['posinset:3']
+      button '辅助操作' ['focusable', 'showing']
+      button '操作' ['focusable', 'showing']
+      link 'WeUI 首页' ['focusable', 'showing']

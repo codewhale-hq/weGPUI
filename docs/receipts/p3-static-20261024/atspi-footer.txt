@@ -1,0 +1,11 @@
+## initial
+apps 2
+application 'xdg-desktop-portal-gtk' [] DISABLED
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['focusable', 'focused', 'showing']
+    panel '' ['showing']
+      link '底部链接' ['focusable', 'showing']
+      link '底部链接' ['focusable', 'showing']
+      link '底部链接' ['focusable', 'showing']
+      link 'WeUI首页' ['focusable', 'showing']
+      link '备案号：粤B2-20090059' ['showing']
