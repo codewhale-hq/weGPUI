@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::*;
 use wegpui::components::loadmore::LoadMore;
@@ -14,9 +15,9 @@ impl Render for LoadMorePage {
     fn render(&mut self, _: &mut Window, _: &mut Context<Self>) -> impl IntoElement {
         PageFrame::new(self.route)
             .title("Loadmore")
-            .desc("加载更多")
-            .child(LoadMore::loading("正在加载").margin(20., 0.))
-            .child(LoadMore::line("暂无数据").margin(32., 0.))
-            .child(LoadMore::dot("已无更多数据").margin(32., 20.))
+            .desc(tr("加载更多"))
+            .child(LoadMore::loading(tr("正在加载")).margin(20., 0.))
+            .child(LoadMore::line(tr("暂无数据")).margin(32., 0.))
+            .child(LoadMore::dot(tr("已无更多数据")).margin(32., 20.))
     }
 }

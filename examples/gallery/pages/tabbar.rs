@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use wegpui::components::{
@@ -45,25 +46,25 @@ impl Render for TabbarPage {
                 .flex()
                 .flex_col()
                 .child(
-                    tab_panel(("panel", selected), TABS[selected])
+                    tab_panel(("panel", selected), tr(TABS[selected]))
                         .p(px(32.))
                         .child(PANELS[selected]),
                 )
                 .child(
                     Tabbar::new("tabbar")
-                        .label("选项卡标题")
+                        .label(tr("选项卡标题"))
                         .item(
-                            TabbarItem::new(TABS[0], icon())
+                            TabbarItem::new(tr(TABS[0]), icon())
                                 .badge(Badge::new("8"), -2., -13.)
                                 .description("8"),
                         )
-                        .item(TabbarItem::new(TABS[1], icon()))
+                        .item(TabbarItem::new(tr(TABS[1]), icon()))
                         .item(
-                            TabbarItem::new(TABS[2], icon())
+                            TabbarItem::new(tr(TABS[2]), icon())
                                 .badge(Badge::dot(), 0., -6.)
                                 .description("new"),
                         )
-                        .item(TabbarItem::new(TABS[3], icon()))
+                        .item(TabbarItem::new(tr(TABS[3]), icon()))
                         .selected(selected)
                         .on_select(move |i, _, cx| {
                             entity

@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use wegpui::{
@@ -31,7 +32,7 @@ impl Render for FlexPage {
         let row = |n: usize| flex().children((0..n).map(|_| flex_item().child(placeholder())));
         PageFrame::new(self.route)
             .title("Flex")
-            .desc("Flex布局")
+            .desc(tr("Flex布局"))
             .spacing()
             .child(row(1))
             .child(row(2))

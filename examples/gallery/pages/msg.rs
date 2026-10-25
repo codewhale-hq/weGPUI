@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{
     chrome::{self, PageFrame},
     pages::Args,
@@ -25,18 +26,18 @@ pub fn build(route: &'static str, _: &Args, _: &mut Window, cx: &mut App) -> Any
 
 fn desc_link() -> LinkText {
     LinkText::new("msg-desc")
-        .text(DESC)
-        .link("文字链接", |_, _| {})
+        .text(tr(DESC))
+        .link(tr("文字链接"), |_, _| {})
 }
 
 fn tips_link() -> LinkText {
     LinkText::new("msg-tips")
-        .text(TIPS)
-        .link("文字链接", |_, _| {})
+        .text(tr(TIPS))
+        .link(tr("文字链接"), |_, _| {})
 }
 
 fn primary() -> Button {
-    Button::new("推荐操作")
+    Button::new(tr("推荐操作"))
         .id("msg-primary")
         .primary()
         .on_click(|_, window, cx| crate::back(window, cx))
@@ -44,7 +45,7 @@ fn primary() -> Button {
 
 fn footer() -> Footer {
     Footer::new()
-        .link(FooterLink::new("msg-footer-link", "底部链接文本").on_click(|_, _, _| {}))
+        .link(FooterLink::new("msg-footer-link", tr("底部链接文本")).on_click(|_, _, _| {}))
         .text("Copyright © 2008-2016 weui.io")
 }
 
@@ -74,55 +75,55 @@ impl Render for MsgPage {
         let msg = match self.route {
             "msg_success" => Msg::new("msg")
                 .icon(MsgIcon::Success)
-                .title("操作成功")
+                .title(tr("操作成功"))
                 .desc(desc_link())
                 .opr(primary())
                 .tips(tips_link())
                 .extra(footer()),
             "msg_warn" => Msg::new("msg")
                 .icon(MsgIcon::Warn)
-                .title("操作失败")
+                .title(tr("操作失败"))
                 .desc(desc_link())
                 .tips(tips_link())
                 .opr(
-                    Button::new("辅助操作")
+                    Button::new(tr("辅助操作"))
                         .id("msg-default")
                         .on_click(|_, window, cx| crate::back(window, cx)),
                 )
                 .extra(footer()),
             "msg_text" => Msg::new("msg")
-                .title("操作成功")
+                .title(tr("操作成功"))
                 .desc(desc_link())
                 .opr(primary()),
             "msg_text_primary" => Msg::new("msg")
-                .desc(DESC)
-                .desc_primary(DESC)
+                .desc(tr(DESC))
+                .desc_primary(tr(DESC))
                 .opr(primary())
                 .tips(tips_link()),
             "msg_custom_area_preview" => Msg::new("msg")
                 .icon(MsgIcon::Success)
-                .title("操作成功")
+                .title(tr("操作成功"))
                 .desc(desc_link())
                 .custom_area(
                     FormPreviewList::new()
-                        .item("姓名", "张三")
-                        .item("微信号", "zhangsan"),
+                        .item(tr("姓名"), tr("张三"))
+                        .item(tr("微信号"), "zhangsan"),
                 )
                 .opr(primary()),
             "msg_custom_area_tips" => Msg::new("msg")
                 .icon(MsgIcon::Success)
-                .title("操作成功")
+                .title(tr("操作成功"))
                 .desc(desc_link())
                 .custom_area(
                     ListTips::new()
-                        .item("列表提示项")
-                        .item("列表提示项")
-                        .item("列表提示项"),
+                        .item(tr("列表提示项"))
+                        .item(tr("列表提示项"))
+                        .item(tr("列表提示项")),
                 )
                 .opr(primary()),
             "msg_custom_area_cell" => Msg::new("msg")
                 .icon(MsgIcon::Success)
-                .title("操作成功")
+                .title(tr("操作成功"))
                 .desc(desc_link())
                 .custom_area(custom_cells())
                 .opr(primary()),
@@ -142,17 +143,17 @@ impl Render for MsgPage {
 
 fn index(route: &'static str) -> PageFrame {
     let links: [(&str, &'static str); 7] = [
-        ("成功提示页", "msg_success"),
-        ("失败提示页", "msg_warn"),
-        ("无图标提示页", "msg_text"),
-        ("无图标提示页", "msg_text_primary"),
-        ("key-value场景", "msg_custom_area_preview"),
-        ("描述列表场景", "msg_custom_area_tips"),
-        ("跳转列表场景", "msg_custom_area_cell"),
+        (tr("成功提示页"), "msg_success"),
+        (tr("失败提示页"), "msg_warn"),
+        (tr("无图标提示页"), "msg_text"),
+        (tr("无图标提示页"), "msg_text_primary"),
+        (tr("key-value场景"), "msg_custom_area_preview"),
+        (tr("描述列表场景"), "msg_custom_area_tips"),
+        (tr("跳转列表场景"), "msg_custom_area_cell"),
     ];
     PageFrame::new(route)
         .title("Msg")
-        .desc("提示页")
+        .desc(tr("提示页"))
         .spacing()
         .child(
             div()

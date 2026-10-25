@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use wegpui::components::{
@@ -34,12 +35,12 @@ impl Render for GalleryPage {
         let page = cx.entity().downgrade();
         PageFrame::new(self.route)
             .title("Gallery")
-            .desc("画廊，可实现上传图片的展示或幻灯片播放")
+            .desc(tr("画廊，可实现上传图片的展示或幻灯片播放"))
             .no_scroll()
             .child(
                 Gallery::new("gallery", &self.viewer)
                     .src("pic_article.png")
-                    .label("图片详情")
+                    .label(tr("图片详情"))
                     .on_delete(cx.listener(|this, _, window, cx| {
                         this.viewer.hide(window, cx);
                         cx.notify();

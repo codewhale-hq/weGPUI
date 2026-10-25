@@ -550,7 +550,19 @@ impl TextInput {
         self.cursor_visible = true;
     }
 
-    fn left(&mut self, _: &Left, _: &mut Window, cx: &mut Context<Self>) {
+    fn rtl_paragraph(&self, cx: &App) -> bool {
+        for c in self.content.chars() {
+            if crate::bidi::is_rtl_char(c) {
+                return true;
+            }
+            if c.is_alphabetic() {
+                return false;
+            }
+        }
+        crate::i18n::direction(cx).is_rtl()
+    }
+
+    fn move_backward(&mut self, cx: &mut Context<Self>) {
         if self.selected_range.is_empty() {
             self.move_to(self.previous_boundary(self.cursor_offset()), cx);
         } else {
@@ -558,11 +570,27 @@ impl TextInput {
         }
     }
 
-    fn right(&mut self, _: &Right, _: &mut Window, cx: &mut Context<Self>) {
+    fn move_forward(&mut self, cx: &mut Context<Self>) {
         if self.selected_range.is_empty() {
             self.move_to(self.next_boundary(self.selected_range.end), cx);
         } else {
             self.move_to(self.selected_range.end, cx)
+        }
+    }
+
+    fn left(&mut self, _: &Left, _: &mut Window, cx: &mut Context<Self>) {
+        if self.rtl_paragraph(cx) {
+            self.move_forward(cx)
+        } else {
+            self.move_backward(cx)
+        }
+    }
+
+    fn right(&mut self, _: &Right, _: &mut Window, cx: &mut Context<Self>) {
+        if self.rtl_paragraph(cx) {
+            self.move_backward(cx)
+        } else {
+            self.move_forward(cx)
         }
     }
 
@@ -583,27 +611,57 @@ impl TextInput {
     }
 
     fn select_left(&mut self, _: &SelectLeft, _: &mut Window, cx: &mut Context<Self>) {
-        self.select_to(self.previous_boundary(self.cursor_offset()), cx);
+        let target = if self.rtl_paragraph(cx) {
+            self.next_boundary(self.cursor_offset())
+        } else {
+            self.previous_boundary(self.cursor_offset())
+        };
+        self.select_to(target, cx);
     }
 
     fn select_right(&mut self, _: &SelectRight, _: &mut Window, cx: &mut Context<Self>) {
-        self.select_to(self.next_boundary(self.cursor_offset()), cx);
+        let target = if self.rtl_paragraph(cx) {
+            self.previous_boundary(self.cursor_offset())
+        } else {
+            self.next_boundary(self.cursor_offset())
+        };
+        self.select_to(target, cx);
     }
 
     fn word_left(&mut self, _: &WordLeft, _: &mut Window, cx: &mut Context<Self>) {
-        self.move_to(self.previous_word(self.cursor_offset()), cx);
+        let target = if self.rtl_paragraph(cx) {
+            self.next_word(self.cursor_offset())
+        } else {
+            self.previous_word(self.cursor_offset())
+        };
+        self.move_to(target, cx);
     }
 
     fn word_right(&mut self, _: &WordRight, _: &mut Window, cx: &mut Context<Self>) {
-        self.move_to(self.next_word(self.cursor_offset()), cx);
+        let target = if self.rtl_paragraph(cx) {
+            self.previous_word(self.cursor_offset())
+        } else {
+            self.next_word(self.cursor_offset())
+        };
+        self.move_to(target, cx);
     }
 
     fn select_word_left(&mut self, _: &SelectWordLeft, _: &mut Window, cx: &mut Context<Self>) {
-        self.select_to(self.previous_word(self.cursor_offset()), cx);
+        let target = if self.rtl_paragraph(cx) {
+            self.next_word(self.cursor_offset())
+        } else {
+            self.previous_word(self.cursor_offset())
+        };
+        self.select_to(target, cx);
     }
 
     fn select_word_right(&mut self, _: &SelectWordRight, _: &mut Window, cx: &mut Context<Self>) {
-        self.select_to(self.next_word(self.cursor_offset()), cx);
+        let target = if self.rtl_paragraph(cx) {
+            self.previous_word(self.cursor_offset())
+        } else {
+            self.next_word(self.cursor_offset())
+        };
+        self.select_to(target, cx);
     }
 
     fn select_all(&mut self, _: &SelectAll, _: &mut Window, cx: &mut Context<Self>) {
@@ -1354,9 +1412,17 @@ struct TextLayout {
     line_height: Pixels,
     total_height: Pixels,
     bounds: Bounds<Pixels>,
+    rtl: bool,
 }
 
 impl TextLayout {
+    fn shift(&self, line: usize) -> Pixels {
+        if !self.rtl {
+            return px(0.);
+        }
+        (self.bounds.size.width - self.lines[line].unwrapped_layout.width).max(px(0.))
+    }
+
     fn locate(&self, index: usize) -> Option<(usize, usize)> {
         if self.lines.is_empty() {
             return None;
@@ -1386,14 +1452,29 @@ impl TextLayout {
         starts[1..].iter().filter(|start| **start < local).count()
     }
 
+    fn bidi_clusters(line: &WrappedLine) -> Option<Vec<crate::bidi::Cluster>> {
+        if !line.wrap_boundaries().is_empty() {
+            return None;
+        }
+        let clusters = crate::bidi::clusters(&line.unwrapped_layout, &line.text);
+        crate::bidi::has_rtl(&clusters).then_some(clusters)
+    }
+
     fn position(&self, index: usize) -> Point<Pixels> {
         let Some((line, local)) = self.locate(index) else {
             return Point::default();
         };
-        self.lines[line]
+        let wrapped = &self.lines[line];
+        let shift = self.shift(line);
+        if let Some(clusters) = Self::bidi_clusters(wrapped)
+            && let Some(x) = crate::bidi::caret_x(&clusters, &wrapped.text, local)
+        {
+            return point(px(x) + shift, self.tops[line]);
+        }
+        wrapped
             .position_for_index(local, self.line_height)
             .unwrap_or_default()
-            + point(px(0.), self.tops[line])
+            + point(shift, self.tops[line])
     }
 
     fn index_at(&self, position: Point<Pixels>) -> usize {
@@ -1405,13 +1486,22 @@ impl TextLayout {
             .partition_point(|top| *top <= position.y)
             .saturating_sub(1);
         let wrapped = &self.lines[line];
+        if let Some(clusters) = Self::bidi_clusters(wrapped) {
+            return self.starts[line]
+                + crate::bidi::index_for_x(
+                    &clusters,
+                    &wrapped.text,
+                    f32::from(position.x - self.shift(line)),
+                );
+        }
         let rows = wrapped.wrap_boundaries().len() + 1;
         let y = (position.y - self.tops[line])
             .max(px(0.))
             .min(self.line_height * rows as f32 - px(0.5));
-        let local = match wrapped
-            .closest_index_for_position(point(position.x.max(px(0.)), y), self.line_height)
-        {
+        let local = match wrapped.closest_index_for_position(
+            point((position.x - self.shift(line)).max(px(0.)), y),
+            self.line_height,
+        ) {
             Ok(index) | Err(index) => index,
         };
         self.starts[line] + local
@@ -1533,11 +1623,32 @@ impl TextLayout {
             }
             let starts = Self::row_starts(line);
             let layout = &line.unwrapped_layout;
+            let shift = self.shift(i);
             for (row, row_start) in starts.iter().enumerate() {
                 let row_end = starts.get(row + 1).copied().unwrap_or(len);
                 let lo = range.start.max(base + row_start);
                 let hi = range.end.min(base + row_end);
                 if lo > hi {
+                    continue;
+                }
+                if starts.len() == 1
+                    && let Some(clusters) = Self::bidi_clusters(line)
+                {
+                    let extra = if range.end > base + len {
+                        newline_width
+                    } else {
+                        px(0.)
+                    };
+                    let y = self.tops[i] + self.line_height * row as f32;
+                    let spans = crate::bidi::selection_spans(&clusters, lo - base, hi - base);
+                    let last = spans.len().saturating_sub(1);
+                    for (k, (x0, x1)) in spans.into_iter().enumerate() {
+                        let tail = if k == last { extra } else { px(0.) };
+                        rects.push(Bounds::from_corners(
+                            point(px(x0) + shift, y),
+                            point(px(x1) + tail + shift, y + self.line_height),
+                        ));
+                    }
                     continue;
                 }
                 let origin_x = layout.x_for_index(*row_start);
@@ -1553,8 +1664,8 @@ impl TextLayout {
                 }
                 let y = self.tops[i] + self.line_height * row as f32;
                 rects.push(Bounds::from_corners(
-                    point(x0, y),
-                    point(x1 + extra, y + self.line_height),
+                    point(x0 + shift, y),
+                    point(x1 + extra + shift, y + self.line_height),
                 ));
             }
         }
@@ -1702,10 +1813,14 @@ impl Element for TextElement {
             line_height,
             total_height: y,
             bounds,
+            rtl: crate::i18n::direction(cx).is_rtl() && !input.multiline,
         };
 
         let cursor_display = input.to_display(input.cursor_offset());
-        let cursor_pos = layout.position(cursor_display);
+        let mut cursor_pos = layout.position(cursor_display);
+        if empty && layout.rtl {
+            cursor_pos.x = bounds.size.width - px(1.);
+        }
         let mut scroll = input.scroll;
         if input.multiline {
             scroll.x = px(0.);
@@ -1820,9 +1935,9 @@ impl Element for TextElement {
             for selection in selections {
                 window.paint_quad(selection);
             }
-            for (line, top) in layout.lines.iter().zip(&layout.tops) {
+            for (i, (line, top)) in layout.lines.iter().zip(&layout.tops).enumerate() {
                 line.paint(
-                    origin + point(px(0.), *top),
+                    origin + point(layout.shift(i), *top),
                     layout.line_height,
                     TextAlign::Left,
                     None,

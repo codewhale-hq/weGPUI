@@ -31,6 +31,9 @@
 //!   entities. Overlay visibility lives in a caller-owned [`components::Presence`].
 //! - Wrap the window's root element in [`accessibility::ModalScope`] so content behind open
 //!   modals is hidden from assistive technology.
+//! - Every default label, accessible name and message the library produces comes from the
+//!   active [`I18n`] catalog ([`i18n`]); English is the default and any language can be
+//!   supplied. Text you pass to builders is used as given.
 //!
 //! See `docs/STATUS.md` for verified behaviour and known gaps, and `docs/PLATFORMS.md` for
 //! platform support. Desktop builds are exercised on macOS and Linux; mobile platforms are not
@@ -38,23 +41,29 @@
 
 pub mod accessibility;
 pub mod assets;
+mod bidi;
 pub mod components;
+pub mod i18n;
 pub mod input;
+pub mod logical;
 pub mod motion;
 pub mod scrolling;
 pub mod theme;
 
 pub use assets::Assets;
+pub use i18n::{Direction, I18n, Locale, Messages};
 pub use theme::{Palette, Theme, ThemeMode};
 
 /// Initialises weGPUI for an application.
 ///
-/// Installs the light [`Theme`] and then follows the system appearance, registers the
+/// Installs the light [`Theme`] and then follows the system appearance, installs English as the
+/// [`I18n`] language unless one is already set, registers the
 /// [`input`] key bindings, and applies the system reduced-motion preference where weGPUI can read
 /// it ([`motion::system_reduce_motion`]). Call it once, inside `Application::run`, before opening
 /// windows that render weGPUI components.
 pub fn init(cx: &mut gpui::App) {
     Theme::init(cx);
+    I18n::init(cx);
     input::init(cx);
     motion::sync_reduce_motion(cx);
 }

@@ -6,7 +6,7 @@
 //! applied, and links keep a text-sized hit area (no 44px `weui-wa-hotarea`).
 
 use super::ClickHandler;
-use crate::Theme;
+use crate::{Theme, logical::Logical};
 use gpui::{prelude::*, *};
 
 /// A footer link (`weui-footer__link`): 14px text in the theme link colour, with a hairline
@@ -48,6 +48,7 @@ impl RenderOnce for FooterLink {
         crate::scrolling::FocusTarget::new({
             let t = Theme::get(cx);
             let (link, line) = (t.link, t.fg_3);
+            let dir = crate::i18n::direction(cx);
             div()
                 .relative()
                 .mx(px(8.))
@@ -55,7 +56,7 @@ impl RenderOnce for FooterLink {
                     el.child(
                         div()
                             .absolute()
-                            .left(px(-8.))
+                            .inset_s(dir, px(-8.))
                             .top(px(14. * 0.36))
                             .bottom(px(14. * 0.36))
                             .w(px(0.5))
@@ -173,6 +174,7 @@ pub fn footer_color(cx: &App) -> Hsla {
 impl RenderOnce for Footer {
     fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
         let color = footer_color(cx);
+        let dir = crate::i18n::direction(cx);
         let fixed = self.fixed_bottom;
         let footer = div()
             .id(self.id)
@@ -188,7 +190,7 @@ impl RenderOnce for Footer {
                 el.w(window.viewport_size().width).py(px(16.)).occlude()
             })
             .when(!self.links.is_empty(), |el| {
-                el.child(div().flex().justify_center().children(self.links))
+                el.child(div().flex().row(dir).justify_center().children(self.links))
             })
             .children(
                 self.texts

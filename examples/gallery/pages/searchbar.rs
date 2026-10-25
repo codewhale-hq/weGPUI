@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{
     chrome::{PageFrame, go},
     pages::Args,
@@ -41,8 +42,8 @@ impl SearchbarPage {
             cx.new(|cx| {
                 let bar = SearchBar::new(cx).variant(variant);
                 match variant {
-                    SearchBarVariant::Filled => bar.words("微信"),
-                    SearchBarVariant::FilledGrey => bar.words("微信").clear_on_cancel(false),
+                    SearchBarVariant::Filled => bar.words(tr("微信")),
+                    SearchBarVariant::FilledGrey => bar.words(tr("微信")).clear_on_cancel(false),
                     _ => bar,
                 }
             })
@@ -73,11 +74,11 @@ impl Render for SearchbarPage {
     fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         let t = Theme::get(cx).clone();
         let desc = match self.route {
-            "searchbar_filled" => "搜索栏 Filled",
-            "searchbar_grey" => "搜索栏 Grey",
-            "searchbar_outlined" => "搜索栏 Outlined",
-            "searchbar_homepage" => "搜索栏 Homepage",
-            _ => "搜索栏",
+            "searchbar_filled" => tr("搜索栏 Filled"),
+            "searchbar_grey" => tr("搜索栏 Grey"),
+            "searchbar_outlined" => tr("搜索栏 Outlined"),
+            "searchbar_homepage" => tr("搜索栏 Homepage"),
+            _ => tr("搜索栏"),
         };
         let frame = PageFrame::new(self.route).title("SearchBar").desc(desc);
         let Some(bar) = self.bar.clone() else {
@@ -116,7 +117,8 @@ impl Render for SearchbarPage {
         };
         frame.child(bar).when(show_results, |el| {
             el.child(
-                SearchResults::new("searchResult").items(std::iter::repeat_n("实时搜索文本", 4)),
+                SearchResults::new("searchResult")
+                    .items(std::iter::repeat_n(tr("实时搜索文本"), 4)),
             )
         })
     }

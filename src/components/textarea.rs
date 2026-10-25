@@ -8,6 +8,7 @@
 use crate::{
     Theme,
     input::{InputEvent, TextInput},
+    logical::Logical,
 };
 use gpui::{prelude::*, *};
 
@@ -193,7 +194,7 @@ impl Render for TextArea {
                             .role(Role::Status)
                             .aria_label(SharedString::from(counter.clone()))
                             .w_full()
-                            .text_right()
+                            .text_end(crate::i18n::direction(cx))
                             .text_size(px(14.))
                             .text_color(counter_color)
                             .child(counter),

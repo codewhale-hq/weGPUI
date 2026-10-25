@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{
     chrome::{PageFrame, themed_image},
     pages::Args,
@@ -45,6 +46,7 @@ const CATEGORIES: &[Category] = &[
             ("preview", "Preview"),
             ("progress", "Progress"),
             ("steps", "Steps"),
+            ("languages", "Languages"),
         ],
     ),
     (
@@ -131,7 +133,7 @@ impl Render for Home {
                     .text_size(px(14.))
                     .line_height(relative(1.6))
                     .text_color(t.fg_1)
-                    .child("WeUI 是一套同微信原生视觉体验一致的基础样式库，由微信官方设计团队为微信内网页和微信小程序量身设计，令用户的使用感知更加统一。"),
+                    .child(tr("WeUI 是一套同微信原生视觉体验一致的基础样式库，由微信官方设计团队为微信内网页和微信小程序量身设计，令用户的使用感知更加统一。")),
             );
         let brand = t.brand;
         let category = |i: usize,
@@ -166,7 +168,7 @@ impl Render for Home {
                 .rounded(px(2.))
                 .overflow_hidden()
                 .child(
-                    category(i, label, icon, expanded, cx)
+                    category(i, tr(label), icon, expanded, cx)
                         .on_click(cx.listener(move |this, _, _, cx| this.toggle(i, cx)))
                         .reveal_focus(),
                 );
@@ -210,7 +212,7 @@ impl Render for Home {
                     div()
                         .id("layers")
                         .role(Role::MenuItem)
-                        .aria_label("层级规范")
+                        .aria_label(tr("层级规范"))
                         .focusable()
                         .tab_stop(true)
                         .flex()
@@ -220,7 +222,7 @@ impl Render for Home {
                         .border_color(transparent_black())
                         .focus_visible(move |s| s.border_color(brand))
                         .cursor_pointer()
-                        .child(div().flex_1().child("层级规范"))
+                        .child(div().flex_1().child(tr("层级规范")))
                         .child(img(themed_image("icon_nav_z-index.png", cx)).size(px(30.)))
                         .on_click(|_, w, cx| crate::go("layers", w, cx))
                         .reveal_focus(),
@@ -230,7 +232,7 @@ impl Render for Home {
             div()
                 .id("menubar")
                 .role(Role::MenuBar)
-                .aria_label("WeUI组件列表")
+                .aria_label(tr("WeUI组件列表"))
                 .child(list),
         )
     }

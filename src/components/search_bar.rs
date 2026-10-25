@@ -9,6 +9,7 @@ use super::{Cell, Cells, Icon};
 use crate::{
     Theme,
     input::{InputEvent, TextInput},
+    logical::Logical,
 };
 use gpui::{prelude::*, *};
 use std::rc::Rc;
@@ -65,19 +66,21 @@ pub struct SearchBar {
     input: Entity<TextInput>,
     homepage_focus: FocusHandle,
     variant: SearchBarVariant,
-    placeholder: SharedString,
+    placeholder: Option<SharedString>,
     words: Option<SharedString>,
     focusing: bool,
     clear_on_cancel: bool,
     _subscription: Subscription,
+    _i18n_subscription: Subscription,
 }
 
 impl SearchBar {
-    /// Creates a filled search bar with placeholder "搜索" and clear-on-cancel on; the inner input
-    /// has the `SearchInput` role.
+    /// Creates a filled search bar with the localized [`crate::Messages::search`] placeholder and
+    /// clear-on-cancel on; the inner input has the `SearchInput` role.
     pub fn new(cx: &mut Context<Self>) -> Self {
+        let default_placeholder = crate::i18n::messages(cx).search.clone();
         let input = cx.new(|cx| {
-            let mut input = TextInput::new("搜索", cx);
+            let mut input = TextInput::new(default_placeholder, cx);
             input.set_accessible_role(Some(Role::SearchInput), cx);
             input
         });
@@ -98,15 +101,24 @@ impl SearchBar {
             }
             cx.notify();
         });
+        let i18n_subscription = cx.observe_global::<crate::i18n::I18n>(|this, cx| {
+            if this.placeholder.is_none() {
+                let text = crate::i18n::messages(cx).search.clone();
+                this.input
+                    .update(cx, |input, cx| input.set_placeholder(text, cx));
+            }
+            cx.notify();
+        });
         Self {
             input,
             homepage_focus: cx.focus_handle().tab_stop(true),
             variant: SearchBarVariant::Filled,
-            placeholder: "搜索".into(),
+            placeholder: None,
             words: None,
             focusing: false,
             clear_on_cancel: true,
             _subscription: subscription,
+            _i18n_subscription: i18n_subscription,
         }
     }
 
@@ -116,7 +128,7 @@ impl SearchBar {
         self
     }
 
-    /// Shows a brand-coloured keyword before the input (`weui-search-bar__words`), such as "微信".
+    /// Shows a brand-coloured keyword before the input (`weui-search-bar__words`), such as "WeChat".
     /// Default none. All input variants support the keyword; the homepage has no input.
     pub fn words(mut self, words: impl Into<SharedString>) -> Self {
         self.words = Some(words.into());
@@ -141,10 +153,11 @@ impl SearchBar {
         cx.notify();
     }
 
-    /// Sets the placeholder used by the label, the homepage button and the input (default "搜索").
+    /// Sets the placeholder used by the label, the homepage button and the input (default: the
+    /// localized [`crate::Messages::search`]).
     pub fn set_placeholder(&mut self, text: impl Into<SharedString>, cx: &mut Context<Self>) {
-        self.placeholder = text.into();
-        let placeholder = self.placeholder.clone();
+        let placeholder = text.into();
+        self.placeholder = Some(placeholder.clone());
         self.input
             .update(cx, |input, cx| input.set_placeholder(placeholder, cx));
         cx.notify();
@@ -236,11 +249,19 @@ impl SearchBar {
         }
     }
 
+    fn placeholder_text(&self, cx: &App) -> SharedString {
+        self.placeholder
+            .clone()
+            .unwrap_or_else(|| crate::i18n::messages(cx).search.clone())
+    }
+
     fn render_homepage(&mut self, cx: &mut Context<Self>) -> Div {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let brand = t.focus_color(t.bg_2);
         div()
             .flex()
+            .row(dir)
             .w_full()
             .py(px(12.))
             .px(px(20.))
@@ -250,6 +271,7 @@ impl SearchBar {
                     .flex_1()
                     .min_w_0()
                     .flex()
+                    .row(dir)
                     .items_center()
                     .rounded(px(8.))
                     .bg(t.bg_2)
@@ -258,7 +280,7 @@ impl SearchBar {
                         div()
                             .id("search-bar-open")
                             .role(Role::Button)
-                            .aria_label(self.placeholder.clone())
+                            .aria_label(self.placeholder_text(cx))
                             .track_focus(&self.homepage_focus)
                             .focusable()
                             .tab_stop(true)
@@ -268,7 +290,7 @@ impl SearchBar {
                             // stays put, turns brand on keyboard focus: a grey fill alone was
                             // hard to see on the BG-2 field.
                             .py(px(10.))
-                            .ml(px(-2.))
+                            .ms(dir, px(-2.))
                             .border_2()
                             .border_color(transparent_black())
                             .text_size(px(17.))
@@ -276,14 +298,14 @@ impl SearchBar {
                             .text_color(t.fg_2)
                             .rounded(px(4.))
                             .focus_visible(move |s| s.border_color(brand))
-                            .child(self.placeholder.clone())
+                            .child(self.placeholder_text(cx))
                             .on_click(cx.listener(|_, _, _, cx| cx.emit(SearchBarEvent::Open))),
                     )
                     .child(
                         div()
                             .id("search-bar-camera")
                             .role(Role::Button)
-                            .aria_label("拍照")
+                            .aria_label(crate::i18n::messages(cx).take_photo.clone())
                             .focusable()
                             .tab_stop(true)
                             .relative()
@@ -334,6 +356,7 @@ impl Render for SearchBar {
                     .into_any_element();
             }
             let t = Theme::get(cx).clone();
+            let dir = crate::i18n::direction(cx);
             let variant = self.variant;
             let outlined = variant == SearchBarVariant::Outlined;
             let focusing = self.is_focusing();
@@ -358,18 +381,19 @@ impl Render for SearchBar {
             let back = div()
                 .id("search-bar-back")
                 .role(Role::Button)
-                .aria_label("返回")
+                .aria_label(crate::i18n::messages(cx).back.clone())
                 .focusable()
                 .tab_stop(true)
                 .relative()
                 .flex()
+                .row(dir)
                 .items_center()
-                .mr(px(12.))
+                .me(dir, px(12.))
                 .rounded(px(4.))
                 .border_2()
                 .border_color(transparent_black())
-                .ml(px(-2.))
-                .mr(px(10.))
+                .ms(dir, px(-2.))
+                .me(dir, px(10.))
                 .my(px(-2.))
                 .focus_visible(move |s| s.border_color(bar_focus))
                 .active(|s| s.opacity(0.5))
@@ -377,6 +401,7 @@ impl Render for SearchBar {
                 .child(hot_area(44., 44.))
                 .on_click(cx.listener(|_, _, _, cx| cx.emit(SearchBarEvent::Back)));
 
+            let fade_angle = if dir.is_rtl() { 270. } else { 90. };
             let field = div()
                 .relative()
                 .flex_1()
@@ -392,11 +417,11 @@ impl Render for SearchBar {
                             .absolute()
                             .top_0()
                             .bottom(px(2.))
-                            .right_0()
+                            .inset_e(dir, px(0.))
                             .w(px(40.))
                             .rounded(px(6.))
                             .bg(linear_gradient(
-                                90.,
+                                fade_angle,
                                 linear_color_stop(mask_bg.opacity(0.), 0.),
                                 linear_color_stop(mask_bg, 0.83),
                             )),
@@ -407,20 +432,20 @@ impl Render for SearchBar {
                 div()
                     .id("search-bar-clear")
                     .role(Role::Button)
-                    .aria_label("清除")
+                    .aria_label(crate::i18n::messages(cx).clear.clone())
                     .focusable()
                     .tab_stop(true)
                     .relative()
                     .flex()
                     .items_center()
                     .flex_shrink_0()
-                    .ml(px(8.))
-                    .mr(px(12.))
+                    .ms(dir, px(8.))
+                    .me(dir, px(12.))
                     .rounded_full()
                     .border_2()
                     .border_color(transparent_black())
-                    .ml(px(6.))
-                    .mr(px(10.))
+                    .ms(dir, px(6.))
+                    .me(dir, px(10.))
                     .my(px(-2.))
                     .focus_visible(move |s| s.border_color(clear_focus))
                     .child(Icon::new("clear").size(20.).color(t.fg_2))
@@ -435,15 +460,16 @@ impl Render for SearchBar {
 
             let box_ = div()
                 .flex()
+                .row(dir)
                 .items_center()
                 .flex_1()
                 .min_w_0()
-                .when(outlined, |el| el.pl(px(12.)))
+                .when(outlined, |el| el.ps(dir, px(12.)))
                 .when(!outlined, |el| {
                     el.child(
                         div()
-                            .ml(px(8.))
-                            .mr(px(4.))
+                            .ms(dir, px(8.))
+                            .me(dir, px(4.))
                             .flex_shrink_0()
                             .child(Icon::new("search").size(24.).color(t.fg_2)),
                     )
@@ -455,7 +481,7 @@ impl Render for SearchBar {
                             .role(Role::Label)
                             .aria_value(words.clone())
                             .flex_shrink_0()
-                            .mr(px(8.))
+                            .me(dir, px(8.))
                             .text_size(px(17.))
                             .text_color(t.brand)
                             .child(words),
@@ -472,13 +498,14 @@ impl Render for SearchBar {
                     .rounded(px(6.))
                     .bg(form_bg)
                     .flex()
+                    .row(dir)
                     .items_center()
                     .justify_center()
                     .text_size(px(17.))
                     .text_color(t.fg_2)
                     .cursor_text()
                     .role(Role::Button)
-                    .aria_label(self.placeholder.clone())
+                    .aria_label(self.placeholder_text(cx))
                     .focusable()
                     .tab_stop(true)
                     .border_2()
@@ -486,10 +513,10 @@ impl Render for SearchBar {
                     .focus_visible(move |s| s.border_color(field_focus))
                     .child(
                         div()
-                            .mr(px(4.))
+                            .me(dir, px(4.))
                             .child(Icon::new("search").size(24.).color(t.fg_2)),
                     )
-                    .child(self.placeholder.clone())
+                    .child(self.placeholder_text(cx))
                     .on_click(cx.listener(|this, _, window, cx| this.activate(window, cx)))
             });
 
@@ -499,16 +526,18 @@ impl Render for SearchBar {
                 .aria_expanded(!empty && focusing)
                 .relative()
                 .flex()
+                .row(dir)
                 .items_center()
                 .flex_1()
                 .min_w_0()
                 .bg(form_bg)
                 .when(outlined, |el| {
-                    el.border_l(px(0.5))
-                        .border_t(px(0.5))
-                        .border_b(px(0.5))
-                        .border_color(t.fg_3)
-                        .rounded_l(px(6.))
+                    let el = el.border_t(px(0.5)).border_b(px(0.5)).border_color(t.fg_3);
+                    if dir.is_rtl() {
+                        el.border_r(px(0.5)).rounded_r(px(6.))
+                    } else {
+                        el.border_l(px(0.5)).rounded_l(px(6.))
+                    }
                 })
                 .when(!outlined, |el| el.rounded(px(6.)))
                 .child(box_)
@@ -519,7 +548,7 @@ impl Render for SearchBar {
                 div()
                     .id("search-bar-search")
                     .role(Role::Button)
-                    .aria_label("搜索")
+                    .aria_label(crate::i18n::messages(cx).search.clone())
                     .focusable()
                     .tab_stop(true)
                     .flex()
@@ -531,10 +560,11 @@ impl Render for SearchBar {
                     .line_height(px(20.))
                     .text_color(t.white)
                     .bg(brand)
-                    .rounded_r(px(6.))
+                    .when(dir.is_rtl(), |el| el.rounded_l(px(6.)))
+                    .when(!dir.is_rtl(), |el| el.rounded_r(px(6.)))
                     .active(move |s| s.bg(brand.blend(mask)))
                     .focus_visible(move |s| s.shadow(super::form::focus_ring(search_focus)))
-                    .child("搜索")
+                    .child(crate::i18n::messages(cx).search.clone())
                     .on_click(cx.listener(|_, _, _, cx| cx.emit(SearchBarEvent::Submit)))
             });
 
@@ -542,24 +572,24 @@ impl Render for SearchBar {
                 div()
                     .id("search-bar-cancel")
                     .role(Role::Button)
-                    .aria_label("取消")
+                    .aria_label(crate::i18n::messages(cx).cancel.clone())
                     .focusable()
                     .tab_stop(true)
                     .flex()
                     .items_center()
                     .flex_shrink_0()
-                    .ml(px(12.))
+                    .ms(dir, px(12.))
                     .text_size(px(action_size))
                     .text_color(t.link)
                     .rounded(px(4.))
                     .border_2()
                     .border_color(transparent_black())
-                    .ml(px(10.))
-                    .mr(px(-2.))
+                    .ms(dir, px(10.))
+                    .me(dir, px(-2.))
                     .my(px(-2.))
                     .focus_visible(move |s| s.border_color(bar_focus))
                     .active(|s| s.opacity(0.5))
-                    .child("取消")
+                    .child(crate::i18n::messages(cx).cancel.clone())
                     .on_click(cx.listener(|this, _, window, cx| this.cancel(window, cx)))
             });
 
@@ -568,10 +598,11 @@ impl Render for SearchBar {
                 .role(Role::Search)
                 .relative()
                 .flex()
+                .row(dir)
                 .w_full()
                 .py(px(10.))
-                .pr(px(if outlined { 16. } else { 12. }))
-                .pl(px(if focusing { 16. } else { 12. }))
+                .pe(dir, px(if outlined { 16. } else { 12. }))
+                .ps(dir, px(if focusing { 16. } else { 12. }))
                 .bg(match variant {
                     SearchBarVariant::Filled => t.bg_0,
                     _ => t.bg_2,
@@ -629,11 +660,12 @@ impl SearchResults {
 impl RenderOnce for SearchResults {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let on_select = self.on_select;
         Cells::new()
             .id(self.id)
             .role(Role::ListBox)
-            .aria_label("搜索结果")
+            .aria_label(crate::i18n::messages(cx).search_results.clone())
             .margin_top(0.)
             .children(self.items.into_iter().enumerate().map(|(ix, text)| {
                 let on_select = on_select.clone();
@@ -641,7 +673,11 @@ impl RenderOnce for SearchResults {
                     .role(Role::ListBoxOption)
                     .aria_label(text.clone())
                     .active()
-                    .bd(div().py(px(2.)).pl(px(20.)).text_color(t.fg_1).child(text))
+                    .bd(div()
+                        .py(px(2.))
+                        .ps(dir, px(20.))
+                        .text_color(t.fg_1)
+                        .child(text))
                     .on_click(move |_, window, cx| {
                         if let Some(handler) = on_select.as_ref() {
                             handler(ix, window, cx);

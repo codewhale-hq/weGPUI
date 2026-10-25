@@ -5,7 +5,7 @@
 //! primary and centred horizontal layouts as unreleased extensions.
 
 use super::Icon;
-use crate::Theme;
+use crate::{Theme, logical::Logical};
 use gpui::{prelude::*, *};
 
 /// Arrangement of a [`Steps`] list.
@@ -165,25 +165,25 @@ fn dot(size: f32, color: Hsla) -> Div {
         .flex_shrink_0()
 }
 
-fn state_label(step: &Step, index: usize, total: usize) -> SharedString {
-    let state = if step.success { "，已完成" } else { "" };
-    let text = match &step.desc {
-        Some(desc) => format!(
-            "第{}步，共{}步，{}，{}{}",
-            index + 1,
-            total,
-            step.title,
-            desc,
-            state
-        ),
-        None => format!("第{}步，共{}步，{}{}", index + 1, total, step.title, state),
-    };
-    SharedString::from(text)
+fn state_label(step: &Step, index: usize, total: usize, m: &crate::i18n::Messages) -> SharedString {
+    let mut parts = vec![
+        crate::i18n::fill(&m.step_position, &[("n", &(index + 1)), ("total", &total)]),
+        step.title.to_string(),
+    ];
+    if let Some(desc) = &step.desc {
+        parts.push(desc.to_string());
+    }
+    if step.success {
+        parts.push(m.step_completed.to_string());
+    }
+    SharedString::from(m.join(&parts))
 }
 
 impl RenderOnce for Steps {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
+        let m = crate::i18n::messages_arc(cx);
         let font = t.steps_font_size;
         let c = Ctx {
             font,
@@ -206,6 +206,7 @@ impl RenderOnce for Steps {
             .id(self.id)
             .role(Role::List)
             .when_some(self.label, |el, label| el.aria_label(label))
+            .text_start(dir)
             .text_size(px(font))
             .line_height(relative(c.line));
         match self.layout {
@@ -232,14 +233,14 @@ impl RenderOnce for Steps {
                         div()
                             .id(ElementId::NamedInteger("step".into(), i as u64))
                             .role(Role::ListItem)
-                            .aria_label(state_label(step, i, n))
+                            .aria_label(state_label(step, i, n, &m))
                             .relative()
                             .pb(px(32.))
                             .when(i + 1 < n, |el| {
                                 el.child(
                                     div()
                                         .absolute()
-                                        .left_0()
+                                        .inset_s(dir, px(0.))
                                         .w(px(0.5))
                                         .top(px(top))
                                         .bottom(px(bottom))
@@ -249,7 +250,7 @@ impl RenderOnce for Steps {
                             .child(
                                 div()
                                     .relative()
-                                    .pl(px(36.))
+                                    .ps(dir, px(36.))
                                     .child(text_block(step, &c))
                                     .when(!has_icon, |el| {
                                         el.child(
@@ -258,7 +259,7 @@ impl RenderOnce for Steps {
                                                 if lit[i] { c.highlight } else { c.default },
                                             )
                                             .absolute()
-                                            .left(px(-c.dot / 2.))
+                                            .inset_s(dir, px(-c.dot / 2.))
                                             .top(px(mid - c.dot / 2.)),
                                         )
                                     })
@@ -275,7 +276,7 @@ impl RenderOnce for Steps {
                                         el.child(
                                             div()
                                                 .absolute()
-                                                .left(px(-c.icon / 2.))
+                                                .inset_s(dir, px(-c.icon / 2.))
                                                 .top(px(mid - c.icon / 2. + margin))
                                                 .child(Icon::new(name).size(c.icon).color(color)),
                                         )
@@ -285,20 +286,22 @@ impl RenderOnce for Steps {
             }
             StepsLayout::Horizontal => {
                 root.flex()
+                    .row(dir)
                     .items_center()
                     .children(self.items.iter().enumerate().map(|(i, step)| {
                         let last = i + 1 == n;
                         div()
                             .id(ElementId::NamedInteger("step".into(), i as u64))
                             .role(Role::ListItem)
-                            .aria_label(state_label(step, i, n))
+                            .aria_label(state_label(step, i, n, &m))
                             .flex()
+                            .row(dir)
                             .items_center()
                             .when(!last, |el| el.flex_1())
                             .when(last, |el| el.flex_none())
                             .child(dot(c.dot, if lit[i] { c.highlight } else { c.default }))
                             .when(step.show_text, |el| {
-                                el.child(text_block(step, &c).ml(px(8.)))
+                                el.child(text_block(step, &c).ms(dir, px(8.)))
                             })
                             .when(!last, |el| {
                                 el.child(
@@ -313,13 +316,14 @@ impl RenderOnce for Steps {
             }
             StepsLayout::HorizontalPrimary => {
                 root.flex()
+                    .row(dir)
                     .children(self.items.iter().enumerate().map(|(i, step)| {
                         let last = i + 1 == n;
                         let mask = c.dot + 2. * c.gap_h;
                         div()
                             .id(ElementId::NamedInteger("step".into(), i as u64))
                             .role(Role::ListItem)
-                            .aria_label(state_label(step, i, n))
+                            .aria_label(state_label(step, i, n, &m))
                             .relative()
                             .when(!last, |el| el.flex_1())
                             .when(last, |el| el.flex_none())
@@ -342,7 +346,7 @@ impl RenderOnce for Steps {
                                         div()
                                             .absolute()
                                             .top(px(-mask / 2.))
-                                            .left(px(-mask / 2. + c.dot / 2.))
+                                            .inset_s(dir, px(-mask / 2. + c.dot / 2.))
                                             .size(px(mask))
                                             .bg(c.bg2),
                                     )
@@ -353,7 +357,7 @@ impl RenderOnce for Steps {
                                         )
                                         .absolute()
                                         .top(px(-c.dot / 2.))
-                                        .left_0(),
+                                        .inset_s(dir, px(0.)),
                                     )
                                     .when(step.show_text, |el| el.child(text_block(step, &c))),
                             )
@@ -361,6 +365,7 @@ impl RenderOnce for Steps {
             }
             StepsLayout::HorizontalCenter => {
                 root.flex()
+                    .row(dir)
                     .text_center()
                     .children(self.items.iter().enumerate().map(|(i, step)| {
                         let mask = c.dot + 2. * c.gap_h;
@@ -369,7 +374,7 @@ impl RenderOnce for Steps {
                         div()
                             .id(ElementId::NamedInteger("step".into(), i as u64))
                             .role(Role::ListItem)
-                            .aria_label(state_label(step, i, n))
+                            .aria_label(state_label(step, i, n, &m))
                             .relative()
                             .flex_1()
                             .when(i > 0, |el| {
@@ -377,8 +382,8 @@ impl RenderOnce for Steps {
                                     div()
                                         .absolute()
                                         .top_0()
-                                        .left_0()
-                                        .right(relative(0.5))
+                                        .inset_s(dir, px(0.))
+                                        .inset_e(dir, relative(0.5))
                                         .h(px(0.5))
                                         .bg(before),
                                 )
@@ -388,8 +393,8 @@ impl RenderOnce for Steps {
                                     div()
                                         .absolute()
                                         .top_0()
-                                        .left(relative(0.5))
-                                        .right_0()
+                                        .inset_s(dir, relative(0.5))
+                                        .inset_e(dir, px(0.))
                                         .h(px(0.5))
                                         .bg(after),
                                 )
@@ -402,8 +407,8 @@ impl RenderOnce for Steps {
                                         div()
                                             .absolute()
                                             .top(px(-mask / 2.))
-                                            .left(relative(0.5))
-                                            .ml(px(-mask / 2.))
+                                            .inset_s(dir, relative(0.5))
+                                            .ms(dir, px(-mask / 2.))
                                             .size(px(mask))
                                             .bg(c.bg2),
                                     )
@@ -414,8 +419,8 @@ impl RenderOnce for Steps {
                                         )
                                         .absolute()
                                         .top(px(-c.dot / 2.))
-                                        .left(relative(0.5))
-                                        .ml(px(-c.dot / 2.)),
+                                        .inset_s(dir, relative(0.5))
+                                        .ms(dir, px(-c.dot / 2.)),
                                     )
                                     .when(step.show_text, |el| el.child(text_block(step, &c))),
                             )

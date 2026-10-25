@@ -7,7 +7,7 @@
 //! Transport, retry policy and status updates remain application-owned.
 
 use super::{ClickHandler, Icon};
-use crate::Theme;
+use crate::{Theme, logical::Logical};
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
@@ -30,7 +30,8 @@ pub struct UploaderFile {
     pub src: ImageSource,
     /// Display state (default [`UploaderStatus::Done`]).
     pub status: UploaderStatus,
-    /// Accessible name of the thumbnail (default "图片标题").
+    /// Accessible name of the thumbnail. Empty (the default) selects the localized
+    /// [`crate::Messages::image_title`].
     pub label: SharedString,
 }
 
@@ -40,7 +41,7 @@ impl UploaderFile {
         Self {
             src: src.into(),
             status: UploaderStatus::Done,
-            label: "图片标题".into(),
+            label: SharedString::default(),
         }
     }
     /// Sets the status to [`UploaderStatus::Error`].
@@ -75,8 +76,8 @@ pub struct Uploader {
     info: Option<SharedString>,
     files: Vec<UploaderFile>,
     deletable: bool,
-    hint: SharedString,
-    add_label: SharedString,
+    hint: Option<SharedString>,
+    add_label: Option<SharedString>,
     max_files: Option<usize>,
     add_focus: Option<FocusHandle>,
     on_preview: Option<IndexHandler>,
@@ -85,7 +86,8 @@ pub struct Uploader {
 }
 
 impl Uploader {
-    /// Creates an uploader titled `title` with no files, deletion off and add label "上传图片".
+    /// Creates an uploader titled `title` with no files, deletion off and the localized
+    /// [`crate::Messages::upload_image`] add label.
     pub fn new(id: impl Into<ElementId>, title: impl Into<SharedString>) -> Self {
         Self {
             id: id.into(),
@@ -93,8 +95,8 @@ impl Uploader {
             info: None,
             files: vec![],
             deletable: false,
-            hint: "轻点两下查看大图".into(),
-            add_label: "上传图片".into(),
+            hint: None,
+            add_label: None,
             max_files: None,
             add_focus: None,
             on_preview: None,
@@ -118,14 +120,16 @@ impl Uploader {
         self.deletable = deletable;
         self
     }
-    /// Sets the add box's accessible label (default "上传图片").
+    /// Sets the add box's accessible label (default: the localized
+    /// [`crate::Messages::upload_image`]).
     pub fn add_label(mut self, label: impl Into<SharedString>) -> Self {
-        self.add_label = label.into();
+        self.add_label = Some(label.into());
         self
     }
-    /// Sets the accessible description of a done thumbnail (default "轻点两下查看大图").
+    /// Sets the accessible description of a done thumbnail (default: the localized
+    /// [`crate::Messages::view_large_image_hint`]).
     pub fn hint(mut self, hint: impl Into<SharedString>) -> Self {
-        self.hint = hint.into();
+        self.hint = Some(hint.into());
         self
     }
     /// Hides the add box when the supplied file count reaches `maximum`. All statuses count;
@@ -193,12 +197,14 @@ impl RenderOnce for Uploader {
                     window.blur(cx);
                 }
             }
+            let m = crate::i18n::messages_arc(cx);
+            let dir = crate::i18n::direction(cx);
             let t = Theme::get(cx).clone();
             let dark = Theme::get(cx).is_dark;
             let white = t.white;
             let red = t.red;
             let header_label = SharedString::from(match &self.info {
-                Some(info) => format!("{}，{}", self.title, info),
+                Some(info) => m.join(&[&*self.title, &**info]),
                 None => self.title.to_string(),
             });
             let header = div()
@@ -206,6 +212,7 @@ impl RenderOnce for Uploader {
                 .role(Role::ListItem)
                 .aria_label(header_label)
                 .flex()
+                .row(dir)
                 .items_center()
                 .pb(px(12.))
                 .child(div().flex_1().child(self.title))
@@ -230,8 +237,16 @@ impl RenderOnce for Uploader {
                         let mut hit = div()
                             .id("uploader-file-thumb")
                             .role(Role::Image)
-                            .aria_label(file.label.clone())
-                            .aria_description(self.hint.clone())
+                            .aria_label(if file.label.is_empty() {
+                                m.image_title.clone()
+                            } else {
+                                file.label.clone()
+                            })
+                            .aria_description(
+                                self.hint
+                                    .clone()
+                                    .unwrap_or_else(|| m.view_large_image_hint.clone()),
+                            )
                             .absolute()
                             .inset_0()
                             .border_2()
@@ -251,7 +266,7 @@ impl RenderOnce for Uploader {
                                     div()
                                         .absolute()
                                         .top(px(-1.))
-                                        .right(px(-1.))
+                                        .inset_e(dir, px(-1.))
                                         .size(px(1.))
                                         .rounded_full()
                                         .shadow(vec![BoxShadow {
@@ -266,7 +281,7 @@ impl RenderOnce for Uploader {
                                     div()
                                         .absolute()
                                         .top(px(4.))
-                                        .right(px(4.))
+                                        .inset_e(dir, px(4.))
                                         .size(px(16.))
                                         .flex()
                                         .items_center()
@@ -277,10 +292,10 @@ impl RenderOnce for Uploader {
                                             div()
                                                 .id("uploader-file-delete")
                                                 .role(Role::Button)
-                                                .aria_label("删除")
+                                                .aria_label(m.delete.clone())
                                                 .absolute()
                                                 .top(px(-8.))
-                                                .right(px(-8.))
+                                                .inset_e(dir, px(-8.))
                                                 .size(px(32.))
                                                 .rounded_full()
                                                 .border_2()
@@ -305,7 +320,7 @@ impl RenderOnce for Uploader {
                                 base.aria_label(text.clone()).child(text)
                             }
                             _ => base
-                                .aria_label("错误")
+                                .aria_label(m.error.clone())
                                 .child(Icon::new("warn").size(24.).color(red)),
                         };
                         item = item
@@ -333,7 +348,7 @@ impl RenderOnce for Uploader {
             let add = div()
                 .id("uploader-input-box")
                 .role(Role::Button)
-                .aria_label(self.add_label)
+                .aria_label(self.add_label.unwrap_or_else(|| m.upload_image.clone()))
                 .relative()
                 .size(px(SIZE))
                 .flex_shrink_0()
@@ -384,6 +399,7 @@ impl RenderOnce for Uploader {
                         .id("uploader-files")
                         .role(Role::List)
                         .flex()
+                        .row(dir)
                         .flex_wrap()
                         .gap(px(8.))
                         .children(files)

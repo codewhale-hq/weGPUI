@@ -148,12 +148,28 @@ impl RenderOnce for Icon {
         let color = self
             .color
             .unwrap_or_else(|| icon_color(&self.name, self.variant, cx));
+        let mirror = crate::i18n::direction(cx).is_rtl()
+            && matches!(
+                &*self.name,
+                "arrow"
+                    | "arrow-bold"
+                    | "back-arrow"
+                    | "back-arrow-thin"
+                    | "back-circle"
+                    | "back"
+                    | "btn_goback"
+            );
         let icon = svg()
             .path(SharedString::from(format!("icon-{}.svg", self.name)))
             .w(px(w))
             .h(px(h))
             .flex_shrink_0()
             .text_color(color);
+        let icon = if mirror {
+            icon.with_transformation(Transformation::scale(size(-1., 1.)))
+        } else {
+            icon
+        };
         let icon = match self.active {
             Some((group, active)) => icon
                 .id(SharedString::from(format!("icon-svg-{}", self.name)))
@@ -185,6 +201,7 @@ pub struct IconButton {
     id: ElementId,
     icon: Icon,
     label: SharedString,
+    localized: Option<fn(&crate::i18n::Messages) -> &SharedString>,
     btn_icon: bool,
     disabled: bool,
     focus: Option<FocusHandle>,
@@ -199,6 +216,7 @@ impl IconButton {
         Self {
             id: id.into(),
             label: icon.clone(),
+            localized: None,
             icon: Icon::new(icon),
             btn_icon: false,
             disabled: false,
@@ -206,21 +224,26 @@ impl IconButton {
             on_click: None,
         }
     }
-    /// Creates a 12×24px `back-arrow` button labelled "返回" (back), as `weui-icon-btn_goback`.
+    /// Creates a 12×24px `back-arrow` button labelled with the localized
+    /// [`crate::Messages::back`], as `weui-icon-btn_goback`.
     pub fn goback(id: impl Into<ElementId>) -> Self {
-        let mut this = Self::new(id, "back-arrow").label("返回");
+        let mut this = Self::new(id, "back-arrow");
+        this.localized = Some(|m| &m.back);
         this.icon = this.icon.w(12.).h(24.);
         this
     }
-    /// Creates a 24px `close` button labelled "关闭" (close), as `weui-icon-btn_close`.
+    /// Creates a 24px `close` button labelled with the localized [`crate::Messages::close`], as
+    /// `weui-icon-btn_close`.
     pub fn close(id: impl Into<ElementId>) -> Self {
-        let mut this = Self::new(id, "close").label("关闭");
+        let mut this = Self::new(id, "close");
+        this.localized = Some(|m| &m.close);
         this.icon = this.icon.size(24.);
         this
     }
     /// Sets the accessible name of the button.
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = label.into();
+        self.localized = None;
         self
     }
     /// Sets the icon's width and height in logical pixels. Default: 24px.
@@ -297,7 +320,10 @@ impl RenderOnce for IconButton {
         let mut hit = div()
             .id(self.id)
             .role(Role::Button)
-            .aria_label(self.label)
+            .aria_label(match self.localized {
+                Some(pick) => pick(crate::i18n::messages(cx)).clone(),
+                None => self.label,
+            })
             .absolute()
             .top(px(-10.))
             .bottom(px(-10.))

@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use wegpui::components::{
@@ -69,19 +70,19 @@ impl ToastPage {
 impl Render for ToastPage {
     fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         let buttons = TOASTS.iter().enumerate().map(|(i, (id, label, _, _))| {
-            Button::new(*label)
+            Button::new(tr(label))
                 .id(SharedString::from(format!("show-toast-{id}")))
                 .on_click(cx.listener(move |this, _, window, cx| this.show(i, window, cx)))
         });
         let toasts = TOASTS.iter().enumerate().map(|(i, (id, _, text, kind))| {
-            Toast::new(*text)
+            Toast::new(tr(text))
                 .id(SharedString::from(format!("toast-{id}")))
                 .kind(*kind)
                 .presence(&self.toasts[i])
         });
         PageFrame::new("toast")
             .title("Toast")
-            .desc("弹出式提示")
+            .desc(tr("弹出式提示"))
             .spacing()
             .child(div().flex().flex_col().gap(px(16.)).children(buttons))
             .children(toasts)

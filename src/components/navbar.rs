@@ -4,7 +4,7 @@
 //! keys move focus and selection within this bar. Only the selected tab is in the Tab order;
 //! Home/End select the first/last tab, and arrows wrap at the ends.
 
-use crate::{Theme, scrolling::RevealFocus};
+use crate::{Theme, logical::Logical, scrolling::RevealFocus};
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
@@ -31,6 +31,7 @@ pub(crate) fn tab_keys(
     handles: Vec<FocusHandle>,
     selected: usize,
     handler: Option<SelectHandler>,
+    rtl: bool,
 ) -> impl Fn(&KeyDownEvent, &mut Window, &mut App) + 'static {
     move |event, window, cx| {
         let Some(handler) = handler.as_ref() else {
@@ -40,11 +41,11 @@ pub(crate) fn tab_keys(
         if count == 0 {
             return;
         }
-        let next = match event.keystroke.key.as_str() {
-            "right" | "down" => (selected + 1) % count,
-            "left" | "up" => (selected + count - 1) % count,
-            "home" => 0,
-            "end" => count - 1,
+        let next = match (event.keystroke.key.as_str(), rtl) {
+            ("down", _) | ("right", false) | ("left", true) => (selected + 1) % count,
+            ("up", _) | ("left", false) | ("right", true) => (selected + count - 1) % count,
+            ("home", _) => 0,
+            ("end", _) => count - 1,
             _ => return,
         };
         window.focus(&handles[next], cx);
@@ -103,6 +104,7 @@ impl Navbar {
 impl RenderOnce for Navbar {
     fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let count = self.items.len();
         let selected = self.selected;
         let handles = tab_focus_handles(self.id.clone(), count, window, cx);
@@ -113,6 +115,7 @@ impl RenderOnce for Navbar {
             .aria_label(self.label)
             .relative()
             .flex()
+            .row(dir)
             .flex_shrink_0()
             .bg(t.bg_2)
             .children(self.items.into_iter().enumerate().map(|(i, label)| {
@@ -125,7 +128,12 @@ impl RenderOnce for Navbar {
                     .aria_selected(on)
                     .track_focus(&handles[i].clone().tab_stop(i == tab_stop))
                     .focusable()
-                    .on_key_down(tab_keys(handles.clone(), i, self.on_select.clone()))
+                    .on_key_down(tab_keys(
+                        handles.clone(),
+                        i,
+                        self.on_select.clone(),
+                        dir.is_rtl(),
+                    ))
                     .relative()
                     .flex_1()
                     .py(px(14.))
@@ -151,7 +159,7 @@ impl RenderOnce for Navbar {
                                 .absolute()
                                 .top(px(-2.))
                                 .bottom(px(-2.))
-                                .right(px(-2.))
+                                .inset_e(dir, px(-2.))
                                 .w(px(0.5))
                                 .bg(t.fg_3),
                         )

@@ -5,7 +5,7 @@
 use crate::scrolling::RevealFocus;
 
 use super::ChangeHandler;
-use crate::{Theme, accessibility::Semantics};
+use crate::{Theme, accessibility::Semantics, logical::Logical};
 use gpui::{prelude::*, *};
 use std::time::{Duration, Instant};
 
@@ -140,7 +140,7 @@ impl SwitchMotion {
 #[derive(IntoElement)]
 pub struct Switch {
     id: ElementId,
-    label: SharedString,
+    label: Option<SharedString>,
     checked: bool,
     disabled: bool,
     surface: Option<Hsla>,
@@ -148,20 +148,22 @@ pub struct Switch {
 }
 
 impl Switch {
-    /// Creates an off, enabled switch whose accessible name is "开关".
+    /// Creates an off, enabled switch whose accessible name is the localized
+    /// [`crate::Messages::switch`].
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
-            label: "开关".into(),
+            label: None,
             checked: false,
             disabled: false,
             surface: None,
             on_change: None,
         }
     }
-    /// Sets the accessible name, usually the row's visible title. It is not drawn. Default "开关".
+    /// Sets the accessible name, usually the row's visible title. It is not drawn. Default: the
+    /// localized [`crate::Messages::switch`].
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
-        self.label = label.into();
+        self.label = Some(label.into());
         self
     }
     /// Sets the on/off state to draw and expose; a change between renders animates the knob.
@@ -193,6 +195,7 @@ impl Switch {
 impl RenderOnce for Switch {
     fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let checked = self.checked;
         let motion = window.use_keyed_state(self.id.clone(), cx, |_, _| SwitchMotion::new(checked));
         let reduced = cx.reduce_motion();
@@ -206,7 +209,10 @@ impl RenderOnce for Switch {
         let mut el = div()
             .id(self.id)
             .role(Role::Switch)
-            .aria_label(self.label)
+            .aria_label(
+                self.label
+                    .unwrap_or_else(|| crate::i18n::messages(cx).switch.clone()),
+            )
             .aria_toggled(if checked {
                 Toggled::True
             } else {
@@ -231,7 +237,7 @@ impl RenderOnce for Switch {
                         div()
                             .absolute()
                             .top(px(2.))
-                            .left(px(2. + x))
+                            .inset_s(dir, px(2. + x))
                             .size(px(28.))
                             .rounded(px(15.))
                             .bg(if disabled {

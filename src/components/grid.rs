@@ -5,7 +5,7 @@
 //! they stay focusable even without a click handler.
 
 use super::ClickHandler;
-use crate::Theme;
+use crate::{Theme, logical::Logical};
 use gpui::{prelude::*, *};
 
 /// One grid cell: a third of the row wide, padded 20px vertically and 10px horizontally, with a
@@ -66,6 +66,7 @@ impl RenderOnce for Grid {
         crate::scrolling::FocusTarget::new({
             let t = Theme::get(cx);
             let (line, active, fg) = (t.fg_3, t.bg_color_active, t.fg_0);
+            let dir = crate::i18n::direction(cx);
             let has_icon = self.icon.is_some();
             div()
                 .id(self.id)
@@ -99,7 +100,7 @@ impl RenderOnce for Grid {
                         .absolute()
                         .top_0()
                         .bottom_0()
-                        .right_0()
+                        .inset_e(dir, px(0.))
                         .w(px(0.5))
                         .bg(line),
                 )
@@ -145,12 +146,14 @@ impl ParentElement for Grids {
 impl RenderOnce for Grids {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let line = Theme::get(cx).fg_3;
+        let dir = crate::i18n::direction(cx);
         div()
             .id(self.id)
             .role(Role::Group)
             .relative()
             .overflow_hidden()
             .flex()
+            .row(dir)
             .flex_wrap()
             .children(self.children)
             .child(
@@ -166,7 +169,7 @@ impl RenderOnce for Grids {
                 div()
                     .absolute()
                     .top_0()
-                    .left_0()
+                    .inset_s(dir, px(0.))
                     .bottom_0()
                     .w(px(0.5))
                     .bg(line),

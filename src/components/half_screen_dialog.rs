@@ -11,7 +11,7 @@ use super::{
     ClickHandler, Icon,
     modal::{MaskKind, Modal, Motion, Placement, Presence, TRANSITION, ease},
 };
-use crate::{Theme, scrolling::RevealFocus};
+use crate::{Theme, logical::Logical, scrolling::RevealFocus};
 use gpui::{prelude::*, *};
 use std::{rc::Rc, time::Instant};
 
@@ -319,6 +319,7 @@ impl ParentElement for HalfScreenDialog {
 impl RenderOnce for HalfScreenDialog {
     fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let viewport = window.viewport_size();
         let maximum_height = if viewport.height <= px(558.) {
             (viewport.height - px(16.)).max(px(0.))
@@ -405,7 +406,7 @@ impl RenderOnce for HalfScreenDialog {
                         .absolute()
                         .top_0()
                         .bottom_0()
-                        .left(px(-8.))
+                        .inset_s(dir, px(-8.))
                         .flex()
                         .items_center()
                         .child(side),
@@ -415,6 +416,7 @@ impl RenderOnce for HalfScreenDialog {
                 div()
                     .flex_1()
                     .min_w_0()
+                    .text_start(dir)
                     .when(has_left, |el| el.px(px(40.)).text_center())
                     .child(main),
             )
@@ -424,11 +426,12 @@ impl RenderOnce for HalfScreenDialog {
                         .absolute()
                         .top_0()
                         .bottom_0()
-                        .left_0()
-                        .right(px(-8.))
+                        .inset_s(dir, px(0.))
+                        .inset_e(dir, px(-8.))
                         .flex()
                         .items_center()
-                        .justify_end()
+                        .when(dir.is_rtl(), |el| el.justify_start())
+                        .when(!dir.is_rtl(), |el| el.justify_end())
                         .child(side),
                 )
             });
@@ -517,6 +520,7 @@ impl RenderOnce for HalfScreenDialog {
             .line_height(relative(1.4))
             .bg(t.bg_2)
             .text_color(t.fg_0)
+            .text_start(dir)
             .rounded_t(px(12.))
             .overflow_hidden()
             .when(!self.flush && !self.bottom_fixed, |el| el.px(px(24.)))

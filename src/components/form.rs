@@ -7,7 +7,10 @@
 use crate::scrolling::RevealFocus;
 
 use super::ClickHandler;
-use crate::{Theme, accessibility::Semantics, components::date_field::DateField, input::TextInput};
+use crate::{
+    Theme, accessibility::Semantics, components::date_field::DateField, input::TextInput,
+    logical::Logical,
+};
 use gpui::{prelude::*, *};
 
 /// Default form label width in logical pixels (WeUI `@weuiCellLabelWidth`, 105px).
@@ -366,9 +369,9 @@ impl RenderOnce for FormCell {
                         if let Some(message) = &self.validation_error {
                             input.set_invalid(message.is_some(), cx);
                             let description = match (&self.label_desc, message) {
-                                (Some(hint), Some(error)) => {
-                                    Some(format!("{hint}，{error}").into())
-                                }
+                                (Some(hint), Some(error)) => Some(
+                                    crate::i18n::messages(cx).join(&[&**hint, &**error]).into(),
+                                ),
                                 (hint, error) => error.clone().or_else(|| hint.clone()),
                             };
                             input.set_aria_description(description, cx);
@@ -402,6 +405,7 @@ impl RenderOnce for FormCell {
             CellKind::Vcode => (4., 16.),
             _ => (16., 16.),
         };
+        let dir = crate::i18n::direction(cx);
         let wrap = matches!(kind, CellKind::Wrap | CellKind::Vcode);
         let vertical = kind == CellKind::Vertical;
         let pressable = self.active
@@ -423,6 +427,7 @@ impl RenderOnce for FormCell {
         let label_width = self.label_width;
         let label_el = self.label.map(|label| {
             form_label(label, label_width)
+                .when(dir.is_rtl() && !vertical, |el| el.mr(px(0.)).ml(px(8.)))
                 .when(vertical, |el| el.w_full().mr(px(0.)))
                 .when(wrap, |el| {
                     el.mt(px(if kind == CellKind::Vcode { 12. } else { 8. }))
@@ -441,7 +446,7 @@ impl RenderOnce for FormCell {
         let hd = has_hd.then(|| {
             div()
                 .flex_shrink_0()
-                .when(!wrap && !vertical, |el| el.pr(px(16.)))
+                .when(!wrap && !vertical, |el| el.pe(dir, px(16.)))
                 .when(vertical, |el| el.w_full().mb(px(12.)))
                 .children(label_el)
                 .children(label_desc)
@@ -460,7 +465,7 @@ impl RenderOnce for FormCell {
                 .flex_shrink_0()
                 .flex()
                 .items_center()
-                .when(!vertical, |el| el.pl(px(16.)))
+                .when(!vertical, |el| el.ps(dir, px(16.)))
                 .text_color(t.fg_1)
                 .child(ft)
         });
@@ -470,6 +475,7 @@ impl RenderOnce for FormCell {
             .id(self.id)
             .relative()
             .flex()
+            .row(dir)
             .when(vertical, |el| el.flex_col().items_start())
             .when(!vertical && !wrap, |el| {
                 if kind == CellKind::Primary {
@@ -480,8 +486,8 @@ impl RenderOnce for FormCell {
             })
             .pt(px(py))
             .pb(px(py))
-            .pl(px(px_))
-            .pr(px(if kind == CellKind::Vcode { 16. } else { px_ }))
+            .ps(dir, px(px_))
+            .pe(dir, px(if kind == CellKind::Vcode { 16. } else { px_ }))
             .text_size(px(17.))
             .line_height(relative(24. / 17.))
             .text_color(color)
@@ -602,6 +608,7 @@ fn hairline(color: Hsla) -> Div {
 impl RenderOnce for FormGroup {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let line = t.fg_3;
         let has_title = self.title.is_some();
         let base: f32 = if self.first {
@@ -614,7 +621,12 @@ impl RenderOnce for FormGroup {
         let mt = if has_title { base } else { base.max(8.) };
         let rows = self.rows.into_iter().enumerate().map(|(i, (row, inset))| {
             div().relative().child(row).when(i > 0, |el| {
-                el.child(hairline(line).top_0().left(px(inset)).right(px(16.)))
+                el.child(
+                    hairline(line)
+                        .top_0()
+                        .inset_s(dir, px(inset))
+                        .inset_e(dir, px(16.)),
+                )
             })
         });
         let group = div()
@@ -909,17 +921,20 @@ impl ParentElement for TipsGroup {
 }
 
 impl RenderOnce for TipsGroup {
-    fn render(self, _: &mut Window, _: &mut App) -> impl IntoElement {
+    fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let n = self.items.len();
+        let dir = crate::i18n::direction(cx);
         div()
             .max_w_full()
             .flex()
             .flex_col()
-            .items_start()
-            .text_left()
+            .when(dir.is_rtl(), |el| el.items_end())
+            .when(!dir.is_rtl(), |el| el.items_start())
+            .text_start(dir)
             .children(self.items.into_iter().enumerate().map(|(i, item)| {
                 div()
                     .flex()
+                    .row(dir)
                     .when(i > 0, |el| el.mt(px(8.)))
                     .when(i + 1 < n, |el| el.mb(px(8.)))
                     .child(item)
@@ -929,7 +944,7 @@ impl RenderOnce for TipsGroup {
 
 /// A [`TextInput`] plus the WeUI clear button (`.weui-btn_input-clear`), shown while the text is
 /// editable and non-empty and either the input or the button has focus. The button is a `Role::Button` tab
-/// stop named "清除"; activating it clears the text and refocuses the input.
+/// stop named by the localized [`crate::Messages::clear`]; activating it clears the text and refocuses the input.
 pub struct ClearableInput {
     input: Entity<TextInput>,
     clear_focus: FocusHandle,
@@ -964,6 +979,7 @@ impl ClearableInput {
 impl Render for ClearableInput {
     fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let input = self.input.clone();
         let input_focus = input.read(cx).focus_handle(cx);
         let editable = !input.read(cx).is_disabled() && !input.read(cx).is_readonly();
@@ -973,6 +989,7 @@ impl Render for ClearableInput {
         let (rest, pressed) = (t.fg_2, t.fg_1);
         div()
             .flex()
+            .row(dir)
             .items_center()
             .w_full()
             .min_w_0()
@@ -982,11 +999,11 @@ impl Render for ClearableInput {
                     div()
                         .id("input-clear")
                         .role(Role::Button)
-                        .aria_label("清除")
+                        .aria_label(crate::i18n::messages(cx).clear.clone())
                         .group("input-clear")
                         .track_focus(&self.clear_focus)
                         .flex_shrink_0()
-                        .pl(px(8.))
+                        .ps(dir, px(8.))
                         .h(px(24.))
                         .flex()
                         .items_center()

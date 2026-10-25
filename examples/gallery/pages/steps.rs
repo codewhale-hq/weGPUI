@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{
     chrome::{self, PageFrame},
     pages::Args,
@@ -17,7 +18,9 @@ pub fn build(route: &'static str, _: &Args, _: &mut Window, cx: &mut App) -> Any
 }
 
 fn step(success: bool) -> Step {
-    Step::new("标题").desc("描述内容详情").success(success)
+    Step::new(tr("标题"))
+        .desc(tr("描述内容详情"))
+        .success(success)
 }
 
 fn group(id: &'static str, layout: StepsLayout, items: Vec<Step>) -> impl IntoElement {
@@ -30,7 +33,7 @@ fn group(id: &'static str, layout: StepsLayout, items: Vec<Step>) -> impl IntoEl
         .child(
             Steps::new(id)
                 .layout(layout)
-                .aria_label("步骤条")
+                .aria_label(tr("步骤条"))
                 .items(items),
         )
 }
@@ -89,7 +92,7 @@ impl Render for StepsPage {
             "steps_horizonal" => PageFrame::new(self.route).children(horizontal()),
             _ => PageFrame::new(self.route)
                 .title("Steps")
-                .desc("步骤条")
+                .desc(tr("步骤条"))
                 .child(
                     div()
                         .flex()
@@ -97,12 +100,12 @@ impl Render for StepsPage {
                         .items_center()
                         .gap(px(16.))
                         .child(
-                            Button::new("垂直型")
+                            Button::new(tr("垂直型"))
                                 .id("steps-vertical")
                                 .on_click(chrome::go("steps_vertical")),
                         )
                         .child(
-                            Button::new("水平型")
+                            Button::new(tr("水平型"))
                                 .id("steps-horizonal")
                                 .on_click(chrome::go("steps_horizonal")),
                         ),

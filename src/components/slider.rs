@@ -6,7 +6,7 @@
 //! example), and the readout shows at most one decimal place.
 
 use super::ChangeHandler;
-use crate::Theme;
+use crate::{Theme, logical::Logical};
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
@@ -134,6 +134,8 @@ impl RenderOnce for Slider {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         crate::scrolling::FocusTarget::new({
             let t = Theme::get(cx).clone();
+            let dir = crate::i18n::direction(cx);
+            let rtl = dir.is_rtl();
             let (min, max, step) = (self.min, self.max, self.step);
             let value = if self.value.is_finite() {
                 self.value.clamp(min, max)
@@ -170,9 +172,9 @@ impl RenderOnce for Slider {
                 .aria_value(format_value(value))
                 .aria_orientation(Orientation::Horizontal)
                 .absolute()
-                .left(relative(fraction))
+                .inset_s(dir, relative(fraction))
                 .top(px(-13.))
-                .ml(px(-14.))
+                .ms(dir, px(-14.))
                 .size(px(28.))
                 .rounded_full()
                 .bg(white())
@@ -197,13 +199,13 @@ impl RenderOnce for Slider {
                     .focus_visible(move |s| s.border_color(focus))
                     .on_key_down(move |event, window, cx| {
                         let big = (span / 10.).max(step);
-                        let next = match event.keystroke.key.as_str() {
-                            "left" | "down" => value - step,
-                            "right" | "up" => value + step,
-                            "pageup" => value + big,
-                            "pagedown" => value - big,
-                            "home" => min,
-                            "end" => max,
+                        let next = match (event.keystroke.key.as_str(), rtl) {
+                            ("down", _) | ("left", false) | ("right", true) => value - step,
+                            ("up", _) | ("right", false) | ("left", true) => value + step,
+                            ("pageup", _) => value + big,
+                            ("pagedown", _) => value - big,
+                            ("home", _) => min,
+                            ("end", _) => max,
                             _ => return,
                         };
                         cx.stop_propagation();
@@ -230,6 +232,8 @@ impl RenderOnce for Slider {
             let move_emit = emit.clone();
             let inner = div()
                 .relative()
+                .flex()
+                .row(dir)
                 .h(px(2.))
                 .bg(t.fg_3)
                 .child(div().h_full().w(relative(fraction)).bg(brand))
@@ -239,7 +243,11 @@ impl RenderOnce for Slider {
                             return;
                         }
                         let b = event.bounds;
-                        let x = (event.event.position.x - b.origin.x).as_f32();
+                        let x = if rtl {
+                            (b.origin.x + b.size.width - event.event.position.x).as_f32()
+                        } else {
+                            (event.event.position.x - b.origin.x).as_f32()
+                        };
                         let w = b.size.width.as_f32().max(1.);
                         move_emit(min + (x / w).clamp(0., 1.) * span, window, cx);
                     })
@@ -254,6 +262,7 @@ impl RenderOnce for Slider {
             div()
                 .id(self.id)
                 .flex()
+                .row(dir)
                 .items_center()
                 .child(slider)
                 .when(self.show_value, |el| {
@@ -262,7 +271,7 @@ impl RenderOnce for Slider {
                             .id("slider-value")
                             .role(Role::Status)
                             .aria_label(label_value.clone())
-                            .ml(px(7.))
+                            .ms(dir, px(7.))
                             .min_w(px(24.))
                             .text_center()
                             .text_size(px(14.))

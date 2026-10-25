@@ -7,7 +7,7 @@
 use crate::scrolling::RevealFocus;
 
 use super::{ClickHandler, Icon};
-use crate::Theme;
+use crate::{Theme, logical::Logical};
 use gpui::{prelude::*, *};
 
 /// Visual style of a [`Cells`] group.
@@ -178,6 +178,7 @@ pub fn cells_title(text: impl IntoElement, cx: &App) -> Div {
 impl RenderOnce for Cells {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let form = matches!(self.style, CellsStyle::Form | CellsStyle::FormPrimary);
         let (inset_l, inset_r) = self.inset;
         let line = t.fg_3;
@@ -192,8 +193,8 @@ impl RenderOnce for Cells {
                     div()
                         .absolute()
                         .top_0()
-                        .left(px(inset_l))
-                        .right(px(inset_r))
+                        .inset_s(dir, px(inset_l))
+                        .inset_e(dir, px(inset_r))
                         .h(px(0.5))
                         .bg(line),
                 )
@@ -474,6 +475,7 @@ impl Cell {
 impl RenderOnce for Cell {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let padding = self.padding.unwrap_or(Edges {
             top: px(16.),
             bottom: px(16.),
@@ -514,18 +516,19 @@ impl RenderOnce for Cell {
             div()
                 .relative()
                 .flex()
+                .row(dir)
                 .items_center()
                 .justify_end()
-                .text_right()
+                .text_end(dir)
                 .text_color(t.fg_1)
-                .when(self.form, |el| el.pl(px(16.)))
-                .when(self.access, |el| el.pr(px(24.)))
+                .when(self.form, |el| el.ps(dir, px(16.)))
+                .when(self.access, |el| el.pe(dir, px(24.)))
                 .children(self.ft)
                 .when(self.access, |el| {
                     el.child(
                         div()
                             .absolute()
-                            .right_0()
+                            .inset_e(dir, px(0.))
                             .top_0()
                             .bottom_0()
                             .flex()
@@ -546,12 +549,14 @@ impl RenderOnce for Cell {
             .when_some(self.selected, |el, s| el.aria_selected(s))
             .relative()
             .flex()
+            .row(dir)
+            .text_start(dir)
             .when(self.primary, |el| el.items_start())
             .when(!self.primary, |el| el.items_center())
             .pt(padding.top - px(2.))
             .pb(padding.bottom - px(2.))
-            .pl(padding.left - px(2.))
-            .pr(padding.right - px(2.))
+            .ps(dir, padding.left - px(2.))
+            .pe(dir, padding.right - px(2.))
             .border_2()
             .border_color(transparent_black())
             .when_some(self.min_height, |el, h| el.min_h(px(h)))
@@ -559,7 +564,7 @@ impl RenderOnce for Cell {
             .line_height(relative(24. / 17.))
             .text_color(color)
             .when_some(self.hd, |el, hd| {
-                el.child(div().when(self.form, |el| el.pr(px(16.))).child(hd))
+                el.child(div().when(self.form, |el| el.pe(dir, px(16.))).child(hd))
             })
             .child(bd)
             .children(ft);

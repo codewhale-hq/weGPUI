@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use wegpui::{
@@ -46,9 +47,9 @@ impl Render for ArticlePage {
         let brand = t.brand;
         let lists = section(2)
             .mb_0()
-            .child(h4("列表示例"))
+            .child(h4(tr("列表示例")))
             .child(
-                section(3).mb_0().child(h5("原生无序列表")).child(
+                section(3).mb_0().child(h5(tr("原生无序列表"))).child(
                     ArticleList::unordered()
                         .item(ITEM)
                         .item(ListItem::new(ITEM).nested(
@@ -60,7 +61,7 @@ impl Render for ArticlePage {
                         .item(ITEM),
                 ),
             )
-            .child(section(3).mb_0().child(h5("原生有序列表")).child(ordered_nested(
+            .child(section(3).mb_0().child(h5(tr("原生有序列表"))).child(ordered_nested(
                 ArticleList::ordered(),
                 ITEM,
                 [ADI, ADI, ADI],
@@ -69,11 +70,11 @@ impl Render for ArticlePage {
             .child(
                 section(3)
                     .mb_0()
-                    .child(h5("原生段落列表（需要自行添加class）"))
+                    .child(h5(tr("原生段落列表（需要自行添加class）")))
                     .child(ordered_nested(ArticleList::inside(), LONG, [ADI_LONG, ADI, ADI], ITEM)),
             )
             .child(
-                section(3).mb_0().child(h5("自定义序号列表（需要自行添加class）")).child(
+                section(3).mb_0().child(h5(tr("自定义序号列表（需要自行添加class）"))).child(
                     ArticleList::none()
                         .item(ListItem::new("1 Elit quo illum ut voluptateElit quo illum ut voluptate possimus. Maxime"))
                         .item(
@@ -106,15 +107,15 @@ impl Render for ArticlePage {
         );
         PageFrame::new(self.route).child(
             Article::new("article")
-                .child(h1("文章页大标题"))
+                .child(h1(tr("文章页大标题")))
                 .child(
-                    section(0).mb(px(24.)).child(h2("二级标题")).child(
+                    section(0).mb(px(24.)).child(h2(tr("二级标题"))).child(
                         section(1)
                             .mb_0()
-                            .child(h3("三级标题"))
+                            .child(h3(tr("三级标题")))
                             .child(
                                 section(2)
-                                    .child(h4("四级标题"))
+                                    .child(h4(tr("四级标题")))
                                     .child(paragraph_text("article-body", LOREM))
                                     .child(
                                         paragraph()
@@ -126,7 +127,7 @@ impl Render for ArticlePage {
                                                 div()
                                                     .id("article-image-1")
                                                     .role(Role::Image)
-                                                    .aria_label("配图")
+                                                    .aria_label(tr("配图"))
                                                     .relative()
                                                     .flex()
                                                     .flex_col()
@@ -145,7 +146,7 @@ impl Render for ArticlePage {
                                                 div()
                                                     .id("article-image-2")
                                                     .role(Role::Image)
-                                                    .aria_label("配图")
+                                                    .aria_label(tr("配图"))
                                                     .relative()
                                                     .flex()
                                                     .flex_col()
@@ -167,7 +168,7 @@ impl Render for ArticlePage {
                 )
                 .child(
                     section(0)
-                        .child(h2("无障碍焦点整合示例"))
+                        .child(h2(tr("无障碍焦点整合示例")))
                         .child(section(1).mb_0().child(combo)),
                 ),
         )

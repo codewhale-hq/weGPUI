@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use wegpui::components::navbar::{Navbar, tab_panel};
@@ -36,7 +37,7 @@ impl Render for NavbarPage {
                 .flex_col()
                 .child(
                     Navbar::new("navbar")
-                        .items(TABS)
+                        .items(TABS.map(tr))
                         .selected(selected)
                         .on_select(move |i, _, cx| {
                             entity
@@ -48,7 +49,7 @@ impl Render for NavbarPage {
                         }),
                 )
                 .child(
-                    tab_panel(("panel", selected), TABS[selected])
+                    tab_panel(("panel", selected), tr(TABS[selected]))
                         .p(px(32.))
                         .child(PANELS[selected]),
                 ),

@@ -6,7 +6,7 @@
 //! assume a `bg_2` surface.
 
 use super::loading::Loading;
-use crate::Theme;
+use crate::{Theme, logical::Logical};
 use gpui::{prelude::*, *};
 
 /// Visual state of a [`LoadMore`].
@@ -15,7 +15,7 @@ pub enum LoadMoreKind {
     /// A spinner followed by the text, exposed as an alert so the text is announced.
     #[default]
     Loading,
-    /// The text centred on a hairline (`weui-loadmore_line`), for example "暂无数据".
+    /// The text centred on a hairline (`weui-loadmore_line`), for example "No data".
     Line,
     /// A 4px dot centred on a hairline (`weui-loadmore_dot`); the text is only the accessible name.
     Dot,
@@ -84,6 +84,7 @@ impl RenderOnce for LoadMore {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx);
         let (fg, line, bg) = (t.fg_1, t.fg_3, t.bg_2);
+        let dir = crate::i18n::direction(cx);
         let (mt, mb) = self.margin.unwrap_or(match self.kind {
             LoadMoreKind::Loading => (20., 20.),
             _ => (32., 20.),
@@ -96,6 +97,7 @@ impl RenderOnce for LoadMore {
             .mt(px(mt))
             .mb(px(mb))
             .flex()
+            .row(dir)
             .justify_center()
             .text_size(px(14.))
             .line_height(px(lh))
@@ -106,7 +108,7 @@ impl RenderOnce for LoadMore {
                     .aria_label(self.text.clone())
                     .items_center()
                     .h(px(lh))
-                    .child(div().mr(px(8.)).child(Loading::primary()))
+                    .child(div().me(dir, px(8.)).child(Loading::primary()))
                     .child(self.text),
             )
             .live(accesskit::Live::Assertive)

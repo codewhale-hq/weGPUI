@@ -6,7 +6,7 @@
 //! [`paragraph_text`] for accessible plain-text paragraphs; the compositional [`paragraph`]
 //! container needs semantic children such as GPUI [`Text`] for assistive technology.
 
-use crate::Theme;
+use crate::{Theme, logical::Logical};
 use gpui::{prelude::*, *};
 
 const FONT: f32 = 17.;
@@ -47,6 +47,7 @@ impl RenderOnce for Article {
             .pb(px(48.))
             .px(px(24.))
             .text_color(Theme::get(cx).fg_0)
+            .text_start(crate::i18n::direction(cx))
             .text_size(px(FONT))
             .line_height(px(LINE))
             .children(self.children)
@@ -270,6 +271,7 @@ impl From<&'static str> for ListItem {
 impl RenderOnce for ArticleList {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let color = Theme::get(cx).fg_0;
+        let dir = crate::i18n::direction(cx);
         let em = FONT;
         let indent = match self.style {
             ListStyle::Disc | ListStyle::Decimal => 1.2 * em,
@@ -285,7 +287,7 @@ impl RenderOnce for ArticleList {
             .role(Role::List)
             .flex()
             .flex_col()
-            .ml(px(indent))
+            .ms(dir, px(indent))
             .when(self.nested, |el| el.mt(px(0.5 * em)))
             .when(!self.nested, |el| el.mb(px(24.)))
             .children(self.items.into_iter().enumerate().map(move |(i, item)| {
@@ -315,7 +317,7 @@ impl RenderOnce for ArticleList {
                             div()
                                 .absolute()
                                 .top(px(LINE / 2. - 2.5))
-                                .left(px(-19.))
+                                .inset_s(dir, px(-19.))
                                 .size(px(5.))
                                 .rounded_full()
                                 .bg(color),
@@ -327,8 +329,8 @@ impl RenderOnce for ArticleList {
                                 div()
                                     .absolute()
                                     .top_0()
-                                    .right(relative(1.))
-                                    .pr(px(if style == ListStyle::Disc { 10. } else { 4. }))
+                                    .inset_e(dir, relative(1.))
+                                    .pe(dir, px(if style == ListStyle::Disc { 10. } else { 4. }))
                                     .whitespace_nowrap()
                                     .child(m),
                             )

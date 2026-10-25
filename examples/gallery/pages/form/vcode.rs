@@ -3,8 +3,10 @@ use super::{
     toast_presence,
 };
 use crate::chrome::PageFrame;
+use crate::text::tr;
 use gpui::{prelude::*, *};
 use wegpui::{
+    I18n,
     components::{
         agree::Agree,
         button::{BottomFixedOpr, Button},
@@ -16,6 +18,7 @@ use wegpui::{
         vcode::VcodeButton,
     },
     input::{InputEvent, InputKind, TextInput},
+    logical::Logical,
     scrolling::RevealFocus,
 };
 
@@ -45,9 +48,9 @@ impl Vcode {
     ) -> Self {
         let rows = if route == "form_bottom_fixed" { 6 } else { 1 };
         let phones = (0..rows)
-            .map(|_| input("请输入手机号", InputKind::Number, "12345678907", cx))
+            .map(|_| input(tr("请输入手机号"), InputKind::Number, "12345678907", cx))
             .collect();
-        let code = input("输入验证码", InputKind::Text, "", cx);
+        let code = input(tr("输入验证码"), InputKind::Text, "", cx);
         code.update(cx, |i, cx| i.set_max_len(Some(6), cx));
         let code_field = cx.new(|cx| ClearableInput::new(code.clone(), window, cx));
         let vcode = cx.new(VcodeButton::new);
@@ -102,8 +105,8 @@ impl Vcode {
         let phone = &self.phones[i];
         let width = if self.route == "form_vcode" { W } else { 105. };
         FormCell::new(("cell-phone", i))
-            .label("手机号")
-            .label_width(width)
+            .label(tr("手机号"))
+            .label_width(crate::text::label_w(width))
             .label_for(phone)
             .child(phone.clone())
             .ft(info_button(
@@ -116,8 +119,10 @@ impl Vcode {
 
 impl Render for Vcode {
     fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let dir = I18n::get(cx).direction();
         let fixed = self.route == "form_bottom_fixed";
-        let tips_link = form_link("no-code", "收不到验证码", true, cx, |_, _, _| {}).reveal_focus();
+        let tips_link =
+            form_link("no-code", tr("收不到验证码"), true, cx, |_, _, _| {}).reveal_focus();
         let mut group = FormGroup::new("group-1").first();
         for i in 0..self.phones.len() {
             group = group.row(self.phone_cell(i, cx));
@@ -126,8 +131,8 @@ impl Render for Vcode {
             group = group.row(
                 FormCell::new("js_cell_vcode")
                     .kind(CellKind::Vcode)
-                    .label("验证码")
-                    .label_width(W)
+                    .label(tr("验证码"))
+                    .label_width(crate::text::label_w(W))
                     .label_for(&self.code)
                     .child(cell_control_flex(
                         div()
@@ -137,7 +142,7 @@ impl Render for Vcode {
                             .items_center()
                             .child(self.code_field.clone()),
                     ))
-                    .child(div().my(px(8.)).ml(px(16.)).child(self.vcode.clone())),
+                    .child(div().my(px(8.)).ms(dir, px(16.)).child(self.vcode.clone())),
             );
         }
         let group = group.tips(tips_link);
@@ -160,32 +165,40 @@ impl Render for Vcode {
                     cx.notify();
                 }));
             if link {
-                a.link("《相关条款》", |_, _, _| {})
+                a.link(tr("《相关条款》"), |_, _, _| {})
             } else {
                 a
             }
         };
         let submit = cx.listener(|this, _, window, cx| this.submit(window, cx));
         let mut form = Form::new("weui-form").title(if fixed {
-            "底部悬浮表单"
+            tr("底部悬浮表单")
         } else {
-            "验证码"
+            tr("验证码")
         });
         form = form
             .desc(if fixed {
-                "底部悬浮表单样式"
+                tr("底部悬浮表单样式")
             } else {
-                "验证手机号样式"
+                tr("验证手机号样式")
             })
             .child(group);
         if fixed {
             let shake = self.shake;
             form = form
                 .bottom_fixed(&self.scroll)
-                .tips_area(agree("weuiAgree", 0, "阅读并同意", true, false, shake, cx))
+                .tips_area(agree(
+                    "weuiAgree",
+                    0,
+                    tr("阅读并同意"),
+                    true,
+                    false,
+                    shake,
+                    cx,
+                ))
                 .opr_area(
                     BottomFixedOpr::new().button(
-                        Button::new("确定")
+                        Button::new(tr("确定"))
                             .id("showTooltips")
                             .primary()
                             .on_click(submit),
@@ -196,18 +209,18 @@ impl Render for Vcode {
             form = form
                 .tips_area(
                     TipsGroup::new()
-                        .child(agree("weuiAgree1", 0, "阅读并同意", true, warn, 0, cx))
+                        .child(agree("weuiAgree1", 0, tr("阅读并同意"), true, warn, 0, cx))
                         .child(agree(
                             "weuiAgree0",
                             1,
-                            "以上信息用于核对账号绑定的身份",
+                            tr("以上信息用于核对账号绑定的身份"),
                             false,
                             false,
                             0,
                             cx,
                         )),
                 )
-                .opr_area(primary_button("showTooltips", "确定", false, submit));
+                .opr_area(primary_button("showTooltips", tr("确定"), false, submit));
         }
         let close = dismiss(cx, |this, window, cx| {
             this.dialog.hide(window, cx);

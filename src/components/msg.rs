@@ -5,7 +5,7 @@
 //! and expose individual keyboard targets with bounds derived from the shaped text.
 
 use super::Icon;
-use crate::Theme;
+use crate::{Theme, logical::Logical};
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
@@ -228,15 +228,15 @@ fn link_bounds(layout: &TextLayout, range: std::ops::Range<usize>) -> Option<Bou
 /// Standard 64 px icon for a [`Msg`] icon area, exposed as an `Image`.
 #[derive(Clone, Copy, PartialEq, Eq)]
 pub enum MsgIcon {
-    /// Brand-coloured `success` icon, named "成功".
+    /// Brand-coloured `success` icon, named by the localized [`crate::Messages::success`].
     Success,
-    /// Red `warn` icon, named "警告".
+    /// Red `warn` icon, named by the localized [`crate::Messages::warning`].
     Warn,
-    /// Yellow `warn` icon, named "警告".
+    /// Yellow `warn` icon, named by the localized [`crate::Messages::warning`].
     WarnPrimary,
-    /// Blue `info-circle` icon, named "提示".
+    /// Blue `info-circle` icon, named by the localized [`crate::Messages::info`].
     Info,
-    /// Blue `waiting` icon, named "等待".
+    /// Blue `waiting` icon, named by the localized [`crate::Messages::waiting`].
     Waiting,
 }
 
@@ -361,11 +361,14 @@ impl RenderOnce for MsgIconView {
         div()
             .id("msg-icon")
             .role(Role::Image)
-            .aria_label(match (self.name, self.primary) {
-                ("success", _) => "成功",
-                ("warn", _) => "警告",
-                ("waiting", _) => "等待",
-                _ => "提示",
+            .aria_label({
+                let m = crate::i18n::messages(cx);
+                match (self.name, self.primary) {
+                    ("success", _) => m.success.clone(),
+                    ("warn", _) => m.warning.clone(),
+                    ("waiting", _) => m.waiting.clone(),
+                    _ => m.info.clone(),
+                }
             })
             .flex()
             .justify_center()
@@ -376,6 +379,7 @@ impl RenderOnce for MsgIconView {
 impl RenderOnce for Msg {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let n = self.areas.len();
         let kinds: Vec<u8> = self
             .areas
@@ -415,7 +419,7 @@ impl RenderOnce for Msg {
                                     .flex()
                                     .flex_col()
                                     .mb(px(16.))
-                                    .text_left()
+                                    .text_start(dir)
                                     .when(prev_kind == Some(TextKind::Title), |el| el.mt(px(32.)))
                                     .when(
                                         matches!(

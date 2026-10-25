@@ -15,6 +15,7 @@ pub mod home;
 pub mod icons;
 pub mod information_bar;
 pub mod input;
+pub mod languages;
 pub mod layers;
 pub mod list;
 pub mod loading;
@@ -42,6 +43,7 @@ pub type Build = fn(&'static str, &Args, &mut Window, &mut App) -> AnyView;
 pub const ROUTES: &[(&str, Build)] = &[
     ("home", home::build),
     ("layers", layers::build),
+    ("languages", languages::build),
     ("button", button::build),
     ("button_default", button::build),
     ("button_bottom_fixed", button::build),

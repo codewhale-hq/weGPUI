@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use wegpui::components::loading::Loading;
@@ -20,7 +21,7 @@ impl Render for LoadingPage {
         ];
         PageFrame::new(self.route)
             .title("Loading")
-            .desc("正在加载")
+            .desc(tr("正在加载"))
             .child(
                 div()
                     .my(px(10.))
@@ -33,7 +34,7 @@ impl Render for LoadingPage {
                         div()
                             .mx(px(5.))
                             .when(i > 0, |el| el.ml(px(5. + 4.4)))
-                            .child(l.label("正在加载"))
+                            .child(l.label(tr("正在加载")))
                     })),
             )
     }

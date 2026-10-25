@@ -1,5 +1,6 @@
 use super::{primary_button, show_toast, toast, toast_presence};
 use crate::chrome::PageFrame;
+use crate::text::tr;
 use gpui::{prelude::*, *};
 use wegpui::components::{
     Cell,
@@ -70,13 +71,13 @@ impl Render for Choice {
             cx.listener(|this, _, window, cx| show_toast(this, window, cx, |t| &mut t.toast));
         let add_more = |id: &'static str| {
             Cell::new(id)
-                .title("添加更多")
+                .title(tr("添加更多"))
                 .link()
                 .form()
                 .on_click(|_, _, _| {})
         };
         let form = match self.route {
-            "form_access" => Form::new("weui-form").title("跳转列表项").child(
+            "form_access" => Form::new("weui-form").title(tr("跳转列表项")).child(
                 FormGroup::new("group-1")
                     .first()
                     .row(
@@ -117,16 +118,16 @@ impl Render for Choice {
                     )
                     .row(add_more("add-more"));
                 Form::new("weui-form")
-                    .title("复选框样式展示")
+                    .title(tr("复选框样式展示"))
                     .child(group)
-                    .opr_area(primary_button("showTooltips", "下一步", false, submit))
+                    .opr_area(primary_button("showTooltips", tr("下一步"), false, submit))
                     .tips_area(form_tips(
                         div()
                             .flex()
                             .justify_center()
-                            .child("点击下一步即表示")
+                            .child(tr("点击下一步即表示"))
                             .child(
-                                form_link("agreement", "同意用户协议", false, cx, |_, _, _| {})
+                                form_link("agreement", tr("同意用户协议"), false, cx, |_, _, _| {})
                                     .reveal_focus(),
                             ),
                         cx,
@@ -143,7 +144,7 @@ impl Render for Choice {
                     }))
                     .rows(window, cx);
                 Form::new("weui-form")
-                    .title("单选框样式展示")
+                    .title(tr("单选框样式展示"))
                     .child(
                         FormGroup::new("group-1")
                             .first()
@@ -151,10 +152,10 @@ impl Render for Choice {
                             .rows(rows, 16.)
                             .row(add_more("add-more")),
                     )
-                    .opr_area(primary_button("showTooltips", "确定", false, submit))
+                    .opr_area(primary_button("showTooltips", tr("确定"), false, submit))
             }
             _ => Form::new("weui-form")
-                .title("开关样式展示")
+                .title(tr("开关样式展示"))
                 .child(
                     FormGroup::new("group-1")
                         .first()
@@ -162,9 +163,9 @@ impl Render for Choice {
                             FormCell::new("cell-switch")
                                 .kind(CellKind::Switch)
                                 .on_tap(toggle(0, self.switches[0], cx))
-                                .child("标题文字")
+                                .child(tr("标题文字"))
                                 .ft(Switch::new("cb")
-                                    .label("标题文字")
+                                    .label(tr("标题文字"))
                                     .checked(self.switches[0])
                                     .on_change(set(0, cx))),
                         )
@@ -172,9 +173,9 @@ impl Render for Choice {
                             FormCell::new("cell-switch-disabled")
                                 .kind(CellKind::Switch)
                                 .disabled(true)
-                                .child("标题文字")
+                                .child(tr("标题文字"))
                                 .ft(Switch::new("cb1")
-                                    .label("标题文字")
+                                    .label(tr("标题文字"))
                                     .checked(true)
                                     .disabled(true)),
                         )
@@ -182,14 +183,14 @@ impl Render for Choice {
                             FormCell::new("cell-switch-cp")
                                 .kind(CellKind::Switch)
                                 .on_tap(toggle(1, self.switches[1], cx))
-                                .child("兼容IE Edge的版本")
+                                .child(tr("兼容IE Edge的版本"))
                                 .ft(Switch::new("switchCP")
-                                    .label("兼容IE Edge的版本")
+                                    .label(tr("兼容IE Edge的版本"))
                                     .checked(self.switches[1])
                                     .on_change(set(1, cx))),
                         ),
                 )
-                .opr_area(primary_button("showTooltips", "确定", false, submit)),
+                .opr_area(primary_button("showTooltips", tr("确定"), false, submit)),
         };
         PageFrame::new(self.route)
             .child(form)

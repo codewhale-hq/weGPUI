@@ -1,9 +1,10 @@
 mod chrome;
 mod pages;
+mod text;
 
 use gpui::{prelude::*, *};
 use std::time::{Duration, Instant};
-use wegpui::{Assets, Theme, ThemeMode};
+use wegpui::{Assets, I18n, Locale, Theme, ThemeMode, logical::Logical};
 
 actions!(
     gallery,
@@ -17,6 +18,20 @@ actions!(
         ToggleCare,
         ToggleBrand,
         ToggleReduceMotion,
+        LangEn,
+        LangZhHans,
+        LangZhHant,
+        LangJa,
+        LangKo,
+        LangEs,
+        LangFr,
+        LangDe,
+        LangPt,
+        LangRu,
+        LangAr,
+        LangHe,
+        LangHi,
+        LangTh,
     ]
 );
 
@@ -128,6 +143,14 @@ impl Gallery {
         }
         cx.notify();
     }
+    fn rebuild(&mut self, window: &mut Window, cx: &mut Context<Self>) {
+        for entry in &mut self.stack {
+            if let Some(view) = pages::build(&entry.route, &pages::Args::default(), window, cx) {
+                entry.view = view;
+            }
+        }
+        cx.notify();
+    }
     fn progress(at: Option<Instant>, window: &Window, cx: &App) -> f32 {
         match at {
             Some(at) if !cx.reduce_motion() => {
@@ -195,6 +218,16 @@ impl Render for Gallery {
             })
             .on_action(|_: &Back, w, cx| back(w, cx))
             .on_action(|_: &Home, w, cx| home(w, cx));
+        root = root.text_start(I18n::get(cx).direction());
+        let fallbacks: Vec<String> = I18n::get(cx)
+            .locale()
+            .font_fallbacks()
+            .iter()
+            .map(|name| name.to_string())
+            .collect();
+        if !fallbacks.is_empty() {
+            root.text_style().font_fallbacks = Some(FontFallbacks::from_fonts(fallbacks));
+        }
         for (i, entry) in self.stack.iter().enumerate() {
             let is_top = i + 1 == n;
             let covered = i + 2 < n || (i + 1 < n && top == Some(1.) && self.leaving.is_none());
@@ -220,6 +253,8 @@ struct CliArgs {
     care: bool,
     brand: Option<Hsla>,
     reduce_motion: Option<bool>,
+    lang: Option<String>,
+    dir: Option<String>,
     scroll: Option<f32>,
     size: Option<(f32, f32)>,
     position: Option<(f32, f32)>,
@@ -249,6 +284,8 @@ fn parse_args() -> CliArgs {
             }
             "--reduce-motion" => args.reduce_motion = Some(true),
             "--motion" => args.reduce_motion = Some(false),
+            "--lang" => args.lang = Some(value()),
+            "--dir" => args.dir = Some(value()),
             "--scroll" => args.scroll = value().parse().ok(),
             "--size" => {
                 let v = value();
@@ -272,6 +309,7 @@ fn set_menus(cx: &mut App) {
     let t = Theme::get(cx);
     let (mode, care, branded) = (t.mode, t.care, t.brand_override.is_some());
     let reduce = cx.reduce_motion();
+    let lang = I18n::get(cx).locale().catalog_tag();
     cx.set_menus([
         Menu::new("weGPUI").items([MenuItem::action("Quit weGPUI", Quit)]),
         Menu::new("Navigate").items([
@@ -287,7 +325,46 @@ fn set_menus(cx: &mut App) {
             MenuItem::action("Custom Brand Colour", ToggleBrand).checked(branded),
             MenuItem::action("Reduce Motion", ToggleReduceMotion).checked(reduce),
         ]),
+        Menu::new("Language").items([
+            MenuItem::action("English", LangEn).checked(lang == "en"),
+            MenuItem::action("简体中文", LangZhHans).checked(lang == "zh-Hans"),
+            MenuItem::action("繁體中文", LangZhHant).checked(lang == "zh-Hant"),
+            MenuItem::action("日本語", LangJa).checked(lang == "ja"),
+            MenuItem::action("한국어", LangKo).checked(lang == "ko"),
+            MenuItem::action("Español", LangEs).checked(lang == "es"),
+            MenuItem::action("Français", LangFr).checked(lang == "fr"),
+            MenuItem::action("Deutsch", LangDe).checked(lang == "de"),
+            MenuItem::action("Português", LangPt).checked(lang == "pt"),
+            MenuItem::action("Русский", LangRu).checked(lang == "ru"),
+            MenuItem::action("العربية", LangAr).checked(lang == "ar"),
+            MenuItem::action("עברית", LangHe).checked(lang == "he"),
+            MenuItem::action("हिन्दी", LangHi).checked(lang == "hi"),
+            MenuItem::action("ไทย", LangTh).checked(lang == "th"),
+        ]),
     ]);
+}
+
+fn set_language(tag: &str, cx: &mut App) {
+    if let Some(locale) = Locale::parse(tag) {
+        text::set_locale(&locale);
+        I18n::set_locale(locale, cx);
+        set_menus(cx);
+        rebuild_pages(cx);
+    }
+}
+
+fn rebuild_pages(cx: &mut App) {
+    let Some(nav) = cx.try_global::<Nav>().map(|n| n.0.clone()) else {
+        return;
+    };
+    if let Some(handle) = cx.active_window() {
+        handle
+            .update(cx, |_, window, cx| {
+                nav.update(cx, |gallery, cx| gallery.rebuild(window, cx))
+                    .ok();
+            })
+            .ok();
+    }
 }
 
 #[path = "../support/platform.rs"]
@@ -297,6 +374,18 @@ fn main() {
     let args = parse_args();
     platform::application().with_assets(Assets).run(move |cx| {
         wegpui::init(cx);
+        let locale = args
+            .lang
+            .as_deref()
+            .and_then(Locale::parse)
+            .unwrap_or_else(Locale::en);
+        text::set_locale(&locale);
+        I18n::set_locale(locale, cx);
+        match args.dir.as_deref() {
+            Some("rtl") => I18n::set_direction(Some(wegpui::Direction::Rtl), cx),
+            Some("ltr") => I18n::set_direction(Some(wegpui::Direction::Ltr), cx),
+            _ => {}
+        }
         if let Some(mode) = args.theme {
             Theme::set_mode(mode, cx);
         }
@@ -340,6 +429,20 @@ fn main() {
             cx.set_reduce_motion(reduce);
             set_menus(cx);
         });
+        cx.on_action(|_: &LangEn, cx| set_language("en", cx));
+        cx.on_action(|_: &LangZhHans, cx| set_language("zh-Hans", cx));
+        cx.on_action(|_: &LangZhHant, cx| set_language("zh-Hant", cx));
+        cx.on_action(|_: &LangJa, cx| set_language("ja", cx));
+        cx.on_action(|_: &LangKo, cx| set_language("ko", cx));
+        cx.on_action(|_: &LangEs, cx| set_language("es", cx));
+        cx.on_action(|_: &LangFr, cx| set_language("fr", cx));
+        cx.on_action(|_: &LangDe, cx| set_language("de", cx));
+        cx.on_action(|_: &LangPt, cx| set_language("pt", cx));
+        cx.on_action(|_: &LangRu, cx| set_language("ru", cx));
+        cx.on_action(|_: &LangAr, cx| set_language("ar", cx));
+        cx.on_action(|_: &LangHe, cx| set_language("he", cx));
+        cx.on_action(|_: &LangHi, cx| set_language("hi", cx));
+        cx.on_action(|_: &LangTh, cx| set_language("th", cx));
         cx.bind_keys([
             KeyBinding::new("cmd-q", Quit, None),
             KeyBinding::new("cmd-[", Back, None),

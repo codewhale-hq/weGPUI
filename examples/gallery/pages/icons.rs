@@ -1,6 +1,7 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
-use wegpui::components::Icon;
+use wegpui::{I18n, components::Icon, logical::Logical};
 
 pub struct IconsPage {
     route: &'static str,
@@ -35,14 +36,16 @@ const BOXES: &[(&str, bool, &str, &str)] = &[
 
 impl Render for IconsPage {
     fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let dir = I18n::get(cx).direction();
         let fg = wegpui::Theme::get(cx).fg_0;
         PageFrame::new(self.route)
             .title("Icons")
-            .desc("图标")
+            .desc(tr("图标"))
             .child(
                 div()
                     .px(px(40.))
                     .children(BOXES.iter().map(|&(name, primary, title, desc)| {
+                        let (title, desc) = (tr(title), tr(desc));
                         let icon = Icon::new(name).label(title);
                         let icon = if primary {
                             icon.msg_primary()
@@ -52,8 +55,9 @@ impl Render for IconsPage {
                         div()
                             .mb(px(25.))
                             .flex()
+                            .row(dir)
                             .items_center()
-                            .child(div().mr(px(18.)).child(icon))
+                            .child(div().me(dir, px(18.)).child(icon))
                             .child(
                                 div()
                                     .flex_shrink(100.)

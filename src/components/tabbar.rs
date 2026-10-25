@@ -4,7 +4,7 @@
 //! handling, with focus contained to the bar and one Tab stop. [`TabbarItem`] describes one tab.
 
 use super::navbar::{SelectHandler, tab_focus_handles, tab_keys};
-use crate::{Theme, scrolling::RevealFocus};
+use crate::{Theme, logical::Logical, scrolling::RevealFocus};
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
@@ -89,6 +89,7 @@ impl Tabbar {
 impl RenderOnce for Tabbar {
     fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let count = self.items.len();
         let selected = self.selected;
         let handles = tab_focus_handles(self.id.clone(), count, window, cx);
@@ -99,6 +100,7 @@ impl RenderOnce for Tabbar {
             .aria_label(self.label)
             .relative()
             .flex()
+            .row(dir)
             .flex_shrink_0()
             .bg(t.bg_1)
             .child(
@@ -122,7 +124,12 @@ impl RenderOnce for Tabbar {
                     .aria_selected(on)
                     .track_focus(&handles[i].clone().tab_stop(i == tab_stop))
                     .focusable()
-                    .on_key_down(tab_keys(handles.clone(), i, self.on_select.clone()))
+                    .on_key_down(tab_keys(
+                        handles.clone(),
+                        i,
+                        self.on_select.clone(),
+                        dir.is_rtl(),
+                    ))
                     .flex_1()
                     .pt(px(6.))
                     .pb(px(6.))
@@ -140,7 +147,7 @@ impl RenderOnce for Tabbar {
                             .mb(px(2.))
                             .child(item.icon)
                             .when_some(item.badge, |el, (badge, top, right)| {
-                                el.child(div().absolute().top(top).right(right).child(badge))
+                                el.child(div().absolute().top(top).inset_e(dir, right).child(badge))
                             }),
                     )
                     .child(

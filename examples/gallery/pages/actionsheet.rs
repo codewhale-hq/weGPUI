@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use wegpui::components::{
@@ -58,7 +59,7 @@ impl Render for ActionSheetPage {
         };
         PageFrame::new("actionsheet")
             .title("ActionSheet")
-            .desc("弹出式菜单")
+            .desc(tr("弹出式菜单"))
             .spacing()
             .child(
                 Button::new("ActionSheet")
@@ -70,21 +71,21 @@ impl Render for ActionSheetPage {
             )
             .child(
                 ActionSheet::new("iosActionsheet")
-                    .title("这是一个标题，可以为一行或者两行。")
-                    .item(ActionSheetItem::new("示例菜单"))
-                    .item(ActionSheetItem::new("示例菜单").tips("副标题"))
-                    .item(ActionSheetItem::new("负向菜单").warn())
-                    .action(ActionSheetItem::new("取消").on_click(hide_ios.clone()))
+                    .title(tr("这是一个标题，可以为一行或者两行。"))
+                    .item(ActionSheetItem::new(tr("示例菜单")))
+                    .item(ActionSheetItem::new(tr("示例菜单")).tips(tr("副标题")))
+                    .item(ActionSheetItem::new(tr("负向菜单")).warn())
+                    .action(ActionSheetItem::new(tr("取消")).on_click(hide_ios.clone()))
                     .presence(&self.ios)
                     .on_dismiss(hide_ios),
             )
             .child(
                 ActionSheet::new("androidActionsheet")
                     .android(true)
-                    .label("示例菜单")
-                    .item(ActionSheetItem::new("示例菜单"))
-                    .item(ActionSheetItem::new("示例菜单"))
-                    .item(ActionSheetItem::new("示例菜单"))
+                    .label(tr("示例菜单"))
+                    .item(ActionSheetItem::new(tr("示例菜单")))
+                    .item(ActionSheetItem::new(tr("示例菜单")))
+                    .item(ActionSheetItem::new(tr("示例菜单")))
                     .presence(&self.android)
                     .on_dismiss(hide_android),
             )

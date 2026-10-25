@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use std::{
@@ -563,6 +564,7 @@ impl Render for LayersPage {
         .w_full()
         .h(px(H));
         let (_, title, desc) = INFO[self.info];
+        let (title, desc) = (tr(title), tr(desc));
         let header = div()
             .p(px(40.))
             .child(

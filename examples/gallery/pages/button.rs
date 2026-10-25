@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use wegpui::{
@@ -34,19 +35,19 @@ impl ButtonPage {
     fn index(&self) -> impl IntoElement {
         PageFrame::new(self.route)
             .title("Button")
-            .desc("按钮")
+            .desc(tr("按钮"))
             .child(
                 div()
                     .flex()
                     .flex_col()
                     .gap(px(16.))
                     .child(
-                        Button::new("普通型")
+                        Button::new(tr("普通型"))
                             .id("btn-nav-default")
                             .on_click(crate::chrome::go("button_default")),
                     )
                     .child(
-                        Button::new("底部悬浮型")
+                        Button::new(tr("底部悬浮型"))
                             .id("btn-nav-bottom-fixed")
                             .on_click(crate::chrome::go("button_bottom_fixed")),
                     ),
@@ -56,20 +57,20 @@ impl ButtonPage {
     fn default_page(&self, cx: &App) -> impl IntoElement {
         let brand = Theme::get(cx).brand;
         let mut first = sp_area();
-        for (kind, key, label) in KINDS {
+        for (kind, key, label) in KINDS.map(|(kind, key, label)| (kind, key, tr(label))) {
             first = first
                 .child(Button::new(label).id(key).kind(kind))
                 .child(
                     Button::new("")
                         .id(format!("{key}-loading-only"))
-                        .title("正在操作")
+                        .title(tr("正在操作"))
                         .kind(kind)
                         .loading(true),
                 )
                 .child(
                     Button::new(label)
                         .id(format!("{key}-loading"))
-                        .title("正在操作")
+                        .title(tr("正在操作"))
                         .kind(kind)
                         .loading(true),
                 )
@@ -81,26 +82,30 @@ impl ButtonPage {
                 );
         }
         let widths = sp_area()
-            .child(Button::new("按钮宽度").id("w1").primary())
-            .child(Button::new("按钮宽度自适应内容").id("w2").primary())
+            .child(Button::new(tr("按钮宽度")).id("w1").primary())
+            .child(Button::new(tr("按钮宽度自适应内容")).id("w2").primary())
             .child(
-                Button::new("按钮宽度自适应内容，达到最大值后折行，最大行数两行的示例")
-                    .id("w3")
-                    .primary(),
+                Button::new(tr(
+                    "按钮宽度自适应内容，达到最大值后折行，最大行数两行的示例",
+                ))
+                .id("w3")
+                .primary(),
             )
             .child(
-                Button::new("按钮宽度自适应内容")
+                Button::new(tr("按钮宽度自适应内容"))
                     .id("w4")
-                    .title("正在操作")
+                    .title(tr("正在操作"))
                     .primary()
                     .loading(true),
             )
             .child(
-                Button::new("按钮宽度自适应内容，达到最大值后折行，最大行数两行的示例")
-                    .id("w5")
-                    .title("正在操作")
-                    .primary()
-                    .loading(true),
+                Button::new(tr(
+                    "按钮宽度自适应内容，达到最大值后折行，最大行数两行的示例",
+                ))
+                .id("w5")
+                .title(tr("正在操作"))
+                .primary()
+                .loading(true),
             );
         let mut medium = sp_area();
         let mut overlay = sp_area().px_0().bg(brand);
@@ -115,19 +120,19 @@ impl ButtonPage {
         let mut margin = div().my(px(15.)).p(px(15.)).flex().justify_between();
         for (i, (kind, key, _)) in KINDS.into_iter().enumerate() {
             medium = medium.child(
-                Button::new("medium 按钮")
+                Button::new(tr("medium 按钮"))
                     .id(format!("medium-{key}"))
                     .kind(kind)
                     .size(Size::Medium),
             );
             overlay = overlay.child(
-                Button::new("overlay 按钮")
+                Button::new(tr("overlay 按钮"))
                     .id(format!("overlay-{key}"))
                     .kind(kind)
                     .overlay(),
             );
             overlay_disabled = overlay_disabled.child(
-                Button::new("overlay 按钮")
+                Button::new(tr("overlay 按钮"))
                     .id(format!("overlay-disabled-{key}"))
                     .kind(kind)
                     .overlay()
@@ -138,7 +143,7 @@ impl ButtonPage {
                     .mx(px(12.))
                     .when(i > 0, |el| el.ml(px(12. + 4.4)))
                     .child(
-                        Button::new("按钮")
+                        Button::new(tr("按钮"))
                             .id(format!("mini-{key}"))
                             .kind(kind)
                             .size(Size::Mini),
@@ -151,7 +156,7 @@ impl ButtonPage {
             (ButtonKind::Warn, "warn"),
         ] {
             margin = margin.child(
-                Button::new("按钮")
+                Button::new(tr("按钮"))
                     .id(format!("margin-{key}"))
                     .kind(kind)
                     .size(Size::Mini)
@@ -160,7 +165,7 @@ impl ButtonPage {
         }
         PageFrame::new(self.route)
             .title("Button")
-            .desc("按钮")
+            .desc(tr("按钮"))
             .bg(Theme::get(cx).bg_0)
             .child(first)
             .child(widths.mt_0())
@@ -177,12 +182,16 @@ impl ButtonPage {
         let page = BottomFixedOprPage::new(
             "bottom-fixed-content",
             BottomFixedOpr::new()
-                .button(Button::new("阅读并同意").id("js_btn").primary())
-                .button(Button::new("取消").id("js_cancel")),
+                .button(
+                    Button::new(crate::text::tr_or("阅读并同意", "Read and agree"))
+                        .id("js_btn")
+                        .primary(),
+                )
+                .button(Button::new(tr("取消")).id("js_cancel")),
         )
         .tips(
-            Agree::new("weuiAgree", "阅读并同意")
-                .link("《相关条款》", |_, _, _| {})
+            Agree::new("weuiAgree", tr("阅读并同意"))
+                .link(tr("《相关条款》"), |_, _, _| {})
                 .checked(self.agreed)
                 .on_change(move |v, _, cx| {
                     entity.update(cx, |this, cx| {

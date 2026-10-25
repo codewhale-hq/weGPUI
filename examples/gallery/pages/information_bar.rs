@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use std::time::{Duration, Instant};
@@ -30,7 +31,11 @@ impl Render for InformationBarPage {
     fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         let reduce = cx.reduce_motion();
         let mut bars = vec![];
-        for (i, (kind, text)) in BARS.into_iter().enumerate() {
+        for (i, (kind, text)) in BARS
+            .into_iter()
+            .map(|(kind, text)| (kind, tr(text)))
+            .enumerate()
+        {
             let opacity = match self.closing[i] {
                 None => 1.,
                 Some(_) if reduce => 0.,
@@ -50,7 +55,7 @@ impl Render for InformationBarPage {
                     )
                     .kind(kind)
                     .opacity(opacity)
-                    .link("详情", |_, _, _| {})
+                    .link(tr("详情"), |_, _, _| {})
                     .on_close(cx.listener(move |this, _, _, cx| {
                         if this.closing[i].is_none() {
                             this.closing[i] = Some(Instant::now());
@@ -62,7 +67,7 @@ impl Render for InformationBarPage {
         }
         PageFrame::new(self.route)
             .title("Information Bar")
-            .desc("信息提示条")
+            .desc(tr("信息提示条"))
             .spacing()
             .children(bars)
     }

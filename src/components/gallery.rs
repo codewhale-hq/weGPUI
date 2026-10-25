@@ -30,21 +30,22 @@ pub struct Gallery {
     id: ElementId,
     presence: Presence,
     src: Option<ImageSource>,
-    label: SharedString,
-    delete_label: SharedString,
+    label: Option<SharedString>,
+    delete_label: Option<SharedString>,
     on_delete: Option<ClickHandler>,
     on_dismiss: Option<DismissHandler>,
 }
 
 impl Gallery {
-    /// Creates a viewer for `presence` (cloned) with no image, label "大图" and no delete bar.
+    /// Creates a viewer for `presence` (cloned) with no image, the localized
+    /// [`crate::Messages::large_image`] label and no delete bar.
     pub fn new(id: impl Into<ElementId>, presence: &Presence) -> Self {
         Self {
             id: id.into(),
             presence: presence.clone(),
             src: None,
-            label: "大图".into(),
-            delete_label: "删除".into(),
+            label: None,
+            delete_label: None,
             on_delete: None,
             on_dismiss: None,
         }
@@ -55,14 +56,16 @@ impl Gallery {
         self.src = Some(src.into());
         self
     }
-    /// Sets the accessible name of the image and the dialog (default "大图").
+    /// Sets the accessible name of the image and the dialog (default: the localized
+    /// [`crate::Messages::large_image`]).
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
-        self.label = label.into();
+        self.label = Some(label.into());
         self
     }
-    /// Sets the delete button's accessible label (default "删除").
+    /// Sets the delete button's accessible label (default: the localized
+    /// [`crate::Messages::delete`]).
     pub fn delete_label(mut self, label: impl Into<SharedString>) -> Self {
-        self.delete_label = label.into();
+        self.delete_label = Some(label.into());
         self
     }
     /// Shows the 60 px bottom bar, whose full area is a focusable delete button; the handler
@@ -84,6 +87,12 @@ impl Gallery {
 impl RenderOnce for Gallery {
     fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let m = crate::i18n::messages_arc(cx);
+        let label = self.label.clone().unwrap_or_else(|| m.large_image.clone());
+        let delete_label = self
+            .delete_label
+            .clone()
+            .unwrap_or_else(|| m.delete.clone());
         let white = t.white;
         let delete_focus = t.focus_color_with(white, rgb(0x0d0d0d).into());
         let has_opr = self.on_delete.is_some();
@@ -100,7 +109,7 @@ impl RenderOnce for Gallery {
         let image = div()
             .id("gallery-img")
             .role(Role::Image)
-            .aria_label(self.label.clone())
+            .aria_label(label.clone())
             .absolute()
             .top_0()
             .left_0()
@@ -111,7 +120,7 @@ impl RenderOnce for Gallery {
                     .track_focus(&image_focus)
                     .tab_stop(true)
                     .cursor_pointer()
-                    .aria_description("按回车或空格关闭图片预览")
+                    .aria_description(m.close_preview_hint.clone())
             })
             .when_some(self.src, |el, src| {
                 el.child(img(src).size_full().object_fit(ObjectFit::Contain))
@@ -147,7 +156,7 @@ impl RenderOnce for Gallery {
                     div()
                         .id("gallery-del")
                         .role(Role::Button)
-                        .aria_label(self.delete_label)
+                        .aria_label(delete_label)
                         .size_full()
                         .flex()
                         .items_center()
@@ -177,7 +186,7 @@ impl RenderOnce for Gallery {
             .placement(Placement::Fill)
             .motion(Motion::Fade)
             .dismiss_on_mask(false)
-            .label(self.label)
+            .label(label)
             .on_dismiss(move |window, cx| {
                 if let Some(handler) = dismiss.as_ref() {
                     handler(window, cx);

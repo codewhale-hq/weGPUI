@@ -1,11 +1,11 @@
 //! WeUI verification-code controls (`src/style/widget/weui-cell/weui-form/weui-vcode.less`,
 //! examples `src/example/form/form_vcode.html` and `input/input.html`). [`VcodeButton`] is the
-//! "获取验证码" button entity with a resend countdown; [`VcodeImage`] is the captcha image.
+//! "Get code" button entity with a resend countdown; [`VcodeImage`] is the captcha image.
 //! Known limitations: the countdown is a weGPUI addition (the upstream example has no timer),
 //! and sending the code is left to the caller, signalled by [`VcodeEvent::Send`].
 use crate::scrolling::RevealFocus;
 
-use crate::{Theme, accessibility::Semantics};
+use crate::{Theme, accessibility::Semantics, logical::Logical};
 use gpui::{prelude::*, *};
 use std::time::Duration;
 
@@ -17,10 +17,10 @@ pub enum VcodeEvent {
 }
 
 /// The "get verification code" button as a GPUI entity (`cx.new(VcodeButton::new)`). Clicking
-/// or activating it while idle emits [`VcodeEvent::Send`] and shows "重新发送(Ns)" counting down
+/// or activating it while idle emits [`VcodeEvent::Send`] and shows the localized "Resend (Ns)" counting down
 /// once per second; while counting it is flagged disabled and ignores activation.
 pub struct VcodeButton {
-    label: SharedString,
+    label: Option<SharedString>,
     seconds: u32,
     remaining: u32,
     plain: bool,
@@ -31,11 +31,12 @@ pub struct VcodeButton {
 impl EventEmitter<VcodeEvent> for VcodeButton {}
 
 impl VcodeButton {
-    /// Creates an idle tab-stop button labelled "获取验证码" with a 60-second countdown, in the
-    /// form-group style: a 32px-high grey rounded button with 16px medium-weight text.
+    /// Creates an idle tab-stop button labelled with the localized [`crate::Messages::get_code`]
+    /// and a 60-second countdown, in the form-group style: a 32px-high grey rounded button with
+    /// 16px medium-weight text.
     pub fn new(cx: &mut Context<Self>) -> Self {
         Self {
-            label: "获取验证码".into(),
+            label: None,
             seconds: 60,
             remaining: 0,
             plain: false,
@@ -43,10 +44,11 @@ impl VcodeButton {
             timer: None,
         }
     }
-    /// Sets the idle label, also its accessible name, and re-renders. The countdown text is
-    /// fixed. Default "获取验证码".
+    /// Sets the idle label, also its accessible name, and re-renders. The countdown text is the
+    /// localized [`crate::Messages::resend_code`]. Default: the localized
+    /// [`crate::Messages::get_code`].
     pub fn set_label(&mut self, label: impl Into<SharedString>, cx: &mut Context<Self>) {
-        self.label = label.into();
+        self.label = Some(label.into());
         cx.notify();
     }
     /// Sets the countdown length in seconds for later starts, minimum 1. Default 60.
@@ -113,11 +115,18 @@ impl Render for VcodeButton {
         let t = Theme::get(cx).clone();
         let counting = self.remaining > 0;
         let text: SharedString = if counting {
-            format!("重新发送({}s)", self.remaining).into()
+            crate::i18n::fill(
+                &crate::i18n::messages(cx).resend_code,
+                &[("seconds", &self.remaining)],
+            )
+            .into()
         } else {
-            self.label.clone()
+            self.label
+                .clone()
+                .unwrap_or_else(|| crate::i18n::messages(cx).get_code.clone())
         };
         let mask = t.btn_active_mask;
+        let dir = crate::i18n::direction(cx);
         let base = div()
             .id("vcode-btn")
             .role(Role::Button)
@@ -129,9 +138,9 @@ impl Render for VcodeButton {
             let link_active = t.link.opacity(0.5);
             base.relative()
                 .h(px(56.))
-                .ml(px(5.))
-                .pl(px(17. * 0.7))
-                .pr(px(17. * 0.6))
+                .ms(dir, px(5.))
+                .ps(dir, px(17. * 0.7))
+                .pe(dir, px(17. * 0.6))
                 .flex()
                 .items_center()
                 .text_size(px(17.))
@@ -141,7 +150,7 @@ impl Render for VcodeButton {
                 .child(
                     div()
                         .absolute()
-                        .left_0()
+                        .inset_s(dir, px(0.))
                         .top_0()
                         .bottom_0()
                         .w(px(0.5))
@@ -185,32 +194,36 @@ impl Render for VcodeButton {
 #[derive(IntoElement)]
 pub struct VcodeImage {
     src: SharedString,
-    label: SharedString,
+    label: Option<SharedString>,
 }
 
 impl VcodeImage {
     /// Creates an image from `src`, which GPUI loads as a URL when it parses as one and as an
-    /// embedded asset path otherwise. Its accessible name is "验证码".
+    /// embedded asset path otherwise. Its accessible name is the localized
+    /// [`crate::Messages::verification_code`].
     pub fn new(src: impl Into<SharedString>) -> Self {
         Self {
             src: src.into(),
-            label: "验证码".into(),
+            label: None,
         }
     }
-    /// Sets the accessible name. Default "验证码".
+    /// Sets the accessible name. Default: the localized [`crate::Messages::verification_code`].
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
-        self.label = label.into();
+        self.label = Some(label.into());
         self
     }
 }
 
 impl RenderOnce for VcodeImage {
-    fn render(self, _: &mut Window, _: &mut App) -> impl IntoElement {
+    fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         div()
             .id("vcode-img")
             .role(Role::Image)
-            .aria_label(self.label)
-            .ml(px(5.))
+            .aria_label(
+                self.label
+                    .unwrap_or_else(|| crate::i18n::messages(cx).verification_code.clone()),
+            )
+            .ms(crate::i18n::direction(cx), px(5.))
             .flex_shrink_0()
             .child(img(self.src).h(px(56.)))
     }

@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use wegpui::components::{
@@ -29,22 +30,22 @@ impl PickerPage {
             Picker::single(
                 "single",
                 [
-                    PickerItem::new("飞机票", "0"),
-                    PickerItem::new("火车票", "1"),
-                    PickerItem::new("的士票", "2"),
-                    PickerItem::new("公交票 (disabled)", "3").disabled(true),
-                    PickerItem::new("其他", "4"),
+                    PickerItem::new(tr("飞机票"), "0"),
+                    PickerItem::new(tr("火车票"), "1"),
+                    PickerItem::new(tr("的士票"), "2"),
+                    PickerItem::new(tr("公交票 (disabled)"), "3").disabled(true),
+                    PickerItem::new(tr("其他"), "4"),
                 ],
                 cx,
             )
-            .title("单列选择器")
+            .title(tr("单列选择器"))
             .show_close(false)
         });
         let (year, month, day) = today();
         let date = cx.new(|cx| {
             Picker::new("date", cx)
                 .date(1990, year, (year, month, day))
-                .title("多列选择器")
+                .title(tr("多列选择器"))
         });
         let multi = cx.new(|cx| {
             Picker::new("multi", cx)
@@ -59,43 +60,43 @@ impl PickerPage {
                         .collect(),
                 ])
                 .default_value(["3", "A"])
-                .title("多列选择器")
+                .title(tr("多列选择器"))
         });
         let cascade = cx.new(|cx| {
             Picker::new("cascade", cx)
                 .cascade(
                     vec![
                         region(
-                            "广东",
+                            tr("广东"),
                             vec![
                                 region(
-                                    "广州",
-                                    vec![region("海珠", vec![]), region("番禺", vec![])],
+                                    tr("广州"),
+                                    vec![region(tr("海珠"), vec![]), region(tr("番禺"), vec![])],
                                 ),
                                 region(
-                                    "佛山",
-                                    vec![region("禅城", vec![]), region("南海", vec![])],
+                                    tr("佛山"),
+                                    vec![region(tr("禅城"), vec![]), region(tr("南海"), vec![])],
                                 ),
                             ],
                         ),
                         region(
-                            "广西",
+                            tr("广西"),
                             vec![
                                 region(
-                                    "南宁",
-                                    vec![region("青秀", vec![]), region("兴宁", vec![])],
+                                    tr("南宁"),
+                                    vec![region(tr("青秀"), vec![]), region(tr("兴宁"), vec![])],
                                 ),
                                 region(
-                                    "桂林",
-                                    vec![region("象山", vec![]), region("秀峰", vec![])],
+                                    tr("桂林"),
+                                    vec![region(tr("象山"), vec![]), region(tr("秀峰"), vec![])],
                                 ),
                             ],
                         ),
                     ],
                     3,
                 )
-                .default_value(["广东", "广州", "海珠"])
-                .title("级联选择器")
+                .default_value([tr("广东"), tr("广州"), tr("海珠")])
+                .title(tr("级联选择器"))
         });
         let pickers = [single.clone(), date.clone(), multi.clone(), cascade.clone()];
         let subscriptions = pickers
@@ -134,7 +135,7 @@ impl Render for PickerPage {
         };
         PageFrame::new("picker")
             .title("Picker")
-            .desc("多列选择器，需要配合js实现")
+            .desc(tr("多列选择器，需要配合js实现"))
             .spacing()
             .child(
                 div()
@@ -142,12 +143,12 @@ impl Render for PickerPage {
                     .flex_col()
                     .gap(px(16.))
                     .child(
-                        Button::new("单列选择器")
+                        Button::new(tr("单列选择器"))
                             .id("showPicker")
                             .on_click(open(&self.single)),
                     )
                     .child(
-                        Button::new("日期选择器")
+                        Button::new(tr("日期选择器"))
                             .id("showDatePicker")
                             .on_click(open(&self.date)),
                     ),

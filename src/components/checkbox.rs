@@ -6,7 +6,7 @@
 use crate::scrolling::RevealFocus;
 
 use super::{ChangeHandler, Icon};
-use crate::{Theme, accessibility::Semantics};
+use crate::{Theme, accessibility::Semantics, logical::Logical};
 use gpui::{prelude::*, *};
 
 /// The WeUI check glyph, `size` px across: a brand-filled circle with a white tick when
@@ -54,7 +54,7 @@ pub fn check_icon(checked: bool, size: f32, cx: &App) -> Div {
 #[derive(IntoElement)]
 pub struct Checkbox {
     id: ElementId,
-    label: SharedString,
+    label: Option<SharedString>,
     checked: bool,
     disabled: bool,
     size: f32,
@@ -62,11 +62,12 @@ pub struct Checkbox {
 }
 
 impl Checkbox {
-    /// Creates an unchecked, enabled 24px checkbox whose accessible name is "多选".
+    /// Creates an unchecked, enabled 24px checkbox whose accessible name is the localized
+    /// [`crate::Messages::checkbox`].
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
-            label: "多选".into(),
+            label: None,
             checked: false,
             disabled: false,
             size: 24.,
@@ -74,9 +75,9 @@ impl Checkbox {
         }
     }
     /// Sets the accessible name. It is not drawn; place visible text next to the checkbox.
-    /// Default "多选".
+    /// Default: the localized [`crate::Messages::checkbox`].
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
-        self.label = label.into();
+        self.label = Some(label.into());
         self
     }
     /// Sets whether the box is drawn and exposed as checked. Default `false`.
@@ -119,7 +120,10 @@ impl RenderOnce for Checkbox {
         let mut el = div()
             .id(self.id)
             .role(Role::CheckBox)
-            .aria_label(self.label)
+            .aria_label(
+                self.label
+                    .unwrap_or_else(|| crate::i18n::messages(cx).checkbox.clone()),
+            )
             .aria_toggled(if checked {
                 Toggled::True
             } else {
@@ -203,10 +207,12 @@ impl CheckboxCell {
 impl RenderOnce for CheckboxCell {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let checked = self.checked;
         let disabled = self.disabled;
         let pressed = t.fg_3;
         let mut el = super::form::cell_frame(self.id)
+            .row(dir)
             .role(Role::CheckBox)
             .aria_label(self.label.clone())
             .aria_toggled(if checked {
@@ -217,7 +223,7 @@ impl RenderOnce for CheckboxCell {
             .text_color(if disabled { t.fg_2 } else { t.fg_0 })
             .child(
                 div()
-                    .pr(px(16.))
+                    .pe(dir, px(16.))
                     .child(check_icon(checked, 24., cx).when(disabled, |el| el.opacity(0.3))),
             )
             .child(div().flex_1().min_w_0().child(self.label));

@@ -1,7 +1,7 @@
 """Drive the native gallery with real input events and capture after each step.
 
 Usage:
-  python3 -I scripts/drive.py ROUTE --out DIR [--theme light|dark] [--height 812] [--state S] STEP...
+  python3 -I scripts/drive.py ROUTE --out DIR [--theme light|dark] [--height 812] [--state S] [--lang TAG] [--dir ltr|rtl] STEP...
 
 Steps (coordinates are window-content points, origin top-left):
   click:X,Y          left click
@@ -79,12 +79,17 @@ def main():
     ap.add_argument('--theme', default='light')
     ap.add_argument('--height', type=int, default=812)
     ap.add_argument('--state')
+    ap.add_argument('--lang', default='zh-Hans')
+    ap.add_argument('--dir', choices=['ltr', 'rtl'])
     ap.add_argument('--motion', action='store_true', help='keep animations enabled')
     args = ap.parse_args()
     out = pathlib.Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     cmd = [str(BINARY), '--page', args.route, '--theme', args.theme, '--size', f'{WIDTH}x{args.height}',
            '--position', '60,60', '--motion' if args.motion else '--reduce-motion']
+    cmd += ['--lang', args.lang]
+    if args.dir:
+        cmd += ['--dir', args.dir]
     if args.state:
         cmd += ['--state', args.state]
     proc = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

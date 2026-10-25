@@ -2,7 +2,7 @@
 //! short text or a count, or a small dot (`weui-badge_dot`).
 //!
 //! Known limitations: a badge sets no role or accessible label, so describe it on the owning cell
-//! or link (upstream uses labels such as "，8个新通知"). Counts are not capped (no "99+").
+//! or link (upstream uses labels such as ", 8 new notifications"). Counts are not capped (no "99+").
 
 use crate::Theme;
 use gpui::{prelude::*, *};

@@ -10,7 +10,7 @@ use super::{
     form::{LABEL_MAX_WIDTH, LABEL_WIDTH, form_label},
     modal::{MaskKind, Modal, Motion, Placement, Presence},
 };
-use crate::{Theme, accessibility::Semantics};
+use crate::{Theme, accessibility::Semantics, logical::Logical};
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
@@ -117,6 +117,7 @@ impl SelectCell {
 impl RenderOnce for SelectCell {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let pressed = t.fg_3;
         let radius = if self.in_primary { 0. } else { 8. };
         let disabled = self.disabled;
@@ -155,101 +156,111 @@ impl RenderOnce for SelectCell {
             .disabled(disabled)
             .reveal_focus()
         };
-        let cell =
-            match self.layout {
-                SelectLayout::Plain => trigger(
-                    div()
-                        .id(self.id)
-                        .relative()
-                        .flex()
-                        .items_center()
-                        .text_size(px(17.))
-                        .child(
-                            div()
-                                .flex_1()
-                                .min_w_0()
-                                .pl(px(14.))
-                                .pr(px(38.))
-                                .child(value),
-                        )
-                        .child(
-                            div()
-                                .absolute()
-                                .right(px(14.))
-                                .top(px(14.))
-                                .child(arrow(cx)),
-                        ),
-                    self.on_click,
-                )
-                .into_any_element(),
-                SelectLayout::After => {
-                    trigger(
+        let cell = match self.layout {
+            SelectLayout::Plain => trigger(
+                div()
+                    .id(self.id)
+                    .relative()
+                    .flex()
+                    .row(dir)
+                    .items_center()
+                    .text_size(px(17.))
+                    .child(
                         div()
-                            .id(self.id)
+                            .flex_1()
+                            .min_w_0()
+                            .ps(dir, px(14.))
+                            .pe(dir, px(38.))
+                            .child(value),
+                    )
+                    .child(
+                        div()
+                            .absolute()
+                            .inset_e(dir, px(14.))
+                            .top(px(14.))
+                            .child(arrow(cx)),
+                    ),
+                self.on_click,
+            )
+            .into_any_element(),
+            SelectLayout::After => trigger(
+                div()
+                    .id(self.id)
+                    .relative()
+                    .flex()
+                    .row(dir)
+                    .items_center()
+                    .text_size(px(17.))
+                    .line_height(relative(24. / 17.))
+                    .child(
+                        div()
+                            .ps(dir, px(14.))
+                            .pe(dir, px(16.))
+                            .text_color(t.fg_0)
+                            .child(form_label(self.label.unwrap_or_default(), self.label_width)),
+                    )
+                    .child(div().flex_1().min_w_0().pe(dir, px(38.)).child(value))
+                    .child(
+                        div()
+                            .absolute()
+                            .inset_e(dir, px(14.))
+                            .top(px(14.))
+                            .child(arrow(cx)),
+                    ),
+                self.on_click,
+            )
+            .into_any_element(),
+            SelectLayout::Before => {
+                let w = self.label_width.min(LABEL_MAX_WIDTH);
+                div()
+                    .id(self.id)
+                    .relative()
+                    .flex()
+                    .row(dir)
+                    .items_center()
+                    .text_size(px(17.))
+                    .line_height(relative(24. / 17.))
+                    .child(trigger(
+                        div()
+                            .id("select-before")
                             .relative()
-                            .flex()
-                            .items_center()
-                            .text_size(px(17.))
-                            .line_height(relative(24. / 17.))
-                            .child(div().pl(px(14.)).pr(px(16.)).text_color(t.fg_0).child(
-                                form_label(self.label.unwrap_or_default(), self.label_width),
-                            ))
-                            .child(div().flex_1().min_w_0().pr(px(38.)).child(value))
+                            .flex_shrink_0()
+                            .child(
+                                div()
+                                    .w(px(w + 52.))
+                                    .ps(dir, px(14.))
+                                    .pe(dir, px(38.))
+                                    .child(value),
+                            )
                             .child(
                                 div()
                                     .absolute()
-                                    .right(px(14.))
+                                    .inset_e(dir, px(14.))
                                     .top(px(14.))
                                     .child(arrow(cx)),
+                            )
+                            .child(
+                                div()
+                                    .absolute()
+                                    .top(px(-2.))
+                                    .bottom(px(-2.))
+                                    .inset_e(dir, px(-2.))
+                                    .w(px(0.5))
+                                    .bg(t.fg_3),
                             ),
                         self.on_click,
+                    ))
+                    .child(
+                        div()
+                            .flex_1()
+                            .min_w_0()
+                            .pl(px(16.))
+                            .pr(px(16.))
+                            .children(self.body),
                     )
                     .into_any_element()
-                }
-                SelectLayout::Before => {
-                    let w = self.label_width.min(LABEL_MAX_WIDTH);
-                    div()
-                        .id(self.id)
-                        .relative()
-                        .flex()
-                        .items_center()
-                        .text_size(px(17.))
-                        .line_height(relative(24. / 17.))
-                        .child(trigger(
-                            div()
-                                .id("select-before")
-                                .relative()
-                                .flex_shrink_0()
-                                .child(div().w(px(w + 52.)).pl(px(14.)).pr(px(38.)).child(value))
-                                .child(
-                                    div()
-                                        .absolute()
-                                        .right(px(14.))
-                                        .top(px(14.))
-                                        .child(arrow(cx)),
-                                )
-                                .child(
-                                    div()
-                                        .absolute()
-                                        .top(px(-2.))
-                                        .bottom(px(-2.))
-                                        .right(px(-2.))
-                                        .w(px(0.5))
-                                        .bg(t.fg_3),
-                                ),
-                            self.on_click,
-                        ))
-                        .child(
-                            div()
-                                .flex_1()
-                                .min_w_0()
-                                .pl(px(16.))
-                                .pr(px(16.))
-                                .children(self.body),
-                        )
-                        .into_any_element()
-                }
-            };
+            }
+        };
         cell.reveal_focus()
     }
 }
@@ -291,7 +302,7 @@ impl SelectMenu {
         }
     }
     /// Sets the title row above the options (12px, `fg_1`), also used as the modal's accessible
-    /// label. Without it there is no title row and the label is "选择".
+    /// label. Without it there is no title row and the label is the localized [`crate::Messages::select`].
     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
         self.title = Some(title.into());
         self
@@ -336,6 +347,7 @@ impl SelectMenu {
 impl RenderOnce for SelectMenu {
     fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let pressed = t.bg_color_active;
         let brand = t.focus_color(t.bg_2);
         let n = self.options.len();
@@ -423,7 +435,7 @@ impl RenderOnce for SelectMenu {
                         el.child(
                             div()
                                 .absolute()
-                                .right(px(14.))
+                                .inset_e(dir, px(14.))
                                 .top(px(14.))
                                 .child(Icon::new("checked").size(24.).color(t.brand)),
                         )
@@ -470,7 +482,11 @@ impl RenderOnce for SelectMenu {
             .mask(MaskKind::Dark)
             .placement(Placement::Bottom)
             .motion(Motion::SlideUp)
-            .label(self.title.clone().unwrap_or_else(|| "选择".into()));
+            .label(
+                self.title
+                    .clone()
+                    .unwrap_or_else(|| crate::i18n::messages(cx).select.clone()),
+            );
         if let Some(d) = dismiss {
             modal = modal.on_dismiss(move |w, cx| d(w, cx));
         }
@@ -518,7 +534,7 @@ impl RenderOnce for SelectMenu {
                     div()
                         .id("select-cancel")
                         .role(Role::Button)
-                        .aria_label("取消")
+                        .aria_label(crate::i18n::messages(cx).cancel.clone())
                         .h(px(56.))
                         .flex_shrink_0()
                         .flex()
@@ -540,7 +556,7 @@ impl RenderOnce for SelectMenu {
                                 d(w, cx);
                             }
                         })
-                        .child("取消"),
+                        .child(crate::i18n::messages(cx).cancel.clone()),
                 ),
         )
     }

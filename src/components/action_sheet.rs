@@ -6,7 +6,7 @@
 //! is not drawn, and the action group is omitted (upstream hides `weui-actionsheet__action` there).
 
 use super::modal::{MaskKind, Modal, Motion, Placement, Presence};
-use crate::{Theme, scrolling::RevealFocus};
+use crate::{Theme, logical::Logical, scrolling::RevealFocus};
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
@@ -113,7 +113,7 @@ impl ActionSheet {
         self.items.extend(items);
         self
     }
-    /// Appends a cell to the action group drawn 8 px below the menu, such as 取消 (iOS style only).
+    /// Appends a cell to the action group drawn 8 px below the menu, such as "Cancel" (iOS style only).
     pub fn action(mut self, item: ActionSheetItem) -> Self {
         self.actions.push(item);
         self
@@ -142,6 +142,7 @@ fn cell(
     first: bool,
     android: bool,
     t: &Theme,
+    dir: crate::i18n::Direction,
     presence: Option<&Presence>,
 ) -> Stateful<Div> {
     let handler = item.handler.clone();
@@ -168,7 +169,7 @@ fn cell(
         .line_height(relative(24. / 17.))
         .bg(t.bg_2)
         .text_color(if item.warn && !android { t.red } else { t.fg_0 })
-        .when(android, |el| el.text_left())
+        .when(android, |el| el.text_start(dir))
         .when(!android, |el| el.text_center())
         .cursor_pointer()
         .active(|s| s.bg(t.bg_color_active))
@@ -206,6 +207,7 @@ fn cell(
 impl RenderOnce for ActionSheet {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let android = self.android;
         let has_title = self.title.is_some();
         let count = self.items.len();
@@ -231,6 +233,7 @@ impl RenderOnce for ActionSheet {
                     i == 0,
                     android,
                     &t,
+                    dir,
                     presence.as_ref(),
                 )
                 .when(i == 0, |el| {
@@ -293,6 +296,7 @@ impl RenderOnce for ActionSheet {
                                 i == 0,
                                 false,
                                 &t,
+                                dir,
                                 presence.as_ref(),
                             )
                             .reveal_focus()

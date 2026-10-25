@@ -5,7 +5,7 @@
 //! [`InformationBar`] and [`ListTips`] are stateless; removing a closed bar is up to the caller.
 
 use super::{ClickHandler, Icon};
-use crate::Theme;
+use crate::{Theme, logical::Logical};
 use gpui::{prelude::*, *};
 
 /// Colour variant of an [`InformationBar`].
@@ -80,14 +80,14 @@ impl InformationBar {
         self.close_label = Some(label.into());
         self
     }
-    /// Sets the close button's handler, adding the button with label "关闭" if `closable` was not
-    /// called. The caller removes the bar.
+    /// Sets the close button's handler, adding the button with the localized
+    /// [`crate::Messages::close`] label if `closable` was not called. The caller removes the bar.
     pub fn on_close(
         mut self,
         handler: impl Fn(&ClickEvent, &mut Window, &mut App) + 'static,
     ) -> Self {
         if self.close_label.is_none() {
-            self.close_label = Some("关闭".into());
+            self.close_label = Some(SharedString::default());
         }
         self.on_close = Some(Box::new(handler));
         self
@@ -112,6 +112,7 @@ impl RenderOnce for InformationBar {
         let floating_width = (window.viewport_size().width - px(16.)).max(px(0.));
         let bar = crate::scrolling::FocusTarget::new({
             let t = Theme::get(cx).clone();
+            let dir = crate::i18n::direction(cx);
             let (fg, bg, icon, link) = match self.kind {
                 InformationBarKind::WarnStrong => (
                     t.information_bar_fg,
@@ -150,6 +151,7 @@ impl RenderOnce for InformationBar {
             let ft = has_ft.then(|| {
                 div()
                     .flex()
+                    .row(dir)
                     .items_center()
                     .when_some(self.link, |el, (label, handler)| {
                         el.child(
@@ -179,10 +181,14 @@ impl RenderOnce for InformationBar {
                                 div()
                                     .id("information-bar-close")
                                     .role(Role::Button)
-                                    .aria_label(label)
-                                    .ml(px(6.))
+                                    .aria_label(if label.is_empty() {
+                                        crate::i18n::messages(cx).close.clone()
+                                    } else {
+                                        label
+                                    })
+                                    .ms(dir, px(6.))
                                     .my(px(-2.))
-                                    .mr(px(-2.))
+                                    .me(dir, px(-2.))
                                     .rounded(px(4.))
                                     .border_2()
                                     .border_color(transparent_black())
@@ -203,6 +209,7 @@ impl RenderOnce for InformationBar {
                 .role(Role::Alert)
                 .aria_label(self.text.clone())
                 .flex()
+                .row(dir)
                 .items_center()
                 .py(px(12.))
                 .px(px(16.))
@@ -210,6 +217,7 @@ impl RenderOnce for InformationBar {
                 .text_size(px(14.))
                 .line_height(relative(1.6))
                 .text_color(fg)
+                .text_start(dir)
                 .bg(bg)
                 .opacity(self.opacity)
                 .when(floating, |el| el.w(floating_width).occlude())
@@ -217,7 +225,7 @@ impl RenderOnce for InformationBar {
                     el.child(
                         div().flex().items_center().child(
                             div()
-                                .mr(px(8.))
+                                .me(dir, px(8.))
                                 .child(Icon::new(name).size(24.).color(icon)),
                         ),
                     )
@@ -289,6 +297,7 @@ impl ListTips {
 impl RenderOnce for ListTips {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let count = self.items.len();
         div()
             .id(self.id)
@@ -301,6 +310,7 @@ impl RenderOnce for ListTips {
             .text_size(px(14.))
             .line_height(relative(1.4))
             .text_color(t.fg_1)
+            .text_start(dir)
             .children(self.items.into_iter().enumerate().map(move |(i, text)| {
                 div()
                     .id(ElementId::NamedInteger("list-tips-item".into(), i as u64))
@@ -309,9 +319,15 @@ impl RenderOnce for ListTips {
                     .aria_size_of_set(count)
                     .aria_label(text.clone())
                     .relative()
-                    .pl(px(15.))
+                    .ps(dir, px(15.))
                     .when(i > 0, |el| el.mt(px(16.)))
-                    .child(div().absolute().left_0().top(px(-1.4)).child("\u{2022}"))
+                    .child(
+                        div()
+                            .absolute()
+                            .inset_s(dir, px(0.))
+                            .top(px(-1.4))
+                            .child("\u{2022}"),
+                    )
                     .child(text)
             }))
             .child(

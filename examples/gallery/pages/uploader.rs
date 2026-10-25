@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{
     chrome::{PageFrame, page_hd},
     pages::Args,
@@ -48,7 +49,7 @@ impl UploaderPage {
             files: true,
             directories: false,
             multiple: true,
-            prompt: Some("选择图片".into()),
+            prompt: Some(tr("选择图片").into()),
         });
         cx.spawn_in(window, async move |this, cx| {
             let result = paths.await;
@@ -64,7 +65,12 @@ impl UploaderPage {
                     }
                     Ok(Ok(None)) | Err(_) => {}
                     Ok(Err(error)) => {
-                        this.error = format!("无法打开文件选择器：{error}").into();
+                        this.error = if crate::text::is_zh() {
+                            format!("无法打开文件选择器：{error}")
+                        } else {
+                            format!("Could not open the file chooser: {error}")
+                        }
+                        .into();
                         this.tips.show(window);
                         this.tips
                             .hide_after(Duration::from_secs(3), window, cx, |this| &mut this.tips);
@@ -134,14 +140,14 @@ impl Render for UploaderPage {
                 .text_color(t.fg_1)
                 .child(
                     LinkText::new("uploader-desc")
-                        .text("上传组件，一般配合")
-                        .link("组件Gallery", |window, cx| {
+                        .text(tr("上传组件，一般配合"))
+                        .link(tr("组件Gallery"), |window, cx| {
                             crate::go("gallery", window, cx)
                         })
-                        .text("来使用。"),
+                        .text(tr("来使用。")),
                 ),
         );
-        let first = Uploader::new("uploader-plain", "图片上传，缩略图不带删除")
+        let first = Uploader::new("uploader-plain", tr("图片上传，缩略图不带删除"))
             .info("3/10")
             .track_add_focus(&self.plain_add_focus)
             .files(self.plain.clone())
@@ -151,7 +157,7 @@ impl Render for UploaderPage {
                 cx.notify();
             }))
             .on_add(cx.listener(|this, _, window, cx| this.choose(false, window, cx)));
-        let second = Uploader::new("uploader-deletable", "图片上传，缩略图带删除")
+        let second = Uploader::new("uploader-deletable", tr("图片上传，缩略图带删除"))
             .info("3/10")
             .track_add_focus(&self.deletable_add_focus)
             .deletable(true)
@@ -194,7 +200,7 @@ impl Render for UploaderPage {
             .child(cell("uploader-cell-2", second))
             .child(
                 Gallery::new("gallery-opr", &self.viewer)
-                    .label("大图")
+                    .label(tr("大图"))
                     .when_some(viewer_src, |g, src| g.src(src))
                     .on_delete(cx.listener(|this, _, window, cx| {
                         if let Some(ix) = this.current.take()
@@ -217,7 +223,7 @@ impl Render for UploaderPage {
             )
             .child(
                 Gallery::new("gallery-plain", &self.preview)
-                    .label("大图")
+                    .label(tr("大图"))
                     .when_some(self.preview_src.clone(), |g, src| g.src(src))
                     .on_dismiss(move |window, cx| {
                         preview_page

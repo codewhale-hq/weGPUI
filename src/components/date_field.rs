@@ -191,7 +191,8 @@ enum Stage {
 pub struct DateField {
     id: SharedString,
     label: SharedString,
-    placeholder: SharedString,
+    placeholder: Option<SharedString>,
+    messages: std::sync::Arc<crate::i18n::Messages>,
     mode: DateFieldMode,
     value: Option<DateValue>,
     disabled: bool,
@@ -212,6 +213,7 @@ pub struct DateField {
     stage: Stage,
     generation: u64,
     _input_subscription: Subscription,
+    _i18n_subscription: Subscription,
     _subscriptions: Vec<Subscription>,
 }
 impl EventEmitter<DateFieldEvent> for DateField {}
@@ -226,9 +228,10 @@ impl DateField {
         cx: &mut Context<Self>,
     ) -> Self {
         let label = label.into();
+        let messages = crate::i18n::messages_arc(cx);
         let placeholder: SharedString = match mode {
-            DateFieldMode::Date => "年/月/日".into(),
-            DateFieldMode::DateTime => "年/月/日 --:--".into(),
+            DateFieldMode::Date => messages.date_placeholder.clone(),
+            DateFieldMode::DateTime => messages.datetime_placeholder.clone(),
         };
         let input = cx.new(|cx| {
             let mut input = TextInput::new(placeholder.clone(), cx);
@@ -256,10 +259,21 @@ impl DateField {
             }
             cx.notify();
         });
+        let i18n_subscription = cx.observe_global::<crate::i18n::I18n>(|this, cx| {
+            this.messages = crate::i18n::messages_arc(cx);
+            if this.placeholder.is_none() {
+                let text = this.default_placeholder();
+                this.input
+                    .update(cx, |input, cx| input.set_placeholder(text, cx));
+            }
+            this.sync_semantics(cx);
+            cx.notify();
+        });
         Self {
             id: id.into(),
             label,
-            placeholder,
+            placeholder: None,
+            messages,
             mode,
             value: None,
             disabled: false,
@@ -280,6 +294,7 @@ impl DateField {
             stage: Stage::Idle,
             generation: 0,
             _input_subscription: subscription,
+            _i18n_subscription: i18n_subscription,
             _subscriptions: vec![],
         }
     }
@@ -342,10 +357,10 @@ impl DateField {
     }
     /// Sets the empty placeholder in both interaction modes.
     pub fn set_placeholder(&mut self, text: impl Into<SharedString>, cx: &mut Context<Self>) {
-        self.placeholder = text.into();
-        self.input.update(cx, |input, cx| {
-            input.set_placeholder(self.placeholder.clone(), cx)
-        });
+        let text = text.into();
+        self.placeholder = Some(text.clone());
+        self.input
+            .update(cx, |input, cx| input.set_placeholder(text, cx));
         cx.notify();
     }
     /// Enables optional typed ISO entry. Switching modes cancels unfinished editing.
@@ -503,26 +518,48 @@ impl DateField {
     fn formatted_value(&self) -> String {
         self.value.map(|v| v.format(self.mode)).unwrap_or_default()
     }
+    fn default_placeholder(&self) -> SharedString {
+        match self.mode {
+            DateFieldMode::Date => self.messages.date_placeholder.clone(),
+            DateFieldMode::DateTime => self.messages.datetime_placeholder.clone(),
+        }
+    }
+    fn placeholder_text(&self) -> SharedString {
+        self.placeholder
+            .clone()
+            .unwrap_or_else(|| self.default_placeholder())
+    }
     fn message(&self) -> Option<SharedString> {
         self.external_error.clone().or_else(|| {
-            self.validation_error().map(|e| match (e, self.mode) {
-                (DateFieldError::Format, DateFieldMode::Date) => "Use YYYY-MM-DD.".into(),
-                (DateFieldError::Format, DateFieldMode::DateTime) => "Use YYYY-MM-DD HH:MM.".into(),
-                _ => e.to_string().into(),
+            self.validation_error().map(|e| {
+                let m = &self.messages;
+                match (e, self.mode) {
+                    (DateFieldError::Format, DateFieldMode::Date) => m.date_format_hint.clone(),
+                    (DateFieldError::Format, DateFieldMode::DateTime) => {
+                        m.datetime_format_hint.clone()
+                    }
+                    (DateFieldError::Date, _) => m.date_invalid.clone(),
+                    (DateFieldError::Time, _) => m.time_invalid.clone(),
+                    (DateFieldError::OutOfRange { start, end }, _) => {
+                        crate::i18n::fill(&m.year_out_of_range, &[("start", &start), ("end", &end)])
+                            .into()
+                    }
+                    (DateFieldError::Unavailable, _) => m.date_unavailable.clone(),
+                }
             })
         })
     }
     fn description(&self) -> Option<SharedString> {
         let availability = if self.disabled {
-            Some("不可用")
+            Some(self.messages.unavailable.clone())
         } else if self.readonly {
-            Some("只读")
+            Some(self.messages.read_only.clone())
         } else {
             None
         };
         match (self.message(), availability) {
-            (Some(error), Some(state)) => Some(format!("{error}，{state}").into()),
-            (message, state) => message.or_else(|| state.map(Into::into)),
+            (Some(error), Some(state)) => Some(self.messages.join(&[&*error, &*state]).into()),
+            (message, state) => message.or(state),
         }
     }
     fn sync_semantics(&self, cx: &mut Context<Self>) {
@@ -603,11 +640,13 @@ impl DateField {
         let label = self.label.clone();
         let id = self.id.clone();
         let with_time = self.mode == DateFieldMode::DateTime;
+        let choose_date = self.messages.choose_date.clone();
+        let choose_time = self.messages.choose_time.clone();
         let date = cx.new(|cx| {
             let p = Picker::new(SharedString::from(format!("{id}-date")), cx)
                 .date(lo, hi, (start.year.clamp(lo, hi), start.month, start.day))
                 .title(label.clone());
-            if with_time { p.desc("选择日期") } else { p }
+            if with_time { p.desc(choose_date) } else { p }
         });
         self._subscriptions.push(cx.subscribe_in(
             &date,
@@ -624,7 +663,7 @@ impl DateField {
                     .columns(time_columns())
                     .default_value([start.hour.to_string(), start.minute.to_string()])
                     .title(label)
-                    .desc("选择时刻")
+                    .desc(choose_time)
             });
             self._subscriptions.push(cx.subscribe_in(
                 &time,
@@ -787,15 +826,27 @@ impl Render for DateField {
         } else {
             t.fg_2
         };
-        let name: SharedString =
-            format!("{}，{}", self.label, text.as_deref().unwrap_or("未选择")).into();
+        let name: SharedString = self
+            .messages
+            .join(&[
+                &*self.label,
+                text.as_deref().unwrap_or(&self.messages.not_selected),
+            ])
+            .into();
         let field = if self.typed_entry {
             let calendar = div()
                 .id((ElementId::from(self.id.clone()), "calendar"))
                 .role(Role::Button)
-                .aria_label(format!("{}，打开日期选择器", self.label))
+                .aria_label(crate::i18n::fill(
+                    &self.messages.open_date_picker,
+                    &[("label", &self.label)],
+                ))
                 .when(self.disabled || self.readonly, |el| {
-                    el.aria_description(if self.disabled { "不可用" } else { "只读" })
+                    el.aria_description(if self.disabled {
+                        self.messages.unavailable.clone()
+                    } else {
+                        self.messages.read_only.clone()
+                    })
                 })
                 .p(px(4.))
                 .rounded(px(4.))
@@ -853,7 +904,7 @@ impl Render for DateField {
                 })
                 .child(
                     text.map(Into::<SharedString>::into)
-                        .unwrap_or(self.placeholder.clone()),
+                        .unwrap_or(self.placeholder_text()),
                 )
                 .child(calendar_glyph(if self.readonly { t.fg_1 } else { t.fg_0 }));
             div().child(

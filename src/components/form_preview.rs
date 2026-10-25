@@ -6,7 +6,7 @@
 use crate::scrolling::RevealFocus;
 
 use super::ClickHandler;
-use crate::Theme;
+use crate::{Theme, i18n::Direction, logical::Logical};
 use gpui::{prelude::*, *};
 
 /// Colour of a [`FormPreviewButton`].
@@ -111,16 +111,18 @@ fn preview_item(
     label_width: f32,
     gap: f32,
     label_color: Hsla,
+    dir: Direction,
 ) -> Div {
     div()
         .flex()
+        .row(dir)
         .items_start()
         .child(
             div()
                 .flex_shrink_0()
                 .w(px(label_width))
-                .mr(px(gap))
-                .text_left()
+                .me(dir, px(gap))
+                .text_start(dir)
                 .text_color(label_color)
                 .child(label),
         )
@@ -130,6 +132,7 @@ fn preview_item(
 impl RenderOnce for FormPreview {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let id = self.id.clone();
         let header = self.header.map(|(label, value)| {
             let aria = SharedString::from(format!("{label} {value}"));
@@ -144,15 +147,21 @@ impl RenderOnce for FormPreview {
                 .child(preview_item(
                     label,
                     div()
-                        .text_right()
+                        .text_end(dir)
                         .text_size(px(25.6))
                         .text_color(t.fg_0)
                         .child(value),
                     67.2,
                     16.,
                     t.fg_1,
+                    dir,
                 ))
-                .child(hairline(t.fg_3).bottom_0().left(px(16.)).right_0())
+                .child(
+                    hairline(t.fg_3)
+                        .bottom_0()
+                        .inset_s(dir, px(16.))
+                        .inset_e(dir, px(0.)),
+                )
         });
         let fg0 = t.fg_0;
         let fg1 = t.fg_1;
@@ -173,10 +182,11 @@ impl RenderOnce for FormPreview {
                             let name = SharedString::from(format!("{label} {value}"));
                             preview_item(
                                 label,
-                                div().text_right().text_color(fg0).child(value),
+                                div().text_end(dir).text_color(fg0).child(value),
                                 60.48,
                                 14.4,
                                 fg1,
+                                dir,
                             )
                             .id(("preview-item", i))
                             .role(Role::ListItem)
@@ -193,6 +203,7 @@ impl RenderOnce for FormPreview {
             div()
                 .relative()
                 .flex()
+                .row(dir)
                 .text_size(px(16.))
                 .line_height(px(50.))
                 .children(self.buttons.into_iter().enumerate().map(|(i, b)| {
@@ -222,7 +233,7 @@ impl RenderOnce for FormPreview {
                             el.child(
                                 div()
                                     .absolute()
-                                    .left(px(-2.))
+                                    .inset_s(dir, px(-2.))
                                     .top(px(-2.))
                                     .bottom(px(-2.))
                                     .w(px(0.5))
@@ -294,6 +305,7 @@ impl FormPreviewList {
 impl RenderOnce for FormPreviewList {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let (fg0, fg1) = (t.fg_0, t.fg_1);
         let count = self.items.len();
         div()
@@ -323,10 +335,11 @@ impl RenderOnce for FormPreviewList {
                             .aria_label(SharedString::from(format!("{label} {value}")))
                             .child(preview_item(
                                 label,
-                                div().text_color(fg0).child(value),
+                                div().text_start(dir).text_color(fg0).child(value),
                                 84.,
                                 14.,
                                 fg1,
+                                dir,
                             ))
                     }),
             )

@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use std::time::Duration;
@@ -63,7 +64,7 @@ impl Render for Index {
     fn render(&mut self, _: &mut Window, _: &mut Context<Self>) -> impl IntoElement {
         PageFrame::new("form")
             .title("Form")
-            .desc("表单页")
+            .desc(tr("表单页"))
             .spacing()
             .child(
                 div()
@@ -73,7 +74,7 @@ impl Render for Index {
                     .items_center()
                     .gap(px(16.))
                     .children(LINKS.iter().map(|(route, label)| {
-                        Button::new(*label)
+                        Button::new(tr(label))
                             .id(*route)
                             .on_click(crate::chrome::go(route))
                     })),
@@ -115,7 +116,7 @@ pub(super) fn primary_button(
 }
 
 pub(super) fn toast(presence: &Presence) -> impl IntoElement {
-    Toast::new("已完成")
+    Toast::new(tr("已完成"))
         .id("form-toast")
         .standalone()
         .presence(presence)
@@ -167,7 +168,7 @@ pub(super) fn footer(cx: &App) -> impl IntoElement {
             div()
                 .id("form-footer-link")
                 .role(Role::Link)
-                .aria_label("底部链接文本")
+                .aria_label(tr("底部链接文本"))
                 .mx(px(8.))
                 .text_size(px(14.))
                 .text_color(t.link)
@@ -176,7 +177,7 @@ pub(super) fn footer(cx: &App) -> impl IntoElement {
                 .focus_visible(move |s| s.shadow(focus_ring(brand)))
                 .active(|s| s.opacity(0.5))
                 .on_click(|_, _, _| {})
-                .child("底部链接文本")
+                .child(tr("底部链接文本"))
                 .reveal_focus(),
         )
         .child(
@@ -199,7 +200,7 @@ pub(super) fn info_button(
     div()
         .id(id)
         .role(Role::Button)
-        .aria_label("帮助")
+        .aria_label(tr("帮助"))
         .group("info-btn")
         .flex()
         .rounded_full()
@@ -230,16 +231,16 @@ pub(super) fn half_screen_dialog(
     let close = on_close.clone();
     let line = || div().h(px(14. * 1.4));
     HalfScreenDialog::new("iosDialog1")
-        .title("标题")
+        .title(tr("标题"))
         .left(
-            HdIconButton::new("dialogClose", "close-thin", "关闭")
+            HdIconButton::new("dialogClose", "close-thin", tr("关闭"))
                 .on_click(move |_, w, cx| close(w, cx)),
         )
         .child(
             div()
                 .child(line())
                 .child(line())
-                .child("可放自定义内容")
+                .child(tr("可放自定义内容"))
                 .children((0..3).map(|_| line())),
         )
         .presence(presence)

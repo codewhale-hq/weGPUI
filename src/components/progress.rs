@@ -3,7 +3,7 @@
 //! cancellation and the timing of optional live announcements, as in the upstream example.
 
 use super::{ClickHandler, Icon};
-use crate::Theme;
+use crate::{Theme, logical::Logical};
 use gpui::{prelude::*, *};
 
 /// A horizontal progress bar filled with the brand colour, optionally followed by a red cancel
@@ -16,22 +16,22 @@ use gpui::{prelude::*, *};
 pub struct Progress {
     id: ElementId,
     value: f32,
-    label: SharedString,
-    cancel_label: SharedString,
+    label: Option<SharedString>,
+    cancel_label: Option<SharedString>,
     cancelable: bool,
     announcement: Option<SharedString>,
     on_cancel: Option<ClickHandler>,
 }
 
 impl Progress {
-    /// Creates a bar at 0% with element id `id`, labelled "进度", with a cancel button labelled
-    /// "取消".
+    /// Creates a bar at 0% with element id `id`, named by the localized
+    /// [`crate::Messages::progress`], with a cancel button named by [`crate::Messages::cancel`].
     pub fn new(id: impl Into<ElementId>) -> Self {
         Self {
             id: id.into(),
             value: 0.,
-            label: "进度".into(),
-            cancel_label: "取消".into(),
+            label: None,
+            cancel_label: None,
             cancelable: true,
             announcement: None,
             on_cancel: None,
@@ -46,14 +46,16 @@ impl Progress {
         };
         self
     }
-    /// Sets the progress indicator's accessible name. Default: "进度" (progress).
+    /// Sets the progress indicator's accessible name. Default: the localized
+    /// [`crate::Messages::progress`].
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
-        self.label = label.into();
+        self.label = Some(label.into());
         self
     }
-    /// Sets the cancel button's accessible name. Default: "取消" (cancel).
+    /// Sets the cancel button's accessible name. Default: the localized
+    /// [`crate::Messages::cancel`].
     pub fn cancel_label(mut self, label: impl Into<SharedString>) -> Self {
-        self.cancel_label = label.into();
+        self.cancel_label = Some(label.into());
         self
     }
     /// Shows or removes the cancel icon and button (default `true`). When `false`, no cancel
@@ -63,7 +65,7 @@ impl Progress {
         self
     }
     /// Adds an invisible alert with caller-controlled announcement text, for example
-    /// "已上传百分之50". Default: none. Keep this text unchanged between milestones to avoid
+    /// "Uploaded 50 percent". Default: none. Keep this text unchanged between milestones to avoid
     /// announcing every animation frame; an empty string keeps the alert available silently.
     /// The numeric indicator value always remains available independently of this text.
     pub fn announcement(mut self, text: impl Into<SharedString>) -> Self {
@@ -86,22 +88,28 @@ impl RenderOnce for Progress {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         crate::scrolling::FocusTarget::new({
             let t = Theme::get(cx).clone();
+            let dir = crate::i18n::direction(cx);
             let brand = t.brand;
             let bar = div()
                 .id("progress-bar")
                 .role(Role::ProgressIndicator)
-                .aria_label(self.label)
+                .aria_label(
+                    self.label
+                        .unwrap_or_else(|| crate::i18n::messages(cx).progress.clone()),
+                )
                 .aria_numeric_value(self.value.round() as f64)
                 .aria_min_numeric_value(0.)
                 .aria_max_numeric_value(100.)
                 .aria_value(SharedString::from(format!("{}%", self.value.round())))
                 .flex_1()
+                .flex()
+                .row(dir)
                 .h(px(3.))
                 .bg(t.bg_0)
                 .child(div().h_full().w(relative(self.value / 100.)).bg(brand));
             let opr = div()
                 .relative()
-                .ml(px(15.))
+                .ms(dir, px(15.))
                 .size(px(24.))
                 .flex_shrink_0()
                 .child(Icon::new("cancel").size(24.).color(t.red))
@@ -109,7 +117,10 @@ impl RenderOnce for Progress {
                     div()
                         .id("progress-cancel")
                         .role(Role::Button)
-                        .aria_label(self.cancel_label)
+                        .aria_label(
+                            self.cancel_label
+                                .unwrap_or_else(|| crate::i18n::messages(cx).cancel.clone()),
+                        )
                         .absolute()
                         .top(px(-10.))
                         .left(px(-10.))
@@ -127,6 +138,7 @@ impl RenderOnce for Progress {
                 .id(self.id)
                 .relative()
                 .flex()
+                .row(dir)
                 .items_center()
                 .child(bar)
                 .when(self.cancelable, |el| el.child(opr))

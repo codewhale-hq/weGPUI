@@ -8,7 +8,7 @@
 //! example is static, so the drag thresholds and 200 ms snap are this crate's own choices.
 
 use super::{ClickHandler, modal::ease};
-use crate::{Theme, accessibility::Semantics};
+use crate::{Theme, accessibility::Semantics, logical::Logical};
 use gpui::{prelude::*, *};
 use std::time::{Duration, Instant};
 
@@ -282,6 +282,8 @@ impl RenderOnce for SwipedCell {
         crate::scrolling::FocusTarget::new({
             let t = Theme::get(cx);
             let (bg, ring) = (t.bg_2, t.focus_color(t.bg_2));
+            let dir = crate::i18n::direction(cx);
+            let rtl = dir.is_rtl();
             let initially_open = self.controlled.unwrap_or(self.default_open);
             let state = window.use_keyed_state(
                 SharedString::from(format!("swiped-{:?}", self.id)),
@@ -357,8 +359,9 @@ impl RenderOnce for SwipedCell {
                 .absolute()
                 .top_0()
                 .bottom_0()
-                .right_0()
+                .inset_e(dir, px(0.))
                 .flex()
+                .row(dir)
                 .text_color(white())
                 .on_children_prepainted(move |bounds, _, cx| {
                     let width: f32 = bounds.iter().map(|b| f32::from(b.size.width)).sum();
@@ -399,13 +402,21 @@ impl RenderOnce for SwipedCell {
                 .role(Role::ListItem)
                 .when_some(self.label, |el, label| el.aria_label(label))
                 .aria_expanded(open)
-                .aria_description(if open {
-                    "操作已展开，按右方向键或 Esc 隐藏"
-                } else {
-                    "操作已收起，按左方向键或回车显示操作"
+                .aria_description({
+                    let m = crate::i18n::messages(cx);
+                    let (show_key, hide_key) = if rtl {
+                        (&m.key_arrow_right, &m.key_arrow_left)
+                    } else {
+                        (&m.key_arrow_left, &m.key_arrow_right)
+                    };
+                    if open {
+                        crate::i18n::fill(&m.swipe_actions_open, &[("hide_key", hide_key)])
+                    } else {
+                        crate::i18n::fill(&m.swipe_actions_closed, &[("show_key", show_key)])
+                    }
                 })
                 .relative()
-                .left(px(offset))
+                .left(px(if rtl { -offset } else { offset }))
                 .bg(bg)
                 .track_focus(&focus)
                 .tab_stop(true)
@@ -422,7 +433,7 @@ impl RenderOnce for SwipedCell {
                     let x = f32::from(event.event.position.x);
                     movement.update(cx, |s, cx| {
                         if let Some((start, base)) = s.drag_from {
-                            let dx = x - start;
+                            let dx = if rtl { start - x } else { x - start };
                             if dx.abs() > 3. {
                                 s.moved = true;
                             }
@@ -491,11 +502,20 @@ impl RenderOnce for SwipedCell {
                         }
                         return;
                     }
-                    let open = match event.keystroke.key.as_str() {
-                        "left" => true,
-                        "escape" if !control.state.read(cx).open => return,
-                        "right" | "escape" => false,
-                        _ => return,
+                    let (open_key, close_key) = if rtl {
+                        ("right", "left")
+                    } else {
+                        ("left", "right")
+                    };
+                    let key = event.keystroke.key.as_str();
+                    let open = if key == open_key {
+                        true
+                    } else if key == "escape" && !control.state.read(cx).open {
+                        return;
+                    } else if key == close_key || key == "escape" {
+                        false
+                    } else {
+                        return;
                     };
                     cx.stop_propagation();
                     control.request(open, window, cx);

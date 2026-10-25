@@ -7,7 +7,7 @@
 use crate::scrolling::RevealFocus;
 
 use super::{ClickHandler, loading::Loading};
-use crate::Theme;
+use crate::{Theme, logical::Logical};
 use gpui::{prelude::*, *};
 
 /// Height and typography preset of a [`Button`], matching WeUI's size modifiers.
@@ -139,14 +139,15 @@ impl Button {
     }
     /// Disables the button when `value` is true (default false). A disabled button uses WeUI's
     /// greyed colours, is not focusable, never calls `on_click`, and is exposed as disabled with
-    /// the description "不可用". In cell mode it dims to 50% opacity instead.
+    /// the localized description [`crate::Messages::unavailable`]. In cell mode it dims to 50%
+    /// opacity instead.
     pub fn disabled(mut self, value: bool) -> Self {
         self.disabled = value;
         self
     }
     /// Shows a 20px [`Loading`] spinner before the label when `value` is true (default false), as
     /// `weui-btn_loading`. A loading button is not focusable, never calls `on_click`, and is
-    /// exposed as busy with the description "正在加载".
+    /// exposed as busy with the localized description [`crate::Messages::loading`].
     pub fn loading(mut self, value: bool) -> Self {
         self.loading = value;
         self
@@ -212,9 +213,9 @@ impl Button {
         self
     }
     /// Sets the accessible name, replacing the label for assistive technology only; nothing is
-    /// drawn. Default: the label, or "正在操作" for a loading button with an empty label (upstream's
-    /// `title`). An empty-label button that is not loading has no accessible name unless this is
-    /// set.
+    /// drawn. Default: the label, or the localized [`crate::Messages::working`] for a loading
+    /// button with an empty label (upstream's `title`). An empty-label button that is not loading
+    /// has no accessible name unless this is set.
     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
         self.title = Some(title.into());
         self
@@ -258,7 +259,8 @@ impl Button {
         }
     }
 
-    fn render_cell(self, t: &Theme) -> AnyElement {
+    fn render_cell(self, t: &Theme, cx: &App) -> AnyElement {
+        let dir = crate::i18n::direction(cx);
         let fg = match self.kind {
             ButtonKind::Default => t.fg_0,
             ButtonKind::Primary => t.link,
@@ -270,7 +272,7 @@ impl Button {
         let label_only = self.label.is_empty();
         let aria = self.title.unwrap_or_else(|| {
             if label_only && self.loading {
-                "正在操作".into()
+                crate::i18n::messages(cx).working.clone()
             } else {
                 self.label.clone()
             }
@@ -282,6 +284,7 @@ impl Button {
             .relative()
             .w_full()
             .flex()
+            .row(dir)
             .items_center()
             .justify_center()
             .p(px(14.))
@@ -295,12 +298,12 @@ impl Button {
             .when(self.loading, |el| {
                 el.child(
                     div()
-                        .when(!label_only, |el| el.mr(px(4.)))
+                        .when(!label_only, |el| el.me(dir, px(4.)))
                         .child(Loading::mask().size(20.).color(fg)),
                 )
             })
             .when_some(self.icon, |el, icon| {
-                el.child(div().size(px(24.)).mr(px(17. * 0.34)).child(icon))
+                el.child(div().size(px(24.)).me(dir, px(17. * 0.34)).child(icon))
             })
             .child(self.label);
         if self.disabled {
@@ -321,9 +324,9 @@ impl Button {
         }
         if !interactive {
             el = el.aria_description(if self.loading {
-                "正在加载"
+                crate::i18n::messages(cx).loading.clone()
             } else {
-                "不可用"
+                crate::i18n::messages(cx).unavailable.clone()
             });
         }
         crate::accessibility::Semantics::new(el)
@@ -390,8 +393,9 @@ pub fn clamp_lines(
 impl RenderOnce for Button {
     fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         if self.cell {
-            return self.render_cell(&t);
+            return self.render_cell(&t, cx);
         }
         let (bg, fg) = self.colors(&t);
         let small = matches!(self.size, Size::Mini | Size::XMini);
@@ -436,7 +440,7 @@ impl RenderOnce for Button {
         let label_only = self.label.is_empty();
         let aria = self.title.clone().unwrap_or_else(|| {
             if label_only && self.loading {
-                SharedString::from("正在操作")
+                crate::i18n::messages(cx).working.clone()
             } else {
                 self.label.clone()
             }
@@ -448,6 +452,7 @@ impl RenderOnce for Button {
             .aria_label(aria)
             .relative()
             .flex()
+            .row(dir)
             .items_center()
             .justify_center()
             .flex_shrink_0()
@@ -475,7 +480,7 @@ impl RenderOnce for Button {
             .when(self.loading, |el| {
                 el.child(
                     div()
-                        .when(!label_only, |el| el.mr(px(4.)))
+                        .when(!label_only, |el| el.me(dir, px(4.)))
                         .child(Loading::mask().size(20.).color(spinner_color)),
                 )
             })
@@ -528,9 +533,9 @@ impl RenderOnce for Button {
             }
         } else {
             el = el.aria_description(if self.loading {
-                "正在加载"
+                crate::i18n::messages(cx).loading.clone()
             } else {
-                "不可用"
+                crate::i18n::messages(cx).unavailable.clone()
             });
         }
         crate::accessibility::Semantics::new(el)

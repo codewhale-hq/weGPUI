@@ -5,7 +5,7 @@
 use crate::scrolling::RevealFocus;
 
 use super::{ChangeHandler, ClickHandler, checkbox::check_icon, form::dual_focus_ring};
-use crate::{Theme, accessibility::Semantics};
+use crate::{Theme, accessibility::Semantics, logical::Logical};
 use gpui::{prelude::*, *};
 use std::time::Duration;
 
@@ -48,7 +48,7 @@ pub struct Agree {
 }
 
 impl Agree {
-    /// Creates an unchecked, enabled line showing `text` (e.g. "阅读并同意") in `fg_1`.
+    /// Creates an unchecked, enabled line showing `text` (e.g. "I have read and agree to") in `fg_1`.
     pub fn new(id: impl Into<ElementId>, text: impl Into<SharedString>) -> Self {
         Self {
             id: id.into(),
@@ -61,7 +61,7 @@ impl Agree {
             on_change: None,
         }
     }
-    /// Appends link-coloured `text` (e.g. "《相关条款》") after the description. Clicking or
+    /// Appends link-coloured `text` (e.g. "the terms") after the description. Clicking or
     /// activating it calls `handler` and does not toggle the checkbox. No link by default.
     pub fn link(
         mut self,
@@ -106,6 +106,7 @@ impl Agree {
 impl RenderOnce for Agree {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let checked = self.checked;
         let label = match &self.link {
             Some((link, _)) => SharedString::from(format!("{}{}", self.text, link)),
@@ -146,9 +147,10 @@ impl RenderOnce for Agree {
                 Toggled::False
             })
             .flex()
+            .row(dir)
             .max_w_full()
             .min_h(px(19.6))
-            .text_left()
+            .text_start(dir)
             .text_size(px(14.))
             .line_height(relative(1.4))
             .child(
@@ -160,9 +162,10 @@ impl RenderOnce for Agree {
             )
             .child(
                 div()
-                    .ml(px(4.))
+                    .ms(dir, px(4.))
                     .min_w_0()
                     .flex()
+                    .row(dir)
                     .flex_wrap()
                     .text_color(if self.warn { t.red } else { t.fg_1 })
                     .child(div().min_w_0().max_w_full().child(self.text))

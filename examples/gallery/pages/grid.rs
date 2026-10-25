@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::*;
 use wegpui::components::grid::{Grid, Grids};
@@ -14,7 +15,7 @@ impl Render for GridPage {
     fn render(&mut self, _: &mut Window, _: &mut Context<Self>) -> impl IntoElement {
         PageFrame::new(self.route)
             .title("Grid")
-            .desc("九宫格")
+            .desc(tr("九宫格"))
             .child(Grids::new("grids").children((0..9).map(|i| {
                 Grid::new(("grid", i as usize))
                     .image("icon_tabbar.png")

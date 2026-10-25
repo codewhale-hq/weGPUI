@@ -6,7 +6,7 @@
 use crate::scrolling::RevealFocus;
 
 use super::Icon;
-use crate::{Theme, accessibility::Semantics};
+use crate::{Theme, accessibility::Semantics, logical::Logical};
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
@@ -73,6 +73,7 @@ impl RadioGroup {
     /// the set. Place them in a container such as `FormGroup::rows` or `Cells::children`.
     pub fn rows(self, window: &mut Window, cx: &mut App) -> Vec<AnyElement> {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let n = self.options.len();
         let handles = window.use_keyed_state(self.id.clone(), cx, |_, _| Vec::<FocusHandle>::new());
         let handles = handles.update(cx, |v, cx| {
@@ -100,6 +101,7 @@ impl RadioGroup {
                     self.id.clone(),
                     format!("radio-option-{i}"),
                 )))
+                .row(dir)
                 .role(Role::RadioButton)
                 .aria_label(label.clone())
                 .aria_toggled(if checked {
@@ -113,7 +115,7 @@ impl RadioGroup {
                 .child(div().flex_1().min_w_0().child(label))
                 .child(
                     div()
-                        .pl(px(16.))
+                        .ps(dir, px(16.))
                         .child(radio_icon(checked, cx).when(disabled, |el| el.opacity(0.3))),
                 );
                 if !disabled {
@@ -129,9 +131,9 @@ impl RadioGroup {
                             }
                         })
                         .on_key_down(move |event, window, cx| {
-                            let step: isize = match event.keystroke.key.as_str() {
-                                "down" | "right" => 1,
-                                "up" | "left" => -1,
+                            let step: isize = match (event.keystroke.key.as_str(), dir.is_rtl()) {
+                                ("down", _) | ("right", false) | ("left", true) => 1,
+                                ("up", _) | ("left", false) | ("right", true) => -1,
                                 _ => return,
                             };
                             cx.stop_propagation();

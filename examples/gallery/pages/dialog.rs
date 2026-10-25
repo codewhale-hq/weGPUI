@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use wegpui::components::{
@@ -64,28 +65,28 @@ impl Render for DialogPage {
         let d = &self.dialogs;
         PageFrame::new("dialog")
             .title("Dialog")
-            .desc("对话框")
+            .desc(tr("对话框"))
             .spacing()
             .child(
                 div()
                     .flex()
                     .flex_col()
                     .gap(px(16.))
-                    .child(trigger("样式一", 0, cx))
-                    .child(trigger("样式二", 1, cx))
-                    .child(trigger("样式三", 2, cx)),
+                    .child(trigger(tr("样式一"), 0, cx))
+                    .child(trigger(tr("样式二"), 1, cx))
+                    .child(trigger(tr("样式三"), 2, cx)),
             )
             .child(
                 Dialog::new("iosDialog1")
-                    .title("弹窗标题")
-                    .body(BODY)
+                    .title(tr("弹窗标题"))
+                    .body(tr(BODY))
                     .button(
-                        DialogButton::new("辅助操作")
+                        DialogButton::new(tr("辅助操作"))
                             .default_style()
                             .on_click(hide(&weak, 0)),
                     )
                     .button(
-                        DialogButton::new("主操作")
+                        DialogButton::new(tr("主操作"))
                             .primary()
                             .on_click(hide(&weak, 0)),
                     )
@@ -94,14 +95,14 @@ impl Render for DialogPage {
             )
             .child(
                 Dialog::new("iosDialog2")
-                    .body(BODY)
+                    .body(tr(BODY))
                     .button(
-                        DialogButton::new("辅助操作")
+                        DialogButton::new(tr("辅助操作"))
                             .default_style()
                             .on_click(hide(&weak, 1)),
                     )
                     .button(
-                        DialogButton::new("负向操作")
+                        DialogButton::new(tr("负向操作"))
                             .warn()
                             .on_click(hide(&weak, 1)),
                     )
@@ -110,16 +111,16 @@ impl Render for DialogPage {
             )
             .child(
                 Dialog::new("iosDialog5")
-                    .title("弹窗标题")
-                    .body(BODY)
+                    .title(tr("弹窗标题"))
+                    .body(tr(BODY))
                     .btn_wrap(true)
                     .button(
-                        DialogButton::new("主操作")
+                        DialogButton::new(tr("主操作"))
                             .primary()
                             .on_click(hide(&weak, 2)),
                     )
                     .button(
-                        DialogButton::new("辅助操作")
+                        DialogButton::new(tr("辅助操作"))
                             .default_style()
                             .on_click(hide(&weak, 2)),
                     )
@@ -129,15 +130,15 @@ impl Render for DialogPage {
             .child(
                 Dialog::new("androidDialog1")
                     .android(true)
-                    .title("弹窗标题")
-                    .body(BODY)
+                    .title(tr("弹窗标题"))
+                    .body(tr(BODY))
                     .button(
-                        DialogButton::new("辅助操作")
+                        DialogButton::new(tr("辅助操作"))
                             .default_style()
                             .on_click(hide(&weak, 3)),
                     )
                     .button(
-                        DialogButton::new("主操作")
+                        DialogButton::new(tr("主操作"))
                             .primary()
                             .on_click(hide(&weak, 3)),
                     )
@@ -147,14 +148,14 @@ impl Render for DialogPage {
             .child(
                 Dialog::new("androidDialog2")
                     .android(true)
-                    .body(BODY)
+                    .body(tr(BODY))
                     .button(
-                        DialogButton::new("辅助操作")
+                        DialogButton::new(tr("辅助操作"))
                             .default_style()
                             .on_click(hide(&weak, 4)),
                     )
                     .button(
-                        DialogButton::new("主操作")
+                        DialogButton::new(tr("主操作"))
                             .primary()
                             .on_click(hide(&weak, 4)),
                     )

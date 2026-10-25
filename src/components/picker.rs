@@ -11,7 +11,7 @@ use super::{
     half_screen_dialog::{HalfScreenDialog, HdIconButton},
     modal::{Presence, ease},
 };
-use crate::{Theme, accessibility::Semantics};
+use crate::{Theme, accessibility::Semantics, logical::Logical};
 use gpui::{prelude::*, *};
 use std::{
     cell::Cell,
@@ -92,7 +92,11 @@ enum Source {
 
 enum ColumnItems {
     Stored(Vec<PickerItem>),
-    Years { start: i32, end: i32 },
+    Years {
+        start: i32,
+        end: i32,
+        label: SharedString,
+    },
 }
 
 impl ColumnItems {
@@ -102,7 +106,7 @@ impl ColumnItems {
     fn len(&self) -> usize {
         match self {
             Self::Stored(items) => items.len(),
-            Self::Years { start, end } => (i64::from(*end) - i64::from(*start) + 1)
+            Self::Years { start, end, .. } => (i64::from(*end) - i64::from(*start) + 1)
                 .max(0)
                 .try_into()
                 .unwrap_or(usize::MAX),
@@ -114,9 +118,12 @@ impl ColumnItems {
         }
         match self {
             Self::Stored(items) => items.get(index).cloned(),
-            Self::Years { start, .. } => {
+            Self::Years { start, label, .. } => {
                 let year = i64::from(*start) + index as i64;
-                Some(PickerItem::new(format!("{year}年"), year.to_string()))
+                Some(PickerItem::new(
+                    crate::i18n::fill(label, &[("year", &year)]),
+                    year.to_string(),
+                ))
             }
         }
     }
@@ -233,8 +240,8 @@ pub struct Picker {
     title: SharedString,
     desc: SharedString,
     show_close: bool,
-    confirm_text: SharedString,
-    close_text: SharedString,
+    confirm_text: Option<SharedString>,
+    close_text: Option<SharedString>,
     source: Source,
     default_value: Vec<SharedString>,
     memory: Vec<Option<usize>>,
@@ -244,8 +251,8 @@ pub struct Picker {
 impl EventEmitter<PickerEvent> for Picker {}
 
 impl Picker {
-    /// Creates an empty, closed picker with Confirm text "确定", close button label "关闭" and the
-    /// close button shown.
+    /// Creates an empty, closed picker with the localized [`crate::Messages::ok`] Confirm text,
+    /// the localized [`crate::Messages::close`] close button label and the close button shown.
     pub fn new(id: impl Into<SharedString>, cx: &mut Context<Self>) -> Self {
         Self {
             presence: Presence::new(cx),
@@ -253,8 +260,8 @@ impl Picker {
             title: SharedString::default(),
             desc: SharedString::default(),
             show_close: true,
-            confirm_text: "确定".into(),
-            close_text: "关闭".into(),
+            confirm_text: None,
+            close_text: None,
             source: Source::Columns(vec![]),
             default_value: vec![],
             memory: vec![],
@@ -281,8 +288,9 @@ impl Picker {
         self.source = Source::Cascade { items, depth };
         self
     }
-    /// Uses a year, month and day cascade over `start_year..=end_year`, labelled `"{y}年"`,
-    /// `"{m}月"` and `"{d}日"` with unpadded numeric values, and makes `today`
+    /// Uses a year, month and day cascade over `start_year..=end_year`, labelled by the locale's
+    /// [`crate::Messages::year_label`], [`crate::Messages::months`] and
+    /// [`crate::Messages::day_label`] with unpadded numeric values, and makes `today`
     /// (`(year, month, day)`) the default value. Pass the user's local date; [`today`] is UTC.
     /// Years are generated as visible rows, and months/days only for the current selection.
     /// Reversed bounds produce an empty year column, as an empty inclusive Rust range does.
@@ -313,14 +321,15 @@ impl Picker {
         self.show_close = value;
         self
     }
-    /// Sets the Confirm button text (default "确定").
+    /// Sets the Confirm button text (default: the localized [`crate::Messages::ok`]).
     pub fn confirm_text(mut self, text: impl Into<SharedString>) -> Self {
-        self.confirm_text = text.into();
+        self.confirm_text = Some(text.into());
         self
     }
-    /// Sets the close button's accessible label (default "关闭").
+    /// Sets the close button's accessible label (default: the localized
+    /// [`crate::Messages::close`]).
     pub fn close_text(mut self, text: impl Into<SharedString>) -> Self {
-        self.close_text = text.into();
+        self.close_text = Some(text.into());
         self
     }
     /// Sets, per column level, the item value to select when that level has no remembered row.
@@ -456,7 +465,11 @@ impl Picker {
                 self.rebuild_from(0, cx);
             }
             Source::Date { start, end } => {
-                let items = ColumnItems::Years { start, end };
+                let items = ColumnItems::Years {
+                    start,
+                    end,
+                    label: crate::i18n::messages(cx).year_label.clone(),
+                };
                 let len = items.len();
                 let index = self
                     .memory
@@ -494,8 +507,11 @@ impl Picker {
                 return;
             };
             if level == 0 {
+                let names = crate::i18n::messages_arc(cx);
                 let months = (1..=12u32)
-                    .map(|month| PickerItem::new(format!("{month}月"), month.to_string()))
+                    .map(|month| {
+                        PickerItem::new(names.months[month as usize - 1].clone(), month.to_string())
+                    })
                     .collect();
                 let column = self.make_column(1, months, cx);
                 if self.columns.len() > 1 {
@@ -506,8 +522,14 @@ impl Picker {
             }
             if level <= 1 {
                 let month = self.columns[1].index() as u32 + 1;
+                let day_label = crate::i18n::messages(cx).day_label.clone();
                 let days = (1..=days_in_month(year, month))
-                    .map(|day| PickerItem::new(format!("{day}日"), day.to_string()))
+                    .map(|day| {
+                        PickerItem::new(
+                            crate::i18n::fill(&day_label, &[("day", &day)]),
+                            day.to_string(),
+                        )
+                    })
                     .collect::<Vec<_>>();
                 if let Some(Some(day)) = self.memory.get_mut(2) {
                     *day = (*day).min(days.len() - 1);
@@ -740,6 +762,7 @@ impl Picker {
         cx: &mut Context<Self>,
     ) -> AnyElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let dark = t.is_dark;
         let shade = |a: f32| -> Hsla {
             if dark {
@@ -831,10 +854,12 @@ impl Picker {
                     .absolute()
                     .top(px(OFFSET * ROW_HEIGHT))
                     .h(px(ROW_HEIGHT))
-                    .left(px(if first { 8. } else { 0. }))
-                    .right(px(if last { 8. } else { 0. }))
-                    .when(first, |el| el.rounded_l(px(8.)))
-                    .when(last, |el| el.rounded_r(px(8.)))
+                    .inset_s(dir, px(if first { 8. } else { 0. }))
+                    .inset_e(dir, px(if last { 8. } else { 0. }))
+                    .when(first && !dir.is_rtl(), |el| el.rounded_l(px(8.)))
+                    .when(first && dir.is_rtl(), |el| el.rounded_r(px(8.)))
+                    .when(last && !dir.is_rtl(), |el| el.rounded_r(px(8.)))
+                    .when(last && dir.is_rtl(), |el| el.rounded_l(px(8.)))
                     .bg(t.bg_3),
             )
             .child(
@@ -878,10 +903,12 @@ impl Picker {
                     .absolute()
                     .top(px(OFFSET * ROW_HEIGHT))
                     .h(px(ROW_HEIGHT))
-                    .left(px(if first { 8. } else { 0. }))
-                    .right(px(if last { 8. } else { 0. }))
-                    .when(first, |el| el.rounded_l(px(8.)))
-                    .when(last, |el| el.rounded_r(px(8.)))
+                    .inset_s(dir, px(if first { 8. } else { 0. }))
+                    .inset_e(dir, px(if last { 8. } else { 0. }))
+                    .when(first && !dir.is_rtl(), |el| el.rounded_l(px(8.)))
+                    .when(first && dir.is_rtl(), |el| el.rounded_r(px(8.)))
+                    .when(last && !dir.is_rtl(), |el| el.rounded_r(px(8.)))
+                    .when(last && dir.is_rtl(), |el| el.rounded_l(px(8.)))
                     .border_2()
                     .border_color(transparent_black())
                     .when(keyboard_focus, |s| s.border_color(brand)),
@@ -963,6 +990,7 @@ impl Render for Picker {
         let close_entity = entity.clone();
         let confirm_entity = entity.clone();
         let can_confirm = self.can_confirm();
+        let dir = crate::i18n::direction(cx);
         let mut dialog =
             HalfScreenDialog::new(SharedString::from(format!("weui-picker-{}", self.id)))
                 .flush(true)
@@ -974,22 +1002,27 @@ impl Render for Picker {
                 .child(
                     div()
                         .flex()
+                        .row(dir)
                         .relative()
                         .h(px(VISIBLE_ROWS * ROW_HEIGHT))
                         .overflow_hidden()
                         .children(columns),
                 )
                 .footer(
-                    Button::new(self.confirm_text.clone())
-                        .id(SharedString::from(format!(
-                            "weui-picker-confirm-{}",
-                            self.id
-                        )))
-                        .primary()
-                        .disabled(!can_confirm)
-                        .on_click(move |_, window, cx| {
-                            confirm_entity.update(cx, |this, cx| this.confirm(window, cx));
-                        }),
+                    Button::new(
+                        self.confirm_text
+                            .clone()
+                            .unwrap_or_else(|| crate::i18n::messages(cx).ok.clone()),
+                    )
+                    .id(SharedString::from(format!(
+                        "weui-picker-confirm-{}",
+                        self.id
+                    )))
+                    .primary()
+                    .disabled(!can_confirm)
+                    .on_click(move |_, window, cx| {
+                        confirm_entity.update(cx, |this, cx| this.confirm(window, cx));
+                    }),
                 );
         if !self.desc.is_empty() {
             dialog = dialog.subtitle(self.desc.clone());
@@ -999,7 +1032,9 @@ impl Render for Picker {
                 HdIconButton::new(
                     SharedString::from(format!("weui-picker-close-{}", self.id)),
                     "close-thin",
-                    self.close_text.clone(),
+                    self.close_text
+                        .clone()
+                        .unwrap_or_else(|| crate::i18n::messages(cx).close.clone()),
                 )
                 .on_click(move |_, window, cx| {
                     close_entity.update(cx, |this, cx| this.close(window, cx));
@@ -1057,6 +1092,7 @@ mod tests {
         let years = ColumnItems::Years {
             start: i32::MIN,
             end: i32::MAX,
+            label: "{year}".into(),
         };
         assert_eq!(years.len(), 1usize << 32);
         assert_eq!(years.get(0).unwrap().value.as_ref(), "-2147483648");
@@ -1074,13 +1110,15 @@ mod tests {
         let years = ColumnItems::Years {
             start: 1900,
             end: 2100,
+            label: "{year}".into(),
         };
         assert_eq!(years.len(), 201);
         assert_eq!(years.get(200).unwrap().value.as_ref(), "2100");
         assert!(
             ColumnItems::Years {
                 start: 2100,
-                end: 1900
+                end: 1900,
+                label: "{year}".into(),
             }
             .is_empty()
         );

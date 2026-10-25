@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use wegpui::components::slider::Slider;
@@ -21,13 +22,17 @@ impl Render for SliderPage {
     fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         PageFrame::new(self.route)
             .title("Slider")
-            .desc("滑块")
+            .desc(tr("滑块"))
             .spacing()
-            .child(Slider::new("slider-fixed").label("不可调滑块").value(0.))
+            .child(
+                Slider::new("slider-fixed")
+                    .label(tr("不可调滑块"))
+                    .value(0.),
+            )
             .child(div().h(px(25.6)))
             .child(
                 Slider::new("slider-adjustable")
-                    .label("可调滑块")
+                    .label(tr("可调滑块"))
                     .value(self.value)
                     .show_value(true)
                     .on_change(cx.listener(|this, value: &f32, _, cx| {

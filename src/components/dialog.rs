@@ -7,7 +7,7 @@
 //! only built-in dismissal.
 
 use super::modal::{MaskKind, Modal, Motion, Placement, Presence};
-use crate::{Theme, accessibility::Semantics, scrolling::RevealFocus};
+use crate::{Theme, accessibility::Semantics, logical::Logical, scrolling::RevealFocus};
 use gpui::{prelude::*, *};
 use std::{rc::Rc, time::Duration};
 
@@ -190,6 +190,7 @@ impl ParentElement for Dialog {
 impl RenderOnce for Dialog {
     fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        let dir = crate::i18n::direction(cx);
         let viewport = window.viewport_size();
         let width = (viewport.width - px(32.)).min(px(320.));
         let android = self.android;
@@ -224,7 +225,7 @@ impl RenderOnce for Dialog {
                         el.px(px(13.6 - 2.))
                             .mt(px(-2.))
                             .line_height(relative(24. / 17.))
-                            .when(i + 1 == count, |el| el.mr(px(-13.6)))
+                            .when(i + 1 == count, |el| el.me(dir, px(-13.6)))
                     } else {
                         el.flex_1()
                             .px(px(8. - 2.))
@@ -247,7 +248,7 @@ impl RenderOnce for Dialog {
                             .absolute()
                             .top(px(-2.))
                             .bottom(px(-2.))
-                            .left(px(-2.))
+                            .inset_s(dir, px(-2.))
                             .w(px(0.5))
                             .bg(line)
                     })
@@ -273,7 +274,9 @@ impl RenderOnce for Dialog {
         let footer = if android {
             div()
                 .flex()
-                .justify_end()
+                .row(dir)
+                .when(dir.is_rtl(), |el| el.justify_start())
+                .when(!dir.is_rtl(), |el| el.justify_end())
                 .items_start()
                 .min_h(px(56.))
                 .px(px(24.))
@@ -283,6 +286,7 @@ impl RenderOnce for Dialog {
             div()
                 .relative()
                 .flex()
+                .row(dir)
                 .when(self.btn_wrap, |el| el.flex_col())
                 .when(!self.btn_wrap, |el| el.items_center())
                 .child(
@@ -310,7 +314,7 @@ impl RenderOnce for Dialog {
             .mb(px(32.))
             .text_size(px(17.))
             .line_height(relative(1.4))
-            .when(android, |el| el.text_left())
+            .when(android, |el| el.text_start(dir))
             .map(|el| {
                 if has_title {
                     el.text_color(t.fg_1)
@@ -346,7 +350,7 @@ impl RenderOnce for Dialog {
                         .pt(px(32.))
                         .pb(px(16.))
                         .px(px(24.))
-                        .when(android, |el| el.text_left())
+                        .when(android, |el| el.text_start(dir))
                         .font_weight(FontWeight::SEMIBOLD)
                         .text_size(px(if android { 22. } else { 17. }))
                         .line_height(relative(1.4))

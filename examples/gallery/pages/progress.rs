@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use std::time::Duration;
@@ -44,11 +45,21 @@ impl ProgressPage {
                             return false;
                         }
                         if progress > 10 && announced.elapsed() > Duration::from_secs(3) {
-                            this.announcement = format!("已上传百分之{progress}").into();
+                            this.announcement = if crate::text::is_zh() {
+                                format!("已上传百分之{progress}")
+                            } else {
+                                format!("Uploaded {progress} percent")
+                            }
+                            .into();
                             announced = std::time::Instant::now();
                         }
                         if progress == 100 {
-                            this.announcement = format!("已上传百分之{progress}").into();
+                            this.announcement = if crate::text::is_zh() {
+                                format!("已上传百分之{progress}")
+                            } else {
+                                format!("Uploaded {progress} percent")
+                            }
+                            .into();
                             this.uploading = false;
                             cx.notify();
                             return false;
@@ -73,7 +84,7 @@ impl ProgressPage {
     fn cancel(&mut self, cx: &mut Context<Self>) {
         if self.uploading {
             self.uploading = false;
-            self.announcement = "已取消上传".into();
+            self.announcement = tr("已取消上传").into();
             cx.notify();
         }
     }
@@ -83,7 +94,11 @@ impl Render for ProgressPage {
     fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         let bars = self.values.iter().enumerate().map(|(i, v)| {
             Progress::new(ElementId::NamedInteger("progress".into(), i as u64))
-                .label(format!("上传进度{}", i + 1))
+                .label(if crate::text::is_zh() {
+                    format!("上传进度{}", i + 1)
+                } else {
+                    format!("Upload progress {}", i + 1)
+                })
                 .value(*v)
                 .when(i == 0, |bar| bar.announcement(self.announcement.clone()))
                 .on_cancel(cx.listener(|this, _, _, cx| this.cancel(cx)))
@@ -97,12 +112,12 @@ impl Render for ProgressPage {
         }
         PageFrame::new(self.route)
             .title("Progress")
-            .desc("进度条")
+            .desc(tr("进度条"))
             .spacing()
             .child(body)
             .child(
                 ButtonArea::new().button(
-                    Button::new("上传")
+                    Button::new(tr("上传"))
                         .id("btnUpload")
                         .primary()
                         .disabled(self.uploading)

@@ -1,3 +1,4 @@
+use crate::text::tr;
 use gpui::{prelude::*, *};
 use wegpui::Theme;
 use wegpui::scrolling::{FocusScroll, RevealFocus};
@@ -135,7 +136,7 @@ pub fn page_ft(cx: &App) -> impl IntoElement {
         div()
             .id("page-footer-home")
             .role(Role::Link)
-            .aria_label("WeUI 首页")
+            .aria_label(tr("WeUI 首页"))
             .cursor_pointer()
             .focusable()
             .tab_stop(true)

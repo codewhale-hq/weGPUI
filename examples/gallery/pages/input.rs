@@ -1,3 +1,4 @@
+use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
 use wegpui::{
@@ -62,15 +63,15 @@ fn field(
 
 impl InputPage {
     fn new(state: Option<&str>, window: &mut Window, cx: &mut Context<Self>) -> Self {
-        let qq = field("请输入qq号", InputKind::Number, cx);
-        let phone = field("请输入手机号", InputKind::Tel, cx);
-        let code = field("请输入验证码", InputKind::Number, cx);
-        let card = field("请输入卡号", InputKind::Number, cx);
+        let qq = field(tr("请输入qq号"), InputKind::Number, cx);
+        let phone = field(tr("请输入手机号"), InputKind::Tel, cx);
+        let code = field(tr("请输入验证码"), InputKind::Number, cx);
+        let card = field(tr("请输入卡号"), InputKind::Number, cx);
         card.update(cx, |input, cx| input.set_text("weui input error", cx));
-        let text = field("请输入文本", InputKind::Text, cx);
-        let number = field("请输入号码", InputKind::Number, cx);
+        let text = field(tr("请输入文本"), InputKind::Text, cx);
+        let number = field(tr("请输入号码"), InputKind::Number, cx);
         let textarea = cx.new(|cx| {
-            let mut area = TextArea::new("请输入文本", cx);
+            let mut area = TextArea::new(tr("请输入文本"), cx);
             area.set_max_len(Some(200), cx);
             area.set_show_count(true, cx);
             area
@@ -82,22 +83,23 @@ impl InputPage {
         });
         for (input, label) in [
             (&qq, "qq"),
-            (&phone, "手机号"),
-            (&code, "验证码"),
-            (&card, "卡号"),
-            (&number, "号码"),
+            (&phone, tr("手机号")),
+            (&code, tr("验证码")),
+            (&card, tr("卡号")),
+            (&number, tr("号码")),
         ] {
             input.update(cx, |input, cx| input.set_aria_label(label, cx));
         }
         cx.observe(&textarea, |_, _, cx| cx.notify()).detach();
         let menus = [Presence::new(cx), Presence::new(cx), Presence::new(cx)];
         let date = cx.new(|cx| {
-            let mut field = DateField::new("input-date-field", "日期", DateFieldMode::Date, cx);
+            let mut field = DateField::new("input-date-field", tr("日期"), DateFieldMode::Date, cx);
             field.set_typed_entry(true, cx);
             field
         });
         let time = cx.new(|cx| {
-            let mut field = DateField::new("input-time-field", "时间", DateFieldMode::DateTime, cx);
+            let mut field =
+                DateField::new("input-time-field", tr("时间"), DateFieldMode::DateTime, cx);
             field.set_typed_entry(true, cx);
             field
         });
@@ -111,7 +113,7 @@ impl InputPage {
                     input.focus(window, cx);
                 });
                 textarea.update(cx, |area, cx| {
-                    area.set_text("WeUI 是一套同微信原生视觉体验一致的基础样式库，由微信官方设计团队为微信内网页和微信小程序量身设计。", cx)
+                    area.set_text(tr("WeUI 是一套同微信原生视觉体验一致的基础样式库，由微信官方设计团队为微信内网页和微信小程序量身设计。"), cx)
                 });
             }
             _ => {}
@@ -145,7 +147,7 @@ impl InputPage {
 
     fn select_menu(&self, ix: usize, cx: &mut Context<Self>) -> impl IntoElement {
         SelectMenu::new(("input-select-menu", ix), &self.menus[ix])
-            .options(SELECTS[ix].iter().copied())
+            .options(SELECTS[ix].iter().copied().map(tr))
             .selected(Some(self.selected[ix]))
             .on_select({
                 let entity = cx.entity();
@@ -248,74 +250,74 @@ impl Render for InputPage {
 
         PageFrame::new("input")
             .title("Input")
-            .desc("表单输入")
+            .desc(tr("表单输入"))
             .child(
                 Cells::new()
-                    .title("单选列表项")
+                    .title(tr("单选列表项"))
                     .role(Role::RadioGroup)
-                    .aria_label("单选列表项")
+                    .aria_label(tr("单选列表项"))
                     .children(radios)
                     .child(
                         Cell::new("input-radio-more")
                             .link()
-                            .title("添加更多")
+                            .title(tr("添加更多"))
                             .on_click(|_, _, _| {}),
                     ),
             )
             .child(
                 Cells::new()
-                    .title("复选列表项")
+                    .title(tr("复选列表项"))
                     .child(checkbox(0, "standard is dealt for u."))
                     .child(checkbox(1, "standard is dealicient for u."))
                     .child(
                         Cell::new("input-check-more")
                             .link()
-                            .title("添加更多")
+                            .title(tr("添加更多"))
                             .on_click(|_, _, _| {}),
                     ),
             )
             .child(
                 Cells::new()
-                    .title("表单")
-                    .tips("底部说明文字底部说明文字")
+                    .title(tr("表单"))
+                    .tips(tr("底部说明文字底部说明文字"))
                     .child(Self::row("input-qq", "qq", self.qq.clone()))
                     .child(
-                        Self::row("input-phone", "手机号", self.phone.clone())
+                        Self::row("input-phone", tr("手机号"), self.phone.clone())
                             .padding(vcode_padding)
                             .ft(self.vcode.clone()),
                     )
-                    .child(Self::row("input-date", "日期", self.date.clone()))
-                    .child(Self::row("input-time", "时间", self.time.clone()))
+                    .child(Self::row("input-date", tr("日期"), self.date.clone()))
+                    .child(Self::row("input-time", tr("时间"), self.time.clone()))
                     .child(
-                        Self::row("input-code", "验证码", self.code.clone())
+                        Self::row("input-code", tr("验证码"), self.code.clone())
                             .padding(vcode_padding)
                             .ft(VcodeImage::new("vcode.jpg")),
                     ),
             )
             .child(
                 Cells::new()
-                    .title("表单报错")
-                    .child(Self::row("input-card", "卡号", self.card.clone()).warn(true)),
+                    .title(tr("表单报错"))
+                    .child(Self::row("input-card", tr("卡号"), self.card.clone()).warn(true)),
             )
             .child(
                 Cells::new()
-                    .title("开关")
-                    .child(switch_row(0, "标题文字"))
-                    .child(switch_row(1, "兼容IE Edge的版本")),
+                    .title(tr("开关"))
+                    .child(switch_row(0, tr("标题文字")))
+                    .child(switch_row(1, tr("兼容IE Edge的版本"))),
             )
             .child(
                 Cells::new()
-                    .title("文本框")
+                    .title(tr("文本框"))
                     .child(Cell::new("input-text").bd(self.text.clone())),
             )
             .child(
                 Cells::new()
-                    .title("文本域")
+                    .title(tr("文本域"))
                     .child(Cell::new("input-textarea").bd(self.textarea.clone())),
             )
             .child(
-                Cells::new().title("选择").child(
-                    SelectCell::new("input-select-before", SELECTS[0][self.selected[0]])
+                Cells::new().title(tr("选择")).child(
+                    SelectCell::new("input-select-before", tr(SELECTS[0][self.selected[0]]))
                         .label_width(LABEL_WIDTH)
                         .expanded(self.menus[0].is_open())
                         .before(self.number.clone())
@@ -324,24 +326,24 @@ impl Render for InputPage {
             )
             .child(
                 Cells::new()
-                    .title("选择")
+                    .title(tr("选择"))
                     .child(
-                        SelectCell::new("input-select-plain", SELECTS[1][self.selected[1]])
+                        SelectCell::new("input-select-plain", tr(SELECTS[1][self.selected[1]]))
                             .expanded(self.menus[1].is_open())
                             .on_click(select(1, cx)),
                     )
                     .child(
-                        SelectCell::new("input-select-after", SELECTS[2][self.selected[2]])
+                        SelectCell::new("input-select-after", tr(SELECTS[2][self.selected[2]]))
                             .label_width(LABEL_WIDTH)
-                            .after("国家/地区")
+                            .after(tr("国家/地区"))
                             .expanded(self.menus[2].is_open())
                             .on_click(select(2, cx)),
                     ),
             )
             .child(
                 div().h(px(25.6)).pt(px(6.)).child(
-                    Agree::new("input-agree", "阅读并同意")
-                        .link("《相关条款》", |_, _, _| {})
+                    Agree::new("input-agree", tr("阅读并同意"))
+                        .link(tr("《相关条款》"), |_, _, _| {})
                         .checked(self.agree)
                         .on_change(move |value, _, cx| {
                             let value = *value;
@@ -359,7 +361,7 @@ impl Render for InputPage {
                     .mb(px(8.))
                     .flex()
                     .justify_center()
-                    .child(Button::new("确定").id("showTooltips").primary()),
+                    .child(Button::new(tr("确定")).id("showTooltips").primary()),
             )
             .child(self.select_menu(0, cx))
             .child(self.select_menu(1, cx))

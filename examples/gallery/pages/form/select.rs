@@ -1,5 +1,6 @@
 use super::{dismiss, input, primary_button, show_toast, toast, toast_presence};
 use crate::chrome::PageFrame;
+use crate::text::tr;
 use gpui::{prelude::*, *};
 use wegpui::{
     components::{
@@ -55,17 +56,25 @@ impl Select {
             };
             let phone = items(&["+86", "+80", "+84", "+87"], None);
             let ticket = items(
-                &["飞机票", "火车票", "的士票", "公交票 (disabled)", "其他"],
+                &[
+                    tr("飞机票"),
+                    tr("火车票"),
+                    tr("的士票"),
+                    tr("公交票 (disabled)"),
+                    tr("其他"),
+                ],
                 Some(3),
             );
             pickers.push(cx.new(|cx| {
                 Picker::new("form-date", cx)
                     .date(1990, year, (year, month, day))
-                    .title("多列选择器")
+                    .title(tr("多列选择器"))
             }));
-            pickers.push(cx.new(|cx| Picker::single("form-phone", phone, cx).title("单列选择器")));
             pickers
-                .push(cx.new(|cx| Picker::single("form-ticket", ticket, cx).title("单列选择器")));
+                .push(cx.new(|cx| Picker::single("form-phone", phone, cx).title(tr("单列选择器"))));
+            pickers.push(
+                cx.new(|cx| Picker::single("form-ticket", ticket, cx).title(tr("单列选择器"))),
+            );
             for (which, picker) in pickers.iter().enumerate() {
                 subscriptions.push(cx.subscribe(
                     picker,
@@ -86,8 +95,8 @@ impl Select {
         }
         let mut this = Self {
             route,
-            number: input("请输入号码", InputKind::Number, "12345678907", cx),
-            mobile: input("请输入号码", InputKind::Number, "12345678907", cx),
+            number: input(tr("请输入号码"), InputKind::Number, "12345678907", cx),
+            mobile: input(tr("请输入号码"), InputKind::Number, "12345678907", cx),
             values: if primary {
                 [None, Some(0), Some(2)]
             } else {
@@ -133,33 +142,49 @@ impl Select {
         };
         match (primary, which) {
             (false, 0) => Menu {
-                title: "账号类型",
-                options: list(&["微信号", "QQ号", "Email"]),
+                title: tr("账号类型"),
+                options: list(&[tr("微信号"), tr("QQ号"), "Email"]),
                 disabled: None,
             },
             (_, 1) => Menu {
-                title: if primary { "单列选择器" } else { "区号" },
+                title: if primary {
+                    tr("单列选择器")
+                } else {
+                    tr("区号")
+                },
                 options: list(&["+86", "+80", "+84", "+87"]),
                 disabled: None,
             },
             (false, _) => Menu {
-                title: "国家",
-                options: list(&["中国", "美国", "英国"]),
+                title: tr("国家"),
+                options: list(&[tr("中国"), tr("美国"), tr("英国")]),
                 disabled: None,
             },
             (true, 0) => {
                 let now = 2026;
                 Menu {
-                    title: "多列选择器",
+                    title: tr("多列选择器"),
                     options: (1990..=now)
-                        .map(|y| SharedString::from(format!("{y}年")))
+                        .map(|y| {
+                            SharedString::from(if crate::text::is_zh() {
+                                format!("{y}年")
+                            } else {
+                                y.to_string()
+                            })
+                        })
                         .collect(),
                     disabled: None,
                 }
             }
             (true, _) => Menu {
-                title: "单列选择器",
-                options: list(&["飞机票", "火车票", "的士票", "公交票 (disabled)", "其他"]),
+                title: tr("单列选择器"),
+                options: list(&[
+                    tr("飞机票"),
+                    tr("火车票"),
+                    tr("的士票"),
+                    tr("公交票 (disabled)"),
+                    tr("其他"),
+                ]),
                 disabled: Some(3),
             },
         }
@@ -172,7 +197,7 @@ impl Select {
                 .date_label
                 .clone()
                 .map(SharedString::from)
-                .unwrap_or("日期".into()),
+                .unwrap_or(tr("日期").into()),
         }
     }
 
@@ -203,40 +228,40 @@ impl Render for Select {
             )
             .row(
                 SelectCell::new("showPhone", self.value(1))
-                    .label_width(W)
+                    .label_width(crate::text::label_w(W))
                     .expanded(expanded(1))
                     .on_click(cx.listener(|this, _, w, cx| this.open(1, w, cx)))
                     .before(self.number.clone()),
             )
             .row(
                 SelectCell::new("showPicker", self.value(2))
-                    .after(if primary { "票种" } else { "国家" })
-                    .label_width(W)
+                    .after(if primary { tr("票种") } else { tr("国家") })
+                    .label_width(crate::text::label_w(W))
                     .expanded(expanded(2))
                     .on_click(cx.listener(|this, _, w, cx| this.open(2, w, cx))),
             )
             .row(
                 FormCell::new("cell-mobile")
                     .kind(CellKind::Wrap)
-                    .label("手机号")
-                    .label_width(W)
+                    .label(tr("手机号"))
+                    .label_width(crate::text::label_w(W))
                     .label_for(&self.mobile)
                     .child(cell_control("+86"))
                     .child(cell_control_flex(self.mobile.clone())),
             );
         let mut form = Form::new("weui-form")
             .title(if primary {
-                "模拟选择框"
+                tr("模拟选择框")
             } else {
-                "原生选择框"
+                tr("原生选择框")
             })
             .child(group);
         if primary {
-            form = form.desc("用于丰富原生选择框结构，使其更具有扩展性");
+            form = form.desc(tr("用于丰富原生选择框结构，使其更具有扩展性"));
         } else {
             form = form.opr_area(primary_button(
                 "showTooltips",
-                "确定",
+                tr("确定"),
                 false,
                 cx.listener(|this, _, window, cx| show_toast(this, window, cx, |t| &mut t.toast)),
             ));

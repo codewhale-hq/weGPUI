@@ -2,7 +2,7 @@
 
 Usage:
   python3 -I scripts/capture.py ROUTE [--state NAME] [--theme light|dark] [--height 812]
-      [--scroll Y] [--brand RRGGBB] [--care] [--name NAME] [--only gpui|weui] [--out DIR]
+      [--scroll Y] [--brand RRGGBB] [--care] [--lang TAG] [--name NAME] [--only gpui|weui] [--out DIR]
 
 Writes DIR/NAME-{theme}-gpui.png and DIR/NAME-{theme}-weui.png (default DIR docs/parity,
 NAME = ROUTE[-STATE]). The WeUI side replays the JavaScript registered for STATE in
@@ -62,6 +62,9 @@ def window_id(pid, height):
 def capture_gpui(args, out):
     cmd = [str(BINARY), '--page', args.route, '--theme', args.theme, '--size', f'{WIDTH}x{args.height}',
            '--position', '60,60', '--reduce-motion']
+    cmd += ['--lang', args.lang]
+    if args.dir:
+        cmd += ['--dir', args.dir]
     if args.state:
         cmd += ['--state', args.state]
     if args.scroll:
@@ -171,6 +174,8 @@ def main():
     ap.add_argument('--scroll', type=int, default=0)
     ap.add_argument('--brand')
     ap.add_argument('--care', action='store_true')
+    ap.add_argument('--lang', default='zh-Hans', help='gallery language; the upstream reference is Chinese')
+    ap.add_argument('--dir', choices=['ltr', 'rtl'], help='force the layout direction')
     ap.add_argument('--name')
     ap.add_argument('--only', choices=['gpui', 'weui'])
     ap.add_argument('--out', default=str(ROOT / 'docs/parity'))

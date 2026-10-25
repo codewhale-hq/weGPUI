@@ -1,5 +1,6 @@
 use super::{dismiss, footer, input, primary_button, show_toast, toast, toast_presence};
 use crate::chrome::PageFrame;
+use crate::text::tr;
 use gpui::{prelude::*, *};
 use wegpui::{
     Theme,
@@ -43,11 +44,11 @@ impl Structure {
         window: &mut Window,
         cx: &mut Context<Self>,
     ) -> Self {
-        let wechat = input("填写本人微信号", InputKind::Text, "", cx);
-        let nickname = input("填写本人微信号的昵称", InputKind::Text, "", cx);
-        let phone = input("填写绑定的电话号码", InputKind::Number, "", cx);
-        let number = input("请输入号码", InputKind::Number, "12345678907", cx);
-        let mobile = input("请输入号码", InputKind::Number, "12345678907", cx);
+        let wechat = input(tr("填写本人微信号"), InputKind::Text, "", cx);
+        let nickname = input(tr("填写本人微信号的昵称"), InputKind::Text, "", cx);
+        let phone = input(tr("填写绑定的电话号码"), InputKind::Number, "", cx);
+        let number = input(tr("请输入号码"), InputKind::Number, "12345678907", cx);
+        let mobile = input(tr("请输入号码"), InputKind::Number, "12345678907", cx);
         let address = cx.new(|cx| {
             let mut area = TextArea::new("input your address", cx);
             area.set_rows(3, cx);
@@ -105,7 +106,7 @@ impl Structure {
     ) -> FormCell {
         FormCell::new(id)
             .label(label)
-            .label_width(width)
+            .label_width(crate::text::label_w(width))
             .label_for(input)
             .when(primary, |el| el.in_primary_group())
             .child(input.clone())
@@ -122,28 +123,42 @@ impl Render for Structure {
         };
         let empty = self.wechat.read(cx).text().is_empty();
         let mut form = Form::new("weui-form")
-            .title("表单结构")
-            .desc("展示表单页面的信息结构样式, 分别由头部区域/控件区域/提示区域/操作区域和底部信息区域组成。");
+            .title(tr("表单结构"))
+            .desc(tr("展示表单页面的信息结构样式, 分别由头部区域/控件区域/提示区域/操作区域和底部信息区域组成。"));
         let group = |id: &'static str| {
             let g = FormGroup::new(id);
             if primary { g.primary() } else { g }
         };
         let mut g1 = group("group-1")
             .first()
-            .title("表单组标题")
-            .row(self.input_cell("cell-wechat", "微信号", &self.wechat, width, primary, cx))
-            .row(self.input_cell("cell-nickname", "昵称", &self.nickname, width, primary, cx));
+            .title(tr("表单组标题"))
+            .row(self.input_cell(
+                "cell-wechat",
+                tr("微信号"),
+                &self.wechat,
+                width,
+                primary,
+                cx,
+            ))
+            .row(self.input_cell(
+                "cell-nickname",
+                tr("昵称"),
+                &self.nickname,
+                width,
+                primary,
+                cx,
+            ));
         if !primary {
             g1 = g1.row(
-                self.input_cell("cell-phone", "联系电话", &self.phone, width, false, cx)
-                    .label_desc("副标题"),
+                self.input_cell("cell-phone", tr("联系电话"), &self.phone, width, false, cx)
+                    .label_desc(tr("副标题")),
             );
             if self.route == "form_page" {
                 g1 = g1.row(
                     FormCell::new("cell-address")
                         .kind(CellKind::Primary)
-                        .label("verification address")
-                        .label_width(width)
+                        .label(crate::text::tr_or("verification address", "Address"))
+                        .label_width(crate::text::label_w(width))
                         .label_for(self.address.read(cx).input())
                         .child(div().min_h(px(80.)).child(self.address.clone())),
                 );
@@ -156,25 +171,25 @@ impl Render for Structure {
             form = form
                 .child(
                     group("group-2")
-                        .title("表单组标题")
+                        .title(tr("表单组标题"))
                         .row(
-                            SelectCell::new("select-account", ACCOUNTS[self.account])
+                            SelectCell::new("select-account", tr(ACCOUNTS[self.account]))
                                 .in_primary_group()
                                 .expanded(self.menu == Some(0) && self.menu_presence.is_open())
                                 .on_click(cx.listener(|this, _, w, cx| this.open_menu(0, w, cx))),
                         )
                         .row(
                             SelectCell::new("select-code", CODES[self.code])
-                                .label_width(width)
+                                .label_width(crate::text::label_w(width))
                                 .in_primary_group()
                                 .expanded(self.menu == Some(1) && self.menu_presence.is_open())
                                 .on_click(cx.listener(|this, _, w, cx| this.open_menu(1, w, cx)))
                                 .before(self.number.clone()),
                         )
                         .row(
-                            SelectCell::new("select-country", COUNTRIES[self.country])
-                                .after("国家")
-                                .label_width(width)
+                            SelectCell::new("select-country", tr(COUNTRIES[self.country]))
+                                .after(tr("国家"))
+                                .label_width(crate::text::label_w(width))
                                 .in_primary_group()
                                 .expanded(self.menu == Some(2) && self.menu_presence.is_open())
                                 .on_click(cx.listener(|this, _, w, cx| this.open_menu(2, w, cx))),
@@ -182,8 +197,8 @@ impl Render for Structure {
                         .row(
                             FormCell::new("cell-mobile")
                                 .kind(CellKind::Wrap)
-                                .label("手机号")
-                                .label_width(width)
+                                .label(tr("手机号"))
+                                .label_width(crate::text::label_w(width))
                                 .in_primary_group()
                                 .label_for(&self.mobile)
                                 .child(cell_control("+86"))
@@ -198,9 +213,9 @@ impl Render for Structure {
                                 this.switch_on = !switch_on;
                                 cx.notify();
                             }))
-                            .child("标题文字")
+                            .child(tr("标题文字"))
                             .ft(Switch::new("switch")
-                                .label("标题文字")
+                                .label(tr("标题文字"))
                                 .checked(switch_on)
                                 .surface(bg1)
                                 .on_change(cx.listener(|this, v: &bool, _, cx| {
@@ -220,24 +235,25 @@ impl Render for Structure {
                 );
         }
         form = form
-            .tips_area(form_tips("表单页提示，居中对齐", cx))
+            .tips_area(form_tips(tr("表单页提示，居中对齐"), cx))
             .opr_area(primary_button(
                 "showTooltips",
-                "确定",
+                tr("确定"),
                 empty,
                 cx.listener(|this, _, window, cx| show_toast(this, window, cx, |t| &mut t.toast)),
             ))
-            .tips_area(form_tips("表单页提示，居中对齐", cx))
+            .tips_area(form_tips(tr("表单页提示，居中对齐"), cx))
             .extra_area(footer(cx));
         let menu = self.menu.map(|which| {
-            let (title, options, selected): (&str, &[&str], usize) = match which {
-                0 => ("账号类型", &ACCOUNTS, self.account),
-                1 => ("区号", &CODES, self.code),
-                _ => ("国家", &COUNTRIES, self.country),
-            };
+            let (title, options, selected): (&'static str, &'static [&'static str], usize) =
+                match which {
+                    0 => (tr("账号类型"), &ACCOUNTS, self.account),
+                    1 => (tr("区号"), &CODES, self.code),
+                    _ => (tr("国家"), &COUNTRIES, self.country),
+                };
             SelectMenu::new("form-select-menu", &self.menu_presence)
                 .title(title)
-                .options(options.iter().copied())
+                .options(options.iter().copied().map(tr))
                 .selected(Some(selected))
                 .on_select(cx.listener(move |this, i: &usize, window, cx| {
                     match which {

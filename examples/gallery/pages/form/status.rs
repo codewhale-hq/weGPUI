@@ -1,5 +1,6 @@
 use super::{input, primary_button, show_toast, toast, toast_presence};
 use crate::chrome::PageFrame;
+use crate::text::tr;
 use gpui::{prelude::*, *};
 use std::time::Duration;
 use wegpui::{
@@ -28,14 +29,14 @@ pub struct Status {
 
 impl Status {
     pub fn new(state: Option<String>, window: &mut Window, cx: &mut Context<Self>) -> Self {
-        let card = input("请输入16位数卡号", InputKind::Text, "", cx);
+        let card = input(tr("请输入16位数卡号"), InputKind::Text, "", cx);
         card.update(cx, |i, cx| i.set_max_len(Some(16), cx));
         let card_field = cx.new(|cx| ClearableInput::new(card.clone(), window, cx));
-        let holder = input("请输入持卡人姓名", InputKind::Text, "", cx);
-        let amount = input("请输入金额", InputKind::Text, "", cx);
-        let email = input("请输入EMail", InputKind::Text, "1234567", cx);
+        let holder = input(tr("请输入持卡人姓名"), InputKind::Text, "", cx);
+        let amount = input(tr("请输入金额"), InputKind::Text, "", cx);
+        let email = input(tr("请输入EMail"), InputKind::Text, "1234567", cx);
         email.update(cx, |i, cx| i.set_readonly(true, cx));
-        let wechat = input("请输入微信号", InputKind::Text, "WeUI", cx);
+        let wechat = input(tr("请输入微信号"), InputKind::Text, "WeUI", cx);
         wechat.update(cx, |i, cx| i.set_disabled(true, cx));
         let subscriptions = vec![
             cx.subscribe(&card, |_, _, _: &InputEvent, cx| cx.notify()),
@@ -95,26 +96,26 @@ impl Render for Status {
         let warn = self.warn_text.as_deref() == Some(card_text);
         let amount_tips = !self.amount.read(cx).text().is_empty();
         let form = Form::new("weui-form")
-            .title("输入框状态")
-            .desc("可体验表单输入的反馈状态。显示报错信息有两种类型，一种是超过1个输入项的时候，用置顶tipsbar报错信息，告知错误原因，页面聚焦到对应的报错区域，内容标红色，另一种是在当前输入项位置报错，适用于只有1个输入项的时候，用户焦点主要是输入区域。")
+            .title(tr("输入框状态"))
+            .desc(tr("可体验表单输入的反馈状态。显示报错信息有两种类型，一种是超过1个输入项的时候，用置顶tipsbar报错信息，告知错误原因，页面聚焦到对应的报错区域，内容标红色，另一种是在当前输入项位置报错，适用于只有1个输入项的时候，用户焦点主要是输入区域。"))
             .child(
                 FormGroup::new("group-1")
                     .first()
-                    .title("表单报错：置顶tipsbar报错信息")
+                    .title(tr("表单报错：置顶tipsbar报错信息"))
                     .row(
                         FormCell::new("js_cell")
-                            .label("卡号")
-                            .label_width(W)
+                            .label(tr("卡号"))
+                            .label_width(crate::text::label_w(W))
                             .warn(warn)
-                            .validation_error(warn.then(|| "请输入16位数卡号".into()))
+                            .validation_error(warn.then(|| tr("请输入16位数卡号").into()))
                             .bd_flex()
                             .label_for(&self.card)
                             .child(self.card_field.clone()),
                     )
                     .row(
                         FormCell::new("cell-holder")
-                            .label("持卡人")
-                            .label_width(W)
+                            .label(tr("持卡人"))
+                            .label_width(crate::text::label_w(W))
                             .bd_flex()
                             .label_for(&self.holder)
                             .child(self.holder.clone()),
@@ -122,14 +123,14 @@ impl Render for Status {
             )
             .child(
                 FormGroup::new("group-2")
-                    .title("表单报错：当前项位置报错")
+                    .title(tr("表单报错：当前项位置报错"))
                     .row(
                         FormCell::new("cell-amount")
-                            .label("金额")
-                            .label_width(W)
+                            .label(tr("金额"))
+                            .label_width(crate::text::label_w(W))
                             .bd_flex()
                             .label_for(&self.amount)
-                            .validation_error(amount_tips.then(|| "最多支持8位数".into()))
+                            .validation_error(amount_tips.then(|| tr("最多支持8位数").into()))
                             .child(self.amount.clone()),
                     )
                     .when(amount_tips, |g| {
@@ -137,8 +138,8 @@ impl Render for Status {
                             wegpui::accessibility::Semantics::new(div()
                                 .id("js_current_tips")
                                 .role(Role::Alert)
-                                .aria_label("最多支持8位数")
-                                .child("最多支持8位数"))
+                                .aria_label(tr("最多支持8位数"))
+                                .child(tr("最多支持8位数")))
                                 .live(accesskit::Live::Assertive),
                         )
                         .tips_warn(true)
@@ -146,19 +147,19 @@ impl Render for Status {
             )
             .child(
                 FormGroup::new("group-3")
-                    .title("表单只读、置灰")
+                    .title(tr("表单只读、置灰"))
                     .row(
                         FormCell::new("cell-email")
                             .label("EMail")
-                            .label_width(W)
+                            .label_width(crate::text::label_w(W))
                             .readonly(true)
                             .label_for(&self.email)
                             .child(self.email.clone()),
                     )
                     .row(
                         FormCell::new("cell-wechat")
-                            .label("微信号")
-                            .label_width(W)
+                            .label(tr("微信号"))
+                            .label_width(crate::text::label_w(W))
                             .disabled(true)
                             .label_for(&self.wechat)
                             .child(self.wechat.clone()),
@@ -166,13 +167,13 @@ impl Render for Status {
             )
             .opr_area(primary_button(
                 "showTooltips",
-                "确定",
+                tr("确定"),
                 empty,
                 cx.listener(|this, _, window, cx| this.submit(window, cx)),
             ));
         PageFrame::new("form_input_status")
             .child(form)
-            .fixed(Toptips::new("js_tooltips", &self.tips, "错误提示").warn())
+            .fixed(Toptips::new("js_tooltips", &self.tips, tr("错误提示")).warn())
             .fixed(toast(&self.toast))
     }
 }
