@@ -43,6 +43,9 @@ versioning once a release policy is decided. No version has been published.
 
 ### Fixed
 
+- macOS AX dumps include raw `AXTitle`, retaining picker/select option names that System Events
+  does not return through its `name` property.
+
 - Evidence scripts fail on capture/traversal errors and invalid image dimensions. X11 capture
   restricts its window search to the launched PID; contact sheets validate their arguments.
 
@@ -62,6 +65,6 @@ versioning once a release policy is decided. No version has been published.
 
 ### Known gaps
 
-See `docs/STATUS.md`. Mobile platforms are not supported, Linux windows need a pending feature
-decision, Windows runtime and screen-reader evidence are missing, and visual/behavioural parity is
+See `docs/STATUS.md`. Mobile platforms are not supported, Linux windows need the approved feature
+change to be applied, Windows runtime and screen-reader evidence are missing, and visual/behavioural parity is
 sampled rather than complete.

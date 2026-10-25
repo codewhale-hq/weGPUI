@@ -31,8 +31,8 @@ These are the gates the CNB pipeline runs (fmt, build, clippy), plus the documen
 Respect `CARGO_TARGET_DIR` in any script you add.
 
 Platform notes: on Linux both the gallery and minimal example currently need a change enabling
-`gpui_platform`'s `wayland`/`x11` features before it can open a window. That change is a pending
-maintainer decision, described in [docs/PLATFORMS.md](docs/PLATFORMS.md). iOS and Android have no
+`gpui_platform`'s `wayland`/`x11` features before they can open a window. That change is approved
+but not yet applied, as described in [docs/PLATFORMS.md](docs/PLATFORMS.md). iOS and Android have no
 backend yet. Please report what you tried on Windows. Native Windows runtime results are
 missing evidence the project needs.
 
@@ -45,7 +45,7 @@ missing evidence the project needs.
   HTML/JS (`src/example/`) and, for pickers, weui.js 1.2.17. Fetch them with
   `scripts/weui_upstream.py`. Do not copy unrelated upstream code.
 - **Generated files.** `src/theme/palette.rs`, `src/assets.rs`, `docs/tokens.json` and the icon
-  icon SVGs in `assets/` come from
+  SVGs in `assets/` come from
   `python3 -I scripts/extract_weui.py "${CARGO_TARGET_DIR:-target}/weui-upstream/weui/package"`.
   Keep the separately authored `assets/loading.svg`; the extractor does not generate it.
   Change the generator, not the output. Regenerating rewrites the eight `*-dark.png` files with
@@ -56,9 +56,9 @@ missing evidence the project needs.
   (lengths are logical pixels), ownership of state and callbacks, and accessibility behaviour.
   Module docs name the upstream source and known limitations.
 - **Code comments.** Keep inline comments rare. Put rationale in the commit message or docs.
-- **Tests.** The project does not yet accept a new test suite without maintainer agreement. Prove
-  changes with the checks above and real runs (screenshots, input, accessibility trees), and
-  discuss test proposals in an issue first.
+- **Tests.** Focused tests are approved. Cover a concrete regression or contract; keep real runs
+  (screenshots, input, accessibility trees) as separate evidence. A broader test-suite design
+  should still be discussed in an issue.
 - **Accessibility is not optional.** Interactive components need a role, an accessible name,
   keyboard operation and visible focus. Overlays use `Presence`/`Modal`. Application roots should
   be wrapped in `accessibility::ModalScope`.

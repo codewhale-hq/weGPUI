@@ -1,0 +1,13 @@
+{"AXRole":"AXWindow","AXTitle":"weGPUI","AXFocused":"true"}
+  {"AXRole":"AXGroup","AXFocused":"false"}
+    {"AXRole":"AXWindow","AXTitle":"标题","AXFocused":"false"}
+      {"AXRole":"AXButton","AXTitle":"关闭","AXFocused":"false"}
+      {"AXRole":"AXButton","AXTitle":"搜索","AXFocused":"false"}
+      {"AXRole":"AXButton","AXTitle":"更多","AXFocused":"false"}
+      {"AXRole":"AXLink","AXTitle":"完成","AXFocused":"false"}
+  {"AXRole":"AXButton","AXFocused":"false"}
+  {"AXRole":"AXButton","AXHelp":"this button also has an action to zoom the window","AXFocused":"false"}
+    {"AXRole":"AXGroup","AXFocused":"false"}
+      {"AXRole":"AXGroup","AXFocused":"false"}
+  {"AXRole":"AXButton","AXFocused":"false"}
+  {"AXRole":"AXStaticText","AXValue":"weGPUI","AXFocused":"false"}

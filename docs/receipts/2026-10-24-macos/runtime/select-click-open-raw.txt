@@ -1,0 +1,11 @@
+{"AXRole":"AXWindow","AXTitle":"weGPUI","AXFocused":"true"}
+  {}
+  CHILD_READ_ERROR Error: Can't get object.
+  {}
+  CHILD_READ_ERROR Error: Can't get object.
+  {}
+  CHILD_READ_ERROR Error: Can't get object.
+  {}
+  CHILD_READ_ERROR Error: Can't get object.
+  {}
+  CHILD_READ_ERROR Error: Can't get object.

@@ -1,0 +1,16 @@
+AXWindow | standard window | weGPUI [focused]
+  AXGroup | group
+    AXGroup | group
+      Heading | Heading | 原生选择框
+      AXPopUpButton | pop up button | 微信号 | 微信号
+      AXPopUpButton | pop up button | +86 | +86
+      AXTextField | text field | 请输入号码 | 12345678907
+      AXPopUpButton | pop up button | 国家 中国 | 中国
+      AXTextField | text field | 请输入号码 | 12345678907
+      AXButton | button | 确定
+  AXButton | close button
+  AXButton | full screen button
+    AXGroup | group
+      AXGroup | group
+  AXButton | minimize button
+  AXStaticText | text | weGPUI | weGPUI

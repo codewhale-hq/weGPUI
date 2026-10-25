@@ -1,0 +1,15 @@
+function run(argv) {
+  const p = Application('System Events').processes.whose({unixId: Number(argv[0])})[0];
+  const lines = [];
+  function raw(e, k) { try { return String(e.attributes.byName(k).value()); } catch (err) { return ''; } }
+  function walk(e, depth) {
+    if (depth > 40) throw new Error('depth limit');
+    const keys = ['AXRole', 'AXSubrole', 'AXTitle', 'AXDescription', 'AXHelp', 'AXValue', 'AXPlaceholderValue', 'AXIdentifier', 'AXSelected', 'AXFocused', 'AXHeadingLevel'];
+    const values = keys.map(k => [k,raw(e,k)]).filter(kv => kv[1] !== '' && kv[1] !== 'null');
+    lines.push('  '.repeat(depth) + JSON.stringify(Object.fromEntries(values)));
+    let count=0; try {count=e.uiElements.length;} catch(err) {lines.push('CHILD_READ_ERROR '+String(err));}
+    for(let i=0;i<count;i++) walk(e.uiElements[i],depth+1);
+  }
+  walk(p.windows[0],0);
+  return lines.join('\n');
+}

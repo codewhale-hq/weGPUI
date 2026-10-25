@@ -1,0 +1,6 @@
+{
+  "announcement_read": "timed out; no transcript collected",
+  "completed": false,
+  "final_enabled": false,
+  "verification": "NSWorkspace.isVoiceOverEnabled()"
+}

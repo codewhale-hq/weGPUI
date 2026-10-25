@@ -14,7 +14,7 @@ dependency. It lives in `scripts/` and is excluded from the published package.
 | Native capture, macOS | `pyobjc-framework-Quartz`, `screencapture`, Screen Recording permission for the terminal | `scripts/capture.py` default path |
 | Native capture, Linux X11 | `xdotool`, ImageMagick `import`, an X server (Xvfb is fine), and a gallery built with the `x11` feature (see below) | `scripts/capture.py` Linux path |
 | Real input, macOS | `scripts/drive.py ROUTE --out DIR STEP...` (Quartz events), Accessibility permission | Mouse/keyboard into the native window |
-| Accessibility tree, macOS | `osascript -l JavaScript scripts/ax_dump.js PID` | Whole-window AX dump; not a VoiceOver test |
+| Accessibility tree, macOS | `osascript -l JavaScript scripts/ax_dump.js PID` | Whole-window AX dump, including raw AXTitle for option labels; not a VoiceOver test |
 | Accessibility tree, Linux | `at-spi2-core`, `python3-pyatspi`, a D-Bus session | See *Linux procedure* |
 
 A fresh macOS setup:
@@ -77,9 +77,9 @@ spinner phases legitimately differ (see `docs/PARITY.md`, "Differences common to
   a screen big enough for a 375×812 window at 2× (for example `Xvfb :98 -screen 0 1600x3600x24`).
   Linux Chromium and GPUI both use the system CJK fonts (Noto), so Linux pairs check the
   pipeline and layout, but are not comparable with the macOS baseline images.
-- Running the gallery on Linux requires `gpui_platform`'s `wayland` or `x11` feature, which is a
-  pending maintainer decision (`docs/PLATFORMS.md`). Until then, apply
-  `docs/proposals/linux-windowing.patch` locally without committing it, or make the equivalent change
+- Running either example on Linux requires `gpui_platform`'s `wayland` or `x11` feature. The
+  feature change is approved but not yet applied (`docs/PLATFORMS.md`). Apply and verify
+  `docs/proposals/linux-windowing.patch` before committing it, or make the equivalent change
   to the dev-dependency: `features = ["font-kit", "wayland", "x11"]`.
 - **Windows, iOS, Android:** no capture path exists yet. See *Other platforms*.
 

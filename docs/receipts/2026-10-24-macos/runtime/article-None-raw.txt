@@ -1,0 +1,54 @@
+{"AXRole":"AXWindow","AXSubrole":"AXStandardWindow","AXTitle":"weGPUI","AXFocused":"true"}
+  {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXFocused":"false"}
+    {"AXRole":"AXGroup","AXSubrole":"AXApplicationGroup","AXFocused":"false"}
+      {"AXRole":"AXGroup","AXSubrole":"AXDocumentArticle","AXSelected":"false","AXFocused":"false"}
+        {"AXRole":"Heading","AXSubrole":"AXUnknown","AXTitle":"文章页大标题","AXFocused":"false"}
+        {"AXRole":"Heading","AXSubrole":"AXUnknown","AXTitle":"二级标题","AXFocused":"false"}
+        {"AXRole":"Heading","AXSubrole":"AXUnknown","AXTitle":"三级标题","AXFocused":"false"}
+        {"AXRole":"Heading","AXSubrole":"AXUnknown","AXTitle":"四级标题","AXFocused":"false"}
+        {"AXRole":"Heading","AXSubrole":"AXUnknown","AXTitle":"列表示例","AXFocused":"false"}
+        {"AXRole":"Heading","AXSubrole":"AXUnknown","AXTitle":"原生无序列表","AXFocused":"false"}
+        {"AXRole":"AXList","AXSubrole":"AXUnknown","AXFocused":"false"}
+          {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"Elit quo illum ut voluptate possimus. Maxime","AXSelected":"false","AXFocused":"false"}
+          {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"Elit quo illum ut voluptate possimus. Maxime","AXSelected":"false","AXFocused":"false"}
+            {"AXRole":"AXList","AXSubrole":"AXUnknown","AXFocused":"false"}
+              {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"Elit facilis nam nam","AXSelected":"false","AXFocused":"false"}
+              {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"Elit facilis nam nam","AXSelected":"false","AXFocused":"false"}
+              {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"Elit facilis nam nam","AXSelected":"false","AXFocused":"false"}
+          {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"Elit quo illum ut voluptate possimus. Maxime","AXSelected":"false","AXFocused":"false"}
+        {"AXRole":"Heading","AXSubrole":"AXUnknown","AXTitle":"原生有序列表","AXFocused":"false"}
+        {"AXRole":"AXList","AXSubrole":"AXUnknown","AXFocused":"false"}
+          {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"Elit quo illum ut voluptate possimus. Maxime","AXSelected":"false","AXFocused":"false"}
+          {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"Elit quo illum ut voluptate possimus. Maxime","AXSelected":"false","AXFocused":"false"}
+            {"AXRole":"AXList","AXSubrole":"AXUnknown","AXFocused":"false"}
+              {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"Adipisicing adipisci labore deleniti","AXSelected":"false","AXFocused":"false"}
+              {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"Adipisicing adipisci labore deleniti","AXSelected":"false","AXFocused":"false"}
+              {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"Adipisicing adipisci labore deleniti","AXSelected":"false","AXFocused":"false"}
+          {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"Elit quo illum ut voluptate possimus. Maxime","AXSelected":"false","AXFocused":"false"}
+        {"AXRole":"Heading","AXSubrole":"AXUnknown","AXTitle":"原生段落列表（需要自行添加class）","AXFocused":"false"}
+        {"AXRole":"AXList","AXSubrole":"AXUnknown","AXFocused":"false"}
+          {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"1. Elit quo illum ut voluptateElit quo illum ut voluptate possimus. Maxime","AXSelected":"false","AXFocused":"false"}
+          {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"2. Elit quo illum ut voluptate possimus. Maxime","AXSelected":"false","AXFocused":"false"}
+            {"AXRole":"AXList","AXSubrole":"AXUnknown","AXFocused":"false"}
+              {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"1. Adipisicing adipisci labore delenitAdipisicing adipisci labore delenitiiAdipisicing adipisci labore deleniti","AXSelected":"false","AXFocused":"false"}
+              {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"2. Adipisicing adipisci labore deleniti","AXSelected":"false","AXFocused":"false"}
+              {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"3. Adipisicing adipisci labore deleniti","AXSelected":"false","AXFocused":"false"}
+          {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"3. Elit quo illum ut voluptate possimus. Maxime","AXSelected":"false","AXFocused":"false"}
+        {"AXRole":"Heading","AXSubrole":"AXUnknown","AXTitle":"自定义序号列表（需要自行添加class）","AXFocused":"false"}
+        {"AXRole":"AXList","AXSubrole":"AXUnknown","AXFocused":"false"}
+          {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"1 Elit quo illum ut voluptateElit quo illum ut voluptate possimus. Maxime","AXSelected":"false","AXFocused":"false"}
+          {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"2 Elit quo illum ut voluptate possimus. Maxime","AXSelected":"false","AXFocused":"false"}
+            {"AXRole":"AXList","AXSubrole":"AXUnknown","AXFocused":"false"}
+              {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"2.1 Adipisicing adipisci labore delenitAdipisicing adipisci labore delenitiiAdipisicing adipisci labore deleniti","AXSelected":"false","AXFocused":"false"}
+              {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"2.2 Adipisicing adipisci labore deleniti","AXSelected":"false","AXFocused":"false"}
+              {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"2.3 Adipisicing adipisci labore deleniti","AXSelected":"false","AXFocused":"false"}
+          {"AXRole":"AXGroup","AXSubrole":"AXUnknown","AXTitle":"3 Elit quo illum ut voluptate possimus. Maxime","AXSelected":"false","AXFocused":"false"}
+        {"AXRole":"Heading","AXSubrole":"AXUnknown","AXTitle":"无障碍焦点整合示例","AXFocused":"false"}
+        {"AXRole":"AXLink","AXSubrole":"AXUnknown","AXTitle":"Ipsum cum soluta laudantium aperiam rem? Accusamus nostrum itaque sint? read more","AXFocused":"false"}
+      {"AXRole":"AXLink","AXSubrole":"AXUnknown","AXTitle":"WeUI 首页","AXFocused":"false"}
+  {"AXRole":"AXButton","AXSubrole":"AXCloseButton","AXFocused":"false"}
+  {"AXRole":"AXButton","AXSubrole":"AXFullScreenButton","AXHelp":"this button also has an action to zoom the window","AXFocused":"false"}
+    {"AXRole":"AXGroup","AXFocused":"false"}
+      {"AXRole":"AXGroup","AXFocused":"false"}
+  {"AXRole":"AXButton","AXSubrole":"AXMinimizeButton","AXFocused":"false"}
+  {"AXRole":"AXStaticText","AXValue":"weGPUI","AXFocused":"false"}

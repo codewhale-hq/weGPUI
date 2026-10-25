@@ -1,0 +1,52 @@
+[
+  {
+    "check": "fetch",
+    "source": "e4a2c877fd99c8a52e1de8a145479ab613262b66",
+    "command": "cargo fetch --manifest-path <repo>/Cargo.toml --locked",
+    "RUSTDOCFLAGS": "",
+    "started_utc": "2026-10-25T02:09:33.785196+00:00",
+    "finished_utc": "2026-10-25T02:19:24.666641+00:00",
+    "exit": 0,
+    "source_unchanged": true
+  },
+  {
+    "check": "fmt",
+    "source": "e4a2c877fd99c8a52e1de8a145479ab613262b66",
+    "command": "cargo fmt --manifest-path <repo>/Cargo.toml --all -- --check",
+    "RUSTDOCFLAGS": "",
+    "started_utc": "2026-10-25T02:19:24.682229+00:00",
+    "finished_utc": "2026-10-25T02:20:09.583522+00:00",
+    "exit": 0,
+    "source_unchanged": true
+  },
+  {
+    "check": "build",
+    "source": "e4a2c877fd99c8a52e1de8a145479ab613262b66",
+    "command": "cargo build --manifest-path <repo>/Cargo.toml --all-targets --locked --offline",
+    "RUSTDOCFLAGS": "",
+    "started_utc": "2026-10-25T02:20:09.586194+00:00",
+    "finished_utc": "2026-10-25T02:20:14.896996+00:00",
+    "exit": 0,
+    "source_unchanged": true
+  },
+  {
+    "check": "clippy",
+    "source": "e4a2c877fd99c8a52e1de8a145479ab613262b66",
+    "command": "cargo clippy --manifest-path <repo>/Cargo.toml --all-targets --locked --offline -- -D warnings",
+    "RUSTDOCFLAGS": "",
+    "started_utc": "2026-10-25T02:20:14.900857+00:00",
+    "finished_utc": "2026-10-25T02:20:17.000966+00:00",
+    "exit": 0,
+    "source_unchanged": true
+  },
+  {
+    "check": "rustdoc",
+    "source": "e4a2c877fd99c8a52e1de8a145479ab613262b66",
+    "command": "cargo doc --manifest-path <repo>/Cargo.toml --no-deps --locked --offline",
+    "RUSTDOCFLAGS": "-D warnings -W missing-docs",
+    "started_utc": "2026-10-25T02:20:17.004425+00:00",
+    "finished_utc": "2026-10-25T02:20:31.253191+00:00",
+    "exit": 0,
+    "source_unchanged": true
+  }
+]

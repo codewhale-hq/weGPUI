@@ -29,7 +29,7 @@ read from the locked Cargo registry; upstream Zed `main` at
 | weGPUI compiles unchanged against `gpui-pre =0.3.9`/`gpui-pre-platform =0.3.9` (`cargo check --all-targets`, Linux, in a scratch copy). | receipt `check-wegpui-on-gpui-039.txt` |
 | The `wasm32` path needs nightly: `wasm_thread` uses `#![feature(stdarch_wasm_atomic_wait)]`. | receipt `check-lib-wasm32-unknown-unknown.txt` |
 
-## What was run in this environment
+## Historical Linux environment
 
 Linux x86_64 cloud container, Rust/Cargo 1.97.0, no GPU, no KVM, no Apple host and no physical
 devices.
@@ -52,6 +52,14 @@ devices.
   proves the library type-checked at that change, not at every later revision. Nothing was linked,
   packaged, launched or touched.
 
+## macOS follow-up (October 24 local time)
+
+[Receipts](receipts/2026-10-24-macos/README.md) identify the exact checked source and incomplete
+runtime attempts. The build and strict documentation checks passed. Minimal dialog interaction
+and selected AX trees were observed. Select keyboard attempts did not establish an interaction
+pass. VoiceOver was attempted without a captured announcement transcript and ended disabled.
+iOS setup reached an installed runtime only. No platform has completed acceptance.
+
 ## Acceptance matrix
 
 Each cell needs a receipt from that platform. Simulators and emulators count only when labelled
@@ -59,10 +67,10 @@ as such. Current state:
 
 | Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
 | --- | --- | --- | --- | --- | --- | --- |
-| macOS | Earlier arm64 receipts (Rust 1.99, `51be7e3`); not rebuilt here | Earlier gallery runs | 28 fresh pairs in the 2026-10-24 review | Mouse/keyboard samples; one TextArea Pinyin commit | Whole-window AX dumps, 9 routes; no VoiceOver | Not done |
+| macOS | arm64 build/fmt/Clippy/strict doc pass at `e4a2c87`, Rust 1.99 | Minimal and gallery launched with unchanged Rust source | Earlier 28 review pairs; new diagnostic images, no new parity verdict | Minimal dialog open/close/OK and focus restore; select-key attempts inconclusive | Modal isolation in minimal/picker/select/half-screen; closed swipe actions absent; article headings/lists; option labels in AXTitle; VoiceOver incomplete | Not done |
 | Linux | x86_64 build/clippy/fmt pass | **Fails** (no windowing feature); passes in scratch with `x11` under Xvfb | Software-rendered Xvfb; 192 pairs (routes light+dark, states light) swept against Linux Chromium (scratch build) | XTEST mouse/keys, fcitx5 Pinyin, GTK portal chooser (scratch build) | AT-SPI tree in scratch; no Orca | Not done |
 | Windows | Historical mingw cross-build links | No native host; Wine failure reported without a committed run log | Missing | Missing | Missing (Narrator/NVDA) | Not done |
-| iOS | Library type-checks for device and simulator targets | Blocked: no iOS backend at the pin, no Apple host | Missing | Missing (touch, keyboard, IME, rotation, lifecycle) | Missing; upstream backend has no AccessKit | Not done |
+| iOS | Library type-checks for device and simulator targets | No app build or launch; 0.3.9 backend path approved, not applied | Missing | Missing (touch, keyboard, IME, rotation, lifecycle) | Missing; upstream backend has no AccessKit | Not done |
 | Android | Library type-checks | Blocked: no Android backend anywhere upstream; no KVM for an emulator here | Missing | Missing | Missing (TalkBack) | Not done |
 
 Mobile interaction acceptance means touch taps, drags and scrolling; the software keyboard and
@@ -95,11 +103,11 @@ platform crate (`gpui_platform` on desktop, a mobile backend on a phone). On mac
 `gpui_platform`'s `font-kit` feature themselves, as the README shows. This is what makes the
 mobile library type-check above.
 
-## Proposals that need a maintainer decision
+## Dependency proposals and decisions
 
-### 1. Linux windowing features (recommended now)
+### 1. Linux windowing features (approved, not applied)
 
-Change the gallery's dev-dependency to
+Approved October 24 for both examples. Change their shared dev-dependency to
 `gpui_platform = { package = "gpui-pre-platform", version = "=0.3.7", features = ["font-kit", "wayland", "x11"] }`.
 No pin changes. It adds 34 transitive packages, all already depended on by the pinned
 `gpui-pre-linux` crate's optional features (`wayland-client`, `x11rb`, `xkbcommon`, `zed-xim` and
@@ -107,9 +115,9 @@ their helpers). Effect: the Linux gallery launches. Public API: none. Maintenanc
 `libxkbcommon-dev`, `libxkbcommon-x11-dev`, `libwayland-dev` and `libx11-xcb-dev`, which
 `.cnb.yml` already installs.
 
-### 2. iOS through upstream `gpui_ios`
+### 2. iOS through upstream `gpui_ios` (approved, not applied)
 
-Move both GPUI pins to `=0.3.9` and add a target-specific dev-dependency,
+Approved October 24, following macOS verification. Move both GPUI pins to `=0.3.9` and add a target-specific dev-dependency,
 `[target.'cfg(target_os = "ios")'.dev-dependencies] gpui_ios = { package = "gpui-pre-ios", version = "=0.3.9" }`.
 The gallery's `main` then calls `gpui_ios::current_platform` on iOS (until a published
 `gpui-pre-platform` carries Zed's iOS branch), plus an Xcode/`Info.plist` bundle wrapper modelled
@@ -124,7 +132,8 @@ on `zed/crates/gpui_ios/examples/ios`.
   upstream contribution (`accesskit` has no UIKit adapter either, so this is substantial).
 - Maintenance: follow upstream; the `gpui-pre` snapshots move weekly.
 - Needs a macOS host with Xcode for building, the iOS Simulator, and a device for physical
-  receipts. None is available in this container.
+  receipts. The later macOS session installed the iOS 26.2 runtime and created an iPhone 17
+  Simulator, but did not boot it or build an app. Cloud Linux cannot replace Apple build tooling.
 
 ### 3. Android through an upstream `gpui_android` contribution
 
@@ -145,10 +154,10 @@ Alternatives considered and **not recommended**:
 
 ### Decision summary
 
-| Decision | Recommendation |
+| Decision | State / recommendation |
 | --- | --- |
-| Enable `wayland`/`x11` for the gallery | Yes, now |
-| Move to `gpui-pre =0.3.9` and add `gpui-pre-ios` | Yes, once a macOS/Xcode host and simulator are available for acceptance |
+| Enable `wayland`/`x11` for both examples | Approved October 24; patch not applied |
+| Move to `gpui-pre =0.3.9` and add `gpui-pre-ios` | Approved October 24; pins unchanged, separate Apple host needed for further runtime acceptance |
 | Fund or contribute `gpui_android` upstream | Required for any honest Android claim; scope separately |
 | iOS AccessKit/VoiceOver | Upstream contribution; without it, iOS fails the accessibility column |
 

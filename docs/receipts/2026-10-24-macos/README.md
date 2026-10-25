@@ -59,7 +59,7 @@ Tooling defects confirmed before changes:
   survived launch. AT-SPI dump exceptions are printed but do not fail the command.
 
 These audit artifacts do not establish current macOS build, input or screen-reader success.
-Runtime and build receipts will identify their own source revision and commands.
+Runtime and build receipts below identify their own source revision and commands.
 
 ## Script repairs
 
@@ -67,3 +67,98 @@ Runtime and build receipts will identify their own source revision and commands.
 now exits 1; invalid contact-sheet arguments exit 2; a real existing pair produces a sheet.
 The X11 PID matcher, process-liveness and AT-SPI error handling are source fixes; no Linux host
 was available for a new runtime check. Capture dimensions will also be exercised by the Mac run.
+
+## macOS build and launch checkpoint
+
+The five checks in `checks.json` all exited 0: locked fetch, formatting, locked/offline
+all-target build, Clippy with `-D warnings`, and rustdoc with `-D warnings -W missing-docs`.
+The recorded source is `e4a2c877fd99c8a52e1de8a145479ab613262b66`. `source-hashes.json` records
+Cargo files and tracked Rust inputs; those inputs remained unchanged through `2f18b7a` and the
+following runtime work. No GPUI pins, dependency features or Rust components changed here.
+Cargo reports an existing future-incompatibility warning for dependency `block 0.1.6`; there
+were no rustdoc diagnostics. Logs retain the wait for the shared build slot, with unrelated
+checkout details removed.
+
+`cargo run --example minimal --locked --offline` and `cargo run --example gallery --locked
+--offline -- --page form_select --theme light --size 375x812 --position 60,60` launched windows.
+Their compiler/launch output is in `minimal-launch.txt` and `gallery-launch.txt`. Both apps
+were subsequently terminated after observation; termination is not a clean user-exit test.
+The archived `probe.rs.txt` was copied locally and compiled (`probe-build.txt`) but was **not
+run**. Its temporary example source was removed from the checkout and retained outside Git.
+
+## Runtime observations and limits
+
+Files under `runtime/` are window screenshots and AX dumps. Full-window images retain the
+native titlebar and are not parity pairs.
+
+| Check | Observed result | Receipt |
+| --- | --- | --- |
+| Minimal dialog | Real mouse opens it; only dialog subtree is exposed. Tab/Enter closes it and restores the Open dialog focus. A second open, two Tabs and Enter selects OK; visible Confirmed becomes 1. | `minimal-open-retargeted.*`, `minimal-confirmed-retargeted.*`, `minimal-ok.*` |
+| Picker (`--state single`) | Only the picker subtree remains. Five option titles exist in raw AXTitle; the older dump omitted them. | `picker-single.txt`, `picker-single-raw.txt` |
+| Select (`--state select1`) | Only the menu subtree remains; 微信号, QQ号, Email are present in raw AXTitle. | `form_select-select1*.txt` |
+| Half-screen dialog (`--state 1`) | The page is absent; close/search/more/done controls remain in the dialog subtree. | `half-screen-dialog-1*.txt` |
+| Toast (`--state success`) | Page controls remain and one named 已完成 node exists. The dump did not record AXSubrole, so this is not a runtime verification of alert mapping or announcements. | `toast-success*.txt` |
+| Closed swipe cell | Delete action absent from the AX tree. Corrected dump exposes static-text titles. | `list-closed*.txt` |
+| Article | Headings and nested lists/items are exposed. No heading-level value was returned in the raw attributes sampled. | `article-None*.txt` |
+
+The option-label discrepancy is a **dump limitation**, not missing labels in the macOS tree:
+`AXTitle` contains them while System Events' `name` property does not. `scripts/ax_dump.js` now
+includes distinct nonempty raw titles. The corrected script was exercised on list/article;
+`ax-raw.js.txt` preserves the separate raw-attribute diagnostic. This is tree evidence only.
+
+Failed or incomplete attempts are retained:
+
+- The first minimal helper selected an auxiliary 500×500 window, producing black screenshots
+  and no interaction. The `*-retargeted` files use the actual 375/376-point app window.
+  Despite its filename, `minimal-confirmed-retargeted` shows closing the dialog, not OK;
+  only `minimal-ok.png` establishes the increment to 1.
+- `dialog --state 1` is invalid: valid states include `ios1`, `ios2`, `ios3`, `android1`,
+  `android2`. `dialog-1.*` shows the page, not modal isolation. The minimal app supplies the
+  successful dialog-isolation evidence.
+- `select-click-open.*` and subsequent `select-*.txt` did not open the menu. A separate
+  `drive.py` Tab/Enter/End/Down/Home/Up/Escape attempt also failed to show the open menu in its
+  images (`drive-select/`). It overlapped the final AX capture and cannot qualify input.
+  A local activation/bounds-order change was tried, but did not establish success; it was
+  reverted and is retained only as `drive-activation-attempt.patch.txt`. No select navigation
+  or focus-restoration pass is claimed on this Mac.
+- An early raw AX traversal returned `Can't get object`; that output is retained in
+  `form-select-start-raw.txt` and `select-click-open-raw.txt`. The diagnostic then used indexed
+  UI-element references, as the normal dump does.
+- VoiceOver was enabled, but querying its last phrase timed out. No announcement transcript
+  was captured. A later app inspection started it again; it was stopped and
+  `NSWorkspace.isVoiceOverEnabled()` returned false (`voiceover-stopped.json`). The earlier
+  process-only observation in `voiceover-minimal.json` is not the final state check.
+- Pinyin, toast typing, undo/redo, UTF-16 limits, probe interactions and system reduced-motion
+  activation were not completed. No input-source or reduced-motion preference was changed.
+
+## Capture and iOS setup checkpoint
+
+`parity/weui-capture-results.json` records 38 successful **upstream-only** captures: 18 overlay
+states plus uploader default, in light and dark. The site was served from the hash-verified
+cache on port 7194, with Playwright Chromium installed for this run. No matching native sweep
+or new paired comparison was completed. See `docs/PARITY.md` for the qualification.
+
+`ios-setup.json` records Xcode 26.2 and an installed iOS 26.2 (23C52) runtime. An iPhone 17
+Simulator was created but not booted. No iOS app was built, packaged, installed or launched.
+This setup is not simulator or device acceptance. GPUI remains pinned to 0.3.7.
+
+## Reproduction
+
+From the repository root (using the checked source and an external target directory if set):
+
+```sh
+cargo fetch --locked
+cargo fmt --all -- --check
+cargo build --all-targets --locked --offline
+cargo clippy --all-targets --locked --offline -- -D warnings
+RUSTDOCFLAGS='-D warnings -W missing-docs' cargo doc --no-deps --locked --offline
+cargo run --example minimal --locked --offline
+cargo run --example gallery --locked --offline -- --page picker --state single
+osascript -l JavaScript scripts/ax_dump.js <gallery-pid>
+python3 -I scripts/weui_upstream.py serve --port 7194
+WEUI_URL=http://127.0.0.1:7194/dist/example/index.html python3 -I scripts/capture.py actionsheet --state ios --only weui --out <capture-directory>
+```
+
+Native input and capture require a dedicated macOS GUI session and its permissions. The input
+attempts above must be repeated without another app taking focus. These commands do not imply
+that the incomplete checks passed.

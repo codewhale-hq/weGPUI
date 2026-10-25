@@ -1,8 +1,9 @@
 # Contributor CI proposal (draft, not enabled)
 
-Status: **awaiting maintainer approval**. No GitHub Actions workflow is committed or enabled. The
-YAML below is a draft for review. A configuration file is not evidence that CI passes. The
-first hosted run will be the first receipt.
+Status: **approved for final setup after implementation and local verification** (October 24).
+No GitHub Actions workflow is committed or enabled. The YAML below remains a draft; reconcile
+it with the eventual manifest and frozen candidate before enabling it. A configuration file is
+not evidence that CI passes. The first hosted run will be the first receipt.
 
 ## Existing gate
 
@@ -13,7 +14,7 @@ this repository.
 
 ## Proposed GitHub workflow
 
-The workflow would be stored at `.github/workflows/ci.yml` once approved. It mirrors the CNB gates
+The workflow would be stored at `.github/workflows/ci.yml` at that final step. It mirrors the CNB gates
 on Linux and macOS, pins the measured MSRV as a separate Linux build, adds the documentation
 check, and grants only read permissions.
 
@@ -113,7 +114,7 @@ be labelled that way. It is not mobile support.
 
 ## Mobile qualification plan
 
-Blocked on the backend decisions in `docs/PLATFORMS.md`. Once an iOS backend is adopted, add a
+The iOS dependency path is approved but not implemented (`docs/PLATFORMS.md`). Once it is adopted, add a
 macOS job that builds the iOS example for `aarch64-apple-ios-sim` and launches it in the
 Simulator with `xcrun simctl`. An Android job needs an Android backend first, then an emulator
 runner with KVM. Touch, software keyboard, rotation, lifecycle and VoiceOver/TalkBack results

@@ -1,0 +1,16 @@
+{
+  "check": "build",
+  "source": "e4a2c877fd99c8a52e1de8a145479ab613262b66",
+  "command": "cargo build --manifest-path <repo>/Cargo.toml --all-targets --locked --offline",
+  "RUSTDOCFLAGS": "",
+  "started_utc": "2026-10-25T02:20:09.586194+00:00",
+  "finished_utc": "2026-10-25T02:20:14.896996+00:00",
+  "exit": 0,
+  "source_unchanged": true
+}
+
+dev-cache: mode=inherited-target-dir sccache=skipped-incremental CARGO_TARGET_DIR=<cache>/target/wegpui
+   Compiling wegpui v0.1.0 (<repo>)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.16s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`

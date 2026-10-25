@@ -1,0 +1,17 @@
+{"AXRole":"AXWindow","AXTitle":"weGPUI","AXFocused":"true"}
+  {"AXRole":"AXGroup","AXFocused":"false"}
+    {"AXRole":"AXGroup","AXFocused":"false"}
+      {"AXRole":"AXButton","AXTitle":"成功提示","AXFocused":"false"}
+      {"AXRole":"AXButton","AXTitle":"失败提示","AXFocused":"false"}
+      {"AXRole":"AXButton","AXTitle":"长文案提示","AXFocused":"false"}
+      {"AXRole":"AXButton","AXTitle":"正在加载提示","AXFocused":"false"}
+      {"AXRole":"AXButton","AXTitle":"文字提示","AXFocused":"false"}
+      {"AXRole":"AXLink","AXTitle":"WeUI 首页","AXFocused":"false"}
+    {"AXRole":"AXGroup","AXFocused":"false"}
+      {"AXRole":"AXGroup","AXTitle":"已完成","AXFocused":"false"}
+  {"AXRole":"AXButton","AXFocused":"false"}
+  {"AXRole":"AXButton","AXHelp":"this button also has an action to zoom the window","AXFocused":"false"}
+    {"AXRole":"AXGroup","AXFocused":"false"}
+      {"AXRole":"AXGroup","AXFocused":"false"}
+  {"AXRole":"AXButton","AXFocused":"false"}
+  {"AXRole":"AXStaticText","AXValue":"weGPUI","AXFocused":"false"}

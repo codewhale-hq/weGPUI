@@ -1,0 +1,21 @@
+{"AXRole":"AXWindow","AXTitle":"weGPUI","AXFocused":"true"}
+  {"AXRole":"AXGroup","AXFocused":"false"}
+    {"AXRole":"AXGroup","AXFocused":"false"}
+      {"AXRole":"AXStaticText","AXTitle":"标题文字","AXSelected":"false","AXFocused":"false"}
+      {"AXRole":"AXGroup","AXTitle":"标题文字 说明文字","AXHelp":"按左方向键或回车显示操作，右方向键或 Esc 隐藏","AXSelected":"false","AXFocused":"false"}
+        {"AXRole":"AXGroup","AXTitle":"标题文字","AXSelected":"false","AXFocused":"false"}
+      {"AXRole":"AXStaticText","AXTitle":"标题文字","AXSelected":"false","AXFocused":"false"}
+      {"AXRole":"AXStaticText","AXTitle":"标题文字","AXSelected":"false","AXFocused":"false"}
+      {"AXRole":"AXButton","AXTitle":"cell standard","AXFocused":"false"}
+      {"AXRole":"AXButton","AXTitle":"cell standard","AXFocused":"false"}
+      {"AXRole":"AXButton","AXTitle":"cell standard 说明文字","AXFocused":"false"}
+      {"AXRole":"AXButton","AXTitle":"cell standard 说明文字","AXFocused":"false"}
+      {"AXRole":"AXButton","AXTitle":"cell standard 说明文字","AXFocused":"false"}
+      {"AXRole":"AXButton","AXTitle":"cell standard 说明文字","AXFocused":"false"}
+      {"AXRole":"AXLink","AXTitle":"WeUI 首页","AXFocused":"false"}
+  {"AXRole":"AXButton","AXFocused":"false"}
+  {"AXRole":"AXButton","AXHelp":"this button also has an action to zoom the window","AXFocused":"false"}
+    {"AXRole":"AXGroup","AXFocused":"false"}
+      {"AXRole":"AXGroup","AXFocused":"false"}
+  {"AXRole":"AXButton","AXFocused":"false"}
+  {"AXRole":"AXStaticText","AXValue":"weGPUI","AXFocused":"false"}

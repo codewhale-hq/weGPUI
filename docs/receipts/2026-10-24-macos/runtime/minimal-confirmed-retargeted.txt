@@ -1,0 +1,11 @@
+AXWindow | standard window [focused]
+  AXGroup | group
+    AXGroup | group
+      AXGroup | group | Confirmed
+      AXButton | button | Open dialog [focused]
+  AXButton | close button
+  AXButton | full screen button
+    AXGroup | group
+      AXGroup | group
+  AXButton | minimize button
+  AXStaticText | text

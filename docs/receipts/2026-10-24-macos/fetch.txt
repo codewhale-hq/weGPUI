@@ -1,0 +1,14 @@
+{
+  "check": "fetch",
+  "source": "e4a2c877fd99c8a52e1de8a145479ab613262b66",
+  "command": "cargo fetch --manifest-path <repo>/Cargo.toml --locked",
+  "RUSTDOCFLAGS": "",
+  "started_utc": "2026-10-25T02:09:33.785196+00:00",
+  "finished_utc": "2026-10-25T02:19:24.666641+00:00",
+  "exit": 0,
+  "source_unchanged": true
+}
+
+dev-cache: mode=inherited-target-dir sccache=skipped-incremental CARGO_TARGET_DIR=<cache>/target/wegpui
+build-lock: waiting for another Cargo build (unrelated checkout details omitted)
+build-lock: acquired after 590s

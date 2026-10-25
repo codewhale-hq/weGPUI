@@ -1,0 +1,54 @@
+AXWindow | standard window | weGPUI [focused]
+  AXGroup | group
+    AXGroup | group
+      AXGroup | group
+        Heading | Heading | 文章页大标题
+        Heading | Heading | 二级标题
+        Heading | Heading | 三级标题
+        Heading | Heading | 四级标题
+        Heading | Heading | 列表示例
+        Heading | Heading | 原生无序列表
+        AXList | list
+          AXGroup | group | Elit quo illum ut voluptate possimus. Maxime
+          AXGroup | group | Elit quo illum ut voluptate possimus. Maxime
+            AXList | list
+              AXGroup | group | Elit facilis nam nam
+              AXGroup | group | Elit facilis nam nam
+              AXGroup | group | Elit facilis nam nam
+          AXGroup | group | Elit quo illum ut voluptate possimus. Maxime
+        Heading | Heading | 原生有序列表
+        AXList | list
+          AXGroup | group | Elit quo illum ut voluptate possimus. Maxime
+          AXGroup | group | Elit quo illum ut voluptate possimus. Maxime
+            AXList | list
+              AXGroup | group | Adipisicing adipisci labore deleniti
+              AXGroup | group | Adipisicing adipisci labore deleniti
+              AXGroup | group | Adipisicing adipisci labore deleniti
+          AXGroup | group | Elit quo illum ut voluptate possimus. Maxime
+        Heading | Heading | 原生段落列表（需要自行添加class）
+        AXList | list
+          AXGroup | group | 1. Elit quo illum ut voluptateElit quo illum ut voluptate possimus. Maxime
+          AXGroup | group | 2. Elit quo illum ut voluptate possimus. Maxime
+            AXList | list
+              AXGroup | group | 1. Adipisicing adipisci labore delenitAdipisicing adipisci labore delenitiiAdipisicing adipisci labore deleniti
+              AXGroup | group | 2. Adipisicing adipisci labore deleniti
+              AXGroup | group | 3. Adipisicing adipisci labore deleniti
+          AXGroup | group | 3. Elit quo illum ut voluptate possimus. Maxime
+        Heading | Heading | 自定义序号列表（需要自行添加class）
+        AXList | list
+          AXGroup | group | 1 Elit quo illum ut voluptateElit quo illum ut voluptate possimus. Maxime
+          AXGroup | group | 2 Elit quo illum ut voluptate possimus. Maxime
+            AXList | list
+              AXGroup | group | 2.1 Adipisicing adipisci labore delenitAdipisicing adipisci labore delenitiiAdipisicing adipisci labore deleniti
+              AXGroup | group | 2.2 Adipisicing adipisci labore deleniti
+              AXGroup | group | 2.3 Adipisicing adipisci labore deleniti
+          AXGroup | group | 3 Elit quo illum ut voluptate possimus. Maxime
+        Heading | Heading | 无障碍焦点整合示例
+        AXLink | link | Ipsum cum soluta laudantium aperiam rem? Accusamus nostrum itaque sint? read more
+      AXLink | link | WeUI 首页
+  AXButton | close button
+  AXButton | full screen button
+    AXGroup | group
+      AXGroup | group
+  AXButton | minimize button
+  AXStaticText | text | weGPUI | weGPUI

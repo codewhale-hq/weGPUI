@@ -1,0 +1,14 @@
+AXWindow | standard window | weGPUI [focused]
+  AXGroup | group
+    AXWindow | dialog | 账号类型
+      AXList | list
+        AXStaticText | text [selected]
+        AXStaticText | text
+        AXStaticText | text
+      AXButton | button | 取消
+  AXButton | close button
+  AXButton | full screen button
+    AXGroup | group
+      AXGroup | group
+  AXButton | minimize button
+  AXStaticText | text | weGPUI | weGPUI

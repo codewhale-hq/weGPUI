@@ -10,6 +10,16 @@ The [2026-10-24 review](REVIEW-2026-10-24.md) rechecked 28 pairs across 13 route
 
 The upstream page is now fetched, verified and served by `scripts/weui_upstream.py`, and `scripts/capture.py` can capture natively on X11 Linux ([PARITY-TOOLING](PARITY-TOOLING.md)). One Linux pair (`dialog:ios1`, light) was produced to validate the pipeline (`receipts/takeover-20261025/linux-x11-capture-pair-dialog-ios1-light.png`). A Linux sweep then captured all 60 routes in their default state, light theme only (native X11 at 2×, Chromium 1243 against the verified local page; 60 of 60 captures succeeded in 3 min 7 s). Ten contact sheets are in `receipts/takeover-20261025/linux-sweep/`. At contact-sheet scale every route's layout, colours and controls correspond. Differences seen: `layers` is still flat natively at the 1 s settle while upstream is mid 3D transition (the known start-up timing difference); `article` paragraphs wrap one line longer natively, shifting the images about 13 pt; and the `form_page`/`form_page_old` label hyphenation differs as on macOS. A second pass captured all 60 routes in dark and all 72 registered states in light (132 of 132 succeeded; ten `dark*.png` and twelve `state*.png` sheets). Every dark route and state corresponds at contact-sheet scale, including overlays (action sheets, dialogs, half-screen dialogs, pickers, toasts, the gallery viewer), filled forms, search states and the vcode countdown. The only new difference seen is the known one: `layers:3d` labels are upright natively. Not swept on Linux: states in dark, care mode, brand colour and scrolled regions. Linux pairs use Noto CJK fonts on both sides and are not comparisons against the macOS images below. The table below was not recaptured. Behaviour fixes made after the baseline (Presence transitions, LinkText focus, uploader chooser) do not change these static first-frame captures, except where noted in [STATUS](STATUS.md).
 
+## macOS follow-up capture checkpoint (October 24 local time)
+
+The follow-up retained **38 upstream-only reference PNGs** in
+[`receipts/2026-10-24-macos/parity/`](receipts/2026-10-24-macos/parity/): 18 registered overlay
+states across actionsheet, half-screen-dialog, picker, toast and uploader, plus uploader default,
+each light and dark. Capture used the hash-verified upstream site and installed Playwright
+Chromium; all 38 commands exited 0. Native paired recapture and comparison were not completed,
+so these files establish no new parity verdict. The separate `runtime/` images are diagnostic
+window captures, including failed input attempts, not replacements for the baseline pairs.
+
 ## Method
 
 - Native: `scripts/capture.py` launches `gallery --page ROUTE [--state S] --theme T --size 375x812 --reduce-motion`, captures the window with `screencapture`, crops the 375×812 pt content at @2x and converts the display profile to sRGB.

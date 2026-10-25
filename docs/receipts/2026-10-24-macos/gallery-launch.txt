@@ -1,0 +1,6 @@
+dev-cache: mode=inherited-target-dir sccache=skipped-incremental CARGO_TARGET_DIR=<cache>/target/wegpui
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.69s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`
+     Running `<cache>/target/wegpui/debug/examples/gallery --page form_select --theme light --size 375x812 --position 60,60`
+2026-10-24 19:25:28.577 gallery[25681:9555695] TSM AdjustCapsLockLEDForKeyTransitionHandling - _ISSetPhysicalKeyboardCapsLockLED Inhibit

@@ -1,0 +1,21 @@
+AXWindow | standard window | weGPUI [focused]
+  AXGroup | group
+    AXGroup | group
+      AXStaticText | text | 标题文字
+      AXGroup | group | 标题文字 说明文字
+        AXGroup | group | 标题文字
+      AXStaticText | text | 标题文字
+      AXStaticText | text | 标题文字
+      AXButton | button | cell standard
+      AXButton | button | cell standard
+      AXButton | button | cell standard 说明文字
+      AXButton | button | cell standard 说明文字
+      AXButton | button | cell standard 说明文字
+      AXButton | button | cell standard 说明文字
+      AXLink | link | WeUI 首页
+  AXButton | close button
+  AXButton | full screen button
+    AXGroup | group
+      AXGroup | group
+  AXButton | minimize button
+  AXStaticText | text | weGPUI | weGPUI

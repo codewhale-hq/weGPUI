@@ -1,0 +1,11 @@
+{"AXRole":"AXWindow","AXFocused":"true"}
+  {"AXRole":"AXGroup","AXFocused":"false"}
+    {"AXRole":"AXGroup","AXFocused":"false"}
+      {"AXRole":"AXGroup","AXTitle":"Confirmed","AXSelected":"false","AXFocused":"false"}
+      {"AXRole":"AXButton","AXTitle":"Open dialog","AXFocused":"true"}
+  {"AXRole":"AXButton","AXFocused":"false"}
+  {"AXRole":"AXButton","AXHelp":"this button also has an action to zoom the window","AXFocused":"false"}
+    {"AXRole":"AXGroup","AXFocused":"false"}
+      {"AXRole":"AXGroup","AXFocused":"false"}
+  {"AXRole":"AXButton","AXFocused":"false"}
+  {"AXRole":"AXStaticText","AXFocused":"false"}

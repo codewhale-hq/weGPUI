@@ -1,0 +1,13 @@
+{
+  "xcode": "26.2 (17C52)",
+  "runtime": [
+    {
+      "name": "iOS 26.2",
+      "version": "26.2",
+      "buildversion": "23C52",
+      "isAvailable": true
+    }
+  ],
+  "simulator_created": "iPhone 17",
+  "booted_or_app_built": false
+}

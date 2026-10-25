@@ -9,6 +9,10 @@ function run(argv) {
   function walk(e, depth) {
     if (depth > 40) return;
     const parts = [attr(e, 'role'), attr(e, 'description'), attr(e, 'name'), attr(e, 'value')];
+    try {
+      const title = e.attributes.byName('AXTitle').value();
+      if (title !== null && title !== undefined && title !== '' && !parts.includes(String(title))) parts.push(String(title));
+    } catch (err) {}
     let extra = '';
     try { if (e.attributes.byName('AXEnabled').value() === false) extra += ' [disabled]'; } catch (err) {}
     try { const s = e.attributes.byName('AXSelected').value(); if (s) extra += ' [selected]'; } catch (err) {}

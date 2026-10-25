@@ -1,0 +1,20 @@
+diff --git a/scripts/drive.py b/scripts/drive.py
+index f8f5928..e665ebe 100644
+--- a/scripts/drive.py
++++ b/scripts/drive.py
+@@ -98,10 +98,13 @@ def main():
+         if not wid:
+             raise SystemExit('gallery window not found')
+         time.sleep(0.8)
++        subprocess.run(['osascript', '-e', f'tell application "System Events" to set frontmost of (first process whose unix id is {proc.pid}) to true'],
++                       check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
++        subprocess.run(['osascript', '-e', f'tell application "System Events" to perform action "AXRaise" of window 1 of (first process whose unix id is {proc.pid})'],
++                       check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
++        time.sleep(0.6)
+         x0, y0, w, h = window_bounds(wid)
+         top = y0 + h - args.height
+-        subprocess.run(['osascript', '-e', f'tell application "System Events" to set frontmost of (first process whose unix id is {proc.pid}) to true'],
+-                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+         post_mouse(Quartz.kCGEventMouseMoved, x0 + w - 2, top + 2)
+         time.sleep(0.4)
+         for step in args.steps:

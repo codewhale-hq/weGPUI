@@ -1,0 +1,19 @@
+{
+  "source_hashes_checked": 89,
+  "source_mismatches": 0,
+  "tracked_and_candidate_paths_scanned": 978,
+  "path_or_credential_pattern_matches": 0,
+  "upstream_reference_captures": 38,
+  "native_runtime_images": 28,
+  "rust_inputs_changed_since_build": false,
+  "checks": [
+    "node --check scripts/ax_dump.js: exit 0",
+    "Python script ast.parse: pass",
+    "git diff --check: pass"
+  ],
+  "limits": [
+    "Pattern scan is not a secret-history audit",
+    "No new native interaction check after session stop",
+    "Failed input and screen-reader attempts retained"
+  ]
+}

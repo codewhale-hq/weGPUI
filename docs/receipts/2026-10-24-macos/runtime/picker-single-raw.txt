@@ -1,0 +1,16 @@
+{"AXRole":"AXWindow","AXTitle":"weGPUI","AXFocused":"true"}
+  {"AXRole":"AXGroup","AXFocused":"false"}
+    {"AXRole":"AXWindow","AXTitle":"单列选择器","AXFocused":"false"}
+      {"AXRole":"AXList","AXTitle":"单列选择器 的士票","AXFocused":"false"}
+        {"AXRole":"AXStaticText","AXTitle":"飞机票","AXSelected":"false","AXFocused":"false"}
+        {"AXRole":"AXStaticText","AXTitle":"火车票","AXSelected":"false","AXFocused":"false"}
+        {"AXRole":"AXStaticText","AXTitle":"的士票","AXSelected":"true","AXFocused":"false"}
+        {"AXRole":"AXStaticText","AXTitle":"公交票 (disabled)","AXSelected":"false","AXFocused":"false"}
+        {"AXRole":"AXStaticText","AXTitle":"其他","AXSelected":"false","AXFocused":"false"}
+      {"AXRole":"AXButton","AXTitle":"确定","AXFocused":"false"}
+  {"AXRole":"AXButton","AXFocused":"false"}
+  {"AXRole":"AXButton","AXHelp":"this button also has an action to zoom the window","AXFocused":"false"}
+    {"AXRole":"AXGroup","AXFocused":"false"}
+      {"AXRole":"AXGroup","AXFocused":"false"}
+  {"AXRole":"AXButton","AXFocused":"false"}
+  {"AXRole":"AXStaticText","AXValue":"weGPUI","AXFocused":"false"}

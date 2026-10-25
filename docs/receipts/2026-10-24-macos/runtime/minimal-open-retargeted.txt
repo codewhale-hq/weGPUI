@@ -1,0 +1,11 @@
+AXWindow | standard window [focused]
+  AXGroup | group
+    AXWindow | dialog | weGPUI [focused]
+      AXButton | button | Cancel
+      AXButton | button | OK
+  AXButton | close button
+  AXButton | full screen button
+    AXGroup | group
+      AXGroup | group
+  AXButton | minimize button
+  AXStaticText | text

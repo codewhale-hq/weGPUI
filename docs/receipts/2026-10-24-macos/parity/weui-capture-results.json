@@ -1,0 +1,268 @@
+[
+  {
+    "key": "actionsheet:ios",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/actionsheet-ios-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/actionsheet-ios-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "actionsheet:ios",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/actionsheet-ios-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/actionsheet-ios-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "actionsheet:android",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/actionsheet-android-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/actionsheet-android-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "actionsheet:android",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/actionsheet-android-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/actionsheet-android-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "toast:success",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/toast-success-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/toast-success-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "toast:success",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/toast-success-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/toast-success-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "toast:fail",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/toast-fail-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/toast-fail-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "toast:fail",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/toast-fail-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/toast-fail-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "toast:longtext",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/toast-longtext-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/toast-longtext-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "toast:longtext",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/toast-longtext-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/toast-longtext-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "toast:loading",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/toast-loading-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/toast-loading-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "toast:loading",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/toast-loading-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/toast-loading-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "toast:text",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/toast-text-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/toast-text-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "toast:text",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/toast-text-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/toast-text-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "half-screen-dialog:1",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-1-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-1-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "half-screen-dialog:1",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-1-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-1-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "half-screen-dialog:2",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-2-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-2-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "half-screen-dialog:2",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-2-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-2-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "half-screen-dialog:3",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-3-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-3-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "half-screen-dialog:3",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-3-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-3-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "half-screen-dialog:4",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-4-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-4-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "half-screen-dialog:4",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-4-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-4-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "half-screen-dialog:5",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-5-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-5-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "half-screen-dialog:5",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-5-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/half-screen-dialog-5-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "picker:single",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/picker-single-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/picker-single-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "picker:single",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/picker-single-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/picker-single-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "picker:date",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/picker-date-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/picker-date-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "picker:date",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/picker-date-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/picker-date-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "picker:multi",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/picker-multi-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/picker-multi-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "picker:multi",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/picker-multi-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/picker-multi-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "picker:cascade",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/picker-cascade-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/picker-cascade-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "picker:cascade",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/picker-cascade-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/picker-cascade-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "uploader:viewer",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/uploader-viewer-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/uploader-viewer-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "uploader:viewer",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/uploader-viewer-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/uploader-viewer-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "uploader:preview",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/uploader-preview-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/uploader-preview-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "uploader:preview",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/uploader-preview-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/uploader-preview-dark-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "uploader",
+    "theme": "light",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/uploader-light-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/uploader-light-weui.png\n",
+    "stderr": ""
+  },
+  {
+    "key": "uploader",
+    "theme": "dark",
+    "exit": 0,
+    "stdout": "<repo>/docs/receipts/2026-10-24-macos/parity/uploader-dark-gpui.png <repo>/docs/receipts/2026-10-24-macos/parity/uploader-dark-weui.png\n",
+    "stderr": ""
+  }
+]

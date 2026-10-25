@@ -1,0 +1,14 @@
+{"AXRole":"AXWindow","AXTitle":"weGPUI","AXFocused":"true"}
+  {"AXRole":"AXGroup","AXFocused":"false"}
+    {"AXRole":"AXWindow","AXTitle":"账号类型","AXFocused":"false"}
+      {"AXRole":"AXList","AXFocused":"false"}
+        {"AXRole":"AXStaticText","AXTitle":"微信号","AXSelected":"true","AXFocused":"false"}
+        {"AXRole":"AXStaticText","AXTitle":"QQ号","AXSelected":"false","AXFocused":"false"}
+        {"AXRole":"AXStaticText","AXTitle":"Email","AXSelected":"false","AXFocused":"false"}
+      {"AXRole":"AXButton","AXTitle":"取消","AXFocused":"false"}
+  {"AXRole":"AXButton","AXFocused":"false"}
+  {"AXRole":"AXButton","AXHelp":"this button also has an action to zoom the window","AXFocused":"false"}
+    {"AXRole":"AXGroup","AXFocused":"false"}
+      {"AXRole":"AXGroup","AXFocused":"false"}
+  {"AXRole":"AXButton","AXFocused":"false"}
+  {"AXRole":"AXStaticText","AXValue":"weGPUI","AXFocused":"false"}

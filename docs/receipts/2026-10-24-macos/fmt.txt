@@ -1,0 +1,14 @@
+{
+  "check": "fmt",
+  "source": "e4a2c877fd99c8a52e1de8a145479ab613262b66",
+  "command": "cargo fmt --manifest-path <repo>/Cargo.toml --all -- --check",
+  "RUSTDOCFLAGS": "",
+  "started_utc": "2026-10-25T02:19:24.682229+00:00",
+  "finished_utc": "2026-10-25T02:20:09.583522+00:00",
+  "exit": 0,
+  "source_unchanged": true
+}
+
+dev-cache: mode=inherited-target-dir sccache=skipped-incremental CARGO_TARGET_DIR=<cache>/target/wegpui
+build-lock: waiting for another Cargo build (unrelated checkout details omitted)
+build-lock: acquired after 44s
