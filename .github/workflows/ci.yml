@@ -91,7 +91,7 @@ jobs:
       - run: cargo +stable check --lib --locked --target aarch64-linux-android
 
   macos:
-    name: Apple builds only (no runtime acceptance)
+    name: macOS native build (no runtime acceptance)
     if: github.event_name != 'pull_request'
     runs-on: macos-15
     timeout-minutes: 45
@@ -103,26 +103,25 @@ jobs:
         run: |
           sw_vers
           xcodebuild -version
-          xcrun --sdk iphonesimulator --show-sdk-version
       - name: Toolchain
         run: |
-          rustup toolchain install stable --profile minimal -c clippy -t aarch64-apple-ios-sim
+          rustup toolchain install stable --profile minimal -c clippy
           rustup default stable
       - run: cargo +stable fetch --locked
       - run: cargo +stable build --all-targets --locked --offline
       - run: cargo +stable test --lib --locked --offline
       - run: cargo +stable clippy --all-targets --locked --offline -- -D warnings
-      - name: Build simulator bundle (does not install or launch)
-        run: bash examples/ios/build-simulator.sh gallery
-      - name: Preserve simulator build diagnostics, including failures
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+
+  windows:
+    name: Windows MSVC build (no runtime acceptance)
+    runs-on: windows-2025
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          name: ios-build-diagnostics
-          path: |
-            target/ios-simulator/**/*.jsonl
-            target/ios-simulator/**/*.stderr
-            target/ios-simulator/**/codesign.txt
-            target/ios-simulator/**/Info.plist
-          if-no-files-found: ignore
-          retention-days: 7
+          persist-credentials: false
+      - run: rustup toolchain install stable --profile minimal -c clippy
+      - run: cargo +stable fetch --locked
+      - run: cargo +stable build --all-targets --locked --offline
+      - run: cargo +stable test --lib --locked --offline
+      - run: cargo +stable clippy --all-targets --locked --offline -- -D warnings

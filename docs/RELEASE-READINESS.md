@@ -30,7 +30,7 @@ Use the acceptance matrix in PLATFORMS; each result needs source/host versions.
 
 - [ ] macOS: current native rendering, input, resizing, IME and VoiceOver on a
   separately authorized Apple host. Hosted compilation is not runtime acceptance.
-- [ ] Windows: native MSVC build followed by a real Windows window, rendering at
+- [ ] Windows: native MSVC build (CI configured; result pending) followed by a real Windows window, rendering at
   multiple scales, keyboard/input/IME and Narrator or NVDA.
 - [ ] Linux: X11 and Wayland runtime checks, resizing/scaling, IME and Orca.
 - [ ] Package a runnable gallery for the supported desktop platforms and verify

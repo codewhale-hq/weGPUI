@@ -41,3 +41,16 @@ those baseline checks.
 Native Windows execution, Wayland, Orca, mobile touch/keyboard/IME/insets/lifecycle,
 VoiceOver/TalkBack and packaging acceptance still require separately identified
 receipts. A future Android application job needs an upstream backend first.
+
+## Desktop-first adjustment — 2026-10-25
+
+The owner selected desktop first with mobile experimental. `ci.yml` now includes
+an explicit Windows MSVC all-target build, library tests and strict Clippy job;
+macOS keeps native build/tests/Clippy. These are build contracts, not interactive
+runtime or screen-reader acceptance. The new Windows job has no passing receipt yet.
+
+The iOS simulator bundle build moved to `experimental-ios.yml`, still triggered
+on main pushes and manually. It retains failure status and diagnostics artifacts;
+there is no `continue-on-error`. The upstream 0.3.9 incompatibility is unchanged.
+This separates experimental application builds from the desktop CI workflow rather
+than hiding the mobile failure. Branch-protection settings were not changed.
