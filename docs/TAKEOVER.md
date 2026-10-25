@@ -35,6 +35,35 @@ dialog, forms, navbar/tabbar and a 15-page keyboard sweep recorded. Use openbox 
 PARITY-TOOLING) or inputs never get focus events. Next: nested modals, toast timing, zero-step
 slider receipt, search-bar homepage variant, screen readers, other OSes.
 
+### Handoff state — 2026-10-24 23:35 PDT
+
+- Gates: fmt check, build all targets, tests (15 pass, 1 doc test ignored), strict clippy
+  and strict rustdoc. All green at the last pushed commit (see `git log -1 origin/main`).
+- Remaining work, in priority order:
+  1. macOS/Windows reruns of the Linux fixes (HUMAN-TASKS 8).
+  2. Screen readers: Orca/NVDA/Narrator (VoiceOver stays off).
+  3. Wayland.
+  4. Dark/care/brand state parity sweep. One was started and stopped at 61/72 dark states with
+     0 FAIL, unreviewed and not committed. Rerun:
+     `DISPLAY=:95 PYTHON=<venv with playwright+pillow> scripts/linux/sweep.sh OUT --theme dark --states`
+     after `scripts/weui_upstream.py fetch` and `serve`, on `Xvfb :95 -screen 0 1600x3600x24`.
+  5. Owner decision on a local date source.
+  6. Release items in RELEASE-READINESS.
+- Test setup (Debian box):
+  - Packages: Xvfb, openbox, xdotool, ImageMagick, dbus, at-spi2-core and python3-pyatspi.
+  - Start the display: `Xvfb :96 -screen 0 1280x1000x24 &` then `DISPLAY=:96 openbox &`.
+    Without a window manager there are no focus events.
+  - Run with `GPUI_X11_SCALE_FACTOR=1` and capture with `import -window <id>`.
+  - AT-SPI: `dbus-run-session -- scripts/linux/session.sh BIN`.
+  - Never `pkill -f` a pattern that also matches your own shell command line.
+- Rules:
+  - GitHub main is canonical; never push to CNB.
+  - No force-push, history rewrite, branch deletion, tags, releases or deploys.
+  - Gates green before every commit; unsigned commits say so; use `[skip ci]`.
+  - No new dependencies, forks or registry patches without approval.
+  - No external posts, including the AccessKit issue.
+  - Keep failed evidence.
+
 ### Update — 2026-10-24 night (Linux cloud agent)
 
 Fixed and verified on Linux: the nested-modal Tab trap (it was capture phase, so the outer modal
