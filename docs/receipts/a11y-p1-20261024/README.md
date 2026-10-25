@@ -36,3 +36,12 @@ vanishes on a light page. They now add a 2px brand outer ring outside the white 
 `linux-x11-openbox-button-default-tab-sequence.png` (button_default, 480x650, four Tabs):
 primary ring visible, loading and disabled buttons skipped, default and warn rings visible,
 focus revealed while scrolling.
+
+## Paste was merged into the preceding typing undo step (fixed)
+
+`input` page, qq field: type `abc12` (Number kind keeps `12`), Shift+Home, Ctrl+C, End,
+Ctrl+V gives `1212`. Before: one Ctrl+Z emptied the field, because the paste landed where the
+last insert ended and was coalesced with it (`…-before.png`, frames: typed, selected, pasted,
+undo → empty). Fix: paste and cut always start and end their own undo step, and caret moves
+break typing coalescing. After (`…-fixed.png`): undo → `12`, undo → empty, redo → `12`, redo →
+`1212`.

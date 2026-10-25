@@ -23,6 +23,8 @@ versioning once a release policy is decided. No version has been published.
 
 ### Fixed
 
+- `TextInput`/`TextArea` undo: paste and cut are separate undo steps, and moving the caret ends
+  typing coalescing.
 - Primary and warn buttons show a visible outer brand focus ring, not only a white inner border.
 - Accessible set positions were one too high (AccessKit positions are zero-based) for radios,
   select options, article lists, form-preview items and list tips.

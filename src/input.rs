@@ -741,7 +741,9 @@ impl TextInput {
             return;
         }
         if let Some(text) = cx.read_from_clipboard().and_then(|item| item.text()) {
+            self.last_edit = None;
             self.replace_text_in_range(None, &text, window, cx);
+            self.last_edit = None;
         }
     }
 
@@ -758,7 +760,9 @@ impl TextInput {
             cx.write_to_clipboard(ClipboardItem::new_string(
                 self.content[self.selected_range.clone()].to_string(),
             ));
-            self.replace_text_in_range(None, "", window, cx)
+            self.last_edit = None;
+            self.replace_text_in_range(None, "", window, cx);
+            self.last_edit = None;
         }
     }
 
@@ -870,6 +874,7 @@ impl TextInput {
     }
 
     fn move_to(&mut self, offset: usize, cx: &mut Context<Self>) {
+        self.last_edit = None;
         self.selected_range = offset..offset;
         self.selection_reversed = false;
         self.after_cursor_change(cx);

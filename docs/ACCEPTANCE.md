@@ -52,7 +52,7 @@ presentational.
 | `toptips` | ToptipsState, Toptips | — | warn | n/a | n/a | n/a | role+name | Warn, overlay | Timing | P3 |
 | `uploader` | UploaderStatus, UploaderFile, Uploader | on_add, on_delete, on_preview | error | yes | click (Enter/Space) | yes | role+name | Add/delete/preview, error status, portal lifecycle | Transport app-owned | P2 |
 | `vcode` | VcodeEvent, VcodeButton, VcodeImage | VcodeEvent | — | yes | click (Enter/Space) | yes | role+name | Countdown guard, events | — | P2 |
-| `input` | InputKind, InputEvent, TextInput | InputEvent | disabled | yes | custom | yes | role+name | Kinds, IME, undo/redo, clipboard, selection | Numeric kinds filter but do not validate; XIM preedit not inline | P1 |
+| `input` | InputKind, InputEvent, TextInput | InputEvent | disabled | yes | custom | yes | role+name | Kinds, IME, undo/redo, clipboard, selection; paste/undo grouping fixed and Linux openbox selection/copy/paste/undo/redo sequence passed 2026-10-24 | Numeric kinds filter but do not validate; XIM preedit not inline | P1 |
 
 ## Cross-cutting acceptance items
 
