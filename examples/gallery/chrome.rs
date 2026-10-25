@@ -1,5 +1,6 @@
 use gpui::{prelude::*, *};
 use wegpui::Theme;
+use wegpui::scrolling::FocusScroll;
 
 pub struct PendingScroll(pub f32);
 impl Global for PendingScroll {}
@@ -189,7 +190,9 @@ impl RenderOnce for PageFrame {
             .relative()
             .size_full()
             .bg(bg)
-            .child(
+            .child(FocusScroll::new(
+                SharedString::from(format!("focus-scroll-{}", self.route)),
+                &handle,
                 div()
                     .id(SharedString::from(format!("page-{}", self.route)))
                     .size_full()
@@ -197,7 +200,7 @@ impl RenderOnce for PageFrame {
                         el.overflow_y_scroll().track_scroll(&handle)
                     })
                     .child(content),
-            )
+            ))
             .children(self.fixed)
     }
 }

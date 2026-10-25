@@ -4,6 +4,7 @@
 //! [`FormCell`] a labelled row, [`TipsGroup`] stacked tips, [`ClearableInput`] the clear button.
 //! Associate a visible label with a text control through [`FormCell::label_for`].
 //! Known limitations: safe-area insets are not applied, and there is no submission/validation.
+use crate::scrolling::RevealFocus;
 
 use super::ClickHandler;
 use crate::{Theme, accessibility::Semantics, input::TextInput};
@@ -419,7 +420,7 @@ impl RenderOnce for FormCell {
         if let Some(handler) = self.on_tap.filter(|_| !self.disabled) {
             el = el.cursor_pointer().on_click(handler);
         }
-        Semantics::new(el).disabled(self.disabled)
+        Semantics::new(el).disabled(self.disabled).reveal_focus()
     }
 }
 
@@ -760,7 +761,9 @@ impl RenderOnce for Form {
                     .flex_col()
                     .line_height(relative(1.4))
                     .bg(t.bg_2)
-                    .child(
+                    .child(crate::scrolling::FocusScroll::new(
+                        "bottom-fixed-focus-scroll",
+                        &scroll,
                         div()
                             .id("bottom-fixed-content")
                             .flex_1()
@@ -768,7 +771,7 @@ impl RenderOnce for Form {
                             .overflow_y_scroll()
                             .track_scroll(&scroll)
                             .child(div().flex().flex_col().pb(px(80.)).child(bd)),
-                    )
+                    ))
                     .child(
                         div()
                             .relative()

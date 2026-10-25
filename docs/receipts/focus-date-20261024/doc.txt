@@ -1,0 +1,4 @@
+ Documenting wegpui v0.1.0 (/workspace/weGPUI)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.72s
+   Generated /workspace/weGPUI/target/doc/wegpui/index.html
+exit 0

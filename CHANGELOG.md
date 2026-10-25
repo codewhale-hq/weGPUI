@@ -8,6 +8,18 @@ versioning once a release policy is decided. No version has been published.
 
 ### Added
 
+- `scrolling::{FocusScroll, FocusTarget, RevealFocus}` keep keyboard focus visible in ordinary
+  vertical scrollers: a focus change scrolls the minimum needed, visible targets and manual
+  scrolling are left alone. Built-in focusable controls register as targets; the gallery page
+  frame, `BottomFixedPage` and `component_states` use the scope.
+- Gallery input page date (`日期`) and datetime (`时间`) fields open native pickers: a
+  1900–2100 date cascade, then an hour/minute sheet for datetime. Only the final confirm writes
+  the value; cancel keeps the previous value; focus returns to the field.
+
+### Fixed
+
+- Picker arrow/Page/Home/End keys pressed during a snap animation no longer panic debug builds.
+
 - `FormCell::label_for` associates a visible label with a text input and its row-focus target.
 - `component_states` example demonstrates loading/disabled actions, associated form labels,
   independent radio choices and a verification-code countdown.

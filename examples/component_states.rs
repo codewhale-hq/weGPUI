@@ -25,6 +25,7 @@ struct States {
     link_clicks: [usize; 2],
     first: usize,
     second: usize,
+    scroll: ScrollHandle,
     _subscription: Subscription,
 }
 
@@ -52,6 +53,7 @@ impl States {
             link_clicks: [0; 2],
             first: 0,
             second: 0,
+            scroll: ScrollHandle::new(),
             _subscription: subscription,
         }
     }
@@ -80,10 +82,12 @@ impl Render for States {
                 cx.notify();
             }))
             .rows(window, cx);
-        div()
+        let scroll = self.scroll.clone();
+        let page = div()
             .id("component-states")
             .size_full()
             .overflow_y_scroll()
+            .track_scroll(&scroll)
             .bg(theme.bg_0)
             .text_color(theme.fg_0)
             .flex()
@@ -222,7 +226,8 @@ impl Render for States {
                         "Saved: {} · Sent: {} · Details: {}",
                         self.saves, self.sends, self.panel_clicks
                     )),
-            )
+            );
+        wegpui::scrolling::FocusScroll::new("component-states-focus", &scroll, page)
     }
 }
 

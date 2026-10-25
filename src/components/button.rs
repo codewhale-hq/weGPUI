@@ -4,6 +4,7 @@
 //!
 //! Known limitations: the safe-area insets of the upstream bottom-fixed CSS are not applied, and a
 //! [`Button::cell`] button ignores size, width and overlay settings.
+use crate::scrolling::RevealFocus;
 
 use super::{ClickHandler, loading::Loading};
 use crate::Theme;
@@ -327,6 +328,7 @@ impl Button {
         crate::accessibility::Semantics::new(el)
             .disabled(self.disabled)
             .busy(self.loading)
+            .reveal_focus()
             .into_any_element()
     }
 }
@@ -516,6 +518,7 @@ impl RenderOnce for Button {
         crate::accessibility::Semantics::new(el)
             .disabled(self.disabled)
             .busy(self.loading)
+            .reveal_focus()
             .into_any_element()
     }
 }

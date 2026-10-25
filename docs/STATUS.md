@@ -147,6 +147,15 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 
 ## Known unresolved defects and gaps
 
+- **Focus scrolling** (fixed 2026-10-24, Linux X11 only): `scrolling::FocusScroll` reveals
+  offscreen focus in the gallery, `BottomFixedPage` and `component_states`. Dialog,
+  half-screen dialog, `BottomFixedOpr` page and navbar scrollers have no `ScrollHandle` yet and
+  are not wrapped. macOS/Windows reruns of the preview 480x650 sequence are still needed.
+  Receipts: [focus-date-20261024](receipts/focus-date-20261024/README.md).
+- **Date/datetime inputs** (fixed 2026-10-24, gallery-level): implemented with `Picker` in the
+  input page. This is an adaptation of HTML `date`/`datetime-local`: fixed 1900–2100 range,
+  no typed entry, no locale formats, no seconds. A reusable `DateField` library component does
+  not exist yet.
 - **Linux windowing:** approved `wayland`/`x11` features applied (34 added lock packages).
   Both examples launch under isolated Xvfb. Wayland runtime and Orca remain untested.
 - **Mobile:** the approved GPUI 0.3.9 plus target-specific `gpui-pre-ios` path and simulator

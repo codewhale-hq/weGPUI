@@ -3,6 +3,7 @@
 //! `.weui-cell_select` trigger row and [`SelectMenu`] the option sheet it opens.
 //! Known limitations: the native HTML `<select>` popup is replaced by a bottom-sheet overlay
 //! that the caller opens and closes through a [`Presence`]; the cell never opens it by itself.
+use crate::scrolling::RevealFocus;
 
 use super::{
     ClickHandler, Icon,
@@ -427,7 +428,7 @@ impl RenderOnce for SelectMenu {
                             }
                         })
                 };
-                Semantics::new(el).disabled(disabled)
+                Semantics::new(el).disabled(disabled).reveal_focus()
             });
         let cancel_dismiss = dismiss.clone();
         let mut modal = Modal::new(self.id, &self.presence)

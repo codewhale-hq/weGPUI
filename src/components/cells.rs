@@ -4,6 +4,7 @@
 //! standalone group title.
 //! Known limitations: rows are separate tab stops with no arrow-key list navigation, and a
 //! [`Cell`] without `on_click` is not focusable even when styled with `access` or `link`.
+use crate::scrolling::RevealFocus;
 
 use super::{ClickHandler, Icon};
 use crate::Theme;
@@ -530,6 +531,8 @@ impl RenderOnce for Cell {
         } else if self.active && !self.disabled {
             el = el.active(move |s| s.bg(pressed).rounded(px(radius)));
         }
-        crate::accessibility::Semantics::new(el).disabled(self.disabled)
+        crate::accessibility::Semantics::new(el)
+            .disabled(self.disabled)
+            .reveal_focus()
     }
 }

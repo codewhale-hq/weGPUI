@@ -3,6 +3,7 @@
 //! [`CheckboxCell`] a full `.weui-check__label` form row, and [`check_icon`] the shared glyph.
 //! Both controls are controlled: they draw the `checked` value they are given and report the
 //! requested new value through `on_change`.
+use crate::scrolling::RevealFocus;
 
 use super::{ChangeHandler, Icon};
 use crate::{Theme, accessibility::Semantics};
@@ -141,7 +142,7 @@ impl RenderOnce for Checkbox {
                 });
             }
         }
-        Semantics::new(el).disabled(self.disabled)
+        Semantics::new(el).disabled(self.disabled).reveal_focus()
     }
 }
 
@@ -222,6 +223,6 @@ impl RenderOnce for CheckboxCell {
                 el = el.on_click(move |_, w, cx| handler(&!checked, w, cx));
             }
         }
-        Semantics::new(el).disabled(disabled)
+        Semantics::new(el).disabled(disabled).reveal_focus()
     }
 }

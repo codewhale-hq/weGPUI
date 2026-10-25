@@ -45,38 +45,40 @@ impl FooterLink {
 
 impl RenderOnce for FooterLink {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
-        let t = Theme::get(cx);
-        let (link, line, ring) = (t.link, t.fg_3, t.brand);
-        div()
-            .relative()
-            .mx(px(8.))
-            .when(!self.first, |el| {
-                el.child(
+        crate::scrolling::FocusTarget::new({
+            let t = Theme::get(cx);
+            let (link, line, ring) = (t.link, t.fg_3, t.brand);
+            div()
+                .relative()
+                .mx(px(8.))
+                .when(!self.first, |el| {
+                    el.child(
+                        div()
+                            .absolute()
+                            .left(px(-8.))
+                            .top(px(14. * 0.36))
+                            .bottom(px(14. * 0.36))
+                            .w(px(0.5))
+                            .bg(line),
+                    )
+                })
+                .child(
                     div()
-                        .absolute()
-                        .left(px(-8.))
-                        .top(px(14. * 0.36))
-                        .bottom(px(14. * 0.36))
-                        .w(px(0.5))
-                        .bg(line),
+                        .id(self.id)
+                        .role(Role::Link)
+                        .aria_label(self.text.clone())
+                        .relative()
+                        .text_size(px(14.))
+                        .text_color(link)
+                        .rounded(px(2.))
+                        .focusable()
+                        .tab_stop(true)
+                        .active(|s| s.opacity(0.5))
+                        .child(self.text)
+                        .focus_visible(move |s| s.bg(ring.opacity(0.15)))
+                        .when_some(self.on_click, |el, h| el.on_click(h)),
                 )
-            })
-            .child(
-                div()
-                    .id(self.id)
-                    .role(Role::Link)
-                    .aria_label(self.text.clone())
-                    .relative()
-                    .text_size(px(14.))
-                    .text_color(link)
-                    .rounded(px(2.))
-                    .focusable()
-                    .tab_stop(true)
-                    .active(|s| s.opacity(0.5))
-                    .child(self.text)
-                    .focus_visible(move |s| s.bg(ring.opacity(0.15)))
-                    .when_some(self.on_click, |el, h| el.on_click(h)),
-            )
+        })
     }
 }
 

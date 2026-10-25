@@ -7,6 +7,7 @@ use wegpui::{
         agree::Agree,
         button::Button,
         checkbox::CheckboxCell,
+        picker::{Picker, PickerEvent, PickerItem, today},
         radio::RadioGroup,
         select::{SelectCell, SelectMenu},
         switch::Switch,
@@ -14,6 +15,7 @@ use wegpui::{
         vcode::{VcodeButton, VcodeImage},
     },
     input::{InputKind, TextInput},
+    scrolling::RevealFocus,
 };
 
 const LABEL_WIDTH: f32 = 105.;
@@ -32,8 +34,13 @@ pub struct InputPage {
     menus: [Presence; 3],
     qq: Entity<TextInput>,
     phone: Entity<TextInput>,
-    date: SharedString,
-    time: SharedString,
+    date: Option<String>,
+    time: Option<String>,
+    date_picker: Entity<Picker>,
+    datetime_date: Entity<Picker>,
+    datetime_time: Entity<Picker>,
+    pending_date: Option<String>,
+    _subscriptions: Vec<Subscription>,
     code: Entity<TextInput>,
     card: Entity<TextInput>,
     text: Entity<TextInput>,
@@ -91,6 +98,62 @@ impl InputPage {
         }
         cx.observe(&textarea, |_, _, cx| cx.notify()).detach();
         let menus = [Presence::new(cx), Presence::new(cx), Presence::new(cx)];
+        let now = today();
+        let date_picker = cx.new(|cx| {
+            Picker::new("input-date-picker", cx)
+                .date(1900, 2100, now)
+                .title("日期")
+        });
+        let datetime_date = cx.new(|cx| {
+            Picker::new("input-datetime-date", cx)
+                .date(1900, 2100, now)
+                .title("时间")
+                .desc("选择日期")
+        });
+        let datetime_time = cx.new(|cx| {
+            Picker::new("input-datetime-time", cx)
+                .columns(time_columns())
+                .default_value(["0", "0"])
+                .title("时间")
+                .desc("选择时刻")
+        });
+        let subscriptions = vec![
+            cx.subscribe_in(&date_picker, window, |this, _, e: &PickerEvent, _, cx| {
+                if let PickerEvent::Confirm(items) = e {
+                    this.date = format_date(items);
+                }
+                cx.notify();
+            }),
+            cx.subscribe_in(
+                &datetime_date,
+                window,
+                |this, _, e: &PickerEvent, window, cx| {
+                    match e {
+                        PickerEvent::Confirm(items) => this.pending_date = format_date(items),
+                        PickerEvent::Close if this.pending_date.is_some() => {
+                            let time = this.datetime_time.clone();
+                            window.defer(cx, move |window, cx| {
+                                time.update(cx, |p, cx| p.open(window, cx));
+                            });
+                        }
+                        _ => {}
+                    }
+                    cx.notify();
+                },
+            ),
+            cx.subscribe_in(&datetime_time, window, |this, _, e: &PickerEvent, _, cx| {
+                match e {
+                    PickerEvent::Confirm(items) => {
+                        if let (Some(date), [h, m]) = (this.pending_date.take(), items.as_slice()) {
+                            this.time = Some(format!("{date} {}:{}", h.label, m.label));
+                        }
+                    }
+                    PickerEvent::Close => this.pending_date = None,
+                    _ => {}
+                }
+                cx.notify();
+            }),
+        ];
         match state {
             Some("focused") => text.update(cx, |input, cx| input.focus(window, cx)),
             Some("typed") => {
@@ -115,8 +178,13 @@ impl InputPage {
             menus,
             qq,
             phone,
-            date: "mm/dd/yyyy".into(),
-            time: "mm/dd/yyyy, --:--".into(),
+            date: None,
+            time: None,
+            date_picker,
+            datetime_date,
+            datetime_time,
+            pending_date: None,
+            _subscriptions: subscriptions,
             code,
             card,
             text,
@@ -136,24 +204,38 @@ impl InputPage {
     fn picker_field(
         &self,
         id: &'static str,
-        value: SharedString,
+        label: &'static str,
+        value: Option<String>,
+        placeholder: &'static str,
+        picker: Entity<Picker>,
         cx: &mut Context<Self>,
     ) -> impl IntoElement {
         let t = Theme::get(cx);
         let brand = t.brand;
+        let shown: SharedString = value.clone().unwrap_or_else(|| placeholder.into()).into();
+        let color = if value.is_some() { t.fg_0 } else { t.fg_2 };
         div()
             .id(id)
             .role(Role::Button)
-            .aria_label(value.clone())
+            .aria_label(SharedString::from(format!(
+                "{label}，{}",
+                value.as_deref().unwrap_or("未选择")
+            )))
             .focusable()
             .tab_stop(true)
+            .cursor_pointer()
             .flex()
             .items_center()
             .justify_between()
             .rounded(px(4.))
+            .text_color(color)
             .focus_visible(move |s| s.bg(brand.opacity(0.1)))
-            .child(value)
+            .on_click(move |_, window, cx| {
+                picker.update(cx, |p, cx| p.open(window, cx));
+            })
+            .child(shown)
             .child(calendar_glyph(t.fg_0))
+            .reveal_focus()
     }
 
     fn select_menu(&self, ix: usize, cx: &mut Context<Self>) -> impl IntoElement {
@@ -186,6 +268,17 @@ impl InputPage {
         self.menus[ix].show(window, cx);
         cx.notify();
     }
+}
+
+fn time_columns() -> Vec<Vec<PickerItem>> {
+    let two = |n: u32| PickerItem::new(format!("{n:02}"), n.to_string());
+    vec![(0..24).map(two).collect(), (0..60).map(two).collect()]
+}
+
+fn format_date(items: &[PickerItem]) -> Option<String> {
+    let [y, m, d] = items else { return None };
+    let n = |i: &PickerItem| i.value.parse::<u32>().ok();
+    Some(format!("{}-{:02}-{:02}", y.value, n(m)?, n(d)?))
 }
 
 fn calendar_glyph(color: Hsla) -> Div {
@@ -318,12 +411,26 @@ impl Render for InputPage {
                     .child(Self::row(
                         "input-date",
                         "日期",
-                        self.picker_field("input-date-field", self.date.clone(), cx),
+                        self.picker_field(
+                            "input-date-field",
+                            "日期",
+                            self.date.clone(),
+                            "年/月/日",
+                            self.date_picker.clone(),
+                            cx,
+                        ),
                     ))
                     .child(Self::row(
                         "input-time",
                         "时间",
-                        self.picker_field("input-time-field", self.time.clone(), cx),
+                        self.picker_field(
+                            "input-time-field",
+                            "时间",
+                            self.time.clone(),
+                            "年/月/日 --:--",
+                            self.datetime_date.clone(),
+                            cx,
+                        ),
                     ))
                     .child(
                         Self::row("input-code", "验证码", self.code.clone())
@@ -403,5 +510,8 @@ impl Render for InputPage {
             .child(self.select_menu(0, cx))
             .child(self.select_menu(1, cx))
             .child(self.select_menu(2, cx))
+            .child(self.date_picker.clone())
+            .child(self.datetime_date.clone())
+            .child(self.datetime_time.clone())
     }
 }

@@ -3,6 +3,7 @@
 //! [`FormPreview`] is the read-only summary card with header, items and footer buttons;
 //! [`FormPreviewList`] is the `.weui-form-preview__list` block for msg page custom areas.
 //! Summary rows are exposed individually within a `List` node.
+use crate::scrolling::RevealFocus;
 
 use super::ClickHandler;
 use crate::Theme;
@@ -228,6 +229,7 @@ impl RenderOnce for FormPreview {
                                     .bg(line),
                             )
                         })
+                        .reveal_focus()
                 }))
                 .child(hairline(line).top_0().left_0().right_0())
         });

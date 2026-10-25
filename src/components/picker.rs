@@ -115,6 +115,15 @@ impl Column {
     fn min_offset(&self) -> f32 {
         -(ROW_HEIGHT * (self.items.len() as f32 - OFFSET - 1.))
     }
+    fn current(&self, cx: &App) -> f32 {
+        match self.anim {
+            Some(at) if !cx.reduce_motion() => {
+                let p = (at.elapsed().as_secs_f32() / SNAP.as_secs_f32()).min(1.);
+                self.from + (self.offset - self.from) * ease(p)
+            }
+            _ => self.offset,
+        }
+    }
     fn visual(&mut self, window: &Window, cx: &App) -> f32 {
         match self.anim {
             Some(at) if !cx.reduce_motion() => {
@@ -431,14 +440,14 @@ impl Picker {
         level: usize,
         delta: f32,
         dir: f32,
-        window: &Window,
+        _window: &Window,
         cx: &mut Context<Self>,
     ) {
         let Some(col) = self.columns.get_mut(level) else {
             return;
         };
         let before = col.index();
-        let visual = col.visual(window, cx);
+        let visual = col.current(cx);
         let mut k = col.offset + delta;
         k = (k / ROW_HEIGHT).round() * ROW_HEIGHT;
         k = k.min(col.max_offset()).max(col.min_offset());
@@ -474,9 +483,9 @@ impl Picker {
         self.snap(level, -rows * ROW_HEIGHT, -rows, window, cx);
     }
 
-    fn drag_start(&mut self, level: usize, y: f32, window: &Window, cx: &mut Context<Self>) {
+    fn drag_start(&mut self, level: usize, y: f32, _window: &Window, cx: &mut Context<Self>) {
         if let Some(col) = self.columns.get_mut(level) {
-            let visual = col.visual(window, cx);
+            let visual = col.current(cx);
             col.offset = visual;
             col.anim = None;
             col.drag = Some(Drag {
@@ -543,7 +552,7 @@ impl Picker {
         let Some(col) = self.columns.get_mut(level) else {
             return;
         };
-        let visual = col.visual(window, cx);
+        let visual = col.current(cx);
         col.anim = None;
         col.offset = (visual + dy)
             .min(col.max_offset() + ROW_HEIGHT / 2.)

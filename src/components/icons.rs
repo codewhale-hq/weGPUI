@@ -4,6 +4,7 @@
 //! [`Icon`] loads `icon-{name}.svg` through the app's `AssetSource`, so register [`crate::Assets`]
 //! (or serve the same names) first. Known limitations: an unknown name paints nothing in a box of
 //! the icon's size, and an icon without a label is invisible to assistive technology.
+use crate::scrolling::RevealFocus;
 
 use super::ClickHandler;
 use crate::Theme;
@@ -317,7 +318,9 @@ impl RenderOnce for IconButton {
                 hit = hit.on_click(handler);
             }
         }
-        let hit = crate::accessibility::Semantics::new(hit).disabled(self.disabled);
+        let hit = crate::accessibility::Semantics::new(hit)
+            .disabled(self.disabled)
+            .reveal_focus();
         div()
             .group(group)
             .relative()

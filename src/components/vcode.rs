@@ -3,6 +3,7 @@
 //! "获取验证码" button entity with a resend countdown; [`VcodeImage`] is the captcha image.
 //! Known limitations: the countdown is a weGPUI addition (the upstream example has no timer),
 //! and sending the code is left to the caller, signalled by [`VcodeEvent::Send`].
+use crate::scrolling::RevealFocus;
 
 use crate::{Theme, accessibility::Semantics};
 use gpui::{prelude::*, *};
@@ -176,7 +177,7 @@ impl Render for VcodeButton {
                 }
             }))
             .child(text);
-        Semantics::new(el).disabled(counting)
+        Semantics::new(el).disabled(counting).reveal_focus()
     }
 }
 

@@ -305,225 +305,229 @@ fn hot_area(w: f32, h: f32) -> Div {
 
 impl Render for SearchBar {
     fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
-        if self.variant == SearchBarVariant::Homepage {
-            return self.render_homepage(cx).into_any_element();
-        }
-        let t = Theme::get(cx).clone();
-        let variant = self.variant;
-        let outlined = variant == SearchBarVariant::Outlined;
-        let focusing = self.is_focusing();
-        let input = self.input.read(cx);
-        let empty = input.is_empty();
-        let input_focused = input.is_focused(window);
-        let form_bg = self.form_bg(cx);
-        let mask_bg = if outlined { t.bg_2 } else { form_bg };
-        let action_size = if outlined { 15. } else { 17. };
-        let pressed = t.fg_3;
-        let brand = t.brand;
+        crate::scrolling::FocusTarget::new({
+            if self.variant == SearchBarVariant::Homepage {
+                return crate::scrolling::FocusTarget::new(self.render_homepage(cx))
+                    .into_any_element();
+            }
+            let t = Theme::get(cx).clone();
+            let variant = self.variant;
+            let outlined = variant == SearchBarVariant::Outlined;
+            let focusing = self.is_focusing();
+            let input = self.input.read(cx);
+            let empty = input.is_empty();
+            let input_focused = input.is_focused(window);
+            let form_bg = self.form_bg(cx);
+            let mask_bg = if outlined { t.bg_2 } else { form_bg };
+            let action_size = if outlined { 15. } else { 17. };
+            let pressed = t.fg_3;
+            let brand = t.brand;
 
-        let back = div()
-            .id("search-bar-back")
-            .role(Role::Button)
-            .aria_label("返回")
-            .focusable()
-            .tab_stop(true)
-            .relative()
-            .flex()
-            .items_center()
-            .mr(px(12.))
-            .rounded(px(4.))
-            .focus_visible(move |s| s.bg(pressed))
-            .active(|s| s.opacity(0.5))
-            .child(Icon::new("back-arrow-thin").w(12.).h(24.).color(t.fg_0))
-            .child(hot_area(44., 44.))
-            .on_click(cx.listener(|_, _, _, cx| cx.emit(SearchBarEvent::Back)));
-
-        let field = div()
-            .relative()
-            .flex_1()
-            .min_w_0()
-            .py(px(6.))
-            .text_size(px(17.))
-            .line_height(px(24.))
-            .text_color(t.fg_0)
-            .child(self.input.clone())
-            .when(!input_focused && !empty, |el| {
-                el.child(
-                    div()
-                        .absolute()
-                        .top_0()
-                        .bottom(px(2.))
-                        .right_0()
-                        .w(px(40.))
-                        .rounded(px(6.))
-                        .bg(linear_gradient(
-                            90.,
-                            linear_color_stop(mask_bg.opacity(0.), 0.),
-                            linear_color_stop(mask_bg, 0.83),
-                        )),
-                )
-            });
-
-        let clear = (!empty).then(|| {
-            div()
-                .id("search-bar-clear")
+            let back = div()
+                .id("search-bar-back")
                 .role(Role::Button)
-                .aria_label("清除")
+                .aria_label("返回")
                 .focusable()
                 .tab_stop(true)
                 .relative()
                 .flex()
                 .items_center()
-                .flex_shrink_0()
-                .ml(px(8.))
                 .mr(px(12.))
-                .rounded_full()
-                .focus_visible(move |s| s.bg(pressed))
-                .child(Icon::new("clear").size(20.).color(t.fg_2))
-                .child(hot_area(44., 36.))
-                .on_click(cx.listener(|this, _, window, cx| this.clear(window, cx)))
-        });
-
-        let box_ = div()
-            .flex()
-            .items_center()
-            .flex_1()
-            .min_w_0()
-            .when(outlined, |el| el.pl(px(12.)))
-            .when(!outlined, |el| {
-                el.child(
-                    div()
-                        .ml(px(8.))
-                        .mr(px(4.))
-                        .flex_shrink_0()
-                        .child(Icon::new("search").size(24.).color(t.fg_2)),
-                )
-                .when_some(self.words.clone(), |el, words| {
-                    el.child(
-                        div()
-                            .flex_shrink_0()
-                            .mr(px(8.))
-                            .text_size(px(17.))
-                            .text_color(t.brand)
-                            .child(words),
-                    )
-                })
-            })
-            .child(field)
-            .children(clear);
-
-        let label = (!focusing).then(|| {
-            div()
-                .id("search-bar-label")
-                .absolute()
-                .inset_0()
-                .rounded(px(6.))
-                .bg(form_bg)
-                .flex()
-                .items_center()
-                .justify_center()
-                .text_size(px(17.))
-                .text_color(t.fg_2)
-                .cursor_text()
-                .role(Role::Button)
-                .aria_label(self.placeholder.clone())
-                .focusable()
-                .tab_stop(true)
-                .border_2()
-                .border_color(transparent_black())
-                .focus_visible(move |s| s.border_color(brand))
-                .child(
-                    div()
-                        .mr(px(4.))
-                        .child(Icon::new("search").size(24.).color(t.fg_2)),
-                )
-                .child(self.placeholder.clone())
-                .on_click(cx.listener(|this, _, window, cx| this.activate(window, cx)))
-        });
-
-        let form = div()
-            .id("search-bar-form")
-            .role(Role::ComboBox)
-            .aria_expanded(!empty && focusing)
-            .relative()
-            .flex()
-            .items_center()
-            .flex_1()
-            .min_w_0()
-            .bg(form_bg)
-            .when(outlined, |el| {
-                el.border_l(px(0.5))
-                    .border_t(px(0.5))
-                    .border_b(px(0.5))
-                    .border_color(t.fg_3)
-                    .rounded_l(px(6.))
-            })
-            .when(!outlined, |el| el.rounded(px(6.)))
-            .child(box_)
-            .children(label);
-
-        let search_btn = outlined.then(|| {
-            let mask = t.btn_active_mask;
-            div()
-                .id("search-bar-search")
-                .role(Role::Button)
-                .aria_label("搜索")
-                .focusable()
-                .tab_stop(true)
-                .flex()
-                .items_center()
-                .flex_shrink_0()
-                .py(px(8.))
-                .px(px(12.))
-                .text_size(px(15.))
-                .line_height(px(20.))
-                .text_color(t.white)
-                .bg(brand)
-                .rounded_r(px(6.))
-                .active(move |s| s.bg(brand.blend(mask)))
-                .focus_visible(move |s| s.bg(brand.blend(mask)))
-                .child("搜索")
-                .on_click(cx.listener(|_, _, _, cx| cx.emit(SearchBarEvent::Submit)))
-        });
-
-        let cancel = focusing.then(|| {
-            div()
-                .id("search-bar-cancel")
-                .role(Role::Button)
-                .aria_label("取消")
-                .focusable()
-                .tab_stop(true)
-                .flex()
-                .items_center()
-                .flex_shrink_0()
-                .ml(px(12.))
-                .text_size(px(action_size))
-                .text_color(t.link)
                 .rounded(px(4.))
                 .focus_visible(move |s| s.bg(pressed))
                 .active(|s| s.opacity(0.5))
-                .child("取消")
-                .on_click(cx.listener(|this, _, window, cx| this.cancel(window, cx)))
-        });
+                .child(Icon::new("back-arrow-thin").w(12.).h(24.).color(t.fg_0))
+                .child(hot_area(44., 44.))
+                .on_click(cx.listener(|_, _, _, cx| cx.emit(SearchBarEvent::Back)));
 
-        div()
-            .id("search-bar")
-            .role(Role::Search)
-            .relative()
-            .flex()
-            .w_full()
-            .py(px(10.))
-            .pr(px(if outlined { 16. } else { 12. }))
-            .pl(px(if focusing { 16. } else { 12. }))
-            .bg(match variant {
-                SearchBarVariant::Filled => t.bg_0,
-                _ => t.bg_2,
-            })
-            .when(focusing, |el| el.child(back))
-            .child(form)
-            .children(search_btn)
-            .children(cancel)
-            .into_any_element()
+            let field = div()
+                .relative()
+                .flex_1()
+                .min_w_0()
+                .py(px(6.))
+                .text_size(px(17.))
+                .line_height(px(24.))
+                .text_color(t.fg_0)
+                .child(self.input.clone())
+                .when(!input_focused && !empty, |el| {
+                    el.child(
+                        div()
+                            .absolute()
+                            .top_0()
+                            .bottom(px(2.))
+                            .right_0()
+                            .w(px(40.))
+                            .rounded(px(6.))
+                            .bg(linear_gradient(
+                                90.,
+                                linear_color_stop(mask_bg.opacity(0.), 0.),
+                                linear_color_stop(mask_bg, 0.83),
+                            )),
+                    )
+                });
+
+            let clear = (!empty).then(|| {
+                div()
+                    .id("search-bar-clear")
+                    .role(Role::Button)
+                    .aria_label("清除")
+                    .focusable()
+                    .tab_stop(true)
+                    .relative()
+                    .flex()
+                    .items_center()
+                    .flex_shrink_0()
+                    .ml(px(8.))
+                    .mr(px(12.))
+                    .rounded_full()
+                    .focus_visible(move |s| s.bg(pressed))
+                    .child(Icon::new("clear").size(20.).color(t.fg_2))
+                    .child(hot_area(44., 36.))
+                    .on_click(cx.listener(|this, _, window, cx| this.clear(window, cx)))
+            });
+
+            let box_ = div()
+                .flex()
+                .items_center()
+                .flex_1()
+                .min_w_0()
+                .when(outlined, |el| el.pl(px(12.)))
+                .when(!outlined, |el| {
+                    el.child(
+                        div()
+                            .ml(px(8.))
+                            .mr(px(4.))
+                            .flex_shrink_0()
+                            .child(Icon::new("search").size(24.).color(t.fg_2)),
+                    )
+                    .when_some(self.words.clone(), |el, words| {
+                        el.child(
+                            div()
+                                .flex_shrink_0()
+                                .mr(px(8.))
+                                .text_size(px(17.))
+                                .text_color(t.brand)
+                                .child(words),
+                        )
+                    })
+                })
+                .child(field)
+                .children(clear);
+
+            let label = (!focusing).then(|| {
+                div()
+                    .id("search-bar-label")
+                    .absolute()
+                    .inset_0()
+                    .rounded(px(6.))
+                    .bg(form_bg)
+                    .flex()
+                    .items_center()
+                    .justify_center()
+                    .text_size(px(17.))
+                    .text_color(t.fg_2)
+                    .cursor_text()
+                    .role(Role::Button)
+                    .aria_label(self.placeholder.clone())
+                    .focusable()
+                    .tab_stop(true)
+                    .border_2()
+                    .border_color(transparent_black())
+                    .focus_visible(move |s| s.border_color(brand))
+                    .child(
+                        div()
+                            .mr(px(4.))
+                            .child(Icon::new("search").size(24.).color(t.fg_2)),
+                    )
+                    .child(self.placeholder.clone())
+                    .on_click(cx.listener(|this, _, window, cx| this.activate(window, cx)))
+            });
+
+            let form = div()
+                .id("search-bar-form")
+                .role(Role::ComboBox)
+                .aria_expanded(!empty && focusing)
+                .relative()
+                .flex()
+                .items_center()
+                .flex_1()
+                .min_w_0()
+                .bg(form_bg)
+                .when(outlined, |el| {
+                    el.border_l(px(0.5))
+                        .border_t(px(0.5))
+                        .border_b(px(0.5))
+                        .border_color(t.fg_3)
+                        .rounded_l(px(6.))
+                })
+                .when(!outlined, |el| el.rounded(px(6.)))
+                .child(box_)
+                .children(label);
+
+            let search_btn = outlined.then(|| {
+                let mask = t.btn_active_mask;
+                div()
+                    .id("search-bar-search")
+                    .role(Role::Button)
+                    .aria_label("搜索")
+                    .focusable()
+                    .tab_stop(true)
+                    .flex()
+                    .items_center()
+                    .flex_shrink_0()
+                    .py(px(8.))
+                    .px(px(12.))
+                    .text_size(px(15.))
+                    .line_height(px(20.))
+                    .text_color(t.white)
+                    .bg(brand)
+                    .rounded_r(px(6.))
+                    .active(move |s| s.bg(brand.blend(mask)))
+                    .focus_visible(move |s| s.bg(brand.blend(mask)))
+                    .child("搜索")
+                    .on_click(cx.listener(|_, _, _, cx| cx.emit(SearchBarEvent::Submit)))
+            });
+
+            let cancel = focusing.then(|| {
+                div()
+                    .id("search-bar-cancel")
+                    .role(Role::Button)
+                    .aria_label("取消")
+                    .focusable()
+                    .tab_stop(true)
+                    .flex()
+                    .items_center()
+                    .flex_shrink_0()
+                    .ml(px(12.))
+                    .text_size(px(action_size))
+                    .text_color(t.link)
+                    .rounded(px(4.))
+                    .focus_visible(move |s| s.bg(pressed))
+                    .active(|s| s.opacity(0.5))
+                    .child("取消")
+                    .on_click(cx.listener(|this, _, window, cx| this.cancel(window, cx)))
+            });
+
+            div()
+                .id("search-bar")
+                .role(Role::Search)
+                .relative()
+                .flex()
+                .w_full()
+                .py(px(10.))
+                .pr(px(if outlined { 16. } else { 12. }))
+                .pl(px(if focusing { 16. } else { 12. }))
+                .bg(match variant {
+                    SearchBarVariant::Filled => t.bg_0,
+                    _ => t.bg_2,
+                })
+                .when(focusing, |el| el.child(back))
+                .child(form)
+                .children(search_btn)
+                .children(cancel)
+                .into_any_element()
+        })
+        .into_any_element()
     }
 }
 

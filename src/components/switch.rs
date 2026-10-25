@@ -2,6 +2,7 @@
 //! `src/example/form/form_switch.html`). [`Switch`] is the 52×32px toggle with upstream's 0.35s
 //! knob and 0.1s colour transitions, which become instant when reduced motion is set.
 //! Place it in the footer of a `CellKind::Switch` form row for the `.weui-cell_switch` layout.
+use crate::scrolling::RevealFocus;
 
 use super::ChangeHandler;
 use crate::{Theme, accessibility::Semantics};
@@ -189,6 +190,6 @@ impl RenderOnce for Switch {
                 });
             }
         }
-        Semantics::new(el).disabled(self.disabled)
+        Semantics::new(el).disabled(self.disabled).reveal_focus()
     }
 }

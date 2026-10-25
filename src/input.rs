@@ -1614,77 +1614,79 @@ impl Element for TextElement {
 
 impl Render for TextInput {
     fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
-        self.ensure_focus_subscriptions(window, cx);
-        let role = self.role.unwrap_or(if self.multiline {
-            Role::MultilineTextInput
-        } else if self.kind == InputKind::Password {
-            Role::PasswordInput
-        } else {
-            Role::TextInput
-        });
-        let label = self
-            .label
-            .clone()
-            .unwrap_or_else(|| self.placeholder.clone());
-        let el = div()
-            .id("text-input")
-            .role(role)
-            .aria_label(label)
-            .aria_placeholder(self.placeholder.clone())
-            .aria_value(self.display_text())
-            .flex()
-            .w_full()
-            .min_w_0()
-            .when(!self.disabled, |el| {
-                el.key_context("TextInput")
-                    .track_focus(&self.focus_handle)
-                    .cursor(CursorStyle::IBeam)
-                    .on_action(cx.listener(Self::undo))
-                    .on_action(cx.listener(Self::redo))
-                    .on_action(cx.listener(Self::backspace))
-                    .on_action(cx.listener(Self::delete))
-                    .on_action(cx.listener(Self::delete_word_left))
-                    .on_action(cx.listener(Self::delete_to_line_start))
-                    .on_action(cx.listener(Self::left))
-                    .on_action(cx.listener(Self::right))
-                    .on_action(cx.listener(Self::up))
-                    .on_action(cx.listener(Self::down))
-                    .on_action(cx.listener(Self::select_left))
-                    .on_action(cx.listener(Self::select_right))
-                    .on_action(cx.listener(Self::select_up))
-                    .on_action(cx.listener(Self::select_down))
-                    .on_action(cx.listener(Self::word_left))
-                    .on_action(cx.listener(Self::word_right))
-                    .on_action(cx.listener(Self::select_word_left))
-                    .on_action(cx.listener(Self::select_word_right))
-                    .on_action(cx.listener(Self::select_all))
-                    .on_action(cx.listener(Self::home))
-                    .on_action(cx.listener(Self::end))
-                    .on_action(cx.listener(Self::select_home))
-                    .on_action(cx.listener(Self::select_end))
-                    .on_action(cx.listener(Self::doc_start))
-                    .on_action(cx.listener(Self::doc_end))
-                    .on_action(cx.listener(Self::select_doc_start))
-                    .on_action(cx.listener(Self::select_doc_end))
-                    .on_action(cx.listener(Self::enter))
-                    .on_action(cx.listener(Self::show_character_palette))
-                    .on_action(cx.listener(Self::paste))
-                    .on_action(cx.listener(Self::cut))
-                    .on_action(cx.listener(Self::copy))
-                    .on_mouse_down(MouseButton::Left, cx.listener(Self::on_mouse_down))
-                    .on_mouse_up(MouseButton::Left, cx.listener(Self::on_mouse_up))
-                    .on_mouse_up_out(MouseButton::Left, cx.listener(Self::on_mouse_up))
-                    .on_mouse_move(cx.listener(Self::on_mouse_move))
-                    .when(self.multiline, |el| {
-                        el.on_scroll_wheel(cx.listener(Self::on_scroll_wheel))
-                    })
-            })
-            .child(TextElement { input: cx.entity() });
-        FieldSemantics {
-            inner: el,
-            disabled: self.disabled,
-            readonly: self.readonly,
-        }
+        crate::scrolling::FocusTarget::new({
+            self.ensure_focus_subscriptions(window, cx);
+            let role = self.role.unwrap_or(if self.multiline {
+                Role::MultilineTextInput
+            } else if self.kind == InputKind::Password {
+                Role::PasswordInput
+            } else {
+                Role::TextInput
+            });
+            let label = self
+                .label
+                .clone()
+                .unwrap_or_else(|| self.placeholder.clone());
+            let el = div()
+                .id("text-input")
+                .role(role)
+                .aria_label(label)
+                .aria_placeholder(self.placeholder.clone())
+                .aria_value(self.display_text())
+                .flex()
+                .w_full()
+                .min_w_0()
+                .when(!self.disabled, |el| {
+                    el.key_context("TextInput")
+                        .track_focus(&self.focus_handle)
+                        .cursor(CursorStyle::IBeam)
+                        .on_action(cx.listener(Self::undo))
+                        .on_action(cx.listener(Self::redo))
+                        .on_action(cx.listener(Self::backspace))
+                        .on_action(cx.listener(Self::delete))
+                        .on_action(cx.listener(Self::delete_word_left))
+                        .on_action(cx.listener(Self::delete_to_line_start))
+                        .on_action(cx.listener(Self::left))
+                        .on_action(cx.listener(Self::right))
+                        .on_action(cx.listener(Self::up))
+                        .on_action(cx.listener(Self::down))
+                        .on_action(cx.listener(Self::select_left))
+                        .on_action(cx.listener(Self::select_right))
+                        .on_action(cx.listener(Self::select_up))
+                        .on_action(cx.listener(Self::select_down))
+                        .on_action(cx.listener(Self::word_left))
+                        .on_action(cx.listener(Self::word_right))
+                        .on_action(cx.listener(Self::select_word_left))
+                        .on_action(cx.listener(Self::select_word_right))
+                        .on_action(cx.listener(Self::select_all))
+                        .on_action(cx.listener(Self::home))
+                        .on_action(cx.listener(Self::end))
+                        .on_action(cx.listener(Self::select_home))
+                        .on_action(cx.listener(Self::select_end))
+                        .on_action(cx.listener(Self::doc_start))
+                        .on_action(cx.listener(Self::doc_end))
+                        .on_action(cx.listener(Self::select_doc_start))
+                        .on_action(cx.listener(Self::select_doc_end))
+                        .on_action(cx.listener(Self::enter))
+                        .on_action(cx.listener(Self::show_character_palette))
+                        .on_action(cx.listener(Self::paste))
+                        .on_action(cx.listener(Self::cut))
+                        .on_action(cx.listener(Self::copy))
+                        .on_mouse_down(MouseButton::Left, cx.listener(Self::on_mouse_down))
+                        .on_mouse_up(MouseButton::Left, cx.listener(Self::on_mouse_up))
+                        .on_mouse_up_out(MouseButton::Left, cx.listener(Self::on_mouse_up))
+                        .on_mouse_move(cx.listener(Self::on_mouse_move))
+                        .when(self.multiline, |el| {
+                            el.on_scroll_wheel(cx.listener(Self::on_scroll_wheel))
+                        })
+                })
+                .child(TextElement { input: cx.entity() });
+            FieldSemantics {
+                inner: el,
+                disabled: self.disabled,
+                readonly: self.readonly,
+            }
+        })
     }
 }
 

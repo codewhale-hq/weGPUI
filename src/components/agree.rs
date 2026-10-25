@@ -2,6 +2,7 @@
 //! `src/example/form/form_vcode.html`). [`Agree`] is a 20px check, description text and an
 //! optional terms link, with the `weui-agree_warn` and `weui-agree_animate` (shake) states.
 //! With reduced motion the warn state shows without the shake.
+use crate::scrolling::RevealFocus;
 
 use super::{ChangeHandler, ClickHandler, checkbox::check_icon, form::focus_ring};
 use crate::{Theme, accessibility::Semantics};
@@ -176,7 +177,7 @@ impl RenderOnce for Agree {
                 });
             }
         }
-        let el = Semantics::new(el).disabled(self.disabled);
+        let el = Semantics::new(el).disabled(self.disabled).reveal_focus();
         if self.shake > 0 && !cx.reduce_motion() {
             div()
                 .relative()

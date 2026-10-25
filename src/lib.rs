@@ -41,6 +41,7 @@ pub mod assets;
 pub mod components;
 pub mod input;
 pub mod motion;
+pub mod scrolling;
 pub mod theme;
 
 pub use assets::Assets;

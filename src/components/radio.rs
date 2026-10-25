@@ -3,6 +3,7 @@
 //! for the caller to place in a container; [`radio_icon`] is the trailing tick.
 //! Known limitations: the builder is not an element and adds no `RadioGroup` node, so set that
 //! role on the container. Row element ids are scoped by the group id.
+use crate::scrolling::RevealFocus;
 
 use super::Icon;
 use crate::{Theme, accessibility::Semantics};
@@ -149,7 +150,10 @@ impl RadioGroup {
                             }
                         });
                 }
-                Semantics::new(el).disabled(disabled).into_any_element()
+                Semantics::new(el)
+                    .disabled(disabled)
+                    .reveal_focus()
+                    .into_any_element()
             })
             .collect()
     }

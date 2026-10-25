@@ -152,33 +152,35 @@ impl EventEmitter<InputEvent> for TextArea {}
 
 impl Render for TextArea {
     fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
-        let t = Theme::get(cx);
-        let input = self.input.read(cx);
-        let count = input.len();
-        let max = input.max_len();
-        let over = max.is_some_and(|max| count > max);
-        let counter = match max {
-            Some(max) => format!("{count}/{max}"),
-            None => count.to_string(),
-        };
-        let counter_color = if self.warn || over { t.red } else { t.fg_2 };
-        div()
-            .flex()
-            .flex_col()
-            .w_full()
-            .child(self.input.clone())
-            .when(self.show_count, |el| {
-                el.child(
-                    div()
-                        .id("textarea-counter")
-                        .role(Role::Status)
-                        .aria_label(SharedString::from(counter.clone()))
-                        .w_full()
-                        .text_right()
-                        .text_size(px(14.))
-                        .text_color(counter_color)
-                        .child(counter),
-                )
-            })
+        crate::scrolling::FocusTarget::new({
+            let t = Theme::get(cx);
+            let input = self.input.read(cx);
+            let count = input.len();
+            let max = input.max_len();
+            let over = max.is_some_and(|max| count > max);
+            let counter = match max {
+                Some(max) => format!("{count}/{max}"),
+                None => count.to_string(),
+            };
+            let counter_color = if self.warn || over { t.red } else { t.fg_2 };
+            div()
+                .flex()
+                .flex_col()
+                .w_full()
+                .child(self.input.clone())
+                .when(self.show_count, |el| {
+                    el.child(
+                        div()
+                            .id("textarea-counter")
+                            .role(Role::Status)
+                            .aria_label(SharedString::from(counter.clone()))
+                            .w_full()
+                            .text_right()
+                            .text_size(px(14.))
+                            .text_color(counter_color)
+                            .child(counter),
+                    )
+                })
+        })
     }
 }
