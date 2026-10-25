@@ -13,6 +13,7 @@ categories = ["gui"]
 exclude = [
     "/docs/parity/",
     "/docs/receipts/",
+    "/docs/proposals/",
     "/scripts/",
     "/.cnb.yml",
     "/.github/",

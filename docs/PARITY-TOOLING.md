@@ -77,27 +77,38 @@ spinner phases legitimately differ (see `docs/PARITY.md`, "Differences common to
   Linux Chromium and GPUI both use the system CJK fonts (Noto), so Linux pairs check the
   pipeline and layout, but are not comparable with the macOS baseline images.
 - Running the gallery on Linux requires `gpui_platform`'s `wayland` or `x11` feature, which is a
-  pending maintainer decision (`docs/PLATFORMS.md`). Until then, make a local, uncommitted change
+  pending maintainer decision (`docs/PLATFORMS.md`). Until then, apply
+  `docs/proposals/linux-windowing.patch` locally without committing it, or make the equivalent change
   to the dev-dependency: `features = ["font-kit", "wayland", "x11"]`.
 - **Windows, iOS, Android:** no capture path exists yet. See *Other platforms*.
 
 ## Linux procedure (interaction and accessibility)
 
-Recorded in `docs/receipts/takeover-20261025/README.md`:
+Scripts in `scripts/linux/` reproduce the procedure recorded in
+`docs/receipts/takeover-20261025/README.md`:
 
 ```sh
+git apply docs/proposals/linux-windowing.patch    # local only, until the owner decides
+cargo build --example gallery
 Xvfb :99 -screen 0 1280x1024x24 &
-export DISPLAY=:99
-dbus-run-session -- sh -c '
-  /usr/libexec/at-spi-bus-launcher --launch-immediately &
-  sleep 1
-  dbus-send --session --dest=org.a11y.Bus /org/a11y/bus \
-    org.freedesktop.DBus.Properties.Set string:org.a11y.Status string:IsEnabled variant:boolean:true
-  target/debug/examples/gallery --page dialog --position 0,0 --reduce-motion &
-  sleep 7
-  python3 -I your_atspi_dump.py      # walk pyatspi.Registry.getDesktop(0)
-'
+
+# Accessibility tree, optionally after real input steps and screenshots:
+DISPLAY=:99 STEPS="open:@190,170|down:Down|close:Escape" SHOTS=/tmp/select \
+  dbus-run-session -- scripts/linux/session.sh \
+  target/debug/examples/gallery --page form_select --position 0,0 --reduce-motion
+
+# Visual sweep (routes, a theme, or every registered state), then contact sheets:
+Xvfb :98 -screen 0 1600x3600x24 &
+python3 -I scripts/weui_upstream.py serve &
+DISPLAY=:98 scripts/linux/sweep.sh /tmp/sweep              # all 60 routes, light
+DISPLAY=:98 scripts/linux/sweep.sh /tmp/sweep --theme dark
+DISPLAY=:98 scripts/linux/sweep.sh /tmp/sweep --states
+python3 -I scripts/contact_sheets.py /tmp/sweep/pairs /tmp/sweep/sheets
 ```
+
+`session.sh` needs `at-spi2-core`, `python3-pyatspi`, `xdotool` and `dbus` (plus ImageMagick
+for screenshots). It picks the first distro Python that can import `pyatspi`, or set `PYTHON`.
+`sweep.sh` uses `PYTHON` (default `python3`) for Playwright and Pillow.
 
 - Without a window manager, X keyboard focus reaches the gallery only after a real click inside
   it (`xdotool mousemove X Y click 1`). Routes opened with `--state` at startup do not receive

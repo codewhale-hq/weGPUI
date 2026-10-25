@@ -172,5 +172,27 @@ added.
 9. A local-time source for `picker::today()`.
 10. Scope of the wider weui.js imperative API. Only behaviour the examples invoke is ported.
 
+## Picking up the work
+
+Everything is on `main`; there are no other branches of record and no uncommitted state.
+
+- **Run Linux locally:** `git apply docs/proposals/linux-windowing.patch` (do not commit it until
+  decision 1 is made), then use `scripts/linux/session.sh`, `scripts/linux/sweep.sh` and
+  `scripts/contact_sheets.py` as described in [PARITY-TOOLING](PARITY-TOOLING.md).
+- **Reproduce behaviour probes:** `receipts/takeover-20261025/probe.rs.txt` and
+  `probe-edges.rs.txt` are the manual probe apps behind the before/after receipts. Copy one to
+  `examples/probe.rs` locally to run it; they are not part of the crate.
+- **Highest-value next evidence, in order:**
+  1. macOS: rebuild `main`, run the gallery and `examples/minimal`, re-run
+     `scripts/ax_dump.js` on dialog, picker, half-screen dialog, form_select, toast, list and
+     article to confirm `ModalScope`, passive toasts, LinkText targets and swipe hiding through
+     `accesskit_macos`. Then do a first VoiceOver pass and recapture the overlay states changed
+     since the baseline (`actionsheet`, `half-screen-dialog`, `picker`, `toast`, `uploader`).
+  2. Windows: a native build and gallery run, with Narrator or NVDA.
+  3. After the owner decisions: commit the Linux patch; build the iOS path on a Mac with Xcode
+     and test in the Simulator; scope the Android backend.
+  4. The weGPUI-side mobile work in [PLATFORMS](PLATFORMS.md) (touch drags, virtual keyboard,
+     visible bounds) and the unresolved defects above.
+
 [Sources](SOURCES.md) · [Coverage](UPSTREAM-COVERAGE.md) · [Visual evidence](PARITY.md) ·
 [Review](REVIEW-2026-10-24.md) · [Platforms](PLATFORMS.md) · [Parity tooling](PARITY-TOOLING.md)

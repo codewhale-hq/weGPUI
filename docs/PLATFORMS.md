@@ -94,7 +94,7 @@ platform crate (`gpui_platform` on desktop, a mobile backend on a phone). On mac
 `gpui_platform`'s `font-kit` feature themselves, as the README shows. This is what makes the
 mobile library type-check above.
 
-## Proposals that need Hunter's decision
+## Proposals that need a maintainer decision
 
 ### 1. Linux windowing features (recommended now)
 
