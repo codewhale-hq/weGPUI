@@ -230,6 +230,7 @@ impl SearchBar {
 
     fn render_homepage(&mut self, cx: &mut Context<Self>) -> Div {
         let t = Theme::get(cx).clone();
+        let brand = t.brand;
         div()
             .flex()
             .w_full()
@@ -254,12 +255,18 @@ impl SearchBar {
                             .tab_stop(true)
                             .flex_1()
                             .min_w_0()
-                            .py(px(12.))
+                            // A transparent 2px border, offset by -2px margins so the text
+                            // stays put, turns brand on keyboard focus: a grey fill alone was
+                            // hard to see on the BG-2 field.
+                            .py(px(10.))
+                            .ml(px(-2.))
+                            .border_2()
+                            .border_color(transparent_black())
                             .text_size(px(17.))
                             .line_height(px(24.))
                             .text_color(t.fg_2)
                             .rounded(px(4.))
-                            .focus_visible(|s| s.bg(t.fg_3))
+                            .focus_visible(move |s| s.border_color(brand))
                             .child(self.placeholder.clone())
                             .on_click(cx.listener(|_, _, _, cx| cx.emit(SearchBarEvent::Open))),
                     )
@@ -273,8 +280,11 @@ impl SearchBar {
                             .relative()
                             .flex()
                             .items_center()
+                            .m(px(-2.))
+                            .border_2()
+                            .border_color(transparent_black())
                             .rounded(px(4.))
-                            .focus_visible(|s| s.bg(t.fg_3))
+                            .focus_visible(move |s| s.border_color(brand))
                             .active(|s| s.opacity(0.5))
                             .child(Icon::new("camera").w(18.8).h(20.).color(t.fg_0))
                             .child(hot_area(44., 44.))

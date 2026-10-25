@@ -23,6 +23,9 @@ versioning once a release policy is decided. No version has been published.
 
 ### Fixed
 
+- Homepage search bar: the 搜索 entry and camera button show a 2px brand focus ring instead of a
+  faint grey fill; the unfocused layout is unchanged.
+
 - Nested modals: the Tab trap ran in the capture phase, so an outer modal took Tab from a modal
   rendered inside it and focus reached controls behind the inner mask. The trap now runs in the
   bubble phase and the innermost modal handles Tab first. New `examples/nested_modals.rs`.
