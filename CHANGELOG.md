@@ -8,6 +8,9 @@ versioning once a release policy is decided. No version has been published.
 
 ### Added
 
+- Final GitHub CI configuration with Linux/MSRV checks, mobile library type-checks, and
+  Apple build-only jobs. Hosted results remain separate from runtime acceptance.
+
 - Approved GPUI 0.3.9 dependency path, target-specific iOS example entry points, and an
   evidence-preserving simulator bundle script. Apple build/runtime acceptance remains pending.
 

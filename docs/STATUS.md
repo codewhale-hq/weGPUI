@@ -91,7 +91,7 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 - **OSS readiness:** README with screenshot pair, usage example and platform table;
   `examples/minimal.rs`; CONTRIBUTING, Contributor Covenant 2.1, SECURITY, CHANGELOG
   (0.1.0, unreleased), issue/PR templates, and a CI draft ([CI-PROPOSAL](CI-PROPOSAL.md)) that is
-  not enabled. Cargo metadata (rust-version, keywords, categories, exclusions).
+  now implemented after local verification. Cargo metadata (rust-version, keywords, categories, exclusions).
 - **Rustdoc:** every public item is documented, including generated palette fields (the
   generator emits the docs) and text-input actions. See *Documentation status* below for the
   warning count.
@@ -181,7 +181,8 @@ added.
   limits, Pinyin, edge probes, reduced motion, and an uninterrupted screen-reader pass.
   Build/launch and sampled AX checks are now recorded; a complete overlay recapture is not.
 - Native Windows build/run; iOS/Android anything beyond type-checks; physical devices.
-- Hosted CI of any kind (CNB result not recorded; GitHub Actions final setup approved, not enabled).
+- Hosted build CI result pending; the repository already has default CodeQL runs. CNB result
+  not recorded. See [CI](CI-PROPOSAL.md) and its receipt for exact hosted observations.
 - Packaging (app bundles, installers) on any platform. `cargo package --list` reviewed: 172 files,
   399 KiB compressed. Nothing published. The README's screenshot pair uses repository-relative
   paths that are excluded from the package, so it renders only where the repository is reachable.
@@ -194,8 +195,8 @@ Approved October 24:
 - Linux `wayland`/`x11` features applied and verified under Xvfb (34 added lock packages).
 - GPUI 0.3.9 pins and target-specific `gpui-pre-ios` are applied with an example bundle
   scaffold. Further Apple verification needs a separately authorized host.
-- Add focused tests. Final GitHub Actions setup is approved after implementation and local
-  verification; the workflow is not enabled.
+- Seven focused Rust tests and five bundle-script fixture tests pass. The approved final
+  GitHub workflow is configured after local verification; hosted results remain separate.
 
 Still pending:
 
