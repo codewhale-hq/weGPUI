@@ -11,6 +11,7 @@ use wegpui::{
         toast::Toast,
     },
     input::{InputKind, TextInput},
+    scrolling::RevealFocus,
 };
 
 mod choice;
@@ -175,7 +176,8 @@ pub(super) fn footer(cx: &App) -> impl IntoElement {
                 .focus_visible(move |s| s.shadow(focus_ring(brand)))
                 .active(|s| s.opacity(0.5))
                 .on_click(|_, _, _| {})
-                .child("底部链接文本"),
+                .child("底部链接文本")
+                .reveal_focus(),
         )
         .child(
             div()
@@ -218,6 +220,7 @@ pub(super) fn info_button(
                 .text_color(rest)
                 .group_active("info-btn", move |s| s.text_color(pressed)),
         )
+        .reveal_focus()
 }
 
 pub(super) fn half_screen_dialog(

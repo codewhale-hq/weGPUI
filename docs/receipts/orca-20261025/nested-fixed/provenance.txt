@@ -1,0 +1,62 @@
+2026-10-25T07:35:53Z
+52650f3b830ed7e8d1cee7921d495bff06e0628d
+ M docs/ACCEPTANCE.md
+ M docs/HUMAN-TASKS.md
+ M docs/PARITY-TOOLING.md
+ M docs/RELEASE-READINESS.md
+ M docs/STATUS.md
+ M docs/TAKEOVER.md
+ M examples/component_states.rs
+ M examples/gallery/pages/article.rs
+ M examples/gallery/pages/form/choice.rs
+ M examples/gallery/pages/form/mod.rs
+ M examples/gallery/pages/form/vcode.rs
+ M examples/gallery/pages/home.rs
+ M scripts/capture.py
+ M scripts/linux/atspi_dump.py
+ M scripts/linux/sweep.sh
+ M src/accessibility.rs
+ M src/components/cells.rs
+ M src/components/dialog.rs
+ M src/components/form.rs
+ M src/components/form_preview.rs
+ M src/components/modal.rs
+ M src/components/navbar.rs
+ M src/components/tabbar.rs
+ M src/input.rs
+?? docs/receipts/a11y-text-20261025/
+?? docs/receipts/focus-reveal-20261025/
+?? docs/receipts/linux-continuation-20261025/
+?? docs/receipts/native-states-20261025/
+?? docs/receipts/nested-modal-a11y-20261025/
+?? docs/receipts/orca-20261025/
+?? docs/receipts/wayland-20261025/
+?? scripts/linux/orca-session.sh
+?? scripts/linux/orca-text.py
+?? scripts/linux/wayland-session.sh
+?? scripts/tests/test_linux_sweep.py
+85d537d8ec0296f72157cb3e7190e038a83ea79ee65dd91a1de1d061609d2399  -
+6349e3fd4ac0efb89c1dc09ac95ee51f1a16d9c191b7189ee34f877b786360f6  /workspace/.wegpui-cloud/target-198/debug/examples/nested_modals
+rustc 1.98.1 (48a229cea 2026-09-01)
+Linux 1df3d6caf486 6.18.55 #1 SMP Wed Oct 14 19:45:18 UTC 2026 x86_64 GNU/Linux
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+Orca version 48.1, AT-SPI2 version: 2.56.2
+speech-dispatcher 0.12.0
+Copyright (C) 2002-2012 Brailcom, o.p.s.
+This is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2, or (at your option)
+any later version. Please see COPYING for more details.
+
+pulseaudio 17.0
+eSpeak NG text-to-speech: 1.52.0  Data at: /usr/lib/x86_64-linux-gnu/espeak-ng-data
+command: /workspace/.wegpui-cloud/target-198/debug/examples/nested_modals

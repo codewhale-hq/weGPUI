@@ -130,7 +130,7 @@ impl Dialog {
             div()
                 .id(("dialog-paragraph", self.body.len()))
                 .role(Role::Label)
-                .aria_label(text.clone())
+                .aria_value(text.clone())
                 .child(text)
                 .into_any_element(),
         );

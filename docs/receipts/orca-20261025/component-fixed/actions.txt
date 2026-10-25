@@ -1,0 +1,14 @@
+2026-10-25T07:32:38Z field:@220,64
+2026-10-25T07:32:40Z typed:text=Alex
+2026-10-25T07:32:43Z input-summary:KP_Enter
+2026-10-25T07:32:45Z caret-left:Left
+2026-10-25T07:32:48Z selection:shift+Left
+2026-10-25T07:32:51Z selection-summary:KP_Enter
+2026-10-25T07:32:53Z undo:ctrl+z
+2026-10-25T07:32:56Z summary-after-undo:KP_Enter
+2026-10-25T07:32:58Z email:@80,438
+2026-10-25T07:33:01Z sms:Down
+2026-10-25T07:33:04Z delivery-position:KP_Enter
+2026-10-25T07:33:06Z frequency:Tab
+2026-10-25T07:33:09Z weekly:Down
+2026-10-25T07:33:11Z frequency-position:KP_Enter

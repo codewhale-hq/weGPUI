@@ -1,0 +1,30 @@
+rustc 1.98.1 (48a229cea 2026-09-01)
+binary: rustc
+commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+commit-date: 2026-09-01
+host: x86_64-unknown-linux-gnu
+release: 1.98.1
+LLVM version: 22.1.8
+cargo 1.98.1 (797e8a9bc 2026-08-05)
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+(EE) 
+Fatal server error:
+(EE) Unrecognized option: -version
+(EE) 
+Openbox 3.6.1
+fonts-noto-cjk	1:20240730+repack1-1
+imagemagick	8:7.1.1.43+dfsg1-1+deb13u12
+libvulkan1:amd64	1.4.309.0-1
+libx11-6:amd64	2:1.8.12-1
+libxkbcommon0:amd64	1.7.0-2
+mesa-vulkan-drivers:amd64	25.0.7-2+deb13u1
+python3-pyatspi	2.46.1-1

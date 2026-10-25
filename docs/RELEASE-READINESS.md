@@ -12,16 +12,21 @@ and rely on the supported behavior. A website is one part of that promise.
 
 - [x] Enable Linux windowing and verify sampled native X11 interactions.
 - [x] Add focused regression tests and stable/MSRV/strict-doc CI.
-- [ ] Resolve the known component defects in STATUS: cell-button loading, focus
-  indication for clickable panels, spinner IDs and variants,
-  list semantics, radio-group IDs, form-label association and vcode restart.
+- [x] Implement the listed component source fixes: cell-button loading, panel focus,
+  spinner IDs/artwork, list semantics, scoped radio IDs, form labels and vcode restart.
+  Sampled Linux/macOS/Windows evidence is linked from STATUS and ACCEPTANCE; full
+  cross-platform state and screen-reader acceptance remains open below.
 - [x] Align explicit and shorthand inside-list constructors; constructor and
   nested-marker contracts pass. Visual/screen-reader acceptance is separate.
 - [ ] Exercise enabled/disabled/loading/error states and keyboard operation for
   each interactive family. Preserve failed attempts and specify the tested SHA.
-  Tracked per module in [ACCEPTANCE](ACCEPTANCE.md).
+  Tracked per module in [ACCEPTANCE](ACCEPTANCE.md). October 25 adds reviewed native
+  dark/care/brand startup states; the pinned reference fetch remains blocked, so paired
+  parity is still open.
 - [ ] Verify modal isolation, names, values and focus restoration with an actual
-  screen reader on each supported desktop OS. Tree snapshots alone do not pass.
+  screen reader on each supported desktop OS. Tree snapshots alone do not pass. Actual
+  Orca samples now exist, with a cache-signal/reopen blocker and no listening review; see
+  [receipt](receipts/orca-20261025/README.md).
 - [ ] Verify input selection, clipboard, undo/redo, UTF-16 limits and IME composition.
 - [ ] Reconcile public rustdoc with observed behavior; document intentional differences.
 
@@ -29,11 +34,13 @@ and rely on the supported behavior. A website is one part of that promise.
 
 Use the acceptance matrix in PLATFORMS; each result needs source/host versions.
 
-- [ ] macOS: current native rendering, input, resizing, IME and VoiceOver on the
-  authorized local Apple host. Hosted compilation is not runtime acceptance.
+- [ ] macOS: current native rendering, input, resizing, IME and accessibility on the
+  authorized local Apple host. VoiceOver stays off; macOS screen-reader acceptance
+  remains incomplete. Hosted compilation is not runtime acceptance.
 - [ ] Windows: native MSVC build (CI configured; result pending) followed by a real Windows window, rendering at
   multiple scales, keyboard/input/IME and Narrator or NVDA.
-- [ ] Linux: X11 and Wayland runtime checks, resizing/scaling, IME and Orca.
+- [ ] Linux: complete X11/Wayland, resizing/scaling, IME and Orca qualification. Nested
+  Weston runtime and partial Orca samples now exist; hardware desktop and complete matrix open.
 - [ ] Package a runnable gallery for the supported desktop platforms and verify
   fresh-machine installation. Define signing/notarization requirements before release.
 

@@ -1,0 +1,17 @@
+2026-10-25T07:40:08Z unicode-summary:KP_Enter
+2026-10-25T07:40:10Z unicode-left:Left
+2026-10-25T07:40:13Z unicode-family-selection:End shift+Left
+2026-10-25T07:40:17Z unicode-combining-selection:Home shift+Right
+2026-10-25T07:40:22Z password:Tab
+2026-10-25T07:40:24Z password-summary:KP_Enter
+2026-10-25T07:40:27Z password-left:Left
+2026-10-25T07:40:29Z password-selection:shift+Left
+2026-10-25T07:40:32Z multiline:Tab
+2026-10-25T07:40:34Z multiline-summary:KP_Enter
+2026-10-25T07:40:37Z multiline-start:ctrl+Home
+2026-10-25T07:40:39Z multiline-selection:ctrl+a
+2026-10-25T07:40:41Z multiline-selected-summary:KP_Enter
+2026-10-25T07:40:44Z empty:Tab
+2026-10-25T07:40:46Z empty-summary:KP_Enter
+2026-10-25T07:40:48Z ascii:text=Ready
+2026-10-25T07:40:51Z ascii-summary:KP_Enter

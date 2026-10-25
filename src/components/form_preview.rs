@@ -136,7 +136,7 @@ impl RenderOnce for FormPreview {
             div()
                 .id("form-preview-hd")
                 .role(Role::Label)
-                .aria_label(aria)
+                .aria_value(aria)
                 .relative()
                 .p(px(16.))
                 .text_size(px(16.))

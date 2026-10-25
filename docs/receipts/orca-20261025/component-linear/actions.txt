@@ -1,0 +1,19 @@
+2026-10-25T07:23:31Z field:@220,64
+2026-10-25T07:23:33Z typed:text=Alex
+2026-10-25T07:23:36Z save:Tab
+2026-10-25T07:23:38Z disabled-review:KP_Page_Up KP_Begin Insert+KP_Begin
+2026-10-25T07:23:44Z review-off:KP_Subtract
+2026-10-25T07:23:47Z send:Tab
+2026-10-25T07:23:49Z start:Tab
+2026-10-25T07:23:51Z panel:Tab
+2026-10-25T07:23:54Z panel-open:Return
+2026-10-25T07:23:56Z delivery:Tab
+2026-10-25T07:23:58Z delivery-sms:Down
+2026-10-25T07:24:01Z delivery-position:KP_Enter
+2026-10-25T07:24:03Z frequency:Tab
+2026-10-25T07:24:05Z frequency-weekly:Down
+2026-10-25T07:24:08Z frequency-position:KP_Enter
+2026-10-25T07:24:10Z guide:Tab
+2026-10-25T07:24:12Z guide-open:Return
+2026-10-25T07:24:15Z preferences:Tab
+2026-10-25T07:24:17Z preferences-open:Return

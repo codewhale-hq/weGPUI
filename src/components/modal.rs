@@ -4,8 +4,9 @@
 //! [`Presence`] is caller-owned open/closed state with focus restoration and transition timing.
 //! [`Modal`] renders it as a deferred, window-sized layer with mask, placement, motion, Tab
 //! containment and Escape/mask dismissal, and lets [`crate::accessibility::ModalScope`] hide the
-//! background from assistive technology. Known limitations: a reversal restarts the easing curve
-//! from the current value, and a slide travels the window height until the panel is first measured.
+//! background and covered modal layers from assistive technology. Known limitations: a reversal
+//! restarts the easing curve from the current value, and a slide travels the window height until
+//! the panel is first measured.
 
 use crate::accessibility::Semantics;
 use gpui::{prelude::*, *};
@@ -355,9 +356,8 @@ impl RenderOnce for Modal {
         let focus = self.presence.focus.clone();
         let interactive = self.presence.visible;
         let passive = self.presence.passive;
-        if interactive && !passive {
-            crate::accessibility::register_open_modal(window, cx);
-        }
+        let hidden_flag = (interactive && !passive)
+            .then(|| crate::accessibility::register_open_modal(window, cx));
         let panel_height = window
             .use_keyed_state(
                 ElementId::NamedChild(std::sync::Arc::new(self.id.clone()), "panel-height".into()),
@@ -475,10 +475,21 @@ impl RenderOnce for Modal {
         let semantics = if passive {
             Semantics::new(layer.role(Role::Group))
         } else {
-            Semantics::new(layer.role(Role::Dialog).aria_label(self.label)).modal()
+            Semantics::new(layer.role(Role::Dialog).aria_label(self.label))
+                .modal()
+                .hidden(!interactive)
         };
-        deferred(anchored().position(point(px(0.), px(0.))).child(semantics))
-            .with_priority(1)
-            .into_any_element()
+        let semantics = if let Some(flag) = hidden_flag {
+            semantics.hidden_flag(flag)
+        } else {
+            semantics
+        };
+        deferred(
+            anchored()
+                .position(point(px(0.), px(0.)))
+                .child(semantics.modal_layer()),
+        )
+        .with_priority(1)
+        .into_any_element()
     }
 }

@@ -1,0 +1,86 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "interfaces": [
+    "Accessible",
+    "Component"
+  ],
+  "children": [
+    {
+      "role": "application",
+      "name": "minimal",
+      "description": "",
+      "interfaces": [
+        "Accessible"
+      ],
+      "children": [
+        {
+          "role": "frame",
+          "name": "",
+          "description": "",
+          "interfaces": [
+            "Accessible",
+            "Component"
+          ],
+          "children": [
+            {
+              "role": "dialog",
+              "name": "weGPUI",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Action",
+                "Component"
+              ],
+              "children": [
+                {
+                  "role": "heading",
+                  "name": "weGPUI",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "label",
+                  "name": "A WeUI dialog rendered by native GPUI components.",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "button",
+                  "name": "Cancel",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "button",
+                  "name": "OK",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

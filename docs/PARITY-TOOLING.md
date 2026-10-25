@@ -9,7 +9,7 @@ dependency. It lives in `scripts/` and is excluded from the published package.
 | Purpose | Requirement | Notes |
 | --- | --- | --- |
 | Upstream fetch/serve | Python 3.10+ (standard library only) | `scripts/weui_upstream.py` |
-| Reference screenshots | Python `playwright` plus Chromium | The Python package version must match the installed browser build. In the Linux cloud container, `playwright==1.63.0` matched the preinstalled `chromium-1243` with `PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers`. Elsewhere, `python3 -m playwright install chromium`. |
+| Reference screenshots | Python `playwright` plus Chromium | Use the browser installed for that Playwright version (`python3 -m playwright install chromium`). An existing Chromium can be selected with `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/absolute/path/to/chromium`; record both versions and any compatibility failures. Historical Linux captures used `playwright==1.63.0`, `chromium-1243` and `PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers`. |
 | Image handling | Pillow | Contact sheets, pairs, sRGB conversion, generated dark PNGs |
 | Native capture, macOS | `pyobjc-framework-Quartz`, `screencapture`, Screen Recording permission for the terminal | `scripts/capture.py` default path |
 | Native capture, Linux X11 | `xdotool`, ImageMagick `import`, an X server (Xvfb is fine), and a gallery built with the `x11` feature (see below) | `scripts/capture.py` Linux path |
@@ -90,6 +90,7 @@ Scripts in `scripts/linux/` reproduce the procedure recorded in
 ```sh
 cargo build --example gallery
 Xvfb :99 -screen 0 1280x1024x24 &
+DISPLAY=:99 openbox &
 
 # Accessibility tree, optionally after real input steps and screenshots:
 DISPLAY=:99 STEPS="open:@190,170|down:Down|close:Escape" SHOTS=/tmp/select \
@@ -98,12 +99,39 @@ DISPLAY=:99 STEPS="open:@190,170|down:Down|close:Escape" SHOTS=/tmp/select \
 
 # Visual sweep (routes, a theme, or every registered state), then contact sheets:
 Xvfb :98 -screen 0 1600x3600x24 &
+DISPLAY=:98 openbox &
 python3 -I scripts/weui_upstream.py serve &
-DISPLAY=:98 scripts/linux/sweep.sh /tmp/sweep              # all 60 routes, light
-DISPLAY=:98 scripts/linux/sweep.sh /tmp/sweep --theme dark
-DISPLAY=:98 scripts/linux/sweep.sh /tmp/sweep --states
-python3 -I scripts/contact_sheets.py /tmp/sweep/pairs /tmp/sweep/sheets
+DISPLAY=:98 scripts/linux/sweep.sh /tmp/sweep-light        # all 60 routes, light
+DISPLAY=:98 scripts/linux/sweep.sh /tmp/sweep-dark --theme dark
+DISPLAY=:98 scripts/linux/sweep.sh /tmp/states-dark --theme dark --states
+DISPLAY=:98 scripts/linux/sweep.sh /tmp/states-care --care --states
+DISPLAY=:98 scripts/linux/sweep.sh /tmp/states-brand --brand 0055CC --states
+DISPLAY=:98 scripts/linux/sweep.sh /tmp/states-dark-care --theme dark --care --states
+python3 -I scripts/contact_sheets.py /tmp/states-dark/pairs /tmp/states-dark/sheets
 ```
+
+`--care` and `--brand RRGGBB` are forwarded to both native and upstream captures and can be
+combined with either theme. `--states` captures every registered state and cannot be combined
+with route arguments. Unknown options, missing values and invalid brand colours fail before
+capture. `sweep.log` records theme, care, brand and capture-side options for each invocation.
+
+Use a **new empty output directory for every invocation**, including retries. Capture filenames
+contain route, state and theme, but do not contain care/brand settings. Reusing a directory can
+overwrite screenshots and per-capture stderr, mix modes or leave stale pairs. Preserve failed
+directories. Record the source SHA and dirty diff, binary build command and Rust version, OS,
+display/window-manager versions, Python/browser versions, exact command and reviewed images in
+the receipt; the options in `sweep.log` alone do not establish build provenance or visual parity.
+
+If the pinned upstream fetch or browser is unavailable, native state captures can still run:
+
+```sh
+DISPLAY=:98 scripts/linux/sweep.sh /tmp/native-states-dark --only gpui --theme dark --states
+```
+
+`--only gpui` does not need Playwright or a reference server, and `--only weui` captures only the
+reference. These produce single-side images in `raw/`; a native-only sweep is **not a parity
+result**. Keep the blocked/failed reference attempt alongside it and do not count the empty
+`pairs/` directory as reviewed pairs.
 
 `session.sh` needs `at-spi2-core`, `python3-pyatspi`, `xdotool` and `dbus` (plus ImageMagick
 for screenshots). It picks the first distro Python that can import `pyatspi`, or set `PYTHON`.

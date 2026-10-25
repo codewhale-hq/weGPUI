@@ -19,12 +19,37 @@ README in `receipts/takeover-20261025/`). Linux runtime results came from a loca
 [macOS follow-up](receipts/2026-10-24-macos/README.md) adds fresh build and sampled runtime evidence,
 including failed/incomplete attempts. It does not complete platform acceptance.
 
+## Linux continuation — 2026-10-25
+
+GitHub main was fetched and fast-forward checked at `52650f3`; the cloud checkout was clean.
+The later uncommitted Mac continuation was not available here and supplies no cloud evidence.
+The continuation uses Rust 1.98.1 and locked gpui-pre 0.3.9, without Cargo dependency changes.
+Integrated checks and source/artifact provenance are in
+[the continuation receipt](receipts/linux-continuation-20261025/README.md).
+
+- Added missing focus-reveal targets and the article link ring; reusable controls and five
+  short-viewport gallery pages were driven ([focus receipt](receipts/focus-reveal-20261025/README.md)).
+- Captured and visually reviewed all 72 registered startup states in dark, light+care and
+  light+brand `7C3AED` (216 native images). This is [native-only evidence](receipts/native-states-20261025/README.md):
+  the pinned reference SDK fetch was blocked by the configured proxy, so no new paired parity pass.
+- Ran real GPUI Wayland clients under nested Weston with DISPLAY absent; sampled modal,
+  keyboard, clipboard/undo and output resizing behavior has [Wayland receipts](receipts/wayland-20261025/README.md).
+- Actual Orca speech exposed missing text readback, incorrectly grouped example radios,
+  unnamed text labels and lower-modal exposure. Source fixes and separate tree/speech
+  followups are linked in [the Orca receipt](receipts/orca-20261025/README.md) and
+  [text receipt](receipts/a11y-text-20261025/README.md).
+- Orca reopen/restoration remains blocked by malformed AccessKit cache signals and defunct
+  reader objects. Disabled-button export also remains unresolved upstream. Captured speech
+  transcripts and PCM were inspected, but audio intelligibility was not reviewed by listening.
+  Full screen-reader acceptance, all component/theme/state combinations, other desktop hosts
+  and hardware Linux qualification remain open. **No component row is accepted.**
+
 ## Platform acceptance matrix
 
 | Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
 | --- | --- | --- | --- | --- | --- | --- |
 | macOS arm64 | Current examples, nine tests, strict Clippy/rustdoc and packaged consumer pass | Current component sample; historical gallery/minimal receipts retained | Native dark component sample; historical parity pairs not recaptured | Loading/countdown guards, disabled Tab skip, panel focus/activation and independent choices | Current input label, spinner names and tip-list AX nodes; historical modal/list checks; VoiceOver incomplete | Crate package and separate consumer build pass; signed/fresh-machine distribution missing |
-| Linux x86_64 | Fresh build, clippy `-D warnings`, fmt, strict doc pass (Rust 1.99.1); 1.95 build and seven tests pass | Both examples pass with committed windowing features under isolated Xvfb | Software-rendered X11; 192 pairs swept against Linux Chromium (60 routes light and dark, 72 states light; contact-sheet review) | XTEST click/keys, fcitx5 Pinyin, GTK portal chooser | AT-SPI tree via pyatspi; no Orca | Missing |
+| Linux x86_64 | Rust 1.98.1 continuation gates/source recorded in receipt; historical MSRV checks separate | X11 and sampled real Wayland clients under nested Weston | Historical 192 pairs; new 216 native-only dark/care/brand captures reviewed | X11 focus reveal; Wayland modal, typing/clipboard/undo and resize samples; historical XIM/portal evidence | Actual Orca transcript/audio collection and Text/tree checks; cache/reopen and disabled-button blockers; no full reader acceptance | Historical crate/consumer checks; desktop distribution missing |
 | Windows ARM64 | Native MSVC gallery/component sample build, 9 tests and strict rustdoc pass on the October 24 component candidate | Gallery and component sample launch in Windows 11 ARM VM | Native VirtIO GPU rendering; sampled light components and dark dialog | Text entry, loading/disabled actions, countdown, panel focus, independent radios and navbar wrap | Screen-reader and native accessibility-tree acceptance still missing | Package archive built and used for guest compilation; distributable installation unqualified |
 | iOS | Fresh library type-checks pass; hosted app build fails in upstream iOS/core APIs | 0.3.9 scaffold wired; upstream compilation blocker, no launch | Missing | Missing | Missing; backend lacks AccessKit | Missing |
 | Android | Fresh 0.3.9 library type-check; no app build | Blocked: no backend upstream | Missing | Missing | Missing | Missing |
@@ -35,7 +60,8 @@ including failed/incomplete attempts. It does not complete platform acceptance.
   and rustdoc pass; a fresh packaged macOS consumer compiles. Runtime checks cover loading,
   countdown, disabled focus, panel focus and independent choices. macOS AX confirms input
   naming and tip-list structure. [Receipts](receipts/component-fixes-20261024/README.md).
-  Keyboard focus does not reliably reveal offscreen actions; this new gap remains open.
+  The subsequently implemented focus-reveal fix has Linux X11 evidence; macOS/Windows
+  reruns of current source remain open (see ACCEPTANCE).
 
 - **Article list constructor:** `new(ListStyle::Inside)` now selects inline decimal
   markers, matching `inside()`. Focused constructor/inheritance contracts pass;
@@ -110,7 +136,9 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 
 ## Behaviour by family
 
-"Matches" names the exercised behaviour only. Linux rows used the uncommitted X11 build.
+"Matches" names the exercised behaviour only. The table retains historical samples; later
+Linux receipts are in ACCEPTANCE. Early X11 receipts used an uncommitted windowing feature
+change, which is now on GitHub main. Receipt source hashes determine the applicable source.
 
 | Family | Result | Evidence and remaining difference |
 | --- | --- | --- |
@@ -133,7 +161,7 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 | Loading | Partly tested | Standard/mask artwork now comes from the upstream SVG; primary uses the separate CSS-ring mask. Three simultaneous spinners render on Windows. Animation timing and live reduced-motion changes remain unverified. |
 | Loadmore | Untested | Presentation only. |
 | Message / LinkText | Partly tested | Current macOS sample: short/wrapped link clicks, separate Tab targets, Enter/Space and named-link activation pass. Bounds follow shaped text; [receipts](receipts/inline-links-20261024/README.md). Screen-reader acceptance remains open. Message callbacks empty. |
-| Navbar / Tabbar | Matches samples | macOS arrow selection after fix. Not re-driven on Linux. |
+| Navbar / Tabbar | Matches samples | macOS arrow sample and later Linux X11 roving-arrow checks (`receipts/a11y-p1-20261024`). Full theme/state and screen-reader acceptance open. |
 | Panel | Untested | CJK punctuation and clamping differ. |
 | Picker | Partly matches; differs | Linux AT-SPI option names present; fresh macOS raw AXTitle contains the names omitted by the old dump. Disabled-default/all-disabled interaction evidence remains Linux-only. `today()` is UTC, while the example uses local time. weui.js throws on all-disabled columns; weGPUI disables Confirm. |
 | Preview | Untested | Callbacks empty. |
@@ -152,23 +180,24 @@ including failed/incomplete attempts. It does not complete platform acceptance.
   half-screen bodies and `BottomFixedOprPage` are wrapped too; `navbar::tab_panel` callers must
   wrap it themselves. macOS/Windows reruns of the preview 480x650 sequence are still needed.
   Receipts: [focus-date-20261024](receipts/focus-date-20261024/README.md).
-- **Date/datetime inputs** (fixed 2026-10-24, gallery-level): implemented with `Picker` in the
-  input page. This is an adaptation of HTML `date`/`datetime-local`: fixed 1900–2100 range,
+- **Date/datetime inputs** (fixed 2026-10-24): the reusable `DateField` entity uses `Picker`
+  and is wired into the input page. This is an adaptation of HTML `date`/`datetime-local`: fixed 1900–2100 range,
   no typed entry, no locale formats, no seconds. Now a reusable library entity,
   `components::date_field::DateField`. Per-component acceptance lives in
   [ACCEPTANCE](ACCEPTANCE.md).
 - **Linux windowing:** approved `wayland`/`x11` features applied (34 added lock packages).
-  Both examples launch under isolated Xvfb. Wayland runtime and Orca remain untested.
+  X11 and nested-Weston Wayland runtime samples now exist. Actual Orca collection and
+  remaining bridge/screen-reader gaps are linked in the continuation section above.
 - **Mobile:** the approved GPUI 0.3.9 plus target-specific `gpui-pre-ios` path and simulator
   bundle scaffold are implemented. Hosted simulator compilation found six missing upstream
   core APIs; see [the blocker](proposals/gpui-ios-039-incompatibility.md). No application linked.
   Linux checks do not qualify an Apple app. Historically, Xcode 26.2
   and an iOS 26.2 Simulator runtime were available during setup; no app was built or launched.
   Android still needs a backend decision. Neither path has a verified mobile AccessKit adapter.
-- **Screen readers:** VoiceOver was attempted, but announcement retrieval timed out and the
-  pass was stopped; it ended disabled. No usable VoiceOver transcript or Narrator/NVDA, Orca
-  or TalkBack session exists. Dialog title/body now have explicit heading/label nodes in source;
-  announcement order still needs screen-reader verification.
+- **Screen readers:** VoiceOver remains off. Historical attempted announcement retrieval
+  timed out; no VoiceOver pass is claimed. Actual Orca samples now exist, including input
+  readback and initial dialog announcements, but reopened/restored objects become defunct in
+  the reader cache. Narrator/NVDA and TalkBack sessions remain missing; no reader matrix passes.
 - **Local date:** `picker::today()` is UTC. A local-time source needs a dependency (for example
   `chrono`, already in `Cargo.lock` transitively) or platform calls. That needs an owner decision.
 - **Linux XIM preedit** is drawn by the input method at the window's top-left, not inline at the
@@ -207,14 +236,15 @@ added.
 - Remaining macOS real-input checks: select navigation/focus, toast typing, undo/redo, UTF-16
   limits, Pinyin, edge probes, reduced motion, and an uninterrupted screen-reader pass.
   Build/launch and sampled AX checks are now recorded; a complete overlay recapture is not.
-- Native Windows build/run; iOS/Android anything beyond type-checks; physical devices.
+- Current-source Windows reruns beyond the historical Windows ARM component/inline-link
+  samples; Windows x64; iOS/Android anything beyond type-checks; physical devices.
 - Hosted CI: Linux stable/MSRV, mobile library checks and macOS native checks pass;
   simulator build fails inside published GPUI 0.3.9. See [CI receipt](receipts/ci-20261024/README.md).
   Default CodeQL also runs; no hosted CNB result is recorded.
 - Packaging (app bundles, installers) on any platform. `cargo package --list` reviewed: 172 files,
   399 KiB compressed. Nothing published. The README's screenshot pair uses repository-relative
   paths that are excluded from the package, so it renders only where the repository is reachable.
-- Complete macOS recapture of all 264 pairs (Linux has 192 sweep pairs, not comparable with macOS). Care mode beyond one route. Long pages beyond 812 pt.
+- Complete macOS recapture of all 264 pairs (the earlier Linux run has 192 sweep pairs, not comparable with macOS). Care mode beyond one route. Long pages beyond 812 pt.
 
 ## Owner decisions
 
@@ -249,7 +279,8 @@ No branch was deleted here. Recheck current refs and working state before editin
 - **Reproduce behaviour probes:** `receipts/takeover-20261025/probe.rs.txt` and
   `probe-edges.rs.txt` are the manual probe apps behind the before/after receipts. Copy one to
   `examples/probe.rs` locally to run it; they are not part of the crate.
-- **Next verification:** extend the sampled isolated X11 checks to Wayland and Orca; finish the remaining macOS input, IME, reduced-motion and paired-capture
+- **Next verification:** extend the sampled nested-Weston/Orca checks to full desktop/component
+  qualification and resolve the recorded bridge blockers; finish the remaining macOS input, IME, reduced-motion and paired-capture
   work on a separate Apple session; verify the implemented iOS scaffold on that host and label every Simulator
   result; obtain native Windows and Android evidence separately. A Linux container cannot
   supply Apple Metal tooling or macOS/iOS runtime acceptance.

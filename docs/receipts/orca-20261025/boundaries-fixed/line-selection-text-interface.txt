@@ -1,0 +1,20 @@
+entry 'Unicode sample'
+  text: 'é 👩\u200d👩\u200d👧\u200d👦'
+  character count: 10
+  caret: 10
+  selections: []
+password text 'Password sample'
+  password character count: 3
+  password contains only mask characters: True
+  caret: 3
+  selections: []
+entry 'Multiline sample'
+  text: 'First é\nFamily 👩\u200d👩\u200d👧\u200d👦\n'
+  character count: 24
+  caret: 8
+  selections: [(0, 8)]
+entry 'Empty sample'
+  text: ''
+  character count: 0
+  caret: 0
+  selections: []

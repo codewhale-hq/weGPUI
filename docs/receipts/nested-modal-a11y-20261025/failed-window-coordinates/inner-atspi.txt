@@ -1,0 +1,6 @@
+apps 1
+application 'nested_modals' [] DISABLED
+  frame 'weGPUI nested modals' ['focusable', 'showing']
+    panel '' ['showing']
+      button 'Open sheet' ['focusable', 'showing']
+      button 'Background button' ['focusable', 'showing']

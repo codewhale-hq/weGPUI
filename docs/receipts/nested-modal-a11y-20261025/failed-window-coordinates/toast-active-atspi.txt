@@ -1,0 +1,12 @@
+apps 1
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['focusable', 'focused', 'showing']
+    panel '' ['showing']
+      button '成功提示' ['focusable', 'showing']
+      button '失败提示' ['focusable', 'showing']
+      button '长文案提示' ['focusable', 'showing']
+      button '正在加载提示' ['focusable', 'showing']
+      button '文字提示' ['focusable', 'showing']
+      link 'WeUI 首页' ['focusable', 'showing']
+    panel '' ['focusable', 'showing']
+      notification '已完成' ['showing']

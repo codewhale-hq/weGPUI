@@ -1,0 +1,37 @@
+07:21:34.460787 - SPEECH OUTPUT: 'Screen reader on.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:21:38.000260 - SPEECH OUTPUT: 'weGPUI component states frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:21:43.813088 - SPEECH OUTPUT: 'Display name entry Enter a display name.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:21:46.046108 - SPEECH OUTPUT: 'left shift' {'established': False}
+07:21:46.073288 - SPEECH OUTPUT: 'A' {'established': False, 'average-pitch': 7.0}
+07:21:46.105730 - SPEECH OUTPUT: 'l' {'established': False}
+07:21:46.166845 - SPEECH OUTPUT: 'e' {'established': False}
+07:21:46.266879 - SPEECH OUTPUT: 'x' {'established': False}
+07:21:48.782479 - SPEECH OUTPUT: 'tab' {'established': False}
+07:21:48.878153 - SPEECH OUTPUT: 'Save profile button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:21:51.225752 - SPEECH OUTPUT: 'return' {'established': False}
+07:21:51.362657 - SPEECH OUTPUT: 'weGPUI component states frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:21:53.889629 - SPEECH OUTPUT: 'tab' {'established': False}
+07:21:54.415554 - SPEECH OUTPUT: 'Save profile button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:21:56.283335 - SPEECH OUTPUT: 'return' {'established': False}
+07:21:56.370349 - SPEECH OUTPUT: 'weGPUI component states frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:21:58.717252 - SPEECH OUTPUT: 'tab' {'established': False}
+07:21:59.485417 - SPEECH OUTPUT: 'Save profile button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:22:01.303728 - SPEECH OUTPUT: 'tab' {'established': False}
+07:22:01.423491 - SPEECH OUTPUT: 'Send code button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:22:03.788235 - SPEECH OUTPUT: 'return' {'established': False}
+07:22:03.958345 - SPEECH OUTPUT: '重新发送(3s) button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:22:04.872775 - SPEECH OUTPUT: '重新发送(2s) button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:22:05.887452 - SPEECH OUTPUT: '重新发送(1s) button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:22:06.159082 - SPEECH OUTPUT: 'tab' {'established': False}
+07:22:06.239598 - SPEECH OUTPUT: 'Start countdown twice button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:22:11.300119 - SPEECH OUTPUT: 'tab' {'established': False}
+07:22:11.384801 - SPEECH OUTPUT: 'Profile details link.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:22:16.478476 - SPEECH OUTPUT: 'tab' {'established': False}
+07:22:16.589867 - SPEECH OUTPUT: 'Delivery and frequency panel' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:22:16.590456 - SPEECH OUTPUT: 'Delivery and frequency.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:22:16.590801 - SPEECH OUTPUT: 'Email selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:22:18.858910 - SPEECH OUTPUT: 'return' {'established': False}
+07:22:21.193615 - SPEECH OUTPUT: 'tab' {'established': False}
+07:22:21.279459 - SPEECH OUTPUT: 'Delivery and frequency.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:22:21.280859 - SPEECH OUTPUT: 'Daily selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:22:23.873243 - SPEECH OUTPUT: 'return' {'established': False}

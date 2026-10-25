@@ -1,0 +1,5 @@
+entry 'Display name'
+  text: 'Alex'
+  character count: 4
+  caret: 3
+  Text interface unavailable: AttributeError: 'Text' object has no attribute 'nSelections'

@@ -1,0 +1,14 @@
+# syntax=docker/dockerfile:1
+FROM wegpui-cloud:rust-1.95
+RUN --mount=type=secret,id=combined_ca,required=true \
+    SSL_CERT_FILE=/run/secrets/combined_ca rustup toolchain install 1.98.1 --profile minimal --component rustfmt --component clippy \
+    && rustup default 1.98.1
+RUN --mount=type=secret,id=combined_ca,required=true \
+    apt-get -o Acquire::https::CaInfo=/run/secrets/combined_ca update \
+    && DEBIAN_FRONTEND=noninteractive apt-get -o Acquire::https::CaInfo=/run/secrets/combined_ca install -y --no-install-recommends \
+       openbox orca pulseaudio pulseaudio-utils speech-dispatcher speech-dispatcher-espeak-ng \
+       espeak-ng weston wayland-utils python3-venv python3-pil chromium ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
+RUN --mount=type=secret,id=combined_ca,required=true \
+    python3 -m venv /opt/parity-python \
+    && SSL_CERT_FILE=/run/secrets/combined_ca PIP_CERT=/run/secrets/combined_ca /opt/parity-python/bin/pip install playwright pillow

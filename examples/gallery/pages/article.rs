@@ -3,6 +3,7 @@ use gpui::{prelude::*, *};
 use wegpui::{
     Theme,
     components::article::{Article, ArticleList, ListItem, h1, h2, h3, h4, h5, paragraph, section},
+    scrolling::RevealFocus,
 };
 
 pub struct ArticlePage {
@@ -40,6 +41,7 @@ impl Render for ArticlePage {
     fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         let t = Theme::get(cx);
         let link = t.link;
+        let brand = t.brand;
         let lists = section(2)
             .mb_0()
             .child(h4("列表示例"))
@@ -90,13 +92,15 @@ impl Render for ArticlePage {
                 .aria_label(COMBO)
                 .tab_stop(true)
                 .focusable()
+                .focus_visible(move |s| s.shadow(wegpui::components::form::focus_ring(brand)))
                 .child(StyledText::new(COMBO).with_highlights([(
                     COMBO.len() - "read more".len()..COMBO.len(),
                     HighlightStyle {
                         color: Some(link),
                         ..Default::default()
                     },
-                )])),
+                )]))
+                .reveal_focus(),
         );
         PageFrame::new(self.route).child(
             Article::new("article")

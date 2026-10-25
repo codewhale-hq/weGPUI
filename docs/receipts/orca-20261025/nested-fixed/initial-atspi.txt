@@ -1,0 +1,7 @@
+apps 2
+application 'orca' [] DISABLED
+application 'nested_modals' [] DISABLED
+  frame 'weGPUI nested modals' ['focusable', 'focused', 'showing']
+    panel '' ['showing']
+      button 'Open sheet' ['focusable', 'showing']
+      button 'Background button' ['focusable', 'showing']

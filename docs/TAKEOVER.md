@@ -1,4 +1,4 @@
-# weGPUI takeover — October 24, 2026
+# weGPUI takeover — October 25, 2026
 
 ## Prompt for the next model
 
@@ -7,6 +7,51 @@ Take over weGPUI and finish its desktop-first developer release. **The goal is t
 **GitHub https://github.com/codewhale-hq/weGPUI is canonical. Push changes to GitHub `main`; CNB is the read-only mirror.** The GitHub About description incorrectly said the reverse and was corrected on October 24. The README and CONTRIBUTING already identify GitHub as canonical. Work from the existing checkout; inspect status before editing and preserve other work.
 
 Read `docs/STATUS.md`, `docs/UPSTREAM-COVERAGE.md`, `docs/RELEASE-READINESS.md`, `docs/PLATFORMS.md`, `CONTRIBUTING.md` and the recent receipts. Read applicable AGENTS.md instructions. Audit current source against the pinned upstream package. All 61 upstream example files map to 60 routes plus the index shell, but route counts and historical screenshots **do not establish functional completeness**.
+
+### Handoff state — 2026-10-25 Linux cloud continuation
+
+GitHub main was fetched and safely checked at `52650f3`. The checkout was clean; the old
+`work` branch was preserved and `main` tracks GitHub. No applicable AGENTS.md was found.
+The later uncommitted Mac changes/results described by the owner were unavailable here;
+these Linux source changes and receipts were produced independently.
+
+- Rust/Cargo 1.98.1, gpui-pre 0.3.9, locked dependency graph unchanged. All five gates and
+  24 tests pass (one doctest ignored); exact final commands/source are in
+  `receipts/linux-continuation-20261025/`. Failed setup/build/probe attempts are retained.
+- Filled missing RevealFocus registrations and the article link ring, with reusable-control
+  and five-page short-viewport checks (`receipts/focus-reveal-20261025/`).
+- Actual Orca speech revealed missing input Text runs, unlabeled Label values, cell value/desc
+  omission and incorrectly grouped example radios. Fixed and tested; Unicode/grapheme,
+  password-mask, multiline and reversed-selection contracts are covered. See
+  `receipts/a11y-text-20261025/` and `receipts/orca-20261025/` for exact limits.
+- Fixed lower-modal accessibility exposure; nested and sibling/deeper modal ordering,
+  keyboard restoration and passive toast behavior have source/runtime evidence in
+  `receipts/nested-modal-a11y-20261025/`. External application deferred priorities are outside
+  the documented ordering contract.
+- Real Wayland client runtime checks ran with DISPLAY absent under nested Weston, with
+  protocol, keyboard, clipboard/undo, tree and resize evidence (`receipts/wayland-20261025/`).
+  Hardware GPU/compositor, live scale/monitor moves and complete desktop qualification open.
+- Reran and visually reviewed all 72 registered states in dark, light+care and light+brand
+  7C3AED: 216 native-only images. No capture failures or confirmed native visual defect.
+  Exact source patch, binary hash and review manifests are in `receipts/native-states-20261025/`.
+  **No new paired parity pass:** the configured proxy blocked the pinned res.wx.qq.com SDK
+  download. The earlier 61/72 run was not reused. `sweep.sh` now accepts --care/--brand/--only.
+- Actual Orca collection now exists, but **no screen-reader/component acceptance is complete**.
+  Reopened/restored modal objects become defunct in Orca; the pinned AccessKit stack emits
+  malformed cache Add/Remove signal signatures. See `receipts/orca-20261025/cache-investigation.md`.
+  Disabled-button export also remains unresolved upstream. No dependency patch/fork or
+  upstream issue was made. Speech transcripts/PCM were inspected; listening/intelligibility
+  review is still needed. VoiceOver stays off; NVDA/Narrator/current-source macOS/Windows open.
+
+Next: finish the full acceptance matrix, obtain authorized resolution of the dependency/cache
+blocker, review real synthesized speech with a human, unblock the pinned reference fetch and
+rerun paired theme/state comparisons, then qualify remaining desktop/platform/release work.
+Keep ACCEPTANCE and HUMAN-TASKS current; no row is accepted from these samples.
+Publication/versioning/local date/website/signing decisions and release authorization remain
+with the owner. DateField still uses UTC today. Never push to CNB or file issues without
+approval. Continue useful work under the constraints below.
+
+The older sections below are historical evidence/context, not the current source backlog.
 
 ### Verified stopping point
 
@@ -35,7 +80,7 @@ dialog, forms, navbar/tabbar and a 15-page keyboard sweep recorded. Use openbox 
 PARITY-TOOLING) or inputs never get focus events. Next: nested modals, toast timing, zero-step
 slider receipt, search-bar homepage variant, screen readers, other OSes.
 
-### Handoff state — 2026-10-24 23:35 PDT
+### Historical handoff state — 2026-10-24 23:35 PDT
 
 - Gates: fmt check, build all targets, tests (15 pass, 1 doc test ignored), strict clippy
   and strict rustdoc. All green at the last pushed commit (see `git log -1 origin/main`).
@@ -75,9 +120,14 @@ scaling 1.5/2 and resize, and the STATUS defect rechecks. `component_states` has
 focus, so click a field before driving it with keys. Next: Orca/Wayland where a host allows,
 macOS/Windows reruns (HUMAN-TASKS 8), and the owner decision on a local date source.
 
-### First work: two unfinished defects
+### Historical candidate: two defects subsequently implemented on GitHub main
 
-The previous Mac checkout contains an **uncommitted, uncompiled candidate**, not part of GitHub `main`. If using another machine, do not assume these changes arrived with `git pull`. Either obtain that candidate from the owner or implement these fixes from the verified source:
+This section preserves the original candidate design for context. The Linux implementations
+are now on GitHub main (see the later receipts and ACCEPTANCE); these are no longer two
+unimplemented source defects. macOS/Windows current-source reruns remain incomplete. The
+owner also reported a later, locally validated but uncommitted Mac continuation on top of
+`52650f3`; it was not available to this cloud session and supplies no cloud validation. The
+October 25 cloud focus-registration changes were implemented independently from source.
 
 1. **Focused controls below the viewport are not revealed.** On the gallery `preview` page at 480x650, Tab focuses the upper action, then the lower action stays offscreen. Manual scrolling reveals its focus ring. Reproduced on macOS, with corresponding Windows ring-loss evidence. Implement reusable focus visibility for ordinary GPUI vertical scrollers, integrate built-in controls and the gallery, and test forward/backward Tab, nested scopes if supported, no needless scrolling for visible targets, manual-scroll preservation and inputs. Do not hardcode a preview-page offset.
    - Local candidate adds public `scrolling::{FocusScroll, FocusTarget, RevealFocus}`. `FocusScroll` wraps an existing scroller/ScrollHandle; targets collect focused bounds during prepaint; a focus change minimally adjusts/clamps the offset and refreshes next frame. Built-in semantics/input wrappers and individual control leaves register targets. Gallery PageFrame and component_states use the scope.
@@ -85,7 +135,8 @@ The previous Mac checkout contains an **uncommitted, uncompiled candidate**, not
 2. **Input-page date/datetime controls are inert.** `examples/gallery/pages/input.rs::picker_field` in committed source has focus styling but no click handler. Upstream uses actual HTML `date` and `datetime-local` inputs. Implement a native editable equivalent with accessible names, confirm/cancel and focus restoration.
    - Local candidate wires existing Picker entities: date selection, then a separate hour/minute sheet for datetime; only final confirmation updates datetime. It uses a 1900–2100 date range and must document that adaptation, verify cancellation/reopening, sequencing and performance. It is not verified or claimed equivalent to every browser date-input behavior.
 
-The candidate also adds keyboard focus to the gallery home-footer link and wraps more raw gallery controls. **Compile and test before committing any of it.** Windows focus-scroll transfer was stopped before any build; a partial guest archive is unusable.
+The candidate also adds keyboard focus to the gallery home-footer link and wraps more raw gallery controls. The original Windows focus-scroll transfer was stopped before a build; its partial guest
+archive is unusable. A later dispatched Windows ARM rerun has no established completed result.
 
 ### Finish the entire scope
 

@@ -88,6 +88,8 @@ pub fn form_tips(text: impl IntoElement, cx: &App) -> Div {
 /// Inline link for tips and agreements: link-coloured `text`, semibold when `bold` (as in
 /// `.weui-cells__tips a`). It is a `Role::Link` tab stop named by `text` with a [`focus_ring`];
 /// `on_click` runs on click or Enter/Space and the click does not reach the enclosing row.
+/// Call [`RevealFocus::reveal_focus`] after styling it to reveal the link inside a
+/// [`crate::scrolling::FocusScroll`].
 pub fn form_link(
     id: impl Into<ElementId>,
     text: impl Into<SharedString>,
@@ -923,7 +925,8 @@ impl Render for ClearableInput {
                                 .size(px(18.))
                                 .text_color(rest)
                                 .group_active("input-clear", move |s| s.text_color(pressed)),
-                        ),
+                        )
+                        .reveal_focus(),
                 )
             })
     }

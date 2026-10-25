@@ -1,0 +1,162 @@
+use gpui::{prelude::*, *};
+use wegpui::{
+    Theme,
+    components::{button::Button, textarea::TextArea},
+    input::{InputKind, TextInput},
+};
+
+const UNICODE_SAMPLE: &str = "e\u{301} 👩‍👩‍👧‍👦";
+const NOTES_SAMPLE: &str = "First e\u{301}\nFamily 👩‍👩‍👧‍👦\n";
+
+struct Probe {
+    unicode: Entity<TextInput>,
+    password: Entity<TextInput>,
+    notes: Entity<TextArea>,
+    empty: Entity<TextInput>,
+}
+
+impl Probe {
+    fn new(cx: &mut Context<Self>) -> Self {
+        let unicode = cx.new(|cx| {
+            let mut input = TextInput::new("Unicode sample", cx);
+            input.set_aria_label("Unicode sample", cx);
+            input.set_text(UNICODE_SAMPLE, cx);
+            input
+        });
+        let password = cx.new(|cx| {
+            let mut input = TextInput::new("Password sample", cx);
+            input.set_aria_label("Password sample", cx);
+            input.set_kind(InputKind::Password, cx);
+            input.set_text("A😀e\u{301}", cx);
+            input
+        });
+        let notes = cx.new(|cx| {
+            let mut area = TextArea::new("Multiline sample", cx);
+            area.set_aria_label("Multiline sample", cx);
+            area.set_rows(4, cx);
+            area.set_text(NOTES_SAMPLE, cx);
+            area
+        });
+        let empty = cx.new(|cx| {
+            let mut input = TextInput::new("Type here", cx);
+            input.set_aria_label("Empty sample", cx);
+            input
+        });
+        Self {
+            unicode,
+            password,
+            notes,
+            empty,
+        }
+    }
+
+    fn reset(&mut self, cx: &mut Context<Self>) {
+        self.unicode
+            .update(cx, |input, cx| input.set_text(UNICODE_SAMPLE, cx));
+        self.password
+            .update(cx, |input, cx| input.set_text("A😀e\u{301}", cx));
+        self.notes
+            .update(cx, |area, cx| area.set_text(NOTES_SAMPLE, cx));
+        self.empty.update(cx, |input, cx| input.clear(cx));
+        eprintln!("samples reset; password remains masked");
+    }
+}
+
+impl Render for Probe {
+    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let theme = Theme::get(cx).clone();
+        div()
+            .id("a11y-text-probe")
+            .size_full()
+            .flex()
+            .flex_col()
+            .gap(px(20.))
+            .p(px(20.))
+            .bg(theme.bg_0)
+            .text_color(theme.fg_0)
+            .text_size(px(17.))
+            .on_key_down(cx.listener(|this, event: &KeyDownEvent, window, cx| {
+                if event.keystroke.key == "tab" {
+                    if event.keystroke.modifiers.shift {
+                        window.focus_prev(cx);
+                    } else {
+                        window.focus_next(cx);
+                    }
+                    cx.stop_propagation();
+                } else if event.keystroke.key == "f7" {
+                    this.reset(cx);
+                    cx.stop_propagation();
+                }
+            }))
+            .child(
+                div()
+                    .flex()
+                    .flex_col()
+                    .gap(px(4.))
+                    .child("Unicode sample: combining mark and family emoji")
+                    .child(self.unicode.clone()),
+            )
+            .child(
+                div()
+                    .flex()
+                    .flex_col()
+                    .gap(px(4.))
+                    .child("Password sample: three masking bullets")
+                    .child(self.password.clone()),
+            )
+            .child(
+                div()
+                    .flex()
+                    .flex_col()
+                    .gap(px(4.))
+                    .child("Multiline sample: two lines and a trailing newline")
+                    .child(self.notes.clone()),
+            )
+            .child(
+                div()
+                    .flex()
+                    .flex_col()
+                    .gap(px(4.))
+                    .child("Empty sample")
+                    .child(self.empty.clone()),
+            )
+            .child(
+                Button::new("Reset samples")
+                    .id("reset-samples")
+                    .on_click(cx.listener(|this, _, _, cx| this.reset(cx))),
+            )
+    }
+}
+
+#[path = "support/platform.rs"]
+mod platform;
+
+fn main() {
+    platform::application()
+        .with_assets(wegpui::Assets)
+        .run(|cx| {
+            wegpui::init(cx);
+            cx.open_window(
+                WindowOptions {
+                    window_bounds: Some(WindowBounds::Windowed(Bounds::new(
+                        point(px(60.), px(60.)),
+                        size(px(640.), px(640.)),
+                    ))),
+                    titlebar: Some(TitlebarOptions {
+                        title: Some("weGPUI accessible text probe".into()),
+                        ..Default::default()
+                    }),
+                    ..Default::default()
+                },
+                |window, cx| {
+                    Theme::observe(window);
+                    let view = cx.new(Probe::new);
+                    let first = view.read(cx).unicode.clone();
+                    first.update(cx, |input, cx| input.focus(window, cx));
+                    view
+                },
+            )
+            .expect("open accessible text probe");
+            cx.activate(true);
+        });
+}

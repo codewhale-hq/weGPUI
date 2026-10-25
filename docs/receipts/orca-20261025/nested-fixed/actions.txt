@@ -1,0 +1,12 @@
+2026-10-25T07:36:04Z sheet-open:@160,84
+2026-10-25T07:36:06Z sheet-first:Tab
+2026-10-25T07:36:08Z inner-open:Return
+2026-10-25T07:36:11Z inner-summary:KP_Enter
+2026-10-25T07:36:13Z inner-cancel:Tab
+2026-10-25T07:36:15Z inner-ok:Tab
+2026-10-25T07:36:18Z inner-wrap:Tab
+2026-10-25T07:36:20Z inner-back:shift+Tab
+2026-10-25T07:36:23Z inner-escape:Escape
+2026-10-25T07:36:25Z outer-return:KP_Enter
+2026-10-25T07:36:28Z outer-escape:Escape
+2026-10-25T07:36:30Z page-return:KP_Enter

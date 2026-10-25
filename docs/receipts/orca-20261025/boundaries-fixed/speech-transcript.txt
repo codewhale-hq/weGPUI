@@ -1,0 +1,32 @@
+07:44:34.964885 - SPEECH OUTPUT: 'Screen reader on.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:44:38.480554 - SPEECH OUTPUT: 'weGPUI accessible text probe frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:44:38.654058 - SPEECH OUTPUT: 'Unicode sample entry é 👩‍👩‍👧‍👦' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:44:43.693297 - SPEECH OUTPUT: 'tab' {'established': False}
+07:44:43.778733 - SPEECH OUTPUT: 'Password sample password text •••' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:44:45.810000 - SPEECH OUTPUT: 'Multiline sample entry.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:44:48.043114 - SPEECH OUTPUT: 'left control' {'established': False}
+07:44:48.093599 - SPEECH OUTPUT: 'F' {'average-pitch': '7.0', 'established': 'False'}
+07:44:50.566931 - SPEECH OUTPUT: 'left control' {'established': False}
+07:44:50.624632 - SPEECH OUTPUT: 'blank' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:44:53.156990 - SPEECH OUTPUT: 'left control' {'established': False}
+07:44:53.182953 - SPEECH OUTPUT: 'left shift' {'established': False}
+07:44:53.225848 - SPEECH OUTPUT: 'First é
+                  Family 👩‍👩‍👧‍👦
+                  ' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:44:53.227526 - SPEECH OUTPUT: 'selected' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:44:55.540603 - SPEECH OUTPUT: 'left control' {'established': False}
+07:44:55.576236 - SPEECH OUTPUT: 'Text unselected.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:44:57.613660 - SPEECH OUTPUT: 'left control' {'established': False}
+07:44:57.639761 - SPEECH OUTPUT: 'left shift' {'established': False}
+07:44:57.678870 - SPEECH OUTPUT: 'First é
+                  Family 👩‍👩‍👧‍👦
+                  ' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:44:57.683895 - SPEECH OUTPUT: 'selected' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:44:59.951672 - SPEECH OUTPUT: 'left control' {'established': False}
+07:44:59.979720 - SPEECH OUTPUT: 'Text unselected.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:45:00.004255 - SPEECH OUTPUT: 'F' {'average-pitch': '7.0', 'established': 'False'}
+07:45:02.459984 - SPEECH OUTPUT: 'blank' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:45:04.985038 - SPEECH OUTPUT: 'F' {'average-pitch': '7.0', 'established': 'False'}
+07:45:07.275035 - SPEECH OUTPUT: 'left shift' {'established': False}
+07:45:07.313067 - SPEECH OUTPUT: 'First é' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:45:07.316208 - SPEECH OUTPUT: 'selected' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}

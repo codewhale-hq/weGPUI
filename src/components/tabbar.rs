@@ -4,7 +4,7 @@
 //! handling, with focus contained to the bar and one Tab stop. [`TabbarItem`] describes one tab.
 
 use super::navbar::{SelectHandler, tab_focus_handles, tab_keys};
-use crate::Theme;
+use crate::{Theme, scrolling::RevealFocus};
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
@@ -155,6 +155,7 @@ impl RenderOnce for Tabbar {
                             handler(i, window, cx);
                         }
                     })
+                    .reveal_focus()
             }))
     }
 }

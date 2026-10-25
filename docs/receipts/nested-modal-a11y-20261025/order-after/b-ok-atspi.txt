@@ -1,0 +1,8 @@
+apps 1
+application 'modal_order_probe' [] DISABLED
+  frame 'weGPUI modal order probe' ['showing']
+    dialog 'Inner B' ['focusable', 'modal', 'showing']
+      heading 'Inner B' ['showing']
+      label 'B is nested inside A and paints after sibling C.' ['showing']
+      button 'Cancel B' ['focusable', 'showing']
+      button 'OK B' ['focusable', 'focused', 'showing']

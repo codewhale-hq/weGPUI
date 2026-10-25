@@ -1,0 +1,170 @@
+use gpui::{prelude::*, *};
+use wegpui::{
+    Theme,
+    components::{
+        button::Button,
+        form::ClearableInput,
+        navbar::Navbar,
+        tabbar::{Tabbar, TabbarItem},
+    },
+    input::TextInput,
+    scrolling::FocusScroll,
+};
+
+struct Probe {
+    scroll: ScrollHandle,
+    start: FocusHandle,
+    end: FocusHandle,
+    input: Entity<TextInput>,
+    clearable: Entity<ClearableInput>,
+    navbar: usize,
+    tabbar: usize,
+    sample: usize,
+}
+
+impl Render for Probe {
+    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let t = Theme::get(cx).clone();
+        let scroll = self.scroll.clone();
+        let spacer = |label| div().h(px(600.)).flex_shrink_0().p(px(20.)).child(label);
+        let navbar_select = cx.listener(|this, index: &usize, _, cx| {
+            this.navbar = *index;
+            cx.notify();
+        });
+        let tabbar_select = cx.listener(|this, index: &usize, _, cx| {
+            this.tabbar = *index;
+            cx.notify();
+        });
+        let page = div()
+            .id("probe-scroll")
+            .size_full()
+            .overflow_y_scroll()
+            .track_scroll(&scroll)
+            .bg(t.bg_0)
+            .text_color(t.fg_0)
+            .flex()
+            .flex_col()
+            .on_key_down(cx.listener(|this, event: &KeyDownEvent, window, cx| {
+                match event.keystroke.key.as_str() {
+                    "tab" => {
+                        if event.keystroke.modifiers.shift {
+                            window.focus_prev(cx);
+                        } else {
+                            window.focus_next(cx);
+                        }
+                        cx.stop_propagation();
+                    }
+                    "f8" => {
+                        this.sample += 1;
+                        let focus = if this.start.is_focused(window) {
+                            "start"
+                        } else if this.end.is_focused(window) {
+                            "end"
+                        } else if this.input.read(cx).focus_handle(cx).is_focused(window) {
+                            "input"
+                        } else {
+                            "tab-or-clear"
+                        };
+                        eprintln!(
+                            "sample={} offset={:?} focus={} navbar={} tabbar={}",
+                            this.sample,
+                            this.scroll.offset().y,
+                            focus,
+                            this.navbar,
+                            this.tabbar,
+                        );
+                        cx.stop_propagation();
+                    }
+                    _ => {}
+                }
+            }))
+            .child(
+                div().p(px(16.)).flex_shrink_0().child(
+                    Button::new("Start")
+                        .id("start")
+                        .track_focus(&self.start)
+                        .on_click(|_, _, _| {}),
+                ),
+            )
+            .child(spacer("Spacer before Navbar"))
+            .child(
+                Navbar::new("navbar")
+                    .items(["Navbar one", "Navbar two"])
+                    .selected(self.navbar)
+                    .on_select(move |index, window, cx| navbar_select(&index, window, cx)),
+            )
+            .child(spacer("Spacer before Tabbar"))
+            .child(
+                Tabbar::new("tabbar")
+                    .label("Probe tabs")
+                    .item(TabbarItem::new("Tabbar one", div().child("1")))
+                    .item(TabbarItem::new("Tabbar two", div().child("2")))
+                    .selected(self.tabbar)
+                    .on_select(move |index, window, cx| tabbar_select(&index, window, cx)),
+            )
+            .child(spacer("Spacer before input"))
+            .child(
+                div()
+                    .flex_shrink_0()
+                    .p(px(16.))
+                    .child(self.clearable.clone()),
+            )
+            .child(spacer("Spacer before End"))
+            .child(
+                div().p(px(16.)).flex_shrink_0().child(
+                    Button::new("End")
+                        .id("end")
+                        .track_focus(&self.end)
+                        .on_click(|_, _, _| {}),
+                ),
+            );
+        FocusScroll::new("probe-focus-scroll", &scroll, page)
+    }
+}
+
+#[path = "support/platform.rs"]
+mod platform;
+
+fn main() {
+    platform::application()
+        .with_assets(wegpui::Assets)
+        .run(|cx| {
+            wegpui::init(cx);
+            cx.open_window(
+                WindowOptions {
+                    titlebar: Some(TitlebarOptions {
+                        title: Some("weGPUI focus reveal probe".into()),
+                        ..Default::default()
+                    }),
+                    window_bounds: Some(WindowBounds::Windowed(Bounds::new(
+                        point(px(0.), px(0.)),
+                        size(px(480.), px(420.)),
+                    ))),
+                    ..Default::default()
+                },
+                |window, cx| {
+                    Theme::observe(window);
+                    cx.new(|cx| {
+                        let input = cx.new(|cx| {
+                            let mut input = TextInput::new("Probe input", cx);
+                            input.set_text("Keep this value", cx);
+                            input
+                        });
+                        let clearable = cx.new(|cx| ClearableInput::new(input.clone(), window, cx));
+                        Probe {
+                            scroll: ScrollHandle::new(),
+                            start: cx.focus_handle(),
+                            end: cx.focus_handle(),
+                            input,
+                            clearable,
+                            navbar: 0,
+                            tabbar: 0,
+                            sample: 0,
+                        }
+                    })
+                },
+            )
+            .expect("open probe window");
+            cx.activate(true);
+        });
+}

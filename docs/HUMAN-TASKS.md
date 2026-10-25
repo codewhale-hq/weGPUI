@@ -1,6 +1,6 @@
 # Tasks that need the owner or another machine
 
-Updated 2026-10-24 (late) by the Linux cloud agent. Each item says what unblocks it.
+Updated 2026-10-25 by the Linux cloud agent. Each item says what unblocks it.
 
 1. **Signed commits.** Commits `b58b6fa` onward were made on a Linux box with no signing key and
    show as unverified. To sign future agent commits, provide a signing key on that machine
@@ -13,7 +13,9 @@ Updated 2026-10-24 (late) by the Linux cloud agent. Each item says what unblocks
 3. **Windows rerun** of the same sequences on the Windows VM / Windows subagent, plus the
    form_bottom_fixed sequence at 480x420.
 4. **Screen-reader acceptance** (NVDA or Narrator on Windows, Orca on Linux; VoiceOver stays off
-   unless the owner changes that instruction). Needed for every ACCEPTANCE row.
+   unless the owner changes that instruction). Needed for every ACCEPTANCE row. October 25
+   cloud Orca samples are partial: reopen/restoration hits malformed AccessKit cache signals,
+   and synthesized audio still needs human intelligibility review. See receipts/orca-20261025.
 5. **Owner decisions still pending** (from STATUS): local-time source for `picker::today()`
    (DateField defaults to UTC "today"), crates.io name/versioning, publication timing, website
    deployment target, signing/notarization requirements for packaged galleries.
@@ -26,5 +28,16 @@ Updated 2026-10-24 (late) by the Linux cloud agent. Each item says what unblocks
    focus, paste/undo grouping, set positions (check NVDA/VoiceOver-off AX inspector reports
    "1 of 2" for the first radio), footer link focus, nested modals (`examples/nested_modals`),
    overlay-primary ring, search-bar rings and swiped-action rings.
-9. **Linux items the cloud box cannot do:** Wayland session, Orca, live scale changes and
-   monitor moves (no compositor or Orca on the box).
+9. **Linux host qualification still needed:** physical monitor moves, live scale changes,
+   hardware compositor/GPU and desktop audio review. This cloud continuation can run nested
+   Weston Wayland and Orca with a virtual audio sink; see the October 25 receipts. Those
+   representative samples do not complete the per-component desktop/screen-reader matrix.
+
+10. **Pinned reference download:** allow the pinned SDK host `res.wx.qq.com` through the
+    managed cloud network policy (or provide an already verified cached artifact) to complete
+    `scripts/weui_upstream.py fetch` and rerun paired dark/care/brand comparisons. October 25
+    native-only captures are reviewed but do not replace this comparison.
+11. **AccessKit cache compatibility:** actual Orca reopen/restoration fails with malformed
+    AddAccessible/RemoveAccessible signatures in the locked stack. See
+    `receipts/orca-20261025/cache-investigation.md`. Dependency changes/forks/registry patches
+    require owner approval; no such change or external report was made.

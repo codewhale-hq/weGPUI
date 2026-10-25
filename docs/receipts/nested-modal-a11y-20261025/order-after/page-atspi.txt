@@ -1,0 +1,4 @@
+apps 1
+application 'modal_order_probe' [] DISABLED
+  frame 'weGPUI modal order probe' ['focusable', 'focused', 'showing']
+    panel '' ['showing']

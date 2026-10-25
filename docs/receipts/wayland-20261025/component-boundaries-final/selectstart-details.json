@@ -1,0 +1,104 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "interfaces": [
+    "Accessible",
+    "Component"
+  ],
+  "children": [
+    {
+      "role": "application",
+      "name": "a11y_text_probe",
+      "description": "",
+      "interfaces": [
+        "Accessible"
+      ],
+      "children": [
+        {
+          "role": "frame",
+          "name": "weGPUI accessible text probe",
+          "description": "",
+          "interfaces": [
+            "Accessible",
+            "Component"
+          ],
+          "children": [
+            {
+              "role": "entry",
+              "name": "Unicode sample",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Component",
+                "Text"
+              ],
+              "text": "é 👩‍👩‍👧‍👦",
+              "caret_offset": 10,
+              "selections": [],
+              "children": []
+            },
+            {
+              "role": "password text",
+              "name": "Password sample",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Component",
+                "Text"
+              ],
+              "text": "•••",
+              "caret_offset": 3,
+              "selections": [],
+              "children": []
+            },
+            {
+              "role": "entry",
+              "name": "Multiline sample",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Component",
+                "Text"
+              ],
+              "text": "First é\nFamily 👩‍👩‍👧‍👦\n",
+              "caret_offset": 0,
+              "selections": [
+                [
+                  0,
+                  24
+                ]
+              ],
+              "children": []
+            },
+            {
+              "role": "entry",
+              "name": "Empty sample",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Component",
+                "Text"
+              ],
+              "text": "",
+              "caret_offset": 0,
+              "selections": [],
+              "children": []
+            },
+            {
+              "role": "button",
+              "name": "Reset samples",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Action",
+                "Component"
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

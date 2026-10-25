@@ -1,0 +1,11 @@
+apps 1
+application 'nested_modals' [] DISABLED
+  frame 'weGPUI nested modals' ['showing']
+    dialog 'Outer sheet' ['focusable', 'modal', 'showing']
+      button 'Open inner dialog' ['focusable', 'showing']
+      button 'Close sheet' ['focusable', 'showing']
+    dialog 'Inner dialog' ['focusable', 'modal', 'showing']
+      heading 'Inner dialog' ['showing']
+      label '' ['showing']
+      button 'Cancel' ['focusable', 'showing']
+      button 'OK' ['focusable', 'focused', 'showing']

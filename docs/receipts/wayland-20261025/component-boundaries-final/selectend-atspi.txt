@@ -1,0 +1,8 @@
+apps 1
+application 'a11y_text_probe' [] DISABLED
+  frame 'weGPUI accessible text probe' ['showing']
+    entry 'Unicode sample' ['focusable', 'showing']
+    password text 'Password sample' ['focusable', 'showing']
+    entry 'Multiline sample' ['focusable', 'focused', 'showing']
+    entry 'Empty sample' ['focusable', 'showing']
+    button 'Reset samples' ['focusable', 'showing']

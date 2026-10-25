@@ -1,0 +1,66 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "interfaces": [
+    "Accessible",
+    "Component"
+  ],
+  "children": [
+    {
+      "role": "application",
+      "name": "nested_modals",
+      "description": "",
+      "interfaces": [
+        "Accessible"
+      ],
+      "children": [
+        {
+          "role": "frame",
+          "name": "weGPUI nested modals",
+          "description": "",
+          "interfaces": [
+            "Accessible",
+            "Component"
+          ],
+          "children": [
+            {
+              "role": "dialog",
+              "name": "Outer sheet",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Action",
+                "Component"
+              ],
+              "children": [
+                {
+                  "role": "button",
+                  "name": "Open inner dialog",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "button",
+                  "name": "Close sheet",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

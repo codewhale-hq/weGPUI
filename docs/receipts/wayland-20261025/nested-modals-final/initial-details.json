@@ -1,0 +1,64 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "interfaces": [
+    "Accessible",
+    "Component"
+  ],
+  "children": [
+    {
+      "role": "application",
+      "name": "nested_modals",
+      "description": "",
+      "interfaces": [
+        "Accessible"
+      ],
+      "children": [
+        {
+          "role": "frame",
+          "name": "weGPUI nested modals",
+          "description": "",
+          "interfaces": [
+            "Accessible",
+            "Component"
+          ],
+          "children": [
+            {
+              "role": "panel",
+              "name": "",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Component"
+              ],
+              "children": [
+                {
+                  "role": "button",
+                  "name": "Open sheet",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "button",
+                  "name": "Background button",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

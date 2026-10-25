@@ -1,0 +1,6 @@
+apps 1
+application 'minimal' [] DISABLED
+  frame '' ['focusable', 'focused', 'showing']
+    panel '' ['showing']
+      list item 'Confirmed' ['showing']
+      button 'Open dialog' ['focusable', 'showing']

@@ -7,6 +7,7 @@ use std::time::{Duration, Instant};
 use wegpui::{
     Theme,
     components::{Cell, Cells, CellsStyle, modal::ease},
+    scrolling::RevealFocus,
 };
 
 type Category = (
@@ -166,7 +167,8 @@ impl Render for Home {
                 .overflow_hidden()
                 .child(
                     category(i, label, icon, expanded, cx)
-                        .on_click(cx.listener(move |this, _, _, cx| this.toggle(i, cx))),
+                        .on_click(cx.listener(move |this, _, _, cx| this.toggle(i, cx)))
+                        .reveal_focus(),
                 );
             if expanded {
                 let cells = Cells::new()
@@ -220,7 +222,8 @@ impl Render for Home {
                         .cursor_pointer()
                         .child(div().flex_1().child("层级规范"))
                         .child(img(themed_image("icon_nav_z-index.png", cx)).size(px(30.)))
-                        .on_click(|_, w, cx| crate::go("layers", w, cx)),
+                        .on_click(|_, w, cx| crate::go("layers", w, cx))
+                        .reveal_focus(),
                 ),
         );
         PageFrame::new("home").header(header).spacing().child(

@@ -1,0 +1,12 @@
+07:26:25.090679 - SPEECH OUTPUT: 'Screen reader on.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:26:28.482221 - SPEECH OUTPUT: 'weGPUI component states frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:26:33.989201 - SPEECH OUTPUT: 'Display name entry Enter a display name.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:26:36.324126 - SPEECH OUTPUT: 'left shift' {'established': False}
+07:26:36.335499 - SPEECH OUTPUT: 'A' {'established': False, 'average-pitch': 7.0}
+07:26:36.380163 - SPEECH OUTPUT: 'l' {'established': False}
+07:26:36.442937 - SPEECH OUTPUT: 'e' {'established': False}
+07:26:36.503500 - SPEECH OUTPUT: 'x' {'established': False}
+07:26:38.896398 - SPEECH OUTPUT: 'Display name entry Enter a display name.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:26:46.008971 - SPEECH OUTPUT: 'left control' {'established': False}
+07:26:46.040130 - SPEECH OUTPUT: 'z' {'established': False}
+07:26:48.357655 - SPEECH OUTPUT: 'Display name entry Enter a display name.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}

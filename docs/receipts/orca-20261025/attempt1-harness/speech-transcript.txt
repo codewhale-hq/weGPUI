@@ -1,0 +1,4 @@
+07:16:38.792505 - SPEECH OUTPUT: 'Screen reader on.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:16:41.178670 - SPEECH OUTPUT: 'Orca speech harness probe frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:16:41.352304 - SPEECH OUTPUT: 'Speech harness probe button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:16:46.353925 - SPEECH OUTPUT: 'tab' {'established': False}

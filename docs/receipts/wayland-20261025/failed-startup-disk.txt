@@ -1,0 +1,12 @@
+Recorded from the tool result of the first fresh-container diagnostic launch.
+No GUI process started; this is an environment failure, not a component verdict.
+
+Command:
+bash /workspace/.wegpui-cloud/run-198 env CARGO_TARGET_DIR=/workspace/.wegpui-cloud/target dbus-run-session -- bash /workspace/.wegpui-cloud/wayland-probe/initial.sh
+
+Exit status: 1
+Output:
+mkdir: cannot create directory '/workspace/.wegpui-cloud/wayland-probe/initial': No space left on device
+
+Recovery: stopped creating fresh Docker vfs containers and used one shared
+persistent `wegpui-198` runtime for subsequent isolated display/D-Bus sessions.

@@ -1,0 +1,166 @@
+2026-10-25T07:20:18Z
+52650f3b830ed7e8d1cee7921d495bff06e0628d
+98d908b364bb881999d6177d2b072a366b8ad1ac39c7bdd412be4b847c02f79a  -
+d44112566e854f8d7d60f952fd4a963609153029bca750b24a3571751b98800d  /workspace/.wegpui-cloud/target-198/debug/examples/gallery
+rustc 1.98.1 (48a229cea 2026-09-01)
+binary: rustc
+commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+commit-date: 2026-09-01
+host: x86_64-unknown-linux-gnu
+release: 1.98.1
+LLVM version: 22.1.8
+cargo 1.98.1 (797e8a9bc 2026-08-05)
+Linux 1df3d6caf486 6.18.55 #1 SMP Wed Oct 14 19:45:18 UTC 2026 x86_64 GNU/Linux
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+Unrecognized option: -version
+use: X [:<display>] [option]
+-a #                   default pointer acceleration (factor)
+-ac                    disable access control restrictions
+-audit int             set audit trail level
+-auth file             select authorization file
+-br                    create root window with black background
++bs                    enable any backing store support
+-bs                    disable any backing store support
++byteswappedclients    Allow clients with endianess different to that of the server
+-byteswappedclients    Prohibit clients with endianess different to that of the server
+-c                     turns off key-click
+c #                    key-click volume (0-100)
+-cc int                default color visual class
+-nocursor              disable the cursor
+-core                  generate core dump on fatal error
+-displayfd fd          file descriptor to write display number to when ready to connect
+-dpi int               screen resolution in dots per inch
+-dpms                  disables VESA DPMS monitor control
+-deferglyphs [none|all|16] defer loading of [no|all|16-bit] glyphs
+-f #                   bell base (0-100)
+-fakescreenfps #       fake screen default fps (1-600)
+-fp string             default font path
+-help                  prints message with these options
++iglx                  Allow creating indirect GLX contexts
+-iglx                  Prohibit creating indirect GLX contexts (default)
+-I                     ignore all remaining arguments
+-ld int                limit data space to N Kb
+-lf int                limit number of open files to N
+-ls int                limit stack space to N Kb
+-nolock                disable the locking mechanism
+-maxclients n          set maximum number of clients (power of two)
+-nolisten string       don't listen on protocol
+-listen string         listen on protocol
+-noreset               don't reset after last client exists
+-background [none]     create root window with no background
+-reset                 reset after last client exists
+-p #                   screen-saver pattern duration (minutes)
+-pn                    accept failure to listen on all ports
+-nopn                  reject failure to listen on all ports
+-r                     turns off auto-repeat
+r                      turns on auto-repeat 
+-render [default|mono|gray|color] set render color alloc policy
+-retro                 start with classic stipple and cursor
+-s #                   screen-saver timeout (minutes)
+-seat string           seat to run on
+-t #                   default pointer threshold (pixels/t)
+-terminate [delay]     terminate at server reset (optional delay in sec)
+-tst                   disable testing extensions
+ttyxx                  server started from init on /dev/ttyxx
+v                      video blanking for screen-saver
+-v                     screen-saver without video blanking
+-wr                    create root window with white background
+-maxbigreqsize         set maximal bigrequest size 
++xinerama              Enable XINERAMA extension
+-xinerama              Disable XINERAMA extension
+-dumbSched             Disable smart scheduling and threaded input, enable old behavior
+-schedInterval int     Set scheduler interval in msec
+-sigstop               Enable SIGSTOP based startup
++extension name        Enable extension
+-extension name        Disable extension
+ Only the following extensions can be run-time enabled/disabled:
+	Generic Event Extension
+	MIT-SHM
+	XTEST
+	SECURITY
+	XINERAMA
+	XFIXES
+	RENDER
+	RANDR
+	COMPOSITE
+	DAMAGE
+	MIT-SCREEN-SAVER
+	DOUBLE-BUFFER
+	RECORD
+	DPMS
+	X-Resource
+	XVideo
+	XVideo-MotionCompensation
+	SELinux
+	GLX
+-query host-name       contact named host for XDMCP
+-broadcast             broadcast for XDMCP
+-multicast [addr [hops]] IPv6 multicast for XDMCP
+-indirect host-name    contact named host for indirect XDMCP
+-port port-num         UDP port number to send messages to
+-from local-address    specify the local address to connect from
+-once                  Terminate server after one session
+-class display-class   specify display class to send in manage
+-cookie xdm-auth-bits  specify the magic cookie for XDMCP
+-displayID display-id  manufacturer display ID for request
+[+-]accessx [ timeout [ timeout_mask [ feedback [ options_mask] ] ] ]
+                       enable/disable accessx key sequences
+-ardelay               set XKB autorepeat delay
+-arinterval            set XKB autorepeat interval
+-screen scrn WxHxD     set screen's width, height, depth
+-pixdepths list-of-int support given pixmap depths
++/-render		   turn on/off RENDER extension support(default on)
+-linebias n            adjust thin line pixelization
+-blackpixel n          pixel value for black
+-whitepixel n          pixel value for white
+-fbdir directory       put framebuffers in mmap'ed files in directory
+-shmem                 put framebuffers in shared memory
+(EE) 
+Fatal server error:
+(EE) Unrecognized option: -version
+(EE) 
+Openbox 3.6.1
+Copyright (c) 2004   Mikael Magnusson
+Copyright (c) 2002   Dana Jansens
+
+This program comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to redistribute it
+under certain conditions. See the file COPYING for details.
+
+Version: ImageMagick 7.1.1-43 Q16 x86_64 22550 https://imagemagick.org
+Copyright: (C) 1999 ImageMagick Studio LLC
+License: https://imagemagick.org/script/license.php
+Features: Cipher DPC Modules OpenMP(4.5) 
+Delegates (built-in): bzlib djvu fftw fontconfig freetype heic jbig jng jp2 jpeg lcms lqr ltdl lzma openexr pangocairo png raw tiff webp wmf x xml zlib zstd
+Compiler: gcc (14.2)
+Name: pillow
+Version: 13.0.0
+Summary: Python Imaging Library (fork)
+Home-page: https://python-pillow.org
+Author: 
+Author-email: Jeffrey 'Alex' Clark <aclark@aclark.net>
+License-Expression: MIT-CMU
+Location: /opt/parity-python/lib/python3.13/site-packages
+Requires: 
+Required-by: 
+---
+Name: playwright
+Version: 1.64.1
+Summary: A high-level API to automate web browsers
+Home-page: https://github.com/Microsoft/playwright-python
+Author: Microsoft Corporation
+Author-email: 
+License-Expression: Apache-2.0
+Location: /opt/parity-python/lib/python3.13/site-packages
+Requires: greenlet, pyee
+Required-by: 
+Device: Vulkan lavapipe software renderer; X11 capture scale=2

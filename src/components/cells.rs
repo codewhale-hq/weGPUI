@@ -260,6 +260,7 @@ pub struct Cell {
     hd: Option<AnyElement>,
     bd: Option<AnyElement>,
     ft: Option<AnyElement>,
+    value_text: Option<SharedString>,
     desc: Option<SharedString>,
     label: Option<SharedString>,
     access: bool,
@@ -285,6 +286,7 @@ impl Cell {
             hd: None,
             bd: None,
             ft: None,
+            value_text: None,
             desc: None,
             label: None,
             access: false,
@@ -315,9 +317,11 @@ impl Cell {
         self
     }
     /// Sets the trailing footer (`.weui-cell__ft`): right-aligned content in `fg_1`, e.g. a
-    /// switch or a value. [`Cell::value`] replaces it. None by default.
+    /// switch or a value. [`Cell::value`] replaces it. Replacing a textual value also clears
+    /// its accessibility description; custom content supplies its own semantics. None by default.
     pub fn ft(mut self, ft: impl IntoElement) -> Self {
         self.ft = Some(ft.into_any_element());
+        self.value_text = None;
         self
     }
     /// Sets the body to `title` text and, unless [`Cell::aria_label`] was called before, uses it
@@ -331,12 +335,16 @@ impl Cell {
         self
     }
     /// Sets the footer to `value` text, e.g. the current setting shown before an access arrow.
+    /// The value is also exposed in the row's accessible description, followed by [`Cell::desc`]
+    /// when present. The accessible name from [`Cell::title`] or [`Cell::aria_label`] is unchanged.
     pub fn value(mut self, value: impl Into<SharedString>) -> Self {
-        self.ft = Some(value.into().into_any_element());
+        let value = value.into();
+        self.value_text = Some(value.clone());
+        self.ft = Some(value.into_any_element());
         self
     }
     /// Adds a description line under the body (`.weui-cell__desc`: 12px in `fg_2`). None by
-    /// default.
+    /// default. The text is also included in the row's accessible description.
     pub fn desc(mut self, desc: impl Into<SharedString>) -> Self {
         self.desc = Some(desc.into());
         self
@@ -427,6 +435,17 @@ impl Cell {
         self.on_click = Some(Box::new(handler));
         self
     }
+
+    fn accessible_description(&self) -> Option<SharedString> {
+        let parts: Vec<&str> = self
+            .value_text
+            .iter()
+            .chain(self.desc.iter())
+            .map(|text| text.as_ref())
+            .filter(|text| !text.is_empty())
+            .collect();
+        (!parts.is_empty()).then(|| parts.join(", ").into())
+    }
 }
 
 impl RenderOnce for Cell {
@@ -438,6 +457,7 @@ impl RenderOnce for Cell {
             left: px(16.),
             right: px(16.),
         });
+        let description = self.accessible_description();
         let interactive = self.on_click.is_some() && !self.disabled;
         let role = self.role.unwrap_or(if self.link {
             Role::Link
@@ -498,6 +518,9 @@ impl RenderOnce for Cell {
             .id(self.id)
             .role(role)
             .when_some(self.label, |el, label| el.aria_label(label))
+            .when_some(description, |el, description| {
+                el.aria_description(description)
+            })
             .when_some(self.selected, |el, s| el.aria_selected(s))
             .relative()
             .flex()
@@ -534,5 +557,50 @@ impl RenderOnce for Cell {
         crate::accessibility::Semantics::new(el)
             .disabled(self.disabled)
             .reveal_focus()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use core::prelude::v1::test;
+
+    use super::*;
+
+    #[test]
+    fn textual_value_and_description_keep_the_explicit_name() {
+        let cell = Cell::new("setting")
+            .aria_label("Language setting")
+            .title("Language")
+            .value("English")
+            .desc("Used throughout the app");
+        assert_eq!(cell.label.as_deref(), Some("Language setting"));
+        assert_eq!(
+            cell.accessible_description().as_deref(),
+            Some("English, Used throughout the app")
+        );
+    }
+
+    #[test]
+    fn replacing_a_footer_clears_its_previous_textual_value() {
+        let custom = Cell::new("setting")
+            .value("Old setting")
+            .desc("Help text")
+            .ft(div());
+        assert_eq!(
+            custom.accessible_description().as_deref(),
+            Some("Help text")
+        );
+        let updated = custom.value("New setting");
+        assert_eq!(
+            updated.accessible_description().as_deref(),
+            Some("New setting, Help text")
+        );
+        assert_eq!(
+            Cell::new("empty")
+                .value("")
+                .desc("")
+                .accessible_description(),
+            None
+        );
     }
 }

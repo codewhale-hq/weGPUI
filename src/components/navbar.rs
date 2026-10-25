@@ -4,7 +4,7 @@
 //! keys move focus and selection within this bar. Only the selected tab is in the Tab order;
 //! Home/End select the first/last tab, and arrows wrap at the ends.
 
-use crate::Theme;
+use crate::{Theme, scrolling::RevealFocus};
 use gpui::{prelude::*, *};
 use std::rc::Rc;
 
@@ -146,6 +146,7 @@ impl RenderOnce for Navbar {
                             handler(i, window, cx);
                         }
                     })
+                    .reveal_focus()
             }))
             .child(
                 div()
@@ -161,6 +162,8 @@ impl RenderOnce for Navbar {
 
 /// Scrolling panel (`TabPanel` role, `weui-tab__panel`) that fills the remaining height; add the
 /// selected tab's content as children.
+/// To reveal focused descendants, call `track_scroll` with a [`ScrollHandle`] and wrap this
+/// panel in [`crate::scrolling::FocusScroll`] using the same handle.
 pub fn tab_panel(id: impl Into<ElementId>, label: impl Into<SharedString>) -> Stateful<Div> {
     div()
         .id(id)

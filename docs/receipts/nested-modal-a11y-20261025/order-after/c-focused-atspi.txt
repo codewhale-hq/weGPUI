@@ -1,0 +1,7 @@
+apps 1
+application 'modal_order_probe' [] DISABLED
+  frame 'weGPUI modal order probe' ['showing']
+    dialog 'Sibling C' ['focusable', 'modal', 'showing']
+      heading 'Sibling C' ['showing']
+      label 'C follows A in the root layout, but paints before B.' ['showing']
+      button 'Close C' ['focusable', 'focused', 'showing']

@@ -1,0 +1,36 @@
+07:32:29.288098 - SPEECH OUTPUT: 'Screen reader on.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:32:32.609826 - SPEECH OUTPUT: 'weGPUI component states frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:32:38.193046 - SPEECH OUTPUT: 'Display name entry Enter a display name.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:32:40.749724 - SPEECH OUTPUT: 'left shift' {'established': False}
+07:32:40.761728 - SPEECH OUTPUT: 'A' {'established': False, 'average-pitch': 7.0}
+07:32:40.827895 - SPEECH OUTPUT: 'l' {'established': False}
+07:32:40.879927 - SPEECH OUTPUT: 'e' {'established': False}
+07:32:40.944282 - SPEECH OUTPUT: 'x' {'established': False}
+07:32:43.537493 - SPEECH OUTPUT: 'Display name entry Alex.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:32:46.029465 - SPEECH OUTPUT: 'x' {'established': 'False'}
+07:32:48.573326 - SPEECH OUTPUT: 'left shift' {'established': False}
+07:32:48.626704 - SPEECH OUTPUT: 'e' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:32:48.627768 - SPEECH OUTPUT: 'selected' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:32:51.164493 - SPEECH OUTPUT: 'Display name entry Alex.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:32:53.789843 - SPEECH OUTPUT: 'left control' {'established': False}
+07:32:53.804651 - SPEECH OUTPUT: 'z' {'established': False}
+07:32:53.845942 - SPEECH OUTPUT: 'Text unselected.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:32:56.375530 - SPEECH OUTPUT: 'Display name entry Enter a display name.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:32:59.152061 - SPEECH OUTPUT: 'Delivery and frequency panel' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:32:59.152820 - SPEECH OUTPUT: 'Delivery panel' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:32:59.160866 - SPEECH OUTPUT: 'Delivery.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:32:59.161451 - SPEECH OUTPUT: 'Email selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:01.639168 - SPEECH OUTPUT: 'Delivery.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:01.639926 - SPEECH OUTPUT: 'SMS selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:04.130685 - SPEECH OUTPUT: 'Delivery.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:04.134740 - SPEECH OUTPUT: 'SMS selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:04.139054 - SPEECH OUTPUT: '2 of 2' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:06.616065 - SPEECH OUTPUT: 'tab' {'established': False}
+07:33:06.789648 - SPEECH OUTPUT: 'Frequency panel' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:06.790373 - SPEECH OUTPUT: 'Frequency.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:06.791332 - SPEECH OUTPUT: 'Daily selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:09.146973 - SPEECH OUTPUT: 'Frequency.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:09.151032 - SPEECH OUTPUT: 'Weekly selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:11.586104 - SPEECH OUTPUT: 'Frequency.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:11.587027 - SPEECH OUTPUT: 'Weekly selected radio button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:11.587699 - SPEECH OUTPUT: '2 of 2' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}

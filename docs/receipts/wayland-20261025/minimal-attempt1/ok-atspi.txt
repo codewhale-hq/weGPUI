@@ -1,0 +1,8 @@
+apps 1
+application 'minimal' [] DISABLED
+  frame '' ['showing']
+    dialog 'weGPUI' ['focusable', 'modal', 'showing']
+      heading 'weGPUI' ['showing']
+      label '' ['showing']
+      button 'Cancel' ['focusable', 'focused', 'showing']
+      button 'OK' ['focusable', 'showing']

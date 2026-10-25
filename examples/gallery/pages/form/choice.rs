@@ -9,6 +9,7 @@ use wegpui::components::{
     radio::RadioGroup,
     switch::Switch,
 };
+use wegpui::scrolling::RevealFocus;
 
 pub struct Choice {
     route: &'static str,
@@ -124,13 +125,10 @@ impl Render for Choice {
                             .flex()
                             .justify_center()
                             .child("点击下一步即表示")
-                            .child(form_link(
-                                "agreement",
-                                "同意用户协议",
-                                false,
-                                cx,
-                                |_, _, _| {},
-                            )),
+                            .child(
+                                form_link("agreement", "同意用户协议", false, cx, |_, _, _| {})
+                                    .reveal_focus(),
+                            ),
                         cx,
                     ))
             }

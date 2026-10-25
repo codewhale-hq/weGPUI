@@ -1,0 +1,9 @@
+apps 2
+application 'orca' [] DISABLED
+application 'nested_modals' [] DISABLED
+  frame 'weGPUI nested modals' ['showing']
+    dialog 'Inner dialog' ['focusable', 'focused', 'modal', 'showing']
+      heading 'Inner dialog' ['showing']
+      label 'Opened from inside the half-screen dialog.' ['showing']
+      button 'Cancel' ['focusable', 'showing']
+      button 'OK' ['focusable', 'showing']

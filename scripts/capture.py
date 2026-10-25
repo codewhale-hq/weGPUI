@@ -11,6 +11,7 @@ WEUI_URL (default http://127.0.0.1:7193/dist/example/index.html, served by
 scripts/weui_upstream.py). Native capture uses Quartz/screencapture on macOS and xdotool plus
 ImageMagick `import` on X11 Linux (GPUI_X11_SCALE_FACTOR defaults to 2 there); see
 docs/PARITY-TOOLING.md.
+PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH optionally selects an installed Chromium executable.
 """
 
 import argparse
@@ -109,7 +110,7 @@ def capture_weui(args, out):
     if key and key not in states:
         raise SystemExit(f'no WeUI replay registered for {key}')
     with sync_playwright() as p:
-        browser = p.chromium.launch()
+        browser = p.chromium.launch(executable_path=os.environ.get('PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH') or None)
         ctx = browser.new_context(viewport={'width': WIDTH, 'height': args.height}, device_scale_factor=2,
                                   color_scheme=args.theme)
         page = ctx.new_page()

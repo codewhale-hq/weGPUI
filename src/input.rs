@@ -15,7 +15,11 @@
 //! is only limited on commit. [`InputKind`] filters characters and is not HTML form validation.
 //! There is no spell checking or context menu. Undo history is cleared by
 //! [`TextInput::set_text`]. Linux XIM preedit was observed in the input method's own window
-//! rather than inline at the caret.
+//! rather than inline at the caret. Accessibility exposes the displayed text and keyboard
+//! selection through synthetic text runs; passwords expose only masking bullets. Text runs
+//! follow hard line breaks. Character geometry, soft-wrap line boundaries and assistive-
+//! technology editing actions are not yet exported. AccessKit's 255-byte character-length
+//! limit requires scalar boundaries for the rare grapheme exceeding that size.
 
 use std::{ops::Range, time::Duration};
 
@@ -959,14 +963,7 @@ impl TextInput {
     }
 
     fn display_text(&self) -> SharedString {
-        if self.kind == InputKind::Password {
-            BULLET
-                .to_string()
-                .repeat(self.content.graphemes(true).count())
-                .into()
-        } else {
-            self.content.clone()
-        }
+        input_display_text(&self.content, self.kind == InputKind::Password)
     }
 
     fn offset_from_utf16(&self, offset: usize) -> usize {
@@ -1632,12 +1629,19 @@ impl Render for TextInput {
                 .label
                 .clone()
                 .unwrap_or_else(|| self.placeholder.clone());
+            let a11y_text = self.display_text();
+            let a11y_selection = self.to_display(self.selected_range.start)
+                ..self.to_display(self.selected_range.end);
+            let selection_reversed = self.selection_reversed;
             let el = div()
                 .id("text-input")
                 .role(role)
                 .aria_label(label)
                 .aria_placeholder(self.placeholder.clone())
-                .aria_value(self.display_text())
+                .aria_value(a11y_text.clone())
+                .a11y_synthetic_children(move |builder| {
+                    push_a11y_text(builder, &a11y_text, a11y_selection, selection_reversed);
+                })
                 .flex()
                 .w_full()
                 .min_w_0()
@@ -1780,6 +1784,112 @@ impl<E: Element> Element for FieldSemantics<E> {
     }
 }
 
+fn input_display_text(content: &SharedString, password: bool) -> SharedString {
+    if password {
+        BULLET
+            .to_string()
+            .repeat(content.graphemes(true).count())
+            .into()
+    } else {
+        content.clone()
+    }
+}
+
+fn a11y_line_ranges(text: &str) -> Vec<Range<usize>> {
+    let mut offset = 0;
+    let mut lines: Vec<_> = text
+        .split_inclusive('\n')
+        .map(|line| {
+            let start = offset;
+            offset += line.len();
+            start..offset
+        })
+        .collect();
+    if lines.is_empty() || text.ends_with('\n') {
+        lines.push(text.len()..text.len());
+    }
+    lines
+}
+
+fn a11y_text_position(text: &str, lines: &[Range<usize>], offset: usize) -> (usize, usize) {
+    let offset = offset.min(text.len());
+    let line = lines
+        .iter()
+        .rposition(|line| line.start <= offset)
+        .unwrap_or(0);
+    let range = &lines[line];
+    let relative_offset = offset.saturating_sub(range.start);
+    let mut boundary = 0;
+    let character = a11y_character_lengths(&text[range.clone()])
+        .into_iter()
+        .take_while(|length| {
+            let before_offset = boundary < relative_offset;
+            boundary += usize::from(*length);
+            before_offset
+        })
+        .count();
+    (line, character)
+}
+
+fn a11y_character_lengths(text: &str) -> Vec<u8> {
+    let mut lengths = Vec::new();
+    for grapheme in text.graphemes(true) {
+        if let Ok(length) = u8::try_from(grapheme.len()) {
+            lengths.push(length);
+        } else {
+            lengths.extend(grapheme.chars().map(|ch| {
+                u8::try_from(ch.len_utf8())
+                    .expect("Unicode scalars contain at most four UTF-8 bytes")
+            }));
+        }
+    }
+    lengths
+}
+
+fn a11y_selection_positions(
+    text: &str,
+    lines: &[Range<usize>],
+    selection: Range<usize>,
+    reversed: bool,
+) -> [(usize, usize); 2] {
+    let start = a11y_text_position(text, lines, selection.start);
+    let end = a11y_text_position(text, lines, selection.end);
+    if reversed { [end, start] } else { [start, end] }
+}
+
+fn a11y_text_run(text: &str) -> accesskit::Node {
+    let mut run = accesskit::Node::new(Role::TextRun);
+    run.set_value(text);
+    run.set_character_lengths(a11y_character_lengths(text));
+    run
+}
+
+fn push_a11y_text(
+    builder: &mut A11ySubtreeBuilder,
+    text: &str,
+    selection: Range<usize>,
+    reversed: bool,
+) {
+    let lines = a11y_line_ranges(text);
+    let ids: Vec<_> = lines
+        .iter()
+        .enumerate()
+        .map(|(index, line)| {
+            let id = builder.synthetic_node_id(("text-run", index));
+            builder.push_child(id, a11y_text_run(&text[line.clone()]));
+            id
+        })
+        .collect();
+    let position = |(line, character_index)| accesskit::TextPosition {
+        node: ids[line],
+        character_index,
+    };
+    let [anchor, focus] = a11y_selection_positions(text, &lines, selection, reversed).map(position);
+    builder
+        .parent_node()
+        .set_text_selection(accesskit::TextSelection { anchor, focus });
+}
+
 fn utf16_offset(text: &str, offset: usize) -> usize {
     let mut units = 0;
     for (byte, ch) in text.char_indices() {
@@ -1792,7 +1902,8 @@ fn utf16_offset(text: &str, offset: usize) -> usize {
 }
 
 /// Installs the text-editing key bindings for the `TextInput` key context. Both `ctrl-` and
-/// `cmd-` variants are bound for clipboard, select-all and undo/redo. Called by [`crate::init`].
+/// `cmd-` variants are bound for clipboard, select-all and undo/redo. Ctrl+Home/End and their
+/// Shift variants move or select to document boundaries. Called by [`crate::init`].
 pub fn init(cx: &mut App) {
     let ctx = Some("TextInput");
     cx.bind_keys([
@@ -1811,6 +1922,10 @@ pub fn init(cx: &mut App) {
         KeyBinding::new("end", End, ctx),
         KeyBinding::new("shift-home", SelectHome, ctx),
         KeyBinding::new("shift-end", SelectEnd, ctx),
+        KeyBinding::new("ctrl-home", DocStart, ctx),
+        KeyBinding::new("ctrl-end", DocEnd, ctx),
+        KeyBinding::new("ctrl-shift-home", SelectDocStart, ctx),
+        KeyBinding::new("ctrl-shift-end", SelectDocEnd, ctx),
         KeyBinding::new("enter", Enter, ctx),
         KeyBinding::new("ctrl-a", SelectAll, ctx),
         KeyBinding::new("ctrl-v", Paste, ctx),
@@ -1845,8 +1960,105 @@ pub fn init(cx: &mut App) {
 
 #[cfg(test)]
 mod tests {
-    use super::utf16_offset;
+    use super::{
+        a11y_line_ranges, a11y_selection_positions, a11y_text_position, a11y_text_run,
+        input_display_text, utf16_offset,
+    };
     use core::prelude::v1::test;
+
+    #[test]
+    fn accessible_text_runs_preserve_newlines_and_trailing_empty_carets() {
+        for (text, expected) in [
+            ("", std::iter::once(0..0).collect()),
+            ("A\n中\n", vec![0..2, 2..6, 6..6]),
+            ("A\n中", vec![0..2, 2..5]),
+        ] {
+            let lines = a11y_line_ranges(text);
+            assert_eq!(lines, expected);
+            let exported: String = lines
+                .iter()
+                .map(|line| {
+                    a11y_text_run(&text[line.clone()])
+                        .value()
+                        .unwrap()
+                        .to_owned()
+                })
+                .collect();
+            assert_eq!(exported, text);
+            let last = lines.len() - 1;
+            let end = a11y_text_run(&text[lines[last].clone()])
+                .character_lengths()
+                .len();
+            assert_eq!(a11y_text_position(text, &lines, text.len()), (last, end));
+        }
+    }
+
+    #[test]
+    fn accessible_carets_follow_combining_and_zwj_graphemes() {
+        let text = "A😀e\u{301}\n👩‍💻";
+        let lines = a11y_line_ranges(text);
+        for (bytes, expected) in [
+            (0, (0, 0)),
+            (5, (0, 2)),
+            (8, (0, 3)),
+            (9, (1, 0)),
+            (20, (1, 1)),
+        ] {
+            assert_eq!(a11y_text_position(text, &lines, bytes), expected);
+        }
+        assert_eq!(a11y_text_run(text).character_lengths(), &[1, 4, 3, 1, 11]);
+    }
+
+    #[test]
+    fn accessible_selections_keep_anchor_and_focus_when_reversed() {
+        let text = "e\u{301}\n👩‍💻";
+        let lines = a11y_line_ranges(text);
+        assert_eq!(
+            a11y_selection_positions(text, &lines, 0..text.len(), false),
+            [(0, 0), (1, 1)]
+        );
+        assert_eq!(
+            a11y_selection_positions(text, &lines, 0..text.len(), true),
+            [(1, 1), (0, 0)]
+        );
+    }
+
+    #[test]
+    fn oversized_graphemes_use_lossless_scalar_lengths_with_matching_positions() {
+        let text = format!("e{}", "\u{301}".repeat(128));
+        let run = a11y_text_run(&text);
+        let lengths = run.character_lengths();
+        assert_eq!(lengths.len(), 129);
+        assert_eq!(
+            lengths
+                .iter()
+                .map(|length| usize::from(*length))
+                .sum::<usize>(),
+            text.len()
+        );
+        let lines = a11y_line_ranges(&text);
+        assert_eq!(
+            a11y_text_position(&text, &lines, text.len()),
+            (0, lengths.len())
+        );
+        let mut offset = 0;
+        for (index, length) in lengths.iter().enumerate() {
+            assert_eq!(a11y_text_position(&text, &lines, offset), (0, index));
+            assert!(text.is_char_boundary(offset));
+            offset += usize::from(*length);
+        }
+        assert_eq!(run.value(), Some(text.as_str()));
+    }
+
+    #[test]
+    fn accessible_password_runs_only_contain_displayed_masking_bullets() {
+        let secret = "A😀e\u{301}".into();
+        let masked = input_display_text(&secret, true);
+        let run = a11y_text_run(&masked);
+        assert_eq!(run.value(), Some("•••"));
+        assert_eq!(run.character_lengths(), &[3, 3, 3]);
+        assert_eq!(input_display_text(&secret, false), secret);
+    }
 
     #[test]
     fn utf16_offsets_stay_on_utf8_boundaries() {

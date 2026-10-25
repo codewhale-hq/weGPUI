@@ -1,0 +1,18 @@
+07:33:19.851938 - SPEECH OUTPUT: 'Screen reader on.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:23.137686 - SPEECH OUTPUT: 'frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:28.599815 - SPEECH OUTPUT: 'weGPUI dialog A WeUI dialog rendered by native GPUI components.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:30.865000 - SPEECH OUTPUT: 'weGPUI dialog A WeUI dialog rendered by native GPUI components.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:30.976758 - SPEECH OUTPUT: 'frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:31.099542 - SPEECH OUTPUT: 'weGPUI dialog A WeUI dialog rendered by native GPUI components.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:33.182319 - SPEECH OUTPUT: 'tab' {'established': False}
+07:33:33.320832 - SPEECH OUTPUT: 'Cancel button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:35.535135 - SPEECH OUTPUT: 'tab' {'established': False}
+07:33:35.620851 - SPEECH OUTPUT: 'OK button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:37.859740 - SPEECH OUTPUT: 'tab' {'established': False}
+07:33:37.951417 - SPEECH OUTPUT: 'Cancel button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:40.195337 - SPEECH OUTPUT: 'escape' {'established': False}
+07:33:40.559866 - SPEECH OUTPUT: 'Open dialog button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+07:33:42.542695 - SPEECH OUTPUT: 'return' {'established': False}
+07:33:44.888611 - SPEECH OUTPUT: 'tab' {'established': False}
+07:33:46.929501 - SPEECH OUTPUT: 'tab' {'established': False}
+07:33:49.265112 - SPEECH OUTPUT: 'return' {'established': False}

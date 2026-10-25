@@ -1,0 +1,291 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "interfaces": [
+    "Accessible",
+    "Component"
+  ],
+  "children": [
+    {
+      "role": "application",
+      "name": "component_states",
+      "description": "",
+      "interfaces": [
+        "Accessible"
+      ],
+      "children": [
+        {
+          "role": "frame",
+          "name": "weGPUI component states",
+          "description": "",
+          "interfaces": [
+            "Accessible",
+            "Component"
+          ],
+          "children": [
+            {
+              "role": "entry",
+              "name": "Display name",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Component",
+                "Text"
+              ],
+              "text": "waylandwayland",
+              "children": []
+            },
+            {
+              "role": "button",
+              "name": "Save profile",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Action",
+                "Component"
+              ],
+              "children": []
+            },
+            {
+              "role": "button",
+              "name": "Unavailable",
+              "description": "不可用",
+              "interfaces": [
+                "Accessible",
+                "Component"
+              ],
+              "children": []
+            },
+            {
+              "role": "button",
+              "name": "Send code",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Action",
+                "Component"
+              ],
+              "children": []
+            },
+            {
+              "role": "button",
+              "name": "Start countdown twice",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Action",
+                "Component"
+              ],
+              "children": []
+            },
+            {
+              "role": "link",
+              "name": "Profile details",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Action",
+                "Component"
+              ],
+              "children": []
+            },
+            {
+              "role": "panel",
+              "name": "Delivery and frequency",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Component"
+              ],
+              "children": [
+                {
+                  "role": "panel",
+                  "name": "Delivery",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Component",
+                    "Selection"
+                  ],
+                  "children": [
+                    {
+                      "role": "radio button",
+                      "name": "Email",
+                      "description": "",
+                      "interfaces": [
+                        "Accessible",
+                        "Action",
+                        "Component"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "role": "radio button",
+                      "name": "SMS",
+                      "description": "",
+                      "interfaces": [
+                        "Accessible",
+                        "Action",
+                        "Component"
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "role": "panel",
+                  "name": "Frequency",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Component",
+                    "Selection"
+                  ],
+                  "children": [
+                    {
+                      "role": "radio button",
+                      "name": "Daily",
+                      "description": "",
+                      "interfaces": [
+                        "Accessible",
+                        "Action",
+                        "Component"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "role": "radio button",
+                      "name": "Weekly",
+                      "description": "",
+                      "interfaces": [
+                        "Accessible",
+                        "Action",
+                        "Component"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "role": "paragraph",
+              "name": "Read the profile guide or review the longer account preferences link that wraps onto another line before saving.",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Component"
+              ],
+              "children": [
+                {
+                  "role": "label",
+                  "name": "Read the profile guide or review the longer account preferences link that wraps onto another line before saving.",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "link",
+                  "name": "the profile guide",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "link",
+                  "name": "review the longer account preferences link that wraps onto another line",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "role": "image",
+              "name": "Standard spinner",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Component"
+              ],
+              "children": []
+            },
+            {
+              "role": "image",
+              "name": "Primary spinner",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Component"
+              ],
+              "children": []
+            },
+            {
+              "role": "image",
+              "name": "Brand spinner",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Component"
+              ],
+              "children": []
+            },
+            {
+              "role": "list",
+              "name": "",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Component"
+              ],
+              "children": [
+                {
+                  "role": "list item",
+                  "name": "Your profile stays on this computer.",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "list item",
+                  "name": "Sending is simulated.",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "role": "label",
+              "name": "Saved 0; sent 0; details 0",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Component"
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

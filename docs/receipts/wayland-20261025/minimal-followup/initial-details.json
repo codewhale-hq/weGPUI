@@ -1,0 +1,64 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "interfaces": [
+    "Accessible",
+    "Component"
+  ],
+  "children": [
+    {
+      "role": "application",
+      "name": "minimal",
+      "description": "",
+      "interfaces": [
+        "Accessible"
+      ],
+      "children": [
+        {
+          "role": "frame",
+          "name": "",
+          "description": "",
+          "interfaces": [
+            "Accessible",
+            "Component"
+          ],
+          "children": [
+            {
+              "role": "panel",
+              "name": "",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Component"
+              ],
+              "children": [
+                {
+                  "role": "list item",
+                  "name": "Confirmed",
+                  "description": "0",
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "button",
+                  "name": "Open dialog",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

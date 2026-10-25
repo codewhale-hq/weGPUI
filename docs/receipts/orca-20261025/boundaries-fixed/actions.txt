@@ -1,0 +1,9 @@
+2026-10-25T07:44:43Z multiline:Tab Tab
+2026-10-25T07:44:48Z doc-start:ctrl+Home
+2026-10-25T07:44:50Z doc-end:ctrl+End
+2026-10-25T07:44:53Z doc-select-start:ctrl+shift+Home
+2026-10-25T07:44:55Z doc-select-end:ctrl+Home ctrl+shift+End
+2026-10-25T07:44:59Z line-start:ctrl+Home
+2026-10-25T07:45:02Z line-end:End
+2026-10-25T07:45:04Z line-home:Home
+2026-10-25T07:45:07Z line-selection:shift+End

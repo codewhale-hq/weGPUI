@@ -1,0 +1,34 @@
+2026-10-25T07:33:26Z
+Linux 6.18.55 x86_64 GNU/Linux
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+rustc 1.98.1 (48a229cea 2026-09-01)
+binary: rustc
+commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+commit-date: 2026-09-01
+host: x86_64-unknown-linux-gnu
+release: 1.98.1
+LLVM version: 22.1.8
+cargo 1.98.1 (797e8a9bc 2026-08-05)
+weston 14.0.2
+libgl1-mesa-dri:amd64	25.0.7-2+deb13u1
+mesa-vulkan-drivers:amd64	25.0.7-2+deb13u1
+openbox	3.6.1-12+b2
+python3-pyatspi	2.46.1-1
+weston	14.0.2-1
+xvfb	2:21.1.16-1.3+deb13u4
+command: /workspace/.wegpui-cloud/target-198/debug/examples/component_states
+app DISPLAY: absent; WAYLAND_DISPLAY=wayland-wegpui; XDG_SESSION_TYPE=wayland
+input: XTEST -> Weston X11 backend -> Wayland keyboard/pointer
+capture: ImageMagick import of Weston X11 output
+52650f3b830ed7e8d1cee7921d495bff06e0628d
+1241c4455b1ff3aaac2ea69f1a08823dee6d0c708e56edbbf8198afd86186e50  /workspace/.wegpui-cloud/target-198/debug/examples/component_states
+2ab43bfb809fe881b3bfc4bd29194158a19a94d632b65738eb92558c03b529a2  /workspace/weGPUI/Cargo.lock

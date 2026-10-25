@@ -1,0 +1,5 @@
+apps 2
+application 'orca' [] DISABLED
+application '-c' [] DISABLED
+  frame 'Orca speech harness probe' ['showing']
+    button 'Speech harness probe' ['focusable', 'focused', 'showing']

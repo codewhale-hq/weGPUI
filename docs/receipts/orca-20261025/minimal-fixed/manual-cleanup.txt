@@ -1,0 +1,1 @@
+After actions/audio collection finished, Orca PID 20442 ignored TERM and blocked harness cleanup. Verified exact PID/process with docker exec ps, then sent KILL to that owned Orca child. Script now bounds cleanup and records forced shutdowns; no process-name matching or broad kill used.

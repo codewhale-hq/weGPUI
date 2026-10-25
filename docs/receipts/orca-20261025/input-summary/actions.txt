@@ -1,0 +1,6 @@
+2026-10-25T07:26:33Z field:@220,64
+2026-10-25T07:26:36Z type:text=Alex
+2026-10-25T07:26:38Z input-summary:KP_Enter
+2026-10-25T07:26:41Z home-end:Home End
+2026-10-25T07:26:45Z undo:ctrl+z
+2026-10-25T07:26:48Z summary-after-undo:KP_Enter

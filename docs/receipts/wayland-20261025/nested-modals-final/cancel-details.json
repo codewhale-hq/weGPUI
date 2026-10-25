@@ -1,0 +1,86 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "interfaces": [
+    "Accessible",
+    "Component"
+  ],
+  "children": [
+    {
+      "role": "application",
+      "name": "nested_modals",
+      "description": "",
+      "interfaces": [
+        "Accessible"
+      ],
+      "children": [
+        {
+          "role": "frame",
+          "name": "weGPUI nested modals",
+          "description": "",
+          "interfaces": [
+            "Accessible",
+            "Component"
+          ],
+          "children": [
+            {
+              "role": "dialog",
+              "name": "Inner dialog",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Action",
+                "Component"
+              ],
+              "children": [
+                {
+                  "role": "heading",
+                  "name": "Inner dialog",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "label",
+                  "name": "Opened from inside the half-screen dialog.",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Component"
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "button",
+                  "name": "Cancel",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "button",
+                  "name": "OK",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

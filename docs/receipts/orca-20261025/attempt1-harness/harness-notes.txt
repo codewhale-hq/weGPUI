@@ -1,0 +1,1 @@
+GTK control is a speech-pipeline probe, not weGPUI acceptance. Initial script extraction called rg, unavailable in the image; audio, full Orca log and tree captures completed. The transcript was extracted afterward with Python from the retained original log. The reusable script now uses Python.

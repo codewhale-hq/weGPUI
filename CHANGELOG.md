@@ -23,6 +23,15 @@ versioning once a release policy is decided. No version has been published.
 
 ### Fixed
 
+- Register focus-reveal targets on navigation tabs, clear-input actions and remaining raw
+  gallery controls; add the article link keyboard ring.
+- Expose TextInput/TextArea text runs and caret/selection to assistive technology with masked
+  password text; expose dialog/form-preview labels and cell value/descriptions correctly.
+- Bind Ctrl+Home/End and Shift variants to existing document-boundary editing actions.
+- Give the two independent radio groups in `component_states` separate named group parents.
+- Hide covered modal layers from accessibility while retaining keyboard/visual restoration.
+  Actual Orca reopen/restoration remains blocked by pinned AccessKit cache-signal defects.
+
 - Swiped-cell actions: the warn (删除) action's focus ring uses theme `fg_0` and default actions
   use brand. The white ring next to a white row was not visible as focus.
 

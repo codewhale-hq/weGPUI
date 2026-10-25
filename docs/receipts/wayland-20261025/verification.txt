@@ -1,0 +1,4 @@
+PASS: Wayland dialog callback/value, focus/trap, resize, nested modal isolation,
+      input Text/caret/selection, clipboard/undo/redo and loading guard snapshots.
+PASS: Unicode/masked password Text readback and Ctrl+Home/End/Shift document boundaries.
+Scope: recorded samples only; screenshots reviewed separately; no screen-reader verdict.

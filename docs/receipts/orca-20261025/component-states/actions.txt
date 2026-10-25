@@ -1,0 +1,17 @@
+2026-10-25T07:21:43Z field:@220,64
+2026-10-25T07:21:46Z typed:text=Alex
+2026-10-25T07:21:48Z save-focus:Tab
+2026-10-25T07:21:51Z save-busy:Return
+2026-10-25T07:21:53Z skip-disabled:Tab
+2026-10-25T07:21:56Z countdown:Return
+2026-10-25T07:21:58Z countdown-skip:Tab
+2026-10-25T07:22:01Z panel-focus:Tab
+2026-10-25T07:22:03Z panel-activate:Return
+2026-10-25T07:22:06Z delivery:Tab
+2026-10-25T07:22:08Z delivery-sms:Down
+2026-10-25T07:22:11Z frequency:Tab
+2026-10-25T07:22:13Z frequency-weekly:Down
+2026-10-25T07:22:16Z guide:Tab
+2026-10-25T07:22:18Z guide-open:Return
+2026-10-25T07:22:21Z preferences:Tab
+2026-10-25T07:22:23Z preferences-open:Return

@@ -1,0 +1,9 @@
+2026-10-25T07:33:28Z open:@160,112
+2026-10-25T07:33:30Z dialog-summary:KP_Enter
+2026-10-25T07:33:33Z cancel:Tab
+2026-10-25T07:33:35Z ok:Tab
+2026-10-25T07:33:37Z trap:Tab
+2026-10-25T07:33:40Z escape:Escape
+2026-10-25T07:33:42Z reopen:Return
+2026-10-25T07:33:44Z to-ok:Tab Tab
+2026-10-25T07:33:49Z confirm:Return

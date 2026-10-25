@@ -168,8 +168,20 @@ impl Render for States {
                     .id("radio-options")
                     .role(Role::Group)
                     .aria_label("Delivery and frequency")
-                    .children(first)
-                    .children(second),
+                    .child(
+                        div()
+                            .id("delivery-options")
+                            .role(Role::RadioGroup)
+                            .aria_label("Delivery")
+                            .children(first),
+                    )
+                    .child(
+                        div()
+                            .id("frequency-options")
+                            .role(Role::RadioGroup)
+                            .aria_label("Frequency")
+                            .children(second),
+                    ),
             )
             .child(
                 LinkText::new("inline-actions")
@@ -218,7 +230,7 @@ impl Render for States {
                 div()
                     .id("results")
                     .role(Role::Label)
-                    .aria_label(format!(
+                    .aria_value(format!(
                         "Saved {}; sent {}; details {}",
                         self.saves, self.sends, self.panel_clicks
                     ))

@@ -6,7 +6,8 @@ Usage (inside a D-Bus session with AT-SPI enabled; see scripts/linux/session.sh)
 Needs the distribution's python3 with `python3-pyatspi` (python3-gi). Each line is
 `role 'name' [states] [DISABLED] [attributes]`, indented by depth. States are limited to
 focused, checked, selected, focusable, modal and showing; attributes to level, posinset and
-setsize. AccessKit reports `focused` only for an active window, which a bare Xvfb never has.
+setsize. Nonempty accessible descriptions are printed after attributes. AccessKit reports
+`focused` only for an active window, which a bare Xvfb never has.
 """
 
 import pyatspi
@@ -30,6 +31,8 @@ def walk(node, depth=0):
         disabled = '' if node.getState().contains(pyatspi.STATE_SENSITIVE) else ' DISABLED'
         attrs = [a for a in (node.getAttributes() or []) if a.split(':')[0] in ATTRS]
         suffix = f' {attrs}' if attrs else ''
+        if node.description:
+            suffix += f' description={node.description!r}'
         print('  ' * depth + f'{node.getRoleName()} {node.name!r} {states}{disabled}{suffix}')
         for i in range(node.childCount):
             ok = walk(node.getChildAtIndex(i), depth + 1) and ok

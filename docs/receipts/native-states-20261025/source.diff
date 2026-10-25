@@ -1,0 +1,321 @@
+diff --git a/examples/gallery/pages/article.rs b/examples/gallery/pages/article.rs
+index 5eaa769..448f61c 100644
+--- a/examples/gallery/pages/article.rs
++++ b/examples/gallery/pages/article.rs
+@@ -3,6 +3,7 @@ use gpui::{prelude::*, *};
+ use wegpui::{
+     Theme,
+     components::article::{Article, ArticleList, ListItem, h1, h2, h3, h4, h5, paragraph, section},
++    scrolling::RevealFocus,
+ };
+ 
+ pub struct ArticlePage {
+@@ -40,6 +41,7 @@ impl Render for ArticlePage {
+     fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+         let t = Theme::get(cx);
+         let link = t.link;
++        let brand = t.brand;
+         let lists = section(2)
+             .mb_0()
+             .child(h4("列表示例"))
+@@ -90,13 +92,15 @@ impl Render for ArticlePage {
+                 .aria_label(COMBO)
+                 .tab_stop(true)
+                 .focusable()
++                .focus_visible(move |s| s.shadow(wegpui::components::form::focus_ring(brand)))
+                 .child(StyledText::new(COMBO).with_highlights([(
+                     COMBO.len() - "read more".len()..COMBO.len(),
+                     HighlightStyle {
+                         color: Some(link),
+                         ..Default::default()
+                     },
+-                )])),
++                )]))
++                .reveal_focus(),
+         );
+         PageFrame::new(self.route).child(
+             Article::new("article")
+diff --git a/examples/gallery/pages/form/choice.rs b/examples/gallery/pages/form/choice.rs
+index 7f5bebd..dd6c01f 100644
+--- a/examples/gallery/pages/form/choice.rs
++++ b/examples/gallery/pages/form/choice.rs
+@@ -9,6 +9,7 @@ use wegpui::components::{
+     radio::RadioGroup,
+     switch::Switch,
+ };
++use wegpui::scrolling::RevealFocus;
+ 
+ pub struct Choice {
+     route: &'static str,
+@@ -124,13 +125,10 @@ impl Render for Choice {
+                             .flex()
+                             .justify_center()
+                             .child("点击下一步即表示")
+-                            .child(form_link(
+-                                "agreement",
+-                                "同意用户协议",
+-                                false,
+-                                cx,
+-                                |_, _, _| {},
+-                            )),
++                            .child(
++                                form_link("agreement", "同意用户协议", false, cx, |_, _, _| {})
++                                    .reveal_focus(),
++                            ),
+                         cx,
+                     ))
+             }
+diff --git a/examples/gallery/pages/form/mod.rs b/examples/gallery/pages/form/mod.rs
+index e7cac4f..1d97e13 100644
+--- a/examples/gallery/pages/form/mod.rs
++++ b/examples/gallery/pages/form/mod.rs
+@@ -11,6 +11,7 @@ use wegpui::{
+         toast::Toast,
+     },
+     input::{InputKind, TextInput},
++    scrolling::RevealFocus,
+ };
+ 
+ mod choice;
+@@ -175,7 +176,8 @@ pub(super) fn footer(cx: &App) -> impl IntoElement {
+                 .focus_visible(move |s| s.shadow(focus_ring(brand)))
+                 .active(|s| s.opacity(0.5))
+                 .on_click(|_, _, _| {})
+-                .child("底部链接文本"),
++                .child("底部链接文本")
++                .reveal_focus(),
+         )
+         .child(
+             div()
+@@ -218,6 +220,7 @@ pub(super) fn info_button(
+                 .text_color(rest)
+                 .group_active("info-btn", move |s| s.text_color(pressed)),
+         )
++        .reveal_focus()
+ }
+ 
+ pub(super) fn half_screen_dialog(
+diff --git a/examples/gallery/pages/form/vcode.rs b/examples/gallery/pages/form/vcode.rs
+index fe4cda8..e8ce275 100644
+--- a/examples/gallery/pages/form/vcode.rs
++++ b/examples/gallery/pages/form/vcode.rs
+@@ -16,6 +16,7 @@ use wegpui::{
+         vcode::VcodeButton,
+     },
+     input::{InputEvent, InputKind, TextInput},
++    scrolling::RevealFocus,
+ };
+ 
+ const W: f32 = 17. * 314. / 100.;
+@@ -116,7 +117,7 @@ impl Vcode {
+ impl Render for Vcode {
+     fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+         let fixed = self.route == "form_bottom_fixed";
+-        let tips_link = form_link("no-code", "收不到验证码", true, cx, |_, _, _| {});
++        let tips_link = form_link("no-code", "收不到验证码", true, cx, |_, _, _| {}).reveal_focus();
+         let mut group = FormGroup::new("group-1").first();
+         for i in 0..self.phones.len() {
+             group = group.row(self.phone_cell(i, cx));
+diff --git a/examples/gallery/pages/home.rs b/examples/gallery/pages/home.rs
+index c2c0744..d864cae 100644
+--- a/examples/gallery/pages/home.rs
++++ b/examples/gallery/pages/home.rs
+@@ -7,6 +7,7 @@ use std::time::{Duration, Instant};
+ use wegpui::{
+     Theme,
+     components::{Cell, Cells, CellsStyle, modal::ease},
++    scrolling::RevealFocus,
+ };
+ 
+ type Category = (
+@@ -166,7 +167,8 @@ impl Render for Home {
+                 .overflow_hidden()
+                 .child(
+                     category(i, label, icon, expanded, cx)
+-                        .on_click(cx.listener(move |this, _, _, cx| this.toggle(i, cx))),
++                        .on_click(cx.listener(move |this, _, _, cx| this.toggle(i, cx)))
++                        .reveal_focus(),
+                 );
+             if expanded {
+                 let cells = Cells::new()
+@@ -220,7 +222,8 @@ impl Render for Home {
+                         .cursor_pointer()
+                         .child(div().flex_1().child("层级规范"))
+                         .child(img(themed_image("icon_nav_z-index.png", cx)).size(px(30.)))
+-                        .on_click(|_, w, cx| crate::go("layers", w, cx)),
++                        .on_click(|_, w, cx| crate::go("layers", w, cx))
++                        .reveal_focus(),
+                 ),
+         );
+         PageFrame::new("home").header(header).spacing().child(
+diff --git a/scripts/capture.py b/scripts/capture.py
+index 6c560a2..77c1d41 100644
+--- a/scripts/capture.py
++++ b/scripts/capture.py
+@@ -11,6 +11,7 @@ WEUI_URL (default http://127.0.0.1:7193/dist/example/index.html, served by
+ scripts/weui_upstream.py). Native capture uses Quartz/screencapture on macOS and xdotool plus
+ ImageMagick `import` on X11 Linux (GPUI_X11_SCALE_FACTOR defaults to 2 there); see
+ docs/PARITY-TOOLING.md.
++PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH optionally selects an installed Chromium executable.
+ """
+ 
+ import argparse
+@@ -109,7 +110,7 @@ def capture_weui(args, out):
+     if key and key not in states:
+         raise SystemExit(f'no WeUI replay registered for {key}')
+     with sync_playwright() as p:
+-        browser = p.chromium.launch()
++        browser = p.chromium.launch(executable_path=os.environ.get('PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH') or None)
+         ctx = browser.new_context(viewport={'width': WIDTH, 'height': args.height}, device_scale_factor=2,
+                                   color_scheme=args.theme)
+         page = ctx.new_page()
+diff --git a/scripts/linux/sweep.sh b/scripts/linux/sweep.sh
+index e76957e..bc8f745 100755
+--- a/scripts/linux/sweep.sh
++++ b/scripts/linux/sweep.sh
+@@ -2,7 +2,8 @@
+ # Capture native/upstream pairs for many routes or states with scripts/capture.py on X11 Linux.
+ #
+ # Usage:
+-#   scripts/linux/sweep.sh OUTDIR [--theme dark] [--states] [ROUTE...]
++#   scripts/linux/sweep.sh OUTDIR [--theme light|dark] [--care] [--brand RRGGBB]
++#       [--only gpui|weui] [--states | ROUTE...]
+ #
+ # With ROUTE arguments, captures those routes in their default state. With --states, captures
+ # every "route:state" key registered in scripts/parity/*.json instead. With neither, captures
+@@ -16,31 +17,59 @@
+ set -euo pipefail
+ 
+ root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+-[[ $# -gt 0 ]] || { echo "usage: $0 OUTDIR [--theme light|dark] [--states] [ROUTE...]" >&2; exit 2; }
++usage() {
++  echo "usage: $0 OUTDIR [--theme light|dark] [--care] [--brand RRGGBB] [--only gpui|weui] [--states | ROUTE...]"
++}
++[[ $# -gt 0 ]] || { usage >&2; exit 2; }
++if [[ $1 == --help || $1 == -h ]]; then usage; exit 0; fi
+ out="$1"
++[[ -n $out && $out != --* ]] || { echo "OUTDIR must be a directory path" >&2; exit 2; }
+ shift
+ theme=light
++care=0
++brand=
++only=
+ states=0
+ routes=()
+ while (($#)); do
+   case "$1" in
+     --theme) [[ $# -gt 1 ]] || { echo "--theme needs a value" >&2; exit 2; }; theme="$2"; shift 2 ;;
++    --brand)
++      [[ $# -gt 1 ]] || { echo "--brand needs RRGGBB" >&2; exit 2; }
++      [[ $2 =~ ^[[:xdigit:]]{6}$ ]] || { echo "brand must be six hexadecimal digits (RRGGBB)" >&2; exit 2; }
++      brand="$2"; shift 2 ;;
++    --care) care=1; shift ;;
++    --only)
++      [[ $# -gt 1 ]] || { echo "--only needs gpui or weui" >&2; exit 2; }
++      [[ $2 == gpui || $2 == weui ]] || { echo "--only must be gpui or weui" >&2; exit 2; }
++      only="$2"; shift 2 ;;
+     --states) states=1; shift ;;
++    --help|-h) usage; exit 0 ;;
++    -*) echo "unknown option: $1" >&2; exit 2 ;;
+     *) routes+=("$1"); shift ;;
+   esac
+ done
+ [[ $theme == light || $theme == dark ]] || { echo "theme must be light or dark" >&2; exit 2; }
++(( !states || ${#routes[@]} == 0 )) || { echo "--states cannot be combined with route arguments" >&2; exit 2; }
++for route in "${routes[@]}"; do
++  [[ $route =~ ^[a-zA-Z0-9_]+$ ]] || { echo "invalid route: $route" >&2; exit 2; }
++done
++capture_options=(--theme "$theme")
++if ((care)); then capture_options+=(--care); fi
++if [[ -n $brand ]]; then capture_options+=(--brand "$brand"); fi
++if [[ -n $only ]]; then capture_options+=(--only "$only"); fi
+ python="${PYTHON:-python3}"
+ mkdir -p "$out/raw" "$out/pairs"
+ export PAIR_DIR="$out/pairs"
+ log="$out/sweep.log"
++printf 'begin theme=%s care=%s brand=%s only=%s states=%s\n' "$theme" "$care" "${brand:-default}" "${only:-both}" "$states" | tee -a "$log"
+ ok=0
+ failed=0
+ 
+ capture() {
+   local name="$1"
+   shift
+-  if timeout 90 "$python" -I "$root/scripts/capture.py" "$@" --theme "$theme" --out "$out/raw" \
++  if timeout 90 "$python" -I "$root/scripts/capture.py" "$@" "${capture_options[@]}" --out "$out/raw" \
+     >/dev/null 2>"$out/err-$name.txt"; then
+     echo "ok $name" | tee -a "$log"
+     ok=$((ok + 1))
+diff --git a/src/components/form.rs b/src/components/form.rs
+index 5860775..10ec6be 100644
+--- a/src/components/form.rs
++++ b/src/components/form.rs
+@@ -88,6 +88,8 @@ pub fn form_tips(text: impl IntoElement, cx: &App) -> Div {
+ /// Inline link for tips and agreements: link-coloured `text`, semibold when `bold` (as in
+ /// `.weui-cells__tips a`). It is a `Role::Link` tab stop named by `text` with a [`focus_ring`];
+ /// `on_click` runs on click or Enter/Space and the click does not reach the enclosing row.
++/// Call [`RevealFocus::reveal_focus`] after styling it to reveal the link inside a
++/// [`crate::scrolling::FocusScroll`].
+ pub fn form_link(
+     id: impl Into<ElementId>,
+     text: impl Into<SharedString>,
+@@ -923,7 +925,8 @@ impl Render for ClearableInput {
+                                 .size(px(18.))
+                                 .text_color(rest)
+                                 .group_active("input-clear", move |s| s.text_color(pressed)),
+-                        ),
++                        )
++                        .reveal_focus(),
+                 )
+             })
+     }
+diff --git a/src/components/navbar.rs b/src/components/navbar.rs
+index c535998..cfc55f7 100644
+--- a/src/components/navbar.rs
++++ b/src/components/navbar.rs
+@@ -4,7 +4,7 @@
+ //! keys move focus and selection within this bar. Only the selected tab is in the Tab order;
+ //! Home/End select the first/last tab, and arrows wrap at the ends.
+ 
+-use crate::Theme;
++use crate::{Theme, scrolling::RevealFocus};
+ use gpui::{prelude::*, *};
+ use std::rc::Rc;
+ 
+@@ -146,6 +146,7 @@ impl RenderOnce for Navbar {
+                             handler(i, window, cx);
+                         }
+                     })
++                    .reveal_focus()
+             }))
+             .child(
+                 div()
+@@ -161,6 +162,8 @@ impl RenderOnce for Navbar {
+ 
+ /// Scrolling panel (`TabPanel` role, `weui-tab__panel`) that fills the remaining height; add the
+ /// selected tab's content as children.
++/// To reveal focused descendants, call `track_scroll` with a [`ScrollHandle`] and wrap this
++/// panel in [`crate::scrolling::FocusScroll`] using the same handle.
+ pub fn tab_panel(id: impl Into<ElementId>, label: impl Into<SharedString>) -> Stateful<Div> {
+     div()
+         .id(id)
+diff --git a/src/components/tabbar.rs b/src/components/tabbar.rs
+index 7b190b1..de10445 100644
+--- a/src/components/tabbar.rs
++++ b/src/components/tabbar.rs
+@@ -4,7 +4,7 @@
+ //! handling, with focus contained to the bar and one Tab stop. [`TabbarItem`] describes one tab.
+ 
+ use super::navbar::{SelectHandler, tab_focus_handles, tab_keys};
+-use crate::Theme;
++use crate::{Theme, scrolling::RevealFocus};
+ use gpui::{prelude::*, *};
+ use std::rc::Rc;
+ 
+@@ -155,6 +155,7 @@ impl RenderOnce for Tabbar {
+                             handler(i, window, cx);
+                         }
+                     })
++                    .reveal_focus()
+             }))
+     }
+ }

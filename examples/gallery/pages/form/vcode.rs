@@ -16,6 +16,7 @@ use wegpui::{
         vcode::VcodeButton,
     },
     input::{InputEvent, InputKind, TextInput},
+    scrolling::RevealFocus,
 };
 
 const W: f32 = 17. * 314. / 100.;
@@ -116,7 +117,7 @@ impl Vcode {
 impl Render for Vcode {
     fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         let fixed = self.route == "form_bottom_fixed";
-        let tips_link = form_link("no-code", "收不到验证码", true, cx, |_, _, _| {});
+        let tips_link = form_link("no-code", "收不到验证码", true, cx, |_, _, _| {}).reveal_focus();
         let mut group = FormGroup::new("group-1").first();
         for i in 0..self.phones.len() {
             group = group.row(self.phone_cell(i, cx));

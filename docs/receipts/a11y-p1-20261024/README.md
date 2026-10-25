@@ -17,7 +17,9 @@ carry AccessKit `disabled`, but `accesskit_atspi_common 0.19.1` maps disabled to
 sensitive" only for roles that support read-only; buttons always get Enabled|Sensitive.
 Disabled switches are reported correctly (`form_switch`: `toggle button '标题文字' DISABLED`,
 identical on the baseline build). The button stays unfocusable and carries the "不可用"
-description, which Orca reads. macOS AX reports it disabled (review-20261024). Fixing this
+description. Correction (2026-10-25): the earlier claim that Orca reads this description
+was unsupported; the actual attempted Orca flat-review sample did not reach this disabled
+control. See `../orca-20261025/README.md`. macOS AX reports it disabled (review-20261024). Fixing this
 needs an upstream AccessKit change; no dependency patch was made.
 
 ## Window-manager harness finding
