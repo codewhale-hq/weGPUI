@@ -1,0 +1,244 @@
+{
+  "run_id": 40156480128,
+  "head_sha": "05cae89f1373f42af30913aa65dc5e51f7c54baf",
+  "url": "https://github.com/codewhale-hq/weGPUI/actions/runs/40156480128",
+  "jobs": [
+    {
+      "id": 121058856236,
+      "name": "Linux build, contracts and docs",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "System dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Toolchain",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +stable fetch --locked",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +stable fmt --all -- --check",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +stable build --all-targets --locked --offline",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +stable test --lib --locked --offline",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +stable clippy --all-targets --locked --offline -- -D warnings",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Strict documentation",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Bundle script contracts (fake tools, no Apple runtime)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 121058856368,
+      "name": "Apple builds only (no runtime acceptance)",
+      "status": "completed",
+      "conclusion": "failure",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Apple tooling",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Toolchain",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +stable fetch --locked",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +stable build --all-targets --locked --offline",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +stable test --lib --locked --offline",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +stable clippy --all-targets --locked --offline -- -D warnings",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build simulator bundle (does not install or launch)",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "name": "Preserve simulator build diagnostics, including failures",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 121058856373,
+      "name": "Mobile library type-checks only",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run rustup toolchain install stable --profile minimal -t aarch64-apple-ios,aarch64-apple-ios-sim,aarch64-linux-android",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +stable check --lib --locked --target aarch64-apple-ios",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +stable check --lib --locked --target aarch64-apple-ios-sim",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +stable check --lib --locked --target aarch64-linux-android",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 121058856378,
+      "name": "Linux Rust 1.95 build and contracts",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "System dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run rustup toolchain install 1.95.0 --profile minimal",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +1.95.0 build --all-targets --locked",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo +1.95.0 test --lib --locked --offline",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}

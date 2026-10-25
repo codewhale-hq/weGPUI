@@ -3,7 +3,9 @@
 The approved final configuration is implemented in
 [`.github/workflows/ci.yml`](../.github/workflows/ci.yml). Workflow configuration
 and local checks are separate from a hosted CI result; consult the run for the
-exact pushed SHA. No hosted pass is implied by committing this file.
+exact pushed SHA. No hosted pass is implied by committing this file. The first run passes Linux, MSRV,
+mobile-library and macOS native checks but fails the iOS bundle inside the upstream
+0.3.9 backend; the failing gate is retained. See the CI receipt below.
 
 | Job | Scope |
 | --- | --- |

@@ -21,10 +21,10 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 
 | Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
 | --- | --- | --- | --- | --- | --- | --- |
-| macOS arm64 | Build/fmt/Clippy/strict doc pass at `e4a2c87` (Rust 1.99) | Minimal and gallery, unchanged Rust source | Earlier 28 review pairs; new diagnostic images, paired recapture incomplete | Minimal dialog open/close/OK and focus restore; select-key attempts inconclusive | Modal isolation, option AXTitle labels, closed swipe actions hidden, article headings/lists; VoiceOver incomplete | Missing |
+| macOS arm64 | Hosted arm64 build, seven tests and Clippy pass at `05cae89`; historical strict docs at `e4a2c87` | Historical minimal/gallery launches at `e4a2c87`; no current runtime requalification | Earlier 28 review pairs; new diagnostic images, paired recapture incomplete | Minimal dialog open/close/OK and focus restore; select-key attempts inconclusive | Modal isolation, option AXTitle labels, closed swipe actions hidden, article headings/lists; VoiceOver incomplete | Missing |
 | Linux x86_64 | Fresh build, clippy `-D warnings`, fmt, strict doc pass (Rust 1.99.1); 1.95 build and seven tests pass | Both examples pass with committed windowing features under isolated Xvfb | Software-rendered X11; 192 pairs swept against Linux Chromium (60 routes light and dark, 72 states light; contact-sheet review) | XTEST click/keys, fcitx5 Pinyin, GTK portal chooser | AT-SPI tree via pyatspi; no Orca | Missing |
 | Windows | Historical mingw cross-build links | Missing; Wine failure reported without a committed run log | Missing | Missing | Missing | Missing |
-| iOS | Fresh 0.3.9 library type-checks for device/simulator; no app build | 0.3.9 backend wired; bundle scaffold present; no Apple app build/launch | Missing | Missing | Missing; backend lacks AccessKit | Missing |
+| iOS | Fresh library type-checks pass; hosted app build fails in upstream iOS/core APIs | 0.3.9 scaffold wired; upstream compilation blocker, no launch | Missing | Missing | Missing; backend lacks AccessKit | Missing |
 | Android | Fresh 0.3.9 library type-check; no app build | Blocked: no backend upstream | Missing | Missing | Missing | Missing |
 
 ## Done
@@ -138,7 +138,9 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 - **Linux windowing:** approved `wayland`/`x11` features applied (34 added lock packages).
   Both examples launch under isolated Xvfb. Wayland runtime and Orca remain untested.
 - **Mobile:** the approved GPUI 0.3.9 plus target-specific `gpui-pre-ios` path and simulator
-  bundle scaffold are implemented. Linux checks do not qualify an Apple app. Xcode 26.2
+  bundle scaffold are implemented. Hosted simulator compilation found six missing upstream
+  core APIs; see [the blocker](proposals/gpui-ios-039-incompatibility.md). No application linked.
+  Linux checks do not qualify an Apple app. Historically, Xcode 26.2
   and an iOS 26.2 Simulator runtime were available during setup; no app was built or launched.
   Android still needs a backend decision. Neither path has a verified mobile AccessKit adapter.
 - **Screen readers:** VoiceOver was attempted, but announcement retrieval timed out and the
@@ -181,8 +183,9 @@ added.
   limits, Pinyin, edge probes, reduced motion, and an uninterrupted screen-reader pass.
   Build/launch and sampled AX checks are now recorded; a complete overlay recapture is not.
 - Native Windows build/run; iOS/Android anything beyond type-checks; physical devices.
-- Hosted build CI result pending; the repository already has default CodeQL runs. CNB result
-  not recorded. See [CI](CI-PROPOSAL.md) and its receipt for exact hosted observations.
+- Hosted CI: Linux stable/MSRV, mobile library checks and macOS native checks pass;
+  simulator build fails inside published GPUI 0.3.9. See [CI receipt](receipts/ci-20261024/README.md).
+  Default CodeQL also runs; no hosted CNB result is recorded.
 - Packaging (app bundles, installers) on any platform. `cargo package --list` reviewed: 172 files,
   399 KiB compressed. Nothing published. The README's screenshot pair uses repository-relative
   paths that are excluded from the package, so it renders only where the repository is reachable.

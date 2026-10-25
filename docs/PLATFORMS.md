@@ -75,10 +75,10 @@ as such. Current state:
 
 | Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
 | --- | --- | --- | --- | --- | --- | --- |
-| macOS | arm64 build/fmt/Clippy/strict doc pass at `e4a2c87`, Rust 1.99 | Minimal and gallery launched with unchanged Rust source | Earlier 28 review pairs; new diagnostic images, no new parity verdict | Minimal dialog open/close/OK and focus restore; select-key attempts inconclusive | Modal isolation in minimal/picker/select/half-screen; closed swipe actions absent; article headings/lists; option labels in AXTitle; VoiceOver incomplete | Not done |
+| macOS | Hosted arm64 build/tests/Clippy pass at `05cae89`; historical strict docs at `e4a2c87` | Historical minimal/gallery launches; no current runtime requalification | Earlier 28 review pairs; new diagnostic images, no new parity verdict | Minimal dialog open/close/OK and focus restore; select-key attempts inconclusive | Modal isolation in minimal/picker/select/half-screen; closed swipe actions absent; article headings/lists; option labels in AXTitle; VoiceOver incomplete | Not done |
 | Linux | x86_64 build/clippy/fmt pass | Both examples launch with applied features under isolated Xvfb | Software-rendered Xvfb; 192 pairs (routes light+dark, states light) swept against Linux Chromium (scratch build) | XTEST mouse/keys, fcitx5 Pinyin, GTK portal chooser (scratch build) | AT-SPI tree in scratch; no Orca | Not done |
 | Windows | Historical mingw cross-build links | No native host; Wine failure reported without a committed run log | Missing | Missing | Missing (Narrator/NVDA) | Not done |
-| iOS | Library type-checks for device and simulator targets | 0.3.9 backend wired and bundle scaffold added; no Apple app build or launch | Missing | Missing (touch, keyboard, IME, rotation, lifecycle) | Missing; upstream backend has no AccessKit | Not done |
+| iOS | Library type-checks pass; hosted simulator app compilation fails | Upstream 0.3.9 API mismatch; no launch | Missing | Missing (touch, keyboard, IME, rotation, lifecycle) | Missing; upstream backend has no AccessKit | Not done |
 | Android | Library type-checks | Blocked: no Android backend anywhere upstream; no KVM for an emulator here | Missing | Missing | Missing (TalkBack) | Not done |
 
 Mobile interaction acceptance means touch taps, drags and scrolling; the software keyboard and
@@ -124,7 +124,7 @@ their helpers). Effect: the Linux gallery launches. Public API: none. Maintenanc
 `libxkbcommon-dev`, `libxkbcommon-x11-dev`, `libwayland-dev` and `libx11-xcb-dev`, which
 `.cnb.yml` already installs.
 
-### 2. iOS through upstream `gpui_ios` (approved path implemented; Apple verification pending)
+### 2. iOS through upstream `gpui_ios` (implemented; upstream build blocker)
 
 Approved October 24, following the historical macOS verification. Both GPUI pins are now `=0.3.9` with a target-specific dev-dependency,
 `[target.'cfg(target_os = "ios")'.dev-dependencies] gpui_ios = { package = "gpui-pre-ios", version = "=0.3.9" }`.
@@ -133,7 +133,10 @@ Both examples call `gpui_ios::current_platform(false)` on iOS through a shared h
 is excluded on iOS. [The bundle script and Info.plist](../examples/ios/README.md) follow
 the published upstream example and preserve failed builds. It does not boot or launch a
 simulator. [Linux and script-test receipts](receipts/ios-path-20261024/README.md)
-are separate from the still-missing Apple app build/runtime evidence.
+are separate from Apple app build/runtime evidence. The first hosted Apple build
+[failed inside the published backend](proposals/gpui-ios-039-incompatibility.md):
+six calls reference core APIs absent from the exact 0.3.9 dependency. No newer published
+iOS release was available. No dependency fork or registry patch has been applied.
 
 - Public API: none expected. The library compiled unchanged on 0.3.9.
 - Renderer: Metal through `gpui_apple`, which is shared with macOS.

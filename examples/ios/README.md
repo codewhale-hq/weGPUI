@@ -32,3 +32,7 @@ lifecycle or VoiceOver acceptance has been established by this scaffold.**
 The backend has no mobile AccessKit adapter. Linux library type-checks and shell
 fixture tests cannot establish Apple runtime acceptance. See
 [platform requirements](../../docs/PLATFORMS.md).
+
+The first hosted build now establishes a concrete upstream blocker: six missing
+core APIs in the published 0.3.9 pair. See the [report](../../docs/proposals/gpui-ios-039-incompatibility.md).
+No simulator bundle was produced; script fixture passes do not override that failure.

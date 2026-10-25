@@ -1,0 +1,74 @@
+{
+  "ios": [
+    {
+      "version": "0.3.9",
+      "yanked": false,
+      "checksum": "13e735b73ae85ed188764287df4d24837045d71a122c51c2264aed8c38ffd51b",
+      "gpui_requirements": [
+        "=0.3.9"
+      ]
+    }
+  ],
+  "core": [
+    {
+      "version": "0.3.0",
+      "yanked": false,
+      "checksum": "5802daa461608153504b99be0b0acd6ca5ab2b2f10bc337732160ae86d6c5fff",
+      "gpui_requirements": []
+    },
+    {
+      "version": "0.3.1",
+      "yanked": false,
+      "checksum": "abb3eb3e6977fe9d138c57e56b7e7066352be1bd0ca1300d7ed40ddbf9587b77",
+      "gpui_requirements": []
+    },
+    {
+      "version": "0.3.2",
+      "yanked": false,
+      "checksum": "c4680a36f5977d6e0892b0e7f3a2a9248a7b8acedc2b1975c88d4eb5517a21ad",
+      "gpui_requirements": []
+    },
+    {
+      "version": "0.3.3",
+      "yanked": false,
+      "checksum": "f8b0f6f593153b6eb84c336ea7ccf12a1fca186f0db99af628e72f85048c1d7b",
+      "gpui_requirements": []
+    },
+    {
+      "version": "0.3.4",
+      "yanked": false,
+      "checksum": "20199390dbd6cfbb7f0cb2ca57b46120cc1f434746a77367d2780657e0973725",
+      "gpui_requirements": []
+    },
+    {
+      "version": "0.3.5",
+      "yanked": false,
+      "checksum": "2a9ca98fdcad06276de623c2f48ebd710f1e7724eebef2f2673c583e85dc8335",
+      "gpui_requirements": []
+    },
+    {
+      "version": "0.3.6",
+      "yanked": false,
+      "checksum": "a0437c0b83e636a92bd1a39fa1d05fb632ae671289537497b35871ffbe231b84",
+      "gpui_requirements": []
+    },
+    {
+      "version": "0.3.7",
+      "yanked": false,
+      "checksum": "0e87a42bb37c7cb4e76dd1ac0ce88851e46e976e0373a47ab3e0757abffee54d",
+      "gpui_requirements": []
+    },
+    {
+      "version": "0.3.8",
+      "yanked": false,
+      "checksum": "d7f0bc3ebba070f8981b3f8e905a12f47d27794a30d029e59cdb9edf7a4b3360",
+      "gpui_requirements": []
+    },
+    {
+      "version": "0.3.9",
+      "yanked": false,
+      "checksum": "34f61c1cfd36fc9c436af09308c963822ae27a45a84feb21a77ba5c9e051f1c0",
+      "gpui_requirements": []
+    }
+  ]
+}
