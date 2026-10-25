@@ -3,12 +3,14 @@ use crate::{
     pages::Args,
 };
 use gpui::{prelude::*, *};
+use std::{path::Path, time::Duration};
 use wegpui::{
     Theme,
     components::{
         Cell, Cells, Presence,
         gallery::{Gallery, gallery_presence},
         msg::LinkText,
+        toptips::{Toptips, ToptipsState},
         uploader::{Uploader, UploaderFile},
     },
 };
@@ -22,7 +24,56 @@ pub struct UploaderPage {
     viewer: Presence,
     preview: Presence,
     current: Option<usize>,
-    preview_src: Option<SharedString>,
+    preview_src: Option<ImageSource>,
+    tips: ToptipsState,
+    error: SharedString,
+}
+
+const IMAGE_EXTENSIONS: [&str; 6] = ["png", "jpg", "jpeg", "gif", "webp", "bmp"];
+
+fn chosen_file(path: &Path) -> UploaderFile {
+    let image = path
+        .extension()
+        .and_then(|ext| ext.to_str())
+        .is_some_and(|ext| IMAGE_EXTENSIONS.contains(&ext.to_ascii_lowercase().as_str()));
+    let file = UploaderFile::new(path);
+    if image { file } else { file.error() }
+}
+
+impl UploaderPage {
+    fn choose(&mut self, deletable: bool, window: &mut Window, cx: &mut Context<Self>) {
+        let paths = cx.prompt_for_paths(PathPromptOptions {
+            files: true,
+            directories: false,
+            multiple: true,
+            prompt: Some("选择图片".into()),
+        });
+        cx.spawn_in(window, async move |this, cx| {
+            let result = paths.await;
+            this.update_in(cx, |this, window, cx| {
+                match result {
+                    Ok(Ok(Some(paths))) => {
+                        let files = paths.iter().map(|path| chosen_file(path));
+                        if deletable {
+                            this.deletable.extend(files);
+                        } else {
+                            this.plain.extend(files);
+                        }
+                    }
+                    Ok(Ok(None)) | Err(_) => {}
+                    Ok(Err(error)) => {
+                        this.error = format!("无法打开文件选择器：{error}").into();
+                        this.tips.show(window);
+                        this.tips
+                            .hide_after(Duration::from_secs(3), window, cx, |this| &mut this.tips);
+                    }
+                }
+                cx.notify();
+            })
+            .ok();
+        })
+        .detach();
+    }
 }
 
 pub fn build(route: &'static str, args: &Args, window: &mut Window, cx: &mut App) -> AnyView {
@@ -46,6 +97,8 @@ pub fn build(route: &'static str, args: &Args, window: &mut Window, cx: &mut App
         preview: gallery_presence(cx),
         current: None,
         preview_src: None,
+        tips: ToptipsState::new(),
+        error: SharedString::default(),
     });
     if matches!(state.as_deref(), Some("viewer" | "preview")) {
         let weak = page.downgrade();
@@ -92,10 +145,7 @@ impl Render for UploaderPage {
                 this.viewer.show(window, cx);
                 cx.notify();
             }))
-            .on_add(cx.listener(|this, _, _, cx| {
-                this.plain.push(UploaderFile::new(PIC));
-                cx.notify();
-            }));
+            .on_add(cx.listener(|this, _, window, cx| this.choose(false, window, cx)));
         let second = Uploader::new("uploader-deletable", "图片上传，缩略图带删除")
             .info("3/10")
             .deletable(true)
@@ -111,10 +161,7 @@ impl Render for UploaderPage {
                     cx.notify();
                 }
             }))
-            .on_add(cx.listener(|this, _, _, cx| {
-                this.deletable.push(UploaderFile::new(PIC));
-                cx.notify();
-            }));
+            .on_add(cx.listener(|this, _, window, cx| this.choose(true, window, cx)));
         let cell = |id: &'static str, uploader: Uploader| {
             Cells::new().child(
                 Cell::new(id)
@@ -135,6 +182,7 @@ impl Render for UploaderPage {
             .map(|f| f.src.clone());
         PageFrame::new(self.route)
             .header(header)
+            .fixed(Toptips::new("uploader-error", &self.tips, self.error.clone()).warn())
             .child(cell("uploader-cell-1", first))
             .child(cell("uploader-cell-2", second))
             .child(

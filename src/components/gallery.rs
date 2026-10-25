@@ -18,7 +18,7 @@ pub fn gallery_presence(cx: &mut App) -> Presence {
 pub struct Gallery {
     id: ElementId,
     presence: Presence,
-    src: Option<SharedString>,
+    src: Option<ImageSource>,
     label: SharedString,
     delete_label: SharedString,
     on_delete: Option<ClickHandler>,
@@ -37,7 +37,7 @@ impl Gallery {
             on_dismiss: None,
         }
     }
-    pub fn src(mut self, src: impl Into<SharedString>) -> Self {
+    pub fn src(mut self, src: impl Into<ImageSource>) -> Self {
         self.src = Some(src.into());
         self
     }

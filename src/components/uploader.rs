@@ -12,13 +12,13 @@ pub enum UploaderStatus {
 
 #[derive(Clone)]
 pub struct UploaderFile {
-    pub src: SharedString,
+    pub src: ImageSource,
     pub status: UploaderStatus,
     pub label: SharedString,
 }
 
 impl UploaderFile {
-    pub fn new(src: impl Into<SharedString>) -> Self {
+    pub fn new(src: impl Into<ImageSource>) -> Self {
         Self {
             src: src.into(),
             status: UploaderStatus::Done,

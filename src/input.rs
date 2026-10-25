@@ -40,10 +40,27 @@ actions!(
         Paste,
         Cut,
         Copy,
+        Undo,
+        Redo,
     ]
 );
 
 const BULLET: char = '•';
+const UNDO_LIMIT: usize = 100;
+
+#[derive(Clone)]
+struct Snapshot {
+    content: SharedString,
+    selected_range: Range<usize>,
+    selection_reversed: bool,
+}
+
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum EditKind {
+    Insert,
+    Delete,
+    Replace,
+}
 const BLINK_INTERVAL: Duration = Duration::from_millis(500);
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
@@ -103,6 +120,10 @@ pub struct TextInput {
     blink_epoch: usize,
     blink_task: Option<Task<()>>,
     focus_subscriptions: Vec<Subscription>,
+    undo_stack: Vec<Snapshot>,
+    redo_stack: Vec<Snapshot>,
+    last_edit: Option<(EditKind, usize)>,
+    composition_base: Option<Snapshot>,
 }
 
 impl TextInput {
@@ -133,6 +154,10 @@ impl TextInput {
             blink_epoch: 0,
             blink_task: None,
             focus_subscriptions: Vec::new(),
+            undo_stack: Vec::new(),
+            redo_stack: Vec::new(),
+            last_edit: None,
+            composition_base: None,
         }
     }
 
@@ -151,7 +176,7 @@ impl TextInput {
     }
 
     pub fn len(&self) -> usize {
-        self.content.graphemes(true).count()
+        self.content.encode_utf16().count()
     }
 
     pub fn is_empty(&self) -> bool {
@@ -191,6 +216,10 @@ impl TextInput {
         let text = self.limit(&text, 0..self.content.len());
         let changed = *self.content != *text;
         self.content = text.into();
+        self.undo_stack.clear();
+        self.redo_stack.clear();
+        self.last_edit = None;
+        self.composition_base = None;
         self.selected_range = self.content.len()..self.content.len();
         self.selection_reversed = false;
         self.marked_range = None;
@@ -249,11 +278,7 @@ impl TextInput {
         if let Some(max) = max_len
             && self.len() > max
         {
-            let end = self
-                .content
-                .grapheme_indices(true)
-                .nth(max)
-                .map_or(self.content.len(), |(i, _)| i);
+            let end = self.limit(&self.content, 0..self.content.len()).len();
             self.content = self.content[..end].to_string().into();
             self.selected_range = end..end;
             self.selection_reversed = false;
@@ -307,10 +332,16 @@ impl TextInput {
         let Some(max) = self.max_len else {
             return text.to_string();
         };
-        let kept = self.content[..replaced.start].graphemes(true).count()
-            + self.content[replaced.end..].graphemes(true).count();
+        let kept = self.content[..replaced.start].encode_utf16().count()
+            + self.content[replaced.end..].encode_utf16().count();
+        let mut budget = max.saturating_sub(kept);
         text.graphemes(true)
-            .take(max.saturating_sub(kept))
+            .take_while(|grapheme| {
+                let units = grapheme.encode_utf16().count();
+                let fits = units <= budget;
+                budget = budget.saturating_sub(units);
+                fits
+            })
             .collect()
     }
 
@@ -627,6 +658,70 @@ impl TextInput {
         }
     }
 
+    fn snapshot(&self) -> Snapshot {
+        Snapshot {
+            content: self.content.clone(),
+            selected_range: self.selected_range.clone(),
+            selection_reversed: self.selection_reversed,
+        }
+    }
+
+    fn restore(&mut self, snapshot: Snapshot, cx: &mut Context<Self>) {
+        self.content = snapshot.content;
+        self.selected_range = snapshot.selected_range;
+        self.selection_reversed = snapshot.selection_reversed;
+        self.marked_range = None;
+        self.composition_base = None;
+        self.last_edit = None;
+        self.after_cursor_change(cx);
+        cx.emit(InputEvent::Changed);
+    }
+
+    fn record_edit(&mut self, before: Snapshot, range: &Range<usize>, text: &str) {
+        let kind = match (range.is_empty(), text.is_empty()) {
+            (_, true) => EditKind::Delete,
+            (true, false) => EditKind::Insert,
+            (false, false) => EditKind::Replace,
+        };
+        let coalesce = match (self.last_edit, kind) {
+            (Some((EditKind::Insert, at)), EditKind::Insert) => {
+                at == range.start && !text.chars().any(char::is_whitespace)
+            }
+            (Some((EditKind::Delete, at)), EditKind::Delete) => {
+                at == range.start || at == range.end
+            }
+            _ => false,
+        };
+        if !coalesce {
+            self.undo_stack.push(before);
+            if self.undo_stack.len() > UNDO_LIMIT {
+                self.undo_stack.remove(0);
+            }
+        }
+        self.redo_stack.clear();
+        self.last_edit = Some((kind, range.start + text.len()));
+    }
+
+    fn undo(&mut self, _: &Undo, _: &mut Window, cx: &mut Context<Self>) {
+        if !self.editable() {
+            return;
+        }
+        if let Some(snapshot) = self.undo_stack.pop() {
+            self.redo_stack.push(self.snapshot());
+            self.restore(snapshot, cx);
+        }
+    }
+
+    fn redo(&mut self, _: &Redo, _: &mut Window, cx: &mut Context<Self>) {
+        if !self.editable() {
+            return;
+        }
+        if let Some(snapshot) = self.redo_stack.pop() {
+            self.undo_stack.push(self.snapshot());
+            self.restore(snapshot, cx);
+        }
+    }
+
     fn vertical(&mut self, direction: f32, select: bool, cx: &mut Context<Self>) {
         if !self.multiline {
             let target = if direction < 0. {
@@ -892,6 +987,13 @@ impl EntityInputHandler for TextInput {
 
     fn unmark_text(&mut self, _window: &mut Window, _cx: &mut Context<Self>) {
         self.marked_range = None;
+        if let Some(base) = self.composition_base.take()
+            && *base.content != *self.content
+        {
+            self.undo_stack.push(base);
+            self.redo_stack.clear();
+            self.last_edit = None;
+        }
     }
 
     fn replace_text_in_range(
@@ -912,10 +1014,27 @@ impl EntityInputHandler for TextInput {
         let text = self.sanitize(new_text);
         let text = self.limit(&text, range.clone());
         let had_marked = self.marked_range.take().is_some();
+        let base = self.composition_base.take();
         if text.is_empty() && range.is_empty() && !had_marked {
             cx.notify();
             return;
         }
+        let before = base.unwrap_or_else(|| self.snapshot());
+        if *before.content
+            == *format!(
+                "{}{}{}",
+                &self.content[..range.start],
+                text,
+                &self.content[range.end..]
+            )
+        {
+            let inserted = self.replace(range, &text);
+            self.selected_range = inserted.end..inserted.end;
+            self.selection_reversed = false;
+            self.after_cursor_change(cx);
+            return;
+        }
+        self.record_edit(before, &range, &text);
         let inserted = self.replace(range, &text);
         self.selected_range = inserted.end..inserted.end;
         self.selection_reversed = false;
@@ -944,8 +1063,14 @@ impl EntityInputHandler for TextInput {
         } else {
             new_text.replace(['\r', '\n'], " ")
         };
+        if self.marked_range.is_none() && self.composition_base.is_none() {
+            self.composition_base = Some(self.snapshot());
+        }
         let inserted = self.replace(range, &new_text);
         self.marked_range = (!new_text.is_empty()).then_some(inserted.clone());
+        if new_text.is_empty() {
+            self.composition_base = None;
+        }
         self.selected_range = new_selected_range_utf16
             .as_ref()
             .map(|range_utf16| {
@@ -1410,6 +1535,8 @@ impl Render for TextInput {
                 el.key_context("TextInput")
                     .track_focus(&self.focus_handle)
                     .cursor(CursorStyle::IBeam)
+                    .on_action(cx.listener(Self::undo))
+                    .on_action(cx.listener(Self::redo))
                     .on_action(cx.listener(Self::backspace))
                     .on_action(cx.listener(Self::delete))
                     .on_action(cx.listener(Self::delete_word_left))
@@ -1580,6 +1707,11 @@ pub fn init(cx: &mut App) {
         KeyBinding::new("cmd-v", Paste, ctx),
         KeyBinding::new("cmd-c", Copy, ctx),
         KeyBinding::new("cmd-x", Cut, ctx),
+        KeyBinding::new("ctrl-z", Undo, ctx),
+        KeyBinding::new("ctrl-shift-z", Redo, ctx),
+        KeyBinding::new("ctrl-y", Redo, ctx),
+        KeyBinding::new("cmd-z", Undo, ctx),
+        KeyBinding::new("cmd-shift-z", Redo, ctx),
         KeyBinding::new("alt-left", WordLeft, ctx),
         KeyBinding::new("alt-right", WordRight, ctx),
         KeyBinding::new("shift-alt-left", SelectWordLeft, ctx),

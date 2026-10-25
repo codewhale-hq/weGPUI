@@ -7,7 +7,10 @@ Usage:
 Writes DIR/NAME-{theme}-gpui.png and DIR/NAME-{theme}-weui.png (default DIR docs/parity,
 NAME = ROUTE[-STATE]). The WeUI side replays the JavaScript registered for STATE in
 scripts/parity/*.json ({"route:state": "js"}) against the page served at
-WEUI_URL (default http://127.0.0.1:7193/dist/example/index.html).
+WEUI_URL (default http://127.0.0.1:7193/dist/example/index.html, served by
+scripts/weui_upstream.py). Native capture uses Quartz/screencapture on macOS and xdotool plus
+ImageMagick `import` on X11 Linux (GPUI_X11_SCALE_FACTOR defaults to 2 there); see
+docs/PARITY-TOOLING.md.
 """
 
 import argparse
@@ -66,6 +69,8 @@ def capture_gpui(args, out):
         cmd += ['--brand', args.brand]
     if args.care:
         cmd += ['--care']
+    if sys.platform.startswith('linux'):
+        return capture_gpui_x11(args, cmd, out)
     proc = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
     try:
         wid = None
@@ -119,6 +124,34 @@ def capture_weui(args, out):
             page.wait_for_timeout(300)
         page.screenshot(path=str(out))
         browser.close()
+
+
+def capture_gpui_x11(args, cmd, out):
+    env = dict(os.environ, GPUI_X11_SCALE_FACTOR=os.environ.get('GPUI_X11_SCALE_FACTOR', '2'))
+    proc = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, env=env)
+    try:
+        wid = None
+        for _ in range(100):
+            time.sleep(0.1)
+            found = subprocess.run(['xdotool', 'search', '--pid', str(proc.pid), '--name', 'weGPUI'],
+                                   capture_output=True, text=True)
+            if found.stdout.strip():
+                wid = found.stdout.split()[0]
+                break
+        if not wid:
+            raise SystemExit(f'gallery window not found; stderr: {proc.stderr.read1().decode() if proc.poll() is not None else ""}')
+        time.sleep(args.settle)
+        with tempfile.TemporaryDirectory() as tmp:
+            raw = pathlib.Path(tmp) / 'raw.png'
+            subprocess.run(['import', '-window', wid, str(raw)], check=True)
+            from PIL import Image
+            Image.open(raw).convert('RGB').save(out)
+    finally:
+        proc.terminate()
+        try:
+            proc.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            proc.kill()
 
 
 def main():
