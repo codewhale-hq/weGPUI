@@ -204,8 +204,8 @@ impl FormCell {
         self.label = Some(label.into());
         self
     }
-    /// Sets the label width in logical pixels, clamped to [`LABEL_MAX_WIDTH`] when rendered.
-    /// Default [`LABEL_WIDTH`], which renders at that 85px cap.
+    /// Sets the horizontal label width in logical pixels, clamped to [`LABEL_MAX_WIDTH`].
+    /// Default [`LABEL_WIDTH`], which renders at that 85px cap. Vertical labels fill their header.
     pub fn label_width(mut self, width: f32) -> Self {
         self.label_width = width;
         self
@@ -345,10 +345,12 @@ impl RenderOnce for FormCell {
         };
         let label_width = self.label_width;
         let label_el = self.label.map(|label| {
-            form_label(label, label_width).when(wrap, |el| {
-                el.mt(px(if kind == CellKind::Vcode { 12. } else { 8. }))
-                    .mb(px(8.))
-            })
+            form_label(label, label_width)
+                .when(vertical, |el| el.w_full().mr(px(0.)))
+                .when(wrap, |el| {
+                    el.mt(px(if kind == CellKind::Vcode { 12. } else { 8. }))
+                        .mb(px(8.))
+                })
         });
         let label_desc = self.label_desc.map(|desc| {
             div()
