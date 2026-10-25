@@ -1,0 +1,35 @@
+ M Cargo.lock
+ M Cargo.toml
+ M NOTICE
+ M docs/ACCEPTANCE.md
+ M docs/HUMAN-TASKS.md
+ M docs/RELEASE-READINESS.md
+ M docs/STATUS.md
+ M docs/TAKEOVER.md
+ M docs/proposals/modal-a11y-action-guard/README.md
+ M docs/proposals/x11-grab-focus/README.md
+ M docs/proposals/x11-grab-focus/checksums.txt
+ M docs/proposals/x11-grab-focus/validation.txt
+ M docs/receipts/orca-controls-20261025/x11-focus-modes-20261025/README.md
+ M src/accessibility.rs
+ M src/components/modal.rs
+ M vendor/README.md
+ M vendor/gpui_pre/src/view.rs
+ M vendor/gpui_pre/src/window.rs
+ M vendor/gpui_pre/src/window/a11y.rs
+ M website/app.js
+ M website/build.py
+ M website/check_browser.py
+ M website/index.html
+ M website/style.css
+?? .github/workflows/pages.yml
+?? docs/proposals/modal-a11y-action-guard/application-status.md
+?? docs/proposals/x11-grab-focus/applied-source-checks.json
+?? docs/receipts/overlay-contracts-20261025/action-guard-fixed-20261025/
+?? docs/receipts/web-interactive-20261025/
+?? docs/receipts/web-playground-20261025/
+?? docs/receipts/x11-grab-focus-20261025/
+?? vendor/gpui_pre_linux/
+?? website/HOSTING.md
+?? website/check_interactive.py
+?? website/playground/

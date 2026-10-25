@@ -1,0 +1,3 @@
+PASS seven saved Click/Focus timing cases: no closed callbacks, opener restored, normal/reopen controls work.
+PASS six caller contracts: raw, same-request close, epoch reopen, passive/background, ancestor chain, two windows.
+PASS supplementary two extracted metadata regressions; full vendor Cargo unit suite remains blocked.

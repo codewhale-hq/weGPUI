@@ -1,0 +1,467 @@
+{
+  "timing_cases": [
+    {
+      "route": "click",
+      "requested_ms": 0,
+      "actual_after_return_ms": 0.002063,
+      "saved_result": true,
+      "saved_error": null,
+      "closed_callbacks": 0,
+      "focus_after_close": "Open slow modal",
+      "reopen": true
+    },
+    {
+      "route": "click",
+      "requested_ms": 1,
+      "actual_after_return_ms": 1.09569,
+      "saved_result": true,
+      "saved_error": null,
+      "closed_callbacks": 0,
+      "focus_after_close": "Open slow modal",
+      "reopen": true
+    },
+    {
+      "route": "click",
+      "requested_ms": 20,
+      "actual_after_return_ms": 20.079606,
+      "saved_result": true,
+      "saved_error": null,
+      "closed_callbacks": 0,
+      "focus_after_close": "Open slow modal",
+      "reopen": true
+    },
+    {
+      "route": "click",
+      "requested_ms": 100,
+      "actual_after_return_ms": 102.80751,
+      "saved_result": null,
+      "saved_error": "GLib.Error('Unknown object '/org/a11y/atspi/accessible/0/336229189971035769522815485675447517184'', 'atspi_error', 1)",
+      "closed_callbacks": 0,
+      "focus_after_close": "Open slow modal",
+      "reopen": true
+    },
+    {
+      "route": "click",
+      "requested_ms": 500,
+      "actual_after_return_ms": 500.439274,
+      "saved_result": null,
+      "saved_error": "GLib.Error('Unknown object '/org/a11y/atspi/accessible/0/336229189971035769522815485675447517184'', 'atspi_error', 1)",
+      "closed_callbacks": 0,
+      "focus_after_close": "Open slow modal",
+      "reopen": true
+    },
+    {
+      "route": "focus",
+      "requested_ms": 0,
+      "actual_after_return_ms": 0.003118,
+      "saved_result": true,
+      "saved_error": null,
+      "closed_callbacks": 0,
+      "focus_after_close": "Open slow modal",
+      "reopen": true
+    },
+    {
+      "route": "focus",
+      "requested_ms": 1,
+      "actual_after_return_ms": 1.086707,
+      "saved_result": true,
+      "saved_error": null,
+      "closed_callbacks": 0,
+      "focus_after_close": "Open slow modal",
+      "reopen": true
+    }
+  ],
+  "caller_contracts": {
+    "raw": {
+      "first_callbacks": 1,
+      "second_callbacks": 0,
+      "at_returns": {
+        "open-own-control": true,
+        "saved-caller-while-closed": true
+      },
+      "focus_after_close": "Open main",
+      "records": [
+        {
+          "ms": 787,
+          "tag": "main",
+          "event": "open",
+          "own": 0,
+          "second": 0,
+          "background": 0,
+          "open": true,
+          "inner": false,
+          "generation": 1
+        },
+        {
+          "ms": 3072,
+          "tag": "main",
+          "event": "first",
+          "own": 1,
+          "second": 0,
+          "background": 0,
+          "open": true,
+          "inner": false,
+          "generation": 1
+        },
+        {
+          "ms": 3310,
+          "tag": "main",
+          "event": "hide",
+          "own": 1,
+          "second": 0,
+          "background": 0,
+          "open": false,
+          "inner": false,
+          "generation": 1
+        }
+      ]
+    },
+    "multiple-close": {
+      "first_callbacks": 1,
+      "second_callbacks": 0,
+      "at_returns": {
+        "first-request": true
+      },
+      "focus_after_close": "Open main",
+      "records": [
+        {
+          "ms": 808,
+          "tag": "main",
+          "event": "open",
+          "own": 0,
+          "second": 0,
+          "background": 0,
+          "open": true,
+          "inner": false,
+          "generation": 1
+        },
+        {
+          "ms": 3093,
+          "tag": "main",
+          "event": "first",
+          "own": 1,
+          "second": 0,
+          "background": 0,
+          "open": true,
+          "inner": false,
+          "generation": 1
+        },
+        {
+          "ms": 3093,
+          "tag": "main",
+          "event": "hide-in-first",
+          "own": 1,
+          "second": 0,
+          "background": 0,
+          "open": false,
+          "inner": false,
+          "generation": 1
+        }
+      ]
+    },
+    "multiple-reopen": {
+      "first_callbacks": 2,
+      "second_callbacks": 0,
+      "at_returns": {
+        "first-request": true,
+        "new-session-request": true
+      },
+      "focus_after_close": "Open main",
+      "records": [
+        {
+          "ms": 714,
+          "tag": "main",
+          "event": "open",
+          "own": 0,
+          "second": 0,
+          "background": 0,
+          "open": true,
+          "inner": false,
+          "generation": 1
+        },
+        {
+          "ms": 2996,
+          "tag": "main",
+          "event": "first",
+          "own": 1,
+          "second": 0,
+          "background": 0,
+          "open": true,
+          "inner": false,
+          "generation": 1
+        },
+        {
+          "ms": 2996,
+          "tag": "main",
+          "event": "hide-in-first",
+          "own": 1,
+          "second": 0,
+          "background": 0,
+          "open": false,
+          "inner": false,
+          "generation": 1
+        },
+        {
+          "ms": 2996,
+          "tag": "main",
+          "event": "reopen-in-first",
+          "own": 1,
+          "second": 0,
+          "background": 0,
+          "open": true,
+          "inner": false,
+          "generation": 2
+        },
+        {
+          "ms": 5469,
+          "tag": "main",
+          "event": "first",
+          "own": 2,
+          "second": 0,
+          "background": 0,
+          "open": true,
+          "inner": false,
+          "generation": 2
+        },
+        {
+          "ms": 5469,
+          "tag": "main",
+          "event": "hide-in-first",
+          "own": 2,
+          "second": 0,
+          "background": 0,
+          "open": false,
+          "inner": false,
+          "generation": 2
+        }
+      ]
+    },
+    "passive": {
+      "first_callbacks": 2,
+      "second_callbacks": 0,
+      "at_returns": {
+        "open-own-control": true,
+        "open-background-control": true,
+        "saved-own-while-closed": true,
+        "background-while-closed": true,
+        "background-after-close": true,
+        "reopened-own-control": true
+      },
+      "focus_after_close": "Background action main",
+      "records": [
+        {
+          "ms": 731,
+          "tag": "main",
+          "event": "open",
+          "own": 0,
+          "second": 0,
+          "background": 0,
+          "open": true,
+          "inner": false,
+          "generation": 1
+        },
+        {
+          "ms": 3061,
+          "tag": "main",
+          "event": "first",
+          "own": 1,
+          "second": 0,
+          "background": 0,
+          "open": true,
+          "inner": false,
+          "generation": 1
+        },
+        {
+          "ms": 3293,
+          "tag": "main",
+          "event": "background",
+          "own": 1,
+          "second": 0,
+          "background": 1,
+          "open": true,
+          "inner": false,
+          "generation": 1
+        },
+        {
+          "ms": 3559,
+          "tag": "main",
+          "event": "hide",
+          "own": 1,
+          "second": 0,
+          "background": 1,
+          "open": false,
+          "inner": false,
+          "generation": 1
+        },
+        {
+          "ms": 3562,
+          "tag": "main",
+          "event": "background",
+          "own": 1,
+          "second": 0,
+          "background": 2,
+          "open": false,
+          "inner": false,
+          "generation": 1
+        },
+        {
+          "ms": 6175,
+          "tag": "main",
+          "event": "background",
+          "own": 1,
+          "second": 0,
+          "background": 3,
+          "open": false,
+          "inner": false,
+          "generation": 1
+        },
+        {
+          "ms": 6223,
+          "tag": "main",
+          "event": "open",
+          "own": 1,
+          "second": 0,
+          "background": 3,
+          "open": true,
+          "inner": false,
+          "generation": 2
+        },
+        {
+          "ms": 8443,
+          "tag": "main",
+          "event": "first",
+          "own": 2,
+          "second": 0,
+          "background": 3,
+          "open": true,
+          "inner": false,
+          "generation": 2
+        }
+      ]
+    },
+    "ancestor": {
+      "first_callbacks": 1,
+      "second_callbacks": 0,
+      "at_returns": {
+        "open-own-control": true,
+        "saved-inner-click-after-parent-close": true,
+        "saved-inner-focus-after-parent-close": true
+      },
+      "focus_after_close": "Open main",
+      "records": [
+        {
+          "ms": 794,
+          "tag": "main",
+          "event": "open",
+          "own": 0,
+          "second": 0,
+          "background": 0,
+          "open": true,
+          "inner": true,
+          "generation": 1
+        },
+        {
+          "ms": 3068,
+          "tag": "main",
+          "event": "first",
+          "own": 1,
+          "second": 0,
+          "background": 0,
+          "open": true,
+          "inner": true,
+          "generation": 1
+        },
+        {
+          "ms": 3274,
+          "tag": "main",
+          "event": "hide",
+          "own": 1,
+          "second": 0,
+          "background": 0,
+          "open": false,
+          "inner": true,
+          "generation": 1
+        }
+      ]
+    },
+    "two-window": {
+      "first_callbacks": 1,
+      "second_callbacks": 0,
+      "at_returns": {
+        "open-own-control": true,
+        "other-window-open-control": true,
+        "saved-caller-while-closed": true,
+        "other-window-closed-control": true
+      },
+      "focus_after_close": "Open A",
+      "records": [
+        {
+          "ms": 802,
+          "tag": "A",
+          "event": "open",
+          "own": 0,
+          "second": 0,
+          "background": 0,
+          "open": true,
+          "inner": false,
+          "generation": 1
+        },
+        {
+          "ms": 3102,
+          "tag": "A",
+          "event": "first",
+          "own": 1,
+          "second": 0,
+          "background": 0,
+          "open": true,
+          "inner": false,
+          "generation": 1
+        },
+        {
+          "ms": 3092,
+          "tag": "B",
+          "event": "background",
+          "own": 0,
+          "second": 0,
+          "background": 1,
+          "open": false,
+          "inner": false,
+          "generation": 0
+        },
+        {
+          "ms": 3571,
+          "tag": "A",
+          "event": "hide",
+          "own": 1,
+          "second": 0,
+          "background": 0,
+          "open": false,
+          "inner": false,
+          "generation": 1
+        },
+        {
+          "ms": 5944,
+          "tag": "B",
+          "event": "background",
+          "own": 0,
+          "second": 0,
+          "background": 2,
+          "open": false,
+          "inner": false,
+          "generation": 0
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Linux X11 samples only; no complete component/reader/host acceptance.",
+    "Full GPUI Cargo unit build remains blocked; extracted metadata tests are separate."
+  ],
+  "source_checks": {
+    "root_unit_tests": 47,
+    "doctests_ignored": 1,
+    "root_five_gates": "PASS",
+    "full_vendor_cargo_tests": "BLOCKED: missing upstream fixtures/optional test support",
+    "extracted_metadata_tests": "2 passed, exact production NodeBuilder/test text with documented std aliases"
+  }
+}

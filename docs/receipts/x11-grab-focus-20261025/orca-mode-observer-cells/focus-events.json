@@ -1,0 +1,242 @@
+[
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:38.736542+00:00",
+    "monotonic_ns": 14970790362102,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:38.736593+00:00",
+    "monotonic_ns": 14970790410219,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:38.742858+00:00",
+    "monotonic_ns": 14970796677384,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:38.742896+00:00",
+    "monotonic_ns": 14970796727771,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:43.871214+00:00",
+    "monotonic_ns": 14975925031605,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:43.871241+00:00",
+    "monotonic_ns": 14975925057275,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:43.877840+00:00",
+    "monotonic_ns": 14975931659452,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:43.877880+00:00",
+    "monotonic_ns": 14975931697480,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:47.906469+00:00",
+    "monotonic_ns": 14979960287627,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:47.906506+00:00",
+    "monotonic_ns": 14979960322976,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:47.912820+00:00",
+    "monotonic_ns": 14979966639873,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:47.912860+00:00",
+    "monotonic_ns": 14979966677470,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:49.927898+00:00",
+    "monotonic_ns": 14981981717822,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:49.927939+00:00",
+    "monotonic_ns": 14981981756601,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:49.934579+00:00",
+    "monotonic_ns": 14981988412959,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:49.934663+00:00",
+    "monotonic_ns": 14981988480957,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:53.030857+00:00",
+    "monotonic_ns": 14985084675344,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:53.030885+00:00",
+    "monotonic_ns": 14985084701713,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:53.037306+00:00",
+    "monotonic_ns": 14985091124392,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:53.037341+00:00",
+    "monotonic_ns": 14985091157839,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:53.208046+00:00",
+    "monotonic_ns": 14985261864805,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:53.208083+00:00",
+    "monotonic_ns": 14985261900949,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:53.214545+00:00",
+    "monotonic_ns": 14985268365025,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:53.214616+00:00",
+    "monotonic_ns": 14985268433692,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:53.375289+00:00",
+    "monotonic_ns": 14985429108068,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:53.375510+00:00",
+    "monotonic_ns": 14985429329027,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:53.569454+00:00",
+    "monotonic_ns": 14985623275311,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:21:53.569553+00:00",
+    "monotonic_ns": 14985623371330,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:22:02.234529+00:00",
+    "monotonic_ns": 14994288348174,
+    "mode": "NotifyNormal",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0xa00001",
+    "utc": "2026-10-25T11:22:02.234569+00:00",
+    "monotonic_ns": 14994288387003,
+    "mode": "NotifyNormal",
+    "detail": "NotifyPointer"
+  }
+]

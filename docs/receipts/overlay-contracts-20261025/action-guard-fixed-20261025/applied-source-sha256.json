@@ -1,0 +1,9 @@
+{
+  "src/accessibility.rs": "8784b403533814ea462814ae6b192ae2105d05bd43f9f36af67539850ff7adf3",
+  "src/components/modal.rs": "9a6bb53380ef6821a8f4212dd5bf9ff45460ab8673491fd30673fadca34a3110",
+  "vendor/gpui_pre/src/window.rs": "0ec8420d584d4771d8eee4e44197c136fbbb068b8ed786dbd8371490a2e2248b",
+  "vendor/gpui_pre/src/window/a11y.rs": "17ca06ea5e2edbd257eb61c9985b7b0b57f4e27117bf0bdd69714002eef3911c",
+  "vendor/gpui_pre/src/view.rs": "a3198399162470ae9e45b2c3b4494af95b4c50cf7fae5564ed95975d9ca34ffb",
+  "Cargo.toml": "a8156ca74eee7d9fceac90cbddc540a12528fb5ef42993eadd7f2bdceafafd7b",
+  "Cargo.lock": "4e8ff7326aea2555d71300a4a8332e08d853e2c500d7185e2996cd3760c1cc3c"
+}

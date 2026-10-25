@@ -1,0 +1,37 @@
+2026-10-25T11:33:07Z
+3840b47370f8defa925cbff7d3bf12ccf6250722
+63650f5c0d66213ed27c9477930171963ea1b472f2914382be39f2bb4757d4ce  /workspace/.wegpui-cloud/artifacts/native-guard-approved/modal-guard-contracts
+4e8ff7326aea2555d71300a4a8332e08d853e2c500d7185e2996cd3760c1cc3c  Cargo.lock
+a8156ca74eee7d9fceac90cbddc540a12528fb5ef42993eadd7f2bdceafafd7b  Cargo.toml
+9a6bb53380ef6821a8f4212dd5bf9ff45460ab8673491fd30673fadca34a3110  src/components/modal.rs
+3048307b00ca32ccb5b1a17ccd3b9c3178655c6d011d42ed75c5bc82e285108f  src/components/swiped.rs
+8784b403533814ea462814ae6b192ae2105d05bd43f9f36af67539850ff7adf3  src/accessibility.rs
+rustc 1.98.1 (48a229cea 2026-09-01)
+binary: rustc
+commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+commit-date: 2026-09-01
+host: x86_64-unknown-linux-gnu
+release: 1.98.1
+LLVM version: 22.1.8
+cargo 1.98.1 (797e8a9bc 2026-08-05)
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+Openbox 3.6.1
+Copyright (c) 2004   Mikael Magnusson
+Copyright (c) 2002   Dana Jansens
+
+This program comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to redistribute it
+under certain conditions. See the file COPYING for details.
+
+use: X [:<display>] [option]
+-a #                   default pointer acceleration (factor)
+-ac                    disable access control restrictions

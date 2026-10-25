@@ -15,7 +15,9 @@ Updated 2026-10-25 by the Linux cloud agent. Each item says what unblocks it.
 4. **Screen-reader acceptance** (NVDA or Narrator on Windows, Orca on Linux; VoiceOver stays off
    unless the owner changes that instruction). Needed for every ACCEPTANCE row. October 25
    cloud Orca samples are partial. The owner-approved compatibility patches repair the sampled
-   cache/reopen failure; recorded synthesized audio still needs human intelligibility review.
+   cache/reopen and X11 grab-focus failures. Actual fixed-source Orca now retains flat review
+   and says `icon-2 button grayed.`; recorded synthesized audio still needs human
+   intelligibility review (`receipts/x11-grab-focus-20261025/`).
    See receipts/orca-20261025, linux-bridge-20261025 and input-contracts-20261025. Full per-family
    reader acceptance remains incomplete, including Linux AT text replacement (the bridge lacks
    an EditableText interface).
@@ -41,21 +43,29 @@ Updated 2026-10-25 by the Linux cloud agent. Each item says what unblocks it.
     managed cloud network policy (or provide an already verified cached artifact) to complete
     `scripts/weui_upstream.py fetch` and rerun paired dark/care/brand comparisons. October 25
     native-only captures are reviewed but do not replace this comparison.
-11. **Downstream accessibility patch integration:** the owner approved local copies of the
-    existing AccessKit crates and GPUI 0.3.9, with narrowly scoped cache/state/window-origin
-    fixes. The sampled Orca reopen and X11 state/origin checks pass; see `vendor/README.md`
-    and both proposals. Cargo patches are not inherited by applications: downstream workspace
-    roots must adopt equivalent configuration to receive these fixes. Publication/hosted forks
-    remain unauthorized. No external report was made. Additional Linux EditableText support
+11. **Downstream compatibility integration:** the owner approved the existing AccessKit,
+    GPUI and Linux-backend copies, including the added modal action/cache and X11 focus-mode
+    fixes. **Current source requires the matching GPUI copy to compile**, because
+    Semantics/Modal calls its added `Window::with_a11y_action_guard` API. All consumers need
+    workspace-root patches for `gpui-pre` → `vendor/gpui_pre`, `gpui-pre-linux` →
+    `vendor/gpui_pre_linux`, `accesskit_unix` → `vendor/accesskit_unix` and
+    `accesskit_atspi_common` → `vendor/accesskit_atspi_common` in the matching checkout;
+    dependency-manifest patches are not inherited. See [vendor guidance](../vendor/README.md).
+    Sampled root gates, saved-action/cache, X11, real Fcitx and actual Orca checks pass.
+    Publication/hosted forks remain unauthorized. No external report was made. Additional Linux EditableText support
     needs atomic host range-edit and clipboard contracts, beyond a contained bridge patch;
     see [the feasibility note](proposals/linux-editable-text/README.md). Advertising a partial
     interface is not a safe substitute.
-12. **Additional compatibility approval:** real saved AT Click/Focus requests at requested
-    0/1ms after modal hide can invoke a callback or steal restored focus; X11 Grab/Ungrab
-    events also disturb Orca window/focus and flat review. The exact
+12. **Remaining compatibility qualification:** the owner approved and applied the exact
     [modal dispatch](proposals/modal-a11y-action-guard/README.md) and
-    [X11 focus filter](proposals/x11-grab-focus/README.md) proposals are unapplied. They extend
-    the earlier approved patch scope, including a local copy of existing `gpui-pre-linux
-    0.3.9`, and require additional owner approval. No package/version change, hosted fork,
-    publication or external report is proposed. New source gates and native regressions
-    remain necessary after approval; preparation checks are not patched runtime results.
+    [X11 focus filter](proposals/x11-grab-focus/README.md), including existing
+    `gpui-pre-linux 0.3.9`. Five combined source gates pass with 47 root tests/one ignored
+    doctest; seven saved-action timing cases, fixed cached/live controls and real X11/IME/Orca
+    samples have separate receipts. Root tests do not execute the two new vendor unit tests:
+    the explicit attempt is blocked before execution by 21 upstream test-asset/optional-test
+    dependency errors. Do not add dependencies to make that attempt green without approval.
+    The extracted NodeBuilder harness passes two supplemental metadata regressions with
+    existing locked rlibs; that is not a full vendor-suite or 49-root-test pass. Six extended
+    raw/listener/epoch/passive/ancestor/two-window modes pass their sampled native contracts.
+    Cache performance, full ordering/reader/host qualification remain open;
+    no package publication, hosted fork or external report is authorized by these approvals.

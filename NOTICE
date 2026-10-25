@@ -28,3 +28,13 @@ Vendored GPUI 0.3.9 compatibility copy
 Copyright Zed Industries. Licensed under Apache-2.0.
 See vendor/gpui_pre/LICENSE-APACHE.
 Local change: invoke the existing accessibility window-bounds update hook.
+Additional approved changes: scoped accessibility-action guards, including view-cache
+guard propagation and stale/closing-target dispatch checks. Current weGPUI source
+requires this matching patched GPUI copy to compile.
+
+Vendored GPUI Linux 0.3.9 compatibility copy
+Copyright Zed Industries. Licensed under Apache-2.0.
+See vendor/gpui_pre_linux/LICENSE-APACHE and WEGPUI-PROVENANCE.md.
+Local change: ignore X11 NotifyGrab/NotifyUngrab FocusIn/FocusOut before changing
+window activation, accessibility focus or keyboard/IME state. Normal and
+WhileGrabbed focus handling remains unchanged.

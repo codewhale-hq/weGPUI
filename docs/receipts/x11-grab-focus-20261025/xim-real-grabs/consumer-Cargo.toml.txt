@@ -1,0 +1,20 @@
+[package]
+name = "wegpui-xim-focus-probe"
+version = "0.0.0"
+edition = "2024"
+
+[dependencies]
+wegpui = { path = "/workspace/weGPUI" }
+gpui = { package = "gpui-pre", version = "=0.3.9" }
+gpui_platform = { package = "gpui-pre-platform", version = "=0.3.9", features = ["font-kit", "wayland", "x11"] }
+
+[patch.crates-io]
+gpui-pre-linux = { path = "/workspace/weGPUI/vendor/gpui_pre_linux" }
+gpui-pre = { path = "/workspace/weGPUI/vendor/gpui_pre" }
+accesskit_unix = { path = "/workspace/weGPUI/vendor/accesskit_unix" }
+accesskit_atspi_common = { path = "/workspace/weGPUI/vendor/accesskit_atspi_common" }
+
+[profile.dev]
+debug = 1
+[profile.dev.package."*"]
+debug = 0

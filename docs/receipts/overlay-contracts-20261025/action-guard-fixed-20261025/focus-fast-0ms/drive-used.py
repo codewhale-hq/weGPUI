@@ -1,0 +1,157 @@
+#!/usr/bin/env python3
+"""Record saved AT Click during closing; callback logs determine the result."""
+import argparse
+import json
+from pathlib import Path
+import subprocess
+import time
+import traceback
+
+import pyatspi
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--window", required=True, help="Native X11 client window ID")
+parser.add_argument("--out", type=Path, required=True)
+parser.add_argument("--delay-ms", type=float, default=20)
+parser.add_argument("--saved-action", choices=["click", "focus"], default="click")
+args = parser.parse_args()
+args.out.mkdir(parents=True, exist_ok=False)
+events = []
+
+
+def note(kind, **values):
+    events.append({"kind": kind, "monotonic_ns": time.monotonic_ns(), **values})
+    (args.out / "driver-events.json").write_text(json.dumps(events, indent=2))
+
+
+def walk(node, depth=0):
+    if depth > 30:
+        return
+    yield node
+    try:
+        children = list(node)
+    except Exception:
+        return
+    for child in children:
+        yield from walk(child, depth + 1)
+
+
+def find(name):
+    for node in walk(pyatspi.Registry.getDesktop(0)):
+        try:
+            if node.name == name:
+                return node
+        except Exception:
+            continue
+    raise RuntimeError(f"No accessible target named {name!r}")
+
+
+def snapshot(label):
+    rows = []
+    for node in walk(pyatspi.Registry.getDesktop(0)):
+        try:
+            if node.name == "Saved overlay action probe" or node.getApplication().name == "wegpui":
+                rows.append({"name": node.name, "role": node.getRoleName(),
+                             "states": [str(state) for state in node.getState().getStates()]})
+        except Exception:
+            continue
+    # Retain the complete desktop if the backend's application name differs.
+    if len(rows) < 2:
+        rows = []
+        for node in walk(pyatspi.Registry.getDesktop(0)):
+            try:
+                rows.append({"name": node.name, "role": node.getRoleName(),
+                             "states": [str(state) for state in node.getState().getStates()]})
+            except Exception:
+                continue
+    (args.out / f"{label}-tree.json").write_text(json.dumps(rows, indent=2))
+    subprocess.run(["import", "-window", args.window, str(args.out / f"{label}.png")], check=True)
+
+
+def pointer(name):
+    node = find(name)
+    rect = node.queryComponent().getExtents(pyatspi.WINDOW_COORDS)
+    subprocess.run(["xdotool", "mousemove", "--window", args.window,
+                    str(rect.x + rect.width // 2), str(rect.y + rect.height // 2),
+                    "click", "1"], check=True)
+    note("pointer", name=name)
+
+
+def action_for(node):
+    interface = node.queryAction()
+    names = [interface.getName(i) for i in range(interface.nActions)]
+    note("action-interface", name=node.name, actions=names)
+    clicks = [i for i, name in enumerate(names) if name.lower() == "click"]
+    if len(clicks) != 1:
+        raise RuntimeError(f"Expected exactly one Click action, got {names!r}")
+    return interface, clicks[0]
+
+
+try:
+    subprocess.run(["xdotool", "windowactivate", "--sync", args.window], check=True)
+    pointer("Open slow modal")
+    time.sleep(2.2)
+    saved_node = find("Saved custom action row")
+    if args.saved_action == "focus":
+        snapshot("initial-open")
+        note("baseline-component-focus", result=bool(saved_node.queryComponent().grabFocus()))
+        time.sleep(0.2)
+        snapshot("baseline-component-focus")
+    baseline, baseline_click = action_for(saved_node)
+    note("baseline-open", result=bool(baseline.doAction(baseline_click)))
+    time.sleep(0.25)
+    snapshot("baseline-open")
+    note("baseline-close", result=bool(baseline.doAction(baseline_click)))
+    time.sleep(0.25)
+    snapshot("before-close")
+    # Keep the exact proxy/interface across removal. Mask click bypasses the row
+    # widget's Escape handler and actually dismisses the surrounding Modal.
+    if args.saved_action == "click":
+        saved, saved_click = action_for(saved_node)
+        invoke_saved = lambda: saved.doAction(saved_click)
+    else:
+        saved_component = saved_node.queryComponent()
+        invoke_saved = saved_component.grabFocus
+        note("saved-component-interface", name=saved_node.name)
+    saved_kind = "saved-" + args.saved_action
+    started = time.monotonic_ns()
+    subprocess.run(["xdotool", "mousemove", "--window", args.window, "10", "10", "mousedown", "1", "mouseup", "1"], check=True)
+    close_returned = time.monotonic_ns()
+    if args.delay_ms > 0:
+        time.sleep(args.delay_ms / 1000)
+    invoked = time.monotonic_ns()
+    try:
+        result = bool(invoke_saved())
+        note(saved_kind, result=result, delay_ms=args.delay_ms,
+             close_command_started_ns=started, close_command_returned_ns=close_returned,
+             action_invoked_ns=invoked)
+    except Exception as error:
+        note(saved_kind + "-error", error=repr(error), delay_ms=args.delay_ms,
+             close_command_started_ns=started, close_command_returned_ns=close_returned,
+             action_invoked_ns=invoked)
+    snapshot("during-close")
+    time.sleep(2.2)
+    snapshot("after-close")
+    # The same saved interface is queried after the two-second close has finished too.
+    after_invoked = time.monotonic_ns()
+    try:
+        note(saved_kind + "-after-closed", result=bool(invoke_saved()),
+             action_invoked_ns=after_invoked,
+             elapsed_since_close_ms=(after_invoked - close_returned) / 1_000_000)
+    except Exception as error:
+        note(saved_kind + "-after-closed-error", error=repr(error),
+             action_invoked_ns=after_invoked,
+             elapsed_since_close_ms=(after_invoked - close_returned) / 1_000_000)
+    time.sleep(0.15)
+    snapshot("after-closed-action")
+    pointer("Open slow modal")
+    time.sleep(2.2)
+    reopened, reopened_click = action_for(find("Saved custom action row"))
+    note("reopened-click", result=bool(reopened.doAction(reopened_click)))
+    time.sleep(0.25)
+    snapshot("reopened")
+except Exception:
+    (args.out / "driver-error.txt").write_text(traceback.format_exc())
+    raise
+finally:
+    note("driver-finished")

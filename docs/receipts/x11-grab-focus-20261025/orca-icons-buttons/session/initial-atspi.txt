@@ -1,0 +1,24 @@
+apps 2
+application 'orca' [] DISABLED
+application 'wegpui-orca-controls-probe' [] DISABLED
+  frame 'weGPUI control contracts' ['focusable', 'focused', 'showing']
+    button 'Start matrix' ['focusable', 'showing']
+    button 'button-0-false-0' ['focusable', 'showing']
+    button 'button-0-false-1' ['showing'] DISABLED description='不可用'
+    button 'button-0-false-2' ['showing'] description='正在加载'
+    button 'button-1-false-0' ['focusable', 'showing']
+    button 'button-1-false-1' ['showing'] DISABLED description='不可用'
+    button 'button-1-false-2' ['showing'] description='正在加载'
+    button 'button-2-false-0' ['focusable', 'showing']
+    button 'button-2-false-1' ['showing'] DISABLED description='不可用'
+    button 'button-2-false-2' ['showing'] description='正在加载'
+    button 'button-0-true-0' ['focusable', 'showing']
+    button 'button-0-true-1' ['showing'] DISABLED description='不可用'
+    button 'button-0-true-2' ['showing'] description='正在加载'
+    button 'button-1-true-0' ['focusable', 'showing']
+    button 'button-1-true-1' ['showing'] DISABLED description='不可用'
+    button 'button-1-true-2' ['showing'] description='正在加载'
+    button 'button-2-true-0' ['focusable', 'showing']
+    button 'button-2-true-1' ['showing'] DISABLED description='不可用'
+    button 'button-2-true-2' ['showing'] description='正在加载'
+    button 'End matrix' ['focusable', 'showing']

@@ -29,9 +29,23 @@ and rely on the supported behavior. A website is one part of that promise.
   failure; audio listening review and complete reader acceptance remain open. See
   [original receipt](receipts/orca-20261025/README.md),
   `receipts/linux-bridge-20261025/` and `receipts/input-contracts-20261025/`.
-- [ ] Resolve the later confirmed saved-action closing race and X11 keyboard-grab focus
-  disturbance. Exact additional dependency proposals remain unapplied pending approval;
-  see [the runtime followup](receipts/linux-runtime-followup-20261025/README.md).
+- [x] Apply the owner-approved modal action/cache and X11 keyboard-grab focus fixes.
+  Combined Rust 1.98.1 gates pass with 47 root tests/one ignored doctest; seven saved-action
+  timing cases and fixed cached/live controls pass
+  ([guard receipts](receipts/overlay-contracts-20261025/action-guard-fixed-20261025/)).
+  Actual X11 focus-mode, Fcitx, Orca disabled-icon and nested-Weston samples pass
+  ([focus receipts](receipts/x11-grab-focus-20261025/README.md)). These close their bounded
+  reproduced failures, while the original failures remain preserved.
+- [x] Verify six extended raw-caller/listener/epoch/passive/ancestor/two-window native modes
+  in the fixed-guard receipt. Callback, restored-focus and tree controls pass; queued AT
+  request success alone is not treated as guard acceptance.
+- [ ] Qualify cache performance and the full ordering/reader/host matrix. The 47 root tests
+  do not run the two new GPUI vendor unit tests; their separate attempt stops before execution
+  with 21 missing upstream test-asset/optional-dependency errors
+  ([attempt](receipts/overlay-contracts-20261025/action-guard-fixed-20261025/vendor-unit-attempt.log)).
+  The extracted NodeBuilder harness passes two supplemental metadata regressions with
+  existing locked rlibs ([scope](receipts/overlay-contracts-20261025/action-guard-fixed-20261025/metadata-extraction.json));
+  this does not establish a full vendor-suite or 49-root-test pass.
 - [ ] Verify input selection, clipboard, undo/redo, UTF-16 limits and IME composition.
 - [ ] Reconcile public rustdoc with observed behavior; document intentional differences.
 
@@ -58,8 +72,12 @@ VoiceOver remains off under the owner’s existing instruction.
 - [ ] Confirm the crates.io package name, versioning and dependency-upgrade policy.
 - [ ] Test the README installation flow in a new consumer project with locked pins.
   Linux X11 pass on 2026-10-24 ([receipt](receipts/release-gates-20261024/README.md));
-  current source must additionally verify the approved root Cargo patches in a new consumer.
-  Dependency-manifest patches are not inherited; see [vendor guidance](../vendor/README.md).
+  current source requires all four approved root Cargo patches in a new consumer.
+  The matching patched GPUI is a compilation requirement: Semantics/Modal calls the added
+  `Window::with_a11y_action_guard` API. The paths are `vendor/gpui_pre`,
+  `vendor/gpui_pre_linux`, `vendor/accesskit_unix` and `vendor/accesskit_atspi_common`
+  in the matching checkout. Dependency-manifest patches are not inherited; see
+  [vendor guidance](../vendor/README.md).
   macOS and Windows consumers still needed.
 - [ ] Ship complete small examples: application setup, forms, controlled state,
   overlays/focus, theming and application-owned upload handling.
@@ -85,6 +103,12 @@ The website source belongs in this repository. It must offer:
 - Accessible keyboard navigation, responsive layouts, useful empty/error states,
   tested links and no required analytics/accounts for reading the docs.
 - A stable public URL and a repeatable deployment from the reviewed repository.
+
+The current user priority is an interactive browser gallery. That source and local browser
+verification are being completed separately from the approved native compatibility batch.
+Browser demonstrations, historical captures and native runtime acceptance must stay distinct.
+The [website work](../website/README.md) also prepares a manual Pages workflow and hosting
+steps for review; they do not authorize CI dispatch, hosting enablement or deployment.
 
 ## 5. Experimental mobile work
 

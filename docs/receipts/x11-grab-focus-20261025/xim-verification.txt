@@ -1,0 +1,3 @@
+PASS: real Fcitx preedit/marked range survives actual native grab/ungrab with unchanged X input focus.
+PASS: real IME commit emits once; undo restores Unicode text; reversed-selection Escape cancellation restores text/selection without Changed.
+Scope: actual XIM input plus native/AT-SPI observations; no screen-reader or complete IME/appearance acceptance.

@@ -8,11 +8,12 @@ Take over weGPUI and finish its desktop-first developer release. **The goal is t
 
 Read `docs/STATUS.md`, `docs/UPSTREAM-COVERAGE.md`, `docs/RELEASE-READINESS.md`, `docs/PLATFORMS.md`, `CONTRIBUTING.md` and the recent receipts. Read applicable AGENTS.md instructions. Audit current source against the pinned upstream package. All 61 upstream example files map to 60 routes plus the index shell, but route counts and historical screenshots **do not establish functional completeness**.
 
-### Handoff state — 2026-10-25 component-contract continuation
+### Handoff state — 2026-10-25 approved native fixes and browser gallery
 
 The component-contract batch was pushed as `49268de7bb78a69cb56b96f6cff02a2d9284e71d`.
-The next ordinary Linux followup changes five source files, with all five Rust 1.98.1 gates
-green and 47 tests passing (one doctest ignored). Its exact gated source and examples are in
+The ordinary Linux followup is committed as `3840b47370f8defa925cbff7d3bf12ccf6250722`,
+with all five Rust 1.98.1 gates green and 47 tests passing (one doctest ignored).
+Its exact gated source and examples are in
 `receipts/linux-runtime-followup-20261025/`:
 
 - Real fcitx5 Pinyin found and verified the selected-text cancellation repair: 35 observer
@@ -25,15 +26,44 @@ green and 47 tests passing (one doctest ignored). Its exact gated source and exa
   clears it. More control reader samples now exist, including general and cell-style buttons;
   these are not generic `cells::Cell` reader acceptance.
 
-Two **new, confirmed P1 framework issues** remain outside the earlier approvals. Saved AT
-Click/Focus requests at requested 0/1ms during close can mutate owner state or steal restored
-focus. X11 temporary keyboard-grab events are treated as normal window focus changes and
-disturb Orca flat review. Exact **unapplied** proposals and source/runtime proof are in
-`proposals/modal-a11y-action-guard/` and `proposals/x11-grab-focus/`. They require additional
-approval before changing the GPUI copy or adding a same-version local Linux-backend copy.
-Existing public APIs cannot safely intercept these paths before framework dispatch/reset.
-Keep the narrower closed/reopened-scope, cache/performance, topmost ordering and host limits
-explicit. Do not claim either proposal is applied or passing while approval is pending.
+The owner subsequently **approved and applied** the modal accessibility-action guard,
+AT-active cached-view bypass and X11 Grab/Ungrab focus filter. The GPUI copy changes three
+framework files; library Semantics/Modal supplies the scope. A fourth same-version local
+copy, `gpui-pre-linux 0.3.9`, filters temporary grabs before backend activation/IME changes.
+The exact proposals and application provenance remain in `proposals/modal-a11y-action-guard/`
+and `proposals/x11-grab-focus/`; their original failure receipts remain historical evidence.
+
+- Combined approved source passes fmt, locked all-target build, 47 root tests (one doctest
+  ignored), strict Clippy and strict rustdoc on Rust 1.98.1. The preserved log is
+  `receipts/overlay-contracts-20261025/action-guard-fixed-20261025/gates.log`, identical to
+  the collector's `native-guard-linux-approved-gates.log`.
+- Seven saved-action timing cases retain closed owner state/restored focus, including
+  requested 0/1ms Click and Focus. The fixed cached/live fixture retains both controls in
+  all 13 fresh trees and original Click/Focus proxies work after parent-only redraws
+  (`receipts/overlay-contracts-20261025/action-guard-fixed-20261025/`). Its failed first
+  window-manager startup is preserved; the successful retry waits for X and Openbox.
+- Real X11 Normal/WhileGrabbed focus transfers still update native/AT activation, while
+  Grab/Ungrab produces no false AT pulses. Actual Fcitx preedit survives real grabs,
+  commit/undo/cancel counts pass, and actual Orca says `icon-2 button grayed.` without
+  losing flat review. Rebuilt nested-Weston isolation/trapping/restoration passes too
+  (`receipts/x11-grab-focus-20261025/`). Transcript/dispatcher/PCM review is not listening.
+- The 47 root tests do **not** run the two added vendor unit tests. The separate attempt
+  stops at 21 errors from missing upstream test assets/optional test dependencies before
+  running tests (`receipts/overlay-contracts-20261025/action-guard-fixed-20261025/vendor-unit-attempt.log`). No new dependency
+  was added. A separate extracted NodeBuilder harness passes the two metadata regressions
+  with existing locked rlibs; that is supplemental evidence, not a passing full vendor suite
+  or 49 root tests (`receipts/overlay-contracts-20261025/action-guard-fixed-20261025/metadata-extraction.json`).
+- Six extended runtime modes pass: raw caller callbacks, multiple-listener close,
+  hide/reopen epoch invalidation, passive overlay/page independence, a closed ancestor with
+  a still-open child, and two-window isolation. Native counters show no closed callback;
+  saved AT requests may return true when queued, so callback/focus/tree results establish
+  rejection. See the `contracts-*` runs in the fixed-guard receipt.
+
+Current user priority is the interactive browser gallery and a reviewable GitHub Pages
+hosting path. Website work is in progress separately; these bounded approved native fixes
+are retained and verified in parallel. Do not dispatch CI, enable hosting or deploy before
+the owner's explicit publication authorization. Cache performance with/without AT,
+arbitrary external topmost ordering, other hosts and complete reader acceptance remain open.
 
 The canonical checkout is `/workspace/weGPUI` on GitHub `main`. The first cloud continuation
 was pushed as `9c4515c`. The separately requested vertical FormCell label-width fix was
@@ -76,8 +106,8 @@ future Mac builds and coordinate the single native build slot with the app/Engin
   image viewer keys/delete target, swipe state, search clear/cancel/submit and homepage focus
   have separate receipts in `data-contracts-20261025/`, `media-contracts-20261025/` and
   `search-contracts-20261025/`.
-- The owner explicitly approved **two sets of local dependency compatibility fixes**. Exact
-  packages remain `accesskit_unix 0.22.1`, `accesskit_atspi_common 0.19.1` and `gpui-pre 0.3.9`.
+- The earlier two approved sets of local dependency fixes retain exact
+  `accesskit_unix 0.22.1`, `accesskit_atspi_common 0.19.1` and `gpui-pre 0.3.9` versions.
   See `../vendor/README.md`, `proposals/accesskit-linux-compat/` and
   `proposals/a11y-state-and-bounds/`. Registry source was not modified; no package was added.
   Cache signal struct encoding, disabled/read-only and omitted state/heading export are
@@ -89,11 +119,15 @@ future Mac builds and coordinate the single native build slot with the app/Engin
   clients are separately recorded. Synthesized audio still needs human listening review;
   no component or desktop platform has full screen-reader acceptance. VoiceOver stays off.
 - Cargo patches apply only at the application workspace root and are **not inherited** from
-  this dependency. A downstream app must adopt equivalent configuration to use the fixes.
+  this dependency. **The matching patched GPUI is required to compile current weGPUI**:
+  Semantics/Modal calls `Window::with_a11y_action_guard`, absent from registry GPUI 0.3.9.
+  Consumers must explicitly select all four matching paths from `../vendor/README.md`:
+  `vendor/gpui_pre`, `vendor/gpui_pre_linux`, `vendor/accesskit_unix` and
+  `vendor/accesskit_atspi_common`, rooted at their matching weGPUI checkout.
   Publication or hosted forks remain unauthorized. The small `a3ce3af` app pin does not
   include the larger compatibility/component batch.
 
-Final integrated gates are all green on Rust/Cargo 1.98.1: fmt, locked all-target build,
+The earlier component batch's integrated gates are all green on Rust/Cargo 1.98.1: fmt, locked all-target build,
 47 tests (one doctest ignored), strict all-target Clippy and strict rustdoc. Exact commands,
 preserved failures and final source hashes are in `receipts/component-contracts-20261025/`.
 All transient probes were archived into receipts and removed from shipped examples.

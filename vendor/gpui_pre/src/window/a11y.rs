@@ -107,6 +107,7 @@ use accesskit::{Action, NodeId, TreeUpdate};
 use collections::{FxHashMap, FxHashSet};
 use smallvec::SmallVec;
 use std::hash::{Hash, Hasher};
+use std::rc::Rc;
 use std::sync::{
     Arc,
     atomic::{AtomicBool, Ordering},
@@ -375,6 +376,10 @@ pub(crate) struct A11yNodeBuilder {
     /// `HashMap<NodeId, Node>` to remove the need for `seen_ids`
     all_nodes: Vec<(NodeId, accesskit::Node)>,
     seen_ids: FxHashSet<NodeId>,
+    /// Dynamic predicates inherited by nodes created in the current element scope.
+    action_guard_stack: Vec<Rc<dyn Fn() -> bool>>,
+    /// Guards retained with each exposed target until the next frame replaces its metadata.
+    action_guards: FxHashMap<NodeId, Vec<Rc<dyn Fn() -> bool>>>,
     /// The node that GPUI considers focused. Note that this may be different to
     /// what is reported to accesskit - see [`Self::active_descendant`]
     focus: Option<NodeId>,
@@ -394,10 +399,38 @@ impl A11yNodeBuilder {
             nodes_stack: SmallVec::new(),
             all_nodes: Vec::new(),
             seen_ids: FxHashSet::default(),
+            action_guard_stack: Vec::new(),
+            action_guards: FxHashMap::default(),
             focus: None,
             active_descendant: None,
             #[cfg(debug_assertions)]
             node_info: FxHashMap::default(),
+        }
+    }
+
+    pub(crate) fn action_guard_context(&self) -> Vec<Rc<dyn Fn() -> bool>> {
+        self.action_guard_stack.clone()
+    }
+
+    pub(crate) fn replace_action_guard_context(
+        &mut self,
+        guards: Vec<Rc<dyn Fn() -> bool>>,
+    ) -> Vec<Rc<dyn Fn() -> bool>> {
+        std::mem::replace(&mut self.action_guard_stack, guards)
+    }
+
+    pub(crate) fn action_allowed(&self, target: NodeId) -> bool {
+        self.has_node(target)
+            && self
+                .action_guards
+                .get(&target)
+                .is_none_or(|guards| guards.iter().all(|guard| guard()))
+    }
+
+    fn capture_action_guards(&mut self, id: NodeId) {
+        if !self.action_guard_stack.is_empty() {
+            self.action_guards
+                .insert(id, self.action_guard_stack.clone());
         }
     }
 
@@ -431,6 +464,7 @@ impl A11yNodeBuilder {
             return false;
         }
 
+        self.capture_action_guards(id);
         if let Some(parent) = self.nodes_stack.last_mut() {
             parent.push_child(id);
         }
@@ -449,6 +483,7 @@ impl A11yNodeBuilder {
             return false;
         }
 
+        self.capture_action_guards(id);
         if let Some(parent) = self.nodes_stack.last_mut() {
             parent.push_child(id);
         }
@@ -476,6 +511,8 @@ impl A11yNodeBuilder {
         self.ids_stack.clear();
         self.nodes_stack.clear();
         self.seen_ids.clear();
+        self.action_guard_stack.clear();
+        self.action_guards.clear();
         #[cfg(debug_assertions)]
         self.node_info.clear();
         let mut root_node = accesskit::Node::new(accesskit::Role::Window);
@@ -635,6 +672,7 @@ impl A11yNodeBuilder {
 
 #[cfg(test)]
 mod tests {
+    use std::rc::Rc;
     // Import specific items rather than glob-importing `super`, which would pull
     // in gpui's own `test` attribute macro and shadow the standard one.
     use super::{A11y, A11yNodeBuilder, ROOT_NODE_ID};
@@ -644,6 +682,50 @@ mod tests {
 
     fn test_node() -> accesskit::Node {
         accesskit::Node::new(Role::GenericContainer)
+    }
+
+    #[test]
+    fn action_guards_track_live_state_for_real_and_synthetic_nodes() {
+        let mut builder = new_builder();
+        let live = Rc::new(std::cell::Cell::new(true));
+        let predicate = live.clone();
+        builder.replace_action_guard_context(vec![Rc::new(move || predicate.get())]);
+        assert!(builder.push(NodeId(100), test_node()));
+        assert!(builder.push_leaf(NodeId(101), test_node()));
+        builder.pop();
+        assert!(builder.action_allowed(NodeId(100)));
+        assert!(builder.action_allowed(NodeId(101)));
+        live.set(false);
+        assert!(!builder.action_allowed(NodeId(100)));
+        assert!(!builder.action_allowed(NodeId(101)));
+        assert!(!builder.action_allowed(NodeId(999)));
+        assert!(builder.action_allowed(ROOT_NODE_ID));
+    }
+
+    #[test]
+    fn action_guard_contexts_compose_without_mutating_saved_scopes() {
+        let mut builder = new_builder();
+        let outer = Rc::new(std::cell::Cell::new(true));
+        let inner = Rc::new(std::cell::Cell::new(true));
+        let first = outer.clone();
+        let second = inner.clone();
+        builder.replace_action_guard_context(vec![
+            Rc::new(move || first.get()),
+            Rc::new(move || second.get()),
+        ]);
+        assert!(builder.push_leaf(NodeId(100), test_node()));
+        builder.replace_action_guard_context(Vec::new());
+        assert!(builder.push_leaf(NodeId(101), test_node()));
+        outer.set(false);
+        assert!(!builder.action_allowed(NodeId(100)));
+        assert!(builder.action_allowed(NodeId(101)));
+        outer.set(true);
+        inner.set(false);
+        assert!(!builder.action_allowed(NodeId(100)));
+        builder.begin_frame(None);
+        assert!(!builder.action_allowed(NodeId(100)));
+        assert!(builder.push_leaf(NodeId(100), test_node()));
+        assert!(builder.action_allowed(NodeId(100)));
     }
 
     fn new_builder() -> A11yNodeBuilder {

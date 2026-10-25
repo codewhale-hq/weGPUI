@@ -1,0 +1,11 @@
+Your windowmanager claims not to support _NET_ACTIVE_WINDOW, so the attempt to activate the window was aborted.
+xdo_activate_window on window:2097153 reported an error
+finished {}
+Traceback (most recent call last):
+  File "/workspace/weGPUI/docs/receipts/overlay-contracts-20261025/action-guard-fixed-20261025/cached/run-1/drive-used.py", line 107, in <module>
+    subprocess.run(['xdotool','windowactivate','--sync',args.window],check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['xdotool', 'windowactivate', '--sync', '2097153']' returned non-zero exit status 1.

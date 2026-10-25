@@ -1,0 +1,1 @@
+PASS: native focus and AT window activation survive temporary grabs; real normal/while-grabbed transfers remain functional.

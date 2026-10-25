@@ -83,8 +83,9 @@ qualification remain open. **No component row is accepted.**
 
 ### Runtime follow-up after `49268de`
 
-The preceding batch was committed as `49268de`. The next five-source continuation passes all
-five gates again on Rust 1.98.1 with 47 unit tests and one ignored doctest; its exact source,
+The preceding batch was committed as `49268de`. The five-source continuation is committed
+as `3840b47` and passes all five gates again on Rust 1.98.1 with 47 unit tests and one ignored
+doctest; its exact source,
 artifacts and log are in [the runtime follow-up receipt](receipts/linux-runtime-followup-20261025/README.md).
 Runtime observations retain their own executable/source provenance:
 
@@ -109,23 +110,65 @@ Runtime observations retain their own executable/source provenance:
 Additional real Orca samples on the separate committed `49268de` consumer cover checked/pressed
 choices, independent radio positions, Agreement/terms, Vcode countdown/restoration and disabled
 default/`Button::cell()` grayed speech plus loading descriptions. Busy is a tree state in these
-samples. No audio has been accepted by human listening; disabled IconButton current-object
-availability remains unqualified because X11 reader grabs reset Orca's review context.
+samples. No audio has been accepted by human listening. The original disabled IconButton
+readback failed because X11 reader grabs reset Orca's review context; its later approved-source
+result is recorded below.
 
-A separate **P1 closing defect remains reproduced**: saved custom AT Click and built-in Focus
-at requested 0/1ms can reach a logically closed modal and lose restored opener focus
-([actual requests](receipts/overlay-contracts-20261025/custom-actions-followup/README.md)). The
-[central dispatch/cached-frame proposal](proposals/modal-a11y-action-guard/README.md) and
-[X11 grab-focus proposal](proposals/x11-grab-focus/README.md) are unapplied and require additional
-owner approval. The actual cached/live fixture remains pending. No new vendored change is
-included in the ordinary five-source follow-up, and no component row is accepted.
+### Approved modal/cache and X11 focus compatibility
+
+The owner approved and applied the [central dispatch/cached-frame guard](proposals/modal-a11y-action-guard/README.md)
+and [X11 grab-focus filter](proposals/x11-grab-focus/README.md). Their additional scope is now
+implemented: three GPUI framework files plus library Semantics/Modal integration, and a fourth
+same-version local `gpui-pre-linux 0.3.9` copy. Combined root fmt, locked all-target build,
+47 tests/one ignored doctest, strict Clippy and strict rustdoc pass on Rust 1.98.1
+([gate log](receipts/overlay-contracts-20261025/action-guard-fixed-20261025/gates.log)).
+
+- [Seven saved-action timing cases](receipts/overlay-contracts-20261025/action-guard-fixed-20261025/)
+  preserve closed owner state/restored focus, including requested 0/1ms Click and Focus.
+  Original immediate-close failures remain in the historical actual-request receipt.
+- [The fixed cached/live fixture](receipts/overlay-contracts-20261025/action-guard-fixed-20261025/cached/README.md)
+  re-renders both children on parent-only notify while AT is active, retains both nodes in
+  13 fresh trees and keeps saved Click/Focus proxies usable. The earlier missing-node failure
+  and the retry's failed first window-manager startup remain preserved.
+- [Actual focus-mode, Fcitx, Orca and Wayland controls](receipts/x11-grab-focus-20261025/README.md)
+  preserve Normal/WhileGrabbed activation and suppress false AT pulses during Grab/Ungrab.
+  Real preedit survives native grabs; commit/undo/reversed cancel pass. Actual Orca retains
+  disabled icon-2 flat review and emits `icon-2 button grayed.`; transcript/dispatcher/PCM
+  were checked independently without listening or ASR. Rebuilt nested-Weston modal isolation,
+  keyboard trap and focus restoration pass.
+
+The 47 root tests do not execute the two added vendor unit tests. Their explicit attempt
+stops before execution at 21 missing upstream test-asset/optional-dependency errors
+([log](receipts/overlay-contracts-20261025/action-guard-fixed-20261025/vendor-unit-attempt.log));
+no new dependency was added. A separate extracted NodeBuilder harness passes the two metadata
+regressions with existing locked rlibs ([scope](receipts/overlay-contracts-20261025/action-guard-fixed-20261025/metadata-extraction.json));
+that is supplemental and does not mean the full vendor suite or 49 root tests passed.
+
+Six extended native modes also pass raw-caller callbacks, multiple-listener close,
+hide/reopen epoch invalidation, passive overlay/page independence, closed-ancestor handling
+with a still-open child, and two-window isolation (`contracts-*` in the fixed-guard receipt).
+Actual counters remain unchanged for closed targets even when AT accepts the queued request;
+focus/tree controls verify restoration. Cache performance, arbitrary external topmost ordering,
+full reader/theme/host matrices and human audio listening remain open.
+
+**Matching patched GPUI is a compilation requirement for every consumer.** Semantics/Modal
+calls `Window::with_a11y_action_guard`, which registry GPUI 0.3.9 lacks. Consumers must adopt
+workspace-root patches selecting `vendor/gpui_pre`, `vendor/gpui_pre_linux`,
+`vendor/accesskit_unix` and `vendor/accesskit_atspi_common` from the matching checkout;
+dependency-manifest patches are not inherited. See [vendor setup](../vendor/README.md).
+No component row is accepted.
+
+The current user priority is the interactive browser gallery and a reviewable GitHub Pages
+hosting path. Website implementation/browser checks are in progress separately from this
+native batch. Hosting preparation belongs to that [website work](../website/README.md);
+it does not enable Pages, dispatch CI or authorize deployment.
 
 ## Platform acceptance matrix
 
 | Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
 | --- | --- | --- | --- | --- | --- | --- |
 | macOS arm64 | October 24 candidate examples, nine tests, strict Clippy/rustdoc and packaged consumer pass; current Linux continuation unqualified | Historical component/gallery/minimal launches | Historical native dark sample and parity pairs | Historical loading/countdown/disabled/panel/choice samples | Historical input/spinner/tip AX checks; VoiceOver off and incomplete | Historical crate/consumer pass; signed/fresh-machine distribution missing |
-| Linux x86_64 | The five-source runtime follow-up passes all five gates on Rust 1.98.1, 47 tests/one ignored doctest; earlier source/MSRV receipts stay separate | X11 and real Wayland clients under nested Weston | Historical 192 pairs; 216 native-only states and targeted eight-mode control/data/media reviews; complete reference/theme parity open | Reusable callback/state/focus/transition matrices and Wayland regression samples; hardware/reduced-motion/IME coverage incomplete | Approved compatibility copies pass sampled cache/state/text/X11-origin checks and Orca reopen/input/date/control speech; full reader/listening acceptance missing | Separate path-consumer build and X11 runtime pass with explicit root patches; published-package/fresh-machine/distribution unqualified |
+| Linux x86_64 | Combined approved guard/cache/Linux-focus source passes all five gates on Rust 1.98.1, 47 root tests/one ignored doctest; vendor-unit attempt blocked separately; earlier source/MSRV receipts stay separate | X11 and real Wayland clients under nested Weston | Historical 192 pairs; 216 native-only states and targeted eight-mode control/data/media reviews; complete reference/theme parity open | Reusable callback/state/focus/transition matrices and Wayland regression samples; hardware/reduced-motion/IME coverage incomplete | Four approved compatibility copies pass sampled action/cache/state/text/X11-origin and focus-mode checks; real Fcitx and Orca reopen/input/date/control/disabled-icon speech exist; full reader/listening acceptance missing | Separate path-consumer build and X11 runtime pass with explicit root patches; published-package/fresh-machine/distribution unqualified |
 | Windows ARM64 | Native MSVC gallery/component sample build, 9 tests and strict rustdoc pass on the October 24 component candidate | Gallery and component sample launch in Windows 11 ARM VM | Native VirtIO GPU rendering; sampled light components and dark dialog | Text entry, loading/disabled actions, countdown, panel focus, independent radios and navbar wrap | Screen-reader and native accessibility-tree acceptance still missing | Package archive built and used for guest compilation; distributable installation unqualified |
 | iOS | Historical library type-checks pass; hosted app build fails in upstream iOS/core APIs | 0.3.9 scaffold wired; upstream compilation blocker, no launch | Missing | Missing | Missing; backend lacks AccessKit | Missing |
 | Android | Historical 0.3.9 library type-check; no app build | Blocked: no backend upstream | Missing | Missing | Missing | Missing |
@@ -226,7 +269,7 @@ bridge events and actual reader speech are separate evidence classes.
 | Article | Semantic text/heading/list helpers and repeated h6 level; responsive gallery images at four light widths and 480px dark, 690px cap and 24px following gap pass native/static-CSS review ([responsive](receipts/article-responsive-20261025/README.md)) | Earlier paint/gap failures and one-pixel Contain rounding retained; full typography/list/reader parity incomplete. |
 | Badge | Historical light/dark/care rendering and accessible row names | Complete themes/states/readers/hosts. |
 | Button / Agree | Eight-mode callback/guards and focus samples; real Orca disabled default/`Button::cell()` grayed and loading descriptions; Agree warning invalid-entry additions/clears preserve checkbox/terms counts ([controls](receipts/control-contracts-20261025/README.md), [reader](receipts/orca-controls-20261025/README.md)) | No human audio listening; Busy tree-only in these speech samples; full motion/theme/state/reader/host acceptance remains open. |
-| Dialog / Modal | Native five-click/disabled/focus/closing guards and depth-ranked isolation; actual saved AT Click/Focus boundary now tested ([overlays](receipts/overlay-contracts-20261025/README.md), [closing](receipts/overlay-contracts-20261025/custom-actions-followup/README.md)) | **P1:** saved custom Click/Focus at requested 0/1ms can reach closed scope/steal restored focus; guard proposal unapplied and cached/live fixture pending. Full timing/reader/theme/host matrix. |
+| Dialog / Modal | Native five-click/disabled/focus guards and depth-ranked isolation; approved guard passes seven timing cases, fixed cached/live proxies and six raw/listener/epoch/passive/ancestor/two-window modes ([fixed receipts](receipts/overlay-contracts-20261025/action-guard-fixed-20261025/)) | Cache performance, arbitrary external topmost ordering and full timing/reader/theme/host matrix. |
 | Flex | Historical light/dark/care layout; broader window resize samples | Complete responsive-layout/host coverage. |
 | Footer | Actual link callbacks, viewport placement, click occlusion and modal hidden/restored tree ([data](receipts/data-contracts-20261025/README.md)) | Safe-area API and text-sized link target/focus acceptance remain open. |
 | Form / DateField | Strict validation, optional ISO typing/clearing, range/owner/DateTime/focus/availability contracts; final 15/15 native steps and actual Orca invalid/retry feedback once each with valid/clear removing error ([forms](receipts/form-contracts-20261025/README.md)) | Default range 1900–2100 and UTC today unchanged; locale/seconds, full theme/reader/host coverage. |
@@ -236,9 +279,9 @@ bridge events and actual reader speech are separate evidence classes.
 | Gallery / image viewer | Actual thumbnail open; image dismissal, full-bar deletion, focus restoration; dark+care/brand samples ([media](receipts/media-contracts-20261025/README.md)) | Pinned upstream has no pinch/zoom/paging requirement. Complete reader/theme/host coverage remains open. |
 | Grid / Cells / Panel | Actual keyboard callbacks, title/tips group semantics and selected panel focus capture ([data](receipts/data-contracts-20261025/README.md)) | Generic Cell state/reader coverage, panel CJK punctuation/clamping and complete visual parity remain open; caller generic slots own semantics. Button::cell() reader samples are recorded in the Button family. |
 | Half-screen dialog | Short/long drag, returning animation, interrupted reopen, short-window sizing, body/subtitle semantics and inline header focus ([overlays](receipts/overlay-contracts-20261025/README.md)) | Complete size/theme/touch/reader/host matrix. |
-| Icons | Historical named assets and native enabled/disabled callback guards; reader item navigation reaches disabled icon line ([controls](receipts/control-contracts-20261025/README.md), [reader](receipts/orca-controls-20261025/README.md)) | Disabled IconButton current-object availability remains unqualified: X11 grabs reset flat review; focus-filter proposal unapplied. Full theme/state/reader/host coverage open. |
+| Icons | Historical named assets and native enabled/disabled callbacks; approved X11 filter lets actual Orca retain disabled icon-2 flat review and emit grayed speech ([fixed reader](receipts/x11-grab-focus-20261025/README.md)) | No human audio listening; full IconButton/theme/state/reader/host coverage open. Combined approved artifact, no isolated one-patch A/B qualification. |
 | Information bar | Viewport fixed placement while parent scrolls, native link/close, occlusion and live text events ([data](receipts/data-contracts-20261025/README.md)) | Bridge events are not speech; full variant/reader/theme/host matrix. |
-| List / swiped cell | Controlled drag/AT callbacks and Expanded/Collapsed; native collapsed-row Escape reaches Modal, open-row Escape closes row first and restores focus ([media](receipts/media-contracts-20261025/README.md), [Escape](receipts/overlay-contracts-20261025/swiped-escape-followup/README.md)) | Generic saved-AT modal closing P1 remains separate; neutral action contrast and full touch/reader/theme/host matrix. |
+| List / swiped cell | Controlled drag/AT callbacks and Expanded/Collapsed; native collapsed-row Escape reaches Modal, open-row Escape closes row first and restores focus ([media](receipts/media-contracts-20261025/README.md), [Escape](receipts/overlay-contracts-20261025/swiped-escape-followup/README.md)) | Approved Modal dispatch guard has separate bounded receipts; neutral action contrast and full touch/reader/theme/host matrix. |
 | Loading / Loadmore | Historical spinner artwork/light/dark/care; later loading text announcement event | Complete animation/live reduced-motion and actual reader qualification. |
 | Message / LinkText | Historical short/wrapped real-input links and shaped bounds; title weight corrected to 500 ([inline links](receipts/inline-links-20261024/README.md), [data](receipts/data-contracts-20261025/README.md)) | Full typography/theme/reader/host coverage. |
 | Navbar / Tabbar | Controlled native/AT selections and roving offscreen reveal ([data](receipts/data-contracts-20261025/README.md), [focus](receipts/focus-reveal-20261025/README.md)) | Caller wraps tab_panel in FocusScroll; full theme/state/reader/host matrix. |
@@ -280,21 +323,20 @@ bridge events and actual reader speech are separate evidence classes.
   or complete reader acceptance.
 - **Reader acceptance:** VoiceOver remains off. Actual Orca reopen/input/date/control speech
   samples work on their named artifacts, including Agree invalid-state changes. Audio has not
-  been accepted by listening; full Orca/NVDA/Narrator matrices remain missing. Disabled IconButton
-  current-object readback remains unqualified: a passive observer correlates same-client
-  NotifyGrab/NotifyUngrab events with window/focus pulses and flat-review reset. The proposed
-  [X11 mode filter](proposals/x11-grab-focus/README.md) is unapplied and needs approval. Downstream
-  default/`Button::cell()` disabled speech does not establish resolution of the upstream AccessKit
-  issue.
+  been accepted by listening; full Orca/NVDA/Narrator matrices remain missing. The approved
+  [X11 mode filter](proposals/x11-grab-focus/README.md) repairs the sampled flat-review reset:
+  actual Orca retains disabled icon-2 and emits grayed speech, with native mode/AT-event controls
+  ([receipt](receipts/x11-grab-focus-20261025/README.md)). The original reset and setup failures
+  remain preserved. These local results do not establish resolution of the upstream AccessKit
+  issue or full IconButton acceptance.
   Linux tree/event checks alone do not establish reader acceptance.
-- **Modal boundaries — P1:** saved custom AT Click and built-in Focus at requested 0/1ms after
-  native close reach the closed model or steal restored focus. Later 20/100/500ms Click calls
-  reject removed objects; they do not supply an immediate guard. The
-  [actual-request receipt](receipts/overlay-contracts-20261025/custom-actions-followup/README.md)
-  preserves the failures. The [central guard proposal](proposals/modal-a11y-action-guard/README.md)
-  is unapplied, requires approval and still needs actual cached/live qualification. Existing
-  modal depth/order/passive samples do not cover this dispatch path; arbitrary external
-  deferred priorities remain outside their ordering contract.
+- **Modal/cache qualification:** the approved guard repairs the bounded saved-action closing
+  defect and active-AT cache omission. Seven timing cases and the actual cached/live fixture
+  pass ([fixed receipt](receipts/overlay-contracts-20261025/action-guard-fixed-20261025/));
+  the [original immediate-close failures](receipts/overlay-contracts-20261025/custom-actions-followup/README.md)
+  remain historical evidence. Six extended raw/listener/epoch/passive/ancestor/two-window
+  modes pass their sampled contracts. Cache performance and full reader/theme/host coverage remain open;
+  the guard's lifecycle scope does not authorize arbitrary external topmost ordering.
 - **Date policy:** the owner still decides the source of local today. `picker::today()` remains
   UTC; DateField defaults 1900–2100 with configurable Gregorian years 1–9999. Typed ISO entry
   exists; locale display and seconds are not implemented.
@@ -364,13 +406,14 @@ Approved October 24 (historical):
 Approved October 25:
 
 - Exact local AccessKit cache compatibility and additional state forwarding; GPUI 0.3.9 X11
-  origin-hook repairs. Implementation and sampled native/reader results are recorded separately
-  in the continuation receipts and vendor documentation. Package versions remain pinned.
+  origin-hook repairs. The owner also approved and applied the modal action/cache guard and
+  `gpui-pre-linux 0.3.9` Grab/Ungrab focus filter. Combined source gates and bounded native,
+  actual Fcitx/Orca and Wayland results are recorded separately above. The matching GPUI
+  workspace-root patch is required for compilation; all four paths are in vendor guidance.
+  Package versions remain pinned.
 
 Still pending:
 
-- The unapplied modal accessibility-action/cached-frame guard and X11 grab-focus compatibility
-  proposals; the existing approvals do not cover these additional backend changes.
 - An upstream Android backend plan.
 - crates.io name, publication timing, versioning and ongoing GPUI upgrade policy.
 - Keeping the historical roughly 34 MB parity corpus in Git (excluded from the package).
@@ -395,9 +438,11 @@ No branch was deleted here. Recheck current refs and working state before editin
 - **Reproduce behaviour probes:** `receipts/takeover-20261025/probe.rs.txt` and
   `probe-edges.rs.txt` are the manual probe apps behind the before/after receipts. Copy one to
   `examples/probe.rs` locally to run it; they are not part of the crate.
-- **Next verification:** complete the cached/live fixture and review the unapplied saved-AT
-  closing and X11 grab-focus proposals; any additional vendor change needs owner approval.
-  Extend sampled theme/state, nested-Weston and Orca checks to full desktop/component qualification;
+- **Next verification:** finish the interactive browser gallery and obtain explicit owner
+  authorization before hosting/CI dispatch/deployment. Preserve the separately verified native
+  batch and its extended guard receipts; qualify cache performance and remaining matrices. Further
+  vendor changes beyond the approved scope require approval. Extend sampled theme/state,
+  nested-Weston and Orca checks to full desktop/component qualification;
   finish the remaining macOS input, IME, reduced-motion and paired-capture
   work on a separate Apple session; verify the implemented iOS scaffold on that host and label every Simulator
   result; obtain native Windows and Android evidence separately. A Linux container cannot

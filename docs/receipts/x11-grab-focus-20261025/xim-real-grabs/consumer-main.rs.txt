@@ -1,0 +1,227 @@
+use gpui::{prelude::*, *};
+use wegpui::{
+    Theme,
+    components::textarea::TextArea,
+    input::{InputEvent, InputKind, TextInput},
+};
+
+const PRIMARY: &str = "A你好B e\u{301} 👩‍💻 C";
+const NOTES: &str = "first e\u{301}\nA你好after";
+
+struct Probe {
+    inputs: Vec<(&'static str, Entity<TextInput>)>,
+    notes: Entity<TextArea>,
+    changes: Vec<usize>,
+    _subscriptions: Vec<Subscription>,
+}
+
+impl Probe {
+    fn new(cx: &mut Context<Self>) -> Self {
+        let mut inputs = Vec::new();
+        for (name, text) in [
+            ("Primary", PRIMARY),
+            ("Limited", "A😀BC"),
+            ("Password", "A😀e\u{301}"),
+            ("Read only", "readonly"),
+            ("Disabled", "disabled"),
+        ] {
+            let input = cx.new(|cx| {
+                let mut input = TextInput::new(name, cx);
+                input.set_aria_label(name, cx);
+                if name == "Password" {
+                    input.set_kind(InputKind::Password, cx);
+                }
+                input.set_text(text, cx);
+                if name == "Limited" {
+                    input.set_max_len(Some(6), cx);
+                }
+                input.set_readonly(name == "Read only", cx);
+                input.set_disabled(name == "Disabled", cx);
+                input
+            });
+            inputs.push((name, input));
+        }
+        let notes = cx.new(|cx| {
+            let mut area = TextArea::new("Notes", cx);
+            area.set_aria_label("Notes", cx);
+            area.set_rows(3, cx);
+            area.set_show_count(true, cx);
+            area.set_max_len(Some(200), cx);
+            area.set_text(NOTES, cx);
+            area
+        });
+        inputs.push(("Notes", notes.read(cx).input().clone()));
+        let subscriptions = inputs
+            .iter()
+            .enumerate()
+            .map(|(index, (name, input))| {
+                let name = *name;
+                cx.subscribe(input, move |this, input, event: &InputEvent, cx| {
+                    if *event == InputEvent::Changed {
+                        this.changes[index] += 1;
+                        eprintln!(
+                            "event field={name:?} change={} text={:?}",
+                            this.changes[index],
+                            input.read(cx).text()
+                        );
+                        cx.notify();
+                    }
+                })
+            })
+            .collect();
+        let changes = vec![0; inputs.len()];
+        Self {
+            inputs,
+            notes,
+            changes,
+            _subscriptions: subscriptions,
+        }
+    }
+
+    fn snapshot(&self, window: &mut Window, cx: &mut Context<Self>) {
+        for (index, (name, input)) in self.inputs.iter().enumerate() {
+            input.update(cx, |input, cx| {
+                let selected = input.selected_text_range(false, window, cx).unwrap();
+                let marked = input.marked_text_range(window, cx);
+                eprintln!(
+                    "snapshot field={name:?} changes={} text={:?} selection={:?} reversed={} marked={marked:?} readonly={} disabled={} max={:?}",
+                    self.changes[index], input.text(), selected.range, selected.reversed,
+                    input.is_readonly(), input.is_disabled(), input.max_len()
+                );
+            });
+        }
+    }
+
+    fn operation(&mut self, key: &str, window: &mut Window, cx: &mut Context<Self>) {
+        eprintln!("operation key={key:?}");
+        self.inputs[0].1.update(cx, |input, cx| {
+            eprintln!(
+                "before operation primary marked={:?}",
+                input.marked_text_range(window, cx)
+            );
+            match key {
+                "f1" => input.set_readonly(!input.is_readonly(), cx),
+                "f2" => input.set_disabled(!input.is_disabled(), cx),
+                "f3" => input.set_max_len(Some(7), cx),
+                "f4" => input.set_max_len(None, cx),
+                "f5" => {
+                    input.set_disabled(false, cx);
+                    input.set_readonly(false, cx);
+                    input.set_max_len(None, cx);
+                    input.set_text(PRIMARY, cx);
+                }
+                // The F6-F10 cases call the public IME protocol directly. They complement
+                // actual fcitx typing and must not be labeled as real input-method evidence.
+                "f6" | "f7" => {
+                    input.replace_and_mark_text_in_range(None, "shi jie", None, window, cx);
+                    if key == "f6" {
+                        input.replace_and_mark_text_in_range(None, "", None, window, cx);
+                    }
+                    input.replace_text_in_range(None, "世界", window, cx);
+                    input.replace_and_mark_text_in_range(None, "", None, window, cx);
+                    input.replace_and_mark_text_in_range(None, "", None, window, cx);
+                }
+                "f8" => {
+                    input.replace_and_mark_text_in_range(None, "shi jie", None, window, cx);
+                    input.replace_and_mark_text_in_range(None, "", None, window, cx);
+                    input.replace_and_mark_text_in_range(None, "", None, window, cx);
+                }
+                "f9" => input.replace_text_in_range(None, "", window, cx),
+                "f10" => {
+                    input.replace_and_mark_text_in_range(None, "shi jie", None, window, cx);
+                    input.set_max_len(Some(3), cx);
+                    input.replace_and_mark_text_in_range(None, "", None, window, cx);
+                }
+                _ => {}
+            }
+        });
+        if key == "f5" {
+            self.inputs[1].1.update(cx, |input, cx| {
+                input.set_max_len(Some(6), cx);
+                input.set_text("A😀BC", cx);
+            });
+            self.notes.update(cx, |area, cx| area.set_text(NOTES, cx));
+        }
+        if key == "f11" {
+            self.inputs[1].1.update(cx, |input, cx| {
+                input.set_max_len(input.max_len(), cx);
+            });
+        }
+        self.snapshot(window, cx);
+    }
+}
+
+impl Render for Probe {
+    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let theme = Theme::get(cx).clone();
+        let mut root = div()
+            .id("ime-observer")
+            .size_full()
+            .p(px(20.))
+            .flex()
+            .flex_col()
+            .gap(px(14.))
+            .bg(theme.bg_0)
+            .text_color(theme.fg_0)
+            .text_size(px(17.))
+            .child("Actual IME observer; F12 snapshot. F1 readonly, F2 disabled, F3 max7, F4 no limit, F5 reset.")
+            .on_key_down(cx.listener(|this, event: &KeyDownEvent, window, cx| {
+                let key = event.keystroke.key.as_str();
+                if key == "tab" {
+                    if event.keystroke.modifiers.shift {
+                        window.focus_prev(cx);
+                    } else {
+                        window.focus_next(cx);
+                    }
+                    cx.stop_propagation();
+                } else if key == "f12" {
+                    this.snapshot(window, cx);
+                    cx.stop_propagation();
+                } else if matches!(key, "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "f9" | "f10" | "f11") {
+                    this.operation(key, window, cx);
+                    cx.stop_propagation();
+                }
+            }));
+        for (name, input) in &self.inputs {
+            if *name == "Notes" {
+                root = root.child(div().child(*name).child(self.notes.clone()));
+            } else {
+                root = root.child(div().child(*name).child(input.clone()));
+            }
+        }
+        root
+    }
+}
+
+#[path = "support/platform.rs"]
+mod platform;
+
+fn main() {
+    platform::application()
+        .with_assets(wegpui::Assets)
+        .run(|cx| {
+            wegpui::init(cx);
+            cx.open_window(
+                WindowOptions {
+                    window_bounds: Some(WindowBounds::Windowed(Bounds::new(
+                        point(px(70.), px(70.)),
+                        size(px(760.), px(850.)),
+                    ))),
+                    titlebar: Some(TitlebarOptions {
+                        title: Some("weGPUI IME observer probe".into()),
+                        ..Default::default()
+                    }),
+                    ..Default::default()
+                },
+                |window, cx| {
+                    Theme::observe(window);
+                    let view = cx.new(Probe::new);
+                    let first = view.read(cx).inputs[0].1.clone();
+                    first.update(cx, |input, cx| input.focus(window, cx));
+                    view
+                },
+            )
+            .expect("open IME observer probe");
+            cx.activate(true);
+        });
+}

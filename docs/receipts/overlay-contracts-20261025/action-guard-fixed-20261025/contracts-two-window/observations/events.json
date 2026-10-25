@@ -1,0 +1,77 @@
+[
+  {
+    "kind": "pointer",
+    "monotonic_ns": 15712226629402,
+    "name": "Open A"
+  },
+  {
+    "kind": "actions",
+    "monotonic_ns": 15714443755445,
+    "name": "Caller action A",
+    "names": [
+      "click"
+    ]
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15714527401993,
+    "label": "opened"
+  },
+  {
+    "kind": "open-own-control",
+    "monotonic_ns": 15714528830104,
+    "result": true,
+    "invoked_ns": 15714527649014
+  },
+  {
+    "kind": "actions",
+    "monotonic_ns": 15714757733553,
+    "name": "Background action B",
+    "names": [
+      "click"
+    ]
+  },
+  {
+    "kind": "other-window-open-control",
+    "monotonic_ns": 15714759046723,
+    "result": true,
+    "invoked_ns": 15714758137938
+  },
+  {
+    "kind": "hide-command",
+    "monotonic_ns": 15714996538808,
+    "started_ns": 15714993478153,
+    "returned_ns": 15714996534426
+  },
+  {
+    "kind": "saved-caller-while-closed",
+    "monotonic_ns": 15714998281062,
+    "result": true,
+    "invoked_ns": 15714996915280
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15715324559941,
+    "label": "during-close"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15717610000293,
+    "label": "closed"
+  },
+  {
+    "kind": "other-window-closed-control",
+    "monotonic_ns": 15717611316476,
+    "result": true,
+    "invoked_ns": 15717610293222
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15717902089551,
+    "label": "other-window-after-close"
+  },
+  {
+    "kind": "finished",
+    "monotonic_ns": 15717902355116
+  }
+]

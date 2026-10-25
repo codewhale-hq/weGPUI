@@ -1,0 +1,298 @@
+{
+  "normal-away": {
+    "native_modes": [
+      {
+        "kind": "FocusOut",
+        "window": "0x400001",
+        "utc": "2026-10-25T11:09:12.462942+00:00",
+        "monotonic_ns": 14224516759524,
+        "mode": "NotifyNormal",
+        "detail": "NotifyNonlinear"
+      }
+    ],
+    "atspi_events": [
+      {
+        "utc": "2026-10-25T11:09:12.481661+00:00",
+        "monotonic_ns": 14224535506533,
+        "type": "window:deactivate",
+        "detail1": 0,
+        "detail2": 0,
+        "name": "",
+        "role": "frame"
+      },
+      {
+        "utc": "2026-10-25T11:09:12.481864+00:00",
+        "monotonic_ns": 14224535685024,
+        "type": "object:state-changed:focused",
+        "detail1": 0,
+        "detail2": 0,
+        "name": "",
+        "role": "frame"
+      }
+    ],
+    "settled": {
+      "utc": "2026-10-25T11:09:13.083911+00:00",
+      "monotonic_ns": 14225137754773,
+      "label": "normal-away",
+      "phase": "settled",
+      "native_input_focus": 12582913,
+      "revert_to": 2,
+      "app_window": 4194305,
+      "control_window": 12582913,
+      "frame_states": [
+        "enabled",
+        "focusable",
+        "sensitive",
+        "showing",
+        "visible"
+      ],
+      "frame_active": false,
+      "app_atspi_focused": []
+    }
+  },
+  "normal-back": {
+    "native_modes": [
+      {
+        "kind": "FocusIn",
+        "window": "0x400001",
+        "utc": "2026-10-25T11:09:13.133451+00:00",
+        "monotonic_ns": 14225187269460,
+        "mode": "NotifyNormal",
+        "detail": "NotifyNonlinear"
+      }
+    ],
+    "atspi_events": [
+      {
+        "utc": "2026-10-25T11:09:13.155578+00:00",
+        "monotonic_ns": 14225209413858,
+        "type": "window:activate",
+        "detail1": 0,
+        "detail2": 0,
+        "name": "",
+        "role": "frame"
+      },
+      {
+        "utc": "2026-10-25T11:09:13.155727+00:00",
+        "monotonic_ns": 14225209545765,
+        "type": "object:state-changed:focused",
+        "detail1": 1,
+        "detail2": 0,
+        "name": "",
+        "role": "frame"
+      }
+    ],
+    "settled": {
+      "utc": "2026-10-25T11:09:13.741608+00:00",
+      "monotonic_ns": 14225795451549,
+      "label": "normal-back",
+      "phase": "settled",
+      "native_input_focus": 4194305,
+      "revert_to": 2,
+      "app_window": 4194305,
+      "control_window": 12582913,
+      "frame_states": [
+        "active",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "visible"
+      ],
+      "frame_active": true,
+      "app_atspi_focused": [
+        {
+          "role": "frame",
+          "name": ""
+        }
+      ]
+    }
+  },
+  "temporary-grab": {
+    "native_modes": [
+      {
+        "kind": "FocusOut",
+        "window": "0x400001",
+        "utc": "2026-10-25T11:09:13.790863+00:00",
+        "monotonic_ns": 14225844680512,
+        "mode": "NotifyGrab",
+        "detail": "NotifyNonlinear"
+      }
+    ],
+    "atspi_events": [],
+    "settled": {
+      "utc": "2026-10-25T11:09:14.411656+00:00",
+      "monotonic_ns": 14226465563635,
+      "label": "temporary-grab",
+      "phase": "settled",
+      "native_input_focus": 4194305,
+      "revert_to": 2,
+      "app_window": 4194305,
+      "control_window": 12582913,
+      "frame_states": [
+        "active",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "visible"
+      ],
+      "frame_active": true,
+      "app_atspi_focused": [
+        {
+          "role": "frame",
+          "name": ""
+        }
+      ]
+    }
+  },
+  "temporary-ungrab": {
+    "native_modes": [
+      {
+        "kind": "FocusIn",
+        "window": "0x400001",
+        "utc": "2026-10-25T11:09:14.485281+00:00",
+        "monotonic_ns": 14226539099992,
+        "mode": "NotifyUngrab",
+        "detail": "NotifyNonlinear"
+      }
+    ],
+    "atspi_events": [],
+    "settled": {
+      "utc": "2026-10-25T11:09:15.103956+00:00",
+      "monotonic_ns": 14227157951678,
+      "label": "temporary-ungrab",
+      "phase": "settled",
+      "native_input_focus": 4194305,
+      "revert_to": 2,
+      "app_window": 4194305,
+      "control_window": 12582913,
+      "frame_states": [
+        "active",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "visible"
+      ],
+      "frame_active": true,
+      "app_atspi_focused": [
+        {
+          "role": "frame",
+          "name": ""
+        }
+      ]
+    }
+  },
+  "while-grabbed-away": {
+    "native_modes": [
+      {
+        "kind": "FocusOut",
+        "window": "0x400001",
+        "utc": "2026-10-25T11:09:15.468275+00:00",
+        "monotonic_ns": 14227522093451,
+        "mode": "NotifyWhileGrabbed",
+        "detail": "NotifyNonlinear"
+      }
+    ],
+    "atspi_events": [
+      {
+        "utc": "2026-10-25T11:09:15.490958+00:00",
+        "monotonic_ns": 14227544794125,
+        "type": "window:deactivate",
+        "detail1": 0,
+        "detail2": 0,
+        "name": "",
+        "role": "frame"
+      },
+      {
+        "utc": "2026-10-25T11:09:15.491410+00:00",
+        "monotonic_ns": 14227545232462,
+        "type": "object:state-changed:focused",
+        "detail1": 0,
+        "detail2": 0,
+        "name": "",
+        "role": "frame"
+      }
+    ],
+    "settled": {
+      "utc": "2026-10-25T11:09:16.075779+00:00",
+      "monotonic_ns": 14228129623153,
+      "label": "while-grabbed-away",
+      "phase": "settled",
+      "native_input_focus": 12582913,
+      "revert_to": 2,
+      "app_window": 4194305,
+      "control_window": 12582913,
+      "frame_states": [
+        "enabled",
+        "focusable",
+        "sensitive",
+        "showing",
+        "visible"
+      ],
+      "frame_active": false,
+      "app_atspi_focused": []
+    }
+  },
+  "while-grabbed-back": {
+    "native_modes": [
+      {
+        "kind": "FocusIn",
+        "window": "0x400001",
+        "utc": "2026-10-25T11:09:16.124413+00:00",
+        "monotonic_ns": 14228178235140,
+        "mode": "NotifyWhileGrabbed",
+        "detail": "NotifyNonlinear"
+      }
+    ],
+    "atspi_events": [
+      {
+        "utc": "2026-10-25T11:09:16.138163+00:00",
+        "monotonic_ns": 14228191998311,
+        "type": "window:activate",
+        "detail1": 0,
+        "detail2": 0,
+        "name": "",
+        "role": "frame"
+      },
+      {
+        "utc": "2026-10-25T11:09:16.138384+00:00",
+        "monotonic_ns": 14228192205228,
+        "type": "object:state-changed:focused",
+        "detail1": 1,
+        "detail2": 0,
+        "name": "",
+        "role": "frame"
+      }
+    ],
+    "settled": {
+      "utc": "2026-10-25T11:09:16.731285+00:00",
+      "monotonic_ns": 14228785126527,
+      "label": "while-grabbed-back",
+      "phase": "settled",
+      "native_input_focus": 4194305,
+      "revert_to": 2,
+      "app_window": 4194305,
+      "control_window": 12582913,
+      "frame_states": [
+        "active",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "visible"
+      ],
+      "frame_active": true,
+      "app_atspi_focused": [
+        {
+          "role": "frame",
+          "name": ""
+        }
+      ]
+    }
+  }
+}

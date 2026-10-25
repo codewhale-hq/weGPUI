@@ -1,0 +1,45 @@
+{
+  "reader_command": "2026-10-25T11:21:53.372069+00:00 XTEST held Insert + KP_Begin",
+  "observed_focus_modes": [
+    {
+      "kind": "FocusOut",
+      "window": "0xa00001",
+      "utc": "2026-10-25T11:21:53.375289+00:00",
+      "monotonic_ns": 14985429108068,
+      "mode": "NotifyGrab",
+      "detail": "NotifyNonlinear"
+    },
+    {
+      "kind": "FocusIn",
+      "window": "0xa00001",
+      "utc": "2026-10-25T11:21:53.375510+00:00",
+      "monotonic_ns": 14985429329027,
+      "mode": "NotifyGrab",
+      "detail": "NotifyNonlinear"
+    },
+    {
+      "kind": "FocusOut",
+      "window": "0xa00001",
+      "utc": "2026-10-25T11:21:53.569454+00:00",
+      "monotonic_ns": 14985623275311,
+      "mode": "NotifyUngrab",
+      "detail": "NotifyNonlinear"
+    },
+    {
+      "kind": "FocusIn",
+      "window": "0xa00001",
+      "utc": "2026-10-25T11:21:53.569553+00:00",
+      "monotonic_ns": 14985623371330,
+      "mode": "NotifyUngrab",
+      "detail": "NotifyNonlinear"
+    }
+  ],
+  "at_window_focus_pulses": [],
+  "flat_review_reset_lines": [],
+  "speech_lines": [
+    "11:21:53.396525 - SPEECH OUTPUT: 'insert' {'established': False}",
+    "11:21:53.497264 - SPEECH OUTPUT: 'icon-2 button grayed.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}"
+  ],
+  "interval_seconds": 0.8,
+  "scope": "Same reader/key fixture on combined approved artifact; observer receive and Orca timestamps, not isolated one-patch causal proof."
+}

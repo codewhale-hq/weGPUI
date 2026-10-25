@@ -1,0 +1,2 @@
+   Compiling wegpui-xim-focus-probe v0.0.0 (/workspace/.wegpui-cloud/xim-focus-consumer)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.01s

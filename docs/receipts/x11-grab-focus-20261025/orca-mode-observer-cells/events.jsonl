@@ -1,0 +1,91 @@
+{"received_utc": "2026-10-25T11:21:38.736446+00:00", "received_monotonic_ns": 14970790284334, "line": ""}
+{"received_utc": "2026-10-25T11:21:38.736542+00:00", "received_monotonic_ns": 14970790362102, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:38.736565+00:00", "received_monotonic_ns": 14970790383039, "line": "    mode NotifyGrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:38.736580+00:00", "received_monotonic_ns": 14970790397612, "line": ""}
+{"received_utc": "2026-10-25T11:21:38.736593+00:00", "received_monotonic_ns": 14970790410219, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:38.736603+00:00", "received_monotonic_ns": 14970790420898, "line": "    mode NotifyGrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:38.742786+00:00", "received_monotonic_ns": 14970796637227, "line": ""}
+{"received_utc": "2026-10-25T11:21:38.742858+00:00", "received_monotonic_ns": 14970796677384, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:38.742874+00:00", "received_monotonic_ns": 14970796691916, "line": "    mode NotifyUngrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:38.742886+00:00", "received_monotonic_ns": 14970796703560, "line": ""}
+{"received_utc": "2026-10-25T11:21:38.742896+00:00", "received_monotonic_ns": 14970796727771, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:38.742922+00:00", "received_monotonic_ns": 14970796738961, "line": "    mode NotifyUngrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:43.871153+00:00", "received_monotonic_ns": 14975924990805, "line": ""}
+{"received_utc": "2026-10-25T11:21:43.871214+00:00", "received_monotonic_ns": 14975925031605, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:43.871225+00:00", "received_monotonic_ns": 14975925042537, "line": "    mode NotifyGrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:43.871234+00:00", "received_monotonic_ns": 14975925050810, "line": ""}
+{"received_utc": "2026-10-25T11:21:43.871241+00:00", "received_monotonic_ns": 14975925057275, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:43.871248+00:00", "received_monotonic_ns": 14975925064500, "line": "    mode NotifyGrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:43.877779+00:00", "received_monotonic_ns": 14975931617749, "line": ""}
+{"received_utc": "2026-10-25T11:21:43.877840+00:00", "received_monotonic_ns": 14975931659452, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:43.877857+00:00", "received_monotonic_ns": 14975931675257, "line": "    mode NotifyUngrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:43.877870+00:00", "received_monotonic_ns": 14975931687703, "line": ""}
+{"received_utc": "2026-10-25T11:21:43.877880+00:00", "received_monotonic_ns": 14975931697480, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:43.877889+00:00", "received_monotonic_ns": 14975931706375, "line": "    mode NotifyUngrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:47.906412+00:00", "received_monotonic_ns": 14979960248854, "line": ""}
+{"received_utc": "2026-10-25T11:21:47.906469+00:00", "received_monotonic_ns": 14979960287627, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:47.906483+00:00", "received_monotonic_ns": 14979960300387, "line": "    mode NotifyGrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:47.906492+00:00", "received_monotonic_ns": 14979960309194, "line": ""}
+{"received_utc": "2026-10-25T11:21:47.906506+00:00", "received_monotonic_ns": 14979960322976, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:47.906514+00:00", "received_monotonic_ns": 14979960330770, "line": "    mode NotifyGrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:47.912759+00:00", "received_monotonic_ns": 14979966595715, "line": ""}
+{"received_utc": "2026-10-25T11:21:47.912820+00:00", "received_monotonic_ns": 14979966639873, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:47.912838+00:00", "received_monotonic_ns": 14979966656277, "line": "    mode NotifyUngrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:47.912851+00:00", "received_monotonic_ns": 14979966668032, "line": ""}
+{"received_utc": "2026-10-25T11:21:47.912860+00:00", "received_monotonic_ns": 14979966677470, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:47.912869+00:00", "received_monotonic_ns": 14979966687060, "line": "    mode NotifyUngrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:49.927822+00:00", "received_monotonic_ns": 14981981661860, "line": ""}
+{"received_utc": "2026-10-25T11:21:49.927898+00:00", "received_monotonic_ns": 14981981717822, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:49.927916+00:00", "received_monotonic_ns": 14981981734113, "line": "    mode NotifyGrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:49.927929+00:00", "received_monotonic_ns": 14981981746607, "line": ""}
+{"received_utc": "2026-10-25T11:21:49.927939+00:00", "received_monotonic_ns": 14981981756601, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:49.927949+00:00", "received_monotonic_ns": 14981981766933, "line": "    mode NotifyGrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:49.934389+00:00", "received_monotonic_ns": 14981988226523, "line": ""}
+{"received_utc": "2026-10-25T11:21:49.934579+00:00", "received_monotonic_ns": 14981988412959, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:49.934626+00:00", "received_monotonic_ns": 14981988444981, "line": "    mode NotifyUngrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:49.934646+00:00", "received_monotonic_ns": 14981988464955, "line": ""}
+{"received_utc": "2026-10-25T11:21:49.934663+00:00", "received_monotonic_ns": 14981988480957, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:49.934679+00:00", "received_monotonic_ns": 14981988496300, "line": "    mode NotifyUngrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:53.030787+00:00", "received_monotonic_ns": 14985084633001, "line": ""}
+{"received_utc": "2026-10-25T11:21:53.030857+00:00", "received_monotonic_ns": 14985084675344, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:53.030870+00:00", "received_monotonic_ns": 14985084686556, "line": "    mode NotifyGrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:53.030878+00:00", "received_monotonic_ns": 14985084695012, "line": ""}
+{"received_utc": "2026-10-25T11:21:53.030885+00:00", "received_monotonic_ns": 14985084701713, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:53.030892+00:00", "received_monotonic_ns": 14985084708377, "line": "    mode NotifyGrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:53.037254+00:00", "received_monotonic_ns": 14985091088509, "line": ""}
+{"received_utc": "2026-10-25T11:21:53.037306+00:00", "received_monotonic_ns": 14985091124392, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:53.037320+00:00", "received_monotonic_ns": 14985091136573, "line": "    mode NotifyUngrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:53.037329+00:00", "received_monotonic_ns": 14985091146038, "line": ""}
+{"received_utc": "2026-10-25T11:21:53.037341+00:00", "received_monotonic_ns": 14985091157839, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:53.037382+00:00", "received_monotonic_ns": 14985091199818, "line": "    mode NotifyUngrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:53.207997+00:00", "received_monotonic_ns": 14985261829611, "line": ""}
+{"received_utc": "2026-10-25T11:21:53.208046+00:00", "received_monotonic_ns": 14985261864805, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:53.208061+00:00", "received_monotonic_ns": 14985261879201, "line": "    mode NotifyGrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:53.208073+00:00", "received_monotonic_ns": 14985261890968, "line": ""}
+{"received_utc": "2026-10-25T11:21:53.208083+00:00", "received_monotonic_ns": 14985261900949, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:53.208094+00:00", "received_monotonic_ns": 14985261911220, "line": "    mode NotifyGrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:53.214493+00:00", "received_monotonic_ns": 14985268324791, "line": ""}
+{"received_utc": "2026-10-25T11:21:53.214545+00:00", "received_monotonic_ns": 14985268365025, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:53.214562+00:00", "received_monotonic_ns": 14985268380082, "line": "    mode NotifyUngrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:53.214605+00:00", "received_monotonic_ns": 14985268423021, "line": ""}
+{"received_utc": "2026-10-25T11:21:53.214616+00:00", "received_monotonic_ns": 14985268433692, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:53.214625+00:00", "received_monotonic_ns": 14985268442552, "line": "    mode NotifyUngrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:53.375231+00:00", "received_monotonic_ns": 14985429066580, "line": ""}
+{"received_utc": "2026-10-25T11:21:53.375289+00:00", "received_monotonic_ns": 14985429108068, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:53.375306+00:00", "received_monotonic_ns": 14985429124180, "line": "    mode NotifyGrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:53.375472+00:00", "received_monotonic_ns": 14985429294327, "line": ""}
+{"received_utc": "2026-10-25T11:21:53.375510+00:00", "received_monotonic_ns": 14985429329027, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:53.375534+00:00", "received_monotonic_ns": 14985429351868, "line": "    mode NotifyGrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:53.569343+00:00", "received_monotonic_ns": 14985623208279, "line": ""}
+{"received_utc": "2026-10-25T11:21:53.569454+00:00", "received_monotonic_ns": 14985623275311, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:53.569485+00:00", "received_monotonic_ns": 14985623304103, "line": "    mode NotifyUngrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:21:53.569532+00:00", "received_monotonic_ns": 14985623350610, "line": ""}
+{"received_utc": "2026-10-25T11:21:53.569553+00:00", "received_monotonic_ns": 14985623371330, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:21:53.569572+00:00", "received_monotonic_ns": 14985623389627, "line": "    mode NotifyUngrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:22:02.234445+00:00", "received_monotonic_ns": 14994288294217, "line": ""}
+{"received_utc": "2026-10-25T11:22:02.234529+00:00", "received_monotonic_ns": 14994288348174, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:22:02.234546+00:00", "received_monotonic_ns": 14994288363952, "line": "    mode NotifyNormal, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:22:02.234559+00:00", "received_monotonic_ns": 14994288376653, "line": ""}
+{"received_utc": "2026-10-25T11:22:02.234569+00:00", "received_monotonic_ns": 14994288387003, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:22:02.234588+00:00", "received_monotonic_ns": 14994288405172, "line": "    mode NotifyNormal, detail NotifyPointer"}
+{"received_utc": "2026-10-25T11:22:02.238904+00:00", "received_monotonic_ns": 14994292740848, "line": "X connection to :110 broken (explicit kill or server shutdown)."}

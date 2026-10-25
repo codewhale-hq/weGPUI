@@ -1,0 +1,48 @@
+[
+  {
+    "name": "main",
+    "role": "desktop frame",
+    "states": []
+  },
+  {
+    "name": "modal-guard-contracts",
+    "role": "application",
+    "states": []
+  },
+  {
+    "name": "Guard contract main",
+    "role": "frame",
+    "states": [
+      "<enum ATSPI_STATE_ACTIVE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_ENABLED of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SENSITIVE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SHOWING of type Atspi.StateType>",
+      "<enum ATSPI_STATE_VISIBLE of type Atspi.StateType>"
+    ]
+  },
+  {
+    "name": "Caller contract",
+    "role": "dialog",
+    "states": [
+      "<enum ATSPI_STATE_ACTIVE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_ENABLED of type Atspi.StateType>",
+      "<enum ATSPI_STATE_FOCUSABLE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_FOCUSED of type Atspi.StateType>",
+      "<enum ATSPI_STATE_MODAL of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SENSITIVE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SHOWING of type Atspi.StateType>",
+      "<enum ATSPI_STATE_VISIBLE of type Atspi.StateType>"
+    ]
+  },
+  {
+    "name": "Caller action main",
+    "role": "button",
+    "states": [
+      "<enum ATSPI_STATE_ENABLED of type Atspi.StateType>",
+      "<enum ATSPI_STATE_FOCUSABLE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SENSITIVE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SHOWING of type Atspi.StateType>",
+      "<enum ATSPI_STATE_VISIBLE of type Atspi.StateType>"
+    ]
+  }
+]

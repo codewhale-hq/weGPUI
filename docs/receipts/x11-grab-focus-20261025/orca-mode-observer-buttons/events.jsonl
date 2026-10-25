@@ -1,0 +1,19 @@
+{"received_utc": "2026-10-25T11:20:09.893630+00:00", "received_monotonic_ns": 14881947503026, "line": ""}
+{"received_utc": "2026-10-25T11:20:09.893817+00:00", "received_monotonic_ns": 14881947636066, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:20:09.893834+00:00", "received_monotonic_ns": 14881947650879, "line": "    mode NotifyGrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:20:09.893851+00:00", "received_monotonic_ns": 14881947668720, "line": ""}
+{"received_utc": "2026-10-25T11:20:09.893861+00:00", "received_monotonic_ns": 14881947677581, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:20:09.893868+00:00", "received_monotonic_ns": 14881947684492, "line": "    mode NotifyGrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:20:09.908536+00:00", "received_monotonic_ns": 14881962373554, "line": ""}
+{"received_utc": "2026-10-25T11:20:09.908594+00:00", "received_monotonic_ns": 14881962412308, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:20:09.908607+00:00", "received_monotonic_ns": 14881962424304, "line": "    mode NotifyUngrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:20:09.908634+00:00", "received_monotonic_ns": 14881962451835, "line": ""}
+{"received_utc": "2026-10-25T11:20:09.908642+00:00", "received_monotonic_ns": 14881962458961, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:20:09.908650+00:00", "received_monotonic_ns": 14881962466561, "line": "    mode NotifyUngrab, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:20:15.137817+00:00", "received_monotonic_ns": 14887191659621, "line": ""}
+{"received_utc": "2026-10-25T11:20:15.137890+00:00", "received_monotonic_ns": 14887191709038, "line": "FocusOut event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:20:15.137907+00:00", "received_monotonic_ns": 14887191724370, "line": "    mode NotifyNormal, detail NotifyNonlinear"}
+{"received_utc": "2026-10-25T11:20:15.137919+00:00", "received_monotonic_ns": 14887191736583, "line": ""}
+{"received_utc": "2026-10-25T11:20:15.137928+00:00", "received_monotonic_ns": 14887191745755, "line": "FocusIn event, serial 18, synthetic NO, window 0xa00001,"}
+{"received_utc": "2026-10-25T11:20:15.137938+00:00", "received_monotonic_ns": 14887191755100, "line": "    mode NotifyNormal, detail NotifyPointer"}
+{"received_utc": "2026-10-25T11:20:15.141779+00:00", "received_monotonic_ns": 14887195615243, "line": "X connection to :110 broken (explicit kill or server shutdown)."}

@@ -1,0 +1,6 @@
+0 PARENT_RENDER redraws=0
+0 CHILD_RENDER name="Live child action" renders=1 clicks=0
+12 CHILD_RENDER name="Cached child action" renders=1 clicks=0
+35 PARENT_RENDER redraws=0
+35 CHILD_RENDER name="Cached child action" renders=2 clicks=0
+35 CHILD_RENDER name="Live child action" renders=2 clicks=0

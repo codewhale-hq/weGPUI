@@ -1,0 +1,55 @@
+2026-10-25T11:21:28Z
+3840b47370f8defa925cbff7d3bf12ccf6250722
+ M Cargo.lock
+ M Cargo.toml
+ M NOTICE
+ M docs/proposals/modal-a11y-action-guard/README.md
+ M docs/proposals/x11-grab-focus/README.md
+ M docs/proposals/x11-grab-focus/checksums.txt
+ M docs/proposals/x11-grab-focus/validation.txt
+ M docs/receipts/orca-controls-20261025/x11-focus-modes-20261025/README.md
+ M src/accessibility.rs
+ M src/components/modal.rs
+ M vendor/README.md
+ M vendor/gpui_pre/src/view.rs
+ M vendor/gpui_pre/src/window.rs
+ M vendor/gpui_pre/src/window/a11y.rs
+ M website/app.js
+ M website/build.py
+ M website/index.html
+?? .github/workflows/pages.yml
+?? docs/proposals/modal-a11y-action-guard/application-status.md
+?? docs/proposals/x11-grab-focus/applied-source-checks.json
+?? docs/receipts/overlay-contracts-20261025/action-guard-fixed-20261025/
+?? docs/receipts/web-interactive-20261025/
+?? docs/receipts/web-playground-20261025/
+?? docs/receipts/x11-grab-focus-20261025/
+?? vendor/gpui_pre_linux/
+?? website/HOSTING.md
+?? website/check_interactive.py
+?? website/playground/
+12d873ddfb260902eed4288a4bc587abed80493ccdcd4498a376cace789f28ed  -
+ab42f309930ae113e3d2c0d2cc474d70f77d101229d1a9bfe5b4671724c790e2  /workspace/.wegpui-cloud/artifacts/native-guard-approved/wegpui-orca-controls-probe
+rustc 1.98.1 (48a229cea 2026-09-01)
+Linux 1df3d6caf486 6.18.55 #1 SMP Wed Oct 14 19:45:18 UTC 2026 x86_64 GNU/Linux
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+Orca version 48.1, AT-SPI2 version: 2.56.2
+speech-dispatcher 0.12.0
+Copyright (C) 2002-2012 Brailcom, o.p.s.
+This is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2, or (at your option)
+any later version. Please see COPYING for more details.
+
+pulseaudio 17.0
+eSpeak NG text-to-speech: 1.52.0  Data at: /usr/lib/x86_64-linux-gnu/espeak-ng-data
+command: /workspace/.wegpui-cloud/artifacts/native-guard-approved/wegpui-orca-controls-probe --page cells

@@ -1,0 +1,1468 @@
+{
+  "actions": [
+    {
+      "at": 1792927022.3962412,
+      "kind": "launch",
+      "route": "observer"
+    },
+    {
+      "at": 1792927024.8762605,
+      "kind": "key",
+      "key": "F12"
+    },
+    {
+      "at": 1792927027.1584167,
+      "kind": "click",
+      "field": "Primary",
+      "desktop": [
+        460,
+        764
+      ]
+    },
+    {
+      "at": 1792927027.912525,
+      "kind": "key",
+      "key": "Home"
+    },
+    {
+      "at": 1792927028.5796735,
+      "kind": "key",
+      "key": "Right"
+    },
+    {
+      "at": 1792927029.2460659,
+      "kind": "key",
+      "key": "shift+Right"
+    },
+    {
+      "at": 1792927029.9250782,
+      "kind": "key",
+      "key": "shift+Right"
+    },
+    {
+      "at": 1792927030.6564841,
+      "kind": "ime",
+      "active": true
+    },
+    {
+      "at": 1792927031.3202763,
+      "kind": "type",
+      "text": "shijie"
+    },
+    {
+      "at": 1792927032.345731,
+      "kind": "key",
+      "key": "F12"
+    },
+    {
+      "at": 1792927033.9450512,
+      "kind": "actual-keyboard-grab",
+      "label": "03-preedit-after-grab-ungrab",
+      "native_input_focus": 8388609,
+      "app_window": 8388609,
+      "control_window": 6291457,
+      "primary": "Ashi jieB é 👩‍💻 C"
+    },
+    {
+      "at": 1792927034.487228,
+      "kind": "key",
+      "key": "F12"
+    },
+    {
+      "at": 1792927035.559554,
+      "kind": "key",
+      "key": "space"
+    },
+    {
+      "at": 1792927036.22545,
+      "kind": "key",
+      "key": "F12"
+    },
+    {
+      "at": 1792927037.4849706,
+      "kind": "ime",
+      "active": false
+    },
+    {
+      "at": 1792927038.1428165,
+      "kind": "key",
+      "key": "ctrl+z"
+    },
+    {
+      "at": 1792927038.8311126,
+      "kind": "key",
+      "key": "F12"
+    },
+    {
+      "at": 1792927039.8699267,
+      "kind": "ime",
+      "active": false
+    },
+    {
+      "at": 1792927040.5274699,
+      "kind": "key",
+      "key": "F5"
+    },
+    {
+      "at": 1792927041.2913015,
+      "kind": "click",
+      "field": "Primary",
+      "desktop": [
+        460,
+        764
+      ]
+    },
+    {
+      "at": 1792927042.0458791,
+      "kind": "key",
+      "key": "Home"
+    },
+    {
+      "at": 1792927042.7128417,
+      "kind": "key",
+      "key": "Right"
+    },
+    {
+      "at": 1792927043.3787074,
+      "kind": "key",
+      "key": "Right"
+    },
+    {
+      "at": 1792927044.0480824,
+      "kind": "key",
+      "key": "Right"
+    },
+    {
+      "at": 1792927044.7192461,
+      "kind": "key",
+      "key": "shift+Left"
+    },
+    {
+      "at": 1792927045.4027233,
+      "kind": "key",
+      "key": "shift+Left"
+    },
+    {
+      "at": 1792927046.1220653,
+      "kind": "ime",
+      "active": true
+    },
+    {
+      "at": 1792927046.7798066,
+      "kind": "type",
+      "text": "shijie"
+    },
+    {
+      "at": 1792927047.7744474,
+      "kind": "key",
+      "key": "F12"
+    },
+    {
+      "at": 1792927049.3848085,
+      "kind": "actual-keyboard-grab",
+      "label": "07-reversed-preedit-after-grab-ungrab",
+      "native_input_focus": 8388609,
+      "app_window": 8388609,
+      "control_window": 6291457,
+      "primary": "Ashi jieB é 👩‍💻 C"
+    },
+    {
+      "at": 1792927049.9370904,
+      "kind": "key",
+      "key": "F12"
+    },
+    {
+      "at": 1792927051.0302756,
+      "kind": "key",
+      "key": "Escape"
+    },
+    {
+      "at": 1792927051.7010403,
+      "kind": "key",
+      "key": "F12"
+    }
+  ],
+  "observations": [
+    {
+      "label": "01-observer-initial",
+      "fields": [
+        {
+          "name": "Primary",
+          "role": "entry",
+          "value": "A你好B é 👩‍💻 C",
+          "caret": 13,
+          "selection": [],
+          "bounds": [
+            440,
+            750,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Limited",
+          "role": "entry",
+          "value": "A😀BC",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            440,
+            820,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Password",
+          "role": "password text",
+          "value": "•••",
+          "caret": 3,
+          "selection": [],
+          "bounds": [
+            440,
+            890,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Read only",
+          "role": "entry",
+          "value": "readonly",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            960,
+            720,
+            28
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "Disabled",
+          "role": "entry",
+          "value": "disabled",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            1030,
+            720,
+            28
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Notes",
+          "role": "entry",
+          "value": "first é\nA你好after",
+          "caret": 17,
+          "selection": [],
+          "bounds": [
+            440,
+            1100,
+            720,
+            84
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "multi line",
+            "sensitive",
+            "showing",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "keyboard-us",
+      "activation": "1",
+      "changes": {
+        "Primary": 0,
+        "Limited": 0,
+        "Notes": 0,
+        "Password": 0,
+        "Read only": 0,
+        "Disabled": 0
+      },
+      "native_snapshots": [
+        "snapshot field=\"Primary\" changes=0 text=\"A你好B e\\u{301} 👩\\u{200d}💻 C\" selection=15..15 reversed=false marked=None readonly=false disabled=false max=None",
+        "snapshot field=\"Limited\" changes=0 text=\"A😀BC\" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)",
+        "snapshot field=\"Password\" changes=0 text=\"A😀e\\u{301}\" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None",
+        "snapshot field=\"Read only\" changes=0 text=\"readonly\" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None",
+        "snapshot field=\"Disabled\" changes=0 text=\"disabled\" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None",
+        "snapshot field=\"Notes\" changes=0 text=\"first e\\u{301}\\nA你好after\" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)"
+      ]
+    },
+    {
+      "label": "02-real-preedit-before-grab",
+      "fields": [
+        {
+          "name": "Primary",
+          "role": "entry",
+          "value": "Ashi jieB é 👩‍💻 C",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            750,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Limited",
+          "role": "entry",
+          "value": "A😀BC",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            440,
+            820,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Password",
+          "role": "password text",
+          "value": "•••",
+          "caret": 3,
+          "selection": [],
+          "bounds": [
+            440,
+            890,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Read only",
+          "role": "entry",
+          "value": "readonly",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            960,
+            720,
+            28
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "Disabled",
+          "role": "entry",
+          "value": "disabled",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            1030,
+            720,
+            28
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Notes",
+          "role": "entry",
+          "value": "first é\nA你好after",
+          "caret": 17,
+          "selection": [],
+          "bounds": [
+            440,
+            1100,
+            720,
+            84
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "multi line",
+            "sensitive",
+            "showing",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "pinyin",
+      "activation": "2",
+      "changes": {
+        "Primary": 0,
+        "Limited": 0,
+        "Notes": 0,
+        "Password": 0,
+        "Read only": 0,
+        "Disabled": 0
+      },
+      "native_snapshots": [
+        "snapshot field=\"Primary\" changes=0 text=\"Ashi jieB e\\u{301} 👩\\u{200d}💻 C\" selection=8..8 reversed=false marked=Some(1..8) readonly=false disabled=false max=None",
+        "snapshot field=\"Limited\" changes=0 text=\"A😀BC\" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)",
+        "snapshot field=\"Password\" changes=0 text=\"A😀e\\u{301}\" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None",
+        "snapshot field=\"Read only\" changes=0 text=\"readonly\" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None",
+        "snapshot field=\"Disabled\" changes=0 text=\"disabled\" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None",
+        "snapshot field=\"Notes\" changes=0 text=\"first e\\u{301}\\nA你好after\" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)"
+      ]
+    },
+    {
+      "label": "03-preedit-after-grab-ungrab",
+      "fields": [
+        {
+          "name": "Primary",
+          "role": "entry",
+          "value": "Ashi jieB é 👩‍💻 C",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            750,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Limited",
+          "role": "entry",
+          "value": "A😀BC",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            440,
+            820,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Password",
+          "role": "password text",
+          "value": "•••",
+          "caret": 3,
+          "selection": [],
+          "bounds": [
+            440,
+            890,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Read only",
+          "role": "entry",
+          "value": "readonly",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            960,
+            720,
+            28
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "Disabled",
+          "role": "entry",
+          "value": "disabled",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            1030,
+            720,
+            28
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Notes",
+          "role": "entry",
+          "value": "first é\nA你好after",
+          "caret": 17,
+          "selection": [],
+          "bounds": [
+            440,
+            1100,
+            720,
+            84
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "multi line",
+            "sensitive",
+            "showing",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "pinyin",
+      "activation": "2",
+      "changes": {
+        "Primary": 0,
+        "Limited": 0,
+        "Notes": 0,
+        "Password": 0,
+        "Read only": 0,
+        "Disabled": 0
+      },
+      "native_snapshots": [
+        "snapshot field=\"Primary\" changes=0 text=\"Ashi jieB e\\u{301} 👩\\u{200d}💻 C\" selection=8..8 reversed=false marked=Some(1..8) readonly=false disabled=false max=None",
+        "snapshot field=\"Limited\" changes=0 text=\"A😀BC\" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)",
+        "snapshot field=\"Password\" changes=0 text=\"A😀e\\u{301}\" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None",
+        "snapshot field=\"Read only\" changes=0 text=\"readonly\" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None",
+        "snapshot field=\"Disabled\" changes=0 text=\"disabled\" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None",
+        "snapshot field=\"Notes\" changes=0 text=\"first e\\u{301}\\nA你好after\" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)"
+      ]
+    },
+    {
+      "label": "04-real-commit",
+      "fields": [
+        {
+          "name": "Primary",
+          "role": "entry",
+          "value": "A世界B é 👩‍💻 C",
+          "caret": 3,
+          "selection": [],
+          "bounds": [
+            440,
+            750,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Limited",
+          "role": "entry",
+          "value": "A😀BC",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            440,
+            820,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Password",
+          "role": "password text",
+          "value": "•••",
+          "caret": 3,
+          "selection": [],
+          "bounds": [
+            440,
+            890,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Read only",
+          "role": "entry",
+          "value": "readonly",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            960,
+            720,
+            28
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "Disabled",
+          "role": "entry",
+          "value": "disabled",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            1030,
+            720,
+            28
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Notes",
+          "role": "entry",
+          "value": "first é\nA你好after",
+          "caret": 17,
+          "selection": [],
+          "bounds": [
+            440,
+            1100,
+            720,
+            84
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "multi line",
+            "sensitive",
+            "showing",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "pinyin",
+      "activation": "2",
+      "changes": {
+        "Primary": 1,
+        "Limited": 0,
+        "Notes": 0,
+        "Password": 0,
+        "Read only": 0,
+        "Disabled": 0
+      },
+      "native_snapshots": [
+        "snapshot field=\"Primary\" changes=1 text=\"A世界B e\\u{301} 👩\\u{200d}💻 C\" selection=3..3 reversed=false marked=None readonly=false disabled=false max=None",
+        "snapshot field=\"Limited\" changes=0 text=\"A😀BC\" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)",
+        "snapshot field=\"Password\" changes=0 text=\"A😀e\\u{301}\" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None",
+        "snapshot field=\"Read only\" changes=0 text=\"readonly\" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None",
+        "snapshot field=\"Disabled\" changes=0 text=\"disabled\" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None",
+        "snapshot field=\"Notes\" changes=0 text=\"first e\\u{301}\\nA你好after\" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)"
+      ]
+    },
+    {
+      "label": "05-real-commit-undo",
+      "fields": [
+        {
+          "name": "Primary",
+          "role": "entry",
+          "value": "A你好B é 👩‍💻 C",
+          "caret": 3,
+          "selection": [
+            [
+              1,
+              3
+            ]
+          ],
+          "bounds": [
+            440,
+            750,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Limited",
+          "role": "entry",
+          "value": "A😀BC",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            440,
+            820,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Password",
+          "role": "password text",
+          "value": "•••",
+          "caret": 3,
+          "selection": [],
+          "bounds": [
+            440,
+            890,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Read only",
+          "role": "entry",
+          "value": "readonly",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            960,
+            720,
+            28
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "Disabled",
+          "role": "entry",
+          "value": "disabled",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            1030,
+            720,
+            28
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Notes",
+          "role": "entry",
+          "value": "first é\nA你好after",
+          "caret": 17,
+          "selection": [],
+          "bounds": [
+            440,
+            1100,
+            720,
+            84
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "multi line",
+            "sensitive",
+            "showing",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "keyboard-us",
+      "activation": "1",
+      "changes": {
+        "Primary": 2,
+        "Limited": 0,
+        "Notes": 0,
+        "Password": 0,
+        "Read only": 0,
+        "Disabled": 0
+      },
+      "native_snapshots": [
+        "snapshot field=\"Primary\" changes=2 text=\"A你好B e\\u{301} 👩\\u{200d}💻 C\" selection=1..3 reversed=false marked=None readonly=false disabled=false max=None",
+        "snapshot field=\"Limited\" changes=0 text=\"A😀BC\" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)",
+        "snapshot field=\"Password\" changes=0 text=\"A😀e\\u{301}\" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None",
+        "snapshot field=\"Read only\" changes=0 text=\"readonly\" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None",
+        "snapshot field=\"Disabled\" changes=0 text=\"disabled\" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None",
+        "snapshot field=\"Notes\" changes=0 text=\"first e\\u{301}\\nA你好after\" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)"
+      ]
+    },
+    {
+      "label": "06-reversed-real-preedit",
+      "fields": [
+        {
+          "name": "Primary",
+          "role": "entry",
+          "value": "Ashi jieB é 👩‍💻 C",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            750,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Limited",
+          "role": "entry",
+          "value": "A😀BC",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            440,
+            820,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Password",
+          "role": "password text",
+          "value": "•••",
+          "caret": 3,
+          "selection": [],
+          "bounds": [
+            440,
+            890,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Read only",
+          "role": "entry",
+          "value": "readonly",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            960,
+            720,
+            28
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "Disabled",
+          "role": "entry",
+          "value": "disabled",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            1030,
+            720,
+            28
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Notes",
+          "role": "entry",
+          "value": "first é\nA你好after",
+          "caret": 17,
+          "selection": [],
+          "bounds": [
+            440,
+            1100,
+            720,
+            84
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "multi line",
+            "sensitive",
+            "showing",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "pinyin",
+      "activation": "2",
+      "changes": {
+        "Primary": 2,
+        "Limited": 0,
+        "Notes": 0,
+        "Password": 0,
+        "Read only": 0,
+        "Disabled": 0
+      },
+      "native_snapshots": [
+        "snapshot field=\"Primary\" changes=2 text=\"Ashi jieB e\\u{301} 👩\\u{200d}💻 C\" selection=8..8 reversed=false marked=Some(1..8) readonly=false disabled=false max=None",
+        "snapshot field=\"Limited\" changes=0 text=\"A😀BC\" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)",
+        "snapshot field=\"Password\" changes=0 text=\"A😀e\\u{301}\" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None",
+        "snapshot field=\"Read only\" changes=0 text=\"readonly\" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None",
+        "snapshot field=\"Disabled\" changes=0 text=\"disabled\" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None",
+        "snapshot field=\"Notes\" changes=0 text=\"first e\\u{301}\\nA你好after\" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)"
+      ]
+    },
+    {
+      "label": "07-reversed-preedit-after-grab-ungrab",
+      "fields": [
+        {
+          "name": "Primary",
+          "role": "entry",
+          "value": "Ashi jieB é 👩‍💻 C",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            750,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Limited",
+          "role": "entry",
+          "value": "A😀BC",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            440,
+            820,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Password",
+          "role": "password text",
+          "value": "•••",
+          "caret": 3,
+          "selection": [],
+          "bounds": [
+            440,
+            890,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Read only",
+          "role": "entry",
+          "value": "readonly",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            960,
+            720,
+            28
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "Disabled",
+          "role": "entry",
+          "value": "disabled",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            1030,
+            720,
+            28
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Notes",
+          "role": "entry",
+          "value": "first é\nA你好after",
+          "caret": 17,
+          "selection": [],
+          "bounds": [
+            440,
+            1100,
+            720,
+            84
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "multi line",
+            "sensitive",
+            "showing",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "pinyin",
+      "activation": "2",
+      "changes": {
+        "Primary": 2,
+        "Limited": 0,
+        "Notes": 0,
+        "Password": 0,
+        "Read only": 0,
+        "Disabled": 0
+      },
+      "native_snapshots": [
+        "snapshot field=\"Primary\" changes=2 text=\"Ashi jieB e\\u{301} 👩\\u{200d}💻 C\" selection=8..8 reversed=false marked=Some(1..8) readonly=false disabled=false max=None",
+        "snapshot field=\"Limited\" changes=0 text=\"A😀BC\" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)",
+        "snapshot field=\"Password\" changes=0 text=\"A😀e\\u{301}\" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None",
+        "snapshot field=\"Read only\" changes=0 text=\"readonly\" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None",
+        "snapshot field=\"Disabled\" changes=0 text=\"disabled\" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None",
+        "snapshot field=\"Notes\" changes=0 text=\"first e\\u{301}\\nA你好after\" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)"
+      ]
+    },
+    {
+      "label": "08-real-cancel",
+      "fields": [
+        {
+          "name": "Primary",
+          "role": "entry",
+          "value": "A你好B é 👩‍💻 C",
+          "caret": 1,
+          "selection": [
+            [
+              1,
+              3
+            ]
+          ],
+          "bounds": [
+            440,
+            750,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "focused",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Limited",
+          "role": "entry",
+          "value": "A😀BC",
+          "caret": 4,
+          "selection": [],
+          "bounds": [
+            440,
+            820,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Password",
+          "role": "password text",
+          "value": "•••",
+          "caret": 3,
+          "selection": [],
+          "bounds": [
+            440,
+            890,
+            720,
+            28
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Read only",
+          "role": "entry",
+          "value": "readonly",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            960,
+            720,
+            28
+          ],
+          "states": [
+            "enabled",
+            "focusable",
+            "sensitive",
+            "showing",
+            "single line",
+            "visible",
+            "selectable text",
+            "read only"
+          ]
+        },
+        {
+          "name": "Disabled",
+          "role": "entry",
+          "value": "disabled",
+          "caret": 8,
+          "selection": [],
+          "bounds": [
+            440,
+            1030,
+            720,
+            28
+          ],
+          "states": [
+            "showing",
+            "single line",
+            "visible",
+            "selectable text"
+          ]
+        },
+        {
+          "name": "Notes",
+          "role": "entry",
+          "value": "first é\nA你好after",
+          "caret": 17,
+          "selection": [],
+          "bounds": [
+            440,
+            1100,
+            720,
+            84
+          ],
+          "states": [
+            "editable",
+            "enabled",
+            "focusable",
+            "multi line",
+            "sensitive",
+            "showing",
+            "visible",
+            "selectable text"
+          ]
+        }
+      ],
+      "input_method": "pinyin",
+      "activation": "2",
+      "changes": {
+        "Primary": 2,
+        "Limited": 0,
+        "Notes": 0,
+        "Password": 0,
+        "Read only": 0,
+        "Disabled": 0
+      },
+      "native_snapshots": [
+        "snapshot field=\"Primary\" changes=2 text=\"A你好B e\\u{301} 👩\\u{200d}💻 C\" selection=1..3 reversed=true marked=None readonly=false disabled=false max=None",
+        "snapshot field=\"Limited\" changes=0 text=\"A😀BC\" selection=5..5 reversed=false marked=None readonly=false disabled=false max=Some(6)",
+        "snapshot field=\"Password\" changes=0 text=\"A😀e\\u{301}\" selection=5..5 reversed=false marked=None readonly=false disabled=false max=None",
+        "snapshot field=\"Read only\" changes=0 text=\"readonly\" selection=8..8 reversed=false marked=None readonly=true disabled=false max=None",
+        "snapshot field=\"Disabled\" changes=0 text=\"disabled\" selection=8..8 reversed=false marked=None readonly=false disabled=true max=None",
+        "snapshot field=\"Notes\" changes=0 text=\"first e\\u{301}\\nA你好after\" selection=17..17 reversed=false marked=None readonly=false disabled=false max=Some(200)"
+      ]
+    }
+  ],
+  "failures": [],
+  "case_categories": {
+    "composition": "actual fcitx5 Pinyin via XIM",
+    "grab": "actual libX11 keyboard grab with unchanged native input focus",
+    "snapshots": "public input trait reads only; no synthetic preedit/commit calls"
+  },
+  "result": "PASS"
+}

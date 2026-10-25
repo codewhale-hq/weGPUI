@@ -1,0 +1,59 @@
+[
+  {
+    "kind": "pointer",
+    "monotonic_ns": 15667416560565,
+    "name": "Open main"
+  },
+  {
+    "kind": "actions",
+    "monotonic_ns": 15669631390939,
+    "name": "Caller action main",
+    "names": [
+      "click"
+    ]
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15669697528705,
+    "label": "opened"
+  },
+  {
+    "kind": "first-request",
+    "monotonic_ns": 15669699075228,
+    "result": true,
+    "invoked_ns": 15669697887140
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15670051843934,
+    "label": "after-first"
+  },
+  {
+    "kind": "actions",
+    "monotonic_ns": 15672170434674,
+    "name": "Caller action main",
+    "names": [
+      "click"
+    ]
+  },
+  {
+    "kind": "new-session-request",
+    "monotonic_ns": 15672171733741,
+    "result": true,
+    "invoked_ns": 15672170899168
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15672768055865,
+    "label": "after-new-session"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15675032421402,
+    "label": "closed"
+  },
+  {
+    "kind": "finished",
+    "monotonic_ns": 15675032718101
+  }
+]

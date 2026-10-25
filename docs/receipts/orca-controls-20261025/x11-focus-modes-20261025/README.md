@@ -85,3 +85,8 @@ cannot intercept these earlier native state changes.
 The proposal is not applied, compiled or runtime-verified. A new local compatibility
 copy of the Linux package requires owner approval. Complete reader, IME, normal focus,
 while-grabbed focus, host and release qualification remains open.
+
+Later status: the owner subsequently approved this additional compatibility copy and
+the exact filter was applied. The proposal document records the current application
+status. The raw observations above remain evidence of the original unpatched artifact;
+they do not establish the new artifact as passing.

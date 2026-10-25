@@ -1,0 +1,2 @@
+PASS: real Wayland nested modal tree isolation, Tab/Shift+Tab trap and sequential Escape focus restoration.
+Scope: new approved common-GPUI artifact; no Wayland screen-reader/global-origin or full platform acceptance.

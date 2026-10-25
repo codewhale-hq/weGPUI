@@ -1,0 +1,90 @@
+[
+  {
+    "kind": "FocusOut",
+    "window": "0x400001",
+    "utc": "2026-10-25T11:09:11.020139+00:00",
+    "monotonic_ns": 14223073959232,
+    "mode": "NotifyNormal",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0x400001",
+    "utc": "2026-10-25T11:09:11.716743+00:00",
+    "monotonic_ns": 14223770561153,
+    "mode": "NotifyNormal",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0x400001",
+    "utc": "2026-10-25T11:09:12.462942+00:00",
+    "monotonic_ns": 14224516759524,
+    "mode": "NotifyNormal",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0x400001",
+    "utc": "2026-10-25T11:09:13.133451+00:00",
+    "monotonic_ns": 14225187269460,
+    "mode": "NotifyNormal",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0x400001",
+    "utc": "2026-10-25T11:09:13.790863+00:00",
+    "monotonic_ns": 14225844680512,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0x400001",
+    "utc": "2026-10-25T11:09:14.485281+00:00",
+    "monotonic_ns": 14226539099992,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0x400001",
+    "utc": "2026-10-25T11:09:15.157333+00:00",
+    "monotonic_ns": 14227211153102,
+    "mode": "NotifyGrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0x400001",
+    "utc": "2026-10-25T11:09:15.468275+00:00",
+    "monotonic_ns": 14227522093451,
+    "mode": "NotifyWhileGrabbed",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0x400001",
+    "utc": "2026-10-25T11:09:16.124413+00:00",
+    "monotonic_ns": 14228178235140,
+    "mode": "NotifyWhileGrabbed",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusIn",
+    "window": "0x400001",
+    "utc": "2026-10-25T11:09:16.769933+00:00",
+    "monotonic_ns": 14228823751223,
+    "mode": "NotifyUngrab",
+    "detail": "NotifyNonlinear"
+  },
+  {
+    "kind": "FocusOut",
+    "window": "0x400001",
+    "utc": "2026-10-25T11:09:17.942593+00:00",
+    "monotonic_ns": 14229996410911,
+    "mode": "NotifyNormal",
+    "detail": "NotifyAncestor"
+  }
+]

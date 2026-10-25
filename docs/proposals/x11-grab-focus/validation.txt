@@ -1,6 +1,9 @@
+Original proposal checks, before owner approval/application:
 PASS: gpui-pre-linux 0.3.9 .crate SHA-256 matches Cargo.lock.
 PASS: original registry client.rs, window.rs, Cargo manifests and license match the locked archive byte-for-byte.
 PASS: exact compat.patch passes git apply --check against a temporary scratch copy of the original client file.
 No Cargo build, new vendor package, registry edit or live source/lockfile change was made.
 The proposed filter is uncompiled and untested until owner approval.
 Preparation diagnostic: .cargo-checksum.json was absent from this extracted registry; archive/lock checksums were verified directly instead.
+
+Approved source application: exact locked archive copied to vendor/gpui_pre_linux; only client.rs differs from original upstream files, with the approved proposed checksum. Root Cargo.lock parsed comparison confirms only this package source/checksum removal, with identical package versions/dependency lists. See applied-source-checks.json. No compilation was performed by this collector; compiled/runtime results are recorded separately.

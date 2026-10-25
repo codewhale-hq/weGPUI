@@ -218,6 +218,86 @@ impl<E: Element> Element for Semantics<E> {
     }
 }
 
+/// A role/id-less wrapper: the child's own root must be created inside the guard scope.
+/// Forwarding the child's role from this wrapper would create that root before prepaint.
+pub(crate) struct A11yActionScope {
+    inner: AnyElement,
+    guard: Rc<dyn Fn() -> bool>,
+}
+
+impl A11yActionScope {
+    pub(crate) fn new(inner: impl IntoElement, guard: Rc<dyn Fn() -> bool>) -> Self {
+        Self {
+            inner: inner.into_any_element(),
+            guard,
+        }
+    }
+}
+
+impl IntoElement for A11yActionScope {
+    type Element = Self;
+    fn into_element(self) -> Self {
+        self
+    }
+}
+
+impl Element for A11yActionScope {
+    type RequestLayoutState = ();
+    type PrepaintState = ();
+
+    fn id(&self) -> Option<ElementId> {
+        None
+    }
+    fn source_location(&self) -> Option<&'static std::panic::Location<'static>> {
+        None
+    }
+
+    fn request_layout(
+        &mut self,
+        _: Option<&GlobalElementId>,
+        _: Option<&InspectorElementId>,
+        window: &mut Window,
+        cx: &mut App,
+    ) -> (LayoutId, ()) {
+        let guard = self.guard.clone();
+        let inner = &mut self.inner;
+        let layout =
+            window.with_a11y_action_guard(guard, |window| inner.request_layout(window, cx));
+        (layout, ())
+    }
+
+    fn prepaint(
+        &mut self,
+        _: Option<&GlobalElementId>,
+        _: Option<&InspectorElementId>,
+        _: Bounds<Pixels>,
+        _: &mut (),
+        window: &mut Window,
+        cx: &mut App,
+    ) {
+        let guard = self.guard.clone();
+        let inner = &mut self.inner;
+        window.with_a11y_action_guard(guard, |window| {
+            inner.prepaint(window, cx);
+        });
+    }
+
+    fn paint(
+        &mut self,
+        _: Option<&GlobalElementId>,
+        _: Option<&InspectorElementId>,
+        _: Bounds<Pixels>,
+        _: &mut (),
+        _: &mut (),
+        window: &mut Window,
+        cx: &mut App,
+    ) {
+        let guard = self.guard.clone();
+        let inner = &mut self.inner;
+        window.with_a11y_action_guard(guard, |window| inner.paint(window, cx));
+    }
+}
+
 #[derive(Default)]
 struct ModalLayers {
     top: Option<(usize, Rc<Cell<bool>>)>,

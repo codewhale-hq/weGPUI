@@ -1,0 +1,19 @@
+
+FocusOut event, serial 18, synthetic NO, window 0xa00001,
+    mode NotifyGrab, detail NotifyNonlinear
+
+FocusIn event, serial 18, synthetic NO, window 0xa00001,
+    mode NotifyGrab, detail NotifyNonlinear
+
+FocusOut event, serial 18, synthetic NO, window 0xa00001,
+    mode NotifyUngrab, detail NotifyNonlinear
+
+FocusIn event, serial 18, synthetic NO, window 0xa00001,
+    mode NotifyUngrab, detail NotifyNonlinear
+
+FocusOut event, serial 18, synthetic NO, window 0xa00001,
+    mode NotifyNormal, detail NotifyNonlinear
+
+FocusIn event, serial 18, synthetic NO, window 0xa00001,
+    mode NotifyNormal, detail NotifyPointer
+X connection to :110 broken (explicit kill or server shutdown).

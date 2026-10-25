@@ -1,0 +1,33 @@
+{"at": 1792927022.3962412, "kind": "launch", "route": "observer"}
+{"at": 1792927024.8762605, "kind": "key", "key": "F12"}
+{"at": 1792927027.1584167, "kind": "click", "field": "Primary", "desktop": [460, 764]}
+{"at": 1792927027.912525, "kind": "key", "key": "Home"}
+{"at": 1792927028.5796735, "kind": "key", "key": "Right"}
+{"at": 1792927029.2460659, "kind": "key", "key": "shift+Right"}
+{"at": 1792927029.9250782, "kind": "key", "key": "shift+Right"}
+{"at": 1792927030.6564841, "kind": "ime", "active": true}
+{"at": 1792927031.3202763, "kind": "type", "text": "shijie"}
+{"at": 1792927032.345731, "kind": "key", "key": "F12"}
+{"at": 1792927033.9450512, "kind": "actual-keyboard-grab", "label": "03-preedit-after-grab-ungrab", "native_input_focus": 8388609, "app_window": 8388609, "control_window": 6291457, "primary": "Ashi jieB é 👩‍💻 C"}
+{"at": 1792927034.487228, "kind": "key", "key": "F12"}
+{"at": 1792927035.559554, "kind": "key", "key": "space"}
+{"at": 1792927036.22545, "kind": "key", "key": "F12"}
+{"at": 1792927037.4849706, "kind": "ime", "active": false}
+{"at": 1792927038.1428165, "kind": "key", "key": "ctrl+z"}
+{"at": 1792927038.8311126, "kind": "key", "key": "F12"}
+{"at": 1792927039.8699267, "kind": "ime", "active": false}
+{"at": 1792927040.5274699, "kind": "key", "key": "F5"}
+{"at": 1792927041.2913015, "kind": "click", "field": "Primary", "desktop": [460, 764]}
+{"at": 1792927042.0458791, "kind": "key", "key": "Home"}
+{"at": 1792927042.7128417, "kind": "key", "key": "Right"}
+{"at": 1792927043.3787074, "kind": "key", "key": "Right"}
+{"at": 1792927044.0480824, "kind": "key", "key": "Right"}
+{"at": 1792927044.7192461, "kind": "key", "key": "shift+Left"}
+{"at": 1792927045.4027233, "kind": "key", "key": "shift+Left"}
+{"at": 1792927046.1220653, "kind": "ime", "active": true}
+{"at": 1792927046.7798066, "kind": "type", "text": "shijie"}
+{"at": 1792927047.7744474, "kind": "key", "key": "F12"}
+{"at": 1792927049.3848085, "kind": "actual-keyboard-grab", "label": "07-reversed-preedit-after-grab-ungrab", "native_input_focus": 8388609, "app_window": 8388609, "control_window": 6291457, "primary": "Ashi jieB é 👩‍💻 C"}
+{"at": 1792927049.9370904, "kind": "key", "key": "F12"}
+{"at": 1792927051.0302756, "kind": "key", "key": "Escape"}
+{"at": 1792927051.7010403, "kind": "key", "key": "F12"}

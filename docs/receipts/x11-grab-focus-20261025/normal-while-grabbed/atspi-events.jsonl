@@ -1,0 +1,14 @@
+{"utc": "2026-10-25T11:09:04.781020+00:00", "monotonic_ns": 14216834982970, "type": "window:activate", "detail1": 0, "detail2": 0, "name": "", "role": "frame"}
+{"utc": "2026-10-25T11:09:04.782914+00:00", "monotonic_ns": 14216836744391, "type": "object:state-changed:focused", "detail1": 1, "detail2": 0, "name": "", "role": "frame"}
+{"utc": "2026-10-25T11:09:11.032892+00:00", "monotonic_ns": 14223086729685, "type": "window:deactivate", "detail1": 0, "detail2": 0, "name": "", "role": "frame"}
+{"utc": "2026-10-25T11:09:11.033297+00:00", "monotonic_ns": 14223087119504, "type": "object:state-changed:focused", "detail1": 0, "detail2": 0, "name": "", "role": "frame"}
+{"utc": "2026-10-25T11:09:11.732474+00:00", "monotonic_ns": 14223786315136, "type": "window:activate", "detail1": 0, "detail2": 0, "name": "", "role": "frame"}
+{"utc": "2026-10-25T11:09:11.732702+00:00", "monotonic_ns": 14223786522291, "type": "object:state-changed:focused", "detail1": 1, "detail2": 0, "name": "", "role": "frame"}
+{"utc": "2026-10-25T11:09:12.481661+00:00", "monotonic_ns": 14224535506533, "type": "window:deactivate", "detail1": 0, "detail2": 0, "name": "", "role": "frame"}
+{"utc": "2026-10-25T11:09:12.481864+00:00", "monotonic_ns": 14224535685024, "type": "object:state-changed:focused", "detail1": 0, "detail2": 0, "name": "", "role": "frame"}
+{"utc": "2026-10-25T11:09:13.155578+00:00", "monotonic_ns": 14225209413858, "type": "window:activate", "detail1": 0, "detail2": 0, "name": "", "role": "frame"}
+{"utc": "2026-10-25T11:09:13.155727+00:00", "monotonic_ns": 14225209545765, "type": "object:state-changed:focused", "detail1": 1, "detail2": 0, "name": "", "role": "frame"}
+{"utc": "2026-10-25T11:09:15.490958+00:00", "monotonic_ns": 14227544794125, "type": "window:deactivate", "detail1": 0, "detail2": 0, "name": "", "role": "frame"}
+{"utc": "2026-10-25T11:09:15.491410+00:00", "monotonic_ns": 14227545232462, "type": "object:state-changed:focused", "detail1": 0, "detail2": 0, "name": "", "role": "frame"}
+{"utc": "2026-10-25T11:09:16.138163+00:00", "monotonic_ns": 14228191998311, "type": "window:activate", "detail1": 0, "detail2": 0, "name": "", "role": "frame"}
+{"utc": "2026-10-25T11:09:16.138384+00:00", "monotonic_ns": 14228192205228, "type": "object:state-changed:focused", "detail1": 1, "detail2": 0, "name": "", "role": "frame"}

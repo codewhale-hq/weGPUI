@@ -1,0 +1,5 @@
+802 tag=A event=open own=0 second=0 background=0 open=true inner=false generation=1
+3102 tag=A event=first own=1 second=0 background=0 open=true inner=false generation=1
+3092 tag=B event=background own=0 second=0 background=1 open=false inner=false generation=0
+3571 tag=A event=hide own=1 second=0 background=0 open=false inner=false generation=1
+5944 tag=B event=background own=0 second=0 background=2 open=false inner=false generation=0

@@ -1,0 +1,3 @@
+PASS: actual Orca retained flat-review target and emitted "icon-2 button grayed." during held reader command.
+PASS: actual Grab/Ungrab remained observable without AT window/focus pulses or flat-review reset; PCM nonzero.
+Scope: named real-reader transcript/audio sample; full listening and screen-reader acceptance remain separate.

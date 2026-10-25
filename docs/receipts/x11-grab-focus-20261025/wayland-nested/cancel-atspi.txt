@@ -1,0 +1,8 @@
+apps 1
+application 'nested_modals' [] DISABLED
+  frame 'weGPUI nested modals' ['showing']
+    dialog 'Inner dialog' ['focusable', 'modal', 'showing']
+      heading 'Inner dialog' ['showing'] ['level:2']
+      label 'Opened from inside the half-screen dialog.' ['showing']
+      button 'Cancel' ['focusable', 'focused', 'showing']
+      button 'OK' ['focusable', 'showing']

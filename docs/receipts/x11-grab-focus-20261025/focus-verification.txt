@@ -1,0 +1,3 @@
+PASS: actual Normal and WhileGrabbed focus transfers preserve native focus and AT activation updates.
+PASS: actual Grab/Ungrab keep native focus and produce no false AT activation/focus pulses.
+Scope: isolated X11 focus protocol controls; real IME and screen-reader checks are separate.

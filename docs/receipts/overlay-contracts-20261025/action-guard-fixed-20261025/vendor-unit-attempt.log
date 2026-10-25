@@ -1,0 +1,242 @@
+   Compiling gpui-pre v0.3.9 (/workspace/weGPUI/vendor/gpui_pre)
+error: couldn't read `vendor/gpui_pre/src/../../../assets/fonts/ibm-plex-sans/IBMPlexSans-Regular.ttf`: No such file or directory (os error 2)
+   --> vendor/gpui_pre/src/svg_renderer.rs:362:9
+    |
+362 |         include_bytes!("../../../assets/fonts/ibm-plex-sans/IBMPlexSans-Regular.ttf");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: couldn't read `vendor/gpui_pre/src/../../../assets/fonts/lilex/Lilex-Regular.ttf`: No such file or directory (os error 2)
+   --> vendor/gpui_pre/src/svg_renderer.rs:363:34
+    |
+363 |     const LILEX_REGULAR: &[u8] = include_bytes!("../../../assets/fonts/lilex/Lilex-Regular.ttf");
+    |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: attribute value must be a literal
+    --> vendor/gpui_pre/src/randomized_element_tree.rs:1648:5
+     |
+1648 | /     #[gpui::property_test(config = ProptestConfig {
+1649 | |         cases: 4,
+1650 | |         ..Default::default()
+1651 | |     })]
+     | |_______^
+     |
+     = note: this error originates in the attribute macro `gpui::property_test` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0433]: cannot find module or crate `futures_concurrency` in this scope
+   --> vendor/gpui_pre/src/app/test_context.rs:714:13
+    |
+714 |         use futures_concurrency::future::Race as _;
+    |             ^^^^^^^^^^^^^^^^^^^ use of unresolved module or unlinked crate `futures_concurrency`
+    |
+    = help: if you wanted to use a crate named `futures_concurrency`, use `cargo add futures_concurrency` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `postage` in this scope
+   --> vendor/gpui_pre/src/app/test_context.rs:774:13
+    |
+774 |         use postage::prelude::{Sink as _, Stream as _};
+    |             ^^^^^^^ use of unresolved module or unlinked crate `postage`
+    |
+    = help: if you wanted to use a crate named `postage`, use `cargo add postage` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `postage` in this scope
+   --> vendor/gpui_pre/src/app/test_context.rs:803:13
+    |
+803 |         use postage::prelude::{Sink as _, Stream as _};
+    |             ^^^^^^^ use of unresolved module or unlinked crate `postage`
+    |
+    = help: if you wanted to use a crate named `postage`, use `cargo add postage` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `proptest` in this scope
+  --> vendor/gpui_pre/src/test.rs:30:5
+   |
+30 | use proptest::prelude::{Just, Strategy, any};
+   |     ^^^^^^^^ use of unresolved module or unlinked crate `proptest`
+   |
+   = help: if you wanted to use a crate named `proptest`, use `cargo add proptest` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `proptest` in this scope
+    --> vendor/gpui_pre/src/randomized_element_tree.rs:1421:9
+     |
+1421 |     use proptest::prelude::*;
+     |         ^^^^^^^^ use of unresolved module or unlinked crate `proptest`
+     |
+     = help: if you wanted to use a crate named `proptest`, use `cargo add proptest` to add it to your `Cargo.toml`
+
+error[E0432]: unresolved import `proptest`
+  --> vendor/gpui_pre/src/gpui.rs:71:9
+   |
+71 | pub use proptest;
+   |         ^^^^^^^^ no external crate `proptest`
+
+error[E0432]: unresolved import `util_macros`
+    --> vendor/gpui_pre/src/style.rs:1337:9
+     |
+1337 |     use util_macros::perf;
+     |         ^^^^^^^^^^^ use of unresolved module or unlinked crate `util_macros`
+     |
+     = help: if you wanted to use a crate named `util_macros`, use `cargo add util_macros` to add it to your `Cargo.toml`
+
+error: cannot find attribute `strategy` in this scope
+    --> vendor/gpui_pre/src/randomized_element_tree.rs:1648:5
+     |
+1648 | /     #[gpui::property_test(config = ProptestConfig {
+1649 | |         cases: 4,
+1650 | |         ..Default::default()
+1651 | |     })]
+     | |_______^
+     |
+     = note: this error originates in the attribute macro `gpui::property_test` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0433]: cannot find `FakeHttpClient` in `http_client`
+   --> vendor/gpui_pre/src/app/headless_app_context.rs:90:40
+    |
+ 90 |         let http_client = http_client::FakeHttpClient::with_404_response();
+    |                                        ^^^^^^^^^^^^^^ could not find `FakeHttpClient` in `http_client`
+    |
+note: found an item that was configured out
+   --> /workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-http-client-0.3.9/src/http_client.rs:437:12
+    |
+436 | #[cfg(feature = "test-support")]
+    |       ------------------------ the item is gated behind the `test-support` feature
+437 | pub struct FakeHttpClient {
+    |            ^^^^^^^^^^^^^^
+help: a trait with a similar name exists
+    |
+ 90 -         let http_client = http_client::FakeHttpClient::with_404_response();
+ 90 +         let http_client = http_client::HttpClient::with_404_response();
+    |
+
+error[E0433]: cannot find `FakeHttpClient` in `http_client`
+   --> vendor/gpui_pre/src/app/test_app.rs:91:40
+    |
+ 91 |         let http_client = http_client::FakeHttpClient::with_404_response();
+    |                                        ^^^^^^^^^^^^^^ could not find `FakeHttpClient` in `http_client`
+    |
+note: found an item that was configured out
+   --> /workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-http-client-0.3.9/src/http_client.rs:437:12
+    |
+436 | #[cfg(feature = "test-support")]
+    |       ------------------------ the item is gated behind the `test-support` feature
+437 | pub struct FakeHttpClient {
+    |            ^^^^^^^^^^^^^^
+help: a trait with a similar name exists
+    |
+ 91 -         let http_client = http_client::FakeHttpClient::with_404_response();
+ 91 +         let http_client = http_client::HttpClient::with_404_response();
+    |
+
+error[E0433]: cannot find `FakeHttpClient` in `http_client`
+   --> vendor/gpui_pre/src/app/test_context.rs:172:40
+    |
+172 |         let http_client = http_client::FakeHttpClient::with_404_response();
+    |                                        ^^^^^^^^^^^^^^ could not find `FakeHttpClient` in `http_client`
+    |
+note: found an item that was configured out
+   --> /workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-http-client-0.3.9/src/http_client.rs:437:12
+    |
+436 | #[cfg(feature = "test-support")]
+    |       ------------------------ the item is gated behind the `test-support` feature
+437 | pub struct FakeHttpClient {
+    |            ^^^^^^^^^^^^^^
+help: a trait with a similar name exists
+    |
+172 -         let http_client = http_client::FakeHttpClient::with_404_response();
+172 +         let http_client = http_client::HttpClient::with_404_response();
+    |
+
+error[E0433]: cannot find `FakeHttpClient` in `http_client`
+   --> vendor/gpui_pre/src/executor.rs:552:40
+    |
+552 |         let http_client = http_client::FakeHttpClient::with_404_response();
+    |                                        ^^^^^^^^^^^^^^ could not find `FakeHttpClient` in `http_client`
+    |
+note: found an item that was configured out
+   --> /workspace/.wegpui-cloud/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-http-client-0.3.9/src/http_client.rs:437:12
+    |
+436 | #[cfg(feature = "test-support")]
+    |       ------------------------ the item is gated behind the `test-support` feature
+437 | pub struct FakeHttpClient {
+    |            ^^^^^^^^^^^^^^
+help: a trait with a similar name exists
+    |
+552 -         let http_client = http_client::FakeHttpClient::with_404_response();
+552 +         let http_client = http_client::HttpClient::with_404_response();
+    |
+
+error[E0433]: cannot find module or crate `proptest` in this scope
+  --> vendor/gpui_pre/src/test.rs:58:17
+   |
+58 |     mut config: proptest::test_runner::Config,
+   |                 ^^^^^^^^ use of unresolved module or unlinked crate `proptest`
+   |
+   = help: if you wanted to use a crate named `proptest`, use `cargo add proptest` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `proptest` in this scope
+  --> vendor/gpui_pre/src/test.rs:59:6
+   |
+59 | ) -> proptest::test_runner::Config {
+   |      ^^^^^^^^ use of unresolved module or unlinked crate `proptest`
+   |
+   = help: if you wanted to use a crate named `proptest`, use `cargo add proptest` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `proptest` in this scope
+  --> vendor/gpui_pre/src/test.rs:64:23
+   |
+64 |     config.rng_seed = proptest::test_runner::RngSeed::Fixed(seed);
+   |                       ^^^^^^^^ use of unresolved module or unlinked crate `proptest`
+   |
+   = help: if you wanted to use a crate named `proptest`, use `cargo add proptest` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `postage` in this scope
+   --> vendor/gpui_pre/src/app/test_context.rs:776:32
+    |
+776 |         let (mut tx, mut rx) = postage::mpsc::channel(1);
+    |                                ^^^^^^^ use of unresolved module or unlinked crate `postage`
+    |
+    = help: if you wanted to use a crate named `postage`, use `cargo add postage` to add it to your `Cargo.toml`
+help: consider importing this module
+    |
+  1 + use std::sync::mpsc;
+    |
+help: if you import `mpsc`, refer to it directly
+    |
+776 -         let (mut tx, mut rx) = postage::mpsc::channel(1);
+776 +         let (mut tx, mut rx) = mpsc::channel(1);
+    |
+
+error[E0433]: cannot find module or crate `postage` in this scope
+   --> vendor/gpui_pre/src/app/test_context.rs:805:28
+    |
+805 |         let (tx, mut rx) = postage::mpsc::channel(1024);
+    |                            ^^^^^^^ use of unresolved module or unlinked crate `postage`
+    |
+    = help: if you wanted to use a crate named `postage`, use `cargo add postage` to add it to your `Cargo.toml`
+help: consider importing this module
+    |
+  1 + use std::sync::mpsc;
+    |
+help: if you import `mpsc`, refer to it directly
+    |
+805 -         let (tx, mut rx) = postage::mpsc::channel(1024);
+805 +         let (tx, mut rx) = mpsc::channel(1024);
+    |
+
+error[E0599]: no method named `race` found for tuple `(..., ...)` in the current scope
+   --> vendor/gpui_pre/src/app/test_context.rs:730:14
+    |
+716 | /         (
+717 | |             async {
+718 | |                 loop {
+719 | |                     if entity.update(self, &mut predicate) {
+...   |
+730 | |             .race()
+    | |             -^^^^ method not found in `(..., ...)`
+    | |_____________|
+    |
+    |
+    = note: the full name for the type has been written to '/workspace/.wegpui-cloud/target-198/debug/deps/gpui-db02d755beec7b3d.long-type-11560278131578318935.txt'
+    = note: consider using `--verbose` to print the full type name to the console
+
+Some errors have detailed explanations: E0432, E0433, E0599.
+For more information about an error, try `rustc --explain E0432`.
+error: could not compile `gpui-pre` (lib test) due to 21 previous errors

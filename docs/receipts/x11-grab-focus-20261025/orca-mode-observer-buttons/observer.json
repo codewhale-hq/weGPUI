@@ -1,0 +1,16 @@
+{
+  "received_utc": "2026-10-25T11:20:04.235773+00:00",
+  "received_monotonic_ns": 14876289708754,
+  "command": [
+    "stdbuf",
+    "-oL",
+    "-eL",
+    "xev",
+    "-id",
+    "10485761",
+    "-event",
+    "focus"
+  ],
+  "window": "10485761",
+  "scope": "Select FocusChangeMask on existing window only; timestamps are observer receive times, not X server event times."
+}

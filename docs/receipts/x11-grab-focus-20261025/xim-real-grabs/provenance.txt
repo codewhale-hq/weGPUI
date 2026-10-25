@@ -1,0 +1,34 @@
+2026-10-25T11:17:02Z
+3840b47370f8defa925cbff7d3bf12ccf6250722
+1cc86bb46f89c42612565a251beffb1c5adf9256d1dd8b24f04fc87f4db343bf  /workspace/.wegpui-cloud/artifacts/native-guard-approved/wegpui-xim-focus-probe
+2e54e3517015d2f90a78bf9fec91bfdafd7ac79f5a0c70870931f00bddeb1cf1  src/input.rs
+fcitx5	5.1.12-2
+fcitx5-modules:amd64	5.1.12-2
+fcitx5-pinyin:amd64	5.1.8-1
+libime-data	1.1.10+dict20250327-1
+libimepinyin0:amd64	1.1.10+dict20250327-1
+Linux 1df3d6caf486 6.18.55 #1 SMP Wed Oct 14 19:45:18 UTC 2026 x86_64 GNU/Linux
+LANG=
+LANGUAGE=
+LC_CTYPE="C.UTF-8"
+LC_NUMERIC="C.UTF-8"
+LC_TIME="C.UTF-8"
+LC_COLLATE="C.UTF-8"
+LC_MONETARY="C.UTF-8"
+LC_MESSAGES="C.UTF-8"
+LC_PAPER="C.UTF-8"
+LC_NAME="C.UTF-8"
+LC_ADDRESS="C.UTF-8"
+LC_TELEPHONE="C.UTF-8"
+LC_MEASUREMENT="C.UTF-8"
+LC_IDENTIFICATION="C.UTF-8"
+LC_ALL=C.UTF-8
+DISPLAY=:116
+GPUI_X11_SCALE_FACTOR=1
+IME_BINARY=/workspace/.wegpui-cloud/artifacts/native-guard-approved/wegpui-xim-focus-probe
+XDG_CACHE_HOME=/tmp/wegpui-xim.XVLGxF/cache
+XDG_CONFIG_HOME=/tmp/wegpui-xim.XVLGxF/config
+XDG_DATA_HOME=/tmp/wegpui-xim.XVLGxF/data
+XDG_RUNTIME_DIR=/tmp/wegpui-xim.XVLGxF/runtime
+XIM_ON_THE_SPOT=1
+XMODIFIERS=@im=fcitx

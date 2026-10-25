@@ -1,0 +1,73 @@
+[
+  {
+    "kind": "pointer",
+    "monotonic_ns": 14794546449781,
+    "name": "Open slow modal"
+  },
+  {
+    "kind": "baseline-component-focus",
+    "monotonic_ns": 14796829508937,
+    "result": true
+  },
+  {
+    "kind": "action-interface",
+    "monotonic_ns": 14797098786205,
+    "name": "Saved custom action row",
+    "actions": [
+      "click"
+    ]
+  },
+  {
+    "kind": "baseline-open",
+    "monotonic_ns": 14797099970470,
+    "result": true
+  },
+  {
+    "kind": "baseline-close",
+    "monotonic_ns": 14797459276671,
+    "result": true
+  },
+  {
+    "kind": "saved-component-interface",
+    "monotonic_ns": 14797787451669,
+    "name": "Saved custom action row"
+  },
+  {
+    "kind": "saved-focus",
+    "monotonic_ns": 14797793083933,
+    "result": true,
+    "delay_ms": 0.0,
+    "close_command_started_ns": 14797787723991,
+    "close_command_returned_ns": 14797792142771,
+    "action_invoked_ns": 14797792145889
+  },
+  {
+    "kind": "saved-focus-after-closed-error",
+    "monotonic_ns": 14800186348923,
+    "error": "GLib.Error('The application no longer exists', 'atspi_error', 0)",
+    "action_invoked_ns": 14800186238628,
+    "elapsed_since_close_ms": 2394.095857
+  },
+  {
+    "kind": "pointer",
+    "monotonic_ns": 14800522644808,
+    "name": "Open slow modal"
+  },
+  {
+    "kind": "action-interface",
+    "monotonic_ns": 14802735142241,
+    "name": "Saved custom action row",
+    "actions": [
+      "click"
+    ]
+  },
+  {
+    "kind": "reopened-click",
+    "monotonic_ns": 14802736535491,
+    "result": true
+  },
+  {
+    "kind": "driver-finished",
+    "monotonic_ns": 14803057766590
+  }
+]

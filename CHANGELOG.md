@@ -49,6 +49,11 @@ versioning once a release policy is decided. No version has been published.
 - Apply owner-approved local compatibility copies of the existing AccessKit crates and
   GPUI 0.3.9 for cache signal encoding, disabled/read-only/state/heading export and the existing
   window-bounds hook. Versions stay pinned; consumers need equivalent workspace-root patches.
+- Guard queued accessibility actions against closed/reopened overlay lifecycles, including
+  native Focus and custom callbacks. Keep cached nodes/actions available while assistive
+  technology is active. The scoped GPUI hook makes matching root patches mandatory to compile.
+- Ignore temporary X11 keyboard-grab focus notifications while retaining real focus changes;
+  real Orca review no longer resets to the wrong icon during the sampled command.
 
 - Register focus-reveal targets on navigation tabs, clear-input actions and remaining raw
   gallery controls; add the article link keyboard ring.

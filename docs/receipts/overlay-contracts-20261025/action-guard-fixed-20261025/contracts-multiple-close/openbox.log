@@ -1,0 +1,3 @@
+Openbox-Message: Unable to find a valid menu file "/var/lib/openbox/debian-menu.xml"
+XIO:  fatal IO error 11 (Resource temporarily unavailable) on X server ":116"
+      after 2671 requests (2668 known processed) with 0 events remaining.

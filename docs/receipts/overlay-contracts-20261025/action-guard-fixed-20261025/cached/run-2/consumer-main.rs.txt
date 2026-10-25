@@ -1,0 +1,196 @@
+//! Standalone diagnostic fixture. Copy to an external consumer's src/main.rs;
+//! reuse its existing support/platform.rs and Cargo.toml. No modal or guard is
+//! present: disappearing actions here demonstrate cache replay, not rejection.
+
+use gpui::{prelude::*, *};
+use std::time::Instant;
+
+struct Child {
+    name: &'static str,
+    clicks: usize,
+    renders: usize,
+    focus: FocusHandle,
+    started: Instant,
+}
+
+impl Render for Child {
+    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        self.renders += 1;
+        eprintln!(
+            "{} CHILD_RENDER name={:?} renders={} clicks={}",
+            self.started.elapsed().as_millis(),
+            self.name,
+            self.renders,
+            self.clicks,
+        );
+        let action = cx.entity().downgrade();
+        div().size_full().p(px(12.)).bg(rgb(0xffffff)).child(
+            div()
+                .id("action")
+                .role(Role::Button)
+                .aria_label(self.name)
+                .aria_description("Custom accessibility Click increments this child only")
+                .track_focus(&self.focus)
+                .tab_stop(true)
+                .w_full()
+                .h(px(100.))
+                .p(px(12.))
+                .bg(rgb(0xe8f4ff))
+                .border_2()
+                .border_color(rgb(0x777777))
+                .focus_visible(|style| style.border_color(rgb(0x000000)))
+                .on_a11y_action(AccessibleAction::Click, move |_, window, cx| {
+                    action
+                        .update(cx, |this, cx| {
+                            this.clicks += 1;
+                            eprintln!(
+                                "{} CUSTOM_AT_CLICK name={:?} clicks={} focused={}",
+                                this.started.elapsed().as_millis(),
+                                this.name,
+                                this.clicks,
+                                this.focus.is_focused(window),
+                            );
+                            cx.notify();
+                        })
+                        .ok();
+                })
+                .child(format!("{}: {} clicks", self.name, self.clicks)),
+        )
+    }
+}
+
+struct Probe {
+    cached: Entity<Child>,
+    live: Entity<Child>,
+    parent_redraws: usize,
+    started: Instant,
+}
+
+impl Probe {
+    fn snapshot(&self, window: &Window, cx: &App) {
+        let cached = self.cached.read(cx);
+        let live = self.live.read(cx);
+        eprintln!(
+            "{} SNAPSHOT parent={} cached_clicks={} cached_renders={} cached_focused={} live_clicks={} live_renders={} live_focused={}",
+            self.started.elapsed().as_millis(),
+            self.parent_redraws,
+            cached.clicks,
+            cached.renders,
+            cached.focus.is_focused(window),
+            live.clicks,
+            live.renders,
+            live.focus.is_focused(window),
+        );
+    }
+}
+
+impl Render for Probe {
+    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        eprintln!(
+            "{} PARENT_RENDER redraws={}",
+            self.started.elapsed().as_millis(),
+            self.parent_redraws,
+        );
+        div()
+            .size_full()
+            .p(px(20.))
+            .bg(rgb(0xeeeeee))
+            .text_color(rgb(0x000000))
+            .text_size(px(16.))
+            .on_key_down(cx.listener(|this, event: &KeyDownEvent, window, cx| {
+                match event.keystroke.key.as_str() {
+                    "f1" => {
+                        this.parent_redraws += 1;
+                        eprintln!(
+                            "{} PARENT_NOTIFY redraws={}",
+                            this.started.elapsed().as_millis(),
+                            this.parent_redraws,
+                        );
+                        // Deliberately no window.refresh/focus/blur and no child
+                        // mutation: those would invalidate the cache control.
+                        cx.notify();
+                    }
+                    "f2" => {
+                        eprintln!("{} CACHED_NOTIFY", this.started.elapsed().as_millis());
+                        this.cached.update(cx, |_, cx| cx.notify());
+                    }
+                    "f3" => this.snapshot(window, cx),
+                    "f4" => {
+                        eprintln!("{} WINDOW_REFRESH", this.started.elapsed().as_millis());
+                        window.refresh();
+                    }
+                    _ => return,
+                }
+                cx.stop_propagation();
+            }))
+            // Fixed-height parent labels keep both child bounds unchanged.
+            .child(div().h(px(36.)).child(format!(
+                "F1 parent notify: {:04}; F2 cached notify; F3 snapshot; F4 full refresh",
+                self.parent_redraws,
+            )))
+            .child(
+                div()
+                    .h(px(36.))
+                    .child("Left cached child; right ordinary entity child"),
+            )
+            .child(
+                div()
+                    .flex()
+                    .gap(px(20.))
+                    .child(
+                        self.cached
+                            .clone()
+                            .cached(StyleRefinement::default().w(px(240.)).h(px(180.))),
+                    )
+                    .child(div().w(px(240.)).h(px(180.)).child(self.live.clone())),
+            )
+    }
+}
+
+#[path = "support/platform.rs"]
+mod platform;
+
+fn main() {
+    platform::application()
+        .with_assets(wegpui::Assets)
+        .run(|cx| {
+            wegpui::init(cx);
+            let bounds = Bounds::centered(None, size(px(720.), px(340.)), cx);
+            cx.open_window(
+                WindowOptions {
+                    window_bounds: Some(WindowBounds::Windowed(bounds)),
+                    titlebar: Some(TitlebarOptions {
+                        title: Some("Cached accessibility action probe".into()),
+                        ..Default::default()
+                    }),
+                    ..Default::default()
+                },
+                |window, cx| {
+                    let started = Instant::now();
+                    let cached = cx.new(|cx| Child {
+                        name: "Cached child action",
+                        clicks: 0,
+                        renders: 0,
+                        focus: cx.focus_handle(),
+                        started,
+                    });
+                    let live = cx.new(|cx| Child {
+                        name: "Live child action",
+                        clicks: 0,
+                        renders: 0,
+                        focus: cx.focus_handle(),
+                        started,
+                    });
+                    window.focus(&live.read(cx).focus.clone(), cx);
+                    cx.new(|_| Probe {
+                        cached,
+                        live,
+                        parent_redraws: 0,
+                        started,
+                    })
+                },
+            )
+            .expect("open cached accessibility probe");
+            cx.activate(true);
+        });
+}

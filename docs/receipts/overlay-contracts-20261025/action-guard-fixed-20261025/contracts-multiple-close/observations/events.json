@@ -1,0 +1,40 @@
+[
+  {
+    "kind": "pointer",
+    "monotonic_ns": 15561858206410,
+    "name": "Open main"
+  },
+  {
+    "kind": "actions",
+    "monotonic_ns": 15564072174082,
+    "name": "Caller action main",
+    "names": [
+      "click"
+    ]
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15564142102427,
+    "label": "opened"
+  },
+  {
+    "kind": "first-request",
+    "monotonic_ns": 15564143489829,
+    "result": true,
+    "invoked_ns": 15564142487962
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15564873496937,
+    "label": "after-first"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15567133123037,
+    "label": "closed"
+  },
+  {
+    "kind": "finished",
+    "monotonic_ns": 15567133439368
+  }
+]

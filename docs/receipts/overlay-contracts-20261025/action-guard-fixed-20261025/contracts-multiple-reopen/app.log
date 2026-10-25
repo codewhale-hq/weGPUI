@@ -1,0 +1,6 @@
+714 tag=main event=open own=0 second=0 background=0 open=true inner=false generation=1
+2996 tag=main event=first own=1 second=0 background=0 open=true inner=false generation=1
+2996 tag=main event=hide-in-first own=1 second=0 background=0 open=false inner=false generation=1
+2996 tag=main event=reopen-in-first own=1 second=0 background=0 open=true inner=false generation=2
+5469 tag=main event=first own=2 second=0 background=0 open=true inner=false generation=2
+5469 tag=main event=hide-in-first own=2 second=0 background=0 open=false inner=false generation=2

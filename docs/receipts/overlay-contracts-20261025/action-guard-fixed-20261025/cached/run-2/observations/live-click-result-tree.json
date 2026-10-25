@@ -1,0 +1,51 @@
+[
+  {
+    "name": "main",
+    "role": "desktop frame",
+    "path": "/org/a11y/atspi/accessible/root",
+    "states": []
+  },
+  {
+    "name": "wegpui-cached-a11y-consumer",
+    "role": "application",
+    "path": "/org/a11y/atspi/accessible/root",
+    "states": []
+  },
+  {
+    "name": "Cached accessibility action probe",
+    "role": "frame",
+    "path": "/org/a11y/atspi/accessible/0/0",
+    "states": [
+      "<enum ATSPI_STATE_ACTIVE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_ENABLED of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SENSITIVE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SHOWING of type Atspi.StateType>",
+      "<enum ATSPI_STATE_VISIBLE of type Atspi.StateType>"
+    ]
+  },
+  {
+    "name": "Cached child action",
+    "role": "button",
+    "path": "/org/a11y/atspi/accessible/0/94353779064919379020227666271872745472",
+    "states": [
+      "<enum ATSPI_STATE_ENABLED of type Atspi.StateType>",
+      "<enum ATSPI_STATE_FOCUSABLE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SENSITIVE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SHOWING of type Atspi.StateType>",
+      "<enum ATSPI_STATE_VISIBLE of type Atspi.StateType>"
+    ]
+  },
+  {
+    "name": "Live child action",
+    "role": "button",
+    "path": "/org/a11y/atspi/accessible/0/312893868537845891302208890306906030080",
+    "states": [
+      "<enum ATSPI_STATE_ENABLED of type Atspi.StateType>",
+      "<enum ATSPI_STATE_FOCUSABLE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_FOCUSED of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SENSITIVE of type Atspi.StateType>",
+      "<enum ATSPI_STATE_SHOWING of type Atspi.StateType>",
+      "<enum ATSPI_STATE_VISIBLE of type Atspi.StateType>"
+    ]
+  }
+]

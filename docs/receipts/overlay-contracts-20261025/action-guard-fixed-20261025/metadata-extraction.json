@@ -1,0 +1,14 @@
+{
+  "source_sha256": "17ca06ea5e2edbd257eb61c9985b7b0b57f4e27117bf0bdd69714002eef3911c",
+  "node_builder_source_sha256": "d54208bdc57469ca0d0ef72ff8361688d42d692857ee5e7db0072b745522931a",
+  "new_test_source_sha256": "b7acf002bba48c29aa0233cbf69dcd02a54c846223314b84098eabd5c9ad4f59",
+  "existing_rlibs": {
+    "accesskit": "/workspace/.wegpui-cloud/target-198/debug/deps/libaccesskit-dda556dc5df9564f.rlib",
+    "smallvec": "/workspace/.wegpui-cloud/target-198/debug/deps/libsmallvec-c17ecce8f563f135.rlib",
+    "log": "/workspace/.wegpui-cloud/target-198/debug/deps/liblog-774efecd15e728c6.rlib"
+  },
+  "limits": [
+    "Not the full GPUI crate unit suite; that remains blocked.",
+    "Production NodeBuilder text and its two new tests execute verbatim, with std map/String aliases and debug metadata disabled."
+  ]
+}

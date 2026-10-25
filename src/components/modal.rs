@@ -8,12 +8,12 @@
 //! restarts the easing curve from the current value, and a slide travels the window height until
 //! the panel is first measured.
 
-use crate::accessibility::Semantics;
+use crate::accessibility::{A11yActionScope, Semantics};
 use gpui::{prelude::*, *};
 use std::{
     sync::{
         Arc,
-        atomic::{AtomicBool, Ordering},
+        atomic::{AtomicBool, AtomicUsize, Ordering},
     },
     time::{Duration, Instant},
 };
@@ -41,6 +41,7 @@ pub struct Presence {
     duration: Duration,
     passive: bool,
     interactive: Arc<AtomicBool>,
+    interactive_generation: Arc<AtomicUsize>,
 }
 
 impl Presence {
@@ -57,6 +58,7 @@ impl Presence {
             duration: TRANSITION,
             passive: false,
             interactive: Arc::new(AtomicBool::new(false)),
+            interactive_generation: Arc::new(AtomicUsize::new(0)),
         }
     }
     /// Sets the length of a full open or close transition (default [`TRANSITION`]); zero disables
@@ -125,6 +127,8 @@ impl Presence {
             }
             self.retarget(true, cx);
             self.generation += 1;
+            self.interactive_generation
+                .store(self.generation, Ordering::Relaxed);
         }
         if !self.passive {
             window.focus(&self.focus, cx);
@@ -533,13 +537,21 @@ impl RenderOnce for Modal {
         } else {
             semantics
         };
-        deferred(
+        let layer = deferred(
             anchored()
                 .position(point(px(0.), px(0.)))
                 .child(semantics.modal_layer()),
         )
-        .with_priority(1)
-        .into_any_element()
+        .with_priority(1);
+        // This scope covers only this layer's targets, including passive content.
+        // Background page targets remain outside it; no focus, modal or hidden state changes.
+        let live = self.presence.interactive.clone();
+        let epoch = self.presence.interactive_generation.clone();
+        let generation = self.presence.generation;
+        let guard = std::rc::Rc::new(move || {
+            live.load(Ordering::Relaxed) && epoch.load(Ordering::Relaxed) == generation
+        });
+        A11yActionScope::new(layer, guard).into_any_element()
     }
 }
 

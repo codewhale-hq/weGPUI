@@ -1,0 +1,107 @@
+[
+  {
+    "kind": "pointer",
+    "monotonic_ns": 15682762034554,
+    "name": "Open main"
+  },
+  {
+    "kind": "actions",
+    "monotonic_ns": 15684994812361,
+    "name": "Caller action main",
+    "names": [
+      "click"
+    ]
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15685091829327,
+    "label": "opened"
+  },
+  {
+    "kind": "open-own-control",
+    "monotonic_ns": 15685093648992,
+    "result": true,
+    "invoked_ns": 15685092106266
+  },
+  {
+    "kind": "actions",
+    "monotonic_ns": 15685323579371,
+    "name": "Background action main",
+    "names": [
+      "click"
+    ]
+  },
+  {
+    "kind": "open-background-control",
+    "monotonic_ns": 15685324617820,
+    "result": true,
+    "invoked_ns": 15685323900189
+  },
+  {
+    "kind": "pointer",
+    "monotonic_ns": 15685590910671,
+    "name": "Hide main"
+  },
+  {
+    "kind": "hide-command",
+    "monotonic_ns": 15685591216824,
+    "started_ns": 15685524904979,
+    "returned_ns": 15685591214481
+  },
+  {
+    "kind": "saved-own-while-closed",
+    "monotonic_ns": 15685592842665,
+    "result": true,
+    "invoked_ns": 15685591454848
+  },
+  {
+    "kind": "background-while-closed",
+    "monotonic_ns": 15685593590892,
+    "result": true,
+    "invoked_ns": 15685593016889
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15685953459480,
+    "label": "during-close"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15688206079134,
+    "label": "closed"
+  },
+  {
+    "kind": "background-after-close",
+    "monotonic_ns": 15688207107278,
+    "result": true,
+    "invoked_ns": 15688206374061
+  },
+  {
+    "kind": "pointer",
+    "monotonic_ns": 15688253894792,
+    "name": "Open main"
+  },
+  {
+    "kind": "actions",
+    "monotonic_ns": 15690473771805,
+    "name": "Caller action main",
+    "names": [
+      "click"
+    ]
+  },
+  {
+    "kind": "reopened-own-control",
+    "monotonic_ns": 15690475334549,
+    "result": true,
+    "invoked_ns": 15690474100439
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15690737095643,
+    "label": "reopened"
+  },
+  {
+    "kind": "finished",
+    "monotonic_ns": 15690737397690
+  }
+]

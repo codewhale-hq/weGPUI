@@ -43,10 +43,11 @@ missing evidence the project needs.
 - **Exact GPUI pins.** `gpui-pre` and `gpui-pre-platform` are pinned with `=`. Changing them,
   enabling dependency features that add packages to `Cargo.lock`, or adding dependencies needs a
   maintainer decision first. Open an issue with the reason and the `Cargo.lock` delta.
-- **Approved local compatibility copies.** The root manifest selects three exact locked
+- **Approved local compatibility copies.** The root manifest selects four exact locked
   packages from `vendor/`; see [vendor guidance](vendor/README.md) for approved deltas and
   provenance. Cargo patches are not inherited by downstream consumers: apply equivalent
-  configuration at the application workspace root. Further dependency changes need approval.
+  configuration at the application workspace root. The current library requires the patched
+  GPUI API to compile. Further dependency changes need approval.
 - **Upstream is the reference.** Compare against the pinned package's CSS (`src/style/`), example
   HTML/JS (`src/example/`) and, for pickers, weui.js 1.2.17. Fetch them with
   `scripts/weui_upstream.py`. Do not copy unrelated upstream code.

@@ -1,0 +1,271 @@
+use gpui::{prelude::*, *};
+use std::time::{Duration, Instant};
+use wegpui::{
+    Theme,
+    accessibility::ModalScope,
+    components::{
+        button::Button,
+        modal::{MaskKind, Modal, Presence},
+    },
+};
+
+struct Probe {
+    mode: String,
+    tag: &'static str,
+    presence: Presence,
+    inner: Presence,
+    own_focus: FocusHandle,
+    background_focus: FocusHandle,
+    own_actions: usize,
+    second_actions: usize,
+    background_actions: usize,
+    reopen_once: bool,
+    started: Instant,
+}
+
+impl Probe {
+    fn record(&self, event: &str) {
+        eprintln!(
+            "{} tag={} event={} own={} second={} background={} open={} inner={} generation={}",
+            self.started.elapsed().as_millis(),
+            self.tag,
+            event,
+            self.own_actions,
+            self.second_actions,
+            self.background_actions,
+            self.presence.is_open(),
+            self.inner.is_open(),
+            self.presence.generation()
+        );
+    }
+}
+
+impl Render for Probe {
+    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let t = Theme::get(cx).clone();
+        let first = cx.entity().downgrade();
+        let second = cx.entity().downgrade();
+        let background = cx.entity().downgrade();
+        let dismiss = cx.entity().downgrade();
+        let dismiss_inner = cx.entity().downgrade();
+        let tag = self.tag;
+        let own = div()
+            .id("caller-action")
+            .role(Role::Button)
+            .aria_label(format!("Caller action {tag}"))
+            .track_focus(&self.own_focus)
+            .tab_stop(true)
+            .w(px(260.))
+            .h(px(80.))
+            .p(px(16.))
+            .bg(t.bg_3)
+            .child(format!("Caller action {tag}"))
+            // Ordinary caller callback deliberately has no Presence/guard checks.
+            .on_a11y_action(AccessibleAction::Click, move |_, window, cx| {
+                first
+                    .update(cx, |this, cx| {
+                        this.own_actions += 1;
+                        this.record("first");
+                        match this.mode.as_str() {
+                            "multiple-close" | "multiple-reopen" => {
+                                this.presence.hide(window, cx);
+                                this.record("hide-in-first");
+                                if this.mode == "multiple-reopen" && this.reopen_once {
+                                    this.reopen_once = false;
+                                    this.presence.show(window, cx);
+                                    this.record("reopen-in-first");
+                                }
+                            }
+                            _ => window.focus(&this.own_focus, cx),
+                        }
+                        cx.notify();
+                    })
+                    .ok();
+            })
+            .when(self.mode.starts_with("multiple"), |el| {
+                el.on_a11y_action(AccessibleAction::Click, move |_, _, cx| {
+                    second
+                        .update(cx, |this, cx| {
+                            this.second_actions += 1;
+                            this.record("second");
+                            cx.notify();
+                        })
+                        .ok();
+                })
+            });
+        let modal_body = div().w(px(340.)).p(px(24.)).bg(t.bg_2);
+        let modal = if self.mode == "ancestor" {
+            Modal::new("outer-modal", &self.presence)
+                .label("Outer contract")
+                .on_dismiss(move |window, cx| {
+                    dismiss
+                        .update(cx, |this, cx| {
+                            this.presence.hide(window, cx);
+                            this.record("hide");
+                            cx.notify();
+                        })
+                        .ok();
+                })
+                .child(
+                    modal_body
+                        .child("Outer remains owner of the inner layer")
+                        .child(
+                            Modal::new("inner-modal", &self.inner)
+                                .label("Inner contract")
+                                .on_dismiss(move |window, cx| {
+                                    dismiss_inner
+                                        .update(cx, |this, cx| {
+                                            this.inner.hide(window, cx);
+                                            this.record("hide-inner");
+                                            cx.notify();
+                                        })
+                                        .ok();
+                                })
+                                .child(div().w(px(308.)).p(px(24.)).bg(t.bg_2).child(own)),
+                        ),
+                )
+                .into_any_element()
+        } else {
+            Modal::new("own-modal", &self.presence)
+                .label("Caller contract")
+                .when(self.mode == "passive", |modal| modal.mask(MaskKind::None))
+                .on_dismiss(move |window, cx| {
+                    dismiss
+                        .update(cx, |this, cx| {
+                            this.presence.hide(window, cx);
+                            this.record("hide");
+                            cx.notify();
+                        })
+                        .ok();
+                })
+                .child(modal_body.child(own))
+                .into_any_element()
+        };
+        ModalScope::new(
+            div()
+                .size_full()
+                .p(px(24.))
+                .bg(t.bg_0)
+                .text_color(t.fg_0)
+                .on_key_down(cx.listener(|this, event: &KeyDownEvent, window, cx| {
+                    match event.keystroke.key.as_str() {
+                        "f6" => {
+                            this.presence.hide(window, cx);
+                            this.record("hide");
+                            cx.notify();
+                        }
+                        "tab" => {
+                            if event.keystroke.modifiers.shift {
+                                window.focus_prev(cx);
+                            } else {
+                                window.focus_next(cx);
+                            }
+                        }
+                        _ => return,
+                    }
+                    cx.stop_propagation();
+                }))
+                .child(
+                    Button::new(format!("Open {tag}"))
+                        .id("open")
+                        .on_click(cx.listener(|this, _, window, cx| {
+                            this.presence.show(window, cx);
+                            if this.mode == "ancestor" {
+                                this.inner.show(window, cx);
+                            }
+                            this.record("open");
+                            cx.notify();
+                        })),
+                )
+                .child(
+                    Button::new(format!("Hide {tag}"))
+                        .id("hide")
+                        .on_click(cx.listener(|this, _, window, cx| {
+                            this.presence.hide(window, cx);
+                            this.record("hide");
+                            cx.notify();
+                        })),
+                )
+                .child(
+                    div()
+                        .id("background")
+                        .role(Role::Button)
+                        .aria_label(format!("Background action {tag}"))
+                        .track_focus(&self.background_focus)
+                        .tab_stop(true)
+                        .mt(px(12.))
+                        .p(px(12.))
+                        .bg(t.bg_2)
+                        .child(format!("Background action {tag}"))
+                        .on_a11y_action(AccessibleAction::Click, move |_, window, cx| {
+                            background
+                                .update(cx, |this, cx| {
+                                    this.background_actions += 1;
+                                    window.focus(&this.background_focus, cx);
+                                    this.record("background");
+                                    cx.notify();
+                                })
+                                .ok();
+                        }),
+                )
+                .child(modal),
+        )
+    }
+}
+
+#[path = "support/platform.rs"]
+mod platform;
+
+fn main() {
+    let mode = std::env::args().nth(1).unwrap_or_else(|| "raw".into());
+    platform::application()
+        .with_assets(wegpui::Assets)
+        .run(move |cx| {
+            wegpui::init(cx);
+            let tags: &[&'static str] = if mode == "two-window" {
+                &["A", "B"]
+            } else {
+                &["main"]
+            };
+            for &tag in tags {
+                let mode = mode.clone();
+                let bounds = Bounds::centered(None, size(px(480.), px(640.)), cx);
+                cx.open_window(
+                    WindowOptions {
+                        window_bounds: Some(WindowBounds::Windowed(bounds)),
+                        titlebar: Some(TitlebarOptions {
+                            title: Some(format!("Guard contract {tag}").into()),
+                            ..Default::default()
+                        }),
+                        ..Default::default()
+                    },
+                    |window, cx| {
+                        Theme::observe(window);
+                        cx.new(|cx| {
+                            let presence = Presence::new(cx).duration(Duration::from_secs(2));
+                            let presence = if mode == "passive" {
+                                presence.passive()
+                            } else {
+                                presence
+                            };
+                            Probe {
+                                mode,
+                                tag,
+                                presence,
+                                inner: Presence::new(cx).duration(Duration::from_secs(2)),
+                                own_focus: cx.focus_handle().tab_stop(true),
+                                background_focus: cx.focus_handle().tab_stop(true),
+                                own_actions: 0,
+                                second_actions: 0,
+                                background_actions: 0,
+                                reopen_once: true,
+                                started: Instant::now(),
+                            }
+                        })
+                    },
+                )
+                .expect("open guard contract window");
+            }
+            cx.activate(true);
+        });
+}

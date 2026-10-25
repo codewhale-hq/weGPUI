@@ -1,0 +1,357 @@
+// Executes the production A11yNodeBuilder source extracted verbatim below.
+// Hash-map aliases use std maps and SharedString uses String; debug-only metadata is disabled.
+use accesskit::{NodeId, TreeUpdate};
+use smallvec::SmallVec;
+use std::{collections::{HashMap as FxHashMap, HashSet as FxHashSet}, rc::Rc};
+type SharedString = String;
+const ROOT_NODE_ID: NodeId = NodeId(0);
+pub(crate) struct A11yNodeBuilder {
+    ids_stack: SmallVec<[NodeId; 16]>,
+    nodes_stack: SmallVec<[accesskit::Node; 16]>,
+    /// This is the exact type required by accesskit, so we can't just make it a
+    /// `HashMap<NodeId, Node>` to remove the need for `seen_ids`
+    all_nodes: Vec<(NodeId, accesskit::Node)>,
+    seen_ids: FxHashSet<NodeId>,
+    /// Dynamic predicates inherited by nodes created in the current element scope.
+    action_guard_stack: Vec<Rc<dyn Fn() -> bool>>,
+    /// Guards retained with each exposed target until the next frame replaces its metadata.
+    action_guards: FxHashMap<NodeId, Vec<Rc<dyn Fn() -> bool>>>,
+    /// The node that GPUI considers focused. Note that this may be different to
+    /// what is reported to accesskit - see [`Self::active_descendant`]
+    focus: Option<NodeId>,
+    /// If a node calls `.aria_active_descendant()`, AND an ancestor is focused,
+    /// override it as the focused node. This supports the "active descendant"
+    /// pattern, which allows a focused container to act as if a descendant is
+    /// focused.
+    active_descendant: Option<NodeId>,
+    #[cfg(debug_assertions)]
+    node_info: FxHashMap<NodeId, debug::NodeDebugInfo>,
+}
+
+impl A11yNodeBuilder {
+    fn new() -> Self {
+        Self {
+            ids_stack: SmallVec::new(),
+            nodes_stack: SmallVec::new(),
+            all_nodes: Vec::new(),
+            seen_ids: FxHashSet::default(),
+            action_guard_stack: Vec::new(),
+            action_guards: FxHashMap::default(),
+            focus: None,
+            active_descendant: None,
+            #[cfg(debug_assertions)]
+            node_info: FxHashMap::default(),
+        }
+    }
+
+    pub(crate) fn action_guard_context(&self) -> Vec<Rc<dyn Fn() -> bool>> {
+        self.action_guard_stack.clone()
+    }
+
+    pub(crate) fn replace_action_guard_context(
+        &mut self,
+        guards: Vec<Rc<dyn Fn() -> bool>>,
+    ) -> Vec<Rc<dyn Fn() -> bool>> {
+        std::mem::replace(&mut self.action_guard_stack, guards)
+    }
+
+    pub(crate) fn action_allowed(&self, target: NodeId) -> bool {
+        self.has_node(target)
+            && self
+                .action_guards
+                .get(&target)
+                .is_none_or(|guards| guards.iter().all(|guard| guard()))
+    }
+
+    fn capture_action_guards(&mut self, id: NodeId) {
+        if !self.action_guard_stack.is_empty() {
+            self.action_guards
+                .insert(id, self.action_guard_stack.clone());
+        }
+    }
+
+    /// Records provenance for a node already pushed this frame. Debug builds only.
+    #[cfg(debug_assertions)]
+    pub(crate) fn record_node_info(&mut self, id: NodeId, info: debug::NodeDebugInfo) {
+        self.node_info.insert(id, info);
+    }
+
+    #[must_use]
+    fn can_push(&mut self, id: NodeId) -> bool {
+        debug_assert!(!self.ids_stack.is_empty(), "node pushed before push_root");
+
+        if !self.seen_ids.insert(id) {
+            debug_assert!(
+                false,
+                "Duplicate a11y node id: {id:?}. In a release build, this node would be silently discarded from the a11y tree."
+            );
+            return false;
+        }
+
+        true
+    }
+
+    /// Push a new node onto the stack. It becomes a child of the current
+    /// top-of-stack node.
+    ///
+    /// Returns `true` if the node was successfully pushed.
+    pub(crate) fn push(&mut self, id: NodeId, node: accesskit::Node) -> bool {
+        if !self.can_push(id) {
+            return false;
+        }
+
+        self.capture_action_guards(id);
+        if let Some(parent) = self.nodes_stack.last_mut() {
+            parent.push_child(id);
+        }
+        self.ids_stack.push(id);
+        self.nodes_stack.push(node);
+        true
+    }
+
+    /// Add a leaf node as a child of the current top-of-stack node, without
+    /// pushing it onto the stack. Semantically equivalent to a [`Self::push`]
+    /// followed by a [`Self::pop`].
+    ///
+    /// Returns `true` if the node was successfully pushed.
+    pub(crate) fn push_leaf(&mut self, id: NodeId, node: accesskit::Node) -> bool {
+        if !self.can_push(id) {
+            return false;
+        }
+
+        self.capture_action_guards(id);
+        if let Some(parent) = self.nodes_stack.last_mut() {
+            parent.push_child(id);
+        }
+        self.all_nodes.push((id, node));
+        true
+    }
+
+    pub(crate) fn current_node_mut(&mut self) -> Option<&mut accesskit::Node> {
+        self.nodes_stack.last_mut()
+    }
+
+    /// Pop the current node off the stack and finalize it into the all_nodes
+    /// list.
+    pub(crate) fn pop(&mut self) {
+        debug_assert!(self.ids_stack.len() > 1, "pop would remove the root node");
+
+        if let (Some(id), Some(node)) = (self.ids_stack.pop(), self.nodes_stack.pop()) {
+            self.all_nodes.push((id, node));
+        }
+    }
+
+    /// Push the root node to start a new frame.
+    fn begin_frame(&mut self, window_title: Option<&SharedString>) {
+        self.all_nodes.clear();
+        self.ids_stack.clear();
+        self.nodes_stack.clear();
+        self.seen_ids.clear();
+        self.action_guard_stack.clear();
+        self.action_guards.clear();
+        #[cfg(debug_assertions)]
+        self.node_info.clear();
+        let mut root_node = accesskit::Node::new(accesskit::Role::Window);
+        if let Some(title) = window_title {
+            root_node.set_label(title.to_string());
+        }
+
+        self.ids_stack.push(ROOT_NODE_ID);
+        self.nodes_stack.push(root_node);
+        self.focus = None;
+        self.active_descendant = None;
+    }
+
+    /// Returns whether a node with the given ID has been pushed in this frame.
+    pub(crate) fn has_node(&self, id: NodeId) -> bool {
+        id == ROOT_NODE_ID || self.seen_ids.contains(&id)
+    }
+
+    /// Returns whether `id` is the node currently reported as focused.
+    pub(crate) fn node_is_focused(&self, id: NodeId) -> bool {
+        self.focus == Some(id)
+    }
+
+    pub(crate) fn focus_is_ancestor_of_current(&self) -> bool {
+        let Some(focus) = self.focus else {
+            return false;
+        };
+
+        // The current node is on top of the stack; everything below it is an
+        // ancestor.
+        let ancestor_count = self.ids_stack.len().saturating_sub(1);
+        self.ids_stack[..ancestor_count].contains(&focus)
+    }
+
+    pub(crate) fn set_active_descendant(&mut self, id: NodeId) {
+        if self
+            .active_descendant
+            .is_some_and(|existing| existing != id)
+        {
+            if cfg!(debug_assertions) {
+                panic!("active descendant claimed by multiple nodes in one frame");
+            } else {
+                log::warn!(
+                    "a11y: multiple nodes claimed the active descendant this frame; \
+                     using last-wins ({id:?})"
+                );
+            }
+        }
+        self.active_descendant = Some(id);
+    }
+
+    pub(crate) fn set_focus(&mut self, id: NodeId) {
+        if self.focus.is_some() {
+            if cfg!(debug_assertions) {
+                panic!("set_focus called more than once in a single frame");
+            } else {
+                log::warn!(
+                    "a11y: set_focus called more than once in a single frame; \
+                     using last-wins ({id:?})"
+                );
+            }
+        }
+        self.focus = Some(id);
+    }
+
+    fn finalize(&mut self) -> TreeUpdate {
+        // Stack should contain only the root node
+        debug_assert_eq!(self.ids_stack.len(), 1);
+        debug_assert_eq!(self.ids_stack[0], ROOT_NODE_ID);
+
+        if self.ids_stack.len() != 1 {
+            log::error!(
+                "a11y: Stack imbalance at end of frame: expected 1 (root), got {}. \
+                 Some elements may have pushed without popping.",
+                self.ids_stack.len()
+            );
+        }
+
+        // Pop remaining nodes (should just be the root).
+        while !self.ids_stack.is_empty() {
+            if let (Some(id), Some(node)) = (self.ids_stack.pop(), self.nodes_stack.pop()) {
+                self.all_nodes.push((id, node));
+            }
+        }
+
+        let focus = match self.active_descendant {
+            Some(id) if self.has_node(id) => id,
+            Some(id) => {
+                if cfg!(debug_assertions) {
+                    panic!("active_descendant set to {id:?}, which is not in the tree");
+                } else {
+                    log::warn!("active_descendant set to {id:?}, which is not in the tree");
+                    self.focus.unwrap_or(ROOT_NODE_ID)
+                }
+            }
+
+            _ => self.focus.unwrap_or(ROOT_NODE_ID),
+        };
+
+        let nodes = std::mem::take(&mut self.all_nodes);
+        let update = TreeUpdate {
+            nodes,
+            tree: Some(accesskit::Tree::new(ROOT_NODE_ID)),
+            tree_id: accesskit::TreeId::ROOT,
+            focus,
+        };
+
+        Self::repair_tree_update(update)
+    }
+
+    /// Accesskit panics on invalid [`TreeUpdate`]s. This function defensively
+    /// checks invariants that accesskit panics on, and tries to fix them.
+    fn repair_tree_update(mut update: TreeUpdate) -> TreeUpdate {
+        let node_ids: FxHashSet<NodeId> = update.nodes.iter().map(|(id, _)| *id).collect();
+
+        // Focus must point to a node in the tree.
+        if !node_ids.contains(&update.focus) {
+            log::error!(
+                "a11y: Focused node {:?} is not in the tree ({} nodes). \
+                 Falling back to root. This is a bug in the a11y tree builder.",
+                update.focus,
+                update.nodes.len()
+            );
+            update.focus = ROOT_NODE_ID;
+        }
+
+        // Every child reference must point to a node in the update.
+        for (id, node) in &mut update.nodes {
+            let has_invalid_child = node
+                .children()
+                .iter()
+                .any(|child_id| !node_ids.contains(child_id));
+            if has_invalid_child {
+                let children = node.children();
+                let invalid_count = children
+                    .iter()
+                    .filter(|child_id| !node_ids.contains(child_id))
+                    .count();
+                log::error!(
+                    "a11y: Node {:?} references {} children not present in the tree. \
+                     Stripping invalid child references.",
+                    id,
+                    invalid_count
+                );
+                let valid: Vec<NodeId> = children
+                    .iter()
+                    .copied()
+                    .filter(|child_id| node_ids.contains(child_id))
+                    .collect();
+                node.set_children(valid);
+            }
+        }
+
+        update
+    }
+}
+
+
+#[cfg(test)] mod regressions { use super::*;
+fn test_node() -> accesskit::Node { accesskit::Node::new(accesskit::Role::GenericContainer) }
+fn new_builder() -> A11yNodeBuilder { let mut b=A11yNodeBuilder::new(); b.begin_frame(None); b }
+    #[test]
+    fn action_guards_track_live_state_for_real_and_synthetic_nodes() {
+        let mut builder = new_builder();
+        let live = Rc::new(std::cell::Cell::new(true));
+        let predicate = live.clone();
+        builder.replace_action_guard_context(vec![Rc::new(move || predicate.get())]);
+        assert!(builder.push(NodeId(100), test_node()));
+        assert!(builder.push_leaf(NodeId(101), test_node()));
+        builder.pop();
+        assert!(builder.action_allowed(NodeId(100)));
+        assert!(builder.action_allowed(NodeId(101)));
+        live.set(false);
+        assert!(!builder.action_allowed(NodeId(100)));
+        assert!(!builder.action_allowed(NodeId(101)));
+        assert!(!builder.action_allowed(NodeId(999)));
+        assert!(builder.action_allowed(ROOT_NODE_ID));
+    }
+
+    #[test]
+    fn action_guard_contexts_compose_without_mutating_saved_scopes() {
+        let mut builder = new_builder();
+        let outer = Rc::new(std::cell::Cell::new(true));
+        let inner = Rc::new(std::cell::Cell::new(true));
+        let first = outer.clone();
+        let second = inner.clone();
+        builder.replace_action_guard_context(vec![
+            Rc::new(move || first.get()),
+            Rc::new(move || second.get()),
+        ]);
+        assert!(builder.push_leaf(NodeId(100), test_node()));
+        builder.replace_action_guard_context(Vec::new());
+        assert!(builder.push_leaf(NodeId(101), test_node()));
+        outer.set(false);
+        assert!(!builder.action_allowed(NodeId(100)));
+        assert!(builder.action_allowed(NodeId(101)));
+        outer.set(true);
+        inner.set(false);
+        assert!(!builder.action_allowed(NodeId(100)));
+        builder.begin_frame(None);
+        assert!(!builder.action_allowed(NodeId(100)));
+        assert!(builder.push_leaf(NodeId(100), test_node()));
+        assert!(builder.action_allowed(NodeId(100)));
+    }
+
+}

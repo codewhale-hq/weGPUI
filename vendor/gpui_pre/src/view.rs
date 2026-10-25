@@ -473,7 +473,8 @@ fn request_layout_view(
     render: &mut dyn FnMut(&mut Window, &mut App) -> AnyElement,
 ) -> (LayoutId, Option<AnyElement>) {
     window.with_rendered_view(entity_id, |window| {
-        let caching_disabled = window.is_inspector_picking(cx);
+        // Cached replay does not reconstruct accessibility nodes/listeners or their guards.
+        let caching_disabled = window.is_inspector_picking(cx) || window.is_a11y_active();
         match cached_style {
             Some(style) if !caching_disabled => {
                 let mut root_style = Style::default();
@@ -597,7 +598,8 @@ fn paint_view(
     cx: &mut App,
 ) {
     window.with_rendered_view(entity_id, |window| {
-        let caching_disabled = window.is_inspector_picking(cx);
+        // Cached replay does not reconstruct accessibility nodes/listeners or their guards.
+        let caching_disabled = window.is_inspector_picking(cx) || window.is_a11y_active();
         if cached && !caching_disabled {
             window.with_element_state::<ViewElementState, _>(
                 global_id.unwrap(),

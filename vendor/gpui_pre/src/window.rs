@@ -1024,6 +1024,7 @@ pub(crate) struct DeferredDraw {
     current_view: EntityId,
     priority: usize,
     parent_node: DispatchNodeId,
+    a11y_action_guards: Vec<Rc<dyn Fn() -> bool>>,
     element_id_stack: ElementIdStack,
     text_style_stack: Vec<TextStyleRefinement>,
     content_mask: Option<ContentMask<Pixels>>,
@@ -3897,7 +3898,15 @@ impl Window {
             traversal_order.sort_by_key(|ix| self.next_frame.deferred_draws[*ix].priority);
 
             for deferred_draw_ix in traversal_order {
-                let (element, parent_node, current_view, rem_size, absolute_offset, prepaint_range) = {
+                let (
+                    element,
+                    parent_node,
+                    current_view,
+                    rem_size,
+                    absolute_offset,
+                    prepaint_range,
+                    a11y_action_guards,
+                ) = {
                     let deferred_draw = &mut self.next_frame.deferred_draws[deferred_draw_ix];
                     self.element_id_stack
                         .clone_from(&deferred_draw.element_id_stack);
@@ -3910,23 +3919,26 @@ impl Window {
                         deferred_draw.rem_size,
                         deferred_draw.absolute_offset,
                         deferred_draw.prepaint_range.clone(),
+                        deferred_draw.a11y_action_guards.clone(),
                     )
                 };
                 self.next_frame.dispatch_tree.set_active_node(parent_node);
 
                 let prepaint_start = self.prepaint_index();
-                if let Some(mut element) = element {
-                    self.with_rendered_view(current_view, |window| {
-                        window.with_rem_size(Some(rem_size), |window| {
-                            window.with_absolute_element_offset(absolute_offset, |window| {
-                                element.prepaint(window, cx);
+                self.with_a11y_action_guards(a11y_action_guards, |window| {
+                    if let Some(mut element) = element {
+                        window.with_rendered_view(current_view, |window| {
+                            window.with_rem_size(Some(rem_size), |window| {
+                                window.with_absolute_element_offset(absolute_offset, |window| {
+                                    element.prepaint(window, cx);
+                                });
                             });
                         });
-                    });
-                    self.next_frame.deferred_draws[deferred_draw_ix].element = Some(element);
-                } else {
-                    self.reuse_prepaint(prepaint_range);
-                }
+                        window.next_frame.deferred_draws[deferred_draw_ix].element = Some(element);
+                    } else {
+                        window.reuse_prepaint(prepaint_range);
+                    }
+                });
                 let prepaint_end = self.prepaint_index();
                 self.next_frame.deferred_draws[deferred_draw_ix].prepaint_range =
                     prepaint_start..prepaint_end;
@@ -3959,17 +3971,19 @@ impl Window {
 
             let paint_start = self.paint_index();
             let content_mask = deferred_draw.content_mask;
-            if let Some(element) = deferred_draw.element.as_mut() {
-                self.with_rendered_view(deferred_draw.current_view, |window| {
-                    window.with_content_mask(content_mask, |window| {
-                        window.with_rem_size(Some(deferred_draw.rem_size), |window| {
-                            element.paint(window, cx);
-                        });
+            self.with_a11y_action_guards(deferred_draw.a11y_action_guards.clone(), |window| {
+                if let Some(element) = deferred_draw.element.as_mut() {
+                    window.with_rendered_view(deferred_draw.current_view, |window| {
+                        window.with_content_mask(content_mask, |window| {
+                            window.with_rem_size(Some(deferred_draw.rem_size), |window| {
+                                element.paint(window, cx);
+                            });
+                        })
                     })
-                })
-            } else {
-                self.reuse_paint(deferred_draw.paint_range.clone());
-            }
+                } else {
+                    window.reuse_paint(deferred_draw.paint_range.clone());
+                }
+            });
             let paint_end = self.paint_index();
             deferred_draw.paint_range = paint_start..paint_end;
         }
@@ -4033,6 +4047,7 @@ impl Window {
                 .map(|deferred_draw| DeferredDraw {
                     current_view: deferred_draw.current_view,
                     parent_node: reused_subtree.refresh_node_id(deferred_draw.parent_node),
+                    a11y_action_guards: deferred_draw.a11y_action_guards.clone(),
                     element_id_stack: deferred_draw.element_id_stack.clone(),
                     text_style_stack: deferred_draw.text_style_stack.clone(),
                     content_mask: deferred_draw.content_mask,
@@ -4515,6 +4530,7 @@ impl Window {
         self.next_frame.deferred_draws.push(DeferredDraw {
             current_view: self.current_view(),
             parent_node,
+            a11y_action_guards: self.a11y.nodes.action_guard_context(),
             element_id_stack: self.element_id_stack.clone(),
             text_style_stack: self.text_style_stack.clone(),
             content_mask,
@@ -7014,6 +7030,35 @@ impl Window {
         self.a11y.debug_tree_json()
     }
 
+    /// Associates live predicates with accessibility targets and listeners produced in `f`.
+    ///
+    /// Every inherited predicate must return true before an action can run. Predicates must
+    /// be side-effect-free and may be evaluated more than once per request. They are retained
+    /// by reference, so changing their underlying model blocks already-painted callbacks and
+    /// built-in Focus/Blur/Click handling before a later tree update removes the targets.
+    /// Deferred elements inherit the scope that scheduled them. Call this around both the
+    /// prepaint and paint of an id/role-less element wrapper so its child's root is included.
+    pub fn with_a11y_action_guard<R>(
+        &mut self,
+        guard: Rc<dyn Fn() -> bool>,
+        f: impl FnOnce(&mut Self) -> R,
+    ) -> R {
+        let mut guards = self.a11y.nodes.action_guard_context();
+        guards.push(guard);
+        self.with_a11y_action_guards(guards, f)
+    }
+
+    fn with_a11y_action_guards<R>(
+        &mut self,
+        guards: Vec<Rc<dyn Fn() -> bool>>,
+        f: impl FnOnce(&mut Self) -> R,
+    ) -> R {
+        let previous = self.a11y.nodes.replace_action_guard_context(guards);
+        let result = f(self);
+        let _ = self.a11y.nodes.replace_action_guard_context(previous);
+        result
+    }
+
     /// Register a listener for an accessibility action on a specific node.
     /// The listener will be called when a screen reader requests the given
     /// action on the node identified by `node_id`.
@@ -7025,15 +7070,28 @@ impl Window {
         action: accesskit::Action,
         listener: impl FnMut(Option<&accesskit::ActionData>, &mut Window, &mut App) + 'static,
     ) {
+        let guards = self.a11y.nodes.action_guard_context();
+        let mut listener = listener;
         self.a11y
             .action_listeners
             .entry(node_id)
             .or_default()
-            .push((action, Box::new(listener)));
+            .push((
+                action,
+                Box::new(move |data, window, cx| {
+                    if guards.iter().all(|guard| guard()) {
+                        listener(data, window, cx);
+                    }
+                }),
+            ));
     }
 
     #[cfg(not(target_family = "wasm"))]
     pub(crate) fn handle_a11y_action(&mut self, request: accesskit::ActionRequest, cx: &mut App) {
+        // Reject removed or logically inactive targets before callbacks or built-in fallback.
+        if !self.a11y.nodes.action_allowed(request.target_node) {
+            return;
+        }
         // Take listeners out temporarily so the closures can borrow Window
         // mutably, then restore them afterward.
         if let Some(mut listeners) = self.a11y.action_listeners.remove(&request.target_node) {
@@ -7041,8 +7099,12 @@ impl Window {
             let mut matched = false;
             for (action, listener) in &mut listeners {
                 if *action == request.action {
-                    listener(extra_data, self, cx);
                     matched = true;
+                    // An earlier matching callback may have closed or replaced its scope.
+                    if !self.a11y.nodes.action_allowed(request.target_node) {
+                        break;
+                    }
+                    listener(extra_data, self, cx);
                 }
             }
             self.a11y
@@ -7053,6 +7115,10 @@ impl Window {
             }
         }
 
+        // A rejected action is consumed; it must never become a synthetic click or Focus.
+        if !self.a11y.nodes.action_allowed(request.target_node) {
+            return;
+        }
         // Fall back to built-in action handling.
         match request.action {
             accesskit::Action::Click => {

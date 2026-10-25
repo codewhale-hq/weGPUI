@@ -1,0 +1,135 @@
+{
+  "role": "desktop frame",
+  "name": "main",
+  "description": "",
+  "interfaces": [
+    "Accessible",
+    "Component"
+  ],
+  "states": [],
+  "attributes": [],
+  "bounds": [
+    0,
+    0,
+    1024,
+    768
+  ],
+  "children": [
+    {
+      "role": "application",
+      "name": "nested_modals",
+      "description": "",
+      "interfaces": [
+        "Accessible"
+      ],
+      "states": [],
+      "attributes": [],
+      "children": [
+        {
+          "role": "frame",
+          "name": "weGPUI nested modals",
+          "description": "",
+          "interfaces": [
+            "Accessible",
+            "Component"
+          ],
+          "states": [
+            "active",
+            "enabled",
+            "sensitive",
+            "showing",
+            "visible"
+          ],
+          "attributes": [],
+          "bounds": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "children": [
+            {
+              "role": "dialog",
+              "name": "Outer sheet",
+              "description": "",
+              "interfaces": [
+                "Accessible",
+                "Action",
+                "Component"
+              ],
+              "states": [
+                "active",
+                "enabled",
+                "focusable",
+                "focused",
+                "modal",
+                "sensitive",
+                "showing",
+                "visible"
+              ],
+              "attributes": [],
+              "bounds": [
+                0,
+                0,
+                900,
+                800
+              ],
+              "children": [
+                {
+                  "role": "button",
+                  "name": "Open inner dialog",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "bounds": [
+                    350,
+                    608,
+                    200,
+                    48
+                  ],
+                  "children": []
+                },
+                {
+                  "role": "button",
+                  "name": "Close sheet",
+                  "description": "",
+                  "interfaces": [
+                    "Accessible",
+                    "Action",
+                    "Component"
+                  ],
+                  "states": [
+                    "enabled",
+                    "focusable",
+                    "sensitive",
+                    "showing",
+                    "visible"
+                  ],
+                  "attributes": [],
+                  "bounds": [
+                    358,
+                    668,
+                    184,
+                    48
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

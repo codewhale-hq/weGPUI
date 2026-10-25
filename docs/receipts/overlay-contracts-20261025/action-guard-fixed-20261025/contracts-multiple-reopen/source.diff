@@ -1,0 +1,182 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index 3dc8edc..1148d25 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -1976,8 +1976,6 @@ dependencies = [
+ [[package]]
+ name = "gpui-pre-linux"
+ version = "0.3.9"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e28213c3fde6f13e91ba0b74b90cbaadec9373e36a031eda98561d31059870f3"
+ dependencies = [
+  "accesskit",
+  "accesskit_unix",
+diff --git a/Cargo.toml b/Cargo.toml
+index dc4da9c..461e357 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -40,3 +40,4 @@ debug = 0
+ accesskit_unix = { path = "vendor/accesskit_unix" }
+ accesskit_atspi_common = { path = "vendor/accesskit_atspi_common" }
+ gpui-pre = { path = "vendor/gpui_pre" }
++gpui-pre-linux = { path = "vendor/gpui_pre_linux" }
+diff --git a/src/accessibility.rs b/src/accessibility.rs
+index 815b6f7..edcb054 100644
+--- a/src/accessibility.rs
++++ b/src/accessibility.rs
+@@ -218,6 +218,86 @@ impl<E: Element> Element for Semantics<E> {
+     }
+ }
+ 
++/// A role/id-less wrapper: the child's own root must be created inside the guard scope.
++/// Forwarding the child's role from this wrapper would create that root before prepaint.
++pub(crate) struct A11yActionScope {
++    inner: AnyElement,
++    guard: Rc<dyn Fn() -> bool>,
++}
++
++impl A11yActionScope {
++    pub(crate) fn new(inner: impl IntoElement, guard: Rc<dyn Fn() -> bool>) -> Self {
++        Self {
++            inner: inner.into_any_element(),
++            guard,
++        }
++    }
++}
++
++impl IntoElement for A11yActionScope {
++    type Element = Self;
++    fn into_element(self) -> Self {
++        self
++    }
++}
++
++impl Element for A11yActionScope {
++    type RequestLayoutState = ();
++    type PrepaintState = ();
++
++    fn id(&self) -> Option<ElementId> {
++        None
++    }
++    fn source_location(&self) -> Option<&'static std::panic::Location<'static>> {
++        None
++    }
++
++    fn request_layout(
++        &mut self,
++        _: Option<&GlobalElementId>,
++        _: Option<&InspectorElementId>,
++        window: &mut Window,
++        cx: &mut App,
++    ) -> (LayoutId, ()) {
++        let guard = self.guard.clone();
++        let inner = &mut self.inner;
++        let layout =
++            window.with_a11y_action_guard(guard, |window| inner.request_layout(window, cx));
++        (layout, ())
++    }
++
++    fn prepaint(
++        &mut self,
++        _: Option<&GlobalElementId>,
++        _: Option<&InspectorElementId>,
++        _: Bounds<Pixels>,
++        _: &mut (),
++        window: &mut Window,
++        cx: &mut App,
++    ) {
++        let guard = self.guard.clone();
++        let inner = &mut self.inner;
++        window.with_a11y_action_guard(guard, |window| {
++            inner.prepaint(window, cx);
++        });
++    }
++
++    fn paint(
++        &mut self,
++        _: Option<&GlobalElementId>,
++        _: Option<&InspectorElementId>,
++        _: Bounds<Pixels>,
++        _: &mut (),
++        _: &mut (),
++        window: &mut Window,
++        cx: &mut App,
++    ) {
++        let guard = self.guard.clone();
++        let inner = &mut self.inner;
++        window.with_a11y_action_guard(guard, |window| inner.paint(window, cx));
++    }
++}
++
+ #[derive(Default)]
+ struct ModalLayers {
+     top: Option<(usize, Rc<Cell<bool>>)>,
+diff --git a/src/components/modal.rs b/src/components/modal.rs
+index aaa95e6..147f148 100644
+--- a/src/components/modal.rs
++++ b/src/components/modal.rs
+@@ -8,12 +8,12 @@
+ //! restarts the easing curve from the current value, and a slide travels the window height until
+ //! the panel is first measured.
+ 
+-use crate::accessibility::Semantics;
++use crate::accessibility::{A11yActionScope, Semantics};
+ use gpui::{prelude::*, *};
+ use std::{
+     sync::{
+         Arc,
+-        atomic::{AtomicBool, Ordering},
++        atomic::{AtomicBool, AtomicUsize, Ordering},
+     },
+     time::{Duration, Instant},
+ };
+@@ -41,6 +41,7 @@ pub struct Presence {
+     duration: Duration,
+     passive: bool,
+     interactive: Arc<AtomicBool>,
++    interactive_generation: Arc<AtomicUsize>,
+ }
+ 
+ impl Presence {
+@@ -57,6 +58,7 @@ impl Presence {
+             duration: TRANSITION,
+             passive: false,
+             interactive: Arc::new(AtomicBool::new(false)),
++            interactive_generation: Arc::new(AtomicUsize::new(0)),
+         }
+     }
+     /// Sets the length of a full open or close transition (default [`TRANSITION`]); zero disables
+@@ -125,6 +127,8 @@ impl Presence {
+             }
+             self.retarget(true, cx);
+             self.generation += 1;
++            self.interactive_generation
++                .store(self.generation, Ordering::Relaxed);
+         }
+         if !self.passive {
+             window.focus(&self.focus, cx);
+@@ -533,13 +537,21 @@ impl RenderOnce for Modal {
+         } else {
+             semantics
+         };
+-        deferred(
++        let layer = deferred(
+             anchored()
+                 .position(point(px(0.), px(0.)))
+                 .child(semantics.modal_layer()),
+         )
+-        .with_priority(1)
+-        .into_any_element()
++        .with_priority(1);
++        // This scope covers only this layer's targets, including passive content.
++        // Background page targets remain outside it; no focus, modal or hidden state changes.
++        let live = self.presence.interactive.clone();
++        let epoch = self.presence.interactive_generation.clone();
++        let generation = self.presence.generation;
++        let guard = std::rc::Rc::new(move || {
++            live.load(Ordering::Relaxed) && epoch.load(Ordering::Relaxed) == generation
++        });
++        A11yActionScope::new(layer, guard).into_any_element()
+     }
+ }
+ 

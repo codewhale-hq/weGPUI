@@ -1,0 +1,58 @@
+[
+  {
+    "kind": "pointer",
+    "monotonic_ns": 15698914364468,
+    "name": "Open main"
+  },
+  {
+    "kind": "actions",
+    "monotonic_ns": 15701126113407,
+    "name": "Caller action main",
+    "names": [
+      "click"
+    ]
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15701187035703,
+    "label": "opened"
+  },
+  {
+    "kind": "open-own-control",
+    "monotonic_ns": 15701188156658,
+    "result": true,
+    "invoked_ns": 15701187264070
+  },
+  {
+    "kind": "hide-parent-command",
+    "monotonic_ns": 15701416296361,
+    "started_ns": 15701388435037,
+    "returned_ns": 15701416292735
+  },
+  {
+    "kind": "saved-inner-click-after-parent-close",
+    "monotonic_ns": 15701417484415,
+    "result": true,
+    "invoked_ns": 15701416535341
+  },
+  {
+    "kind": "saved-inner-focus-after-parent-close",
+    "monotonic_ns": 15701418350807,
+    "result": true,
+    "invoked_ns": 15701417652547
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15701703337645,
+    "label": "during-parent-close"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15703969817000,
+    "label": "closed"
+  },
+  {
+    "kind": "finished",
+    "monotonic_ns": 15703970215329
+  }
+]

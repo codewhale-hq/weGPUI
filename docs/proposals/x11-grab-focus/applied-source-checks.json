@@ -1,0 +1,17 @@
+{
+  "archive_sha256": "e28213c3fde6f13e91ba0b74b90cbaadec9373e36a031eda98561d31059870f3",
+  "modified_upstream_files": [
+    "src/linux/x11/client.rs"
+  ],
+  "modified_client_sha256": "5f7ae89fac0192dbbe8d177d344e706e32f0ddeb5d63473a5d070eef7d262aa3",
+  "root_lock_change": "Only gpui-pre-linux 0.3.9 source/checksum removed; all parsed other fields, packages, versions and dependency lists identical.",
+  "consumer_manifests_updated": [
+    "cached-a11y-consumer",
+    "consumer-contracts",
+    "closing-actions-consumer",
+    "orca-controls-consumer",
+    "agree-warn-consumer",
+    "readme-consumer"
+  ],
+  "build_performed": false
+}

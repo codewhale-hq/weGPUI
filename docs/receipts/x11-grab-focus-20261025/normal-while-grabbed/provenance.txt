@@ -1,0 +1,28 @@
+2026-10-25T11:09:01Z
+Linux 6.18.55 x86_64 GNU/Linux
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.5
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+rustc 1.98.1 (48a229cea 2026-09-01)
+binary: rustc
+commit-hash: 48a229ceaefd4985c50990b14116b6d856af0985
+commit-date: 2026-09-01
+host: x86_64-unknown-linux-gnu
+release: 1.98.1
+LLVM version: 22.1.8
+cargo 1.98.1 (797e8a9bc 2026-08-05)
+3840b47370f8defa925cbff7d3bf12ccf6250722
+d49bc736196532cb9db8f0b7be81e54ce829d7f7c4b664703c3a6f8643392caf  /workspace/.wegpui-cloud/artifacts/x11-grab-focus/minimal-fixed
+4e8ff7326aea2555d71300a4a8332e08d853e2c500d7185e2996cd3760c1cc3c  /workspace/weGPUI/Cargo.lock
+5f7ae89fac0192dbbe8d177d344e706e32f0ddeb5d63473a5d070eef7d262aa3  /workspace/weGPUI/vendor/gpui_pre_linux/src/linux/x11/client.rs
+0ec8420d584d4771d8eee4e44197c136fbbb068b8ed786dbd8371490a2e2248b  /workspace/weGPUI/vendor/gpui_pre/src/window.rs
+17ca06ea5e2edbd257eb61c9985b7b0b57f4e27117bf0bdd69714002eef3911c  /workspace/weGPUI/vendor/gpui_pre/src/window/a11y.rs
+a3198399162470ae9e45b2c3b4494af95b4c50cf7fae5564ed95975d9ca34ffb  /workspace/weGPUI/vendor/gpui_pre/src/view.rs
+Private X11 :115; no reader or IME service in this focus-control sample.

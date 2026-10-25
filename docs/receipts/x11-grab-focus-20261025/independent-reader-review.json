@@ -1,0 +1,30 @@
+{
+  "reviewer": "care_brand_review agent",
+  "rerun_performed": false,
+  "source_edits": false,
+  "actual_orca_phrase": "icon-2 button grayed.",
+  "speech_timestamp_utc": "2026-10-25T11:21:53.497264+00:00",
+  "speech_dispatcher_received_phrase": true,
+  "flat_review_target": "icon-2",
+  "app_atspi_focused_target": "icon-0",
+  "at_focus_activation_pulses_during_command": false,
+  "flat_review_context_reset_during_command": false,
+  "pcm": {
+    "channels": 1,
+    "sample_width_bytes": 2,
+    "sample_rate_hz": 16000,
+    "frames": 487898,
+    "duration_seconds": 30.493625,
+    "nonzero_samples": 187978,
+    "peak": 32768,
+    "rms": 4349.887939391982,
+    "sha256": "9b02d202db45dcf8b74b67272e0e5d47d98168685ae0846655bcd052d3e8a871"
+  },
+  "listening_or_asr_performed": false,
+  "unqualified": [
+    "pronunciation/intelligibility",
+    "per-word PCM alignment",
+    "isolated one-patch causation",
+    "full component/all-host/screen-reader acceptance"
+  ]
+}

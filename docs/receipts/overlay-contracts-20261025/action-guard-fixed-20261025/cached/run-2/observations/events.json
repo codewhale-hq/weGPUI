@@ -1,0 +1,327 @@
+[
+  {
+    "kind": "key",
+    "monotonic_ns": 15131438931450,
+    "key": "F3"
+  },
+  {
+    "kind": "action-interface",
+    "monotonic_ns": 15132491963507,
+    "name": "Cached child action",
+    "actions": [
+      "click"
+    ]
+  },
+  {
+    "kind": "action-interface",
+    "monotonic_ns": 15132500856576,
+    "name": "Live child action",
+    "actions": [
+      "click"
+    ]
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 15132727197377,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15133228847115,
+    "label": "initial",
+    "names": [
+      "main",
+      "wegpui-cached-a11y-consumer",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "baseline-cached-click",
+    "monotonic_ns": 15133237545784,
+    "result": true
+  },
+  {
+    "kind": "baseline-cached-focus",
+    "monotonic_ns": 15133639816324,
+    "result": true
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 15134276549629,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15134780547172,
+    "label": "baseline-cached-focused",
+    "names": [
+      "main",
+      "wegpui-cached-a11y-consumer",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "baseline-live-focus",
+    "monotonic_ns": 15134782918815,
+    "result": true
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 15135481525039,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15135982549155,
+    "label": "baseline-positive-controls",
+    "names": [
+      "main",
+      "wegpui-cached-a11y-consumer",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 15136003002436,
+    "key": "F1"
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 15136810714616,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15137311553250,
+    "label": "parent-only-first",
+    "names": [
+      "main",
+      "wegpui-cached-a11y-consumer",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "saved-cached-click-after-parent",
+    "monotonic_ns": 15137313909085,
+    "result": true
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 15137937550026,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15138438124293,
+    "label": "saved-cached-click-result",
+    "names": [
+      "main",
+      "wegpui-cached-a11y-consumer",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "live-click-after-parent",
+    "monotonic_ns": 15138439947592,
+    "result": true
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 15138998929227,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15139499499908,
+    "label": "live-click-result",
+    "names": [
+      "main",
+      "wegpui-cached-a11y-consumer",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 15139515975987,
+    "key": "F2"
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 15140182834256,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15140683375432,
+    "label": "cached-notify-rescue",
+    "names": [
+      "main",
+      "wegpui-cached-a11y-consumer",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "cached-click-after-rescue",
+    "monotonic_ns": 15140685199494,
+    "result": true
+  },
+  {
+    "kind": "fresh-cached-click-after-rescue",
+    "monotonic_ns": 15141207221110,
+    "exit": 0,
+    "stdout": "{\"name\": \"Cached child action\", \"operation\": \"click\", \"result\": true}\n",
+    "stderr": ""
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 15141779505855,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15142280053898,
+    "label": "fresh-cached-click-rescue-result",
+    "names": [
+      "main",
+      "wegpui-cached-a11y-consumer",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "live-focus-before-second-parent",
+    "monotonic_ns": 15142281761594,
+    "result": true
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 15142847723360,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15143348335706,
+    "label": "before-second-parent",
+    "names": [
+      "main",
+      "wegpui-cached-a11y-consumer",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 15143365320063,
+    "key": "F1"
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 15144031420157,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15144531979410,
+    "label": "parent-only-second",
+    "names": [
+      "main",
+      "wegpui-cached-a11y-consumer",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "saved-cached-focus-after-parent",
+    "monotonic_ns": 15144534045206,
+    "result": true
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 15145092736515,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15145593295113,
+    "label": "saved-cached-focus-result",
+    "names": [
+      "main",
+      "wegpui-cached-a11y-consumer",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 15145610194030,
+    "key": "F4"
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 15146271662263,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15146772212411,
+    "label": "full-refresh-rescue",
+    "names": [
+      "main",
+      "wegpui-cached-a11y-consumer",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "cached-focus-after-full-refresh",
+    "monotonic_ns": 15146774018852,
+    "result": true
+  },
+  {
+    "kind": "fresh-cached-focus-after-full-refresh",
+    "monotonic_ns": 15147279463016,
+    "exit": 0,
+    "stdout": "{\"name\": \"Cached child action\", \"operation\": \"focus\", \"result\": true}\n",
+    "stderr": ""
+  },
+  {
+    "kind": "key",
+    "monotonic_ns": 15147843596935,
+    "key": "F3"
+  },
+  {
+    "kind": "snapshot",
+    "monotonic_ns": 15148344194026,
+    "label": "final-focus-control",
+    "names": [
+      "main",
+      "wegpui-cached-a11y-consumer",
+      "Cached accessibility action probe",
+      "Cached child action",
+      "Live child action"
+    ]
+  },
+  {
+    "kind": "finished",
+    "monotonic_ns": 15148344782822
+  }
+]

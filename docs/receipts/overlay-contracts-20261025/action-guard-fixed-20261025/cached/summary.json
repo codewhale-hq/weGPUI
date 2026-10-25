@@ -1,0 +1,210 @@
+{
+  "result": "focused cached-view AT-SPI controls pass",
+  "native_screen_reader_acceptance": false,
+  "source_head": "3840b47370f8defa925cbff7d3bf12ccf6250722",
+  "source_dirty": true,
+  "runtime_binary_sha256": "c6b2ba7e82c0241424d0ddc01383baba4c993dc54374b06022555c30e180333d",
+  "original_build_sha256": "7e5690d4d2a28eb04f5bf82041576417c6fc1dac206441e69ddd2f77416b05de",
+  "strip_tool": "GNU strip (GNU Binutils for Debian) 2.44",
+  "strip_flags": [
+    "--strip-debug"
+  ],
+  "fixture_sha256": "688be4bf6989b0ea91e9b26fe1071ea9a6c99a6be839518ca6e63c5c69ec61a8",
+  "successful_run": "run-2",
+  "preserved_failed_run": {
+    "path": "run-1",
+    "classification": "desktop startup",
+    "details": "Openbox could not connect before the X server was ready; windowactivate failed before test controls."
+  },
+  "all_snapshot_trees_have_cached_and_live": true,
+  "snapshot_tree_count": 13,
+  "native_snapshots_by_label": {
+    "initial": {
+      "parent": 0,
+      "cached_clicks": 0,
+      "cached_renders": 4,
+      "cached_focused": false,
+      "live_clicks": 0,
+      "live_renders": 4,
+      "live_focused": true
+    },
+    "baseline-cached-focused": {
+      "parent": 0,
+      "cached_clicks": 1,
+      "cached_renders": 6,
+      "cached_focused": true,
+      "live_clicks": 0,
+      "live_renders": 6,
+      "live_focused": false
+    },
+    "baseline-positive-controls": {
+      "parent": 0,
+      "cached_clicks": 1,
+      "cached_renders": 7,
+      "cached_focused": false,
+      "live_clicks": 0,
+      "live_renders": 7,
+      "live_focused": true
+    },
+    "parent-only-first": {
+      "parent": 1,
+      "cached_clicks": 1,
+      "cached_renders": 8,
+      "cached_focused": false,
+      "live_clicks": 0,
+      "live_renders": 8,
+      "live_focused": true
+    },
+    "saved-cached-click-result": {
+      "parent": 1,
+      "cached_clicks": 2,
+      "cached_renders": 9,
+      "cached_focused": false,
+      "live_clicks": 0,
+      "live_renders": 9,
+      "live_focused": true
+    },
+    "live-click-result": {
+      "parent": 1,
+      "cached_clicks": 2,
+      "cached_renders": 10,
+      "cached_focused": false,
+      "live_clicks": 1,
+      "live_renders": 10,
+      "live_focused": true
+    },
+    "cached-notify-rescue": {
+      "parent": 1,
+      "cached_clicks": 2,
+      "cached_renders": 11,
+      "cached_focused": false,
+      "live_clicks": 1,
+      "live_renders": 11,
+      "live_focused": true
+    },
+    "fresh-cached-click-rescue-result": {
+      "parent": 1,
+      "cached_clicks": 4,
+      "cached_renders": 13,
+      "cached_focused": false,
+      "live_clicks": 1,
+      "live_renders": 13,
+      "live_focused": true
+    },
+    "before-second-parent": {
+      "parent": 1,
+      "cached_clicks": 4,
+      "cached_renders": 13,
+      "cached_focused": false,
+      "live_clicks": 1,
+      "live_renders": 13,
+      "live_focused": true
+    },
+    "parent-only-second": {
+      "parent": 2,
+      "cached_clicks": 4,
+      "cached_renders": 14,
+      "cached_focused": false,
+      "live_clicks": 1,
+      "live_renders": 14,
+      "live_focused": true
+    },
+    "saved-cached-focus-result": {
+      "parent": 2,
+      "cached_clicks": 4,
+      "cached_renders": 15,
+      "cached_focused": true,
+      "live_clicks": 1,
+      "live_renders": 15,
+      "live_focused": false
+    },
+    "full-refresh-rescue": {
+      "parent": 2,
+      "cached_clicks": 4,
+      "cached_renders": 16,
+      "cached_focused": true,
+      "live_clicks": 1,
+      "live_renders": 16,
+      "live_focused": false
+    },
+    "final-focus-control": {
+      "parent": 2,
+      "cached_clicks": 4,
+      "cached_renders": 16,
+      "cached_focused": true,
+      "live_clicks": 1,
+      "live_renders": 16,
+      "live_focused": false
+    }
+  },
+  "at_action_and_focus_observations": {
+    "baseline-cached-click": {
+      "kind": "baseline-cached-click",
+      "monotonic_ns": 15133237545784,
+      "result": true
+    },
+    "baseline-cached-focus": {
+      "kind": "baseline-cached-focus",
+      "monotonic_ns": 15133639816324,
+      "result": true
+    },
+    "baseline-live-focus": {
+      "kind": "baseline-live-focus",
+      "monotonic_ns": 15134782918815,
+      "result": true
+    },
+    "saved-cached-click-after-parent": {
+      "kind": "saved-cached-click-after-parent",
+      "monotonic_ns": 15137313909085,
+      "result": true
+    },
+    "live-click-after-parent": {
+      "kind": "live-click-after-parent",
+      "monotonic_ns": 15138439947592,
+      "result": true
+    },
+    "cached-click-after-rescue": {
+      "kind": "cached-click-after-rescue",
+      "monotonic_ns": 15140685199494,
+      "result": true
+    },
+    "fresh-cached-click-after-rescue": {
+      "kind": "fresh-cached-click-after-rescue",
+      "monotonic_ns": 15141207221110,
+      "exit": 0,
+      "stdout": "{\"name\": \"Cached child action\", \"operation\": \"click\", \"result\": true}\n",
+      "stderr": ""
+    },
+    "live-focus-before-second-parent": {
+      "kind": "live-focus-before-second-parent",
+      "monotonic_ns": 15142281761594,
+      "result": true
+    },
+    "saved-cached-focus-after-parent": {
+      "kind": "saved-cached-focus-after-parent",
+      "monotonic_ns": 15144534045206,
+      "result": true
+    },
+    "cached-focus-after-full-refresh": {
+      "kind": "cached-focus-after-full-refresh",
+      "monotonic_ns": 15146774018852,
+      "result": true
+    },
+    "fresh-cached-focus-after-full-refresh": {
+      "kind": "fresh-cached-focus-after-full-refresh",
+      "monotonic_ns": 15147279463016,
+      "exit": 0,
+      "stdout": "{\"name\": \"Cached child action\", \"operation\": \"focus\", \"result\": true}\n",
+      "stderr": ""
+    }
+  },
+  "visual_review": [
+    "run-2/observations/parent-only-first.png",
+    "run-2/observations/final-focus-control.png"
+  ],
+  "limitations": [
+    "AT-SPI fixture only; no Orca run",
+    "No inactive-AT cache/performance qualification",
+    "Fixture contains no Modal guard; overlay lifecycle qualification is separate"
+  ]
+}

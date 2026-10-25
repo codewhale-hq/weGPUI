@@ -66,19 +66,19 @@ gpui_platform = { package = "gpui-pre-platform", version = "=0.3.9", features = 
 On Linux, that application dependency also needs `"wayland"` or `"x11"` in `features`;
 `font-kit` alone builds but panics when opening a window. The bundled examples already enable both.
 
-This preview includes approved compatibility copies of GPUI 0.3.9 and the existing Linux
-AccessKit crates. **Cargo patches in a dependency are not inherited.** To reproduce the
-repository's accessibility fixes, keep a matching local checkout and add these entries to
-your application's workspace-root manifest (adjust the checkout path):
+The native library requires the approved GPUI 0.3.9 compatibility hook to compile.
+**Cargo patches in a dependency are not inherited.** Keep a matching local checkout and add
+these entries to your application's workspace-root manifest (adjust the checkout path):
 
 ```toml
 [patch.crates-io]
 gpui-pre = { path = "../weGPUI/vendor/gpui_pre" }
+gpui-pre-linux = { path = "../weGPUI/vendor/gpui_pre_linux" }
 accesskit_unix = { path = "../weGPUI/vendor/accesskit_unix" }
 accesskit_atspi_common = { path = "../weGPUI/vendor/accesskit_atspi_common" }
 ```
 
-All three package versions stay unchanged. See [vendor provenance and limits](vendor/README.md).
+All four package versions stay unchanged. See [vendor provenance and limits](vendor/README.md).
 Published replacement packages and a release distribution policy have not been authorized.
 
 [`examples/minimal.rs`](examples/minimal.rs) is the compiled, complete version, including

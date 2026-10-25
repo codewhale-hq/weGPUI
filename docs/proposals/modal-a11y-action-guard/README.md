@@ -1,24 +1,26 @@
 # Proposed GPUI modal accessibility-action guard
 
-**Unapplied; additional owner approval is required.** Existing approval covers the AccessKit
-cache-signal/state compatibility fixes and GPUI window-bounds hooks already vendored. It does
-not authorize this new dispatch hook or the GPUI view-cache reuse change. No production/vendor
-file, Cargo dependency, package version or registry file is changed by this proposal. The patches have passed `git apply --check` and Rust 1.98.1 rustfmt
-parsing/format checks on separate candidate files, not compilation or runtime tests.
+**Owner-approved and applied on 2026-10-25.** The owner explicitly approved this dispatch
+hook, GPUI view-cache reuse change and mandatory consumer build effect. The recorded patches
+were applied on `3840b47` and formatted with Rust 1.98.1. Combined-source five gates and the
+sampled Linux timing/caller/cache checks now pass; the full upstream GPUI Cargo test build
+remains blocked by its missing test setup. Exact results and limits are in the
+[applied-source receipt](../../receipts/overlay-contracts-20261025/action-guard-fixed-20261025/README.md).
+No package version or dependency edge was added by the guard subtask.
 
 **Build compatibility changes:** the first-party patch calls the new
 `Window::with_a11y_action_guard` API. Unpatched registry GPUI 0.3.9 does not have that method,
-so the updated library would **fail to compile** against it. Keeping the package version at
+so the updated library **fails to compile** against it. Keeping the package version at
 0.3.9 preserves only the version label, not compatibility with the registry API. Every
-consumer would need the explicit GPUI workspace-root patch, including Git/path consumers;
+consumer needs the explicit GPUI workspace-root patch, including Git/path consumers;
 dependency manifests do not propagate patch tables. There is no silent fallback or feature
 switch that pretends this protection exists on unpatched GPUI.
 
 This is a stronger requirement than the existing behavior-only compatibility fixes. Current
 `cargo package` listing excludes the nested vendor packages, so publication/distribution
 needs an owner-approved way to supply the patched GPUI source. No published fork, package,
-registry change or release is included or authorized by this proposal. The approval request
-must include this consumer/build-policy effect, not describe the change as version-only parity.
+registry change or release was authorized. The owner approved the required workspace-root
+patch/build-policy effect; distribution/publication decisions remain separate.
 
 The current closing guard misses queued accessibility actions. Actual Linux X11 runs on
 `49268de` retain a SwipedCell proxy, close its surrounding Modal by native mask click, and then
@@ -46,7 +48,7 @@ makes the existing live model predicate available at the central dispatch bounda
 
 ## Exact proposed changes
 
-[compat.patch](compat.patch) modifies only three files in the existing `gpui-pre 0.3.9` copy:
+The approved [compat.patch](compat.patch) modifies only three files in the existing `gpui-pre 0.3.9` copy:
 
 | File | Change |
 | --- | --- |
@@ -93,12 +95,12 @@ can Click (native count 1→2); full refresh restores a target that a fresh clie
 (native cached focus=true). Old proxies remain defunct and their errors are preserved.
 
 This confirms the existing replay omission and justifies the paired AT-active bypass. It
-qualifies the baseline controls, not this unapplied patch. AT-active cache performance,
+qualifies the baseline controls, not the newly applied patch. AT-active cache performance,
 activation/deactivation transitions and complete cached accessibility remain unmeasured.
 
 ## First-party integration
 
-[library-integration.patch](library-integration.patch) is separate and also unapplied:
+The approved [library-integration.patch](library-integration.patch) is recorded separately:
 
 - A role/id-less AnyElement wrapper places the child's **own root node**, prepaint, synthetic
   children and paint inside the backend scope. Forwarding the child's role/id from Semantics
@@ -120,24 +122,27 @@ An outer modal stays logically open beneath an inner one. Naively ANDing every a
 hidden/topmost flag would also reject the active inner modal. Pre-frame inner-show ordering
 and arbitrary external deferred priorities remain separate contracts; neither is claimed fixed.
 
-## Qualification required after approval
+## Applied-source qualification
 
-1. Apply the exact backend and library deltas, then format/build and run all five required
-   source gates. Run the new vendor regressions explicitly; dependency builds do not run them.
-2. Repeat saved custom Click and built-in Focus at 0/1/20/100/500ms, plus after full close.
-   Assert no owner mutation and restored opener focus; an AT true return alone is insufficient.
-3. Exercise custom multiple matching listeners where the first closes or closes/reopens the
-   scope; later old-session listeners must not run. Check a known removed target and Blur.
-4. Verify ordinary open controls, custom caller callbacks, synthetic text selection and native
-   fallback actions still work; test two windows to prove scope isolation.
-5. Drive nested/deferred Modal children, rapid close/reopen, reduced motion and passive toast
-   controls, including caller-supplied passive targets while background callbacks continue.
-   Rerun depth-ordered three-layer trees/keyboard; no modal-ordering regression.
-6. Use the cached/live probe before and after unrelated parent redraws, direct child notify,
-   full refresh, AT activation after an inactive cached frame, and active→inactive transitions.
-   Missing nodes/callbacks cannot count as guard acceptance. Record performance observations.
+| Check | Result |
+| --- | --- |
+| Combined root gates | PASS: formatting, all targets, 47 root unit tests/one ignored doctest, strict Clippy and rustdoc, Rust 1.98.1 locked/offline. |
+| Full vendored Cargo unit build | BLOCKED: published GPUI test setup lacks font fixtures and optional test-support dependencies; no extra packages/features/lock changes added. |
+| Two new metadata regressions | PASS in a separate source-extraction harness using existing rlibs; exact NodeBuilder/test text with documented std map/String aliases and debug metadata disabled. This does not replace the full vendor suite. |
+| Saved custom Click | PASS at 0/1/20/100/500ms: no closed callback, opener restored, normal/reopen controls work. |
+| Saved built-in Focus | PASS at 0/1ms, plus after full close; no restored-focus theft. |
+| Caller callbacks / epoch | PASS: raw caller handler, multiple matching listeners, same-request close and close→reopen suppress old-session callbacks; new session works. |
+| Passive / nested / windows | PASS: passive own targets rejected while page callbacks continue; closed ancestor/live-child inputs rejected; independent window callbacks continue. |
+| AT-active cache | PASS: parent-only redraw keeps both nodes, retained/fresh Click/Focus work; old baseline failure and the fixed harness's initial WM-startup failure retained. |
+
+These results are source, interface and native state observations. Full screen-reader/human
+listening, cross-host qualification, arbitrary palettes/themes/states and hardware remain
+separate. The input guard does not establish topmost-modal authorization or automatic child
+lifecycle/announcement behavior. AT activation/deactivation cache transitions and performance
+remain unmeasured. Blur uses the same source preflight but has no dedicated Linux AT request
+fixture in this run; no full accessible-action matrix is claimed.
 
 Vendor and first-party bases are in [source-bases.json](source-bases.json) and
-[library-source-bases.json](library-source-bases.json). The reviewable patches
-are the approval artifact; no publication, hosted fork, registry patch or extra package is
-requested. Further dependency changes remain outside this proposal.
+[library-source-bases.json](library-source-bases.json). The recorded patches are
+the approved change artifacts. No publication, hosted fork, registry patch or extra package
+was authorized. Further dependency changes remain outside this approval.
