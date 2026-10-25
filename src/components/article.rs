@@ -162,12 +162,16 @@ pub struct ArticleList {
 }
 
 impl ArticleList {
-    /// Creates an empty list in `style`. Passing [`ListStyle::Inside`] here draws no markers; use
-    /// [`ArticleList::inside`] for inline numbers.
+    /// Creates an empty list in `style`. [`ListStyle::Inside`] uses inline numbers,
+    /// equivalent to [`ArticleList::inside`].
     pub fn new(style: ListStyle) -> Self {
         Self {
             style,
-            marker: style,
+            marker: if style == ListStyle::Inside {
+                ListStyle::Decimal
+            } else {
+                style
+            },
             nested: false,
             items: vec![],
         }
@@ -182,9 +186,7 @@ impl ArticleList {
     }
     /// Creates a numbered list with inline "1. " prefixes and no indent ([`ListStyle::Inside`]).
     pub fn inside() -> Self {
-        let mut list = Self::new(ListStyle::Inside);
-        list.marker = ListStyle::Decimal;
-        list
+        Self::new(ListStyle::Inside)
     }
     /// Creates a list without markers or indent ([`ListStyle::None`]).
     pub fn none() -> Self {
@@ -293,5 +295,50 @@ impl RenderOnce for ArticleList {
                     .child(text)
                     .when_some(item.nested, |el, nested| el.child(nested.inherit(style)))
             }))
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use core::prelude::v1::test;
+
+    #[test]
+    fn public_constructors_agree_on_marker_and_placement() {
+        for (style, shorthand, marker) in [
+            (ListStyle::Disc, ArticleList::unordered(), ListStyle::Disc),
+            (
+                ListStyle::Decimal,
+                ArticleList::ordered(),
+                ListStyle::Decimal,
+            ),
+            (ListStyle::Inside, ArticleList::inside(), ListStyle::Decimal),
+            (ListStyle::None, ArticleList::none(), ListStyle::None),
+        ] {
+            let explicit = ArticleList::new(style);
+            assert!(explicit.style == shorthand.style);
+            assert!(explicit.marker == marker);
+            assert!(shorthand.marker == marker);
+            assert!(!explicit.nested);
+        }
+    }
+
+    #[test]
+    fn nested_lists_inherit_placement_without_losing_marker_kind() {
+        let ordered = ArticleList::ordered().inherit(ListStyle::Inside);
+        assert!(ordered.nested);
+        assert!(ordered.style == ListStyle::Inside);
+        assert!(ordered.marker == ListStyle::Decimal);
+        let unordered = ArticleList::unordered().inherit(ListStyle::Inside);
+        assert!(unordered.style == ListStyle::Inside);
+        assert!(unordered.marker == ListStyle::Disc);
+        for list in [
+            ArticleList::ordered(),
+            ArticleList::unordered(),
+            ArticleList::inside(),
+        ] {
+            let hidden = list.inherit(ListStyle::None);
+            assert!(hidden.marker == ListStyle::None);
+        }
     }
 }

@@ -1,0 +1,7 @@
+   Compiling wegpui v0.1.0 (/work)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 6.41s
+    Checking wegpui v0.1.0 (/work)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.94s
+ Documenting wegpui v0.1.0 (/work)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.47s
+   Generated /work/target/doc/wegpui/index.html

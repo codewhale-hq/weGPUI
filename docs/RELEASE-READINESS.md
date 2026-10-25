@@ -13,8 +13,10 @@ and rely on the supported behavior. A website is one part of that promise.
 - [x] Enable Linux windowing and verify sampled native X11 interactions.
 - [x] Add focused regression tests and stable/MSRV/strict-doc CI.
 - [ ] Resolve the known component defects in STATUS: cell-button loading, focus
-  indication for clickable panels, spinner IDs and variants, inside-list markers,
+  indication for clickable panels, spinner IDs and variants,
   list semantics, radio-group IDs, form-label association and vcode restart.
+- [x] Align explicit and shorthand inside-list constructors; constructor and
+  nested-marker contracts pass. Visual/screen-reader acceptance is separate.
 - [ ] Exercise enabled/disabled/loading/error states and keyboard operation for
   each interactive family. Preserve failed attempts and specify the tested SHA.
 - [ ] Verify modal isolation, names, values and focus restoration with an actual

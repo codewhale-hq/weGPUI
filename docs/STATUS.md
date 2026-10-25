@@ -31,6 +31,10 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 
 ## Done
 
+- **Article list constructor:** `new(ListStyle::Inside)` now selects inline decimal
+  markers, matching `inside()`. Focused constructor/inheritance contracts pass;
+  this source-level fix does not establish new visual or screen-reader acceptance.
+
 - **Approved iOS path:** exact 0.3.9 pins, shared target-specific example entry point, and
   simulator bundle scaffold. Linux builds/tests, three mobile library type-checks, and
   bundle-script fixture checks pass. Apple application build/runtime remains unqualified.
@@ -156,7 +160,6 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 - **Found during the documentation audit, unfixed** (rustdoc is not uniformly accurate): buttons in cell
   mode ignore `loading`; a clickable small-appmsg panel has no visible focus ring; spinners share
   the default id `weui-loading` unless given an id; all spinner kinds draw the same SVG;
-  `ArticleList::new(ListStyle::Inside)` draws no markers while `inside()` numbers inline;
   `ListTips` items have no `List` parent; radio rows reuse ids across
   groups that share a parent; `FormCell::label` does not name its input for assistive technology
   (gallery inputs expose only the placeholder); `VcodeButton::start` restarts while counting.
