@@ -1,0 +1,57 @@
+# locked registry code (unpatched), patched tests: the new tests must fail
+code: <cargo registry>/gpui-pre-0.3.9/src/text_system/line_wrapper.rs
+tests: vendor/gpui_pre/src/text_system/line_wrapper.rs
+tests extracted: test_is_word_char, test_is_word_char_arabic, test_is_word_char_hebrew, test_is_word_char_devanagari, test_is_word_char_greek, test_is_word_char_neighbouring_scripts_are_unchanged, test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek
+
+running 7 tests
+test tests::test_is_word_char ... ok
+test tests::test_is_word_char_arabic ... FAILED
+test tests::test_is_word_char_devanagari ... FAILED
+test tests::test_is_word_char_greek ... FAILED
+test tests::test_is_word_char_hebrew ... FAILED
+test tests::test_is_word_char_neighbouring_scripts_are_unchanged ... ok
+test tests::test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek ... FAILED
+
+failures:
+
+---- tests::test_is_word_char_arabic stdout ----
+
+thread 'tests::test_is_word_char_arabic' (16295028) panicked at <tmp>/red/harness.rs:970:17:
+assertion failed for 'م' (unicode 0x645) in "مرحبا"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- tests::test_is_word_char_devanagari stdout ----
+
+thread 'tests::test_is_word_char_devanagari' (16295029) panicked at <tmp>/red/harness.rs:1000:17:
+assertion failed for 'न' (unicode 0x928) in "नमस\u{94d}त\u{947}"
+
+---- tests::test_is_word_char_greek stdout ----
+
+thread 'tests::test_is_word_char_greek' (16295030) panicked at <tmp>/red/harness.rs:1015:17:
+assertion failed for 'Κ' (unicode 0x39a) in "Καλημέρα"
+
+---- tests::test_is_word_char_hebrew stdout ----
+
+thread 'tests::test_is_word_char_hebrew' (16295031) panicked at <tmp>/red/harness.rs:985:17:
+assertion failed for 'ש' (unicode 0x5e9) in "שלום"
+
+---- tests::test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek stdout ----
+
+thread 'tests::test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek' (16295033) panicked at <tmp>/red/harness.rs:1056:17:
+assertion `left == right` failed: wrapped inside a word: "نص حكيم له سر قاطع وذ"
+  left: Some('ذ')
+ right: Some(' ')
+
+
+failures:
+    tests::test_is_word_char_arabic
+    tests::test_is_word_char_devanagari
+    tests::test_is_word_char_greek
+    tests::test_is_word_char_hebrew
+    tests::test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek
+
+test result: FAILED. 2 passed; 5 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+
+exit status: 101

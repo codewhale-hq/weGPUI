@@ -51,9 +51,10 @@ and rely on the supported behavior. A website is one part of that promise.
   ([receipt](receipts/i18n-20261025/README.md), [guide](I18N.md)).
 - [ ] Finish localisation acceptance: native-speaker review of the 12 starter catalogs;
   screen-reader output in each language; real keyboard/IME input and caret in a right-to-left
-  field; `TextArea` right alignment; owner decision on the
-  [GPUI line-breaking proposal](proposals/gpui-text-i18n/README.md); locale-aware dates; Linux and
-  Windows runs. Earlier Chinese-name accessibility samples need re-running under the English
+  field; `TextArea` right alignment; owner decision on steps 2 and 3 of the
+  [GPUI line-breaking proposal](proposals/gpui-text-i18n/README.md) (step 1, word breaks for
+  Arabic, Hebrew, Devanagari and Greek, is applied: [receipt](receipts/gpui-word-break-20261025/README.md));
+  locale-aware dates; Linux and Windows runs. Earlier Chinese-name accessibility samples need re-running under the English
   default.
 - [ ] Verify input selection, clipboard, undo/redo, UTF-16 limits and IME composition.
 - [ ] Reconcile public rustdoc with observed behavior; document intentional differences.

@@ -30,10 +30,12 @@ menu; `--lang zh-Hans` still reproduces the upstream wording. Guide: [I18N](I18N
 
 Not done, and said plainly: no native-speaker review of the 12 starter catalogs; no screen-reader
 check in another language; no real keyboard/IME input or caret capture in a right-to-left field;
-Linux and Windows not run; `TextArea` does not right-align; wrapped Arabic, Hebrew, Devanagari and
-Thai text breaks wrongly because of the vendored GPUI (a
-[proposal](proposals/gpui-text-i18n/README.md) awaits approval); dates stay ISO and the picker's
-column order stays year-month-day.
+Linux and Windows not run; `TextArea` does not right-align; dates stay ISO and the picker's
+column order stays year-month-day. Arabic, Hebrew, Devanagari and Greek now wrap at spaces
+(owner-approved step 1 of the [GPUI proposal](proposals/gpui-text-i18n/README.md), applied to
+`vendor/gpui_pre`; [receipt](receipts/gpui-word-break-20261025/README.md)); the vendored GPUI
+still wraps right-to-left paragraphs in visual line order and breaks Thai and Hangul between any
+two characters (steps 2 and 3 await approval; Hangul was left alone by decision).
 
 ## Linux continuation — 2026-10-25
 
@@ -456,7 +458,7 @@ Still pending:
 - crates.io name, publication timing, versioning and ongoing GPUI upgrade policy.
 - Keeping the historical roughly 34 MB parity corpus in Git (excluded from the package).
 - Private conduct/security contacts; a local-time source for `picker::today()`; the wider
-  weui.js imperative API scope; approval for the [GPUI text-breaking proposal](proposals/gpui-text-i18n/README.md).
+  weui.js imperative API scope; approval for steps 2 and 3 of the [GPUI text-breaking proposal](proposals/gpui-text-i18n/README.md).
 
 No platform support or publication decision follows from the approvals above.
 

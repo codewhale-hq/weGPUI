@@ -38,6 +38,10 @@ versioning once a release policy is decided. No version has been published.
   (`--state type:<field>:<ops>`).
 - `scripts/i18n_sweep.py` captures every route per language and, where macOS Automation is
   allowed, scans the accessibility tree for Chinese that survived translation.
+- Vendored `gpui-pre` (owner-approved 2026-10-25): `LineWrapper::is_word_char` treats Arabic,
+  Hebrew, Devanagari and Greek as word characters, so wrapping and ellipsis truncation stop
+  splitting words of those scripts. Thai, Hangul and the line order of wrapped right-to-left
+  paragraphs are unchanged. Delta, checksums and tests: `docs/proposals/gpui-text-i18n`.
 - Interactive browser gallery with 60 WeUI examples, 132 state presets, local file previews,
   theme controls and portable Python-only builds, published on GitHub Pages through a manual workflow.
 - DateField typed ISO entry, read-only and validation APIs, optional-value change events and

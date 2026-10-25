@@ -1,0 +1,14 @@
+host: Darwin 25.1.0 arm64  macOS 26.1
+rustc: rustc 1.99.0 (b940084d7 2026-09-28)
+cargo: cargo 1.99.0 (5f94df478 2026-08-27)
+source: 1b35ca929fd8945768f81292dd0c12b82b19641c
+started: 2026-10-25 13:51:57 PDT
+dirty inventory (git status --short):
+ M vendor/README.md
+ M vendor/gpui_pre/src/text_system/line_wrapper.rs
+?? docs/proposals/gpui-text-i18n/checksums.txt
+?? docs/proposals/gpui-text-i18n/verify-word-break.py
+?? docs/proposals/gpui-text-i18n/word-break.patch
+?? docs/receipts/gpui-word-break-20261025/
+(end dirty inventory)
+finished: 2026-10-25 13:52:22 PDT
