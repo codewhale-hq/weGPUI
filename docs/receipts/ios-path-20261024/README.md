@@ -49,3 +49,10 @@ iOS backend example or an Android application. No mobile executable was linked.
 Runtime and initial build checks identify `source-before-formatting.json`; only
 rustfmt wrapping in the example changed afterward. `source.json` records the
 final formatted candidate, checked again by the final build/Clippy commands.
+
+## Later hosted check
+
+The subsequent [CI run](../ci-20261024/README.md) at `05cae89` passed macOS native
+build/tests/Clippy, but the iOS example failed in `gpui-pre-ios 0.3.9` on six missing
+core APIs. This supersedes the earlier “not attempted” Apple-build checkpoint.
+No Apple application runtime acceptance was attempted or established.

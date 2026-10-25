@@ -1,0 +1,303 @@
+   Compiling libc v0.2.191
+   Compiling serde_core v1.0.229
+   Compiling cfg-if v1.0.5
+   Compiling libm v0.2.16
+   Compiling bitflags v2.13.2
+   Compiling memchr v2.8.3
+   Compiling stable_deref_trait v1.2.1
+   Compiling smallvec v1.16.3
+   Compiling num-traits v0.2.19
+   Compiling simd-adler32 v0.3.10
+   Compiling zerofrom v0.1.8
+   Compiling yoke v0.8.4
+   Compiling adler2 v2.0.1
+   Compiling arrayvec v0.7.8
+   Compiling objc2 v0.6.5
+   Compiling zerovec v0.11.9
+   Compiling bytemuck v1.25.2
+   Compiling log v0.4.34
+   Compiling objc2-encode v4.1.0
+   Compiling pin-project-lite v0.2.17
+   Compiling crossbeam-utils v0.8.23
+   Compiling zerocopy v0.8.63
+   Compiling crc32fast v1.5.3
+   Compiling core-foundation-sys v0.8.7
+   Compiling tinystr v0.8.5
+   Compiling miniz_oxide v0.9.1
+   Compiling block2 v0.6.2
+   Compiling dispatch2 v0.3.1
+   Compiling miniz_oxide v0.8.9
+   Compiling litemap v0.8.3
+   Compiling futures-core v0.3.34
+   Compiling writeable v0.6.4
+   Compiling icu_locale_core v2.4.0
+   Compiling crossbeam-epoch v0.9.21
+   Compiling serde v1.0.229
+   Compiling objc2-core-foundation v0.3.2
+   Compiling flate2 v1.1.10
+   Compiling potential_utf v0.1.6
+   Compiling zerotrie v0.2.5
+   Compiling scopeguard v1.2.0
+   Compiling utf8_iter v1.0.4
+   Compiling futures-sink v0.3.34
+   Compiling itoa v1.0.18
+   Compiling crossbeam-deque v0.8.8
+   Compiling icu_normalizer_data v2.4.0
+   Compiling icu_properties_data v2.4.0
+   Compiling icu_collections v2.4.0
+   Compiling icu_provider v2.4.0
+   Compiling lock_api v0.4.14
+   Compiling euclid v0.22.14
+   Compiling hashbrown v0.17.1
+   Compiling equivalent v1.0.3
+   Compiling rayon-core v1.13.0
+   Compiling getrandom v0.3.4
+   Compiling slotmap v1.1.1
+   Compiling indexmap v2.14.2
+   Compiling futures-channel v0.3.34
+   Compiling zmij v1.0.23
+   Compiling fdeflate v0.3.7
+   Compiling core_maths v0.1.1
+   Compiling futures-io v0.3.34
+   Compiling float-cmp v0.9.0
+   Compiling futures-task v0.3.34
+   Compiling slab v0.4.12
+   Compiling serde_json v1.0.154
+   Compiling anyhow v1.0.104
+   Compiling futures-util v0.3.34
+   Compiling strict-num v0.1.1
+   Compiling parking_lot_core v0.9.12
+   Compiling ttf-parser v0.25.1
+   Compiling icu_properties v2.4.0
+   Compiling icu_normalizer v2.4.0
+   Compiling lyon_geom v1.0.19
+   Compiling objc2-foundation v0.3.2
+   Compiling polycool v0.4.0
+   Compiling arrayref v0.3.9
+   Compiling either v1.19.0
+   Compiling byteorder v1.5.0
+   Compiling zune-core v0.5.3
+   Compiling once_cell v1.21.4
+   Compiling quick-error v2.0.1
+   Compiling weezl v0.1.12
+   Compiling percent-encoding v2.3.2
+   Compiling roxmltree v0.20.0
+   Compiling foldhash v0.2.0
+   Compiling fontconfig-parser v0.5.8
+   Compiling ref-cast v1.0.27
+   Compiling object v0.37.3
+   Compiling form_urlencoded v1.2.2
+   Compiling zune-jpeg v0.5.15
+   Compiling tracing-core v0.1.36
+   Compiling tiny-skia-path v0.11.4
+   Compiling pulp v0.22.3
+   Compiling kurbo v0.13.1
+   Compiling lyon_path v1.0.19
+   Compiling rand_core v0.9.5
+   Compiling futures-executor v0.3.34
+   Compiling idna_adapter v1.2.2
+   Compiling ppv-lite86 v0.2.21
+   Compiling half v2.7.1
+   Compiling core-foundation v0.10.1
+   Compiling getrandom v0.4.3
+   Compiling num-complex v0.4.6
+   Compiling memmap2 v0.9.11
+   Compiling byteorder-lite v0.1.0
+   Compiling bitflags v1.3.2
+   Compiling foreign-types-shared v0.3.1
+   Compiling unicode-ccc v0.4.0
+   Compiling tinyvec v1.13.3
+   Compiling reborrow v0.5.5
+   Compiling bytes v1.12.1
+   Compiling unicode-bidi-mirroring v0.4.0
+   Compiling pulp-wasm-simd-flag v0.1.1
+   Compiling siphasher v1.0.4
+   Compiling parking v2.2.1
+   Compiling gimli v0.32.3
+   Compiling unicode-script v0.5.8
+   Compiling color_quant v1.1.0
+   Compiling unicode-properties v0.1.4
+   Compiling gif v0.14.2
+   Compiling rustybuzz v0.20.1
+   Compiling http v1.5.0
+   Compiling event-listener v5.4.2
+   Compiling addr2line v0.25.1
+   Compiling heapless v0.9.3
+   Compiling svgtypes v0.16.1
+   Compiling fontdb v0.23.0
+   Compiling gpui-pre-ztracing v0.3.9
+   Compiling image-webp v0.2.4
+   Compiling foreign-types v0.5.0
+   Compiling png v0.17.16
+   Compiling tracing v0.1.44
+   Compiling core-graphics-types v0.2.0
+   Compiling rand_chacha v0.9.0
+   Compiling parking_lot v0.12.5
+   Compiling idna v1.1.0
+   Compiling futures v0.3.34
+   Compiling hash32 v0.3.1
+   Compiling rayon v1.12.0
+   Compiling spin v0.9.9
+   Compiling iana-time-zone v0.1.65
+   Compiling simplecss v0.2.2
+   Compiling zune-inflate v0.2.54
+   Compiling roxmltree v0.21.1
+   Compiling aho-corasick v1.1.5
+   Compiling rustc-demangle v0.1.28
+   Compiling imagesize v0.14.0
+   Compiling pxfm v0.1.30
+   Compiling data-url v0.3.2
+   Compiling ryu v1.0.23
+   Compiling lebe v0.5.3
+   Compiling sha1_smol v1.0.1
+   Compiling float_next_after v1.0.0
+   Compiling regex-syntax v0.8.11
+   Compiling base64 v0.22.1
+   Compiling xmlwriter v0.1.0
+   Compiling fax v0.2.7
+   Compiling bit_field v0.10.3
+   Compiling pico-args v0.5.0
+   Compiling unicode-vo v0.1.0
+   Compiling dyn-clone v1.0.20
+   Compiling unicode-bidi v0.3.18
+   Compiling moxcms v0.8.1
+   Compiling regex-automata v0.4.18
+   Compiling usvg v0.46.0
+   Compiling thiserror v2.0.21
+   Compiling schemars v1.2.3
+   Compiling exr v1.74.2
+   Compiling tiff v0.11.3
+   Compiling lyon_tessellation v1.0.22
+   Compiling uuid v1.28.0
+   Compiling serde_urlencoded v0.7.1
+   Compiling backtrace v0.3.76
+   Compiling chrono v0.4.45
+   Compiling pathfinder_simd v0.5.6
+   Compiling flume v0.12.0
+   Compiling url v2.5.8
+   Compiling rand v0.9.5
+   Compiling tiny-skia v0.11.4
+   Compiling event-listener-strategy v0.5.4
+   Compiling http-body v1.1.0
+   Compiling gpui-pre-util v0.3.9
+   Compiling lyon_algorithms v1.0.21
+   Compiling objc2-metal v0.3.2
+   Compiling png v0.18.1
+   Compiling concurrent-queue v2.5.0
+   Compiling rgb v0.8.53
+   Compiling qoi v0.4.1
+   Compiling smol_str v0.3.6
+   Compiling async-task v4.7.1
+   Compiling svg_fmt v0.4.5
+   Compiling web-time v1.1.0
+   Compiling option-ext v0.2.0
+   Compiling link-section v0.19.3
+   Compiling rustc-hash v2.1.3
+   Compiling dirs-sys v0.4.1
+   Compiling gpui-pre-collections v0.3.9
+   Compiling gpui-pre-scheduler v0.3.9
+   Compiling etagere v0.2.15
+   Compiling ctor v1.0.13
+   Compiling gpui-pre-shared-string v0.3.9
+   Compiling profiling v1.0.18
+   Compiling gpui-pre-refineable v0.3.9
+   Compiling pin-project v1.1.13
+   Compiling accesskit v0.24.1
+   Compiling image v0.25.10
+   Compiling resvg v0.46.0
+   Compiling async-channel v2.5.0
+   Compiling objc2-core-video v0.3.2
+   Compiling lyon v1.0.19
+   Compiling strum v0.28.0
+   Compiling gpui-pre-http-client v0.3.9
+   Compiling derive_more v2.1.1
+   Compiling gpui-pre v0.3.9
+   Compiling gpui-pre-sum-tree v0.3.9
+   Compiling regex v1.13.1
+   Compiling core-graphics v0.24.0
+   Compiling itertools v0.14.0
+   Compiling taffy v0.13.0
+   Compiling spin v0.10.1
+   Compiling num_cpus v1.17.0
+   Compiling malloc_buf v0.0.6
+   Compiling inventory v0.3.25
+   Compiling same-file v1.0.6
+   Compiling raw-window-handle v0.6.2
+   Compiling seahash v4.1.0
+   Compiling waker-fn v1.2.0
+   Compiling pollster v0.4.0
+   Compiling zed-font-kit v0.14.1-zed
+   Compiling walkdir v2.5.0
+   Compiling objc v0.2.7
+   Compiling core-text v21.0.0
+   Compiling pathfinder_geometry v0.5.1
+   Compiling dirs v5.0.1
+   Compiling objc2-quartz-core v0.3.2
+   Compiling lazy_static v1.5.1
+   Compiling float-ord v0.3.2
+   Compiling block v0.1.6
+   Compiling metal v0.33.0
+   Compiling gpui-pre-apple v0.3.9
+   Compiling objc2-core-text v0.3.2
+   Compiling objc2-security v0.3.2
+   Compiling mach2 v0.6.0
+   Compiling objc2-ui-kit v0.3.2
+   Compiling unicode-segmentation v1.13.3
+   Compiling wegpui v0.1.0 (/Users/runner/work/weGPUI/weGPUI)
+   Compiling gpui-pre-ios v0.3.9
+error[E0599]: no variant, associated function, or constant named `Disconnected` found for enum `AppLifecyclePhase` in the current scope
+   --> /Users/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-ios-0.3.9/src/ios/application.rs:143:64
+    |
+143 |             AppLifecyclePhase::Background | AppLifecyclePhase::Disconnected => {
+    |                                                                ^^^^^^^^^^^^ variant, associated function, or constant not found in `AppLifecyclePhase`
+
+error[E0599]: no variant, associated function, or constant named `Disconnected` found for enum `AppLifecyclePhase` in the current scope
+   --> /Users/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-ios-0.3.9/src/ios/application.rs:328:78
+    |
+328 |                 platform.application.notify_app_lifecycle(AppLifecyclePhase::Disconnected);
+    |                                                                              ^^^^^^^^^^^^ variant, associated function, or constant not found in `AppLifecyclePhase`
+
+error[E0599]: no method named `query_accepts_focused_text_input` found for mutable reference `&mut PlatformInputHandler` in the current scope
+   --> /Users/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-ios-0.3.9/src/ios/text_input.rs:163:33
+    |
+163 |                     if !handler.query_accepts_focused_text_input() { return false; }
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+help: there is a method `query_accepts_text_input` with a similar name
+    |
+163 -                     if !handler.query_accepts_focused_text_input() { return false; }
+163 +                     if !handler.query_accepts_text_input() { return false; }
+    |
+
+error[E0599]: no method named `selection_bounds_for_range` found for mutable reference `&mut PlatformInputHandler` in the current scope
+   --> /Users/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-ios-0.3.9/src/ios/text_input.rs:432:25
+    |
+432 |                 handler.selection_bounds_for_range(range)
+    |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+help: there is a method `bounds_for_range` with a similar name
+    |
+432 -                 handler.selection_bounds_for_range(range)
+432 +                 handler.bounds_for_range(range)
+    |
+
+error[E0599]: no method named `query_accepts_focused_text_input` found for mutable reference `&mut PlatformInputHandler` in the current scope
+   --> /Users/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-ios-0.3.9/src/ios/text_input.rs:546:24
+    |
+546 |             if handler.query_accepts_focused_text_input() && selection_allowed && marked_allowed {
+    |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+help: there is a method `query_accepts_text_input` with a similar name
+    |
+546 -             if handler.query_accepts_focused_text_input() && selection_allowed && marked_allowed {
+546 +             if handler.query_accepts_text_input() && selection_allowed && marked_allowed {
+    |
+
+error[E0599]: no method named `focus_id` found for struct `PlatformInputHandler` in the current scope
+   --> /Users/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-pre-ios-0.3.9/src/ios/window.rs:743:44
+    |
+743 |             .set_input_field(input_handler.focus_id());
+    |                                            ^^^^^^^^ method not found in `PlatformInputHandler`
+
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `gpui-pre-ios` (lib) due to 6 previous errors

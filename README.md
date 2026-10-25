@@ -83,10 +83,10 @@ packaging all have receipts from that platform. Details and evidence are in
 
 | Platform | Today |
 | --- | --- |
-| macOS | Build, Clippy and strict rustdoc pass at `e4a2c87` (Rust 1.99); minimal and gallery launch, with sampled AX evidence. VoiceOver attempt incomplete. Not packaged. |
+| macOS | Hosted build/tests/Clippy pass at `05cae89`; historical runtime/AX samples at `e4a2c87`. Current runtime and VoiceOver acceptance incomplete. Not packaged. |
 | Linux | Windowing features enabled. Both examples build and render under isolated Xvfb; sampled dialog/select XTEST input and AT-SPI trees verified. No Wayland runtime or Orca acceptance. Not packaged. |
 | Windows | Cross-compiles (mingw). No native run, accessibility or packaging evidence. |
-| iOS | 0.3.9 backend entry point and simulator bundle scaffold implemented. No Apple app build/runtime acceptance. Not supported. |
+| iOS | 0.3.9 scaffold implemented; hosted simulator build fails on mismatched upstream APIs. No runtime acceptance. Not supported. |
 | Android | Library type-checks only. No upstream backend. Not supported. |
 
 ## Documentation
