@@ -47,7 +47,7 @@ TITLES = {'button_default': 'Button styles', 'button_bottom_fixed': 'Bottom-fixe
           'steps_horizonal': 'Horizontal steps', 'half-screen-dialog': 'Half-screen dialogs'}
 
 
-def build(output: Path, include_api: bool):
+def build(output: Path, include_api: bool, api_dir: Path | None = None):
     # The script owns only this generated directory, never source or the whole target tree.
     if output.resolve() in [ROOT.resolve(), (ROOT / 'target').resolve()]:
         raise ValueError('Choose a dedicated website output directory')
@@ -105,7 +105,13 @@ def build(output: Path, include_api: bool):
                 captureCommit='2c8ed10', gpuiVersion=manifest['dependencies']['gpui']['version'].removeprefix('='),
                 rustVersion=manifest['package']['rust-version'], apiIncluded=include_api)
     if include_api:
-        source = ROOT / 'target/doc'
+        if api_dir is None:
+            metadata = json.loads(subprocess.check_output(
+                ['cargo', 'metadata', '--format-version=1', '--no-deps', '--locked', '--offline'],
+                cwd=ROOT, text=True))
+            source = Path(metadata['target_directory']) / 'doc'
+        else:
+            source = api_dir.resolve()
         if not (source / 'wegpui/index.html').exists():
             raise ValueError('Run cargo doc --no-deps --locked before --include-api')
         shutil.copytree(source, output / 'api', dirs_exist_ok=True, ignore=shutil.ignore_patterns('.lock'))
@@ -119,5 +125,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--out', type=Path, default=ROOT / 'website/dist')
     parser.add_argument('--include-api', action='store_true')
+    parser.add_argument('--api-dir', type=Path, help='Rustdoc directory; defaults to Cargo target_directory/doc')
     args = parser.parse_args()
-    build(args.out, args.include_api)
+    build(args.out, args.include_api, args.api_dir)

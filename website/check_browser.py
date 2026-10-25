@@ -22,15 +22,32 @@ with sync_playwright() as p:
     page.goto(args.url,wait_until='networkidle')
     expect(page.get_by_role('heading',level=1)).to_contain_text('Familiar design')
     page.screenshot(path=str(args.out/'overview-desktop.png'),full_page=True)
-    routes=page.evaluate('WEGPUI.routes.map(r=>r.id)')
+    routes=page.evaluate('WEGPUI.routes')
     api_links=set()
+    state_themes=0
+    capture_paths=set()
     for route in routes:
-        page.goto(args.url+'#components/'+route)
-        image=page.locator('#native-capture')
-        expect(image).to_be_visible()
-        expect(image).to_have_js_property('complete',True)
-        assert image.evaluate('(img)=>img.naturalWidth')>0,route
+        for state in route['states']:
+            for theme in ('light','dark'):
+                page.goto(args.url+'#components/'+route['id']+'?state='+state+'&theme='+theme)
+                image=page.locator('#native-capture')
+                expected=route['images'][state][theme]
+                expect(image).to_be_visible()
+                expect(image).to_have_attribute('src',expected['gpui'])
+                expect(image).to_have_js_property('complete',True)
+                assert image.evaluate('(img)=>img.naturalWidth')>0,(route['id'],state,theme)
+                expect(page.locator('#state-select')).to_have_value(state)
+                capture_paths.update(expected.values())
+                state_themes+=1
         api_links.update(page.locator('a[href^="api/"]').evaluate_all('(links)=>links.map(a=>a.getAttribute("href"))'))
+    for path in sorted(capture_paths):
+        decoded=page.evaluate("""src => new Promise(resolve => {
+            const image = new Image();
+            image.onload = () => resolve(image.naturalWidth > 0 && image.naturalHeight > 0);
+            image.onerror = () => resolve(false);
+            image.src = src;
+        })""",path)
+        assert decoded,path
     for path in api_links:
         assert context.request.get(args.url+path).status==200,path
     page.goto(args.url+'#components/button_default')
@@ -82,7 +99,7 @@ with sync_playwright() as p:
     page.goto(args.url+'#components/does-not-exist')
     expect(page.get_by_role('heading',level=1)).to_contain_text('isn’t in this gallery')
     assert errors==[],errors
-    result={'browser':browser.version,'native_application_test':False,'routes_checked':len(routes),'api_links_checked':len(api_links),'viewport_routes':checked,'palettes':palettes,'page_errors':errors,'passed':['catalog search/empty state','state/theme deep links','native/reference comparison','clipboard','keyboard skip/focus','mobile navigation','responsive overflow','missing route']}
+    result={'browser':browser.version,'native_application_test':False,'routes_checked':len(routes),'state_theme_routes_checked':state_themes,'captures_decoded':len(capture_paths),'api_links_checked':len(api_links),'viewport_routes':checked,'palettes':palettes,'page_errors':errors,'passed':['catalog search/empty state','state/theme deep links','native/reference comparison','clipboard','keyboard skip/focus','mobile navigation','responsive overflow','missing route']}
     (args.out/'browser-checks.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))
     browser.close()

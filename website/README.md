@@ -24,6 +24,8 @@ python3 website/build.py --include-api
 
 The builder verifies the coverage inventory against the Rust gallery and requires
 every recorded screenshot. It copies 528 capture assets for 60 routes / 132 states.
+API documentation is resolved through Cargo metadata, including `CARGO_TARGET_DIR` and
+Cargo configuration. For a cross-target documentation tree, pass `--api-dir PATH`.
 Source and installation links use the checkout's exact HEAD. Without `--include-api`,
 API links fall back to Rust source. Output is ignored at `website/dist/` and excluded
 from the crate. CI builds the full site after strict rustdoc and uploads it as the
@@ -39,7 +41,8 @@ python3 website/check_browser.py --browser /usr/bin/chromium
 
 The preview server must already be running. `--browser ''` uses Playwright's
 installed default Chromium. `--out` chooses an evidence directory. The checks cover
-all routes, API links, search/empty state, deep links, themes, comparison, copying,
+all 264 recorded state/theme routes and decode all 528 capture assets, plus API links,
+search/empty state, deep links, themes, comparison, copying,
 keyboard focus, mobile navigation, responsive overflow and missing routes.
 These tests exercise the website, not native GPUI or a screen reader.
 
