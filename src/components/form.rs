@@ -761,17 +761,20 @@ impl RenderOnce for Form {
                     .flex_col()
                     .line_height(relative(1.4))
                     .bg(t.bg_2)
-                    .child(crate::scrolling::FocusScroll::new(
-                        "bottom-fixed-focus-scroll",
-                        &scroll,
-                        div()
-                            .id("bottom-fixed-content")
-                            .flex_1()
-                            .min_h_0()
-                            .overflow_y_scroll()
-                            .track_scroll(&scroll)
-                            .child(div().flex().flex_col().pb(px(80.)).child(bd)),
-                    ))
+                    .child(
+                        crate::scrolling::FocusScroll::new(
+                            "bottom-fixed-focus-scroll",
+                            &scroll,
+                            div()
+                                .id("bottom-fixed-content")
+                                .flex_1()
+                                .min_h_0()
+                                .overflow_y_scroll()
+                                .track_scroll(&scroll)
+                                .child(div().flex().flex_col().pb(px(80.)).child(bd)),
+                        )
+                        .inset_bottom(px(80.)),
+                    )
                     .child(
                         div()
                             .relative()

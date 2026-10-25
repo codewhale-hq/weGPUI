@@ -58,7 +58,7 @@ presentational.
 
 | Item | State |
 | --- | --- |
-| Offscreen focus reveal | Implemented (`scrolling`), Linux X11 runtime only. Dialog body, half-screen body, `BottomFixedOprPage` and `BottomFixedPage` wrapped. `navbar::tab_panel` returns `Stateful<Div>`, so callers wrap it in `FocusScroll` themselves. In bottom-fixed pages a revealed field can sit under the 80px fade above the toolbar. |
+| Offscreen focus reveal | Implemented (`scrolling`), Linux X11 runtime only. Dialog body, half-screen body, `BottomFixedOprPage` and `BottomFixedPage` wrapped. `navbar::tab_panel` returns `Stateful<Div>`, so callers wrap it in `FocusScroll` themselves. `FocusScroll::inset_bottom` keeps revealed fields above the 80px fade in both bottom-fixed pages (fixed 2026-10-24, `linux-x11-form-bottom-fixed-inset-fixed.png`). |
 | Light / dark / care layouts | Website checks cover 264 state/theme selections of captures; native per-component care-mode runtime unsampled. |
 | Screen readers | None accepted (VoiceOver stays off per owner; NVDA/Narrator/Orca not run). |
 | IME / selection / clipboard / undo | `TextInput`/`TextArea` sampled on Linux XIM and macOS Pinyin; Windows IME not run. |

@@ -23,6 +23,7 @@ versioning once a release policy is decided. No version has been published.
 
 ### Fixed
 
+- Bottom-fixed pages reveal focused fields above the toolbar fade (`FocusScroll::inset_bottom`).
 - Picker arrow/Page/Home/End keys pressed during a snap animation no longer panic debug builds.
 
 - `FormCell::label_for` associates a visible label with a text input and its row-focus target.

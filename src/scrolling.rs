@@ -72,9 +72,17 @@ pub struct FocusScroll {
     id: ElementId,
     handle: ScrollHandle,
     child: AnyElement,
+    inset_bottom: Pixels,
 }
 
 impl FocusScroll {
+    /// Treats the bottom `inset` logical pixels of the viewport as covered (for example by a
+    /// gradient or toolbar overlapping the scroller), so revealed targets stop above it.
+    /// Default `0`.
+    pub fn inset_bottom(mut self, inset: Pixels) -> Self {
+        self.inset_bottom = inset;
+        self
+    }
     /// Wraps `scroller`, which must call `track_scroll(&handle)`.
     pub fn new(
         id: impl Into<ElementId>,
@@ -85,6 +93,7 @@ impl FocusScroll {
             id: id.into(),
             handle: handle.clone(),
             child: scroller.into_any_element(),
+            inset_bottom: px(0.),
         }
     }
 }
@@ -137,6 +146,7 @@ impl Element for FocusScroll {
         let focused = window.focused(cx);
         let target = *collector.borrow();
         let handle = self.handle.clone();
+        let inset = self.inset_bottom;
         window.with_element_state(id, |state: Option<ScrollFocusState>, window| {
             let mut state = state.unwrap_or_default();
             let changed = match (&state.last, &focused) {
@@ -146,8 +156,10 @@ impl Element for FocusScroll {
             };
             if changed && let Some(target) = target {
                 let offset = handle.offset();
+                let mut viewport = handle.bounds();
+                viewport.size.height = (viewport.size.height - inset).max(px(0.));
                 if let Some(y) = reveal_offset(
-                    handle.bounds(),
+                    viewport,
                     target,
                     offset.y,
                     handle.max_offset().y,

@@ -735,17 +735,20 @@ impl RenderOnce for BottomFixedOprPage {
             .size_full()
             .flex()
             .flex_col()
-            .child(crate::scrolling::FocusScroll::new(
-                key,
-                &scroll,
-                div()
-                    .id(self.id)
-                    .flex_1()
-                    .min_h_0()
-                    .overflow_y_scroll()
-                    .track_scroll(&scroll)
-                    .child(div().pb(px(80.)).children(self.content)),
-            ))
+            .child(
+                crate::scrolling::FocusScroll::new(
+                    key,
+                    &scroll,
+                    div()
+                        .id(self.id)
+                        .flex_1()
+                        .min_h_0()
+                        .overflow_y_scroll()
+                        .track_scroll(&scroll)
+                        .child(div().pb(px(80.)).children(self.content)),
+                )
+                .inset_bottom(px(80.)),
+            )
             .child(
                 div()
                     .relative()
