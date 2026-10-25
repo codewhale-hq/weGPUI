@@ -1,0 +1,9 @@
+{
+  "repository": "codewhale-hq/weGPUI",
+  "verified_date": "2026-10-24",
+  "command": "gh api repos/codewhale-hq/weGPUI/private-vulnerability-reporting",
+  "response": {
+    "enabled": true
+  },
+  "configuration_changed": false
+}

@@ -8,13 +8,10 @@ weGPUI has not published a release. Only the `main` branch is maintained. Fixes 
 
 Please do **not** put exploit details in a public issue, pull request or discussion.
 
-A private security contact has not been designated yet, and private vulnerability reporting has
-not been confirmed for this repository. This is an open maintainer decision recorded in
-`docs/STATUS.md`. Until it is resolved:
-
-1. If GitHub shows a **Report a vulnerability** button on the repository's *Security* tab, use it.
-2. Otherwise, open a public issue that says only that you have a security report and need a
-   private channel. Include no technical details. A maintainer will arrange a private channel.
+Use GitHub’s [private vulnerability reporting form](https://github.com/codewhale-hq/weGPUI/security/advisories/new).
+Private reporting was confirmed enabled through the repository API on October 24, 2026.
+You can also reach it from the repository’s **Security → Report a vulnerability** button.
+The report is shared privately with repository maintainers; do not file the exploit in a public issue.
 
 Include the affected commit, platform, a minimal reproduction and the impact you observed.
 
