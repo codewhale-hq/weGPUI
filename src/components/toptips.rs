@@ -2,8 +2,8 @@
 //! the window, drawn above modals.
 //!
 //! [`ToptipsState`] is the caller-owned visibility; [`Toptips`] renders it. Unlike
-//! [`Presence`](super::modal::Presence) it never moves focus. Known limitation: the fade is linear,
-//! and hiding during the fade-in restarts the fade-out from full opacity instead of reversing.
+//! [`Presence`](super::modal::Presence) it never moves focus. Showing or hiding mid-fade reverses
+//! from the current opacity. Known limitation: the fade is linear.
 
 use crate::Theme;
 use gpui::{prelude::*, *};
@@ -36,7 +36,7 @@ impl ToptipsState {
         if !self.visible {
             self.visible = true;
             self.generation += 1;
-            self.changed = Some(Instant::now());
+            self.reverse();
         }
         window.refresh();
     }
@@ -49,9 +49,16 @@ impl ToptipsState {
     pub fn hide(&mut self, window: &mut Window) {
         if self.visible {
             self.visible = false;
-            self.changed = Some(Instant::now());
+            self.reverse();
             window.refresh();
         }
+    }
+    fn reverse(&mut self) {
+        let done = self.changed.map_or(1., |at| {
+            (at.elapsed().as_secs_f32() / FADE.as_secs_f32()).min(1.)
+        });
+        let now = Instant::now();
+        self.changed = Some(now.checked_sub(FADE.mul_f32(1. - done)).unwrap_or(now));
     }
     /// Hides after `delay` unless the tips were hidden or shown again in the meantime. Spawns a
     /// task on the entity `T`; `get` returns this state's field from it. Call it after `show`.

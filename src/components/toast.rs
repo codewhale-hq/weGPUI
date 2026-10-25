@@ -2,8 +2,9 @@
 //! icon, or text only, over a transparent mask that blocks pointer input.
 //!
 //! [`Toast`] renders in a [`Modal`] when given a [`Presence`]; hiding it is up to the caller, for
-//! example [`Presence::hide_after`] with [`TOAST_DURATION`]. Known limitation: showing a toast
-//! moves keyboard focus to its layer until it hides, which the upstream page does not do.
+//! example [`Presence::hide_after`] with [`TOAST_DURATION`]. Use [`Toast::presence_for`] (a
+//! passive presence) so the toast does not take focus and is announced as an alert. A presence
+//! that is not passive makes the toast a focus-trapping modal layer, unlike upstream.
 
 use super::{
     Icon,
@@ -97,9 +98,11 @@ impl Toast {
         self.presence = Some(presence.clone());
         self
     }
-    /// Creates a [`Presence`] with the [`TOAST_FADE`] transition.
+    /// Creates a [passive](Presence::passive) [`Presence`] with the [`TOAST_FADE`] transition:
+    /// showing the toast leaves keyboard focus in place and exposes it as an alert, as upstream's
+    /// `role="alert"` toast does.
     pub fn presence_for(cx: &mut App) -> Presence {
-        Presence::new(cx).duration(TOAST_FADE)
+        Presence::new(cx).duration(TOAST_FADE).passive()
     }
 }
 

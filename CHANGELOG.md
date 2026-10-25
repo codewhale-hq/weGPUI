@@ -47,6 +47,11 @@ versioning once a release policy is decided. No version has been published.
 - Closed swipe-cell actions are hidden from assistive technology. Article headings carry their
   level, and list items are list items.
 - Navbar/tabbar arrow keys select the focused tab. Action-sheet child corners are rounded.
+- Toasts no longer take focus or hide the page from assistive technology (`Presence::passive`).
+  Toptips reverse smoothly when hidden mid-fade.
+- Picker Home/End skip disabled edge rows. Slider values snap to the nearest step. Progress
+  ignores NaN. Disabled cells drop the pressed highlight. The Agree shake respects reduced
+  motion.
 
 ### Known gaps
 

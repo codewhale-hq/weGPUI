@@ -1,0 +1,13 @@
+apps 1
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['focusable', 'showing']
+    panel '' ['showing']
+      heading '表单结构' ['showing']
+      entry '填写本人微信号' ['focusable', 'showing']
+      entry '填写本人微信号的昵称' ['focusable', 'showing']
+      entry '填写绑定的电话号码' ['focusable', 'showing']
+      entry 'input your address' ['focusable', 'showing']
+      push button '确定' ['focusable', 'showing']
+      link '底部链接文本' ['focusable', 'showing']
+    panel '' ['focusable', 'showing']
+      notification '已完成' ['showing']

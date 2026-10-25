@@ -58,6 +58,10 @@ pending an owner decision.
     nothing; a chooser failure shows a warning tip (GTK portal and no-portal runs).
   - Picker Home/End with disabled edge rows lands on the nearest enabled row (probe; before,
     the selection stayed put).
+  - Toasts use a passive `Presence`: focus stays put, Tab and typing keep working behind the
+    toast, the page stays in the AT-SPI tree, and the toast is one alert (before: focus moved into
+    an empty layer that trapped Tab and hid the page). Toptips reverse mid-fade instead of
+    jumping to full opacity (source-only).
   - Source-only (built and linted, not driven): Progress ignores NaN values. A loading-only
     button keeps the "正在操作" name, and an empty-label non-loading button no longer gets it.
     Nested lists inside `ArticleList::none()` drop their markers, as WeUI's `__list_none li`
@@ -107,7 +111,7 @@ pending an owner decision.
 | Search bar | Partly matches | Linux single-line Pinyin commit/cancel. macOS typing/results. |
 | Slider | Matches samples | macOS drag/keys. Probe: non-finite inputs, zero step falls back to 1. |
 | Steps | Untested | Static rendering. |
-| Toast / toptips | Partly matches | macOS success toast. Linux uploader error tip. Timing untested. |
+| Toast / toptips | Partly matches | macOS success toast. Linux: passive toast keeps focus and the page tree (as upstream's `role="alert"`); uploader error tip. Timing untested. |
 | Uploader | Partly matches | Linux chooser lifecycle (picked, error, cancel, no portal). Transport is application-owned, as upstream. |
 | Home / layers / index | Untested | Gallery-specific surfaces. |
 
@@ -126,10 +130,8 @@ pending an owner decision.
 - **Found during the documentation audit, unfixed** (documented in rustdoc): buttons in cell
   mode ignore `loading`; a clickable small-appmsg panel has no visible focus ring; spinners share
   the default id `weui-loading` unless given an id; all spinner kinds draw the same SVG;
-  `ArticleList::new(ListStyle::Inside)` draws no markers while `inside()` numbers inline; showing
-  a toast moves focus into an empty layer that traps Tab and ignores Escape (upstream does not
-  move focus); hiding Toptips during fade-in jumps to full opacity; Android-style action sheets
-  do not draw their title; `ListTips` items have no `List` parent; radio rows reuse ids across
+  `ArticleList::new(ListStyle::Inside)` draws no markers while `inside()` numbers inline;
+  `ListTips` items have no `List` parent; radio rows reuse ids across
   groups that share a parent; `FormCell::label` does not name its input for assistive technology
   (gallery inputs expose only the placeholder); `VcodeButton::start` restarts while counting.
 - Public naming still mixes `Navbar`/`Tabbar` with `SearchBar` and terse `hd`/`bd`/`ft` helpers.

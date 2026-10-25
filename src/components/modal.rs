@@ -31,6 +31,7 @@ pub struct Presence {
     focus: FocusHandle,
     generation: usize,
     duration: Duration,
+    passive: bool,
 }
 
 impl Presence {
@@ -45,6 +46,7 @@ impl Presence {
             focus: cx.focus_handle(),
             generation: 0,
             duration: TRANSITION,
+            passive: false,
         }
     }
     /// Sets the length of a full open or close transition (default [`TRANSITION`]); zero disables
@@ -52,6 +54,14 @@ impl Presence {
     pub fn duration(mut self, duration: Duration) -> Self {
         self.duration = duration;
         self.span = duration;
+        self
+    }
+    /// Makes the overlay non-modal, as WeUI toasts are: `show` and `hide` leave keyboard focus
+    /// where it is, and [`Modal`] neither hides the page from assistive technology nor traps Tab.
+    /// The content should carry its own role (a toast is an alert). A mask still blocks pointer
+    /// input.
+    pub fn passive(mut self) -> Self {
+        self.passive = true;
         self
     }
     /// Returns `true` after `show` and `false` as soon as `hide` is called, even while the closing
@@ -91,15 +101,20 @@ impl Presence {
     /// Opens the overlay and moves focus into it.
     ///
     /// When closed, records the currently focused element as the opener (restored by `hide`),
-    /// starts the opening transition from the current value and bumps the generation. Always
-    /// focuses [`Presence::focus_handle`] and refreshes the window.
+    /// starts the opening transition from the current value and bumps the generation. Unless the
+    /// presence is [passive](Presence::passive), always focuses [`Presence::focus_handle`].
+    /// Refreshes the window.
     pub fn show(&mut self, window: &mut Window, cx: &mut App) {
         if !self.visible {
-            self.opener = window.focused(cx).filter(|f| f != &self.focus);
+            if !self.passive {
+                self.opener = window.focused(cx).filter(|f| f != &self.focus);
+            }
             self.retarget(true, cx);
             self.generation += 1;
         }
-        window.focus(&self.focus, cx);
+        if !self.passive {
+            window.focus(&self.focus, cx);
+        }
         window.refresh();
     }
     /// Like [`Presence::show`] but jumps straight to fully visible, skipping the transition.
@@ -118,10 +133,12 @@ impl Presence {
             return;
         }
         self.retarget(false, cx);
-        if let Some(opener) = self.opener.take() {
-            window.focus(&opener, cx);
-        } else if self.focus.contains_focused(window, cx) {
-            window.blur(cx);
+        if !self.passive {
+            if let Some(opener) = self.opener.take() {
+                window.focus(&opener, cx);
+            } else if self.focus.contains_focused(window, cx) {
+                window.blur(cx);
+            }
         }
         window.refresh();
     }
@@ -241,7 +258,10 @@ type DismissHandler = Box<dyn Fn(&mut Window, &mut App)>;
 /// window origin with the mask, places and animates the content per [`Placement`] and [`Motion`],
 /// and is exposed as a modal `Dialog`. While open it keeps Tab and Shift-Tab inside itself, calls
 /// `on_dismiss` on Escape or a mask click, and marks the window so
-/// [`crate::accessibility::ModalScope`] hides the background. It never hides itself.
+/// [`crate::accessibility::ModalScope`] hides the background. With a
+/// [passive](Presence::passive) presence it is an unnamed group instead, whose content supplies
+/// its own role (a toast is an alert): no focus move, no Tab trap and no background hiding. It
+/// never hides itself.
 #[derive(IntoElement)]
 pub struct Modal {
     id: ElementId,
@@ -296,7 +316,7 @@ impl Modal {
         self.mask_motion = animate;
         self
     }
-    /// Sets the accessible name of the dialog layer (default empty).
+    /// Sets the accessible name of the dialog layer (default empty). Unused for passive presences.
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
         self.label = label.into();
         self
@@ -334,7 +354,8 @@ impl RenderOnce for Modal {
         let viewport = window.viewport_size();
         let focus = self.presence.focus.clone();
         let interactive = self.presence.visible;
-        if interactive {
+        let passive = self.presence.passive;
+        if interactive && !passive {
             crate::accessibility::register_open_modal(window, cx);
         }
         let panel_height = window
@@ -449,7 +470,11 @@ impl RenderOnce for Modal {
                 }
             })
             .child(content);
-        let semantics = Semantics::new(layer.role(Role::Dialog).aria_label(self.label)).modal();
+        let semantics = if passive {
+            Semantics::new(layer.role(Role::Group))
+        } else {
+            Semantics::new(layer.role(Role::Dialog).aria_label(self.label)).modal()
+        };
         deferred(anchored().position(point(px(0.), px(0.))).child(semantics))
             .with_priority(1)
             .into_any_element()
