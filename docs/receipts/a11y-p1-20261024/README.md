@@ -41,7 +41,7 @@ focus revealed while scrolling.
 
 `input` page, qq field: type `abc12` (Number kind keeps `12`), Shift+Home, Ctrl+C, End,
 Ctrl+V gives `1212`. Before: one Ctrl+Z emptied the field, because the paste landed where the
-last insert ended and was coalesced with it (`…-before.png`, frames: typed, selected, pasted,
-undo → empty). Fix: paste and cut always start and end their own undo step, and caret moves
+last insert ended and was coalesced with it (observed on screen during the run; the before capture was overwritten by the
+after run and is not retained). Fix: paste and cut always start and end their own undo step, and caret moves
 break typing coalescing. After (`…-fixed.png`): undo → `12`, undo → empty, redo → `12`, redo →
 `1212`.
