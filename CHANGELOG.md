@@ -8,6 +8,9 @@ versioning once a release policy is decided. No version has been published.
 
 ### Added
 
+- Enabled the approved Linux X11/Wayland windowing features for both examples; isolated
+  X11 build, rendering, input and AT-SPI receipts retain failed probe attempts.
+
 - WeUI 2.6.26 tokens generated from `dist/style/weui.css`: four 180-field palettes (light,
   dark, care-light, care-dark) with per-field rustdoc, plus 32 SVG icons and the example images.
 - `Theme` global with system/light/dark modes, care mode and brand-colour override.

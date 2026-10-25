@@ -1,0 +1,41 @@
+dbus-daemon[12736]: [session uid=0 pid=12736 pidfd=5] org.freedesktop.DBus.Error.AccessDenied: Failed to set fd limit to 65536: Operation not permitted
+dbus-daemon[12736]: [session uid=0 pid=12736 pidfd=5] Activating service name='ca.desrt.dconf' requested by ':1.0' (uid=0 pid=12740 comm="/usr/libexec/at-spi-bus-launcher --launch-immediat" label="kernel")
+dbus-daemon[12736]: [session uid=0 pid=12736 pidfd=5] Successfully activated service 'ca.desrt.dconf'
+Defaulting to search window name, class, and classname
+xdotool: Unknown command: 0
+Run 'xdotool help' if you want a command list
+## initial
+apps 1
+application 'minimal' [] DISABLED
+  frame '' ['focusable', 'showing']
+    panel '' ['showing']
+      list item 'Confirmed' ['showing']
+      button 'Open dialog' ['focusable', 'showing']
+## open (@190,126)
+apps 1
+application 'minimal' [] DISABLED
+  frame '' ['focusable', 'showing']
+    panel '' ['showing']
+      list item 'Confirmed' ['showing']
+      button 'Open dialog' ['focusable', 'showing']
+## confirm (Tab Return)
+apps 1
+application 'minimal' [] DISABLED
+  frame '' ['focusable', 'showing']
+    panel '' ['showing']
+      list item 'Confirmed' ['showing']
+      button 'Open dialog' ['focusable', 'showing']
+## reopen (@190,126)
+apps 1
+application 'minimal' [] DISABLED
+  frame '' ['focusable', 'showing']
+    panel '' ['showing']
+      list item 'Confirmed' ['showing']
+      button 'Open dialog' ['focusable', 'showing']
+## dismiss (Escape)
+apps 1
+application 'minimal' [] DISABLED
+  frame '' ['focusable', 'showing']
+    panel '' ['showing']
+      list item 'Confirmed' ['showing']
+      button 'Open dialog' ['focusable', 'showing']

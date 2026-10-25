@@ -11,7 +11,8 @@ launch, rendering, interaction, accessibility or packaging receipts. Mobile is n
 Evidence sources: the macOS review of 2026-10-24 ([REVIEW](REVIEW-2026-10-24.md), receipts in
 `receipts/review-20261024/`), and the Linux cloud takeover of 2026-10-25 (receipts and their
 README in `receipts/takeover-20261025/`). Linux runtime results came from a local build with
-`gpui_platform`'s `x11`/`wayland` features enabled. That feature change is approved but not committed. The later
+`gpui_platform`'s `x11`/`wayland` features enabled. That feature change is now applied; fresh isolated X11 receipts are in
+[cloud-linux-20261024](receipts/cloud-linux-20261024/README.md). The later
 [macOS follow-up](receipts/2026-10-24-macos/README.md) adds fresh build and sampled runtime evidence,
 including failed/incomplete attempts. It does not complete platform acceptance.
 
@@ -20,7 +21,7 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 | Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
 | --- | --- | --- | --- | --- | --- | --- |
 | macOS arm64 | Build/fmt/Clippy/strict doc pass at `e4a2c87` (Rust 1.99) | Minimal and gallery, unchanged Rust source | Earlier 28 review pairs; new diagnostic images, paired recapture incomplete | Minimal dialog open/close/OK and focus restore; select-key attempts inconclusive | Modal isolation, option AXTitle labels, closed swipe actions hidden, article headings/lists; VoiceOver incomplete | Missing |
-| Linux x86_64 | Pass: build, clippy `-D warnings`, fmt, doc (Rust 1.97 stable; build and clippy also on 1.95.0) | **Fails** with committed manifest; passes with `x11` (Xvfb) | Software-rendered X11; 192 pairs swept against Linux Chromium (60 routes light and dark, 72 states light; contact-sheet review) | XTEST click/keys, fcitx5 Pinyin, GTK portal chooser | AT-SPI tree via pyatspi; no Orca | Missing |
+| Linux x86_64 | Fresh build, clippy `-D warnings`, fmt, strict doc pass (Rust 1.99.1); historical 1.95/1.97 checks | Both examples pass with committed windowing features under isolated Xvfb | Software-rendered X11; 192 pairs swept against Linux Chromium (60 routes light and dark, 72 states light; contact-sheet review) | XTEST click/keys, fcitx5 Pinyin, GTK portal chooser | AT-SPI tree via pyatspi; no Orca | Missing |
 | Windows | Historical mingw cross-build links | Missing; Wine failure reported without a committed run log | Missing | Missing | Missing | Missing |
 | iOS | Historical library type-checks at `0637c25`; no app build | No backend at current pin; upgrade approved, runtime installed only | Missing | Missing | Missing; planned backend lacks AccessKit | Missing |
 | Android | Library type-checks at the `0637c25` change | Blocked: no backend upstream | Missing | Missing | Missing | Missing |
@@ -128,8 +129,8 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 
 ## Known unresolved defects and gaps
 
-- **Linux windowing** needs `gpui_platform` `wayland`/`x11` (34 added lock packages). Approved,
-  not yet applied. Until then both committed examples panic on Linux.
+- **Linux windowing:** approved `wayland`/`x11` features applied (34 added lock packages).
+  Both examples launch under isolated Xvfb. Wayland runtime and Orca remain untested.
 - **Mobile:** the GPUI 0.3.9 plus `gpui-pre-ios` path is approved but not applied. Xcode 26.2
   and an iOS 26.2 Simulator runtime were available during setup; no app was built or launched.
   Android still needs a backend decision. Neither path has a verified mobile AccessKit adapter.
@@ -181,9 +182,9 @@ added.
 
 ## Owner decisions
 
-Approved October 24, not yet implemented:
+Approved October 24:
 
-- Enable the proposed `wayland`/`x11` features (34 added lock packages).
+- Linux `wayland`/`x11` features applied and verified under Xvfb (34 added lock packages).
 - Move both GPUI pins to 0.3.9 and add target-specific `gpui-pre-ios`, following macOS verification;
   Simulator setup was also approved and reached runtime installation only.
 - Add focused tests. Final GitHub Actions setup is approved after implementation and local
@@ -206,15 +207,13 @@ At the October 24 macOS audit, the checkout was clean at `0c6555d` and GitHub ad
 of `main`, but the branch was absent from `git ls-remote --heads origin` during this audit.
 No branch was deleted here. Recheck current refs and working state before editing.
 
-- **Run Linux locally or in a cloud container:** apply the approved
-  `docs/proposals/linux-windowing.patch`, verify its 34-package delta and run the Linux checks
-  before committing it. Use `scripts/linux/session.sh`, `scripts/linux/sweep.sh` and
+- **Run Linux locally or in a cloud container:** the approved windowing patch is applied.
+  Run the Linux checks and use `scripts/linux/session.sh`, `scripts/linux/sweep.sh` and
   `scripts/contact_sheets.py` as described in [PARITY-TOOLING](PARITY-TOOLING.md).
 - **Reproduce behaviour probes:** `receipts/takeover-20261025/probe.rs.txt` and
   `probe-edges.rs.txt` are the manual probe apps behind the before/after receipts. Copy one to
   `examples/probe.rs` locally to run it; they are not part of the crate.
-- **Next verification:** complete Linux runtime checks on the approved manifest in a dedicated
-  display session; finish the remaining macOS input, IME, reduced-motion and paired-capture
+- **Next verification:** extend the sampled isolated X11 checks to Wayland and Orca; finish the remaining macOS input, IME, reduced-motion and paired-capture
   work on a separate Apple session; implement the approved iOS path and label every Simulator
   result; obtain native Windows and Android evidence separately. A Linux container cannot
   supply Apple Metal tooling or macOS/iOS runtime acceptance.

@@ -78,7 +78,7 @@ packaging all have receipts from that platform. Details and evidence are in
 | Platform | Today |
 | --- | --- |
 | macOS | Build, Clippy and strict rustdoc pass at `e4a2c87` (Rust 1.99); minimal and gallery launch, with sampled AX evidence. VoiceOver attempt incomplete. Not packaged. |
-| Linux | Builds. The window needs the approved, not-yet-applied `x11`/`wayland` feature change; with it, an X11 window renders, takes input and exposes an AT-SPI tree (Xvfb, no Orca). Not packaged. |
+| Linux | Windowing features enabled. Both examples build and render under isolated Xvfb; sampled dialog/select XTEST input and AT-SPI trees verified. No Wayland runtime or Orca acceptance. Not packaged. |
 | Windows | Cross-compiles (mingw). No native run, accessibility or packaging evidence. |
 | iOS | Library type-checks only. No backend at the pinned GPUI. Not supported. |
 | Android | Library type-checks only. No upstream backend. Not supported. |

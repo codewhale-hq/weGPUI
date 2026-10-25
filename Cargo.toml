@@ -24,7 +24,7 @@ gpui = { package = "gpui-pre", version = "=0.3.7" }
 unicode-segmentation = "1.12"
 
 [dev-dependencies]
-gpui_platform = { package = "gpui-pre-platform", version = "=0.3.7", features = ["font-kit"] }
+gpui_platform = { package = "gpui-pre-platform", version = "=0.3.7", features = ["font-kit", "wayland", "x11"] }
 
 [profile.dev]
 debug = 1

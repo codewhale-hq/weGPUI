@@ -30,9 +30,9 @@ cargo run --example gallery               # every upstream example page
 These are the gates the CNB pipeline runs (fmt, build, clippy), plus the documentation check.
 Respect `CARGO_TARGET_DIR` in any script you add.
 
-Platform notes: on Linux both the gallery and minimal example currently need a change enabling
-`gpui_platform`'s `wayland`/`x11` features before they can open a window. That change is approved
-but not yet applied, as described in [docs/PLATFORMS.md](docs/PLATFORMS.md). iOS and Android have no
+Platform notes: both examples enable `gpui_platform`'s `wayland`/`x11` features on Linux.
+Isolated X11 verification is recorded in [docs/PLATFORMS.md](docs/PLATFORMS.md); Wayland runtime
+acceptance remains outstanding. iOS and Android have no
 backend yet. Please report what you tried on Windows. Native Windows runtime results are
 missing evidence the project needs.
 
