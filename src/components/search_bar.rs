@@ -330,7 +330,6 @@ impl Render for SearchBar {
             let form_bg = self.form_bg(cx);
             let mask_bg = if outlined { t.bg_2 } else { form_bg };
             let action_size = if outlined { 15. } else { 17. };
-            let pressed = t.fg_3;
             let brand = t.brand;
 
             let back = div()
@@ -344,7 +343,12 @@ impl Render for SearchBar {
                 .items_center()
                 .mr(px(12.))
                 .rounded(px(4.))
-                .focus_visible(move |s| s.bg(pressed))
+                .border_2()
+                .border_color(transparent_black())
+                .ml(px(-2.))
+                .mr(px(10.))
+                .my(px(-2.))
+                .focus_visible(move |s| s.border_color(brand))
                 .active(|s| s.opacity(0.5))
                 .child(Icon::new("back-arrow-thin").w(12.).h(24.).color(t.fg_0))
                 .child(hot_area(44., 44.))
@@ -390,7 +394,12 @@ impl Render for SearchBar {
                     .ml(px(8.))
                     .mr(px(12.))
                     .rounded_full()
-                    .focus_visible(move |s| s.bg(pressed))
+                    .border_2()
+                    .border_color(transparent_black())
+                    .ml(px(6.))
+                    .mr(px(10.))
+                    .my(px(-2.))
+                    .focus_visible(move |s| s.border_color(brand))
                     .child(Icon::new("clear").size(20.).color(t.fg_2))
                     .child(hot_area(44., 36.))
                     .on_click(cx.listener(|this, _, window, cx| this.clear(window, cx)))
@@ -512,7 +521,12 @@ impl Render for SearchBar {
                     .text_size(px(action_size))
                     .text_color(t.link)
                     .rounded(px(4.))
-                    .focus_visible(move |s| s.bg(pressed))
+                    .border_2()
+                    .border_color(transparent_black())
+                    .ml(px(10.))
+                    .mr(px(-2.))
+                    .my(px(-2.))
+                    .focus_visible(move |s| s.border_color(brand))
                     .active(|s| s.opacity(0.5))
                     .child("取消")
                     .on_click(cx.listener(|this, _, window, cx| this.cancel(window, cx)))

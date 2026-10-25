@@ -23,7 +23,7 @@ versioning once a release policy is decided. No version has been published.
 
 ### Fixed
 
-- Homepage search bar: the 搜索 entry and camera button show a 2px brand focus ring instead of a
+- Search bar: the homepage 搜索 entry and camera button, and the back, clear and 取消 buttons, show a 2px brand focus ring instead of a
   faint grey fill; the unfocused layout is unchanged.
 
 - Nested modals: the Tab trap ran in the capture phase, so an outer modal took Tab from a modal
