@@ -5,7 +5,7 @@ dependencies can do, what was actually built or run, and the smallest maintainab
 rest. A platform is **supported** only when every column in the acceptance matrix has a receipt
 from that platform. Nothing below reaches that bar yet.
 
-## Pinned dependency facts
+## Historical dependency investigation (0.3.7 and proposed 0.3.9)
 
 Sources: crates.io `gpui-pre =0.3.7` (a snapshot of `zed@1a28cff`) and `gpui-pre-platform =0.3.7`,
 read from the locked Cargo registry; upstream Zed `main` at
@@ -34,7 +34,7 @@ read from the locked Cargo registry; upstream Zed `main` at
 Linux x86_64 cloud container, Rust/Cargo 1.97.0, no GPU, no KVM, no Apple host and no physical
 devices.
 
-- **Linux, current manifest:** `cargo build --all-targets --locked --offline`,
+- **Linux, historical manifest before windowing patch:** `cargo build --all-targets --locked --offline`,
   `cargo clippy --all-targets --locked --offline -- -D warnings` and `cargo fmt --all -- --check`
   all exited 0. Launching the gallery under Xvfb panicked with the `unreachable!` above.
 - **Linux, scratch copy with `features = ["font-kit", "wayland", "x11"]`:** the build added 34
@@ -60,6 +60,14 @@ and selected AX trees were observed. Select keyboard attempts did not establish 
 pass. VoiceOver was attempted without a captured announcement transcript and ended disabled.
 iOS setup reached an installed runtime only. No platform has completed acceptance.
 
+## Current Linux follow-up
+
+The approved patch is applied with exactly 34 added lock packages and no removed versions.
+Both examples build and render under isolated Xvfb on Debian 13 with Rust 1.99.1.
+XTEST confirms the minimal dialog counter and gallery select change/dismissal; AT-SPI
+confirms sampled modal isolation. Earlier failed probe attempts are retained.
+See [receipts](receipts/cloud-linux-20261024/README.md). No Wayland or Orca pass is claimed.
+
 ## Acceptance matrix
 
 Each cell needs a receipt from that platform. Simulators and emulators count only when labelled
@@ -68,9 +76,9 @@ as such. Current state:
 | Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
 | --- | --- | --- | --- | --- | --- | --- |
 | macOS | arm64 build/fmt/Clippy/strict doc pass at `e4a2c87`, Rust 1.99 | Minimal and gallery launched with unchanged Rust source | Earlier 28 review pairs; new diagnostic images, no new parity verdict | Minimal dialog open/close/OK and focus restore; select-key attempts inconclusive | Modal isolation in minimal/picker/select/half-screen; closed swipe actions absent; article headings/lists; option labels in AXTitle; VoiceOver incomplete | Not done |
-| Linux | x86_64 build/clippy/fmt pass | **Fails** (no windowing feature); passes in scratch with `x11` under Xvfb | Software-rendered Xvfb; 192 pairs (routes light+dark, states light) swept against Linux Chromium (scratch build) | XTEST mouse/keys, fcitx5 Pinyin, GTK portal chooser (scratch build) | AT-SPI tree in scratch; no Orca | Not done |
+| Linux | x86_64 build/clippy/fmt pass | Both examples launch with applied features under isolated Xvfb | Software-rendered Xvfb; 192 pairs (routes light+dark, states light) swept against Linux Chromium (scratch build) | XTEST mouse/keys, fcitx5 Pinyin, GTK portal chooser (scratch build) | AT-SPI tree in scratch; no Orca | Not done |
 | Windows | Historical mingw cross-build links | No native host; Wine failure reported without a committed run log | Missing | Missing | Missing (Narrator/NVDA) | Not done |
-| iOS | Library type-checks for device and simulator targets | No app build or launch; 0.3.9 backend path approved, not applied | Missing | Missing (touch, keyboard, IME, rotation, lifecycle) | Missing; upstream backend has no AccessKit | Not done |
+| iOS | Library type-checks for device and simulator targets | 0.3.9 backend wired and bundle scaffold added; no Apple app build or launch | Missing | Missing (touch, keyboard, IME, rotation, lifecycle) | Missing; upstream backend has no AccessKit | Not done |
 | Android | Library type-checks | Blocked: no Android backend anywhere upstream; no KVM for an emulator here | Missing | Missing | Missing (TalkBack) | Not done |
 
 Mobile interaction acceptance means touch taps, drags and scrolling; the software keyboard and
@@ -105,23 +113,27 @@ mobile library type-check above.
 
 ## Dependency proposals and decisions
 
-### 1. Linux windowing features (approved, not applied)
+### 1. Linux windowing features (approved and applied)
 
-Approved October 24 for both examples. Change their shared dev-dependency to
+Approved October 24 for both examples. The first slice set their shared dev-dependency to
 `gpui_platform = { package = "gpui-pre-platform", version = "=0.3.7", features = ["font-kit", "wayland", "x11"] }`.
-No pin changes. It adds 34 transitive packages, all already depended on by the pinned
+That first slice changed no pins; the subsequent iOS slice moves to 0.3.9. It added 34
+transitive packages, all already depended on by the pinned
 `gpui-pre-linux` crate's optional features (`wayland-client`, `x11rb`, `xkbcommon`, `zed-xim` and
 their helpers). Effect: the Linux gallery launches. Public API: none. Maintenance: CI needs
 `libxkbcommon-dev`, `libxkbcommon-x11-dev`, `libwayland-dev` and `libx11-xcb-dev`, which
 `.cnb.yml` already installs.
 
-### 2. iOS through upstream `gpui_ios` (approved, not applied)
+### 2. iOS through upstream `gpui_ios` (approved path implemented; Apple verification pending)
 
-Approved October 24, following macOS verification. Move both GPUI pins to `=0.3.9` and add a target-specific dev-dependency,
+Approved October 24, following the historical macOS verification. Both GPUI pins are now `=0.3.9` with a target-specific dev-dependency,
 `[target.'cfg(target_os = "ios")'.dev-dependencies] gpui_ios = { package = "gpui-pre-ios", version = "=0.3.9" }`.
-The gallery's `main` then calls `gpui_ios::current_platform` on iOS (until a published
-`gpui-pre-platform` carries Zed's iOS branch), plus an Xcode/`Info.plist` bundle wrapper modelled
-on `zed/crates/gpui_ios/examples/ios`.
+Both examples call `gpui_ios::current_platform(false)` on iOS through a shared helper
+(until a published `gpui-pre-platform` carries Zed's iOS branch). The desktop dependency
+is excluded on iOS. [The bundle script and Info.plist](../examples/ios/README.md) follow
+the published upstream example and preserve failed builds. It does not boot or launch a
+simulator. [Linux and script-test receipts](receipts/ios-path-20261024/README.md)
+are separate from the still-missing Apple app build/runtime evidence.
 
 - Public API: none expected. The library compiled unchanged on 0.3.9.
 - Renderer: Metal through `gpui_apple`, which is shared with macOS.
@@ -156,8 +168,8 @@ Alternatives considered and **not recommended**:
 
 | Decision | State / recommendation |
 | --- | --- |
-| Enable `wayland`/`x11` for both examples | Approved October 24; patch not applied |
-| Move to `gpui-pre =0.3.9` and add `gpui-pre-ios` | Approved October 24; pins unchanged, separate Apple host needed for further runtime acceptance |
+| Enable `wayland`/`x11` for both examples | Applied; isolated X11 build/rendering/input/AT-SPI receipts |
+| Move to `gpui-pre =0.3.9` and add `gpui-pre-ios` | Implemented scaffold; separate authorized Apple host needed for app build/runtime acceptance |
 | Fund or contribute `gpui_android` upstream | Required for any honest Android claim; scope separately |
 | iOS AccessKit/VoiceOver | Upstream contribution; without it, iOS fails the accessibility column |
 

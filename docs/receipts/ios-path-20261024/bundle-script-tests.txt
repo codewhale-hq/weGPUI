@@ -1,0 +1,10 @@
+test_ambiguous_artifacts_fail_without_a_bundle (test_ios_bundle.BundleScriptTests.test_ambiguous_artifacts_fail_without_a_bundle) ... ok
+test_build_failure_is_retained_without_a_bundle (test_ios_bundle.BundleScriptTests.test_build_failure_is_retained_without_a_bundle) ... ok
+test_device_target_is_rejected (test_ios_bundle.BundleScriptTests.test_device_target_is_rejected) ... ok
+test_linux_host_is_rejected_before_build (test_ios_bundle.BundleScriptTests.test_linux_host_is_rejected_before_build) ... ok
+test_relative_target_directory_and_both_examples (test_ios_bundle.BundleScriptTests.test_relative_target_directory_and_both_examples) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.712s
+
+OK

@@ -77,10 +77,9 @@ spinner phases legitimately differ (see `docs/PARITY.md`, "Differences common to
   a screen big enough for a 375×812 window at 2× (for example `Xvfb :98 -screen 0 1600x3600x24`).
   Linux Chromium and GPUI both use the system CJK fonts (Noto), so Linux pairs check the
   pipeline and layout, but are not comparable with the macOS baseline images.
-- Running either example on Linux requires `gpui_platform`'s `wayland` or `x11` feature. The
-  feature change is approved but not yet applied (`docs/PLATFORMS.md`). Apply and verify
-  `docs/proposals/linux-windowing.patch` before committing it, or make the equivalent change
-  to the dev-dependency: `features = ["font-kit", "wayland", "x11"]`.
+- Both examples enable `gpui_platform`'s `wayland` and `x11` features. The approved
+  `docs/proposals/linux-windowing.patch` is applied; do not reapply it. The patch remains a
+  historical proposal artifact. X11 runtime receipts do not qualify Wayland.
 - **Windows, iOS, Android:** no capture path exists yet. See *Other platforms*.
 
 ## Linux procedure (interaction and accessibility)
@@ -89,7 +88,6 @@ Scripts in `scripts/linux/` reproduce the procedure recorded in
 `docs/receipts/takeover-20261025/README.md`:
 
 ```sh
-git apply docs/proposals/linux-windowing.patch    # local only, until the owner decides
 cargo build --example gallery
 Xvfb :99 -screen 0 1280x1024x24 &
 
@@ -134,8 +132,8 @@ not an interaction verdict.
   `PrintWindow`, and inspect accessibility with Accessibility Insights or Narrator/NVDA. Name the
   Windows version, scaling factor and screen reader in the report. A mingw cross-build is not a
   runtime receipt. The earlier Wine 9.0 failure is commit-reported without a committed run log.
-- **iOS/Android:** no backend exists at the pinned GPUI (`docs/PLATFORMS.md`). Once one does,
-  evidence must come from a labelled simulator/emulator or device, with OS version, device model,
+- **iOS/Android:** iOS has an unqualified backend/bundle scaffold; Android has no backend
+  (`docs/PLATFORMS.md`). Runtime evidence must come from a labelled simulator/emulator or device, with OS version, device model,
   orientation, safe-area insets, software keyboard/IME, lifecycle (background/foreground) and
   VoiceOver/TalkBack results. A narrow desktop window is not mobile evidence.
 

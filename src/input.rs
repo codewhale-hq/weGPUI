@@ -1832,3 +1832,20 @@ pub fn init(cx: &mut App) {
         KeyBinding::new("ctrl-cmd-space", ShowCharacterPalette, ctx),
     ]);
 }
+
+#[cfg(test)]
+mod tests {
+    use super::utf16_offset;
+    use core::prelude::v1::test;
+
+    #[test]
+    fn utf16_offsets_stay_on_utf8_boundaries() {
+        let text = "A😀中";
+        // An offset inside the surrogate pair rounds to the next scalar boundary.
+        for (units, bytes) in [(0, 0), (1, 1), (2, 5), (3, 5), (4, 8), (99, 8)] {
+            assert_eq!(utf16_offset(text, units), bytes);
+            assert!(text.is_char_boundary(bytes));
+        }
+        assert_eq!(utf16_offset("", 99), 0);
+    }
+}

@@ -1,0 +1,67 @@
+dbus-daemon[14117]: [session uid=0 pid=14117 pidfd=5] org.freedesktop.DBus.Error.AccessDenied: Failed to set fd limit to 65536: Operation not permitted
+## initial
+apps 1
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['focusable', 'showing']
+    panel '' ['showing']
+      heading '原生选择框' ['showing']
+      combo box '微信号' ['focusable', 'showing']
+      combo box '+86' ['focusable', 'showing']
+      entry '请输入号码' ['focusable', 'showing']
+      combo box '国家 中国' ['focusable', 'showing']
+      entry '请输入号码' ['focusable', 'showing']
+      button '确定' ['focusable', 'showing']
+## open (@190,170)
+apps 1
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['showing']
+    dialog '账号类型' ['focusable', 'modal', 'showing']
+      list box '' ['showing']
+        list item '微信号' ['focusable', 'selected', 'showing'] ['posinset:2']
+        list item 'QQ号' ['focusable', 'showing'] ['posinset:3']
+        list item 'Email' ['focusable', 'showing'] ['posinset:4']
+      button '取消' ['focusable', 'showing']
+## next (Down)
+apps 1
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['showing']
+    dialog '账号类型' ['focusable', 'modal', 'showing']
+      list box '' ['showing']
+        list item '微信号' ['focusable', 'selected', 'showing'] ['posinset:2']
+        list item 'QQ号' ['focusable', 'showing'] ['posinset:3']
+        list item 'Email' ['focusable', 'showing'] ['posinset:4']
+      button '取消' ['focusable', 'showing']
+## choose (Return)
+apps 1
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['showing']
+    panel '' ['showing']
+      heading '原生选择框' ['showing']
+      combo box 'QQ号' ['focusable', 'showing']
+      combo box '+86' ['focusable', 'showing']
+      entry '请输入号码' ['focusable', 'showing']
+      combo box '国家 中国' ['focusable', 'showing']
+      entry '请输入号码' ['focusable', 'showing']
+      button '确定' ['focusable', 'showing']
+## reopen (@190,170)
+apps 1
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['showing']
+    dialog '账号类型' ['focusable', 'modal', 'showing']
+      list box '' ['showing']
+        list item '微信号' ['focusable', 'showing'] ['posinset:2']
+        list item 'QQ号' ['focusable', 'selected', 'showing'] ['posinset:3']
+        list item 'Email' ['focusable', 'showing'] ['posinset:4']
+      button '取消' ['focusable', 'showing']
+## dismiss (Escape)
+apps 1
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['showing']
+    panel '' ['showing']
+      heading '原生选择框' ['showing']
+      combo box 'QQ号' ['focusable', 'showing']
+      combo box '+86' ['focusable', 'showing']
+      entry '请输入号码' ['focusable', 'showing']
+      combo box '国家 中国' ['focusable', 'showing']
+      entry '请输入号码' ['focusable', 'showing']
+      button '确定' ['focusable', 'showing']

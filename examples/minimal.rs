@@ -86,8 +86,11 @@ impl Render for Demo {
     }
 }
 
+#[path = "support/platform.rs"]
+mod platform;
+
 fn main() {
-    gpui_platform::application()
+    platform::application()
         .with_assets(wegpui::Assets)
         .run(|cx| {
             wegpui::init(cx);

@@ -8,6 +8,18 @@ versioning once a release policy is decided. No version has been published.
 
 ### Added
 
+- Final GitHub CI configuration with Linux/MSRV checks, mobile library type-checks, and
+  Apple build-only jobs. Hosted results remain separate from runtime acceptance.
+
+- Approved GPUI 0.3.9 dependency path, target-specific iOS example entry points, and an
+  evidence-preserving simulator bundle script. Apple build/runtime acceptance remains pending.
+
+- Seven focused regression tests for UTF-16 offsets, disabled picker defaults, Gregorian
+  month lengths, and slider snapping/invalid bounds and steps.
+
+- Enabled the approved Linux X11/Wayland windowing features for both examples; isolated
+  X11 build, rendering, input and AT-SPI receipts retain failed probe attempts.
+
 - WeUI 2.6.26 tokens generated from `dist/style/weui.css`: four 180-field palettes (light,
   dark, care-light, care-dark) with per-field rustdoc, plus 32 SVG icons and the example images.
 - `Theme` global with system/light/dark modes, care mode and brand-colour override.
