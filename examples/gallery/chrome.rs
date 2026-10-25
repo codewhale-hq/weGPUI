@@ -1,6 +1,6 @@
 use gpui::{prelude::*, *};
 use wegpui::Theme;
-use wegpui::scrolling::FocusScroll;
+use wegpui::scrolling::{FocusScroll, RevealFocus};
 
 pub struct PendingScroll(pub f32);
 impl Global for PendingScroll {}
@@ -137,13 +137,23 @@ pub fn page_ft(cx: &App) -> impl IntoElement {
             .role(Role::Link)
             .aria_label("WeUI 首页")
             .cursor_pointer()
+            .focusable()
+            .tab_stop(true)
+            .rounded(px(4.))
+            .border_2()
+            .border_color(transparent_black())
+            .focus_visible({
+                let ring = Theme::get(cx).brand;
+                move |s| s.border_color(ring)
+            })
             .active(|s| s.opacity(0.5))
             .on_click(|_, w, cx| crate::home(w, cx))
             .child(
                 img(themed_image("icon_footer_link.png", cx))
                     .w(px(84.))
                     .h(px(19.)),
-            ),
+            )
+            .reveal_focus(),
     )
 }
 

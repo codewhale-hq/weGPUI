@@ -23,8 +23,7 @@ Source through `0039001` is committed and pushed. `b1e94e1` adds the completed W
 Both defects below are implemented from verified source on GitHub `main` (the Mac candidate was
 not available and was not used). See `docs/receipts/focus-date-20261024/` for the Linux X11
 runtime sequences, gates and the picker key-during-animation panic found and fixed on the way.
-Still open from this section: macOS/Windows reruns, `navbar::tab_panel` (caller-wrapped) and the home footer link focus from the
-candidate. `DateField` is now a library component. The acceptance inventory is
+Still open from this section: macOS/Windows reruns, `navbar::tab_panel` (caller-wrapped) (the home footer link focus is now done). `DateField` is now a library component. The acceptance inventory is
 `docs/ACCEPTANCE.md`; work its P1 rows first. Human/other-machine items are in
 `docs/HUMAN-TASKS.md`. Release-gate receipts done on Linux: `docs/receipts/release-gates-20261024/`.
 

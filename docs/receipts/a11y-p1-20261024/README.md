@@ -67,3 +67,9 @@ information-bar Enter on the focused close button removes the bar.
 The link underline and close-button border used the brand green, 1px on the close button,
 which is faint on red/orange bars (`…-focus-before.png`). Both now use the bar's own text
 colour, and the close border is 2px (`…-focus-after.png`).
+
+## Gallery page-footer link keyboard focus (added)
+
+The WeDesign footer link on every gallery page was pointer-only. It is now a tab stop with a
+2px brand ring and focus reveal; Enter goes home (`linux-x11-openbox-footer-link-keyboard.png`,
+preview page, four Tabs then Enter).
