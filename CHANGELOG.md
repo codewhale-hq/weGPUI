@@ -23,6 +23,9 @@ versioning once a release policy is decided. No version has been published.
 
 ### Fixed
 
+- Swiped-cell actions: the warn (删除) action's focus ring uses theme `fg_0` and default actions
+  use brand. The white ring next to a white row was not visible as focus.
+
 - Search bar: the homepage 搜索 entry and camera button, and the back, clear and 取消 buttons, show a 2px brand focus ring instead of a
   faint grey fill; the unfocused layout is unchanged.
 

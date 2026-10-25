@@ -73,7 +73,13 @@ impl RenderOnce for SwipedAction {
                 SwipedActionKind::Default => t.bg_0,
                 SwipedActionKind::Warn => t.red,
             };
-            let (mask, ring) = (t.btn_active_mask, white());
+            // The ring sits on the button edge, next to the row background: a white ring on a
+            // red button in a white list read as a 2px narrower button, not as focus.
+            let ring = match self.kind {
+                SwipedActionKind::Default => t.brand,
+                SwipedActionKind::Warn => t.fg_0,
+            };
+            let mask = t.btn_active_mask;
             let exposed = self.tab_stop;
             let el = div()
                 .id(self.id)
