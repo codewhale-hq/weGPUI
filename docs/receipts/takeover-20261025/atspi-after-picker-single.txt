@@ -1,0 +1,11 @@
+apps 1
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['showing']
+    dialog '单列选择器' ['focusable', 'modal', 'showing']
+      list box '单列选择器 的士票' ['focusable', 'showing']
+        list item '飞机票' ['showing']
+        list item '火车票' ['showing']
+        list item '的士票' ['selected', 'showing']
+        list item '公交票 (disabled)' ['showing']
+        list item '其他' ['showing']
+      push button '确定' ['focusable', 'showing']

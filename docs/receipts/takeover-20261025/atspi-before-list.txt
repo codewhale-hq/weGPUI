@@ -1,0 +1,16 @@
+apps 1
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['focusable', 'showing']
+    list item '标题文字' ['showing']
+    push button '删除' ['focusable', 'showing']
+    list item '标题文字 说明文字' ['focusable', 'showing']
+      list item '标题文字' ['showing']
+    list item '标题文字' ['showing']
+    list item '标题文字' ['showing']
+    push button 'cell standard' ['focusable', 'showing']
+    push button 'cell standard' ['focusable', 'showing']
+    push button 'cell standard 说明文字' ['focusable', 'showing']
+    push button 'cell standard 说明文字' ['focusable', 'showing']
+    push button 'cell standard 说明文字' ['focusable', 'showing']
+    push button 'cell standard 说明文字' ['focusable', 'showing']
+    link 'WeUI 首页' ['showing']

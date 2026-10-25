@@ -1,0 +1,5 @@
+PROBE alldis close selected=[]
+PROBE link first
+PROBE link second
+PROBE disdef confirm ["Z"]
+PROBE disdef close selected=["Z"]

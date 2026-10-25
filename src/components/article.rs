@@ -63,6 +63,7 @@ pub fn heading(level: usize, text: impl Into<SharedString>) -> Stateful<Div> {
         .id(SharedString::from(format!("h{level}-{text}")))
         .role(Role::Heading)
         .aria_label(text.clone())
+        .aria_level(level)
         .text_size(px(size))
         .font_weight(weight)
         .line_height(relative(1.4))
@@ -213,6 +214,11 @@ impl RenderOnce for ArticleList {
                 };
                 let outside = matches!(style, ListStyle::Disc | ListStyle::Decimal);
                 div()
+                    .id(("article-list-item", i))
+                    .role(Role::ListItem)
+                    .aria_label(text.clone())
+                    .aria_position_in_set(i + 1)
+                    .aria_size_of_set(count)
                     .relative()
                     .mt(px(if i == 0 && !nested_list { 0.5 * em } else { 0. }))
                     .mb(px(if i + 1 == count { 0. } else { 0.5 * em }))

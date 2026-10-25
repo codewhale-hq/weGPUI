@@ -1,5 +1,5 @@
 use super::{ClickHandler, modal::ease};
-use crate::Theme;
+use crate::{Theme, accessibility::Semantics};
 use gpui::{prelude::*, *};
 use std::time::{Duration, Instant};
 
@@ -56,7 +56,8 @@ impl RenderOnce for SwipedAction {
             SwipedActionKind::Warn => t.red,
         };
         let (mask, ring) = (t.btn_active_mask, white());
-        div()
+        let exposed = self.tab_stop;
+        let el = div()
             .id(self.id)
             .role(Role::Button)
             .aria_label(self.label.clone())
@@ -76,7 +77,8 @@ impl RenderOnce for SwipedAction {
                     .focus_visible(move |s| s.border_color(ring))
             })
             .when_some(self.on_click, |el, h| el.on_click(h))
-            .child(self.label)
+            .child(self.label);
+        Semantics::new(el).hidden(!exposed)
     }
 }
 
@@ -287,6 +289,25 @@ impl RenderOnce for SwipedCell {
                         s.snap_to(to, cx.reduce_motion());
                         cx.notify();
                     });
+                }
+            })
+            .on_a11y_action(AccessibleAction::Expand, {
+                let state = state.clone();
+                move |_, _, cx| {
+                    state.update(cx, |s, cx| {
+                        let to = -s.width;
+                        s.snap_to(to, cx.reduce_motion());
+                        cx.notify();
+                    })
+                }
+            })
+            .on_a11y_action(AccessibleAction::Collapse, {
+                let state = state.clone();
+                move |_, _, cx| {
+                    state.update(cx, |s, cx| {
+                        s.snap_to(0., cx.reduce_motion());
+                        cx.notify();
+                    })
                 }
             })
             .on_key_down(move |e, _, cx| {

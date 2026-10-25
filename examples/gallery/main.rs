@@ -208,7 +208,7 @@ impl Render for Gallery {
             let p = leaving_p.unwrap_or(1.);
             root = root.child(layer(entry, p, 1. - p, width));
         }
-        root
+        wegpui::accessibility::ModalScope::new(root)
     }
 }
 

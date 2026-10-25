@@ -106,6 +106,10 @@ impl Column {
     }
 }
 
+fn enabled_at(items: &[PickerItem], index: usize) -> bool {
+    items.get(index).is_some_and(|item| !item.disabled)
+}
+
 fn default_index(items: &[PickerItem]) -> usize {
     let len = items.len();
     if len == 0 {
@@ -222,11 +226,23 @@ impl Picker {
     pub fn selected(&self) -> Vec<PickerItem> {
         self.columns
             .iter()
-            .filter_map(|c| c.items.get(c.index()).cloned())
+            .filter_map(|c| {
+                c.items
+                    .get(c.index())
+                    .filter(|item| !item.disabled)
+                    .cloned()
+            })
             .collect()
     }
     pub fn indices(&self) -> Vec<usize> {
         self.columns.iter().map(Column::index).collect()
+    }
+    pub fn can_confirm(&self) -> bool {
+        !self.columns.is_empty()
+            && self
+                .columns
+                .iter()
+                .all(|column| enabled_at(&column.items, column.index()))
     }
 
     pub fn open(&mut self, window: &mut Window, cx: &mut Context<Self>) {
@@ -253,18 +269,22 @@ impl Picker {
         }
     }
     fn confirm(&mut self, window: &mut Window, cx: &mut Context<Self>) {
+        if !self.can_confirm() {
+            return;
+        }
         cx.emit(PickerEvent::Confirm(self.selected()));
         self.close(window, cx);
     }
 
     fn initial_index(&self, level: usize, items: &[PickerItem]) -> usize {
         if let Some(Some(i)) = self.memory.get(level)
-            && *i < items.len()
+            && enabled_at(items, *i)
         {
             return *i;
         }
         if let Some(value) = self.default_value.get(level)
             && let Some(i) = items.iter().position(|it| &it.value == value)
+            && enabled_at(items, i)
         {
             return i;
         }
@@ -680,6 +700,7 @@ impl Render for Picker {
         let entity = cx.entity();
         let close_entity = entity.clone();
         let confirm_entity = entity.clone();
+        let can_confirm = self.can_confirm();
         let mut dialog =
             HalfScreenDialog::new(SharedString::from(format!("weui-picker-{}", self.id)))
                 .flush(true)
@@ -703,6 +724,7 @@ impl Render for Picker {
                             self.id
                         )))
                         .primary()
+                        .disabled(!can_confirm)
                         .on_click(move |_, window, cx| {
                             confirm_entity.update(cx, |this, cx| this.confirm(window, cx));
                         }),

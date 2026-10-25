@@ -8,6 +8,8 @@ pub const TRANSITION: Duration = Duration::from_millis(300);
 pub struct Presence {
     visible: bool,
     changed: Option<Instant>,
+    from: f32,
+    span: Duration,
     opener: Option<FocusHandle>,
     focus: FocusHandle,
     generation: usize,
@@ -19,6 +21,8 @@ impl Presence {
         Self {
             visible: false,
             changed: None,
+            from: 0.,
+            span: TRANSITION,
             opener: None,
             focus: cx.focus_handle(),
             generation: 0,
@@ -27,6 +31,7 @@ impl Presence {
     }
     pub fn duration(mut self, duration: Duration) -> Self {
         self.duration = duration;
+        self.span = duration;
         self
     }
     pub fn is_open(&self) -> bool {
@@ -38,12 +43,31 @@ impl Presence {
     pub fn focus_handle(&self) -> &FocusHandle {
         &self.focus
     }
+    fn linear(&self, cx: &App) -> f32 {
+        match self.changed {
+            Some(at) if !cx.reduce_motion() && !self.span.is_zero() => {
+                (at.elapsed().as_secs_f32() / self.span.as_secs_f32()).min(1.)
+            }
+            _ => 1.,
+        }
+    }
+    fn value(&self, cx: &App) -> f32 {
+        let to = if self.visible { 1. } else { 0. };
+        self.from + (to - self.from) * ease(self.linear(cx))
+    }
+    fn retarget(&mut self, visible: bool, cx: &App) {
+        let current = self.value(cx);
+        let to = if visible { 1. } else { 0. };
+        self.from = current;
+        self.span = self.duration.mul_f32((to - current).abs());
+        self.visible = visible;
+        self.changed = Some(Instant::now());
+    }
     pub fn show(&mut self, window: &mut Window, cx: &mut App) {
         if !self.visible {
             self.opener = window.focused(cx).filter(|f| f != &self.focus);
-            self.visible = true;
+            self.retarget(true, cx);
             self.generation += 1;
-            self.changed = Some(Instant::now());
         }
         window.focus(&self.focus, cx);
         window.refresh();
@@ -51,16 +75,16 @@ impl Presence {
     pub fn show_instantly(&mut self, window: &mut Window, cx: &mut App) {
         self.show(window, cx);
         self.changed = None;
+        self.from = 1.;
     }
     pub fn hide(&mut self, window: &mut Window, cx: &mut App) {
         if !self.visible {
             return;
         }
-        self.visible = false;
-        self.changed = Some(Instant::now());
+        self.retarget(false, cx);
         if let Some(opener) = self.opener.take() {
             window.focus(&opener, cx);
-        } else if self.focus.is_focused(window) {
+        } else if self.focus.contains_focused(window, cx) {
             window.blur(cx);
         }
         window.refresh();
@@ -94,20 +118,14 @@ impl Presence {
         .detach();
     }
     pub fn progress(&self, window: &Window, cx: &App) -> Option<f32> {
-        let linear = match self.changed {
-            Some(at) if !cx.reduce_motion() => {
-                (at.elapsed().as_secs_f32() / self.duration.as_secs_f32()).min(1.)
-            }
-            _ => 1.,
-        };
+        let linear = self.linear(cx);
         if linear < 1. {
             window.request_animation_frame();
         }
-        let p = if self.visible { linear } else { 1. - linear };
         if !self.visible && linear >= 1. {
             return None;
         }
-        Some(ease(p))
+        Some(self.value(cx))
     }
 }
 
@@ -231,6 +249,17 @@ impl RenderOnce for Modal {
         let viewport = window.viewport_size();
         let focus = self.presence.focus.clone();
         let interactive = self.presence.visible;
+        if interactive {
+            crate::accessibility::register_open_modal(window, cx);
+        }
+        let panel_height = window
+            .use_keyed_state(
+                ElementId::NamedChild(std::sync::Arc::new(self.id.clone()), "panel-height".into()),
+                cx,
+                |_, _| std::rc::Rc::new(std::cell::Cell::new(0f32)),
+            )
+            .read(cx)
+            .clone();
         let dismiss = std::rc::Rc::new(self.on_dismiss);
         let dismiss_key = dismiss.clone();
         let mask_alpha = if self.mask_motion { p } else { 1. };
@@ -245,8 +274,21 @@ impl RenderOnce for Modal {
             .flex_col()
             .occlude()
             .on_click(|_, _, cx| cx.stop_propagation())
+            .child({
+                let panel_height = panel_height.clone();
+                canvas(
+                    move |bounds, _, _| panel_height.set(bounds.size.height.as_f32()),
+                    |_, _, _, _| {},
+                )
+                .absolute()
+                .size_full()
+            })
             .children(self.children);
-        let shift = (1. - p) * viewport.height.as_f32();
+        let travel = match panel_height.get() {
+            h if h > 0. => h,
+            _ => viewport.height.as_f32(),
+        };
+        let shift = (1. - p) * travel;
         content = match self.motion {
             Motion::Fade => content.opacity(p),
             Motion::SlideUp => content.top(px(shift)),

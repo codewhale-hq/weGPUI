@@ -20,3 +20,23 @@ software rendering, no GPU, KVM, Apple host or physical devices. Compiler progre
 | `build-linux-x11wayland-exp.txt`, `linux-features-lock-delta.txt` | scratch copy with `wayland`+`x11`: gallery build exit 0; 34 added lock packages, no version changes |
 | `run-linux-x11-exp.txt`, `linux-x11-xvfb-*.png` | X11 gallery under Xvfb: window opened; `button` route; after an `xdotool` click on 普通型 and two `Tab` presses |
 | `atspi-before-*.txt` | AT-SPI tree via `pyatspi` (scratch X11 build, `e23436c` sources) before accessibility fixes |
+
+## Defect-fix verification (Linux X11 scratch build, fixed sources)
+
+Runtime checks used the scratch copy with `wayland`/`x11` enabled, rebuilt from the committed
+`src/` and `examples/`. Input came from `xdotool` (XTEST) under Xvfb without a window manager, so
+apps receive keyboard focus only after a real click inside the window. That is why `--state`
+startup routes were not driven by keyboard. accesskit reports the focused state only for an active
+window, so focus was judged from screenshots.
+
+| File | What it shows |
+| --- | --- |
+| `atspi-after-{dialog-ios1,picker-single,half-screen-dialog-1}.txt` | With a modal open, only the dialog subtree is exposed. Compare with the `atspi-before-*` files, where background buttons and links stayed exposed. |
+| `atspi-after-dialog-default.txt` | No modal: the page is exposed under an unnamed `panel` (the `ModalScope` group). |
+| `linux-x11-select-keyboard-sequence.png`, `atspi-after-form_select-keyboard.txt` | `form_select` opened by click, then Down, Down×3, Up×5, End, Home, Escape. Focus stays within the three options, Home/End reach the ends, and Escape closes the menu and restores the trigger focus ring. |
+| `probe.rs.txt` | Manual probe app (not part of the crate) with two LinkText links, non-finite Slider inputs, an all-disabled picker and a disabled default value. |
+| `probe-baseline-e23436c.txt`, `linux-x11-probe-baseline-e23436c.png` | Baseline: `Slider::range(NaN, 10.)` panics in `f32::clamp`; a NaN value renders "NaN" with no handle; the all-disabled picker confirms `["B"]`; the disabled default confirms `"Y (disabled)"`; only the first link is keyboard-reachable. |
+| `probe-fixed-stdout.txt`, `linux-x11-probe-fixed-pickers.png`, `linux-x11-linktext-two-targets.png` | Fixed: no panic, NaN value at the midpoint, invalid ranges ignored; the all-disabled picker has a disabled confirm, Return emits nothing and `selected()` is empty; the disabled default falls back to Z; each link has its own focus stop, highlight and single activation. |
+| `presence-interrupt-frames.txt`, `presence-interrupt-int-{base,fixed}.png` | Escape 20 ms after opening a half-screen dialog. Baseline jumps to fully open (mask gray 160 → 119), then fades. Fixed reverses from the current value. The fixed panel also enters sooner because it travels its own height rather than the viewport height. |
+| `atspi-{before,after}-list-closed.txt` | A closed swipe cell's 删除 button was exposed before and is hidden after. |
+| `atspi-{before,after}-article.txt` | List items are now exposed with `posinset`. Heading `level` is set on the AccessKit node, but `accesskit_atspi_common 0.19.1` does not forward it to AT-SPI. macOS/Windows exposure is untested. |

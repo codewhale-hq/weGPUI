@@ -1,0 +1,4 @@
+Half-screen dialog interrupted transition, Linux X11 under Xvfb, ffmpeg x11grab 50 fps, Escape 20 ms after the opening click.
+Each sample is panel-top-row/mask-gray at x=30,y=40 (237 = no mask, about 119 = fully open mask). Frames without the dialog are omitted.
+e23436c (baseline): -/232 -/198 -/198 -/160 -/160 -/160 -/160 679/119 679/119 710/124 710/124 782/135 782/135 782/135 799/153 799/153 -/188 -/188 -/227 -/227 -/227
+fixed: -/233 765/199 765/199 767/163 767/163 767/163 743/151 743/151 743/190 743/190 806/218 806/218 806/218 800/231 800/231 811/237 811/237 811/237

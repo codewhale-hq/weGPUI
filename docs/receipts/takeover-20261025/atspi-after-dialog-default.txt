@@ -1,0 +1,8 @@
+apps 1
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['focusable', 'showing']
+    panel '' ['showing']
+      push button '样式一' ['focusable', 'showing']
+      push button '样式二' ['focusable', 'showing']
+      push button '样式三' ['focusable', 'showing']
+      link 'WeUI 首页' ['showing']

@@ -46,12 +46,18 @@ impl Slider {
         self
     }
     pub fn range(mut self, min: f32, max: f32) -> Self {
-        self.min = min;
-        self.max = max.max(min);
+        if min.is_finite() && max.is_finite() && (max - min).is_finite() {
+            self.min = min;
+            self.max = max.max(min);
+        }
         self
     }
     pub fn step(mut self, step: f32) -> Self {
-        self.step = step.max(f32::EPSILON);
+        self.step = if step.is_finite() && step > 0. {
+            step
+        } else {
+            1.
+        };
         self
     }
     pub fn label(mut self, label: impl Into<SharedString>) -> Self {
@@ -89,7 +95,11 @@ impl RenderOnce for Slider {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let t = Theme::get(cx).clone();
         let (min, max, step) = (self.min, self.max, self.step);
-        let value = self.value.clamp(min, max);
+        let value = if self.value.is_finite() {
+            self.value.clamp(min, max)
+        } else {
+            min + (max - min) / 2.
+        };
         let span = (max - min).max(f32::EPSILON);
         let fraction = (value - min) / span;
         let brand = t.brand;

@@ -292,6 +292,8 @@ impl RenderOnce for SelectMenu {
                 window.defer(cx, move |window, cx| window.focus(&h, cx));
             }
         }
+        let enabled: Rc<Vec<bool>> = Rc::new(self.options.iter().map(|(_, d)| !d).collect());
+        let option_handles = Rc::new(handles.clone());
         let dismiss = self.on_dismiss.clone();
         let rows = self
             .options
@@ -353,16 +355,22 @@ impl RenderOnce for SelectMenu {
                         .cursor_pointer()
                         .active(move |s| s.bg(pressed))
                         .focus_visible(move |s| s.border_color(brand))
-                        .on_key_down(|event, window, cx| match event.keystroke.key.as_str() {
-                            "down" => {
-                                window.focus_next(cx);
+                        .on_key_down({
+                            let enabled = enabled.clone();
+                            let option_handles = option_handles.clone();
+                            move |event, window, cx| {
+                                let next = match event.keystroke.key.as_str() {
+                                    "down" => (i + 1..n).find(|j| enabled[*j]),
+                                    "up" => (0..i).rev().find(|j| enabled[*j]),
+                                    "home" => (0..n).find(|j| enabled[*j]),
+                                    "end" => (0..n).rev().find(|j| enabled[*j]),
+                                    _ => return,
+                                };
                                 cx.stop_propagation();
+                                if let Some(j) = next {
+                                    window.focus(&option_handles[j], cx);
+                                }
                             }
-                            "up" => {
-                                window.focus_prev(cx);
-                                cx.stop_propagation();
-                            }
-                            _ => {}
                         })
                         .on_click(move |_, window, cx| {
                             if let Some(h) = on_select.as_ref() {

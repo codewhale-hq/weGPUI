@@ -1,0 +1,6 @@
+apps 1
+application 'gallery' [] DISABLED
+  frame 'weGPUI' ['showing']
+    dialog '弹窗标题' ['focusable', 'modal', 'showing']
+      push button '辅助操作' ['focusable', 'showing']
+      push button '主操作' ['focusable', 'showing']

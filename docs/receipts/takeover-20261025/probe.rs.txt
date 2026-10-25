@@ -1,0 +1,109 @@
+use gpui::{prelude::*, *};
+use wegpui::components::{
+    button::Button,
+    msg::LinkText,
+    picker::{Picker, PickerEvent, PickerItem},
+    slider::Slider,
+};
+
+struct Probe {
+    all_disabled: Entity<Picker>,
+    disabled_default: Entity<Picker>,
+    _subs: Vec<Subscription>,
+}
+
+impl Probe {
+    fn new(cx: &mut Context<Self>) -> Self {
+        let all_disabled = cx.new(|cx| {
+            Picker::single(
+                "alldis",
+                [
+                    PickerItem::new("A", "a").disabled(true),
+                    PickerItem::new("B", "b").disabled(true),
+                ],
+                cx,
+            )
+            .title("all disabled")
+        });
+        let disabled_default = cx.new(|cx| {
+            Picker::single(
+                "disdef",
+                [
+                    PickerItem::new("X", "x"),
+                    PickerItem::new("Y (disabled)", "y").disabled(true),
+                    PickerItem::new("Z", "z"),
+                ],
+                cx,
+            )
+            .default_value(["y"])
+            .title("default disabled")
+        });
+        let mut subs = vec![];
+        for (name, p) in [("alldis", &all_disabled), ("disdef", &disabled_default)] {
+            subs.push(cx.subscribe(p, move |_, picker, e: &PickerEvent, cx| {
+                let sel: Vec<_> = picker.read(cx).selected().iter().map(|i| i.label.to_string()).collect();
+                match e {
+                    PickerEvent::Confirm(items) => println!("PROBE {name} confirm {:?}", items.iter().map(|i| i.label.to_string()).collect::<Vec<_>>()),
+                    PickerEvent::Change(_) => println!("PROBE {name} change {sel:?}"),
+                    PickerEvent::Close => println!("PROBE {name} close selected={sel:?}"),
+                }
+            }));
+        }
+        Self { all_disabled, disabled_default, _subs: subs }
+    }
+}
+
+impl Render for Probe {
+    fn render(&mut self, _: &mut Window, _: &mut Context<Self>) -> impl IntoElement {
+        let a = self.all_disabled.clone();
+        let d = self.disabled_default.clone();
+        wegpui::accessibility::ModalScope::new(
+            div()
+                .id("probe")
+                .size_full()
+                .on_key_down(|event, window, cx| {
+                    if event.keystroke.key == "tab" {
+                        if event.keystroke.modifiers.shift { window.focus_prev(cx) } else { window.focus_next(cx) }
+                        window.prevent_default();
+                        cx.stop_propagation();
+                    }
+                })
+                .bg(white())
+                .text_color(black())
+                .flex()
+                .flex_col()
+                .gap_4()
+                .p_4()
+                .child(
+                    LinkText::new("two-links")
+                        .text("Read ")
+                        .link("first", |_, _| println!("PROBE link first"))
+                        .text(" and ")
+                        .link("second", |_, _| println!("PROBE link second")),
+                )
+                .child(Slider::new("nan-value").value(f32::NAN).label("nan value").show_value(true))
+                .child(Slider::new("nan-range").range(f32::NAN, 10.).value(5.).label("nan range").show_value(true))
+                .child(Slider::new("inf-range").range(0., f32::INFINITY).value(5.).label("inf range").show_value(true))
+                .child(Slider::new("huge-range").range(-f32::MAX, f32::MAX).value(5.).label("huge range").show_value(true))
+                .child(Slider::new("zero-step").step(0.).value(5.).label("zero step").show_value(true).on_change(|v, _, _| println!("PROBE zero-step change {v}")))
+                .child(Button::new("open all-disabled").id("open-a").on_click(move |_, w, cx| a.update(cx, |p, cx| p.open(w, cx))))
+                .child(Button::new("open disabled-default").id("open-d").on_click(move |_, w, cx| d.update(cx, |p, cx| p.open(w, cx))))
+                .child(self.all_disabled.clone())
+                .child(self.disabled_default.clone()),
+        )
+    }
+}
+
+fn main() {
+    gpui_platform::application().with_assets(wegpui::Assets).run(|cx| {
+        wegpui::init(cx);
+        cx.set_reduce_motion(true);
+        let b = Bounds::new(point(px(0.), px(0.)), size(px(375.), px(812.)));
+        cx.open_window(
+            WindowOptions { window_bounds: Some(WindowBounds::Windowed(b)), ..Default::default() },
+            |_, cx| cx.new(Probe::new),
+        )
+        .unwrap();
+        cx.activate(true);
+    });
+}
