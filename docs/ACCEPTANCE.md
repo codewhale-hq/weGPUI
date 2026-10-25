@@ -62,9 +62,11 @@ presentational.
 | Light / dark / care layouts | Focus rings and select menu checked in dark, care, dark+care on Linux 2026-10-24. Website checks cover 264 state/theme selections of captures; native per-component care-mode runtime unsampled. |
 | Screen readers | None accepted (VoiceOver stays off per owner; NVDA/Narrator/Orca not run). |
 | IME / selection / clipboard / undo | `TextInput`/`TextArea` sampled on Linux XIM and macOS Pinyin; Windows IME not run. |
-| Scaling / resize | Not run. |
+| Scaling / resize | Linux X11 2026-10-24: scale 1.5 and 2, and resizes to 320×600, 600×900 and 900×500, no panics (`receipts/scale-resize-20261024`). Wayland and runtime scale changes not run. |
 | Set positions | Fixed 2026-10-24 (were off by one); Linux AT-SPI verified. |
 | Disabled buttons on Linux | AccessKit AT-SPI 0.19.1 does not export disabled for buttons; documented upstream limitation (`receipts/a11y-p1-20261024`). |
+| STATUS defect families | Linux recheck 2026-10-24: vcode double start, cell-button loading, panel focus, radio roving (`receipts/status-defects-20261024`). |
+| Nested modals | Fixed and verified 2026-10-24 (`receipts/nested-modals-20261024`). |
 | Keyboard sweep | 15 interactive pages tabbed on Linux openbox with visible focus and no panics (`receipts/keyboard-sweep-20261024`). |
 | Upstream static demos vs broken callbacks | Static upstream demos (empty handlers): footer, grid, form_preview, msg, list delete. Gallery keeps them inert intentionally; library callbacks exist. |
 
