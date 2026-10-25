@@ -849,3 +849,43 @@ pub fn today() -> (i32, u32, u32) {
     let y = (yoe + era * 400 + if m <= 2 { 1 } else { 0 }) as i32;
     (y, m, d)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use core::prelude::v1::test;
+
+    #[test]
+    fn disabled_default_wraps_to_an_enabled_option() {
+        let items = vec![
+            PickerItem::new("enabled", "0"),
+            PickerItem::new("middle", "1").disabled(true),
+            PickerItem::new("last", "2").disabled(true),
+        ];
+        assert_eq!(default_index(&items), 0);
+        assert!(enabled_at(&items, default_index(&items)));
+    }
+
+    #[test]
+    fn empty_and_all_disabled_columns_have_no_enabled_default() {
+        assert_eq!(default_index(&[]), 0);
+        assert!(!enabled_at(&[], 0));
+        let items = vec![PickerItem::new("disabled", "0").disabled(true)];
+        assert!(!enabled_at(&items, default_index(&items)));
+        assert!(!enabled_at(&items, usize::MAX));
+    }
+
+    #[test]
+    fn gregorian_centuries_and_month_lengths() {
+        assert_eq!(days_in_month(1900, 2), 28);
+        assert_eq!(days_in_month(2000, 2), 29);
+        assert_eq!(days_in_month(2024, 2), 29);
+        assert_eq!(days_in_month(2025, 2), 28);
+        for month in [4, 6, 9, 11] {
+            assert_eq!(days_in_month(2024, month), 30);
+        }
+        for month in [1, 3, 5, 7, 8, 10, 12] {
+            assert_eq!(days_in_month(2024, month), 31);
+        }
+    }
+}

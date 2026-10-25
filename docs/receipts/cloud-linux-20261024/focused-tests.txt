@@ -1,0 +1,17 @@
+   Compiling wegpui v0.1.0 (/work)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.65s
+     Running unittests src/lib.rs (target/debug/deps/wegpui-552ff8bd67270d35)
+
+running 7 tests
+test components::picker::tests::gregorian_centuries_and_month_lengths ... ok
+test components::picker::tests::empty_and_all_disabled_columns_have_no_enabled_default ... ok
+test components::picker::tests::disabled_default_wraps_to_an_enabled_option ... ok
+test components::slider::tests::invalid_ranges_cannot_replace_the_last_finite_range ... ok
+test components::slider::tests::invalid_steps_preserve_a_usable_keyboard_increment ... ok
+test components::slider::tests::snapping_is_relative_to_minimum_and_clamped ... ok
+test input::tests::utf16_offsets_stay_on_utf8_boundaries ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+    Checking wegpui v0.1.0 (/work)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.94s

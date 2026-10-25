@@ -8,6 +8,9 @@ versioning once a release policy is decided. No version has been published.
 
 ### Added
 
+- Seven focused regression tests for UTF-16 offsets, disabled picker defaults, Gregorian
+  month lengths, and slider snapping/invalid bounds and steps.
+
 - Enabled the approved Linux X11/Wayland windowing features for both examples; isolated
   X11 build, rendering, input and AT-SPI receipts retain failed probe attempts.
 

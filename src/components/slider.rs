@@ -245,3 +245,35 @@ impl RenderOnce for Slider {
             })
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use core::prelude::v1::test;
+
+    #[test]
+    fn invalid_steps_preserve_a_usable_keyboard_increment() {
+        for step in [0., -1., f32::NAN, f32::INFINITY] {
+            let slider = Slider::new("test").step(step);
+            assert_eq!(snap(41., slider.min, slider.max, slider.step), 41.);
+        }
+    }
+
+    #[test]
+    fn snapping_is_relative_to_minimum_and_clamped() {
+        assert_eq!(snap(14., 5., 25., 5.), 15.);
+        assert_eq!(snap(-100., 5., 25., 5.), 5.);
+        assert_eq!(snap(100., 5., 25., 5.), 25.);
+        assert_eq!(snap(10., 5., 5., 1.), 5.);
+    }
+
+    #[test]
+    fn invalid_ranges_cannot_replace_the_last_finite_range() {
+        for (min, max) in [(f32::NAN, 5.), (0., f32::INFINITY), (-f32::MAX, f32::MAX)] {
+            let slider = Slider::new("test").range(10., 20.).range(min, max);
+            assert_eq!((slider.min, slider.max), (10., 20.));
+        }
+        let slider = Slider::new("test").range(20., 10.);
+        assert_eq!((slider.min, slider.max), (20., 20.));
+    }
+}

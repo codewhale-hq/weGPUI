@@ -58,3 +58,12 @@ The reproducer expects this container's installed dependencies and running Xvfb.
 Invoke from the checkout: `bash docs/receipts/cloud-linux-20261024/run-x11.sh minimal`
 (or `select`). Run serially on this display. Existing output files should be moved
 to a new attempt prefix before rerunning so failed evidence is not overwritten.
+
+## Focused tests (following `08ca368`)
+
+Seven library tests pass under `cargo test --lib --locked --offline -j 4`;
+all-target Clippy with `-D warnings` also passes (`focused-tests.txt`).
+Initial compilation failed because GPUI's glob-imported `test` attribute shadowed
+Rust's builtin test attribute. The tests explicitly import the builtin attribute;
+no recursion limit was raised. Both failed compile logs are retained.
+These tests cover pure contracts, not GUI, IME or assistive-technology acceptance.
