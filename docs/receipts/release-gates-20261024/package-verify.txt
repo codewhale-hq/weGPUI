@@ -1,0 +1,6 @@
+   Packaging wegpui v0.1.0 (/workspace/weGPUI)
+    Packaged 183 files, 1.3MiB (430.4KiB compressed)
+   Verifying wegpui v0.1.0 (/workspace/weGPUI)
+   Compiling wegpui v0.1.0 (/workspace/weGPUI/target/package/wegpui-0.1.0)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.36s
+exit 0

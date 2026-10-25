@@ -1,0 +1,4 @@
+name = "wegpui"
+version = "0.1.0"
+source = "git+https://github.com/codewhale-hq/weGPUI#f5fe0b6b2bcc8e93d67c2854fd172035e73d73aa"
+dependencies = [

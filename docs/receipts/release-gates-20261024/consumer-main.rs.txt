@@ -1,0 +1,20 @@
+use gpui::{prelude::*, *};
+use wegpui::components::{Cell, Cells, button::Button};
+
+struct Home;
+
+impl Render for Home {
+    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let t = wegpui::Theme::get(cx);
+        div().size_full().bg(t.bg_0)
+            .child(Cells::new().child(Cell::new("account").title("Account").access()))
+            .child(Button::new("Continue").id("continue").primary())
+    }
+}
+
+fn main() {
+    gpui_platform::application().with_assets(wegpui::Assets).run(|cx| {
+        wegpui::init(cx);
+        cx.open_window(WindowOptions::default(), |_, cx| cx.new(|_| Home)).unwrap();
+    });
+}

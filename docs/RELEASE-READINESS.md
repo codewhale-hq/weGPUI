@@ -19,6 +19,7 @@ and rely on the supported behavior. A website is one part of that promise.
   nested-marker contracts pass. Visual/screen-reader acceptance is separate.
 - [ ] Exercise enabled/disabled/loading/error states and keyboard operation for
   each interactive family. Preserve failed attempts and specify the tested SHA.
+  Tracked per module in [ACCEPTANCE](ACCEPTANCE.md).
 - [ ] Verify modal isolation, names, values and focus restoration with an actual
   screen reader on each supported desktop OS. Tree snapshots alone do not pass.
 - [ ] Verify input selection, clipboard, undo/redo, UTF-16 limits and IME composition.
@@ -44,10 +45,14 @@ VoiceOver remains off under the owner’s existing instruction.
 
 - [ ] Confirm the crates.io package name, versioning and dependency-upgrade policy.
 - [ ] Test the README installation flow in a new consumer project with locked pins.
+  Linux X11 pass on 2026-10-24 ([receipt](receipts/release-gates-20261024/README.md));
+  macOS and Windows consumers still needed.
 - [ ] Ship complete small examples: application setup, forms, controlled state,
   overlays/focus, theming and application-owned upload handling.
 - [ ] Generate versioned API documentation from the release source.
 - [ ] Verify cargo package contents, licenses/attribution and documentation assets.
+  `cargo package` list and verify build pass on Linux at `f5fe0b6`; README screenshots stay
+  repository-relative (see STATUS).
 - [ ] Prepare release notes, compatibility table and migration notes.
 - [ ] Select maintainers and working security/conduct contact routes.
 - [ ] Publish the versioned crate and signed/downloadable examples only after the
