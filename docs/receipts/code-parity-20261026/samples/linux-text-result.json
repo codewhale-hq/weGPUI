@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "checks": [
+    "select-all",
+    "partial-keyboard",
+    "cross-row-keyboard",
+    "ascii-insert",
+    "undo-restore",
+    "pointer-drag"
+  ]
+}

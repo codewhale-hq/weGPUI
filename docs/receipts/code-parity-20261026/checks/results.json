@@ -1,0 +1,192 @@
+[
+  {
+    "name": "linux-build",
+    "command": [
+      "docker",
+      "exec",
+      "wegpui-rtl-qualification",
+      "cargo",
+      "build",
+      "--manifest-path",
+      "/src/Cargo.toml",
+      "--all-targets",
+      "--locked",
+      "--offline"
+    ],
+    "exit_code": 0,
+    "seconds": 65.18,
+    "source_commit": "4b01775143fedca00512cd7ea6b3188d6626e47a"
+  },
+  {
+    "name": "linux-tests",
+    "command": [
+      "docker",
+      "exec",
+      "wegpui-rtl-qualification",
+      "cargo",
+      "test",
+      "--manifest-path",
+      "/src/Cargo.toml",
+      "--lib",
+      "--example",
+      "gallery",
+      "--locked",
+      "--offline"
+    ],
+    "exit_code": 0,
+    "seconds": 8.88,
+    "source_commit": "4b01775143fedca00512cd7ea6b3188d6626e47a"
+  },
+  {
+    "name": "macos-fmt",
+    "command": [
+      "cargo",
+      "fmt",
+      "--all",
+      "--",
+      "--check"
+    ],
+    "exit_code": 0,
+    "seconds": 0.75,
+    "source_commit": "4b01775143fedca00512cd7ea6b3188d6626e47a"
+  },
+  {
+    "name": "macos-build",
+    "command": [
+      "cargo",
+      "build",
+      "--all-targets",
+      "--locked",
+      "--offline"
+    ],
+    "exit_code": 0,
+    "seconds": 10.17,
+    "source_commit": "4b01775143fedca00512cd7ea6b3188d6626e47a"
+  },
+  {
+    "name": "macos-tests",
+    "command": [
+      "cargo",
+      "test",
+      "--lib",
+      "--example",
+      "gallery",
+      "--locked",
+      "--offline"
+    ],
+    "exit_code": 0,
+    "seconds": 2.81,
+    "source_commit": "4b01775143fedca00512cd7ea6b3188d6626e47a"
+  },
+  {
+    "name": "macos-clippy",
+    "command": [
+      "cargo",
+      "clippy",
+      "--all-targets",
+      "--locked",
+      "--offline",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit_code": 0,
+    "seconds": 5.17,
+    "source_commit": "4b01775143fedca00512cd7ea6b3188d6626e47a"
+  },
+  {
+    "name": "macos-rustdoc",
+    "command": [
+      "cargo",
+      "doc",
+      "--no-deps",
+      "--locked",
+      "--offline"
+    ],
+    "exit_code": 0,
+    "seconds": 7.48,
+    "source_commit": "4b01775143fedca00512cd7ea6b3188d6626e47a"
+  },
+  {
+    "name": "word-break",
+    "command": [
+      "python3",
+      "-I",
+      "docs/proposals/gpui-text-i18n/verify-word-break.py",
+      "--workdir",
+      "<artifacts>/final/word-break"
+    ],
+    "exit_code": 0,
+    "seconds": 0.7,
+    "source_commit": "4b01775143fedca00512cd7ea6b3188d6626e47a"
+  },
+  {
+    "name": "logical-wrap",
+    "command": [
+      "python3",
+      "-I",
+      "docs/proposals/gpui-text-i18n/verify-logical-wrap.py",
+      "--workdir",
+      "<artifacts>/final/logical-wrap"
+    ],
+    "exit_code": 0,
+    "seconds": 1.26,
+    "source_commit": "4b01775143fedca00512cd7ea6b3188d6626e47a"
+  },
+  {
+    "name": "trailing-space",
+    "command": [
+      "python3",
+      "-I",
+      "docs/proposals/gpui-trailing-space-wrap/verify.py",
+      "--workdir",
+      "<artifacts>/final/trailing-space"
+    ],
+    "exit_code": 0,
+    "seconds": 1.48,
+    "source_commit": "4b01775143fedca00512cd7ea6b3188d6626e47a"
+  },
+  {
+    "name": "cjk",
+    "command": [
+      "python3",
+      "-I",
+      "docs/proposals/gpui-cjk-closing/verify.py",
+      "--workdir",
+      "<artifacts>/final/cjk"
+    ],
+    "exit_code": 0,
+    "seconds": 1.22,
+    "source_commit": "4b01775143fedca00512cd7ea6b3188d6626e47a"
+  },
+  {
+    "name": "script-tests",
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "seconds": 4.22,
+    "source_commit": "4b01775143fedca00512cd7ea6b3188d6626e47a"
+  },
+  {
+    "name": "website-tests",
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "website/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "seconds": 0.62,
+    "source_commit": "4b01775143fedca00512cd7ea6b3188d6626e47a"
+  }
+]

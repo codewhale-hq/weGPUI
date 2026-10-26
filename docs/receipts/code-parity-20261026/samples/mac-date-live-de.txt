@@ -1,0 +1,54 @@
+Window: "weGPUI", App: CodeParity.
+1 standard window weGPUI, Secondary Actions: Raise
+	2 container
+		3 Radio list items
+			4 radio button (selectable, settable, boolean) cell standard
+			5 radio button (selectable, settable, boolean) cell standard
+			6 link Add more
+		7 checkbox (settable, boolean) standard is dealt for u., Value: on
+		8 checkbox (settable, boolean) standard is dealicient for u., Value: off
+		9 link Add more
+		10 container (selectable) qq
+			11 text field (settable) qq, Placeholder: Enter QQ number
+		12 container (selectable) Phone
+			13 text field (settable) Phone, Placeholder: Enter phone number
+			14 button Code anfordern
+		15 container (selectable) Date
+			16 text field (settable) Date, Value: 05.03.2027
+			17 button Date, Datumsauswahl öffnen
+		18 container (selectable) Time
+			19 text field (settable) Time, Placeholder: TT.MM.JJJJ HH:MM
+			20 button Time, Datumsauswahl öffnen
+		21 container (selectable) Code
+			22 text field (settable) Code, Placeholder: Enter verification code
+			23 image Bestätigungscode
+		24 container (selectable) Card no.
+			25 text field (settable) Card no., Placeholder: Enter card number
+		26 container (selectable)
+			27 switch (settable, boolean) Title text, Value: off
+		28 container (selectable)
+			29 switch (settable, boolean) IE Edge-compatible version, Value: on
+		30 container (selectable)
+			31 text field (settable) Enter text
+		32 container (selectable)
+			33 text entry area (settable) Enter text
+			34 container 0/200
+		35 pop up button (settable) +86
+		36 text field (settable) Number, Placeholder: Enter number
+		37 pop up button (settable) WeChat ID
+		38 pop up button (settable) Country/region China, Value: China
+		39 checkbox (settable, boolean) I have read and agree to the Terms, Value: off
+			40 link the Terms
+		41 button OK
+		42 link WeUI home
+	43 close button
+	44 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	45 minimize button
+	46 text weGPUI
+47 menu bar
+	48 Code Parity
+	49 Navigate
+	50 Appearance
+	51 Language
+
+The focused UI element is 1 standard window weGPUI, Secondary Actions: Raise

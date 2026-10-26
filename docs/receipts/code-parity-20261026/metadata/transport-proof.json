@@ -1,0 +1,9 @@
+{
+  "transport": "official npm weui 2.6.26 archive from retained cache",
+  "archive_sha256": "f88a8f1d22ceb94e802bf423bd477a4a0cfad4cf9d70a77eedbc3cb17511b435",
+  "validated_style_sources": 59,
+  "css_sha256": "8db42592f96d571568c49ae1b8484f55042e6a6dab25f8144460cd4a23530fd3",
+  "html_sha256": "380579150f95fc72af1b6b352246ae9838a5dacac5de0284f77c4a3149c05fce",
+  "js_sha256": "87707d2d625c95f247e1957d5eee8c43bbe0c056983336990868f325d9b0c6fe",
+  "revision_association": "retained pinned reference metadata; all CSS, HTML, JS and 59 style sources hash-equivalent; no fresh git checkout claimed"
+}

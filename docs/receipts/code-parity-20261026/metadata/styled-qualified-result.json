@@ -1,0 +1,113 @@
+{
+  "status": "pass",
+  "image_size": [
+    800,
+    1200
+  ],
+  "checks": [
+    "glyph colors",
+    "underline colors",
+    "strikethrough colors",
+    "left/right alignment",
+    "six wrapped right-aligned backgrounds",
+    "wrapped underline/strike continuation"
+  ],
+  "measurements": [
+    {
+      "y": 40,
+      "index": 0,
+      "expected": "red",
+      "counts": {
+        "red": 1581,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "y": 40,
+      "index": 2,
+      "expected": "green",
+      "counts": {
+        "red": 0,
+        "green": 1292,
+        "blue": 0
+      }
+    },
+    {
+      "y": 40,
+      "index": 4,
+      "expected": "blue",
+      "counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 960
+      }
+    },
+    {
+      "y": 280,
+      "index": 0,
+      "expected": "red",
+      "counts": {
+        "red": 1584,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "y": 280,
+      "index": 2,
+      "expected": "green",
+      "counts": {
+        "red": 0,
+        "green": 1289,
+        "blue": 0
+      }
+    },
+    {
+      "y": 280,
+      "index": 4,
+      "expected": "blue",
+      "counts": {
+        "red": 0,
+        "green": 8,
+        "blue": 950
+      }
+    },
+    {
+      "row": 0,
+      "background_start": 604,
+      "background_end": 739,
+      "full_width_red_decoration_rows": 8
+    },
+    {
+      "row": 1,
+      "background_start": 617,
+      "background_end": 739,
+      "full_width_red_decoration_rows": 8
+    },
+    {
+      "row": 2,
+      "background_start": 615,
+      "background_end": 739,
+      "full_width_red_decoration_rows": 8
+    },
+    {
+      "row": 3,
+      "background_start": 594,
+      "background_end": 739,
+      "full_width_red_decoration_rows": 8
+    },
+    {
+      "row": 4,
+      "background_start": 592,
+      "background_end": 739,
+      "full_width_red_decoration_rows": 8
+    },
+    {
+      "row": 5,
+      "background_start": 572,
+      "background_end": 739,
+      "full_width_red_decoration_rows": 8
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+[
+  {
+    "id": 40276223301,
+    "name": "Push on main",
+    "path": "dynamic/github-code-scanning/codeql",
+    "sha": "fa60f66e42e7604174f585d7be3c5725b26b186a",
+    "status": "in_progress",
+    "url": "https://github.com/codewhale-hq/weGPUI/actions/runs/40276223301"
+  },
+  {
+    "id": 40276223271,
+    "name": "CI",
+    "path": ".github/workflows/ci.yml",
+    "sha": "fa60f66e42e7604174f585d7be3c5725b26b186a",
+    "status": "in_progress",
+    "url": "https://github.com/codewhale-hq/weGPUI/actions/runs/40276223271"
+  },
+  {
+    "id": 40274887155,
+    "name": "CI",
+    "path": ".github/workflows/ci.yml",
+    "sha": "4b01775143fedca00512cd7ea6b3188d6626e47a",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/codewhale-hq/weGPUI/actions/runs/40274887155"
+  },
+  {
+    "id": 40274887072,
+    "name": "Push on main",
+    "path": "dynamic/github-code-scanning/codeql",
+    "sha": "4b01775143fedca00512cd7ea6b3188d6626e47a",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/codewhale-hq/weGPUI/actions/runs/40274887072"
+  }
+]

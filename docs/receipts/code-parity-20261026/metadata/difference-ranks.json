@@ -1,0 +1,73 @@
+{
+  "pairs": 1056,
+  "scenes": 132,
+  "median_pixels_over_8_percent": 2.52975,
+  "maximum_pixels_over_8_percent": 11.0689,
+  "largest_differences": [
+    {
+      "id": "light-care/button_bottom_fixed-agreed",
+      "pixels_over_8_percent": 11.0689
+    },
+    {
+      "id": "light-care-brand/button_bottom_fixed-agreed",
+      "pixels_over_8_percent": 11.0588
+    },
+    {
+      "id": "light-care/button_bottom_fixed",
+      "pixels_over_8_percent": 10.9933
+    },
+    {
+      "id": "light-care-brand/button_bottom_fixed",
+      "pixels_over_8_percent": 10.9831
+    },
+    {
+      "id": "light/button_bottom_fixed-agreed",
+      "pixels_over_8_percent": 10.9722
+    },
+    {
+      "id": "light-brand/button_bottom_fixed-agreed",
+      "pixels_over_8_percent": 10.9632
+    },
+    {
+      "id": "dark-care/button_bottom_fixed-agreed",
+      "pixels_over_8_percent": 10.944
+    },
+    {
+      "id": "dark-care-brand/button_bottom_fixed-agreed",
+      "pixels_over_8_percent": 10.9355
+    },
+    {
+      "id": "light/button_bottom_fixed",
+      "pixels_over_8_percent": 10.8934
+    },
+    {
+      "id": "dark/button_bottom_fixed-agreed",
+      "pixels_over_8_percent": 10.8866
+    },
+    {
+      "id": "light-brand/button_bottom_fixed",
+      "pixels_over_8_percent": 10.8837
+    },
+    {
+      "id": "dark-brand/button_bottom_fixed-agreed",
+      "pixels_over_8_percent": 10.8781
+    },
+    {
+      "id": "dark-care/button_bottom_fixed",
+      "pixels_over_8_percent": 10.8681
+    },
+    {
+      "id": "dark-care-brand/button_bottom_fixed",
+      "pixels_over_8_percent": 10.8589
+    },
+    {
+      "id": "dark/button_bottom_fixed",
+      "pixels_over_8_percent": 10.8076
+    },
+    {
+      "id": "dark-brand/button_bottom_fixed",
+      "pixels_over_8_percent": 10.7984
+    }
+  ],
+  "qualification": "Raster difference ranks aid inspection; thresholds are not acceptance criteria."
+}

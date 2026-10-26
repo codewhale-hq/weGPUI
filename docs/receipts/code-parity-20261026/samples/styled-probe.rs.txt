@@ -1,0 +1,29 @@
+use gpui::{prelude::*, *};
+#[path="/src/examples/support/platform.rs"] mod platform;
+struct Probe;
+impl Render for Probe {
+ fn render(&mut self, _: &mut Window, _: &mut Context<Self>) -> impl IntoElement {
+  div().size_full().bg(rgb(0xffffff)).child(canvas(|_,window,_| {
+   let runs: Vec<_> = [0xff0000,0x00aa00,0x0000ff].into_iter().map(|color| TextRun {len:2,font:font("Noto Sans Hebrew"),color:rgb(color).into(),background_color:Some(rgb(0xffeeee).into()),underline:Some(UnderlineStyle {thickness:px(2.),color:None,wavy:false}),strikethrough:Some(StrikethroughStyle { thickness:px(2.),color:None })}).collect();
+   let line = window.text_system().shape_text("אבג".into(),px(48.),&runs,None,None).unwrap().remove(0);
+   assert!(line.position_for_index(0,px(70.)).unwrap().x > line.position_for_index(2,px(70.)).unwrap().x);
+   let ranges: Vec<_> = (0..3).map(|i| {let rect = line.selection_bounds(i*2..i*2+2,px(70.))[0];format!("{{\"index\":{},\"x\":{},\"width\":{}}}",i*2,rect.origin.x.as_f32(),rect.size.width.as_f32())}).collect();
+   std::fs::write("/work/code-parity/probe-geometry.json",format!("[{}]",ranges.join(","))).unwrap();
+   let wrapped_text: SharedString = "אבגד הוזח טיכל מנסע פצקר שתאב".into();
+   let wrapped_runs = [TextRun { len:wrapped_text.len(),font:font("Noto Sans Hebrew"),color:rgb(0xff0000).into(),background_color:Some(rgb(0xffeeee).into()),underline:Some(UnderlineStyle {thickness:px(2.),color:None,wavy:false}),strikethrough:Some(StrikethroughStyle {thickness:px(2.),color:None}) }];
+   let wrapped = window.text_system().shape_text(wrapped_text,px(32.),&wrapped_runs,Some(px(140.)),None).unwrap().remove(0);
+   assert!(wrapped.bidi_rows().len()>2);
+   let widths:Vec<_> = wrapped.bidi_rows().iter().map(|row| row.width.as_f32().to_string()).collect();
+   std::fs::write("/work/code-parity/styled-wrap-widths.json",format!("[{}]",widths.join(","))).unwrap();
+   (line, wrapped)
+  },|bounds,(line,wrapped),window,cx| {
+   line.paint_background(point(bounds.origin.x+px(20.),bounds.origin.y+px(20.)),px(70.),TextAlign::Left,None,window,cx).unwrap();
+   line.paint(point(bounds.origin.x+px(20.),bounds.origin.y+px(20.)),px(70.),TextAlign::Left,None,window,cx).unwrap();
+   line.paint_background(point(bounds.origin.x+px(20.),bounds.origin.y+px(140.)),px(70.),TextAlign::Right,Some(Bounds::new(bounds.origin,size(px(350.),px(70.)))),window,cx).unwrap();
+   line.paint(point(bounds.origin.x+px(20.),bounds.origin.y+px(140.)),px(70.),TextAlign::Right,Some(Bounds::new(bounds.origin,size(px(350.),px(70.)))),window,cx).unwrap();
+   wrapped.paint_background(point(bounds.origin.x+px(20.),bounds.origin.y+px(260.)),px(50.),TextAlign::Right,Some(Bounds::new(bounds.origin,size(px(350.),px(250.)))),window,cx).unwrap();
+   wrapped.paint(point(bounds.origin.x+px(20.),bounds.origin.y+px(260.)),px(50.),TextAlign::Right,Some(Bounds::new(bounds.origin,size(px(350.),px(250.)))),window,cx).unwrap();
+  }).size_full())
+ }
+}
+fn main() {platform::application().with_assets(wegpui::Assets).run(|cx| {wegpui::init(cx);cx.open_window(WindowOptions {window_bounds:Some(WindowBounds::Windowed(Bounds::new(point(px(60.),px(60.)),size(px(400.),px(600.))))),..Default::default()},|_,cx|cx.new(|_|Probe)).unwrap();cx.activate(true);});}

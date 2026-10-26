@@ -12,15 +12,18 @@ rendering failure remained open. Step 3 was subsequently approved; see the curre
 The localisation work ([I18N](../../I18N.md)) worked around everything that could be worked
 around in weGPUI itself; this is what remained.
 
-## Current continuation — 25 October 2026 (Pacific)
+## Current continuation — 26 October 2026
 
-The owner explicitly approved step 3 in chat. The
-[RTL continuation](../../receipts/rtl-completion-20261025/README.md) normalises platform glyph
-order before layout caching and reuses the input bidi shim per wrapped row for caret, pointer,
-selection and vertical navigation. TextArea aligns by locale. Current macOS and Linux ARM64
-X11 samples show complete Arabic/Hebrew paragraphs; current host/readback evidence replaces
-no historical source identity. Full IME/readers, Windows, Linux x86_64/hardware and styling
-remain unqualified. No new library dependency or version change is involved.
+Step 3 and the two direct locked crate references are owner-approved. The
+[code/parity continuation](../../receipts/code-parity-20261026/README.md) replaces the
+input-only shim with GPUI shared row geometry using `unicode-bidi 0.3.18`. Text-owning shaped,
+wrapped and element layouts now share caret/hit/selection geometry, including alignment and
+inline-link bounds. Styled RTL lookup/decoration painting and shaped ellipsis clamping are
+repaired. Opening punctuation and oversized RTL words are handled in the shared break path.
+Package versions stay unchanged; `chrono 0.4.45` supplies host-local today for weGPUI dates.
+
+The historical prototype and held failures below retain their original source identities.
+Full IME/readers, Windows visible UI, Linux hardware and dictionary breaking remain open.
 
 ## What was wrong
 
@@ -116,14 +119,14 @@ Linux evidence are separate. That trial approval did not itself release the RTL 
 step 3. The later publication request is recorded above; the supplied macOS captures do not
 qualify the later guard.
 
-## Step 3 — approved; input continuation implemented
+## Step 3 — shared implementation complete; qualification remains scoped
 
-Wrapped input caret and selection now use row-local shaped clusters. The existing `src/bidi.rs`
-shim remains in use, rather than rewriting GPUI’s text-free `LineLayout` APIs. Migrating those
-generic APIs and their other consumers remains a separate integration gap; the native input
-checks do not qualify it. See the current continuation for implementation and evidence.
+The shared implementation and its current host evidence are in the continuation above.
+Text-free raw `LineLayout` methods retain their legacy contract; text-aware consumers use
+`ShapedLine`, `WrappedLineLayout` and element `TextLayout`. Exact font-provided ligature caret
+positions, dictionary segmentation, real RTL IME and full host/reader matrices remain open.
 
-## Not proposed
+## Outside this continuation
 
-New dependencies, a new text shaper, ICU, hyphenation, vertical text, or changes to the Linux
-and Windows vendor copies beyond the shared `text_system` code.
+A new shaper, ICU, hyphenation, vertical text, alternate calendars and platform-specific
+backend changes beyond the shared GPUI text layer.

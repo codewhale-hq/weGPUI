@@ -55,8 +55,9 @@ and rely on the supported behavior. A website is one part of that promise.
   macOS/Linux ARM64 X11 samples from full acceptance.
 - [ ] Finish localisation acceptance: native-speaker review of the 12 starter catalogs;
   screen-reader output in each promised language; real RTL keyboard/IME composition; Windows
-  and Linux x86_64/hardware reruns; styled wrapping and generic GPUI x/index API integration;
-  locale-aware dates. Earlier Chinese-name accessibility samples need re-running under the
+  and Linux x86_64/hardware reruns; complete styled/complex-script and date-locale review.
+  Shared text-owning GPUI geometry, styled RTL painting and locale dates are implemented in the
+  [code/parity continuation](receipts/code-parity-20261026/README.md). Earlier Chinese-name accessibility samples need re-running under the
   English default. Historical failures remain in their original receipts.
 - [ ] Verify input selection, clipboard, undo/redo, UTF-16 limits and IME composition.
 - [ ] Reconcile public rustdoc with observed behavior; document intentional differences.

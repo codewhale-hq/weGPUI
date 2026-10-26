@@ -1,0 +1,3 @@
+The following is a diff from the previous accessibility tree for Window: "weGPUI" with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+~			17 text entry area (settable) Arabic paragraph, Value: XYZم مكتبة weGPUI اللغة العربية والعبرية والإنجليزية في الفقرة نفسها، مع أرقام مثل 12345 وعناوين مثل weui.io في الوسط، وتنتقل الأسطر بترتيب القراءة الصحيح.
+The focused UI element is 0 standard window weGPUI, Secondary Actions: Raise

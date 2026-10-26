@@ -21,7 +21,7 @@ All eight Layers appearances pass 48 native interaction steps, including selecte
 hidden inactive controls. A further 80 normal-motion interruption and stable-endpoint checks
 pass in all eight appearances. A current-source English/light Orca sample passes twelve
 state steps and eight name/role speech windows, with real synthesized PCM retained; human
-listening and full reader acceptance remain open. Current source gates pass with 59 root and three gallery tests.
+listening and full reader acceptance remain open. That earlier source passed 59 root and three gallery tests.
 The earlier apparent 16px half-screen text gap was a measurement error; no padding change was made.
 
 The first public release targets macOS, Windows and Linux; iOS and Android remain
@@ -41,14 +41,25 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 
 ## Localisation and right-to-left — 2026-10-25
 
-The owner subsequently approved step 3. The [RTL continuation](receipts/rtl-completion-20261025/README.md)
-adds row-aware wrapped input caret/hit testing/selection, grapheme-safe endpoints, TextArea
-alignment and platform glyph-order normalisation. Fresh macOS and Linux ARM64 X11 samples
-show readable Arabic/Hebrew paragraphs in both locale directions. Windows, Linux x86_64/hardware,
-real RTL IME, full reader matrices, styled wrapping and locale-aware dates remain open.
-The input shim remains in use; generic GPUI x/index APIs have not been replaced. Current
-Windows ARM64 source-bundle build, 59 library/three gallery tests, strict Clippy/docs and
-standalone consumer pass; visible Windows checks remain blocked at VM sign-in.
+The owner approved step 3 and direct references to the already locked `unicode-bidi 0.3.18`
+and `chrono 0.4.45` crates. The current [code and parity continuation](receipts/code-parity-20261026/README.md) moves input mapping
+into GPUI's shared cached row geometry, resolves Unicode bidi levels and paragraph direction,
+repairs styled RTL painting and aligned link hit testing, protects opening punctuation, and
+uses shaped rows for ellipsis clamping. Date display, typed entry and picker order follow the
+locale policy; committed values remain ISO and `today()` uses the host local clock.
+
+The shared-library source is `4b01775143fedca00512cd7ea6b3188d6626e47a`; follow-up
+`fa60f66e42e7604174f585d7be3c5725b26b186a` corrects amount-example styling and reference replay
+timing. Both final CI runs pass, including Windows build/tests only. Local macOS/Linux
+all-target builds, 54 library and three gallery tests, strict macOS Clippy/docs, extracted text
+contracts and 33 script/five website tests pass. Five existing bidi tests moved from the root
+library into the shared vendor harness. Current macOS keyboard/date and Linux ARM64 X11
+input/styled-text samples are retained. Windows remains build/tests only by owner instruction;
+its hosted final validation is recorded in the continuation receipt. No Windows UI claim follows.
+
+Real RTL IME, complete reader/native-speaker matrices, dictionary breaking, Linux hardware and
+windowing diversity, mobile backends and release distribution remain qualification or scope gaps.
+VoiceOver remains off. Historical receipts below keep their original source identity.
 
 The following paragraphs describe the earlier source and evidence:
 
@@ -505,7 +516,7 @@ Still pending:
 - An upstream Android backend plan.
 - crates.io name, publication timing, versioning and ongoing GPUI upgrade policy.
 - Keeping the historical roughly 34 MB parity corpus in Git (excluded from the package).
-- Private conduct/security contacts; a local-time source for `picker::today()`; the wider
+- Private conduct/security contacts; the wider
   weui.js imperative API scope; complete host/IME/reader qualification of the approved
   [RTL continuation](receipts/rtl-completion-20261025/README.md).
 

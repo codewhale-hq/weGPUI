@@ -45,9 +45,9 @@ changes, plus a website route-inventory repair. The exact source, checks and lim
 
 | Work | Completion evidence needed | Where it can be done |
 | --- | --- | --- |
-| Qualify right-to-left wrapping | Fresh macOS and Linux ARM64 X11 samples are readable; re-run Linux x86_64/hardware and Windows, styled runs and complete break cases | Current receipt identifies the sampled hosts; full matrix remains open |
-| Qualify wrapped caret and partial selection | Step 3 is approved; row-aware input mapping is implemented. Complete real RTL IME, reader and desktop matrices; generic GPUI mapping remains separate | macOS and Linux samples are in the RTL continuation |
-| Localisation details | Locale-aware date display/entry/column order; an application/host policy for local today; explicit coverage of scripts needing dictionary breaking | Source work and locale review; new dependencies remain a separate decision |
+| Qualify right-to-left wrapping | Fresh macOS and Linux ARM64 X11 samples are readable; re-run Linux x86_64/hardware and Windows; extend the passing styled Hebrew sample to complete complex-script/break cases | Current receipt identifies the sampled hosts; full matrix remains open |
+| Qualify wrapped caret and partial selection | Step 3 is approved; row-aware input mapping is implemented. Complete real RTL IME, reader and desktop matrices; shared text-owning GPUI mapping is implemented | macOS and Linux samples are in the RTL continuation |
+| Localisation details | Locale-aware numeric date display/entry/column order and host-local today are implemented with the approved locked crates; qualify translations and dictionary-breaking scripts | Native locale review; CLDR, alternate calendars and dictionary segmentation remain outside this bounded policy |
 | Review translations | Native-speaker review of the twelve starter catalogs and keyboard/reader checks for the promised locales | Qualified language reviewers and native hosts |
 | Complete component behaviour | Each interactive family's enabled/disabled/loading/error, callbacks, keyboard, reduced-motion, focus and state-transition cases | Linux automation can extend coverage; current-source macOS/Windows runs are still required |
 | Complete rendering parity | Full light/dark/care/custom-brand/state/reference review, responsive widths and long pages | Each desktop renderer, with fonts and source provenance recorded |
@@ -78,3 +78,7 @@ iOS still fails in the pinned upstream application APIs and has no runtime quali
 Android has no selected upstream backend. Both need backend/API work, real device or simulator
 builds, rendering, input, accessibility and distribution evidence before support can be claimed.
 These are distinct projects after the desktop release scope, not boxes a Linux build can close.
+
+The [current code/parity receipt](receipts/code-parity-20261026/README.md) records shared
+Unicode bidi mapping, styled painting, punctuation, shaped clamping and locale dates, with
+Windows held to build/tests. The table above tracks the remaining qualification work.

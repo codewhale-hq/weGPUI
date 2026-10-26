@@ -115,8 +115,11 @@ wegpui::I18n::set_locale(wegpui::Locale::parse("ar").unwrap(), cx);
 The 14 catalogs cover English, Simplified and Traditional Chinese, Japanese, Korean, Spanish,
 French, German, Portuguese, Russian, Hindi, Thai, Arabic and Hebrew. Twelve are starter
 translations awaiting native-speaker review. RTL layouts, wrapped input caret/selection and multiline alignment are implemented, with
-sampled macOS and Linux evidence. Windows, full IME/reader qualification and locale-aware dates
-remain open. See the [RTL continuation](docs/receipts/rtl-completion-20261025/README.md). See [the localisation guide](docs/I18N.md).
+sampled macOS and Linux evidence. Shared Unicode bidi geometry, styled RTL colors/underlines,
+locale-ordered Gregorian date entry/pickers and host-local today are implemented. Full IME,
+reader and platform qualification remains open. See the
+[code and parity receipt](docs/receipts/code-parity-20261026/README.md) and
+[localisation guide](docs/I18N.md).
 
 ## Platform status
 

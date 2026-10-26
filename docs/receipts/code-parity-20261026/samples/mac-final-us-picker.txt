@@ -1,0 +1,61 @@
+The following is a diff from the previous accessibility tree for Window: "weGPUI" with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 1-41
++	51 dialog Date
++		52 button Close
++		53 list Date March
++			54 text (selectable) January
++			55 text (selectable) February
++			56 text (selected) March
++			57 text (selectable) April
++			58 text (selectable) May
++			59 text (selectable) June
++			60 text (selectable) July
++			61 text (selectable) August
++			62 text (selectable) September
++			63 text (selectable) October
++			64 text (selectable) November
++			65 text (selectable) December
++		66 list Date 4
++			67 text (selectable) 1
++			68 text (selectable) 2
++			69 text (selectable) 3
++			70 text (selected) 4
++			71 text (selectable) 5
++			72 text (selectable) 6
++			73 text (selectable) 7
++			74 text (selectable) 8
++			75 text (selectable) 9
++			76 text (selectable) 10
++			77 text (selectable) 11
++			78 text (selectable) 12
++			79 text (selectable) 13
++			80 text (selectable) 14
++			81 text (selectable) 15
++			82 text (selectable) 16
++			83 text (selectable) 17
++			84 text (selectable) 18
++			85 text (selectable) 19
++			86 text (selectable) 20
++			87 text (selectable) 21
++			88 text (selectable) 22
++			89 text (selectable) 23
++			90 text (selectable) 24
++			91 text (selectable) 25
++			92 text (selectable) 26
++			93 text (selectable) 27
++			94 text (selectable) 28
++			95 text (selectable) 29
++			96 text (selectable) 30
++			97 text (selectable) 31
++		98 list Date 2027
++			99 text (selectable) 2023
++			100 text (selectable) 2024
++			101 text (selectable) 2025
++			102 text (selectable) 2026
++			103 text (selected) 2027
++			104 text (selectable) 2028
++			105 text (selectable) 2029
++			106 text (selectable) 2030
++			107 text (selectable) 2031
++		108 button OK
+The focused UI element is 0 standard window weGPUI, Secondary Actions: Raise

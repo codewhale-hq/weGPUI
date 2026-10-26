@@ -1,0 +1,12 @@
+{"id": "light/article", "route": "article", "state": null, "theme": "light", "care": false, "brand": null}
+{"id": "light/footer", "route": "footer", "state": null, "theme": "light", "care": false, "brand": null}
+{"id": "light/form_page", "route": "form_page", "state": null, "theme": "light", "care": false, "brand": null}
+{"id": "light/input", "route": "input", "state": null, "theme": "light", "care": false, "brand": null}
+{"id": "light/layers", "route": "layers", "state": null, "theme": "light", "care": false, "brand": null}
+{"id": "light/panel", "route": "panel", "state": null, "theme": "light", "care": false, "brand": null}
+{"id": "dark-care-brand/article", "route": "article", "state": null, "theme": "dark", "care": true, "brand": "7C3AED"}
+{"id": "dark-care-brand/footer", "route": "footer", "state": null, "theme": "dark", "care": true, "brand": "7C3AED"}
+{"id": "dark-care-brand/form_page", "route": "form_page", "state": null, "theme": "dark", "care": true, "brand": "7C3AED"}
+{"id": "dark-care-brand/input", "route": "input", "state": null, "theme": "dark", "care": true, "brand": "7C3AED"}
+{"id": "dark-care-brand/layers", "route": "layers", "state": null, "theme": "dark", "care": true, "brand": "7C3AED"}
+{"id": "dark-care-brand/panel", "route": "panel", "state": null, "theme": "dark", "care": true, "brand": "7C3AED"}

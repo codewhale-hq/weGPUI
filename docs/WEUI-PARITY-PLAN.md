@@ -66,6 +66,8 @@ in `line_wrapper.rs` for twenty closing marks. Its thirteen extracted cases and 
 checks pass. The [October 26 receipt](receipts/weui-parity-20261026/README.md) records current
 source gates, typography, Layers geometry/labels/focus/actions and bounded native contracts. Step 3 was subsequently approved; the [RTL continuation](receipts/rtl-completion-20261025/README.md)
 records new row-aware input mapping, glyph-order normalisation and current host samples.
-Full host/IME/reader and generic GPUI mapping qualification remain open. No new library dependency, deployment, publication
-or platform-support claim follows from this parity work. macOS/Windows/hardware and human
+The subsequent [shared continuation](receipts/code-parity-20261026/README.md) adds the
+owner-approved direct locked Unicode bidi/clock edges, text-owning GPUI mapping, styled painting,
+shaped clamping and locale dates. Full host/IME/reader qualification remains open. No deployment,
+package publication or platform-support claim follows from this parity work. macOS/Windows/hardware and human
 reader checks cannot be replaced by Linux screenshots or browser tests.

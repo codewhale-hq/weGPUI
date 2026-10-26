@@ -4,7 +4,8 @@ The owner approved these local compatibility copies on 2026-10-25. Package versi
 remain `accesskit_unix 0.22.1`, `accesskit_atspi_common 0.19.1`, `gpui-pre 0.3.9` and
 `gpui-pre-linux 0.3.9`. Copies came from the exact locked crate archives; licenses and
 package provenance are retained. Registry files were not edited. Root Cargo patches
-select these copies without changing dependency requirements or feature edges.
+select these copies; the approved Unicode bidi continuation adds one direct edge to the already
+locked `unicode-bidi 0.3.18`, without changing package versions.
 
 ## Compilation and consumer setup
 
@@ -99,7 +100,8 @@ caret/selection, styling and platform limits are in the
 [receipt](../docs/receipts/gpui-logical-wrap-20261025/README.md). Step 3 was subsequently approved. The [RTL continuation](../docs/receipts/rtl-completion-20261025/README.md)
 adds visual-order normalisation before caching platform layouts and row-aware mapping in
 weGPUI input. Fresh macOS/Linux ARM64 samples supersede the old sampled rendering failure;
-the input shim remains necessary because generic GPUI x/index APIs are not yet bidi-aware.
+the subsequent [shared text continuation](../docs/receipts/code-parity-20261026/README.md)
+replaces the input-only shim with cached Unicode bidi geometry in text-owning layouts.
 
 `WrappedLineLayout` now carries private logical-row metadata. Downstream GPUI code should
 obtain layouts through the text-system factories; code that previously used an external struct
@@ -132,3 +134,22 @@ dictionary segmentation. Linux source/native evidence is in the
 [October 26 receipt](../docs/receipts/weui-parity-20261026/README.md). The later
 [publication review](../docs/REVIEW-2026-10-26.md) records repository publication authorization;
 step 3, full platform acceptance and package/site publication remain separate.
+
+## Shared Unicode geometry and shaped clamping
+
+The owner approved the direct locked `unicode-bidi 0.3.18` dependency. `text_system/bidi.rs`
+resolves paragraph/row levels, caches visual clusters and logical ends, and maps caret, glyph
+hits and discontiguous selections. `ShapedLine` and factory-built `WrappedLineLayout` expose
+text-aware geometry; element `TextLayout` applies actual painted alignment. Its selection
+rectangles also serve weGPUI inline links. Raw text-free `LineLayout` methods retain their
+legacy low-level behavior and platform struct layout.
+
+Descending logical glyph indices now select the correct color, background, underline and
+strikethrough run. Decorations continue at the next row's aligned origin. Opening punctuation
+shares one break predicate with wrapper, truncator and shaped rows; oversized RTL words break
+at shaped clusters. Element line clamping checks real shaped rows, including ellipsis, so the
+Panel description cannot silently clip its last characters after an estimated-width decision.
+
+Five existing bidi tests moved into the extracted real-source harness alongside the four
+layout cases. The packaged upstream test target remains unavailable; this is not a full
+GPUI test-suite claim. The receipt records exact source, binaries, native probes and limits.

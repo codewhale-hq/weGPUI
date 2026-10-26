@@ -1,0 +1,57 @@
+[
+  {
+    "name": "linux-gallery-tests",
+    "command": [
+      "docker",
+      "exec",
+      "wegpui-rtl-qualification",
+      "cargo",
+      "test",
+      "--manifest-path",
+      "/src/Cargo.toml",
+      "--example",
+      "gallery",
+      "--locked",
+      "--offline"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "macos-gallery-tests",
+    "command": [
+      "cargo",
+      "test",
+      "--example",
+      "gallery",
+      "--locked",
+      "--offline"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "macos-gallery-clippy",
+    "command": [
+      "cargo",
+      "clippy",
+      "--example",
+      "gallery",
+      "--locked",
+      "--offline",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "updated-rustdoc",
+    "command": [
+      "cargo",
+      "doc",
+      "--no-deps",
+      "--locked",
+      "--offline"
+    ],
+    "exit_code": 0
+  }
+]

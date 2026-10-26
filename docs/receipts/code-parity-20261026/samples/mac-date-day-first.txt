@@ -1,0 +1,44 @@
+The following is a diff from the previous accessibility tree for Window: "weGPUI" with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 53-84, 86-108
+~	51 container
+~		52 Radio list items
++			53 radio button (selectable, settable, boolean) cell standard
++			54 radio button (selectable, settable, boolean) cell standard
++			55 link Add more
++		56 checkbox (settable, boolean) standard is dealt for u., Value: on
++		57 checkbox (settable, boolean) standard is dealicient for u., Value: off
++		58 link Add more
++		59 container (selectable) qq
++			60 text field (settable) qq, Placeholder: Enter QQ number
++		61 container (selectable) Phone
++			62 text field (settable) Phone, Placeholder: Enter phone number
++			63 button Get code
++		64 container (selectable) Date
++			65 text field (settable) Date, Value: 05/03/2027
++			66 button Date, open date picker
++		67 container (selectable) Time
++			68 text field (settable) Time, Placeholder: DD/MM/YYYY HH:MM
++			69 button Time, open date picker
++		70 container (selectable) Code
++			71 text field (settable) Code, Placeholder: Enter verification code
++			72 image Verification code
++		73 container (selectable) Card no.
++			74 text field (settable) Card no., Placeholder: Enter card number
++		75 container (selectable)
++			76 switch (settable, boolean) Title text, Value: off
++		77 container (selectable)
++			78 switch (settable, boolean) IE Edge-compatible version, Value: on
++		79 container (selectable)
++			80 text field (settable) Enter text
++		81 container (selectable)
++			82 text entry area (settable) Enter text
++			83 container 0/200
++		84 pop up button (settable) +86
+~		85 text field (settable) Number, Placeholder: Enter number
++		86 pop up button (settable) WeChat ID
++		87 pop up button (settable) Country/region China, Value: China
++		88 checkbox (settable, boolean) I have read and agree to the Terms, Value: off
++			89 link the Terms
++		90 button OK
++		91 link WeUI home
+The focused UI element is 0 standard window weGPUI, Secondary Actions: Raise

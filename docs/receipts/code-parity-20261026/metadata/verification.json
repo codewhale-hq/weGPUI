@@ -1,0 +1,10 @@
+{
+  "pairs": 1056,
+  "reused_unchanged_defaults": 472,
+  "corrected_state_and_control_pairs": 584,
+  "verified_image_files_in_input_corpora": 3280,
+  "final_source_commit": "fa60f66e42e7604174f585d7be3c5725b26b186a",
+  "base_source_commit": "4b01775143fedca00512cd7ea6b3188d6626e47a",
+  "reason_for_union": "The follow-up changes only amount-row visual warn styling, Panel module documentation and reference state readiness. All registered states and the affected default route were retaken; 472 other defaults retain their unchanged source/binary evidence.",
+  "qualification": "capture completeness and image identity, not full parity acceptance"
+}

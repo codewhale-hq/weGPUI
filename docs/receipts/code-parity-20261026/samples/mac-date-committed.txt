@@ -1,0 +1,3 @@
+The following is a diff from the previous accessibility tree for Window: "weGPUI" with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+~			15 text field (settable) Date, Value: 04/03/2027
+The focused UI element is 0 standard window weGPUI, Secondary Actions: Raise
