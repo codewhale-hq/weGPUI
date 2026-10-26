@@ -65,8 +65,13 @@ Final source gates and consumer results are retained under [checks](checks/). ma
 build, 54 library/three gallery tests, strict Clippy and strict rustdoc pass on frozen source.
 Linux all-target build, the same 54/three tests, strict Clippy and strict rustdoc also pass.
 The initial Linux attempt stopped before formatting because rustfmt was absent; installing
-the official toolchain components resolved that tooling failure. Hosted results are retained
-when complete.
+the official toolchain components resolved that tooling failure. [Final hosted CI](https://github.com/codewhale-hq/weGPUI/actions/runs/40281279626)
+passes at `b368c94`, including Linux stable/MSRV, macOS, Windows MSVC all-target
+build/library/gallery tests/Clippy, and mobile library-only type checks. Windows visible UI
+was not unlocked or driven. The separate experimental iOS bundle still fails; its diagnostics
+remain distinct from the passing library type checks. Its six `gpui-pre-ios` errors are
+missing lifecycle/input-handler APIs in the published backend/core pair; [stderr](checks/ios-bundle.txt)
+retains them. [CodeQL](https://github.com/codewhale-hq/weGPUI/actions/runs/40281278870) also passes.
 
 The focused harnesses pass seven word cases, 16 logical and nine shared layout/bidi cases,
 13 punctuation cases and eight trailing-space plus five shared bidi cases. The deliberate
@@ -85,7 +90,9 @@ failed attempts are preserved under [website](website/); they are not promoted t
 The fresh preview consumer initially failed because this container mixed a newer FreeType
 pkg-config file with an older bzip2 development package lacking `bzip2.pc`. Updating the
 official bzip2 development package resolves that system prerequisite; the failed attempt
-is retained. This is separate from the cached native-source build results.
+is retained. The corrected fresh consumer now builds locked/offline successfully. The
+verified source bundle hash is `c76e32cbd496f0a66078d5b8a8d5852db76580a6f1801f728cbb1f741e129f21`.
+This is separate from the cached native-source build results.
 
 ## Remaining acceptance
 
@@ -95,5 +102,9 @@ and distributable installation. Mobile remains experimental with backend gaps. S
 capture, browser, hosted build and actual-reader evidence are distinct. See
 [acceptance](../../ACCEPTANCE.md) and [release readiness](../../RELEASE-READINESS.md).
 
-Website publication and live-origin verification, when complete, are recorded separately.
+The [website update](../pages-update-20261026/README.md) is published at `b368c94`;
+live-origin recorded views and interactive checks pass. Its deployment evidence is separate.
+The dictionary dependency decision is prepared in the [next proposal](../../proposals/gpui-dictionary-break/README.md);
+the owner subsequently approved the dictionaries and dependencies needed to continue. That
+next implementation is separately qualified and does not relabel this receipt.
 No crate publication, signing, billing, paid provider operation or support claim is made.

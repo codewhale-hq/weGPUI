@@ -17,6 +17,12 @@ status visible until the desktop release gates are complete.
 
 ## GitHub Pages
 
+The latest owner-authorized update publishes `b368c94` in
+[run 40281443167](https://github.com/codewhale-hq/weGPUI/actions/runs/40281443167).
+Build/deploy and direct live-origin browser checks pass; see the
+[update receipt](../docs/receipts/pages-update-20261026/README.md). The following original
+publication record remains historical.
+
 The published gallery is <https://codewhale-hq.github.io/weGPUI/>. The owner saved
 **GitHub Actions** as the Pages source, then dispatched
 [run 40211664701](https://github.com/codewhale-hq/weGPUI/actions/runs/40211664701)

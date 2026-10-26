@@ -82,12 +82,12 @@ the website. Native GPUI and actual screen-reader acceptance require separate ch
 
 ## Publication
 
-The gallery is published at <https://codewhale-hq.github.io/weGPUI/>. GitHub records a
-successful build and deployment of `e5b6996` in
-[run 40211664701](https://github.com/codewhale-hq/weGPUI/actions/runs/40211664701).
-The owner selected GitHub Actions in Pages settings and dispatched this publication.
-That receipt's cloud proxy blocked the published origin. The current local host can reach
-the origin; a later update's deployment and browser evidence must identify its own source.
+The gallery is published at <https://codewhale-hq.github.io/weGPUI/>. The latest reviewed
+update publishes `b368c94` through [run 40281443167](https://github.com/codewhale-hq/weGPUI/actions/runs/40281443167).
+Live-origin verification confirms the clean source revision, all 264 recorded views and 528
+referenced images, plus selected interactive/deep-link/palette checks. See the
+[deployment receipt](../docs/receipts/pages-update-20261026/README.md). The original owner-run
+publication and earlier cloud-proxy restriction retain their own historical receipt.
 
 Deploy the complete `website/dist/`, including `.nojekyll`, only after owner approval.
 [HOSTING.md](HOSTING.md) describes the manual-only GitHub Pages workflow, required
