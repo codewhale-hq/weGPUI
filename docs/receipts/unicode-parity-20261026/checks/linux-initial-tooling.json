@@ -1,0 +1,19 @@
+{
+  "source_commit": "0cf3f1933a17d8f3d55fe22b8e990f797265a7ac",
+  "host": "Linux-6.10.14-linuxkit-aarch64-with-glibc2.41",
+  "source_unchanged": true,
+  "checks": [
+    {
+      "name": "fmt",
+      "command": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "exit_code": 1,
+      "seconds": 0.17
+    }
+  ]
+}

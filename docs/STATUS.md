@@ -41,6 +41,15 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 
 ## Localisation and right-to-left — 2026-10-25
 
+The latest [Unicode and website continuation](receipts/unicode-parity-20261026/README.md)
+uses the owner-approved already-locked `unicode-linebreak 0.1.5` across all wrapping and
+truncation paths. Unicode 15.0 opportunities replace the script/punctuation allow-list.
+All 112 targeted pairs at 320/375 across eight appearances are captured and hash-verified.
+The narrow form now has the reference's four lines; measured 17px article line ends match.
+The website derives recent capture provenance from hashed receipts, refreshes platform claims
+and preserves live preview state when switching palettes. This closes the reproduced wrapping
+and preview-reset gaps; it does not complete dictionary, IME, reader or platform acceptance.
+
 The owner approved step 3 and direct references to the already locked `unicode-bidi 0.3.18`
 and `chrono 0.4.45` crates. The current [code and parity continuation](receipts/code-parity-20261026/README.md) moves input mapping
 into GPUI's shared cached row geometry, resolves Unicode bidi levels and paragraph direction,

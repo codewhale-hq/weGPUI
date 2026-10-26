@@ -1,0 +1,66 @@
+Window: "weGPUI", App: CodeParity.
+0 standard window weGPUI, Secondary Actions: Raise
+	1 container
+		2 container (selectable) العربية
+			3 text field (settable) …, Value: مرحبا بالعالم 123 hello
+		4 container (selectable) עברית
+			5 text field (settable) …, Value: שלום עולם 2026 WeUI
+		6 container (selectable) Mixed
+			7 text field (settable) …, Value: Hello مرحبا שלום 2026
+		8 container (selectable) हिन्दी
+			9 text field (settable) …, Value: नमस्ते दुनिया देवनागरी
+		10 container (selectable) ไทย
+			11 text field (settable) …, Value: สวัสดีชาวโลก ภาษาไทย
+		12 container (selectable) 日本語
+			13 text field (settable) …, Value: こんにちは世界 日本語
+		14 container (selectable) 한국어
+			15 text field (settable) …, Value: 안녕하세요 세계
+		16 container (selectable) العربية ¶
+			17 text entry area (settable) Arabic paragraph, Value: تدعم مكتبة weGPUI اللغة العربية والعبرية والإنجليزية في الفقرة نفسها، مع أرقام مثل 12345 وعناوين مثل weui.io في الوسط، وتنتقل الأسطر بترتيب القراءة الصحيح.
+		18 list
+			19 text (selectable) English, Help: Hello, world, The quick brown fox jumps over the lazy dog., Secondary Actions: Pick
+			20 text (selectable) 简体中文, Help: 你好，世界, 敏捷的棕色狐狸跳过了那只懒狗。, Secondary Actions: Pick
+			21 text (selectable) 繁體中文, Help: 你好，世界, 敏捷的棕色狐狸跳過了那隻懶狗。, Secondary Actions: Pick
+			22 text (selectable) 日本語, Help: こんにちは、世界, 色は匂えど 散りぬるを 我が世誰ぞ 常ならむ, Secondary Actions: Pick
+			23 text (selectable) 한국어, Help: 안녕하세요, 세계, 키스의 고유조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다., Secondary Actions: Pick
+			24 text (selectable) Español, Help: Hola, mundo, El veloz murciélago hindú comía feliz cardillo y kiwi., Secondary Actions: Pick
+			25 text (selectable) Français, Help: Bonjour, le monde, Portez ce vieux whisky au juge blond qui fume., Secondary Actions: Pick
+			26 text (selectable) Deutsch, Help: Hallo, Welt, Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich., Secondary Actions: Pick
+			27 text (selectable) Português, Help: Olá, mundo, À noite, vovô Kowalsky vê o ímã cair no pé do pinguim queixoso., Secondary Actions: Pick
+			28 text (selectable) Русский, Help: Привет, мир, Съешь же ещё этих мягких французских булок, да выпей чаю., Secondary Actions: Pick
+			29 text (selected) العربية, Help: مرحبًا بالعالم, نص حكيم له سر قاطع وذو شأن عظيم مكتوب على ثوب أخضر ومغلف بجلد أزرق., Secondary Actions: Pick
+			30 text (selectable) עברית, Help: שלום עולם, דג סקרן שט בים מאוכזב ולפתע מצא חברה., Secondary Actions: Pick
+			31 text (selectable) हिन्दी, Help: नमस्ते दुनिया, ऋषियों को सताने वाले दुष्ट राक्षसों के राजा रावण का सर्वनाश करने वाले विष्णुवतार भगवान श्रीराम।, Secondary Actions: Pick
+			32 text (selectable) ไทย, Help: สวัสดีชาวโลก, เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน, Secondary Actions: Pick
+		33 container (selectable) Han: 直 骨 令 刃 海 (ja / zh-Hans / zh-Hant / ko forms differ)
+		34 container (selectable) اللغة العربية (Arabic) في 2026 — weGPUI
+		35 container (selectable) שלום, WeUI 2.6.26! — עברית (Hebrew)
+		36 container (selectable) Latin text with عربي and עברית inside, 12345.
+		37 container (selectable) Emoji 👩‍💻 🇯🇵 and a combining accent é
+		38 container (selectable) تدعم مكتبة weGPUI اللغة العربية والعبرية والإنجليزية في الفقرة نفسها، مع أرقام مثل 12345 وعناوين مثل weui.io في الوسط، وتنتقل الأسطر بترتيب القراءة الصحيح.
+		39 container (selectable) הספרייה weGPUI תומכת בעברית, בערבית ובאנגלית באותה פסקה, עם מספרים כמו 12345 וכתובות כמו weui.io באמצע, והשורות מתקפלות לפי סדר הקריאה הנכון.
+		40 container (selectable) The library wraps a mixed paragraph in reading order: العربية في المنتصف, then עברית and 2026, before the English text carries on to a second and a third line.
+		41 container (selectable) locale, Help: ar
+		42 container (selectable) direction, Help: RTL
+		43 container (selectable) ok, Help: موافق
+		44 container (selectable) cancel, Help: إلغاء
+		45 container (selectable) search, Help: بحث
+		46 container (selectable) loading, Help: جارٍ التحميل
+		47 container (selectable) unavailable, Help: غير متاح
+		48 container (selectable) get_code, Help: الحصول على الرمز
+		49 container (selectable) resend_code, Help: إعادة الإرسال (59 ث)
+		50 container (selectable) step_position, Help: الخطوة 2 من 4
+		51 container (selectable) months, Help: يناير · فبراير · مارس
+		52 container (selectable) year / day, Help: 2026، 25
+		53 link WeUI home
+	54 close button
+	55 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	56 minimize button
+	57 text weGPUI
+58 menu bar
+	59 Code Parity
+	60 Navigate
+	61 Appearance
+	62 Language
+
+The focused UI element is 0 standard window weGPUI, Secondary Actions: Raise

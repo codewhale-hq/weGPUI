@@ -36,6 +36,10 @@ and review limits; these images are not a claim of current cross-platform parity
 - **Localisation:** English defaults, 14 message catalogs, custom catalogs and mirrored RTL
   layouts. Translation review and several bidirectional-text cases remain open.
 
+The [latest parity continuation](docs/receipts/unicode-parity-20261026/README.md) adds Unicode
+line breaking, matching narrow-form/article samples and refreshed website evidence. Recorded
+comparisons identify their own source; capture completeness does not establish full parity.
+
 The [component modules](src/components/mod.rs) document APIs, defaults, callbacks and known
 limits. Applications own state, network requests, persistence and upload transport.
 

@@ -1,0 +1,134 @@
+baseline 101
+
+running 13 tests
+test tests::ascii_closing_marks_still_attach ... FAILED
+test tests::closing_marks_attach_to_the_preceding_cjk_word ... FAILED
+test tests::closing_marks_do_not_start_a_wrapped_row ... FAILED
+test tests::opening_marks_and_other_scripts_are_unchanged ... FAILED
+test tests::panel_clamp_now_accounts_for_the_moved_punctuation ... FAILED
+test tests::test_is_word_char ... FAILED
+test tests::test_is_word_char_arabic ... FAILED
+test tests::test_is_word_char_devanagari ... FAILED
+test tests::test_is_word_char_greek ... FAILED
+test tests::test_is_word_char_hebrew ... FAILED
+test tests::test_is_word_char_neighbouring_scripts_are_unchanged ... FAILED
+test tests::test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek ... FAILED
+test tests::unpunctuated_text_that_fits_stays_complete ... ok
+
+failures:
+
+---- tests::ascii_closing_marks_still_attach stdout ----
+
+thread 'tests::ascii_closing_marks_still_attach' (21207322) panicked at /Volumes/VIXinSSD/CW/artifacts/wegpui-full-parity-20261025/cjk/baseline.rs:997:13:
+（
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- tests::closing_marks_attach_to_the_preceding_cjk_word stdout ----
+
+thread 'tests::closing_marks_attach_to_the_preceding_cjk_word' (21207323) panicked at /Volumes/VIXinSSD/CW/artifacts/wegpui-full-parity-20261025/cjk/baseline.rs:957:13:
+、
+
+---- tests::closing_marks_do_not_start_a_wrapped_row stdout ----
+
+thread 'tests::closing_marks_do_not_start_a_wrapped_row' (21207324) panicked at /Volumes/VIXinSSD/CW/artifacts/wegpui-full-parity-20261025/cjk/baseline.rs:967:13:
+assertion `left == right` failed: 、
+  left: 12
+ right: 9
+
+---- tests::opening_marks_and_other_scripts_are_unchanged stdout ----
+
+thread 'tests::opening_marks_and_other_scripts_are_unchanged' (21207325) panicked at /Volumes/VIXinSSD/CW/artifacts/wegpui-full-parity-20261025/cjk/baseline.rs:990:13:
+（
+
+---- tests::panel_clamp_now_accounts_for_the_moved_punctuation stdout ----
+
+thread 'tests::panel_clamp_now_accounts_for_the_moved_punctuation' (21207326) panicked at /Volumes/VIXinSSD/CW/artifacts/wegpui-full-parity-20261025/cjk/baseline.rs:976:9:
+由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。
+
+---- tests::test_is_word_char stdout ----
+
+thread 'tests::test_is_word_char' (21207327) panicked at /Volumes/VIXinSSD/CW/artifacts/wegpui-full-parity-20261025/cjk/baseline.rs:856:13:
+assertion `left == right` failed: Hello123
+  left: [1, 2, 3, 4, 5, 6, 7, 8]
+ right: [8]
+
+---- tests::test_is_word_char_arabic stdout ----
+
+thread 'tests::test_is_word_char_arabic' (21207328) panicked at /Volumes/VIXinSSD/CW/artifacts/wegpui-full-parity-20261025/cjk/baseline.rs:883:13:
+assertion `left == right` failed: مرحبا
+  left: [2, 4, 6, 8, 10]
+ right: [10]
+
+---- tests::test_is_word_char_devanagari stdout ----
+
+thread 'tests::test_is_word_char_devanagari' (21207329) panicked at /Volumes/VIXinSSD/CW/artifacts/wegpui-full-parity-20261025/cjk/baseline.rs:902:13:
+assertion `left == right` failed: नमस्ते
+  left: [3, 6, 9, 12, 15, 18]
+ right: [18]
+
+---- tests::test_is_word_char_greek stdout ----
+
+thread 'tests::test_is_word_char_greek' (21207330) panicked at /Volumes/VIXinSSD/CW/artifacts/wegpui-full-parity-20261025/cjk/baseline.rs:909:13:
+assertion `left == right` failed: Καλημέρα
+  left: [2, 4, 6, 8, 10, 12, 14, 16]
+ right: [16]
+
+---- tests::test_is_word_char_hebrew stdout ----
+
+thread 'tests::test_is_word_char_hebrew' (21207331) panicked at /Volumes/VIXinSSD/CW/artifacts/wegpui-full-parity-20261025/cjk/baseline.rs:890:13:
+assertion `left == right` failed: שלום
+  left: [2, 4, 6, 8]
+ right: [8]
+
+---- tests::test_is_word_char_neighbouring_scripts_are_unchanged stdout ----
+
+thread 'tests::test_is_word_char_neighbouring_scripts_are_unchanged' (21207332) panicked at /Volumes/VIXinSSD/CW/artifacts/wegpui-full-parity-20261025/cjk/baseline.rs:916:13:
+assertion `left == right` failed: Հայերեն
+  left: [2, 4, 6, 8, 10, 12, 14]
+ right: [14]
+
+---- tests::test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek stdout ----
+
+thread 'tests::test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek' (21207333) panicked at /Volumes/VIXinSSD/CW/artifacts/wegpui-full-parity-20261025/cjk/baseline.rs:943:17:
+assertion `left == right` failed: wrapped inside a word: "نص حكيم له سر قاطع وذو"
+  left: Some('و')
+ right: Some(' ')
+
+
+failures:
+    tests::ascii_closing_marks_still_attach
+    tests::closing_marks_attach_to_the_preceding_cjk_word
+    tests::closing_marks_do_not_start_a_wrapped_row
+    tests::opening_marks_and_other_scripts_are_unchanged
+    tests::panel_clamp_now_accounts_for_the_moved_punctuation
+    tests::test_is_word_char
+    tests::test_is_word_char_arabic
+    tests::test_is_word_char_devanagari
+    tests::test_is_word_char_greek
+    tests::test_is_word_char_hebrew
+    tests::test_is_word_char_neighbouring_scripts_are_unchanged
+    tests::test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek
+
+test result: FAILED. 1 passed; 12 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+proposal 0
+
+running 13 tests
+test tests::ascii_closing_marks_still_attach ... ok
+test tests::closing_marks_attach_to_the_preceding_cjk_word ... ok
+test tests::closing_marks_do_not_start_a_wrapped_row ... ok
+test tests::opening_marks_and_other_scripts_are_unchanged ... ok
+test tests::panel_clamp_now_accounts_for_the_moved_punctuation ... ok
+test tests::test_is_word_char ... ok
+test tests::test_is_word_char_arabic ... ok
+test tests::test_is_word_char_devanagari ... ok
+test tests::test_is_word_char_greek ... ok
+test tests::test_is_word_char_hebrew ... ok
+test tests::test_is_word_char_neighbouring_scripts_are_unchanged ... ok
+test tests::test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek ... ok
+test tests::unpunctuated_text_that_fits_stays_complete ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+

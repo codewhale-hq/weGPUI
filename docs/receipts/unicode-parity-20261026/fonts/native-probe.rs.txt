@@ -1,0 +1,19 @@
+use gpui::{prelude::*, *};
+#[path="/src/examples/support/platform.rs"] mod platform;
+struct Probe;
+impl Render for Probe {
+ fn render(&mut self, window: &mut Window, _: &mut Context<Self>) -> impl IntoElement {
+  let text:SharedString="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.".into();
+  let mut out=String::new();
+  for name in [".SystemUIFont","Noto Sans","DejaVu Sans"] {
+   let face=font(name);let id=window.text_system().resolve_font(&face);
+   out.push_str(&format!("REQUEST {name} RESOLVED {:?}\n",window.text_system().get_font_for_id(id)));
+   let runs=[TextRun { len:text.len(),font:face,color:rgb(0).into(),background_color:None,underline:None,strikethrough:None }];
+   let shaped=window.text_system().shape_text(text.clone(),px(17.),&runs,Some(px(327.)),None).unwrap().remove(0);
+   out.push_str(&format!("FONT WIDTH {:?} BOUNDARIES {:?}\n",shaped.width(),shaped.wrap_boundaries));
+   for i in 0..=shaped.wrap_boundaries.len(){let start=shaped.wrapped_line_start_index(i);let end=if i<shaped.wrap_boundaries.len(){shaped.wrapped_line_start_index(i+1)}else{text.len()};out.push_str(&format!("{}\n",&text[start..end]));}
+  }
+  std::fs::write("/work/full-parity/native-fonts.txt",out).unwrap();div().size_full().child(text)
+ }
+}
+fn main(){platform::application().with_assets(wegpui::Assets).run(|cx|{wegpui::init(cx);cx.open_window(WindowOptions::default(),|_,cx|cx.new(|_|Probe)).unwrap();cx.activate(true);});}

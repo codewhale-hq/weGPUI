@@ -1,0 +1,528 @@
+{
+  "browser": "156.0.8078.47",
+  "native_application_test": false,
+  "source_commit": "974c15120e357427587a24c5fdf9c9cf4e1df99a",
+  "source_dirty": true,
+  "capture_commit": "2c8ed10",
+  "native_evidence": {
+    "receipt": "docs/receipts/code-parity-20261026/README.md",
+    "sourceCommit": "fa60f66e42e7604174f585d7be3c5725b26b186a",
+    "capturedPairs": 1056,
+    "scenes": 132,
+    "platformJobs": [
+      {
+        "id": 121419433406,
+        "name": "macOS native build (no runtime acceptance)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40276223271,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Apple tooling",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Toolchain",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run cargo +stable fetch --locked",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run cargo +stable build --all-targets --locked --offline",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run cargo +stable test --lib --locked --offline",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run cargo +stable test --example gallery --locked --offline",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Run cargo +stable clippy --all-targets --locked --offline -- -D warnings",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 18
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19
+          }
+        ]
+      },
+      {
+        "id": 121419433418,
+        "name": "Windows MSVC build (no runtime acceptance)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40276223271,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run rustup toolchain install stable --profile minimal -c clippy",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run cargo +stable fetch --locked",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run cargo +stable build --all-targets --locked --offline",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run cargo +stable test --lib --locked --offline",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run cargo +stable test --example gallery --locked --offline",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run cargo +stable clippy --all-targets --locked --offline -- -D warnings",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          }
+        ]
+      },
+      {
+        "id": 121419433591,
+        "name": "Mobile library type-checks only",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40276223271,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run rustup toolchain install stable --profile minimal -t aarch64-apple-ios,aarch64-apple-ios-sim,aarch64-linux-android",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run cargo +stable check --lib --locked --target aarch64-apple-ios",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run cargo +stable check --lib --locked --target aarch64-apple-ios-sim",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run cargo +stable check --lib --locked --target aarch64-linux-android",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      },
+      {
+        "id": 121419434076,
+        "name": "Linux build, contracts and docs",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40276223271,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "System dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Toolchain",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run cargo +stable fetch --locked",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run cargo +stable fmt --all -- --check",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run cargo +stable build --all-targets --locked --offline",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run cargo +stable test --lib --locked --offline",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Run cargo +stable test --example gallery --locked --offline",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Run cargo +stable clippy --all-targets --locked --offline -- -D warnings",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Strict documentation",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Extracted vendored text contracts",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Build complete showcase",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Preserve reviewable website",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Bundle script contracts (fake tools, no Apple runtime)",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 30
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 31
+          }
+        ]
+      },
+      {
+        "id": 121419434197,
+        "name": "Linux Rust 1.95 build and contracts",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40276223271,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "System dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run rustup toolchain install 1.95.0 --profile minimal",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run cargo +1.95.0 build --all-targets --locked",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run cargo +1.95.0 test --lib --locked --offline",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run cargo +1.95.0 test --example gallery --locked --offline",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          }
+        ]
+      }
+    ]
+  },
+  "gpui_version": "0.3.9",
+  "routes_checked": 60,
+  "state_theme_routes_checked": 264,
+  "captures_decoded": 528,
+  "api_links_checked": 0,
+  "viewport_routes": [
+    [
+      390,
+      "overview"
+    ],
+    [
+      390,
+      "components/form_select?view=native"
+    ],
+    [
+      390,
+      "get-started"
+    ],
+    [
+      390,
+      "themes"
+    ],
+    [
+      390,
+      "native"
+    ],
+    [
+      390,
+      "native-guide"
+    ],
+    [
+      390,
+      "native-themes"
+    ],
+    [
+      390,
+      "platforms"
+    ],
+    [
+      390,
+      "roadmap"
+    ],
+    [
+      768,
+      "overview"
+    ],
+    [
+      768,
+      "components/form_select?view=native"
+    ],
+    [
+      768,
+      "get-started"
+    ],
+    [
+      768,
+      "themes"
+    ],
+    [
+      768,
+      "native"
+    ],
+    [
+      768,
+      "native-guide"
+    ],
+    [
+      768,
+      "native-themes"
+    ],
+    [
+      768,
+      "platforms"
+    ],
+    [
+      768,
+      "roadmap"
+    ],
+    [
+      1440,
+      "overview"
+    ],
+    [
+      1440,
+      "components/form_select?view=native"
+    ],
+    [
+      1440,
+      "get-started"
+    ],
+    [
+      1440,
+      "themes"
+    ],
+    [
+      1440,
+      "native"
+    ],
+    [
+      1440,
+      "native-guide"
+    ],
+    [
+      1440,
+      "native-themes"
+    ],
+    [
+      1440,
+      "platforms"
+    ],
+    [
+      1440,
+      "roadmap"
+    ]
+  ],
+  "palettes": [
+    "light",
+    "dark",
+    "care_light",
+    "care_dark"
+  ],
+  "page_errors": [],
+  "passed": [
+    "catalog search/empty state",
+    "state/theme deep links",
+    "native/reference comparison",
+    "recorded capture provenance",
+    "clipboard",
+    "keyboard skip/focus",
+    "mobile navigation",
+    "responsive overflow",
+    "missing route"
+  ]
+}

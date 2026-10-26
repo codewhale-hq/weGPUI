@@ -1,0 +1,28 @@
+import json, threading
+from functools import partial
+from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
+from pathlib import Path
+from playwright.sync_api import sync_playwright
+class Quiet(SimpleHTTPRequestHandler):
+ def log_message(self,*args):pass
+server=ThreadingHTTPServer(('127.0.0.1',0),partial(Quiet,directory='/work/code-parity/reference'))
+threading.Thread(target=server.serve_forever,daemon=True).start()
+results=[]
+with sync_playwright() as p:
+ browser=p.chromium.launch(executable_path='/usr/bin/chromium')
+ for width in [320,375]:
+  page=browser.new_page(viewport={'width':width,'height':812},locale='zh-CN')
+  page.goto(f'http://127.0.0.1:{server.server_port}/dist/example/index.html#article')
+  page.wait_for_function("Array.from(document.querySelectorAll('#container > .page')).at(-1)?.classList.contains('js_show')")
+  data=page.locator('.weui-article p').first.evaluate('''e=>{const s=getComputedStyle(e),t=e.firstChild,rows={};for(let i=0;i<t.length;i++){const r=new Range();r.setStart(t,i);r.setEnd(t,i+1);const b=r.getBoundingClientRect();(rows[b.y]??=[]).push({c:t.textContent[i],x:b.x,w:b.width})}return {text:e.textContent,box:e.getBoundingClientRect().toJSON(),style:{fontFamily:s.fontFamily,fontSize:s.fontSize,lineHeight:s.lineHeight,wordBreak:s.wordBreak,overflowWrap:s.overflowWrap},rows}}''')
+  session=page.context.new_cdp_session(page)
+  session.send('DOM.enable');session.send('CSS.enable')
+  root=session.send('DOM.getDocument')['root']['nodeId']
+  node=session.send('DOM.querySelector',{'nodeId':root,'selector':'.weui-article p'})['nodeId']
+  data['fonts']=session.send('CSS.getPlatformFontsForNode',{'nodeId':node})
+  data['width']=width
+  results.append(data);page.close()
+ browser.close()
+server.shutdown()
+Path('/work/full-parity/article-font-metrics.json').write_text(json.dumps(results,indent=2,ensure_ascii=False)+'\n')
+print(json.dumps([{k:v for k,v in r.items() if k!='rows'}|{'lines':[''.join(c['c'] for c in row) for row in r['rows'].values()]} for r in results],indent=2,ensure_ascii=False))

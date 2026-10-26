@@ -1,0 +1,57 @@
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages were automatically installed and are no longer required:
+  libdrm-nouveau2 libdrm-radeon1 libglapi-mesa libllvm15 libnsl-dev libnsl2
+  libpthread-stubs0-dev libpython3.11-minimal libpython3.11-stdlib
+  libtirpc-common libtirpc-dev libtirpc3 libxcb-dri2-0 python3.11
+  python3.11-minimal usr-is-merged util-linux-extra
+Use 'apt autoremove' to remove them.
+The following additional packages will be installed:
+  bzip2 libbz2-1.0
+Suggested packages:
+  bzip2-doc
+Recommended packages:
+  bzip2-doc
+The following packages will be upgraded:
+  bzip2 libbz2-1.0 libbz2-dev
+3 upgraded, 0 newly installed, 0 to remove and 346 not upgraded.
+Need to get 109 kB of archives.
+After this operation, 15.4 kB disk space will be freed.
+Get:1 http://deb.debian.org/debian trixie/main arm64 bzip2 arm64 1.0.8-6 [39.5 kB]
+Get:2 http://deb.debian.org/debian trixie/main arm64 libbz2-dev arm64 1.0.8-6 [31.9 kB]
+Get:3 http://deb.debian.org/debian trixie/main arm64 libbz2-1.0 arm64 1.0.8-6 [37.8 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 109 kB in 0s (1105 kB/s)
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 29537 files and directories currently installed.)
+Preparing to unpack .../bzip2_1.0.8-6_arm64.deb ...
+Unpacking bzip2 (1.0.8-6) over (1.0.8-5+b1) ...
+Preparing to unpack .../libbz2-dev_1.0.8-6_arm64.deb ...
+Unpacking libbz2-dev:arm64 (1.0.8-6) over (1.0.8-5+b1) ...
+Preparing to unpack .../libbz2-1.0_1.0.8-6_arm64.deb ...
+Unpacking libbz2-1.0:arm64 (1.0.8-6) over (1.0.8-5+b1) ...
+Setting up libbz2-1.0:arm64 (1.0.8-6) ...
+Setting up bzip2 (1.0.8-6) ...
+Setting up libbz2-dev:arm64 (1.0.8-6) ...
+Processing triggers for libc-bin (2.41-12+deb13u4) ...

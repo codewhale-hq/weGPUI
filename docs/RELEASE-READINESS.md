@@ -69,8 +69,10 @@ Use the acceptance matrix in PLATFORMS; each result needs source/host versions.
 - [ ] macOS: current native rendering, input, resizing, IME and accessibility on the
   authorized local Apple host. VoiceOver stays off; macOS screen-reader acceptance
   remains incomplete. Hosted compilation is not runtime acceptance.
-- [ ] Windows: native MSVC build (CI configured; result pending) followed by a real Windows window, rendering at
+- [ ] Windows: recorded native MSVC build/tests/Clippy pass; full acceptance also needs a real Windows window, rendering at
   multiple scales, keyboard/input/IME and Narrator or NVDA.
+  Current continuation remains build/tests only by owner instruction; visible Windows checks
+  are outside its scope. See the [shared source receipt](receipts/code-parity-20261026/README.md).
 - [ ] Linux: complete X11/Wayland, resizing/scaling, IME and Orca qualification. Nested
   Weston runtime and partial Orca samples now exist; hardware desktop and complete matrix open.
 - [ ] Package a runnable gallery for the supported desktop platforms and verify

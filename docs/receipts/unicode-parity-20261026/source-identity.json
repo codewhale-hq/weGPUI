@@ -1,0 +1,22 @@
+{
+  "qualified_source": "0cf3f1933a17d8f3d55fe22b8e990f797265a7ac",
+  "capture_base_commit": "974c15120e357427587a24c5fdf9c9cf4e1df99a",
+  "capture_source_was_dirty": true,
+  "captures": [
+    {
+      "width": 320,
+      "pairs": 56,
+      "binary_sha256": "f382edfc66c29b6c186b41174550e79703bc2f1b40f2a6be9e03ff8dc54106f0",
+      "source_hashes_match_qualified_revision": true,
+      "images_hash_verified": 112
+    },
+    {
+      "width": 375,
+      "pairs": 56,
+      "binary_sha256": "f382edfc66c29b6c186b41174550e79703bc2f1b40f2a6be9e03ff8dc54106f0",
+      "source_hashes_match_qualified_revision": true,
+      "images_hash_verified": 112
+    }
+  ],
+  "macos_binary_sha256": "a54a5e1e66a68e95a2c3f2b1b70df5250607cf694fafa0593891ae3a28cc0b77"
+}

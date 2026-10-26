@@ -1,0 +1,31 @@
+REQUEST .SystemUIFont RESOLVED Some(Font { family: "Noto Sans", features: FontFeatures, fallbacks: None, weight: FontWeight(400.0), style: Normal })
+FONT WIDTH 327px BOUNDARIES [WrapBoundary { run_ix: 0, glyph_ix: 40 }, WrapBoundary { run_ix: 0, glyph_ix: 80 }, WrapBoundary { run_ix: 0, glyph_ix: 117 }, WrapBoundary { run_ix: 0, glyph_ix: 157 }, WrapBoundary { run_ix: 0, glyph_ix: 200 }, WrapBoundary { run_ix: 0, glyph_ix: 238 }, WrapBoundary { run_ix: 0, glyph_ix: 278 }]
+Lorem ipsum dolor sit amet, consectetur 
+adipisicing elit, sed do eiusmod tempor 
+incididunt ut labore et dolore magna 
+aliqua. Ut enim ad minim veniam, cillum 
+dolore eu fugiat nulla pariatur. Excepteur 
+sint occaecat cupidatat non proident, 
+sunt in culpa qui officia deserunt mollit 
+anim id est laborum.
+REQUEST Noto Sans RESOLVED Some(Font { family: "Noto Sans", features: FontFeatures, fallbacks: None, weight: FontWeight(400.0), style: Normal })
+FONT WIDTH 327px BOUNDARIES [WrapBoundary { run_ix: 0, glyph_ix: 40 }, WrapBoundary { run_ix: 0, glyph_ix: 80 }, WrapBoundary { run_ix: 0, glyph_ix: 117 }, WrapBoundary { run_ix: 0, glyph_ix: 157 }, WrapBoundary { run_ix: 0, glyph_ix: 200 }, WrapBoundary { run_ix: 0, glyph_ix: 238 }, WrapBoundary { run_ix: 0, glyph_ix: 278 }]
+Lorem ipsum dolor sit amet, consectetur 
+adipisicing elit, sed do eiusmod tempor 
+incididunt ut labore et dolore magna 
+aliqua. Ut enim ad minim veniam, cillum 
+dolore eu fugiat nulla pariatur. Excepteur 
+sint occaecat cupidatat non proident, 
+sunt in culpa qui officia deserunt mollit 
+anim id est laborum.
+REQUEST DejaVu Sans RESOLVED Some(Font { family: "DejaVu Sans", features: FontFeatures, fallbacks: None, weight: FontWeight(400.0), style: Normal })
+FONT WIDTH 327px BOUNDARIES [WrapBoundary { run_ix: 0, glyph_ix: 28 }, WrapBoundary { run_ix: 0, glyph_ix: 65 }, WrapBoundary { run_ix: 0, glyph_ix: 101 }, WrapBoundary { run_ix: 0, glyph_ix: 136 }, WrapBoundary { run_ix: 0, glyph_ix: 174 }, WrapBoundary { run_ix: 0, glyph_ix: 205 }, WrapBoundary { run_ix: 0, glyph_ix: 243 }, WrapBoundary { run_ix: 0, glyph_ix: 278 }]
+Lorem ipsum dolor sit amet, 
+consectetur adipisicing elit, sed do 
+eiusmod tempor incididunt ut labore 
+et dolore magna aliqua. Ut enim ad 
+minim veniam, cillum dolore eu fugiat 
+nulla pariatur. Excepteur sint 
+occaecat cupidatat non proident, sunt 
+in culpa qui officia deserunt mollit 
+anim id est laborum.

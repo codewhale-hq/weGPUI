@@ -53,6 +53,12 @@ Other recorded differences to remeasure include form-description/label wrapping,
 typography and spacing, panel punctuation/ellipsis, motion timing, and responsive/scrolled
 regions. Every new finding will be added to the execution receipt with its disposition.
 
+The [Unicode continuation](receipts/unicode-parity-20261026/README.md) replaces the bounded
+break policy with the approved locked Unicode 15.0 iterator. It captures 112 targeted pairs
+and closes the reproduced 320px form-description row-count difference. Measured article
+line endings match at 375px with the same resolved Noto Sans font. Baseline/raster differences,
+dictionary segmentation and the remaining interaction/host/reader matrix stay explicit.
+
 ## Preserved constraints
 
 The owner initially held the logical-wrap prototype, then requested publication of all

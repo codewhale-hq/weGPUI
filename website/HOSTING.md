@@ -23,8 +23,8 @@ The published gallery is <https://codewhale-hq.github.io/weGPUI/>. The owner sav
 from `main` at `e5b6996ca29bba628386293220fe604c6e6acf7a`. Both build and deploy
 jobs succeeded. The deploy log returned that URL as its evaluated environment URL.
 See [the publication receipt](../docs/receipts/pages-publication-20261025/README.md).
-The cloud proxy blocks direct access to the public origin; deployed-origin rendering,
-deep links and interactions remain unqualified here.
+That receipt's cloud proxy blocked direct access to the public origin. The current local host
+reaches it with HTTP 200; later deployed-origin checks retain their own publication identity.
 
 `.github/workflows/pages.yml` is prepared for **manual publication from `main`**.
 It has only a `workflow_dispatch` trigger. A push, pull request or ordinary CI run
@@ -32,8 +32,9 @@ does not trigger it. It uses the artifact deployment API and does not need a
 `gh-pages` branch. Its configuration step has `enablement: 'false'`, so the workflow
 cannot create a Pages site automatically.
 
-Source pushes do not publish updates. Further workflow dispatches still require
-owner authorization under the original takeover instructions. The existing Pages
+Source pushes do not publish updates. The owner requested website updates during the current
+parity continuation, authorizing this reviewed update. Other workflow dispatches require
+applicable owner authorization. The existing Pages
 source does not need to be configured again for each publication.
 
 For an authorized update:
@@ -54,9 +55,9 @@ For an authorized update:
    verify theme switching and browser interactions on the published origin.
 
 The deployment step's returned URL is authoritative for each successful run.
-Existing organization or custom-domain settings may change it. The agent did not
-change DNS, set a custom domain, enable Pages or dispatch the publication; the owner
-performed the GitHub configuration and workflow run.
+Existing organization or custom-domain settings may change it. The original publication's
+configuration and workflow run were performed by the owner. Subsequent authorized runs
+retain separate receipts; no DNS, domain or permission change is needed for a content update.
 
 The `build` job has repository-content read and Pages read permissions. Only the
 `deploy` job receives Pages write and OIDC token permissions. Checkout does not
@@ -88,7 +89,8 @@ settings or workflow-dispatch operation. The cloud runtime reports no configured
 outbound identity or secret binding. Existing shell credential failures do not
 justify changing authentication or creating an account. Subsequent publication
 still needs the owner's authenticated GitHub session or an authorized connection
-with workflow-dispatch capability.
+with workflow-dispatch capability. The current local host has an authenticated GitHub CLI
+with workflow scope; it can perform an owner-authorized dispatch without changing settings.
 
 ## Base paths and other static hosts
 

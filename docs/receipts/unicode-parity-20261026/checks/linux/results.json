@@ -1,0 +1,83 @@
+{
+  "source_commit": "0cf3f1933a17d8f3d55fe22b8e990f797265a7ac",
+  "host": "Linux-6.10.14-linuxkit-aarch64-with-glibc2.41",
+  "source_unchanged": true,
+  "checks": [
+    {
+      "name": "fmt",
+      "command": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 2.28
+    },
+    {
+      "name": "all-targets",
+      "command": [
+        "cargo",
+        "build",
+        "--all-targets",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "seconds": 90.89
+    },
+    {
+      "name": "library",
+      "command": [
+        "cargo",
+        "test",
+        "--lib",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "seconds": 3.09
+    },
+    {
+      "name": "gallery",
+      "command": [
+        "cargo",
+        "test",
+        "--example",
+        "gallery",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "seconds": 14.0
+    },
+    {
+      "name": "clippy",
+      "command": [
+        "cargo",
+        "clippy",
+        "--all-targets",
+        "--locked",
+        "--offline",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit_code": 0,
+      "seconds": 94.25
+    },
+    {
+      "name": "docs",
+      "command": [
+        "cargo",
+        "doc",
+        "--no-deps",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "seconds": 32.87
+    }
+  ]
+}

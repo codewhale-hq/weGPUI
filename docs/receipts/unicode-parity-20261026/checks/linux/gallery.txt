@@ -1,0 +1,11 @@
+   Compiling wegpui v0.1.0 (/src)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 13.77s
+     Running unittests examples/gallery/main.rs (/target/debug/examples/gallery-5ff6829fc0c8fb83)
+
+running 3 tests
+test pages::layers::tests::label_transform_tracks_plane_points_at_both_scales ... ok
+test pages::layers::tests::layer_size_follows_upstream_media_queries ... ok
+test pages::layers::tests::projection_matches_upstream_browser_quads ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

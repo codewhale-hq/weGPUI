@@ -1,0 +1,4 @@
+    Checking gpui-pre v0.3.9 ($REPO/vendor/gpui_pre)
+ Documenting wegpui v0.1.0 ($REPO)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 10.21s
+   Generated $BUILD_CACHE/target/wegpui/doc/wegpui/index.html

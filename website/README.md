@@ -8,8 +8,10 @@ preview selected images locally in the browser; they have no server upload trans
 These demos are a separate HTML/CSS/JavaScript implementation. Native Rust/GPUI source,
 setup and acceptance evidence remain available through `#native-guide` and the
 **Native Rust captures** view, for example `#components/button_default?view=native`.
-Its 528 comparison images are historical captures, not live native controls or current
-platform acceptance. See [playground provenance and adapters](playground/README.md).
+Its 528 referenced comparison images include five recent Linux ARM64 pairs with per-image
+source/host/viewport provenance; other images keep their historical macOS identity. The
+538 bundled PNG assets include the ten replacements. Recorded controls do not establish
+current platform acceptance. See [playground provenance and adapters](playground/README.md).
 
 ## Build and preview
 
@@ -27,11 +29,14 @@ licenses are bundled locally. Output defaults to the ignored `website/dist/`;
 both a domain root and a project prefix such as `/weGPUI/`, without rewrite rules.
 
 The builder checks route/state inventory, template hashes and local asset provenance.
+`native-evidence.json` selects recent samples from a checked-in receipt. The builder verifies
+its matrix, capture manifests and sample hashes, and rejects duplicate sample identifiers.
 The native-only Languages route has no browser counterpart and is explicitly excluded by
 the builder/checker shared inventory; other unexpected routes still fail validation. Run
 `python3 -m unittest discover -s website/tests -v` for the five inventory/build regressions.
 Current local Chromium verification passes 42 checks across both mounts (360 route/viewport
-observations); see [the completion receipt](../docs/receipts/completion-20261025/README.md).
+observations), including retained live-frame/draft/focus during palette changes; see
+[the Unicode/website receipt](../docs/receipts/unicode-parity-20261026/README.md).
 Source/install links identify the checkout's exact HEAD; a dirty preview is marked.
 Rebuild from committed source before sharing revision-pinned setup instructions.
 
@@ -69,7 +74,7 @@ The legacy capture-view suite requires the preview server above to be running:
 python3 website/check_browser.py --browser /usr/bin/chromium
 ```
 
-It checks 264 historical state/theme views, decodes all 528 capture assets, and checks
+It checks 264 recorded state/theme views, decodes all 528 referenced capture images, and checks
 source/API links and surrounding website behavior. `--url URL` selects the server base
 and `--out PATH` selects evidence output; its default is UTC-stamped under
 `target/website-browser/`. Both suites preserve source/build provenance and exercise
@@ -81,8 +86,8 @@ The gallery is published at <https://codewhale-hq.github.io/weGPUI/>. GitHub rec
 successful build and deployment of `e5b6996` in
 [run 40211664701](https://github.com/codewhale-hq/weGPUI/actions/runs/40211664701).
 The owner selected GitHub Actions in Pages settings and dispatched this publication.
-The cloud proxy blocks access to the published origin, so local browser results remain
-separate from deployed-origin rendering and interaction acceptance.
+That receipt's cloud proxy blocked the published origin. The current local host can reach
+the origin; a later update's deployment and browser evidence must identify its own source.
 
 Deploy the complete `website/dist/`, including `.nojekyll`, only after owner approval.
 [HOSTING.md](HOSTING.md) describes the manual-only GitHub Pages workflow, required
