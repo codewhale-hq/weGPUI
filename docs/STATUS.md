@@ -46,7 +46,9 @@ adds row-aware wrapped input caret/hit testing/selection, grapheme-safe endpoint
 alignment and platform glyph-order normalisation. Fresh macOS and Linux ARM64 X11 samples
 show readable Arabic/Hebrew paragraphs in both locale directions. Windows, Linux x86_64/hardware,
 real RTL IME, full reader matrices, styled wrapping and locale-aware dates remain open.
-The input shim remains in use; generic GPUI x/index APIs have not been replaced.
+The input shim remains in use; generic GPUI x/index APIs have not been replaced. Current
+Windows ARM64 source-bundle build, 59 library/three gallery tests, strict Clippy/docs and
+standalone consumer pass; visible Windows checks remain blocked at VM sign-in.
 
 The following paragraphs describe the earlier source and evidence:
 

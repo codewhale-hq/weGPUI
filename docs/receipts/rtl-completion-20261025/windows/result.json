@@ -1,0 +1,14 @@
+{
+  "source_commit": "f26610bf01ff2f4c93f6224f38d91d653108ad8d",
+  "environment": "existing Windows 11 Pro ARM64 VM, MSVC Build Tools 2022, Rust 1.99.0",
+  "checks": {
+    "workspace_all_targets_build": "pass",
+    "standalone_consumer_build": "pass",
+    "library_tests": 59,
+    "gallery_tests": 3,
+    "strict_all_targets_clippy": "pass",
+    "strict_workspace_rustdoc": "pass"
+  },
+  "native_runtime": "blocked at Windows sign-in; no new Windows interaction or reader acceptance",
+  "dependencies": "locked/offline; existing compiler and cache; no fetch required"
+}

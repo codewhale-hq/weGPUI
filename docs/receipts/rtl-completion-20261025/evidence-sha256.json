@@ -1,5 +1,5 @@
 {
-  "README.md": "1bb76738f4ef2cfeb33442bd0f188a7c17d0a62567498c76b83b829210205200",
+  "README.md": "68f349665a00a8b98a6c26c41fa07840326f20833f37f45c1ed4bcae7eb205c1",
   "base.txt": "5dbbed36b36173392e813610cdc4ceb94c4226bb86a9f69b89a5e7a5451d5b36",
   "binaries.json": "7b2bc577ebcf8b8ba334970c9c70764f63c99177885a81f864487db0a0946a47",
   "checks/check.txt": "9c9866ac3e7a8344df0da401d18eab5a570ff09b569913ca120c6794c7042993",
@@ -17,6 +17,13 @@
   "failures/native-text-attempt1.txt": "192cc67b0c71e000b455390febd73bfa09c7774afa9e9c342ba32fdc17614310",
   "failures/native-text-attempt2.txt": "0fef3c36c8372a7fe8786f8308d17590931c5436cb5785995022bb11e9d93812",
   "failures/script-tests.txt": "2d07ebe8b8df7c5318c9e133aed6a2e8458826240a367193c5ab6742e884d618",
+  "final/linux-build.txt": "f91546660a62ee899e050d10681d53268469227f35aa7ecc9b3e298ea49dcd97",
+  "final/linux-tests.txt": "fc4049152ce92549e7f188f8fce34afd120ac07ff44869cad866f1c47f826724",
+  "final/macos-build.txt": "6c788b02805bb8182b23bf626ff88a182dd59994a4800fbfa463b9460a13ca27",
+  "final/macos-clippy.txt": "51ccdb3f89dd5b960b10918268173b43924f58c837cdd418feaacc52b05a55ad",
+  "final/macos-fmt.txt": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+  "final/macos-rustdoc.txt": "904c2805439d2ccf23dd13b2287844f0668e2de64fff389f738212cf615832eb",
+  "final/results.json": "31afd80c9a73024c07042977ae583430ecc386ca96630c8361b58f2299baa83d",
   "linux/build.txt": "aaa8dd5dac8d28158811a15a42f4fee90658f0ac8902bb0869c9e2c8e09060d6",
   "linux/captures/languages-ar-paragraphs-dark-gpui.png": "798e0f8c6d7e79dad77b493814f756746d3e3e31c065ccfa24774431d39dfc07",
   "linux/captures/languages-ar-paragraphs-light-gpui.png": "2780ec7c29df7b69c3d1cfd8073c5fba360a89c7191555f989ea7693e8111964",
@@ -57,5 +64,15 @@
   "macos/textarea-ar-dark-final-dark-gpui.png": "e2521ab50001129d707d7fe3b47014f54c38ae6d61f772114d79f7ddde737292",
   "macos/typed.json": "4e6bf4d227770b5b79b2141b7d634d8078308dc9f7886be3115a6d5476a04dc0",
   "macos/undo.json": "6061d9a7df7585ae977fbdba4aa9a90e71cbd457071b1e38b4277252c2751af5",
-  "source-sha256.json": "84d92d5014218720ceeebff6733b455985ae457c09f6aff21dd8fcaace603b3f"
+  "source-sha256.json": "84d92d5014218720ceeebff6733b455985ae457c09f6aff21dd8fcaace603b3f",
+  "windows/build-initial.txt": "185b0b1985b16cf001a6057dd68f8b02c64935aadb5de2ae5d7595bbcf5946fd",
+  "windows/build.cmd": "17156345800743a50dca15c5ec21e1eb996f8c5bfc88f029fecb3c5e320f1fad",
+  "windows/bundle-verification.json": "49bf4951a4d9b80caa9071bef87f92aa83820cb1e2f67783d1cbb3ddbb3da1a6",
+  "windows/clippy.txt": "1af88e0771559e1b561c58ce6dc7f0f359cf63ca70b170e71217430132c3c479",
+  "windows/compiler-env.txt": "5bacd33d2dbcf1f47b4bd0ed2df3970c4bbd8506aaf54d2b142ff13ab177fc36",
+  "windows/result.json": "3f301029646248b8a1e01b6baed323ebc736456b896223d3fc003ac6ab86ea1e",
+  "windows/rustc.txt": "432eb4b1f2ffde9ad6c77acabccdb0944d02b94ac4dc4dc1e4a36f2cb6a6ddd9",
+  "windows/rustdoc.txt": "0e4bdb95d85accd1d8f6347b2476569f5b33699be414fbcb815ff1242a3b3c8e",
+  "windows/state.txt": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+  "windows/tests.txt": "33184acdb21b6b9f304a7c32b2d1fd945da37aeac275cbca45e51babca191367"
 }

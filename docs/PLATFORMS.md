@@ -87,7 +87,9 @@ reruns require those hosts; their historical samples do not qualify the Linux ch
 
 The [RTL continuation](receipts/rtl-completion-20261025/README.md) adds current macOS ARM64
 and Linux ARM64 X11 software-renderer samples for paragraph wrapping and native input. These
-are bounded samples; Windows, Linux x86_64/hardware, real RTL IME, complete reader matrices
+are bounded samples. The existing Windows ARM64 VM also passes the current source bundle’s
+all-target build, 59 library/three gallery tests, strict Clippy/docs and standalone consumer.
+Visible Windows runtime remains blocked at sign-in. Linux x86_64/hardware, real RTL IME, complete reader matrices
 and fresh installation still need their own evidence. VoiceOver remains off.
 
 ## Acceptance matrix
@@ -97,9 +99,9 @@ as such. Current state:
 
 | Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
 | --- | --- | --- | --- | --- | --- | --- |
-| macOS | Hosted arm64 build/tests/Clippy pass at `05cae89`; historical strict docs at `e4a2c87` | Historical minimal/gallery launches; no current runtime requalification | Earlier 28 review pairs; new diagnostic images, no new parity verdict | Minimal dialog open/close/OK and focus restore; select-key attempts inconclusive | Modal isolation in minimal/picker/select/half-screen; closed swipe actions absent; article headings/lists; option labels in AXTitle; VoiceOver incomplete | Not done |
+| macOS | Current local ARM64 all-target build, 59 library/three gallery tests, strict Clippy/docs at `f26610b` | Current sampled Languages/input and ten route launches; full matrix open | Earlier 28 review pairs; new diagnostic images, no new parity verdict | Minimal dialog open/close/OK and focus restore; select-key attempts inconclusive | Modal isolation in minimal/picker/select/half-screen; closed swipe actions absent; article headings/lists; option labels in AXTitle; VoiceOver incomplete | Not done |
 | Linux | Rust 1.98.1 current-source gates recorded in continuation receipts | X11 plus actual Wayland clients under nested Weston | Historical 192 pairs; 216 reviewed native-only theme/state images and later targeted component reviews | Native keyboard/pointer callbacks, scale/move text geometry, sampled Wayland input; historical XIM/portal | Actual Orca transcript/audio samples and AT-SPI contracts; full reader/listening acceptance open | Historical consumer/package checks; current patched-consumer and distribution qualification separate |
-| Windows | Historical native ARM/MSVC component builds and mingw cross-build | Windows 11 ARM gallery/component samples; current-source rerun missing | Historical native VirtIO samples | Historical sampled controls/inline links; current-source rerun missing | Missing (Narrator/NVDA) | Historical package build; installation qualification missing |
+| Windows | Current ARM64/MSVC source-bundle all-target build, 59 library/three gallery tests, strict Clippy/docs and standalone consumer at `f26610b` | Historical Windows 11 ARM samples; current visible UI blocked at sign-in | Historical native VirtIO samples | Historical sampled controls/inline links; current-source rerun missing | Missing (Narrator/NVDA) | Historical package build; installation qualification missing |
 | iOS | Library type-checks pass; hosted simulator app compilation fails | Upstream 0.3.9 API mismatch; no launch | Missing | Missing (touch, keyboard, IME, rotation, lifecycle) | Missing; upstream backend has no AccessKit | Not done |
 | Android | Library type-checks | Blocked: no Android backend anywhere upstream; no KVM for an emulator here | Missing | Missing | Missing (TalkBack) | Not done |
 

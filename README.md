@@ -126,8 +126,8 @@ complete platform support are separate milestones.
 | Platform | Available evidence | Remaining qualification |
 | --- | --- | --- |
 | Linux | Current source gates, X11 comparisons, native interaction and Orca samples; historical nested-Wayland checks | Complete reader/IME/state coverage, hardware and distribution |
-| macOS | Historical native builds, comparisons and sampled input/accessibility checks | Current-source runtime, full input/reader coverage and signed distribution |
-| Windows | Historical ARM64/MSVC builds and sampled native interactions | Current-source runtime, x64, reader and distribution |
+| macOS | Current build/tests/Clippy/docs and sampled RTL native input/AX checks; historical comparisons | Complete state/input/reader coverage and signed distribution |
+| Windows | Current ARM64/MSVC build/tests/Clippy/docs and standalone consumer; historical native interactions | Current visible UI needs VM sign-in; x64, reader and distribution |
 | iOS | Experimental backend and bundle scaffold | Upstream application API incompatibilities; no runtime acceptance |
 | Android | Library type-checks | Backend selection and native runtime |
 

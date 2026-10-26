@@ -73,3 +73,25 @@ open. VoiceOver was left off. No component or platform is promoted to fully acce
 Historical publication captures and receipts keep their original source identity. The 1,056-pair
 matrix at `9b618ae` was not regenerated or relabelled as evidence for this later text source.
 Driver copies and command logs redact host-specific absolute paths; image bytes are unchanged.
+
+## Frozen candidate checks
+
+The source commit is `f26610bf01ff2f4c93f6224f38d91d653108ad8d`. macOS formatting, locked/offline
+all-target build, strict all-target Clippy and strict rustdoc all pass. Linux ARM64 locked/offline
+all-target build and the 59 library plus three gallery tests pass. The unchanged Rust-source
+hashes match the earlier focused tests and native captures; those checks were not rerun on
+unchanged source. Exact commands and results are in `final/results.json`. The existing
+third-party `block 0.1.6` future-compatibility notice is retained in build logs.
+
+## Windows ARM64 source bundle
+
+The existing Windows 11 Pro ARM64 VM builds the frozen source through the reproducible preview
+workspace, including the standalone consumer and all library targets. All 59 library and three
+gallery tests, strict all-target Clippy and strict workspace rustdoc pass with Rust 1.99.0 and
+MSVC Build Tools 2022. Builds use the existing compiler/cache and `--locked --offline`; the
+initial build succeeds without fetching. The host bundle verifier passes and the transferred
+archive SHA-256 matches. Commands, logs and results are under `windows/`.
+
+The VM remains at Windows sign-in. The user was asked to unlock it; no current Windows visible
+interaction, IME or screen-reader result is claimed. Existing historical Windows runtime
+samples remain separate. Windows x64 and fresh-machine distribution remain open.

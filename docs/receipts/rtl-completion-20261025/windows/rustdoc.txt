@@ -1,0 +1,11 @@
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   C:\CW\artifacts\wegpui-rtl-20261025\wegpui-preview-7fa821c8b9c5\wegpui\Cargo.toml
+workspace: C:\CW\artifacts\wegpui-rtl-20261025\wegpui-preview-7fa821c8b9c5\Cargo.toml
+warning: patch for the non root package will be ignored, specify patch at the workspace root:
+package:   C:\CW\artifacts\wegpui-rtl-20261025\wegpui-preview-7fa821c8b9c5\wegpui\Cargo.toml
+workspace: C:\CW\artifacts\wegpui-rtl-20261025\wegpui-preview-7fa821c8b9c5\Cargo.toml
+    Checking wegpui v0.1.0 (C:\CW\artifacts\wegpui-rtl-20261025\wegpui-preview-7fa821c8b9c5\wegpui)
+ Documenting wegpui v0.1.0 (C:\CW\artifacts\wegpui-rtl-20261025\wegpui-preview-7fa821c8b9c5\wegpui)
+ Documenting wegpui-preview v0.0.0 (C:\CW\artifacts\wegpui-rtl-20261025\wegpui-preview-7fa821c8b9c5\consumer)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 11.92s
+   Generated C:\CW\artifacts\wegpui-20261024\target\doc\wegpui\index.html and 1 other file

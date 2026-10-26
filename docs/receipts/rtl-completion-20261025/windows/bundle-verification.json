@@ -1,0 +1,8 @@
+{
+  "source_commit": "f26610bf01ff2f4c93f6224f38d91d653108ad8d",
+  "archive_sha256": "26a70ed2fdae70e5d9b0d1906a551fb3566823e8c05fb394a39ab9ac776280ee",
+  "source_sha256": "7fa821c8b9c50c70b0930c3b87ecbb1bde550b129e7b3bb4f9a6c99ceff66f65",
+  "host_verification": "passed",
+  "guest_archive_sha256": "26a70ed2fdae70e5d9b0d1906a551fb3566823e8c05fb394a39ab9ac776280ee",
+  "transfer_verified": true
+}

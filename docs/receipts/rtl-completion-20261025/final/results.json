@@ -1,0 +1,90 @@
+{
+  "source_commit": "f26610bf01ff2f4c93f6224f38d91d653108ad8d",
+  "checks": [
+    {
+      "name": "macos-fmt",
+      "command": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "environment": {},
+      "status": 0
+    },
+    {
+      "name": "macos-build",
+      "command": [
+        "cargo",
+        "build",
+        "--all-targets",
+        "--locked",
+        "--offline"
+      ],
+      "environment": {},
+      "status": 0
+    },
+    {
+      "name": "macos-clippy",
+      "command": [
+        "cargo",
+        "clippy",
+        "--all-targets",
+        "--locked",
+        "--offline",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "environment": {},
+      "status": 0
+    },
+    {
+      "name": "macos-rustdoc",
+      "command": [
+        "cargo",
+        "doc",
+        "--no-deps",
+        "--locked",
+        "--offline"
+      ],
+      "environment": {
+        "RUSTDOCFLAGS": "-D warnings -W missing-docs"
+      },
+      "status": 0
+    },
+    {
+      "name": "linux-build",
+      "command": [
+        "docker",
+        "exec",
+        "wegpui-rtl-qualification",
+        "cargo",
+        "build",
+        "--all-targets",
+        "--locked",
+        "--offline"
+      ],
+      "environment": {},
+      "status": 0
+    },
+    {
+      "name": "linux-tests",
+      "command": [
+        "docker",
+        "exec",
+        "wegpui-rtl-qualification",
+        "cargo",
+        "test",
+        "--lib",
+        "--example",
+        "gallery",
+        "--locked",
+        "--offline"
+      ],
+      "environment": {},
+      "status": 0
+    }
+  ]
+}
