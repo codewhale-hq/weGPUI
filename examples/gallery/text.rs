@@ -486,6 +486,7 @@ const TABLE: &[(&str, &str)] = &[
     ("语言和文字示例", "Language and script samples"),
     ("切换语言", "Switch language"),
     ("混合方向文本", "Mixed-direction text"),
+    ("换行的混合方向文本", "Wrapped mixed-direction paragraphs"),
     ("当前语言包", "Active catalog"),
     ("试着输入", "Try typing"),
 ];

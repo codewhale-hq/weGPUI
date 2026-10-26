@@ -179,6 +179,12 @@ const MIXED: [&str; 5] = [
     "Emoji 👩‍💻 🇯🇵 and a combining accent e\u{301}",
 ];
 
+const PARAGRAPHS: [&str; 3] = [
+    "تدعم مكتبة weGPUI اللغة العربية والعبرية والإنجليزية في الفقرة نفسها، مع أرقام مثل 12345 وعناوين مثل weui.io في الوسط، وتنتقل الأسطر بترتيب القراءة الصحيح.",
+    "הספרייה weGPUI תומכת בעברית, בערבית ובאנגלית באותה פסקה, עם מספרים כמו 12345 וכתובות כמו weui.io באמצע, והשורות מתקפלות לפי סדר הקריאה הנכון.",
+    "The library wraps a mixed paragraph in reading order: العربية في المنتصف, then עברית and 2026, before the English text carries on to a second and a third line.",
+];
+
 impl Render for LanguagesPage {
     fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         let i18n = I18n::get(cx);
@@ -254,6 +260,14 @@ impl Render for LanguagesPage {
                         .iter()
                         .enumerate()
                         .map(|(i, text)| Cell::new(("mixed", i)).title(*text)),
+                ),
+            )
+            .child(
+                Cells::new().title(tr("换行的混合方向文本")).children(
+                    PARAGRAPHS
+                        .iter()
+                        .enumerate()
+                        .map(|(i, text)| Cell::new(("paragraph", i)).title(*text)),
                 ),
             )
             .child(

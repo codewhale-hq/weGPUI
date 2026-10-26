@@ -1438,13 +1438,8 @@ impl TextLayout {
     }
 
     fn row_starts(line: &WrappedLine) -> Vec<usize> {
-        let runs = &line.unwrapped_layout.runs;
-        std::iter::once(0)
-            .chain(
-                line.wrap_boundaries()
-                    .iter()
-                    .map(|b| runs[b.run_ix].glyphs[b.glyph_ix].index),
-            )
+        (0..=line.wrap_boundaries().len())
+            .map(|row| line.wrapped_line_start_index(row))
             .collect()
     }
 

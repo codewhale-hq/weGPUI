@@ -96,6 +96,10 @@ impl RenderOnce for SwipedAction {
                 .border_2()
                 .border_color(transparent_black())
                 .bg(bg)
+                .text_color(match self.kind {
+                    SwipedActionKind::Default => t.fg_0,
+                    SwipedActionKind::Warn => white(),
+                })
                 .text_size(px(17.))
                 .line_height(px(24.))
                 .active(move |s| s.bg(bg.blend(mask)))

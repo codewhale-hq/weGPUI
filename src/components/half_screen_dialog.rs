@@ -213,7 +213,7 @@ impl HalfScreenDialog {
             on_dismiss: None,
         }
     }
-    /// Sets the 15 px semibold title (`__title`) and uses it as the accessible name. Not drawn when
+    /// Sets the 15 px medium-weight title (`__title`) and uses it as the accessible name. Not drawn when
     /// [`HalfScreenDialog::main`] is set.
     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
         let title = title.into();
@@ -373,7 +373,7 @@ impl RenderOnce for HalfScreenDialog {
                     div()
                         .child(
                             div()
-                                .font_weight(FontWeight::SEMIBOLD)
+                                .font_weight(FontWeight::MEDIUM)
                                 .text_size(px(15.))
                                 .text_color(t.fg_0)
                                 .child(title),

@@ -139,7 +139,7 @@ impl Render for HalfScreenDialogPage {
             .child(
                 div()
                     .text_size(px(17.))
-                    .font_weight(FontWeight::SEMIBOLD)
+                    .font_weight(FontWeight::MEDIUM)
                     .line_height(relative(1.4))
                     .child(tr("辅助描述内容，可根据实际需要安排")),
             )

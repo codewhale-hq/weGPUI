@@ -48,6 +48,7 @@ struct Entry {
 pub struct Gallery {
     stack: Vec<Entry>,
     leaving: Option<(Entry, Instant)>,
+    font_family: SharedString,
 }
 
 struct Nav(WeakEntity<Gallery>);
@@ -95,6 +96,11 @@ impl Gallery {
         let mut this = Self {
             stack: vec![],
             leaving: None,
+            font_family: args
+                .font_family
+                .clone()
+                .unwrap_or_else(|| ".SystemUIFont".into())
+                .into(),
         };
         let page_args = pages::Args {
             state: args.state.clone(),
@@ -200,7 +206,7 @@ impl Render for Gallery {
             .relative()
             .size_full()
             .overflow_hidden()
-            .font_family(".SystemUIFont")
+            .font_family(self.font_family.clone())
             .text_size(px(16.))
             .line_height(relative(1.6))
             .text_color(t.fg_0)
@@ -258,6 +264,7 @@ struct CliArgs {
     scroll: Option<f32>,
     size: Option<(f32, f32)>,
     position: Option<(f32, f32)>,
+    font_family: Option<String>,
 }
 
 fn parse_args() -> CliArgs {
@@ -285,6 +292,7 @@ fn parse_args() -> CliArgs {
             "--reduce-motion" => args.reduce_motion = Some(true),
             "--motion" => args.reduce_motion = Some(false),
             "--lang" => args.lang = Some(value()),
+            "--font-family" => args.font_family = Some(value()),
             "--dir" => args.dir = Some(value()),
             "--scroll" => args.scroll = value().parse().ok(),
             "--size" => {

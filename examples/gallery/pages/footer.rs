@@ -1,9 +1,9 @@
 use crate::text::tr;
 use crate::{chrome::PageFrame, pages::Args};
 use gpui::{prelude::*, *};
-use wegpui::{
-    Theme,
-    components::footer::{Footer, FooterLink},
+use wegpui::components::{
+    footer::{Footer, FooterLink},
+    form::form_link,
 };
 
 pub struct FooterPage {
@@ -19,7 +19,6 @@ const BR: f32 = 16. * 1.6 * 2.;
 
 impl Render for FooterPage {
     fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
-        let link = Theme::get(cx).link;
         PageFrame::new(self.route)
             .title("Footer")
             .desc(tr("页脚"))
@@ -46,14 +45,15 @@ impl Render for FooterPage {
                             .on_click(|_, w, cx| crate::home(w, cx)),
                     )
                     .text(COPYRIGHT)
-                    .child(
-                        div()
-                            .id("page-copyright")
-                            .role(Role::Link)
-                            .aria_label(tr("备案号：粤B2-20090059"))
-                            .text_color(link)
-                            .child(tr("备案号：粤B2-20090059")),
-                    ),
+                    .child(form_link(
+                        "page-copyright",
+                        tr("备案号：粤B2-20090059"),
+                        false,
+                        cx,
+                        |_, _, cx| {
+                            cx.open_url("https://beian.miit.gov.cn/");
+                        },
+                    )),
             )
     }
 }

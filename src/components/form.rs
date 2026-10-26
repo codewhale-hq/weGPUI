@@ -114,7 +114,7 @@ pub fn form_tips(text: impl IntoElement, cx: &App) -> Div {
         .child(text)
 }
 
-/// Inline link for tips and agreements: link-coloured `text`, semibold when `bold` (as in
+/// Inline link for tips and agreements: link-coloured `text`, medium-weight when `bold` (as in
 /// `.weui-cells__tips a`). It is a `Role::Link` tab stop named by `text` with a [`dual_focus_ring`];
 /// `on_click` runs on click or Enter/Space and the click does not reach the enclosing row.
 /// Call [`RevealFocus::reveal_focus`] after styling it to reveal the link inside a
@@ -133,7 +133,7 @@ pub fn form_link(
         .role(Role::Link)
         .aria_label(text.clone())
         .text_color(t.link)
-        .when(bold, |el| el.font_weight(FontWeight::SEMIBOLD))
+        .when(bold, |el| el.font_weight(FontWeight::MEDIUM))
         .cursor_pointer()
         .focusable()
         .tab_stop(true)
@@ -713,7 +713,7 @@ impl Form {
             bottom_fixed: None,
         }
     }
-    /// Sets the page title (`.weui-form__title`): 22px semibold text, exposed as a level-2
+    /// Sets the page title (`.weui-form__title`): 22px medium text, exposed as a level-2
     /// heading named by the text. None by default.
     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
         self.title = Some(title.into());
@@ -775,7 +775,7 @@ impl RenderOnce for Form {
                             .aria_level(2)
                             .aria_label(title.clone())
                             .text_size(px(22.))
-                            .font_weight(FontWeight::SEMIBOLD)
+                            .font_weight(FontWeight::MEDIUM)
                             .line_height(relative(1.36))
                             .child(title),
                     )

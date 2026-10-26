@@ -112,7 +112,7 @@ impl Dialog {
             on_dismiss: None,
         }
     }
-    /// Sets the semibold title and uses it as the accessible name, replacing any earlier label.
+    /// Sets the medium-weight title and uses it as the accessible name, replacing any earlier label.
     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
         let title = title.into();
         self.label = title.clone();
@@ -120,7 +120,7 @@ impl Dialog {
         self
     }
     /// Appends a text paragraph to the body; it becomes the accessible name if none is set yet.
-    /// Without a title the body is drawn semibold in the primary text colour.
+    /// Without a title the body is drawn medium-weight in the primary text colour.
     pub fn body(mut self, text: impl Into<SharedString>) -> Self {
         let text = text.into();
         if self.label.is_empty() {
@@ -214,7 +214,7 @@ impl RenderOnce for Dialog {
                 .aria_label(button.label.clone())
                 .relative()
                 .text_size(px(17.))
-                .font_weight(FontWeight::SEMIBOLD)
+                .font_weight(FontWeight::MEDIUM)
                 .text_color(color)
                 .overflow_hidden()
                 .cursor_pointer()
@@ -321,7 +321,7 @@ impl RenderOnce for Dialog {
                 } else {
                     el.min_h(px(40.))
                         .pt(px(32.))
-                        .font_weight(FontWeight::SEMIBOLD)
+                        .font_weight(FontWeight::MEDIUM)
                         .text_color(t.fg_0)
                         .flex()
                         .flex_col()
@@ -351,7 +351,7 @@ impl RenderOnce for Dialog {
                         .pb(px(16.))
                         .px(px(24.))
                         .when(android, |el| el.text_start(dir))
-                        .font_weight(FontWeight::SEMIBOLD)
+                        .font_weight(FontWeight::MEDIUM)
                         .text_size(px(if android { 22. } else { 17. }))
                         .line_height(relative(1.4))
                         .text_color(t.fg_0)

@@ -148,21 +148,28 @@ impl RenderOnce for Agree {
             })
             .flex()
             .row(dir)
+            .min_w_0()
             .max_w_full()
             .min_h(px(19.6))
             .text_start(dir)
             .text_size(px(14.))
             .line_height(relative(1.4))
             .child(
-                div().h(px(19.6)).flex().items_center().child(
-                    check_icon(checked, 20., cx)
-                        .h(px(19.6))
-                        .when(self.disabled, |el| el.opacity(0.3)),
-                ),
+                div()
+                    .flex_shrink_0()
+                    .h(px(19.6))
+                    .flex()
+                    .items_center()
+                    .child(
+                        check_icon(checked, 20., cx)
+                            .h(px(19.6))
+                            .when(self.disabled, |el| el.opacity(0.3)),
+                    ),
             )
             .child(
                 div()
                     .ms(dir, px(4.))
+                    .flex_1()
                     .min_w_0()
                     .flex()
                     .row(dir)

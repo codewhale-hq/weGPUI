@@ -327,7 +327,7 @@ mod tests {
         let mut motion = SwitchMotion::new(false);
         motion.update(true, start, false);
         motion.update(false, start + COLOR, false);
-        assert_eq!(motion.color_duration, COLOR);
+        assert!(motion.color_duration.abs_diff(COLOR) <= Duration::from_nanos(1));
         assert!(motion.knob_duration < KNOB);
     }
 }

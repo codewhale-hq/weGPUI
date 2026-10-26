@@ -199,12 +199,8 @@ fn link_bounds(layout: &TextLayout, range: std::ops::Range<usize>) -> Option<Bou
     let height = layout.line_height();
     for line in layout.line_layouts() {
         let mut start = 0;
-        let ends = line
-            .wrap_boundaries
-            .iter()
-            .map(|boundary| {
-                line.unwrapped_layout.runs[boundary.run_ix].glyphs[boundary.glyph_ix].index
-            })
+        let ends = (1..=line.wrap_boundaries.len())
+            .map(|row| line.wrapped_line_start_index(row))
             .chain([line.len()]);
         for end in ends {
             let from = range.start.max(offset + start);

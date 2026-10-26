@@ -12,7 +12,7 @@ use std::{
     },
 };
 
-use super::LineWrapper;
+use super::{LineWrapper, logical_wrap};
 
 /// A laid out and styled line of text
 #[derive(Default, Debug)]
@@ -190,6 +190,17 @@ impl LineLayout {
         (left, right)
     }
 
+    fn is_visually_reordered(&self) -> bool {
+        let mut previous = 0;
+        for glyph in self.runs.iter().flat_map(|run| run.glyphs.iter()) {
+            if glyph.index < previous {
+                return true;
+            }
+            previous = glyph.index;
+        }
+        false
+    }
+
     fn compute_wrap_boundaries(
         &self,
         text: &str,
@@ -248,7 +259,10 @@ impl LineLayout {
             let next_x = glyphs.peek().map_or(self.width, |(_, _, x)| *x);
             let width = next_x - last_boundary_x;
 
-            if width > wrap_width && boundary > last_boundary {
+            if width > wrap_width
+                && boundary > last_boundary
+                && (ch != ' ' || first_non_whitespace_ix.is_none())
+            {
                 // When used line_clamp, we should limit the number of lines.
                 if let Some(max_lines) = max_lines
                     && boundaries.len() >= max_lines.saturating_sub(1)
@@ -283,6 +297,8 @@ pub struct WrappedLineLayout {
 
     /// The width of the line, if it was wrapped
     pub wrap_width: Option<Pixels>,
+
+    pub(crate) logical_line_starts: SmallVec<[usize; 1]>,
 }
 
 /// A boundary at which a line was wrapped
@@ -330,6 +346,24 @@ impl WrappedLineLayout {
     /// The wrap boundaries in this layout
     pub fn wrap_boundaries(&self) -> &[WrapBoundary] {
         &self.wrap_boundaries
+    }
+
+    /// The byte index at which the given wrapped row starts; row 0 starts at 0 and the row after
+    /// the last one starts at the end of the text. Prefer this to reading the index of the glyph
+    /// at a wrap boundary, which is the logical start of a row only for left-to-right rows.
+    pub fn wrapped_line_start_index(&self, row: usize) -> usize {
+        if row == 0 {
+            return 0;
+        }
+        if let Some(&index) = self.logical_line_starts.get(row - 1) {
+            return index;
+        }
+        match self.wrap_boundaries.get(row - 1) {
+            Some(boundary) => {
+                self.unwrapped_layout.runs[boundary.run_ix].glyphs[boundary.glyph_ix].index
+            }
+            None => self.unwrapped_layout.len,
+        }
     }
 
     /// The font size of this layout
@@ -382,7 +416,7 @@ impl WrappedLineLayout {
             };
             let run = &self.unwrapped_layout.runs[line_start_boundary.run_ix];
             let glyph = &run.glyphs[line_start_boundary.glyph_ix];
-            wrapped_line_start_index = glyph.index;
+            wrapped_line_start_index = self.wrapped_line_start_index(wrapped_line_ix);
             wrapped_line_start_x = glyph.position.x;
         } else {
             wrapped_line_start_index = 0;
@@ -396,7 +430,7 @@ impl WrappedLineLayout {
             let next_wrap_boundary = self.wrap_boundaries[next_wrap_boundary_ix];
             let run = &self.unwrapped_layout.runs[next_wrap_boundary.run_ix];
             let glyph = &run.glyphs[next_wrap_boundary.glyph_ix];
-            wrapped_line_end_index = glyph.index;
+            wrapped_line_end_index = self.wrapped_line_start_index(wrapped_line_ix + 1);
             wrapped_line_end_x = glyph.position.x;
         } else {
             wrapped_line_end_index = self.unwrapped_layout.len;
@@ -427,14 +461,8 @@ impl WrappedLineLayout {
     /// Returns the pixel position for the given byte index.
     pub fn position_for_index(&self, index: usize, line_height: Pixels) -> Option<Point<Pixels>> {
         let mut line_start_ix = 0;
-        let mut line_end_indices = self
-            .wrap_boundaries
-            .iter()
-            .map(|wrap_boundary| {
-                let run = &self.unwrapped_layout.runs[wrap_boundary.run_ix];
-                let glyph = &run.glyphs[wrap_boundary.glyph_ix];
-                glyph.index
-            })
+        let mut line_end_indices = (1..=self.wrap_boundaries.len())
+            .map(|row| self.wrapped_line_start_index(row))
             .chain([self.len()])
             .enumerate();
         for (ix, line_end_ix) in line_end_indices {
@@ -637,15 +665,32 @@ impl LineLayoutCache {
             drop(current_frame);
             let text = SharedString::from(text);
             let unwrapped_layout = self.layout_line::<&SharedString>(&text, font_size, runs, None);
-            let wrap_boundaries = if let Some(wrap_width) = wrap_width {
-                unwrapped_layout.compute_wrap_boundaries(text.as_ref(), wrap_width, max_lines)
-            } else {
-                SmallVec::new()
+            let (unwrapped_layout, wrap_boundaries, logical_line_starts) = match wrap_width {
+                Some(wrap_width) => match self.layout_logical_lines(
+                    &text,
+                    font_size,
+                    runs,
+                    &unwrapped_layout,
+                    wrap_width,
+                    max_lines,
+                ) {
+                    Some((layout, boundaries, starts)) => (Arc::new(layout), boundaries, starts),
+                    None => {
+                        let boundaries = unwrapped_layout.compute_wrap_boundaries(
+                            text.as_ref(),
+                            wrap_width,
+                            max_lines,
+                        );
+                        (unwrapped_layout, boundaries, SmallVec::new())
+                    }
+                },
+                None => (unwrapped_layout, SmallVec::new(), SmallVec::new()),
             };
             let layout = Arc::new(WrappedLineLayout {
                 unwrapped_layout,
                 wrap_boundaries,
                 wrap_width,
+                logical_line_starts,
             });
             let key = Arc::new(CacheKey {
                 text,
@@ -663,6 +708,125 @@ impl LineLayoutCache {
 
             layout
         }
+    }
+
+    fn layout_logical_lines(
+        &self,
+        text: &SharedString,
+        font_size: Pixels,
+        runs: &[FontRun],
+        unwrapped: &LineLayout,
+        wrap_width: Pixels,
+        max_lines: Option<usize>,
+    ) -> Option<(
+        LineLayout,
+        SmallVec<[WrapBoundary; 1]>,
+        SmallVec<[usize; 1]>,
+    )> {
+        if unwrapped.width <= wrap_width
+            || !text.chars().any(logical_wrap::is_rtl_char)
+            || !unwrapped.is_visually_reordered()
+        {
+            return None;
+        }
+        let visual: Vec<(usize, f32)> = unwrapped
+            .runs
+            .iter()
+            .flat_map(|run| run.glyphs.iter())
+            .map(|glyph| (glyph.index, glyph.position.x.as_f32()))
+            .collect();
+        let units = logical_wrap::logical_units(&visual, unwrapped.width.as_f32(), text);
+        if units.is_empty() {
+            return None;
+        }
+        let starts = logical_wrap::wrap(
+            &units,
+            wrap_width.as_f32(),
+            max_lines,
+            LineWrapper::is_word_char,
+        )?;
+        if starts.is_empty() {
+            return None;
+        }
+
+        let mark = if logical_wrap::base_direction_is_rtl(text) {
+            logical_wrap::RLM
+        } else {
+            logical_wrap::LRM
+        };
+        let mark_len = mark.len_utf8();
+        let font_runs: Vec<(usize, FontId)> =
+            runs.iter().map(|run| (run.len, run.font_id)).collect();
+        let line_count = starts.len() + 1;
+        let mut combined: Vec<ShapedRun> = Vec::new();
+        let mut boundaries: SmallVec<[WrapBoundary; 1]> = SmallVec::new();
+        let mut x_offset = 0f32;
+        for line in 0..line_count {
+            let start = if line == 0 { 0 } else { starts[line - 1] };
+            let end = starts.get(line).copied().unwrap_or(text.len());
+            let shaped_end = if line + 1 < line_count {
+                start + text[start..end].trim_end_matches(' ').len()
+            } else {
+                end
+            };
+            if shaped_end <= start {
+                return None;
+            }
+            let mut line_runs: Vec<FontRun> =
+                logical_wrap::slice_runs(&font_runs, start..shaped_end)
+                    .into_iter()
+                    .map(|(len, font_id)| FontRun { len, font_id })
+                    .collect();
+            line_runs.first_mut()?.len += mark_len;
+            let mut marked = String::with_capacity(mark_len + shaped_end - start);
+            marked.push(mark);
+            marked.push_str(&text[start..shaped_end]);
+            let shaped = self.layout_line(marked, font_size, &line_runs, None);
+
+            let shaped_runs: Vec<(FontId, &[ShapedGlyph])> = shaped
+                .runs
+                .iter()
+                .map(|run| (run.font_id, run.glyphs.as_slice()))
+                .collect();
+            let placed = logical_wrap::place_line(
+                &shaped_runs,
+                shaped.width.as_f32(),
+                mark_len,
+                start,
+                x_offset,
+                |glyph| glyph.index,
+                |glyph| glyph.position.x.as_f32(),
+                |glyph, x, index| ShapedGlyph {
+                    id: glyph.id,
+                    position: point(px(x), glyph.position.y),
+                    index,
+                    is_emoji: glyph.is_emoji,
+                },
+            )?;
+            if line > 0 {
+                boundaries.push(WrapBoundary {
+                    run_ix: combined.len(),
+                    glyph_ix: 0,
+                });
+            }
+            combined.extend(
+                placed
+                    .runs
+                    .into_iter()
+                    .map(|(font_id, glyphs)| ShapedRun { font_id, glyphs }),
+            );
+            x_offset += placed.width;
+        }
+
+        let layout = LineLayout {
+            font_size: unwrapped.font_size,
+            width: px(x_offset),
+            ascent: unwrapped.ascent,
+            descent: unwrapped.descent,
+            runs: combined,
+            len: unwrapped.len,
+        };
+        Some((layout, boundaries, starts.into_iter().collect()))
     }
 
     pub fn layout_line<Text>(
@@ -1095,6 +1259,95 @@ mod tests {
             }],
             len: 0,
         }
+    }
+
+    fn logical_two_row_layout() -> WrappedLineLayout {
+        let first_row = ShapedRun {
+            font_id: FontId(0),
+            glyphs: vec![glyph_at(0., 4), glyph_at(5., 2), glyph_at(15., 0)],
+        };
+        let second_row = ShapedRun {
+            font_id: FontId(0),
+            glyphs: vec![glyph_at(25., 7), glyph_at(35., 5)],
+        };
+        WrappedLineLayout {
+            unwrapped_layout: Arc::new(LineLayout {
+                font_size: px(16.),
+                width: px(45.),
+                ascent: px(12.),
+                descent: px(4.),
+                runs: vec![first_row, second_row],
+                len: 9,
+            }),
+            wrap_boundaries: SmallVec::from_buf([WrapBoundary {
+                run_ix: 1,
+                glyph_ix: 0,
+            }]),
+            wrap_width: Some(px(30.)),
+            logical_line_starts: SmallVec::from_buf([5]),
+        }
+    }
+
+    #[test]
+    fn logical_rows_start_at_their_logical_index_not_at_their_first_glyph() {
+        let layout = logical_two_row_layout();
+        assert_eq!(layout.wrapped_line_start_index(0), 0);
+        assert_eq!(layout.wrapped_line_start_index(1), 5);
+        assert_eq!(layout.wrapped_line_start_index(2), 9);
+        let glyph_order = WrappedLineLayout {
+            logical_line_starts: SmallVec::new(),
+            ..logical_two_row_layout()
+        };
+        assert_eq!(glyph_order.wrapped_line_start_index(1), 7);
+    }
+
+    #[test]
+    fn logical_rows_place_each_index_on_the_row_that_holds_it() {
+        let layout = logical_two_row_layout();
+        let line_height = px(20.);
+        for (index, row) in [(0, 0), (4, 0), (5, 0), (7, 1), (8, 1), (9, 1)] {
+            let position = layout.position_for_index(index, line_height).unwrap();
+            assert_eq!(position.y, line_height * row as f32, "index {index}");
+        }
+    }
+
+    #[test]
+    fn logical_rows_hit_test_to_the_index_under_the_pointer() {
+        let layout = logical_two_row_layout();
+        let line_height = px(20.);
+        assert_eq!(
+            layout.index_for_position(point(px(2.), px(5.)), line_height),
+            Ok(4)
+        );
+        assert_eq!(
+            layout.index_for_position(point(px(2.), px(25.)), line_height),
+            Ok(7)
+        );
+        assert_eq!(
+            layout.index_for_position(point(px(30.), px(5.)), line_height),
+            Err(5)
+        );
+        assert_eq!(
+            layout.index_for_position(point(px(30.), px(25.)), line_height),
+            Err(9)
+        );
+    }
+
+    #[test]
+    fn rows_that_were_not_wrapped_logically_keep_their_glyph_derived_starts() {
+        let glyphs = [(0., 0), (10., 1), (20., 2), (0., 3), (10., 4)];
+        let layout = WrappedLineLayout {
+            unwrapped_layout: Arc::new(make_layout(
+                glyphs.iter().map(|&(x, index)| glyph_at(x, index)).collect(),
+            )),
+            wrap_boundaries: SmallVec::from_buf([WrapBoundary {
+                run_ix: 0,
+                glyph_ix: 3,
+            }]),
+            ..Default::default()
+        };
+        assert_eq!(layout.wrapped_line_start_index(1), 3);
+        assert_eq!(layout.wrapped_line_start_index(2), layout.len());
     }
 
     fn glyph_x_positions(layout: &LineLayout) -> Vec<f32> {
