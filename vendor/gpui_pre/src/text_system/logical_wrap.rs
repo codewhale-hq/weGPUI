@@ -5,29 +5,15 @@ pub(crate) const RLM: char = '\u{200F}';
 
 pub(crate) fn is_rtl_char(c: char) -> bool {
     matches!(
-        c,
-        '\u{0590}'..='\u{08FF}'
-            | '\u{200F}'
-            | '\u{202B}'
-            | '\u{202E}'
-            | '\u{2067}'
-            | '\u{FB1D}'..='\u{FDFF}'
-            | '\u{FE70}'..='\u{FEFF}'
-            | '\u{10800}'..='\u{10FFF}'
-            | '\u{1E800}'..='\u{1EFFF}'
-    ) && !matches!(c, '\u{0660}'..='\u{0669}' | '\u{06F0}'..='\u{06F9}')
+        unicode_bidi::bidi_class(c),
+        unicode_bidi::BidiClass::R | unicode_bidi::BidiClass::AL
+    )
 }
 
 pub(crate) fn base_direction_is_rtl(text: &str) -> bool {
-    for c in text.chars() {
-        if is_rtl_char(c) {
-            return true;
-        }
-        if c.is_alphabetic() {
-            return false;
-        }
-    }
-    false
+    unicode_bidi::ParagraphBidiInfo::new(text, None)
+        .paragraph_level
+        .is_rtl()
 }
 
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -67,7 +53,7 @@ pub(crate) fn wrap(
     units: &[Unit],
     wrap_width: f32,
     max_lines: Option<usize>,
-    is_word_char: impl Fn(char) -> bool,
+    can_break_before: impl Fn(char, char) -> bool,
 ) -> Option<Vec<usize>> {
     let mut starts = Vec::new();
     let mut first_non_whitespace = None;
@@ -83,11 +69,7 @@ pub(crate) fn wrap(
             x = next_x;
             continue;
         }
-        if is_word_char(ch) {
-            if prev_ch == ' ' && ch != ' ' && first_non_whitespace.is_some() {
-                last_candidate = Some((i, x));
-            }
-        } else if ch != ' ' && first_non_whitespace.is_some() {
+        if can_break_before(prev_ch, ch) && first_non_whitespace.is_some() {
             last_candidate = Some((i, x));
         }
         if ch != ' ' && first_non_whitespace.is_none() {
@@ -99,10 +81,15 @@ pub(crate) fn wrap(
             {
                 break;
             }
-            let (ordinal, candidate_x) = last_candidate.take()?;
-            last_boundary = ordinal;
-            last_boundary_x = candidate_x;
-            starts.push(units[ordinal].index);
+            let boundary = last_candidate
+                .take()
+                .filter(|(ordinal, _)| *ordinal > last_boundary)
+                .or_else(|| (prev_ch.is_alphanumeric() && ch.is_alphanumeric()).then_some((i, x)));
+            if let Some((ordinal, candidate_x)) = boundary {
+                last_boundary = ordinal;
+                last_boundary_x = candidate_x;
+                starts.push(units[ordinal].index);
+            }
         }
         prev_ch = ch;
         x = next_x;
@@ -183,8 +170,8 @@ pub(crate) fn slice_runs<T: Copy>(runs: &[(usize, T)], range: Range<usize>) -> V
 mod tests {
     use super::*;
 
-    fn word(c: char) -> bool {
-        !c.is_whitespace()
+    fn word(previous: char, c: char) -> bool {
+        previous == ' ' && !c.is_whitespace()
     }
 
     fn uniform_units(text: &str, advance: f32) -> Vec<Unit> {
@@ -198,7 +185,9 @@ mod tests {
         for c in ['ب', 'ש', 'ܐ', 'ހ', 'ﭐ', 'ﺎ', '\u{200F}'] {
             assert!(is_rtl_char(c), "{c:?} should be right to left");
         }
-        for c in ['a', 'я', 'न', 'α', '你', '1', '٣', '۴', ' ', '\u{200E}', '.'] {
+        for c in [
+            'a', 'я', 'न', 'α', '你', '1', '٣', '۴', ' ', '\u{200E}', '.',
+        ] {
             assert!(!is_rtl_char(c), "{c:?} should not be right to left");
         }
     }
@@ -220,11 +209,31 @@ mod tests {
         assert_eq!(
             units,
             [
-                Unit { index: 0, ch: 'ا', advance: 10. },
-                Unit { index: 2, ch: 'ب', advance: 10. },
-                Unit { index: 4, ch: ' ', advance: 10. },
-                Unit { index: 5, ch: 'ج', advance: 10. },
-                Unit { index: 7, ch: 'د', advance: 10. },
+                Unit {
+                    index: 0,
+                    ch: 'ا',
+                    advance: 10.
+                },
+                Unit {
+                    index: 2,
+                    ch: 'ب',
+                    advance: 10.
+                },
+                Unit {
+                    index: 4,
+                    ch: ' ',
+                    advance: 10.
+                },
+                Unit {
+                    index: 5,
+                    ch: 'ج',
+                    advance: 10.
+                },
+                Unit {
+                    index: 7,
+                    ch: 'د',
+                    advance: 10.
+                },
             ]
         );
     }
@@ -272,9 +281,9 @@ mod tests {
     }
 
     #[test]
-    fn a_word_wider_than_the_line_is_left_to_the_caller() {
+    fn a_word_wider_than_the_line_breaks_at_shaped_cluster_boundaries() {
         let units = uniform_units("aaaaaaaa", 10.);
-        assert_eq!(wrap(&units, 25., None, word), None);
+        assert_eq!(wrap(&units, 25., None, word), Some(vec![2, 4, 6]));
     }
 
     #[test]
@@ -288,7 +297,10 @@ mod tests {
     #[test]
     fn candidates_include_characters_that_are_not_word_characters() {
         let units = uniform_units("ab/cd/ef", 10.);
-        let starts = wrap(&units, 35., None, |c| c.is_alphanumeric()).unwrap();
+        let starts = wrap(&units, 35., None, |previous, c| {
+            c != ' ' && (!c.is_alphanumeric() || previous == ' ')
+        })
+        .unwrap();
         assert_eq!(starts, [2, 5]);
     }
 

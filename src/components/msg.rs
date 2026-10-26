@@ -193,32 +193,10 @@ impl RenderOnce for LinkText {
 }
 
 fn link_bounds(layout: &TextLayout, range: std::ops::Range<usize>) -> Option<Bounds<Pixels>> {
-    let mut result: Option<Bounds<Pixels>> = None;
-    let mut offset = 0;
-    let mut origin = layout.bounds().origin;
-    let height = layout.line_height();
-    for line in layout.line_layouts() {
-        let mut start = 0;
-        let ends = (1..=line.wrap_boundaries.len())
-            .map(|row| line.wrapped_line_start_index(row))
-            .chain([line.len()]);
-        for end in ends {
-            let from = range.start.max(offset + start);
-            let to = range.end.min(offset + end);
-            if from < to {
-                let left = line.unwrapped_layout.x_for_index(from - offset)
-                    - line.unwrapped_layout.x_for_index(start);
-                let right = line.unwrapped_layout.x_for_index(to - offset)
-                    - line.unwrapped_layout.x_for_index(start);
-                let bounds = Bounds::new(origin + point(left, px(0.)), size(right - left, height));
-                result = Some(result.map_or(bounds, |previous| previous.union(&bounds)));
-            }
-            start = end;
-            origin.y += height;
-        }
-        offset += line.len() + 1;
-    }
-    result
+    layout
+        .selection_bounds(range)
+        .into_iter()
+        .reduce(|previous, bounds| previous.union(&bounds))
 }
 
 /// Standard 64 px icon for a [`Msg`] icon area, exposed as an `Image`.

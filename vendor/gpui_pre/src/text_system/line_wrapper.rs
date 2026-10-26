@@ -78,17 +78,9 @@ impl LineWrapper {
                             continue;
                         }
 
-                        if Self::is_word_char(c) {
-                            if prev_c == ' ' && c != ' ' && first_non_whitespace_ix.is_some() {
-                                last_candidate_ix = ix;
-                                last_candidate_width = width;
-                            }
-                        } else {
-                            // CJK may not be space separated, e.g.: `Hello world你好世界`
-                            if c != ' ' && first_non_whitespace_ix.is_some() {
-                                last_candidate_ix = ix;
-                                last_candidate_width = width;
-                            }
+                        if Self::can_break_before(prev_c, c) && first_non_whitespace_ix.is_some() {
+                            last_candidate_ix = ix;
+                            last_candidate_width = width;
                         }
 
                         if c != ' ' && first_non_whitespace_ix.is_none() {
@@ -428,12 +420,7 @@ impl LineWrapper {
 
             let char_width = self.width_for_char(c);
 
-            if Self::is_word_char(c) {
-                if prev_c == ' ' && first_non_whitespace_ix.is_some() {
-                    last_candidate_ix = ix;
-                    last_candidate_width = width;
-                }
-            } else if c != ' ' && first_non_whitespace_ix.is_some() {
+            if Self::can_break_before(prev_c, c) && first_non_whitespace_ix.is_some() {
                 last_candidate_ix = ix;
                 last_candidate_width = width;
             }
@@ -494,6 +481,32 @@ impl LineWrapper {
 
         // Text fits within max_lines without truncation.
         (text, Cow::Borrowed(runs))
+    }
+
+    pub(crate) fn can_break_before(previous: char, current: char) -> bool {
+        !matches!(
+            previous,
+            '(' | '['
+                | '{'
+                | '（'
+                | '［'
+                | '｛'
+                | '〈'
+                | '《'
+                | '「'
+                | '『'
+                | '【'
+                | '〔'
+                | '〖'
+                | '〘'
+                | '〚'
+                | '‘'
+                | '“'
+        ) && if Self::is_word_char(current) {
+            previous == ' ' && current != ' '
+        } else {
+            current != ' '
+        }
     }
 
     /// Any character in this list should be treated as a word character,
@@ -1324,7 +1337,8 @@ mod tests {
 
     #[test]
     fn test_is_word_char_devanagari() {
-        for word in ["नमस्ते", "सर्वनाश।", "श्रीराम॥", "१२३", "ॐ"] {
+        for word in ["नमस्ते", "सर्वनाश।", "श्रीराम॥", "१२३", "ॐ"]
+        {
             for c in word.chars() {
                 assert!(
                     LineWrapper::is_word_char(c),
@@ -1354,7 +1368,9 @@ mod tests {
 
     #[test]
     fn test_is_word_char_neighbouring_scripts_are_unchanged() {
-        for c in ['\u{058F}', '\u{0700}', '\u{0E01}', '\u{1100}', '\u{AC00}', '\u{4F60}'] {
+        for c in [
+            '\u{058F}', '\u{0700}', '\u{0E01}', '\u{1100}', '\u{AC00}', '\u{4F60}',
+        ] {
             assert!(
                 !LineWrapper::is_word_char(c),
                 "'{}' (unicode 0x{:x}) became a word character",

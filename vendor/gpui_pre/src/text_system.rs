@@ -1,3 +1,6 @@
+#[doc(hidden)]
+#[path = "text_system/bidi.rs"]
+pub mod text_bidi;
 mod font_fallbacks;
 mod font_features;
 mod line;

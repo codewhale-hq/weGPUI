@@ -40,7 +40,7 @@ TESTS = r"logical_rows\w*|rows_that_were_not_wrapped_logically\w*"
 STUBS = r'''#![allow(dead_code, unused_imports, unused_variables, unused_mut, clippy::all)]
 use std::{
     fmt,
-    ops::{Add, AddAssign, Deref, DerefMut, Div, Mul, Neg, Sub, SubAssign},
+    ops::{Add, AddAssign, Deref, DerefMut, Div, Mul, Neg, Sub, SubAssign, Range},
     sync::Arc,
 };
 
@@ -204,12 +204,33 @@ impl<A: Array> SmallVec<A> {
     }
 }
 
+pub type SharedString = String;
+pub use layout::{LineLayout, ShapedGlyph, ShapedRun, WrappedLineLayout};
+#[path = "BIDI_MODULE"]
+pub mod text_bidi;
+#[derive(Clone, Copy, Debug, Default)]
+pub struct Bounds<T> { pub origin: Point<T>, pub size: Size<T> }
+impl<T> Bounds<T> { pub fn new(origin: Point<T>, size: Size<T>) -> Self { Self { origin, size } } }
+pub fn size<T>(width: T, height: T) -> Size<T> { Size { width, height } }
+
 pub mod layout {
     use super::*;
 
     pub(crate) struct LineWrapper;
     impl LineWrapper {
 '''
+
+
+STUBS = STUBS.replace("BIDI_MODULE", str(TEXT_SYSTEM / "bidi.rs"))
+
+
+def unicode_args(work):
+    registry = pathlib.Path.home() / ".cargo/registry/src"
+    source = next(registry.glob("*/unicode-bidi-0.3.18/src/lib.rs"))
+    library = work / "libunicode_bidi.rlib"
+    if not library.exists():
+        subprocess.run(["rustc", "--edition", "2018", "--crate-name", "unicode_bidi", "--crate-type", "rlib", "--cfg", 'feature="std"', "--cfg", 'feature="hardcoded-data"', str(source), "-o", str(library)], check=True, capture_output=True)
+    return ["--extern", f"unicode_bidi={library}"]
 
 
 def function_text(source, name):
@@ -228,7 +249,7 @@ def stage_module(work):
     module = TEXT_SYSTEM / "logical_wrap.rs"
     binary = work / "logical_wrap_tests"
     print(f"== stage 1: {module.relative_to(TEXT_SYSTEM.parents[3])}")
-    build = run(["rustc", "--edition", "2024", "--test", "-A", "dead_code", str(module), "-o", str(binary)])
+    build = run(["rustc", "--edition", "2024", "--test", "-A", "dead_code", str(module), "-o", str(binary), *unicode_args(work)])
     if build.returncode != 0:
         print(build.stderr[-6000:])
         return build.returncode
@@ -251,7 +272,7 @@ def stage_layout(work, glyph_derived_rows=False):
             sys.exit("wrapped_line_start_index changed; update --glyph-derived-rows")
         block = block.replace(needle, "if let Some(&index) = None::<&usize> {")
     tests_part = layout_source[layout_source.index("#[cfg(test)]\nmod tests {"):]
-    is_word_char = function_text(wrapper_source, "is_word_char")
+    is_word_char = function_text(wrapper_source, "is_word_char") + function_text(wrapper_source, "can_break_before")
     names = list(HELPERS) + re.findall(rf"fn ({TESTS})\(\)", tests_part)
     tests = "\n".join(function_text(tests_part, name) for name in names)
     body = STUBS + is_word_char + "    }\n\n" + block
@@ -260,7 +281,7 @@ def stage_layout(work, glyph_derived_rows=False):
     source.write_text(body, encoding="utf-8")
     binary = work / "layout_harness"
     print(f"== stage 2: line_layout.rs layout types; tests: {', '.join(n for n in names if n not in HELPERS)}")
-    build = run(["rustc", "--edition", "2024", "--test", str(source), "-o", str(binary)])
+    build = run(["rustc", "--edition", "2024", "--test", str(source), "-o", str(binary), *unicode_args(work)])
     if build.returncode != 0:
         print(build.stderr[-8000:])
         return build.returncode

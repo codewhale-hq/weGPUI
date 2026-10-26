@@ -656,3 +656,6 @@ priority = -1
 [lints.rust.unexpected_cfgs]
 level = "allow"
 priority = 0
+
+[dependencies.unicode-bidi]
+version = "=0.3.18"

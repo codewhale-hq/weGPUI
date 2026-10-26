@@ -62,14 +62,14 @@ def main():
                                      tofile="b/vendor/gpui_pre/src/text_system/line_layout.rs"))
     (args.workdir / "trailing-space.patch").write_text(patch)
     wrapper = (SOURCE.parent / "line_wrapper.rs").read_text()
-    classifier = harness.function_text(wrapper, "is_word_char")
+    classifier = harness.function_text(wrapper, "is_word_char") + harness.function_text(wrapper, "can_break_before")
     for name, source in [("baseline", original), ("proposal", patched)]:
         block = source[source.index("/// A laid out and styled line of text"):source.index("pub(crate) struct LineLayoutCache")]
         generated = harness.STUBS + classifier + "    }\n" + block + TESTS
         target = args.workdir / (name + ".rs")
         target.write_text(generated)
         binary = args.workdir / name
-        subprocess.run(["rustc", "--edition", "2024", "--test", str(target), "-o", str(binary)], check=True)
+        subprocess.run(["rustc", "--edition", "2024", "--test", str(target), "-o", str(binary), *harness.unicode_args(args.workdir)], check=True)
         result = subprocess.run([str(binary), "--test-threads=1"], capture_output=True, text=True)
         print(name, "exit", result.returncode, flush=True)
         print(result.stdout, flush=True)

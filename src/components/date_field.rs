@@ -1,13 +1,12 @@
 //! Native counterparts of WeUI's HTML `date` and `datetime-local` inputs.
 //!
 //! The default button opens a year/month/day [`Picker`], followed by hour/minute for
-//! [`DateFieldMode::DateTime`]. [`DateField::set_typed_entry`] enables an editable ISO field:
+//! [`DateFieldMode::DateTime`]. [`DateField::set_typed_entry`] enables an editable numeric field:
 //! Enter or blur commits valid text, Escape discards a draft, and Alt+Down or the calendar
 //! button opens the sheets. Only the final sheet confirmation changes the value.
 //!
-//! Display remains `YYYY-MM-DD` / `YYYY-MM-DD HH:MM`, without locale conversion or seconds.
-//! Gregorian years 1–9999 are supported; the default range is 1900–2100. Empty sheets start at
-//! [`today`], which intentionally remains UTC pending the owner's policy.
+//! Display and typed entry follow the locale's numeric Gregorian date order; committed values
+//! remain ISO. Gregorian years 1–9999 are supported; empty sheets start at local [`today`].
 
 use crate::{
     Theme,
@@ -176,6 +175,106 @@ pub enum DateFieldEvent {
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct DateFieldValueChanged(pub Option<DateValue>);
 
+#[derive(Clone, Copy)]
+pub(crate) struct DatePresentation {
+    pub(crate) order: [usize; 3],
+    separator: char,
+}
+
+impl DatePresentation {
+    pub(crate) fn for_locale(locale: &crate::i18n::Locale) -> Self {
+        let language = locale.language();
+        let region = locale.region();
+        let order =
+            if matches!(language, "zh" | "ja" | "ko") || (language == "en" && region.is_none()) {
+                [0, 1, 2]
+            } else if region == Some("US") {
+                [1, 2, 0]
+            } else {
+                [2, 1, 0]
+            };
+        let separator = if matches!(language, "de" | "ru" | "tr" | "uk" | "pl") {
+            '.'
+        } else if order == [0, 1, 2] && !matches!(language, "zh" | "ja" | "ko") {
+            '-'
+        } else {
+            '/'
+        };
+        Self { order, separator }
+    }
+
+    fn format(self, value: DateValue, mode: DateFieldMode) -> String {
+        let parts = [
+            format!("{:04}", value.year),
+            format!("{:02}", value.month),
+            format!("{:02}", value.day),
+        ];
+        let mut date = self
+            .order
+            .map(|i| parts[i].clone())
+            .join(&self.separator.to_string());
+        if mode == DateFieldMode::DateTime {
+            date.push_str(&format!(" {:02}:{:02}", value.hour, value.minute));
+        }
+        date
+    }
+
+    fn placeholder(self, original: &str, mode: DateFieldMode) -> String {
+        let parts: Vec<_> = original
+            .split(' ')
+            .next()
+            .unwrap_or(original)
+            .split(['-', '/', '.'])
+            .collect();
+        let parts = if parts.len() == 3 {
+            parts
+        } else {
+            vec!["YYYY", "MM", "DD"]
+        };
+        let date = self
+            .order
+            .map(|i| parts[i])
+            .join(&self.separator.to_string());
+        if mode == DateFieldMode::DateTime {
+            format!(
+                "{date} {}",
+                original.split_once(' ').map_or("HH:MM", |(_, time)| time)
+            )
+        } else {
+            date
+        }
+    }
+
+    fn parse(self, text: &str, mode: DateFieldMode) -> Result<DateValue, DateFieldError> {
+        if text.trim().as_bytes().get(4) == Some(&b'-') {
+            return DateValue::parse(text, mode);
+        }
+        let text = text.trim();
+        let (date, time) = text.split_once([' ', 'T']).unwrap_or((text, ""));
+        let parts: Vec<_> = date.split(self.separator).collect();
+        if parts.len() != 3
+            || parts.iter().enumerate().any(|(i, part)| {
+                part.len() != if self.order[i] == 0 { 4 } else { 2 }
+                    || !part.bytes().all(|b| b.is_ascii_digit())
+            })
+        {
+            return Err(DateFieldError::Format);
+        }
+        let mut ordered = [""; 3];
+        for (column, part) in self.order.into_iter().zip(parts) {
+            ordered[column] = part;
+        }
+        let mut iso = ordered.join("-");
+        if mode == DateFieldMode::DateTime {
+            iso.push(' ');
+            iso.push_str(time);
+        } else if !time.is_empty() {
+            return Err(DateFieldError::Format);
+        }
+        DateValue::parse(&iso, mode)
+    }
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum Stage {
     Idle,
@@ -193,6 +292,8 @@ pub struct DateField {
     label: SharedString,
     placeholder: Option<SharedString>,
     messages: std::sync::Arc<crate::i18n::Messages>,
+    presentation: DatePresentation,
+    entry_presentation: DatePresentation,
     mode: DateFieldMode,
     value: Option<DateValue>,
     disabled: bool,
@@ -229,10 +330,10 @@ impl DateField {
     ) -> Self {
         let label = label.into();
         let messages = crate::i18n::messages_arc(cx);
-        let placeholder: SharedString = match mode {
-            DateFieldMode::Date => messages.date_placeholder.clone(),
-            DateFieldMode::DateTime => messages.datetime_placeholder.clone(),
-        };
+        let presentation = DatePresentation::for_locale(cx.global::<crate::i18n::I18n>().locale());
+        let placeholder: SharedString = presentation
+            .placeholder(&messages.date_placeholder, mode)
+            .into();
         let input = cx.new(|cx| {
             let mut input = TextInput::new(placeholder.clone(), cx);
             input.set_aria_label(label.clone(), cx);
@@ -241,6 +342,9 @@ impl DateField {
         let subscription = cx.subscribe(&input, |this, input, event: &InputEvent, cx| {
             match event {
                 InputEvent::Changed => {
+                    if !this.dirty {
+                        this.entry_presentation = this.presentation;
+                    }
                     this.dirty = input.read(cx).text() != this.formatted_value();
                     this.error = None;
                     this.repeat_error = false;
@@ -261,6 +365,11 @@ impl DateField {
         });
         let i18n_subscription = cx.observe_global::<crate::i18n::I18n>(|this, cx| {
             this.messages = crate::i18n::messages_arc(cx);
+            this.presentation =
+                DatePresentation::for_locale(cx.global::<crate::i18n::I18n>().locale());
+            if !this.dirty {
+                this.sync_text(cx);
+            }
             if this.placeholder.is_none() {
                 let text = this.default_placeholder();
                 this.input
@@ -274,6 +383,8 @@ impl DateField {
             label,
             placeholder: None,
             messages,
+            presentation,
+            entry_presentation: presentation,
             mode,
             value: None,
             disabled: false,
@@ -472,7 +583,9 @@ impl DateField {
         let parsed = if text.is_empty() {
             Ok(None)
         } else {
-            DateValue::parse(&text, self.mode).and_then(|v| self.validate(v).map(|()| Some(v)))
+            self.entry_presentation
+                .parse(&text, self.mode)
+                .and_then(|v| self.validate(v).map(|()| Some(v)))
         };
         match parsed {
             Ok(value) => {
@@ -516,13 +629,21 @@ impl DateField {
         Ok(())
     }
     fn formatted_value(&self) -> String {
-        self.value.map(|v| v.format(self.mode)).unwrap_or_default()
+        self.value
+            .map(|v| self.presentation.format(v, self.mode))
+            .unwrap_or_default()
     }
     fn default_placeholder(&self) -> SharedString {
-        match self.mode {
-            DateFieldMode::Date => self.messages.date_placeholder.clone(),
-            DateFieldMode::DateTime => self.messages.datetime_placeholder.clone(),
-        }
+        self.presentation
+            .placeholder(
+                if self.mode == DateFieldMode::Date {
+                    &self.messages.date_placeholder
+                } else {
+                    &self.messages.datetime_placeholder
+                },
+                self.mode,
+            )
+            .into()
     }
     fn placeholder_text(&self) -> SharedString {
         self.placeholder
@@ -534,10 +655,16 @@ impl DateField {
             self.validation_error().map(|e| {
                 let m = &self.messages;
                 match (e, self.mode) {
-                    (DateFieldError::Format, DateFieldMode::Date) => m.date_format_hint.clone(),
-                    (DateFieldError::Format, DateFieldMode::DateTime) => {
-                        m.datetime_format_hint.clone()
-                    }
+                    (DateFieldError::Format, DateFieldMode::Date) => m
+                        .date_format_hint
+                        .replace(&*m.date_placeholder, &self.default_placeholder())
+                        .replace("YYYY-MM-DD", &self.default_placeholder())
+                        .into(),
+                    (DateFieldError::Format, DateFieldMode::DateTime) => m
+                        .datetime_format_hint
+                        .replace(&*m.datetime_placeholder, &self.default_placeholder())
+                        .replace("YYYY-MM-DD HH:MM", &self.default_placeholder())
+                        .into(),
                     (DateFieldError::Date, _) => m.date_invalid.clone(),
                     (DateFieldError::Time, _) => m.time_invalid.clone(),
                     (DateFieldError::OutOfRange { start, end }, _) => {
@@ -816,7 +943,7 @@ impl Render for DateField {
         let description_announces = cfg!(target_os = "linux")
             && self.input.read(cx).is_focused(window)
             && !self.repeat_error;
-        let text = self.value.map(|v| v.format(self.mode));
+        let text = self.value.map(|v| self.presentation.format(v, self.mode));
         let color = if invalid {
             t.red
         } else if self.readonly {
@@ -989,6 +1116,21 @@ mod tests {
             minute: 6,
         };
         assert_eq!(v.format(DateFieldMode::Date), "2027-03-04");
+        for (tag, text) in [
+            ("en-US", "03/04/2027"),
+            ("en-GB", "04/03/2027"),
+            ("de", "04.03.2027"),
+            ("zh-CN", "2027/03/04"),
+        ] {
+            let locale = crate::i18n::Locale::parse(tag).unwrap();
+            let presentation = super::DatePresentation::for_locale(&locale);
+            assert_eq!(presentation.format(v, DateFieldMode::Date), text);
+            assert_eq!(
+                presentation.parse(text, DateFieldMode::Date),
+                Ok(DateValue::date(2027, 3, 4))
+            );
+            assert!(presentation.parse("01/02/27", DateFieldMode::Date).is_err());
+        }
         assert_eq!(v.format(DateFieldMode::DateTime), "2027-03-04 05:06");
     }
     #[test]

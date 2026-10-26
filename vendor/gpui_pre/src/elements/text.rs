@@ -1,9 +1,9 @@
 use crate::{
     ActiveTooltip, AnyView, App, Bounds, DispatchPhase, Element, ElementId, GlobalElementId,
     HighlightStyle, Hitbox, HitboxBehavior, InspectorElementId, IntoElement, LayoutId,
-    MouseDownEvent, MouseMoveEvent, MouseUpEvent, Pixels, Point, SharedString, Size, TextOverflow,
-    TextRun, TextStyle, TooltipId, TruncateFrom, WhiteSpace, Window, WrappedLine,
-    WrappedLineLayout, register_tooltip_mouse_handlers, set_tooltip_on_window,
+    MouseDownEvent, MouseMoveEvent, MouseUpEvent, Pixels, Point, SharedString, Size, TextAlign,
+    TextOverflow, TextRun, TextStyle, TooltipId, TruncateFrom, WhiteSpace, Window, WrappedLine,
+    WrappedLineLayout, px, register_tooltip_mouse_handlers, set_tooltip_on_window,
 };
 use anyhow::Context as _;
 use gpui_util::ResultExt;
@@ -620,7 +620,110 @@ enum TextPaintPass {
     Foreground,
 }
 
+fn clamp_shaped_text<'a>(
+    text: SharedString,
+    runs: &'a [TextRun],
+    font_size: Pixels,
+    wrap_width: Pixels,
+    max_lines: usize,
+    affix: &str,
+    window: &mut Window,
+) -> (SharedString, Cow<'a, [TextRun]>) {
+    if max_lines == 0 {
+        return ("".into(), Cow::Owned(Vec::new()));
+    }
+    let Ok(lines) =
+        window
+            .text_system()
+            .shape_text(text.clone(), font_size, runs, Some(wrap_width), None)
+    else {
+        return (text, Cow::Borrowed(runs));
+    };
+    if lines
+        .iter()
+        .map(|line| line.bidi_rows().len())
+        .sum::<usize>()
+        <= max_lines
+        && lines
+            .iter()
+            .flat_map(|line| line.bidi_rows())
+            .all(|row| row.width <= wrap_width)
+    {
+        return (text, Cow::Borrowed(runs));
+    }
+    let mut remaining = max_lines;
+    let mut offset = 0;
+    let mut end = text.len();
+    let mut boundaries = vec![0];
+    for line in &lines {
+        for row in line.bidi_rows() {
+            boundaries.extend(
+                row.clusters
+                    .iter()
+                    .map(|cluster| offset + row.range.start + cluster.index),
+            );
+        }
+        if remaining > 0 {
+            if line.bidi_rows().len() >= remaining {
+                end = offset + line.wrapped_line_start_index(remaining);
+                remaining = 0;
+            } else {
+                remaining -= line.bidi_rows().len();
+            }
+        }
+        offset += line.len() + 1;
+    }
+    boundaries.sort_unstable();
+    boundaries.dedup();
+    loop {
+        end = text[..end].trim_end_matches(char::is_whitespace).len();
+        let result: SharedString = format!("{}{affix}", &text[..end]).into();
+        let mut styled = Vec::new();
+        let mut remaining = end;
+        for run in runs {
+            if remaining == 0 {
+                break;
+            }
+            let mut run = run.clone();
+            run.len = run.len.min(remaining);
+            remaining -= run.len;
+            styled.push(run);
+        }
+        if let Some(last) = styled.last_mut() {
+            last.len += affix.len();
+        } else if let Some(first) = runs.first() {
+            let mut first = first.clone();
+            first.len = affix.len();
+            styled.push(first);
+        }
+        if let Ok(shaped) = window.text_system().shape_text(
+            result.clone(),
+            font_size,
+            &styled,
+            Some(wrap_width),
+            None,
+        ) && shaped
+            .iter()
+            .map(|line| line.bidi_rows().len())
+            .sum::<usize>()
+            <= max_lines
+            && shaped
+                .iter()
+                .flat_map(|line| line.bidi_rows())
+                .all(|row| row.width <= wrap_width)
+        {
+            return (result, Cow::Owned(styled));
+        }
+        let previous = boundaries.partition_point(|boundary| *boundary < end);
+        if previous == 0 {
+            return ("".into(), Cow::Owned(Vec::new()));
+        }
+        end = boundaries[previous - 1];
+    }
+}
+
 struct TextLayoutInner {
+    text_align: TextAlign,
     len: usize,
     lines: SmallVec<[WrappedLine; 1]>,
     line_height: Pixels,
@@ -705,14 +808,26 @@ impl TextLayout {
                     if let Some(max_lines) = text_style.line_clamp
                         && let Some(wrap_width) = wrap_width
                     {
-                        line_wrapper.truncate_wrapped_line(
-                            text.clone(),
-                            wrap_width,
-                            max_lines,
-                            &truncation_affix,
-                            &runs,
-                            truncate_from,
-                        )
+                        if truncate_from == TruncateFrom::End {
+                            clamp_shaped_text(
+                                text.clone(),
+                                &runs,
+                                font_size,
+                                wrap_width,
+                                max_lines,
+                                &truncation_affix,
+                                window,
+                            )
+                        } else {
+                            line_wrapper.truncate_wrapped_line(
+                                text.clone(),
+                                wrap_width,
+                                max_lines,
+                                &truncation_affix,
+                                &runs,
+                                truncate_from,
+                            )
+                        }
                     } else if let Some(unclipped) = window
                         .text_system()
                         .shape_text(text.clone(), font_size, &runs, None, None)
@@ -754,6 +869,7 @@ impl TextLayout {
                     .log_err()
                 else {
                     element_state.0.borrow_mut().replace(TextLayoutInner {
+                        text_align: text_style.text_align,
                         lines: Default::default(),
                         len: 0,
                         line_height,
@@ -773,6 +889,7 @@ impl TextLayout {
                 }
 
                 element_state.0.borrow_mut().replace(TextLayoutInner {
+                    text_align: text_style.text_align,
                     lines,
                     len,
                     line_height,
@@ -878,11 +995,23 @@ impl TextLayout {
         let mut line_start_ix = 0;
         for line in &element_state.lines {
             let line_bottom = line_origin.y + line.size(line_height).height;
-            if position.y > line_bottom {
+            if position.y >= line_bottom {
                 line_origin.y = line_bottom;
                 line_start_ix += line.len() + 1;
             } else {
-                let position_within_line = position - line_origin;
+                let mut position_within_line = position - line_origin;
+                let row = ((position_within_line.y / line_height) as usize)
+                    .min(line.bidi_rows().len().saturating_sub(1));
+                let width = line
+                    .bidi_rows()
+                    .get(row)
+                    .map_or(line.width(), |row| row.width);
+                let available = bounds.size.width;
+                position_within_line.x -= match element_state.text_align {
+                    TextAlign::Left => px(0.),
+                    TextAlign::Center => (available - width) / 2.,
+                    TextAlign::Right => available - width,
+                };
                 match line.index_for_position(position_within_line, line_height) {
                     Ok(index_within_line) => return Ok(line_start_ix + index_within_line),
                     Err(index_within_line) => return Err(line_start_ix + index_within_line),
@@ -917,11 +1046,60 @@ impl TextLayout {
                 continue;
             } else {
                 let ix_within_line = index - line_start_ix;
-                return Some(line_origin + line.position_for_index(ix_within_line, line_height)?);
+                let mut position = line.position_for_index(ix_within_line, line_height)?;
+                let row = (position.y / line_height) as usize;
+                let width = line
+                    .bidi_rows()
+                    .get(row)
+                    .map_or(line.width(), |row| row.width);
+                let available = bounds.size.width;
+                position.x += match element_state.text_align {
+                    TextAlign::Left => px(0.),
+                    TextAlign::Center => (available - width) / 2.,
+                    TextAlign::Right => available - width,
+                };
+                return Some(line_origin + position);
             }
         }
 
         None
+    }
+
+    #[doc = "Returns selected visual rectangles in window coordinates, including text alignment."]
+    pub fn selection_bounds(&self, range: Range<usize>) -> Vec<Bounds<Pixels>> {
+        let state = self.0.borrow();
+        let state = state.as_ref().expect("measurement has not been performed");
+        let mut origin = state
+            .bounds
+            .expect("prepaint has not been performed")
+            .origin;
+        let mut offset = 0;
+        let mut result = Vec::new();
+        for line in &state.lines {
+            if range.end > offset && range.start < offset + line.len() {
+                for mut bounds in line.selection_bounds(
+                    range.start.saturating_sub(offset)..(range.end - offset).min(line.len()),
+                    state.line_height,
+                ) {
+                    let row = (bounds.origin.y / state.line_height) as usize;
+                    let width = line
+                        .bidi_rows()
+                        .get(row)
+                        .map_or(line.width(), |row| row.width);
+                    let available = bounds.size.width;
+                    bounds.origin.x += match state.text_align {
+                        TextAlign::Left => px(0.),
+                        TextAlign::Center => (available - width) / 2.,
+                        TextAlign::Right => available - width,
+                    };
+                    bounds.origin += origin;
+                    result.push(bounds);
+                }
+            }
+            origin.y += line.size(state.line_height).height;
+            offset += line.len() + 1;
+        }
+        result
     }
 
     /// Retrieve the layout for the line containing the given byte index.

@@ -1,89 +1,173 @@
-use gpui::{LineLayout, ShapedRun};
+use crate::{LineLayout, ShapedRun};
 
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub(crate) struct Cluster {
+pub struct Cluster {
     pub index: usize,
+    end: usize,
     pub x0: f32,
     pub x1: f32,
     pub rtl: bool,
 }
 
-pub(crate) fn is_rtl_char(c: char) -> bool {
+pub fn is_rtl_char(c: char) -> bool {
     matches!(
-        c as u32,
-        0x0590..=0x08FF | 0xFB1D..=0xFDFF | 0xFE70..=0xFEFF | 0x10800..=0x10FFF | 0x1E800..=0x1EFFF
-    ) && !matches!(c, '\u{0660}'..='\u{0669}' | '\u{06F0}'..='\u{06F9}')
+        unicode_bidi::bidi_class(c),
+        unicode_bidi::BidiClass::R | unicode_bidi::BidiClass::AL
+    )
 }
 
-fn run_is_rtl(run: &ShapedRun, text: &str) -> bool {
-    let (Some(first), Some(last)) = (run.glyphs.first(), run.glyphs.last()) else {
-        return false;
-    };
-    if first.index != last.index {
-        return first.index > last.index;
+pub fn paragraph_is_rtl(text: &str, fallback: bool) -> bool {
+    match unicode_bidi::get_base_direction_full(text) {
+        unicode_bidi::Direction::Rtl => true,
+        unicode_bidi::Direction::Ltr => false,
+        unicode_bidi::Direction::Mixed => fallback,
     }
-    text.get(first.index..)
-        .and_then(|rest| rest.chars().next())
-        .is_some_and(is_rtl_char)
 }
 
-pub(crate) fn clusters(layout: &LineLayout, text: &str) -> Vec<Cluster> {
-    let mut glyphs: Vec<(usize, f32, bool)> = Vec::new();
-    for run in &layout.runs {
-        let rtl = run_is_rtl(run, text);
-        for glyph in &run.glyphs {
-            let rtl = text
-                .get(glyph.index..)
-                .and_then(|s| s.chars().next())
-                .map_or(rtl, |c| {
-                    if c.is_alphabetic() || c.is_numeric() {
-                        is_rtl_char(c)
-                    } else {
-                        rtl
-                    }
-                });
-            glyphs.push((glyph.index, f32::from(glyph.position.x), rtl));
-        }
-    }
+pub fn clusters(layout: &LineLayout, text: &str) -> Vec<Cluster> {
+    let info = unicode_bidi::ParagraphBidiInfo::new(text, None);
+    clusters_with_levels(layout, &info.reordered_levels(0..text.len()), 0, text.len())
+}
+
+fn clusters_with_levels(
+    layout: &LineLayout,
+    levels: &[unicode_bidi::Level],
+    offset: usize,
+    len: usize,
+) -> Vec<Cluster> {
+    let mut glyphs: Vec<_> = layout.runs.iter().flat_map(|run| &run.glyphs).collect();
+    glyphs.sort_by(|a, b| {
+        a.position
+            .x
+            .partial_cmp(&b.position.x)
+            .unwrap_or(std::cmp::Ordering::Equal)
+    });
     let width = f32::from(layout.width);
     let mut clusters: Vec<Cluster> = Vec::new();
-    for cluster in glyphs
-        .iter()
-        .enumerate()
-        .map(|(k, &(index, x0, rtl))| Cluster {
-            index,
+    let mut owners = std::collections::HashMap::<usize, usize>::new();
+    for (k, glyph) in glyphs.iter().enumerate() {
+        let x0 = f32::from(glyph.position.x);
+        let cluster = Cluster {
+            index: glyph.index,
+            end: len,
             x0,
-            x1: glyphs.get(k + 1).map_or(width, |next| next.1).max(x0),
-            rtl,
-        })
-    {
-        if let Some(previous) = clusters
-            .iter_mut()
-            .find(|previous| previous.index == cluster.index)
-        {
+            x1: glyphs
+                .get(k + 1)
+                .map_or(width, |next| f32::from(next.position.x))
+                .max(x0),
+            rtl: levels
+                .get(glyph.index + offset)
+                .is_some_and(|level| level.is_rtl()),
+        };
+        if let Some(&owner) = owners.get(&cluster.index) {
+            let previous = &mut clusters[owner];
             previous.x0 = previous.x0.min(cluster.x0);
             previous.x1 = previous.x1.max(cluster.x1);
         } else {
+            owners.insert(cluster.index, clusters.len());
             clusters.push(cluster);
         }
+    }
+    let mut indices: Vec<_> = owners.keys().copied().collect();
+    indices.sort_unstable();
+    for cluster in &mut clusters {
+        cluster.end = indices
+            .get(indices.partition_point(|index| *index <= cluster.index))
+            .copied()
+            .unwrap_or(len);
     }
     clusters
 }
 
-pub(crate) fn has_rtl(clusters: &[Cluster]) -> bool {
+#[derive(Clone, Debug)]
+pub struct Row {
+    pub range: std::ops::Range<usize>,
+    pub width: crate::Pixels,
+    pub clusters: Vec<Cluster>,
+}
+
+pub(crate) fn rows(line: &crate::WrappedLineLayout, text: &str) -> Vec<Row> {
+    let layout = &line.unwrapped_layout;
+    let edges: Vec<_> = std::iter::once(crate::px(0.))
+        .chain(line.wrap_boundaries().iter().map(|boundary| {
+            layout.runs[boundary.run_ix].glyphs[boundary.glyph_ix]
+                .position
+                .x
+        }))
+        .chain([layout.width])
+        .collect();
+    let info = unicode_bidi::ParagraphBidiInfo::new(text, None);
+    (0..edges.len() - 1)
+        .map(|row| {
+            let start = line.wrapped_line_start_index(row);
+            let end = line.wrapped_line_start_index(row + 1);
+            let width = edges[row + 1] - edges[row];
+            let runs = layout
+                .runs
+                .iter()
+                .filter_map(|run| {
+                    let glyphs: Vec<_> = run
+                        .glyphs
+                        .iter()
+                        .filter(|glyph| glyph.index >= start && glyph.index < end)
+                        .map(|glyph| crate::ShapedGlyph {
+                            index: glyph.index - start,
+                            position: crate::point(glyph.position.x - edges[row], glyph.position.y),
+                            ..glyph.clone()
+                        })
+                        .collect();
+                    (!glyphs.is_empty()).then_some(ShapedRun {
+                        font_id: run.font_id,
+                        glyphs,
+                    })
+                })
+                .collect();
+            let local = LineLayout {
+                font_size: layout.font_size,
+                width,
+                ascent: layout.ascent,
+                descent: layout.descent,
+                runs,
+                len: end - start,
+            };
+            let levels = info.reordered_levels(start..end);
+            let mut clusters = clusters_with_levels(&local, &levels, start, end - start);
+            if row + 1 < edges.len() - 1 && !line.logical_line_starts.is_empty() {
+                let trimmed = text[start..end].trim_end_matches(' ').len();
+                if trimmed < end - start && !clusters.iter().any(|cluster| cluster.index == trimmed)
+                {
+                    for cluster in &mut clusters {
+                        cluster.end = cluster.end.min(trimmed);
+                    }
+                    let x = if info.paragraph_level.is_rtl() {
+                        0.
+                    } else {
+                        f32::from(width)
+                    };
+                    clusters.push(Cluster {
+                        index: trimmed,
+                        end: end - start,
+                        x0: x,
+                        x1: x,
+                        rtl: info.paragraph_level.is_rtl(),
+                    });
+                    clusters.sort_by(|a, b| a.x0.total_cmp(&b.x0).then(a.x1.total_cmp(&b.x1)));
+                }
+            }
+            Row {
+                range: start..end,
+                width,
+                clusters,
+            }
+        })
+        .collect()
+}
+
+pub fn has_rtl(clusters: &[Cluster]) -> bool {
     clusters.iter().any(|cluster| cluster.rtl)
 }
 
-fn next_logical(clusters: &[Cluster], after: usize, len: usize) -> usize {
-    clusters
-        .iter()
-        .map(|cluster| cluster.index)
-        .filter(|index| *index > after)
-        .min()
-        .unwrap_or(len)
-}
-
-pub(crate) fn caret_x(clusters: &[Cluster], text: &str, index: usize) -> Option<f32> {
+pub fn caret_x(clusters: &[Cluster], text: &str, index: usize) -> Option<f32> {
     if clusters.is_empty() {
         return None;
     }
@@ -94,7 +178,7 @@ pub(crate) fn caret_x(clusters: &[Cluster], text: &str, index: usize) -> Option<
         .iter()
         .filter(|cluster| cluster.index < index)
         .max_by_key(|cluster| cluster.index)?;
-    let next = next_logical(clusters, owner.index, text.len());
+    let next = owner.end;
     if index >= next {
         return Some(if owner.rtl { owner.x0 } else { owner.x1 });
     }
@@ -109,14 +193,13 @@ pub(crate) fn caret_x(clusters: &[Cluster], text: &str, index: usize) -> Option<
     })
 }
 
-pub(crate) fn index_for_x(clusters: &[Cluster], text: &str, x: f32) -> usize {
-    let len = text.len();
+pub fn index_for_x(clusters: &[Cluster], text: &str, x: f32) -> usize {
     let (Some(first), Some(last)) = (clusters.first(), clusters.last()) else {
         return 0;
     };
     let left = |cluster: &Cluster| {
         if cluster.rtl {
-            next_logical(clusters, cluster.index, len)
+            cluster.end
         } else {
             cluster.index
         }
@@ -125,7 +208,7 @@ pub(crate) fn index_for_x(clusters: &[Cluster], text: &str, x: f32) -> usize {
         if cluster.rtl {
             cluster.index
         } else {
-            next_logical(clusters, cluster.index, len)
+            cluster.end
         }
     };
     if x <= first.x0 {
@@ -138,11 +221,15 @@ pub(crate) fn index_for_x(clusters: &[Cluster], text: &str, x: f32) -> usize {
         .iter()
         .find(|cluster| x >= cluster.x0 && x < cluster.x1)
         .unwrap_or(last);
-    let end = next_logical(clusters, cluster.index, len);
+    let end = cluster.end;
     let Some(span) = text.get(cluster.index..end) else {
         return left(cluster);
     };
-    let fraction = ((x - cluster.x0) / (cluster.x1 - cluster.x0)).clamp(0., 1.);
+    let fraction = if cluster.x1 > cluster.x0 {
+        ((x - cluster.x0) / (cluster.x1 - cluster.x0)).clamp(0., 1.)
+    } else {
+        0.
+    };
     let fraction = if cluster.rtl { 1. - fraction } else { fraction };
     let offset = (fraction * span.chars().count() as f32).round() as usize;
     cluster.index
@@ -152,7 +239,7 @@ pub(crate) fn index_for_x(clusters: &[Cluster], text: &str, x: f32) -> usize {
             .map_or(span.len(), |(index, _)| index)
 }
 
-pub(crate) fn selection_spans(
+pub fn selection_spans(
     clusters: &[Cluster],
     text: &str,
     start: usize,
@@ -162,16 +249,12 @@ pub(crate) fn selection_spans(
         .iter()
         .filter_map(|cluster| {
             let lo = start.max(cluster.index);
-            let hi = end.min(next_logical(clusters, cluster.index, text.len()));
+            let hi = end.min(cluster.end);
             if lo >= hi || cluster.x1 <= cluster.x0 {
                 return None;
             }
             let edge = |index| {
-                let total = text
-                    .get(cluster.index..next_logical(clusters, cluster.index, text.len()))?
-                    .chars()
-                    .count()
-                    .max(1) as f32;
+                let total = text.get(cluster.index..cluster.end)?.chars().count().max(1) as f32;
                 let before = text.get(cluster.index..index)?.chars().count() as f32;
                 let span = (cluster.x1 - cluster.x0) * before / total;
                 Some(if cluster.rtl {
@@ -199,7 +282,7 @@ pub(crate) fn selection_spans(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use gpui::{FontId, GlyphId, ShapedGlyph, point, px};
+    use crate::{FontId, GlyphId, ShapedGlyph, point, px};
 
     fn layout(glyphs: &[(usize, f32)], runs: &[usize], width: f32) -> LineLayout {
         let mut at = 0;
@@ -269,6 +352,22 @@ mod tests {
         let text = "abאב";
         let line = layout(&[(0, 0.), (1, 10.), (4, 20.), (2, 30.)], &[2, 2], 40.);
         let clusters = clusters(&line, text);
+        let neutral_text = "א 12";
+        let neutral_line = layout(&[(3, 0.), (4, 10.), (2, 20.), (0, 30.)], &[4], 40.);
+        let neutral_clusters = super::clusters(&neutral_line, neutral_text);
+        assert!(
+            neutral_clusters
+                .iter()
+                .find(|cluster| cluster.index == 2)
+                .unwrap()
+                .rtl
+        );
+        assert!(
+            neutral_clusters
+                .iter()
+                .filter(|cluster| cluster.index >= 3)
+                .all(|cluster| !cluster.rtl)
+        );
         assert_eq!(caret_x(&clusters, text, 1), Some(10.));
         assert_eq!(caret_x(&clusters, text, 2), Some(40.));
         assert_eq!(caret_x(&clusters, text, 6), Some(20.));
@@ -285,6 +384,9 @@ mod tests {
         let line = layout(&[(0, 0.)], &[1], 10.);
         assert!(has_rtl(&clusters(&line, "ש")));
         assert!(!has_rtl(&clusters(&line, "s")));
+        assert!(!paragraph_is_rtl("\u{2067}א\u{2069}a", true));
+        assert!(paragraph_is_rtl("123", true));
+        assert!(!paragraph_is_rtl("123", false));
         assert!(is_rtl_char('ع') && is_rtl_char('א') && !is_rtl_char('क') && !is_rtl_char('中'));
     }
 

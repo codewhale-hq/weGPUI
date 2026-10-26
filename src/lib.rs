@@ -41,7 +41,6 @@
 
 pub mod accessibility;
 pub mod assets;
-mod bidi;
 pub mod components;
 pub mod i18n;
 pub mod input;

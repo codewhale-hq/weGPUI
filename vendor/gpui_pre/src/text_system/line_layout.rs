@@ -12,7 +12,7 @@ use std::{
     },
 };
 
-use super::{LineWrapper, logical_wrap};
+use super::{LineWrapper, logical_wrap, text_bidi};
 
 /// A laid out and styled line of text
 #[derive(Default, Debug)]
@@ -269,18 +269,9 @@ impl LineLayout {
                 continue;
             }
 
-            // Here is very similar to `LineWrapper::wrap_line` to determine text wrapping,
-            // but there are some differences, so we have to duplicate the code here.
-            if LineWrapper::is_word_char(ch) {
-                if prev_ch == ' ' && ch != ' ' && first_non_whitespace_ix.is_some() {
-                    last_candidate_ix = Some(boundary);
-                    last_candidate_x = x;
-                }
-            } else {
-                if ch != ' ' && first_non_whitespace_ix.is_some() {
-                    last_candidate_ix = Some(boundary);
-                    last_candidate_x = x;
-                }
+            if LineWrapper::can_break_before(prev_ch, ch) && first_non_whitespace_ix.is_some() {
+                last_candidate_ix = Some(boundary);
+                last_candidate_x = x;
             }
 
             if ch != ' ' && first_non_whitespace_ix.is_none() {
@@ -330,6 +321,8 @@ pub struct WrappedLineLayout {
     pub wrap_width: Option<Pixels>,
 
     pub(crate) logical_line_starts: SmallVec<[usize; 1]>,
+    pub(crate) text: SharedString,
+    pub(crate) bidi_rows: Vec<text_bidi::Row>,
 }
 
 /// A boundary at which a line was wrapped
@@ -342,6 +335,44 @@ pub struct WrapBoundary {
 }
 
 impl WrappedLineLayout {
+    #[doc = "Cached visual clusters and logical ranges for each wrapped row."]
+    pub fn bidi_rows(&self) -> &[text_bidi::Row] {
+        &self.bidi_rows
+    }
+
+    #[doc = "Returns separate visual rectangles for the selected byte range."]
+    pub fn selection_bounds(
+        &self,
+        range: Range<usize>,
+        line_height: Pixels,
+    ) -> Vec<crate::Bounds<Pixels>> {
+        self.bidi_rows
+            .iter()
+            .enumerate()
+            .flat_map(|(row, metrics)| {
+                let lo = range.start.max(metrics.range.start);
+                let hi = range.end.min(metrics.range.end);
+                if lo >= hi {
+                    return Vec::new();
+                }
+                text_bidi::selection_spans(
+                    &metrics.clusters,
+                    &self.text[metrics.range.clone()],
+                    lo - metrics.range.start,
+                    hi - metrics.range.start,
+                )
+                .into_iter()
+                .map(|(x0, x1)| {
+                    crate::Bounds::new(
+                        point(px(x0), line_height * row as f32),
+                        crate::size(px(x1 - x0), line_height),
+                    )
+                })
+                .collect()
+            })
+            .collect()
+    }
+
     /// The length of the underlying text, in utf8 bytes.
     #[allow(clippy::len_without_is_empty)]
     pub fn len(&self) -> usize {
@@ -437,6 +468,33 @@ impl WrappedLineLayout {
         line_height: Pixels,
         closest: bool,
     ) -> Result<usize, usize> {
+        if !self.bidi_rows.is_empty() {
+            let row_index =
+                ((position.y.max(px(0.)) / line_height) as usize).min(self.bidi_rows.len() - 1);
+            let row = &self.bidi_rows[row_index];
+            let text = &self.text[row.range.clone()];
+            let x = f32::from(position.x);
+            let index = if closest {
+                text_bidi::index_for_x(&row.clusters, text, x)
+            } else {
+                row.clusters
+                    .iter()
+                    .find(|cluster| x >= cluster.x0 && x < cluster.x1)
+                    .map_or_else(
+                        || text_bidi::index_for_x(&row.clusters, text, x),
+                        |cluster| cluster.index,
+                    )
+            } + row.range.start;
+            return if position.y >= px(0.)
+                && position.y < line_height * self.bidi_rows.len() as f32
+                && position.x >= px(0.)
+                && position.x < row.width
+            {
+                Ok(index)
+            } else {
+                Err(index)
+            };
+        }
         let wrapped_line_ix = (position.y / line_height) as usize;
 
         let wrapped_line_start_index;
@@ -491,6 +549,23 @@ impl WrappedLineLayout {
 
     /// Returns the pixel position for the given byte index.
     pub fn position_for_index(&self, index: usize, line_height: Pixels) -> Option<Point<Pixels>> {
+        if !self.bidi_rows.is_empty() {
+            if index > self.len() || !self.text.is_char_boundary(index) {
+                return None;
+            }
+            let row_index = self
+                .bidi_rows
+                .partition_point(|row| row.range.start <= index)
+                .saturating_sub(1);
+            let row = &self.bidi_rows[row_index];
+            let x = text_bidi::caret_x(
+                &row.clusters,
+                &self.text[row.range.clone()],
+                index - row.range.start,
+            )
+            .unwrap_or(0.);
+            return Some(point(px(x), line_height * row_index as f32));
+        }
         let mut line_start_ix = 0;
         let mut line_end_indices = (1..=self.wrap_boundaries.len())
             .map(|row| self.wrapped_line_start_index(row))
@@ -717,12 +792,16 @@ impl LineLayoutCache {
                 },
                 None => (unwrapped_layout, SmallVec::new(), SmallVec::new()),
             };
-            let layout = Arc::new(WrappedLineLayout {
+            let mut layout = WrappedLineLayout {
                 unwrapped_layout,
                 wrap_boundaries,
                 wrap_width,
                 logical_line_starts,
-            });
+                text: text.clone(),
+                bidi_rows: Vec::new(),
+            };
+            layout.bidi_rows = text_bidi::rows(&layout, &text);
+            let layout = Arc::new(layout);
             let key = Arc::new(CacheKey {
                 text,
                 font_size,
@@ -774,7 +853,7 @@ impl LineLayoutCache {
             &units,
             wrap_width.as_f32(),
             max_lines,
-            LineWrapper::is_word_char,
+            LineWrapper::can_break_before,
         )?;
         if starts.is_empty() {
             return None;
@@ -1318,6 +1397,7 @@ mod tests {
             }]),
             wrap_width: Some(px(30.)),
             logical_line_starts: SmallVec::from_buf([5]),
+            ..Default::default()
         }
     }
 
@@ -1336,6 +1416,31 @@ mod tests {
 
     #[test]
     fn logical_rows_place_each_index_on_the_row_that_holds_it() {
+        let mut cached = logical_two_row_layout();
+        cached.text = "אב גד".into();
+        cached.bidi_rows = text_bidi::rows(&cached, &cached.text);
+        for (index, x, row) in [
+            (0, 25., 0),
+            (2, 15., 0),
+            (4, 5., 0),
+            (5, 20., 1),
+            (7, 10., 1),
+            (9, 0., 1),
+        ] {
+            assert_eq!(
+                cached.position_for_index(index, px(20.)),
+                Some(point(px(x), px(20.) * row as f32))
+            );
+        }
+        assert_eq!(
+            cached.closest_index_for_position(point(px(18.), px(25.)), px(20.)),
+            Ok(5)
+        );
+        assert_eq!(
+            cached.index_for_position(point(px(18.), px(25.)), px(20.)),
+            Ok(5)
+        );
+        assert_eq!(cached.selection_bounds(0..9, px(20.)).len(), 2);
         let layout = logical_two_row_layout();
         let line_height = px(20.);
         for (index, row) in [(0, 0), (4, 0), (5, 0), (7, 1), (8, 1), (9, 1)] {

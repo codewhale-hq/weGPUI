@@ -551,15 +551,7 @@ impl TextInput {
     }
 
     fn rtl_paragraph(&self, cx: &App) -> bool {
-        for c in self.content.chars() {
-            if crate::bidi::is_rtl_char(c) {
-                return true;
-            }
-            if c.is_alphabetic() {
-                return false;
-            }
-        }
-        crate::i18n::direction(cx).is_rtl()
+        gpui::text_bidi::paragraph_is_rtl(&self.content, crate::i18n::direction(cx).is_rtl())
     }
 
     fn move_backward(&mut self, cx: &mut Context<Self>) {
@@ -1429,11 +1421,7 @@ struct TextLayout {
     rows: Vec<Vec<TextRow>>,
 }
 
-struct TextRow {
-    range: Range<usize>,
-    width: Pixels,
-    clusters: Vec<crate::bidi::Cluster>,
-}
+type TextRow = gpui::text_bidi::Row;
 
 impl TextLayout {
     fn shift(&self, line: usize, row: usize) -> Pixels {
@@ -1444,57 +1432,7 @@ impl TextLayout {
     }
 
     fn rows(line: &WrappedLine) -> Vec<TextRow> {
-        let starts = Self::row_starts(line);
-        let layout = &line.unwrapped_layout;
-        let edges: Vec<_> = std::iter::once(px(0.))
-            .chain(line.wrap_boundaries().iter().map(|boundary| {
-                layout.runs[boundary.run_ix].glyphs[boundary.glyph_ix]
-                    .position
-                    .x
-            }))
-            .chain([layout.width])
-            .collect();
-        starts
-            .iter()
-            .enumerate()
-            .map(|(row, &start)| {
-                let end = starts.get(row + 1).copied().unwrap_or(line.len());
-                let width = edges[row + 1] - edges[row];
-                let runs = layout
-                    .runs
-                    .iter()
-                    .filter_map(|run| {
-                        let glyphs: Vec<_> = run
-                            .glyphs
-                            .iter()
-                            .filter(|glyph| glyph.index >= start && glyph.index < end)
-                            .map(|glyph| ShapedGlyph {
-                                index: glyph.index - start,
-                                position: point(glyph.position.x - edges[row], glyph.position.y),
-                                ..glyph.clone()
-                            })
-                            .collect();
-                        (!glyphs.is_empty()).then_some(ShapedRun {
-                            font_id: run.font_id,
-                            glyphs,
-                        })
-                    })
-                    .collect();
-                let row_layout = LineLayout {
-                    font_size: layout.font_size,
-                    width,
-                    ascent: layout.ascent,
-                    descent: layout.descent,
-                    runs,
-                    len: end - start,
-                };
-                TextRow {
-                    range: start..end,
-                    width,
-                    clusters: crate::bidi::clusters(&row_layout, &line.text[start..end]),
-                }
-            })
-            .collect()
+        line.bidi_rows().to_vec()
     }
 
     fn locate(&self, index: usize) -> Option<(usize, usize)> {
@@ -1528,7 +1466,7 @@ impl TextLayout {
         let row = Self::row_of(&Self::row_starts(&self.lines[line]), local);
         let metrics = &self.rows[line][row];
         let text = &self.lines[line].text[metrics.range.clone()];
-        let x = crate::bidi::caret_x(&metrics.clusters, text, local - metrics.range.start)
+        let x = gpui::text_bidi::caret_x(&metrics.clusters, text, local - metrics.range.start)
             .unwrap_or(0.);
         point(
             px(x) + self.shift(line, row),
@@ -1548,7 +1486,7 @@ impl TextLayout {
             .min(self.rows[line].len() - 1);
         let metrics = &self.rows[line][row];
         let text = &self.lines[line].text[metrics.range.clone()];
-        let index = crate::bidi::index_for_x(
+        let index = gpui::text_bidi::index_for_x(
             &metrics.clusters,
             text,
             f32::from(position.x - self.shift(line, row)),
@@ -1633,7 +1571,7 @@ impl TextLayout {
                     Vec::new()
                 };
                 let monotonic = ordered
-                    && !crate::bidi::has_rtl(&self.rows[line_index][row].clusters)
+                    && !gpui::text_bidi::has_rtl(&self.rows[line_index][row].clusters)
                     && positions.iter().all(|x| x.is_finite())
                     && positions.windows(2).all(|pair| pair[1] >= pair[0]);
                 let extents = monotonic.then(|| {
@@ -1683,8 +1621,12 @@ impl TextLayout {
                     continue;
                 }
                 let text = &line.text[metrics.range.clone()];
-                let spans =
-                    crate::bidi::selection_spans(&metrics.clusters, text, lo - start, hi - start);
+                let spans = gpui::text_bidi::selection_spans(
+                    &metrics.clusters,
+                    text,
+                    lo - start,
+                    hi - start,
+                );
                 let shift = self.shift(line_index, row);
                 let y = self.tops[line_index] + self.line_height * row as f32;
                 for (x0, x1) in spans {
@@ -1694,11 +1636,9 @@ impl TextLayout {
                     ));
                 }
                 if row + 1 == self.rows[line_index].len() && range.end > base + line.len() {
-                    let x = crate::bidi::caret_x(&metrics.clusters, text, text.len()).unwrap_or(0.);
-                    let rtl = text
-                        .chars()
-                        .find(|c| c.is_alphabetic())
-                        .is_some_and(crate::bidi::is_rtl_char);
+                    let x =
+                        gpui::text_bidi::caret_x(&metrics.clusters, text, text.len()).unwrap_or(0.);
+                    let rtl = gpui::text_bidi::paragraph_is_rtl(text, self.rtl);
                     let x0 = px(x) + shift - if rtl { newline_width } else { px(0.) };
                     rects.push(Bounds::new(
                         point(x0, y),

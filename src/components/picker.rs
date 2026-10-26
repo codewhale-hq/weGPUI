@@ -291,7 +291,7 @@ impl Picker {
     /// Uses a year, month and day cascade over `start_year..=end_year`, labelled by the locale's
     /// [`crate::Messages::year_label`], [`crate::Messages::months`] and
     /// [`crate::Messages::day_label`] with unpadded numeric values, and makes `today`
-    /// (`(year, month, day)`) the default value. Pass the user's local date; [`today`] is UTC.
+    /// (`(year, month, day)`) the default value. Pass the user's local date; [`today`] reads the host local clock.
     /// Years are generated as visible rows, and months/days only for the current selection.
     /// Reversed bounds produce an empty year column, as an empty inclusive Rust range does.
     pub fn date(mut self, start_year: i32, end_year: i32, today: (i32, u32, u32)) -> Self {
@@ -374,7 +374,10 @@ impl Picker {
     pub fn open(&mut self, window: &mut Window, cx: &mut Context<Self>) {
         self.rebuild(cx);
         self.presence.show(window, cx);
-        if let Some(first) = self.columns.first() {
+        if let Some(first) = self
+            .columns
+            .get(self.display_order(cx).first().copied().unwrap_or(0))
+        {
             window.focus(&first.focus.clone(), cx);
         }
         cx.notify();
@@ -383,7 +386,10 @@ impl Picker {
     pub fn open_instantly(&mut self, window: &mut Window, cx: &mut Context<Self>) {
         self.rebuild(cx);
         self.presence.show_instantly(window, cx);
-        if let Some(first) = self.columns.first() {
+        if let Some(first) = self
+            .columns
+            .get(self.display_order(cx).first().copied().unwrap_or(0))
+        {
             window.focus(&first.focus.clone(), cx);
         }
         cx.notify();
@@ -754,6 +760,20 @@ impl Picker {
         .detach();
     }
 
+    fn display_order(&self, cx: &App) -> Vec<usize> {
+        if matches!(self.source, Source::Date { .. }) {
+            super::date_field::DatePresentation::for_locale(
+                cx.global::<crate::i18n::I18n>().locale(),
+            )
+            .order
+            .into_iter()
+            .filter(|i| *i < self.columns.len())
+            .collect()
+        } else {
+            (0..self.columns.len()).collect()
+        }
+    }
+
     fn render_column(
         &mut self,
         level: usize,
@@ -983,7 +1003,9 @@ impl Render for Picker {
             return div().into_any_element();
         }
         let count = self.columns.len();
-        let columns: Vec<AnyElement> = (0..count)
+        let columns: Vec<AnyElement> = self
+            .display_order(cx)
+            .into_iter()
             .map(|level| self.render_column(level, count, window, cx))
             .collect();
         let entity = cx.entity();
@@ -1061,24 +1083,11 @@ pub fn days_in_month(year: i32, month: u32) -> u32 {
     }
 }
 
-/// Today's date as `(year, month, day)` in UTC, read from the system clock (1970-01-01 if the clock
-/// is before the Unix epoch). The standard library has no local time zone, so apps wanting local
-/// dates pass their own `(year, month, day)` to [`Picker::date`].
+/// Today's Gregorian date as `(year, month, day)` in the host's local time zone.
 pub fn today() -> (i32, u32, u32) {
-    let secs = std::time::SystemTime::now()
-        .duration_since(std::time::UNIX_EPOCH)
-        .map(|d| d.as_secs() as i64)
-        .unwrap_or(0);
-    let z = secs.div_euclid(86_400) + 719_468;
-    let era = z.div_euclid(146_097);
-    let doe = z - era * 146_097;
-    let yoe = (doe - doe / 1460 + doe / 36_524 - doe / 146_096) / 365;
-    let doy = doe - (365 * yoe + yoe / 4 - yoe / 100);
-    let mp = (5 * doy + 2) / 153;
-    let d = (doy - (153 * mp + 2) / 5 + 1) as u32;
-    let m = if mp < 10 { mp + 3 } else { mp - 9 } as u32;
-    let y = (yoe + era * 400 + if m <= 2 { 1 } else { 0 }) as i32;
-    (y, m, d)
+    use chrono::Datelike;
+    let date = chrono::Local::now();
+    (date.year(), date.month(), date.day())
 }
 
 #[cfg(test)]

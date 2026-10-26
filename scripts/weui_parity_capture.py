@@ -119,7 +119,7 @@ def capture(record):
         with output.with_name(output.name + "-native.log").open("w") as native_log:
             process = subprocess.Popen(command, env=WORKER["environment"], stdout=native_log, stderr=native_log)
             context = WORKER["browser"].new_context(viewport={"width": WORKER["width"], "height": WORKER["height"]},
-                                                   device_scale_factor=2, color_scheme=record["theme"])
+                                                   device_scale_factor=2, color_scheme=record["theme"], locale="zh-CN")
             page = context.new_page()
             page.set_default_timeout(15000)
             errors = []
@@ -157,8 +157,17 @@ def capture(record):
                 result["reference_scroll"] = scroll
                 page.wait_for_timeout(300)
             page.screenshot(path=str(reference_path))
-            subprocess.run(["import", "-window", window, str(native_path)],
-                           env=WORKER["environment"], check=True, capture_output=True)
+            for attempt in range(21):
+                subprocess.run(["import", "-window", window, str(native_path)],
+                               env=WORKER["environment"], check=True, capture_output=True)
+                with Image.open(native_path) as image:
+                    populated = any(low != high for low, high in image.convert("RGB").getextrema())
+                if populated:
+                    break
+                if attempt == 20:
+                    native_path.rename(native_path.with_name(native_path.stem + "-invalid.png"))
+                    raise ValueError("Native capture remained uniformly blank after readiness retries")
+                time.sleep(.25)
         native = Image.open(native_path).convert("RGB")
         reference = Image.open(reference_path).convert("RGB")
         if native.size != (WORKER["width"] * 2, WORKER["height"] * 2) or native.size != reference.size:
@@ -244,7 +253,7 @@ def main():
     manifest = {"base_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
                 "binary_sha256": sha256(binary), "reference": inventory["reference"],
                 "expected_pairs": len(records), "full_matrix": complete,
-                "language": "zh-Hans", "viewport": [args.width, args.height], "scale": 2, "scroll": args.scroll,
+                "language": "zh-Hans", "reference_browser_locale": "zh-CN", "viewport": [args.width, args.height], "scale": 2, "scroll": args.scroll,
                 "native_font_family": args.font_family or ".SystemUIFont",
                 "capture_script_sha256": sha256(Path(__file__)),
                 "matrix_sha256": sha256(args.matrix), "inventory_sha256": sha256(args.inventory),

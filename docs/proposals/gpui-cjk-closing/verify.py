@@ -57,6 +57,9 @@ TESTS = r'''
     }
     #[test]
     fn ascii_closing_marks_still_attach() {
+        for c in "（［｛〈《「『【〔〖〘〚([{‘“".chars() {
+            assert!(!LineWrapper::can_break_before(c, '界'), "{c}");
+        }
         for c in ")]!}…".chars() { assert!(LineWrapper::is_word_char(c)); }
     }
 '''
