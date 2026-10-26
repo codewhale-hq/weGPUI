@@ -1,0 +1,3 @@
+ Documenting wegpui v0.1.0 (<repo>)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.40s
+   Generated <cargo-target>/doc/wegpui/index.html

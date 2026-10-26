@@ -1,0 +1,8 @@
+    Checking gpui-pre v0.3.9 (<repo>/vendor/gpui_pre)
+    Checking gpui-pre-apple v0.3.9
+    Checking wegpui v0.1.0 (<repo>)
+    Checking gpui-pre-macos v0.3.9
+    Checking gpui-pre-platform v0.3.9
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 4.98s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 2`

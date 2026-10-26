@@ -1,0 +1,13 @@
+   Compiling wegpui v0.1.0 (<repo>)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.11s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`
+     Running unittests examples/gallery/main.rs (<cargo-target>/debug/examples/gallery-5ef9c4d4add73001)
+
+running 3 tests
+test pages::layers::tests::label_transform_tracks_plane_points_at_both_scales ... ok
+test pages::layers::tests::layer_size_follows_upstream_media_queries ... ok
+test pages::layers::tests::projection_matches_upstream_browser_quads ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

@@ -1,0 +1,27 @@
+127.0.0.1 - - [26/Oct/2026 05:42:32] "GET /dist/example/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [26/Oct/2026 05:42:32] "GET /dist/style/weui.min.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Oct/2026 05:42:32] "GET /dist/example/example.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Oct/2026 05:42:32] "GET /vendor/weui.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [26/Oct/2026 05:42:32] "GET /dist/example/zepto.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [26/Oct/2026 05:42:32] "GET /dist/example/example.js HTTP/1.1" 200 -
+127.0.0.1 - - [26/Oct/2026 05:42:32] "GET /dist/example/wah.js HTTP/1.1" 200 -
+127.0.0.1 - - [26/Oct/2026 05:42:32] "GET /dist/example/images/pic_gongan.png HTTP/1.1" 200 -
+127.0.0.1 - - [26/Oct/2026 05:42:32] "GET /dist/example/images/icon_footer_link.png HTTP/1.1" 200 -
+127.0.0.1 - - [26/Oct/2026 05:42:32] "GET /dist/example/images/layers/content.png HTTP/1.1" 200 -
+127.0.0.1 - - [26/Oct/2026 05:42:32] "GET /dist/example/images/layers/navigation.png HTTP/1.1" 200 -
+127.0.0.1 - - [26/Oct/2026 05:42:32] "GET /dist/example/images/layers/popout.png HTTP/1.1" 200 -
+127.0.0.1 - - [26/Oct/2026 05:42:32] "GET /dist/example/images/layers/transparent.gif HTTP/1.1" 200 -
+127.0.0.1 - - [26/Oct/2026 05:42:32] code 404, message File not found
+127.0.0.1 - - [26/Oct/2026 05:42:32] "GET /favicon.ico HTTP/1.1" 404 -
+searchbar_filled initial {'pages': 1, 'search': 'weui-search-bar', 'searchcount': 1, 'value': None, 'sliderCount': 0, 'handler': None}
+searchbar_filled immediate {'pages': 1, 'search': 'weui-search-bar weui-search-bar_focusing', 'searchcount': 1, 'value': None, 'sliderCount': 0, 'handler': None}
+searchbar_filled later {'pages': 1, 'search': 'weui-search-bar', 'searchcount': 1, 'value': None, 'sliderCount': 0, 'handler': None}
+searchbar_filled retry {'pages': 1, 'search': 'weui-search-bar weui-search-bar_focusing', 'searchcount': 1, 'value': None, 'sliderCount': 0, 'handler': None}
+slider initial {'pages': 2, 'search': 'weui-search-bar weui-search-bar_focusing', 'searchcount': 1, 'value': '50', 'sliderCount': 1, 'handler': '50%'}
+slider immediate {'pages': 2, 'search': 'weui-search-bar weui-search-bar_focusing', 'searchcount': 1, 'value': '80', 'sliderCount': 1, 'handler': '80%'}
+slider later {'pages': 2, 'search': 'weui-search-bar', 'searchcount': 1, 'value': '80', 'sliderCount': 1, 'handler': '80%'}
+127.0.0.1 - - [26/Oct/2026 05:42:36] "GET /dist/example/images/pic_160.png HTTP/1.1" 200 -
+uploader initial {'pages': 3, 'search': 'weui-search-bar', 'searchcount': 1, 'value': '80', 'sliderCount': 1, 'handler': '80%'}
+uploader immediate {'pages': 3, 'search': 'weui-search-bar', 'searchcount': 1, 'value': '80', 'sliderCount': 1, 'handler': '80%'}
+uploader later {'pages': 3, 'search': 'weui-search-bar', 'searchcount': 1, 'value': '80', 'sliderCount': 1, 'handler': '80%'}
+{'box': {'x': 0, 'y': 0, 'width': 375, 'height': 812, 'top': 0, 'right': 375, 'bottom': 812, 'left': 0}, 'background': 'url("http://127.0.0.1:34629/dist/example/images/pic_160.png")', 'element': '<div role="dialog" aria-hidden="false" aria-modal="true" class="weui-gallery" id="gallery" wah-hotarea="click" style="display: block; opacity: 1;">\n          <span role="img" tabindex="-1" class="weui-gallery__img" id="galleryImg" style="background-image: url(./images/pic_160.png);"></span>\n        </div>'}

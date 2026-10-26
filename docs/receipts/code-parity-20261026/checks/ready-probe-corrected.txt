@@ -1,0 +1,8 @@
+1/8 captured light/form_input_status-amount
+2/8 captured light/searchbar_filled-focused
+3/8 captured light/searchbar_filled-typed
+4/8 captured light/searchbar_grey-focused
+5/8 captured light/searchbar_grey-typed
+6/8 captured light/searchbar_outlined-focused
+7/8 captured light/searchbar_outlined-typed
+8/8 captured light/slider-value80

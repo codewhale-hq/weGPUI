@@ -1,0 +1,70 @@
+baseline exit 101
+
+running 13 tests
+test layout::trailing_space_tests::exact_fit_without_trailing_space ... ok
+test layout::trailing_space_tests::fitting_word_before_multiple_spaces_stays_on_row ... FAILED
+test layout::trailing_space_tests::fitting_word_before_space_stays_on_row ... FAILED
+test layout::trailing_space_tests::genuinely_overflowing_word_moves ... ok
+test layout::trailing_space_tests::leading_space_policy_is_preserved ... ok
+test layout::trailing_space_tests::oversized_word_still_splits ... ok
+test layout::trailing_space_tests::trailing_space_does_not_add_row ... FAILED
+test layout::trailing_space_tests::unspaced_cjk_still_wraps ... ok
+test text_bidi::tests::a_ligature_interpolates_the_caret_inside_its_glyph ... ok
+test text_bidi::tests::a_single_right_to_left_glyph_is_classified_by_its_character ... ok
+test text_bidi::tests::left_to_right_text_maps_indices_to_the_obvious_positions ... ok
+test text_bidi::tests::mixed_direction_selection_can_split_into_two_spans ... ok
+test text_bidi::tests::right_to_left_text_runs_from_the_right_edge ... ok
+
+failures:
+
+---- layout::trailing_space_tests::fitting_word_before_multiple_spaces_stays_on_row stdout ----
+
+thread 'layout::trailing_space_tests::fitting_word_before_multiple_spaces_stays_on_row' (20987707) panicked at <artifacts>/final/trailing-space/baseline.rs:845:73:
+assertion `left == right` failed
+  left: [3, 8]
+ right: [8]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- layout::trailing_space_tests::fitting_word_before_space_stays_on_row stdout ----
+
+thread 'layout::trailing_space_tests::fitting_word_before_space_stays_on_row' (20987708) panicked at <artifacts>/final/trailing-space/baseline.rs:844:63:
+assertion `left == right` failed
+  left: [3]
+ right: [6]
+
+---- layout::trailing_space_tests::trailing_space_does_not_add_row stdout ----
+
+thread 'layout::trailing_space_tests::trailing_space_does_not_add_row' (20987712) panicked at <artifacts>/final/trailing-space/baseline.rs:846:56:
+assertion `left == right` failed
+  left: [3]
+ right: []
+
+
+failures:
+    layout::trailing_space_tests::fitting_word_before_multiple_spaces_stays_on_row
+    layout::trailing_space_tests::fitting_word_before_space_stays_on_row
+    layout::trailing_space_tests::trailing_space_does_not_add_row
+
+test result: FAILED. 10 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+proposal exit 0
+
+running 13 tests
+test layout::trailing_space_tests::exact_fit_without_trailing_space ... ok
+test layout::trailing_space_tests::fitting_word_before_multiple_spaces_stays_on_row ... ok
+test layout::trailing_space_tests::fitting_word_before_space_stays_on_row ... ok
+test layout::trailing_space_tests::genuinely_overflowing_word_moves ... ok
+test layout::trailing_space_tests::leading_space_policy_is_preserved ... ok
+test layout::trailing_space_tests::oversized_word_still_splits ... ok
+test layout::trailing_space_tests::trailing_space_does_not_add_row ... ok
+test layout::trailing_space_tests::unspaced_cjk_still_wraps ... ok
+test text_bidi::tests::a_ligature_interpolates_the_caret_inside_its_glyph ... ok
+test text_bidi::tests::a_single_right_to_left_glyph_is_classified_by_its_character ... ok
+test text_bidi::tests::left_to_right_text_maps_indices_to_the_obvious_positions ... ok
+test text_bidi::tests::mixed_direction_selection_can_split_into_two_spans ... ok
+test text_bidi::tests::right_to_left_text_runs_from_the_right_edge ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
