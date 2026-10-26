@@ -48,6 +48,13 @@ def to_srgb(im):
     return im
 
 
+def save_native_capture(im, out):
+    if all(low == high for low, high in im.convert('RGB').getextrema()):
+        im.save(out.with_name(out.stem + '-invalid.png'))
+        raise SystemExit('uniform native capture; the window has not produced reviewable content')
+    im.save(out)
+
+
 def window_id(pid, height):
     import Quartz
     infos = Quartz.CGWindowListCopyWindowInfo(Quartz.kCGWindowListOptionAll, Quartz.kCGNullWindowID)
@@ -97,7 +104,7 @@ def capture_gpui(args, out):
             if scale != 2 or im.width != WIDTH * 2 or not 0 <= top <= 120:
                 im.save(out.with_name(out.stem + '-invalid.png'))
                 raise SystemExit(f'invalid native capture size {im.size}; expected 2x content plus titlebar')
-            to_srgb(im).crop((0, top, im.width, im.height)).save(out)
+            save_native_capture(to_srgb(im).crop((0, top, im.width, im.height)), out)
     finally:
         proc.terminate()
         try:
@@ -156,7 +163,7 @@ def capture_gpui_x11(args, cmd, out):
             if im.size != (WIDTH * 2, args.height * 2):
                 im.save(out.with_name(out.stem + '-invalid.png'))
                 raise SystemExit(f'invalid X11 capture size {im.size}; expected {(WIDTH * 2, args.height * 2)}')
-            im.save(out)
+            save_native_capture(im, out)
     finally:
         proc.terminate()
         try:

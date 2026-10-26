@@ -91,12 +91,15 @@ files matched the supplied macOS prototype byte-for-byte at the held receipt. De
 | `elements/text.rs` | `3ffcc422356924ae4d6eef864421f56588be65cd931c8fe35d7e5e6438c23346` | `c0b02ee20e6500fb4d75a603dd9e5f0f0a7c5008d01da8c28e04e20b6178d912` |
 | `text_system/logical_wrap.rs` | new | `eda32d8770882c2208f520b3d64640a2129b87eabaa6dfe6f8c39ea842df23b2` |
 
-The extracted tests and five Linux gates pass. The Linux Languages captures still clip and
-misalign Arabic/Hebrew paragraphs, including in an A/B baseline build. The owner initially held landing on 2026-10-25, then requested publication of all existing work
-after review on October 26 ([review](../docs/REVIEW-2026-10-26.md)). No platform guard or logic
-revision is included; the Linux visual failure remains an acceptance blocker. Evidence and remaining
+At the held receipt, the extracted tests and five Linux gates passed, but Linux Languages
+captures clipped/misaligned Arabic/Hebrew paragraphs, including in an A/B baseline build. The owner initially held landing on 2026-10-25, then requested publication of all existing work
+after review on October 26 ([review](../docs/REVIEW-2026-10-26.md)). That review included no platform
+guard or logic revision; the Linux visual failure remained open at that source. Evidence and remaining
 caret/selection, styling and platform limits are in the
-[receipt](../docs/receipts/gpui-logical-wrap-20261025/README.md). Step 3 is not approved.
+[receipt](../docs/receipts/gpui-logical-wrap-20261025/README.md). Step 3 was subsequently approved. The [RTL continuation](../docs/receipts/rtl-completion-20261025/README.md)
+adds visual-order normalisation before caching platform layouts and row-aware mapping in
+weGPUI input. Fresh macOS/Linux ARM64 samples supersede the old sampled rendering failure;
+the input shim remains necessary because generic GPUI x/index APIs are not yet bidi-aware.
 
 `WrappedLineLayout` now carries private logical-row metadata. Downstream GPUI code should
 obtain layouts through the text-system factories; code that previously used an external struct
@@ -108,12 +111,12 @@ These same-version local copies are a preview compatibility graph, not unchanged
 The owner separately approved a trial of
 [`gpui-trailing-space-wrap`](../docs/proposals/gpui-trailing-space-wrap/README.md).
 One guard in `text_system/line_layout.rs::compute_wrap_boundaries` prevents an ASCII trailing
-space from moving an otherwise fitting word onto the next row. Its current SHA-256 is
+space from moving an otherwise fitting word onto the next row. Its SHA-256 at the publication review was
 `cc576691d1835e5702c0b141e66a57d679eb98eddb0890b4671e78e963c98ef4`.
-The four other prototype files and the logical RTL/caret/selection implementation are unchanged.
+That trial left the four other prototype files and logical RTL/caret/selection implementation unchanged.
 The table above identifies the original held prototype, not this later trial's whole-file hash.
-Fresh Linux source/native evidence is separate from its supplied macOS captures. The known RTL rendering limits and unapproved step 3 remain; the later repository publication
-authorization is recorded in the review above. No dependency or version changes were made.
+Fresh Linux source/native evidence is separate from its supplied macOS captures. The later repository publication authorization is recorded in the review above. The subsequent
+RTL continuation has step-3 approval and its own source hashes and current host evidence. No dependency or version changes were made.
 
 ## CJK closing marks (owner-approved trial 2026-10-26)
 

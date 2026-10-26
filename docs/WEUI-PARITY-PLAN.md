@@ -64,6 +64,8 @@ the logical RTL/caret path. The owner then approved the separate
 [CJK closing-mark trial](proposals/gpui-cjk-closing/README.md), extending the existing classifier
 in `line_wrapper.rs` for twenty closing marks. Its thirteen extracted cases and native Panel
 checks pass. The [October 26 receipt](receipts/weui-parity-20261026/README.md) records current
-source gates, typography, Layers geometry/labels/focus/actions and bounded native contracts. Step 3 remains unapproved. No new library dependency, deployment, publication
+source gates, typography, Layers geometry/labels/focus/actions and bounded native contracts. Step 3 was subsequently approved; the [RTL continuation](receipts/rtl-completion-20261025/README.md)
+records new row-aware input mapping, glyph-order normalisation and current host samples.
+Full host/IME/reader and generic GPUI mapping qualification remain open. No new library dependency, deployment, publication
 or platform-support claim follows from this parity work. macOS/Windows/hardware and human
 reader checks cannot be replaced by Linux screenshots or browser tests.

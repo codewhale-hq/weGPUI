@@ -12,7 +12,7 @@ pub(crate) fn is_rtl_char(c: char) -> bool {
     matches!(
         c as u32,
         0x0590..=0x08FF | 0xFB1D..=0xFDFF | 0xFE70..=0xFEFF | 0x10800..=0x10FFF | 0x1E800..=0x1EFFF
-    )
+    ) && !matches!(c, '\u{0660}'..='\u{0669}' | '\u{06F0}'..='\u{06F9}')
 }
 
 fn run_is_rtl(run: &ShapedRun, text: &str) -> bool {
@@ -32,11 +32,22 @@ pub(crate) fn clusters(layout: &LineLayout, text: &str) -> Vec<Cluster> {
     for run in &layout.runs {
         let rtl = run_is_rtl(run, text);
         for glyph in &run.glyphs {
+            let rtl = text
+                .get(glyph.index..)
+                .and_then(|s| s.chars().next())
+                .map_or(rtl, |c| {
+                    if c.is_alphabetic() || c.is_numeric() {
+                        is_rtl_char(c)
+                    } else {
+                        rtl
+                    }
+                });
             glyphs.push((glyph.index, f32::from(glyph.position.x), rtl));
         }
     }
     let width = f32::from(layout.width);
-    glyphs
+    let mut clusters: Vec<Cluster> = Vec::new();
+    for cluster in glyphs
         .iter()
         .enumerate()
         .map(|(k, &(index, x0, rtl))| Cluster {
@@ -45,7 +56,18 @@ pub(crate) fn clusters(layout: &LineLayout, text: &str) -> Vec<Cluster> {
             x1: glyphs.get(k + 1).map_or(width, |next| next.1).max(x0),
             rtl,
         })
-        .collect()
+    {
+        if let Some(previous) = clusters
+            .iter_mut()
+            .find(|previous| previous.index == cluster.index)
+        {
+            previous.x0 = previous.x0.min(cluster.x0);
+            previous.x1 = previous.x1.max(cluster.x1);
+        } else {
+            clusters.push(cluster);
+        }
+    }
+    clusters
 }
 
 pub(crate) fn has_rtl(clusters: &[Cluster]) -> bool {
@@ -116,18 +138,52 @@ pub(crate) fn index_for_x(clusters: &[Cluster], text: &str, x: f32) -> usize {
         .iter()
         .find(|cluster| x >= cluster.x0 && x < cluster.x1)
         .unwrap_or(last);
-    if x < (cluster.x0 + cluster.x1) / 2. {
-        left(cluster)
-    } else {
-        right(cluster)
-    }
+    let end = next_logical(clusters, cluster.index, len);
+    let Some(span) = text.get(cluster.index..end) else {
+        return left(cluster);
+    };
+    let fraction = ((x - cluster.x0) / (cluster.x1 - cluster.x0)).clamp(0., 1.);
+    let fraction = if cluster.rtl { 1. - fraction } else { fraction };
+    let offset = (fraction * span.chars().count() as f32).round() as usize;
+    cluster.index
+        + span
+            .char_indices()
+            .nth(offset)
+            .map_or(span.len(), |(index, _)| index)
 }
 
-pub(crate) fn selection_spans(clusters: &[Cluster], start: usize, end: usize) -> Vec<(f32, f32)> {
+pub(crate) fn selection_spans(
+    clusters: &[Cluster],
+    text: &str,
+    start: usize,
+    end: usize,
+) -> Vec<(f32, f32)> {
     let mut spans: Vec<(f32, f32)> = clusters
         .iter()
-        .filter(|cluster| cluster.index >= start && cluster.index < end && cluster.x1 > cluster.x0)
-        .map(|cluster| (cluster.x0, cluster.x1))
+        .filter_map(|cluster| {
+            let lo = start.max(cluster.index);
+            let hi = end.min(next_logical(clusters, cluster.index, text.len()));
+            if lo >= hi || cluster.x1 <= cluster.x0 {
+                return None;
+            }
+            let edge = |index| {
+                let total = text
+                    .get(cluster.index..next_logical(clusters, cluster.index, text.len()))?
+                    .chars()
+                    .count()
+                    .max(1) as f32;
+                let before = text.get(cluster.index..index)?.chars().count() as f32;
+                let span = (cluster.x1 - cluster.x0) * before / total;
+                Some(if cluster.rtl {
+                    cluster.x1 - span
+                } else {
+                    cluster.x0 + span
+                })
+            };
+            let a: f32 = edge(lo)?;
+            let b: f32 = edge(hi)?;
+            Some((a.min(b), a.max(b)))
+        })
         .collect();
     spans.sort_by(|a, b| a.0.total_cmp(&b.0));
     let mut merged: Vec<(f32, f32)> = Vec::new();
@@ -189,7 +245,7 @@ mod tests {
         assert_eq!(index_for_x(&clusters, text, 17.), 2);
         assert_eq!(index_for_x(&clusters, text, -5.), 0);
         assert_eq!(index_for_x(&clusters, text, 99.), 3);
-        assert_eq!(selection_spans(&clusters, 1, 3), vec![(10., 30.)]);
+        assert_eq!(selection_spans(&clusters, text, 1, 3), vec![(10., 30.)]);
     }
 
     #[test]
@@ -205,7 +261,7 @@ mod tests {
         assert_eq!(index_for_x(&clusters, text, 27.), 0);
         assert_eq!(index_for_x(&clusters, text, -3.), 6);
         assert_eq!(index_for_x(&clusters, text, 99.), 0);
-        assert_eq!(selection_spans(&clusters, 2, 6), vec![(0., 20.)]);
+        assert_eq!(selection_spans(&clusters, text, 2, 6), vec![(0., 20.)]);
     }
 
     #[test]
@@ -216,10 +272,10 @@ mod tests {
         assert_eq!(caret_x(&clusters, text, 1), Some(10.));
         assert_eq!(caret_x(&clusters, text, 2), Some(40.));
         assert_eq!(caret_x(&clusters, text, 6), Some(20.));
-        assert_eq!(selection_spans(&clusters, 0, 6), vec![(0., 40.)]);
-        assert_eq!(selection_spans(&clusters, 2, 4), vec![(30., 40.)]);
+        assert_eq!(selection_spans(&clusters, text, 0, 6), vec![(0., 40.)]);
+        assert_eq!(selection_spans(&clusters, text, 2, 4), vec![(30., 40.)]);
         assert_eq!(
-            selection_spans(&clusters, 1, 4),
+            selection_spans(&clusters, text, 1, 4),
             vec![(10., 20.), (30., 40.)]
         );
     }
@@ -240,5 +296,7 @@ mod tests {
         assert_eq!(caret_x(&clusters, text, 0), Some(20.));
         assert_eq!(caret_x(&clusters, text, 2), Some(10.));
         assert_eq!(caret_x(&clusters, text, 4), Some(0.));
+        assert_eq!(index_for_x(&clusters, text, 9.), 2);
+        assert_eq!(selection_spans(&clusters, text, 0, 2), vec![(10., 20.)]);
     }
 }

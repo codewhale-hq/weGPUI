@@ -7,6 +7,13 @@ component acceptance. The criteria in [ACCEPTANCE](ACCEPTANCE.md),
 
 ## Current continuation
 
+The [RTL continuation](receipts/rtl-completion-20261025/README.md) follows the owner’s step-3
+approval. It implements row-aware wrapped input selection/carets and TextArea alignment,
+normalises platform glyph order, and records fresh macOS/Linux samples. Complete desktop
+acceptance still requires the host, reader, IME and distribution work below.
+
+### Earlier completion work
+
 The later [WeUI parity execution](WEUI-PARITY-PLAN.md) extends this work with an exact upstream
 inventory, complete appearance/state paired capture sweeps, a footer visible-geometry correction
 and the separately approved trailing-space guard trial. Its current-source checks and open
@@ -38,9 +45,9 @@ changes, plus a website route-inventory repair. The exact source, checks and lim
 
 | Work | Completion evidence needed | Where it can be done |
 | --- | --- | --- |
-| Resolve right-to-left wrapping | Fix the Linux clipped/misaligned paragraph result, retain word boundaries, re-run harnesses/gates and capture English/Arabic Languages pages on macOS when wrapping logic changes | Linux implementation plus the owner's Mac captures; the Linux failure remains an acceptance blocker |
-| Wrapped caret and partial selection | Step 3 approval, then bidirectional x/index mapping with selection, pointer, navigation, accessibility and IME checks | Requires separate approval under the existing text-work instruction |
-| Localisation details | TextArea right alignment; locale-aware date display/entry/column order; an application/host policy for local today; explicit coverage of scripts needing dictionary breaking | Source work and locale review; new dependencies remain a separate decision |
+| Qualify right-to-left wrapping | Fresh macOS and Linux ARM64 X11 samples are readable; re-run Linux x86_64/hardware and Windows, styled runs and complete break cases | Current receipt identifies the sampled hosts; full matrix remains open |
+| Qualify wrapped caret and partial selection | Step 3 is approved; row-aware input mapping is implemented. Complete real RTL IME, reader and desktop matrices; generic GPUI mapping remains separate | macOS and Linux samples are in the RTL continuation |
+| Localisation details | Locale-aware date display/entry/column order; an application/host policy for local today; explicit coverage of scripts needing dictionary breaking | Source work and locale review; new dependencies remain a separate decision |
 | Review translations | Native-speaker review of the twelve starter catalogs and keyboard/reader checks for the promised locales | Qualified language reviewers and native hosts |
 | Complete component behaviour | Each interactive family's enabled/disabled/loading/error, callbacks, keyboard, reduced-motion, focus and state-transition cases | Linux automation can extend coverage; current-source macOS/Windows runs are still required |
 | Complete rendering parity | Full light/dark/care/custom-brand/state/reference review, responsive widths and long pages | Each desktop renderer, with fonts and source provenance recorded |
@@ -61,7 +68,8 @@ requested complete review and publication of all current work to GitHub. The
 [publication review](REVIEW-2026-10-26.md) records that later authorization; the original
 [receipt](receipts/gpui-logical-wrap-20261025/README.md) remains a historical record of the hold.
 Linux clipping/misalignment is still a release-acceptance blocker. The logical implementation
-was not revised; step 3 and new dependencies remain unapproved. Repository publication does
+was not revised by that publication review. The later RTL continuation has step-3 approval;
+new library dependencies remain a separate decision. Repository publication does
 not authorize a package release, website deployment or another platform-support claim.
 
 ## Experimental mobile work

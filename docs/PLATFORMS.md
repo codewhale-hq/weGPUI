@@ -83,6 +83,13 @@ scale changes, fresh installation, the complete state matrix and human speech li
 remain open. Wayland does not expose a global desktop origin. Current-source macOS/Windows
 reruns require those hosts; their historical samples do not qualify the Linux changes.
 
+## Current RTL continuation
+
+The [RTL continuation](receipts/rtl-completion-20261025/README.md) adds current macOS ARM64
+and Linux ARM64 X11 software-renderer samples for paragraph wrapping and native input. These
+are bounded samples; Windows, Linux x86_64/hardware, real RTL IME, complete reader matrices
+and fresh installation still need their own evidence. VoiceOver remains off.
+
 ## Acceptance matrix
 
 Each cell needs a receipt from that platform. Simulators and emulators count only when labelled

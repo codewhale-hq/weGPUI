@@ -49,17 +49,15 @@ and rely on the supported behavior. A website is one part of that promise.
 - [x] Work in English and other languages: message catalogs, mirrored layouts, bidirectional
   `TextInput` and an English-first gallery. macOS source gates pass with 59 tests
   ([receipt](receipts/i18n-20261025/README.md), [guide](I18N.md)).
+- [x] Implement the owner-approved step-3 input continuation: wrapped row caret/hit testing,
+  partial and cross-row selection, TextArea alignment and platform glyph-order normalisation.
+  The [receipt](receipts/rtl-completion-20261025/README.md) separates source checks and current
+  macOS/Linux ARM64 X11 samples from full acceptance.
 - [ ] Finish localisation acceptance: native-speaker review of the 12 starter catalogs;
-  screen-reader output in each language; real keyboard/IME input and caret in a right-to-left
-  field; `TextArea` right alignment; resolution of the Linux visual failure in step 2;
-  approval for step 3 of the
-  [GPUI line-breaking proposal](proposals/gpui-text-i18n/README.md) (step 1, word breaks for
-  Arabic, Hebrew, Devanagari and Greek, is applied: [receipt](receipts/gpui-word-break-20261025/README.md);
-  the approved step 2 prototype passes five Linux gates and its known rendering limits remain:
-  [receipt](receipts/gpui-logical-wrap-20261025/README.md));
-  the [publication review](REVIEW-2026-10-26.md) records the later instruction to commit the current work;
-  locale-aware dates; full Linux and Windows localisation acceptance. Earlier Chinese-name accessibility samples need re-running under the English
-  default.
+  screen-reader output in each promised language; real RTL keyboard/IME composition; Windows
+  and Linux x86_64/hardware reruns; styled wrapping and generic GPUI x/index API integration;
+  locale-aware dates. Earlier Chinese-name accessibility samples need re-running under the
+  English default. Historical failures remain in their original receipts.
 - [ ] Verify input selection, clipboard, undo/redo, UTF-16 limits and IME composition.
 - [ ] Reconcile public rustdoc with observed behavior; document intentional differences.
 

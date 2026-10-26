@@ -1,0 +1,32 @@
+== stage 1: vendor/gpui_pre/src/text_system/logical_wrap.rs
+
+running 16 tests
+test tests::a_left_to_right_line_loses_its_mark_at_the_left_end ... ok
+test tests::a_line_with_no_glyphs_but_the_mark_is_rejected ... ok
+test tests::a_mark_with_an_advance_is_taken_out_of_the_line_width ... ok
+test tests::a_right_to_left_line_loses_its_mark_at_the_right_end ... ok
+test tests::a_word_wider_than_the_line_is_left_to_the_caller ... ok
+test tests::arabic_text_breaks_between_words_not_inside_them ... ok
+test tests::base_direction_follows_the_first_strong_character ... ok
+test tests::breaks_fall_on_word_starts_in_logical_order ... ok
+test tests::candidates_include_characters_that_are_not_word_characters ... ok
+test tests::font_runs_are_cut_to_a_line ... ok
+test tests::glyphs_of_one_character_share_a_unit ... ok
+test tests::line_clamp_stops_adding_breaks ... ok
+test tests::marks_with_a_negative_offset_never_shrink_the_line ... ok
+test tests::rtl_characters_are_classified_by_script ... ok
+test tests::runs_keep_their_order_and_empty_ones_are_dropped ... ok
+test tests::units_are_logical_even_when_the_shaper_returns_visual_order ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+== stage 2: line_layout.rs layout types; tests: logical_rows_start_at_their_logical_index_not_at_their_first_glyph, logical_rows_place_each_index_on_the_row_that_holds_it, logical_rows_hit_test_to_the_index_under_the_pointer, rows_that_were_not_wrapped_logically_keep_their_glyph_derived_starts
+
+running 4 tests
+test layout::tests::logical_rows_hit_test_to_the_index_under_the_pointer ... ok
+test layout::tests::logical_rows_place_each_index_on_the_row_that_holds_it ... ok
+test layout::tests::logical_rows_start_at_their_logical_index_not_at_their_first_glyph ... ok
+test layout::tests::rows_that_were_not_wrapped_logically_keep_their_glyph_derived_starts ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

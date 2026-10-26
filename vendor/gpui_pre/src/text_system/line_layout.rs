@@ -57,6 +57,37 @@ pub struct ShapedGlyph {
 }
 
 impl LineLayout {
+    fn normalize_visual_order(&mut self) {
+        let mut previous = px(f32::NEG_INFINITY);
+        let ordered = self.runs.iter().flat_map(|run| &run.glyphs).all(|glyph| {
+            let ordered = glyph.position.x >= previous;
+            previous = glyph.position.x;
+            ordered
+        });
+        if ordered {
+            return;
+        }
+        let mut glyphs: Vec<_> = std::mem::take(&mut self.runs)
+            .into_iter()
+            .flat_map(|run| {
+                run.glyphs
+                    .into_iter()
+                    .map(move |glyph| (run.font_id, glyph))
+            })
+            .collect();
+        glyphs.sort_by(|(_, a), (_, b)| a.position.x.as_f32().total_cmp(&b.position.x.as_f32()));
+        for (font_id, glyph) in glyphs {
+            if let Some(run) = self.runs.last_mut().filter(|run| run.font_id == font_id) {
+                run.glyphs.push(glyph);
+            } else {
+                self.runs.push(ShapedRun {
+                    font_id,
+                    glyphs: vec![glyph],
+                });
+            }
+        }
+    }
+
     /// The index for the character at the given x coordinate
     pub fn index_for_x(&self, x: Pixels) -> Option<usize> {
         if x >= self.width {
@@ -864,6 +895,7 @@ impl LineLayoutCache {
             let mut layout = self
                 .platform_text_system
                 .layout_line(&text, font_size, runs);
+            layout.normalize_visual_order();
 
             if let Some(force_width) = force_width {
                 apply_force_width_to_layout(&mut layout, force_width);
@@ -1015,6 +1047,7 @@ impl LineLayoutCache {
         let mut layout = self
             .platform_text_system
             .layout_line(&text, font_size, runs);
+        layout.normalize_visual_order();
 
         if let Some(force_width) = force_width {
             apply_force_width_to_layout(&mut layout, force_width);
@@ -1338,7 +1371,10 @@ mod tests {
         let glyphs = [(0., 0), (10., 1), (20., 2), (0., 3), (10., 4)];
         let layout = WrappedLineLayout {
             unwrapped_layout: Arc::new(make_layout(
-                glyphs.iter().map(|&(x, index)| glyph_at(x, index)).collect(),
+                glyphs
+                    .iter()
+                    .map(|&(x, index)| glyph_at(x, index))
+                    .collect(),
             )),
             wrap_boundaries: SmallVec::from_buf([WrapBoundary {
                 run_ix: 0,

@@ -1,0 +1,72 @@
+[
+ {
+  "lang": "en",
+  "route": "button_default",
+  "status": "ok",
+  "leaks": [],
+  "png": "button_default-en.png"
+ },
+ {
+  "lang": "en",
+  "route": "form",
+  "status": "ok",
+  "leaks": [],
+  "png": "form-en.png"
+ },
+ {
+  "lang": "en",
+  "route": "searchbar",
+  "status": "ok",
+  "leaks": [],
+  "png": "searchbar-en.png"
+ },
+ {
+  "lang": "en",
+  "route": "form_textarea",
+  "status": "ok",
+  "leaks": [],
+  "png": "form_textarea-en.png"
+ },
+ {
+  "lang": "en",
+  "route": "languages",
+  "status": "ok",
+  "leaks": [],
+  "png": "languages-en.png"
+ },
+ {
+  "lang": "ar",
+  "route": "button_default",
+  "status": "ok",
+  "leaks": [],
+  "png": "button_default-ar.png"
+ },
+ {
+  "lang": "ar",
+  "route": "form",
+  "status": "ok",
+  "leaks": [],
+  "png": "form-ar.png"
+ },
+ {
+  "lang": "ar",
+  "route": "searchbar",
+  "status": "ok",
+  "leaks": [],
+  "png": "searchbar-ar.png"
+ },
+ {
+  "lang": "ar",
+  "route": "form_textarea",
+  "status": "ok",
+  "leaks": [],
+  "png": "form_textarea-ar.png"
+ },
+ {
+  "lang": "ar",
+  "route": "languages",
+  "status": "ok",
+  "leaks": [],
+  "png": "languages-ar.png"
+ }
+]

@@ -1,0 +1,10 @@
+build-lock: all 2 build slots are busy (pid 90429 in BUILD_TOOLS_ROOT: python3 /Volumes/VIXinSSD/CW/artifacts/codex-0103-orcarouter-20261025/window.py; pid 7348 in BUILD_TOOLS_ROOT: cargo --config build.build-dir = "/Volumes/VIXinSSD/cw-build-cache/build/{workspace-path-hash}" build --manifest-path); set CODEWHALE_BUILD_LOCK=0 to skip
+build-lock: acquired after 251s
+    Checking gpui-pre v0.3.9 (REPO_ROOT/vendor/gpui_pre)
+    Checking gpui-pre-apple v0.3.9
+    Checking wegpui v0.1.0 (REPO_ROOT)
+    Checking gpui-pre-macos v0.3.9
+    Checking gpui-pre-platform v0.3.9
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 6.38s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 2`

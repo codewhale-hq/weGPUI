@@ -1,0 +1,9 @@
+Error org.freedesktop.DBus.Error.UnknownMethod: Object does not exist at path “/org/freedesktop/DBus”
+Traceback (most recent call last):
+  File "/work/text-runtime.py", line 23, in <module>
+    first=snap('all');key('Right','shift+Left','shift+Left','shift+Left');partial=snap('partial')
+          ^^^^^^^^^^^
+  File "/work/text-runtime.py", line 15, in snap
+    node=field(pyatspi.Registry.getDesktop(0));assert node is not None,'field absent'
+                                                      ^^^^^^^^^^^^^^^^
+AssertionError: field absent

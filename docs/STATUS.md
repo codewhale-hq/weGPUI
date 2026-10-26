@@ -12,7 +12,8 @@ manual review and contract acceptance. The owner separately approved a monotonic
 trailing-space trial; this changes one guard in `line_layout.rs` and fixes the article's early
 word break. On October 26 the owner requested complete review and publication of all current
 work to GitHub, superseding the earlier landing hold for repository publication. The Linux RTL
-visual failure remains an acceptance blocker and step 3 remains unapproved. The supplied
+visual failure remained an acceptance blocker at that review. Step 3 was subsequently approved;
+see the current RTL continuation below. The supplied
 macOS prototype images do not qualify the new guard. The [October 26 continuation](receipts/weui-parity-20261026/README.md)
 adds upstream 500-weight corrections, responsive transformed Layers labels and direct named
 accessibility actions, and the separately approved twenty-character CJK closing-mark trial.
@@ -39,6 +40,15 @@ README in `receipts/takeover-20261025/`). Linux runtime results came from a loca
 including failed/incomplete attempts. It does not complete platform acceptance.
 
 ## Localisation and right-to-left — 2026-10-25
+
+The owner subsequently approved step 3. The [RTL continuation](receipts/rtl-completion-20261025/README.md)
+adds row-aware wrapped input caret/hit testing/selection, grapheme-safe endpoints, TextArea
+alignment and platform glyph-order normalisation. Fresh macOS and Linux ARM64 X11 samples
+show readable Arabic/Hebrew paragraphs in both locale directions. Windows, Linux x86_64/hardware,
+real RTL IME, full reader matrices, styled wrapping and locale-aware dates remain open.
+The input shim remains in use; generic GPUI x/index APIs have not been replaced.
+
+The following paragraphs describe the earlier source and evidence:
 
 The independent [completion continuation](COMPLETION.md) adds minimum footer targets and an
 application-supplied safe-area API, readable neutral swipe actions, bounded agreement layout,
@@ -494,7 +504,8 @@ Still pending:
 - crates.io name, publication timing, versioning and ongoing GPUI upgrade policy.
 - Keeping the historical roughly 34 MB parity corpus in Git (excluded from the package).
 - Private conduct/security contacts; a local-time source for `picker::today()`; the wider
-  weui.js imperative API scope; resolution of the Linux step 2 rendering failure and approval for step 3 of the [GPUI text-breaking proposal](proposals/gpui-text-i18n/README.md).
+  weui.js imperative API scope; complete host/IME/reader qualification of the approved
+  [RTL continuation](receipts/rtl-completion-20261025/README.md).
 
 No platform support or publication decision follows from the approvals above.
 

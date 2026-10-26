@@ -1,0 +1,2 @@
+rustc 1.99.1 (58cf8f9c3 2026-10-13)
+Linux d4fb546e8094 6.10.14-linuxkit #1 SMP Wed Sep 10 06:47:45 UTC 2025 aarch64 GNU/Linux

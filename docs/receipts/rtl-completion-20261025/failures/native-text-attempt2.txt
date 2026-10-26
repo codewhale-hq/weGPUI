@@ -1,0 +1,11 @@
+all {"AXRole": "AXTextArea", "AXTitle": "Arabic paragraph", "AXDescription": null, "AXValue": "تدعم مكتبة weGPUI اللغة العربية والعبرية والإنجليزية في الفقرة نفسها، مع أرقام مثل 12345 وعناوين مثل weui.io في الوسط، وتنتقل الأسطر بترتيب القراءة الصحيح.", "AXSelectedText": "تدعم مكتبة weGPUI اللغة العربية والعبرية والإنجليزية في الفقرة نفسها، مع أرقام مثل 12345 وعناوين مثل weui.io في الوسط، وتنتقل الأسطر بترتيب القراءة الصحيح.", "AXSelectedTextRange": [1, 155], "AXNumberOfCharacters": 155, "AXFocused": true}
+partial {"AXRole": "AXTextArea", "AXTitle": "Arabic paragraph", "AXDescription": null, "AXValue": "تدعم مكتبة weGPUI اللغة العربية والعبرية والإنجليزية في الفقرة نفسها، مع أرقام مثل 12345 وعناوين مثل weui.io في الوسط، وتنتقل الأسطر بترتيب القراءة الصحيح.", "AXSelectedText": "تدع", "AXSelectedTextRange": [1, 3], "AXNumberOfCharacters": 155, "AXFocused": true}
+cross-row {"AXRole": "AXTextArea", "AXTitle": "Arabic paragraph", "AXDescription": null, "AXValue": "تدعم مكتبة weGPUI اللغة العربية والعبرية والإنجليزية في الفقرة نفسها، مع أرقام مثل 12345 وعناوين مثل weui.io في الوسط، وتنتقل الأسطر بترتيب القراءة الصحيح.", "AXSelectedText": "م مكتبة weGPUI اللغة العربية والعبرية والإ", "AXSelectedTextRange": [4, 45], "AXNumberOfCharacters": 155, "AXFocused": true}
+typed {"AXRole": "AXTextArea", "AXTitle": "Arabic paragraph", "AXDescription": null, "AXValue": "مرحبا 2026 hello", "AXSelectedText": "", "AXSelectedTextRange": [17, 16], "AXNumberOfCharacters": 16, "AXFocused": true}
+undo {"AXRole": "AXTextArea", "AXTitle": "Arabic paragraph", "AXDescription": null, "AXValue": "مرحبا 2026", "AXSelectedText": "", "AXSelectedTextRange": [11, 10], "AXNumberOfCharacters": 10, "AXFocused": true}
+drag {"AXRole": "AXTextArea", "AXTitle": "Arabic paragraph", "AXDescription": null, "AXValue": "مرحبا 2026", "AXSelectedText": "رحبا ", "AXSelectedTextRange": [2, 6], "AXNumberOfCharacters": 10, "AXFocused": true}
+Traceback (most recent call last):
+  File "EVIDENCE_ROOT/native-text.py", line 49, in <module>
+    assert undo['AXValue']==first['AXValue'],'undo'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: undo

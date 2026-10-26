@@ -1,0 +1,36 @@
+import pathlib,subprocess,time,json,os,pyatspi
+out=pathlib.Path('/work/text');out.mkdir(exist_ok=True)
+proc=subprocess.Popen(['/target/debug/examples/gallery','--page','languages','--lang','ar','--state','type:7:all','--size','375x812','--position','60,60','--reduce-motion'],stdout=(out/'runtime.log').open('w'),stderr=subprocess.STDOUT)
+try:
+ time.sleep(5)
+ wid=subprocess.check_output(['xdotool','search','--all','--onlyvisible','--pid',str(proc.pid),'--name','weGPUI'],text=True).splitlines()[0]
+ subprocess.run(['xdotool','windowactivate','--sync',wid],check=True);time.sleep(.3)
+ def field(node):
+  if node.name=='Arabic paragraph':return node
+  for child in node:
+   if child is None:continue
+   found=field(child)
+   if found is not None:return found
+ def snap(name):
+  node=field(pyatspi.Registry.getDesktop(0));assert node is not None,'field absent'
+  t=node.queryText();sel=[t.getSelection(i) for i in range(t.getNSelections())]
+  row={'value':t.getText(0,t.characterCount),'selection':sel,'selected':[t.getText(a,b) for a,b in sel],'caret':t.caretOffset}
+  (out/(name+'.json')).write_text(json.dumps(row,ensure_ascii=False,indent=2)+'\n');print(name,row,flush=True)
+  subprocess.run(['import','-window',wid,str(out/(name+'.png'))],check=True)
+  return row
+ def key(*keys):
+  subprocess.run(['xdotool','key','--clearmodifiers',*keys],check=True);time.sleep(.3)
+ first=snap('all');key('Right','shift+Left','shift+Left','shift+Left');partial=snap('partial')
+ key('Down','shift+Up');cross=snap('cross-row')
+ key('ctrl+a');subprocess.run(['xdotool','type','--clearmodifiers','hello 2026'],check=True);time.sleep(.3);typed=snap('typed')
+ key('ctrl+z','ctrl+z','ctrl+z');restored=snap('restored')
+ subprocess.run(['xdotool','mousemove','--window',wid,'700','1200','mousedown','1','mousemove','--window',wid,'400','1290','mouseup','1'],check=True);time.sleep(.3);drag=snap('drag')
+ assert first['selected']==[first['value']]
+ assert partial['selected']==['تدع']
+ assert cross['selected'] and cross['selected'][0] in first['value']
+ assert typed['value']=='hello 2026'
+ assert restored['value']==first['value']
+ assert drag['selected'] and drag['selected'][0] in first['value']
+ (out/'result.json').write_text(json.dumps({'status':'pass','checks':['select-all','partial-keyboard','cross-row-keyboard','ascii-insert','undo-restore','pointer-drag']},indent=2)+'\n')
+finally:
+ proc.terminate();proc.wait(timeout=5)

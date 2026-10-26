@@ -4,14 +4,18 @@ use gpui::{prelude::*, *};
 use std::time::Duration;
 use wegpui::{
     I18n,
-    components::{Cell, Cells},
+    components::{Cell, Cells, textarea::TextArea},
     i18n::fill,
-    input::{Left, Right, SelectAll, SelectLeft, SelectRight, TextInput},
+    input::{
+        Down, End, Home, Left, Right, SelectAll, SelectDown, SelectEnd, SelectHome, SelectLeft,
+        SelectRight, SelectUp, TextInput, Up,
+    },
 };
 
 pub struct LanguagesPage {
     route: &'static str,
     inputs: Vec<(&'static str, Entity<TextInput>)>,
+    area: Entity<TextArea>,
 }
 
 const TYPING: [(&str, &str); 7] = [
@@ -25,7 +29,7 @@ const TYPING: [(&str, &str); 7] = [
 ];
 
 pub fn build(route: &'static str, args: &Args, window: &mut Window, cx: &mut App) -> AnyView {
-    let inputs: Vec<(&'static str, Entity<TextInput>)> = TYPING
+    let mut inputs: Vec<(&'static str, Entity<TextInput>)> = TYPING
         .iter()
         .map(|&(name, text)| {
             let input = cx.new(|cx| {
@@ -36,6 +40,14 @@ pub fn build(route: &'static str, args: &Args, window: &mut Window, cx: &mut App
             (name, input)
         })
         .collect();
+    let area = cx.new(|cx| {
+        let mut area = TextArea::new("…", cx);
+        area.set_rows(6, cx);
+        area.set_aria_label("Arabic paragraph", cx);
+        area.set_text(PARAGRAPHS[0], cx);
+        area
+    });
+    inputs.push(("العربية ¶", area.read(cx).input().clone()));
     if let Some(spec) = args.state.as_deref().and_then(|s| s.strip_prefix("type:")) {
         let (index, ops) = spec.split_once(':').unwrap_or((spec, ""));
         let ops: Vec<String> = ops
@@ -64,6 +76,14 @@ pub fn build(route: &'static str, args: &Args, window: &mut Window, cx: &mut App
                                 "right" => Box::new(Right),
                                 "selleft" => Box::new(SelectLeft),
                                 "selright" => Box::new(SelectRight),
+                                "up" => Box::new(Up),
+                                "down" => Box::new(Down),
+                                "home" => Box::new(Home),
+                                "end" => Box::new(End),
+                                "selup" => Box::new(SelectUp),
+                                "seldown" => Box::new(SelectDown),
+                                "selhome" => Box::new(SelectHome),
+                                "selend" => Box::new(SelectEnd),
                                 _ => continue,
                             };
                             window.dispatch_action(action, cx);
@@ -74,7 +94,12 @@ pub fn build(route: &'static str, args: &Args, window: &mut Window, cx: &mut App
             .detach();
         }
     }
-    cx.new(|_| LanguagesPage { route, inputs }).into()
+    cx.new(|_| LanguagesPage {
+        route,
+        inputs,
+        area,
+    })
+    .into()
 }
 
 struct Sample {
@@ -230,11 +255,18 @@ impl Render for LanguagesPage {
             .child(
                 Cells::new()
                     .title(tr("试着输入"))
-                    .children(self.inputs.iter().enumerate().map(|(i, (name, input))| {
-                        Cell::new(("typing", i))
-                            .title(*name)
-                            .bd(div().child(input.clone()))
-                    })),
+                    .children(self.inputs.iter().take(TYPING.len()).enumerate().map(
+                        |(i, (name, input))| {
+                            Cell::new(("typing", i))
+                                .title(*name)
+                                .bd(div().child(input.clone()))
+                        },
+                    ))
+                    .child(
+                        Cell::new(("typing", TYPING.len()))
+                            .title(self.inputs[TYPING.len()].0)
+                            .bd(div().child(self.area.clone())),
+                    ),
             )
             .child(
                 Cells::new()

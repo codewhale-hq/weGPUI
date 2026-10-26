@@ -1,0 +1,28 @@
+WARN cosmic_text::font::system: failed to get system locale, falling back to en-US
+INFO gpui_linux::linux::x11::client: XInput version: 2.4, gesture support: true
+ERROR gpui_linux::linux::x11::client: Found no xinput mouse pointers.
+INFO gpui_linux::linux::x11::client: x11: compositor present: true, gtk_frame_extents_supported: false
+INFO gpui_linux::linux::x11::client: Using scale factor from GPUI_X11_SCALE_FACTOR: 2
+INFO zbus::connection::handshake::common: write_command; command=Auth(Some(External), Some([48]))
+INFO zbus::connection::handshake::common: write_commands; commands=[Auth(Some(External), Some([48]))] extra_bytes=None
+INFO gpui_linux::linux::x11::window: Using Visual { id: 64, colormap: 0, depth: 32 }
+INFO gpui_linux::linux::x11::window: Creating colormap 4194306
+INFO tracing::span: read_command;
+INFO zbus::connection::handshake::common: read_commands; n_commands=1
+INFO zbus::connection::handshake::common: write_commands; commands=[NegotiateUnixFD, Begin] extra_bytes=Some([108, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 109, 0, 0, 0, 1, 1, 111, 0, 21, 0, 0, 0, 47, 111, 114, 103, 47, 102, 114, 101, 101, 100, 101, 115, 107, 116, 111, 112, 47, 68, 66, 117, 115, 0, 0, 0, 2, 1, 115, 0, 20, 0, 0, 0, 111, 114, 103, 46, 102, 114, 101, 101, 100, 101, 115, 107, 116, 111, 112, 46, 68, 66, 117, 115, 0, 0, 0, 0, 3, 1, 115, 0, 5, 0, 0, 0, 72, 101, 108, 108, 111, 0, 0, 0, 6, 1, 115, 0, 20, 0, 0, 0, 111, 114, 103, 46, 102, 114, 101, 101, 100, 101, 115, 107, 116, 111, 112, 46, 68, 66, 117, 115, 0, 0, 0, 0])
+INFO zbus::connection::handshake::common: read_commands; n_commands=1
+INFO zbus::proxy: {}; task_name="org.freedesktop.portal.Settings proxy caching"
+WARN zbus::proxy: Failed to populate properties cache via GetAll: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.portal.Desktop was not provided by any .service files. Property change streams will not produce values.
+INFO gpui_wgpu::wgpu_context: Found 1 GPU adapter(s):
+INFO gpui_wgpu::wgpu_context:   - llvmpipe (LLVM 19.1.7, 128 bits) (vendor=0x10005, device=0x0000, backend=Vulkan, type=Cpu)
+INFO gpui_wgpu::wgpu_context: Testing adapter: llvmpipe (LLVM 19.1.7, 128 bits) (Vulkan)...
+INFO gpui_wgpu::wgpu_context: Selected GPU (passed configuration test): llvmpipe (LLVM 19.1.7, 128 bits) (Vulkan)
+INFO gpui_wgpu::wgpu_context: Selected GPU adapter: "llvmpipe (LLVM 19.1.7, 128 bits)" (Vulkan)
+INFO zbus::connection::handshake::common: write_command; command=Auth(Some(External), Some([48]))
+INFO zbus::connection::handshake::common: write_commands; commands=[Auth(Some(External), Some([48]))] extra_bytes=None
+INFO tracing::span: read_command;
+INFO zbus::connection::handshake::common: read_commands; n_commands=1
+INFO zbus::connection::handshake::common: write_commands; commands=[NegotiateUnixFD, Begin] extra_bytes=Some([108, 1, 0, 1, 0, 0, 0, 0, 21, 0, 0, 0, 109, 0, 0, 0, 1, 1, 111, 0, 21, 0, 0, 0, 47, 111, 114, 103, 47, 102, 114, 101, 101, 100, 101, 115, 107, 116, 111, 112, 47, 68, 66, 117, 115, 0, 0, 0, 2, 1, 115, 0, 20, 0, 0, 0, 111, 114, 103, 46, 102, 114, 101, 101, 100, 101, 115, 107, 116, 111, 112, 46, 68, 66, 117, 115, 0, 0, 0, 0, 3, 1, 115, 0, 5, 0, 0, 0, 72, 101, 108, 108, 111, 0, 0, 0, 6, 1, 115, 0, 20, 0, 0, 0, 111, 114, 103, 46, 102, 114, 101, 101, 100, 101, 115, 107, 116, 111, 112, 46, 68, 66, 117, 115, 0, 0, 0, 0])
+INFO zbus::connection::handshake::common: read_commands; n_commands=1
+INFO zbus::proxy: {}; task_name="org.a11y.Status proxy caching"
+INFO gpui_linux::linux::platform: activate is not implemented on Linux, ignoring the call

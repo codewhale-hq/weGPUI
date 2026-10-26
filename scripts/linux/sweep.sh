@@ -31,6 +31,7 @@ brand=
 only=
 states=0
 routes=()
+route_count=0
 while (($#)); do
   case "$1" in
     --theme) [[ $# -gt 1 ]] || { echo "--theme needs a value" >&2; exit 2; }; theme="$2"; shift 2 ;;
@@ -46,14 +47,16 @@ while (($#)); do
     --states) states=1; shift ;;
     --help|-h) usage; exit 0 ;;
     -*) echo "unknown option: $1" >&2; exit 2 ;;
-    *) routes+=("$1"); shift ;;
+    *) routes+=("$1"); route_count=$((route_count + 1)); shift ;;
   esac
 done
 [[ $theme == light || $theme == dark ]] || { echo "theme must be light or dark" >&2; exit 2; }
-(( !states || ${#routes[@]} == 0 )) || { echo "--states cannot be combined with route arguments" >&2; exit 2; }
-for route in "${routes[@]}"; do
-  [[ $route =~ ^[a-zA-Z0-9_]+$ ]] || { echo "invalid route: $route" >&2; exit 2; }
-done
+(( !states || route_count == 0 )) || { echo "--states cannot be combined with route arguments" >&2; exit 2; }
+if ((route_count)); then
+  for route in "${routes[@]}"; do
+    [[ $route =~ ^[a-zA-Z0-9_]+$ ]] || { echo "invalid route: $route" >&2; exit 2; }
+  done
+fi
 capture_options=(--theme "$theme")
 if ((care)); then capture_options+=(--care); fi
 if [[ -n $brand ]]; then capture_options+=(--brand "$brand"); fi
@@ -91,11 +94,14 @@ for path in sorted(glob.glob(sys.argv[1] + "/scripts/parity/*.json")):
     capture "${key/:/-}" "${key%%:*}" --state "${key#*:}"
   done <<< "$keys"
 else
-  if ((${#routes[@]} == 0)); then
-    mapfile -t routes < <(grep -oE '^\| `[^`]+` \| .* \| `[^`]+` \|' "$root/docs/UPSTREAM-COVERAGE.md" |
+  if ((route_count == 0)); then
+    while IFS= read -r route; do
+      routes+=("$route")
+      route_count=$((route_count + 1))
+    done < <(grep -oE '^\| `[^`]+` \| .* \| `[^`]+` \|' "$root/docs/UPSTREAM-COVERAGE.md" |
       sed -E 's/.*\| `([^`]+)` \|$/\1/' | awk '!seen[$0]++')
   fi
-  ((${#routes[@]} > 0)) || { echo "no routes found" >&2; exit 1; }
+  ((route_count > 0)) || { echo "no routes found" >&2; exit 1; }
   for route in "${routes[@]}"; do
     capture "$route" "$route"
   done

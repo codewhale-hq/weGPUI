@@ -1383,9 +1383,22 @@ impl EntityInputHandler for TextInput {
         let start = layout.position(self.to_display(range.start));
         let end = layout.position(self.to_display(range.end));
         let origin = bounds.origin - self.scroll;
+        if !range.is_empty()
+            && let Some(mut rect) = layout
+                .selection_rects(
+                    self.to_display(range.start)..self.to_display(range.end),
+                    px(0.),
+                )
+                .into_iter()
+                .filter(|rect| rect.origin.y == start.y)
+                .reduce(|a, b| a.union(&b))
+        {
+            rect.origin += origin;
+            return Some(rect);
+        }
         Some(Bounds::from_corners(
-            origin + start,
-            origin + point(end.x.max(start.x), start.y + layout.line_height),
+            origin + point(start.x.min(end.x), start.y),
+            origin + point(end.x.max(start.x) + px(1.), start.y + layout.line_height),
         ))
     }
 
@@ -1413,14 +1426,75 @@ struct TextLayout {
     total_height: Pixels,
     bounds: Bounds<Pixels>,
     rtl: bool,
+    rows: Vec<Vec<TextRow>>,
+}
+
+struct TextRow {
+    range: Range<usize>,
+    width: Pixels,
+    clusters: Vec<crate::bidi::Cluster>,
 }
 
 impl TextLayout {
-    fn shift(&self, line: usize) -> Pixels {
+    fn shift(&self, line: usize, row: usize) -> Pixels {
         if !self.rtl {
             return px(0.);
         }
-        (self.bounds.size.width - self.lines[line].unwrapped_layout.width).max(px(0.))
+        (self.bounds.size.width - self.rows[line][row].width).max(px(0.))
+    }
+
+    fn rows(line: &WrappedLine) -> Vec<TextRow> {
+        let starts = Self::row_starts(line);
+        let layout = &line.unwrapped_layout;
+        let edges: Vec<_> = std::iter::once(px(0.))
+            .chain(line.wrap_boundaries().iter().map(|boundary| {
+                layout.runs[boundary.run_ix].glyphs[boundary.glyph_ix]
+                    .position
+                    .x
+            }))
+            .chain([layout.width])
+            .collect();
+        starts
+            .iter()
+            .enumerate()
+            .map(|(row, &start)| {
+                let end = starts.get(row + 1).copied().unwrap_or(line.len());
+                let width = edges[row + 1] - edges[row];
+                let runs = layout
+                    .runs
+                    .iter()
+                    .filter_map(|run| {
+                        let glyphs: Vec<_> = run
+                            .glyphs
+                            .iter()
+                            .filter(|glyph| glyph.index >= start && glyph.index < end)
+                            .map(|glyph| ShapedGlyph {
+                                index: glyph.index - start,
+                                position: point(glyph.position.x - edges[row], glyph.position.y),
+                                ..glyph.clone()
+                            })
+                            .collect();
+                        (!glyphs.is_empty()).then_some(ShapedRun {
+                            font_id: run.font_id,
+                            glyphs,
+                        })
+                    })
+                    .collect();
+                let row_layout = LineLayout {
+                    font_size: layout.font_size,
+                    width,
+                    ascent: layout.ascent,
+                    descent: layout.descent,
+                    runs,
+                    len: end - start,
+                };
+                TextRow {
+                    range: start..end,
+                    width,
+                    clusters: crate::bidi::clusters(&row_layout, &line.text[start..end]),
+                }
+            })
+            .collect()
     }
 
     fn locate(&self, index: usize) -> Option<(usize, usize)> {
@@ -1444,32 +1518,22 @@ impl TextLayout {
     }
 
     fn row_of(starts: &[usize], local: usize) -> usize {
-        starts[1..].iter().filter(|start| **start < local).count()
-    }
-
-    fn bidi_clusters(line: &WrappedLine) -> Option<Vec<crate::bidi::Cluster>> {
-        if !line.wrap_boundaries().is_empty() {
-            return None;
-        }
-        let clusters = crate::bidi::clusters(&line.unwrapped_layout, &line.text);
-        crate::bidi::has_rtl(&clusters).then_some(clusters)
+        starts[1..].iter().filter(|start| **start <= local).count()
     }
 
     fn position(&self, index: usize) -> Point<Pixels> {
         let Some((line, local)) = self.locate(index) else {
             return Point::default();
         };
-        let wrapped = &self.lines[line];
-        let shift = self.shift(line);
-        if let Some(clusters) = Self::bidi_clusters(wrapped)
-            && let Some(x) = crate::bidi::caret_x(&clusters, &wrapped.text, local)
-        {
-            return point(px(x) + shift, self.tops[line]);
-        }
-        wrapped
-            .position_for_index(local, self.line_height)
-            .unwrap_or_default()
-            + point(shift, self.tops[line])
+        let row = Self::row_of(&Self::row_starts(&self.lines[line]), local);
+        let metrics = &self.rows[line][row];
+        let text = &self.lines[line].text[metrics.range.clone()];
+        let x = crate::bidi::caret_x(&metrics.clusters, text, local - metrics.range.start)
+            .unwrap_or(0.);
+        point(
+            px(x) + self.shift(line, row),
+            self.tops[line] + self.line_height * row as f32,
+        )
     }
 
     fn index_at(&self, position: Point<Pixels>) -> usize {
@@ -1480,26 +1544,22 @@ impl TextLayout {
             .tops
             .partition_point(|top| *top <= position.y)
             .saturating_sub(1);
-        let wrapped = &self.lines[line];
-        if let Some(clusters) = Self::bidi_clusters(wrapped) {
-            return self.starts[line]
-                + crate::bidi::index_for_x(
-                    &clusters,
-                    &wrapped.text,
-                    f32::from(position.x - self.shift(line)),
-                );
-        }
-        let rows = wrapped.wrap_boundaries().len() + 1;
-        let y = (position.y - self.tops[line])
-            .max(px(0.))
-            .min(self.line_height * rows as f32 - px(0.5));
-        let local = match wrapped.closest_index_for_position(
-            point((position.x - self.shift(line)).max(px(0.)), y),
-            self.line_height,
-        ) {
-            Ok(index) | Err(index) => index,
-        };
-        self.starts[line] + local
+        let row = (((position.y - self.tops[line]).max(px(0.)) / self.line_height) as usize)
+            .min(self.rows[line].len() - 1);
+        let metrics = &self.rows[line][row];
+        let text = &self.lines[line].text[metrics.range.clone()];
+        let index = crate::bidi::index_for_x(
+            &metrics.clusters,
+            text,
+            f32::from(position.x - self.shift(line, row)),
+        );
+        let index = text
+            .grapheme_indices(true)
+            .map(|(byte, _)| byte)
+            .chain([text.len()])
+            .min_by_key(|byte| byte.abs_diff(index))
+            .unwrap_or(0);
+        self.starts[line] + metrics.range.start + index
     }
 
     fn row_range(&self, index: usize) -> Range<usize> {
@@ -1573,15 +1633,17 @@ impl TextLayout {
                     Vec::new()
                 };
                 let monotonic = ordered
+                    && !crate::bidi::has_rtl(&self.rows[line_index][row].clusters)
                     && positions.iter().all(|x| x.is_finite())
                     && positions.windows(2).all(|pair| pair[1] >= pair[0]);
                 let extents = monotonic.then(|| {
                     let width = positions.last().copied().unwrap_or(0.);
                     let top = origin.y + self.tops[line_index] + self.line_height * row as f32;
+                    let left = origin.x + self.shift(line_index, row);
                     A11yRunExtents {
                         bounds: accesskit::Rect {
-                            x0: f64::from(origin.x.as_f32() * scale),
-                            x1: f64::from((origin.x.as_f32() + width) * scale),
+                            x0: f64::from(left.as_f32() * scale),
+                            x1: f64::from((left.as_f32() + width) * scale),
                             y0: f64::from(top.as_f32() * scale),
                             y1: f64::from((top + self.line_height).as_f32() * scale),
                         },
@@ -1610,58 +1672,39 @@ impl TextLayout {
 
     fn selection_rects(&self, range: Range<usize>, newline_width: Pixels) -> Vec<Bounds<Pixels>> {
         let mut rects = Vec::new();
-        for (i, line) in self.lines.iter().enumerate() {
-            let base = self.starts[i];
-            let len = line.len();
-            if range.end < base || range.start > base + len {
-                continue;
-            }
-            let starts = Self::row_starts(line);
-            let layout = &line.unwrapped_layout;
-            let shift = self.shift(i);
-            for (row, row_start) in starts.iter().enumerate() {
-                let row_end = starts.get(row + 1).copied().unwrap_or(len);
-                let lo = range.start.max(base + row_start);
-                let hi = range.end.min(base + row_end);
+        for (line_index, line) in self.lines.iter().enumerate() {
+            let base = self.starts[line_index];
+            for (row, metrics) in self.rows[line_index].iter().enumerate() {
+                let start = base + metrics.range.start;
+                let end = base + metrics.range.end;
+                let lo = range.start.max(start);
+                let hi = range.end.min(end);
                 if lo > hi {
                     continue;
                 }
-                if starts.len() == 1
-                    && let Some(clusters) = Self::bidi_clusters(line)
-                {
-                    let extra = if range.end > base + len {
-                        newline_width
-                    } else {
-                        px(0.)
-                    };
-                    let y = self.tops[i] + self.line_height * row as f32;
-                    let spans = crate::bidi::selection_spans(&clusters, lo - base, hi - base);
-                    let last = spans.len().saturating_sub(1);
-                    for (k, (x0, x1)) in spans.into_iter().enumerate() {
-                        let tail = if k == last { extra } else { px(0.) };
-                        rects.push(Bounds::from_corners(
-                            point(px(x0) + shift, y),
-                            point(px(x1) + tail + shift, y + self.line_height),
-                        ));
-                    }
-                    continue;
+                let text = &line.text[metrics.range.clone()];
+                let spans =
+                    crate::bidi::selection_spans(&metrics.clusters, text, lo - start, hi - start);
+                let shift = self.shift(line_index, row);
+                let y = self.tops[line_index] + self.line_height * row as f32;
+                for (x0, x1) in spans {
+                    rects.push(Bounds::from_corners(
+                        point(px(x0) + shift, y),
+                        point(px(x1) + shift, y + self.line_height),
+                    ));
                 }
-                let origin_x = layout.x_for_index(*row_start);
-                let x0 = layout.x_for_index(lo - base) - origin_x;
-                let x1 = layout.x_for_index(hi - base) - origin_x;
-                let extra = if row + 1 == starts.len() && range.end > base + len {
-                    newline_width
-                } else {
-                    px(0.)
-                };
-                if x1 + extra <= x0 {
-                    continue;
+                if row + 1 == self.rows[line_index].len() && range.end > base + line.len() {
+                    let x = crate::bidi::caret_x(&metrics.clusters, text, text.len()).unwrap_or(0.);
+                    let rtl = text
+                        .chars()
+                        .find(|c| c.is_alphabetic())
+                        .is_some_and(crate::bidi::is_rtl_char);
+                    let x0 = px(x) + shift - if rtl { newline_width } else { px(0.) };
+                    rects.push(Bounds::new(
+                        point(x0, y),
+                        size(newline_width, self.line_height),
+                    ));
                 }
-                let y = self.tops[i] + self.line_height * row as f32;
-                rects.push(Bounds::from_corners(
-                    point(x0 + shift, y),
-                    point(x1 + extra + shift, y + self.line_height),
-                ));
             }
         }
         rects
@@ -1801,14 +1844,16 @@ impl Element for TextElement {
         let caret_height = lines.first().map_or(line_height, |line| {
             (line.ascent() + line.descent()).min(line_height)
         });
+        let rows = lines.iter().map(TextLayout::rows).collect();
         let layout = TextLayout {
+            rows,
             lines,
             starts,
             tops,
             line_height,
             total_height: y,
             bounds,
-            rtl: crate::i18n::direction(cx).is_rtl() && !input.multiline,
+            rtl: crate::i18n::direction(cx).is_rtl(),
         };
 
         let cursor_display = input.to_display(input.cursor_offset());
@@ -1931,11 +1976,16 @@ impl Element for TextElement {
                 window.paint_quad(selection);
             }
             for (i, (line, top)) in layout.lines.iter().zip(&layout.tops).enumerate() {
+                let wrapped = layout.rows[i].len() > 1;
                 line.paint(
-                    origin + point(layout.shift(i), *top),
+                    origin + point(if wrapped { px(0.) } else { layout.shift(i, 0) }, *top),
                     layout.line_height,
-                    TextAlign::Left,
-                    None,
+                    if layout.rtl && wrapped {
+                        TextAlign::Right
+                    } else {
+                        TextAlign::Left
+                    },
+                    layout.rtl.then_some(Bounds::new(origin, bounds.size)),
                     window,
                     cx,
                 )
@@ -2258,13 +2308,10 @@ fn a11y_line_ranges(text: &str) -> Vec<Range<usize>> {
 
 fn a11y_text_position(text: &str, lines: &[Range<usize>], offset: usize) -> (usize, usize) {
     let offset = offset.min(text.len());
-    let mut line = lines
+    let line = lines
         .iter()
         .rposition(|line| line.start <= offset)
         .unwrap_or(0);
-    if line > 0 && lines[line].start == offset && !text[..offset].ends_with('\n') {
-        line -= 1;
-    }
     let range = &lines[line];
     let relative_offset = offset.saturating_sub(range.start);
     let mut boundary = 0;
@@ -2653,10 +2700,10 @@ mod tests {
     }
 
     #[test]
-    fn accessible_soft_wrap_caret_affinity_matches_native_previous_row() {
+    fn accessible_soft_wrap_caret_affinity_matches_native_next_row() {
         let text = "e\u{301} ab";
         let lines = vec![0..4, 4..6];
-        assert_eq!(a11y_text_position(text, &lines, 4), (0, 2));
+        assert_eq!(a11y_text_position(text, &lines, 4), (1, 0));
         assert_eq!(a11y_text_position(text, &lines, 5), (1, 1));
         let hard = "e\u{301}\nab";
         assert_eq!(a11y_text_position(hard, &lines, 4), (1, 0));

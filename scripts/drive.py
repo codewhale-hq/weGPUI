@@ -66,6 +66,7 @@ def post_text(text):
     for ch in text:
         for down in (True, False):
             ev = Quartz.CGEventCreateKeyboardEvent(None, 0, down)
+            Quartz.CGEventSetFlags(ev, 0)
             Quartz.CGEventKeyboardSetUnicodeString(ev, len(ch.encode('utf-16-le')) // 2, ch)
             Quartz.CGEventPost(Quartz.kCGHIDEventTap, ev)
             time.sleep(0.02)

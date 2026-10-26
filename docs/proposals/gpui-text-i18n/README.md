@@ -7,11 +7,20 @@ also approved the step 2 prototype, with landing conditional on the Languages pa
 and five gates. The owner initially held landing after reviewing
 the Linux failure ([receipt](../../receipts/gpui-logical-wrap-20261025/README.md)). On October 26
 the owner requested complete review and publication of all current work to GitHub; the
-[publication review](../../REVIEW-2026-10-26.md) records that later authorization. The Linux
-rendering failure remains an acceptance blocker. Step 3
-remains unapproved. Vendor guidance: [vendor/README](../../../vendor/README.md).
+[publication review](../../REVIEW-2026-10-26.md) records that later authorization. At that publication source the Linux
+rendering failure remained open. Step 3 was subsequently approved; see the current continuation below. Vendor guidance: [vendor/README](../../../vendor/README.md).
 The localisation work ([I18N](../../I18N.md)) worked around everything that could be worked
 around in weGPUI itself; this is what remained.
+
+## Current continuation — 25 October 2026 (Pacific)
+
+The owner explicitly approved step 3 in chat. The
+[RTL continuation](../../receipts/rtl-completion-20261025/README.md) normalises platform glyph
+order before layout caching and reuses the input bidi shim per wrapped row for caret, pointer,
+selection and vertical navigation. TextArea aligns by locale. Current macOS and Linux ARM64
+X11 samples show complete Arabic/Hebrew paragraphs; current host/readback evidence replaces
+no historical source identity. Full IME/readers, Windows, Linux x86_64/hardware and styling
+remain unqualified. No new library dependency or version change is involved.
 
 ## What was wrong
 
@@ -107,10 +116,12 @@ Linux evidence are separate. That trial approval did not itself release the RTL 
 step 3. The later publication request is recorded above; the supplied macOS captures do not
 qualify the later guard.
 
-## Step 3 — still unapproved
+## Step 3 — approved; input continuation implemented
 
-Make `x_for_index`/`index_for_x` bidi-aware, so `src/bidi.rs` can be deleted. This would
-also extend caret and selection to wrapped lines, which `TextArea` cannot do today.
+Wrapped input caret and selection now use row-local shaped clusters. The existing `src/bidi.rs`
+shim remains in use, rather than rewriting GPUI’s text-free `LineLayout` APIs. Migrating those
+generic APIs and their other consumers remains a separate integration gap; the native input
+checks do not qualify it. See the current continuation for implementation and evidence.
 
 ## Not proposed
 
