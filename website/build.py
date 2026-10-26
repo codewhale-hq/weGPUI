@@ -2,6 +2,7 @@
 """Build the static browser gallery and separate recorded native showcase."""
 import argparse
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
 import re
@@ -10,6 +11,10 @@ import subprocess
 import tomllib
 
 ROOT = Path(__file__).resolve().parents[1]
+_inventory_spec = importlib.util.spec_from_file_location('website_inventory', ROOT / 'website/inventory.py')
+_inventory = importlib.util.module_from_spec(_inventory_spec)
+_inventory_spec.loader.exec_module(_inventory)
+browser_route_map = _inventory.browser_route_map
 FAMILY_INFO = {
     'button': ('Buttons', 'Actions', 'Primary, secondary, warning and consent actions, in regular and bottom-fixed layouts.'),
     'actionsheet': ('Action sheets', 'Overlays', 'Contextual actions presented in an iOS- or Android-style sheet.'),
@@ -76,7 +81,7 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
     captures = output / 'captures'
     captures.mkdir(exist_ok=True)
     route_source = (ROOT / 'examples/gallery/pages/mod.rs').read_text()
-    route_map = dict(re.findall(r'\("([\w-]+)",\s*(\w+)::build\)', route_source))
+    route_map = browser_route_map(route_source)
     records = []
     for line in (ROOT / 'docs/UPSTREAM-COVERAGE.md').read_text().splitlines():
         if not line.startswith('| `'):

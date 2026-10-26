@@ -127,7 +127,7 @@ def capture_weui(args, out):
             page.evaluate(f'(async () => {{ {states[key]} }})()')
             page.wait_for_timeout(1200)
         if args.scroll:
-            page.evaluate(f"document.querySelector('.page:last-child').scrollTop = {args.scroll}")
+            page.evaluate("y => Array.from(document.querySelectorAll('#container > .page')).at(-1).scrollTop = y", args.scroll)
             page.wait_for_timeout(300)
         page.screenshot(path=str(out))
         browser.close()

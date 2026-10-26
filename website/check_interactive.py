@@ -4,6 +4,7 @@ import argparse
 from contextlib import contextmanager
 from datetime import datetime, timezone
 import hashlib
+import importlib.util
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import json
 from pathlib import Path
@@ -16,6 +17,10 @@ from urllib.parse import urlencode, urljoin, urlparse
 from playwright.sync_api import expect, sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
+_inventory_spec = importlib.util.spec_from_file_location('website_inventory', ROOT / 'website/inventory.py')
+_inventory = importlib.util.module_from_spec(_inventory_spec)
+_inventory_spec.loader.exec_module(_inventory)
+browser_route_map = _inventory.browser_route_map
 VIEWPORTS = (375, 768, 1280)
 PNG = bytes.fromhex(
     '89504e470d0a1a0a0000000d49484452000000010000000108060000001f15c489'
@@ -786,8 +791,7 @@ def main():
     files = {str(path.relative_to(args.site)): digest(path)
              for path in args.site.rglob('*') if path.is_file()}
     (args.out / 'built-site-sha256.json').write_text(json.dumps(files, indent=2) + '\n')
-    routes = sorted(re.findall(r'\("([\w-]+)",\s*\w+::build\)',
-                               (ROOT / 'examples/gallery/pages/mod.rs').read_text()))
+    routes = sorted(browser_route_map((ROOT / 'examples/gallery/pages/mod.rs').read_text()))
     assert len(routes) == 60, routes
     provenance = {'native_gpui_test': False,
                   'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
