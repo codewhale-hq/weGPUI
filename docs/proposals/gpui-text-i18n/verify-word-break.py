@@ -18,6 +18,7 @@ Exit status is the test binary's.
 """
 
 import argparse
+import importlib.util
 import pathlib
 import re
 import subprocess
@@ -34,6 +35,9 @@ for candidate in [ROOT, *ROOT.parents]:
 
 TEST_NAMES = r"test_is_word_char\w*|test_wrap_line_breaks_only_between_words\w*"
 MARKER = "#[cfg(test)]\nmod tests {"
+SPEC = importlib.util.spec_from_file_location("logical_harness", ROOT / "verify-logical-wrap.py")
+logical_harness = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(logical_harness)
 
 STUBS = r'''#![allow(dead_code, unused_imports, unused_variables, unused_mut)]
 use std::{
@@ -200,7 +204,7 @@ def main():
     binary = work / "harness"
     print(f"code: {args.code}\ntests: {args.tests}\ntests extracted: {', '.join(names)}")
     build = subprocess.run(
-        ["rustc", "--edition", "2024", "--test", str(src), "-o", str(binary)],
+        ["rustc", "--edition", "2024", "--test", str(src), "-o", str(binary), *logical_harness.unicode_args(work)],
         capture_output=True,
         text=True,
     )

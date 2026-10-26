@@ -11,16 +11,13 @@ SPEC = importlib.util.spec_from_file_location("word_harness", ROOT / "docs/propo
 harness = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(harness)
 SOURCE = ROOT / "vendor/gpui_pre/src/text_system/line_wrapper.rs"
-NEEDLE = "        // Non-breaking glue characters\n"
-ADDITION = """        matches!(c, '、' | '。' | '，' | '．' | '：' | '；' | '！' | '？' |
-            '）' | '］' | '｝' | '〉' | '》' | '」' | '』' | '】' | '〕' | '〗' | '〙' | '〛') ||
-
-"""
+NEEDLE = "unicode_linebreak::linebreaks(text)"
 TESTS = r'''
     #[test]
     fn closing_marks_attach_to_the_preceding_cjk_word() {
         for c in "、。，．：；！？）］｝〉》」』】〕〗〙〛".chars() {
-            assert!(LineWrapper::is_word_char(c), "{c}");
+            let text = format!("界{c}界");
+            assert!(!LineWrapper::break_indices(&text).contains(&"界".len()), "{c}");
         }
     }
     #[test]
@@ -51,16 +48,21 @@ TESTS = r'''
     }
     #[test]
     fn opening_marks_and_other_scripts_are_unchanged() {
-        for c in "（［｛〈《「『【〔〖〘〚你好ไทย한글".chars() {
-            assert!(!LineWrapper::is_word_char(c), "{c}");
+        for c in "（［｛〈《「『【〔〖〘〚".chars() {
+            let text = format!("{c}界");
+            assert!(!LineWrapper::break_indices(&text).contains(&c.len_utf8()), "{c}");
         }
     }
     #[test]
     fn ascii_closing_marks_still_attach() {
         for c in "（［｛〈《「『【〔〖〘〚([{‘“".chars() {
-            assert!(!LineWrapper::can_break_before(c, '界'), "{c}");
+            let text = format!("{c}界");
+            assert!(!LineWrapper::break_indices(&text).contains(&c.len_utf8()), "{c}");
         }
-        for c in ")]!}…".chars() { assert!(LineWrapper::is_word_char(c)); }
+        for c in ")]!}…".chars() {
+            let text = format!("界{c}界");
+            assert!(!LineWrapper::break_indices(&text).contains(&"界".len()), "{c}");
+        }
     }
 '''
 
@@ -71,13 +73,11 @@ def main():
     args = parser.parse_args()
     args.workdir.mkdir(parents=True, exist_ok=True)
     current = SOURCE.read_text()
-    original = current.replace(ADDITION, "") if current.count(ADDITION) == 1 else current
-    if original.count(NEEDLE) != 1:
-        parser.error("Classifier changed; review this proposal")
-    candidate = original.replace(NEEDLE, ADDITION + NEEDLE)
-    patch = "".join(difflib.unified_diff(original.splitlines(True), candidate.splitlines(True),
-                                     fromfile="a/vendor/gpui_pre/src/text_system/line_wrapper.rs",
-                                     tofile="b/vendor/gpui_pre/src/text_system/line_wrapper.rs"))
+    if current.count(NEEDLE) != 1:
+        parser.error("Break iterator changed; review the negative control")
+    candidate = current
+    original = current.replace(NEEDLE, "text.char_indices().skip(1).map(|(index, _)| (index, ())).chain(std::iter::once((text.len(), ())))")
+    patch = "".join(difflib.unified_diff(original.splitlines(True), candidate.splitlines(True), fromfile="negative-control", tofile="current-Unicode-source"))
     (args.workdir / "cjk-closing.patch").write_text(patch)
     for name, source in [("baseline", original), ("proposal", candidate)]:
         code, tests = harness.split(source)
@@ -89,7 +89,7 @@ def main():
         target = args.workdir / (name + ".rs")
         target.write_text(generated)
         binary = args.workdir / name
-        subprocess.run(["rustc", "--edition", "2024", "--test", str(target), "-o", str(binary)], check=True)
+        subprocess.run(["rustc", "--edition", "2024", "--test", str(target), "-o", str(binary), *harness.logical_harness.unicode_args(args.workdir)], check=True)
         result = subprocess.run([str(binary), "--test-threads=1"], capture_output=True, text=True)
         (args.workdir / (name + ".log")).write_text(result.stdout + result.stderr)
         print(name, result.returncode, flush=True)

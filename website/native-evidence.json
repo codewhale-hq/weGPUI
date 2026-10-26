@@ -1,0 +1,30 @@
+{
+  "receipt": "docs/receipts/code-parity-20261026",
+  "samples": [
+    {
+      "id": "light/panel",
+      "native": "samples/light-panel-gpui.png",
+      "reference": "samples/light-panel-weui.png"
+    },
+    {
+      "id": "light/form_input_status-amount",
+      "native": "samples/light-form_input_status-amount-gpui.png",
+      "reference": "samples/light-form_input_status-amount-weui.png"
+    },
+    {
+      "id": "light/searchbar_filled-focused",
+      "native": "samples/light-searchbar_filled-focused-gpui.png",
+      "reference": "samples/light-searchbar_filled-focused-weui.png"
+    },
+    {
+      "id": "light/searchbar_filled-typed",
+      "native": "samples/light-searchbar_filled-typed-gpui.png",
+      "reference": "samples/light-searchbar_filled-typed-weui.png"
+    },
+    {
+      "id": "light/slider-value80",
+      "native": "samples/light-slider-value80-gpui.png",
+      "reference": "samples/light-slider-value80-weui.png"
+    }
+  ]
+}

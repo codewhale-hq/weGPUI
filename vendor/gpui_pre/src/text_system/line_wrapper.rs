@@ -55,13 +55,40 @@ impl LineWrapper {
         wrap_width: Pixels,
         indent_adjustment: IndentAdjustment,
     ) -> impl Iterator<Item = Boundary> + 'a {
+        let mut text = String::new();
+        let mut offsets = Vec::new();
+        let mut original = 0;
+        for fragment in fragments {
+            match fragment {
+                LineFragment::Text { text: fragment } => {
+                    for c in fragment.chars() {
+                        offsets.push((text.len(), original));
+                        text.push(c);
+                        original += c.len_utf8();
+                    }
+                }
+                LineFragment::Element { len_utf8, .. } => {
+                    offsets.push((text.len(), original));
+                    text.push('\u{FFFC}');
+                    original += len_utf8;
+                }
+            }
+        }
+        let breaks: Vec<_> = Self::break_indices(&text)
+            .into_iter()
+            .filter_map(|index| {
+                offsets
+                    .binary_search_by_key(&index, |(encoded, _)| *encoded)
+                    .ok()
+                    .map(|i| offsets[i].1)
+            })
+            .collect();
         let mut width = px(0.);
         let mut first_non_whitespace_ix = None;
         let mut base_indent = None;
         let mut last_candidate_ix = 0;
         let mut last_candidate_width = px(0.);
         let mut last_wrap_ix = 0;
-        let mut prev_c = '\0';
         let mut index = 0;
         let mut candidates = fragments
             .iter()
@@ -71,14 +98,13 @@ impl LineWrapper {
             for candidate in candidates.by_ref() {
                 let ix = index;
                 index += candidate.len_utf8();
-                let mut new_prev_c = prev_c;
                 let item_width = match candidate {
                     WrapBoundaryCandidate::Char { character: c } => {
                         if c == '\n' {
                             continue;
                         }
 
-                        if Self::can_break_before(prev_c, c) && first_non_whitespace_ix.is_some() {
+                        if breaks.binary_search(&ix).is_ok() && first_non_whitespace_ix.is_some() {
                             last_candidate_ix = ix;
                             last_candidate_width = width;
                         }
@@ -87,15 +113,13 @@ impl LineWrapper {
                             first_non_whitespace_ix = Some(ix);
                         }
 
-                        new_prev_c = c;
-
                         self.width_for_char(c)
                     }
                     WrapBoundaryCandidate::Element {
                         width: element_width,
                         ..
                     } => {
-                        if prev_c == ' ' && first_non_whitespace_ix.is_some() {
+                        if breaks.binary_search(&ix).is_ok() && first_non_whitespace_ix.is_some() {
                             last_candidate_ix = ix;
                             last_candidate_width = width;
                         }
@@ -170,8 +194,6 @@ impl LineWrapper {
 
                     return Some(Boundary::new(last_wrap_ix, next_indent));
                 }
-
-                prev_c = new_prev_c;
             }
 
             None
@@ -379,11 +401,11 @@ impl LineWrapper {
 
         let mut width = px(0.);
         let mut line = 0usize;
+        let breaks = Self::break_indices(&text);
         let mut first_non_whitespace_ix = None;
         let mut last_candidate_ix = 0usize;
         let mut last_candidate_width = px(0.);
         let mut last_wrap_ix = 0usize;
-        let mut prev_c = '\0';
         let mut indent: Option<u32> = None;
         let mut truncate_ix = 0usize;
 
@@ -412,7 +434,6 @@ impl LineWrapper {
                 last_candidate_ix = 0;
                 last_candidate_width = px(0.);
                 last_wrap_ix = ix + 1;
-                prev_c = '\0';
                 indent = None;
                 truncate_ix = ix + 1;
                 continue;
@@ -420,7 +441,7 @@ impl LineWrapper {
 
             let char_width = self.width_for_char(c);
 
-            if Self::can_break_before(prev_c, c) && first_non_whitespace_ix.is_some() {
+            if breaks.binary_search(&ix).is_ok() && first_non_whitespace_ix.is_some() {
                 last_candidate_ix = ix;
                 last_candidate_width = width;
             }
@@ -475,89 +496,16 @@ impl LineWrapper {
                     return (result, Cow::Owned(runs));
                 }
             }
-
-            prev_c = c;
         }
 
         // Text fits within max_lines without truncation.
         (text, Cow::Borrowed(runs))
     }
 
-    pub(crate) fn can_break_before(previous: char, current: char) -> bool {
-        !matches!(
-            previous,
-            '(' | '['
-                | '{'
-                | '（'
-                | '［'
-                | '｛'
-                | '〈'
-                | '《'
-                | '「'
-                | '『'
-                | '【'
-                | '〔'
-                | '〖'
-                | '〘'
-                | '〚'
-                | '‘'
-                | '“'
-        ) && if Self::is_word_char(current) {
-            previous == ' ' && current != ' '
-        } else {
-            current != ' '
-        }
-    }
-
-    /// Any character in this list should be treated as a word character,
-    /// meaning it can be part of a word that should not be wrapped.
-    pub(crate) fn is_word_char(c: char) -> bool {
-        // ASCII alphanumeric characters, for English, numbers: `Hello123`, etc.
-        c.is_ascii_alphanumeric() ||
-        // Latin script in Unicode for French, German, Spanish, etc.
-        // Latin-1 Supplement
-        // https://en.wikipedia.org/wiki/Latin-1_Supplement
-        matches!(c, '\u{00C0}'..='\u{00FF}') ||
-        // Latin Extended-A
-        // https://en.wikipedia.org/wiki/Latin_Extended-A
-        matches!(c, '\u{0100}'..='\u{017F}') ||
-        // Latin Extended-B
-        // https://en.wikipedia.org/wiki/Latin_Extended-B
-        matches!(c, '\u{0180}'..='\u{024F}') ||
-        // Cyrillic for Russian, Ukrainian, etc.
-        // https://en.wikipedia.org/wiki/Cyrillic_script_in_Unicode
-        matches!(c, '\u{0400}'..='\u{04FF}') ||
-
-        // Vietnamese (https://vietunicode.sourceforge.net/charset/)
-        matches!(c, '\u{1E00}'..='\u{1EFF}') || // Latin Extended Additional
-        matches!(c, '\u{0300}'..='\u{036F}') || // Combining Diacritical Marks
-
-        // Bengali (https://en.wikipedia.org/wiki/Bengali_(Unicode_block))
-        matches!(c, '\u{0980}'..='\u{09FF}') ||
-        matches!(c, '\u{0600}'..='\u{06FF}' | '\u{0750}'..='\u{077F}' | '\u{08A0}'..='\u{08FF}' | '\u{FB50}'..='\u{FDFF}' | '\u{FE70}'..='\u{FEFF}') ||
-        matches!(c, '\u{0590}'..='\u{05FF}') ||
-        matches!(c, '\u{0900}'..='\u{097F}') ||
-        matches!(c, '\u{0370}'..='\u{03FF}' | '\u{1F00}'..='\u{1FFF}') ||
-
-        // Some other known special characters that should be treated as word characters,
-        // e.g. `a-b`, `var_name`, `I'm`/`won’t`, '@mention`, `#hashtag`, `100%`, `3.1415`,
-        // `2^3`, `a~b`, `a=1`, `Self::new`, etc. Trailing punctuation like `,`, `.`, `:`, `;`
-        // is included so it stays attached to the preceding word when wrapping.
-        matches!(c, '-' | '_' | '.' | '\'' | '’' | '‘' | '$' | '%' | '@' | '#' | '^' | '~' | ',' | '=' | ':' | ';') ||
-        // Closing punctuation never starts a line (UAX #14 LB13: no break
-        // before `!`, `)`, `]`, `}`, closing quotes or an ellipsis) — `plz!`,
-        // `see)`, `quoted”` wrap as one word instead of orphaning the mark on
-        // the next line. `/` and `?` stay break opportunities so long paths
-        // and URLs (`a/b`, `foo?b=2`) can wrap.
-        matches!(c, '!' | ')' | ']' | '}' | '"' | '”' | '»' | '…') ||
-        // `⋯` character is special used in Zed, to keep this at the end of the line.
-        matches!(c, '⋯') ||
-
-        matches!(c, '、' | '。' | '，' | '．' | '：' | '；' | '！' | '？' |
-            '）' | '］' | '｝' | '〉' | '》' | '」' | '』' | '】' | '〕' | '〗' | '〙' | '〛') ||
-
-        // Non-breaking glue characters
-        matches!(c, '\u{202F}' | '\u{00A0}' | '\u{2011}')
+    pub(crate) fn break_indices(text: &str) -> Vec<usize> {
+        unicode_linebreak::linebreaks(text)
+            .map(|(index, _)| index)
+            .collect()
     }
 
     #[inline(always)]
@@ -1216,88 +1164,42 @@ mod tests {
 
     #[test]
     fn test_is_word_char() {
-        #[track_caller]
-        fn assert_word(word: &str) {
-            for c in word.chars() {
-                assert!(
-                    LineWrapper::is_word_char(c),
-                    "assertion failed for '{}' (unicode 0x{:x})",
-                    c,
-                    c as u32
-                );
-            }
+        for text in [
+            "Hello123",
+            "var_name",
+            "3.1415",
+            "100%",
+            "github.com",
+            "won’t",
+            "ÀÁÂÃÄÅ",
+            "ĀāĂăĄą",
+            "ƀƁƂƃƄƅ",
+            "АБВГДЕЖ",
+            "গিয়েছিলেন",
+            "foo\u{00A0}bar",
+            "foo\u{202F}bar",
+            "foo\u{2011}bar",
+            "👩‍💻",
+            "🇯🇵",
+            "é",
+        ] {
+            assert_eq!(LineWrapper::break_indices(text), vec![text.len()], "{text}");
         }
-
-        #[track_caller]
-        fn assert_not_word(word: &str) {
-            let found = word.chars().any(|c| !LineWrapper::is_word_char(c));
-            assert!(found, "assertion failed for '{}'", word);
+        for text in [
+            "foo bar",
+            "zed-industries/zed",
+            "你好",
+            "안녕하세요",
+            "こんにちは",
+            "😀😁😂",
+        ] {
+            assert!(LineWrapper::break_indices(text).len() > 1, "{text}");
         }
-
-        assert_word("Hello123");
-        assert_word("non-English");
-        assert_word("var_name");
-        assert_word("123456");
-        assert_word("3.1415");
-        assert_word("10^2");
-        assert_word("1~2");
-        assert_word("100%");
-        assert_word("@mention");
-        assert_word("#hashtag");
-        assert_word("$variable");
-        assert_word("a=1");
-        assert_word("Self::is_word_char");
-        assert_word("on;");
-        assert_word("more⋯");
-        assert_word("won’t");
-        assert_word("‘twas");
-        assert_word("plz!");
-        assert_word("see)");
-        assert_word("quoted”");
-        assert_word("well…");
-
-        // Space
-        assert_not_word("foo bar");
-
-        // URL case
-        assert_word("github.com");
-        assert_not_word("zed-industries/zed");
-        assert_not_word("zed-industries\\zed");
-        assert_not_word("a=1&b=2");
-        assert_not_word("foo?b=2");
-
-        // Latin-1 Supplement
-        assert_word("ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏ");
-        // Latin Extended-A
-        assert_word("ĀāĂăĄąĆćĈĉĊċČčĎď");
-        // Latin Extended-B
-        assert_word("ƀƁƂƃƄƅƆƇƈƉƊƋƌƍƎƏ");
-        // Cyrillic
-        assert_word("АБВГДЕЖЗИЙКЛМНОП");
-        // Vietnamese (https://github.com/zed-industries/zed/issues/23245)
-        assert_word("ThậmchíđếnkhithuachạychúngcònnhẫntâmgiếtnốtsốđôngtùchínhtrịởYênBáivàCaoBằng");
-        // Bengali
-        assert_word("গিয়েছিলেন");
-        assert_word("ছেলে");
-        assert_word("হচ্ছিল");
-
-        // non-word characters
-        assert_not_word("你好");
-        assert_not_word("안녕하세요");
-        assert_not_word("こんにちは");
-        assert_not_word("😀😁😂");
-        assert_not_word("()[]{}<>");
-
-        // Non-breaking ("Glue") characters, see https://www.unicode.org/reports/tr14/
-        // (https://github.com/zed-industries/zed/issues/59664)
-        assert_word("\u{202F}"); // NNBSP " "
-        assert_word("\u{00A0}"); // NBSP " "
-        assert_word("\u{2011}"); // NBH "‑"
     }
 
     #[test]
     fn test_is_word_char_arabic() {
-        for word in [
+        for text in [
             "مرحبا",
             "بالعالم،",
             "ٱلْكِتَابُ",
@@ -1308,75 +1210,42 @@ mod tests {
             "ﷲ",
             "ﺎﺏ",
         ] {
-            for c in word.chars() {
-                assert!(
-                    LineWrapper::is_word_char(c),
-                    "assertion failed for '{}' (unicode 0x{:x}) in {:?}",
-                    c,
-                    c as u32,
-                    word
-                );
-            }
+            assert_eq!(LineWrapper::break_indices(text), vec![text.len()], "{text}");
         }
     }
 
     #[test]
     fn test_is_word_char_hebrew() {
-        for word in ["שלום", "שָׁלוֹם", "דג־סקרן", "צ׳יפס"] {
-            for c in word.chars() {
-                assert!(
-                    LineWrapper::is_word_char(c),
-                    "assertion failed for '{}' (unicode 0x{:x}) in {:?}",
-                    c,
-                    c as u32,
-                    word
-                );
-            }
+        for text in ["שלום", "שָׁלוֹם", "צ׳יפס"] {
+            assert_eq!(LineWrapper::break_indices(text), vec![text.len()], "{text}");
         }
+        assert_eq!(LineWrapper::break_indices("דג־סקרן"), vec!["דג־סקרן".len()]);
     }
 
     #[test]
     fn test_is_word_char_devanagari() {
-        for word in ["नमस्ते", "सर्वनाश।", "श्रीराम॥", "१२३", "ॐ"]
+        for text in ["नमस्ते", "सर्वनाश।", "श्रीराम॥", "१२३", "ॐ"]
         {
-            for c in word.chars() {
-                assert!(
-                    LineWrapper::is_word_char(c),
-                    "assertion failed for '{}' (unicode 0x{:x}) in {:?}",
-                    c,
-                    c as u32,
-                    word
-                );
-            }
+            assert_eq!(LineWrapper::break_indices(text), vec![text.len()], "{text}");
         }
     }
 
     #[test]
     fn test_is_word_char_greek() {
-        for word in ["Καλημέρα", "ἄνθρωπος", "ῥῆμα", "σοφίας;"] {
-            for c in word.chars() {
-                assert!(
-                    LineWrapper::is_word_char(c),
-                    "assertion failed for '{}' (unicode 0x{:x}) in {:?}",
-                    c,
-                    c as u32,
-                    word
-                );
-            }
+        for text in ["Καλημέρα", "ἄνθρωπος", "ῥῆμα", "σοφίας;"] {
+            assert_eq!(LineWrapper::break_indices(text), vec![text.len()], "{text}");
         }
     }
 
     #[test]
     fn test_is_word_char_neighbouring_scripts_are_unchanged() {
-        for c in [
-            '\u{058F}', '\u{0700}', '\u{0E01}', '\u{1100}', '\u{AC00}', '\u{4F60}',
-        ] {
-            assert!(
-                !LineWrapper::is_word_char(c),
-                "'{}' (unicode 0x{:x}) became a word character",
-                c,
-                c as u32
-            );
+        for text in ["Հայերեն", "ܫܠܡܐ", "ภาษาไทย"] {
+            assert_eq!(LineWrapper::break_indices(text), vec![text.len()], "{text}");
+        }
+        for text in ["각", "가각", "你好", "「你好」", "a-1", "a/1", "1,234.56"] {
+            let breaks = LineWrapper::break_indices(text);
+            assert!(breaks.iter().all(|index| text.is_char_boundary(*index)));
+            assert_eq!(breaks.last(), Some(&text.len()));
         }
     }
 

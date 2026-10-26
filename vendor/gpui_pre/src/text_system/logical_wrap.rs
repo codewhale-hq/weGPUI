@@ -53,7 +53,7 @@ pub(crate) fn wrap(
     units: &[Unit],
     wrap_width: f32,
     max_lines: Option<usize>,
-    can_break_before: impl Fn(char, char) -> bool,
+    can_break_before: impl Fn(usize, char, char) -> bool,
 ) -> Option<Vec<usize>> {
     let mut starts = Vec::new();
     let mut first_non_whitespace = None;
@@ -69,7 +69,7 @@ pub(crate) fn wrap(
             x = next_x;
             continue;
         }
-        if can_break_before(prev_ch, ch) && first_non_whitespace.is_some() {
+        if can_break_before(unit.index, prev_ch, ch) && first_non_whitespace.is_some() {
             last_candidate = Some((i, x));
         }
         if ch != ' ' && first_non_whitespace.is_none() {
@@ -170,7 +170,7 @@ pub(crate) fn slice_runs<T: Copy>(runs: &[(usize, T)], range: Range<usize>) -> V
 mod tests {
     use super::*;
 
-    fn word(previous: char, c: char) -> bool {
+    fn word(_: usize, previous: char, c: char) -> bool {
         previous == ' ' && !c.is_whitespace()
     }
 
@@ -297,7 +297,7 @@ mod tests {
     #[test]
     fn candidates_include_characters_that_are_not_word_characters() {
         let units = uniform_units("ab/cd/ef", 10.);
-        let starts = wrap(&units, 35., None, |previous, c| {
+        let starts = wrap(&units, 35., None, |_, previous, c| {
             c != ' ' && (!c.is_alphanumeric() || previous == ' ')
         })
         .unwrap();

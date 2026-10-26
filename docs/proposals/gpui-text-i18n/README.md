@@ -25,6 +25,12 @@ Package versions stay unchanged; `chrono 0.4.45` supplies host-local today for w
 The historical prototype and held failures below retain their original source identities.
 Full IME/readers, Windows visible UI, Linux hardware and dictionary breaking remain open.
 
+The owner then approved the existing locked `unicode-linebreak 0.1.5` crate. The
+[Unicode continuation](../../receipts/unicode-parity-20261026/README.md) replaces the bounded
+allow-list with its Unicode 15.0 opportunities in all four wrapping/truncation paths.
+Narrow mixed CJK/Latin forms now match the pinned reference's line breaks; dictionary
+segmentation and newer Unicode revisions remain outside this implementation.
+
 ## What was wrong
 
 Both problems showed on the *Languages* page, in English, with no right-to-left layout involved

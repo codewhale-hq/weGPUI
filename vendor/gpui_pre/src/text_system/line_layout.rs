@@ -247,7 +247,7 @@ impl LineLayout {
             glyph_ix: 0,
         };
         let mut last_boundary_x = px(0.);
-        let mut prev_ch = '\0';
+        let breaks = LineWrapper::break_indices(text);
         let mut glyphs = self
             .runs
             .iter()
@@ -259,17 +259,18 @@ impl LineLayout {
                         WrapBoundary { run_ix, glyph_ix },
                         character,
                         glyph.position.x,
+                        glyph.index,
                     )
                 })
             })
             .peekable();
 
-        while let Some((boundary, ch, x)) = glyphs.next() {
+        while let Some((boundary, ch, x, index)) = glyphs.next() {
             if ch == '\n' {
                 continue;
             }
 
-            if LineWrapper::can_break_before(prev_ch, ch) && first_non_whitespace_ix.is_some() {
+            if breaks.binary_search(&index).is_ok() && first_non_whitespace_ix.is_some() {
                 last_candidate_ix = Some(boundary);
                 last_candidate_x = x;
             }
@@ -278,7 +279,7 @@ impl LineLayout {
                 first_non_whitespace_ix = Some(boundary);
             }
 
-            let next_x = glyphs.peek().map_or(self.width, |(_, _, x)| *x);
+            let next_x = glyphs.peek().map_or(self.width, |(_, _, x, _)| *x);
             let width = next_x - last_boundary_x;
 
             if width > wrap_width
@@ -301,7 +302,6 @@ impl LineLayout {
                 }
                 boundaries.push(last_boundary);
             }
-            prev_ch = ch;
         }
 
         boundaries
@@ -849,12 +849,10 @@ impl LineLayoutCache {
         if units.is_empty() {
             return None;
         }
-        let starts = logical_wrap::wrap(
-            &units,
-            wrap_width.as_f32(),
-            max_lines,
-            LineWrapper::can_break_before,
-        )?;
+        let breaks = LineWrapper::break_indices(text);
+        let starts = logical_wrap::wrap(&units, wrap_width.as_f32(), max_lines, |index, _, _| {
+            breaks.binary_search(&index).is_ok()
+        })?;
         if starts.is_empty() {
             return None;
         }

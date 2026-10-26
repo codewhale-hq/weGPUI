@@ -62,7 +62,7 @@ def main():
                                      tofile="b/vendor/gpui_pre/src/text_system/line_layout.rs"))
     (args.workdir / "trailing-space.patch").write_text(patch)
     wrapper = (SOURCE.parent / "line_wrapper.rs").read_text()
-    classifier = harness.function_text(wrapper, "is_word_char") + harness.function_text(wrapper, "can_break_before")
+    classifier = harness.function_text(wrapper, "break_indices")
     for name, source in [("baseline", original), ("proposal", patched)]:
         block = source[source.index("/// A laid out and styled line of text"):source.index("pub(crate) struct LineLayoutCache")]
         generated = harness.STUBS + classifier + "    }\n" + block + TESTS

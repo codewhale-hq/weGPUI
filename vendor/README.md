@@ -5,7 +5,9 @@ remain `accesskit_unix 0.22.1`, `accesskit_atspi_common 0.19.1`, `gpui-pre 0.3.9
 `gpui-pre-linux 0.3.9`. Copies came from the exact locked crate archives; licenses and
 package provenance are retained. Registry files were not edited. Root Cargo patches
 select these copies; the approved Unicode bidi continuation adds one direct edge to the already
-locked `unicode-bidi 0.3.18`, without changing package versions.
+locked `unicode-bidi 0.3.18`. The owner subsequently approved the locked
+`unicode-linebreak 0.1.5` edge for Unicode 15.0 break opportunities. Neither changes
+the package set or package versions.
 
 ## Compilation and consumer setup
 
@@ -153,3 +155,13 @@ Panel description cannot silently clip its last characters after an estimated-wi
 Five existing bidi tests moved into the extracted real-source harness alongside the four
 layout cases. The packaged upstream test target remains unavailable; this is not a full
 GPUI test-suite claim. The receipt records exact source, binaries, native probes and limits.
+
+## Unicode break opportunities
+
+The [Unicode continuation](../docs/receipts/unicode-parity-20261026/README.md) replaces the
+script/punctuation allow-list with `unicode-linebreak 0.1.5` across estimated wrapping,
+truncation, monotonic shaped rows and logical RTL rows. Inline element placeholders map back
+to their original UTF-8 lengths. Normal opportunities protect nonbreaking spaces, combining
+marks, emoji sequences and paired punctuation; existing emergency wrapping remains when
+a whole word exceeds the available width. This is Unicode 15.0 line breaking, without
+dictionary segmentation, hyphenation or font-provided ligature caret positions.

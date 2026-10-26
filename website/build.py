@@ -53,6 +53,48 @@ TITLES = {'button_default': 'Button styles', 'button_bottom_fixed': 'Bottom-fixe
           'steps_horizonal': 'Horizontal steps', 'half-screen-dialog': 'Half-screen dialogs'}
 
 
+def native_evidence():
+    config = json.loads((ROOT / 'website/native-evidence.json').read_text())
+    receipt = (ROOT / config['receipt']).resolve()
+    if not receipt.is_relative_to(ROOT / 'docs/receipts'):
+        raise ValueError('Native evidence must belong to a repository receipt')
+    checksums = json.loads((receipt / 'CHECKSUMS.json').read_text())
+    required = ['metadata/verification.json', 'metadata/qualified-matrix.jsonl', 'metadata/ci-jobs-final.json']
+    required += [sample[key] for sample in config['samples'] for key in ['native', 'reference']]
+    for name in required:
+        path = (receipt / name).resolve()
+        if not path.is_relative_to(receipt) or not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != checksums.get(name):
+            raise ValueError(f'Native evidence differs from its receipt: {name}')
+    verification = json.loads((receipt / required[0]).read_text())
+    matrix = [json.loads(line) for line in (receipt / required[1]).read_text().splitlines()]
+    rows = {row['id']: row for row in matrix}
+    if len(rows) != len(matrix) or len(rows) != verification['pairs'] or any(row['status'] != 'captured' for row in rows.values()):
+        raise ValueError('Native matrix is incomplete')
+    if len({sample['id'] for sample in config['samples']}) != len(config['samples']):
+        raise ValueError('Native samples must have unique identifiers')
+    samples = []
+    for sample in config['samples']:
+        row = rows[sample['id']]
+        if row['theme'] not in ['light', 'dark'] or row['care'] or row['brand']:
+            raise ValueError('The native component viewer requires an ordinary light/dark sample')
+        for key, hash_key in [('native', 'native_sha256'), ('reference', 'reference_sha256')]:
+            if checksums[sample[key]] != row[hash_key]:
+                raise ValueError('Native sample differs from its qualified matrix')
+        corpus = row['corpus']
+        manifest_name = f'metadata/{corpus}/manifest.json'
+        manifest_path = (receipt / manifest_name).resolve()
+        if not manifest_path.is_relative_to(receipt) or hashlib.sha256(manifest_path.read_bytes()).hexdigest() != checksums.get(manifest_name):
+            raise ValueError('Native capture manifest differs from its receipt')
+        manifest = json.loads(manifest_path.read_text())
+        if manifest['host']['system'] != 'Linux' or manifest['host']['architecture'] != 'aarch64':
+            raise ValueError('Native sample platform differs from its recorded host')
+        samples.append(dict(sample, route=row['route'], state=row['state'] or 'default', theme=row['theme'],
+                            commit=manifest['base_commit'], platform='Linux ARM64', viewport=row['viewport']))
+    return dict(receipt=config['receipt'] + '/README.md', sourceCommit=verification['final_source_commit'],
+                capturedPairs=verification['pairs'], scenes=len({(row['route'],row['state']) for row in rows.values()}),
+                platformJobs=json.loads((receipt / required[2]).read_text())['jobs'], samples=samples)
+
+
 def build(output: Path, include_api: bool, api_dir: Path | None = None):
     # The script owns only this generated directory, never source or the whole target tree.
     if output.resolve() in [ROOT.resolve(), (ROOT / 'target').resolve()]:
@@ -78,6 +120,7 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
     licenses.mkdir(exist_ok=True)
     for name in ('LICENSE-MIT', 'LICENSE-APACHE', 'LICENSE-WEUI', 'NOTICE'):
         shutil.copyfile(ROOT / name, licenses / name)
+    evidence = native_evidence()
     captures = output / 'captures'
     captures.mkdir(exist_ok=True)
     route_source = (ROOT / 'examples/gallery/pages/mod.rs').read_text()
@@ -119,11 +162,23 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
         # input is a crate-level module, not components::input.
         api_modules = [('input' if x == 'input' else f'components/{x}') for x in modules]
         title = TITLES.get(route, label if route == family else route.replace('_', ' ').replace('-', ' ').capitalize())
+        capture_evidence = {}
+        for sample in evidence['samples']:
+            if sample['route'] != route:
+                continue
+            state, theme = sample['state'], sample['theme']
+            if state not in states:
+                raise ValueError('Native sample state differs from the gallery')
+            capture_evidence.setdefault(state, {})[theme] = dict(commit=sample['commit'], platform=sample['platform'], viewport=sample['viewport'], receipt=evidence['receipt'])
+            for key, kind in [('native','gpui'),('reference','weui')]:
+                filename = 'verified-' + sample['id'].replace('/','-') + '-' + kind + '.png'
+                shutil.copyfile(ROOT / Path(evidence['receipt']).parent / sample[key], captures / filename)
+                images[state][theme][kind] = 'captures/' + filename
         records.append(dict(id=route, family=family, familyLabel=label, category=category,
                             title=title, description=description, states=states, images=images,
                             source=page_source, modules=api_modules,
                             playground='playground/index.html#' + route,
-                            browserSource='playground/source/' + route + '.html.txt'))
+                            browserSource='playground/source/' + route + '.html.txt', captureEvidence=capture_evidence))
     assert {r['id'] for r in records} == set(route_map), 'Coverage differs from the Rust gallery'
     assert {r['id'] for r in provenance['routes']} == set(route_map), 'Browser inventory differs from the 60 routes'
     assert len(provenance['routes']) == 60
@@ -133,7 +188,8 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
         source = playground_source / 'source' / (record['id'] + '.html.txt')
         assert hashlib.sha256(source.read_bytes()).hexdigest() == browser_routes[record['id']]['sha256'], record['id']
     manifest = tomllib.loads((ROOT / 'Cargo.toml').read_text())
-    data = dict(routes=records, tokens=json.loads((ROOT / 'docs/tokens.json').read_text()),
+    evidence.pop('samples')
+    data = dict(nativeEvidence=evidence, routes=records, tokens=json.loads((ROOT / 'docs/tokens.json').read_text()),
                 sourceCommit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
                 sourceDirty=bool(subprocess.check_output(
                     ['git', 'status', '--porcelain', '--untracked-files=no'], cwd=ROOT, text=True).strip()),

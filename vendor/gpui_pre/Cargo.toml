@@ -659,3 +659,6 @@ priority = 0
 
 [dependencies.unicode-bidi]
 version = "=0.3.18"
+
+[dependencies.unicode-linebreak]
+version = "=0.1.5"

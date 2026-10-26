@@ -43,7 +43,12 @@ class RouteInventoryTests(unittest.TestCase):
             data = (Path(output) / 'data.js').read_text()
             records = json.loads(data.removeprefix('window.WEGPUI = ').removesuffix(';\n'))
             self.assertEqual(len(records['routes']), 60)
-            self.assertEqual(len(list((Path(output) / 'captures').glob('*.png'))), 528)
+            evidence = records['nativeEvidence']
+            self.assertEqual(evidence['capturedPairs'], 1056)
+            self.assertEqual(evidence['scenes'], 132)
+            panel = next(route for route in records['routes'] if route['id'] == 'panel')
+            self.assertEqual(panel['captureEvidence']['default']['light']['platform'], 'Linux ARM64')
+            self.assertEqual(len(list((Path(output) / 'captures').glob('*.png'))), 538)
 
 
 if __name__ == '__main__':

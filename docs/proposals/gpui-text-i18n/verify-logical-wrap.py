@@ -7,7 +7,7 @@ dev-dependencies; see verify-word-break.py), so two stages run here:
      test crate.
   2. The layout types of `text_system/line_layout.rs` (everything before `LineLayoutCache`) are
      compiled unmodified against a small stand-in for the GPUI items they use (`Pixels`, `Point`,
-     `Size`, `FontId`, `GlyphId`, `SmallVec`) together with the real `LineWrapper::is_word_char`,
+     `Size`, `FontId`, `GlyphId`, `SmallVec`) together with the real `LineWrapper::break_indices`,
      and the layout tests named below are copied verbatim from the file's test module and run.
 
 Usage:
@@ -230,7 +230,11 @@ def unicode_args(work):
     library = work / "libunicode_bidi.rlib"
     if not library.exists():
         subprocess.run(["rustc", "--edition", "2018", "--crate-name", "unicode_bidi", "--crate-type", "rlib", "--cfg", 'feature="std"', "--cfg", 'feature="hardcoded-data"', str(source), "-o", str(library)], check=True, capture_output=True)
-    return ["--extern", f"unicode_bidi={library}"]
+    linebreak_source = next(registry.glob("*/unicode-linebreak-0.1.5/src/lib.rs"))
+    linebreak_library = work / "libunicode_linebreak.rlib"
+    if not linebreak_library.exists():
+        subprocess.run(["rustc", "--edition", "2018", "--crate-name", "unicode_linebreak", "--crate-type", "rlib", str(linebreak_source), "-o", str(linebreak_library)], check=True, capture_output=True)
+    return ["--extern", f"unicode_bidi={library}", "--extern", f"unicode_linebreak={linebreak_library}"]
 
 
 def function_text(source, name):
@@ -272,10 +276,10 @@ def stage_layout(work, glyph_derived_rows=False):
             sys.exit("wrapped_line_start_index changed; update --glyph-derived-rows")
         block = block.replace(needle, "if let Some(&index) = None::<&usize> {")
     tests_part = layout_source[layout_source.index("#[cfg(test)]\nmod tests {"):]
-    is_word_char = function_text(wrapper_source, "is_word_char") + function_text(wrapper_source, "can_break_before")
+    break_indices = function_text(wrapper_source, "break_indices")
     names = list(HELPERS) + re.findall(rf"fn ({TESTS})\(\)", tests_part)
     tests = "\n".join(function_text(tests_part, name) for name in names)
-    body = STUBS + is_word_char + "    }\n\n" + block
+    body = STUBS + break_indices + "    }\n\n" + block
     body += "\n    #[cfg(test)]\n    mod tests {\n        use super::*;\n\n" + tests + "    }\n}\n"
     source = work / "layout_harness.rs"
     source.write_text(body, encoding="utf-8")

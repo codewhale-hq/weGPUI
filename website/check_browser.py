@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Exercise historical native-capture views and the surrounding website, not native GPUI."""
+"""Exercise recorded native-capture views and the surrounding website, not native GPUI."""
 import argparse
 from datetime import datetime, timezone
 import json
 from pathlib import Path
+import re
 from playwright.sync_api import sync_playwright, expect
 
 parser=argparse.ArgumentParser()
@@ -37,6 +38,11 @@ with sync_playwright() as p:
                 expect(image).to_have_attribute('src',expected['gpui'])
                 expect(image).to_have_js_property('complete',True)
                 assert image.evaluate('(img)=>img.naturalWidth')>0,(route['id'],state,theme)
+                evidence=route.get('captureEvidence',{}).get(state,{}).get(theme)
+                if evidence:
+                    expect(image).to_have_attribute('alt',re.compile(re.escape(evidence['platform']+' capture from '+evidence['commit'][:7])))
+                    expect(page.locator('.provenance')).to_contain_text(evidence['commit'][:7])
+                    expect(page.locator('.provenance')).to_contain_text(evidence['platform'])
                 expect(page.locator('#state-select')).to_have_value(state)
                 capture_paths.update(expected.values())
                 state_themes+=1
@@ -107,7 +113,7 @@ with sync_playwright() as p:
     page.goto(args.url+'#components/does-not-exist')
     expect(page.get_by_role('heading',level=1)).to_contain_text('isn’t in this gallery')
     assert errors==[],errors
-    result={'browser':browser.version,'native_application_test':False,'source_commit':page.evaluate('WEGPUI.sourceCommit'),'source_dirty':page.evaluate('WEGPUI.sourceDirty'),'capture_commit':page.evaluate('WEGPUI.captureCommit'),'gpui_version':page.evaluate('WEGPUI.gpuiVersion'),'routes_checked':len(routes),'state_theme_routes_checked':state_themes,'captures_decoded':len(capture_paths),'api_links_checked':len(api_links),'viewport_routes':checked,'palettes':palettes,'page_errors':errors,'passed':['catalog search/empty state','state/theme deep links','native/reference comparison','clipboard','keyboard skip/focus','mobile navigation','responsive overflow','missing route']}
+    result={'browser':browser.version,'native_application_test':False,'source_commit':page.evaluate('WEGPUI.sourceCommit'),'source_dirty':page.evaluate('WEGPUI.sourceDirty'),'capture_commit':page.evaluate('WEGPUI.captureCommit'),'native_evidence':page.evaluate('WEGPUI.nativeEvidence'),'gpui_version':page.evaluate('WEGPUI.gpuiVersion'),'routes_checked':len(routes),'state_theme_routes_checked':state_themes,'captures_decoded':len(capture_paths),'api_links_checked':len(api_links),'viewport_routes':checked,'palettes':palettes,'page_errors':errors,'passed':['catalog search/empty state','state/theme deep links','native/reference comparison','recorded capture provenance','clipboard','keyboard skip/focus','mobile navigation','responsive overflow','missing route']}
     (args.out/'browser-checks.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))
     browser.close()

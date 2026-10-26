@@ -739,6 +739,17 @@ class Checks:
             self.page.set_viewport_size({'width': width, 'height': 900})
             for name in ('themes', 'native-themes'):
                 self.page.goto(self.base + '#' + name, wait_until='networkidle')
+                if name == 'themes':
+                    iframe = self.page.locator('#theme-demo')
+                    iframe.scroll_into_view_if_needed()
+                    frame = iframe.element_handle().content_frame()
+                    assert frame
+                    frame.wait_for_function("() => document.body?.dataset.ready === 'true'")
+                    frame.evaluate("window.__paletteFrameRetained = true")
+                    draft = frame.locator('input[type=checkbox]:not(:disabled)').first
+                    draft.locator('xpath=ancestor::label[1]').click()
+                    draft_value = draft.is_checked()
+                self.page.get_by_label('Palette', exact=True).focus()
                 self.page.get_by_label('Palette', exact=True).select_option('care_dark')
                 expect(self.page).to_have_url(self.base + '#' + name + '?palette=care_dark')
                 expect(self.page.locator('.swatches>div')).to_have_count(8)
@@ -752,7 +763,10 @@ class Checks:
                     expect(iframe).to_be_visible()
                     frame = iframe.element_handle().content_frame()
                     assert frame
-                    frame.wait_for_function("() => document.body?.dataset.route === 'form_checkbox' && document.body.dataset.ready === 'true'")
+                    frame.wait_for_function("() => document.body?.dataset.route === 'form_checkbox' && document.body.dataset.ready === 'true' && WEGPUI_PLAYGROUND_CONFIG.theme === 'dark' && WEGPUI_PLAYGROUND_CONFIG.care")
+                    assert frame.evaluate('window.__paletteFrameRetained')
+                    assert draft.is_checked() == draft_value
+                    expect(self.page.get_by_label('Palette', exact=True)).to_be_focused()
                     config = frame.evaluate('WEGPUI_PLAYGROUND_CONFIG')
                     assert config['theme'] == 'dark' and config['care']
                     checkbox = frame.locator('input[type=checkbox]:not(:disabled)').first
