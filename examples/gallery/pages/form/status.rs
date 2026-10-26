@@ -131,6 +131,7 @@ impl Render for Status {
                             .bd_flex()
                             .label_for(&self.amount)
                             .validation_error(amount_tips.then(|| tr("最多支持8位数").into()))
+                            .warn(false)
                             .child(self.amount.clone()),
                     )
                     .when(amount_tips, |g| {

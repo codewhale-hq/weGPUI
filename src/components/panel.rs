@@ -2,8 +2,8 @@
 //! `src/style/widget/weui-media-box/`: a [`Panel`] groups [`MediaBox`] rows under an optional title
 //! and footer.
 //!
-//! Known limitations: descriptions are clamped to two lines by GPUI's line breaker, which lacks CJK
-//! line-start rules, so a line can begin with "。" and the ellipsis can differ from a browser.
+//! Descriptions use two shaped lines with ellipsis and common CJK punctuation guards.
+//! Complete Unicode line breaking and cross-renderer font parity remain unqualified.
 //! Panel rows of any kind get the separators drawn for media boxes.
 
 use super::ClickHandler;

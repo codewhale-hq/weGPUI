@@ -125,6 +125,10 @@ def capture(record):
             errors = []
             page.on("pageerror", lambda error: errors.append(str(error)))
             page.goto(WORKER["url"] + "#" + record["route"], wait_until="load")
+            page.wait_for_function("""() => {
+                const page = Array.from(document.querySelectorAll('#container > .page')).at(-1);
+                return page && page.classList.contains('js_show');
+            }""")
             if record["care"]:
                 page.evaluate("document.body.setAttribute('data-weui-mode', 'care')")
             if record["brand"]:
@@ -156,6 +160,17 @@ def capture(record):
                 }""", WORKER["scroll"])
                 result["reference_scroll"] = scroll
                 page.wait_for_timeout(300)
+            if record["route"].startswith("searchbar_") and record["state"] in {"focused", "typed"}:
+                result["reference_input"] = page.evaluate("""() => ({
+                    focused: document.activeElement?.id === 'searchInput',
+                    value: document.querySelector('#searchInput').value,
+                    focusing: document.querySelector('#searchBar').classList.contains('weui-search-bar_focusing')
+                })""")
+                if not result["reference_input"]["focused"] or (record["state"] == "typed" and result["reference_input"]["value"] != "weui"):
+                    raise ValueError("Reference search state was not retained")
+            if record["route"] == "slider" and record["state"] == "value80":
+                if page.locator('#sliderValue').inner_text() != '80':
+                    raise ValueError("Reference slider state was not retained")
             page.screenshot(path=str(reference_path))
             for attempt in range(21):
                 subprocess.run(["import", "-window", window, str(native_path)],
