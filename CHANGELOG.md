@@ -17,6 +17,15 @@ versioning once a release policy is decided. No version has been published.
 
 ### Added
 
+- Pinned WeUI source/style inventory and a complete paired-capture worklist, a verified local
+  UI reference, and a Linux capture runner covering themes, care, custom brand, states,
+  responsive widths and scroll positions. Captures remain distinct from parity acceptance.
+
+- `examples/application.rs`: a complete draft form with validation, controlled state, themes,
+  modal confirmation and application-owned local image selection/preview/deletion.
+- `scripts/package_preview.py`: reproducible, integrity-checked desktop preview source bundles
+  containing a separate consumer, all four Cargo compatibility copies and project licences.
+
 - `wegpui::i18n` (`Locale`, `Direction`, `Messages`, `I18n`, `fill`): BCP 47 locale tags,
   text direction inferred from script/language, runtime language switching,
   and 14 built-in catalogs (English, Simplified and Traditional Chinese, Japanese, Korean,
@@ -40,8 +49,12 @@ versioning once a release policy is decided. No version has been published.
   allowed, scans the accessibility tree for Chinese that survived translation.
 - Vendored `gpui-pre` (owner-approved 2026-10-25): `LineWrapper::is_word_char` treats Arabic,
   Hebrew, Devanagari and Greek as word characters, so wrapping and ellipsis truncation stop
-  splitting words of those scripts. Thai, Hangul and the line order of wrapped right-to-left
-  paragraphs are unchanged. Delta, checksums and tests: `docs/proposals/gpui-text-i18n`.
+  splitting words of those scripts. Thai and Hangul breaking are unchanged. Delta, checksums
+  and tests: `docs/proposals/gpui-text-i18n`.
+- Approved step 2 prototype for logical-order wrapping of right-to-left/mixed paragraphs in
+  vendored GPUI, explicit logical row starts and Languages page paragraph samples. Five Linux gates pass, but native Linux Arabic/Hebrew
+  captures remain clipped and misaligned. Supplied macOS evidence and Linux A/B captures:
+  `docs/receipts/gpui-logical-wrap-20261025`. No new dependency; step 3 remains unapproved.
 - Interactive browser gallery with 60 WeUI examples, 132 state presets, local file previews,
   theme controls and portable Python-only builds, published on GitHub Pages through a manual workflow.
 - DateField typed ISO entry, read-only and validation APIs, optional-value change events and
@@ -66,6 +79,30 @@ versioning once a release policy is decided. No version has been published.
   the value; cancel keeps the previous value; focus returns to the field.
 
 ### Fixed
+
+- Dialog, half-screen dialog and form-link emphasis use upstream 500 weight.
+- Layers follows upstream responsive plane sizes and flattened transforms; labels and keyboard
+  focus outlines follow the planes. Named accessibility actions select the intended layer,
+  focus follows selection and hidden layers leave the accessibility/tab order.
+- The separately approved CJK trial keeps twenty closing marks with preceding CJK text,
+  correcting the sampled Panel line break and two-row ellipsis. No dependency was added.
+- Wrapped footer rows keep 44px targets apart; invisible measurement text is hidden from
+  accessibility. Preview verification rejects Windows drive, backslash and stream paths;
+  capture validation rejects inconsistent scenes and reference page errors. Preview bundles
+  retain the changelog and project policies.
+- Footer links retain invisible 44px targets while restoring the upstream visible line height
+  and separator placement. The gallery's registration link now has keyboard/click activation.
+- Form page titles use the upstream medium weight. The separately approved GPUI trailing-space
+  guard trial keeps a fitting last word on its row; known RTL rendering limits remain.
+- Scrolled reference captures find the last page even when a form appends script siblings.
+
+- Restore website builds and browser verification after the native-only Languages route was
+  added; retain strict coverage checks for the 60 upstream browser routes and add CI regressions.
+
+- Footer links have at least 44×44 logical-pixel targets and can wrap in narrow rows.
+  `Footer::safe_area_bottom` accepts host-provided bottom padding, including for fixed footers.
+- Neutral swipe actions use the theme foreground instead of inheriting white text.
+- Long agreement text can shrink and wrap while its checkbox keeps its width.
 
 - Canceling inline IME composition restores selected committed text and selection direction
   without a Changed event. State/maxlength changes settle preedit without stale restoration.

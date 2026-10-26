@@ -1,0 +1,149 @@
+{
+  "passed": true,
+  "reader": "Orca 48.1",
+  "at_spi": "2.56.2",
+  "speech_dispatcher": "0.12.0",
+  "synthesizer": "eSpeak NG 1.52.0",
+  "gallery_binary_sha256": "4615ee3a813d142147e77ab77e03bddf207d26539828daa9720282bce47635e3",
+  "native_steps": 12,
+  "speech_windows_verified": 8,
+  "speech_checks": [
+    {
+      "step": "Popout focused",
+      "start": "01:14:55.392429",
+      "end": "01:14:57.646697",
+      "matching_speech": [
+        "01:14:55.472816 - SPEECH OUTPUT: 'Popout button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}"
+      ],
+      "focus": [
+        "Popout"
+      ],
+      "controls": [
+        "Content",
+        "Mask",
+        "Navigation",
+        "Popout"
+      ]
+    },
+    {
+      "step": "Popout selected",
+      "start": "01:14:57.646697",
+      "end": "01:15:00.512622",
+      "matching_speech": [
+        "01:14:57.690529 - SPEECH OUTPUT: 'Popout button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}"
+      ],
+      "focus": [
+        "Popout"
+      ],
+      "controls": [
+        "Popout"
+      ]
+    },
+    {
+      "step": "Mask focused",
+      "start": "01:15:00.712548",
+      "end": "01:15:02.967465",
+      "matching_speech": [
+        "01:15:00.787260 - SPEECH OUTPUT: 'Mask button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}"
+      ],
+      "focus": [
+        "Mask"
+      ],
+      "controls": [
+        "Content",
+        "Mask",
+        "Navigation",
+        "Popout"
+      ]
+    },
+    {
+      "step": "Mask selected",
+      "start": "01:15:02.967465",
+      "end": "01:15:05.909864",
+      "matching_speech": [
+        "01:15:03.015638 - SPEECH OUTPUT: 'Mask button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}"
+      ],
+      "focus": [
+        "Mask"
+      ],
+      "controls": [
+        "Mask"
+      ]
+    },
+    {
+      "step": "Navigation focused",
+      "start": "01:15:06.125772",
+      "end": "01:15:08.381512",
+      "matching_speech": [
+        "01:15:06.204139 - SPEECH OUTPUT: 'Navigation button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}"
+      ],
+      "focus": [
+        "Navigation"
+      ],
+      "controls": [
+        "Content",
+        "Mask",
+        "Navigation",
+        "Popout"
+      ]
+    },
+    {
+      "step": "Navigation selected",
+      "start": "01:15:08.381512",
+      "end": "01:15:11.250717",
+      "matching_speech": [
+        "01:15:08.426409 - SPEECH OUTPUT: 'Navigation button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}"
+      ],
+      "focus": [
+        "Navigation"
+      ],
+      "controls": [
+        "Navigation"
+      ]
+    },
+    {
+      "step": "Content focused",
+      "start": "01:15:11.451734",
+      "end": "01:15:13.700303",
+      "matching_speech": [
+        "01:15:11.528505 - SPEECH OUTPUT: 'Content button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}"
+      ],
+      "focus": [
+        "Content"
+      ],
+      "controls": [
+        "Content",
+        "Mask",
+        "Navigation",
+        "Popout"
+      ]
+    },
+    {
+      "step": "Content selected",
+      "start": "01:15:13.700303",
+      "end": "01:15:16.570458",
+      "matching_speech": [
+        "01:15:13.743866 - SPEECH OUTPUT: 'Content button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}"
+      ],
+      "focus": [
+        "Content"
+      ],
+      "controls": [
+        "Content"
+      ]
+    }
+  ],
+  "audio": {
+    "method": "Real synthesizer server audio through ALSA file PCM, slave null; no utterances injected",
+    "format": "S16_LE",
+    "sample_rate": 22050,
+    "channels": 1,
+    "sample_count": 851713,
+    "duration_seconds": 38.626439909297055,
+    "peak": 30309,
+    "rms": 4645.447094149423,
+    "raw_sha256": "b76319bcf780bf81960f0a37e720a5429074e18fb4a117ffe77ead3fc969e5f3",
+    "wav_sha256": "c4e00e21cc4925a77e01f2539c8110f5de2b2e533cd63fd5ed410aec260a1b60"
+  },
+  "qualification": "Bounded English light-mode reader navigation/current-object generation and nonzero real synthesized PCM. No human listening, complete reader matrix, audio timing or other-host acceptance."
+}

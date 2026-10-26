@@ -2,8 +2,14 @@
 
 **Status.** Step 1 was approved by the owner on 2026-10-25 (in chat: no new dependency, Hangul
 left as is) and is applied to `vendor/gpui_pre`; the delta is [word-break.patch](word-break.patch)
-and the evidence is the [receipt](../../receipts/gpui-word-break-20261025/README.md). Steps 2
-and 3 are still proposals and need approval. Vendor guidance: [vendor/README](../../../vendor/README.md).
+and the evidence is the [receipt](../../receipts/gpui-word-break-20261025/README.md). The owner
+also approved the step 2 prototype, with landing conditional on the Languages page, unit tests
+and five gates. The owner initially held landing after reviewing
+the Linux failure ([receipt](../../receipts/gpui-logical-wrap-20261025/README.md)). On October 26
+the owner requested complete review and publication of all current work to GitHub; the
+[publication review](../../REVIEW-2026-10-26.md) records that later authorization. The Linux
+rendering failure remains an acceptance blocker. Step 3
+remains unapproved. Vendor guidance: [vendor/README](../../../vendor/README.md).
 The localisation work ([I18N](../../I18N.md)) worked around everything that could be worked
 around in weGPUI itself; this is what remained.
 
@@ -61,17 +67,50 @@ from the file. Against the unpatched registry source, five of the seven fail, in
 wrapping test, with the mid-word split seen in the capture (`نص حكيم له سر قاطع وذ`); against the
 patched source all seven pass ([logs](../../receipts/gpui-word-break-20261025/verification/)).
 
-## Steps 2 and 3 — still proposals
+## Step 2 — approved prototype; Linux rendering remains limited
 
-2. **Wrap in logical order.** Compute candidates and boundaries from the text in byte order,
-   measuring with the glyph advances, then resolve each resulting line's visual order on its own.
-   Touch points: `layout_wrapped_line`, `WrappedLineLayout`, and the consumers of
-   `WrapBoundary` (`position_for_index`, `index_for_position`, `closest_index_for_x`, and
-   `WrappedLine::paint`). I have not prototyped this one; it needs the per-platform shapers'
-   run output reviewed, and it is the larger and riskier half. It is what makes the first line of
-   a wrapped Arabic or Hebrew paragraph hold the start of the sentence.
-3. **Make `x_for_index`/`index_for_x` bidi-aware**, so `src/bidi.rs` can be deleted. It would
-   also extend caret and selection to wrapped lines, which `TextArea` cannot do today.
+[logical-wrap.patch](logical-wrap.patch) contains the five-file vendor delta. Reordered,
+over-width paragraphs containing right-to-left characters are measured in logical byte order
+using the whole paragraph's glyph advances. Breaks use the existing word-candidate rules;
+an unsupported break falls back to the old wrapper. Each line is shaped separately with an
+LRM/RLM preserving the paragraph's base direction; the mark is stripped and non-final trailing
+spaces are not shaped. The resulting synthetic layout keeps explicit logical row starts.
+
+`WrappedLineLayout::wrapped_line_start_index` supplies those starts to text extraction,
+position/index mapping, weGPUI input rows and message-link bounds. The Languages page adds
+Arabic, Hebrew and English paragraphs with mixed-direction spans. The optional TextArea
+experiment was dropped. No dependencies, versions or lockfile changed.
+
+[verify-logical-wrap.py](verify-logical-wrap.py) runs 16 tests from the standalone module and
+four tests extracted verbatim from the real layout types. Its `--glyph-derived-rows` negative
+control fails three of the four layout tests. The seven step 1 tests also pass. These harnesses
+do not exercise a platform shaper or establish correct caret x/partial-selection geometry.
+
+All five Linux gates pass with 59 unit tests and three ignored doc examples. A pre-existing
+Switch assertion needed a one-nanosecond tolerance for Rust 1.95's `Duration::mul_f32` rounding;
+production animation and wrapping code were unchanged. Every patched vendor file was
+byte-identical to the supplied macOS prototype at that receipt, preserving the scope of its macOS captures.
+
+**Linux visual failure:** under Xvfb, the Arabic and Hebrew paragraphs remain clipped and
+misaligned in both locales. An A/B build of the pre-step-2 source with the same gallery samples
+shows clipping already existed; the prototype changes the visible fragments without producing
+the complete, readable macOS layout. The receipt keeps both sets of captures. The handoff
+requires an owner decision before landing when Linux mis-orders or mis-aligns lines; the owner
+chose to hold on 2026-10-25, before the later repository publication request recorded above. No
+platform guard or wrapping-logic fix has been made. Any logic change needs new macOS captures.
+
+A later, separately approved [trailing-space trial](../gpui-trailing-space-wrap/README.md)
+adds one guard to the monotonic shaped-row wrapper in `line_layout.rs`. It does not change
+`logical_wrap.rs`, `layout_logical_lines` or row-start/caret/selection code. The original patch
+and checksums here remain historical artifacts; the later trial's whole-file hash and fresh
+Linux evidence are separate. That trial approval did not itself release the RTL landing hold or approve
+step 3. The later publication request is recorded above; the supplied macOS captures do not
+qualify the later guard.
+
+## Step 3 — still unapproved
+
+Make `x_for_index`/`index_for_x` bidi-aware, so `src/bidi.rs` can be deleted. This would
+also extend caret and selection to wrapped lines, which `TextArea` cannot do today.
 
 ## Not proposed
 

@@ -1,0 +1,11 @@
+{
+  "source_files": 305,
+  "paired_scenes": 1056,
+  "image_files_verified": 2112,
+  "source_mismatches": [],
+  "image_mismatches": [],
+  "reference_page_errors": 0,
+  "binary_sha256": "7911fdd09ee94bbf34ac50deec1d1be027edbf05fd175c4ca2e69257e4426bf5",
+  "regular_binary_matches": true,
+  "passed": true
+}

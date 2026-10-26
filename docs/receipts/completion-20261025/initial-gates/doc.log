@@ -1,0 +1,26 @@
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   <earlier-preview>/wegpui-preview-156878f404dc/wegpui/Cargo.toml
+workspace: <earlier-preview>/wegpui-preview-156878f404dc/Cargo.toml
+warning: patch for the non root package will be ignored, specify patch at the workspace root:
+package:   <earlier-preview>/wegpui-preview-156878f404dc/wegpui/Cargo.toml
+workspace: <earlier-preview>/wegpui-preview-156878f404dc/Cargo.toml
+    Checking wegpui v0.1.0 (<earlier-preview>/wegpui-preview-156878f404dc/wegpui)
+ Documenting wegpui v0.1.0 (<earlier-preview>/wegpui-preview-156878f404dc/wegpui)
+ Documenting wegpui-preview v0.0.0 (<earlier-preview>/wegpui-preview-156878f404dc/consumer)
+error: missing documentation for the crate
+   --> consumer/src/main.rs:1:1
+    |
+  1 | / use gpui::{prelude::*, *};
+  2 | | use wegpui::{
+  3 | |     Theme, ThemeMode,
+  4 | |     accessibility::ModalScope,
+...   |
+395 | |         });
+396 | | }
+    | |_^
+    |
+    = note: `-D missing-docs` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(missing_docs)]`
+
+error: could not document `wegpui-preview`
+warning: build failed, waiting for other jobs to finish...

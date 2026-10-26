@@ -1,0 +1,72 @@
+{
+  "recorded_scenes": 264,
+  "successful_pairs": 260,
+  "failed_records": [
+    {
+      "id": "light-brand/form_vcode-toast",
+      "route": "form_vcode",
+      "state": "toast",
+      "theme": "light",
+      "care": false,
+      "brand": "7C3AED",
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light-brand/form_vcode-toast-weui.png'",
+      "seconds": 2.929
+    },
+    {
+      "id": "light-brand/half-screen-dialog-1",
+      "route": "half-screen-dialog",
+      "state": "1",
+      "theme": "light",
+      "care": false,
+      "brand": "7C3AED",
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light-brand/half-screen-dialog-1-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light-brand/half-screen-dialog-2",
+      "route": "half-screen-dialog",
+      "state": "2",
+      "theme": "light",
+      "care": false,
+      "brand": "7C3AED",
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light-brand/half-screen-dialog-2-weui.png'",
+      "seconds": 2.842
+    },
+    {
+      "id": "light-brand/uploader-viewer",
+      "route": "uploader",
+      "state": "viewer",
+      "theme": "light",
+      "care": false,
+      "brand": "7C3AED",
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "Command '['import', '-window', '4194305', '<evidence>/captures/light-brand/uploader-viewer-gpui.png']' returned non-zero exit status 1.",
+      "seconds": 2.048
+    }
+  ],
+  "summary_write_failed": true,
+  "qualification": "Retained failed storage-capacity attempt; not validation"
+}

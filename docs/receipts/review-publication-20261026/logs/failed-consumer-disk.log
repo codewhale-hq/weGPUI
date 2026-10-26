@@ -1,0 +1,12 @@
+   Compiling gpui-pre v0.3.9 (<repo>/vendor/gpui_pre)
+   Compiling accesskit_atspi_common v0.19.1 (<repo>/vendor/accesskit_atspi_common)
+   Compiling accesskit_unix v0.22.1 (<repo>/vendor/accesskit_unix)
+   Compiling gpui-pre-wgpu v0.3.9
+   Compiling gpui-pre-linux v0.3.9 (<repo>/vendor/gpui_pre_linux)
+error: couldn't create a temp dir: No space left on device (os error 28) at path "<toolchain-cache>/target/debug/deps/rustc7JEbde"
+
+error: could not compile `gpui-pre` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: couldn't create a temp dir: No space left on device (os error 28) at path "<toolchain-cache>/target/debug/deps/rustcuOCqUM"
+
+error: could not compile `gpui-pre-linux` (lib) due to 1 previous error

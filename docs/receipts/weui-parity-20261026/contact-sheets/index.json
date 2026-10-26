@@ -1,0 +1,146 @@
+[
+  {
+    "mode": "light",
+    "scene": "dialog-ios1",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "light",
+    "scene": "half-screen-dialog-2",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "light",
+    "scene": "form_vcode",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "light",
+    "scene": "form_bottom_fixed",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "light",
+    "scene": "layers-3d",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "light",
+    "scene": "panel",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "dark",
+    "scene": "dialog-ios1",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "dark",
+    "scene": "half-screen-dialog-2",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "dark",
+    "scene": "form_vcode",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "dark",
+    "scene": "form_bottom_fixed",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "dark",
+    "scene": "layers-3d",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "dark",
+    "scene": "panel",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "light-care",
+    "scene": "dialog-ios1",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "light-care",
+    "scene": "half-screen-dialog-2",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "light-care",
+    "scene": "form_vcode",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "light-care",
+    "scene": "form_bottom_fixed",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "light-care",
+    "scene": "layers-3d",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "light-care",
+    "scene": "panel",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "dark-care",
+    "scene": "dialog-ios1",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "dark-care",
+    "scene": "half-screen-dialog-2",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "dark-care",
+    "scene": "form_vcode",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "dark-care",
+    "scene": "form_bottom_fixed",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "dark-care",
+    "scene": "layers-3d",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  },
+  {
+    "mode": "dark-care",
+    "scene": "panel",
+    "scale": "contact sheet",
+    "source": "current-matrix"
+  }
+]

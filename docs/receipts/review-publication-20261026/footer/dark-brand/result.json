@@ -1,0 +1,42 @@
+{
+  "bounds": {
+    "Help": [
+      566,
+      372,
+      45,
+      44
+    ],
+    "Terms": [
+      566,
+      416,
+      45,
+      44
+    ]
+  },
+  "overlap_area": 0,
+  "passed": true,
+  "edge_callbacks": [
+    "Help",
+    "Help",
+    "Help",
+    "Help",
+    "Terms",
+    "Terms",
+    "Terms",
+    "Terms"
+  ],
+  "all_callbacks": [
+    "Help",
+    "Help",
+    "Help",
+    "Help",
+    "Terms",
+    "Terms",
+    "Terms",
+    "Terms",
+    "Help",
+    "Help",
+    "Terms",
+    "Terms"
+  ]
+}

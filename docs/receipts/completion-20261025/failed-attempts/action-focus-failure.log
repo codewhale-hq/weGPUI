@@ -1,0 +1,53 @@
+dbus-daemon[23]: [session uid=1000 pid=23 pidfd=5] Activating service name='org.freedesktop.portal.Desktop' requested by ':1.5' (uid=1000 pid=39 comm="<target>/debug/wegpui-previ" label="kernel")
+dbus-daemon[23]: [session uid=1000 pid=23 pidfd=5] Activating service name='org.freedesktop.impl.portal.PermissionStore' requested by ':1.6' (uid=1000 pid=57 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[23]: [session uid=1000 pid=23 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.PermissionStore'
+dbus-daemon[23]: [session uid=1000 pid=23 pidfd=5] Activating service name='org.freedesktop.portal.Documents' requested by ':1.6' (uid=1000 pid=57 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[23]: [session uid=1000 pid=23 pidfd=5] Successfully activated service 'org.freedesktop.portal.Documents'
+fuse: device not found, try 'modprobe fuse' first
+error: fuse init failed: Can't mount path <temporary>
+
+(/usr/libexec/xdg-desktop-portal:57): xdg-desktop-portal-WARNING **: 22:17:18.621: Document portal fuse mount point unknown: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name :1.8 was not provided by any .service files
+
+(/usr/libexec/xdg-desktop-portal:57): xdg-desktop-portal-WARNING **: 22:17:18.621: Choosing gtk.portal for org.freedesktop.impl.portal.Lockdown via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:57): xdg-desktop-portal-WARNING **: 22:17:18.621: The preferred method to match portal implementations to desktop environments is to use the portals.conf(5) configuration file
+dbus-daemon[23]: [session uid=1000 pid=23 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.6' (uid=1000 pid=57 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:88): xdg-desktop-portal-gtk-WARNING **: 22:17:18.694: error: Could not connect: No such file or directory
+
+dbus-daemon[23]: [session uid=1000 pid=23 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.desktop.gtk'
+
+(/usr/libexec/xdg-desktop-portal:57): xdg-desktop-portal-WARNING **: 22:17:18.720: Failed to create RealtimeKit proxy: Could not connect: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:57): xdg-desktop-portal-WARNING **: 22:17:18.720: Choosing gtk.portal for org.freedesktop.impl.portal.Settings via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:57): xdg-desktop-portal-WARNING **: 22:17:18.721: Choosing gtk.portal for org.freedesktop.impl.portal.FileChooser via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:57): xdg-desktop-portal-WARNING **: 22:17:18.722: Choosing gtk.portal for org.freedesktop.impl.portal.AppChooser via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:57): xdg-desktop-portal-WARNING **: 22:17:18.722: Choosing gtk.portal for org.freedesktop.impl.portal.Print via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:57): xdg-desktop-portal-WARNING **: 22:17:18.723: Choosing gtk.portal for org.freedesktop.impl.portal.Notification via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:57): xdg-desktop-portal-WARNING **: 22:17:18.724: Choosing gtk.portal for org.freedesktop.impl.portal.Inhibit via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:57): xdg-desktop-portal-WARNING **: 22:17:18.724: Choosing gtk.portal for org.freedesktop.impl.portal.Access via the deprecated UseIn key
+[W][22:17:18.726302] pw.conf      | [          conf.c: 1182 try_load_conf()] can't load config client.conf: No such file or directory
+[E][22:17:18.726322] pw.conf      | [          conf.c: 1215 pw_conf_load_conf_for_context()] can't load config client.conf: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:57): xdg-desktop-portal-WARNING **: 22:17:18.726: Failed connect to PipeWire: Couldn't create PipeWire context
+
+(/usr/libexec/xdg-desktop-portal:57): xdg-desktop-portal-WARNING **: 22:17:18.726: Choosing gtk.portal for org.freedesktop.impl.portal.Account via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:57): xdg-desktop-portal-WARNING **: 22:17:18.727: Choosing gtk.portal for org.freedesktop.impl.portal.Email via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:57): xdg-desktop-portal-WARNING **: 22:17:18.727: Choosing gtk.portal for org.freedesktop.impl.portal.DynamicLauncher via the deprecated UseIn key
+dbus-daemon[23]: [session uid=1000 pid=23 pidfd=5] Successfully activated service 'org.freedesktop.portal.Desktop'
+PASS: footer pointer/accessibility target is at least 44 x 44 (604, 825, 72, 44)
+Traceback (most recent call last):
+  File "<runtime-evidence>/drive.py", line 55, in <module>
+    find('Enter your name before reviewing the draft.','status bar')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<runtime-evidence>/drive.py", line 22, in find
+    raise AssertionError(f'Missing {role}: {name}')
+AssertionError: Missing status bar: Enter your name before reviewing the draft.

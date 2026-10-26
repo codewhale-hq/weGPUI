@@ -1,0 +1,1400 @@
+{
+  "recorded_scenes": 132,
+  "successful_pairs": 45,
+  "failed_records": [
+    {
+      "id": "light/picker",
+      "route": "picker",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/picker-weui.png'",
+      "seconds": 1.63
+    },
+    {
+      "id": "light/preview",
+      "route": "preview",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/preview-weui.png'",
+      "seconds": 1.71
+    },
+    {
+      "id": "light/progress",
+      "route": "progress",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/progress-weui.png'",
+      "seconds": 1.722
+    },
+    {
+      "id": "light/searchbar",
+      "route": "searchbar",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/searchbar-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/searchbar_filled",
+      "route": "searchbar_filled",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/searchbar_filled-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/searchbar_grey",
+      "route": "searchbar_grey",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/searchbar_grey-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/searchbar_homepage",
+      "route": "searchbar_homepage",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/searchbar_homepage-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/searchbar_outlined",
+      "route": "searchbar_outlined",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/searchbar_outlined-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/slider",
+      "route": "slider",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/slider-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/steps",
+      "route": "steps",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/steps-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/steps_horizonal",
+      "route": "steps_horizonal",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/steps_horizonal-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/steps_vertical",
+      "route": "steps_vertical",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/steps_vertical-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/tabbar",
+      "route": "tabbar",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/tabbar-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/toast",
+      "route": "toast",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/toast-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/uploader",
+      "route": "uploader",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/uploader-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/actionsheet-android",
+      "route": "actionsheet",
+      "state": "android",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/actionsheet-android-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/actionsheet-ios",
+      "route": "actionsheet",
+      "state": "ios",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/actionsheet-ios-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/button_bottom_fixed-agreed",
+      "route": "button_bottom_fixed",
+      "state": "agreed",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/button_bottom_fixed-agreed-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/dialog-android1",
+      "route": "dialog",
+      "state": "android1",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/dialog-android1-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/dialog-android2",
+      "route": "dialog",
+      "state": "android2",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/dialog-android2-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/dialog-ios1",
+      "route": "dialog",
+      "state": "ios1",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/dialog-ios1-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/dialog-ios2",
+      "route": "dialog",
+      "state": "ios2",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/dialog-ios2-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/dialog-ios3",
+      "route": "dialog",
+      "state": "ios3",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/dialog-ios3-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_bottom_fixed-checked",
+      "route": "form_bottom_fixed",
+      "state": "checked",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_bottom_fixed-checked-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_bottom_fixed-dialog",
+      "route": "form_bottom_fixed",
+      "state": "dialog",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_bottom_fixed-dialog-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_bottom_fixed-toast",
+      "route": "form_bottom_fixed",
+      "state": "toast",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_bottom_fixed-toast-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_checkbox-checked",
+      "route": "form_checkbox",
+      "state": "checked",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_checkbox-checked-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_checkbox-toast",
+      "route": "form_checkbox",
+      "state": "toast",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_checkbox-toast-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_input_status-amount",
+      "route": "form_input_status",
+      "state": "amount",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_input_status-amount-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_input_status-error",
+      "route": "form_input_status",
+      "state": "error",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_input_status-error-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_input_status-toast",
+      "route": "form_input_status",
+      "state": "toast",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_input_status-toast-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_page-filled",
+      "route": "form_page",
+      "state": "filled",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_page-filled-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_page-toast",
+      "route": "form_page",
+      "state": "toast",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_page-toast-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_page_old-filled",
+      "route": "form_page_old",
+      "state": "filled",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_page_old-filled-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_primary-filled",
+      "route": "form_primary",
+      "state": "filled",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_primary-filled-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_primary-switch",
+      "route": "form_primary",
+      "state": "switch",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_primary-switch-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_radio-checked",
+      "route": "form_radio",
+      "state": "checked",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_radio-checked-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_radio-toast",
+      "route": "form_radio",
+      "state": "toast",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_radio-toast-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_select-toast",
+      "route": "form_select",
+      "state": "toast",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_select-toast-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_select_primary-select1",
+      "route": "form_select_primary",
+      "state": "select1",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_select_primary-select1-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_select_primary-select2",
+      "route": "form_select_primary",
+      "state": "select2",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_select_primary-select2-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_select_primary-select3",
+      "route": "form_select_primary",
+      "state": "select3",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_select_primary-select3-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_switch-checked",
+      "route": "form_switch",
+      "state": "checked",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_switch-checked-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_switch-toast",
+      "route": "form_switch",
+      "state": "toast",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_switch-toast-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_vcode-checked",
+      "route": "form_vcode",
+      "state": "checked",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_vcode-checked-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_vcode-countdown",
+      "route": "form_vcode",
+      "state": "countdown",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_vcode-countdown-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_vcode-dialog",
+      "route": "form_vcode",
+      "state": "dialog",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_vcode-dialog-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_vcode-toast",
+      "route": "form_vcode",
+      "state": "toast",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_vcode-toast-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/form_vcode-warn",
+      "route": "form_vcode",
+      "state": "warn",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/form_vcode-warn-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/gallery-closed",
+      "route": "gallery",
+      "state": "closed",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/gallery-closed-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/half-screen-dialog-1",
+      "route": "half-screen-dialog",
+      "state": "1",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/half-screen-dialog-1-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/half-screen-dialog-2",
+      "route": "half-screen-dialog",
+      "state": "2",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/half-screen-dialog-2-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/half-screen-dialog-3",
+      "route": "half-screen-dialog",
+      "state": "3",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/half-screen-dialog-3-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/half-screen-dialog-4",
+      "route": "half-screen-dialog",
+      "state": "4",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/half-screen-dialog-4-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/half-screen-dialog-5",
+      "route": "half-screen-dialog",
+      "state": "5",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/half-screen-dialog-5-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/home-category-1",
+      "route": "home",
+      "state": "category-1",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/home-category-1-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/information-bar-closed",
+      "route": "information-bar",
+      "state": "closed",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/information-bar-closed-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/layers-3d",
+      "route": "layers",
+      "state": "3d",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/layers-3d-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/layers-content",
+      "route": "layers",
+      "state": "content",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/layers-content-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/layers-mask",
+      "route": "layers",
+      "state": "mask",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/layers-mask-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/layers-navigation",
+      "route": "layers",
+      "state": "navigation",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/layers-navigation-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/layers-popout",
+      "route": "layers",
+      "state": "popout",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/layers-popout-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/list-closed",
+      "route": "list",
+      "state": "closed",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/list-closed-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/navbar-tab2",
+      "route": "navbar",
+      "state": "tab2",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/navbar-tab2-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/navbar-tab3",
+      "route": "navbar",
+      "state": "tab3",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/navbar-tab3-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/picker-cascade",
+      "route": "picker",
+      "state": "cascade",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/picker-cascade-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/picker-date",
+      "route": "picker",
+      "state": "date",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/picker-date-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/picker-multi",
+      "route": "picker",
+      "state": "multi",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/picker-multi-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/picker-single",
+      "route": "picker",
+      "state": "single",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/picker-single-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/progress-uploading",
+      "route": "progress",
+      "state": "uploading",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/progress-uploading-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/searchbar_filled-focused",
+      "route": "searchbar_filled",
+      "state": "focused",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/searchbar_filled-focused-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/searchbar_filled-typed",
+      "route": "searchbar_filled",
+      "state": "typed",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/searchbar_filled-typed-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/searchbar_grey-focused",
+      "route": "searchbar_grey",
+      "state": "focused",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/searchbar_grey-focused-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/searchbar_grey-typed",
+      "route": "searchbar_grey",
+      "state": "typed",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/searchbar_grey-typed-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/searchbar_outlined-filled",
+      "route": "searchbar_outlined",
+      "state": "filled",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/searchbar_outlined-filled-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/searchbar_outlined-focused",
+      "route": "searchbar_outlined",
+      "state": "focused",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/searchbar_outlined-focused-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/searchbar_outlined-typed",
+      "route": "searchbar_outlined",
+      "state": "typed",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/searchbar_outlined-typed-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/slider-value80",
+      "route": "slider",
+      "state": "value80",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/slider-value80-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/tabbar-tab2",
+      "route": "tabbar",
+      "state": "tab2",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/tabbar-tab2-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/tabbar-tab3",
+      "route": "tabbar",
+      "state": "tab3",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/tabbar-tab3-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/toast-fail",
+      "route": "toast",
+      "state": "fail",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/toast-fail-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/toast-loading",
+      "route": "toast",
+      "state": "loading",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/toast-loading-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/toast-longtext",
+      "route": "toast",
+      "state": "longtext",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/toast-longtext-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/toast-success",
+      "route": "toast",
+      "state": "success",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/toast-success-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/toast-text",
+      "route": "toast",
+      "state": "text",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/toast-text-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/uploader-preview",
+      "route": "uploader",
+      "state": "preview",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/uploader-preview-native.log'",
+      "seconds": 0.0
+    },
+    {
+      "id": "light/uploader-viewer",
+      "route": "uploader",
+      "state": "viewer",
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "error": "[Errno 28] No space left on device: '<evidence>/captures/light/uploader-viewer-native.log'",
+      "seconds": 0.0
+    }
+  ],
+  "summary_write_failed": true,
+  "qualification": "Retained failed storage-capacity attempt; not validation"
+}

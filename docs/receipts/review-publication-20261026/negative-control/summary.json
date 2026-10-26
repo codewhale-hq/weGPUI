@@ -1,0 +1,38 @@
+{
+  "expected": 1,
+  "captured": 0,
+  "failed": [
+    {
+      "id": "light/footer",
+      "route": "footer",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 0,
+      "status": "failed",
+      "pixels_over_8_percent": 2.1375,
+      "mean_rgb_difference": 1.1379,
+      "difference_bbox": [
+        81,
+        97,
+        548,
+        1588
+      ],
+      "native_sha256": "be17146abdd9f683ba2723d67e73e6b4dda458fdfc756768a792a6d6a11714a7",
+      "reference_sha256": "43af893dc6ec0deab6c0a0d324df7a2973c2dce8cf773dae1cbae709dfaed374",
+      "reference_errors": [
+        "reference-error-control"
+      ],
+      "qualification": "unreviewed paired capture; scores are not parity verdicts",
+      "error": "Reference page errors: reference-error-control",
+      "seconds": 2.087
+    }
+  ],
+  "full_matrix": false,
+  "qualification": "capture completeness only; manual difference review required"
+}

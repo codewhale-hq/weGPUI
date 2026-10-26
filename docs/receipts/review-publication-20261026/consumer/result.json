@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "steps": [
+    "Pointer opens named modal and hides page",
+    "Tab stays within modal",
+    "Shift+Tab stays within modal",
+    "Confirmed 1; page restored and opener focused",
+    "Space reopens modal",
+    "Confirmed 1; page restored and opener focused",
+    "Confirmed 2; page restored and opener focused"
+  ],
+  "native_consumer": true,
+  "no_reader_claim": true
+}

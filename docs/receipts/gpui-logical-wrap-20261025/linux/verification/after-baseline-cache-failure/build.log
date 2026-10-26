@@ -1,0 +1,15 @@
+   Compiling wegpui v0.1.0 (<checkout>)
+error[E0599]: no method named `wrapped_line_start_index` found for struct `Arc<WrappedLineLayout>` in the current scope
+   --> src/components/msg.rs:203:29
+    |
+203 |             .map(|row| line.wrapped_line_start_index(row))
+    |                             ^^^^^^^^^^^^^^^^^^^^^^^^ method not found in `Arc<WrappedLineLayout>`
+
+error[E0599]: no method named `wrapped_line_start_index` found for reference `&gpui::WrappedLine` in the current scope
+    --> src/input.rs:1442:29
+     |
+1442 |             .map(|row| line.wrapped_line_start_index(row))
+     |                             ^^^^^^^^^^^^^^^^^^^^^^^^ method not found in `&gpui::WrappedLine`
+
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `wegpui` (lib test) due to 2 previous errors

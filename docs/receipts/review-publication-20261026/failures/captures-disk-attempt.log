@@ -1,0 +1,312 @@
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activating service name='org.freedesktop.portal.Desktop' requested by ':1.0' (uid=1000 pid=110 comm="/usr/lib/chromium/chromium --show-component-extens" label="kernel")
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activating service name='org.freedesktop.impl.portal.PermissionStore' requested by ':1.2' (uid=1000 pid=278 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.PermissionStore'
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activating service name='org.freedesktop.portal.Documents' requested by ':1.2' (uid=1000 pid=278 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Successfully activated service 'org.freedesktop.portal.Documents'
+fuse: device not found, try 'modprobe fuse' first
+error: fuse init failed: Can't mount path <temporary>
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activating service name='org.freedesktop.portal.Documents' requested by ':1.2' (uid=1000 pid=278 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Successfully activated service 'org.freedesktop.portal.Documents'
+fuse: device not found, try 'modprobe fuse' first
+error: fuse init failed: Can't mount path <temporary>
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.085: Document portal fuse mount point unknown: GDBus.Error:org.freedesktop.DBus.Error.NoReply: Message recipient disconnected from message bus without replying
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.085: Choosing gtk.portal for org.freedesktop.impl.portal.Lockdown as a last-resort fallback
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.2' (uid=1000 pid=278 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activating service name='org.a11y.Bus' requested by ':1.7' (uid=1000 pid=110 comm="/usr/lib/chromium/chromium --show-component-extens" label="kernel")
+
+(xdg-desktop-portal-gtk:395): Gtk-WARNING **: 01:41:28.130: cannot open display: 
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Successfully activated service 'org.a11y.Bus'
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.173: Failed to create RealtimeKit proxy: Could not connect: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.173: Choosing gtk.portal for org.freedesktop.impl.portal.Settings as a last-resort fallback
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.2' (uid=1000 pid=278 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:484): Gtk-WARNING **: 01:41:28.184: cannot open display: 
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.186: Failed to create settings proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.186: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.186: Choosing gtk.portal for org.freedesktop.impl.portal.FileChooser as a last-resort fallback
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.2' (uid=1000 pid=278 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:490): Gtk-WARNING **: 01:41:28.237: cannot open display: 
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.238: Failed to create file chooser proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.238: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.238: Choosing gtk.portal for org.freedesktop.impl.portal.AppChooser as a last-resort fallback
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.2' (uid=1000 pid=278 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:551): Gtk-WARNING **: 01:41:28.266: cannot open display: 
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.271: Failed to create app chooser proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.271: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.271: Choosing gtk.portal for org.freedesktop.impl.portal.Print as a last-resort fallback
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.2' (uid=1000 pid=278 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[465]: Activating service name='org.a11y.atspi.Registry' requested by ':1.1' (uid=1000 pid=110 comm="/usr/lib/chromium/chromium --show-component-extens" label="kernel")
+
+(xdg-desktop-portal-gtk:573): Gtk-WARNING **: 01:41:28.329: cannot open display: 
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.333: Failed to create print proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.333: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.333: Choosing gtk.portal for org.freedesktop.impl.portal.Notification as a last-resort fallback
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.2' (uid=1000 pid=278 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[465]: Successfully activated service 'org.a11y.atspi.Registry'
+SpiRegistry daemon is running with well-known name - org.a11y.atspi.Registry
+
+(xdg-desktop-portal-gtk:626): Gtk-WARNING **: 01:41:28.377: cannot open display: 
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.383: Failed to create notification proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.383: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.383: Choosing gtk.portal for org.freedesktop.impl.portal.Inhibit as a last-resort fallback
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.2' (uid=1000 pid=278 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:664): Gtk-WARNING **: 01:41:28.454: cannot open display: 
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.459: Failed to create inhibit proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.459: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.459: Choosing gtk.portal for org.freedesktop.impl.portal.Access as a last-resort fallback
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.2' (uid=1000 pid=278 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:702): Gtk-WARNING **: 01:41:28.529: cannot open display: 
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.536: Failed to create access proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.536: No skeleton to export
+[W][01:41:28.537147] pw.conf      | [          conf.c: 1182 try_load_conf()] can't load config client.conf: No such file or directory
+[E][01:41:28.537159] pw.conf      | [          conf.c: 1215 pw_conf_load_conf_for_context()] can't load config client.conf: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.537: Failed connect to PipeWire: Couldn't create PipeWire context
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.2' (uid=1000 pid=278 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:726): Gtk-WARNING **: 01:41:28.594: cannot open display: 
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.599: Failed to create access proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.599: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.599: Choosing gtk.portal for org.freedesktop.impl.portal.Account as a last-resort fallback
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.2' (uid=1000 pid=278 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:747): Gtk-WARNING **: 01:41:28.657: cannot open display: 
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.672: Failed to create account proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.672: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.672: Choosing gtk.portal for org.freedesktop.impl.portal.Email as a last-resort fallback
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.2' (uid=1000 pid=278 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:790): Gtk-WARNING **: 01:41:28.730: cannot open display: 
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.742: Failed to create email proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.742: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.742: Choosing gtk.portal for org.freedesktop.impl.portal.DynamicLauncher as a last-resort fallback
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.2' (uid=1000 pid=278 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:804): Gtk-WARNING **: 01:41:28.783: cannot open display: 
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.789: Failed to create dynamic_launcher proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:278): xdg-desktop-portal-WARNING **: 01:41:28.789: No skeleton to export
+dbus-daemon[9]: [session uid=1000 pid=9 pidfd=5] Successfully activated service 'org.freedesktop.portal.Desktop'
+1/1056 captured light/actionsheet
+2/1056 captured light/article
+3/1056 captured light/badge
+4/1056 captured light/button
+5/1056 captured light/button_bottom_fixed
+6/1056 captured light/button_default
+7/1056 captured light/dialog
+8/1056 captured light/flex
+9/1056 captured light/footer
+10/1056 captured light/form
+11/1056 captured light/form_access
+12/1056 captured light/form_bottom_fixed
+13/1056 captured light/form_checkbox
+14/1056 captured light/form_input_status
+15/1056 captured light/form_page
+16/1056 captured light/form_page_old
+17/1056 captured light/form_primary
+18/1056 captured light/form_radio
+19/1056 captured light/form_select
+20/1056 captured light/form_select_primary
+21/1056 captured light/form_switch
+22/1056 captured light/form_textarea
+23/1056 captured light/form_vcode
+24/1056 captured light/form_vertical
+25/1056 captured light/gallery
+26/1056 captured light/grid
+27/1056 captured light/half-screen-dialog
+28/1056 captured light/home
+29/1056 captured light/icons
+30/1056 captured light/information-bar
+31/1056 captured light/input
+32/1056 captured light/layers
+33/1056 captured light/list
+34/1056 captured light/loading
+35/1056 captured light/loadmore
+36/1056 captured light/msg
+37/1056 captured light/msg_custom_area_cell
+38/1056 captured light/msg_custom_area_preview
+39/1056 captured light/msg_custom_area_tips
+40/1056 captured light/msg_success
+41/1056 captured light/msg_text
+42/1056 captured light/msg_text_primary
+43/1056 captured light/msg_warn
+44/1056 captured light/navbar
+45/1056 captured light/panel
+46/1056 failed light/picker
+47/1056 failed light/preview
+48/1056 failed light/progress
+49/1056 failed light/searchbar
+50/1056 failed light/searchbar_filled
+51/1056 failed light/searchbar_grey
+52/1056 failed light/searchbar_homepage
+53/1056 failed light/searchbar_outlined
+54/1056 failed light/slider
+55/1056 failed light/steps
+56/1056 failed light/steps_horizonal
+57/1056 failed light/steps_vertical
+58/1056 failed light/tabbar
+59/1056 failed light/toast
+60/1056 failed light/uploader
+61/1056 failed light/actionsheet-android
+62/1056 failed light/actionsheet-ios
+63/1056 failed light/button_bottom_fixed-agreed
+64/1056 failed light/dialog-android1
+65/1056 failed light/dialog-android2
+66/1056 failed light/dialog-ios1
+67/1056 failed light/dialog-ios2
+68/1056 failed light/dialog-ios3
+69/1056 failed light/form_bottom_fixed-checked
+70/1056 failed light/form_bottom_fixed-dialog
+71/1056 failed light/form_bottom_fixed-toast
+72/1056 failed light/form_checkbox-checked
+73/1056 failed light/form_checkbox-toast
+74/1056 failed light/form_input_status-amount
+75/1056 failed light/form_input_status-error
+76/1056 failed light/form_input_status-toast
+77/1056 failed light/form_page-filled
+78/1056 failed light/form_page-toast
+79/1056 failed light/form_page_old-filled
+80/1056 failed light/form_primary-filled
+81/1056 failed light/form_primary-switch
+82/1056 failed light/form_radio-checked
+83/1056 failed light/form_radio-toast
+84/1056 failed light/form_select-toast
+85/1056 failed light/form_select_primary-select1
+86/1056 failed light/form_select_primary-select2
+87/1056 failed light/form_select_primary-select3
+88/1056 failed light/form_switch-checked
+89/1056 failed light/form_switch-toast
+90/1056 failed light/form_vcode-checked
+91/1056 failed light/form_vcode-countdown
+92/1056 failed light/form_vcode-dialog
+93/1056 failed light/form_vcode-toast
+94/1056 failed light/form_vcode-warn
+95/1056 failed light/gallery-closed
+96/1056 failed light/half-screen-dialog-1
+97/1056 failed light/half-screen-dialog-2
+98/1056 failed light/half-screen-dialog-3
+99/1056 failed light/half-screen-dialog-4
+100/1056 failed light/half-screen-dialog-5
+101/1056 failed light/home-category-1
+102/1056 failed light/information-bar-closed
+103/1056 failed light/layers-3d
+104/1056 failed light/layers-content
+105/1056 failed light/layers-mask
+106/1056 failed light/layers-navigation
+107/1056 failed light/layers-popout
+108/1056 failed light/list-closed
+109/1056 failed light/navbar-tab2
+110/1056 failed light/navbar-tab3
+111/1056 failed light/picker-cascade
+112/1056 failed light/picker-date
+113/1056 failed light/picker-multi
+114/1056 failed light/picker-single
+115/1056 failed light/progress-uploading
+116/1056 failed light/searchbar_filled-focused
+117/1056 failed light/searchbar_filled-typed
+118/1056 failed light/searchbar_grey-focused
+119/1056 failed light/searchbar_grey-typed
+120/1056 failed light/searchbar_outlined-filled
+121/1056 failed light/searchbar_outlined-focused
+122/1056 failed light/searchbar_outlined-typed
+123/1056 failed light/slider-value80
+124/1056 failed light/tabbar-tab2
+125/1056 failed light/tabbar-tab3
+126/1056 failed light/toast-fail
+127/1056 failed light/toast-loading
+128/1056 failed light/toast-longtext
+129/1056 failed light/toast-success
+130/1056 failed light/toast-text
+131/1056 failed light/uploader-preview
+132/1056 failed light/uploader-viewer
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/concurrent/futures/process.py", line 254, in _process_worker
+    r = call_item.fn(*call_item.args, **call_item.kwargs)
+  File "/usr/lib/python3.13/concurrent/futures/process.py", line 203, in _process_chunk
+    return [fn(*args) for args in chunk]
+            ~~^^^^^^^
+  File "<repo>/scripts/weui_parity_capture.py", line 99, in capture
+    output.parent.mkdir(parents=True, exist_ok=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 724, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+OSError: [Errno 28] No space left on device: '<evidence>/captures/light-brand'
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<repo>/scripts/weui_parity_capture.py", line 288, in <module>
+    main()
+    ~~~~^^
+  File "<repo>/scripts/weui_parity_capture.py", line 272, in main
+    for result in executor.map(capture, records, chunksize=1):
+                  ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/concurrent/futures/process.py", line 617, in _chain_from_iterable_of_lists
+    for element in iterable:
+                   ^^^^^^^^
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+OSError: [Errno 28] No space left on device: '<evidence>/captures/light-brand'

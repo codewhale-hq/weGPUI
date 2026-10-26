@@ -1,0 +1,653 @@
+{
+  "reference": {
+    "upstream": "https://github.com/Tencent/weui",
+    "revision": "7a6f8ad7700d0d6f1361dbe5e2942b4b129e7a7e",
+    "version": "2.6.26",
+    "scope": "WeUI CSS, example markup and weui.js UI behaviour; WeChat SDK behaviour excluded",
+    "css_sha256": "8db42592f96d571568c49ae1b8484f55042e6a6dab25f8144460cd4a23530fd3",
+    "weui_js_sha256": "87707d2d625c95f247e1957d5eee8c43bbe0c056983336990868f325d9b0c6fe",
+    "original_index_sha256": "380579150f95fc72af1b6b352246ae9838a5dacac5de0284f77c4a3149c05fce",
+    "reference_index_sha256": "76194e69c7a1eae96a21d277d6e0a4e9d1f6baeb1133f4a918219a944925e58a",
+    "changes": [
+      "Remove unused WeChat SDK script tag",
+      "Use byte-identical local weui.js 1.2.17"
+    ]
+  },
+  "upstream_examples": 61,
+  "upstream_routes": [
+    "actionsheet",
+    "article",
+    "badge",
+    "button",
+    "button_bottom_fixed",
+    "button_default",
+    "dialog",
+    "flex",
+    "footer",
+    "form",
+    "form_access",
+    "form_bottom_fixed",
+    "form_checkbox",
+    "form_input_status",
+    "form_page",
+    "form_page_old",
+    "form_primary",
+    "form_radio",
+    "form_select",
+    "form_select_primary",
+    "form_switch",
+    "form_textarea",
+    "form_vcode",
+    "form_vertical",
+    "gallery",
+    "grid",
+    "half-screen-dialog",
+    "home",
+    "icons",
+    "information-bar",
+    "input",
+    "layers",
+    "list",
+    "loading",
+    "loadmore",
+    "msg",
+    "msg_custom_area_cell",
+    "msg_custom_area_preview",
+    "msg_custom_area_tips",
+    "msg_success",
+    "msg_text",
+    "msg_text_primary",
+    "msg_warn",
+    "navbar",
+    "panel",
+    "picker",
+    "preview",
+    "progress",
+    "searchbar",
+    "searchbar_filled",
+    "searchbar_grey",
+    "searchbar_homepage",
+    "searchbar_outlined",
+    "slider",
+    "steps",
+    "steps_horizonal",
+    "steps_vertical",
+    "tabbar",
+    "toast",
+    "uploader"
+  ],
+  "native_only_routes": [
+    "languages"
+  ],
+  "styles": [
+    {
+      "source": "src/style/widget/weui-agree/weui-agree.less",
+      "modules": [
+        "agree"
+      ],
+      "sha256": "95b3d25e4a6e6f3a5eec0de75c310e6bfd8a679837348a9db524e412980e8782",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-animate/weui-animate.less",
+      "modules": [
+        "modal"
+      ],
+      "sha256": "6d5f93c4a12b874027e8299115746859cf8f688984b16527ee5f219228529a3b",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-button/weui-btn_bottom-fixed.less",
+      "modules": [
+        "button"
+      ],
+      "sha256": "bf67d1c31ae432bc1b1fab677fac15433d97f3b70129526f11ffb25be6e5ca3b",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-button/weui-btn_cell.less",
+      "modules": [
+        "button"
+      ],
+      "sha256": "8494c56a2fb85717c15b34b9a68bb77764b64e30f2dfd53804ab3f1d5227cdca",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-button/weui-btn_default.less",
+      "modules": [
+        "button"
+      ],
+      "sha256": "c7192ebfdc1f0cf7eb713a4bdb0de977cee9e401077e11312647242dfd826c93",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-button/weui-btn_disabled.less",
+      "modules": [
+        "button"
+      ],
+      "sha256": "1843518e792b3febec5db3bbff7317bf2aaabc4801327e2bcc7e14aff79700a9",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-button/weui-btn_global.less",
+      "modules": [
+        "button"
+      ],
+      "sha256": "0cfbf03c4b7e4c24a229472b2fdda1a886bf5bea0b0ef1fda559997a5ee3d71a",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-button/weui-btn_loading.less",
+      "modules": [
+        "button"
+      ],
+      "sha256": "f26ef2a4d3ddb2f3d9e91dd1e9adad9e86f2d9e91dde45006991d096c32cd504",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-button/weui-btn_overlay.less",
+      "modules": [
+        "button"
+      ],
+      "sha256": "8cabb39d1f23718e1ac73eefef034bf761871c6e614a9f6dd1363c06fbf310e6",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-button/weui-btn_primary.less",
+      "modules": [
+        "button"
+      ],
+      "sha256": "4d293b3140c5b381d844adc8040c5b4c6960d4f9c85f230dd807d2ad938bb501",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-button/weui-btn_warn.less",
+      "modules": [
+        "button"
+      ],
+      "sha256": "d0c7a4b7d613872edc407e88f20f00f39a4b447dfb0461df91deb6e96bc92cb1",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-button/weui-button.less",
+      "modules": [
+        "button"
+      ],
+      "sha256": "86350259f7bd2d82b482f9ed510b0ec5178bf6eeadff030c8d27c24c1acb5cc3",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-access.less",
+      "modules": [
+        "cells",
+        "select"
+      ],
+      "sha256": "741f4f1cab4c573b6152454e3a396816b1d017c5c5a2dcb9f31de7b244701424",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-cell-form.less",
+      "modules": [
+        "form",
+        "input",
+        "textarea"
+      ],
+      "sha256": "909493780a0e241a916deb5fbcdedc98ba806e2d4a652be7d3cd3f0a5bd250c9",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-cell.less",
+      "modules": [
+        "cells"
+      ],
+      "sha256": "59a98e351fb736ddff1a44811cabab1640d88818511d0c333e15d3f952658f34",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-cell_global.less",
+      "modules": [
+        "cells"
+      ],
+      "sha256": "347609fb586f4960bf4a56220f83b21a9333bf9c2f65dbd7d25a433a45f9806d",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-cell_swiped.less",
+      "modules": [
+        "swiped"
+      ],
+      "sha256": "4dafcc4b5b034f7789ee5e65341f01a13c8a41755726da15147a9b43643c00fe",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-cells__group.less",
+      "modules": [
+        "cells",
+        "form"
+      ],
+      "sha256": "7251363aea7e497a84b14b7e4c8d1c4edc9754e20dedc29188d382f52e5693ee",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-check/weui-check_common.less",
+      "modules": [
+        "checkbox",
+        "radio"
+      ],
+      "sha256": "01969a03989b338d47f8114b879dbd4b202dc145324b915567e405dc02d5df0a",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-check/weui-checkbox.less",
+      "modules": [
+        "checkbox",
+        "agree"
+      ],
+      "sha256": "2814f65a6891ca11c9c03fd29a1cca477f762640e04d2b3c3ff63079b08ce014",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-check/weui-radio.less",
+      "modules": [
+        "radio"
+      ],
+      "sha256": "3901100ae3bf73168e1822966855867bfc6d948a0d4c9b760948134f04c955ce",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-check.less",
+      "modules": [
+        "checkbox",
+        "radio",
+        "agree"
+      ],
+      "sha256": "643ba2348fa53f634c888598bd31392894828788b533f00ed2c67c162f064b59",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-form/weui-form-preview.less",
+      "modules": [
+        "form_preview"
+      ],
+      "sha256": "95405a3e0002cf28b047666afca7ac16c456ee455e7769b82ab4eeb2b4c62ddd",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-form/weui-form_common.less",
+      "modules": [
+        "form",
+        "input",
+        "textarea"
+      ],
+      "sha256": "3e4d1d079be673d65cbc600a22a9384397e507fc333964f09851f329865225ac",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-form/weui-select.less",
+      "modules": [
+        "select"
+      ],
+      "sha256": "f8d82e67ea861c157fa276c60e94ef0854908ea21328fcd37dde261a37d247ea",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-form/weui-vcode.less",
+      "modules": [
+        "vcode"
+      ],
+      "sha256": "9e340dfed4676453d0af574a2bd5b9e05ed1526f638cddeea2290444ecce7180",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-form.less",
+      "modules": [
+        "form",
+        "input",
+        "textarea",
+        "select",
+        "vcode"
+      ],
+      "sha256": "909493780a0e241a916deb5fbcdedc98ba806e2d4a652be7d3cd3f0a5bd250c9",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-gallery.less",
+      "modules": [
+        "gallery"
+      ],
+      "sha256": "c2ce525ec22cacd40d0c63e00002dc28a59db6bbe938051fa7134677ecd39a2b",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-switch.less",
+      "modules": [
+        "switch"
+      ],
+      "sha256": "b2abb4cdb75072a6caadf63b79c83b16119dd3bc42c956330b261771dca9b61a",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-cell/weui-uploader.less",
+      "modules": [
+        "uploader"
+      ],
+      "sha256": "989d0d9ca3cbe81dfdeb1f0111bd96a7aa51f75f149d40693e9bf7d9695ca943",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-flex/weui-flex.less",
+      "modules": [
+        "flex"
+      ],
+      "sha256": "8966d481a9a8cd9bb4b49556099b963e4f4f69e246b5cc6a26b9a3f5a73749af",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-footer/weui-footer.less",
+      "modules": [
+        "footer"
+      ],
+      "sha256": "4ed05478325f94f7d87a52f7c2a8de9af04f5940d7e6e0ef652e79bca23f9ba4",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-grid/weui-grid.less",
+      "modules": [
+        "grid"
+      ],
+      "sha256": "f723df64d20b4ba67f8289e857264d024a6701bc9b32d900e8b029801da48fb7",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-loading/weui-loading.less",
+      "modules": [
+        "loading"
+      ],
+      "sha256": "502d206017058b3ea5f1801bb5b7e14d25597c7b209aae86a2f28df547b24c93",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-loading/weui-primary-loading.less",
+      "modules": [
+        "loading"
+      ],
+      "sha256": "9740ede2d1b44cbc1b3fe559a9be672f4166e43c529badc62eb0d22b1093ae40",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-media-box/weui-media-box.less",
+      "modules": [
+        "panel"
+      ],
+      "sha256": "07e3d2e9860b22a6c007af49aed75170ffd1a529fd0dd23fa8234df83eda6d84",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-page/weui-article.less",
+      "modules": [
+        "article"
+      ],
+      "sha256": "34b713def66a65c0da7ba42f18823e6f612cf38f9a58537078bb2e4f3446afc9",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-page/weui-form.less",
+      "modules": [
+        "form"
+      ],
+      "sha256": "fee0a509da3869365ccb4239154dcd1730c4bd90e6dac6d87806d0a86a419356",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-page/weui-msg.less",
+      "modules": [
+        "msg"
+      ],
+      "sha256": "4b985d507a5db61266a9338a07b8b783f06de25989837d1403317625ee43a6be",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-panel/weui-panel.less",
+      "modules": [
+        "panel"
+      ],
+      "sha256": "cfd99075d5465985696598931149e62ccfe628882cdf0c1d668d8678ae3469e9",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-picker/weui-picker.less",
+      "modules": [
+        "picker"
+      ],
+      "sha256": "10f304c6380345ebd36c74f261fbe34a27d16f6538384f4a8075829f509c6597",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-progress/weui-progress.less",
+      "modules": [
+        "progress"
+      ],
+      "sha256": "66e5e60182782f121df2088d6494df48c7e3cba8330e0b49018cacf3a52bdc4b",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-searchbar/weui-searchbar.less",
+      "modules": [
+        "search_bar"
+      ],
+      "sha256": "d6a5884639ee238b388e985034254a8111a6cdeda6d8242d1c6ee83b62087de6",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-slider/weui-slider.less",
+      "modules": [
+        "slider"
+      ],
+      "sha256": "74b072b042ed571665c1fc02ef3a8ecab0e73cda2e34e00a99e1189f84ccada1",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-steps/weui-steps.less",
+      "modules": [
+        "steps"
+      ],
+      "sha256": "5497d949dc52c03662f50f11be80ea60ff5a76104d1c2da0387b8ed00d0e28aa",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-tab/weui-navbar.less",
+      "modules": [
+        "navbar",
+        "tabbar"
+      ],
+      "sha256": "78201037adb2298bcb2d4e6725eb2be7702775b0725d3096974ac1394423869e",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-tab/weui-tab.less",
+      "modules": [
+        "navbar",
+        "tabbar"
+      ],
+      "sha256": "ffe149e08e5562ad25f4f8adf0f0a1dabc1c263106673a3aa32d37c3ed5fa0d5",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-tab/weui-tabbar.less",
+      "modules": [
+        "navbar",
+        "tabbar"
+      ],
+      "sha256": "613e5ee5306743d59477804d93c708cbd83c194a889335e56ebbd309526321ca",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-text/weui-link.less",
+      "modules": [
+        "msg",
+        "form",
+        "footer",
+        "half_screen_dialog"
+      ],
+      "sha256": "b57ddf508784a92cb962d3915e461ea027775ea81dbf2c83a766f9d693c0b326",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-tips/weui-actionsheet.less",
+      "modules": [
+        "action_sheet"
+      ],
+      "sha256": "7d14bfaa5d1e447337b64bfa82b1804569fe61a685a9fe4cc27aac32f6265078",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-tips/weui-badge.less",
+      "modules": [
+        "badge"
+      ],
+      "sha256": "1089ec930f058e473153eda125c96e30aea577ead7bb95768957c06b0184c255",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-tips/weui-dialog.less",
+      "modules": [
+        "dialog"
+      ],
+      "sha256": "44bbccabb6ef73e41c1d9799602522ba2ba0a4c753b3be062c29858f71f436ef",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-tips/weui-half-screen-dialog.less",
+      "modules": [
+        "half_screen_dialog"
+      ],
+      "sha256": "e0dfcf0a457ed7df2d950f7ed1e00e7c0eaab64df141d837b27034ea32096e64",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-tips/weui-information-bar.less",
+      "modules": [
+        "information_bar"
+      ],
+      "sha256": "152b56cfac4fb7409aaa30e9f420caabb64e084302a534cc8eda18d51f559e9c",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-tips/weui-list-tips.less",
+      "modules": [
+        "information_bar"
+      ],
+      "sha256": "41acdf17107c174f43ebbe8cf1800bb5a05ea8d3bfbd77036cae893e2ad8cac1",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-tips/weui-loadmore.less",
+      "modules": [
+        "loadmore"
+      ],
+      "sha256": "b66a4fe33dc0b0a0a6f438e037b5af99fcd1f03dc9782259f4fba6e443838c88",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-tips/weui-mask.less",
+      "modules": [
+        "modal"
+      ],
+      "sha256": "a7d19cd89ea620720bb91c67258470fe230e3fb6939576822eb0ae15aa6bf983",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-tips/weui-toast.less",
+      "modules": [
+        "toast"
+      ],
+      "sha256": "7f93c3f95bf7684377d169bfd15c732d271d220189ad4b36316544b1b89a93d8",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    },
+    {
+      "source": "src/style/widget/weui-tips/weui-toptips.less",
+      "modules": [
+        "toptips"
+      ],
+      "sha256": "59b74b6e210968e05a219074ba3eea7036874b41dd5b4b60589b522ef63f0ceb",
+      "qualification": "mapped; runtime parity remains to be reviewed"
+    }
+  ],
+  "replays": {
+    "searchbar_filled:focused": "document.querySelector('#searchText').click();",
+    "searchbar_filled:typed": "document.querySelector('#searchText').click(); const i = document.querySelector('#searchInput'); i.value = 'weui'; i.dispatchEvent(new Event('input'));",
+    "searchbar_grey:focused": "document.querySelector('#searchText').click();",
+    "searchbar_grey:typed": "document.querySelector('#searchText').click(); const i = document.querySelector('#searchInput'); i.value = 'weui'; i.dispatchEvent(new Event('input'));",
+    "searchbar_outlined:focused": "document.querySelector('#searchInput').focus();",
+    "searchbar_outlined:typed": "const i = document.querySelector('#searchInput'); i.focus(); i.value = 'weui'; i.dispatchEvent(new Event('input'));",
+    "searchbar_outlined:filled": "const i = document.querySelector('#searchInput'); i.value = 'weui'; i.dispatchEvent(new Event('input')); i.blur();",
+    "form_page:filled": "(()=>{const i=document.querySelector('#js_input1'); i.value='weui'; i.dispatchEvent(new Event('input',{bubbles:true}));})();(()=>{const b=document.querySelector('#showTooltips'); b.classList.remove('weui-btn_disabled'); b.removeAttribute('disabled');})();",
+    "form_page:toast": "(()=>{const i=document.querySelector('#js_input1'); i.value='weui'; i.dispatchEvent(new Event('input',{bubbles:true}));})();(()=>{const b=document.querySelector('#showTooltips'); b.classList.remove('weui-btn_disabled'); b.removeAttribute('disabled');})();document.querySelector('#showTooltips').click();await new Promise(r=>setTimeout(r,500));",
+    "form_page_old:filled": "(()=>{const i=document.querySelector('#js_input1'); i.value='weui'; i.dispatchEvent(new Event('input',{bubbles:true}));})();(()=>{const b=document.querySelector('#showTooltips'); b.classList.remove('weui-btn_disabled'); b.removeAttribute('disabled');})();",
+    "form_primary:switch": "document.querySelector('#cb').click();await new Promise(r=>setTimeout(r,500));",
+    "form_primary:filled": "(()=>{const i=document.querySelector('#js_input1'); i.value='weui'; i.dispatchEvent(new Event('input',{bubbles:true}));})();(()=>{const b=document.querySelector('#showTooltips'); b.classList.remove('weui-btn_disabled'); b.removeAttribute('disabled');})();",
+    "form_input_status:error": "(()=>{const i=document.querySelector('#js_input1'); i.value='1234'; i.dispatchEvent(new Event('input',{bubbles:true}));})();document.querySelector('#showTooltips').click();await new Promise(r=>setTimeout(r,500));",
+    "form_input_status:amount": "(()=>{const i=document.querySelector('#js_current_input'); i.value='123456789'; i.dispatchEvent(new Event('input',{bubbles:true}));})();",
+    "form_input_status:toast": "(()=>{const i=document.querySelector('#js_input1'); i.value='1234567890123456'; i.dispatchEvent(new Event('input',{bubbles:true}));})();document.querySelector('#showTooltips').click();await new Promise(r=>setTimeout(r,500));",
+    "form_vcode:dialog": "document.querySelector('#showIOSDialog1').click();await new Promise(r=>setTimeout(r,800));",
+    "form_vcode:checked": "document.querySelector('#weuiAgreeCheckbox1').click();document.querySelector('#weuiAgreeCheckbox0').click();",
+    "form_vcode:toast": "document.querySelector('#weuiAgreeCheckbox').checked=true;document.querySelector('#weuiAgreeCheckbox1').click();document.querySelector('#weuiAgreeCheckbox0').click();document.querySelector('#js_toast').style.display='block';",
+    "form_vcode:warn": "document.querySelector('#weuiAgree1').classList.add('weui-agree_warn');",
+    "form_vcode:countdown": "(()=>{const b=document.querySelector('#js_btn_vcode'); b.textContent='重新发送(59s)'; b.classList.add('weui-btn_disabled');})();",
+    "form_bottom_fixed:dialog": "document.querySelector('#showIOSDialog1').click();await new Promise(r=>setTimeout(r,800));",
+    "form_bottom_fixed:checked": "document.querySelector('#weuiAgreeCheckbox').click();",
+    "form_bottom_fixed:toast": "document.querySelector('#weuiAgreeCheckbox').click();document.querySelector('#showTooltips').click();await new Promise(r=>setTimeout(r,500));",
+    "form_checkbox:toast": "document.querySelector('#showTooltips').click();await new Promise(r=>setTimeout(r,500));",
+    "form_checkbox:checked": "document.querySelector('#s11').click();document.querySelector('#s12').click();",
+    "form_radio:toast": "document.querySelector('#showTooltips').click();await new Promise(r=>setTimeout(r,500));",
+    "form_radio:checked": "document.querySelector('#x11').click();",
+    "form_switch:toast": "document.querySelector('#showTooltips').click();await new Promise(r=>setTimeout(r,500));",
+    "form_switch:checked": "document.querySelector('#cb').click();document.querySelector('#switchCP').click();await new Promise(r=>setTimeout(r,500));",
+    "form_select:toast": "document.querySelector('#showTooltips').click();await new Promise(r=>setTimeout(r,500));",
+    "form_select_primary:select1": "document.querySelector('#showDatePicker').click();await new Promise(r=>setTimeout(r,800));",
+    "form_select_primary:select2": "document.querySelector('#showPhone').click();await new Promise(r=>setTimeout(r,800));",
+    "form_select_primary:select3": "document.querySelector('#showPicker').click();await new Promise(r=>setTimeout(r,800));",
+    "list:closed": "document.querySelector('.weui-cell_swiped > .weui-cell__bd').style.transform = 'none'",
+    "button_bottom_fixed:agreed": "document.querySelector('#weuiAgreeCheckbox').click()",
+    "progress:uploading": "document.querySelectorAll('.js_progress').forEach(e => e.style.width = '40%'); document.querySelector('#btnUpload').classList.add('weui-btn_disabled');",
+    "slider:value80": "document.querySelector('#sliderTrack').style.width = '80%'; document.querySelector('#sliderHandler').style.left = '80%'; document.querySelector('#sliderValue').textContent = '80';",
+    "information-bar:closed": "document.querySelectorAll('.weui-information-bar')[0].style.display = 'none';",
+    "uploader:viewer": "document.querySelector('#uploaderFiles li').click(); await new Promise(r => setTimeout(r, 400));",
+    "uploader:preview": "document.querySelector('#uploaderFilesWithDelete .weui-uploader__file__thumb').click(); await new Promise(r => setTimeout(r, 400));",
+    "gallery:closed": "document.querySelector('#gallery').style.display = 'none';",
+    "dialog:ios1": "document.querySelector('#showIOSDialog1').click(); await new Promise(r=>setTimeout(r,400));",
+    "dialog:ios2": "document.querySelector('#showIOSDialog2').click(); await new Promise(r=>setTimeout(r,400));",
+    "dialog:ios3": "document.querySelector('#showIOSDialog5').click(); await new Promise(r=>setTimeout(r,400));",
+    "dialog:android1": "$('#androidDialog1').fadeIn(200); await new Promise(r=>setTimeout(r,400));",
+    "dialog:android2": "$('#androidDialog2').fadeIn(200); await new Promise(r=>setTimeout(r,400));",
+    "actionsheet:ios": "document.querySelector('#showIOSActionSheet').click(); await new Promise(r=>setTimeout(r,600));",
+    "actionsheet:android": "$('#androidActionsheet').attr('aria-hidden','false').fadeIn(200); await new Promise(r=>setTimeout(r,400));",
+    "toast:success": "document.querySelector('#showToast').click(); await new Promise(r=>setTimeout(r,300));",
+    "toast:fail": "document.querySelector('#showWarnToast').click(); await new Promise(r=>setTimeout(r,300));",
+    "toast:longtext": "document.querySelector('#showTextMoreToast').click(); await new Promise(r=>setTimeout(r,300));",
+    "toast:loading": "document.querySelector('#showLoadingToast').click(); await new Promise(r=>setTimeout(r,300));",
+    "toast:text": "document.querySelector('#showTextToast').click(); await new Promise(r=>setTimeout(r,300));",
+    "half-screen-dialog:1": "document.querySelector('#showDialog1').click(); await new Promise(r=>setTimeout(r,600));",
+    "half-screen-dialog:2": "document.querySelector('#showDialog2').click(); await new Promise(r=>setTimeout(r,600));",
+    "half-screen-dialog:3": "document.querySelector('#showDialog3').click(); await new Promise(r=>setTimeout(r,600));",
+    "half-screen-dialog:4": "document.querySelector('#showDialog4').click(); await new Promise(r=>setTimeout(r,600));",
+    "half-screen-dialog:5": "document.querySelector('#showDialog5').click(); await new Promise(r=>setTimeout(r,600));",
+    "picker:single": "document.querySelector('#showPicker').click(); await new Promise(r=>setTimeout(r,600));",
+    "picker:date": "document.querySelector('#showDatePicker').click(); await new Promise(r=>setTimeout(r,600));",
+    "picker:multi": "weui.picker([{label:'1',value:1},{label:'2',value:2},{label:'3',value:3}], [{label:'A',value:'A'},{label:'B',value:'B'},{label:'C',value:'C'}], {title:'多列选择器', defaultValue:[3,'A']}); await new Promise(r=>setTimeout(r,600));",
+    "picker:cascade": "weui.picker([{label:'广东',value:0,children:[{label:'广州',value:1,children:[{label:'海珠',value:1},{label:'番禺',value:2}]},{label:'佛山',value:2,children:[{label:'禅城',value:1},{label:'南海',value:2}]}]},{label:'广西',value:0,children:[{label:'南宁',value:1,children:[{label:'青秀',value:1},{label:'兴宁',value:2}]},{label:'桂林',value:2,children:[{label:'象山',value:1},{label:'秀峰',value:2}]}]}], {title:'级联选择器', depth:3, defaultValue:[0,1,1]}); await new Promise(r=>setTimeout(r,600));",
+    "navbar:tab2": "document.querySelector('#tab2').click(); await new Promise(r=>setTimeout(r,200));",
+    "navbar:tab3": "document.querySelector('#tab3').click(); await new Promise(r=>setTimeout(r,200));",
+    "tabbar:tab2": "document.querySelector('#tab2').click(); await new Promise(r=>setTimeout(r,200));",
+    "tabbar:tab3": "document.querySelector('#tab3').click(); await new Promise(r=>setTimeout(r,200));",
+    "layers:popout": "await new Promise(r=>setTimeout(r,600)); document.querySelector('.layers__layer_popout').click(); await new Promise(r=>setTimeout(r,1600));",
+    "layers:mask": "await new Promise(r=>setTimeout(r,600)); document.querySelector('.layers__layer_mask').click(); await new Promise(r=>setTimeout(r,1600));",
+    "layers:navigation": "await new Promise(r=>setTimeout(r,600)); document.querySelector('.layers__layer_navigation').click(); await new Promise(r=>setTimeout(r,1600));",
+    "layers:content": "await new Promise(r=>setTimeout(r,600)); document.querySelector('.layers__layer_content').click(); await new Promise(r=>setTimeout(r,1600));",
+    "layers:3d": "await new Promise(r=>setTimeout(r,2000));",
+    "home:category-1": "document.querySelectorAll(\".js_category\")[1].click(); await new Promise(r=>setTimeout(r,800));"
+  },
+  "scene_count": 132,
+  "pair_count": 1056,
+  "qualification": "source coverage and capture worklist; not component acceptance"
+}

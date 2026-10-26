@@ -1,0 +1,19 @@
+{
+  "mode": "dark-care-brand",
+  "passed": true,
+  "reduce_motion": false,
+  "steps": [
+    "All four stack controls initially exposed",
+    "Enter selects Popout during normal transform",
+    "Cached hidden Mask action leaves Popout selected",
+    "Space reverses the active selection transform",
+    "Return restores all four controls",
+    "Mask can be selected while return animation is settling",
+    "Second Mask action reverses its active transform",
+    "Content selects after interrupted Mask return",
+    "Final return restores stack controls",
+    "Final settled stack is pixel-identical to initial stack"
+  ],
+  "cached_hidden_action_returned_rejection": true,
+  "final_stack_difference_bbox": null
+}

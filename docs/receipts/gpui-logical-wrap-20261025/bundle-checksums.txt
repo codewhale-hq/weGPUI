@@ -1,0 +1,2 @@
+8aaec7b94c13310944224d9edbb8d2c1a54826f55ebce450576a76239331ffa6  wegpui-step2-prototype-20261025.tar.gz
+888c94d3ce634d79eaaa3db8e9d3e8b5aecd6f47bbea71b8a5b19c15b616e486  step2-prototype.patch

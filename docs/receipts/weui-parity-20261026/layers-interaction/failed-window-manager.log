@@ -1,0 +1,55 @@
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Activating service name='org.freedesktop.portal.Desktop' requested by ':1.5' (uid=1000 pid=36 comm="<toolchain-cache>/target/debug/examples/gal" label="kernel")
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Activating service name='org.freedesktop.impl.portal.PermissionStore' requested by ':1.6' (uid=1000 pid=58 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.PermissionStore'
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Activating service name='org.freedesktop.portal.Documents' requested by ':1.6' (uid=1000 pid=58 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Successfully activated service 'org.freedesktop.portal.Documents'
+fuse: device not found, try 'modprobe fuse' first
+error: fuse init failed: Can't mount path <temporary>
+
+(/usr/libexec/xdg-desktop-portal:58): xdg-desktop-portal-WARNING **: 00:45:49.448: Document portal fuse mount point unknown: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name :1.8 was not provided by any .service files
+
+(/usr/libexec/xdg-desktop-portal:58): xdg-desktop-portal-WARNING **: 00:45:49.448: Choosing gtk.portal for org.freedesktop.impl.portal.Lockdown via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:58): xdg-desktop-portal-WARNING **: 00:45:49.448: The preferred method to match portal implementations to desktop environments is to use the portals.conf(5) configuration file
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.6' (uid=1000 pid=58 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:77): xdg-desktop-portal-gtk-WARNING **: 00:45:49.496: error: Could not connect: No such file or directory
+
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.desktop.gtk'
+
+(/usr/libexec/xdg-desktop-portal:58): xdg-desktop-portal-WARNING **: 00:45:49.512: Failed to create RealtimeKit proxy: Could not connect: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:58): xdg-desktop-portal-WARNING **: 00:45:49.512: Choosing gtk.portal for org.freedesktop.impl.portal.Settings via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:58): xdg-desktop-portal-WARNING **: 00:45:49.513: Choosing gtk.portal for org.freedesktop.impl.portal.FileChooser via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:58): xdg-desktop-portal-WARNING **: 00:45:49.513: Choosing gtk.portal for org.freedesktop.impl.portal.AppChooser via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:58): xdg-desktop-portal-WARNING **: 00:45:49.514: Choosing gtk.portal for org.freedesktop.impl.portal.Print via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:58): xdg-desktop-portal-WARNING **: 00:45:49.515: Choosing gtk.portal for org.freedesktop.impl.portal.Notification via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:58): xdg-desktop-portal-WARNING **: 00:45:49.515: Choosing gtk.portal for org.freedesktop.impl.portal.Inhibit via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:58): xdg-desktop-portal-WARNING **: 00:45:49.516: Choosing gtk.portal for org.freedesktop.impl.portal.Access via the deprecated UseIn key
+[W][00:45:49.517445] pw.conf      | [          conf.c: 1182 try_load_conf()] can't load config client.conf: No such file or directory
+[E][00:45:49.517459] pw.conf      | [          conf.c: 1215 pw_conf_load_conf_for_context()] can't load config client.conf: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:58): xdg-desktop-portal-WARNING **: 00:45:49.517: Failed connect to PipeWire: Couldn't create PipeWire context
+
+(/usr/libexec/xdg-desktop-portal:58): xdg-desktop-portal-WARNING **: 00:45:49.517: Choosing gtk.portal for org.freedesktop.impl.portal.Account via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:58): xdg-desktop-portal-WARNING **: 00:45:49.518: Choosing gtk.portal for org.freedesktop.impl.portal.Email via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:58): xdg-desktop-portal-WARNING **: 00:45:49.520: Choosing gtk.portal for org.freedesktop.impl.portal.DynamicLauncher via the deprecated UseIn key
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Successfully activated service 'org.freedesktop.portal.Desktop'
+Your windowmanager claims not to support _NET_ACTIVE_WINDOW, so the attempt to activate the window was aborted.
+xdo_activate_window on window:4194305 reported an error
+Traceback (most recent call last):
+  File "<evidence>/layers-interaction/drive.py", line 39, in <module>
+    subprocess.run(['xdotool','windowactivate','--sync',window],check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['xdotool', 'windowactivate', '--sync', '4194305']' returned non-zero exit status 1.

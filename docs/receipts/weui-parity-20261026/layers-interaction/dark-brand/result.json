@@ -1,0 +1,19 @@
+{
+  "mode": "dark-brand",
+  "steps": [
+    "Enter selects Popout",
+    "Space restores stack",
+    "Projected Content pointer region selects Content",
+    "Flat Content pointer region restores stack",
+    "AT default action selects Mask",
+    "AT default action restores stack"
+  ],
+  "frame": [
+    452,
+    114,
+    375,
+    812
+  ],
+  "passed": true,
+  "selected_focus_and_hidden_controls": true
+}

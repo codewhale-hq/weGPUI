@@ -47,6 +47,46 @@ instead of serving a different script.
 
 ## Capturing a pair
 
+### Pinned UI-only source reference and full Linux matrix
+
+When the WeChat SDK CDN is unavailable, a separate UI reference can be prepared from the exact
+upstream checkout. It verifies the revision, clean tracked source, CSS and local weui.js hashes,
+and refuses to omit the SDK if inline example code uses it. Its metadata explicitly excludes
+SDK integration behaviour; this does not change the strict full-runtime fetch above.
+
+```sh
+git clone https://github.com/Tencent/weui target/tencent-weui
+git -C target/tencent-weui checkout --detach 7a6f8ad7700d0d6f1361dbe5e2942b4b129e7a7e
+python3 -I scripts/weui_reference.py --source target/tencent-weui --out target/weui-ui-reference
+python3 -I scripts/weui_parity_inventory.py --source target/tencent-weui \
+    --reference target/weui-ui-reference/REFERENCE.json --out target/weui-matrix
+cargo build --example gallery --locked
+dbus-run-session -- python3 -I scripts/weui_parity_capture.py \
+    --matrix target/weui-matrix/matrix.jsonl --inventory target/weui-matrix/inventory.json \
+    --reference target/weui-ui-reference --binary target/debug/examples/gallery \
+    --out target/weui-pairs --workers 4
+python3 -I scripts/weui_parity_report.py target/weui-pairs
+```
+
+This Linux runner needs Xvfb, Openbox, xdotool, ImageMagick, Pillow, Playwright and system
+Chromium at `/usr/bin/chromium`. It starts isolated X servers and browser contexts, freezes the
+native executable, validates the prepared reference, and retains per-scene logs, image hashes,
+source hashes and scores. Use a new output directory. `review.html` provides offline scene and
+appearance selectors plus a reference-reveal overlay; every scene starts unreviewed.
+
+`--routes article,footer` selects a recorded subset. `--width`, `--height` and `--scroll` extend
+the worklist to responsive/scrolled views. `--display-base` separates concurrent runs. For
+repeated runs, an explicitly read-only captured executable can be shared with
+`--reuse-frozen-binary`; its recorded SHA-256 still identifies every run. The gallery's optional
+`--font-family FAMILY` is a diagnostic control: it does not change the reference's CSS or the
+gallery's normal platform-font default. Pass a matching `--font-family` to the runner to use it.
+
+The inventory maps all 59 widget LESS files and 61 HTML examples. The 60 routes plus 72 states
+in eight appearance combinations yield 1,056 pairs. This proves capture coverage; manual
+difference review, real interactions, motion and reader/native-host acceptance remain separate.
+
+### Single-pair and platform procedures
+
 ```sh
 cargo build --example gallery
 python3 -I scripts/capture.py ROUTE [--state S] [--theme light|dark] [--scroll Y] \
@@ -207,3 +247,9 @@ Every report (issue, PR or receipt) names the route, the state, the theme (plus 
 screenshots, the platform with OS version and scale, and the commit. Say what was compared
 (visual, interaction, accessibility tree or screen reader) and what was not. Keep failed captures.
 A script that exits 0 is not evidence that the interaction worked.
+
+The [October 26 receipt](receipts/weui-parity-20261026/README.md) records a further full
+1,056-pair sweep after typography, Layers and approved CJK changes, with 305 source hashes and
+2,112 verified image hashes. Its native Layers and SearchBar fixture results are separate from
+static capture completeness. The earlier source bundles, matrices and macOS samples retain
+their original source identities.

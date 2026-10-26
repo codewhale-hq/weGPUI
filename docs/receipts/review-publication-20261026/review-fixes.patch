@@ -1,0 +1,296 @@
+--- a/src/components/footer.rs
++++ b/src/components/footer.rs
+@@ -70,7 +70,7 @@
+         });
+         let horizontal = (px(44.) - width).max(px(0.)) / 2.;
+         let target = div()
+-            .id(self.id)
++            .id("link")
+             .role(Role::Link)
+             .aria_label(self.text.clone())
+             .absolute()
+@@ -94,6 +94,7 @@
+             .focus_visible(move |s| s.shadow(super::form::dual_focus_ring()))
+             .when_some(self.on_click, |el, h| el.on_click(h));
+         div()
++            .id(self.id)
+             .relative()
+             .max_w_full()
+             .min_w_0()
+@@ -110,7 +111,16 @@
+                         .bg(line),
+                 )
+             })
+-            .child(div().opacity(0.).child(self.text))
++            .child(
++                crate::accessibility::Semantics::new(
++                    div()
++                        .id("measure")
++                        .role(Role::Paragraph)
++                        .opacity(0.)
++                        .child(self.text),
++                )
++                .hidden(true),
++            )
+             .child(crate::scrolling::FocusTarget::new(target))
+     }
+ }
+@@ -244,6 +254,7 @@
+                     div()
+                         .flex()
+                         .flex_wrap()
++                        .gap_y(px(24.4))
+                         .max_w_full()
+                         .row(dir)
+                         .justify_center()
+--- a/scripts/package_preview.py
++++ b/scripts/package_preview.py
+@@ -13,7 +13,7 @@
+ 
+ ROOT = pathlib.Path(__file__).resolve().parent.parent
+ VENDORS = ("gpui_pre", "gpui_pre_linux", "accesskit_unix", "accesskit_atspi_common")
+-FILES = ("Cargo.toml", "Cargo.lock", "README.md", "CONTRIBUTING.md", "LICENSE-MIT", "LICENSE-APACHE", "LICENSE-WEUI", "NOTICE")
++FILES = ("Cargo.toml", "Cargo.lock", "README.md", "CONTRIBUTING.md", "CHANGELOG.md", "CODE_OF_CONDUCT.md", "SECURITY.md", "LICENSE-MIT", "LICENSE-APACHE", "LICENSE-WEUI", "NOTICE")
+ DIRECTORIES = ("src", "assets", "examples", "vendor", "scripts", "docs")
+ OMIT = {".git", "target", "__pycache__", ".DS_Store"}
+ 
+@@ -152,7 +152,11 @@
+                         info.mode = 0o755 if name.endswith(".sh") else 0o644
+                         tar.addfile(info, io.BytesIO(data))
+         verify_bundle(temporary)
+-        temporary.replace(archive)
++        if archive.exists():
++            if archive.read_bytes() != temporary.read_bytes():
++                raise ValueError("Archive already exists with different provenance; choose another output directory")
++        else:
++            temporary.replace(archive)
+     finally:
+         temporary.unlink(missing_ok=True)
+     archive.with_name(archive.name + ".sha256").write_text(
+@@ -168,6 +172,7 @@
+         for entry in tar:
+             name = pathlib.PurePosixPath(entry.name)
+             if (not entry.isfile() or name.is_absolute() or ".." in name.parts
++                    or "\\" in entry.name or ":" in entry.name
+                     or len(name.parts) < 2 or entry.name != name.as_posix()):
+                 raise ValueError(f"Invalid archive entry: {entry.name}")
+             prefixes.add(name.parts[0])
+--- a/scripts/weui_parity_capture.py
++++ b/scripts/weui_parity_capture.py
+@@ -12,6 +12,7 @@
+ import os
+ from pathlib import Path
+ import platform
++import re
+ import shutil
+ import subprocess
+ import time
+@@ -29,6 +30,32 @@
+ 
+ def sha256(path):
+     return hashlib.sha256(path.read_bytes()).hexdigest()
++
++
++def validate_records(records, inventory):
++    if not records:
++        raise ValueError("Choose a nonempty matrix")
++    identifiers = set()
++    for record in records:
++        identifier = record.get("id", "")
++        if not isinstance(identifier, str) or not re.fullmatch(r"[\w-]+/[\w-]+", identifier, re.ASCII):
++            raise ValueError("Invalid scene identifier")
++        if identifier in identifiers:
++            raise ValueError("Duplicate scene identifiers would overwrite capture evidence")
++        identifiers.add(identifier)
++        route, state = record["route"], record["state"]
++        theme, care, brand = record["theme"], record["care"], record["brand"]
++        if route not in inventory["upstream_routes"] or (state is not None and
++                (not isinstance(state, str) or not state or route + ":" + state not in inventory["replays"])):
++            raise ValueError("Unknown route or state in capture matrix")
++        if theme not in {"light", "dark"} or not isinstance(care, bool):
++            raise ValueError("Invalid theme or care flag in capture matrix")
++        if brand is not None and (not isinstance(brand, str) or not re.fullmatch(r"[0-9A-Fa-f]{6}", brand)):
++            raise ValueError("Brand must contain six hexadecimal digits")
++        mode = "-".join([theme] + (["care"] if care else []) + (["brand"] if brand else []))
++        scene = route + ("-" + state if state else "")
++        if identifier != mode + "/" + scene:
++            raise ValueError("Scene identifier differs from its route, state or appearance")
+ 
+ 
+ def worker_init(binary, output, url, replays, display_base, font_family, width, height, scroll):
+@@ -146,6 +173,8 @@
+                       difference_bbox=mask.getbbox(), native_sha256=sha256(native_path),
+                       reference_sha256=sha256(reference_path), reference_errors=errors,
+                       qualification="unreviewed paired capture; scores are not parity verdicts")
++        if errors:
++            raise RuntimeError("Reference page errors: " + "; ".join(errors))
+     except Exception as error:
+         result.update(status="failed", error=str(error))
+     finally:
+@@ -191,17 +220,15 @@
+                       ("dist/example/index.html", "reference_index_sha256")]:
+         if sha256(args.reference / path) != reference[key]:
+             parser.error(f"Reference asset changed: {path}")
++    try:
++        validate_records(records, inventory)
++    except (ValueError, KeyError, TypeError, AttributeError) as error:
++        parser.error(f"Invalid capture matrix: {error}")
+     if args.routes:
+         requested = set(args.routes.split(","))
+         if not requested <= set(inventory["upstream_routes"]):
+             parser.error("Unknown route in --routes")
+         records = [row for row in records if row["route"] in requested]
+-    if len({record["id"] for record in records}) != len(records):
+-        parser.error("Duplicate scene identifiers would overwrite capture evidence")
+-    for record in records:
+-        path = Path(record["id"])
+-        if path.is_absolute() or ".." in path.parts:
+-            parser.error("Invalid scene identifier")
+     if not records or (args.out.exists() and any(args.out.iterdir())):
+         parser.error("Choose a nonempty matrix and a new empty output directory")
+     args.out.mkdir(parents=True, exist_ok=True)
+@@ -211,9 +238,12 @@
+     else:
+         shutil.copyfile(args.binary, binary)
+         binary.chmod(0o555)
++    expected_count = (len(inventory["upstream_routes"]) + len(inventory["replays"])) * 8
++    complete = (not args.routes and len(records) == expected_count == inventory["pair_count"]
++                and all(record["brand"] in {None, "7C3AED"} for record in records))
+     manifest = {"base_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
+                 "binary_sha256": sha256(binary), "reference": inventory["reference"],
+-                "expected_pairs": len(records), "full_matrix": not args.routes and len(records) == inventory["pair_count"],
++                "expected_pairs": len(records), "full_matrix": complete,
+                 "language": "zh-Hans", "viewport": [args.width, args.height], "scale": 2, "scroll": args.scroll,
+                 "native_font_family": args.font_family or ".SystemUIFont",
+                 "capture_script_sha256": sha256(Path(__file__)),
+--- a/scripts/tests/test_package_preview.py
++++ b/scripts/tests/test_package_preview.py
+@@ -65,7 +65,8 @@
+             root = pathlib.PurePosixPath(tar.getnames()[0]).parts[0]
+             workspace = tar.extractfile(f"{root}/Cargo.toml").read().decode()
+             self.assertIn('members = ["wegpui", "consumer"]', workspace)
+-            for name in ("LICENSE-MIT", "LICENSE-APACHE", "LICENSE-WEUI", "NOTICE"):
++            for name in ("LICENSE-MIT", "LICENSE-APACHE", "LICENSE-WEUI", "NOTICE",
++                         "CHANGELOG.md", "CODE_OF_CONDUCT.md", "SECURITY.md"):
+                 self.assertIsNotNone(tar.getmember(f"{root}/wegpui/{name}"))
+             for vendor in preview.VENDORS:
+                 self.assertIn(f'path = "wegpui/vendor/{vendor}"', workspace)
+@@ -77,6 +78,15 @@
+             manifest = json.load(tar.extractfile(f"{root}/SOURCE.json"))
+             self.assertEqual(manifest["base_revision"], "base-revision")
+             self.assertNotIn(str(self.source), json.dumps(manifest))
++
++    def test_an_existing_artifact_is_not_overwritten_by_different_provenance(self):
++        archive = self.make_bundle()
++        original = archive.read_bytes()
++        checksum = archive.with_name(archive.name + ".sha256").read_bytes()
++        with self.assertRaisesRegex(ValueError, "already exists with different provenance"):
++            preview.create_bundle(self.source, self.root / "out", "another-base-revision")
++        self.assertEqual(archive.read_bytes(), original)
++        self.assertEqual(archive.with_name(archive.name + ".sha256").read_bytes(), checksum)
+ 
+     def test_missing_vendor_copy_is_rejected(self):
+         shutil.rmtree(self.source / "vendor/gpui_pre")
+@@ -102,12 +112,14 @@
+             preview.verify_bundle(changed)
+ 
+     def test_unsafe_archive_paths_are_rejected(self):
+-        unsafe = self.root / "unsafe.tar.gz"
+-        with tarfile.open(unsafe, "w:gz") as tar:
+-            entry = tarfile.TarInfo("bundle/../escape")
+-            tar.addfile(entry, io.BytesIO(b""))
+-        with self.assertRaisesRegex(ValueError, "Invalid archive entry"):
+-            preview.verify_bundle(unsafe)
++        for name in ["bundle/../escape", r"bundle/..\escape", "C:/bundle/file", "bundle/file:stream"]:
++            with self.subTest(path=name):
++                unsafe = self.root / "unsafe.tar.gz"
++                with tarfile.open(unsafe, "w:gz") as tar:
++                    entry = tarfile.TarInfo(name)
++                    tar.addfile(entry, io.BytesIO(b""))
++                with self.assertRaisesRegex(ValueError, "Invalid archive entry"):
++                    preview.verify_bundle(unsafe)
+ 
+ 
+ if __name__ == "__main__":
+--- a/scripts/tests/test_weui_parity_capture.py
++++ b/scripts/tests/test_weui_parity_capture.py
+@@ -30,9 +30,12 @@
+             self.metadata[key] = hashlib.sha256(target.read_bytes()).hexdigest()
+         (self.reference / "REFERENCE.json").write_text(json.dumps(self.metadata))
+         self.inventory = self.root / "inventory.json"
+-        self.inventory.write_text(json.dumps({"reference": self.metadata, "pair_count": 1}))
++        self.inventory.write_text(json.dumps({"reference": self.metadata, "pair_count": 8,
++                                              "upstream_routes": ["footer"], "replays": {}}))
+         self.matrix = self.root / "matrix.jsonl"
+-        self.matrix.write_text(json.dumps({"id": "light/footer"}) + "\n")
++        self.record = {"id": "light/footer", "route": "footer", "state": None,
++                       "theme": "light", "care": False, "brand": None}
++        self.matrix.write_text(json.dumps(self.record) + "\n")
+         self.binary = self.root / "binary"
+         self.binary.write_bytes(b"fixture; never executed")
+         self.binary.chmod(0o755)
+@@ -66,6 +69,19 @@
+         self.matrix.write_text(self.matrix.read_text() * 2)
+         self.rejected()
+ 
++    def test_inconsistent_scene_metadata_is_rejected_before_output(self):
++        for change in [{"route": "unknown"}, {"state": "missing"}, {"theme": "dark"},
++                       {"care": 1}, {"care": True}, {"brand": "#7C3AED"},
++                       {"id": "light"}, {"id": "light/footer/extra"}, {"id": "light/.."}]:
++            with self.subTest(change=change):
++                self.matrix.write_text(json.dumps(self.record | change) + "\n")
++                self.rejected()
++
++    def test_registered_state_and_custom_brand_can_be_captured(self):
++        inventory = {"upstream_routes": ["footer"], "replays": {"footer:active": "replay"}}
++        capture.validate_records([self.record | {"id": "dark-care-brand/footer-active", "theme": "dark",
++                                 "care": True, "brand": "ABC123", "state": "active"}], inventory)
++
+ 
+ if __name__ == "__main__":
+     unittest.main()
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -38,11 +38,20 @@
+       - run: cargo +stable fmt --all -- --check
+       - run: cargo +stable build --all-targets --locked --offline
+       - run: cargo +stable test --lib --locked --offline
++      - run: cargo +stable test --example gallery --locked --offline
+       - run: cargo +stable clippy --all-targets --locked --offline -- -D warnings
+       - name: Strict documentation
+         run: cargo +stable doc --no-deps --locked --offline
+         env:
+           RUSTDOCFLAGS: -D warnings -W missing-docs
++      - name: Extracted vendored text contracts
++        env:
++          RUSTUP_TOOLCHAIN: stable
++        run: |
++          python3 -I docs/proposals/gpui-text-i18n/verify-word-break.py --workdir "${CARGO_TARGET_DIR:-target}/text-contracts/word-break"
++          python3 -I docs/proposals/gpui-text-i18n/verify-logical-wrap.py --workdir "${CARGO_TARGET_DIR:-target}/text-contracts/logical-wrap"
++          python3 -I docs/proposals/gpui-trailing-space-wrap/verify.py --workdir "${CARGO_TARGET_DIR:-target}/text-contracts/trailing-space"
++          python3 -I docs/proposals/gpui-cjk-closing/verify.py --workdir "${CARGO_TARGET_DIR:-target}/text-contracts/cjk-closing"
+       - name: Build complete showcase
+         run: |
+           python3 -m unittest discover -s website/tests -v
+@@ -77,6 +86,7 @@
+       - run: rustup toolchain install 1.95.0 --profile minimal
+       - run: cargo +1.95.0 build --all-targets --locked
+       - run: cargo +1.95.0 test --lib --locked --offline
++      - run: cargo +1.95.0 test --example gallery --locked --offline
+ 
+   mobile-typecheck:
+     name: Mobile library type-checks only
+@@ -111,6 +121,7 @@
+       - run: cargo +stable fetch --locked
+       - run: cargo +stable build --all-targets --locked --offline
+       - run: cargo +stable test --lib --locked --offline
++      - run: cargo +stable test --example gallery --locked --offline
+       - run: cargo +stable clippy --all-targets --locked --offline -- -D warnings
+ 
+   windows:
+@@ -125,4 +136,5 @@
+       - run: cargo +stable fetch --locked
+       - run: cargo +stable build --all-targets --locked --offline
+       - run: cargo +stable test --lib --locked --offline
++      - run: cargo +stable test --example gallery --locked --offline
+       - run: cargo +stable clippy --all-targets --locked --offline -- -D warnings

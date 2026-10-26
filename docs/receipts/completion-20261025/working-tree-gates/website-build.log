@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "<checkout>/website/build.py", line 167, in <module>
+    build(args.out, args.include_api, args.api_dir)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/website/build.py", line 122, in build
+    assert {r['id'] for r in records} == set(route_map), 'Coverage differs from the Rust gallery'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Coverage differs from the Rust gallery

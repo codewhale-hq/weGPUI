@@ -1,0 +1,265 @@
+--- a/src/components/footer.rs
++++ b/src/components/footer.rs
+@@ -14,7 +14,8 @@
+ /// separator before every link except the first.
+ ///
+ /// It exposes `Role::Link` named by its text, is a Tab stop and activates on click, Enter or Space;
+-/// pressing halves its opacity. Its target is at least 44×44 logical pixels.
++/// pressing halves its opacity. Its invisible target is at least 44×44 logical pixels without
++/// enlarging the visible text row.
+ #[derive(IntoElement)]
+ pub struct FooterLink {
+     id: ElementId,
+@@ -45,49 +46,72 @@
+ }
+ 
+ impl RenderOnce for FooterLink {
+-    fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
+-        crate::scrolling::FocusTarget::new({
+-            let t = Theme::get(cx);
+-            let (link, line) = (t.link, t.fg_3);
+-            let dir = crate::i18n::direction(cx);
+-            div()
+-                .relative()
+-                .max_w_full()
+-                .min_w_0()
+-                .mx(px(8.))
+-                .when(!self.first, |el| {
+-                    el.child(
+-                        div()
+-                            .absolute()
+-                            .inset_s(dir, px(-8.))
+-                            .top(px(12.2 + 14. * 0.36))
+-                            .bottom(px(12.2 + 14. * 0.36))
+-                            .w(px(0.5))
+-                            .bg(line),
+-                    )
+-                })
+-                .child(
++    fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
++        let t = Theme::get(cx);
++        let (link, line) = (t.link, t.fg_3);
++        let dir = crate::i18n::direction(cx);
++        let font = window.text_style().font();
++        let width = self.text.split('\n').fold(px(0.), |width, text| {
++            let text = SharedString::from(text.to_owned());
++            let run = TextRun {
++                len: text.len(),
++                font: font.clone(),
++                color: link,
++                background_color: None,
++                underline: None,
++                strikethrough: None,
++            };
++            width.max(
++                window
++                    .text_system()
++                    .shape_line(text, px(14.), &[run], None)
++                    .width,
++            )
++        });
++        let horizontal = (px(44.) - width).max(px(0.)) / 2.;
++        let target = div()
++            .id(self.id)
++            .role(Role::Link)
++            .aria_label(self.text.clone())
++            .absolute()
++            .left(-horizontal)
++            .right(-horizontal)
++            .top(px(-12.2))
++            .bottom(px(-12.2))
++            .min_w(px(44.))
++            .min_h(px(44.))
++            .flex()
++            .items_center()
++            .justify_center()
++            .text_size(px(14.))
++            .text_color(link)
++            .rounded(px(2.))
++            .focusable()
++            .tab_stop(true)
++            .cursor_pointer()
++            .active(|s| s.opacity(0.5))
++            .child(self.text.clone())
++            .focus_visible(move |s| s.shadow(super::form::dual_focus_ring()))
++            .when_some(self.on_click, |el, h| el.on_click(h));
++        div()
++            .relative()
++            .max_w_full()
++            .min_w_0()
++            .mx(px(8.))
++            .text_size(px(14.))
++            .when(!self.first, |el| {
++                el.child(
+                     div()
+-                        .id(self.id)
+-                        .role(Role::Link)
+-                        .aria_label(self.text.clone())
+-                        .relative()
+-                        .flex()
+-                        .items_center()
+-                        .justify_center()
+-                        .min_w(px(44.))
+-                        .min_h(px(44.))
+-                        .text_size(px(14.))
+-                        .text_color(link)
+-                        .rounded(px(2.))
+-                        .focusable()
+-                        .tab_stop(true)
+-                        .active(|s| s.opacity(0.5))
+-                        .child(self.text)
+-                        .focus_visible(move |s| s.shadow(super::form::dual_focus_ring()))
+-                        .when_some(self.on_click, |el, h| el.on_click(h)),
++                        .absolute()
++                        .inset_s(dir, px(-8.))
++                        .top(px(14. * 0.36))
++                        .bottom(px(14. * 0.36))
++                        .w(px(0.5))
++                        .bg(line),
+                 )
+-        })
++            })
++            .child(div().opacity(0.).child(self.text))
++            .child(crate::scrolling::FocusTarget::new(target))
+     }
+ }
+ 
+--- a/vendor/gpui_pre/src/text_system/line_layout.rs
++++ b/vendor/gpui_pre/src/text_system/line_layout.rs
+@@ -259,7 +259,10 @@
+             let next_x = glyphs.peek().map_or(self.width, |(_, _, x)| *x);
+             let width = next_x - last_boundary_x;
+ 
+-            if width > wrap_width && boundary > last_boundary {
++            if width > wrap_width
++                && boundary > last_boundary
++                && (ch != ' ' || first_non_whitespace_ix.is_none())
++            {
+                 // When used line_clamp, we should limit the number of lines.
+                 if let Some(max_lines) = max_lines
+                     && boundaries.len() >= max_lines.saturating_sub(1)
+--- a/src/components/form.rs
++++ b/src/components/form.rs
+@@ -713,7 +713,7 @@
+             bottom_fixed: None,
+         }
+     }
+-    /// Sets the page title (`.weui-form__title`): 22px semibold text, exposed as a level-2
++    /// Sets the page title (`.weui-form__title`): 22px medium text, exposed as a level-2
+     /// heading named by the text. None by default.
+     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
+         self.title = Some(title.into());
+@@ -775,7 +775,7 @@
+                             .aria_level(2)
+                             .aria_label(title.clone())
+                             .text_size(px(22.))
+-                            .font_weight(FontWeight::SEMIBOLD)
++                            .font_weight(FontWeight::MEDIUM)
+                             .line_height(relative(1.36))
+                             .child(title),
+                     )
+--- a/examples/gallery/main.rs
++++ b/examples/gallery/main.rs
+@@ -48,6 +48,7 @@
+ pub struct Gallery {
+     stack: Vec<Entry>,
+     leaving: Option<(Entry, Instant)>,
++    font_family: SharedString,
+ }
+ 
+ struct Nav(WeakEntity<Gallery>);
+@@ -95,6 +96,11 @@
+         let mut this = Self {
+             stack: vec![],
+             leaving: None,
++            font_family: args
++                .font_family
++                .clone()
++                .unwrap_or_else(|| ".SystemUIFont".into())
++                .into(),
+         };
+         let page_args = pages::Args {
+             state: args.state.clone(),
+@@ -200,7 +206,7 @@
+             .relative()
+             .size_full()
+             .overflow_hidden()
+-            .font_family(".SystemUIFont")
++            .font_family(self.font_family.clone())
+             .text_size(px(16.))
+             .line_height(relative(1.6))
+             .text_color(t.fg_0)
+@@ -258,6 +264,7 @@
+     scroll: Option<f32>,
+     size: Option<(f32, f32)>,
+     position: Option<(f32, f32)>,
++    font_family: Option<String>,
+ }
+ 
+ fn parse_args() -> CliArgs {
+@@ -285,6 +292,7 @@
+             "--reduce-motion" => args.reduce_motion = Some(true),
+             "--motion" => args.reduce_motion = Some(false),
+             "--lang" => args.lang = Some(value()),
++            "--font-family" => args.font_family = Some(value()),
+             "--dir" => args.dir = Some(value()),
+             "--scroll" => args.scroll = value().parse().ok(),
+             "--size" => {
+--- a/examples/gallery/pages/footer.rs
++++ b/examples/gallery/pages/footer.rs
+@@ -1,9 +1,9 @@
+ use crate::text::tr;
+ use crate::{chrome::PageFrame, pages::Args};
+ use gpui::{prelude::*, *};
+-use wegpui::{
+-    Theme,
+-    components::footer::{Footer, FooterLink},
++use wegpui::components::{
++    footer::{Footer, FooterLink},
++    form::form_link,
+ };
+ 
+ pub struct FooterPage {
+@@ -19,7 +19,6 @@
+ 
+ impl Render for FooterPage {
+     fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+-        let link = Theme::get(cx).link;
+         PageFrame::new(self.route)
+             .title("Footer")
+             .desc(tr("页脚"))
+@@ -46,14 +45,15 @@
+                             .on_click(|_, w, cx| crate::home(w, cx)),
+                     )
+                     .text(COPYRIGHT)
+-                    .child(
+-                        div()
+-                            .id("page-copyright")
+-                            .role(Role::Link)
+-                            .aria_label(tr("备案号：粤B2-20090059"))
+-                            .text_color(link)
+-                            .child(tr("备案号：粤B2-20090059")),
+-                    ),
++                    .child(form_link(
++                        "page-copyright",
++                        tr("备案号：粤B2-20090059"),
++                        false,
++                        cx,
++                        |_, _, cx| {
++                            cx.open_url("https://beian.miit.gov.cn/");
++                        },
++                    )),
+             )
+     }
+ }
+--- a/scripts/capture.py
++++ b/scripts/capture.py
+@@ -127,7 +127,7 @@
+             page.evaluate(f'(async () => {{ {states[key]} }})()')
+             page.wait_for_timeout(1200)
+         if args.scroll:
+-            page.evaluate(f"document.querySelector('.page:last-child').scrollTop = {args.scroll}")
++            page.evaluate("y => Array.from(document.querySelectorAll('#container > .page')).at(-1).scrollTop = y", args.scroll)
+             page.wait_for_timeout(300)
+         page.screenshot(path=str(out))
+         browser.close()

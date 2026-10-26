@@ -1,0 +1,14 @@
+{
+  "upstream": "https://github.com/Tencent/weui",
+  "revision": "7a6f8ad7700d0d6f1361dbe5e2942b4b129e7a7e",
+  "version": "2.6.26",
+  "scope": "WeUI CSS, example markup and weui.js UI behaviour; WeChat SDK behaviour excluded",
+  "css_sha256": "8db42592f96d571568c49ae1b8484f55042e6a6dab25f8144460cd4a23530fd3",
+  "weui_js_sha256": "87707d2d625c95f247e1957d5eee8c43bbe0c056983336990868f325d9b0c6fe",
+  "original_index_sha256": "380579150f95fc72af1b6b352246ae9838a5dacac5de0284f77c4a3149c05fce",
+  "reference_index_sha256": "76194e69c7a1eae96a21d277d6e0a4e9d1f6baeb1133f4a918219a944925e58a",
+  "changes": [
+    "Remove unused WeChat SDK script tag",
+    "Use byte-identical local weui.js 1.2.17"
+  ]
+}

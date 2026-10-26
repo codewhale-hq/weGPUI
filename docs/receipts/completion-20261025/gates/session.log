@@ -1,0 +1,13 @@
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   <extracted-preview>/wegpui-preview-83739a2a1608/wegpui/Cargo.toml
+workspace: <extracted-preview>/wegpui-preview-83739a2a1608/Cargo.toml
+warning: patch for the non root package will be ignored, specify patch at the workspace root:
+package:   <extracted-preview>/wegpui-preview-83739a2a1608/wegpui/Cargo.toml
+workspace: <extracted-preview>/wegpui-preview-83739a2a1608/Cargo.toml
+     Removed 290 files, 7.5GiB total
+fmt=0
+build=0
+test=0
+clippy=0
+doc=0
+tool-tests=0

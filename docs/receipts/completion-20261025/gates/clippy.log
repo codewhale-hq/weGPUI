@@ -1,0 +1,9 @@
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   <extracted-preview>/wegpui-preview-83739a2a1608/wegpui/Cargo.toml
+workspace: <extracted-preview>/wegpui-preview-83739a2a1608/Cargo.toml
+warning: patch for the non root package will be ignored, specify patch at the workspace root:
+package:   <extracted-preview>/wegpui-preview-83739a2a1608/wegpui/Cargo.toml
+workspace: <extracted-preview>/wegpui-preview-83739a2a1608/Cargo.toml
+    Checking wegpui v0.1.0 (<extracted-preview>/wegpui-preview-83739a2a1608/wegpui)
+    Checking wegpui-preview v0.0.0 (<extracted-preview>/wegpui-preview-83739a2a1608/consumer)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.30s

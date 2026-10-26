@@ -27,6 +27,11 @@ licenses are bundled locally. Output defaults to the ignored `website/dist/`;
 both a domain root and a project prefix such as `/weGPUI/`, without rewrite rules.
 
 The builder checks route/state inventory, template hashes and local asset provenance.
+The native-only Languages route has no browser counterpart and is explicitly excluded by
+the builder/checker shared inventory; other unexpected routes still fail validation. Run
+`python3 -m unittest discover -s website/tests -v` for the five inventory/build regressions.
+Current local Chromium verification passes 42 checks across both mounts (360 route/viewport
+observations); see [the completion receipt](../docs/receipts/completion-20261025/README.md).
 Source/install links identify the checkout's exact HEAD; a dirty preview is marked.
 Rebuild from committed source before sharing revision-pinned setup instructions.
 

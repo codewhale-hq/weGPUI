@@ -1,0 +1,203 @@
+{
+  "pairs": 1056,
+  "native_identical": 1055,
+  "reference_identical": 1025,
+  "both_identical": 1024,
+  "source_changes": [
+    "src/components/footer.rs"
+  ],
+  "changed": [
+    {
+      "id": "light/button_default",
+      "route": "button_default",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "light/loading",
+      "route": "loading",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "light/loadmore",
+      "route": "loadmore",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "light/form_vcode-countdown",
+      "route": "form_vcode",
+      "native_changed": true,
+      "reference_changed": false
+    },
+    {
+      "id": "light/toast-loading",
+      "route": "toast",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "light-brand/button_default",
+      "route": "button_default",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "light-brand/loading",
+      "route": "loading",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "light-brand/loadmore",
+      "route": "loadmore",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "light-brand/toast-loading",
+      "route": "toast",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "light-care/button_default",
+      "route": "button_default",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "light-care/loading",
+      "route": "loading",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "light-care/loadmore",
+      "route": "loadmore",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "light-care/toast-loading",
+      "route": "toast",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "light-care-brand/button_default",
+      "route": "button_default",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "light-care-brand/loading",
+      "route": "loading",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "light-care-brand/toast-loading",
+      "route": "toast",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "dark/button_default",
+      "route": "button_default",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "dark/loading",
+      "route": "loading",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "dark/loadmore",
+      "route": "loadmore",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "dark/toast-loading",
+      "route": "toast",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "dark-brand/button_default",
+      "route": "button_default",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "dark-brand/loading",
+      "route": "loading",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "dark-brand/loadmore",
+      "route": "loadmore",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "dark-brand/toast-loading",
+      "route": "toast",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "dark-care/button_default",
+      "route": "button_default",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "dark-care/loading",
+      "route": "loading",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "dark-care/loadmore",
+      "route": "loadmore",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "dark-care/toast-loading",
+      "route": "toast",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "dark-care-brand/button_default",
+      "route": "button_default",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "dark-care-brand/loading",
+      "route": "loading",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "dark-care-brand/loadmore",
+      "route": "loadmore",
+      "native_changed": false,
+      "reference_changed": true
+    },
+    {
+      "id": "dark-care-brand/toast-loading",
+      "route": "toast",
+      "native_changed": false,
+      "reference_changed": true
+    }
+  ]
+}

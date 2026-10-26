@@ -1,0 +1,376 @@
+[
+  {
+    "tag": "DIV",
+    "cls": "weui-footer",
+    "text": "\n            Copyright \u00a9 2008-2022 weui.io\n        ",
+    "box": {
+      "x": 16,
+      "y": 138.390625,
+      "width": 343,
+      "height": 16.796875,
+      "top": 138.390625,
+      "right": 359,
+      "bottom": 155.1875,
+      "left": 16
+    },
+    "font": "14px",
+    "line": "19.6px"
+  },
+  {
+    "tag": "P",
+    "cls": "weui-footer__text",
+    "text": "Copyright \u00a9 2008-2022 weui.io",
+    "box": {
+      "x": 16,
+      "y": 138.390625,
+      "width": 343,
+      "height": 16.796875,
+      "top": 138.390625,
+      "right": 359,
+      "bottom": 155.1875,
+      "left": 16
+    },
+    "font": "12px",
+    "line": "16.8px"
+  },
+  {
+    "tag": "BR",
+    "cls": "",
+    "text": "",
+    "box": {
+      "x": 16,
+      "y": 156.1875,
+      "width": 0,
+      "height": 22,
+      "top": 156.1875,
+      "right": 16,
+      "bottom": 178.1875,
+      "left": 16
+    },
+    "font": "16px",
+    "line": "25.6px"
+  },
+  {
+    "tag": "BR",
+    "cls": "",
+    "text": "",
+    "box": {
+      "x": 16,
+      "y": 181.78125,
+      "width": 0,
+      "height": 22,
+      "top": 181.78125,
+      "right": 16,
+      "bottom": 203.78125,
+      "left": 16
+    },
+    "font": "16px",
+    "line": "25.6px"
+  },
+  {
+    "tag": "DIV",
+    "cls": "weui-footer",
+    "text": "\n            \n                \u5e95\u90e8\u94fe\u63a5\n            \n            Copyright \u00a9 2008-2022 weui.io\n        ",
+    "box": {
+      "x": 16,
+      "y": 206.375,
+      "width": 343,
+      "height": 36.390625,
+      "top": 206.375,
+      "right": 359,
+      "bottom": 242.765625,
+      "left": 16
+    },
+    "font": "14px",
+    "line": "19.6px"
+  },
+  {
+    "tag": "P",
+    "cls": "weui-footer__links",
+    "text": "\n                \u5e95\u90e8\u94fe\u63a5\n            ",
+    "box": {
+      "x": 16,
+      "y": 206.375,
+      "width": 343,
+      "height": 19.59375,
+      "top": 206.375,
+      "right": 359,
+      "bottom": 225.96875,
+      "left": 16
+    },
+    "font": "0px",
+    "line": "0px"
+  },
+  {
+    "tag": "A",
+    "cls": "weui-footer__link weui-wa-hotarea",
+    "text": "\u5e95\u90e8\u94fe\u63a5",
+    "box": {
+      "x": 159.5,
+      "y": 206.375,
+      "width": 56,
+      "height": 19.59375,
+      "top": 206.375,
+      "right": 215.5,
+      "bottom": 225.96875,
+      "left": 159.5
+    },
+    "font": "14px",
+    "line": "19.6px"
+  },
+  {
+    "tag": "P",
+    "cls": "weui-footer__text",
+    "text": "Copyright \u00a9 2008-2022 weui.io",
+    "box": {
+      "x": 16,
+      "y": 225.96875,
+      "width": 343,
+      "height": 16.796875,
+      "top": 225.96875,
+      "right": 359,
+      "bottom": 242.765625,
+      "left": 16
+    },
+    "font": "12px",
+    "line": "16.8px"
+  },
+  {
+    "tag": "BR",
+    "cls": "",
+    "text": "",
+    "box": {
+      "x": 16,
+      "y": 243.765625,
+      "width": 0,
+      "height": 22,
+      "top": 243.765625,
+      "right": 16,
+      "bottom": 265.765625,
+      "left": 16
+    },
+    "font": "16px",
+    "line": "25.6px"
+  },
+  {
+    "tag": "BR",
+    "cls": "",
+    "text": "",
+    "box": {
+      "x": 16,
+      "y": 269.359375,
+      "width": 0,
+      "height": 22,
+      "top": 269.359375,
+      "right": 16,
+      "bottom": 291.359375,
+      "left": 16
+    },
+    "font": "16px",
+    "line": "25.6px"
+  },
+  {
+    "tag": "DIV",
+    "cls": "weui-footer",
+    "text": "\n            \n                \u5e95\u90e8\u94fe\u63a5\n                \u5e95\u90e8\u94fe\u63a5\n            \n            Copyright \u00a9 2008-2022 weui.io\n        ",
+    "box": {
+      "x": 16,
+      "y": 293.953125,
+      "width": 343,
+      "height": 36.390625,
+      "top": 293.953125,
+      "right": 359,
+      "bottom": 330.34375,
+      "left": 16
+    },
+    "font": "14px",
+    "line": "19.6px"
+  },
+  {
+    "tag": "P",
+    "cls": "weui-footer__links",
+    "text": "\n                \u5e95\u90e8\u94fe\u63a5\n                \u5e95\u90e8\u94fe\u63a5\n            ",
+    "box": {
+      "x": 16,
+      "y": 293.953125,
+      "width": 343,
+      "height": 19.59375,
+      "top": 293.953125,
+      "right": 359,
+      "bottom": 313.546875,
+      "left": 16
+    },
+    "font": "0px",
+    "line": "0px"
+  },
+  {
+    "tag": "A",
+    "cls": "weui-footer__link weui-wa-hotarea",
+    "text": "\u5e95\u90e8\u94fe\u63a5",
+    "box": {
+      "x": 123.5,
+      "y": 293.953125,
+      "width": 56,
+      "height": 19.59375,
+      "top": 293.953125,
+      "right": 179.5,
+      "bottom": 313.546875,
+      "left": 123.5
+    },
+    "font": "14px",
+    "line": "19.6px"
+  },
+  {
+    "tag": "A",
+    "cls": "weui-footer__link weui-wa-hotarea",
+    "text": "\u5e95\u90e8\u94fe\u63a5",
+    "box": {
+      "x": 195.5,
+      "y": 293.953125,
+      "width": 56,
+      "height": 19.59375,
+      "top": 293.953125,
+      "right": 251.5,
+      "bottom": 313.546875,
+      "left": 195.5
+    },
+    "font": "14px",
+    "line": "19.6px"
+  },
+  {
+    "tag": "P",
+    "cls": "weui-footer__text",
+    "text": "Copyright \u00a9 2008-2022 weui.io",
+    "box": {
+      "x": 16,
+      "y": 313.546875,
+      "width": 343,
+      "height": 16.796875,
+      "top": 313.546875,
+      "right": 359,
+      "bottom": 330.34375,
+      "left": 16
+    },
+    "font": "12px",
+    "line": "16.8px"
+  },
+  {
+    "tag": "DIV",
+    "cls": "weui-footer weui-footer_fixed-bottom",
+    "text": "\n            \n                WeUI\u9996\u9875\n            \n            Copyright \u00a9 2008-2022 weui.io\n            \n              \u5907\u6848\u53f7\uff1a\u7ca4B2-20090059\n            \n        ",
+    "box": {
+      "x": 0,
+      "y": 724.015625,
+      "width": 375,
+      "height": 87.984375,
+      "top": 724.015625,
+      "right": 375,
+      "bottom": 812,
+      "left": 0
+    },
+    "font": "14px",
+    "line": "19.6px"
+  },
+  {
+    "tag": "P",
+    "cls": "weui-footer__links",
+    "text": "\n                WeUI\u9996\u9875\n            ",
+    "box": {
+      "x": 0,
+      "y": 740.015625,
+      "width": 375,
+      "height": 19.59375,
+      "top": 740.015625,
+      "right": 375,
+      "bottom": 759.609375,
+      "left": 0
+    },
+    "font": "0px",
+    "line": "0px"
+  },
+  {
+    "tag": "A",
+    "cls": "weui-footer__link weui-wa-hotarea",
+    "text": "WeUI\u9996\u9875",
+    "box": {
+      "x": 155.6875,
+      "y": 740.015625,
+      "width": 63.625,
+      "height": 19.59375,
+      "top": 740.015625,
+      "right": 219.3125,
+      "bottom": 759.609375,
+      "left": 155.6875
+    },
+    "font": "14px",
+    "line": "19.6px"
+  },
+  {
+    "tag": "P",
+    "cls": "weui-footer__text",
+    "text": "Copyright \u00a9 2008-2022 weui.io",
+    "box": {
+      "x": 0,
+      "y": 759.609375,
+      "width": 375,
+      "height": 16.796875,
+      "top": 759.609375,
+      "right": 375,
+      "bottom": 776.40625,
+      "left": 0
+    },
+    "font": "12px",
+    "line": "16.8px"
+  },
+  {
+    "tag": "DIV",
+    "cls": "weui-footer",
+    "text": "\n              \n                \u5907\u6848\u53f7\uff1a\u7ca4B2-20090059\n                \u7ca4\u516c\u7f51\u5b89\u5907 44030502009285\u53f7\n\n                \u516c\u53f8\u5730\u5740\uff1a\u6df1\u5733\u5e02\u5357\u5c71\u533a\u7ca4\u6d77\u8857\u9053\u9ebb\u5cad\u793e\u533a\u79d1\u6280\u4e2d\u4e00\u8def\u817e\u8baf\u5927\u53a635\u5c42\n                \u8054\u7cfb\u7535\u8bdd\uff1a4006 700 700\n              \n              \n                Copyright \u00a9 1998 - 2026 Tencent All Rights Reserved.\n              \n            ",
+    "box": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    },
+    "font": "14px",
+    "line": "19.6px"
+  },
+  {
+    "tag": "DIV",
+    "cls": "weui-footer__text",
+    "text": "\n                \u5907\u6848\u53f7\uff1a\u7ca4B2-20090059\n                \u7ca4\u516c\u7f51\u5b89\u5907 44030502009285\u53f7\n\n                \u516c\u53f8\u5730\u5740\uff1a\u6df1\u5733\u5e02\u5357\u5c71\u533a\u7ca4\u6d77\u8857\u9053\u9ebb\u5cad\u793e\u533a\u79d1\u6280\u4e2d\u4e00\u8def\u817e\u8baf\u5927\u53a635\u5c42\n                \u8054\u7cfb\u7535\u8bdd\uff1a4006 700 700\n              ",
+    "box": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    },
+    "font": "12px",
+    "line": "16.8px"
+  },
+  {
+    "tag": "DIV",
+    "cls": "weui-footer__text",
+    "text": "\n                Copyright \u00a9 1998 - 2026 Tencent All Rights Reserved.\n              ",
+    "box": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    },
+    "font": "12px",
+    "line": "16.8px"
+  }
+]

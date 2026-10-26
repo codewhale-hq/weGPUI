@@ -1,0 +1,345 @@
+{
+  "modes": 8,
+  "edge_callbacks": 64,
+  "keyboard_callbacks": 32,
+  "overlapping_targets": 0,
+  "passed": true,
+  "results": [
+    {
+      "bounds": {
+        "Help": [
+          566,
+          372,
+          45,
+          44
+        ],
+        "Terms": [
+          566,
+          416,
+          45,
+          44
+        ]
+      },
+      "overlap_area": 0,
+      "passed": true,
+      "edge_callbacks": [
+        "Help",
+        "Help",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Terms"
+      ],
+      "all_callbacks": [
+        "Help",
+        "Help",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms"
+      ]
+    },
+    {
+      "bounds": {
+        "Help": [
+          566,
+          372,
+          45,
+          44
+        ],
+        "Terms": [
+          566,
+          416,
+          45,
+          44
+        ]
+      },
+      "overlap_area": 0,
+      "passed": true,
+      "edge_callbacks": [
+        "Help",
+        "Help",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Terms"
+      ],
+      "all_callbacks": [
+        "Help",
+        "Help",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms"
+      ]
+    },
+    {
+      "bounds": {
+        "Help": [
+          566,
+          372,
+          45,
+          44
+        ],
+        "Terms": [
+          566,
+          416,
+          45,
+          44
+        ]
+      },
+      "overlap_area": 0,
+      "passed": true,
+      "edge_callbacks": [
+        "Help",
+        "Help",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Terms"
+      ],
+      "all_callbacks": [
+        "Help",
+        "Help",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms"
+      ]
+    },
+    {
+      "bounds": {
+        "Help": [
+          566,
+          372,
+          45,
+          44
+        ],
+        "Terms": [
+          566,
+          416,
+          45,
+          44
+        ]
+      },
+      "overlap_area": 0,
+      "passed": true,
+      "edge_callbacks": [
+        "Help",
+        "Help",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Terms"
+      ],
+      "all_callbacks": [
+        "Help",
+        "Help",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms"
+      ]
+    },
+    {
+      "bounds": {
+        "Help": [
+          566,
+          372,
+          45,
+          44
+        ],
+        "Terms": [
+          566,
+          416,
+          45,
+          44
+        ]
+      },
+      "overlap_area": 0,
+      "passed": true,
+      "edge_callbacks": [
+        "Help",
+        "Help",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Terms"
+      ],
+      "all_callbacks": [
+        "Help",
+        "Help",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms"
+      ]
+    },
+    {
+      "bounds": {
+        "Help": [
+          566,
+          372,
+          45,
+          44
+        ],
+        "Terms": [
+          566,
+          416,
+          45,
+          44
+        ]
+      },
+      "overlap_area": 0,
+      "passed": true,
+      "edge_callbacks": [
+        "Help",
+        "Help",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Terms"
+      ],
+      "all_callbacks": [
+        "Help",
+        "Help",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms"
+      ]
+    },
+    {
+      "bounds": {
+        "Help": [
+          566,
+          372,
+          45,
+          44
+        ],
+        "Terms": [
+          566,
+          416,
+          45,
+          44
+        ]
+      },
+      "overlap_area": 0,
+      "passed": true,
+      "edge_callbacks": [
+        "Help",
+        "Help",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Terms"
+      ],
+      "all_callbacks": [
+        "Help",
+        "Help",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms"
+      ]
+    },
+    {
+      "bounds": {
+        "Help": [
+          566,
+          372,
+          45,
+          44
+        ],
+        "Terms": [
+          566,
+          416,
+          45,
+          44
+        ]
+      },
+      "overlap_area": 0,
+      "passed": true,
+      "edge_callbacks": [
+        "Help",
+        "Help",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Terms"
+      ],
+      "all_callbacks": [
+        "Help",
+        "Help",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Terms",
+        "Help",
+        "Help",
+        "Terms",
+        "Terms"
+      ]
+    }
+  ]
+}

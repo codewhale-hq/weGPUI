@@ -1,0 +1,150 @@
+{
+  "passed": true,
+  "steps": [
+    {
+      "step": "Popout focused",
+      "utc": "2026-10-26T01:13:08.858888+00:00",
+      "focused": [
+        "Popout"
+      ],
+      "layer_controls": [
+        "Content",
+        "Mask",
+        "Navigation",
+        "Popout"
+      ]
+    },
+    {
+      "step": "Popout selected",
+      "utc": "2026-10-26T01:13:11.124874+00:00",
+      "focused": [
+        "Popout"
+      ],
+      "layer_controls": [
+        "Popout"
+      ]
+    },
+    {
+      "step": "Popout restored",
+      "utc": "2026-10-26T01:13:14.011394+00:00",
+      "focused": [
+        "Popout"
+      ],
+      "layer_controls": [
+        "Content",
+        "Mask",
+        "Navigation",
+        "Popout"
+      ]
+    },
+    {
+      "step": "Mask focused",
+      "utc": "2026-10-26T01:13:14.251636+00:00",
+      "focused": [
+        "Mask"
+      ],
+      "layer_controls": [
+        "Content",
+        "Mask",
+        "Navigation",
+        "Popout"
+      ]
+    },
+    {
+      "step": "Mask selected",
+      "utc": "2026-10-26T01:13:16.508054+00:00",
+      "focused": [
+        "Mask"
+      ],
+      "layer_controls": [
+        "Mask"
+      ]
+    },
+    {
+      "step": "Mask restored",
+      "utc": "2026-10-26T01:13:19.375027+00:00",
+      "focused": [
+        "Mask"
+      ],
+      "layer_controls": [
+        "Content",
+        "Mask",
+        "Navigation",
+        "Popout"
+      ]
+    },
+    {
+      "step": "Navigation focused",
+      "utc": "2026-10-26T01:13:19.583434+00:00",
+      "focused": [
+        "Navigation"
+      ],
+      "layer_controls": [
+        "Content",
+        "Mask",
+        "Navigation",
+        "Popout"
+      ]
+    },
+    {
+      "step": "Navigation selected",
+      "utc": "2026-10-26T01:13:21.840570+00:00",
+      "focused": [
+        "Navigation"
+      ],
+      "layer_controls": [
+        "Navigation"
+      ]
+    },
+    {
+      "step": "Navigation restored",
+      "utc": "2026-10-26T01:13:24.719490+00:00",
+      "focused": [
+        "Navigation"
+      ],
+      "layer_controls": [
+        "Content",
+        "Mask",
+        "Navigation",
+        "Popout"
+      ]
+    },
+    {
+      "step": "Content focused",
+      "utc": "2026-10-26T01:13:24.923499+00:00",
+      "focused": [
+        "Content"
+      ],
+      "layer_controls": [
+        "Content",
+        "Mask",
+        "Navigation",
+        "Popout"
+      ]
+    },
+    {
+      "step": "Content selected",
+      "utc": "2026-10-26T01:13:27.174144+00:00",
+      "focused": [
+        "Content"
+      ],
+      "layer_controls": [
+        "Content"
+      ]
+    },
+    {
+      "step": "Content restored",
+      "utc": "2026-10-26T01:13:30.051898+00:00",
+      "focused": [
+        "Content"
+      ],
+      "layer_controls": [
+        "Content",
+        "Mask",
+        "Navigation",
+        "Popout"
+      ]
+    }
+  ],
+  "qualification": "Real Orca keyboard/flat-review collection; speech and audio are verified separately."
+}

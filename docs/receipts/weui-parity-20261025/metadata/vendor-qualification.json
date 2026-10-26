@@ -1,0 +1,32 @@
+[
+  {
+    "path": "vendor/gpui_pre/src/text_system.rs",
+    "prototype_sha256": "97a9bd817a51810d29bc92eff033e6310150e597d4d7e31cb8b79aa2db1413ea",
+    "current_sha256": "97a9bd817a51810d29bc92eff033e6310150e597d4d7e31cb8b79aa2db1413ea",
+    "change": "byte-identical"
+  },
+  {
+    "path": "vendor/gpui_pre/src/text_system/line_layout.rs",
+    "prototype_sha256": "7c46681f528ba2299f45f6390b1613c7c46d47c5b2de442e00f47ee4c62db1fc",
+    "current_sha256": "cc576691d1835e5702c0b141e66a57d679eb98eddb0890b4671e78e963c98ef4",
+    "change": "approved monotonic trailing-space guard only"
+  },
+  {
+    "path": "vendor/gpui_pre/src/text_system/line.rs",
+    "prototype_sha256": "f8d61079493afe7815c5db027e3ce3d66f1c80bdd1c634f5a39f8814ca6a287b",
+    "current_sha256": "f8d61079493afe7815c5db027e3ce3d66f1c80bdd1c634f5a39f8814ca6a287b",
+    "change": "byte-identical"
+  },
+  {
+    "path": "vendor/gpui_pre/src/elements/text.rs",
+    "prototype_sha256": "c0b02ee20e6500fb4d75a603dd9e5f0f0a7c5008d01da8c28e04e20b6178d912",
+    "current_sha256": "c0b02ee20e6500fb4d75a603dd9e5f0f0a7c5008d01da8c28e04e20b6178d912",
+    "change": "byte-identical"
+  },
+  {
+    "path": "vendor/gpui_pre/src/text_system/logical_wrap.rs",
+    "prototype_sha256": "eda32d8770882c2208f520b3d64640a2129b87eabaa6dfe6f8c39ea842df23b2",
+    "current_sha256": "eda32d8770882c2208f520b3d64640a2129b87eabaa6dfe6f8c39ea842df23b2",
+    "change": "byte-identical"
+  }
+]

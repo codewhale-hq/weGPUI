@@ -1,0 +1,44 @@
+
+running 13 tests
+test tests::ascii_closing_marks_still_attach ... ok
+test tests::closing_marks_attach_to_the_preceding_cjk_word ... FAILED
+test tests::closing_marks_do_not_start_a_wrapped_row ... FAILED
+test tests::opening_marks_and_other_scripts_are_unchanged ... ok
+test tests::panel_clamp_now_accounts_for_the_moved_punctuation ... FAILED
+test tests::test_is_word_char ... ok
+test tests::test_is_word_char_arabic ... ok
+test tests::test_is_word_char_devanagari ... ok
+test tests::test_is_word_char_greek ... ok
+test tests::test_is_word_char_hebrew ... ok
+test tests::test_is_word_char_neighbouring_scripts_are_unchanged ... ok
+test tests::test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek ... ok
+test tests::unpunctuated_text_that_fits_stays_complete ... ok
+
+failures:
+
+---- tests::closing_marks_attach_to_the_preceding_cjk_word stdout ----
+
+thread 'tests::closing_marks_attach_to_the_preceding_cjk_word' (33) panicked at <prior-evidence>/cjk-proposal/baseline.rs:1065:13:
+、
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- tests::closing_marks_do_not_start_a_wrapped_row stdout ----
+
+thread 'tests::closing_marks_do_not_start_a_wrapped_row' (34) panicked at <prior-evidence>/cjk-proposal/baseline.rs:1075:13:
+assertion `left == right` failed: 、
+  left: 12
+ right: 9
+
+---- tests::panel_clamp_now_accounts_for_the_moved_punctuation stdout ----
+
+thread 'tests::panel_clamp_now_accounts_for_the_moved_punctuation' (36) panicked at <prior-evidence>/cjk-proposal/baseline.rs:1084:9:
+由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。
+
+
+failures:
+    tests::closing_marks_attach_to_the_preceding_cjk_word
+    tests::closing_marks_do_not_start_a_wrapped_row
+    tests::panel_clamp_now_accounts_for_the_moved_punctuation
+
+test result: FAILED. 10 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

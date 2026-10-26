@@ -1,0 +1,69 @@
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Activating service name='org.freedesktop.portal.Desktop' requested by ':1.5' (uid=1000 pid=41 comm="<toolchain-cache>/target/debug/examples/gal" label="kernel")
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Activating service name='org.freedesktop.impl.portal.PermissionStore' requested by ':1.6' (uid=1000 pid=59 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.PermissionStore'
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Activating service name='org.freedesktop.portal.Documents' requested by ':1.6' (uid=1000 pid=59 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Successfully activated service 'org.freedesktop.portal.Documents'
+fuse: device not found, try 'modprobe fuse' first
+error: fuse init failed: Can't mount path <temporary>
+
+(/usr/libexec/xdg-desktop-portal:59): xdg-desktop-portal-WARNING **: 00:54:32.779: Document portal fuse mount point unknown: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name :1.8 was not provided by any .service files
+
+(/usr/libexec/xdg-desktop-portal:59): xdg-desktop-portal-WARNING **: 00:54:32.779: Choosing gtk.portal for org.freedesktop.impl.portal.Lockdown via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:59): xdg-desktop-portal-WARNING **: 00:54:32.779: The preferred method to match portal implementations to desktop environments is to use the portals.conf(5) configuration file
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.6' (uid=1000 pid=59 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:94): xdg-desktop-portal-gtk-WARNING **: 00:54:32.880: error: Could not connect: No such file or directory
+
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.desktop.gtk'
+
+(/usr/libexec/xdg-desktop-portal:59): xdg-desktop-portal-WARNING **: 00:54:32.942: Failed to create RealtimeKit proxy: Could not connect: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:59): xdg-desktop-portal-WARNING **: 00:54:32.942: Choosing gtk.portal for org.freedesktop.impl.portal.Settings via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:59): xdg-desktop-portal-WARNING **: 00:54:32.952: Choosing gtk.portal for org.freedesktop.impl.portal.FileChooser via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:59): xdg-desktop-portal-WARNING **: 00:54:32.953: Choosing gtk.portal for org.freedesktop.impl.portal.AppChooser via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:59): xdg-desktop-portal-WARNING **: 00:54:32.957: Choosing gtk.portal for org.freedesktop.impl.portal.Print via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:59): xdg-desktop-portal-WARNING **: 00:54:32.958: Choosing gtk.portal for org.freedesktop.impl.portal.Notification via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:59): xdg-desktop-portal-WARNING **: 00:54:32.959: Choosing gtk.portal for org.freedesktop.impl.portal.Inhibit via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:59): xdg-desktop-portal-WARNING **: 00:54:32.961: Choosing gtk.portal for org.freedesktop.impl.portal.Access via the deprecated UseIn key
+[W][00:54:32.962854] pw.conf      | [          conf.c: 1182 try_load_conf()] can't load config client.conf: No such file or directory
+[E][00:54:32.962875] pw.conf      | [          conf.c: 1215 pw_conf_load_conf_for_context()] can't load config client.conf: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:59): xdg-desktop-portal-WARNING **: 00:54:32.962: Failed connect to PipeWire: Couldn't create PipeWire context
+
+(/usr/libexec/xdg-desktop-portal:59): xdg-desktop-portal-WARNING **: 00:54:32.972: Choosing gtk.portal for org.freedesktop.impl.portal.Account via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:59): xdg-desktop-portal-WARNING **: 00:54:32.973: Choosing gtk.portal for org.freedesktop.impl.portal.Email via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:59): xdg-desktop-portal-WARNING **: 00:54:32.974: Choosing gtk.portal for org.freedesktop.impl.portal.DynamicLauncher via the deprecated UseIn key
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Successfully activated service 'org.freedesktop.portal.Desktop'
+Window 6291457 OS focus 6291457
+Focused [('Popout', 'button')]
+PASS ['Enter selects Popout', 'Space restores stack', 'Projected Content pointer region selects Content', 'Flat Content pointer region restores stack', 'AT default action selects Mask', 'AT default action restores stack']
+Window 6291457 OS focus 6291457
+Focused [('Popout', 'button')]
+PASS ['Enter selects Popout', 'Space restores stack', 'Projected Content pointer region selects Content', 'Flat Content pointer region restores stack', 'AT default action selects Mask', 'AT default action restores stack']
+Window 6291457 OS focus 6291457
+Focused [('Popout', 'button')]
+PASS ['Enter selects Popout', 'Space restores stack', 'Projected Content pointer region selects Content', 'Flat Content pointer region restores stack', 'AT default action selects Mask', 'AT default action restores stack']
+Window 6291457 OS focus 6291457
+Focused [('Popout', 'button')]
+PASS ['Enter selects Popout', 'Space restores stack', 'Projected Content pointer region selects Content', 'Flat Content pointer region restores stack', 'AT default action selects Mask', 'AT default action restores stack']
+Window 6291457 OS focus 6291457
+Focused [('Popout', 'button')]
+PASS ['Enter selects Popout', 'Space restores stack', 'Projected Content pointer region selects Content', 'Flat Content pointer region restores stack', 'AT default action selects Mask', 'AT default action restores stack']
+Window 6291457 OS focus 6291457
+Focused [('Popout', 'button')]
+PASS ['Enter selects Popout', 'Space restores stack', 'Projected Content pointer region selects Content', 'Flat Content pointer region restores stack', 'AT default action selects Mask', 'AT default action restores stack']
+Window 6291457 OS focus 6291457
+Focused [('Popout', 'button')]
+PASS ['Enter selects Popout', 'Space restores stack', 'Projected Content pointer region selects Content', 'Flat Content pointer region restores stack', 'AT default action selects Mask', 'AT default action restores stack']
+Window 6291457 OS focus 6291457
+Focused [('Popout', 'button')]
+PASS ['Enter selects Popout', 'Space restores stack', 'Projected Content pointer region selects Content', 'Flat Content pointer region restores stack', 'AT default action selects Mask', 'AT default action restores stack']

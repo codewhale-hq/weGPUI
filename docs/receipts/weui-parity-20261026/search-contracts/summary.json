@@ -1,0 +1,302 @@
+{
+  "appearances": 8,
+  "variants": [
+    "grey",
+    "filled",
+    "outlined"
+  ],
+  "runs": 24,
+  "transition_steps": 120,
+  "passed": true,
+  "qualification": "Input availability and callback contracts; whole-bar disabled API and reader speech are not claimed.",
+  "results": [
+    {
+      "mode": "dark",
+      "variant": "filled",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "dark",
+      "variant": "grey",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "dark",
+      "variant": "outlined",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "dark-brand",
+      "variant": "filled",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "dark-brand",
+      "variant": "grey",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "dark-brand",
+      "variant": "outlined",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "dark-care",
+      "variant": "filled",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "dark-care",
+      "variant": "grey",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "dark-care",
+      "variant": "outlined",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "dark-care-brand",
+      "variant": "filled",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "dark-care-brand",
+      "variant": "grey",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "dark-care-brand",
+      "variant": "outlined",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "light",
+      "variant": "filled",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "light",
+      "variant": "grey",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "light",
+      "variant": "outlined",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "light-brand",
+      "variant": "filled",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "light-brand",
+      "variant": "grey",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "light-brand",
+      "variant": "outlined",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "light-care",
+      "variant": "filled",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "light-care",
+      "variant": "grey",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "light-care",
+      "variant": "outlined",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "light-care-brand",
+      "variant": "filled",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "light-care-brand",
+      "variant": "grey",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "light-care-brand",
+      "variant": "outlined",
+      "steps": [
+        "type-and-submit",
+        "disabled-preserves-text",
+        "reenabled-clear-refocus",
+        "readonly-preserves-text",
+        "editable-cancel-clears"
+      ],
+      "passed": true
+    }
+  ]
+}

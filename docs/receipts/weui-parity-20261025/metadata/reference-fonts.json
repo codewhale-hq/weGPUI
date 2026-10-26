@@ -1,0 +1,98 @@
+{
+  "article": {
+    "fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 291
+        }
+      ]
+    },
+    "widths": [
+      {
+        "text": "Lorem ipsum dolor sit amet, consectetur",
+        "width": 323.8831481933594
+      },
+      {
+        "text": "Lorem ipsum dolor sit amet, consectetur ",
+        "width": 328.3031311035156
+      }
+    ],
+    "style": {
+      "font": "system-ui, -apple-system, \"Helvetica Neue\", sans-serif",
+      "size": "17px",
+      "width": 327,
+      "lineHeight": "27.2px"
+    }
+  },
+  "form_primary": {
+    "fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans CJK SC",
+          "postScriptName": "NotoSansCJKsc-Regular",
+          "isCustomFont": false,
+          "glyphCount": 42
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 5
+        }
+      ]
+    },
+    "widths": [
+      {
+        "text": "Lorem ipsum dolor sit amet, consectetur",
+        "width": 323.8831481933594
+      },
+      {
+        "text": "Lorem ipsum dolor sit amet, consectetur ",
+        "width": 328.3031311035156
+      }
+    ],
+    "style": {
+      "font": "system-ui, -apple-system, \"Helvetica Neue\", sans-serif",
+      "size": "17px",
+      "width": 311,
+      "lineHeight": "23.8px"
+    }
+  },
+  "panel": {
+    "fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans CJK SC",
+          "postScriptName": "NotoSansCJKsc-Regular",
+          "isCustomFont": false,
+          "glyphCount": 38
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ]
+    },
+    "widths": [
+      {
+        "text": "Lorem ipsum dolor sit amet, consectetur",
+        "width": 323.8831481933594
+      },
+      {
+        "text": "Lorem ipsum dolor sit amet, consectetur ",
+        "width": 328.3031311035156
+      }
+    ],
+    "style": {
+      "font": "system-ui, -apple-system, \"Helvetica Neue\", sans-serif",
+      "size": "14px",
+      "width": 267,
+      "lineHeight": "19.6px"
+    }
+  }
+}

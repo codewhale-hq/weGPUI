@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<evidence>/report-check.py", line 21, in <module>
+    assert page.locator('#scene').input_value()=='button_bottom_fixed'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

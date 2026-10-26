@@ -1,0 +1,7 @@
+{
+  "expected": 24,
+  "captured": 24,
+  "failed": [],
+  "full_matrix": false,
+  "qualification": "capture completeness only; manual difference review required"
+}

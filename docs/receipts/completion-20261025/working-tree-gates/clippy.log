@@ -1,0 +1,6 @@
+    Checking gpui-pre v0.3.9 (<checkout>/vendor/gpui_pre)
+    Checking gpui-pre-wgpu v0.3.9
+    Checking wegpui v0.1.0 (<checkout>)
+    Checking gpui-pre-linux v0.3.9 (<checkout>/vendor/gpui_pre_linux)
+    Checking gpui-pre-platform v0.3.9
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 10.92s

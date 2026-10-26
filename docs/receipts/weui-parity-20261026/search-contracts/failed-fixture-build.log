@@ -1,0 +1,13 @@
+   Compiling wegpui v0.1.0 (<repo>)
+error[E0502]: cannot borrow `*cx` as mutable because it is also borrowed as immutable
+  --> examples/__parity_search_probe.rs:47:360
+   |
+47 | ...x| Probe::new(variant, cx)); window.focus(&probe.read(cx).root_focus, cx); probe }).expect("search window");
+   |                                 ^^^^^^^-----^^^^^^^^^^^^^--^^^^^^^^^^^^^^^^^
+   |                                 |      |                 |
+   |                                 |      |                 immutable borrow occurs here
+   |                                 |      immutable borrow later used by call
+   |                                 mutable borrow occurs here
+
+For more information about this error, try `rustc --explain E0502`.
+error: could not compile `wegpui` (example "__parity_search_probe") due to 1 previous error

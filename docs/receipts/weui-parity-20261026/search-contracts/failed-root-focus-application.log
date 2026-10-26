@@ -1,0 +1,9 @@
+event=Focus
+event=Changed
+event=Changed
+event=Changed
+event=Changed
+event=Changed
+event=Submit
+snapshot text="alpha" focusing=true disabled=false readonly=false focused=true
+event=Blur

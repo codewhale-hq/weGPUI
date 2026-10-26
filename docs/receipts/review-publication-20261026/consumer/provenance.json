@@ -1,0 +1,13 @@
+{
+  "binary_sha256": "3d5473eb25e92eb7265e2dd3aef4d1d12d8137ff48e27c2aadd84be671d6819e",
+  "source_manifest": "../metadata/captures/manifest.json",
+  "consumer_files": {
+    "Cargo.toml": "dbd4cea892ed27d4913e5ac89228dc3d2cd69e5179d55fd685a71eca65696ae9",
+    "Cargo.lock": "fe50f1605f10f922ca5f801cb4e2b52423bc64cdb62869c41f8dfec7f8f91e4e",
+    "src/main.rs": "9ef67a8f2aec62f53e1f30100f8fdabbfcc94aa7b3b52f90067b59ee05e0c963",
+    "src/support/platform.rs": "d2ebf086a4d5833564e8dfbf468764fe7ef2b79ec28b1095097ae89f4fb7163c"
+  },
+  "readme_sha256": "55da17b3533a2a050f580686e9849e928f0ecb8d1c969b158e6496196a940b6c",
+  "readme_manifest_snippet_sha256": "0d32e392195552b3ab02f35358086d867b1dbb6b20192a1a051c8f26c2c4d9f6",
+  "manifest_matches_readme": true
+}

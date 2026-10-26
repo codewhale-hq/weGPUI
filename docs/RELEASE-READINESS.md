@@ -21,8 +21,8 @@ and rely on the supported behavior. A website is one part of that promise.
 - [ ] Exercise enabled/disabled/loading/error states and keyboard operation for
   each interactive family. Preserve failed attempts and specify the tested SHA.
   Tracked per module in [ACCEPTANCE](ACCEPTANCE.md). October 25 adds reviewed native
-  dark/care/brand startup states; the pinned reference fetch remains blocked, so paired
-  parity is still open.
+  dark/care/brand startup states; a separately prepared pinned UI reference now supports complete 1,056-pair capture sweeps
+  ([receipt](receipts/weui-parity-20261026/README.md)); detailed parity acceptance remains open.
 - [ ] Verify modal isolation, names, values and focus restoration with an actual
   screen reader on each supported desktop OS. Tree snapshots alone do not pass. Actual
   Orca samples now exist. Approved local compatibility fixes repair the sampled cache/reopen
@@ -51,10 +51,14 @@ and rely on the supported behavior. A website is one part of that promise.
   ([receipt](receipts/i18n-20261025/README.md), [guide](I18N.md)).
 - [ ] Finish localisation acceptance: native-speaker review of the 12 starter catalogs;
   screen-reader output in each language; real keyboard/IME input and caret in a right-to-left
-  field; `TextArea` right alignment; owner decision on steps 2 and 3 of the
+  field; `TextArea` right alignment; resolution of the Linux visual failure in step 2;
+  approval for step 3 of the
   [GPUI line-breaking proposal](proposals/gpui-text-i18n/README.md) (step 1, word breaks for
-  Arabic, Hebrew, Devanagari and Greek, is applied: [receipt](receipts/gpui-word-break-20261025/README.md));
-  locale-aware dates; Linux and Windows runs. Earlier Chinese-name accessibility samples need re-running under the English
+  Arabic, Hebrew, Devanagari and Greek, is applied: [receipt](receipts/gpui-word-break-20261025/README.md);
+  the approved step 2 prototype passes five Linux gates and its known rendering limits remain:
+  [receipt](receipts/gpui-logical-wrap-20261025/README.md));
+  the [publication review](REVIEW-2026-10-26.md) records the later instruction to commit the current work;
+  locale-aware dates; full Linux and Windows localisation acceptance. Earlier Chinese-name accessibility samples need re-running under the English
   default.
 - [ ] Verify input selection, clipboard, undo/redo, UTF-16 limits and IME composition.
 - [ ] Reconcile public rustdoc with observed behavior; document intentional differences.
@@ -90,7 +94,13 @@ VoiceOver remains off under the owner’s existing instruction.
   [vendor guidance](../vendor/README.md).
   macOS and Windows consumers still needed.
 - [ ] Ship complete small examples: application setup, forms, controlled state,
-  overlays/focus, theming and application-owned upload handling.
+  overlays/focus, theming and application-owned upload handling. `examples/application.rs`
+  now provides that complete source example; Linux native checks are in the
+  [completion receipt](receipts/completion-20261025/README.md). Other desktop hosts remain open.
+- [x] Prepare a reproducible local preview source bundle with a separate consumer and all four
+  required root Cargo patches. Locked/offline Linux compilation and 59 library tests pass
+  ([guide](PREVIEW-DISTRIBUTION.md), [receipt](receipts/completion-20261025/README.md));
+  installers, fresh-machine/native-host acceptance and publication remain open.
 - [ ] Generate versioned API documentation from the release source.
 - [ ] Verify cargo package contents, licenses/attribution and documentation assets.
   `cargo package` list and verify build pass on Linux at `f5fe0b6`; README screenshots stay

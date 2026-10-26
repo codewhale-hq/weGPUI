@@ -1,0 +1,192 @@
+[
+  {
+    "file": "espeak-ng-data_1.52.0+dfsg-5_amd64.deb",
+    "bytes": 8653552,
+    "sha256": "7c239b30e419897313b5b8c98123cf3ec871cfedbf43bbb956b985a492e37f19"
+  },
+  {
+    "file": "espeak-ng_1.52.0+dfsg-5_amd64.deb",
+    "bytes": 2383480,
+    "sha256": "b64da7b5e21b3540a5cfe5a2fd5c650f6f366ffccb9b810eb337ea4677435d31"
+  },
+  {
+    "file": "gir1.2-atk-1.0_2.56.2-1+deb13u2_amd64.deb",
+    "bytes": 26080,
+    "sha256": "724d4d1313deb9b0fd37e43fd667298c6005c3fa52cebed559b401ad7d185c0d"
+  },
+  {
+    "file": "gir1.2-gdkpixbuf-2.0_2.42.12+dfsg-4+deb13u1_amd64.deb",
+    "bytes": 14484,
+    "sha256": "a3d2d45c2c0202b0e80d7a333f8be264bd9244096b1e76e64d265d3e5ed9f9f6"
+  },
+  {
+    "file": "gir1.2-gstreamer-1.0_1.26.2-2_amd64.deb",
+    "bytes": 118184,
+    "sha256": "5d9d78b0b99d190e4c8f5664fd1aed6dfaeea5d23f018894cbe3023374d55190"
+  },
+  {
+    "file": "gir1.2-gtk-3.0_3.24.49-3_amd64.deb",
+    "bytes": 223664,
+    "sha256": "782cadd4f2448349cf563fb522797388c9667330756c2662d83f1bf3a0099e20"
+  },
+  {
+    "file": "gir1.2-harfbuzz-0.0_10.2.0-1+deb13u1_amd64.deb",
+    "bytes": 42172,
+    "sha256": "28aeb4063736737cf0fee6c33512a2b394fd38d6254081e341afdea3d1f5784b"
+  },
+  {
+    "file": "gir1.2-pango-1.0_1.56.3-1_amd64.deb",
+    "bytes": 39084,
+    "sha256": "ca6baf41a343c5f93c3d76226a273dab55793a63ba951b24e4359b394d60aacb"
+  },
+  {
+    "file": "gir1.2-wnck-3.0_43.2-1_amd64.deb",
+    "bytes": 29328,
+    "sha256": "a64bf4a6a4fcc30fe0e036678519e108be372ae04f238bb956beb25edd79a787"
+  },
+  {
+    "file": "libao-common_1.2.2+20180113-1.2_all.deb",
+    "bytes": 7912,
+    "sha256": "876271c4c017f49a6ffe741f52b62f5b4a7d049bf023ed80e6849ae03a6a157f"
+  },
+  {
+    "file": "libao4_1.2.2+20180113-1.2_amd64.deb",
+    "bytes": 33688,
+    "sha256": "cd8e7fca37dc60e53a7097e6c94ddbdb3d83bc46d4a968a5bc4f91eff5a949ed"
+  },
+  {
+    "file": "libaudio2_1.9.4-9_amd64.deb",
+    "bytes": 73304,
+    "sha256": "ae1419f35cfeab682c96b87223d793a7c0b1a406b12fd8a470ad1907b24d9acc"
+  },
+  {
+    "file": "libbrlapi0.8_6.7-3.1+deb13u3_amd64.deb",
+    "bytes": 92960,
+    "sha256": "d8767805735bfae0edbe793fc8b6f6266ac9e55bec88c3d36b567c41b6438ca2"
+  },
+  {
+    "file": "libdotconf0_1.4.1-1_amd64.deb",
+    "bytes": 14468,
+    "sha256": "d61a82516027f5aae585bf0f62f63239215d0af11496bed83df63b1eea9f4fff"
+  },
+  {
+    "file": "libespeak-ng1_1.52.0+dfsg-5_amd64.deb",
+    "bytes": 201844,
+    "sha256": "845886095f5be3ba7680c8e15de068f76d67600275cbd7b6f6c7d00e53c05b34"
+  },
+  {
+    "file": "libharfbuzz-gobject0_10.2.0-1+deb13u1_amd64.deb",
+    "bytes": 32916,
+    "sha256": "17ce468cf0fa04734bf6fce4c80f9d77565c25e8b9f10aab9532892bb07e7845"
+  },
+  {
+    "file": "liblouis-data_3.33.0-1_all.deb",
+    "bytes": 2104168,
+    "sha256": "244f96c92ea9eddee53494dbd916dfddbe3f9e665bc79b58873bfdc94caf0b30"
+  },
+  {
+    "file": "liblouis20_3.33.0-1_amd64.deb",
+    "bytes": 102564,
+    "sha256": "8784e6782e82f2cf5ccfd1277c5c2d30352f382acde726aa4348d6896dff8c34"
+  },
+  {
+    "file": "libpcaudio0_1.3-1_amd64.deb",
+    "bytes": 8880,
+    "sha256": "db95c30434707a60774ed9ad0193ba680e061ae7d99f354a1a93f147317a4ea5"
+  },
+  {
+    "file": "libsonic0_0.2.0-13+b1_amd64.deb",
+    "bytes": 10280,
+    "sha256": "07a1d67546465f07638be05f0931d79e0d6bb1a7831e1f67ac6611d1ba297009"
+  },
+  {
+    "file": "libspeechd-module0_0.12.0-5_amd64.deb",
+    "bytes": 14700,
+    "sha256": "319970e669e1095c136eb0c3904cd758c3198bff2ebd51d8082654b44388c2bd"
+  },
+  {
+    "file": "libspeechd2_0.12.0-5_amd64.deb",
+    "bytes": 22456,
+    "sha256": "4933961cc2ee9e4f4ebdb7b959c913bbdc7f5bd6f11791660088ca915ee977a4"
+  },
+  {
+    "file": "libwnck-3-0_43.2-1_amd64.deb",
+    "bytes": 109740,
+    "sha256": "54d240d236681afee5eead2827bbb777d95422bcc1c760ab0ba160438a0db8fc"
+  },
+  {
+    "file": "libwnck-3-common_43.2-1_all.deb",
+    "bytes": 229648,
+    "sha256": "a1c4e2f59a663d7410339f63ca28d200905124872d4b6cdceb291f67a58976ad"
+  },
+  {
+    "file": "libxres1_2%3a1.2.1-1+b2_amd64.deb",
+    "bytes": 17492,
+    "sha256": "995b467fa9d0d47b4bff46cafd11ac7067f36a0e30cfaa121e73df7f8af93041"
+  },
+  {
+    "file": "orca_48.1-1+deb13u2_all.deb",
+    "bytes": 1982268,
+    "sha256": "418cb7c00cc293d050c031ffcffb7a40e78538a05771911be37889355f3c08aa"
+  },
+  {
+    "file": "python3-brlapi_6.7-3.1+deb13u3_amd64.deb",
+    "bytes": 171104,
+    "sha256": "68044a5982b662370285c87fec20b96a54b715c5783ef2a1e9407a27e7f3dbab"
+  },
+  {
+    "file": "python3-cairo_1.27.0-2_amd64.deb",
+    "bytes": 114228,
+    "sha256": "d6e5d25b82d2cd0de18cfe8ee0bc4d3f9d0e33ee27ec1d4347e391fc3e3bf996"
+  },
+  {
+    "file": "python3-dbus_1.4.0-1_amd64.deb",
+    "bytes": 98424,
+    "sha256": "62d05b99e55dfd06f3cf8a8bd4912d572bd1dfa82bdc9dec5d1e23bdad7c8e46"
+  },
+  {
+    "file": "python3-louis_3.33.0-1_all.deb",
+    "bytes": 24448,
+    "sha256": "94fe44539578ff8790526298fd876e7b865f9311d603815b8dcc31b35fe45ed2"
+  },
+  {
+    "file": "python3-psutil_7.0.0-2_amd64.deb",
+    "bytes": 220368,
+    "sha256": "6ff93ff86128c8cd8bfbd72350ca5eede97a174a1f990d80403a0b9c4edf85e0"
+  },
+  {
+    "file": "python3-setproctitle_1.3.6-2_amd64.deb",
+    "bytes": 18516,
+    "sha256": "9b28afe9a3c46228375d184fd4bde075664d62a735895fa1b9cfc742b3eecd75"
+  },
+  {
+    "file": "python3-speechd_0.12.0-5_all.deb",
+    "bytes": 44608,
+    "sha256": "1a0b0f8418096412aaa6d0d77573eb51e29531f1a0e2f96441941834b0147147"
+  },
+  {
+    "file": "python3-xdg_0.28-2_all.deb",
+    "bytes": 40476,
+    "sha256": "31e90a2b22802fa884fe6f73d70946e7a15c9bd65d7e98098cbe13d2d22f9f20"
+  },
+  {
+    "file": "speech-dispatcher-audio-plugins_0.12.0-5_amd64.deb",
+    "bytes": 37832,
+    "sha256": "f616623b3ed7b56060e51aa4d2bb329b5d43e95da53b951126a653407246c151"
+  },
+  {
+    "file": "speech-dispatcher-espeak-ng_0.12.0-5_amd64.deb",
+    "bytes": 27460,
+    "sha256": "6f67702888ab9b4ab81cf0fa80e175acf942849c9d5509341a198ba62e8a98ce"
+  },
+  {
+    "file": "speech-dispatcher_0.12.0-5_amd64.deb",
+    "bytes": 3987636,
+    "sha256": "fd90ec8dd5416a92ea29479435e00276343bf48600229c7af85e9dd85a9d1a7f"
+  },
+  {
+    "file": "xkbset_0.8-1_amd64.deb",
+    "bytes": 19400,
+    "sha256": "b8ea96930fec184bc71cd43b819049623a03287e4a2d6df40fb2ef3f3d485368"
+  }
+]

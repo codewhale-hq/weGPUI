@@ -1,0 +1,322 @@
+[
+  {
+    "id": "light/button_default",
+    "implementation": "weui",
+    "difference_bbox": [
+      284,
+      492,
+      396,
+      1556
+    ]
+  },
+  {
+    "id": "light/loading",
+    "implementation": "weui",
+    "difference_bbox": [
+      268,
+      308,
+      482,
+      340
+    ]
+  },
+  {
+    "id": "light/loadmore",
+    "implementation": "weui",
+    "difference_bbox": [
+      295,
+      323,
+      329,
+      356
+    ]
+  },
+  {
+    "id": "light/form_vcode-countdown",
+    "implementation": "gpui",
+    "difference_bbox": [
+      382,
+      618,
+      416,
+      642
+    ]
+  },
+  {
+    "id": "light/toast-loading",
+    "implementation": "weui",
+    "difference_bbox": [
+      335,
+      697,
+      417,
+      779
+    ]
+  },
+  {
+    "id": "light-brand/button_default",
+    "implementation": "weui",
+    "difference_bbox": [
+      284,
+      492,
+      396,
+      1556
+    ]
+  },
+  {
+    "id": "light-brand/loading",
+    "implementation": "weui",
+    "difference_bbox": [
+      268,
+      308,
+      482,
+      340
+    ]
+  },
+  {
+    "id": "light-brand/loadmore",
+    "implementation": "weui",
+    "difference_bbox": [
+      295,
+      323,
+      329,
+      357
+    ]
+  },
+  {
+    "id": "light-brand/toast-loading",
+    "implementation": "weui",
+    "difference_bbox": [
+      335,
+      697,
+      417,
+      779
+    ]
+  },
+  {
+    "id": "light-care/button_default",
+    "implementation": "weui",
+    "difference_bbox": [
+      284,
+      492,
+      396,
+      1556
+    ]
+  },
+  {
+    "id": "light-care/loading",
+    "implementation": "weui",
+    "difference_bbox": [
+      268,
+      308,
+      482,
+      340
+    ]
+  },
+  {
+    "id": "light-care/loadmore",
+    "implementation": "weui",
+    "difference_bbox": [
+      295,
+      323,
+      330,
+      356
+    ]
+  },
+  {
+    "id": "light-care/toast-loading",
+    "implementation": "weui",
+    "difference_bbox": [
+      335,
+      697,
+      417,
+      779
+    ]
+  },
+  {
+    "id": "light-care-brand/button_default",
+    "implementation": "weui",
+    "difference_bbox": [
+      284,
+      492,
+      396,
+      1556
+    ]
+  },
+  {
+    "id": "light-care-brand/loading",
+    "implementation": "weui",
+    "difference_bbox": [
+      268,
+      308,
+      482,
+      340
+    ]
+  },
+  {
+    "id": "light-care-brand/toast-loading",
+    "implementation": "weui",
+    "difference_bbox": [
+      335,
+      697,
+      417,
+      779
+    ]
+  },
+  {
+    "id": "dark/button_default",
+    "implementation": "weui",
+    "difference_bbox": [
+      284,
+      492,
+      396,
+      1556
+    ]
+  },
+  {
+    "id": "dark/loading",
+    "implementation": "weui",
+    "difference_bbox": [
+      268,
+      308,
+      482,
+      340
+    ]
+  },
+  {
+    "id": "dark/loadmore",
+    "implementation": "weui",
+    "difference_bbox": [
+      295,
+      323,
+      329,
+      357
+    ]
+  },
+  {
+    "id": "dark/toast-loading",
+    "implementation": "weui",
+    "difference_bbox": [
+      335,
+      697,
+      417,
+      779
+    ]
+  },
+  {
+    "id": "dark-brand/button_default",
+    "implementation": "weui",
+    "difference_bbox": [
+      284,
+      492,
+      396,
+      1556
+    ]
+  },
+  {
+    "id": "dark-brand/loading",
+    "implementation": "weui",
+    "difference_bbox": [
+      268,
+      308,
+      482,
+      340
+    ]
+  },
+  {
+    "id": "dark-brand/loadmore",
+    "implementation": "weui",
+    "difference_bbox": [
+      295,
+      323,
+      329,
+      357
+    ]
+  },
+  {
+    "id": "dark-brand/toast-loading",
+    "implementation": "weui",
+    "difference_bbox": [
+      335,
+      697,
+      417,
+      779
+    ]
+  },
+  {
+    "id": "dark-care/button_default",
+    "implementation": "weui",
+    "difference_bbox": [
+      284,
+      492,
+      396,
+      1556
+    ]
+  },
+  {
+    "id": "dark-care/loading",
+    "implementation": "weui",
+    "difference_bbox": [
+      268,
+      308,
+      482,
+      340
+    ]
+  },
+  {
+    "id": "dark-care/loadmore",
+    "implementation": "weui",
+    "difference_bbox": [
+      295,
+      323,
+      329,
+      356
+    ]
+  },
+  {
+    "id": "dark-care/toast-loading",
+    "implementation": "weui",
+    "difference_bbox": [
+      335,
+      697,
+      417,
+      779
+    ]
+  },
+  {
+    "id": "dark-care-brand/button_default",
+    "implementation": "weui",
+    "difference_bbox": [
+      284,
+      492,
+      396,
+      1556
+    ]
+  },
+  {
+    "id": "dark-care-brand/loading",
+    "implementation": "weui",
+    "difference_bbox": [
+      268,
+      308,
+      482,
+      340
+    ]
+  },
+  {
+    "id": "dark-care-brand/loadmore",
+    "implementation": "weui",
+    "difference_bbox": [
+      295,
+      323,
+      329,
+      357
+    ]
+  },
+  {
+    "id": "dark-care-brand/toast-loading",
+    "implementation": "weui",
+    "difference_bbox": [
+      335,
+      697,
+      417,
+      779
+    ]
+  }
+]

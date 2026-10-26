@@ -1,0 +1,42 @@
+01:14:50.615595 - SPEECH OUTPUT: 'Screen reader on.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+01:14:53.975712 - SPEECH OUTPUT: 'weGPUI frame' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+01:14:54.313137 - SPEECH OUTPUT: 'tab' {'established': False}
+01:14:54.486459 - SPEECH OUTPUT: 'tab' {'established': False}
+01:14:54.671897 - SPEECH OUTPUT: 'tab' {'established': False}
+01:14:54.850746 - SPEECH OUTPUT: 'Navigation button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+01:14:54.877502 - SPEECH OUTPUT: 'tab' {'established': False}
+01:14:54.977547 - SPEECH OUTPUT: 'Content button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+01:14:55.050759 - SPEECH OUTPUT: 'tab' {'established': False}
+01:14:55.088226 - SPEECH OUTPUT: 'WeUI home link.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+01:14:55.231565 - SPEECH OUTPUT: 'tab' {'established': False}
+01:14:55.301397 - SPEECH OUTPUT: 'Popout button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+01:14:55.426980 - SPEECH OUTPUT: 'insert' {'established': False}
+01:14:55.472816 - SPEECH OUTPUT: 'Popout button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+01:14:57.466035 - SPEECH OUTPUT: 'return' {'established': False}
+01:14:57.671020 - SPEECH OUTPUT: 'insert' {'established': False}
+01:14:57.690529 - SPEECH OUTPUT: 'Popout button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+01:14:59.740550 - SPEECH OUTPUT: 'space' {'established': False}
+01:15:00.543966 - SPEECH OUTPUT: 'tab' {'established': False}
+01:15:00.582764 - SPEECH OUTPUT: 'Mask button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+01:15:00.745763 - SPEECH OUTPUT: 'insert' {'established': False}
+01:15:00.787260 - SPEECH OUTPUT: 'Mask button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+01:15:02.785848 - SPEECH OUTPUT: 'return' {'established': False}
+01:15:02.995714 - SPEECH OUTPUT: 'insert' {'established': False}
+01:15:03.015638 - SPEECH OUTPUT: 'Mask button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+01:15:05.131560 - SPEECH OUTPUT: 'space' {'established': False}
+01:15:05.950960 - SPEECH OUTPUT: 'tab' {'established': False}
+01:15:06.002845 - SPEECH OUTPUT: 'Navigation button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+01:15:06.162023 - SPEECH OUTPUT: 'insert' {'established': False}
+01:15:06.204139 - SPEECH OUTPUT: 'Navigation button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+01:15:08.201227 - SPEECH OUTPUT: 'return' {'established': False}
+01:15:08.410307 - SPEECH OUTPUT: 'insert' {'established': False}
+01:15:08.426409 - SPEECH OUTPUT: 'Navigation button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+01:15:10.477869 - SPEECH OUTPUT: 'space' {'established': False}
+01:15:11.283641 - SPEECH OUTPUT: 'tab' {'established': False}
+01:15:11.326365 - SPEECH OUTPUT: 'Content button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+01:15:11.485476 - SPEECH OUTPUT: 'insert' {'established': False}
+01:15:11.528505 - SPEECH OUTPUT: 'Content button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+01:15:13.523320 - SPEECH OUTPUT: 'return' {'established': False}
+01:15:13.727310 - SPEECH OUTPUT: 'insert' {'established': False}
+01:15:13.743866 - SPEECH OUTPUT: 'Content button.' {'established': False, 'family': {'name': None, 'gender': None, 'lang': None, 'dialect': None, 'variant': None}}
+01:15:15.797743 - SPEECH OUTPUT: 'space' {'established': False}

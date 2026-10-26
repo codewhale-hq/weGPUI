@@ -1,0 +1,106 @@
+[
+  {
+    "mode": "light",
+    "neutral_peak_contrast": 15.313,
+    "footer_target": [
+      44,
+      44
+    ],
+    "bottom_padding": 40,
+    "agreement_bounds": [
+      343,
+      80
+    ]
+  },
+  {
+    "mode": "light-brand",
+    "neutral_peak_contrast": 15.313,
+    "footer_target": [
+      44,
+      44
+    ],
+    "bottom_padding": 40,
+    "agreement_bounds": [
+      343,
+      80
+    ]
+  },
+  {
+    "mode": "light-care",
+    "neutral_peak_contrast": 17.937,
+    "footer_target": [
+      44,
+      44
+    ],
+    "bottom_padding": 40,
+    "agreement_bounds": [
+      343,
+      80
+    ]
+  },
+  {
+    "mode": "light-care-brand",
+    "neutral_peak_contrast": 17.937,
+    "footer_target": [
+      44,
+      44
+    ],
+    "bottom_padding": 40,
+    "agreement_bounds": [
+      343,
+      80
+    ]
+  },
+  {
+    "mode": "dark",
+    "neutral_peak_contrast": 12.12,
+    "footer_target": [
+      44,
+      44
+    ],
+    "bottom_padding": 40,
+    "agreement_bounds": [
+      343,
+      80
+    ]
+  },
+  {
+    "mode": "dark-brand",
+    "neutral_peak_contrast": 12.12,
+    "footer_target": [
+      44,
+      44
+    ],
+    "bottom_padding": 40,
+    "agreement_bounds": [
+      343,
+      80
+    ]
+  },
+  {
+    "mode": "dark-care",
+    "neutral_peak_contrast": 13.77,
+    "footer_target": [
+      44,
+      44
+    ],
+    "bottom_padding": 40,
+    "agreement_bounds": [
+      343,
+      80
+    ]
+  },
+  {
+    "mode": "dark-care-brand",
+    "neutral_peak_contrast": 13.77,
+    "footer_target": [
+      44,
+      44
+    ],
+    "bottom_padding": 40,
+    "agreement_bounds": [
+      343,
+      80
+    ]
+  }
+]

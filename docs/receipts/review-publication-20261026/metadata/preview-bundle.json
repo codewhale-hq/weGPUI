@@ -1,0 +1,15 @@
+{
+  "file": "wegpui-preview-62740d2f38a5.tar.gz",
+  "archive_sha256": "916be06ac15a0cd78e7bcd765e80c3536fe19d294f04e81ee8ac20b4092531f9",
+  "source_sha256": "62740d2f38a512e4389b4a0199896d85cc4199321639df071509b69fa3b6caae",
+  "verification_passed": true,
+  "identical_repeat_succeeded": true,
+  "source_matches_current_tree": true,
+  "base_revision": "295dd14",
+  "new_policy_files_included": [
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "SECURITY.md"
+  ],
+  "qualification": "Source archive integrity/reproducibility, not installer or platform acceptance."
+}

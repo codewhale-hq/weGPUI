@@ -1,0 +1,22 @@
+--- a/orca/orca_platform.py
++++ b/orca/orca_platform.py
+@@ -38,7 +38,7 @@
+ 
+ # "--prefix" parameter used when configuring the build.
+ #
+-prefix      = "/usr"
++prefix      = "<reader-tools>/root/usr"
+ 
+ # The package name (should be "orca").
+ #
+@@ -46,8 +46,8 @@
+ 
+ # The location of the data directory (usually "share").
+ #
+-datadir = os.path.join('/usr','share')
++datadir = '<reader-tools>/root/usr/share'
+ 
+ # The directory where we could find liblouis translation tables.
+ #
+-tablesdir = "/usr/share/liblouis/tables"
++tablesdir = "<reader-tools>/root/usr/share/liblouis/tables"

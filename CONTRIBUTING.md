@@ -22,16 +22,28 @@ cargo fetch --locked                      # once, to fill the dependency cache
 cargo fmt --all -- --check
 cargo build --all-targets --locked --offline
 cargo test --locked --offline
+cargo test --example gallery --locked --offline
 cargo clippy --all-targets --locked --offline -- -D warnings
 RUSTDOCFLAGS='-D warnings -W missing-docs' cargo doc --no-deps --locked --offline
 cargo run --example minimal               # small consumer app
 cargo run --example gallery               # every upstream example page
 ```
 
-These are the source gates (fmt, build, tests, strict Clippy and documentation).
+These are the source gates (fmt, build, tests, strict Clippy and documentation), with the
+gallery geometry contracts run separately. Tooling and website regressions run with:
+
+```sh
+python3 -m unittest discover -s scripts/tests -v
+python3 -m unittest discover -s website/tests -v
+```
+
+The packaged GPUI test target is incomplete. The extracted text-contract harnesses under
+`docs/proposals/gpui-text-i18n`, `gpui-trailing-space-wrap` and `gpui-cjk-closing` exercise the
+actual vendored functions with their documented minimal types; they do not replace a complete
+upstream GPUI test run. Linux CI runs all four harnesses separately.
 Respect `CARGO_TARGET_DIR` in any script you add.
 
-Platform notes: both examples enable `gpui_platform`'s `wayland`/`x11` features on Linux.
+Platform notes: the desktop examples enable `gpui_platform`'s `wayland`/`x11` features on Linux.
 Isolated X11 verification is recorded in [docs/PLATFORMS.md](docs/PLATFORMS.md); sampled actual
 Wayland runtime is recorded in `docs/receipts/wayland-20261025/`, with full acceptance outstanding.
 iOS has an unqualified backend/bundle scaffold; Android has no upstream

@@ -2,3 +2,17 @@
 a670eafc621cd774a6d1874f91a2105110d79a3e3b31247c2fd6d58a81e9c87d  vendor/gpui_pre/src/text_system/line_wrapper.rs [patched]
 80d6a2e148d5383572fb4f953a4c3040baa017ef813eca0b913987700898ed7b  word-break.patch
 34f61c1cfd36fc9c436af09308c963822ae27a45a84feb21a77ba5c9e051f1c0  gpui-pre-0.3.9.crate [registry archive]
+
+# Historical step 2 prototype (initial hold; later publication authorization: docs/REVIEW-2026-10-26.md)
+b39e05a8a8f7b36e13ffe1211d2c2993f68f2ce4cada87ad3414492a42e927b4  gpui-pre-0.3.9/src/text_system.rs [locked registry source]
+a78d230d050bbf17bd968612da1d84f4c8aaefc39f82100e11b2b3a6990d45e4  gpui-pre-0.3.9/src/text_system/line_layout.rs [locked registry source]
+25bbf6a409ce8e70d1265a858f2d2abdbbc2c110d515abd31bb0a379cdce54e3  gpui-pre-0.3.9/src/text_system/line.rs [locked registry source]
+3ffcc422356924ae4d6eef864421f56588be65cd931c8fe35d7e5e6438c23346  gpui-pre-0.3.9/src/elements/text.rs [locked registry source]
+97a9bd817a51810d29bc92eff033e6310150e597d4d7e31cb8b79aa2db1413ea  vendor/gpui_pre/src/text_system.rs [step 2 prototype; byte-identical to supplied source]
+7c46681f528ba2299f45f6390b1613c7c46d47c5b2de442e00f47ee4c62db1fc  vendor/gpui_pre/src/text_system/line_layout.rs [step 2 prototype; byte-identical to supplied source]
+f8d61079493afe7815c5db027e3ce3d66f1c80bdd1c634f5a39f8814ca6a287b  vendor/gpui_pre/src/text_system/line.rs [step 2 prototype; byte-identical to supplied source]
+c0b02ee20e6500fb4d75a603dd9e5f0f0a7c5008d01da8c28e04e20b6178d912  vendor/gpui_pre/src/elements/text.rs [step 2 prototype; byte-identical to supplied source]
+eda32d8770882c2208f520b3d64640a2129b87eabaa6dfe6f8c39ea842df23b2  vendor/gpui_pre/src/text_system/logical_wrap.rs [step 2 prototype; byte-identical to supplied source]
+ed451e433e34dd1cee143ba593b946bfd852492b7908c2d56bfcec4d2276c817  logical-wrap.patch
+3b188f44ad555200aae634c078b4f35b7aa3ee1ec3556ec00bd4b4092a69c93a  verify-word-break.py
+17c6662454d437080783b6c396f373a463b18291ade071e07c5791123ec7b741  verify-logical-wrap.py

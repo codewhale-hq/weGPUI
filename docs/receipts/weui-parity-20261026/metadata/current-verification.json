@@ -1,0 +1,12 @@
+{
+  "source_files": 305,
+  "paired_scenes": 1056,
+  "image_files_verified": 2112,
+  "source_mismatches": [],
+  "image_mismatches": [],
+  "reference_page_errors": 0,
+  "current_binary_sha256": "4615ee3a813d142147e77ab77e03bddf207d26539828daa9720282bce47635e3",
+  "frozen_binary_sha256": "4615ee3a813d142147e77ab77e03bddf207d26539828daa9720282bce47635e3",
+  "manifest_binary_sha256": "4615ee3a813d142147e77ab77e03bddf207d26539828daa9720282bce47635e3",
+  "passed": true
+}

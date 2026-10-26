@@ -1,0 +1,613 @@
+--- a/src/components/dialog.rs
++++ b/src/components/dialog.rs
+@@ -112,7 +112,7 @@
+             on_dismiss: None,
+         }
+     }
+-    /// Sets the semibold title and uses it as the accessible name, replacing any earlier label.
++    /// Sets the medium-weight title and uses it as the accessible name, replacing any earlier label.
+     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
+         let title = title.into();
+         self.label = title.clone();
+@@ -120,7 +120,7 @@
+         self
+     }
+     /// Appends a text paragraph to the body; it becomes the accessible name if none is set yet.
+-    /// Without a title the body is drawn semibold in the primary text colour.
++    /// Without a title the body is drawn medium-weight in the primary text colour.
+     pub fn body(mut self, text: impl Into<SharedString>) -> Self {
+         let text = text.into();
+         if self.label.is_empty() {
+@@ -214,7 +214,7 @@
+                 .aria_label(button.label.clone())
+                 .relative()
+                 .text_size(px(17.))
+-                .font_weight(FontWeight::SEMIBOLD)
++                .font_weight(FontWeight::MEDIUM)
+                 .text_color(color)
+                 .overflow_hidden()
+                 .cursor_pointer()
+@@ -321,7 +321,7 @@
+                 } else {
+                     el.min_h(px(40.))
+                         .pt(px(32.))
+-                        .font_weight(FontWeight::SEMIBOLD)
++                        .font_weight(FontWeight::MEDIUM)
+                         .text_color(t.fg_0)
+                         .flex()
+                         .flex_col()
+@@ -351,7 +351,7 @@
+                         .pb(px(16.))
+                         .px(px(24.))
+                         .when(android, |el| el.text_start(dir))
+-                        .font_weight(FontWeight::SEMIBOLD)
++                        .font_weight(FontWeight::MEDIUM)
+                         .text_size(px(if android { 22. } else { 17. }))
+                         .line_height(relative(1.4))
+                         .text_color(t.fg_0)
+--- a/src/components/half_screen_dialog.rs
++++ b/src/components/half_screen_dialog.rs
+@@ -213,7 +213,7 @@
+             on_dismiss: None,
+         }
+     }
+-    /// Sets the 15 px semibold title (`__title`) and uses it as the accessible name. Not drawn when
++    /// Sets the 15 px medium-weight title (`__title`) and uses it as the accessible name. Not drawn when
+     /// [`HalfScreenDialog::main`] is set.
+     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
+         let title = title.into();
+@@ -373,7 +373,7 @@
+                     div()
+                         .child(
+                             div()
+-                                .font_weight(FontWeight::SEMIBOLD)
++                                .font_weight(FontWeight::MEDIUM)
+                                 .text_size(px(15.))
+                                 .text_color(t.fg_0)
+                                 .child(title),
+--- a/src/components/form.rs
++++ b/src/components/form.rs
+@@ -114,7 +114,7 @@
+         .child(text)
+ }
+ 
+-/// Inline link for tips and agreements: link-coloured `text`, semibold when `bold` (as in
++/// Inline link for tips and agreements: link-coloured `text`, medium-weight when `bold` (as in
+ /// `.weui-cells__tips a`). It is a `Role::Link` tab stop named by `text` with a [`dual_focus_ring`];
+ /// `on_click` runs on click or Enter/Space and the click does not reach the enclosing row.
+ /// Call [`RevealFocus::reveal_focus`] after styling it to reveal the link inside a
+@@ -133,7 +133,7 @@
+         .role(Role::Link)
+         .aria_label(text.clone())
+         .text_color(t.link)
+-        .when(bold, |el| el.font_weight(FontWeight::SEMIBOLD))
++        .when(bold, |el| el.font_weight(FontWeight::MEDIUM))
+         .cursor_pointer()
+         .focusable()
+         .tab_stop(true)
+@@ -713,7 +713,7 @@
+             bottom_fixed: None,
+         }
+     }
+-    /// Sets the page title (`.weui-form__title`): 22px semibold text, exposed as a level-2
++    /// Sets the page title (`.weui-form__title`): 22px medium text, exposed as a level-2
+     /// heading named by the text. None by default.
+     pub fn title(mut self, title: impl Into<SharedString>) -> Self {
+         self.title = Some(title.into());
+@@ -775,7 +775,7 @@
+                             .aria_level(2)
+                             .aria_label(title.clone())
+                             .text_size(px(22.))
+-                            .font_weight(FontWeight::SEMIBOLD)
++                            .font_weight(FontWeight::MEDIUM)
+                             .line_height(relative(1.36))
+                             .child(title),
+                     )
+--- a/examples/gallery/pages/half_screen_dialog.rs
++++ b/examples/gallery/pages/half_screen_dialog.rs
+@@ -139,7 +139,7 @@
+             .child(
+                 div()
+                     .text_size(px(17.))
+-                    .font_weight(FontWeight::SEMIBOLD)
++                    .font_weight(FontWeight::MEDIUM)
+                     .line_height(relative(1.4))
+                     .child(tr("辅助描述内容，可根据实际需要安排")),
+             )
+--- a/examples/gallery/pages/layers.rs
++++ b/examples/gallery/pages/layers.rs
+@@ -10,7 +10,6 @@
+ 
+ const W: f32 = 180.;
+ const H: f32 = 320.;
+-const PERSPECTIVE: f32 = 1000.;
+ const TRANSITION: Duration = Duration::from_millis(500);
+ const CELL: f32 = 3.;
+ const COLS: usize = (W / CELL) as usize;
+@@ -20,7 +19,7 @@
+     name: &'static str,
+     title: &'static str,
+     image: Option<&'static str>,
+-    z: f32,
++    depth: usize,
+ }
+ 
+ const LAYERS: [LayerSpec; 4] = [
+@@ -28,25 +27,25 @@
+         name: "content",
+         title: "Content",
+         image: Some("layers_content.png"),
+-        z: 120. - 3. * 80.,
++        depth: 3,
+     },
+     LayerSpec {
+         name: "navigation",
+         title: "Navigation",
+         image: Some("layers_navigation.png"),
+-        z: 120. - 2. * 80.,
++        depth: 2,
+     },
+     LayerSpec {
+         name: "mask",
+         title: "Mask",
+         image: None,
+-        z: 120. - 80.,
++        depth: 1,
+     },
+     LayerSpec {
+         name: "popout",
+         title: "Popout",
+         image: Some("layers_popout.png"),
+-        z: 120.,
++        depth: 0,
+     },
+ ];
+ 
+@@ -227,6 +226,9 @@
+     }
+ 
+     fn activate(&mut self, i: usize, window: &mut Window, cx: &mut Context<Self>) {
++        if self.layers[i].opacity.to <= 0. {
++            return;
++        }
+         let reduce = cx.reduce_motion();
+         if self.layers.iter().any(|l| l.transform.to < 1.) {
+             self.info = 0;
+@@ -265,6 +267,7 @@
+             }
+         }
+         self.transform(i, 0., window, cx);
++        window.focus(&self.focus[i], cx);
+     }
+ 
+     fn hit(&self, position: Point<Pixels>) -> Option<usize> {
+@@ -359,13 +362,14 @@
+     a: f32,
+     z: f32,
+     center: (f32, f32),
+-    origin: (f32, f32),
++    width: f32,
++    height: f32,
+ }
+ 
+ impl Projector {
+     fn project(&self, x: f32, y: f32) -> Point<Pixels> {
+         let a = self.a;
+-        let (mut px_, mut py_, mut pz) = (x - W / 2., y - H / 2., self.z * a);
++        let (mut px_, mut py_, pz) = (x - self.width / 2., y - self.height / 2., self.z * a);
+         px_ += (-15f32 * a).to_radians().tan() * py_;
+         let rz = (10. * a).to_radians();
+         let (s, c) = rz.sin_cos();
+@@ -374,17 +378,22 @@
+         py_ = ny;
+         let rx = (45. * a).to_radians();
+         let (s, c) = rx.sin_cos();
+-        let (ny, nz) = (py_ * c - pz * s, py_ * s + pz * c);
++        let ny = py_ * c - pz * s;
+         py_ = ny;
+-        pz = nz;
+         px_ += 15. * a;
+         let wx = self.center.0 + px_;
+         let wy = self.center.1 + py_;
+-        let f = PERSPECTIVE / (PERSPECTIVE - pz);
+-        point(
+-            px(self.origin.0 + (wx - self.origin.0) * f),
+-            px(self.origin.1 + (wy - self.origin.1) * f),
+-        )
++        point(px(wx), px(wy))
++    }
++
++    fn transformation(&self, scale: f32) -> TransformationMatrix {
++        let origin = self.project(0., 0.);
++        let x = self.project(1., 0.) - origin;
++        let y = self.project(0., 1.) - origin;
++        TransformationMatrix {
++            rotation_scale: [[x.x.as_f32(), y.x.as_f32()], [x.y.as_f32(), y.y.as_f32()]],
++            translation: [origin.x.as_f32() * scale, origin.y.as_f32() * scale],
++        }
+     }
+ }
+ 
+@@ -407,6 +416,17 @@
+     border: Option<Hsla>,
+     cells: Option<(Rc<Vec<Hsla>>, std::sync::Arc<RenderImage>)>,
+     label: (&'static str, Hsla),
++    focused: bool,
++}
++
++fn layer_size(viewport: Size<Pixels>) -> (f32, f32) {
++    if viewport.width >= px(414.) && viewport.height >= px(640.) {
++        (200., 355.)
++    } else if viewport.width >= px(375.) && viewport.height >= px(603.) {
++        (180., 320.)
++    } else {
++        (150., 266.)
++    }
+ }
+ 
+ impl Render for LayersPage {
+@@ -415,7 +435,8 @@
+         let reduce = cx.reduce_motion();
+         self.load_cells(window, cx);
+         let viewport = window.viewport_size();
+-        let origin = (viewport.width.as_f32() / 2., viewport.height.as_f32() / 2.);
++        let (layer_width, layer_height) = layer_size(viewport);
++        let compact = viewport.width <= px(320.);
+         let mut animating = false;
+         let mut paint = vec![];
+         for (i, spec) in LAYERS.iter().enumerate() {
+@@ -438,7 +459,11 @@
+             };
+             paint.push(PaintLayer {
+                 a,
+-                z: spec.z,
++                z: if compact {
++                    140. - spec.depth as f32 * 60.
++                } else {
++                    120. - spec.depth as f32 * 80.
++                },
+                 opacity,
+                 bg,
+                 border: (spec.name == "popout" && !layer.pic).then(|| Hsla::from(rgba(0xcbcbcb80))),
+@@ -448,6 +473,7 @@
+                     None
+                 },
+                 label: (spec.title, label_color.opacity(label)),
++                focused: self.focus[i].is_focused(window) && window.last_input_was_keyboard(),
+             });
+         }
+         if animating {
+@@ -459,25 +485,30 @@
+             move |bounds, _, window, cx| {
+                 let center = (
+                     bounds.origin.x.as_f32() + bounds.size.width.as_f32() / 2.,
+-                    bounds.origin.y.as_f32() + H / 2.,
++                    bounds.origin.y.as_f32() + layer_height / 2.,
+                 );
+                 let mut quads = quads.borrow_mut();
++                let mut focus = None;
+                 for (i, layer) in paint.iter().enumerate() {
+                     let p = Projector {
+                         a: layer.a,
+                         z: layer.z,
+                         center,
+-                        origin,
++                        width: layer_width,
++                        height: layer_height,
+                     };
+                     let outline = [
+                         p.project(0., 0.),
+-                        p.project(W, 0.),
+-                        p.project(W, H),
+-                        p.project(0., H),
++                        p.project(layer_width, 0.),
++                        p.project(layer_width, layer_height),
++                        p.project(0., layer_height),
+                     ];
+                     quads[i] = Some(outline);
+                     if layer.opacity <= 0.01 {
+                         continue;
++                    }
++                    if layer.focused {
++                        focus = Some(p);
+                     }
+                     let alpha = |c: Hsla| {
+                         let mut c = c;
+@@ -490,14 +521,15 @@
+                         .as_ref()
+                         .filter(|_| layer.a < 0.001 && layer.opacity > 0.99)
+                     {
+-                        let rect = Bounds::new(outline[0], size(px(W), px(H)));
++                        let rect = Bounds::new(outline[0], size(px(layer_width), px(layer_height)));
+                         let isz = image.size(0);
+-                        let scale = (W / isz.width.0 as f32).min(H / isz.height.0 as f32);
++                        let scale = (layer_width / isz.width.0 as f32)
++                            .min(layer_height / isz.height.0 as f32);
+                         let (dw, dh) = (isz.width.0 as f32 * scale, isz.height.0 as f32 * scale);
+                         let dest = Bounds::new(
+                             point(
+-                                rect.origin.x + px((W - dw) / 2.),
+-                                rect.origin.y + px((H - dh) / 2.),
++                                rect.origin.x + px((layer_width - dw) / 2.),
++                                rect.origin.y + px((layer_height - dh) / 2.),
+                             ),
+                             size(px(dw), px(dh)),
+                         );
+@@ -508,9 +540,10 @@
+                         let mut grid = Vec::with_capacity((COLS + 1) * (ROWS + 1));
+                         for r in 0..=ROWS {
+                             for c in 0..=COLS {
+-                                grid.push(
+-                                    p.project((c as f32 * CELL).min(W), (r as f32 * CELL).min(H)),
+-                                );
++                                grid.push(p.project(
++                                    (c as f32 * CELL).min(W) * layer_width / W,
++                                    (r as f32 * CELL).min(H) * layer_height / H,
++                                ));
+                             }
+                         }
+                         let at = |c: usize, r: usize| grid[r * (COLS + 1) + c];
+@@ -528,10 +561,20 @@
+                     if let Some(border) = layer.border {
+                         let b = alpha(border);
+                         let edges = [
+-                            [(0., 0.), (W, 0.), (W, 1.), (0., 1.)],
+-                            [(0., H - 1.), (W, H - 1.), (W, H), (0., H)],
+-                            [(0., 0.), (1., 0.), (1., H), (0., H)],
+-                            [(W - 1., 0.), (W, 0.), (W, H), (W - 1., H)],
++                            [(0., 0.), (layer_width, 0.), (layer_width, 1.), (0., 1.)],
++                            [
++                                (0., layer_height - 1.),
++                                (layer_width, layer_height - 1.),
++                                (layer_width, layer_height),
++                                (0., layer_height),
++                            ],
++                            [(0., 0.), (1., 0.), (1., layer_height), (0., layer_height)],
++                            [
++                                (layer_width - 1., 0.),
++                                (layer_width, 0.),
++                                (layer_width, layer_height),
++                                (layer_width - 1., layer_height),
++                            ],
+                         ];
+                         for e in edges {
+                             let q = e.map(|(x, y)| p.project(x, y));
+@@ -550,10 +593,37 @@
+                             window
+                                 .text_system()
+                                 .shape_line(text.into(), px(14.), &[run], None);
+-                        let anchor = p.project(W / 2., H - 5. - 14. * 1.6 / 2.);
+-                        let at = point(anchor.x - line.width / 2., anchor.y - px(14. * 1.6 / 2.));
+-                        line.paint(at, px(14. * 1.6), TextAlign::Left, None, window, cx)
+-                            .ok();
++                        let baseline = layer_height - 5.
++                            - (14. * 1.6 - line.ascent.as_f32() - line.descent.as_f32()) / 2.
++                            - line.descent.as_f32();
++                        let family = if style.font_family.starts_with('.') {
++                            "system-ui"
++                        } else {
++                            style.font_family.as_ref()
++                        };
++                        let family = family.replace('&', "&amp;").replace('"', "&quot;")
++                            .replace('<', "&lt;").replace('>', "&gt;");
++                        let data = format!(
++                            "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{layer_width}\" height=\"{layer_height}\"><text x=\"{}\" y=\"{baseline}\" font-family=\"{family}\" font-size=\"14\" text-anchor=\"middle\">{text}</text></svg>",
++                            layer_width / 2.
++                        );
++                        let path: SharedString = format!("layers-label:{layer_width}:{layer_height}:{family}:{text}").into();
++                        window.paint_svg(
++                            Bounds::new(point(px(0.), px(0.)), size(px(layer_width), px(layer_height))),
++                            path, Some(data.as_bytes()), p.transformation(window.scale_factor()), color, cx,
++                        ).ok();
++                    }
++                }
++                if let Some(projector) = focus {
++                    for (inset, color) in [(4., black()), (2., white())] {
++                        for edge in [
++                            [(0., 0.), (layer_width, 0.), (layer_width, inset), (0., inset)],
++                            [(0., layer_height - inset), (layer_width, layer_height - inset), (layer_width, layer_height), (0., layer_height)],
++                            [(0., 0.), (inset, 0.), (inset, layer_height), (0., layer_height)],
++                            [(layer_width - inset, 0.), (layer_width, 0.), (layer_width, layer_height), (layer_width - inset, layer_height)],
++                        ] {
++                            fill(window, &edge.map(|(x, y)| projector.project(x, y)), color);
++                        }
+                     }
+                 }
+             },
+@@ -562,19 +632,27 @@
+         .top_0()
+         .left_0()
+         .w_full()
+-        .h(px(H));
++        .h(px(layer_height));
+         let (_, title, desc) = INFO[self.info];
+         let (title, desc) = (tr(title), tr(desc));
+         let header = div()
+-            .p(px(40.))
++            .py(px(40.))
++            .px(px(if compact { 20. } else { 40. }))
+             .child(
+                 div()
++                    .id("layers-title")
++                    .role(Role::Heading)
++                    .aria_level(2)
++                    .aria_label(title)
+                     .text_size(px(20.))
+                     .line_height(relative(1.6))
+                     .child(title),
+             )
+             .child(
+                 div()
++                    .id("layers-description")
++                    .role(Role::Paragraph)
++                    .aria_label(desc)
+                     .mt(px(4.))
+                     .min_h(px(14. * 1.6 * 3.))
+                     .text_size(px(14.))
+@@ -582,7 +660,12 @@
+                     .text_color(t.fg_1)
+                     .child(desc),
+             );
+-        let buttons = (0..4).rev().map(|i| {
++        let visible_layers: Vec<_> = (0..4)
++            .rev()
++            .filter(|&i| self.layers[i].opacity.to > 0.)
++            .collect();
++        let buttons = visible_layers.into_iter().map(|i| {
++            let weak = cx.entity().downgrade();
+             div()
+                 .id(("layer", i))
+                 .role(Role::Button)
+@@ -591,12 +674,15 @@
+                 .tab_stop(true)
+                 .absolute()
+                 .top_0()
+-                .left(px(-W / 2.))
+-                .w(px(W))
+-                .h(px(H))
++                .left(px(-layer_width / 2.))
++                .w(px(layer_width))
++                .h(px(layer_height))
+                 .border_2()
+                 .border_color(transparent_black())
+-                .focus_visible(|s| s.border_color(t.brand))
++                .on_a11y_action(AccessibleAction::Click, move |_, window, cx| {
++                    weak.update(cx, |this, cx| this.activate(i, window, cx))
++                        .ok();
++                })
+                 .on_click(cx.listener(move |this, e: &ClickEvent, window, cx| {
+                     if e.is_keyboard() {
+                         this.activate(i, window, cx);
+@@ -615,7 +701,7 @@
+                     .top(px(-120.))
+                     .left_0()
+                     .w_full()
+-                    .h(px(H + 240.))
++                    .h(px(layer_height + 240.))
+                     .on_click(cx.listener(|this, e: &ClickEvent, window, cx| {
+                         if e.is_keyboard() {
+                             return;
+@@ -631,9 +717,110 @@
+                     .top_0()
+                     .left(relative(0.5))
+                     .w(px(0.))
+-                    .h(px(H))
++                    .h(px(layer_height))
+                     .children(buttons),
+             );
+         PageFrame::new("layers").header(header).child(stage)
+     }
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::{Projector, layer_size, px, size};
++
++    #[test]
++    fn projection_matches_upstream_browser_quads() {
++        let cases = [
++            (
++                375.,
++                812.,
++                -120.,
++                [
++                    183.87157, 310.83527, 361.13696, 332.93707, 221.12843, 545.24536, 43.863045,
++                    523.14355,
++                ],
++            ),
++            (
++                320.,
++                812.,
++                -40.,
++                [
++                    159.33046, 247.02206, 307.05164, 265.44025, 190.66954, 441.92148, 42.94838,
++                    423.5033,
++                ],
++            ),
++            (
++                480.,
++                812.,
++                -120.,
++                [
++                    234.1802, 315.4968, 431.14175, 340.05435, 275.8198, 575.58386, 78.85825,
++                    551.02625,
++                ],
++            ),
++            (
++                375.,
++                480.,
++                -120.,
++                [
++                    186.83046, 303.5906, 334.55164, 322.0088, 218.16954, 498.49002, 70.44838,
++                    480.07187,
++                ],
++            ),
++        ];
++        for (viewport_width, viewport_height, z, expected) in cases {
++            let (width, height) = layer_size(size(px(viewport_width), px(viewport_height)));
++            let projector = Projector {
++                a: 1.,
++                z,
++                width,
++                height,
++                center: (viewport_width / 2., 183.1875 + height / 2.),
++            };
++            for ((x, y), pair) in [(0., 0.), (width, 0.), (width, height), (0., height)]
++                .into_iter()
++                .zip(expected.chunks_exact(2))
++            {
++                let point = projector.project(x, y);
++                assert!((point.x.as_f32() - pair[0]).abs() < 0.001);
++                assert!((point.y.as_f32() - pair[1]).abs() < 0.001);
++            }
++        }
++    }
++
++    #[test]
++    fn layer_size_follows_upstream_media_queries() {
++        for (width, height, expected) in [
++            (374., 812., (150., 266.)),
++            (375., 602., (150., 266.)),
++            (375., 603., (180., 320.)),
++            (413., 812., (180., 320.)),
++            (414., 639., (180., 320.)),
++            (414., 640., (200., 355.)),
++        ] {
++            assert_eq!(layer_size(size(px(width), px(height))), expected);
++        }
++    }
++
++    #[test]
++    fn label_transform_tracks_plane_points_at_both_scales() {
++        for progress in [0., 0.37, 1.] {
++            for scale in [1., 2.] {
++                let projector = Projector {
++                    a: progress,
++                    z: 120.,
++                    width: 200.,
++                    height: 355.,
++                    center: (240., 360.6875),
++                };
++                let matrix = projector.transformation(scale);
++                for (x, y) in [(0., 0.), (200., 355.), (100., 338.8)] {
++                    let transformed = matrix.apply(super::point(px(x * scale), px(y * scale)));
++                    let expected = projector.project(x, y);
++                    assert!((transformed.x.as_f32() - expected.x.as_f32() * scale).abs() < 0.02);
++                    assert!((transformed.y.as_f32() - expected.y.as_f32() * scale).abs() < 0.02);
++                }
++            }
++        }
++    }
++}
+--- a/vendor/gpui_pre/src/text_system/line_wrapper.rs
++++ b/vendor/gpui_pre/src/text_system/line_wrapper.rs
+@@ -540,6 +540,9 @@
+         // `⋯` character is special used in Zed, to keep this at the end of the line.
+         matches!(c, '⋯') ||
+ 
++        matches!(c, '、' | '。' | '，' | '．' | '：' | '；' | '！' | '？' |
++            '）' | '］' | '｝' | '〉' | '》' | '」' | '』' | '】' | '〕' | '〗' | '〙' | '〛') ||
++
+         // Non-breaking glue characters
+         matches!(c, '\u{202F}' | '\u{00A0}' | '\u{2011}')
+     }

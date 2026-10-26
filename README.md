@@ -1,100 +1,81 @@
 # weGPUI
 
-weGPUI is [WeUI 2.6.26](https://github.com/Tencent/weui), Tencent's design system for WeChat, as
-native Rust components for [GPUI](https://gpui.rs), the GPU-accelerated UI framework behind Zed.
-It renders WeUI's tokens, icons, components and overlays with GPUI primitives, without a WebView,
-and is written to stay close to upstream behaviour.
+**WeUI components, rendered natively in Rust.**
 
-**[Open the interactive browser gallery →](https://codewhale-hq.github.io/weGPUI/)**
+weGPUI brings [Tencent's WeUI 2.6.26](https://github.com/Tencent/weui) design language to
+[GPUI](https://gpui.rs), the GPU-accelerated framework behind Zed. It provides native controls,
+forms, navigation and overlays using GPUI primitives, with no embedded browser.
 
-| Native GPUI (macOS) | Upstream WeUI in Chromium |
+[Explore the browser gallery](https://codewhale-hq.github.io/weGPUI/) ·
+[Run the native examples](#quick-start) · [Project status](docs/STATUS.md) ·
+[Contribute](CONTRIBUTING.md)
+
+**Developer preview · 0.1.0 · unreleased.** The native gallery maps all 60 upstream routes and
+adds a Languages page. Visual, interaction and accessibility parity are still being qualified;
+no desktop platform has completed the full support criteria. See the
+[acceptance matrix](docs/ACCEPTANCE.md) and [remaining work](docs/COMPLETION.md).
+
+| Native GPUI | Upstream WeUI |
 | --- | --- |
-| <img src="https://raw.githubusercontent.com/codewhale-hq/weGPUI/main/docs/parity/half-screen-dialog-1-light-gpui.png" width="280" alt="weGPUI half-screen dialog"> | <img src="https://raw.githubusercontent.com/codewhale-hq/weGPUI/main/docs/parity/half-screen-dialog-1-light-weui.png" width="280" alt="WeUI half-screen dialog"> |
+| <img src="https://raw.githubusercontent.com/codewhale-hq/weGPUI/main/docs/parity/half-screen-dialog-1-light-gpui.png" width="280" alt="Native weGPUI half-screen dialog"> | <img src="https://raw.githubusercontent.com/codewhale-hq/weGPUI/main/docs/parity/half-screen-dialog-1-light-weui.png" width="280" alt="Upstream WeUI half-screen dialog in Chromium"> |
 
-The library is in development: **0.1.0, unreleased**. All 61 upstream example files map to the
-gallery (60 routes plus the index shell), but parity is sampled, not complete. [docs/STATUS.md](docs/STATUS.md) records what is
-verified, what differs, and what has not been tested.
+Recorded macOS comparison. [Visual evidence](docs/PARITY.md) identifies each capture's source
+and review limits; these images are not a claim of current cross-platform parity.
 
-## Interactive browser gallery
+## What is included
 
-The website offers 60 live WeUI browser examples and 132 state presets, with light,
-dark, care contrast and custom brand controls. Forms, dialogs, pickers and local file
-previews run in HTML/CSS/JavaScript; the native Rust library remains a separate implementation.
+- **Controls and forms:** buttons, cells, text inputs, text areas, choices, switches, sliders,
+  search, validation, verification codes and date fields.
+- **Navigation and content:** navigation bars, tab bars, grids, panels, articles, steps,
+  footers and previews.
+- **Overlays and media:** dialogs, half-screen dialogs, action sheets, pickers, toasts,
+  image viewers and uploader interfaces.
+- **Themes:** light and dark appearance, care contrast, custom brand colours and host palettes.
+- **Accessibility:** roles and names, keyboard navigation, visible focus, modal isolation,
+  focus restoration and reduced-motion handling, with bounded native and reader evidence.
+- **Localisation:** English defaults, 14 message catalogs, custom catalogs and mirrored RTL
+  layouts. Translation review and several bidirectional-text cases remain open.
 
-The gallery is published on GitHub Pages. The [successful deployment](https://github.com/codewhale-hq/weGPUI/actions/runs/40211664701)
-uses source revision `e5b6996`. Updates are published manually through
-[Publish gallery to GitHub Pages](https://github.com/codewhale-hq/weGPUI/actions/workflows/pages.yml):
-**Run workflow → Branch: main → Run workflow**. Pushing source alone does not publish it.
-
-To preview locally:
-
-```sh
-python3 website/build.py
-python3 -m http.server 4173 --bind 127.0.0.1 --directory website/dist
-```
-
-Open <http://127.0.0.1:4173/>. See [website setup and checks](website/README.md) and
-[GitHub Pages hosting](website/HOSTING.md).
-Historical native captures and the native setup guide remain available in the gallery.
+The [component modules](src/components/mod.rs) document APIs, defaults, callbacks and known
+limits. Applications own state, network requests, persistence and upload transport.
 
 ## Quick start
 
+Install **Rust 1.95+** and your platform's [GPUI build requirements](CONTRIBUTING.md#build-and-check).
+Linux additionally needs an X11 or Wayland desktop and GPUI's system libraries.
+
 ```sh
-git clone https://github.com/codewhale-hq/weGPUI && cd weGPUI
-cargo run --example minimal    # a small app: a list cell, a button and a dialog
-cargo run --example gallery    # every WeUI example page, with theme and care-mode menus
-cargo run --example component_states # loading, labels, countdown and keyboard checks
+git clone https://github.com/codewhale-hq/weGPUI.git
+cd weGPUI
+cargo run --example minimal --locked
+cargo run --example gallery --locked
 ```
 
-Rust 1.95 or newer is required. Linux needs GPUI's system libraries (see
-[CONTRIBUTING](CONTRIBUTING.md)). The bundled examples already enable `gpui_platform`'s
-`wayland`/`x11` features ([docs/PLATFORMS.md](docs/PLATFORMS.md)).
+More examples:
 
-## Using the library
-
-weGPUI depends on `gpui` and `unicode-segmentation`, with no platform crate in the library's
-dependencies. Your application picks the GPUI platform crate:
-
-```rust
-use gpui::{prelude::*, *};
-use wegpui::components::{Cell, Cells, button::Button};
-
-struct Home;
-
-impl Render for Home {
-    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
-        let t = wegpui::Theme::get(cx);
-        div().size_full().bg(t.bg_0)
-            .child(Cells::new().child(Cell::new("account").title("Account").access()))
-            .child(Button::new("Continue").id("continue").primary())
-    }
-}
-
-fn main() {
-    gpui_platform::application().with_assets(wegpui::Assets).run(|cx| {
-        wegpui::init(cx);
-        cx.open_window(WindowOptions::default(), |_, cx| cx.new(|_| Home)).unwrap();
-    });
-}
+```sh
+cargo run --example application --locked
+cargo run --example component_states --locked
+cargo run --example gallery --locked -- --lang zh-Hans --theme dark --care
+cargo doc --no-deps --open
 ```
 
-Until a crates.io release, depend on the Git repository and the same exact GPUI pins:
+`minimal` demonstrates a cell, button and dialog. `application` combines validation, controlled
+state, local image selection/preview/deletion, theme switching and modal confirmation.
+`component_states` exercises loading, labels, countdowns and keyboard behavior.
+
+## Use in an application
+
+The preview requires the matching compatibility copies in `vendor/`. **Cargo patches are not
+inherited from dependencies:** configure all four at your application's workspace root.
+With a sibling checkout named `weGPUI`, use:
 
 ```toml
 [dependencies]
-wegpui = { git = "https://github.com/codewhale-hq/weGPUI" }
+wegpui = { path = "../weGPUI" }
 gpui = { package = "gpui-pre", version = "=0.3.9" }
-gpui_platform = { package = "gpui-pre-platform", version = "=0.3.9", features = ["font-kit"] }
-```
+gpui_platform = { package = "gpui-pre-platform", version = "=0.3.9", features = ["font-kit", "wayland", "x11"] }
 
-On Linux, that application dependency also needs `"wayland"` or `"x11"` in `features`;
-`font-kit` alone builds but panics when opening a window. The bundled examples already enable both.
-
-The native library requires the approved GPUI 0.3.9 compatibility hook to compile.
-**Cargo patches in a dependency are not inherited.** Keep a matching local checkout and add
-these entries to your application's workspace-root manifest (adjust the checkout path):
-
-```toml
 [patch.crates-io]
 gpui-pre = { path = "../weGPUI/vendor/gpui_pre" }
 gpui-pre-linux = { path = "../weGPUI/vendor/gpui_pre_linux" }
@@ -102,79 +83,107 @@ accesskit_unix = { path = "../weGPUI/vendor/accesskit_unix" }
 accesskit_atspi_common = { path = "../weGPUI/vendor/accesskit_atspi_common" }
 ```
 
-All four package versions stay unchanged. See [vendor provenance and limits](vendor/README.md).
-Published replacement packages and a release distribution policy have not been authorized.
+The desktop platform dependency includes Linux windowing features; `font-kit` alone cannot
+open a Linux window. Keep the exact GPUI pins and vendor source together. Provenance and the
+scope of each compatibility change are documented in [vendor/README.md](vendor/README.md).
 
-[`examples/minimal.rs`](examples/minimal.rs) is the compiled, complete version, including
-`ModalScope` (hides the page from screen readers while a modal is open), Tab navigation and a
-`Presence`-driven dialog. Public items carry rustdoc: run `cargo doc --open`.
+Register `wegpui::Assets` and call `wegpui::init(cx)` before opening windows. Wrap application
+roots in `accessibility::ModalScope` for modal isolation. The complete, compiled starting point
+is [examples/minimal.rs](examples/minimal.rs); its platform helper and keyboard wiring are
+included in the repository.
 
-A native host can map its existing design tokens into a `Palette`, then install
-`Theme::build(mode, dark, care, None).with_palette(palette)` as the GPUI global.
-The host owns reapplying that mapping when its appearance changes; the standard
-mode/care/brand setters rebuild the upstream palette. This changes presentation
-only and keeps the controls and accessibility behavior in weGPUI.
+For a self-contained source setup with the patches already configured, create a
+[reproducible preview bundle](docs/PREVIEW-DISTRIBUTION.md):
+
+```sh
+python3 -I scripts/package_preview.py --out target/preview
+```
+
+The bundle includes a separate consumer, integrity manifests, licences and the patched source
+graph. It is a developer source distribution, not a signed installer or a published crate.
 
 ## Languages and right-to-left
 
-Every string the library draws or announces comes from a message catalog, so it works in English
-and in any other language: 14 catalogs are built in (English, Simplified and Traditional Chinese,
-Japanese, Korean, Spanish, French, German, Portuguese, Russian, Hindi, Thai, Arabic and Hebrew;
-twelve are unreviewed starter translations) and any other language is a `Messages` value.
-Layouts mirror under a right-to-left locale and text inputs follow bidirectional text.
+Built-in control labels and messages use the active `I18n` catalog. English is the default;
+applications can switch languages at runtime or supply a custom `Messages` catalog.
+Text passed to component builders remains application-owned.
 
 ```rust
 wegpui::I18n::set_locale(wegpui::Locale::parse("ar").unwrap(), cx);
 ```
 
-`cargo run --example gallery -- --lang ar` shows it. Known gaps (wrapped Arabic and Indic text,
-multi-line input, dates) are in [docs/I18N.md](docs/I18N.md). The browser gallery is unchanged.
+The 14 catalogs cover English, Simplified and Traditional Chinese, Japanese, Korean, Spanish,
+French, German, Portuguese, Russian, Hindi, Thai, Arabic and Hebrew. Twelve are starter
+translations awaiting native-speaker review. RTL layouts and unwrapped bidirectional input
+are implemented; wrapped RTL paragraphs, caret/partial selection, multiline alignment and
+locale-aware dates have documented limits. See [the localisation guide](docs/I18N.md).
 
-## Platform support
+## Platform status
 
-Nothing is called supported until build, launch, rendering, interaction, accessibility and
-packaging all have receipts from that platform. Details and evidence are in
-[docs/PLATFORMS.md](docs/PLATFORMS.md).
+The first release targets macOS, Windows and Linux. Build results, native runtime samples and
+complete platform support are separate milestones.
 
-| Platform | Today |
-| --- | --- |
-| macOS | Native component builds, nine tests, strict Clippy/docs and a packaged consumer pass. Sampled loading, focus, labels and inline-link interactions verified. Full runtime and VoiceOver acceptance incomplete; signed distribution missing. |
-| Linux | Rust 1.98.1 X11 builds and native interaction, state/theme and accessibility samples; actual Wayland clients under nested Weston and Orca transcript/audio collection. Full screen-reader, hardware desktop and distribution acceptance remain incomplete. |
-| Windows | Native Windows 11 ARM/MSVC builds, nine tests and strict Clippy/docs pass; sampled component and inline-link interactions verified. x64, screen-reader and distribution acceptance missing. |
-| iOS | 0.3.9 scaffold implemented; hosted simulator build fails on mismatched upstream APIs. No runtime acceptance. Not supported. |
-| Android | Library type-checks only. No upstream backend. Not supported. |
+| Platform | Available evidence | Remaining qualification |
+| --- | --- | --- |
+| Linux | Current source gates, X11 comparisons, native interaction and Orca samples; historical nested-Wayland checks | Complete reader/IME/state coverage, hardware and distribution |
+| macOS | Historical native builds, comparisons and sampled input/accessibility checks | Current-source runtime, full input/reader coverage and signed distribution |
+| Windows | Historical ARM64/MSVC builds and sampled native interactions | Current-source runtime, x64, reader and distribution |
+| iOS | Experimental backend and bundle scaffold | Upstream application API incompatibilities; no runtime acceptance |
+| Android | Library type-checks | Backend selection and native runtime |
 
-## Documentation
+[Platform evidence](docs/PLATFORMS.md) defines the support criteria.
+[Release readiness](docs/RELEASE-READINESS.md) tracks packaging, signing and maintainer decisions.
 
-- [STATUS](docs/STATUS.md): done, partial, and not done, with missing receipts
-- [Localisation and right-to-left](docs/I18N.md): catalogs, mirroring, limits
-- [Independent review](docs/REVIEW-2026-10-24.md): per-family behaviour table
-- [Visual parity](docs/PARITY.md) and [parity tooling](docs/PARITY-TOOLING.md)
-- [Upstream coverage](docs/UPSTREAM-COVERAGE.md) and [sources](docs/SOURCES.md)
-- [Platform feasibility](docs/PLATFORMS.md) and the [CI proposal](docs/CI-PROPOSAL.md)
-- [Contributing](CONTRIBUTING.md), [Code of Conduct](CODE_OF_CONDUCT.md),
-  [Security](SECURITY.md), [Changelog](CHANGELOG.md)
+## Browser gallery
 
-[GitHub](https://github.com/codewhale-hq/weGPUI) is the canonical home for issues and pull
-requests; [CNB](https://cnb.cool/codewhale.net/weGPUI) is a mirror. The repository builds
-independently of any parent workspace.
+The [published gallery](https://codewhale-hq.github.io/weGPUI/) runs upstream WeUI examples in
+HTML/CSS/JavaScript. It offers 60 routes, 132 scene presets, light/dark/care/brand controls and
+local file previews. Native Rust is a separate implementation.
 
-## Licence and attribution
+To preview the website locally:
 
-Original weGPUI code is available under either the MIT or Apache License 2.0, at your option. See
-LICENSE-MIT and LICENSE-APACHE.
+```sh
+python3 website/build.py
+python3 -m http.server 4173 --bind 127.0.0.1 --directory website/dist
+```
 
-WeUI design, example content and icon assets: **Copyright Tencent, Inc.**, MIT licence. The pinned
-distribution additionally identifies Copyright 2026 Tencent, Inc. and Copyright (C) 2017 THL A29
-Limited, a Tencent company. Its MIT notice is preserved in NOTICE and LICENSE-WEUI.
+Source pushes do not deploy the website. [Website documentation](website/README.md) covers
+builds, checks and the manual GitHub Pages publishing workflow.
 
-The text input adapts GPUI's `examples/input.rs`, Copyright Zed Industries, Apache-2.0. Its
-attribution is preserved in the source header and NOTICE.
+## Development and review
 
-## Showcase and public release
+Run the five source gates after filling the dependency cache with `cargo fetch --locked`:
 
-The first release targets desktop; mobile remains experimental. The
-[release checklist](docs/RELEASE-READINESS.md) tracks the remaining acceptance gates.
-The [website](website/README.md) includes all 60 gallery routes, 132 recorded states,
-light/dark comparisons, getting started, themes and API documentation. It can be
-built and served locally; a public deployment has not yet been configured.
+```sh
+cargo fmt --all -- --check
+cargo build --all-targets --locked --offline
+cargo test --locked --offline
+cargo clippy --all-targets --locked --offline -- -D warnings
+RUSTDOCFLAGS='-D warnings -W missing-docs' cargo doc --no-deps --locked --offline
+```
+
+The [parity plan](docs/WEUI-PARITY-PLAN.md) pins upstream source and tracks 132 scenes across
+eight appearances. [Capture tooling](docs/PARITY-TOOLING.md) records source and image hashes;
+capture completeness and pixel scores do not establish parity. Component behavior, actual
+reader output and platform acceptance each require their own evidence.
+
+- [Publication review](docs/REVIEW-2026-10-26.md) and [status/known limitations](docs/STATUS.md)
+- [Component acceptance](docs/ACCEPTANCE.md) and [visual review](docs/PARITY.md)
+- [Upstream coverage](docs/UPSTREAM-COVERAGE.md) and [source attribution](docs/SOURCES.md)
+- [Contributing](CONTRIBUTING.md), [security reporting](SECURITY.md) and [code of conduct](CODE_OF_CONDUCT.md)
+- [Changelog](CHANGELOG.md)
+
+[GitHub](https://github.com/codewhale-hq/weGPUI) is the canonical home for source, issues and
+pull requests. [CNB](https://cnb.cool/codewhale.net/weGPUI) is a read-only mirror.
+
+## Licence
+
+Original weGPUI code is **MIT OR Apache-2.0**. See [LICENSE-MIT](LICENSE-MIT) and
+[LICENSE-APACHE](LICENSE-APACHE).
+
+WeUI design, example content and icons are Copyright Tencent, Inc., under the MIT licence.
+The distribution also identifies THL A29 Limited, a Tencent company. Their notices are
+preserved in [LICENSE-WEUI](LICENSE-WEUI) and [NOTICE](NOTICE).
+
+The text input adapts GPUI's input example, Copyright Zed Industries, Apache-2.0; its
+attribution is preserved in the source and NOTICE. This is an independent project.

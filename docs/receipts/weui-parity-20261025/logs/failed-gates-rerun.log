@@ -1,0 +1,106 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.30s
+     Running unittests src/lib.rs (<toolchain-cache>/target/debug/deps/wegpui-b4acb65e9e11c591)
+
+running 59 tests
+test accessibility::tests::later_modal_hides_already_constructed_layers_at_a11y_write ... ok
+test accessibility::tests::nested_modal_stays_exposed_after_a_later_root_sibling_registers ... ok
+test accessibility::tests::read_only_and_live_are_forwarded_without_disabling_the_node ... ok
+test bidi::tests::a_ligature_interpolates_the_caret_inside_its_glyph ... ok
+test bidi::tests::a_single_right_to_left_glyph_is_classified_by_its_character ... ok
+test bidi::tests::left_to_right_text_maps_indices_to_the_obvious_positions ... ok
+test bidi::tests::mixed_direction_selection_can_split_into_two_spans ... ok
+test bidi::tests::right_to_left_text_runs_from_the_right_edge ... ok
+test components::cells::tests::replacing_a_footer_clears_its_previous_textual_value ... ok
+test components::date_field::tests::formats_html_values ... ok
+test components::article::tests::nested_lists_inherit_placement_without_losing_marker_kind ... ok
+test components::date_field::tests::parses_and_validates_calendar_and_time_text ... ok
+test components::cells::tests::textual_value_and_description_keep_the_explicit_name ... ok
+test components::date_field::tests::picker_values_must_describe_a_real_date ... ok
+test components::article::tests::public_constructors_agree_on_marker_and_placement ... ok
+test components::date_field::tests::date_mode_normalizes_time_and_range_bounds_are_safe ... ok
+test components::modal::tests::presence_keeps_send_and_sync ... ok
+test components::picker::tests::disabled_default_wraps_to_an_enabled_option ... ok
+test components::picker::tests::empty_and_all_disabled_columns_have_no_enabled_default ... ok
+test components::picker::tests::generated_year_ranges_are_inclusive_and_reversed_ranges_are_empty ... ok
+test components::picker::tests::generated_years_cover_full_i32_range_without_a_year_vector ... ok
+test components::picker::tests::gregorian_centuries_and_month_lengths ... ok
+test components::slider::tests::accessible_value_requests_reject_non_finite_values_before_narrowing ... ok
+test components::slider::tests::invalid_ranges_cannot_replace_the_last_finite_range ... ok
+test components::slider::tests::invalid_steps_preserve_a_usable_keyboard_increment ... ok
+test components::slider::tests::snapping_is_relative_to_minimum_and_clamped ... ok
+test components::slider::tests::tiny_valid_steps_do_not_overflow_and_jump_to_the_maximum ... ok
+test components::switch::tests::a_completed_color_transition_restarts_at_its_full_css_duration ... ok
+test components::switch::tests::enabling_reduced_motion_settles_both_channels_without_restarting ... ok
+test components::switch::tests::reversing_during_motion_preserves_the_current_position_and_colour ... ok
+test components::switch::tests::reversing_shortens_each_running_css_transition ... ok
+test i18n::tests::catalog_selection_splits_chinese_and_falls_back_to_english ... ok
+test i18n::tests::direction_follows_an_explicit_script_before_the_language ... ok
+test components::slider::tests::upper_endpoint_keeps_a_valid_step_without_losing_float_endpoints ... ok
+test i18n::tests::every_builtin_catalog_is_complete_and_keeps_its_placeholders ... ok
+test i18n::tests::fill_replaces_named_placeholders_and_keeps_unknown_text ... ok
+test i18n::tests::join_uses_the_catalog_separator ... ok
+test i18n::tests::locale_parsing_accepts_bcp47_and_posix_spellings ... ok
+test i18n::tests::zh_hans_reproduces_the_original_weui_wording ... ok
+test input::tests::accessible_carets_follow_combining_and_zwj_graphemes ... ok
+test input::tests::accessible_edit_positions_map_known_runs_and_reject_stale_nodes ... ok
+test input::tests::accessible_glyph_lookup_matches_native_first_matching_glyph ... ok
+test input::tests::accessible_password_runs_only_contain_displayed_masking_bullets ... ok
+test input::tests::accessible_selections_keep_anchor_and_focus_when_reversed ... ok
+test input::tests::accessible_text_runs_preserve_newlines_and_trailing_empty_carets ... ok
+test input::tests::assistive_selection_rejects_endpoints_inside_native_graphemes ... ok
+test input::tests::composition_truncation_keeps_suffix_and_selection_on_valid_boundaries ... ok
+test input::tests::accessible_soft_wrap_caret_affinity_matches_native_previous_row ... ok
+test input::tests::input_semantics_export_invalid_without_changing_readonly_or_disabled ... ok
+test input::tests::utf16_offsets_stay_on_utf8_boundaries ... ok
+test input::tests::word_navigation_and_deletion_match_linux_browser_boundaries ... ok
+test scrolling::tests::above_scrolls_back_and_clamps_at_top ... ok
+test scrolling::tests::below_scrolls_minimally_and_clamps ... ok
+test scrolling::tests::tall_target_aligns_top ... ok
+test input::tests::oversized_graphemes_use_lossless_scalar_lengths_with_matching_positions ... ok
+test theme::tests::custom_palette_and_translucent_surfaces_use_painted_colours ... ok
+test scrolling::tests::visible_target_does_not_scroll ... ok
+test theme::tests::focus_contrast_covers_themes_fills_and_custom_brands ... ok
+test input::tests::accessible_word_starts_preserve_unicode_and_large_run_boundaries ... ok
+
+test result: ok. 59 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+   Doc-tests wegpui
+
+running 3 tests
+test src/i18n.rs - i18n (line 12) ... ignored
+test src/lib.rs - (line 15) ... ignored
+test src/logical.rs - logical (line 8) ... ignored
+
+test result: ok. 0 passed; 0 failed; 3 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 0.17s; merged doctests compilation took 0.16s
+test_ambiguous_artifacts_fail_without_a_bundle (test_ios_bundle.BundleScriptTests.test_ambiguous_artifacts_fail_without_a_bundle) ... ok
+test_build_failure_is_retained_without_a_bundle (test_ios_bundle.BundleScriptTests.test_build_failure_is_retained_without_a_bundle) ... ok
+test_device_target_is_rejected (test_ios_bundle.BundleScriptTests.test_device_target_is_rejected) ... ok
+test_linux_host_is_rejected_before_build (test_ios_bundle.BundleScriptTests.test_linux_host_is_rejected_before_build) ... ok
+test_relative_target_directory_and_both_examples (test_ios_bundle.BundleScriptTests.test_relative_target_directory_and_both_examples) ... ok
+test_care_brand_and_dark_reach_each_registered_state (test_linux_sweep.LinuxSweepTests.test_care_brand_and_dark_reach_each_registered_state) ... ok
+test_failed_capture_is_retained_and_later_routes_still_run (test_linux_sweep.LinuxSweepTests.test_failed_capture_is_retained_and_later_routes_still_run) ... ok
+test_invalid_arguments_fail_before_capture_or_output_creation (test_linux_sweep.LinuxSweepTests.test_invalid_arguments_fail_before_capture_or_output_creation) ... ok
+test_native_only_is_forwarded_without_reference_capture (test_linux_sweep.LinuxSweepTests.test_native_only_is_forwarded_without_reference_capture) ... ok
+test_routes_keep_default_theme_without_optional_modes (test_linux_sweep.LinuxSweepTests.test_routes_keep_default_theme_without_optional_modes) ... ok
+test_bundle_is_reproducible_across_location_and_mtime_changes (test_package_preview.PreviewBundleTests.test_bundle_is_reproducible_across_location_and_mtime_changes) ... ok
+test_missing_vendor_copy_is_rejected (test_package_preview.PreviewBundleTests.test_missing_vendor_copy_is_rejected) ... ok
+test_modified_archive_content_is_rejected (test_package_preview.PreviewBundleTests.test_modified_archive_content_is_rejected) ... ok
+test_separate_consumer_uses_all_four_workspace_patches (test_package_preview.PreviewBundleTests.test_separate_consumer_uses_all_four_workspace_patches) ... ok
+test_source_symlink_is_rejected (test_package_preview.PreviewBundleTests.test_source_symlink_is_rejected) ... ok
+test_unsafe_archive_paths_are_rejected (test_package_preview.PreviewBundleTests.test_unsafe_archive_paths_are_rejected) ... ok
+test_every_scene_has_all_eight_appearance_combinations (test_weui_parity_inventory.ParityInventoryTests.test_every_scene_has_all_eight_appearance_combinations) ... ok
+test_native_only_or_unknown_replays_are_rejected (test_weui_parity_inventory.ParityInventoryTests.test_native_only_or_unknown_replays_are_rejected) ... ok
+test_shared_style_files_map_to_all_native_consumers (test_weui_parity_inventory.ParityInventoryTests.test_shared_style_files_map_to_all_native_consumers) ... ok
+test_unknown_widget_files_are_not_silently_counted_as_covered (test_weui_parity_inventory.ParityInventoryTests.test_unknown_widget_files_are_not_silently_counted_as_covered) ... ok
+test_changed_ui_runtime_is_rejected (test_weui_reference.WeuiReferenceTests.test_changed_ui_runtime_is_rejected) ... ok
+test_existing_evidence_is_not_overwritten (test_weui_reference.WeuiReferenceTests.test_existing_evidence_is_not_overwritten) ... ok
+test_other_upstream_revision_is_rejected (test_weui_reference.WeuiReferenceTests.test_other_upstream_revision_is_rejected) ... ok
+test_reference_retains_assets_and_records_exact_html_changes (test_weui_reference.WeuiReferenceTests.test_reference_retains_assets_and_records_exact_html_changes) ... ok
+test_used_wechat_sdk_cannot_be_silently_removed (test_weui_reference.WeuiReferenceTests.test_used_wechat_sdk_cannot_be_silently_removed) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.707s
+
+OK

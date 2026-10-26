@@ -1,0 +1,57 @@
+Traceback (most recent call last):
+  File "<reader-tools>/root/usr/lib/python3/dist-packages/speechd/client.py", line 597, in _connect_with_autospawn
+    self._server_spawn(connection_args)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "<reader-tools>/root/usr/lib/python3/dist-packages/speechd/client.py", line 693, in _server_spawn
+    raise SpawnError("Can't find Speech Dispatcher spawn command %s"
+                                 % (cmd))
+speechd.client.SpawnError: Can't find Speech Dispatcher spawn command /usr/bin/speech-dispatcher
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<reader-tools>/root/usr/lib/python3/dist-packages/orca/event_manager.py", line 526, in _on_no_focus
+    def _on_no_focus(self) -> bool:
+    
+  File "<reader-tools>/root/usr/lib/python3/dist-packages/orca/orca.py", line 166, in shutdownOnSignal
+    shutdown(signum=signum)
+    ~~~~~~~~^^^^^^^^^^^^^^^
+  File "<reader-tools>/root/usr/lib/python3/dist-packages/orca/orca.py", line 131, in shutdown
+    script.presentationInterrupt()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "<reader-tools>/root/usr/lib/python3/dist-packages/orca/scripts/default.py", line 2287, in presentationInterrupt
+    speech_and_verbosity_manager.get_manager().interrupt_speech()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "<reader-tools>/root/usr/lib/python3/dist-packages/orca/speech_and_verbosity_manager.py", line 331, in interrupt_speech
+    server.stop()
+    ~~~~~~~~~~~^^
+  File "<reader-tools>/root/usr/lib/python3/dist-packages/orca/speechdispatcherfactory.py", line 617, in stop
+    self._cancel()
+    ~~~~~~~~~~~~^^
+  File "<reader-tools>/root/usr/lib/python3/dist-packages/orca/speechdispatcherfactory.py", line 358, in _cancel
+    self._send_command(self._client.cancel)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "<reader-tools>/root/usr/lib/python3/dist-packages/orca/speechdispatcherfactory.py", line 196, in _send_command
+    self.reset()
+    ~~~~~~~~~~^^
+  File "<reader-tools>/root/usr/lib/python3/dist-packages/orca/speechdispatcherfactory.py", line 625, in reset
+    self._init()
+    ~~~~~~~~~~^^
+  File "<reader-tools>/root/usr/lib/python3/dist-packages/orca/speechdispatcherfactory.py", line 156, in _init
+    self._client = client = speechd.SSIPClient('Orca', component=self._id)
+                            ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<reader-tools>/root/usr/lib/python3/dist-packages/speechd/client.py", line 584, in __init__
+    self._connect_with_autospawn(connection_args, autospawn)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<reader-tools>/root/usr/lib/python3/dist-packages/speechd/client.py", line 600, in _connect_with_autospawn
+    raise ce
+  File "<reader-tools>/root/usr/lib/python3/dist-packages/speechd/client.py", line 590, in _connect_with_autospawn
+    self._conn = _SSIP_Connection(**connection_args)
+                 ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "<reader-tools>/root/usr/lib/python3/dist-packages/speechd/client.py", line 190, in __init__
+    raise SSIPCommunicationError("Can't open socket using method "
+                                 + communication_method,
+                                 original_exception = ex)
+speechd.client.SSIPCommunicationError: Can't open socket using method unix_socket
+Original error: [Errno 111] Connection refused
+Additional error: Can't find Speech Dispatcher spawn command /usr/bin/speech-dispatcher

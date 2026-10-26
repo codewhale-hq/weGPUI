@@ -1,0 +1,52 @@
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Activating service name='org.freedesktop.portal.Desktop' requested by ':1.0' (uid=1000 pid=28 comm="<toolchain-cache>/target/debug/examples/gal" label="kernel")
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Activating service name='org.freedesktop.impl.portal.PermissionStore' requested by ':1.1' (uid=1000 pid=41 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.PermissionStore'
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Activating service name='org.freedesktop.portal.Documents' requested by ':1.1' (uid=1000 pid=41 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Successfully activated service 'org.freedesktop.portal.Documents'
+fuse: device not found, try 'modprobe fuse' first
+error: fuse init failed: Can't mount path <temporary>
+
+(/usr/libexec/xdg-desktop-portal:41): xdg-desktop-portal-WARNING **: 00:06:02.949: Document portal fuse mount point unknown: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name :1.3 was not provided by any .service files
+
+(/usr/libexec/xdg-desktop-portal:41): xdg-desktop-portal-WARNING **: 00:06:02.949: Choosing gtk.portal for org.freedesktop.impl.portal.Lockdown as a last-resort fallback
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.1' (uid=1000 pid=41 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Activating service name='org.a11y.Bus' requested by ':1.4' (uid=1000 pid=62 comm="/usr/libexec/xdg-desktop-portal-gtk" label="kernel")
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Successfully activated service 'org.a11y.Bus'
+dbus-daemon[84]: Activating service name='org.a11y.atspi.Registry' requested by ':1.0' (uid=1000 pid=62 comm="/usr/libexec/xdg-desktop-portal-gtk" label="kernel")
+
+(xdg-desktop-portal-gtk:62): xdg-desktop-portal-gtk-WARNING **: 00:06:03.015: error: Could not connect: No such file or directory
+
+dbus-daemon[84]: Successfully activated service 'org.a11y.atspi.Registry'
+SpiRegistry daemon is running with well-known name - org.a11y.atspi.Registry
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.desktop.gtk'
+
+(/usr/libexec/xdg-desktop-portal:41): xdg-desktop-portal-WARNING **: 00:06:03.031: Failed to create RealtimeKit proxy: Could not connect: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:41): xdg-desktop-portal-WARNING **: 00:06:03.031: Choosing gtk.portal for org.freedesktop.impl.portal.Settings as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:41): xdg-desktop-portal-WARNING **: 00:06:03.032: Choosing gtk.portal for org.freedesktop.impl.portal.FileChooser as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:41): xdg-desktop-portal-WARNING **: 00:06:03.033: Choosing gtk.portal for org.freedesktop.impl.portal.AppChooser as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:41): xdg-desktop-portal-WARNING **: 00:06:03.034: Choosing gtk.portal for org.freedesktop.impl.portal.Print as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:41): xdg-desktop-portal-WARNING **: 00:06:03.034: Choosing gtk.portal for org.freedesktop.impl.portal.Notification as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:41): xdg-desktop-portal-WARNING **: 00:06:03.035: Choosing gtk.portal for org.freedesktop.impl.portal.Inhibit as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:41): xdg-desktop-portal-WARNING **: 00:06:03.036: Choosing gtk.portal for org.freedesktop.impl.portal.Access as a last-resort fallback
+[W][00:06:03.037725] pw.conf      | [          conf.c: 1182 try_load_conf()] can't load config client.conf: No such file or directory
+[E][00:06:03.037744] pw.conf      | [          conf.c: 1215 pw_conf_load_conf_for_context()] can't load config client.conf: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:41): xdg-desktop-portal-WARNING **: 00:06:03.037: Failed connect to PipeWire: Couldn't create PipeWire context
+
+(/usr/libexec/xdg-desktop-portal:41): xdg-desktop-portal-WARNING **: 00:06:03.038: Choosing gtk.portal for org.freedesktop.impl.portal.Account as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:41): xdg-desktop-portal-WARNING **: 00:06:03.039: Choosing gtk.portal for org.freedesktop.impl.portal.Email as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:41): xdg-desktop-portal-WARNING **: 00:06:03.039: Choosing gtk.portal for org.freedesktop.impl.portal.DynamicLauncher as a last-resort fallback
+dbus-daemon[22]: [session uid=1000 pid=22 pidfd=5] Successfully activated service 'org.freedesktop.portal.Desktop'
+D2_DESC_TEXT [Bounds { origin: Point { x: 24px, y: 266.5px }, size: Size { 327px × 24px } }]
+D2_TIPS_TEXT [Bounds { origin: Point { x: 24px, y: 306.5px }, size: Size { 327px × 507px } }]
+D2_DESC_TEXT [Bounds { origin: Point { x: 24px, y: 266.5px }, size: Size { 327px × 24px } }]
+D2_TIPS_TEXT [Bounds { origin: Point { x: 24px, y: 306.5px }, size: Size { 327px × 507px } }]

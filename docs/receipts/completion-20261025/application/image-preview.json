@@ -1,0 +1,46 @@
+[
+  {
+    "role": "desktop frame",
+    "name": "main",
+    "bounds": [
+      0,
+      0,
+      1024,
+      768
+    ],
+    "checked": false
+  },
+  {
+    "role": "frame",
+    "name": "",
+    "bounds": [
+      430,
+      114,
+      420,
+      812
+    ],
+    "checked": false
+  },
+  {
+    "role": "dialog",
+    "name": "Image preview",
+    "bounds": [
+      430,
+      114,
+      420,
+      812
+    ],
+    "checked": false
+  },
+  {
+    "role": "image",
+    "name": "Image preview",
+    "bounds": [
+      430,
+      114,
+      420,
+      812
+    ],
+    "checked": false
+  }
+]

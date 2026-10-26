@@ -1,0 +1,9 @@
+{
+  "log_files_reviewed": 170,
+  "path_redacted_files": [
+    "docs/proposals/gpui-cjk-closing/baseline.log",
+    "docs/proposals/gpui-trailing-space-wrap/baseline.log"
+  ],
+  "original_copies_retained_outside_git": true,
+  "publication_log_files_explicitly_staged": true
+}

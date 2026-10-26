@@ -1,0 +1,200 @@
+[
+  {
+    "role": "desktop frame",
+    "name": "main",
+    "bounds": [
+      0,
+      0,
+      1024,
+      768
+    ],
+    "checked": false
+  },
+  {
+    "role": "frame",
+    "name": "",
+    "bounds": [
+      430,
+      114,
+      420,
+      812
+    ],
+    "checked": false
+  },
+  {
+    "role": "panel",
+    "name": "",
+    "bounds": [
+      430,
+      114,
+      420,
+      812
+    ],
+    "checked": false
+  },
+  {
+    "role": "button",
+    "name": "Dark mode",
+    "bounds": [
+      732,
+      122,
+      98,
+      32
+    ],
+    "checked": false
+  },
+  {
+    "role": "entry",
+    "name": "Name",
+    "bounds": [
+      555,
+      233,
+      279,
+      24
+    ],
+    "checked": false
+  },
+  {
+    "role": "entry",
+    "name": "Notes",
+    "bounds": [
+      446,
+      325,
+      388,
+      72
+    ],
+    "checked": false
+  },
+  {
+    "role": "status bar",
+    "name": "0/240",
+    "bounds": [
+      446,
+      397,
+      388,
+      20
+    ],
+    "checked": false
+  },
+  {
+    "role": "toggle button",
+    "name": "Updates",
+    "bounds": [
+      555,
+      445,
+      52,
+      32
+    ],
+    "checked": false
+  },
+  {
+    "role": "list item",
+    "name": "Images, 0/3",
+    "bounds": [
+      446,
+      505,
+      388,
+      38
+    ],
+    "checked": false
+  },
+  {
+    "role": "list",
+    "name": "",
+    "bounds": [
+      446,
+      543,
+      388,
+      96
+    ],
+    "checked": false
+  },
+  {
+    "role": "button",
+    "name": "Upload image",
+    "bounds": [
+      446,
+      543,
+      96,
+      96
+    ],
+    "checked": false
+  },
+  {
+    "role": "check box",
+    "name": "I have read the draft and understand that confirming it keeps this example's data in memory. Read the terms",
+    "bounds": [
+      446,
+      671,
+      388,
+      60
+    ],
+    "checked": false
+  },
+  {
+    "role": "link",
+    "name": "Read the terms",
+    "bounds": [
+      470,
+      711,
+      101,
+      20
+    ],
+    "checked": false
+  },
+  {
+    "role": "status bar",
+    "name": "1 of 3 images selected.",
+    "bounds": [
+      430,
+      747,
+      420,
+      58
+    ],
+    "checked": false
+  },
+  {
+    "role": "button",
+    "name": "Review draft",
+    "bounds": [
+      500,
+      805,
+      280,
+      48
+    ],
+    "checked": false
+  },
+  {
+    "role": "panel",
+    "name": "",
+    "bounds": [
+      430,
+      809,
+      420,
+      117
+    ],
+    "checked": false
+  },
+  {
+    "role": "link",
+    "name": "Reset draft",
+    "bounds": [
+      604,
+      825,
+      72,
+      44
+    ],
+    "checked": false
+  },
+  {
+    "role": "paragraph",
+    "name": "Confirmed drafts: 1",
+    "bounds": [
+      585,
+      869,
+      110,
+      17
+    ],
+    "checked": false
+  }
+]

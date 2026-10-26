@@ -1,0 +1,13 @@
+{
+  "new_third_party_packages": 0,
+  "new_consumer_package": [
+    [
+      "wegpui-readme-consumer",
+      "0.0.0",
+      null
+    ]
+  ],
+  "root_only_packages": 2,
+  "shared_package_versions_unchanged": true,
+  "locked_build_passed": true
+}

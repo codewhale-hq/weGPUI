@@ -1,0 +1,7 @@
+{
+  "source_sha256": "d0ded4f9e27fadf1d5c6086296b471faad425e1d2ae482a4d8ca20d780338fab",
+  "binary_sha256": "998ad1c8d691800cf60740ea05491924ae41c40f185c87dbea35e4c47045ffd0",
+  "gzip_round_trip_sha256": "998ad1c8d691800cf60740ea05491924ae41c40f185c87dbea35e4c47045ffd0",
+  "gallery_source_manifest": "../current-matrix/manifest.json",
+  "temporary_source_removed": true
+}

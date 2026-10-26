@@ -1,0 +1,553 @@
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activating service name='org.freedesktop.portal.Desktop' requested by ':1.0' (uid=1000 pid=94 comm="/usr/lib/chromium/chromium --show-component-extens" label="kernel")
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activating service name='org.freedesktop.impl.portal.PermissionStore' requested by ':1.4' (uid=1000 pid=336 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.PermissionStore'
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activating service name='org.a11y.Bus' requested by ':1.6' (uid=1000 pid=94 comm="/usr/lib/chromium/chromium --show-component-extens" label="kernel")
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activating service name='org.freedesktop.portal.Documents' requested by ':1.4' (uid=1000 pid=336 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Successfully activated service 'org.a11y.Bus'
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Successfully activated service 'org.freedesktop.portal.Documents'
+fuse: device not found, try 'modprobe fuse' first
+error: fuse init failed: Can't mount path <temporary>
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activating service name='org.freedesktop.portal.Documents' requested by ':1.4' (uid=1000 pid=336 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Successfully activated service 'org.freedesktop.portal.Documents'
+fuse: device not found, try 'modprobe fuse' first
+error: fuse init failed: Can't mount path <temporary>
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.045: Document portal fuse mount point unknown: GDBus.Error:org.freedesktop.DBus.Error.NoReply: Message recipient disconnected from message bus without replying
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.045: Choosing gtk.portal for org.freedesktop.impl.portal.Lockdown as a last-resort fallback
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.4' (uid=1000 pid=336 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:515): Gtk-WARNING **: 23:25:51.074: cannot open display: 
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.129: Failed to create RealtimeKit proxy: Could not connect: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.129: Choosing gtk.portal for org.freedesktop.impl.portal.Settings as a last-resort fallback
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.4' (uid=1000 pid=336 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+dbus-daemon[487]: Activating service name='org.a11y.atspi.Registry' requested by ':1.0' (uid=1000 pid=94 comm="/usr/lib/chromium/chromium --show-component-extens" label="kernel")
+dbus-daemon[487]: Successfully activated service 'org.a11y.atspi.Registry'
+SpiRegistry daemon is running with well-known name - org.a11y.atspi.Registry
+
+(xdg-desktop-portal-gtk:602): Gtk-WARNING **: 23:25:51.186: cannot open display: 
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.195: Failed to create settings proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.195: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.195: Choosing gtk.portal for org.freedesktop.impl.portal.FileChooser as a last-resort fallback
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.4' (uid=1000 pid=336 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:672): Gtk-WARNING **: 23:25:51.244: cannot open display: 
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.255: Failed to create file chooser proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.255: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.255: Choosing gtk.portal for org.freedesktop.impl.portal.AppChooser as a last-resort fallback
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.4' (uid=1000 pid=336 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:709): Gtk-WARNING **: 23:25:51.376: cannot open display: 
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.380: Failed to create app chooser proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.380: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.380: Choosing gtk.portal for org.freedesktop.impl.portal.Print as a last-resort fallback
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.4' (uid=1000 pid=336 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:744): Gtk-WARNING **: 23:25:51.449: cannot open display: 
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.453: Failed to create print proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.453: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.453: Choosing gtk.portal for org.freedesktop.impl.portal.Notification as a last-resort fallback
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.4' (uid=1000 pid=336 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:781): Gtk-WARNING **: 23:25:51.527: cannot open display: 
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.536: Failed to create notification proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.536: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.536: Choosing gtk.portal for org.freedesktop.impl.portal.Inhibit as a last-resort fallback
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.4' (uid=1000 pid=336 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:799): Gtk-WARNING **: 23:25:51.568: cannot open display: 
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.582: Failed to create inhibit proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.582: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.582: Choosing gtk.portal for org.freedesktop.impl.portal.Access as a last-resort fallback
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.4' (uid=1000 pid=336 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:813): Gtk-WARNING **: 23:25:51.676: cannot open display: 
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.689: Failed to create access proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.689: No skeleton to export
+[W][23:25:51.690185] pw.conf      | [          conf.c: 1182 try_load_conf()] can't load config client.conf: No such file or directory
+[E][23:25:51.690198] pw.conf      | [          conf.c: 1215 pw_conf_load_conf_for_context()] can't load config client.conf: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.690: Failed connect to PipeWire: Couldn't create PipeWire context
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.4' (uid=1000 pid=336 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:823): Gtk-WARNING **: 23:25:51.774: cannot open display: 
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.780: Failed to create access proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.781: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.781: Choosing gtk.portal for org.freedesktop.impl.portal.Account as a last-resort fallback
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.4' (uid=1000 pid=336 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:844): Gtk-WARNING **: 23:25:51.807: cannot open display: 
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.834: Failed to create account proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.834: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.834: Choosing gtk.portal for org.freedesktop.impl.portal.Email as a last-resort fallback
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.4' (uid=1000 pid=336 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:855): Gtk-WARNING **: 23:25:51.891: cannot open display: 
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.896: Failed to create email proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.897: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.897: Choosing gtk.portal for org.freedesktop.impl.portal.DynamicLauncher as a last-resort fallback
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.4' (uid=1000 pid=336 comm="/usr/libexec/xdg-desktop-portal" label="kernel")
+
+(xdg-desktop-portal-gtk:863): Gtk-WARNING **: 23:25:51.950: cannot open display: 
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Activated service 'org.freedesktop.impl.portal.desktop.gtk' failed: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.956: Failed to create dynamic_launcher proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:336): xdg-desktop-portal-WARNING **: 23:25:51.956: No skeleton to export
+dbus-daemon[10]: [session uid=1000 pid=10 pidfd=5] Successfully activated service 'org.freedesktop.portal.Desktop'
+1/1056 captured light/actionsheet
+2/1056 captured light/article
+3/1056 captured light/badge
+4/1056 captured light/button
+5/1056 captured light/button_bottom_fixed
+6/1056 captured light/button_default
+7/1056 captured light/dialog
+8/1056 captured light/flex
+9/1056 captured light/footer
+10/1056 captured light/form
+11/1056 captured light/form_access
+12/1056 captured light/form_bottom_fixed
+13/1056 captured light/form_checkbox
+14/1056 captured light/form_input_status
+15/1056 captured light/form_page
+16/1056 captured light/form_page_old
+17/1056 captured light/form_primary
+18/1056 captured light/form_radio
+19/1056 captured light/form_select
+20/1056 captured light/form_select_primary
+21/1056 captured light/form_switch
+22/1056 captured light/form_textarea
+23/1056 captured light/form_vcode
+24/1056 captured light/form_vertical
+25/1056 captured light/gallery
+26/1056 captured light/grid
+27/1056 captured light/half-screen-dialog
+28/1056 captured light/home
+29/1056 captured light/icons
+30/1056 captured light/information-bar
+31/1056 captured light/input
+32/1056 captured light/layers
+33/1056 captured light/list
+34/1056 captured light/loading
+35/1056 captured light/loadmore
+36/1056 captured light/msg
+37/1056 captured light/msg_custom_area_cell
+38/1056 captured light/msg_custom_area_preview
+39/1056 captured light/msg_custom_area_tips
+40/1056 captured light/msg_success
+41/1056 captured light/msg_text
+42/1056 captured light/msg_text_primary
+43/1056 captured light/msg_warn
+44/1056 captured light/navbar
+45/1056 captured light/panel
+46/1056 captured light/picker
+47/1056 captured light/preview
+48/1056 captured light/progress
+49/1056 captured light/searchbar
+50/1056 captured light/searchbar_filled
+51/1056 captured light/searchbar_grey
+52/1056 captured light/searchbar_homepage
+53/1056 captured light/searchbar_outlined
+54/1056 captured light/slider
+55/1056 captured light/steps
+56/1056 captured light/steps_horizonal
+57/1056 captured light/steps_vertical
+58/1056 captured light/tabbar
+59/1056 captured light/toast
+60/1056 captured light/uploader
+61/1056 captured light/actionsheet-android
+62/1056 captured light/actionsheet-ios
+63/1056 captured light/button_bottom_fixed-agreed
+64/1056 captured light/dialog-android1
+65/1056 captured light/dialog-android2
+66/1056 captured light/dialog-ios1
+67/1056 captured light/dialog-ios2
+68/1056 captured light/dialog-ios3
+69/1056 captured light/form_bottom_fixed-checked
+70/1056 captured light/form_bottom_fixed-dialog
+71/1056 captured light/form_bottom_fixed-toast
+72/1056 captured light/form_checkbox-checked
+73/1056 captured light/form_checkbox-toast
+74/1056 captured light/form_input_status-amount
+75/1056 captured light/form_input_status-error
+76/1056 captured light/form_input_status-toast
+77/1056 captured light/form_page-filled
+78/1056 captured light/form_page-toast
+79/1056 captured light/form_page_old-filled
+80/1056 captured light/form_primary-filled
+81/1056 captured light/form_primary-switch
+82/1056 captured light/form_radio-checked
+83/1056 captured light/form_radio-toast
+84/1056 captured light/form_select-toast
+85/1056 captured light/form_select_primary-select1
+86/1056 captured light/form_select_primary-select2
+87/1056 captured light/form_select_primary-select3
+88/1056 captured light/form_switch-checked
+89/1056 captured light/form_switch-toast
+90/1056 captured light/form_vcode-checked
+91/1056 captured light/form_vcode-countdown
+92/1056 captured light/form_vcode-dialog
+93/1056 captured light/form_vcode-toast
+94/1056 captured light/form_vcode-warn
+95/1056 captured light/gallery-closed
+96/1056 captured light/half-screen-dialog-1
+97/1056 captured light/half-screen-dialog-2
+98/1056 captured light/half-screen-dialog-3
+99/1056 captured light/half-screen-dialog-4
+100/1056 captured light/half-screen-dialog-5
+101/1056 captured light/home-category-1
+102/1056 captured light/information-bar-closed
+103/1056 captured light/layers-3d
+104/1056 captured light/layers-content
+105/1056 captured light/layers-mask
+106/1056 captured light/layers-navigation
+107/1056 captured light/layers-popout
+108/1056 captured light/list-closed
+109/1056 captured light/navbar-tab2
+110/1056 captured light/navbar-tab3
+111/1056 captured light/picker-cascade
+112/1056 captured light/picker-date
+113/1056 captured light/picker-multi
+114/1056 captured light/picker-single
+115/1056 captured light/progress-uploading
+116/1056 captured light/searchbar_filled-focused
+117/1056 captured light/searchbar_filled-typed
+118/1056 captured light/searchbar_grey-focused
+119/1056 captured light/searchbar_grey-typed
+120/1056 captured light/searchbar_outlined-filled
+121/1056 captured light/searchbar_outlined-focused
+122/1056 captured light/searchbar_outlined-typed
+123/1056 captured light/slider-value80
+124/1056 captured light/tabbar-tab2
+125/1056 captured light/tabbar-tab3
+126/1056 captured light/toast-fail
+127/1056 captured light/toast-loading
+128/1056 captured light/toast-longtext
+129/1056 captured light/toast-success
+130/1056 captured light/toast-text
+131/1056 captured light/uploader-preview
+132/1056 captured light/uploader-viewer
+133/1056 captured light-brand/actionsheet
+134/1056 captured light-brand/article
+135/1056 captured light-brand/badge
+136/1056 captured light-brand/button
+137/1056 captured light-brand/button_bottom_fixed
+138/1056 captured light-brand/button_default
+139/1056 captured light-brand/dialog
+140/1056 captured light-brand/flex
+141/1056 captured light-brand/footer
+142/1056 captured light-brand/form
+143/1056 captured light-brand/form_access
+144/1056 captured light-brand/form_bottom_fixed
+145/1056 captured light-brand/form_checkbox
+146/1056 captured light-brand/form_input_status
+147/1056 captured light-brand/form_page
+148/1056 captured light-brand/form_page_old
+149/1056 captured light-brand/form_primary
+150/1056 captured light-brand/form_radio
+151/1056 captured light-brand/form_select
+152/1056 captured light-brand/form_select_primary
+153/1056 captured light-brand/form_switch
+154/1056 captured light-brand/form_textarea
+155/1056 captured light-brand/form_vcode
+156/1056 captured light-brand/form_vertical
+157/1056 captured light-brand/gallery
+158/1056 captured light-brand/grid
+159/1056 captured light-brand/half-screen-dialog
+160/1056 captured light-brand/home
+161/1056 captured light-brand/icons
+162/1056 captured light-brand/information-bar
+163/1056 captured light-brand/input
+164/1056 captured light-brand/layers
+165/1056 captured light-brand/list
+166/1056 captured light-brand/loading
+167/1056 captured light-brand/loadmore
+168/1056 captured light-brand/msg
+169/1056 captured light-brand/msg_custom_area_cell
+170/1056 captured light-brand/msg_custom_area_preview
+171/1056 captured light-brand/msg_custom_area_tips
+172/1056 captured light-brand/msg_success
+173/1056 captured light-brand/msg_text
+174/1056 captured light-brand/msg_text_primary
+175/1056 captured light-brand/msg_warn
+176/1056 captured light-brand/navbar
+177/1056 captured light-brand/panel
+178/1056 captured light-brand/picker
+179/1056 captured light-brand/preview
+180/1056 captured light-brand/progress
+181/1056 captured light-brand/searchbar
+182/1056 captured light-brand/searchbar_filled
+183/1056 captured light-brand/searchbar_grey
+184/1056 captured light-brand/searchbar_homepage
+185/1056 captured light-brand/searchbar_outlined
+186/1056 captured light-brand/slider
+187/1056 captured light-brand/steps
+188/1056 captured light-brand/steps_horizonal
+189/1056 captured light-brand/steps_vertical
+190/1056 captured light-brand/tabbar
+191/1056 captured light-brand/toast
+192/1056 captured light-brand/uploader
+193/1056 captured light-brand/actionsheet-android
+194/1056 captured light-brand/actionsheet-ios
+195/1056 captured light-brand/button_bottom_fixed-agreed
+196/1056 captured light-brand/dialog-android1
+197/1056 captured light-brand/dialog-android2
+198/1056 captured light-brand/dialog-ios1
+199/1056 captured light-brand/dialog-ios2
+200/1056 captured light-brand/dialog-ios3
+201/1056 captured light-brand/form_bottom_fixed-checked
+202/1056 captured light-brand/form_bottom_fixed-dialog
+203/1056 captured light-brand/form_bottom_fixed-toast
+204/1056 captured light-brand/form_checkbox-checked
+205/1056 captured light-brand/form_checkbox-toast
+206/1056 captured light-brand/form_input_status-amount
+207/1056 captured light-brand/form_input_status-error
+208/1056 captured light-brand/form_input_status-toast
+209/1056 captured light-brand/form_page-filled
+210/1056 captured light-brand/form_page-toast
+211/1056 captured light-brand/form_page_old-filled
+212/1056 captured light-brand/form_primary-filled
+213/1056 captured light-brand/form_primary-switch
+214/1056 captured light-brand/form_radio-checked
+215/1056 captured light-brand/form_radio-toast
+216/1056 captured light-brand/form_select-toast
+217/1056 captured light-brand/form_select_primary-select1
+218/1056 captured light-brand/form_select_primary-select2
+219/1056 captured light-brand/form_select_primary-select3
+220/1056 captured light-brand/form_switch-checked
+221/1056 captured light-brand/form_switch-toast
+222/1056 captured light-brand/form_vcode-checked
+223/1056 captured light-brand/form_vcode-countdown
+224/1056 captured light-brand/form_vcode-dialog
+225/1056 captured light-brand/form_vcode-toast
+226/1056 captured light-brand/form_vcode-warn
+227/1056 captured light-brand/gallery-closed
+228/1056 captured light-brand/half-screen-dialog-1
+229/1056 captured light-brand/half-screen-dialog-2
+230/1056 captured light-brand/half-screen-dialog-3
+231/1056 captured light-brand/half-screen-dialog-4
+232/1056 captured light-brand/half-screen-dialog-5
+233/1056 captured light-brand/home-category-1
+234/1056 captured light-brand/information-bar-closed
+235/1056 captured light-brand/layers-3d
+236/1056 captured light-brand/layers-content
+237/1056 captured light-brand/layers-mask
+238/1056 captured light-brand/layers-navigation
+239/1056 captured light-brand/layers-popout
+240/1056 captured light-brand/list-closed
+241/1056 captured light-brand/navbar-tab2
+242/1056 captured light-brand/navbar-tab3
+243/1056 captured light-brand/picker-cascade
+244/1056 captured light-brand/picker-date
+245/1056 captured light-brand/picker-multi
+246/1056 captured light-brand/picker-single
+247/1056 captured light-brand/progress-uploading
+248/1056 captured light-brand/searchbar_filled-focused
+249/1056 captured light-brand/searchbar_filled-typed
+250/1056 captured light-brand/searchbar_grey-focused
+251/1056 captured light-brand/searchbar_grey-typed
+252/1056 captured light-brand/searchbar_outlined-filled
+253/1056 captured light-brand/searchbar_outlined-focused
+254/1056 captured light-brand/searchbar_outlined-typed
+255/1056 captured light-brand/slider-value80
+256/1056 captured light-brand/tabbar-tab2
+257/1056 captured light-brand/tabbar-tab3
+258/1056 captured light-brand/toast-fail
+259/1056 captured light-brand/toast-loading
+260/1056 captured light-brand/toast-longtext
+261/1056 captured light-brand/toast-success
+262/1056 captured light-brand/toast-text
+263/1056 captured light-brand/uploader-preview
+264/1056 captured light-brand/uploader-viewer
+265/1056 captured light-care/actionsheet
+266/1056 captured light-care/article
+267/1056 captured light-care/badge
+268/1056 captured light-care/button
+269/1056 captured light-care/button_bottom_fixed
+270/1056 captured light-care/button_default
+271/1056 captured light-care/dialog
+272/1056 captured light-care/flex
+273/1056 captured light-care/footer
+274/1056 captured light-care/form
+275/1056 captured light-care/form_access
+276/1056 captured light-care/form_bottom_fixed
+277/1056 captured light-care/form_checkbox
+278/1056 captured light-care/form_input_status
+279/1056 captured light-care/form_page
+280/1056 captured light-care/form_page_old
+281/1056 captured light-care/form_primary
+282/1056 captured light-care/form_radio
+283/1056 captured light-care/form_select
+284/1056 captured light-care/form_select_primary
+285/1056 captured light-care/form_switch
+286/1056 captured light-care/form_textarea
+287/1056 captured light-care/form_vcode
+288/1056 captured light-care/form_vertical
+289/1056 captured light-care/gallery
+290/1056 captured light-care/grid
+291/1056 captured light-care/half-screen-dialog
+292/1056 captured light-care/home
+293/1056 captured light-care/icons
+294/1056 captured light-care/information-bar
+295/1056 captured light-care/input
+296/1056 captured light-care/layers
+297/1056 captured light-care/list
+298/1056 captured light-care/loading
+299/1056 captured light-care/loadmore
+300/1056 captured light-care/msg
+301/1056 captured light-care/msg_custom_area_cell
+302/1056 captured light-care/msg_custom_area_preview
+303/1056 captured light-care/msg_custom_area_tips
+304/1056 captured light-care/msg_success
+305/1056 captured light-care/msg_text
+306/1056 captured light-care/msg_text_primary
+307/1056 captured light-care/msg_warn
+308/1056 captured light-care/navbar
+309/1056 captured light-care/panel
+310/1056 captured light-care/picker
+311/1056 captured light-care/preview
+312/1056 captured light-care/progress
+313/1056 captured light-care/searchbar
+314/1056 captured light-care/searchbar_filled
+315/1056 captured light-care/searchbar_grey
+316/1056 captured light-care/searchbar_homepage
+317/1056 captured light-care/searchbar_outlined
+318/1056 captured light-care/slider
+319/1056 captured light-care/steps
+320/1056 captured light-care/steps_horizonal
+321/1056 captured light-care/steps_vertical
+322/1056 captured light-care/tabbar
+323/1056 captured light-care/toast
+324/1056 captured light-care/uploader
+325/1056 captured light-care/actionsheet-android
+326/1056 captured light-care/actionsheet-ios
+327/1056 captured light-care/button_bottom_fixed-agreed
+328/1056 captured light-care/dialog-android1
+329/1056 captured light-care/dialog-android2
+330/1056 captured light-care/dialog-ios1
+331/1056 captured light-care/dialog-ios2
+332/1056 captured light-care/dialog-ios3
+333/1056 captured light-care/form_bottom_fixed-checked
+334/1056 captured light-care/form_bottom_fixed-dialog
+335/1056 captured light-care/form_bottom_fixed-toast
+336/1056 captured light-care/form_checkbox-checked
+337/1056 captured light-care/form_checkbox-toast
+338/1056 captured light-care/form_input_status-amount
+339/1056 captured light-care/form_input_status-error
+340/1056 captured light-care/form_input_status-toast
+341/1056 captured light-care/form_page-filled
+342/1056 captured light-care/form_page-toast
+343/1056 captured light-care/form_page_old-filled
+344/1056 captured light-care/form_primary-filled
+345/1056 captured light-care/form_primary-switch
+346/1056 captured light-care/form_radio-checked
+347/1056 captured light-care/form_radio-toast
+348/1056 captured light-care/form_select-toast
+349/1056 captured light-care/form_select_primary-select1
+350/1056 captured light-care/form_select_primary-select2
+351/1056 captured light-care/form_select_primary-select3
+352/1056 captured light-care/form_switch-checked
+353/1056 captured light-care/form_switch-toast
+354/1056 captured light-care/form_vcode-checked
+355/1056 captured light-care/form_vcode-countdown
+356/1056 captured light-care/form_vcode-dialog
+357/1056 captured light-care/form_vcode-toast
+358/1056 captured light-care/form_vcode-warn
+359/1056 captured light-care/gallery-closed
+360/1056 captured light-care/half-screen-dialog-1
+361/1056 captured light-care/half-screen-dialog-2
+362/1056 captured light-care/half-screen-dialog-3
+363/1056 captured light-care/half-screen-dialog-4
+364/1056 captured light-care/half-screen-dialog-5
+365/1056 captured light-care/home-category-1
+366/1056 captured light-care/information-bar-closed
+367/1056 failed light-care/layers-3d
+368/1056 failed light-care/layers-content
+369/1056 failed light-care/layers-mask
+370/1056 failed light-care/layers-navigation
+371/1056 failed light-care/layers-popout
+372/1056 failed light-care/list-closed
+373/1056 failed light-care/navbar-tab2
+374/1056 failed light-care/navbar-tab3
+375/1056 failed light-care/picker-cascade
+376/1056 failed light-care/picker-date
+377/1056 failed light-care/picker-multi
+378/1056 failed light-care/picker-single
+379/1056 failed light-care/progress-uploading
+380/1056 failed light-care/searchbar_filled-focused
+381/1056 failed light-care/searchbar_filled-typed
+382/1056 failed light-care/searchbar_grey-focused
+383/1056 failed light-care/searchbar_grey-typed
+384/1056 failed light-care/searchbar_outlined-filled
+385/1056 failed light-care/searchbar_outlined-focused
+386/1056 failed light-care/searchbar_outlined-typed
+387/1056 failed light-care/slider-value80
+388/1056 failed light-care/tabbar-tab2
+389/1056 failed light-care/tabbar-tab3
+390/1056 failed light-care/toast-fail
+391/1056 failed light-care/toast-loading
+392/1056 failed light-care/toast-longtext
+393/1056 failed light-care/toast-success
+394/1056 failed light-care/toast-text
+Traceback (most recent call last):
+  File "<repo>/scripts/weui_parity_capture.py", line 198, in main
+    with (args.out / "results.jsonl").open("w") as output:
+            ^^^^^^^^^^^^^^
+OSError: [Errno 28] No space left on device
+
+During handling of the above exception, another exception occurred:
+
+OSError: [Errno 28] No space left on device
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<repo>/scripts/weui_parity_capture.py", line 211, in <module>
+    raise SystemExit(1)
+    ^^
+  File "<repo>/scripts/weui_parity_capture.py", line 194, in main
+    try:
+    
+OSError: [Errno 28] No space left on device

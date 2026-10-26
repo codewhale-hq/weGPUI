@@ -1,0 +1,16 @@
+code: <checkout>/vendor/gpui_pre/src/text_system/line_wrapper.rs
+tests: <checkout>/vendor/gpui_pre/src/text_system/line_wrapper.rs
+tests extracted: test_is_word_char, test_is_word_char_arabic, test_is_word_char_hebrew, test_is_word_char_devanagari, test_is_word_char_greek, test_is_word_char_neighbouring_scripts_are_unchanged, test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek
+
+running 7 tests
+test tests::test_is_word_char ... ok
+test tests::test_is_word_char_arabic ... ok
+test tests::test_is_word_char_devanagari ... ok
+test tests::test_is_word_char_greek ... ok
+test tests::test_is_word_char_hebrew ... ok
+test tests::test_is_word_char_neighbouring_scripts_are_unchanged ... ok
+test tests::test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+

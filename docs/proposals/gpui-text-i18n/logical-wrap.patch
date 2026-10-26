@@ -1,0 +1,781 @@
+diff --git a/vendor/gpui_pre/src/elements/text.rs b/vendor/gpui_pre/src/elements/text.rs
+index d1896ad..6980634 100644
+--- a/vendor/gpui_pre/src/elements/text.rs
++++ b/vendor/gpui_pre/src/elements/text.rs
+@@ -992,10 +992,8 @@ impl TextLayout {
+ 
+         for wrapped in self.0.borrow().as_ref().unwrap().lines.iter() {
+             let mut seen = 0;
+-            for boundary in wrapped.layout.wrap_boundaries.iter() {
+-                let index = wrapped.layout.unwrapped_layout.runs[boundary.run_ix].glyphs
+-                    [boundary.glyph_ix]
+-                    .index;
++            for row in 1..=wrapped.layout.wrap_boundaries.len() {
++                let index = wrapped.layout.wrapped_line_start_index(row);
+ 
+                 accumulator.push_str(&wrapped.text[seen..index]);
+                 accumulator.push('\n');
+diff --git a/vendor/gpui_pre/src/text_system.rs b/vendor/gpui_pre/src/text_system.rs
+index cf6bb10..c0f8206 100644
+--- a/vendor/gpui_pre/src/text_system.rs
++++ b/vendor/gpui_pre/src/text_system.rs
+@@ -3,6 +3,7 @@ mod font_features;
+ mod line;
+ mod line_layout;
+ mod line_wrapper;
++mod logical_wrap;
+ 
+ pub use font_fallbacks::*;
+ pub use font_features::*;
+diff --git a/vendor/gpui_pre/src/text_system/line.rs b/vendor/gpui_pre/src/text_system/line.rs
+index f521005..6fb32c4 100644
+--- a/vendor/gpui_pre/src/text_system/line.rs
++++ b/vendor/gpui_pre/src/text_system/line.rs
+@@ -1377,6 +1377,7 @@ mod tests {
+                             glyph_ix: 2,
+                         }]),
+                         wrap_width: Some(px(16.)),
++                        ..Default::default()
+                     }),
+                     text: line.text,
+                     decoration_runs: line.decoration_runs.into_vec(),
+diff --git a/vendor/gpui_pre/src/text_system/line_layout.rs b/vendor/gpui_pre/src/text_system/line_layout.rs
+index f0bf121..a0ec5ab 100644
+--- a/vendor/gpui_pre/src/text_system/line_layout.rs
++++ b/vendor/gpui_pre/src/text_system/line_layout.rs
+@@ -12,7 +12,7 @@ use std::{
+     },
+ };
+ 
+-use super::LineWrapper;
++use super::{LineWrapper, logical_wrap};
+ 
+ /// A laid out and styled line of text
+ #[derive(Default, Debug)]
+@@ -190,6 +190,17 @@ impl LineLayout {
+         (left, right)
+     }
+ 
++    fn is_visually_reordered(&self) -> bool {
++        let mut previous = 0;
++        for glyph in self.runs.iter().flat_map(|run| run.glyphs.iter()) {
++            if glyph.index < previous {
++                return true;
++            }
++            previous = glyph.index;
++        }
++        false
++    }
++
+     fn compute_wrap_boundaries(
+         &self,
+         text: &str,
+@@ -283,6 +294,8 @@ pub struct WrappedLineLayout {
+ 
+     /// The width of the line, if it was wrapped
+     pub wrap_width: Option<Pixels>,
++
++    pub(crate) logical_line_starts: SmallVec<[usize; 1]>,
+ }
+ 
+ /// A boundary at which a line was wrapped
+@@ -332,6 +345,24 @@ impl WrappedLineLayout {
+         &self.wrap_boundaries
+     }
+ 
++    /// The byte index at which the given wrapped row starts; row 0 starts at 0 and the row after
++    /// the last one starts at the end of the text. Prefer this to reading the index of the glyph
++    /// at a wrap boundary, which is the logical start of a row only for left-to-right rows.
++    pub fn wrapped_line_start_index(&self, row: usize) -> usize {
++        if row == 0 {
++            return 0;
++        }
++        if let Some(&index) = self.logical_line_starts.get(row - 1) {
++            return index;
++        }
++        match self.wrap_boundaries.get(row - 1) {
++            Some(boundary) => {
++                self.unwrapped_layout.runs[boundary.run_ix].glyphs[boundary.glyph_ix].index
++            }
++            None => self.unwrapped_layout.len,
++        }
++    }
++
+     /// The font size of this layout
+     pub fn font_size(&self) -> Pixels {
+         self.unwrapped_layout.font_size
+@@ -382,7 +413,7 @@ impl WrappedLineLayout {
+             };
+             let run = &self.unwrapped_layout.runs[line_start_boundary.run_ix];
+             let glyph = &run.glyphs[line_start_boundary.glyph_ix];
+-            wrapped_line_start_index = glyph.index;
++            wrapped_line_start_index = self.wrapped_line_start_index(wrapped_line_ix);
+             wrapped_line_start_x = glyph.position.x;
+         } else {
+             wrapped_line_start_index = 0;
+@@ -396,7 +427,7 @@ impl WrappedLineLayout {
+             let next_wrap_boundary = self.wrap_boundaries[next_wrap_boundary_ix];
+             let run = &self.unwrapped_layout.runs[next_wrap_boundary.run_ix];
+             let glyph = &run.glyphs[next_wrap_boundary.glyph_ix];
+-            wrapped_line_end_index = glyph.index;
++            wrapped_line_end_index = self.wrapped_line_start_index(wrapped_line_ix + 1);
+             wrapped_line_end_x = glyph.position.x;
+         } else {
+             wrapped_line_end_index = self.unwrapped_layout.len;
+@@ -427,14 +458,8 @@ impl WrappedLineLayout {
+     /// Returns the pixel position for the given byte index.
+     pub fn position_for_index(&self, index: usize, line_height: Pixels) -> Option<Point<Pixels>> {
+         let mut line_start_ix = 0;
+-        let mut line_end_indices = self
+-            .wrap_boundaries
+-            .iter()
+-            .map(|wrap_boundary| {
+-                let run = &self.unwrapped_layout.runs[wrap_boundary.run_ix];
+-                let glyph = &run.glyphs[wrap_boundary.glyph_ix];
+-                glyph.index
+-            })
++        let mut line_end_indices = (1..=self.wrap_boundaries.len())
++            .map(|row| self.wrapped_line_start_index(row))
+             .chain([self.len()])
+             .enumerate();
+         for (ix, line_end_ix) in line_end_indices {
+@@ -637,15 +662,32 @@ impl LineLayoutCache {
+             drop(current_frame);
+             let text = SharedString::from(text);
+             let unwrapped_layout = self.layout_line::<&SharedString>(&text, font_size, runs, None);
+-            let wrap_boundaries = if let Some(wrap_width) = wrap_width {
+-                unwrapped_layout.compute_wrap_boundaries(text.as_ref(), wrap_width, max_lines)
+-            } else {
+-                SmallVec::new()
++            let (unwrapped_layout, wrap_boundaries, logical_line_starts) = match wrap_width {
++                Some(wrap_width) => match self.layout_logical_lines(
++                    &text,
++                    font_size,
++                    runs,
++                    &unwrapped_layout,
++                    wrap_width,
++                    max_lines,
++                ) {
++                    Some((layout, boundaries, starts)) => (Arc::new(layout), boundaries, starts),
++                    None => {
++                        let boundaries = unwrapped_layout.compute_wrap_boundaries(
++                            text.as_ref(),
++                            wrap_width,
++                            max_lines,
++                        );
++                        (unwrapped_layout, boundaries, SmallVec::new())
++                    }
++                },
++                None => (unwrapped_layout, SmallVec::new(), SmallVec::new()),
+             };
+             let layout = Arc::new(WrappedLineLayout {
+                 unwrapped_layout,
+                 wrap_boundaries,
+                 wrap_width,
++                logical_line_starts,
+             });
+             let key = Arc::new(CacheKey {
+                 text,
+@@ -665,6 +707,125 @@ impl LineLayoutCache {
+         }
+     }
+ 
++    fn layout_logical_lines(
++        &self,
++        text: &SharedString,
++        font_size: Pixels,
++        runs: &[FontRun],
++        unwrapped: &LineLayout,
++        wrap_width: Pixels,
++        max_lines: Option<usize>,
++    ) -> Option<(
++        LineLayout,
++        SmallVec<[WrapBoundary; 1]>,
++        SmallVec<[usize; 1]>,
++    )> {
++        if unwrapped.width <= wrap_width
++            || !text.chars().any(logical_wrap::is_rtl_char)
++            || !unwrapped.is_visually_reordered()
++        {
++            return None;
++        }
++        let visual: Vec<(usize, f32)> = unwrapped
++            .runs
++            .iter()
++            .flat_map(|run| run.glyphs.iter())
++            .map(|glyph| (glyph.index, glyph.position.x.as_f32()))
++            .collect();
++        let units = logical_wrap::logical_units(&visual, unwrapped.width.as_f32(), text);
++        if units.is_empty() {
++            return None;
++        }
++        let starts = logical_wrap::wrap(
++            &units,
++            wrap_width.as_f32(),
++            max_lines,
++            LineWrapper::is_word_char,
++        )?;
++        if starts.is_empty() {
++            return None;
++        }
++
++        let mark = if logical_wrap::base_direction_is_rtl(text) {
++            logical_wrap::RLM
++        } else {
++            logical_wrap::LRM
++        };
++        let mark_len = mark.len_utf8();
++        let font_runs: Vec<(usize, FontId)> =
++            runs.iter().map(|run| (run.len, run.font_id)).collect();
++        let line_count = starts.len() + 1;
++        let mut combined: Vec<ShapedRun> = Vec::new();
++        let mut boundaries: SmallVec<[WrapBoundary; 1]> = SmallVec::new();
++        let mut x_offset = 0f32;
++        for line in 0..line_count {
++            let start = if line == 0 { 0 } else { starts[line - 1] };
++            let end = starts.get(line).copied().unwrap_or(text.len());
++            let shaped_end = if line + 1 < line_count {
++                start + text[start..end].trim_end_matches(' ').len()
++            } else {
++                end
++            };
++            if shaped_end <= start {
++                return None;
++            }
++            let mut line_runs: Vec<FontRun> =
++                logical_wrap::slice_runs(&font_runs, start..shaped_end)
++                    .into_iter()
++                    .map(|(len, font_id)| FontRun { len, font_id })
++                    .collect();
++            line_runs.first_mut()?.len += mark_len;
++            let mut marked = String::with_capacity(mark_len + shaped_end - start);
++            marked.push(mark);
++            marked.push_str(&text[start..shaped_end]);
++            let shaped = self.layout_line(marked, font_size, &line_runs, None);
++
++            let shaped_runs: Vec<(FontId, &[ShapedGlyph])> = shaped
++                .runs
++                .iter()
++                .map(|run| (run.font_id, run.glyphs.as_slice()))
++                .collect();
++            let placed = logical_wrap::place_line(
++                &shaped_runs,
++                shaped.width.as_f32(),
++                mark_len,
++                start,
++                x_offset,
++                |glyph| glyph.index,
++                |glyph| glyph.position.x.as_f32(),
++                |glyph, x, index| ShapedGlyph {
++                    id: glyph.id,
++                    position: point(px(x), glyph.position.y),
++                    index,
++                    is_emoji: glyph.is_emoji,
++                },
++            )?;
++            if line > 0 {
++                boundaries.push(WrapBoundary {
++                    run_ix: combined.len(),
++                    glyph_ix: 0,
++                });
++            }
++            combined.extend(
++                placed
++                    .runs
++                    .into_iter()
++                    .map(|(font_id, glyphs)| ShapedRun { font_id, glyphs }),
++            );
++            x_offset += placed.width;
++        }
++
++        let layout = LineLayout {
++            font_size: unwrapped.font_size,
++            width: px(x_offset),
++            ascent: unwrapped.ascent,
++            descent: unwrapped.descent,
++            runs: combined,
++            len: unwrapped.len,
++        };
++        Some((layout, boundaries, starts.into_iter().collect()))
++    }
++
+     pub fn layout_line<Text>(
+         &self,
+         text: Text,
+@@ -1097,6 +1258,95 @@ mod tests {
+         }
+     }
+ 
++    fn logical_two_row_layout() -> WrappedLineLayout {
++        let first_row = ShapedRun {
++            font_id: FontId(0),
++            glyphs: vec![glyph_at(0., 4), glyph_at(5., 2), glyph_at(15., 0)],
++        };
++        let second_row = ShapedRun {
++            font_id: FontId(0),
++            glyphs: vec![glyph_at(25., 7), glyph_at(35., 5)],
++        };
++        WrappedLineLayout {
++            unwrapped_layout: Arc::new(LineLayout {
++                font_size: px(16.),
++                width: px(45.),
++                ascent: px(12.),
++                descent: px(4.),
++                runs: vec![first_row, second_row],
++                len: 9,
++            }),
++            wrap_boundaries: SmallVec::from_buf([WrapBoundary {
++                run_ix: 1,
++                glyph_ix: 0,
++            }]),
++            wrap_width: Some(px(30.)),
++            logical_line_starts: SmallVec::from_buf([5]),
++        }
++    }
++
++    #[test]
++    fn logical_rows_start_at_their_logical_index_not_at_their_first_glyph() {
++        let layout = logical_two_row_layout();
++        assert_eq!(layout.wrapped_line_start_index(0), 0);
++        assert_eq!(layout.wrapped_line_start_index(1), 5);
++        assert_eq!(layout.wrapped_line_start_index(2), 9);
++        let glyph_order = WrappedLineLayout {
++            logical_line_starts: SmallVec::new(),
++            ..logical_two_row_layout()
++        };
++        assert_eq!(glyph_order.wrapped_line_start_index(1), 7);
++    }
++
++    #[test]
++    fn logical_rows_place_each_index_on_the_row_that_holds_it() {
++        let layout = logical_two_row_layout();
++        let line_height = px(20.);
++        for (index, row) in [(0, 0), (4, 0), (5, 0), (7, 1), (8, 1), (9, 1)] {
++            let position = layout.position_for_index(index, line_height).unwrap();
++            assert_eq!(position.y, line_height * row as f32, "index {index}");
++        }
++    }
++
++    #[test]
++    fn logical_rows_hit_test_to_the_index_under_the_pointer() {
++        let layout = logical_two_row_layout();
++        let line_height = px(20.);
++        assert_eq!(
++            layout.index_for_position(point(px(2.), px(5.)), line_height),
++            Ok(4)
++        );
++        assert_eq!(
++            layout.index_for_position(point(px(2.), px(25.)), line_height),
++            Ok(7)
++        );
++        assert_eq!(
++            layout.index_for_position(point(px(30.), px(5.)), line_height),
++            Err(5)
++        );
++        assert_eq!(
++            layout.index_for_position(point(px(30.), px(25.)), line_height),
++            Err(9)
++        );
++    }
++
++    #[test]
++    fn rows_that_were_not_wrapped_logically_keep_their_glyph_derived_starts() {
++        let glyphs = [(0., 0), (10., 1), (20., 2), (0., 3), (10., 4)];
++        let layout = WrappedLineLayout {
++            unwrapped_layout: Arc::new(make_layout(
++                glyphs.iter().map(|&(x, index)| glyph_at(x, index)).collect(),
++            )),
++            wrap_boundaries: SmallVec::from_buf([WrapBoundary {
++                run_ix: 0,
++                glyph_ix: 3,
++            }]),
++            ..Default::default()
++        };
++        assert_eq!(layout.wrapped_line_start_index(1), 3);
++        assert_eq!(layout.wrapped_line_start_index(2), layout.len());
++    }
++
+     fn glyph_x_positions(layout: &LineLayout) -> Vec<f32> {
+         layout.runs[0]
+             .glyphs
+diff --git a/vendor/gpui_pre/src/text_system/logical_wrap.rs b/vendor/gpui_pre/src/text_system/logical_wrap.rs
+new file mode 100644
+index 0000000..4eebfa0
+--- /dev/null
++++ b/vendor/gpui_pre/src/text_system/logical_wrap.rs
+@@ -0,0 +1,375 @@
++use std::ops::Range;
++
++pub(crate) const LRM: char = '\u{200E}';
++pub(crate) const RLM: char = '\u{200F}';
++
++pub(crate) fn is_rtl_char(c: char) -> bool {
++    matches!(
++        c,
++        '\u{0590}'..='\u{08FF}'
++            | '\u{200F}'
++            | '\u{202B}'
++            | '\u{202E}'
++            | '\u{2067}'
++            | '\u{FB1D}'..='\u{FDFF}'
++            | '\u{FE70}'..='\u{FEFF}'
++            | '\u{10800}'..='\u{10FFF}'
++            | '\u{1E800}'..='\u{1EFFF}'
++    ) && !matches!(c, '\u{0660}'..='\u{0669}' | '\u{06F0}'..='\u{06F9}')
++}
++
++pub(crate) fn base_direction_is_rtl(text: &str) -> bool {
++    for c in text.chars() {
++        if is_rtl_char(c) {
++            return true;
++        }
++        if c.is_alphabetic() {
++            return false;
++        }
++    }
++    false
++}
++
++#[derive(Clone, Copy, Debug, PartialEq)]
++pub(crate) struct Unit {
++    pub index: usize,
++    pub ch: char,
++    pub advance: f32,
++}
++
++pub(crate) fn logical_units(visual: &[(usize, f32)], total_width: f32, text: &str) -> Vec<Unit> {
++    let mut ordered: Vec<(usize, usize, f32)> = visual
++        .iter()
++        .enumerate()
++        .map(|(ordinal, &(index, x))| {
++            let next_x = visual.get(ordinal + 1).map_or(total_width, |&(_, x)| x);
++            (index, ordinal, (next_x - x).max(0.))
++        })
++        .collect();
++    ordered.sort_by_key(|&(index, ordinal, _)| (index, ordinal));
++    let mut units: Vec<Unit> = Vec::with_capacity(ordered.len());
++    for (index, _, advance) in ordered {
++        if let Some(last) = units.last_mut()
++            && last.index == index
++        {
++            last.advance += advance;
++            continue;
++        }
++        let Some(ch) = text.get(index..).and_then(|rest| rest.chars().next()) else {
++            return Vec::new();
++        };
++        units.push(Unit { index, ch, advance });
++    }
++    units
++}
++
++pub(crate) fn wrap(
++    units: &[Unit],
++    wrap_width: f32,
++    max_lines: Option<usize>,
++    is_word_char: impl Fn(char) -> bool,
++) -> Option<Vec<usize>> {
++    let mut starts = Vec::new();
++    let mut first_non_whitespace = None;
++    let mut last_candidate: Option<(usize, f32)> = None;
++    let mut last_boundary = 0;
++    let mut last_boundary_x = 0.;
++    let mut prev_ch = '\0';
++    let mut x = 0.;
++    for (i, unit) in units.iter().enumerate() {
++        let ch = unit.ch;
++        let next_x = x + unit.advance;
++        if ch == '\n' {
++            x = next_x;
++            continue;
++        }
++        if is_word_char(ch) {
++            if prev_ch == ' ' && ch != ' ' && first_non_whitespace.is_some() {
++                last_candidate = Some((i, x));
++            }
++        } else if ch != ' ' && first_non_whitespace.is_some() {
++            last_candidate = Some((i, x));
++        }
++        if ch != ' ' && first_non_whitespace.is_none() {
++            first_non_whitespace = Some(i);
++        }
++        if next_x - last_boundary_x > wrap_width && i > last_boundary {
++            if let Some(max_lines) = max_lines
++                && starts.len() >= max_lines.saturating_sub(1)
++            {
++                break;
++            }
++            let (ordinal, candidate_x) = last_candidate.take()?;
++            last_boundary = ordinal;
++            last_boundary_x = candidate_x;
++            starts.push(units[ordinal].index);
++        }
++        prev_ch = ch;
++        x = next_x;
++    }
++    Some(starts)
++}
++
++pub(crate) struct Placed<R, G> {
++    pub runs: Vec<(R, Vec<G>)>,
++    pub width: f32,
++}
++
++pub(crate) fn place_line<R: Copy, G>(
++    runs: &[(R, &[G])],
++    width: f32,
++    mark_len: usize,
++    line_start: usize,
++    x_offset: f32,
++    index_of: impl Fn(&G) -> usize,
++    x_of: impl Fn(&G) -> f32,
++    rebuild: impl Fn(&G, f32, usize) -> G,
++) -> Option<Placed<R, G>> {
++    let mut min_x = f32::INFINITY;
++    let mut mark_x = None;
++    for glyph in runs.iter().flat_map(|(_, glyphs)| glyphs.iter()) {
++        if index_of(glyph) < mark_len {
++            mark_x = Some(x_of(glyph));
++        } else {
++            min_x = min_x.min(x_of(glyph));
++        }
++    }
++    if !min_x.is_finite() {
++        return None;
++    }
++    let right_edge = match mark_x {
++        Some(mark_x) if mark_x > min_x => mark_x,
++        _ => width,
++    };
++    let runs = runs
++        .iter()
++        .filter_map(|&(font, glyphs)| {
++            let glyphs: Vec<G> = glyphs
++                .iter()
++                .filter(|glyph| index_of(glyph) >= mark_len)
++                .map(|glyph| {
++                    rebuild(
++                        glyph,
++                        x_of(glyph) - min_x + x_offset,
++                        index_of(glyph) - mark_len + line_start,
++                    )
++                })
++                .collect();
++            (!glyphs.is_empty()).then_some((font, glyphs))
++        })
++        .collect();
++    Some(Placed {
++        runs,
++        width: right_edge - min_x,
++    })
++}
++
++pub(crate) fn slice_runs<T: Copy>(runs: &[(usize, T)], range: Range<usize>) -> Vec<(usize, T)> {
++    let mut sliced = Vec::new();
++    let mut start = 0;
++    for &(len, value) in runs {
++        let end = start + len;
++        let low = start.max(range.start);
++        let high = end.min(range.end);
++        if low < high {
++            sliced.push((high - low, value));
++        }
++        start = end;
++    }
++    sliced
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++
++    fn word(c: char) -> bool {
++        !c.is_whitespace()
++    }
++
++    fn uniform_units(text: &str, advance: f32) -> Vec<Unit> {
++        text.char_indices()
++            .map(|(index, ch)| Unit { index, ch, advance })
++            .collect()
++    }
++
++    #[test]
++    fn rtl_characters_are_classified_by_script() {
++        for c in ['ب', 'ש', 'ܐ', 'ހ', 'ﭐ', 'ﺎ', '\u{200F}'] {
++            assert!(is_rtl_char(c), "{c:?} should be right to left");
++        }
++        for c in ['a', 'я', 'न', 'α', '你', '1', '٣', '۴', ' ', '\u{200E}', '.'] {
++            assert!(!is_rtl_char(c), "{c:?} should not be right to left");
++        }
++    }
++
++    #[test]
++    fn base_direction_follows_the_first_strong_character() {
++        assert!(base_direction_is_rtl("مرحبا hello"));
++        assert!(base_direction_is_rtl("123 (שלום) hello"));
++        assert!(!base_direction_is_rtl("hello مرحبا"));
++        assert!(!base_direction_is_rtl("123 ... 456"));
++        assert!(!base_direction_is_rtl(""));
++    }
++
++    #[test]
++    fn units_are_logical_even_when_the_shaper_returns_visual_order() {
++        let text = "اب جد";
++        let visual = [(7, 0.), (5, 10.), (4, 20.), (2, 30.), (0, 40.)];
++        let units = logical_units(&visual, 50., text);
++        assert_eq!(
++            units,
++            [
++                Unit { index: 0, ch: 'ا', advance: 10. },
++                Unit { index: 2, ch: 'ب', advance: 10. },
++                Unit { index: 4, ch: ' ', advance: 10. },
++                Unit { index: 5, ch: 'ج', advance: 10. },
++                Unit { index: 7, ch: 'د', advance: 10. },
++            ]
++        );
++    }
++
++    #[test]
++    fn glyphs_of_one_character_share_a_unit() {
++        let text = "لا ب";
++        let visual = [(5, 0.), (4, 12.), (0, 22.)];
++        let units = logical_units(&visual, 30., text);
++        assert_eq!(units.iter().map(|u| u.index).collect::<Vec<_>>(), [0, 4, 5]);
++        let split = [(5, 0.), (0, 10.), (0, 14.), (4, 24.)];
++        let units = logical_units(&split, 34., text);
++        assert_eq!(units.iter().map(|u| u.index).collect::<Vec<_>>(), [0, 4, 5]);
++        assert_eq!(units[0].advance, 14.);
++    }
++
++    #[test]
++    fn marks_with_a_negative_offset_never_shrink_the_line() {
++        let text = "بَ جد";
++        let visual = [(7, 0.), (5, 10.), (4, 20.), (0, 30.), (2, 28.)];
++        let total: f32 = logical_units(&visual, 40., text)
++            .iter()
++            .map(|u| u.advance)
++            .sum();
++        assert!(total >= 40.);
++    }
++
++    #[test]
++    fn breaks_fall_on_word_starts_in_logical_order() {
++        let text = "aa bb cc";
++        let units = uniform_units(text, 10.);
++        assert_eq!(wrap(&units, 45., None, word), Some(vec![3, 6]));
++        assert_eq!(wrap(&units, 85., None, word), Some(vec![]));
++    }
++
++    #[test]
++    fn arabic_text_breaks_between_words_not_inside_them() {
++        let text = "نص حكيم له سر قاطع وذو شأن عظيم";
++        let units = uniform_units(text, 10.);
++        let starts = wrap(&units, 150., None, word).unwrap();
++        assert!(!starts.is_empty());
++        for start in starts {
++            assert_eq!(text[..start].chars().last(), Some(' '));
++        }
++    }
++
++    #[test]
++    fn a_word_wider_than_the_line_is_left_to_the_caller() {
++        let units = uniform_units("aaaaaaaa", 10.);
++        assert_eq!(wrap(&units, 25., None, word), None);
++    }
++
++    #[test]
++    fn line_clamp_stops_adding_breaks() {
++        let units = uniform_units("aa bb cc dd ee ff", 10.);
++        assert_eq!(wrap(&units, 45., Some(2), word).unwrap().len(), 1);
++        assert_eq!(wrap(&units, 45., Some(1), word).unwrap().len(), 0);
++        assert!(wrap(&units, 45., None, word).unwrap().len() > 2);
++    }
++
++    #[test]
++    fn candidates_include_characters_that_are_not_word_characters() {
++        let units = uniform_units("ab/cd/ef", 10.);
++        let starts = wrap(&units, 35., None, |c| c.is_alphanumeric()).unwrap();
++        assert_eq!(starts, [2, 5]);
++    }
++
++    type Glyph = (usize, f32);
++
++    fn place(
++        runs: &[(char, &[Glyph])],
++        width: f32,
++        line_start: usize,
++        x_offset: f32,
++    ) -> Option<Placed<char, Glyph>> {
++        place_line(
++            runs,
++            width,
++            3,
++            line_start,
++            x_offset,
++            |g| g.0,
++            |g| g.1,
++            |_, x, index| (index, x),
++        )
++    }
++
++    #[test]
++    fn a_right_to_left_line_loses_its_mark_at_the_right_end() {
++        let shaped: [Glyph; 6] = [(10, 0.), (8, 10.), (7, 20.), (5, 30.), (3, 40.), (0, 50.)];
++        let placed = place(&[('a', &shaped)], 50., 20, 100.).unwrap();
++        assert_eq!(placed.width, 50.);
++        assert_eq!(
++            placed.runs,
++            [(
++                'a',
++                vec![(27, 100.), (25, 110.), (24, 120.), (22, 130.), (20, 140.)]
++            )]
++        );
++    }
++
++    #[test]
++    fn a_left_to_right_line_loses_its_mark_at_the_left_end() {
++        let shaped: [Glyph; 4] = [(0, 0.), (3, 0.), (4, 10.), (5, 20.)];
++        let placed = place(&[('a', &shaped)], 30., 7, 0.).unwrap();
++        assert_eq!(placed.width, 30.);
++        assert_eq!(placed.runs, [('a', vec![(7, 0.), (8, 10.), (9, 20.)])]);
++    }
++
++    #[test]
++    fn a_mark_with_an_advance_is_taken_out_of_the_line_width() {
++        let shaped: [Glyph; 3] = [(0, 0.), (3, 2.), (4, 12.)];
++        let placed = place(&[('a', &shaped)], 22., 0, 40.).unwrap();
++        assert_eq!(placed.width, 20.);
++        assert_eq!(placed.runs, [('a', vec![(0, 40.), (1, 50.)])]);
++        let shaped: [Glyph; 3] = [(4, 0.), (3, 10.), (0, 20.)];
++        let placed = place(&[('a', &shaped)], 22., 0, 0.).unwrap();
++        assert_eq!(placed.width, 20.);
++    }
++
++    #[test]
++    fn runs_keep_their_order_and_empty_ones_are_dropped() {
++        let first: [Glyph; 1] = [(0, 0.)];
++        let second: [Glyph; 2] = [(5, 4.), (3, 14.)];
++        let third: [Glyph; 1] = [(8, 24.)];
++        let placed = place(&[('a', &first), ('b', &second), ('c', &third)], 34., 0, 0.).unwrap();
++        assert_eq!(
++            placed.runs,
++            [('b', vec![(2, 0.), (0, 10.)]), ('c', vec![(5, 20.)])]
++        );
++    }
++
++    #[test]
++    fn a_line_with_no_glyphs_but_the_mark_is_rejected() {
++        let shaped: [Glyph; 1] = [(0, 0.)];
++        assert!(place(&[('a', &shaped)], 0., 0, 0.).is_none());
++    }
++
++    #[test]
++    fn font_runs_are_cut_to_a_line() {
++        let runs = [(4, 'a'), (6, 'b'), (5, 'c')];
++        assert_eq!(slice_runs(&runs, 0..15), runs);
++        assert_eq!(slice_runs(&runs, 2..7), [(2, 'a'), (3, 'b')]);
++        assert_eq!(slice_runs(&runs, 10..15), [(5, 'c')]);
++        assert_eq!(slice_runs(&runs, 4..10), [(6, 'b')]);
++        assert!(slice_runs(&runs, 7..7).is_empty());
++    }
++}

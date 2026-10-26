@@ -1,8 +1,27 @@
-# Status — 2026-10-25
+# Status — 2026-10-26
 
 weGPUI is an independent Rust library and gallery port of WeUI 2.6.26 for GPUI. GitHub is the
 canonical contributor home; CNB is a mirror. All 61 upstream example files have gallery
-mappings. Visual, behavioural and accessibility parity is **sampled, not complete**.
+mappings. Visual, behavioural and accessibility parity is **sampled, not complete**. The
+[publication review](REVIEW-2026-10-26.md) records the final review scope, fixes and checks.
+
+Current upstream is still WeUI 2.6.26. The [parity plan](WEUI-PARITY-PLAN.md) inventories
+61 HTML examples and 59 widget styles, and executes the eight-appearance, 132-scene reference
+matrix. The [new receipt](receipts/weui-parity-20261025/README.md) separates capture completeness,
+manual review and contract acceptance. The owner separately approved a monotonic shaped-row
+trailing-space trial; this changes one guard in `line_layout.rs` and fixes the article's early
+word break. On October 26 the owner requested complete review and publication of all current
+work to GitHub, superseding the earlier landing hold for repository publication. The Linux RTL
+visual failure remains an acceptance blocker and step 3 remains unapproved. The supplied
+macOS prototype images do not qualify the new guard. The [October 26 continuation](receipts/weui-parity-20261026/README.md)
+adds upstream 500-weight corrections, responsive transformed Layers labels and direct named
+accessibility actions, and the separately approved twenty-character CJK closing-mark trial.
+All eight Layers appearances pass 48 native interaction steps, including selected focus and
+hidden inactive controls. A further 80 normal-motion interruption and stable-endpoint checks
+pass in all eight appearances. A current-source English/light Orca sample passes twelve
+state steps and eight name/role speech windows, with real synthesized PCM retained; human
+listening and full reader acceptance remain open. Current source gates pass with 59 root and three gallery tests.
+The earlier apparent 16px half-screen text gap was a measurement error; no padding change was made.
 
 The first public release targets macOS, Windows and Linux; iOS and Android remain
 experimental. See the [desktop release checklist](RELEASE-READINESS.md) and
@@ -21,6 +40,15 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 
 ## Localisation and right-to-left — 2026-10-25
 
+The independent [completion continuation](COMPLETION.md) adds minimum footer targets and an
+application-supplied safe-area API, readable neutral swipe actions, bounded agreement layout,
+a complete application example and a reproducible preview source bundle. It also repairs the
+website route-inventory regression; five website regressions and 42 full Chromium checks pass
+across root/project mounts (360 route/viewport observations). Its source and
+verification are separate from the held text prototype:
+[receipt](receipts/completion-20261025/README.md). This does not complete a component's desktop
+acceptance matrix or authorize publication.
+
 The owner's instruction that the library "work in English and all other languages" settles the
 scope question that was open here. Every string the library supplies comes from a message catalog
 (14 built-in; any other language by supplying a `Messages`), layouts mirror under a right-to-left
@@ -34,8 +62,15 @@ Linux and Windows not run; `TextArea` does not right-align; dates stay ISO and t
 column order stays year-month-day. Arabic, Hebrew, Devanagari and Greek now wrap at spaces
 (owner-approved step 1 of the [GPUI proposal](proposals/gpui-text-i18n/README.md), applied to
 `vendor/gpui_pre`; [receipt](receipts/gpui-word-break-20261025/README.md)); the vendored GPUI
-still wraps right-to-left paragraphs in visual line order and breaks Thai and Hangul between any
-two characters (steps 2 and 3 await approval; Hangul was left alone by decision).
+has an approved step 2 prototype for logical-order wrapping. Its supplied macOS captures and
+all five Linux source gates pass, but Linux Xvfb still clips and misaligns Arabic/Hebrew
+paragraphs (also present in the A/B baseline). **The owner initially chose to hold landing on 2026-10-25**:
+[receipt](receipts/gpui-logical-wrap-20261025/README.md). Step 3 (caret x and partial selection
+in wrapped right-to-left rows) remains unapproved. Thai and Hangul still break between any two
+characters; Hangul was left alone by decision. This is a sampled Linux check, not completion
+of localisation acceptance on Linux. The later
+[publication review](REVIEW-2026-10-26.md) records the owner's request to commit the existing
+prototype with these limits; it does not authorize step 3 or another wrapping-logic revision.
 
 ## Linux continuation — 2026-10-25
 
@@ -311,28 +346,28 @@ bridge events and actual reader speech are separate evidence classes.
 | Button / Agree | Eight-mode callback/guards and focus samples; real Orca disabled default/`Button::cell()` grayed and loading descriptions; Agree warning invalid-entry additions/clears preserve checkbox/terms counts ([controls](receipts/control-contracts-20261025/README.md), [reader](receipts/orca-controls-20261025/README.md)) | No human audio listening; Busy tree-only in these speech samples; full motion/theme/state/reader/host acceptance remains open. |
 | Dialog / Modal | Native five-click/disabled/focus guards and depth-ranked isolation; approved guard passes seven timing cases, fixed cached/live proxies and six raw/listener/epoch/passive/ancestor/two-window modes ([fixed receipts](receipts/overlay-contracts-20261025/action-guard-fixed-20261025/)) | Cache performance, arbitrary external topmost ordering and full timing/reader/theme/host matrix. |
 | Flex | Historical light/dark/care layout; broader window resize samples | Complete responsive-layout/host coverage. |
-| Footer | Actual link callbacks, viewport placement, click occlusion and modal hidden/restored tree ([data](receipts/data-contracts-20261025/README.md)) | Safe-area API and text-sized link target/focus acceptance remain open. |
+| Footer | Actual link callbacks, viewport placement, click occlusion and modal hidden/restored tree ([data](receipts/data-contracts-20261025/README.md)) | Host-supplied safe-area padding and minimum 44px targets are implemented in the independent continuation; full focus/reader/host acceptance remains open. |
 | Form / DateField | Strict validation, optional ISO typing/clearing, range/owner/DateTime/focus/availability contracts; final 15/15 native steps and actual Orca invalid/retry feedback once each with valid/clear removing error ([forms](receipts/form-contracts-20261025/README.md)) | Default range 1900–2100 and UTC today unchanged; locale/seconds, full theme/reader/host coverage. |
 | Input / TextArea | Scale 1/2 native/AT text/selection/geometry and held-modifier Orca; real inline XIM selected/reversed cancellation fix, callback/undo/state/maxlength and multiline contracts in 35-snapshot observer ([input](receipts/input-contracts-20261025/README.md), [IME](receipts/ime-x11-20261025/README.md)) | Pinned adapter lacks EditableText; full IME/reader/theme/host matrix and preedit cursor modes remain open. Historical reader teardown failures retained. |
 | Form choices | Controlled/disabled/propagation/motion samples; real Orca checkbox checked/unchecked, Switch pressed/not-pressed and independent radio positions with disabled skip and callback counts ([controls](receipts/control-contracts-20261025/README.md), [reader](receipts/orca-controls-20261025/README.md)) | Complete motion/reader/theme/host matrix and human audio listening remain open. |
 | Form select | Bounded long menu, disabled skip, initial selected reveal, commit/reopen/dismiss and restore ([overlays](receipts/overlay-contracts-20261025/README.md)) | Native overlay adaptation; complete state/reader/host matrix. |
 | Gallery / image viewer | Actual thumbnail open; image dismissal, full-bar deletion, focus restoration; dark+care/brand samples ([media](receipts/media-contracts-20261025/README.md)) | Pinned upstream has no pinch/zoom/paging requirement. Complete reader/theme/host coverage remains open. |
-| Grid / Cells / Panel | Actual keyboard callbacks, title/tips group semantics and selected panel focus capture ([data](receipts/data-contracts-20261025/README.md)) | Generic Cell state/reader coverage, panel CJK punctuation/clamping and complete visual parity remain open; caller generic slots own semantics. Button::cell() reader samples are recorded in the Button family. |
+| Grid / Cells / Panel | Actual keyboard callbacks, title/tips group semantics and selected panel focus capture ([data](receipts/data-contracts-20261025/README.md)) | Generic Cell state/reader coverage and complete visual parity remain open; the approved CJK closing-mark trial corrects the sampled Panel clamp; caller generic slots own semantics. Button::cell() reader samples are recorded in the Button family. |
 | Half-screen dialog | Short/long drag, returning animation, interrupted reopen, short-window sizing, body/subtitle semantics and inline header focus ([overlays](receipts/overlay-contracts-20261025/README.md)) | Complete size/theme/touch/reader/host matrix. |
 | Icons | Historical named assets and native enabled/disabled callbacks; approved X11 filter lets actual Orca retain disabled icon-2 flat review and emit grayed speech ([fixed reader](receipts/x11-grab-focus-20261025/README.md)) | No human audio listening; full IconButton/theme/state/reader/host coverage open. Combined approved artifact, no isolated one-patch A/B qualification. |
 | Information bar | Viewport fixed placement while parent scrolls, native link/close, occlusion and live text events ([data](receipts/data-contracts-20261025/README.md)) | Bridge events are not speech; full variant/reader/theme/host matrix. |
-| List / swiped cell | Controlled drag/AT callbacks and Expanded/Collapsed; native collapsed-row Escape reaches Modal, open-row Escape closes row first and restores focus ([media](receipts/media-contracts-20261025/README.md), [Escape](receipts/overlay-contracts-20261025/swiped-escape-followup/README.md)) | Approved Modal dispatch guard has separate bounded receipts; neutral action contrast and full touch/reader/theme/host matrix. |
+| List / swiped cell | Controlled drag/AT callbacks and Expanded/Collapsed; native collapsed-row Escape reaches Modal, open-row Escape closes row first and restores focus ([media](receipts/media-contracts-20261025/README.md), [Escape](receipts/overlay-contracts-20261025/swiped-escape-followup/README.md)) | Approved Modal dispatch guard has separate bounded receipts; neutral action uses the theme foreground in the independent continuation; full touch/reader/theme/host matrix remains open. |
 | Loading / Loadmore | Historical spinner artwork/light/dark/care; later loading text announcement event | Complete animation/live reduced-motion and actual reader qualification. |
 | Message / LinkText | Historical short/wrapped real-input links and shaped bounds; title weight corrected to 500 ([inline links](receipts/inline-links-20261024/README.md), [data](receipts/data-contracts-20261025/README.md)) | Full typography/theme/reader/host coverage. |
 | Navbar / Tabbar | Controlled native/AT selections and roving offscreen reveal ([data](receipts/data-contracts-20261025/README.md), [focus](receipts/focus-reveal-20261025/README.md)) | Caller wraps tab_panel in FocusScroll; full theme/state/reader/host matrix. |
 | Picker | Lazy full-i32 dates, exact Home/End, leap/day clamp, disabled/reentrant/wheel contracts and focused-column ring ([overlays](receipts/overlay-contracts-20261025/README.md)) | UTC policy unchanged; all-disabled Confirm intentionally disabled; full focus/reader/theme/touch/host coverage. |
 | Preview / Steps | Historical static light/dark/care trees and focus; title weights corrected | Full typography/state/reader/host coverage. |
 | Progress / Slider | Controlled value/cancel removal/live events; numeric AT/key updates, snapping and availability guards ([data](receipts/data-contracts-20261025/README.md)) | Complete pointer/geometry/live-reader/theme/host matrix. |
-| Search bar | Native Homepage/Outlined/Filled callback counts, public focus, read-only clear guards, keyword label, clearing/refocus and cancel rules ([search](receipts/search-contracts-20261025/README.md)) | Final eight-mode FilledGrey caret/action focus pixels pass separately; disabled transitions/FilledGrey callback matrix and complete theme/state/reader/host coverage remain open. |
+| Search bar | Native Homepage/Outlined/Filled callback counts, public focus, read-only clear guards, keyword label, clearing/refocus and cancel rules ([search](receipts/search-contracts-20261025/README.md)) | Eight-mode FilledGrey caret/action focus pixels pass separately. The October 26 fixture adds 24 FilledGrey/Filled/Outlined runs and 120 callback/inner-input disabled/read-only transition steps; complete motion/reader/host coverage remains open. |
 | Toast / toptips | Historical timed passive focus/page-tree behavior; explicit live metadata added | Full actual announcement/reader, reduced-motion/timing/theme/host matrix. |
 | Uploader | Actual capacity/add/status/preview/delete lifecycle and focus; historical native chooser lifecycle ([media](receipts/media-contracts-20261025/README.md)) | Transport/compression/retry application-owned; complete chooser/reader/theme/host coverage. |
 | Verification code | Native timer/activation guards; real Orca rounded/plain countdown names, grayed state, reset/restoration/restart and callback counts ([controls](receipts/control-contracts-20261025/README.md), [reader](receipts/orca-controls-20261025/README.md)) | Complete timing/theme/reader/host matrix; no read-only API exists. |
-| Home / layers / index | Focus-reveal samples and native startup captures | Gallery-specific; route coverage does not establish reusable component completion. |
+| Home / layers / index | Focus-reveal samples and native startup captures | Gallery-specific; Layers now has matched responsive projection/labels and eight-mode native keyboard/pointer/AT-action checks (October 26 receipt). Full reader, motion and other-host checks remain open. |
 
 ## Known unresolved defects and gaps
 
@@ -341,7 +376,8 @@ bridge events and actual reader speech are separate evidence classes.
   FilledGrey caret strategy remain preserved failures. Corrected checkbox callbacks/interiors,
   16 final caret surfaces and 24 FilledGrey action-focus checks pass. Complete focus appearance,
   arbitrary host palettes/images and minimum targets remain unqualified. Footer links remain
-  text-sized; the neutral swipe action inherits low-contrast upstream white-on-light colours.
+  at least 44×44 in the independent continuation; neutral swipe actions explicitly use the
+  theme foreground. Complete target/contrast/reader checks on other hosts remain open.
 - **Complete parity:** per-component dark/care/brand/state reference checks, actual reader
   announcements/order and current-source macOS/Windows runtime matrices are incomplete.
   All inventory rows remain unaccepted. The final article image-wrapper light/dark correction
@@ -389,7 +425,7 @@ bridge events and actual reader speech are separate evidence classes.
   path has a verified AccessKit adapter.
 - **Composition/identity:** caller-supplied generic children own their semantics; plain-text
   helpers are available for many slots. Repeated helper/loop instances need explicit stable IDs.
-  Footer safe-area handling remains absent.
+  Footer has an application-supplied bottom safe-area API; automatic host inset discovery remains application-owned.
 - **API/release policy:** public naming mixes Navbar/Tabbar and SearchBar with hd/bd/ft helpers.
   Breaking naming, package/version policy and distribution authorization remain owner decisions.
   Approved Cargo path patches must be adopted at downstream workspace roots; current Linux
@@ -458,7 +494,7 @@ Still pending:
 - crates.io name, publication timing, versioning and ongoing GPUI upgrade policy.
 - Keeping the historical roughly 34 MB parity corpus in Git (excluded from the package).
 - Private conduct/security contacts; a local-time source for `picker::today()`; the wider
-  weui.js imperative API scope; approval for steps 2 and 3 of the [GPUI text-breaking proposal](proposals/gpui-text-i18n/README.md).
+  weui.js imperative API scope; resolution of the Linux step 2 rendering failure and approval for step 3 of the [GPUI text-breaking proposal](proposals/gpui-text-i18n/README.md).
 
 No platform support or publication decision follows from the approvals above.
 

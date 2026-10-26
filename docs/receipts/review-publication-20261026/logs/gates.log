@@ -1,0 +1,353 @@
+
+cargo fmt --all -- --check
+GATE_EXIT=0
+
+cargo build --all-targets --locked --offline
+   Compiling wegpui v0.1.0 (<repo>)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 6.61s
+GATE_EXIT=0
+
+cargo test --locked --offline
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.24s
+     Running unittests src/lib.rs (<toolchain-cache>/target/debug/deps/wegpui-b4acb65e9e11c591)
+
+running 59 tests
+test accessibility::tests::later_modal_hides_already_constructed_layers_at_a11y_write ... ok
+test accessibility::tests::nested_modal_stays_exposed_after_a_later_root_sibling_registers ... ok
+test bidi::tests::a_single_right_to_left_glyph_is_classified_by_its_character ... ok
+test bidi::tests::a_ligature_interpolates_the_caret_inside_its_glyph ... ok
+test accessibility::tests::read_only_and_live_are_forwarded_without_disabling_the_node ... ok
+test bidi::tests::left_to_right_text_maps_indices_to_the_obvious_positions ... ok
+test bidi::tests::right_to_left_text_runs_from_the_right_edge ... ok
+test bidi::tests::mixed_direction_selection_can_split_into_two_spans ... ok
+test components::article::tests::nested_lists_inherit_placement_without_losing_marker_kind ... ok
+test components::article::tests::public_constructors_agree_on_marker_and_placement ... ok
+test components::cells::tests::replacing_a_footer_clears_its_previous_textual_value ... ok
+test components::cells::tests::textual_value_and_description_keep_the_explicit_name ... ok
+test components::date_field::tests::date_mode_normalizes_time_and_range_bounds_are_safe ... ok
+test components::date_field::tests::formats_html_values ... ok
+test components::date_field::tests::parses_and_validates_calendar_and_time_text ... ok
+test components::modal::tests::presence_keeps_send_and_sync ... ok
+test components::picker::tests::disabled_default_wraps_to_an_enabled_option ... ok
+test components::picker::tests::empty_and_all_disabled_columns_have_no_enabled_default ... ok
+test components::picker::tests::generated_year_ranges_are_inclusive_and_reversed_ranges_are_empty ... ok
+test components::date_field::tests::picker_values_must_describe_a_real_date ... ok
+test components::picker::tests::generated_years_cover_full_i32_range_without_a_year_vector ... ok
+test components::picker::tests::gregorian_centuries_and_month_lengths ... ok
+test components::slider::tests::accessible_value_requests_reject_non_finite_values_before_narrowing ... ok
+test components::slider::tests::invalid_ranges_cannot_replace_the_last_finite_range ... ok
+test components::slider::tests::invalid_steps_preserve_a_usable_keyboard_increment ... ok
+test components::slider::tests::snapping_is_relative_to_minimum_and_clamped ... ok
+test components::slider::tests::tiny_valid_steps_do_not_overflow_and_jump_to_the_maximum ... ok
+test components::slider::tests::upper_endpoint_keeps_a_valid_step_without_losing_float_endpoints ... ok
+test components::switch::tests::enabling_reduced_motion_settles_both_channels_without_restarting ... ok
+test components::switch::tests::reversing_during_motion_preserves_the_current_position_and_colour ... ok
+test i18n::tests::direction_follows_an_explicit_script_before_the_language ... ok
+test components::switch::tests::reversing_shortens_each_running_css_transition ... ok
+test i18n::tests::fill_replaces_named_placeholders_and_keeps_unknown_text ... ok
+test components::switch::tests::a_completed_color_transition_restarts_at_its_full_css_duration ... ok
+test i18n::tests::catalog_selection_splits_chinese_and_falls_back_to_english ... ok
+test i18n::tests::join_uses_the_catalog_separator ... ok
+test i18n::tests::zh_hans_reproduces_the_original_weui_wording ... ok
+test i18n::tests::every_builtin_catalog_is_complete_and_keeps_its_placeholders ... ok
+test i18n::tests::locale_parsing_accepts_bcp47_and_posix_spellings ... ok
+test input::tests::accessible_carets_follow_combining_and_zwj_graphemes ... ok
+test input::tests::accessible_glyph_lookup_matches_native_first_matching_glyph ... ok
+test input::tests::accessible_edit_positions_map_known_runs_and_reject_stale_nodes ... ok
+test input::tests::accessible_selections_keep_anchor_and_focus_when_reversed ... ok
+test input::tests::accessible_password_runs_only_contain_displayed_masking_bullets ... ok
+test input::tests::accessible_soft_wrap_caret_affinity_matches_native_previous_row ... ok
+test input::tests::accessible_text_runs_preserve_newlines_and_trailing_empty_carets ... ok
+test input::tests::composition_truncation_keeps_suffix_and_selection_on_valid_boundaries ... ok
+test input::tests::assistive_selection_rejects_endpoints_inside_native_graphemes ... ok
+test input::tests::input_semantics_export_invalid_without_changing_readonly_or_disabled ... ok
+test scrolling::tests::above_scrolls_back_and_clamps_at_top ... ok
+test input::tests::word_navigation_and_deletion_match_linux_browser_boundaries ... ok
+test input::tests::utf16_offsets_stay_on_utf8_boundaries ... ok
+test scrolling::tests::below_scrolls_minimally_and_clamps ... ok
+test scrolling::tests::tall_target_aligns_top ... ok
+test scrolling::tests::visible_target_does_not_scroll ... ok
+test input::tests::oversized_graphemes_use_lossless_scalar_lengths_with_matching_positions ... ok
+test theme::tests::custom_palette_and_translucent_surfaces_use_painted_colours ... ok
+test theme::tests::focus_contrast_covers_themes_fills_and_custom_brands ... ok
+test input::tests::accessible_word_starts_preserve_unicode_and_large_run_boundaries ... ok
+
+test result: ok. 59 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+   Doc-tests wegpui
+
+running 3 tests
+test src/i18n.rs - i18n (line 12) ... ignored
+test src/lib.rs - (line 15) ... ignored
+test src/logical.rs - logical (line 8) ... ignored
+
+test result: ok. 0 passed; 0 failed; 3 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 0.11s; merged doctests compilation took 0.11s
+GATE_EXIT=0
+
+cargo test --example gallery --locked --offline
+   Compiling wegpui v0.1.0 (<repo>)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.55s
+     Running unittests examples/gallery/main.rs (<toolchain-cache>/target/debug/examples/gallery-4fb56c26dc148720)
+
+running 3 tests
+test pages::layers::tests::label_transform_tracks_plane_points_at_both_scales ... ok
+test pages::layers::tests::layer_size_follows_upstream_media_queries ... ok
+test pages::layers::tests::projection_matches_upstream_browser_quads ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+GATE_EXIT=0
+
+cargo clippy --all-targets --locked --offline -- -D warnings
+    Checking wegpui v0.1.0 (<repo>)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.49s
+GATE_EXIT=0
+
+env RUSTDOCFLAGS=-D warnings -W missing-docs cargo doc --no-deps --locked --offline
+ Documenting wegpui v0.1.0 (<repo>)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.03s
+   Generated <toolchain-cache>/target/doc/wegpui/index.html
+GATE_EXIT=0
+
+python3 -I docs/proposals/gpui-cjk-closing/verify.py --workdir <evidence>/cjk-gate
+baseline 101
+
+running 13 tests
+test tests::ascii_closing_marks_still_attach ... ok
+test tests::closing_marks_attach_to_the_preceding_cjk_word ... FAILED
+test tests::closing_marks_do_not_start_a_wrapped_row ... FAILED
+test tests::opening_marks_and_other_scripts_are_unchanged ... ok
+test tests::panel_clamp_now_accounts_for_the_moved_punctuation ... FAILED
+test tests::test_is_word_char ... ok
+test tests::test_is_word_char_arabic ... ok
+test tests::test_is_word_char_devanagari ... ok
+test tests::test_is_word_char_greek ... ok
+test tests::test_is_word_char_hebrew ... ok
+test tests::test_is_word_char_neighbouring_scripts_are_unchanged ... ok
+test tests::test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek ... ok
+test tests::unpunctuated_text_that_fits_stays_complete ... ok
+
+failures:
+
+---- tests::closing_marks_attach_to_the_preceding_cjk_word stdout ----
+
+thread 'tests::closing_marks_attach_to_the_preceding_cjk_word' (389) panicked at <evidence>/cjk-gate/baseline.rs:1065:13:
+、
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- tests::closing_marks_do_not_start_a_wrapped_row stdout ----
+
+thread 'tests::closing_marks_do_not_start_a_wrapped_row' (390) panicked at <evidence>/cjk-gate/baseline.rs:1075:13:
+assertion `left == right` failed: 、
+  left: 12
+ right: 9
+
+---- tests::panel_clamp_now_accounts_for_the_moved_punctuation stdout ----
+
+thread 'tests::panel_clamp_now_accounts_for_the_moved_punctuation' (392) panicked at <evidence>/cjk-gate/baseline.rs:1084:9:
+由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。
+
+
+failures:
+    tests::closing_marks_attach_to_the_preceding_cjk_word
+    tests::closing_marks_do_not_start_a_wrapped_row
+    tests::panel_clamp_now_accounts_for_the_moved_punctuation
+
+test result: FAILED. 10 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+proposal 0
+
+running 13 tests
+test tests::ascii_closing_marks_still_attach ... ok
+test tests::closing_marks_attach_to_the_preceding_cjk_word ... ok
+test tests::closing_marks_do_not_start_a_wrapped_row ... ok
+test tests::opening_marks_and_other_scripts_are_unchanged ... ok
+test tests::panel_clamp_now_accounts_for_the_moved_punctuation ... ok
+test tests::test_is_word_char ... ok
+test tests::test_is_word_char_arabic ... ok
+test tests::test_is_word_char_devanagari ... ok
+test tests::test_is_word_char_greek ... ok
+test tests::test_is_word_char_hebrew ... ok
+test tests::test_is_word_char_neighbouring_scripts_are_unchanged ... ok
+test tests::test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek ... ok
+test tests::unpunctuated_text_that_fits_stays_complete ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+GATE_EXIT=0
+
+python3 -I docs/proposals/gpui-text-i18n/verify-word-break.py --workdir <evidence>/word-break
+code: <repo>/vendor/gpui_pre/src/text_system/line_wrapper.rs
+tests: <repo>/vendor/gpui_pre/src/text_system/line_wrapper.rs
+tests extracted: test_is_word_char, test_is_word_char_arabic, test_is_word_char_hebrew, test_is_word_char_devanagari, test_is_word_char_greek, test_is_word_char_neighbouring_scripts_are_unchanged, test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek
+
+running 7 tests
+test tests::test_is_word_char ... ok
+test tests::test_is_word_char_arabic ... ok
+test tests::test_is_word_char_devanagari ... ok
+test tests::test_is_word_char_greek ... ok
+test tests::test_is_word_char_hebrew ... ok
+test tests::test_is_word_char_neighbouring_scripts_are_unchanged ... ok
+test tests::test_wrap_line_breaks_only_between_words_in_arabic_hebrew_devanagari_greek ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+GATE_EXIT=0
+
+python3 -I docs/proposals/gpui-text-i18n/verify-logical-wrap.py --workdir <evidence>/logical-wrap
+== stage 1: vendor/gpui_pre/src/text_system/logical_wrap.rs
+
+running 16 tests
+test tests::a_left_to_right_line_loses_its_mark_at_the_left_end ... ok
+test tests::a_line_with_no_glyphs_but_the_mark_is_rejected ... ok
+test tests::a_mark_with_an_advance_is_taken_out_of_the_line_width ... ok
+test tests::a_right_to_left_line_loses_its_mark_at_the_right_end ... ok
+test tests::a_word_wider_than_the_line_is_left_to_the_caller ... ok
+test tests::arabic_text_breaks_between_words_not_inside_them ... ok
+test tests::base_direction_follows_the_first_strong_character ... ok
+test tests::breaks_fall_on_word_starts_in_logical_order ... ok
+test tests::candidates_include_characters_that_are_not_word_characters ... ok
+test tests::font_runs_are_cut_to_a_line ... ok
+test tests::glyphs_of_one_character_share_a_unit ... ok
+test tests::line_clamp_stops_adding_breaks ... ok
+test tests::marks_with_a_negative_offset_never_shrink_the_line ... ok
+test tests::rtl_characters_are_classified_by_script ... ok
+test tests::runs_keep_their_order_and_empty_ones_are_dropped ... ok
+test tests::units_are_logical_even_when_the_shaper_returns_visual_order ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+== stage 2: line_layout.rs layout types; tests: logical_rows_start_at_their_logical_index_not_at_their_first_glyph, logical_rows_place_each_index_on_the_row_that_holds_it, logical_rows_hit_test_to_the_index_under_the_pointer, rows_that_were_not_wrapped_logically_keep_their_glyph_derived_starts
+
+running 4 tests
+test layout::tests::logical_rows_hit_test_to_the_index_under_the_pointer ... ok
+test layout::tests::logical_rows_place_each_index_on_the_row_that_holds_it ... ok
+test layout::tests::logical_rows_start_at_their_logical_index_not_at_their_first_glyph ... ok
+test layout::tests::rows_that_were_not_wrapped_logically_keep_their_glyph_derived_starts ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+GATE_EXIT=0
+
+python3 -I docs/proposals/gpui-trailing-space-wrap/verify.py --workdir <evidence>/trailing-space
+baseline exit 101
+
+running 8 tests
+test layout::trailing_space_tests::exact_fit_without_trailing_space ... ok
+test layout::trailing_space_tests::fitting_word_before_multiple_spaces_stays_on_row ... FAILED
+test layout::trailing_space_tests::fitting_word_before_space_stays_on_row ... FAILED
+test layout::trailing_space_tests::genuinely_overflowing_word_moves ... ok
+test layout::trailing_space_tests::leading_space_policy_is_preserved ... ok
+test layout::trailing_space_tests::oversized_word_still_splits ... ok
+test layout::trailing_space_tests::trailing_space_does_not_add_row ... FAILED
+test layout::trailing_space_tests::unspaced_cjk_still_wraps ... ok
+
+failures:
+
+---- layout::trailing_space_tests::fitting_word_before_multiple_spaces_stays_on_row stdout ----
+
+thread 'layout::trailing_space_tests::fitting_word_before_multiple_spaces_stays_on_row' (561) panicked at <evidence>/trailing-space/baseline.rs:705:73:
+assertion `left == right` failed
+  left: [3, 8]
+ right: [8]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- layout::trailing_space_tests::fitting_word_before_space_stays_on_row stdout ----
+
+thread 'layout::trailing_space_tests::fitting_word_before_space_stays_on_row' (562) panicked at <evidence>/trailing-space/baseline.rs:704:63:
+assertion `left == right` failed
+  left: [3]
+ right: [6]
+
+---- layout::trailing_space_tests::trailing_space_does_not_add_row stdout ----
+
+thread 'layout::trailing_space_tests::trailing_space_does_not_add_row' (566) panicked at <evidence>/trailing-space/baseline.rs:706:56:
+assertion `left == right` failed
+  left: [3]
+ right: []
+
+
+failures:
+    layout::trailing_space_tests::fitting_word_before_multiple_spaces_stays_on_row
+    layout::trailing_space_tests::fitting_word_before_space_stays_on_row
+    layout::trailing_space_tests::trailing_space_does_not_add_row
+
+test result: FAILED. 5 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+proposal exit 0
+
+running 8 tests
+test layout::trailing_space_tests::exact_fit_without_trailing_space ... ok
+test layout::trailing_space_tests::fitting_word_before_multiple_spaces_stays_on_row ... ok
+test layout::trailing_space_tests::fitting_word_before_space_stays_on_row ... ok
+test layout::trailing_space_tests::genuinely_overflowing_word_moves ... ok
+test layout::trailing_space_tests::leading_space_policy_is_preserved ... ok
+test layout::trailing_space_tests::oversized_word_still_splits ... ok
+test layout::trailing_space_tests::trailing_space_does_not_add_row ... ok
+test layout::trailing_space_tests::unspaced_cjk_still_wraps ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+GATE_EXIT=0
+
+python3 -m unittest discover -s scripts/tests -v
+test_ambiguous_artifacts_fail_without_a_bundle (test_ios_bundle.BundleScriptTests.test_ambiguous_artifacts_fail_without_a_bundle) ... ok
+test_build_failure_is_retained_without_a_bundle (test_ios_bundle.BundleScriptTests.test_build_failure_is_retained_without_a_bundle) ... ok
+test_device_target_is_rejected (test_ios_bundle.BundleScriptTests.test_device_target_is_rejected) ... ok
+test_linux_host_is_rejected_before_build (test_ios_bundle.BundleScriptTests.test_linux_host_is_rejected_before_build) ... ok
+test_relative_target_directory_and_both_examples (test_ios_bundle.BundleScriptTests.test_relative_target_directory_and_both_examples) ... ok
+test_care_brand_and_dark_reach_each_registered_state (test_linux_sweep.LinuxSweepTests.test_care_brand_and_dark_reach_each_registered_state) ... ok
+test_failed_capture_is_retained_and_later_routes_still_run (test_linux_sweep.LinuxSweepTests.test_failed_capture_is_retained_and_later_routes_still_run) ... ok
+test_invalid_arguments_fail_before_capture_or_output_creation (test_linux_sweep.LinuxSweepTests.test_invalid_arguments_fail_before_capture_or_output_creation) ... ok
+test_native_only_is_forwarded_without_reference_capture (test_linux_sweep.LinuxSweepTests.test_native_only_is_forwarded_without_reference_capture) ... ok
+test_routes_keep_default_theme_without_optional_modes (test_linux_sweep.LinuxSweepTests.test_routes_keep_default_theme_without_optional_modes) ... ok
+test_bundle_is_reproducible_across_location_and_mtime_changes (test_package_preview.PreviewBundleTests.test_bundle_is_reproducible_across_location_and_mtime_changes) ... ok
+test_missing_vendor_copy_is_rejected (test_package_preview.PreviewBundleTests.test_missing_vendor_copy_is_rejected) ... ok
+test_modified_archive_content_is_rejected (test_package_preview.PreviewBundleTests.test_modified_archive_content_is_rejected) ... ok
+test_separate_consumer_uses_all_four_workspace_patches (test_package_preview.PreviewBundleTests.test_separate_consumer_uses_all_four_workspace_patches) ... ok
+test_source_symlink_is_rejected (test_package_preview.PreviewBundleTests.test_source_symlink_is_rejected) ... ok
+test_unsafe_archive_paths_are_rejected (test_package_preview.PreviewBundleTests.test_unsafe_archive_paths_are_rejected) ... ok
+test_changed_reference_asset_is_rejected_before_output (test_weui_parity_capture.CaptureEvidenceValidationTests.test_changed_reference_asset_is_rejected_before_output) ... ok
+test_duplicate_scenes_cannot_overwrite_evidence (test_weui_parity_capture.CaptureEvidenceValidationTests.test_duplicate_scenes_cannot_overwrite_evidence) ... ok
+test_inconsistent_scene_metadata_is_rejected_before_output (test_weui_parity_capture.CaptureEvidenceValidationTests.test_inconsistent_scene_metadata_is_rejected_before_output) ... ok
+test_parent_scene_path_is_rejected_before_output (test_weui_parity_capture.CaptureEvidenceValidationTests.test_parent_scene_path_is_rejected_before_output) ... ok
+test_reference_metadata_drift_is_rejected_before_output (test_weui_parity_capture.CaptureEvidenceValidationTests.test_reference_metadata_drift_is_rejected_before_output) ... ok
+test_registered_state_and_custom_brand_can_be_captured (test_weui_parity_capture.CaptureEvidenceValidationTests.test_registered_state_and_custom_brand_can_be_captured) ... ok
+test_writable_binary_cannot_be_reused_as_frozen (test_weui_parity_capture.CaptureEvidenceValidationTests.test_writable_binary_cannot_be_reused_as_frozen) ... ok
+test_every_scene_has_all_eight_appearance_combinations (test_weui_parity_inventory.ParityInventoryTests.test_every_scene_has_all_eight_appearance_combinations) ... ok
+test_native_only_or_unknown_replays_are_rejected (test_weui_parity_inventory.ParityInventoryTests.test_native_only_or_unknown_replays_are_rejected) ... ok
+test_shared_style_files_map_to_all_native_consumers (test_weui_parity_inventory.ParityInventoryTests.test_shared_style_files_map_to_all_native_consumers) ... ok
+test_unknown_widget_files_are_not_silently_counted_as_covered (test_weui_parity_inventory.ParityInventoryTests.test_unknown_widget_files_are_not_silently_counted_as_covered) ... ok
+test_changed_ui_runtime_is_rejected (test_weui_reference.WeuiReferenceTests.test_changed_ui_runtime_is_rejected) ... ok
+test_existing_evidence_is_not_overwritten (test_weui_reference.WeuiReferenceTests.test_existing_evidence_is_not_overwritten) ... ok
+test_other_upstream_revision_is_rejected (test_weui_reference.WeuiReferenceTests.test_other_upstream_revision_is_rejected) ... ok
+test_reference_retains_assets_and_records_exact_html_changes (test_weui_reference.WeuiReferenceTests.test_reference_retains_assets_and_records_exact_html_changes) ... ok
+test_used_wechat_sdk_cannot_be_silently_removed (test_weui_reference.WeuiReferenceTests.test_used_wechat_sdk_cannot_be_silently_removed) ... ok
+
+----------------------------------------------------------------------
+Ran 32 tests in 0.443s
+
+OK
+GATE_EXIT=0
+
+python3 -m unittest discover -s website/tests -v
+test_all_real_browser_routes_match_the_upstream_inventory (test_inventory.RouteInventoryTests.test_all_real_browser_routes_match_the_upstream_inventory) ... ok
+test_isolated_python_builds_the_complete_real_site (test_inventory.RouteInventoryTests.test_isolated_python_builds_the_complete_real_site) ... ok
+test_missing_native_only_exception_is_reported (test_inventory.RouteInventoryTests.test_missing_native_only_exception_is_reported) ... ok
+test_native_languages_page_does_not_require_a_browser_demo (test_inventory.RouteInventoryTests.test_native_languages_page_does_not_require_a_browser_demo) ... ok
+test_other_new_routes_are_not_silently_excluded (test_inventory.RouteInventoryTests.test_other_new_routes_are_not_silently_excluded) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.114s
+
+OK
+GATE_EXIT=0

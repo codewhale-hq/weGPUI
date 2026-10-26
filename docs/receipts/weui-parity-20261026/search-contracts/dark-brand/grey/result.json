@@ -1,0 +1,109 @@
+{
+  "mode": "dark-brand",
+  "variant": "grey",
+  "passed": true,
+  "steps": [
+    {
+      "step": "type-and-submit",
+      "text": "alpha",
+      "events": {
+        "Focus": 1,
+        "Changed": 5,
+        "Submit": 1
+      },
+      "input_states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ]
+    },
+    {
+      "step": "disabled-preserves-text",
+      "text": "alpha",
+      "events": {
+        "Focus": 1,
+        "Changed": 5,
+        "Submit": 1,
+        "Blur": 1
+      },
+      "input_states": [
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ]
+    },
+    {
+      "step": "reenabled-clear-refocus",
+      "text": "",
+      "events": {
+        "Focus": 2,
+        "Changed": 6,
+        "Submit": 1,
+        "Blur": 1,
+        "Clear": 1
+      },
+      "input_states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ]
+    },
+    {
+      "step": "readonly-preserves-text",
+      "text": "beta",
+      "events": {
+        "Focus": 2,
+        "Changed": 10,
+        "Submit": 1,
+        "Blur": 1,
+        "Clear": 1
+      },
+      "input_states": [
+        "enabled",
+        "focusable",
+        "focused",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text",
+        "read only"
+      ]
+    },
+    {
+      "step": "editable-cancel-clears",
+      "text": "",
+      "events": {
+        "Focus": 2,
+        "Changed": 11,
+        "Submit": 1,
+        "Blur": 2,
+        "Clear": 1,
+        "Cancel": 1
+      },
+      "input_states": [
+        "editable",
+        "enabled",
+        "focusable",
+        "sensitive",
+        "showing",
+        "single line",
+        "visible",
+        "selectable text"
+      ]
+    }
+  ]
+}

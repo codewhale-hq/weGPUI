@@ -1,0 +1,18 @@
+host: Darwin 25.1.0 arm64  macOS 26.1
+rustc: rustc 1.99.0 (b940084d7 2026-09-28)
+cargo: cargo 1.99.0 (5f94df478 2026-08-27)
+source: b1ddcae2b37b1901c17c78c6f06d9f4224ce03c2
+started: 2026-10-25 14:35:20 PDT
+dirty inventory (git status --short):
+ M examples/gallery/pages/languages.rs
+ M examples/gallery/text.rs
+ M src/components/msg.rs
+ M src/input.rs
+ M vendor/gpui_pre/src/elements/text.rs
+ M vendor/gpui_pre/src/text_system.rs
+ M vendor/gpui_pre/src/text_system/line.rs
+ M vendor/gpui_pre/src/text_system/line_layout.rs
+?? docs/proposals/gpui-text-i18n/verify-logical-wrap.py
+?? vendor/gpui_pre/src/text_system/logical_wrap.rs
+(end dirty inventory)
+finished: 2026-10-25 14:35:46 PDT

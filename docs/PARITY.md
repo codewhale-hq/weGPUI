@@ -1,5 +1,14 @@
 # Visual parity
 
+The [2026-10-25 full-matrix continuation](receipts/weui-parity-20261025/README.md) pins current
+upstream 2.6.26 and adds new Linux evidence in eight appearance combinations, responsive/scrolled
+views, corrected Footer geometry and the separately approved trailing-space guard trial.
+The [October 26 follow-up](receipts/weui-parity-20261026/README.md) adds corrected 500-weight
+text, responsive Layers geometry and transformed labels, and the approved CJK closing-mark trial.
+Its manifests distinguish each source. Capture coverage is complete for
+its named matrix; detailed review and cross-host behaviour/accessibility remain incomplete.
+The route verdicts below remain historical and are not promoted to current acceptance.
+
 Historical evidence for the candidate at commit `2c8ed10` (gallery binary built from that source). Every gallery route and every registered capture state was captured natively and beside the official WeUI 2.6.26 example, in light and dark: **264 pairs, 528 PNG files** in `docs/parity/`, plus brand and care-mode samples. Each pair was inspected (light at pair scale, dark at contact-sheet scale, the 40 largest pixel-difference scores individually).
 
 ## Independent review qualification

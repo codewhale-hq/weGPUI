@@ -1,0 +1,47 @@
+root-key=f5
+event=Focus
+root-key=a
+event=Changed
+root-key=l
+event=Changed
+root-key=p
+event=Changed
+root-key=h
+event=Changed
+root-key=a
+event=Changed
+event=Submit
+root-key=f10
+snapshot text="alpha" focusing=true disabled=false readonly=false focused=true
+root-key=f6
+event=Blur
+root-key=z
+root-key=backspace
+root-key=f10
+snapshot text="alpha" focusing=true disabled=true readonly=false focused=false
+root-key=f7
+reenable
+root-key=f5
+event=Focus
+event=Clear
+event=Changed
+root-key=f10
+snapshot text="" focusing=true disabled=false readonly=false focused=true
+root-key=b
+event=Changed
+root-key=e
+event=Changed
+root-key=t
+event=Changed
+root-key=a
+event=Changed
+root-key=f8
+root-key=z
+root-key=f10
+snapshot text="beta" focusing=true disabled=false readonly=true focused=true
+root-key=f9
+event=Cancel
+event=Changed
+event=Blur
+root-key=f10
+snapshot text="" focusing=true disabled=false readonly=false focused=false

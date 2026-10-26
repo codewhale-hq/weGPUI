@@ -1,0 +1,6 @@
+cc576691d1835e5702c0b141e66a57d679eb98eddb0890b4671e78e963c98ef4  vendor/gpui_pre/src/text_system/line_layout.rs
+d397dc3458a34b9b26886735ea4a9515a956d29bc0f9375bad478a3826753dfc  docs/proposals/gpui-trailing-space-wrap/trailing-space.patch
+ff4704f16de935b26103cda37b032f367a19b960778f2af7d9b182bca5621acc  docs/proposals/gpui-trailing-space-wrap/verify.py
+f9dad06461fde73556d2d4776818c5b75534f799a4962c2e329e87cd08a644a7  docs/proposals/gpui-trailing-space-wrap/baseline.log
+b1216341918875f6cad54e674d24a7b8a45f43ce6f2ef68a83688ab0542d1298  docs/proposals/gpui-trailing-space-wrap/proposal.log
+621cd36d4618587fe691118353bef9d5ae8805a0c0b8051e320785aaec082364  docs/proposals/gpui-trailing-space-wrap/README.md

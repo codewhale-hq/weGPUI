@@ -1,0 +1,72 @@
+{
+  "expected": 12,
+  "captured": 8,
+  "failed": [
+    {
+      "id": "light/form_page",
+      "route": "form_page",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 800,
+      "status": "failed",
+      "error": "Page.evaluate: TypeError: Cannot set properties of null (setting 'scrollTop')\n    at eval (eval at evaluate (:370:30), <anonymous>:1:59)\n    at UtilityScript.evaluate (<anonymous>:377:18)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+      "seconds": 1.782
+    },
+    {
+      "id": "light/form_primary",
+      "route": "form_primary",
+      "state": null,
+      "theme": "light",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 800,
+      "status": "failed",
+      "error": "Page.evaluate: TypeError: Cannot set properties of null (setting 'scrollTop')\n    at eval (eval at evaluate (:370:30), <anonymous>:1:59)\n    at UtilityScript.evaluate (<anonymous>:377:18)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+      "seconds": 1.787
+    },
+    {
+      "id": "dark/form_page",
+      "route": "form_page",
+      "state": null,
+      "theme": "dark",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 800,
+      "status": "failed",
+      "error": "Page.evaluate: TypeError: Cannot set properties of null (setting 'scrollTop')\n    at eval (eval at evaluate (:370:30), <anonymous>:1:59)\n    at UtilityScript.evaluate (<anonymous>:377:18)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+      "seconds": 1.618
+    },
+    {
+      "id": "dark/form_primary",
+      "route": "form_primary",
+      "state": null,
+      "theme": "dark",
+      "care": false,
+      "brand": null,
+      "viewport": [
+        375,
+        812
+      ],
+      "scroll": 800,
+      "status": "failed",
+      "error": "Page.evaluate: TypeError: Cannot set properties of null (setting 'scrollTop')\n    at eval (eval at evaluate (:370:30), <anonymous>:1:59)\n    at UtilityScript.evaluate (<anonymous>:377:18)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+      "seconds": 1.572
+    }
+  ],
+  "full_matrix": false,
+  "qualification": "capture completeness only; manual difference review required"
+}

@@ -1,0 +1,6 @@
+ba8c00801d7200854768a74e8234838be0bed7310acfabdb7585dca54a711e55  vendor/gpui_pre/src/text_system/line_wrapper.rs
+06750800d103046d4e662b28c2a91ed708c4aa0c454f4098ab5b0bb2b17810a3  docs/proposals/gpui-cjk-closing/README.md
+55867b23a1f515c59e1ce69d441468bd4493edb8b4d61b3c5644148c6d145058  docs/proposals/gpui-cjk-closing/baseline.log
+6ec3e37613c30a694276dd23a17af6cdce26cbcea1920706b438213c6c410197  docs/proposals/gpui-cjk-closing/cjk-closing.patch
+ccab845daff60c0cc6c29159029796ae0eeae58b71807ea5a2a1047ffac87b7d  docs/proposals/gpui-cjk-closing/proposal.log
+b86c50de78d8a08334aa1d33f7859196291b5c734470d747093fbb28b1aee4eb  docs/proposals/gpui-cjk-closing/verify.py
