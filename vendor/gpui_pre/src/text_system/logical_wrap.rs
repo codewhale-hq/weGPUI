@@ -3,7 +3,8 @@ use std::ops::Range;
 pub(crate) const LRM: char = '\u{200E}';
 pub(crate) const RLM: char = '\u{200F}';
 
-pub(crate) fn is_rtl_char(c: char) -> bool {
+#[cfg(test)]
+fn is_rtl_char(c: char) -> bool {
     matches!(
         unicode_bidi::bidi_class(c),
         unicode_bidi::BidiClass::R | unicode_bidi::BidiClass::AL

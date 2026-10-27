@@ -1,11 +1,15 @@
 # Published GPUI 0.3.9 iOS/core API mismatch
 
-Prepared report only; not submitted upstream. No fork or registry patch applied.
+Historical report, not submitted upstream. The owner subsequently approved the local
+compatibility work. The existing vendored core now supplies the missing APIs and the
+simulator executable links and launches. See the
+[continuation](../receipts/dictionary-mobile-20261026/README.md). Registry files remain untouched.
+The reproduction and failures below identify the earlier source.
 
 `gpui-pre-ios =0.3.9` declares an exact dependency on `gpui-pre =0.3.9`, but fails
 when building a native iOS simulator executable. Registry inspection on October 24,
 2026 (America/Los_Angeles) found only this iOS release and no core release newer
-than 0.3.9. The currently approved weGPUI path cannot build an iOS application.
+than 0.3.9. That unmodified core/backend pair could not build an iOS application.
 
 Reproduction: checkout weGPUI `05cae89f1373f42af30913aa65dc5e51f7c54baf`, install
 `aarch64-apple-ios-sim` with Rust 1.99.1 on an Apple build host, then run:
@@ -36,5 +40,5 @@ explicitly excludes without a separate decision. Merely upgrading Xcode cannot
 supply missing Rust enum variants or methods.
 
 [Run and retained diagnostics](../receipts/ci-20261024/README.md).
-No iOS application was linked, packaged, installed or launched, and no mobile
-runtime or accessibility acceptance is claimed.
+At the historical source above, no iOS application was linked, packaged, installed or launched.
+The later compatibility work does not establish complete mobile or accessibility acceptance.

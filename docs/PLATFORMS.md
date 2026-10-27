@@ -1,9 +1,17 @@
-# Platform feasibility and acceptance — 2026-10-25
+# Platform feasibility and acceptance — 2026-10-26
 
 The target is macOS, Windows, Linux, iOS and Android. This document records what the pinned
 dependencies can do, what was actually built or run, and the smallest maintainable path to the
 rest. A platform is **supported** only when every column in the acceptance matrix has a receipt
 from that platform. Nothing below reaches that bar yet.
+
+The [October 26 continuation](receipts/dictionary-mobile-20261026/README.md) records the latest
+dictionary provider, shaping-cluster repair and iOS compatibility work. The local simulator
+app now links, installs and launches, with sampled touch navigation. Safe-area layout, touch
+Back navigation and selection fragments are implemented. Focus scrolling also responds to
+visible viewport size changes. These changes do not complete mobile input, lifecycle or
+accessibility acceptance. Windows remains build/tests only by owner instruction; visible UI
+is outside this continuation's scope, rather than waiting for a sign-in decision.
 
 ## Historical dependency investigation (0.3.7 and proposed 0.3.9)
 
@@ -89,7 +97,7 @@ The [RTL continuation](receipts/rtl-completion-20261025/README.md) adds current 
 and Linux ARM64 X11 software-renderer samples for paragraph wrapping and native input. These
 are bounded samples. The existing Windows ARM64 VM also passes the current source bundle’s
 all-target build, 59 library/three gallery tests, strict Clippy/docs and standalone consumer.
-Visible Windows runtime remains blocked at sign-in. Linux x86_64/hardware, real RTL IME, complete reader matrices
+Visible Windows runtime was initially blocked at sign-in and is now excluded by the owner. Linux x86_64/hardware, real RTL IME, complete reader matrices
 and fresh installation still need their own evidence. VoiceOver remains off.
 
 ## Acceptance matrix
@@ -101,8 +109,8 @@ as such. Current state:
 | --- | --- | --- | --- | --- | --- | --- |
 | macOS | Current local ARM64 all-target build, 59 library/three gallery tests, strict Clippy/docs at `f26610b` | Current sampled Languages/input and ten route launches; full matrix open | Earlier 28 review pairs; new diagnostic images, no new parity verdict | Minimal dialog open/close/OK and focus restore; select-key attempts inconclusive | Modal isolation in minimal/picker/select/half-screen; closed swipe actions absent; article headings/lists; option labels in AXTitle; VoiceOver incomplete | Not done |
 | Linux | Rust 1.98.1 current-source gates recorded in continuation receipts | X11 plus actual Wayland clients under nested Weston | Historical 192 pairs; 216 reviewed native-only theme/state images and later targeted component reviews | Native keyboard/pointer callbacks, scale/move text geometry, sampled Wayland input; historical XIM/portal | Actual Orca transcript/audio samples and AT-SPI contracts; full reader/listening acceptance open | Historical consumer/package checks; current patched-consumer and distribution qualification separate |
-| Windows | Current ARM64/MSVC source-bundle all-target build, 59 library/three gallery tests, strict Clippy/docs and standalone consumer at `f26610b` | Historical Windows 11 ARM samples; current visible UI blocked at sign-in | Historical native VirtIO samples | Historical sampled controls/inline links; current-source rerun missing | Missing (Narrator/NVDA) | Historical package build; installation qualification missing |
-| iOS | Library type-checks pass; hosted simulator app compilation fails | Upstream 0.3.9 API mismatch; no launch | Missing | Missing (touch, keyboard, IME, rotation, lifecycle) | Missing; upstream backend has no AccessKit | Not done |
+| Windows | Current ARM64/MSVC source-bundle all-target build, 59 library/three gallery tests, strict Clippy/docs and standalone consumer at `f26610b` | Historical Windows 11 ARM samples; current visible UI outside owner-selected scope | Historical native VirtIO samples | Historical sampled controls/inline links; current-source rerun missing | Missing (Narrator/NVDA) | Historical package build; installation qualification missing |
+| iOS | Local simulator executable and ad-hoc bundle build through the approved core bridge; hosted checks retain their own source | Local iPhone 17 / iOS 26.2 simulator launch | Gallery home and button samples; complete parity open | Sampled touch navigation; full keyboard, IME, insets, rotation and lifecycle open | Missing; upstream backend has no AccessKit | Local ad-hoc simulator bundle only; device/release qualification missing |
 | Android | Library type-checks | Blocked: no Android backend anywhere upstream; no KVM for an emulator here | Missing | Missing | Missing (TalkBack) | Not done |
 
 Mobile interaction acceptance means touch taps, drags and scrolling; the software keyboard and
@@ -119,13 +127,14 @@ A backend alone would not make the components mobile-ready. Read against `gpui-p
 | Taps | Recognised taps are delivered as synthesised mouse down/up (`gestures.rs`, `RecognizedTouchGesture::Tap`) | Click handlers | Likely works as is; unverified |
 | Drags | A touch becomes a pan (`ScrollWheelEvent` with `TouchPhase`) unless an element claims `TouchDragEvent` at `Started` with `prevent_default` | Swipe cells, slider and half-screen grab use mouse events; picker columns also handle `on_scroll_wheel` already | Handle touch drags where needed and verify the picker's existing pan path on a phone |
 | Long press, pinch | `LongPressEvent`, `capture_long_press`; `on_pinch` exists but the 0.3.7 touch arena does not recognize pinches | Not used | Backend/recognizer work before any optional gallery pinch-zoom (upstream has none) |
-| Software keyboard | `Window::request_virtual_keyboard`/`dismiss_virtual_keyboard`; the platform may require a user gesture | Never requested | Request on tap-to-focus in `TextInput` and dismiss on blur |
-| Safe area and keyboard occlusion | `Window::fully_visible_bounds`, `visual_viewport_bounds` (`WindowInsets::safe_area`/`ime`) | Not applied (bottom-fixed areas, tabbar, sheets, toasts) | Pad or position against the visible bounds; scroll the focused input into view |
+| Software keyboard | The pinned iOS backend reconciles its responder when a focused input handler is installed or withdrawn | Focus identity and eligibility now bridge to that backend; input provides native selection fragments | Qualify actual typing, composition, selection, focus transfer and dismissal on the simulator/device |
+| Safe area and keyboard occlusion | `Window::fully_visible_bounds`, `visual_viewport_bounds` (`WindowInsets::safe_area`/`ime`) | Both iOS examples constrain their root to fully visible bounds; focus scrolling observes visible viewport size changes | Verify inset/keyboard/rotation behavior for every overlay and fixed area on a phone |
 | Lifecycle | `Platform::on_app_lifecycle` (`Background`/`Foreground`) exists on the platform trait only; at 0.3.7 no `App` API forwards it | Not observed | Upstream plumbing or a newer GPUI, then pause timers and animations (toast, vcode countdown, spinners) |
 | Accessibility | AccessKit tree built in core | Roles, names and states as on desktop | Needs a mobile AccessKit adapter in the backend |
 
-These changes are safe on desktop, where insets are zero and the soft-keyboard calls are no-ops.
-They were not made in this pass because no mobile run could verify them.
+The root inset handling and touch Back control are iOS-specific. Focus-scroller viewport
+handling and input geometry are shared with desktop. The earlier investigation did not make
+these changes; the October 26 continuation records the later implementation and its limits.
 
 ## Applied without new dependencies
 
@@ -148,7 +157,7 @@ their helpers). Effect: the Linux gallery launches. Public API: none. Maintenanc
 `libxkbcommon-dev`, `libxkbcommon-x11-dev`, `libwayland-dev` and `libx11-xcb-dev`, which
 `.cnb.yml` already installs.
 
-### 2. iOS through upstream `gpui_ios` (implemented; upstream build blocker)
+### 2. iOS through upstream `gpui_ios` (implemented; experimental runtime)
 
 Approved October 24, following the historical macOS verification. Both GPUI pins are now `=0.3.9` with a target-specific dev-dependency,
 `[target.'cfg(target_os = "ios")'.dev-dependencies] gpui_ios = { package = "gpui-pre-ios", version = "=0.3.9" }`.
@@ -160,19 +169,22 @@ simulator. [Linux and script-test receipts](receipts/ios-path-20261024/README.md
 are separate from Apple app build/runtime evidence. The first hosted Apple build
 [failed inside the published backend](proposals/gpui-ios-039-incompatibility.md):
 six calls reference core APIs absent from the exact 0.3.9 dependency. No newer published
-iOS release was available. No dependency fork or registry patch has been applied.
+iOS release was available in that investigation. The subsequently approved local core bridge
+resolves those missing APIs without modifying Cargo registry files.
 
 - Public API: none expected. The library compiled unchanged on 0.3.9.
 - Renderer: Metal through `gpui_apple`, which is shared with macOS.
 - Input: UIKit touches feed GPUI's gesture arena. Native text input exists, but weGPUI's
-  `TextInput`/`TextArea` must also call `request_virtual_keyboard` on focus and honour
-  `WindowInsets::ime`. That is weGPUI work.
+  input now provides native selection fragments and focus identity. The backend reconciles
+  keyboard visibility when input handlers change; the examples use visible bounds. Full
+  software-keyboard, IME and occlusion checks remain open.
 - Accessibility: upstream has no AccessKit adapter for iOS. VoiceOver acceptance needs an
   upstream contribution (`accesskit` has no UIKit adapter either, so this is substantial).
 - Maintenance: follow upstream; the `gpui-pre` snapshots move weekly.
 - Needs a macOS host with Xcode for building, the iOS Simulator, and a device for physical
   receipts. The later macOS session installed the iOS 26.2 runtime and created an iPhone 17
-  Simulator, but did not boot it or build an app. Cloud Linux cannot replace Apple build tooling.
+  simulator. The October 26 continuation boots that dedicated device and builds, installs
+  and launches the gallery. Cloud Linux cannot replace Apple build tooling.
 
 ### 3. Android through an upstream `gpui_android` contribution
 
@@ -196,7 +208,7 @@ Alternatives considered and **not recommended**:
 | Decision | State / recommendation |
 | --- | --- |
 | Enable `wayland`/`x11` for both examples | Applied; isolated X11 build/rendering/input/AT-SPI receipts |
-| Move to `gpui-pre =0.3.9` and add `gpui-pre-ios` | Implemented scaffold; separate authorized Apple host needed for app build/runtime acceptance |
+| Move to `gpui-pre =0.3.9` and add `gpui-pre-ios` | Approved local core bridge links and launches on an Apple ARM64 simulator; full runtime acceptance remains open |
 | Fund or contribute `gpui_android` upstream | Required for any honest Android claim; scope separately |
 | iOS AccessKit/VoiceOver | Upstream contribution; without it, iOS fails the accessibility column |
 

@@ -248,6 +248,7 @@ impl LineLayout {
         };
         let mut last_boundary_x = px(0.);
         let breaks = LineWrapper::break_indices(text);
+        let mut previous_index = None;
         let mut glyphs = self
             .runs
             .iter()
@@ -263,6 +264,7 @@ impl LineLayout {
                     )
                 })
             })
+            .filter(move |(_, _, _, index)| previous_index.replace(*index) != Some(*index))
             .peekable();
 
         while let Some((boundary, ch, x, index)) = glyphs.next() {
@@ -833,10 +835,7 @@ impl LineLayoutCache {
         SmallVec<[WrapBoundary; 1]>,
         SmallVec<[usize; 1]>,
     )> {
-        if unwrapped.width <= wrap_width
-            || !text.chars().any(logical_wrap::is_rtl_char)
-            || !unwrapped.is_visually_reordered()
-        {
+        if unwrapped.width <= wrap_width || !unwrapped.is_visually_reordered() {
             return None;
         }
         let visual: Vec<(usize, f32)> = unwrapped
@@ -1487,6 +1486,40 @@ mod tests {
         };
         assert_eq!(layout.wrapped_line_start_index(1), 3);
         assert_eq!(layout.wrapped_line_start_index(2), layout.len());
+        let mut clusters = make_layout(vec![
+            glyph_at(0., 0),
+            glyph_at(5., 0),
+            glyph_at(10., 3),
+            glyph_at(15., 3),
+            glyph_at(20., 6),
+            glyph_at(25., 6),
+            glyph_at(30., 9),
+            glyph_at(35., 9),
+        ]);
+        clusters.width = px(40.);
+        clusters.len = "你好世界".len();
+        let boundaries = clusters.compute_wrap_boundaries("你好世界", px(25.), None);
+        assert_eq!(
+            boundaries
+                .iter()
+                .map(|boundary| boundary.glyph_ix)
+                .collect::<Vec<_>>(),
+            vec![4]
+        );
+        for (i, glyph) in clusters.runs[0].glyphs.iter_mut().enumerate() {
+            glyph.index = i / 2;
+            glyph.position.x = px(i as f32 * 10.);
+        }
+        clusters.width = px(80.);
+        clusters.len = 4;
+        let boundaries = clusters.compute_wrap_boundaries("abcd", px(30.), None);
+        assert_eq!(
+            boundaries
+                .iter()
+                .map(|boundary| boundary.glyph_ix)
+                .collect::<Vec<_>>(),
+            vec![2, 4, 6]
+        );
     }
 
     fn glyph_x_positions(layout: &LineLayout) -> Vec<f32> {

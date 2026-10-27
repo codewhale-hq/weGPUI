@@ -36,8 +36,8 @@ and review limits; these images are not a claim of current cross-platform parity
 - **Localisation:** English defaults, 14 message catalogs, custom catalogs and mirrored RTL
   layouts. Translation review and several bidirectional-text cases remain open.
 
-The [latest parity continuation](docs/receipts/unicode-parity-20261026/README.md) adds Unicode
-line breaking, matching narrow-form/article samples and refreshed website evidence. Recorded
+The [latest parity continuation](docs/receipts/dictionary-mobile-20261026/README.md) adds
+dictionary line breaking, shaping-cluster protection and the iOS compatibility bridge. Recorded
 comparisons identify their own source; capture completeness does not establish full parity.
 
 The [component modules](src/components/mod.rs) document APIs, defaults, callbacks and known
@@ -134,8 +134,8 @@ complete platform support are separate milestones.
 | --- | --- | --- |
 | Linux | Current source gates, X11 comparisons, native interaction and Orca samples; historical nested-Wayland checks | Complete reader/IME/state coverage, hardware and distribution |
 | macOS | Current build/tests/Clippy/docs and sampled RTL native input/AX checks; historical comparisons | Complete state/input/reader coverage and signed distribution |
-| Windows | Current ARM64/MSVC build/tests/Clippy/docs and standalone consumer; historical native interactions | Current visible UI needs VM sign-in; x64, reader and distribution |
-| iOS | Experimental backend and bundle scaffold | Upstream application API incompatibilities; no runtime acceptance |
+| Windows | Current ARM64/MSVC build/tests/Clippy/docs and standalone consumer; historical native interactions | Visible UI excluded by owner; reader and distribution remain unqualified |
+| iOS | Experimental simulator bundle links and launches; sampled touch navigation | Complete keyboard/IME, insets, lifecycle, accessibility and device qualification |
 | Android | Library type-checks | Backend selection and native runtime |
 
 [Platform evidence](docs/PLATFORMS.md) defines the support criteria.

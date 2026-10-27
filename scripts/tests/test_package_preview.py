@@ -65,7 +65,7 @@ class PreviewBundleTests(unittest.TestCase):
             root = pathlib.PurePosixPath(tar.getnames()[0]).parts[0]
             workspace = tar.extractfile(f"{root}/Cargo.toml").read().decode()
             self.assertIn('members = ["wegpui", "consumer"]', workspace)
-            for name in ("LICENSE-MIT", "LICENSE-APACHE", "LICENSE-WEUI", "NOTICE",
+            for name in ("LICENSE-MIT", "LICENSE-APACHE", "LICENSE-WEUI", "LICENSE-UNICODE-3", "NOTICE",
                          "CHANGELOG.md", "CODE_OF_CONDUCT.md", "SECURITY.md"):
                 self.assertIsNotNone(tar.getmember(f"{root}/wegpui/{name}"))
             for vendor in preview.VENDORS:

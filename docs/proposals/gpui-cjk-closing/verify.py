@@ -11,7 +11,6 @@ SPEC = importlib.util.spec_from_file_location("word_harness", ROOT / "docs/propo
 harness = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(harness)
 SOURCE = ROOT / "vendor/gpui_pre/src/text_system/line_wrapper.rs"
-NEEDLE = "unicode_linebreak::linebreaks(text)"
 TESTS = r'''
     #[test]
     fn closing_marks_attach_to_the_preceding_cjk_word() {
@@ -73,10 +72,9 @@ def main():
     args = parser.parse_args()
     args.workdir.mkdir(parents=True, exist_ok=True)
     current = SOURCE.read_text()
-    if current.count(NEEDLE) != 1:
-        parser.error("Break iterator changed; review the negative control")
     candidate = current
-    original = current.replace(NEEDLE, "text.char_indices().skip(1).map(|(index, _)| (index, ())).chain(std::iter::once((text.len(), ())))")
+    provider = harness.logical_harness.function_text(current, "break_indices")
+    original = current.replace(provider, '    pub(crate) fn break_indices(text: &str) -> Vec<usize> {\n        text.char_indices().skip(1).map(|(index, _)| index).chain(std::iter::once(text.len())).collect()\n    }\n')
     patch = "".join(difflib.unified_diff(original.splitlines(True), candidate.splitlines(True), fromfile="negative-control", tofile="current-Unicode-source"))
     (args.workdir / "cjk-closing.patch").write_text(patch)
     for name, source in [("baseline", original), ("proposal", candidate)]:

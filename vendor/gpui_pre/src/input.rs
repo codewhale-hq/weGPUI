@@ -73,6 +73,17 @@ pub trait EntityInputHandler: 'static + Sized {
         cx: &mut Context<Self>,
     ) -> Option<Bounds<Pixels>>;
 
+    #[doc = "See InputHandler::selection_bounds_for_range for native selection fragments."]
+    fn selection_bounds_for_range(
+        &mut self,
+        _range_utf16: Range<usize>,
+        _element_bounds: Bounds<Pixels>,
+        _window: &mut Window,
+        _cx: &mut Context<Self>,
+    ) -> Vec<Bounds<Pixels>> {
+        Vec::new()
+    }
+
     /// See [`InputHandler::character_index_for_point`] for details
     fn character_index_for_point(
         &mut self,
@@ -220,6 +231,17 @@ impl<V: EntityInputHandler> InputHandler for ElementInputHandler<V> {
     ) -> Option<Bounds<Pixels>> {
         self.view.update(cx, |view, cx| {
             view.bounds_for_range(range_utf16, self.element_bounds, window, cx)
+        })
+    }
+
+    fn selection_bounds_for_range(
+        &mut self,
+        range_utf16: Range<usize>,
+        window: &mut Window,
+        cx: &mut App,
+    ) -> Vec<Bounds<Pixels>> {
+        self.view.update(cx, |view, cx| {
+            view.selection_bounds_for_range(range_utf16, self.element_bounds, window, cx)
         })
     }
 

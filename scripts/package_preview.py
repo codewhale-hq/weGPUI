@@ -13,7 +13,7 @@ import tomllib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 VENDORS = ("gpui_pre", "gpui_pre_linux", "accesskit_unix", "accesskit_atspi_common")
-FILES = ("Cargo.toml", "Cargo.lock", "README.md", "CONTRIBUTING.md", "CHANGELOG.md", "CODE_OF_CONDUCT.md", "SECURITY.md", "LICENSE-MIT", "LICENSE-APACHE", "LICENSE-WEUI", "NOTICE")
+FILES = ("Cargo.toml", "Cargo.lock", "README.md", "CONTRIBUTING.md", "CHANGELOG.md", "CODE_OF_CONDUCT.md", "SECURITY.md", "LICENSE-MIT", "LICENSE-APACHE", "LICENSE-WEUI", "LICENSE-UNICODE-3", "NOTICE")
 DIRECTORIES = ("src", "assets", "examples", "vendor", "scripts", "docs")
 OMIT = {".git", "target", "__pycache__", ".DS_Store"}
 

@@ -1,4 +1,4 @@
-# iOS simulator bundle scaffold
+# Experimental iOS simulator bundle
 
 Both examples select `gpui-pre-ios =0.3.9` on iOS and `gpui-pre-platform =0.3.9`
 on desktop. The desktop platform dependency is excluded on iOS because its
@@ -27,12 +27,23 @@ The scene delegate name `GPUIIosSceneDelegate` is supplied by that backend.
 No generated Xcode project or signing identity is needed for an ad-hoc simulator
 bundle; physical-device provisioning is separate.
 
-**No iOS app build, launch, touch, software keyboard, IME, insets, rotation,
-lifecycle or VoiceOver acceptance has been established by this scaffold.**
+The approved local core bridge supplies the lifecycle/focus/selection APIs missing from the
+published pair. A local Apple ARM64 simulator bundle now links and launches. The gallery and
+minimal example use the fully visible bounds, and the gallery includes a touch Back control.
+weGPUI text input supplies document-ordered selection fragments; its scrollers respond when
+the visible viewport shrinks. These implementations still need the complete software-keyboard,
+IME, inset, rotation, lifecycle and physical-device acceptance matrix.
 The backend has no mobile AccessKit adapter. Linux library type-checks and shell
 fixture tests cannot establish Apple runtime acceptance. See
 [platform requirements](../../docs/PLATFORMS.md).
 
-The first hosted build now establishes a concrete upstream blocker: six missing
-core APIs in the published 0.3.9 pair. See the [report](../../docs/proposals/gpui-ios-039-incompatibility.md).
-No simulator bundle was produced; script fixture passes do not override that failure.
+The first hosted build retained six missing core APIs in the published 0.3.9 pair. See the
+[historical report](../../docs/proposals/gpui-ios-039-incompatibility.md) and
+[current continuation](../../docs/receipts/dictionary-mobile-20261026/README.md).
+Successful linking and sampled touch navigation do not establish full mobile acceptance.
+
+On iOS, password fields deliberately reject native text sessions and expose no native
+document text or length. The pinned UIKit backend has no secure-entry trait; visually
+masking a plain native responder would expose password text to system UI/accessibility.
+Native secure entry is required before iOS password editing can be supported. Desktop
+password behavior is unchanged.

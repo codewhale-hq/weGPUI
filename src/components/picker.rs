@@ -3,8 +3,8 @@
 //! flush [`HalfScreenDialog`].
 //!
 //! [`Picker`] is a GPUI entity emitting [`PickerEvent`]s; [`PickerItem`] trees describe the
-//! options. Known limitations: [`today`] is the UTC date, not the local one, and a column whose
-//! rows are all disabled keeps Confirm disabled.
+//! options. [`today`] uses the host's local date. A column whose rows are all disabled keeps
+//! Confirm disabled.
 
 use super::{
     button::Button,

@@ -136,15 +136,19 @@ The website source belongs in this repository. It must offer:
   and live iframe pointer/Space interaction. The final 390px theme capture was reviewed.
   Candidate 3 changes only the palette handler and CSS minimum width relative to candidate 1;
   the full 40-check result remains attributed to candidate 1.
-- [ ] Qualify the live deployed host, additional browser engines and actual screen-reader
-  behavior on the website. Local Chromium checks do not establish these results.
+- [x] Verify `b368c94` on the live deployed host: 264 recorded views, 528 decoded images and
+  selected interactive/deep-link/palette checks ([receipt](receipts/pages-update-20261026/README.md)).
+- [x] Verify the dictionary/mobile website candidate locally: 42 checks across both mounts,
+  including 360 route/viewport observations ([receipt](receipts/dictionary-mobile-20261026/README.md)).
+- [ ] Qualify additional browser engines and actual screen-reader behavior on the website.
 - [x] Prepare the manual-only Pages workflow and [hosting steps](../website/HOSTING.md).
 - [x] Publish the owner's reviewed source on GitHub Pages. The owner configured the source
   and dispatched [run 40211664701](https://github.com/codewhale-hq/weGPUI/actions/runs/40211664701)
   for `e5b6996`; build and deploy succeeded and returned <https://codewhale-hq.github.io/weGPUI/>.
   [The receipt](receipts/pages-publication-20261025/README.md) distinguishes this GitHub
-  deployment result from public-origin browser qualification, blocked by the cloud proxy.
-  Further dispatches/publications still require owner authorization; source pushes do not deploy.
+  deployment result from the earlier cloud-proxy restriction. The subsequent owner-authorized
+  `b368c94` update has successful live-origin browser verification. Continued website updates
+  are authorized; source pushes do not deploy automatically.
 
 The browser uses a separate HTML/CSS/JavaScript implementation. Historical native captures
 remain available with `?view=native`, and native setup at `#native-guide`. Browser checks do
@@ -153,10 +157,13 @@ verified native batch is committed as `f7d41a534b02c15c6dbf3d0b216c9becc3925bcd`
 
 ## 5. Experimental mobile work
 
-The `gpui-pre-ios =0.3.9` / core `=0.3.9` pair fails to compile because of missing
-upstream APIs. Keep that result visible in an experimental CI workflow and the
-[upstream report](proposals/gpui-ios-039-incompatibility.md). Do not silently patch
-the Cargo registry or introduce an unapproved GPUI fork. Android needs an upstream
+The published `gpui-pre-ios =0.3.9` / core `=0.3.9` pair lacked six required APIs.
+The approved vendored core bridge now links a simulator app, with a local launch and sampled
+touch navigation. Preserve the historical failure in the
+[upstream report](proposals/gpui-ios-039-incompatibility.md) and qualify the new source
+through the [continuation](receipts/dictionary-mobile-20261026/README.md). Registry files
+remain untouched. Mobile accessibility, full input/inset/lifecycle and physical-device
+acceptance are still open. Android needs an upstream
 platform backend. Neither mobile platform blocks the desktop-first release, but
 neither may be described as supported.
 

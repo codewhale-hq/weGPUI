@@ -660,5 +660,7 @@ priority = 0
 [dependencies.unicode-bidi]
 version = "=0.3.18"
 
-[dependencies.unicode-linebreak]
-version = "=0.1.5"
+[dependencies.icu_segmenter]
+version = "=2.4.0"
+default-features = false
+features = ["compiled_data"]

@@ -503,8 +503,9 @@ impl LineWrapper {
     }
 
     pub(crate) fn break_indices(text: &str) -> Vec<usize> {
-        unicode_linebreak::linebreaks(text)
-            .map(|(index, _)| index)
+        icu_segmenter::LineSegmenter::new_dictionary(Default::default())
+            .segment_str(text)
+            .filter(|&index| index > 0 || text.is_empty())
             .collect()
     }
 
@@ -1239,8 +1240,20 @@ mod tests {
 
     #[test]
     fn test_is_word_char_neighbouring_scripts_are_unchanged() {
-        for text in ["Հայերեն", "ܫܠܡܐ", "ภาษาไทย"] {
+        for text in ["Հայերեն", "ܫܠܡܐ"] {
             assert_eq!(LineWrapper::break_indices(text), vec![text.len()], "{text}");
+        }
+        assert_eq!(LineWrapper::break_indices("ภาษาไทย"), vec![12, 21]);
+        for text in [
+            "ภาษาไทยภาษาไทย",
+            "ພາສາລາວພາສາລາວ",
+            "ភាសាខ្មែរភាសាខ្មែរភាសា",
+            "မြန်မာဘာသာမြန်မာဘာသာ",
+        ] {
+            let breaks = LineWrapper::break_indices(text);
+            assert!(breaks.len() > 1, "{text}");
+            assert!(breaks.iter().all(|index| text.is_char_boundary(*index)));
+            assert_eq!(breaks.last(), Some(&text.len()));
         }
         for text in ["각", "가각", "你好", "「你好」", "a-1", "a/1", "1,234.56"] {
             let breaks = LineWrapper::break_indices(text);

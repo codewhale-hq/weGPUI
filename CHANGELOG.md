@@ -33,7 +33,7 @@ versioning once a release policy is decided. No version has been published.
   Simplified Chinese are starter translations awaiting native review). Any other language is
   supplied as a `Messages` value. See `docs/I18N.md`.
 - `TextInput`/`TextArea` caret, click placement and selection painting follow bidirectional
-  text on unwrapped lines containing right-to-left glyphs.
+  text on wrapped and unwrapped lines containing right-to-left glyphs, using shared resolved bidi clusters.
 - Right-to-left layout: components read `I18n::direction` and mirror (rows, padding and margins,
   arrows, switch and slider travel, swipe actions and keys, steps, picker columns, half-screen
   header slots, forms, search, dialogs and more; the list is in `docs/I18N.md`).
@@ -47,17 +47,19 @@ versioning once a release policy is decided. No version has been published.
   (`--state type:<field>:<ops>`).
 - `scripts/i18n_sweep.py` captures every route per language and, where macOS Automation is
   allowed, scans the accessibility tree for Chinese that survived translation.
-- Vendored `gpui-pre` (owner-approved 2026-10-25): `LineWrapper::is_word_char` treats Arabic,
-  Hebrew, Devanagari and Greek as word characters, so wrapping and ellipsis truncation stop
-  splitting words of those scripts. Thai and Hangul breaking are unchanged. Delta, checksums
-  and tests: `docs/proposals/gpui-text-i18n`.
-- Approved step 2 prototype for logical-order wrapping of right-to-left/mixed paragraphs in
-  vendored GPUI, explicit logical row starts and Languages page paragraph samples. Five Linux gates pass, but native Linux Arabic/Hebrew
-  captures remain clipped and misaligned. Supplied macOS evidence and Linux A/B captures:
-  `docs/receipts/gpui-logical-wrap-20261025`. No new dependency; step 3 remains unapproved.
+- Approved vendored GPUI text continuation: shared Unicode bidi geometry, logical row
+  reshaping, styled RTL painting, aligned link bounds and shaped ellipsis clamping. ICU4X
+  2.4.0 supplies line-break opportunities and bundled Thai/Lao/Khmer/Myanmar dictionaries.
+  Repeated glyph indices stay in one shaping cluster. Source-qualified samples and known
+  font/dictionary differences remain in `docs/receipts/dictionary-mobile-20261026`.
+- Experimental iOS core compatibility bridge, simulator bundle, safe-area example layout and
+  touch Back navigation. Native input reports document length, edit eligibility, selection
+  updates/fragments and software-keyboard action hints. Focus reveal responds to visible
+  viewport size changes. Complete mobile accessibility/device qualification remains open.
 - Interactive browser gallery with 60 WeUI examples, 132 state presets, local file previews,
   theme controls and portable Python-only builds, published on GitHub Pages through a manual workflow.
-- DateField typed ISO entry, read-only and validation APIs, optional-value change events and
+- DateField locale-ordered entry with canonical ISO values, host-local today, read-only and
+  validation APIs, optional-value change events and
   form-label/error association. Full-i32 year ranges use bounded lazy picker rows.
 - Semantic article paragraphs/headings, cell titles/tips, configurable progress announcements,
   uploader capacity and controlled swipe-open callbacks.

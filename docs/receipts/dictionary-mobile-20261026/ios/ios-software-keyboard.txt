@@ -1,0 +1,62 @@
+Window: "weGPUI iPhone 17", App: Simulator.
+1 standard window weGPUI iPhone 17 – iOS 26.2, Secondary Actions: Raise
+	2 button Action
+	3 button Volume Up
+	4 button Volume Down
+	5 button Sleep/Wake
+	6 container
+		7 text entry area (settable) Value: wegpui-parity, Secondary Actions: Cancel
+		8 button q
+		9 button w
+		10 button e
+		11 button r
+		12 button t
+		13 button y
+		14 button u
+		15 button i
+		16 button o
+		17 button p
+		18 button a
+		19 button s
+		20 button d
+		21 button f
+		22 button g
+		23 button h
+		24 button j
+		25 button k
+		26 button l
+		27 button Description: shift, Help: Quadruple-tap to enter caps lock, Secondary Actions: Caps Lock
+		28 button z
+		29 button x
+		30 button c
+		31 button v
+		32 button b
+		33 button n
+		34 button m
+		35 button delete
+		36 button Description: numbers, ID: more
+		37 button Description: Emoji, ID: emoji
+		38 button Description:  , ID: space
+		39 button Description: done, ID: Done
+		40 element Secondary Actions: Cancel
+		41 button Description: Next keyboard, Help: Double-tap and hold, then drag up to select another keyboard, Value: 简体拼音, Secondary Actions: Cancel
+		42 button Description: Dictate, Help: Double-tap to start dictation. Double-tap with two fingers when finished., ID: dictation, Secondary Actions: Cancel
+	43 toolbar
+		44 button Description: Home, Secondary Actions: Move previous, Move next, Remove from toolbar
+		45 button Description: Save Screen, Secondary Actions: Move previous, Move next, Remove from toolbar
+		46 button Description: Rotate, Secondary Actions: Move previous, Move next, Remove from toolbar
+	47 close button
+	48 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	49 minimize button
+	50 text weGPUI iPhone 17 iOS 26.2
+51 menu bar
+	52 Simulator
+	53 File
+	54 Edit
+	55 Device
+	56 I/O
+	57 Features
+	58 Window
+	59 Help
+
+The focused UI element is 1 standard window weGPUI iPhone 17 – iOS 26.2, Secondary Actions: Raise

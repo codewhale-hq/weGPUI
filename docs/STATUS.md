@@ -41,7 +41,15 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 
 ## Localisation and right-to-left — 2026-10-25
 
-The latest [Unicode and website continuation](receipts/unicode-parity-20261026/README.md)
+The [dictionary/mobile continuation](receipts/dictionary-mobile-20261026/README.md) uses
+approved ICU4X 2.4.0 dictionaries for Thai, Lao, Khmer and Myanmar. Shaping clusters stay
+intact and reordered combining glyphs use logical row shaping. The local iOS simulator app
+now links and launches, with touch Back navigation, portrait/landscape safe areas, native
+text entry, software-keyboard input, lower-field reveal and actual Pinyin preedit/commit
+samples. Full reader, IME, hardware and mobile acceptance remain open. Windows stays
+build/tests only. VoiceOver stays off. Each receipt identifies its own source.
+
+The earlier [Unicode and website continuation](receipts/unicode-parity-20261026/README.md)
 uses the owner-approved already-locked `unicode-linebreak 0.1.5` across all wrapping and
 truncation paths. Unicode 15.0 opportunities replace the script/punctuation allow-list.
 All 112 targeted pairs at 320/375 across eight appearances are captured and hash-verified.
@@ -66,7 +74,7 @@ library into the shared vendor harness. Current macOS keyboard/date and Linux AR
 input/styled-text samples are retained. Windows remains build/tests only by owner instruction;
 its hosted final validation is recorded in the continuation receipt. No Windows UI claim follows.
 
-Real RTL IME, complete reader/native-speaker matrices, dictionary breaking, Linux hardware and
+Real RTL IME, complete reader/native-speaker matrices, dictionary vocabulary/font coverage, Linux hardware and
 windowing diversity, mobile backends and release distribution remain qualification or scope gaps.
 VoiceOver remains off. Historical receipts below keep their original source identity.
 
@@ -266,18 +274,19 @@ succeeded for `e5b6996` in [run 40211664701](https://github.com/codewhale-hq/weG
 returning <https://codewhale-hq.github.io/weGPUI/>. See the
 [publication receipt](receipts/pages-publication-20261025/README.md) and
 [hosting steps](../website/HOSTING.md). The agent's checks were read-only. Direct access
-to the public origin is blocked by the cloud proxy, so deployed-origin browser qualification
-is still open. Further workflow dispatches require owner authorization; source pushes do
-not publish automatically.
+to the public origin was blocked by that cloud proxy. The later owner-authorized
+[update and live-origin verification](receipts/pages-update-20261026/README.md) publishes
+`b368c94` and verifies all 264 recorded views/528 images plus selected interactive checks.
+Source pushes do not publish automatically.
 
 ## Platform acceptance matrix
 
 | Platform | Build | Launch | Rendering | Interaction | Accessibility | Packaging |
 | --- | --- | --- | --- | --- | --- | --- |
-| macOS arm64 | October 24 candidate examples, nine tests, strict Clippy/rustdoc and packaged consumer pass; current Linux continuation unqualified | Historical component/gallery/minimal launches | Historical native dark sample and parity pairs | Historical loading/countdown/disabled/panel/choice samples | Historical input/spinner/tip AX checks; VoiceOver off and incomplete | Historical crate/consumer pass; signed/fresh-machine distribution missing |
+| macOS arm64 | Later code/Unicode continuations pass current ARM64 build, 54 library/three gallery tests and strict Clippy/docs; packaged-consumer receipts retain their source | Historical component/gallery/minimal launches | Historical native dark sample and parity pairs | Historical loading/countdown/disabled/panel/choice samples | Historical input/spinner/tip AX checks; VoiceOver off and incomplete | Historical crate/consumer pass; signed/fresh-machine distribution missing |
 | Linux x86_64 | Combined approved guard/cache/Linux-focus source passes all five gates on Rust 1.98.1, 47 root tests/one ignored doctest; vendor-unit attempt blocked separately; earlier source/MSRV receipts stay separate | X11 and real Wayland clients under nested Weston | Historical 192 pairs; 216 native-only states and targeted eight-mode control/data/media reviews; complete reference/theme parity open | Reusable callback/state/focus/transition matrices and Wayland regression samples; hardware/reduced-motion/IME coverage incomplete | Four approved compatibility copies pass sampled action/cache/state/text/X11-origin and focus-mode checks; real Fcitx and Orca reopen/input/date/control/disabled-icon speech exist; full reader/listening acceptance missing | Separate path-consumer build and X11 runtime pass with explicit root patches; published-package/fresh-machine/distribution unqualified |
-| Windows ARM64 | Native MSVC gallery/component sample build, 9 tests and strict rustdoc pass on the October 24 component candidate | Gallery and component sample launch in Windows 11 ARM VM | Native VirtIO GPU rendering; sampled light components and dark dialog | Text entry, loading/disabled actions, countdown, panel focus, independent radios and navbar wrap | Screen-reader and native accessibility-tree acceptance still missing | Package archive built and used for guest compilation; distributable installation unqualified |
-| iOS | Historical library type-checks pass; hosted app build fails in upstream iOS/core APIs | 0.3.9 scaffold wired; upstream compilation blocker, no launch | Missing | Missing | Missing; backend lacks AccessKit | Missing |
+| Windows ARM64 | Later hosted Windows MSVC all-target builds, library/gallery tests and strict Clippy pass; prior ARM64 consumer/docs receipts retain their source | Gallery and component sample launch in Windows 11 ARM VM | Native VirtIO GPU rendering; sampled light components and dark dialog | Text entry, loading/disabled actions, countdown, panel focus, independent radios and navbar wrap | Screen-reader and native accessibility-tree acceptance still missing | Package archive built and used for guest compilation; distributable installation unqualified |
+| iOS | Approved core bridge links a local simulator bundle | iPhone 17 / iOS 26.2 simulator launch | Sampled gallery pages and portrait/landscape safe areas | Touch navigation, native text/keyboard, Pinyin and lower-field reveal samples | Missing; backend lacks AccessKit | Ad-hoc simulator bundle only |
 | Android | Historical 0.3.9 library type-check; no app build | Blocked: no backend upstream | Missing | Missing | Missing | Missing |
 
 ## Historical completed slices
@@ -379,7 +388,7 @@ bridge events and actual reader speech are separate evidence classes.
 | Dialog / Modal | Native five-click/disabled/focus guards and depth-ranked isolation; approved guard passes seven timing cases, fixed cached/live proxies and six raw/listener/epoch/passive/ancestor/two-window modes ([fixed receipts](receipts/overlay-contracts-20261025/action-guard-fixed-20261025/)) | Cache performance, arbitrary external topmost ordering and full timing/reader/theme/host matrix. |
 | Flex | Historical light/dark/care layout; broader window resize samples | Complete responsive-layout/host coverage. |
 | Footer | Actual link callbacks, viewport placement, click occlusion and modal hidden/restored tree ([data](receipts/data-contracts-20261025/README.md)) | Host-supplied safe-area padding and minimum 44px targets are implemented in the independent continuation; full focus/reader/host acceptance remains open. |
-| Form / DateField | Strict validation, optional ISO typing/clearing, range/owner/DateTime/focus/availability contracts; final 15/15 native steps and actual Orca invalid/retry feedback once each with valid/clear removing error ([forms](receipts/form-contracts-20261025/README.md)) | Default range 1900–2100 and UTC today unchanged; locale/seconds, full theme/reader/host coverage. |
+| Form / DateField | Strict validation, optional ISO typing/clearing, range/owner/DateTime/focus/availability contracts; final 15/15 native steps and actual Orca invalid/retry feedback once each with valid/clear removing error ([forms](receipts/form-contracts-20261025/README.md)) | Default range 1900–2100; host-local today and locale numeric display/entry implemented. Seconds and full theme/reader/host coverage remain open. |
 | Input / TextArea | Scale 1/2 native/AT text/selection/geometry and held-modifier Orca; real inline XIM selected/reversed cancellation fix, callback/undo/state/maxlength and multiline contracts in 35-snapshot observer ([input](receipts/input-contracts-20261025/README.md), [IME](receipts/ime-x11-20261025/README.md)) | Pinned adapter lacks EditableText; full IME/reader/theme/host matrix and preedit cursor modes remain open. Historical reader teardown failures retained. |
 | Form choices | Controlled/disabled/propagation/motion samples; real Orca checkbox checked/unchecked, Switch pressed/not-pressed and independent radio positions with disabled skip and callback counts ([controls](receipts/control-contracts-20261025/README.md), [reader](receipts/orca-controls-20261025/README.md)) | Complete motion/reader/theme/host matrix and human audio listening remain open. |
 | Form select | Bounded long menu, disabled skip, initial selected reveal, commit/reopen/dismiss and restore ([overlays](receipts/overlay-contracts-20261025/README.md)) | Native overlay adaptation; complete state/reader/host matrix. |
@@ -392,7 +401,7 @@ bridge events and actual reader speech are separate evidence classes.
 | Loading / Loadmore | Historical spinner artwork/light/dark/care; later loading text announcement event | Complete animation/live reduced-motion and actual reader qualification. |
 | Message / LinkText | Historical short/wrapped real-input links and shaped bounds; title weight corrected to 500 ([inline links](receipts/inline-links-20261024/README.md), [data](receipts/data-contracts-20261025/README.md)) | Full typography/theme/reader/host coverage. |
 | Navbar / Tabbar | Controlled native/AT selections and roving offscreen reveal ([data](receipts/data-contracts-20261025/README.md), [focus](receipts/focus-reveal-20261025/README.md)) | Caller wraps tab_panel in FocusScroll; full theme/state/reader/host matrix. |
-| Picker | Lazy full-i32 dates, exact Home/End, leap/day clamp, disabled/reentrant/wheel contracts and focused-column ring ([overlays](receipts/overlay-contracts-20261025/README.md)) | UTC policy unchanged; all-disabled Confirm intentionally disabled; full focus/reader/theme/touch/host coverage. |
+| Picker | Lazy full-i32 dates, exact Home/End, leap/day clamp, disabled/reentrant/wheel contracts and focused-column ring ([overlays](receipts/overlay-contracts-20261025/README.md)) | Host-local today and locale-ordered columns implemented; all-disabled Confirm intentionally disabled; full focus/reader/theme/touch/host coverage. |
 | Preview / Steps | Historical static light/dark/care trees and focus; title weights corrected | Full typography/state/reader/host coverage. |
 | Progress / Slider | Controlled value/cancel removal/live events; numeric AT/key updates, snapping and availability guards ([data](receipts/data-contracts-20261025/README.md)) | Complete pointer/geometry/live-reader/theme/host matrix. |
 | Search bar | Native Homepage/Outlined/Filled callback counts, public focus, read-only clear guards, keyword label, clearing/refocus and cancel rules ([search](receipts/search-contracts-20261025/README.md)) | Eight-mode FilledGrey caret/action focus pixels pass separately. The October 26 fixture adds 24 FilledGrey/Filled/Outlined runs and 120 callback/inner-input disabled/read-only transition steps; complete motion/reader/host coverage remains open. |
@@ -445,16 +454,18 @@ bridge events and actual reader speech are separate evidence classes.
   remain historical evidence. Six extended raw/listener/epoch/passive/ancestor/two-window
   modes pass their sampled contracts. Cache performance and full reader/theme/host coverage remain open;
   the guard's lifecycle scope does not authorize arbitrary external topmost ordering.
-- **Date policy:** the owner still decides the source of local today. `picker::today()` remains
-  UTC; DateField defaults 1900–2100 with configurable Gregorian years 1–9999. Typed ISO entry
-  exists; locale display and seconds are not implemented.
+- **Date policy:** the approved `chrono` edge supplies host-local `picker::today()`. Locale
+  display/entry and picker-column order follow the documented numeric policy; committed values
+  remain ISO. DateField defaults to 1900–2100 with configurable Gregorian years 1–9999.
+  Alternate calendars, localized digits and seconds remain outside this policy.
 - **Windowing/hardware:** X11 scale/resize/origin and nested-Weston Wayland samples exist, using
   software rendering. Hardware/compositor diversity, live scale changes and monitor moves are
   unqualified. Wayland has no global window-origin hook.
-- **Mobile:** approved GPUI 0.3.9 iOS scaffolding still fails hosted application compilation on
-  missing core APIs ([blocker](proposals/gpui-ios-039-incompatibility.md)). No application linked;
-  Linux checks do not qualify Apple runtime. Android has no backend decision. Neither mobile
-  path has a verified AccessKit adapter.
+- **Mobile:** the approved local GPUI 0.3.9 core bridge resolves the missing iOS APIs.
+  A simulator app links and launches, with the bounded touch/input/inset samples described in
+  the [continuation](receipts/dictionary-mobile-20261026/README.md). Earlier hosted failures
+  remain historical. Full mobile runtime, accessibility and physical-device acceptance remain
+  open. Android still needs a backend; neither mobile path has a verified AccessKit adapter.
 - **Composition/identity:** caller-supplied generic children own their semantics; plain-text
   helpers are available for many slots. Repeated helper/loop instances need explicit stable IDs.
   Footer has an application-supplied bottom safe-area API; automatic host inset discovery remains application-owned.
@@ -489,7 +500,9 @@ added.
   limits, Pinyin, edge probes, reduced motion, and an uninterrupted screen-reader pass.
   Build/launch and sampled AX checks are now recorded; a complete overlay recapture is not.
 - Current-source Windows reruns beyond the historical Windows ARM component/inline-link
-  samples; Windows x64; iOS/Android anything beyond type-checks; physical devices.
+  samples. Windows MSVC x64 build/tests pass in hosted CI; visible Windows UI stays outside
+  owner-selected scope. iOS has bounded simulator samples; Android runtime and physical-device
+  acceptance remain missing.
 - Historical hosted CI: Linux stable/MSRV, mobile library checks and macOS native checks pass;
   simulator build fails inside published GPUI 0.3.9. See [CI receipt](receipts/ci-20261024/README.md).
   Default CodeQL also runs; no hosted CNB result is recorded.

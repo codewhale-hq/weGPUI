@@ -1,0 +1,12 @@
+The following is a diff from the previous accessibility tree for Window: "weGPUI iPhone 17" with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 93-95, 97, 99, 101
+~		7 text entry area (settable) Value: 米, Secondary Actions: Cancel
+~			96 button Description: 卡, 卡片的卡, ID: 卡, Secondary Actions: Cancel
++			103 button Description: 妮, 小妮子的妮, ID: 妮, Secondary Actions: Cancel
++			104 button Description: 🌾, Secondary Actions: Cancel
+~			98 button Description: 🍚, Secondary Actions: Cancel
++			105 button Description: 白色, 明白的白，瑟彩的瑟，色子的色, ID: 白色, Secondary Actions: Cancel
+~			100 button Description: 奇, 奇怪的奇, ID: 奇, Secondary Actions: Cancel
++			106 button Description: 朵, 耳朵的朵, ID: 朵, Secondary Actions: Cancel
++			107 button Description: 兰, 兰花的兰, ID: 兰, Secondary Actions: Cancel
+The focused UI element is 1 standard window weGPUI iPhone 17 – iOS 26.2, Secondary Actions: Raise

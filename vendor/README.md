@@ -5,9 +5,10 @@ remain `accesskit_unix 0.22.1`, `accesskit_atspi_common 0.19.1`, `gpui-pre 0.3.9
 `gpui-pre-linux 0.3.9`. Copies came from the exact locked crate archives; licenses and
 package provenance are retained. Registry files were not edited. Root Cargo patches
 select these copies; the approved Unicode bidi continuation adds one direct edge to the already
-locked `unicode-bidi 0.3.18`. The owner subsequently approved the locked
-`unicode-linebreak 0.1.5` edge for Unicode 15.0 break opportunities. Neither changes
-the package set or package versions.
+locked `unicode-bidi 0.3.18`. The owner subsequently approved ICU4X 2.4.0 dictionary
+segmentation. It replaces the interim direct `unicode-linebreak 0.1.5` edge and adds four
+package versions, without changing existing versions. The local core also bridges the
+published iOS backend's missing focus, selection-fragment and lifecycle APIs.
 
 ## Compilation and consumer setup
 
@@ -122,20 +123,21 @@ The table above identifies the original held prototype, not this later trial's w
 Fresh Linux source/native evidence is separate from its supplied macOS captures. The later repository publication authorization is recorded in the review above. The subsequent
 RTL continuation has step-3 approval and its own source hashes and current host evidence. No dependency or version changes were made.
 
-## CJK closing marks (owner-approved trial 2026-10-26)
+## Historical CJK closing-mark trial (owner-approved 2026-10-26)
 
 The owner separately approved [this bounded trial](../docs/proposals/gpui-cjk-closing/README.md).
-The existing `LineWrapper::is_word_char` closing-mark rule now includes twenty CJK closing
+That source’s `LineWrapper::is_word_char` closing-mark rule included twenty CJK closing
 characters in `text_system/line_wrapper.rs`. The shared wrapper/truncator keeps those marks with
 the preceding character; Panel now matches the sampled browser break and two-row ellipsis.
 Seven existing and six new extracted cases pass, with three expected failures in the unchanged
-control. Current file SHA-256: `ba8c00801d7200854768a74e8234838be0bed7310acfabdb7585dca54a711e55`.
+control. Historical file SHA-256: `ba8c00801d7200854768a74e8234838be0bed7310acfabdb7585dca54a711e55`.
 This is separate from both the step-1 script rule and the held logical-wrap prototype. It adds
 no dependency and does not implement full Unicode line breaking, opening-mark constraints or
 dictionary segmentation. Linux source/native evidence is in the
 [October 26 receipt](../docs/receipts/weui-parity-20261026/README.md). The later
 [publication review](../docs/REVIEW-2026-10-26.md) records repository publication authorization;
-step 3, full platform acceptance and package/site publication remain separate.
+The later Unicode and ICU continuations replace this classifier; the historical hash above
+does not describe current source. Full platform acceptance and package releases remain separate.
 
 ## Shared Unicode geometry and shaped clamping
 
@@ -158,10 +160,24 @@ GPUI test-suite claim. The receipt records exact source, binaries, native probes
 
 ## Unicode break opportunities
 
-The [Unicode continuation](../docs/receipts/unicode-parity-20261026/README.md) replaces the
-script/punctuation allow-list with `unicode-linebreak 0.1.5` across estimated wrapping,
-truncation, monotonic shaped rows and logical RTL rows. Inline element placeholders map back
-to their original UTF-8 lengths. Normal opportunities protect nonbreaking spaces, combining
-marks, emoji sequences and paired punctuation; existing emergency wrapping remains when
-a whole word exceeds the available width. This is Unicode 15.0 line breaking, without
-dictionary segmentation, hyphenation or font-provided ligature caret positions.
+The [Unicode continuation](../docs/receipts/unicode-parity-20261026/README.md) replaced the
+script/punctuation allow-list across estimated wrapping, truncation, monotonic shaped rows
+and logical RTL rows. The subsequent approved provider is ICU4X 2.4.0 with bundled Thai,
+Lao, Khmer and Myanmar dictionaries and no LSTM feature or runtime network requirement.
+Inline element placeholders map back to their original UTF-8 lengths. Normal opportunities
+protect nonbreaking spaces, combining marks, emoji sequences and paired punctuation;
+existing emergency wrapping remains when a whole word exceeds the available width.
+Repeated glyph indices stay in one shaping cluster. Reordered combining glyphs use logical
+row shaping. Browser dictionaries and font fallbacks can differ. Hyphenation and
+font-provided ligature caret positions remain outside this implementation.
+
+## iOS compatibility APIs
+
+The core now supplies the lifecycle variant and focused input methods required by the
+published `gpui-pre-ios 0.3.9` backend. Focus eligibility checks the registered field identity
+against the window's current focus and fails closed. Selection fragments are optional for
+other consumers; weGPUI input supplies document-ordered cluster fragments in window
+coordinates. An empty vector means unavailable geometry. A disconnected scene can reconnect;
+it is not a process-termination notification. These APIs preserve the single patched GPUI
+package identity and add no platform package. Mobile runtime and accessibility acceptance
+remain separate from successful linking.

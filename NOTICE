@@ -38,3 +38,13 @@ See vendor/gpui_pre_linux/LICENSE-APACHE and WEGPUI-PROVENANCE.md.
 Local change: ignore X11 NotifyGrab/NotifyUngrab FocusIn/FocusOut before changing
 window activation, accessibility focus or keyboard/IME state. Normal and
 WhileGrabbed focus handling remains unchanged.
+
+ICU4X Unicode segmentation and bundled dictionaries
+icu_segmenter / icu_segmenter_data / icu_locale_fallback / icu_locale_fallback_data 2.4.0
+Copyright Unicode, Inc. Licensed under Unicode-3.0.
+See LICENSE-UNICODE-3 for the complete copyright and permission notice.
+
+GPUI platform/input compatibility bridge
+The lifecycle, input-field identity and focused-input eligibility API shapes follow
+published gpui-fast 0.1.10. Copyright Zed Industries; Apache-2.0.
+No gpui-fast package is selected by the dependency graph.

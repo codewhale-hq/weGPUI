@@ -118,7 +118,7 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
                     ignore=shutil.ignore_patterns('vendor_upstream.py', '.gitattributes', '__pycache__', '*.pyc'))
     licenses = output / 'licenses'
     licenses.mkdir(exist_ok=True)
-    for name in ('LICENSE-MIT', 'LICENSE-APACHE', 'LICENSE-WEUI', 'NOTICE'):
+    for name in ('LICENSE-MIT', 'LICENSE-APACHE', 'LICENSE-WEUI', 'LICENSE-UNICODE-3', 'NOTICE'):
         shutil.copyfile(ROOT / name, licenses / name)
     evidence = native_evidence()
     captures = output / 'captures'

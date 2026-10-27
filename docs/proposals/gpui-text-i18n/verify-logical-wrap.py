@@ -20,8 +20,11 @@ The exit status is non-zero if either stage fails.
 """
 
 import argparse
+import json
+import os
 import pathlib
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -230,11 +233,26 @@ def unicode_args(work):
     library = work / "libunicode_bidi.rlib"
     if not library.exists():
         subprocess.run(["rustc", "--edition", "2018", "--crate-name", "unicode_bidi", "--crate-type", "rlib", "--cfg", 'feature="std"', "--cfg", 'feature="hardcoded-data"', str(source), "-o", str(library)], check=True, capture_output=True)
-    linebreak_source = next(registry.glob("*/unicode-linebreak-0.1.5/src/lib.rs"))
-    linebreak_library = work / "libunicode_linebreak.rlib"
-    if not linebreak_library.exists():
-        subprocess.run(["rustc", "--edition", "2018", "--crate-name", "unicode_linebreak", "--crate-type", "rlib", str(linebreak_source), "-o", str(linebreak_library)], check=True, capture_output=True)
-    return ["--extern", f"unicode_bidi={library}", "--extern", f"unicode_linebreak={linebreak_library}"]
+    project = work / "unicode-dependencies"
+    project.mkdir(exist_ok=True)
+    manifest = project / "Cargo.toml"
+    manifest.write_text('[package]\nname = "wegpui-text-harness-dependencies"\nversion = "0.0.0"\nedition = "2024"\n[workspace]\n[lib]\npath = "lib.rs"\n[dependencies]\nicu_segmenter = { version = "=2.4.0", default-features = false, features = ["compiled_data"] }\n[profile.dev]\ndebug = 1\n[profile.dev.package."*"]\ndebug = 0\n')
+    (project / "lib.rs").write_text('pub use icu_segmenter;\n')
+    shutil.copyfile(TEXT_SYSTEM.parents[3] / "Cargo.lock", project / "Cargo.lock")
+    subprocess.run(["cargo", "metadata", "--manifest-path", str(manifest), "--offline", "--format-version", "1"], check=True, capture_output=True)
+    target = pathlib.Path(os.environ.get("CARGO_TARGET_DIR", str(work.parent / "unicode-dependencies-target"))).resolve()
+    result = subprocess.run(["cargo", "build", "--manifest-path", str(manifest), "--target-dir", str(target), "--locked", "--offline", "--message-format=json"], capture_output=True, text=True)
+    if result.returncode:
+        print(result.stderr[-6000:])
+        for line in result.stdout.splitlines():
+            if line.startswith('{'):
+                item = json.loads(line)
+                if item.get('reason') == 'compiler-message':
+                    print(item['message'].get('rendered', ''))
+        sys.exit(result.returncode)
+    artifacts = [json.loads(line) for line in result.stdout.splitlines() if line.startswith('{')]
+    segmenter = next(pathlib.Path(name) for item in artifacts if item.get("reason") == "compiler-artifact" and item["target"]["name"] == "icu_segmenter" for name in item["filenames"] if name.endswith('.rlib'))
+    return ["--extern", f"unicode_bidi={library}", "--extern", f"icu_segmenter={segmenter}", "-L", f"dependency={segmenter.parent}"]
 
 
 def function_text(source, name):

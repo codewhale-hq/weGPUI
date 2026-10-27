@@ -8,7 +8,7 @@
 //! [`FOCUS_MARGIN`], clamped to the scroll range, and redraws on the next frame.
 //!
 //! Behaviour contract:
-//! - Only focus *changes* scroll. Manual wheel or drag scrolling while focus stays put is kept.
+//! - Focus changes or viewport size changes reveal the target. Manual scrolling is otherwise kept.
 //! - A target that is already fully visible never scrolls.
 //! - With nested targets the innermost one containing focus is revealed.
 //! - A nested `FocusScroll` handles its own targets; outer scrollers do not see them.
@@ -101,6 +101,7 @@ impl FocusScroll {
 #[derive(Default)]
 struct ScrollFocusState {
     last: Option<WeakFocusHandle>,
+    viewport: Option<gpui::Size<Pixels>>,
 }
 
 impl IntoElement for FocusScroll {
@@ -147,6 +148,8 @@ impl Element for FocusScroll {
         let target = *collector.borrow();
         let handle = self.handle.clone();
         let inset = self.inset_bottom;
+        let mut viewport = handle.bounds().intersect(&window.fully_visible_bounds());
+        viewport.size.height = (viewport.size.height - inset).max(px(0.));
         window.with_element_state(id, |state: Option<ScrollFocusState>, window| {
             let mut state = state.unwrap_or_default();
             let changed = match (&state.last, &focused) {
@@ -154,10 +157,10 @@ impl Element for FocusScroll {
                 (None, None) => false,
                 _ => true,
             };
-            if changed && let Some(target) = target {
+            if (changed || state.viewport != Some(viewport.size))
+                && let Some(target) = target
+            {
                 let offset = handle.offset();
-                let mut viewport = handle.bounds();
-                viewport.size.height = (viewport.size.height - inset).max(px(0.));
                 if let Some(y) = reveal_offset(
                     viewport,
                     target,
@@ -170,6 +173,7 @@ impl Element for FocusScroll {
                 }
             }
             state.last = focused.as_ref().map(|f| f.downgrade());
+            state.viewport = Some(viewport.size);
             ((), state)
         });
     }

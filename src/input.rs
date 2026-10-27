@@ -205,6 +205,8 @@ pub struct TextInput {
     redo_stack: Vec<Snapshot>,
     last_edit: Option<(EditKind, usize)>,
     composition_base: Option<Snapshot>,
+    #[cfg(target_os = "ios")]
+    native_state: Option<(SharedString, Range<usize>, Option<Range<usize>>)>,
 }
 
 impl TextInput {
@@ -242,6 +244,8 @@ impl TextInput {
             redo_stack: Vec::new(),
             last_edit: None,
             composition_base: None,
+            #[cfg(target_os = "ios")]
+            native_state: None,
         }
     }
 
@@ -892,6 +896,7 @@ impl TextInput {
             return;
         }
         if let Some(text) = cx.read_from_clipboard().and_then(|item| item.text()) {
+            let text = self.sanitize(&text);
             self.last_edit = None;
             self.replace_text_in_range(None, &text, window, cx);
             self.last_edit = None;
@@ -1214,6 +1219,65 @@ impl TextInput {
 }
 
 impl EntityInputHandler for TextInput {
+    fn text_length_utf16(
+        &mut self,
+        _window: &mut Window,
+        _cx: &mut Context<Self>,
+    ) -> Option<usize> {
+        #[cfg(target_os = "ios")]
+        if self.kind == InputKind::Password {
+            return None;
+        }
+        Some(self.len())
+    }
+
+    fn accepts_text_input(&self, _window: &mut Window, _cx: &mut Context<Self>) -> bool {
+        #[cfg(target_os = "ios")]
+        if self.kind == InputKind::Password {
+            return false;
+        }
+        self.editable()
+    }
+
+    fn text_input_configuration(
+        &mut self,
+        _window: &mut Window,
+        _cx: &mut Context<Self>,
+    ) -> TextInputConfiguration {
+        TextInputConfiguration {
+            input_action: if self.multiline {
+                TextInputAction::Enter
+            } else {
+                TextInputAction::Done
+            },
+            ..Default::default()
+        }
+    }
+
+    fn set_selected_text_range(
+        &mut self,
+        range_utf16: Range<usize>,
+        _window: &mut Window,
+        cx: &mut Context<Self>,
+    ) {
+        if self.disabled || range_utf16.start > range_utf16.end || range_utf16.end > self.len() {
+            return;
+        }
+        let range = self.range_from_utf16(&range_utf16);
+        if self.range_to_utf16(&range) != range_utf16 {
+            return;
+        }
+        let Some((range, reversed)) =
+            native_grapheme_selection(&self.content, range.start, range.end)
+        else {
+            return;
+        };
+        self.selected_range = range;
+        self.selection_reversed = reversed;
+        self.last_edit = None;
+        self.after_cursor_change(cx);
+    }
+
     fn text_for_range(
         &mut self,
         range_utf16: Range<usize>,
@@ -1221,6 +1285,10 @@ impl EntityInputHandler for TextInput {
         _window: &mut Window,
         _cx: &mut Context<Self>,
     ) -> Option<String> {
+        #[cfg(target_os = "ios")]
+        if self.kind == InputKind::Password {
+            return None;
+        }
         let range = self.range_from_utf16(&range_utf16);
         actual_range.replace(self.range_to_utf16(&range));
         Some(self.content[range].to_string())
@@ -1279,10 +1347,17 @@ impl EntityInputHandler for TextInput {
         &mut self,
         range_utf16: Option<Range<usize>>,
         new_text: &str,
-        _: &mut Window,
+        _window: &mut Window,
         cx: &mut Context<Self>,
     ) {
         if !self.editable() {
+            return;
+        }
+        #[cfg(target_os = "ios")]
+        if !self.multiline && range_utf16.is_none() && matches!(new_text, "\n" | "\r" | "\r\n") {
+            self.unmark_text(_window, cx);
+            cx.emit(InputEvent::Submit);
+            _window.dismiss_virtual_keyboard();
             return;
         }
         let range = range_utf16
@@ -1392,6 +1467,67 @@ impl EntityInputHandler for TextInput {
             origin + point(start.x.min(end.x), start.y),
             origin + point(end.x.max(start.x) + px(1.), start.y + layout.line_height),
         ))
+    }
+
+    fn selection_bounds_for_range(
+        &mut self,
+        range_utf16: Range<usize>,
+        bounds: Bounds<Pixels>,
+        _window: &mut Window,
+        _cx: &mut Context<Self>,
+    ) -> Vec<Bounds<Pixels>> {
+        let Some(layout) = self.layout.as_ref() else {
+            return Vec::new();
+        };
+        let range = self.range_from_utf16(&range_utf16);
+        if range.is_empty() {
+            return Vec::new();
+        }
+        let range = self.to_display(range.start)..self.to_display(range.end);
+        let origin = bounds.origin - self.scroll;
+        let mut result = Vec::new();
+        for (line_index, line) in layout.lines.iter().enumerate() {
+            let base = layout.starts[line_index];
+            for (row, metrics) in layout.rows[line_index].iter().enumerate() {
+                let start = base + metrics.range.start;
+                let end = base + metrics.range.end;
+                let lo = range.start.max(start);
+                let hi = range.end.min(end);
+                if lo > hi {
+                    continue;
+                }
+                let text = &line.text[metrics.range.clone()];
+                let mut clusters: Vec<_> = metrics.clusters.iter().collect();
+                clusters.sort_unstable_by_key(|cluster| cluster.index);
+                let shift = layout.shift(line_index, row);
+                let y = layout.tops[line_index] + layout.line_height * row as f32;
+                for cluster in clusters {
+                    for (x0, x1) in gpui::text_bidi::selection_spans(
+                        std::slice::from_ref(cluster),
+                        text,
+                        lo - start,
+                        hi - start,
+                    ) {
+                        result.push(Bounds::new(
+                            origin + point(px(x0) + shift, y),
+                            size(px(x1 - x0), layout.line_height),
+                        ));
+                    }
+                }
+                if row + 1 == layout.rows[line_index].len()
+                    && range.start <= base + line.len()
+                    && range.end > base + line.len()
+                {
+                    let x =
+                        gpui::text_bidi::caret_x(&metrics.clusters, text, text.len()).unwrap_or(0.);
+                    result.push(Bounds::new(
+                        origin + point(px(x) + shift, y),
+                        size(px(1.), layout.line_height),
+                    ));
+                }
+            }
+        }
+        result
     }
 
     fn character_index_for_point(
@@ -1943,6 +2079,33 @@ impl Element for TextElement {
             input.scroll = scroll;
             input.autoscroll = false;
             input.layout = Some(layout);
+            #[cfg(target_os = "ios")]
+            if input.focus_handle.is_focused(window)
+                && input.editable()
+                && input.kind != InputKind::Password
+            {
+                let state = (
+                    input.content.clone(),
+                    input.selected_range.clone(),
+                    input.marked_range.clone(),
+                );
+                let change = match input.native_state.as_ref() {
+                    Some(previous) if previous.0 != state.0 => {
+                        Some(TextInputStateChange::ContentChanged)
+                    }
+                    Some(previous) if previous.1 != state.1 || previous.2 != state.2 => {
+                        Some(TextInputStateChange::SelectionChanged)
+                    }
+                    None => Some(TextInputStateChange::ContentChanged),
+                    _ => None,
+                };
+                input.native_state = Some(state);
+                if let Some(change) = change {
+                    window.notify_text_input_state_changed(&input.focus_handle, change);
+                }
+            } else {
+                input.native_state = None;
+            }
         });
     }
 }

@@ -187,7 +187,10 @@ fn layer(entry: &Entry, offset: f32, opacity: f32, width: Pixels) -> impl IntoEl
 impl Render for Gallery {
     fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         let t = Theme::get(cx).clone();
+        #[cfg(not(target_os = "ios"))]
         let width = window.viewport_size().width;
+        #[cfg(target_os = "ios")]
+        let width = window.fully_visible_bounds().size.width;
         let n = self.stack.len();
         let top = self
             .stack
@@ -247,6 +250,35 @@ impl Render for Gallery {
             let p = leaving_p.unwrap_or(1.);
             root = root.child(layer(entry, p, 1. - p, width));
         }
+        #[cfg(target_os = "ios")]
+        let root = platform::safe_area(
+            div()
+                .size_full()
+                .flex()
+                .flex_col()
+                .when(n > 1, |el| {
+                    el.child(
+                        div()
+                            .h(px(56.))
+                            .flex_shrink_0()
+                            .px(px(16.))
+                            .flex()
+                            .items_center()
+                            .child(
+                                wegpui::components::button::Button::new(
+                                    I18n::get(cx).messages().back.clone(),
+                                )
+                                .inline()
+                                .medium()
+                                .margin_reset()
+                                .on_click(|_, window, cx| back(window, cx)),
+                            ),
+                    )
+                })
+                .child(div().relative().flex_1().min_h_0().child(root)),
+            window,
+            cx,
+        );
         wegpui::accessibility::ModalScope::new(root)
     }
 }

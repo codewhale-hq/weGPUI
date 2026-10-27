@@ -1,0 +1,21 @@
+{
+  "new_packages": [
+    {
+      "name": "icu_locale_fallback",
+      "version": "2.4.0"
+    },
+    {
+      "name": "icu_locale_fallback_data",
+      "version": "2.4.0"
+    },
+    {
+      "name": "icu_segmenter",
+      "version": "2.4.0"
+    },
+    {
+      "name": "icu_segmenter_data",
+      "version": "2.4.0"
+    }
+  ],
+  "changed_existing_packages": []
+}

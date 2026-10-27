@@ -1,0 +1,24 @@
+weGPUI dictionary/mobile continuation: local gates, 2026-10-27, macOS arm64, Rust stable
+Source: 901f770 plus the uncommitted continuation tree committed with this file.
+
+cargo fmt --all -- --check                                   pass
+cargo build --all-targets --locked --offline                 pass
+cargo test --lib --locked --offline                          54 passed, 0 failed
+cargo test --example gallery --locked --offline              3 passed, 0 failed
+cargo clippy --all-targets --locked --offline -- -D warnings pass
+RUSTDOCFLAGS="-D warnings" cargo doc --no-deps --locked      pass
+cargo check --lib --locked --offline --target aarch64-apple-ios-sim   pass
+
+Extracted vendored text contracts (patched copies; baseline negative controls fail as documented):
+  verify-word-break.py       7 passed
+  verify-logical-wrap.py     16 + 9 passed
+  trailing-space verify.py   13 passed (baseline: 3 expected failures)
+  cjk-closing verify.py      13 passed (baseline: 12 expected failures)
+
+python3 -m unittest discover -s scripts/tests                33 passed
+python3 -m unittest discover -s website/tests                5 passed
+node --check website/app.js                                  pass
+python3 website/build.py --include-api                       60 routes, 132 states, API docs
+
+Not run: iOS simulator runtime recheck of the single-line Done-key correction, Windows, Linux,
+hosted CI, screen readers. No package, tag, release or website publication.

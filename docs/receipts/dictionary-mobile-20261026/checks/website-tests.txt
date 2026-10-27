@@ -1,0 +1,10 @@
+test_all_real_browser_routes_match_the_upstream_inventory (test_inventory.RouteInventoryTests.test_all_real_browser_routes_match_the_upstream_inventory) ... ok
+test_isolated_python_builds_the_complete_real_site (test_inventory.RouteInventoryTests.test_isolated_python_builds_the_complete_real_site) ... ok
+test_missing_native_only_exception_is_reported (test_inventory.RouteInventoryTests.test_missing_native_only_exception_is_reported) ... ok
+test_native_languages_page_does_not_require_a_browser_demo (test_inventory.RouteInventoryTests.test_native_languages_page_does_not_require_a_browser_demo) ... ok
+test_other_new_routes_are_not_silently_excluded (test_inventory.RouteInventoryTests.test_other_new_routes_are_not_silently_excluded) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.264s
+
+OK

@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   ios:
-    name: Experimental simulator build (known upstream blocker)
+    name: Experimental simulator build (no runtime acceptance)
     runs-on: macos-15
     timeout-minutes: 45
     steps:

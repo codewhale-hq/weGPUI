@@ -2971,6 +2971,17 @@ impl Window {
         self.platform_window.hide_soft_keyboard();
     }
 
+    #[doc = "Invalidates the native text session after an application-side text or selection change in the focused field. The platform must defer document queries until the current window update is complete."]
+    pub fn notify_text_input_state_changed(
+        &self,
+        focus_handle: &FocusHandle,
+        change: TextInputStateChange,
+    ) {
+        if focus_handle.is_focused(self) {
+            self.platform_window.text_input_state_changed(change);
+        }
+    }
+
     /// Returns whether this window is focused by the operating system (receiving key events).
     pub fn is_window_active(&self) -> bool {
         self.active.get()
@@ -5416,9 +5427,9 @@ impl Window {
 
         if focus_handle.is_focused(self) {
             let cx = self.to_async(cx);
-            self.next_frame
-                .input_handlers
-                .push(Some(PlatformInputHandler::new(cx, Box::new(input_handler))));
+            self.next_frame.input_handlers.push(Some(
+                PlatformInputHandler::new(cx, Box::new(input_handler)).with_focus(focus_handle.id),
+            ));
         }
     }
 
