@@ -13,6 +13,16 @@ visible viewport size changes. These changes do not complete mobile input, lifec
 accessibility acceptance. Windows remains build/tests only by owner instruction; visible UI
 is outside this continuation's scope, rather than waiting for a sign-in decision.
 
+## Android backend discovery — 2026-10-28
+
+A separate local Codewhale checkout of `gpui-mobile` at commit `9b6c8c3` contains
+an Android backend. Its manifest pins `gpui-pre =0.3.7`, whereas this project uses a
+patched 0.3.9 core; the GPUI types therefore do not directly match. Its README and
+examples contain older version references. This discovery does not establish a compatible
+backend, build, launch, input or accessibility pass for weGPUI. The machine has Android
+SDK/NDK tools and system images, but no connected device or running emulator was observed.
+The historical third-party package investigation below keeps its own version and evidence.
+
 ## Historical dependency investigation (0.3.7 and proposed 0.3.9)
 
 Sources: crates.io `gpui-pre =0.3.7` (a snapshot of `zed@1a28cff`) and `gpui-pre-platform =0.3.7`,

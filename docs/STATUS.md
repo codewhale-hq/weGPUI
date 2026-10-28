@@ -29,7 +29,9 @@ experimental. See the [desktop release checklist](RELEASE-READINESS.md) and
 [website build guide](../website/README.md). **No platform is supported yet**
 in the sense of [PLATFORMS](PLATFORMS.md): every one still lacks at least one of the build,
 launch, rendering, interaction, accessibility or packaging receipts. The iOS backend/bundle
-scaffold is implemented but unqualified; Android has no backend.
+scaffold is implemented but unqualified; Android has no compatible integrated backend.
+A separate local `gpui-mobile` backend targets GPUI 0.3.7 and needs a 0.3.9 port; see
+the current [platform discovery](PLATFORMS.md#android-backend-discovery--2026-10-28).
 
 Evidence sources: the macOS review of 2026-10-24 ([REVIEW](REVIEW-2026-10-24.md), receipts in
 `receipts/review-20261024/`), and the Linux cloud takeover of 2026-10-25 (receipts and their
