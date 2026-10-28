@@ -856,6 +856,7 @@ impl Picker {
         div()
             .id(("weui-picker-group", level))
             .role(Role::ListBox)
+            .aria_size_of_set(item_count)
             .aria_label(SharedString::from(format!("{} {}", title, selected)))
             .track_focus(&focus)
             .tab_stop(true)

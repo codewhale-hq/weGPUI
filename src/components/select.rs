@@ -521,6 +521,7 @@ impl RenderOnce for SelectMenu {
                     div()
                         .id("select-listbox")
                         .role(Role::ListBox)
+                        .aria_size_of_set(n)
                         .track_scroll(&scroll)
                         .max_h(options_height)
                         .min_h_0()

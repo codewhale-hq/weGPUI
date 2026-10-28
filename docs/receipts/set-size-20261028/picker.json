@@ -1,0 +1,115 @@
+[
+  {
+    "role": "application",
+    "name": "set_size_probe",
+    "attributes": [],
+    "states": []
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI set size probe",
+    "attributes": [],
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "dialog",
+    "name": "Picker",
+    "attributes": [],
+    "states": [
+      "active",
+      "enabled",
+      "focusable",
+      "modal",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "push button",
+    "name": "Close",
+    "attributes": [],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list box",
+    "name": "Picker Picker three",
+    "attributes": [],
+    "states": [
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "vertical",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "Picker one",
+    "attributes": [
+      "setsize:3",
+      "posinset:1"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "Picker disabled",
+    "attributes": [
+      "posinset:2",
+      "setsize:3"
+    ],
+    "states": [
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "Picker three",
+    "attributes": [
+      "setsize:3",
+      "posinset:3"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "selected",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "push button",
+    "name": "OK",
+    "attributes": [],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  }
+]

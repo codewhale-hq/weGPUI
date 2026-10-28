@@ -1,0 +1,23 @@
+build-lock: all 2 build slots are busy (pid 92212 in /Volumes/VIXinSSD/CW/codewhale: cargo --config build.build-dir = "/Volumes/VIXinSSD/cw-build-cache/build/{workspace-path-hash}" build --manifest-path; pid 73320 in /Volumes/VIXinSSD/CW/codewhale: cargo --config build.build-dir = "/Volumes/VIXinSSD/cw-build-cache/build/{workspace-path-hash}" test -p); set CODEWHALE_BUILD_LOCK=0 to skip
+build-lock: acquired after 129s
+warning: patch `gpui-pre-ios v0.3.9 (/src/vendor/gpui_pre_ios)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling gpui-pre v0.3.9 (/src/vendor/gpui_pre)
+   Compiling gpui-pre-wgpu v0.3.9
+   Compiling wegpui v0.1.0 (/src)
+   Compiling gpui-pre-linux v0.3.9 (/src/vendor/gpui_pre_linux)
+   Compiling gpui-pre-platform v0.3.9
+   Compiling set_size_probe v0.0.0 (/work/full-parity/set-size-probe)
+warning: unused variable: `window`
+  --> src/main.rs:35:26
+   |
+35 |     fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+   |                          ^^^^^^ help: if this is intentional, prefix it with an underscore: `_window`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: `set_size_probe` (bin "set_size_probe") generated 1 warning (run `cargo fix --bin "set_size_probe" -p set_size_probe` to apply 1 suggestion)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 32.19s

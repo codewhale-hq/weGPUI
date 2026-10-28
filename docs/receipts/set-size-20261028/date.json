@@ -1,0 +1,881 @@
+[
+  {
+    "role": "application",
+    "name": "set_size_probe",
+    "attributes": [],
+    "states": []
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI set size probe",
+    "attributes": [],
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "dialog",
+    "name": "Date picker",
+    "attributes": [],
+    "states": [
+      "active",
+      "enabled",
+      "focusable",
+      "modal",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "push button",
+    "name": "Close",
+    "attributes": [],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list box",
+    "name": "Date picker 2000",
+    "attributes": [],
+    "states": [
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "vertical",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "1996",
+    "attributes": [
+      "posinset:97",
+      "setsize:201"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "1997",
+    "attributes": [
+      "posinset:98",
+      "setsize:201"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "1998",
+    "attributes": [
+      "setsize:201",
+      "posinset:99"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "1999",
+    "attributes": [
+      "posinset:100",
+      "setsize:201"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "2000",
+    "attributes": [
+      "posinset:101",
+      "setsize:201"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "selected",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "2001",
+    "attributes": [
+      "posinset:102",
+      "setsize:201"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "2002",
+    "attributes": [
+      "posinset:103",
+      "setsize:201"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "2003",
+    "attributes": [
+      "setsize:201",
+      "posinset:104"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "2004",
+    "attributes": [
+      "posinset:105",
+      "setsize:201"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list box",
+    "name": "Date picker January",
+    "attributes": [],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "vertical",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "January",
+    "attributes": [
+      "posinset:1",
+      "setsize:12"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "selected",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "February",
+    "attributes": [
+      "setsize:12",
+      "posinset:2"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "March",
+    "attributes": [
+      "setsize:12",
+      "posinset:3"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "April",
+    "attributes": [
+      "posinset:4",
+      "setsize:12"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "May",
+    "attributes": [
+      "setsize:12",
+      "posinset:5"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "June",
+    "attributes": [
+      "setsize:12",
+      "posinset:6"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "July",
+    "attributes": [
+      "posinset:7",
+      "setsize:12"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "August",
+    "attributes": [
+      "posinset:8",
+      "setsize:12"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "September",
+    "attributes": [
+      "posinset:9",
+      "setsize:12"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "October",
+    "attributes": [
+      "posinset:10",
+      "setsize:12"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "November",
+    "attributes": [
+      "posinset:11",
+      "setsize:12"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "December",
+    "attributes": [
+      "posinset:12",
+      "setsize:12"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list box",
+    "name": "Date picker 1",
+    "attributes": [],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "vertical",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "1",
+    "attributes": [
+      "posinset:1",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "selected",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "2",
+    "attributes": [
+      "setsize:31",
+      "posinset:2"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "3",
+    "attributes": [
+      "setsize:31",
+      "posinset:3"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "4",
+    "attributes": [
+      "posinset:4",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "5",
+    "attributes": [
+      "setsize:31",
+      "posinset:5"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "6",
+    "attributes": [
+      "setsize:31",
+      "posinset:6"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "7",
+    "attributes": [
+      "setsize:31",
+      "posinset:7"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "8",
+    "attributes": [
+      "setsize:31",
+      "posinset:8"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "9",
+    "attributes": [
+      "posinset:9",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "10",
+    "attributes": [
+      "posinset:10",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "11",
+    "attributes": [
+      "posinset:11",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "12",
+    "attributes": [
+      "posinset:12",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "13",
+    "attributes": [
+      "posinset:13",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "14",
+    "attributes": [
+      "posinset:14",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "15",
+    "attributes": [
+      "posinset:15",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "16",
+    "attributes": [
+      "posinset:16",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "17",
+    "attributes": [
+      "posinset:17",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "18",
+    "attributes": [
+      "posinset:18",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "19",
+    "attributes": [
+      "setsize:31",
+      "posinset:19"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "20",
+    "attributes": [
+      "posinset:20",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "21",
+    "attributes": [
+      "setsize:31",
+      "posinset:21"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "22",
+    "attributes": [
+      "setsize:31",
+      "posinset:22"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "23",
+    "attributes": [
+      "posinset:23",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "24",
+    "attributes": [
+      "posinset:24",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "25",
+    "attributes": [
+      "posinset:25",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "26",
+    "attributes": [
+      "posinset:26",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "27",
+    "attributes": [
+      "posinset:27",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "28",
+    "attributes": [
+      "setsize:31",
+      "posinset:28"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "29",
+    "attributes": [
+      "posinset:29",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "30",
+    "attributes": [
+      "posinset:30",
+      "setsize:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "31",
+    "attributes": [
+      "setsize:31",
+      "posinset:31"
+    ],
+    "states": [
+      "enabled",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "push button",
+    "name": "OK",
+    "attributes": [],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  }
+]

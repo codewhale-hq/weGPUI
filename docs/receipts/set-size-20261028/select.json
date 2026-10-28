@@ -1,0 +1,104 @@
+[
+  {
+    "role": "application",
+    "name": "set_size_probe",
+    "attributes": [],
+    "states": []
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI set size probe",
+    "attributes": [],
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "dialog",
+    "name": "Select options",
+    "attributes": [],
+    "states": [
+      "active",
+      "enabled",
+      "focusable",
+      "modal",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list box",
+    "name": "",
+    "attributes": [],
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "vertical",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "Select one",
+    "attributes": [
+      "setsize:3",
+      "posinset:1"
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "focused",
+      "selectable",
+      "selected",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "Select disabled",
+    "attributes": [
+      "posinset:2",
+      "setsize:3"
+    ],
+    "states": [
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "list item",
+    "name": "Select three",
+    "attributes": [
+      "posinset:3",
+      "setsize:3"
+    ],
+    "states": [
+      "enabled",
+      "focusable",
+      "selectable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "push button",
+    "name": "Cancel",
+    "attributes": [],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  }
+]
