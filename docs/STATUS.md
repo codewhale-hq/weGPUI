@@ -42,13 +42,16 @@ including failed/incomplete attempts. It does not complete platform acceptance.
 ## Consumer handoff — 2026-10-28
 
 For the existing Codewhale macOS client, `c343621c3651c3210098f701ac5aeeec4a52e193`
-is the latest source with the completed macOS build, library tests, Clippy/docs and sampled
+is a source with a completed macOS build, library tests, Clippy/docs and sampled
 Unicode input/undo evidence described in the [dictionary receipt](receipts/dictionary-mobile-20261026/README.md).
 It requires the four workspace-root vendor patches documented at that revision. This is a
 tested library candidate, not a verified Codewhale app integration or an instruction to
-change its pin. `31c0954` adds an iOS-only keyboard request; the later continuation adds
-a fifth iOS backend patch and changes GPUI text configuration. Consumers should verify their
-own patch graph, compile and native input/rendering before updating.
+change its pin. `31c0954` adds an iOS-only keyboard request; `d7bd7e5` adds a fifth iOS backend patch
+and changes GPUI text configuration. The newer `1c633f9` adds dictionary and telephone
+input changes and passes the named macOS checks and Linux samples in its
+[receipt](receipts/chromium-dictionary-tel-20261028/README.md). Consumers should verify
+the five-patch graph, compile and native input/rendering before updating; no Codewhale app
+integration against the newer source has been verified.
 
 ## Localisation and right-to-left — 2026-10-25
 
@@ -60,7 +63,8 @@ text entry, software-keyboard input, lower-field reveal and actual Pinyin preedi
 samples. An opt-in normal overflow policy matches the browser in the previously different
 Myanmar sample. Pinned Chromium Khmer/Lao dictionary data now produces matching rows in all
 16 controlled four-script comparisons ([receipt](receipts/chromium-dictionary-tel-20261028/README.md));
-this does not prove broader language parity. The iOS digit keypad builds; its native Done
+an expanded 192-case comparison matches 189 rows, with three Khmer differences. Neither
+comparison proves broader language parity. The iOS digit keypad builds; its native Done
 control and keyboard switching still need runtime checks. Password entry remains fail-closed.
 Full reader, IME, hardware and mobile acceptance remain open. Windows stays
 build/tests only. VoiceOver stays off. Each receipt identifies its own source.

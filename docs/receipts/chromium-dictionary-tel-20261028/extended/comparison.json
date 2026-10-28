@@ -1,0 +1,9626 @@
+[
+  {
+    "id": "km-original",
+    "language": "km",
+    "width": 112.0,
+    "text": "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា",
+    "lines": [
+      "ភាសាខ្មែរជាភាសា",
+      "ផ្លូវការរបស់",
+      "ប្រទេសកម្ពុជា ",
+      "ភាសាខ្មែរជាភាសា",
+      "ផ្លូវការរបស់",
+      "ប្រទេសកម្ពុជា"
+    ],
+    "stock_breaks": [
+      0,
+      27,
+      33,
+      69,
+      81,
+      99,
+      121,
+      148,
+      154,
+      190,
+      202,
+      220,
+      241
+    ],
+    "candidate_breaks": [
+      0,
+      27,
+      33,
+      45,
+      60,
+      69,
+      81,
+      121,
+      148,
+      154,
+      166,
+      181,
+      190,
+      202,
+      241
+    ],
+    "row_widths": [
+      109.00399780273438,
+      68.40798950195312,
+      88.24700927734375,
+      109.0040283203125,
+      68.40802001953125,
+      83.826904296875
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរជាភាសា",
+      "ផ្លូវការរបស់",
+      "ប្រទេសកម្ពុជា ",
+      "ភាសាខ្មែរជាភាសា",
+      "ផ្លូវការរបស់",
+      "ប្រទេសកម្ពុជា"
+    ],
+    "reference_row_widths": [
+      109.015625,
+      68.421875,
+      83.828125,
+      109.015625,
+      68.421875,
+      83.828125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 58
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-original",
+    "language": "km",
+    "width": 160.0,
+    "text": "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា",
+    "lines": [
+      "ភាសាខ្មែរជាភាសាផ្លូវការ",
+      "របស់ប្រទេសកម្ពុជា ",
+      "ភាសាខ្មែរជាភាសាផ្លូវការ",
+      "របស់ប្រទេសកម្ពុជា"
+    ],
+    "stock_breaks": [
+      0,
+      27,
+      33,
+      69,
+      81,
+      99,
+      121,
+      148,
+      154,
+      190,
+      202,
+      220,
+      241
+    ],
+    "candidate_breaks": [
+      0,
+      27,
+      33,
+      45,
+      60,
+      69,
+      81,
+      121,
+      148,
+      154,
+      166,
+      181,
+      190,
+      202,
+      241
+    ],
+    "row_widths": [
+      145.9449920654297,
+      119.71400451660156,
+      145.94503784179688,
+      115.29391479492188
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរជាភាសាផ្លូវការ",
+      "របស់ប្រទេសកម្ពុជា ",
+      "ភាសាខ្មែរជាភាសាផ្លូវការ",
+      "របស់ប្រទេសកម្ពុជា"
+    ],
+    "reference_row_widths": [
+      145.953125,
+      115.296875,
+      145.953125,
+      115.296875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 58
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-original",
+    "language": "km",
+    "width": 225.0,
+    "text": "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា",
+    "lines": [
+      "ភាសាខ្មែរជាភាសាផ្លូវការរបស់",
+      "ប្រទេសកម្ពុជា ភាសាខ្មែរជាភាសាផ្លូវ",
+      "ការរបស់ប្រទេសកម្ពុជា"
+    ],
+    "stock_breaks": [
+      0,
+      27,
+      33,
+      69,
+      81,
+      99,
+      121,
+      148,
+      154,
+      190,
+      202,
+      220,
+      241
+    ],
+    "candidate_breaks": [
+      0,
+      27,
+      33,
+      45,
+      60,
+      69,
+      81,
+      121,
+      148,
+      154,
+      166,
+      181,
+      190,
+      202,
+      241
+    ],
+    "row_widths": [
+      177.4119873046875,
+      213.58804321289062,
+      135.89791870117188
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរជាភាសាផ្លូវការរបស់",
+      "ប្រទេសកម្ពុជា ភាសាខ្មែរជាភាសាផ្លូវ",
+      "ការរបស់ប្រទេសកម្ពុជា"
+    ],
+    "reference_row_widths": [
+      177.421875,
+      213.59375,
+      135.90625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 58
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-original",
+    "language": "km",
+    "width": 320.0,
+    "text": "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា",
+    "lines": [
+      "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា ",
+      "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា"
+    ],
+    "stock_breaks": [
+      0,
+      27,
+      33,
+      69,
+      81,
+      99,
+      121,
+      148,
+      154,
+      190,
+      202,
+      220,
+      241
+    ],
+    "candidate_breaks": [
+      0,
+      27,
+      33,
+      45,
+      60,
+      69,
+      81,
+      121,
+      148,
+      154,
+      166,
+      181,
+      190,
+      202,
+      241
+    ],
+    "row_widths": [
+      265.65899658203125,
+      261.23895263671875
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា ",
+      "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា"
+    ],
+    "reference_row_widths": [
+      261.25,
+      261.25
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 58
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-original",
+    "language": "km",
+    "width": 375.0,
+    "text": "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា",
+    "lines": [
+      "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា ភាសាខ្មែរជាភាសា",
+      "ផ្លូវការរបស់ប្រទេសកម្ពុជា"
+    ],
+    "stock_breaks": [
+      0,
+      27,
+      33,
+      69,
+      81,
+      99,
+      121,
+      148,
+      154,
+      190,
+      202,
+      220,
+      241
+    ],
+    "candidate_breaks": [
+      0,
+      27,
+      33,
+      45,
+      60,
+      69,
+      81,
+      121,
+      148,
+      154,
+      166,
+      181,
+      190,
+      202,
+      241
+    ],
+    "row_widths": [
+      374.66302490234375,
+      152.23492431640625
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា ភាសាខ្មែរជាភាសា",
+      "ផ្លូវការរបស់ប្រទេសកម្ពុជា"
+    ],
+    "reference_row_widths": [
+      374.671875,
+      152.25
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 58
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-original",
+    "language": "km",
+    "width": 650.0,
+    "text": "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា",
+    "lines": [
+      "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា"
+    ],
+    "stock_breaks": [
+      0,
+      27,
+      33,
+      69,
+      81,
+      99,
+      121,
+      148,
+      154,
+      190,
+      202,
+      220,
+      241
+    ],
+    "candidate_breaks": [
+      0,
+      27,
+      33,
+      45,
+      60,
+      69,
+      81,
+      121,
+      148,
+      154,
+      166,
+      181,
+      190,
+      202,
+      241
+    ],
+    "row_widths": [
+      526.89794921875
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា"
+    ],
+    "reference_row_widths": [
+      526.90625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 58
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-rights",
+    "language": "km",
+    "width": 112.0,
+    "text": "សេចក្ដីប្រកាសជាសកលស្ដីពីសិទ្ធិមនុស្ស",
+    "lines": [
+      "សេចក្ដីប្រកា",
+      "សជាសកលស្ដី",
+      "ពីសិទ្ធិមនុស្ស"
+    ],
+    "stock_breaks": [
+      0,
+      39,
+      48,
+      54,
+      72,
+      108
+    ],
+    "candidate_breaks": [
+      0,
+      21,
+      36,
+      48,
+      66,
+      78,
+      90,
+      108
+    ],
+    "row_widths": [
+      73.32099914550781,
+      89.60700988769531,
+      79.25399780273438
+    ],
+    "reference_lines": [
+      "សេចក្ដីប្រកាស",
+      "ជាសកលស្ដីពីសិទ្ធិ",
+      "មនុស្ស"
+    ],
+    "reference_row_widths": [
+      89.109375,
+      110.59375,
+      42.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 29
+        }
+      ]
+    },
+    "match": false
+  },
+  {
+    "id": "km-icu-rights",
+    "language": "km",
+    "width": 160.0,
+    "text": "សេចក្ដីប្រកាសជាសកលស្ដីពីសិទ្ធិមនុស្ស",
+    "lines": [
+      "សេចក្ដីប្រកាសជាស",
+      "កលស្ដីពីសិទ្ធិមនុស្ស"
+    ],
+    "stock_breaks": [
+      0,
+      39,
+      48,
+      54,
+      72,
+      108
+    ],
+    "candidate_breaks": [
+      0,
+      21,
+      36,
+      48,
+      66,
+      78,
+      90,
+      108
+    ],
+    "row_widths": [
+      120.56400299072266,
+      121.61800384521484
+    ],
+    "reference_lines": [
+      "សេចក្ដីប្រកាសជាសកល",
+      "ស្ដីពីសិទ្ធិមនុស្ស"
+    ],
+    "reference_row_widths": [
+      147.15625,
+      95.03125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 29
+        }
+      ]
+    },
+    "match": false
+  },
+  {
+    "id": "km-icu-rights",
+    "language": "km",
+    "width": 225.0,
+    "text": "សេចក្ដីប្រកាសជាសកលស្ដីពីសិទ្ធិមនុស្ស",
+    "lines": [
+      "សេចក្ដីប្រកាសជាសកលស្ដីពីសិទ្ធិ",
+      "មនុស្ស"
+    ],
+    "stock_breaks": [
+      0,
+      39,
+      48,
+      54,
+      72,
+      108
+    ],
+    "candidate_breaks": [
+      0,
+      21,
+      36,
+      48,
+      66,
+      78,
+      90,
+      108
+    ],
+    "row_widths": [
+      199.6820068359375,
+      42.5
+    ],
+    "reference_lines": [
+      "សេចក្ដីប្រកាសជាសកលស្ដីពីសិទ្ធិ",
+      "មនុស្ស"
+    ],
+    "reference_row_widths": [
+      199.6875,
+      42.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 29
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-rights",
+    "language": "km",
+    "width": 320.0,
+    "text": "សេចក្ដីប្រកាសជាសកលស្ដីពីសិទ្ធិមនុស្ស",
+    "lines": [
+      "សេចក្ដីប្រកាសជាសកលស្ដីពីសិទ្ធិមនុស្ស"
+    ],
+    "stock_breaks": [
+      0,
+      39,
+      48,
+      54,
+      72,
+      108
+    ],
+    "candidate_breaks": [
+      0,
+      21,
+      36,
+      48,
+      66,
+      78,
+      90,
+      108
+    ],
+    "row_widths": [
+      242.1820068359375
+    ],
+    "reference_lines": [
+      "សេចក្ដីប្រកាសជាសកលស្ដីពីសិទ្ធិមនុស្ស"
+    ],
+    "reference_row_widths": [
+      242.1875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 29
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-rights",
+    "language": "km",
+    "width": 375.0,
+    "text": "សេចក្ដីប្រកាសជាសកលស្ដីពីសិទ្ធិមនុស្ស",
+    "lines": [
+      "សេចក្ដីប្រកាសជាសកលស្ដីពីសិទ្ធិមនុស្ស"
+    ],
+    "stock_breaks": [
+      0,
+      39,
+      48,
+      54,
+      72,
+      108
+    ],
+    "candidate_breaks": [
+      0,
+      21,
+      36,
+      48,
+      66,
+      78,
+      90,
+      108
+    ],
+    "row_widths": [
+      242.1820068359375
+    ],
+    "reference_lines": [
+      "សេចក្ដីប្រកាសជាសកលស្ដីពីសិទ្ធិមនុស្ស"
+    ],
+    "reference_row_widths": [
+      242.1875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 29
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-rights",
+    "language": "km",
+    "width": 650.0,
+    "text": "សេចក្ដីប្រកាសជាសកលស្ដីពីសិទ្ធិមនុស្ស",
+    "lines": [
+      "សេចក្ដីប្រកាសជាសកលស្ដីពីសិទ្ធិមនុស្ស"
+    ],
+    "stock_breaks": [
+      0,
+      39,
+      48,
+      54,
+      72,
+      108
+    ],
+    "candidate_breaks": [
+      0,
+      21,
+      36,
+      48,
+      66,
+      78,
+      90,
+      108
+    ],
+    "row_widths": [
+      242.1820068359375
+    ],
+    "reference_lines": [
+      "សេចក្ដីប្រកាសជាសកលស្ដីពីសិទ្ធិមនុស្ស"
+    ],
+    "reference_row_widths": [
+      242.1875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 29
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-repeat",
+    "language": "km",
+    "width": 112.0,
+    "text": "ភាសាខ្មែរភាសាខ្មែរភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរ",
+      "ភាសាខ្មែរ",
+      "ភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      27,
+      54,
+      81
+    ],
+    "candidate_breaks": [
+      0,
+      27,
+      54,
+      81
+    ],
+    "row_widths": [
+      56.95000076293945,
+      56.94999313354492,
+      56.949981689453125
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរ",
+      "ភាសាខ្មែរ",
+      "ភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      56.953125,
+      56.953125,
+      56.953125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 18
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-repeat",
+    "language": "km",
+    "width": 160.0,
+    "text": "ភាសាខ្មែរភាសាខ្មែរភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរភាសាខ្មែរ",
+      "ភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      27,
+      54,
+      81
+    ],
+    "candidate_breaks": [
+      0,
+      27,
+      54,
+      81
+    ],
+    "row_widths": [
+      113.89999389648438,
+      56.949981689453125
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរភាសាខ្មែរ",
+      "ភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      113.90625,
+      56.953125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 18
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-repeat",
+    "language": "km",
+    "width": 225.0,
+    "text": "ភាសាខ្មែរភាសាខ្មែរភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរភាសាខ្មែរភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      27,
+      54,
+      81
+    ],
+    "candidate_breaks": [
+      0,
+      27,
+      54,
+      81
+    ],
+    "row_widths": [
+      170.8499755859375
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរភាសាខ្មែរភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      170.859375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 18
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-repeat",
+    "language": "km",
+    "width": 320.0,
+    "text": "ភាសាខ្មែរភាសាខ្មែរភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរភាសាខ្មែរភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      27,
+      54,
+      81
+    ],
+    "candidate_breaks": [
+      0,
+      27,
+      54,
+      81
+    ],
+    "row_widths": [
+      170.8499755859375
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរភាសាខ្មែរភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      170.859375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 18
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-repeat",
+    "language": "km",
+    "width": 375.0,
+    "text": "ភាសាខ្មែរភាសាខ្មែរភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរភាសាខ្មែរភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      27,
+      54,
+      81
+    ],
+    "candidate_breaks": [
+      0,
+      27,
+      54,
+      81
+    ],
+    "row_widths": [
+      170.8499755859375
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរភាសាខ្មែរភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      170.859375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 18
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-repeat",
+    "language": "km",
+    "width": 650.0,
+    "text": "ភាសាខ្មែរភាសាខ្មែរភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរភាសាខ្មែរភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      27,
+      54,
+      81
+    ],
+    "candidate_breaks": [
+      0,
+      27,
+      54,
+      81
+    ],
+    "row_widths": [
+      170.8499755859375
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរភាសាខ្មែរភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      170.859375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 18
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-spaces",
+    "language": "km",
+    "width": 112.0,
+    "text": "អស់ នឹង មាន",
+    "lines": [
+      "អស់ នឹង មាន"
+    ],
+    "stock_breaks": [
+      0,
+      10,
+      20,
+      29
+    ],
+    "candidate_breaks": [
+      0,
+      10,
+      20,
+      29
+    ],
+    "row_widths": [
+      83.48699951171875
+    ],
+    "reference_lines": [
+      "អស់ នឹង មាន"
+    ],
+    "reference_row_widths": [
+      83.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 8
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-spaces",
+    "language": "km",
+    "width": 160.0,
+    "text": "អស់ នឹង មាន",
+    "lines": [
+      "អស់ នឹង មាន"
+    ],
+    "stock_breaks": [
+      0,
+      10,
+      20,
+      29
+    ],
+    "candidate_breaks": [
+      0,
+      10,
+      20,
+      29
+    ],
+    "row_widths": [
+      83.48699951171875
+    ],
+    "reference_lines": [
+      "អស់ នឹង មាន"
+    ],
+    "reference_row_widths": [
+      83.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 8
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-spaces",
+    "language": "km",
+    "width": 225.0,
+    "text": "អស់ នឹង មាន",
+    "lines": [
+      "អស់ នឹង មាន"
+    ],
+    "stock_breaks": [
+      0,
+      10,
+      20,
+      29
+    ],
+    "candidate_breaks": [
+      0,
+      10,
+      20,
+      29
+    ],
+    "row_widths": [
+      83.48699951171875
+    ],
+    "reference_lines": [
+      "អស់ នឹង មាន"
+    ],
+    "reference_row_widths": [
+      83.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 8
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-spaces",
+    "language": "km",
+    "width": 320.0,
+    "text": "អស់ នឹង មាន",
+    "lines": [
+      "អស់ នឹង មាន"
+    ],
+    "stock_breaks": [
+      0,
+      10,
+      20,
+      29
+    ],
+    "candidate_breaks": [
+      0,
+      10,
+      20,
+      29
+    ],
+    "row_widths": [
+      83.48699951171875
+    ],
+    "reference_lines": [
+      "អស់ នឹង មាន"
+    ],
+    "reference_row_widths": [
+      83.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 8
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-spaces",
+    "language": "km",
+    "width": 375.0,
+    "text": "អស់ នឹង មាន",
+    "lines": [
+      "អស់ នឹង មាន"
+    ],
+    "stock_breaks": [
+      0,
+      10,
+      20,
+      29
+    ],
+    "candidate_breaks": [
+      0,
+      10,
+      20,
+      29
+    ],
+    "row_widths": [
+      83.48699951171875
+    ],
+    "reference_lines": [
+      "អស់ នឹង មាន"
+    ],
+    "reference_row_widths": [
+      83.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 8
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-spaces",
+    "language": "km",
+    "width": 650.0,
+    "text": "អស់ នឹង មាន",
+    "lines": [
+      "អស់ នឹង មាន"
+    ],
+    "stock_breaks": [
+      0,
+      10,
+      20,
+      29
+    ],
+    "candidate_breaks": [
+      0,
+      10,
+      20,
+      29
+    ],
+    "row_widths": [
+      83.48699951171875
+    ],
+    "reference_lines": [
+      "អស់ នឹង មាន"
+    ],
+    "reference_row_widths": [
+      83.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 8
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-prefix",
+    "language": "km",
+    "width": 112.0,
+    "text": "ព្រះរាជាណាចក្រកម្ពុជាជាប",
+    "lines": [
+      "ព្រះរាជាណាចក្រ",
+      "កម្ពុជាជាប"
+    ],
+    "stock_breaks": [
+      0,
+      42,
+      63,
+      69,
+      72
+    ],
+    "candidate_breaks": [
+      0,
+      42,
+      63,
+      69,
+      72
+    ],
+    "row_widths": [
+      100.50399780273438,
+      63.78398132324219
+    ],
+    "reference_lines": [
+      "ព្រះរាជាណាចក្រ",
+      "កម្ពុជាជាប"
+    ],
+    "reference_row_widths": [
+      100.515625,
+      63.796875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-prefix",
+    "language": "km",
+    "width": 160.0,
+    "text": "ព្រះរាជាណាចក្រកម្ពុជាជាប",
+    "lines": [
+      "ព្រះរាជាណាចក្រកម្ពុជាជា",
+      "ប"
+    ],
+    "stock_breaks": [
+      0,
+      42,
+      63,
+      69,
+      72
+    ],
+    "candidate_breaks": [
+      0,
+      42,
+      63,
+      69,
+      72
+    ],
+    "row_widths": [
+      153.49298095703125,
+      10.794998168945312
+    ],
+    "reference_lines": [
+      "ព្រះរាជាណាចក្រកម្ពុជា",
+      "ជាប"
+    ],
+    "reference_row_widths": [
+      137.8125,
+      26.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": false
+  },
+  {
+    "id": "km-icu-prefix",
+    "language": "km",
+    "width": 225.0,
+    "text": "ព្រះរាជាណាចក្រកម្ពុជាជាប",
+    "lines": [
+      "ព្រះរាជាណាចក្រកម្ពុជាជាប"
+    ],
+    "stock_breaks": [
+      0,
+      42,
+      63,
+      69,
+      72
+    ],
+    "candidate_breaks": [
+      0,
+      42,
+      63,
+      69,
+      72
+    ],
+    "row_widths": [
+      164.28797912597656
+    ],
+    "reference_lines": [
+      "ព្រះរាជាណាចក្រកម្ពុជាជាប"
+    ],
+    "reference_row_widths": [
+      164.296875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-prefix",
+    "language": "km",
+    "width": 320.0,
+    "text": "ព្រះរាជាណាចក្រកម្ពុជាជាប",
+    "lines": [
+      "ព្រះរាជាណាចក្រកម្ពុជាជាប"
+    ],
+    "stock_breaks": [
+      0,
+      42,
+      63,
+      69,
+      72
+    ],
+    "candidate_breaks": [
+      0,
+      42,
+      63,
+      69,
+      72
+    ],
+    "row_widths": [
+      164.28797912597656
+    ],
+    "reference_lines": [
+      "ព្រះរាជាណាចក្រកម្ពុជាជាប"
+    ],
+    "reference_row_widths": [
+      164.296875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-prefix",
+    "language": "km",
+    "width": 375.0,
+    "text": "ព្រះរាជាណាចក្រកម្ពុជាជាប",
+    "lines": [
+      "ព្រះរាជាណាចក្រកម្ពុជាជាប"
+    ],
+    "stock_breaks": [
+      0,
+      42,
+      63,
+      69,
+      72
+    ],
+    "candidate_breaks": [
+      0,
+      42,
+      63,
+      69,
+      72
+    ],
+    "row_widths": [
+      164.28797912597656
+    ],
+    "reference_lines": [
+      "ព្រះរាជាណាចក្រកម្ពុជាជាប"
+    ],
+    "reference_row_widths": [
+      164.296875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-icu-prefix",
+    "language": "km",
+    "width": 650.0,
+    "text": "ព្រះរាជាណាចក្រកម្ពុជាជាប",
+    "lines": [
+      "ព្រះរាជាណាចក្រកម្ពុជាជាប"
+    ],
+    "stock_breaks": [
+      0,
+      42,
+      63,
+      69,
+      72
+    ],
+    "candidate_breaks": [
+      0,
+      42,
+      63,
+      69,
+      72
+    ],
+    "row_widths": [
+      164.28797912597656
+    ],
+    "reference_lines": [
+      "ព្រះរាជាណាចក្រកម្ពុជាជាប"
+    ],
+    "reference_row_widths": [
+      164.296875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-punct",
+    "language": "km",
+    "width": 112.0,
+    "text": "(ភាសាខ្មែរ), កម្ពុជា! 2026",
+    "lines": [
+      "(ភាសាខ្មែរ), ",
+      "កម្ពុជា! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      31,
+      54,
+      58
+    ],
+    "candidate_breaks": [
+      0,
+      31,
+      54,
+      58
+    ],
+    "row_widths": [
+      76.1259994506836,
+      85.1869888305664
+    ],
+    "reference_lines": [
+      "(ភាសាខ្មែរ), ",
+      "កម្ពុជា! 2026"
+    ],
+    "reference_row_widths": [
+      71.71875,
+      85.1875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 9
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 11
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-punct",
+    "language": "km",
+    "width": 160.0,
+    "text": "(ភាសាខ្មែរ), កម្ពុជា! 2026",
+    "lines": [
+      "(ភាសាខ្មែរ), កម្ពុជា! ",
+      "2026"
+    ],
+    "stock_breaks": [
+      0,
+      31,
+      54,
+      58
+    ],
+    "candidate_breaks": [
+      0,
+      31,
+      54,
+      58
+    ],
+    "row_widths": [
+      122.4169921875,
+      38.89599609375
+    ],
+    "reference_lines": [
+      "(ភាសាខ្មែរ), កម្ពុជា! ",
+      "2026"
+    ],
+    "reference_row_widths": [
+      118,
+      38.90625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 9
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 11
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-punct",
+    "language": "km",
+    "width": 225.0,
+    "text": "(ភាសាខ្មែរ), កម្ពុជា! 2026",
+    "lines": [
+      "(ភាសាខ្មែរ), កម្ពុជា! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      31,
+      54,
+      58
+    ],
+    "candidate_breaks": [
+      0,
+      31,
+      54,
+      58
+    ],
+    "row_widths": [
+      161.31298828125
+    ],
+    "reference_lines": [
+      "(ភាសាខ្មែរ), កម្ពុជា! 2026"
+    ],
+    "reference_row_widths": [
+      161.328125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 11
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-punct",
+    "language": "km",
+    "width": 320.0,
+    "text": "(ភាសាខ្មែរ), កម្ពុជា! 2026",
+    "lines": [
+      "(ភាសាខ្មែរ), កម្ពុជា! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      31,
+      54,
+      58
+    ],
+    "candidate_breaks": [
+      0,
+      31,
+      54,
+      58
+    ],
+    "row_widths": [
+      161.31298828125
+    ],
+    "reference_lines": [
+      "(ភាសាខ្មែរ), កម្ពុជា! 2026"
+    ],
+    "reference_row_widths": [
+      161.328125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 11
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-punct",
+    "language": "km",
+    "width": 375.0,
+    "text": "(ភាសាខ្មែរ), កម្ពុជា! 2026",
+    "lines": [
+      "(ភាសាខ្មែរ), កម្ពុជា! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      31,
+      54,
+      58
+    ],
+    "candidate_breaks": [
+      0,
+      31,
+      54,
+      58
+    ],
+    "row_widths": [
+      161.31298828125
+    ],
+    "reference_lines": [
+      "(ភាសាខ្មែរ), កម្ពុជា! 2026"
+    ],
+    "reference_row_widths": [
+      161.328125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 11
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-punct",
+    "language": "km",
+    "width": 650.0,
+    "text": "(ភាសាខ្មែរ), កម្ពុជា! 2026",
+    "lines": [
+      "(ភាសាខ្មែរ), កម្ពុជា! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      31,
+      54,
+      58
+    ],
+    "candidate_breaks": [
+      0,
+      31,
+      54,
+      58
+    ],
+    "row_widths": [
+      161.31298828125
+    ],
+    "reference_lines": [
+      "(ភាសាខ្មែរ), កម្ពុជា! 2026"
+    ],
+    "reference_row_widths": [
+      161.328125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 11
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-nbsp",
+    "language": "km",
+    "width": 112.0,
+    "text": "ភាសាខ្មែរ ភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរ ភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      56
+    ],
+    "candidate_breaks": [
+      0,
+      56
+    ],
+    "row_widths": [
+      118.31999206542969
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរ ភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      118.328125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-nbsp",
+    "language": "km",
+    "width": 160.0,
+    "text": "ភាសាខ្មែរ ភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរ ភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      56
+    ],
+    "candidate_breaks": [
+      0,
+      56
+    ],
+    "row_widths": [
+      118.31999206542969
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរ ភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      118.328125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-nbsp",
+    "language": "km",
+    "width": 225.0,
+    "text": "ភាសាខ្មែរ ភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរ ភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      56
+    ],
+    "candidate_breaks": [
+      0,
+      56
+    ],
+    "row_widths": [
+      118.31999206542969
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរ ភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      118.328125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-nbsp",
+    "language": "km",
+    "width": 320.0,
+    "text": "ភាសាខ្មែរ ភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរ ភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      56
+    ],
+    "candidate_breaks": [
+      0,
+      56
+    ],
+    "row_widths": [
+      118.31999206542969
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរ ភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      118.328125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-nbsp",
+    "language": "km",
+    "width": 375.0,
+    "text": "ភាសាខ្មែរ ភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរ ភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      56
+    ],
+    "candidate_breaks": [
+      0,
+      56
+    ],
+    "row_widths": [
+      118.31999206542969
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរ ភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      118.328125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-nbsp",
+    "language": "km",
+    "width": 650.0,
+    "text": "ភាសាខ្មែរ ភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរ ភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      56
+    ],
+    "candidate_breaks": [
+      0,
+      56
+    ],
+    "row_widths": [
+      118.31999206542969
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរ ភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      118.328125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-zwsp",
+    "language": "km",
+    "width": 112.0,
+    "text": "ភាសាខ្មែរ​ភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរ​",
+      "ភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      57
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      57
+    ],
+    "row_widths": [
+      56.95000076293945,
+      56.95000076293945
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរ​",
+      "ភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      56.953125,
+      56.953125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-zwsp",
+    "language": "km",
+    "width": 160.0,
+    "text": "ភាសាខ្មែរ​ភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរ​ភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      57
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      57
+    ],
+    "row_widths": [
+      113.9000015258789
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរ​ភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      113.90625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-zwsp",
+    "language": "km",
+    "width": 225.0,
+    "text": "ភាសាខ្មែរ​ភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរ​ភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      57
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      57
+    ],
+    "row_widths": [
+      113.9000015258789
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរ​ភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      113.90625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-zwsp",
+    "language": "km",
+    "width": 320.0,
+    "text": "ភាសាខ្មែរ​ភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរ​ភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      57
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      57
+    ],
+    "row_widths": [
+      113.9000015258789
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរ​ភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      113.90625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-zwsp",
+    "language": "km",
+    "width": 375.0,
+    "text": "ភាសាខ្មែរ​ភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរ​ភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      57
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      57
+    ],
+    "row_widths": [
+      113.9000015258789
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរ​ភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      113.90625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "km-synthetic-zwsp",
+    "language": "km",
+    "width": 650.0,
+    "text": "ភាសាខ្មែរ​ភាសាខ្មែរ",
+    "lines": [
+      "ភាសាខ្មែរ​ភាសាខ្មែរ"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      57
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      57
+    ],
+    "row_widths": [
+      113.9000015258789
+    ],
+    "reference_lines": [
+      "ភាសាខ្មែរ​ភាសាខ្មែរ"
+    ],
+    "reference_row_widths": [
+      113.90625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-original",
+    "language": "lo",
+    "width": 112.0,
+    "text": "ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ",
+    "lines": [
+      "ພາສາລາວແມ່ນ",
+      "ພາສາທາງການ",
+      "ຂອງປະເທດລາວ ",
+      "ພາສາລາວແມ່ນ",
+      "ພາສາທາງການ",
+      "ຂອງປະເທດລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      45,
+      63,
+      72,
+      87,
+      97,
+      109,
+      118,
+      130,
+      142,
+      160,
+      169,
+      184,
+      193
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      45,
+      63,
+      72,
+      87,
+      97,
+      109,
+      118,
+      130,
+      142,
+      160,
+      169,
+      184,
+      193
+    ],
+    "row_widths": [
+      89.99800872802734,
+      84.76200103759766,
+      102.49301147460938,
+      89.99798583984375,
+      84.76199340820312,
+      98.07305908203125
+    ],
+    "reference_lines": [
+      "ພາສາລາວແມ່ນ",
+      "ພາສາທາງການ",
+      "ຂອງປະເທດລາວ ",
+      "ພາສາລາວແມ່ນ",
+      "ພາສາທາງການ",
+      "ຂອງປະເທດລາວ"
+    ],
+    "reference_row_widths": [
+      90,
+      84.765625,
+      98.078125,
+      90,
+      84.765625,
+      98.078125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 64
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-original",
+    "language": "lo",
+    "width": 160.0,
+    "text": "ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ",
+    "lines": [
+      "ພາສາລາວແມ່ນພາສາ",
+      "ທາງການຂອງປະເທດລາວ ",
+      "ພາສາລາວແມ່ນພາສາ",
+      "ທາງການຂອງປະເທດລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      45,
+      63,
+      72,
+      87,
+      97,
+      109,
+      118,
+      130,
+      142,
+      160,
+      169,
+      184,
+      193
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      45,
+      63,
+      72,
+      87,
+      97,
+      109,
+      118,
+      130,
+      142,
+      160,
+      169,
+      184,
+      193
+    ],
+    "row_widths": [
+      124.25301361083984,
+      153.0,
+      124.25299072265625,
+      148.58004760742188
+    ],
+    "reference_lines": [
+      "ພາສາລາວແມ່ນພາສາ",
+      "ທາງການຂອງປະເທດລາວ ",
+      "ພາສາລາວແມ່ນພາສາ",
+      "ທາງການຂອງປະເທດລາວ"
+    ],
+    "reference_row_widths": [
+      124.265625,
+      148.59375,
+      124.265625,
+      148.59375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 64
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-original",
+    "language": "lo",
+    "width": 225.0,
+    "text": "ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ",
+    "lines": [
+      "ພາສາລາວແມ່ນພາສາທາງການຂອງ",
+      "ປະເທດລາວ ພາສາລາວແມ່ນພາສາ",
+      "ທາງການຂອງປະເທດລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      45,
+      63,
+      72,
+      87,
+      97,
+      109,
+      118,
+      130,
+      142,
+      160,
+      169,
+      184,
+      193
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      45,
+      63,
+      72,
+      87,
+      97,
+      109,
+      118,
+      130,
+      142,
+      160,
+      169,
+      184,
+      193
+    ],
+    "row_widths": [
+      202.0279998779297,
+      199.47801208496094,
+      148.58004760742188
+    ],
+    "reference_lines": [
+      "ພາສາລາວແມ່ນພາສາທາງການຂອງ",
+      "ປະເທດລາວ ພາສາລາວແມ່ນພາສາ",
+      "ທາງການຂອງປະເທດລາວ"
+    ],
+    "reference_row_widths": [
+      202.03125,
+      199.484375,
+      148.59375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 65
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-original",
+    "language": "lo",
+    "width": 320.0,
+    "text": "ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ",
+    "lines": [
+      "ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ ພາສາ",
+      "ລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      45,
+      63,
+      72,
+      87,
+      97,
+      109,
+      118,
+      130,
+      142,
+      160,
+      169,
+      184,
+      193
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      45,
+      63,
+      72,
+      87,
+      97,
+      109,
+      118,
+      130,
+      142,
+      160,
+      169,
+      184,
+      193
+    ],
+    "row_widths": [
+      311.5080261230469,
+      238.57803344726562
+    ],
+    "reference_lines": [
+      "ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ ພາສາ",
+      "ລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ"
+    ],
+    "reference_row_widths": [
+      311.515625,
+      238.578125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 65
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-original",
+    "language": "lo",
+    "width": 375.0,
+    "text": "ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ",
+    "lines": [
+      "ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ ພາສາລາວແມ່ນ",
+      "ພາສາທາງການຂອງປະເທດລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      45,
+      63,
+      72,
+      87,
+      97,
+      109,
+      118,
+      130,
+      142,
+      160,
+      169,
+      184,
+      193
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      45,
+      63,
+      72,
+      87,
+      97,
+      109,
+      118,
+      130,
+      142,
+      160,
+      169,
+      184,
+      193
+    ],
+    "row_widths": [
+      367.2510070800781,
+      182.83505249023438
+    ],
+    "reference_lines": [
+      "ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ ພາສາລາວແມ່ນ",
+      "ພາສາທາງການຂອງປະເທດລາວ"
+    ],
+    "reference_row_widths": [
+      367.25,
+      182.84375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 65
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-original",
+    "language": "lo",
+    "width": 650.0,
+    "text": "ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ",
+    "lines": [
+      "ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      45,
+      63,
+      72,
+      87,
+      97,
+      109,
+      118,
+      130,
+      142,
+      160,
+      169,
+      184,
+      193
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      45,
+      63,
+      72,
+      87,
+      97,
+      109,
+      118,
+      130,
+      142,
+      160,
+      169,
+      184,
+      193
+    ],
+    "row_widths": [
+      550.0860595703125
+    ],
+    "reference_lines": [
+      "ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ"
+    ],
+    "reference_row_widths": [
+      550.09375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 65
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-rights",
+    "language": "lo",
+    "width": 112.0,
+    "text": "ກ່ຽວກັບສິດຂອງມະນຸດ",
+    "lines": [
+      "ກ່ຽວກັບສິດຂອງ",
+      "ມະນຸດ"
+    ],
+    "stock_breaks": [
+      0,
+      21,
+      30,
+      39,
+      54
+    ],
+    "candidate_breaks": [
+      0,
+      21,
+      30,
+      39,
+      54
+    ],
+    "row_widths": [
+      99.90900421142578,
+      38.012001037597656
+    ],
+    "reference_lines": [
+      "ກ່ຽວກັບສິດຂອງ",
+      "ມະນຸດ"
+    ],
+    "reference_row_widths": [
+      99.921875,
+      38.015625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 18
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-rights",
+    "language": "lo",
+    "width": 160.0,
+    "text": "ກ່ຽວກັບສິດຂອງມະນຸດ",
+    "lines": [
+      "ກ່ຽວກັບສິດຂອງມະນຸດ"
+    ],
+    "stock_breaks": [
+      0,
+      21,
+      30,
+      39,
+      54
+    ],
+    "candidate_breaks": [
+      0,
+      21,
+      30,
+      39,
+      54
+    ],
+    "row_widths": [
+      137.92100524902344
+    ],
+    "reference_lines": [
+      "ກ່ຽວກັບສິດຂອງມະນຸດ"
+    ],
+    "reference_row_widths": [
+      137.921875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 18
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-rights",
+    "language": "lo",
+    "width": 225.0,
+    "text": "ກ່ຽວກັບສິດຂອງມະນຸດ",
+    "lines": [
+      "ກ່ຽວກັບສິດຂອງມະນຸດ"
+    ],
+    "stock_breaks": [
+      0,
+      21,
+      30,
+      39,
+      54
+    ],
+    "candidate_breaks": [
+      0,
+      21,
+      30,
+      39,
+      54
+    ],
+    "row_widths": [
+      137.92100524902344
+    ],
+    "reference_lines": [
+      "ກ່ຽວກັບສິດຂອງມະນຸດ"
+    ],
+    "reference_row_widths": [
+      137.921875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 18
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-rights",
+    "language": "lo",
+    "width": 320.0,
+    "text": "ກ່ຽວກັບສິດຂອງມະນຸດ",
+    "lines": [
+      "ກ່ຽວກັບສິດຂອງມະນຸດ"
+    ],
+    "stock_breaks": [
+      0,
+      21,
+      30,
+      39,
+      54
+    ],
+    "candidate_breaks": [
+      0,
+      21,
+      30,
+      39,
+      54
+    ],
+    "row_widths": [
+      137.92100524902344
+    ],
+    "reference_lines": [
+      "ກ່ຽວກັບສິດຂອງມະນຸດ"
+    ],
+    "reference_row_widths": [
+      137.921875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 18
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-rights",
+    "language": "lo",
+    "width": 375.0,
+    "text": "ກ່ຽວກັບສິດຂອງມະນຸດ",
+    "lines": [
+      "ກ່ຽວກັບສິດຂອງມະນຸດ"
+    ],
+    "stock_breaks": [
+      0,
+      21,
+      30,
+      39,
+      54
+    ],
+    "candidate_breaks": [
+      0,
+      21,
+      30,
+      39,
+      54
+    ],
+    "row_widths": [
+      137.92100524902344
+    ],
+    "reference_lines": [
+      "ກ່ຽວກັບສິດຂອງມະນຸດ"
+    ],
+    "reference_row_widths": [
+      137.921875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 18
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-rights",
+    "language": "lo",
+    "width": 650.0,
+    "text": "ກ່ຽວກັບສິດຂອງມະນຸດ",
+    "lines": [
+      "ກ່ຽວກັບສິດຂອງມະນຸດ"
+    ],
+    "stock_breaks": [
+      0,
+      21,
+      30,
+      39,
+      54
+    ],
+    "candidate_breaks": [
+      0,
+      21,
+      30,
+      39,
+      54
+    ],
+    "row_widths": [
+      137.92100524902344
+    ],
+    "reference_lines": [
+      "ກ່ຽວກັບສິດຂອງມະນຸດ"
+    ],
+    "reference_row_widths": [
+      137.921875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 18
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-repeat",
+    "language": "lo",
+    "width": 112.0,
+    "text": "ພາສາລາວພາສາລາວພາສາລາວ",
+    "lines": [
+      "ພາສາລາວພາສາ",
+      "ລາວພາສາລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42,
+      54,
+      63
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42,
+      54,
+      63
+    ],
+    "row_widths": [
+      94.62200927734375,
+      86.47898864746094
+    ],
+    "reference_lines": [
+      "ພາສາລາວພາສາ",
+      "ລາວພາສາລາວ"
+    ],
+    "reference_row_widths": [
+      94.625,
+      86.484375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 21
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-repeat",
+    "language": "lo",
+    "width": 160.0,
+    "text": "ພາສາລາວພາສາລາວພາສາລາວ",
+    "lines": [
+      "ພາສາລາວພາສາລາວພາສາ",
+      "ລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42,
+      54,
+      63
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42,
+      54,
+      63
+    ],
+    "row_widths": [
+      154.98899841308594,
+      26.11199951171875
+    ],
+    "reference_lines": [
+      "ພາສາລາວພາສາລາວພາສາ",
+      "ລາວ"
+    ],
+    "reference_row_widths": [
+      155,
+      26.125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 21
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-repeat",
+    "language": "lo",
+    "width": 225.0,
+    "text": "ພາສາລາວພາສາລາວພາສາລາວ",
+    "lines": [
+      "ພາສາລາວພາສາລາວພາສາລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42,
+      54,
+      63
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42,
+      54,
+      63
+    ],
+    "row_widths": [
+      181.1009979248047
+    ],
+    "reference_lines": [
+      "ພາສາລາວພາສາລາວພາສາລາວ"
+    ],
+    "reference_row_widths": [
+      181.109375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 21
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-repeat",
+    "language": "lo",
+    "width": 320.0,
+    "text": "ພາສາລາວພາສາລາວພາສາລາວ",
+    "lines": [
+      "ພາສາລາວພາສາລາວພາສາລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42,
+      54,
+      63
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42,
+      54,
+      63
+    ],
+    "row_widths": [
+      181.1009979248047
+    ],
+    "reference_lines": [
+      "ພາສາລາວພາສາລາວພາສາລາວ"
+    ],
+    "reference_row_widths": [
+      181.109375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 21
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-repeat",
+    "language": "lo",
+    "width": 375.0,
+    "text": "ພາສາລາວພາສາລາວພາສາລາວ",
+    "lines": [
+      "ພາສາລາວພາສາລາວພາສາລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42,
+      54,
+      63
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42,
+      54,
+      63
+    ],
+    "row_widths": [
+      181.1009979248047
+    ],
+    "reference_lines": [
+      "ພາສາລາວພາສາລາວພາສາລາວ"
+    ],
+    "reference_row_widths": [
+      181.109375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 21
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-repeat",
+    "language": "lo",
+    "width": 650.0,
+    "text": "ພາສາລາວພາສາລາວພາສາລາວ",
+    "lines": [
+      "ພາສາລາວພາສາລາວພາສາລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42,
+      54,
+      63
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42,
+      54,
+      63
+    ],
+    "row_widths": [
+      181.1009979248047
+    ],
+    "reference_lines": [
+      "ພາສາລາວພາສາລາວພາສາລາວ"
+    ],
+    "reference_row_widths": [
+      181.109375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 21
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-prefix",
+    "language": "lo",
+    "width": 112.0,
+    "text": "ປະເທດລາວມີພົນລ",
+    "lines": [
+      "ປະເທດລາວມີພົນ",
+      "ລ"
+    ],
+    "stock_breaks": [
+      0,
+      15,
+      24,
+      30,
+      39,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      15,
+      24,
+      30,
+      39,
+      42
+    ],
+    "row_widths": [
+      104.12500762939453,
+      10.641998291015625
+    ],
+    "reference_lines": [
+      "ປະເທດລາວມີພົນ",
+      "ລ"
+    ],
+    "reference_row_widths": [
+      104.125,
+      10.65625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-prefix",
+    "language": "lo",
+    "width": 160.0,
+    "text": "ປະເທດລາວມີພົນລ",
+    "lines": [
+      "ປະເທດລາວມີພົນລ"
+    ],
+    "stock_breaks": [
+      0,
+      15,
+      24,
+      30,
+      39,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      15,
+      24,
+      30,
+      39,
+      42
+    ],
+    "row_widths": [
+      114.76700592041016
+    ],
+    "reference_lines": [
+      "ປະເທດລາວມີພົນລ"
+    ],
+    "reference_row_widths": [
+      114.78125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-prefix",
+    "language": "lo",
+    "width": 225.0,
+    "text": "ປະເທດລາວມີພົນລ",
+    "lines": [
+      "ປະເທດລາວມີພົນລ"
+    ],
+    "stock_breaks": [
+      0,
+      15,
+      24,
+      30,
+      39,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      15,
+      24,
+      30,
+      39,
+      42
+    ],
+    "row_widths": [
+      114.76700592041016
+    ],
+    "reference_lines": [
+      "ປະເທດລາວມີພົນລ"
+    ],
+    "reference_row_widths": [
+      114.78125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-prefix",
+    "language": "lo",
+    "width": 320.0,
+    "text": "ປະເທດລາວມີພົນລ",
+    "lines": [
+      "ປະເທດລາວມີພົນລ"
+    ],
+    "stock_breaks": [
+      0,
+      15,
+      24,
+      30,
+      39,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      15,
+      24,
+      30,
+      39,
+      42
+    ],
+    "row_widths": [
+      114.76700592041016
+    ],
+    "reference_lines": [
+      "ປະເທດລາວມີພົນລ"
+    ],
+    "reference_row_widths": [
+      114.78125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-prefix",
+    "language": "lo",
+    "width": 375.0,
+    "text": "ປະເທດລາວມີພົນລ",
+    "lines": [
+      "ປະເທດລາວມີພົນລ"
+    ],
+    "stock_breaks": [
+      0,
+      15,
+      24,
+      30,
+      39,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      15,
+      24,
+      30,
+      39,
+      42
+    ],
+    "row_widths": [
+      114.76700592041016
+    ],
+    "reference_lines": [
+      "ປະເທດລາວມີພົນລ"
+    ],
+    "reference_row_widths": [
+      114.78125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-icu-prefix",
+    "language": "lo",
+    "width": 650.0,
+    "text": "ປະເທດລາວມີພົນລ",
+    "lines": [
+      "ປະເທດລາວມີພົນລ"
+    ],
+    "stock_breaks": [
+      0,
+      15,
+      24,
+      30,
+      39,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      15,
+      24,
+      30,
+      39,
+      42
+    ],
+    "row_widths": [
+      114.76700592041016
+    ],
+    "reference_lines": [
+      "ປະເທດລາວມີພົນລ"
+    ],
+    "reference_row_widths": [
+      114.78125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-punct",
+    "language": "lo",
+    "width": 112.0,
+    "text": "(ພາສາລາວ), ສິດ! 2026",
+    "lines": [
+      "(ພາສາລາວ), ສິດ! ",
+      "2026"
+    ],
+    "stock_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "candidate_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "row_widths": [
+      110.14299011230469,
+      38.89601135253906
+    ],
+    "reference_lines": [
+      "(ພາສາລາວ), ສິດ! ",
+      "2026"
+    ],
+    "reference_row_widths": [
+      105.734375,
+      38.90625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 8
+        },
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 11
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-punct",
+    "language": "lo",
+    "width": 160.0,
+    "text": "(ພາສາລາວ), ສິດ! 2026",
+    "lines": [
+      "(ພາສາລາວ), ສິດ! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "candidate_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "row_widths": [
+      149.03900146484375
+    ],
+    "reference_lines": [
+      "(ພາສາລາວ), ສິດ! 2026"
+    ],
+    "reference_row_widths": [
+      149.046875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 8
+        },
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-punct",
+    "language": "lo",
+    "width": 225.0,
+    "text": "(ພາສາລາວ), ສິດ! 2026",
+    "lines": [
+      "(ພາສາລາວ), ສິດ! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "candidate_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "row_widths": [
+      149.03900146484375
+    ],
+    "reference_lines": [
+      "(ພາສາລາວ), ສິດ! 2026"
+    ],
+    "reference_row_widths": [
+      149.046875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 8
+        },
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-punct",
+    "language": "lo",
+    "width": 320.0,
+    "text": "(ພາສາລາວ), ສິດ! 2026",
+    "lines": [
+      "(ພາສາລາວ), ສິດ! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "candidate_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "row_widths": [
+      149.03900146484375
+    ],
+    "reference_lines": [
+      "(ພາສາລາວ), ສິດ! 2026"
+    ],
+    "reference_row_widths": [
+      149.046875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 8
+        },
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-punct",
+    "language": "lo",
+    "width": 375.0,
+    "text": "(ພາສາລາວ), ສິດ! 2026",
+    "lines": [
+      "(ພາສາລາວ), ສິດ! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "candidate_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "row_widths": [
+      149.03900146484375
+    ],
+    "reference_lines": [
+      "(ພາສາລາວ), ສິດ! 2026"
+    ],
+    "reference_row_widths": [
+      149.046875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 8
+        },
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-punct",
+    "language": "lo",
+    "width": 650.0,
+    "text": "(ພາສາລາວ), ສິດ! 2026",
+    "lines": [
+      "(ພາສາລາວ), ສິດ! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "candidate_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "row_widths": [
+      149.03900146484375
+    ],
+    "reference_lines": [
+      "(ພາສາລາວ), ສິດ! 2026"
+    ],
+    "reference_row_widths": [
+      149.046875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 8
+        },
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-nbsp",
+    "language": "lo",
+    "width": 112.0,
+    "text": "ພາສາລາວ ພາສາລາວ",
+    "lines": [
+      "ພາສາລາວ ພາສາ",
+      "ລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "row_widths": [
+      99.04200744628906,
+      26.11199951171875
+    ],
+    "reference_lines": [
+      "ພາສາລາວ ພາສາ",
+      "ລາວ"
+    ],
+    "reference_row_widths": [
+      99.046875,
+      26.125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 15
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-nbsp",
+    "language": "lo",
+    "width": 160.0,
+    "text": "ພາສາລາວ ພາສາລາວ",
+    "lines": [
+      "ພາສາລາວ ພາສາລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "row_widths": [
+      125.15400695800781
+    ],
+    "reference_lines": [
+      "ພາສາລາວ ພາສາລາວ"
+    ],
+    "reference_row_widths": [
+      125.15625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 15
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-nbsp",
+    "language": "lo",
+    "width": 225.0,
+    "text": "ພາສາລາວ ພາສາລາວ",
+    "lines": [
+      "ພາສາລາວ ພາສາລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "row_widths": [
+      125.15400695800781
+    ],
+    "reference_lines": [
+      "ພາສາລາວ ພາສາລາວ"
+    ],
+    "reference_row_widths": [
+      125.15625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 15
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-nbsp",
+    "language": "lo",
+    "width": 320.0,
+    "text": "ພາສາລາວ ພາສາລາວ",
+    "lines": [
+      "ພາສາລາວ ພາສາລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "row_widths": [
+      125.15400695800781
+    ],
+    "reference_lines": [
+      "ພາສາລາວ ພາສາລາວ"
+    ],
+    "reference_row_widths": [
+      125.15625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 15
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-nbsp",
+    "language": "lo",
+    "width": 375.0,
+    "text": "ພາສາລາວ ພາສາລາວ",
+    "lines": [
+      "ພາສາລາວ ພາສາລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "row_widths": [
+      125.15400695800781
+    ],
+    "reference_lines": [
+      "ພາສາລາວ ພາສາລາວ"
+    ],
+    "reference_row_widths": [
+      125.15625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 15
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-nbsp",
+    "language": "lo",
+    "width": 650.0,
+    "text": "ພາສາລາວ ພາສາລາວ",
+    "lines": [
+      "ພາສາລາວ ພາສາລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "row_widths": [
+      125.15400695800781
+    ],
+    "reference_lines": [
+      "ພາສາລາວ ພາສາລາວ"
+    ],
+    "reference_row_widths": [
+      125.15625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 15
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-zwsp",
+    "language": "lo",
+    "width": 112.0,
+    "text": "ພາສາລາວ​ພາສາລາວ",
+    "lines": [
+      "ພາສາລາວ​ພາສາ",
+      "ລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "row_widths": [
+      94.62200927734375,
+      26.11199951171875
+    ],
+    "reference_lines": [
+      "ພາສາລາວ​ພາສາ",
+      "ລາວ"
+    ],
+    "reference_row_widths": [
+      94.625,
+      26.125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 15
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-zwsp",
+    "language": "lo",
+    "width": 160.0,
+    "text": "ພາສາລາວ​ພາສາລາວ",
+    "lines": [
+      "ພາສາລາວ​ພາສາລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "row_widths": [
+      120.7340087890625
+    ],
+    "reference_lines": [
+      "ພາສາລາວ​ພາສາລາວ"
+    ],
+    "reference_row_widths": [
+      120.734375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 15
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-zwsp",
+    "language": "lo",
+    "width": 225.0,
+    "text": "ພາສາລາວ​ພາສາລາວ",
+    "lines": [
+      "ພາສາລາວ​ພາສາລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "row_widths": [
+      120.7340087890625
+    ],
+    "reference_lines": [
+      "ພາສາລາວ​ພາສາລາວ"
+    ],
+    "reference_row_widths": [
+      120.734375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 15
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-zwsp",
+    "language": "lo",
+    "width": 320.0,
+    "text": "ພາສາລາວ​ພາສາລາວ",
+    "lines": [
+      "ພາສາລາວ​ພາສາລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "row_widths": [
+      120.7340087890625
+    ],
+    "reference_lines": [
+      "ພາສາລາວ​ພາສາລາວ"
+    ],
+    "reference_row_widths": [
+      120.734375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 15
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-zwsp",
+    "language": "lo",
+    "width": 375.0,
+    "text": "ພາສາລາວ​ພາສາລາວ",
+    "lines": [
+      "ພາສາລາວ​ພາສາລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "row_widths": [
+      120.7340087890625
+    ],
+    "reference_lines": [
+      "ພາສາລາວ​ພາສາລາວ"
+    ],
+    "reference_row_widths": [
+      120.734375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 15
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-zwsp",
+    "language": "lo",
+    "width": 650.0,
+    "text": "ພາສາລາວ​ພາສາລາວ",
+    "lines": [
+      "ພາສາລາວ​ພາສາລາວ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "row_widths": [
+      120.7340087890625
+    ],
+    "reference_lines": [
+      "ພາສາລາວ​ພາສາລາວ"
+    ],
+    "reference_row_widths": [
+      120.734375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 15
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-latin",
+    "language": "lo",
+    "width": 112.0,
+    "text": "ພາສາລາວ GPUI ສິດ",
+    "lines": [
+      "ພາສາລາວ GPUI ",
+      "ສິດ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      22,
+      27,
+      36
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      22,
+      27,
+      36
+    ],
+    "row_widths": [
+      110.05799865722656,
+      21.60699462890625
+    ],
+    "reference_lines": [
+      "ພາສາລາວ GPUI ",
+      "ສິດ"
+    ],
+    "reference_row_widths": [
+      105.640625,
+      21.609375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        },
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 11
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-latin",
+    "language": "lo",
+    "width": 160.0,
+    "text": "ພາສາລາວ GPUI ສິດ",
+    "lines": [
+      "ພາສາລາວ GPUI ສິດ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      22,
+      27,
+      36
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      22,
+      27,
+      36
+    ],
+    "row_widths": [
+      131.6649932861328
+    ],
+    "reference_lines": [
+      "ພາສາລາວ GPUI ສິດ"
+    ],
+    "reference_row_widths": [
+      131.671875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        },
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-latin",
+    "language": "lo",
+    "width": 225.0,
+    "text": "ພາສາລາວ GPUI ສິດ",
+    "lines": [
+      "ພາສາລາວ GPUI ສິດ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      22,
+      27,
+      36
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      22,
+      27,
+      36
+    ],
+    "row_widths": [
+      131.6649932861328
+    ],
+    "reference_lines": [
+      "ພາສາລາວ GPUI ສິດ"
+    ],
+    "reference_row_widths": [
+      131.671875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        },
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-latin",
+    "language": "lo",
+    "width": 320.0,
+    "text": "ພາສາລາວ GPUI ສິດ",
+    "lines": [
+      "ພາສາລາວ GPUI ສິດ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      22,
+      27,
+      36
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      22,
+      27,
+      36
+    ],
+    "row_widths": [
+      131.6649932861328
+    ],
+    "reference_lines": [
+      "ພາສາລາວ GPUI ສິດ"
+    ],
+    "reference_row_widths": [
+      131.671875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        },
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-latin",
+    "language": "lo",
+    "width": 375.0,
+    "text": "ພາສາລາວ GPUI ສິດ",
+    "lines": [
+      "ພາສາລາວ GPUI ສິດ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      22,
+      27,
+      36
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      22,
+      27,
+      36
+    ],
+    "row_widths": [
+      131.6649932861328
+    ],
+    "reference_lines": [
+      "ພາສາລາວ GPUI ສິດ"
+    ],
+    "reference_row_widths": [
+      131.671875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        },
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "lo-synthetic-latin",
+    "language": "lo",
+    "width": 650.0,
+    "text": "ພາສາລາວ GPUI ສິດ",
+    "lines": [
+      "ພາສາລາວ GPUI ສິດ"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      22,
+      27,
+      36
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      22,
+      27,
+      36
+    ],
+    "row_widths": [
+      131.6649932861328
+    ],
+    "reference_lines": [
+      "ພາສາລາວ GPUI ສິດ"
+    ],
+    "reference_row_widths": [
+      131.671875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        },
+        {
+          "familyName": "Noto Sans Lao",
+          "postScriptName": "NotoSansLao-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-original",
+    "language": "my",
+    "width": 112.0,
+    "text": "မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည် မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည်",
+    "lines": [
+      "မြန်မာဘာသာ",
+      "သည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာ",
+      "စကားဖြစ်သည် ",
+      "မြန်မာဘာသာ",
+      "သည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာ",
+      "စကားဖြစ်သည်"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      39,
+      117,
+      129,
+      151,
+      181,
+      190,
+      268,
+      280,
+      301
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      39,
+      117,
+      129,
+      151,
+      181,
+      190,
+      268,
+      280,
+      301
+    ],
+    "row_widths": [
+      98.03900146484375,
+      38.011993408203125,
+      192.64398193359375,
+      113.44100952148438,
+      98.03900146484375,
+      38.01202392578125,
+      192.64398193359375,
+      109.02093505859375
+    ],
+    "reference_lines": [
+      "မြန်မာဘာသာ",
+      "သည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာ",
+      "စကားဖြစ်သည် ",
+      "မြန်မာဘာသာ",
+      "သည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာ",
+      "စကားဖြစ်သည်"
+    ],
+    "reference_row_widths": [
+      98.046875,
+      38.015625,
+      192.65625,
+      109.03125,
+      98.046875,
+      38.015625,
+      192.65625,
+      109.03125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 100
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-original",
+    "language": "my",
+    "width": 160.0,
+    "text": "မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည် မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည်",
+    "lines": [
+      "မြန်မာဘာသာသည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာ",
+      "စကားဖြစ်သည် ",
+      "မြန်မာဘာသာသည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာ",
+      "စကားဖြစ်သည်"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      39,
+      117,
+      129,
+      151,
+      181,
+      190,
+      268,
+      280,
+      301
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      39,
+      117,
+      129,
+      151,
+      181,
+      190,
+      268,
+      280,
+      301
+    ],
+    "row_widths": [
+      136.05099487304688,
+      192.64398193359375,
+      113.44100952148438,
+      136.051025390625,
+      192.64398193359375,
+      109.02093505859375
+    ],
+    "reference_lines": [
+      "မြန်မာဘာသာသည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာ",
+      "စကားဖြစ်သည် ",
+      "မြန်မာဘာသာသည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာ",
+      "စကားဖြစ်သည်"
+    ],
+    "reference_row_widths": [
+      136.0625,
+      192.65625,
+      109.03125,
+      136.0625,
+      192.65625,
+      109.03125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 100
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-original",
+    "language": "my",
+    "width": 225.0,
+    "text": "မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည် မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည်",
+    "lines": [
+      "မြန်မာဘာသာသည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာ",
+      "စကားဖြစ်သည် မြန်မာဘာသာ",
+      "သည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာ",
+      "စကားဖြစ်သည်"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      39,
+      117,
+      129,
+      151,
+      181,
+      190,
+      268,
+      280,
+      301
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      39,
+      117,
+      129,
+      151,
+      181,
+      190,
+      268,
+      280,
+      301
+    ],
+    "row_widths": [
+      136.05099487304688,
+      192.64398193359375,
+      211.48001098632812,
+      38.01202392578125,
+      192.64398193359375,
+      109.02093505859375
+    ],
+    "reference_lines": [
+      "မြန်မာဘာသာသည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာ",
+      "စကားဖြစ်သည် မြန်မာဘာသာ",
+      "သည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာ",
+      "စကားဖြစ်သည်"
+    ],
+    "reference_row_widths": [
+      136.0625,
+      192.65625,
+      211.484375,
+      38.015625,
+      192.65625,
+      109.03125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 100
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-original",
+    "language": "my",
+    "width": 320.0,
+    "text": "မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည် မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည်",
+    "lines": [
+      "မြန်မာဘာသာသည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည် ",
+      "မြန်မာဘာသာသည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည်"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      39,
+      117,
+      129,
+      151,
+      181,
+      190,
+      268,
+      280,
+      301
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      39,
+      117,
+      129,
+      151,
+      181,
+      190,
+      268,
+      280,
+      301
+    ],
+    "row_widths": [
+      136.05099487304688,
+      306.0849914550781,
+      136.051025390625,
+      301.6649169921875
+    ],
+    "reference_lines": [
+      "မြန်မာဘာသာသည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည် ",
+      "မြန်မာဘာသာသည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည်"
+    ],
+    "reference_row_widths": [
+      136.0625,
+      301.671875,
+      136.0625,
+      301.671875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 100
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-original",
+    "language": "my",
+    "width": 375.0,
+    "text": "မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည် မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည်",
+    "lines": [
+      "မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကား",
+      "ဖြစ်သည် မြန်မာဘာသာသည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည်"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      39,
+      117,
+      129,
+      151,
+      181,
+      190,
+      268,
+      280,
+      301
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      39,
+      117,
+      129,
+      151,
+      181,
+      190,
+      268,
+      280,
+      301
+    ],
+    "row_widths": [
+      372.8779602050781,
+      205.30905151367188,
+      301.6649169921875
+    ],
+    "reference_lines": [
+      "မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကား",
+      "ဖြစ်သည် မြန်မာဘာသာသည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည်"
+    ],
+    "reference_row_widths": [
+      372.890625,
+      205.3125,
+      301.671875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 100
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-original",
+    "language": "my",
+    "width": 650.0,
+    "text": "မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည် မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည်",
+    "lines": [
+      "မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည် မြန်မာဘာသာသည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည်"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      39,
+      117,
+      129,
+      151,
+      181,
+      190,
+      268,
+      280,
+      301
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      39,
+      117,
+      129,
+      151,
+      181,
+      190,
+      268,
+      280,
+      301
+    ],
+    "row_widths": [
+      578.18701171875,
+      301.6649169921875
+    ],
+    "reference_lines": [
+      "မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည် မြန်မာဘာသာသည်",
+      "မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည်"
+    ],
+    "reference_row_widths": [
+      578.1875,
+      301.671875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 100
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-language",
+    "language": "my",
+    "width": 112.0,
+    "text": "မြန်မာဘာသာစကား",
+    "lines": [
+      "မြန်မာဘာသာ",
+      "စကား"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      42
+    ],
+    "row_widths": [
+      98.03900146484375,
+      44.18299865722656
+    ],
+    "reference_lines": [
+      "မြန်မာဘာသာ",
+      "စကား"
+    ],
+    "reference_row_widths": [
+      98.046875,
+      44.1875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-language",
+    "language": "my",
+    "width": 160.0,
+    "text": "မြန်မာဘာသာစကား",
+    "lines": [
+      "မြန်မာဘာသာစကား"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      42
+    ],
+    "row_widths": [
+      142.2220001220703
+    ],
+    "reference_lines": [
+      "မြန်မာဘာသာစကား"
+    ],
+    "reference_row_widths": [
+      142.234375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-language",
+    "language": "my",
+    "width": 225.0,
+    "text": "မြန်မာဘာသာစကား",
+    "lines": [
+      "မြန်မာဘာသာစကား"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      42
+    ],
+    "row_widths": [
+      142.2220001220703
+    ],
+    "reference_lines": [
+      "မြန်မာဘာသာစကား"
+    ],
+    "reference_row_widths": [
+      142.234375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-language",
+    "language": "my",
+    "width": 320.0,
+    "text": "မြန်မာဘာသာစကား",
+    "lines": [
+      "မြန်မာဘာသာစကား"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      42
+    ],
+    "row_widths": [
+      142.2220001220703
+    ],
+    "reference_lines": [
+      "မြန်မာဘာသာစကား"
+    ],
+    "reference_row_widths": [
+      142.234375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-language",
+    "language": "my",
+    "width": 375.0,
+    "text": "မြန်မာဘာသာစကား",
+    "lines": [
+      "မြန်မာဘာသာစကား"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      42
+    ],
+    "row_widths": [
+      142.2220001220703
+    ],
+    "reference_lines": [
+      "မြန်မာဘာသာစကား"
+    ],
+    "reference_row_widths": [
+      142.234375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-language",
+    "language": "my",
+    "width": 650.0,
+    "text": "မြန်မာဘာသာစကား",
+    "lines": [
+      "မြန်မာဘာသာစကား"
+    ],
+    "stock_breaks": [
+      0,
+      30,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      30,
+      42
+    ],
+    "row_widths": [
+      142.2220001220703
+    ],
+    "reference_lines": [
+      "မြန်မာဘာသာစကား"
+    ],
+    "reference_row_widths": [
+      142.234375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-repeat",
+    "language": "my",
+    "width": 112.0,
+    "text": "မြန်မာစာမြန်မာစာမြန်မာစာ",
+    "lines": [
+      "မြန်မာစာမြန်မာ",
+      "စာမြန်မာစာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      24,
+      42,
+      48,
+      66,
+      72
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      24,
+      42,
+      48,
+      66,
+      72
+    ],
+    "row_widths": [
+      107.7969970703125,
+      82.68800354003906
+    ],
+    "reference_lines": [
+      "မြန်မာစာမြန်မာ",
+      "စာမြန်မာစာ"
+    ],
+    "reference_row_widths": [
+      107.796875,
+      82.703125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 24
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-repeat",
+    "language": "my",
+    "width": 160.0,
+    "text": "မြန်မာစာမြန်မာစာမြန်မာစာ",
+    "lines": [
+      "မြန်မာစာမြန်မာစာ",
+      "မြန်မာစာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      24,
+      42,
+      48,
+      66,
+      72
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      24,
+      42,
+      48,
+      66,
+      72
+    ],
+    "row_widths": [
+      126.98999786376953,
+      63.49500274658203
+    ],
+    "reference_lines": [
+      "မြန်မာစာမြန်မာစာ",
+      "မြန်မာစာ"
+    ],
+    "reference_row_widths": [
+      127,
+      63.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 24
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-repeat",
+    "language": "my",
+    "width": 225.0,
+    "text": "မြန်မာစာမြန်မာစာမြန်မာစာ",
+    "lines": [
+      "မြန်မာစာမြန်မာစာမြန်မာစာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      24,
+      42,
+      48,
+      66,
+      72
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      24,
+      42,
+      48,
+      66,
+      72
+    ],
+    "row_widths": [
+      190.48500061035156
+    ],
+    "reference_lines": [
+      "မြန်မာစာမြန်မာစာမြန်မာစာ"
+    ],
+    "reference_row_widths": [
+      190.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 24
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-repeat",
+    "language": "my",
+    "width": 320.0,
+    "text": "မြန်မာစာမြန်မာစာမြန်မာစာ",
+    "lines": [
+      "မြန်မာစာမြန်မာစာမြန်မာစာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      24,
+      42,
+      48,
+      66,
+      72
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      24,
+      42,
+      48,
+      66,
+      72
+    ],
+    "row_widths": [
+      190.48500061035156
+    ],
+    "reference_lines": [
+      "မြန်မာစာမြန်မာစာမြန်မာစာ"
+    ],
+    "reference_row_widths": [
+      190.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 24
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-repeat",
+    "language": "my",
+    "width": 375.0,
+    "text": "မြန်မာစာမြန်မာစာမြန်မာစာ",
+    "lines": [
+      "မြန်မာစာမြန်မာစာမြန်မာစာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      24,
+      42,
+      48,
+      66,
+      72
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      24,
+      42,
+      48,
+      66,
+      72
+    ],
+    "row_widths": [
+      190.48500061035156
+    ],
+    "reference_lines": [
+      "မြန်မာစာမြန်မာစာမြန်မာစာ"
+    ],
+    "reference_row_widths": [
+      190.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 24
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-repeat",
+    "language": "my",
+    "width": 650.0,
+    "text": "မြန်မာစာမြန်မာစာမြန်မာစာ",
+    "lines": [
+      "မြန်မာစာမြန်မာစာမြန်မာစာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      24,
+      42,
+      48,
+      66,
+      72
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      24,
+      42,
+      48,
+      66,
+      72
+    ],
+    "row_widths": [
+      190.48500061035156
+    ],
+    "reference_lines": [
+      "မြန်မာစာမြန်မာစာမြန်မာစာ"
+    ],
+    "reference_row_widths": [
+      190.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 24
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-prefix",
+    "language": "my",
+    "width": 112.0,
+    "text": "မြန်မာန",
+    "lines": [
+      "မြန်မာန"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      21
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      21
+    ],
+    "row_widths": [
+      53.992000579833984
+    ],
+    "reference_lines": [
+      "မြန်မာန"
+    ],
+    "reference_row_widths": [
+      54
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 7
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-prefix",
+    "language": "my",
+    "width": 160.0,
+    "text": "မြန်မာန",
+    "lines": [
+      "မြန်မာန"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      21
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      21
+    ],
+    "row_widths": [
+      53.992000579833984
+    ],
+    "reference_lines": [
+      "မြန်မာန"
+    ],
+    "reference_row_widths": [
+      54
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 7
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-prefix",
+    "language": "my",
+    "width": 225.0,
+    "text": "မြန်မာန",
+    "lines": [
+      "မြန်မာန"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      21
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      21
+    ],
+    "row_widths": [
+      53.992000579833984
+    ],
+    "reference_lines": [
+      "မြန်မာန"
+    ],
+    "reference_row_widths": [
+      54
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 7
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-prefix",
+    "language": "my",
+    "width": 320.0,
+    "text": "မြန်မာန",
+    "lines": [
+      "မြန်မာန"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      21
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      21
+    ],
+    "row_widths": [
+      53.992000579833984
+    ],
+    "reference_lines": [
+      "မြန်မာန"
+    ],
+    "reference_row_widths": [
+      54
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 7
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-prefix",
+    "language": "my",
+    "width": 375.0,
+    "text": "မြန်မာန",
+    "lines": [
+      "မြန်မာန"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      21
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      21
+    ],
+    "row_widths": [
+      53.992000579833984
+    ],
+    "reference_lines": [
+      "မြန်မာန"
+    ],
+    "reference_row_widths": [
+      54
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 7
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-icu-prefix",
+    "language": "my",
+    "width": 650.0,
+    "text": "မြန်မာန",
+    "lines": [
+      "မြန်မာန"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      21
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      21
+    ],
+    "row_widths": [
+      53.992000579833984
+    ],
+    "reference_lines": [
+      "မြန်မာန"
+    ],
+    "reference_row_widths": [
+      54
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 7
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-punct",
+    "language": "my",
+    "width": 112.0,
+    "text": "(မြန်မာစာ), မြန်မာ! 2026",
+    "lines": [
+      "(မြန်မာစာ), ",
+      "မြန်မာ! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      19,
+      28,
+      48,
+      52
+    ],
+    "candidate_breaks": [
+      0,
+      19,
+      28,
+      48,
+      52
+    ],
+    "row_widths": [
+      82.6709976196289,
+      92.19100189208984
+    ],
+    "reference_lines": [
+      "(မြန်မာစာ), ",
+      "မြန်မာ! 2026"
+    ],
+    "reference_row_widths": [
+      78.265625,
+      92.203125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 9
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-punct",
+    "language": "my",
+    "width": 160.0,
+    "text": "(မြန်မာစာ), မြန်မာ! 2026",
+    "lines": [
+      "(မြန်မာစာ), မြန်မာ! ",
+      "2026"
+    ],
+    "stock_breaks": [
+      0,
+      19,
+      28,
+      48,
+      52
+    ],
+    "candidate_breaks": [
+      0,
+      19,
+      28,
+      48,
+      52
+    ],
+    "row_widths": [
+      135.9659881591797,
+      38.89601135253906
+    ],
+    "reference_lines": [
+      "(မြန်မာစာ), မြန်မာ! ",
+      "2026"
+    ],
+    "reference_row_widths": [
+      131.546875,
+      38.90625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 9
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-punct",
+    "language": "my",
+    "width": 225.0,
+    "text": "(မြန်မာစာ), မြန်မာ! 2026",
+    "lines": [
+      "(မြန်မာစာ), မြန်မာ! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      19,
+      28,
+      48,
+      52
+    ],
+    "candidate_breaks": [
+      0,
+      19,
+      28,
+      48,
+      52
+    ],
+    "row_widths": [
+      174.86199951171875
+    ],
+    "reference_lines": [
+      "(မြန်မာစာ), မြန်မာ! 2026"
+    ],
+    "reference_row_widths": [
+      174.875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-punct",
+    "language": "my",
+    "width": 320.0,
+    "text": "(မြန်မာစာ), မြန်မာ! 2026",
+    "lines": [
+      "(မြန်မာစာ), မြန်မာ! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      19,
+      28,
+      48,
+      52
+    ],
+    "candidate_breaks": [
+      0,
+      19,
+      28,
+      48,
+      52
+    ],
+    "row_widths": [
+      174.86199951171875
+    ],
+    "reference_lines": [
+      "(မြန်မာစာ), မြန်မာ! 2026"
+    ],
+    "reference_row_widths": [
+      174.875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-punct",
+    "language": "my",
+    "width": 375.0,
+    "text": "(မြန်မာစာ), မြန်မာ! 2026",
+    "lines": [
+      "(မြန်မာစာ), မြန်မာ! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      19,
+      28,
+      48,
+      52
+    ],
+    "candidate_breaks": [
+      0,
+      19,
+      28,
+      48,
+      52
+    ],
+    "row_widths": [
+      174.86199951171875
+    ],
+    "reference_lines": [
+      "(မြန်မာစာ), မြန်မာ! 2026"
+    ],
+    "reference_row_widths": [
+      174.875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-punct",
+    "language": "my",
+    "width": 650.0,
+    "text": "(မြန်မာစာ), မြန်မာ! 2026",
+    "lines": [
+      "(မြန်မာစာ), မြန်မာ! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      19,
+      28,
+      48,
+      52
+    ],
+    "candidate_breaks": [
+      0,
+      19,
+      28,
+      48,
+      52
+    ],
+    "row_widths": [
+      174.86199951171875
+    ],
+    "reference_lines": [
+      "(မြန်မာစာ), မြန်မာ! 2026"
+    ],
+    "reference_row_widths": [
+      174.875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-nbsp",
+    "language": "my",
+    "width": 112.0,
+    "text": "မြန်မာစာ မြန်မာစာ",
+    "lines": [
+      "မြန်မာ",
+      "စာ မြန်မာစာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      44,
+      50
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      44,
+      50
+    ],
+    "row_widths": [
+      44.302001953125,
+      87.10798645019531
+    ],
+    "reference_lines": [
+      "မြန်မာ",
+      "စာ မြန်မာစာ"
+    ],
+    "reference_row_widths": [
+      44.3125,
+      87.109375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-nbsp",
+    "language": "my",
+    "width": 160.0,
+    "text": "မြန်မာစာ မြန်မာစာ",
+    "lines": [
+      "မြန်မာစာ မြန်မာစာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      44,
+      50
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      44,
+      50
+    ],
+    "row_widths": [
+      131.4099884033203
+    ],
+    "reference_lines": [
+      "မြန်မာစာ မြန်မာစာ"
+    ],
+    "reference_row_widths": [
+      131.421875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-nbsp",
+    "language": "my",
+    "width": 225.0,
+    "text": "မြန်မာစာ မြန်မာစာ",
+    "lines": [
+      "မြန်မာစာ မြန်မာစာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      44,
+      50
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      44,
+      50
+    ],
+    "row_widths": [
+      131.4099884033203
+    ],
+    "reference_lines": [
+      "မြန်မာစာ မြန်မာစာ"
+    ],
+    "reference_row_widths": [
+      131.421875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-nbsp",
+    "language": "my",
+    "width": 320.0,
+    "text": "မြန်မာစာ မြန်မာစာ",
+    "lines": [
+      "မြန်မာစာ မြန်မာစာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      44,
+      50
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      44,
+      50
+    ],
+    "row_widths": [
+      131.4099884033203
+    ],
+    "reference_lines": [
+      "မြန်မာစာ မြန်မာစာ"
+    ],
+    "reference_row_widths": [
+      131.421875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-nbsp",
+    "language": "my",
+    "width": 375.0,
+    "text": "မြန်မာစာ မြန်မာစာ",
+    "lines": [
+      "မြန်မာစာ မြန်မာစာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      44,
+      50
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      44,
+      50
+    ],
+    "row_widths": [
+      131.4099884033203
+    ],
+    "reference_lines": [
+      "မြန်မာစာ မြန်မာစာ"
+    ],
+    "reference_row_widths": [
+      131.421875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-nbsp",
+    "language": "my",
+    "width": 650.0,
+    "text": "မြန်မာစာ မြန်မာစာ",
+    "lines": [
+      "မြန်မာစာ မြန်မာစာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      44,
+      50
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      44,
+      50
+    ],
+    "row_widths": [
+      131.4099884033203
+    ],
+    "reference_lines": [
+      "မြန်မာစာ မြန်မာစာ"
+    ],
+    "reference_row_widths": [
+      131.421875
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-zwsp",
+    "language": "my",
+    "width": 112.0,
+    "text": "မြန်မာစာ​မြန်မာစာ",
+    "lines": [
+      "မြန်မာစာ​မြန်မာ",
+      "စာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      27,
+      45,
+      51
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      27,
+      45,
+      51
+    ],
+    "row_widths": [
+      107.7969970703125,
+      19.193008422851562
+    ],
+    "reference_lines": [
+      "မြန်မာစာ​မြန်မာ",
+      "စာ"
+    ],
+    "reference_row_widths": [
+      107.796875,
+      19.203125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-zwsp",
+    "language": "my",
+    "width": 160.0,
+    "text": "မြန်မာစာ​မြန်မာစာ",
+    "lines": [
+      "မြန်မာစာ​မြန်မာစာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      27,
+      45,
+      51
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      27,
+      45,
+      51
+    ],
+    "row_widths": [
+      126.99000549316406
+    ],
+    "reference_lines": [
+      "မြန်မာစာ​မြန်မာစာ"
+    ],
+    "reference_row_widths": [
+      127
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-zwsp",
+    "language": "my",
+    "width": 225.0,
+    "text": "မြန်မာစာ​မြန်မာစာ",
+    "lines": [
+      "မြန်မာစာ​မြန်မာစာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      27,
+      45,
+      51
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      27,
+      45,
+      51
+    ],
+    "row_widths": [
+      126.99000549316406
+    ],
+    "reference_lines": [
+      "မြန်မာစာ​မြန်မာစာ"
+    ],
+    "reference_row_widths": [
+      127
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-zwsp",
+    "language": "my",
+    "width": 320.0,
+    "text": "မြန်မာစာ​မြန်မာစာ",
+    "lines": [
+      "မြန်မာစာ​မြန်မာစာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      27,
+      45,
+      51
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      27,
+      45,
+      51
+    ],
+    "row_widths": [
+      126.99000549316406
+    ],
+    "reference_lines": [
+      "မြန်မာစာ​မြန်မာစာ"
+    ],
+    "reference_row_widths": [
+      127
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-zwsp",
+    "language": "my",
+    "width": 375.0,
+    "text": "မြန်မာစာ​မြန်မာစာ",
+    "lines": [
+      "မြန်မာစာ​မြန်မာစာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      27,
+      45,
+      51
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      27,
+      45,
+      51
+    ],
+    "row_widths": [
+      126.99000549316406
+    ],
+    "reference_lines": [
+      "မြန်မာစာ​မြန်မာစာ"
+    ],
+    "reference_row_widths": [
+      127
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-zwsp",
+    "language": "my",
+    "width": 650.0,
+    "text": "မြန်မာစာ​မြန်မာစာ",
+    "lines": [
+      "မြန်မာစာ​မြန်မာစာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      27,
+      45,
+      51
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      27,
+      45,
+      51
+    ],
+    "row_widths": [
+      126.99000549316406
+    ],
+    "reference_lines": [
+      "မြန်မာစာ​မြန်မာစာ"
+    ],
+    "reference_row_widths": [
+      127
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-latin",
+    "language": "my",
+    "width": 112.0,
+    "text": "မြန်မာစာ GPUI မြန်မာ",
+    "lines": [
+      "မြန်မာစာ GPUI ",
+      "မြန်မာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      25,
+      30,
+      48
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      25,
+      30,
+      48
+    ],
+    "row_widths": [
+      113.18600463867188,
+      44.302001953125
+    ],
+    "reference_lines": [
+      "မြန်မာစာ GPUI ",
+      "မြန်မာ"
+    ],
+    "reference_row_widths": [
+      108.78125,
+      44.3125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 5
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-latin",
+    "language": "my",
+    "width": 160.0,
+    "text": "မြန်မာစာ GPUI မြန်မာ",
+    "lines": [
+      "မြန်မာစာ GPUI မြန်မာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      25,
+      30,
+      48
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      25,
+      30,
+      48
+    ],
+    "row_widths": [
+      157.48800659179688
+    ],
+    "reference_lines": [
+      "မြန်မာစာ GPUI မြန်မာ"
+    ],
+    "reference_row_widths": [
+      157.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 6
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-latin",
+    "language": "my",
+    "width": 225.0,
+    "text": "မြန်မာစာ GPUI မြန်မာ",
+    "lines": [
+      "မြန်မာစာ GPUI မြန်မာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      25,
+      30,
+      48
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      25,
+      30,
+      48
+    ],
+    "row_widths": [
+      157.48800659179688
+    ],
+    "reference_lines": [
+      "မြန်မာစာ GPUI မြန်မာ"
+    ],
+    "reference_row_widths": [
+      157.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 6
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-latin",
+    "language": "my",
+    "width": 320.0,
+    "text": "မြန်မာစာ GPUI မြန်မာ",
+    "lines": [
+      "မြန်မာစာ GPUI မြန်မာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      25,
+      30,
+      48
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      25,
+      30,
+      48
+    ],
+    "row_widths": [
+      157.48800659179688
+    ],
+    "reference_lines": [
+      "မြန်မာစာ GPUI မြန်မာ"
+    ],
+    "reference_row_widths": [
+      157.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 6
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-latin",
+    "language": "my",
+    "width": 375.0,
+    "text": "မြန်မာစာ GPUI မြန်မာ",
+    "lines": [
+      "မြန်မာစာ GPUI မြန်မာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      25,
+      30,
+      48
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      25,
+      30,
+      48
+    ],
+    "row_widths": [
+      157.48800659179688
+    ],
+    "reference_lines": [
+      "မြန်မာစာ GPUI မြန်မာ"
+    ],
+    "reference_row_widths": [
+      157.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 6
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "my-synthetic-latin",
+    "language": "my",
+    "width": 650.0,
+    "text": "မြန်မာစာ GPUI မြန်မာ",
+    "lines": [
+      "မြန်မာစာ GPUI မြန်မာ"
+    ],
+    "stock_breaks": [
+      0,
+      18,
+      25,
+      30,
+      48
+    ],
+    "candidate_breaks": [
+      0,
+      18,
+      25,
+      30,
+      48
+    ],
+    "row_widths": [
+      157.48800659179688
+    ],
+    "reference_lines": [
+      "မြန်မာစာ GPUI မြန်မာ"
+    ],
+    "reference_row_widths": [
+      157.5
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 6
+        },
+        {
+          "familyName": "Noto Sans Myanmar",
+          "postScriptName": "NotoSansMyanmar-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-original",
+    "language": "th",
+    "width": 112.0,
+    "text": "เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน",
+    "lines": [
+      "เป็นมนุษย์",
+      "สุดประเสริฐเลิศ",
+      "คุณค่า กว่า",
+      "บรรดาฝูงสัตว์",
+      "เดรัจฉาน เป็น",
+      "มนุษย์",
+      "สุดประเสริฐเลิศ",
+      "คุณค่า กว่า",
+      "บรรดาฝูงสัตว์",
+      "เดรัจฉาน"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      30,
+      63,
+      75,
+      94,
+      106,
+      121,
+      130,
+      145,
+      170,
+      182,
+      200,
+      233,
+      245,
+      264,
+      276,
+      291,
+      300,
+      315,
+      339
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      30,
+      63,
+      75,
+      94,
+      106,
+      121,
+      130,
+      145,
+      170,
+      182,
+      200,
+      233,
+      245,
+      264,
+      276,
+      291,
+      300,
+      315,
+      339
+    ],
+    "row_widths": [
+      67.37100219726562,
+      101.91499328613281,
+      73.11698913574219,
+      93.3470458984375,
+      90.20199584960938,
+      41.83697509765625,
+      101.9149169921875,
+      73.116943359375,
+      93.3470458984375,
+      60.2481689453125
+    ],
+    "reference_lines": [
+      "เป็นมนุษย์",
+      "สุดประเสริฐเลิศ",
+      "คุณค่า กว่า",
+      "บรรดาฝูงสัตว์",
+      "เดรัจฉาน เป็น",
+      "มนุษย์",
+      "สุดประเสริฐเลิศ",
+      "คุณค่า กว่า",
+      "บรรดาฝูงสัตว์",
+      "เดรัจฉาน"
+    ],
+    "reference_row_widths": [
+      67.375,
+      101.921875,
+      73.125,
+      93.359375,
+      90.203125,
+      41.84375,
+      101.921875,
+      73.125,
+      93.359375,
+      60.25
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 112
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 3
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-original",
+    "language": "th",
+    "width": 160.0,
+    "text": "เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน",
+    "lines": [
+      "เป็นมนุษย์สุดประเสริฐ",
+      "เลิศคุณค่า กว่าบรรดา",
+      "ฝูงสัตว์เดรัจฉาน เป็น",
+      "มนุษย์สุดประเสริฐเลิศ",
+      "คุณค่า กว่าบรรดาฝูง",
+      "สัตว์เดรัจฉาน"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      30,
+      63,
+      75,
+      94,
+      106,
+      121,
+      130,
+      145,
+      170,
+      182,
+      200,
+      233,
+      245,
+      264,
+      276,
+      291,
+      300,
+      315,
+      339
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      30,
+      63,
+      75,
+      94,
+      106,
+      121,
+      130,
+      145,
+      170,
+      182,
+      200,
+      233,
+      245,
+      264,
+      276,
+      291,
+      300,
+      315,
+      339
+    ],
+    "row_widths": [
+      144.05799865722656,
+      142.57899475097656,
+      139.31503295898438,
+      143.75189208984375,
+      137.56396484375,
+      89.148193359375
+    ],
+    "reference_lines": [
+      "เป็นมนุษย์สุดประเสริฐ",
+      "เลิศคุณค่า กว่าบรรดา",
+      "ฝูงสัตว์เดรัจฉาน เป็น",
+      "มนุษย์สุดประเสริฐเลิศ",
+      "คุณค่า กว่าบรรดาฝูง",
+      "สัตว์เดรัจฉาน"
+    ],
+    "reference_row_widths": [
+      144.0625,
+      142.59375,
+      139.328125,
+      143.765625,
+      137.578125,
+      89.15625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 112
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 3
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-original",
+    "language": "th",
+    "width": 225.0,
+    "text": "เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน",
+    "lines": [
+      "เป็นมนุษย์สุดประเสริฐเลิศคุณค่า ",
+      "กว่าบรรดาฝูงสัตว์เดรัจฉาน เป็น",
+      "มนุษย์สุดประเสริฐเลิศคุณค่า กว่า",
+      "บรรดาฝูงสัตว์เดรัจฉาน"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      30,
+      63,
+      75,
+      94,
+      106,
+      121,
+      130,
+      145,
+      170,
+      182,
+      200,
+      233,
+      245,
+      264,
+      276,
+      291,
+      300,
+      315,
+      339
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      30,
+      63,
+      75,
+      94,
+      106,
+      121,
+      130,
+      145,
+      170,
+      182,
+      200,
+      233,
+      245,
+      264,
+      276,
+      291,
+      300,
+      315,
+      339
+    ],
+    "row_widths": [
+      216.93699645996094,
+      209.01502990722656,
+      216.86883544921875,
+      153.59521484375
+    ],
+    "reference_lines": [
+      "เป็นมนุษย์สุดประเสริฐเลิศคุณค่า ",
+      "กว่าบรรดาฝูงสัตว์เดรัจฉาน เป็น",
+      "มนุษย์สุดประเสริฐเลิศคุณค่า กว่า",
+      "บรรดาฝูงสัตว์เดรัจฉาน"
+    ],
+    "reference_row_widths": [
+      212.53125,
+      209.015625,
+      216.875,
+      153.609375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 112
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-original",
+    "language": "th",
+    "width": 320.0,
+    "text": "เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน",
+    "lines": [
+      "เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูง",
+      "สัตว์เดรัจฉาน เป็นมนุษย์สุดประเสริฐเลิศคุณค่า ",
+      "กว่าบรรดาฝูงสัตว์เดรัจฉาน"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      30,
+      63,
+      75,
+      94,
+      106,
+      121,
+      130,
+      145,
+      170,
+      182,
+      200,
+      233,
+      245,
+      264,
+      276,
+      291,
+      300,
+      315,
+      339
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      30,
+      63,
+      75,
+      94,
+      106,
+      121,
+      130,
+      145,
+      170,
+      182,
+      200,
+      233,
+      245,
+      264,
+      276,
+      291,
+      300,
+      315,
+      339
+    ],
+    "row_widths": [
+      306.8500061035156,
+      310.5048522949219,
+      179.06121826171875
+    ],
+    "reference_lines": [
+      "เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูง",
+      "สัตว์เดรัจฉาน เป็นมนุษย์สุดประเสริฐเลิศคุณค่า ",
+      "กว่าบรรดาฝูงสัตว์เดรัจฉาน"
+    ],
+    "reference_row_widths": [
+      306.859375,
+      306.09375,
+      179.0625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 112
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-original",
+    "language": "th",
+    "width": 375.0,
+    "text": "เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน",
+    "lines": [
+      "เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์",
+      "เดรัจฉาน เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูง",
+      "สัตว์เดรัจฉาน"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      30,
+      63,
+      75,
+      94,
+      106,
+      121,
+      130,
+      145,
+      170,
+      182,
+      200,
+      233,
+      245,
+      264,
+      276,
+      291,
+      300,
+      315,
+      339
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      30,
+      63,
+      75,
+      94,
+      106,
+      121,
+      130,
+      145,
+      170,
+      182,
+      200,
+      233,
+      245,
+      264,
+      276,
+      291,
+      300,
+      315,
+      339
+    ],
+    "row_widths": [
+      335.7500305175781,
+      371.5178527832031,
+      89.148193359375
+    ],
+    "reference_lines": [
+      "เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์",
+      "เดรัจฉาน เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูง",
+      "สัตว์เดรัจฉาน"
+    ],
+    "reference_row_widths": [
+      335.75,
+      371.53125,
+      89.15625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 112
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 3
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-original",
+    "language": "th",
+    "width": 650.0,
+    "text": "เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน",
+    "lines": [
+      "เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่า",
+      "บรรดาฝูงสัตว์เดรัจฉาน"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      30,
+      63,
+      75,
+      94,
+      106,
+      121,
+      130,
+      145,
+      170,
+      182,
+      200,
+      233,
+      245,
+      264,
+      276,
+      291,
+      300,
+      315,
+      339
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      30,
+      63,
+      75,
+      94,
+      106,
+      121,
+      130,
+      145,
+      170,
+      182,
+      200,
+      233,
+      245,
+      264,
+      276,
+      291,
+      300,
+      315,
+      339
+    ],
+    "row_widths": [
+      642.8208618164062,
+      153.59521484375
+    ],
+    "reference_lines": [
+      "เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่า",
+      "บรรดาฝูงสัตว์เดรัจฉาน"
+    ],
+    "reference_row_widths": [
+      642.828125,
+      153.609375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 112
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 3
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-repeat",
+    "language": "th",
+    "width": 112.0,
+    "text": "ภาษาไทยภาษาไทย",
+    "lines": [
+      "ภาษาไทยภาษา",
+      "ไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42
+    ],
+    "row_widths": [
+      95.48899841308594,
+      25.618995666503906
+    ],
+    "reference_lines": [
+      "ภาษาไทยภาษา",
+      "ไทย"
+    ],
+    "reference_row_widths": [
+      95.5,
+      25.625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-repeat",
+    "language": "th",
+    "width": 160.0,
+    "text": "ภาษาไทยภาษาไทย",
+    "lines": [
+      "ภาษาไทยภาษาไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42
+    ],
+    "row_widths": [
+      121.10799407958984
+    ],
+    "reference_lines": [
+      "ภาษาไทยภาษาไทย"
+    ],
+    "reference_row_widths": [
+      121.109375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-repeat",
+    "language": "th",
+    "width": 225.0,
+    "text": "ภาษาไทยภาษาไทย",
+    "lines": [
+      "ภาษาไทยภาษาไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42
+    ],
+    "row_widths": [
+      121.10799407958984
+    ],
+    "reference_lines": [
+      "ภาษาไทยภาษาไทย"
+    ],
+    "reference_row_widths": [
+      121.109375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-repeat",
+    "language": "th",
+    "width": 320.0,
+    "text": "ภาษาไทยภาษาไทย",
+    "lines": [
+      "ภาษาไทยภาษาไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42
+    ],
+    "row_widths": [
+      121.10799407958984
+    ],
+    "reference_lines": [
+      "ภาษาไทยภาษาไทย"
+    ],
+    "reference_row_widths": [
+      121.109375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-repeat",
+    "language": "th",
+    "width": 375.0,
+    "text": "ภาษาไทยภาษาไทย",
+    "lines": [
+      "ภาษาไทยภาษาไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42
+    ],
+    "row_widths": [
+      121.10799407958984
+    ],
+    "reference_lines": [
+      "ภาษาไทยภาษาไทย"
+    ],
+    "reference_row_widths": [
+      121.109375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-repeat",
+    "language": "th",
+    "width": 650.0,
+    "text": "ภาษาไทยภาษาไทย",
+    "lines": [
+      "ภาษาไทยภาษาไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      21,
+      33,
+      42
+    ],
+    "row_widths": [
+      121.10799407958984
+    ],
+    "reference_lines": [
+      "ภาษาไทยภาษาไทย"
+    ],
+    "reference_row_widths": [
+      121.109375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-grapheme",
+    "language": "th",
+    "width": 112.0,
+    "text": "ตามที่กล่าวมาแล้ว",
+    "lines": [
+      "ตามที่กล่าวมา",
+      "แล้ว"
+    ],
+    "stock_breaks": [
+      0,
+      9,
+      18,
+      33,
+      39,
+      51
+    ],
+    "candidate_breaks": [
+      0,
+      9,
+      18,
+      33,
+      39,
+      51
+    ],
+    "row_widths": [
+      91.01800537109375,
+      27.55699920654297
+    ],
+    "reference_lines": [
+      "ตามที่กล่าวมา",
+      "แล้ว"
+    ],
+    "reference_row_widths": [
+      91.03125,
+      27.5625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 17
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-grapheme",
+    "language": "th",
+    "width": 160.0,
+    "text": "ตามที่กล่าวมาแล้ว",
+    "lines": [
+      "ตามที่กล่าวมาแล้ว"
+    ],
+    "stock_breaks": [
+      0,
+      9,
+      18,
+      33,
+      39,
+      51
+    ],
+    "candidate_breaks": [
+      0,
+      9,
+      18,
+      33,
+      39,
+      51
+    ],
+    "row_widths": [
+      118.57500457763672
+    ],
+    "reference_lines": [
+      "ตามที่กล่าวมาแล้ว"
+    ],
+    "reference_row_widths": [
+      118.578125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 17
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-grapheme",
+    "language": "th",
+    "width": 225.0,
+    "text": "ตามที่กล่าวมาแล้ว",
+    "lines": [
+      "ตามที่กล่าวมาแล้ว"
+    ],
+    "stock_breaks": [
+      0,
+      9,
+      18,
+      33,
+      39,
+      51
+    ],
+    "candidate_breaks": [
+      0,
+      9,
+      18,
+      33,
+      39,
+      51
+    ],
+    "row_widths": [
+      118.57500457763672
+    ],
+    "reference_lines": [
+      "ตามที่กล่าวมาแล้ว"
+    ],
+    "reference_row_widths": [
+      118.578125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 17
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-grapheme",
+    "language": "th",
+    "width": 320.0,
+    "text": "ตามที่กล่าวมาแล้ว",
+    "lines": [
+      "ตามที่กล่าวมาแล้ว"
+    ],
+    "stock_breaks": [
+      0,
+      9,
+      18,
+      33,
+      39,
+      51
+    ],
+    "candidate_breaks": [
+      0,
+      9,
+      18,
+      33,
+      39,
+      51
+    ],
+    "row_widths": [
+      118.57500457763672
+    ],
+    "reference_lines": [
+      "ตามที่กล่าวมาแล้ว"
+    ],
+    "reference_row_widths": [
+      118.578125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 17
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-grapheme",
+    "language": "th",
+    "width": 375.0,
+    "text": "ตามที่กล่าวมาแล้ว",
+    "lines": [
+      "ตามที่กล่าวมาแล้ว"
+    ],
+    "stock_breaks": [
+      0,
+      9,
+      18,
+      33,
+      39,
+      51
+    ],
+    "candidate_breaks": [
+      0,
+      9,
+      18,
+      33,
+      39,
+      51
+    ],
+    "row_widths": [
+      118.57500457763672
+    ],
+    "reference_lines": [
+      "ตามที่กล่าวมาแล้ว"
+    ],
+    "reference_row_widths": [
+      118.578125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 17
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-grapheme",
+    "language": "th",
+    "width": 650.0,
+    "text": "ตามที่กล่าวมาแล้ว",
+    "lines": [
+      "ตามที่กล่าวมาแล้ว"
+    ],
+    "stock_breaks": [
+      0,
+      9,
+      18,
+      33,
+      39,
+      51
+    ],
+    "candidate_breaks": [
+      0,
+      9,
+      18,
+      33,
+      39,
+      51
+    ],
+    "row_widths": [
+      118.57500457763672
+    ],
+    "reference_lines": [
+      "ตามที่กล่าวมาแล้ว"
+    ],
+    "reference_row_widths": [
+      118.578125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 17
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-wordjoiner",
+    "language": "th",
+    "width": 112.0,
+    "text": "ก⁠รุ⁠ง",
+    "lines": [
+      "ก⁠รุ⁠ง"
+    ],
+    "stock_breaks": [
+      0,
+      18
+    ],
+    "candidate_breaks": [
+      0,
+      18
+    ],
+    "row_widths": [
+      27.625001907348633
+    ],
+    "reference_lines": [
+      "ก⁠รุ⁠ง"
+    ],
+    "reference_row_widths": [
+      27.625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-wordjoiner",
+    "language": "th",
+    "width": 160.0,
+    "text": "ก⁠รุ⁠ง",
+    "lines": [
+      "ก⁠รุ⁠ง"
+    ],
+    "stock_breaks": [
+      0,
+      18
+    ],
+    "candidate_breaks": [
+      0,
+      18
+    ],
+    "row_widths": [
+      27.625001907348633
+    ],
+    "reference_lines": [
+      "ก⁠รุ⁠ง"
+    ],
+    "reference_row_widths": [
+      27.625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-wordjoiner",
+    "language": "th",
+    "width": 225.0,
+    "text": "ก⁠รุ⁠ง",
+    "lines": [
+      "ก⁠รุ⁠ง"
+    ],
+    "stock_breaks": [
+      0,
+      18
+    ],
+    "candidate_breaks": [
+      0,
+      18
+    ],
+    "row_widths": [
+      27.625001907348633
+    ],
+    "reference_lines": [
+      "ก⁠รุ⁠ง"
+    ],
+    "reference_row_widths": [
+      27.625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-wordjoiner",
+    "language": "th",
+    "width": 320.0,
+    "text": "ก⁠รุ⁠ง",
+    "lines": [
+      "ก⁠รุ⁠ง"
+    ],
+    "stock_breaks": [
+      0,
+      18
+    ],
+    "candidate_breaks": [
+      0,
+      18
+    ],
+    "row_widths": [
+      27.625001907348633
+    ],
+    "reference_lines": [
+      "ก⁠รุ⁠ง"
+    ],
+    "reference_row_widths": [
+      27.625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-wordjoiner",
+    "language": "th",
+    "width": 375.0,
+    "text": "ก⁠รุ⁠ง",
+    "lines": [
+      "ก⁠รุ⁠ง"
+    ],
+    "stock_breaks": [
+      0,
+      18
+    ],
+    "candidate_breaks": [
+      0,
+      18
+    ],
+    "row_widths": [
+      27.625001907348633
+    ],
+    "reference_lines": [
+      "ก⁠รุ⁠ง"
+    ],
+    "reference_row_widths": [
+      27.625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-wordjoiner",
+    "language": "th",
+    "width": 650.0,
+    "text": "ก⁠รุ⁠ง",
+    "lines": [
+      "ก⁠รุ⁠ง"
+    ],
+    "stock_breaks": [
+      0,
+      18
+    ],
+    "candidate_breaks": [
+      0,
+      18
+    ],
+    "row_widths": [
+      27.625001907348633
+    ],
+    "reference_lines": [
+      "ก⁠รุ⁠ง"
+    ],
+    "reference_row_widths": [
+      27.625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-prefix",
+    "language": "th",
+    "width": 112.0,
+    "text": "ผู้ใช้ส",
+    "lines": [
+      "ผู้ใช้ส"
+    ],
+    "stock_breaks": [
+      0,
+      9,
+      18,
+      21
+    ],
+    "candidate_breaks": [
+      0,
+      9,
+      18,
+      21
+    ],
+    "row_widths": [
+      34.79900360107422
+    ],
+    "reference_lines": [
+      "ผู้ใช้ส"
+    ],
+    "reference_row_widths": [
+      34.8125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 7
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-prefix",
+    "language": "th",
+    "width": 160.0,
+    "text": "ผู้ใช้ส",
+    "lines": [
+      "ผู้ใช้ส"
+    ],
+    "stock_breaks": [
+      0,
+      9,
+      18,
+      21
+    ],
+    "candidate_breaks": [
+      0,
+      9,
+      18,
+      21
+    ],
+    "row_widths": [
+      34.79900360107422
+    ],
+    "reference_lines": [
+      "ผู้ใช้ส"
+    ],
+    "reference_row_widths": [
+      34.8125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 7
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-prefix",
+    "language": "th",
+    "width": 225.0,
+    "text": "ผู้ใช้ส",
+    "lines": [
+      "ผู้ใช้ส"
+    ],
+    "stock_breaks": [
+      0,
+      9,
+      18,
+      21
+    ],
+    "candidate_breaks": [
+      0,
+      9,
+      18,
+      21
+    ],
+    "row_widths": [
+      34.79900360107422
+    ],
+    "reference_lines": [
+      "ผู้ใช้ส"
+    ],
+    "reference_row_widths": [
+      34.8125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 7
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-prefix",
+    "language": "th",
+    "width": 320.0,
+    "text": "ผู้ใช้ส",
+    "lines": [
+      "ผู้ใช้ส"
+    ],
+    "stock_breaks": [
+      0,
+      9,
+      18,
+      21
+    ],
+    "candidate_breaks": [
+      0,
+      9,
+      18,
+      21
+    ],
+    "row_widths": [
+      34.79900360107422
+    ],
+    "reference_lines": [
+      "ผู้ใช้ส"
+    ],
+    "reference_row_widths": [
+      34.8125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 7
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-prefix",
+    "language": "th",
+    "width": 375.0,
+    "text": "ผู้ใช้ส",
+    "lines": [
+      "ผู้ใช้ส"
+    ],
+    "stock_breaks": [
+      0,
+      9,
+      18,
+      21
+    ],
+    "candidate_breaks": [
+      0,
+      9,
+      18,
+      21
+    ],
+    "row_widths": [
+      34.79900360107422
+    ],
+    "reference_lines": [
+      "ผู้ใช้ส"
+    ],
+    "reference_row_widths": [
+      34.8125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 7
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-icu-prefix",
+    "language": "th",
+    "width": 650.0,
+    "text": "ผู้ใช้ส",
+    "lines": [
+      "ผู้ใช้ส"
+    ],
+    "stock_breaks": [
+      0,
+      9,
+      18,
+      21
+    ],
+    "candidate_breaks": [
+      0,
+      9,
+      18,
+      21
+    ],
+    "row_widths": [
+      34.79900360107422
+    ],
+    "reference_lines": [
+      "ผู้ใช้ส"
+    ],
+    "reference_row_widths": [
+      34.8125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 7
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-punct",
+    "language": "th",
+    "width": 112.0,
+    "text": "(ภาษาไทย), ไทย! 2026",
+    "lines": [
+      "(ภาษาไทย), ไทย! ",
+      "2026"
+    ],
+    "stock_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "candidate_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "row_widths": [
+      114.34198760986328,
+      38.896018981933594
+    ],
+    "reference_lines": [
+      "(ภาษาไทย), ไทย! ",
+      "2026"
+    ],
+    "reference_row_widths": [
+      109.921875,
+      38.90625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 9
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-punct",
+    "language": "th",
+    "width": 160.0,
+    "text": "(ภาษาไทย), ไทย! 2026",
+    "lines": [
+      "(ภาษาไทย), ไทย! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "candidate_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "row_widths": [
+      153.23800659179688
+    ],
+    "reference_lines": [
+      "(ภาษาไทย), ไทย! 2026"
+    ],
+    "reference_row_widths": [
+      153.25
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-punct",
+    "language": "th",
+    "width": 225.0,
+    "text": "(ภาษาไทย), ไทย! 2026",
+    "lines": [
+      "(ภาษาไทย), ไทย! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "candidate_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "row_widths": [
+      153.23800659179688
+    ],
+    "reference_lines": [
+      "(ภาษาไทย), ไทย! 2026"
+    ],
+    "reference_row_widths": [
+      153.25
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-punct",
+    "language": "th",
+    "width": 320.0,
+    "text": "(ภาษาไทย), ไทย! 2026",
+    "lines": [
+      "(ภาษาไทย), ไทย! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "candidate_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "row_widths": [
+      153.23800659179688
+    ],
+    "reference_lines": [
+      "(ภาษาไทย), ไทย! 2026"
+    ],
+    "reference_row_widths": [
+      153.25
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-punct",
+    "language": "th",
+    "width": 375.0,
+    "text": "(ภาษาไทย), ไทย! 2026",
+    "lines": [
+      "(ภาษาไทย), ไทย! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "candidate_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "row_widths": [
+      153.23800659179688
+    ],
+    "reference_lines": [
+      "(ภาษาไทย), ไทย! 2026"
+    ],
+    "reference_row_widths": [
+      153.25
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-punct",
+    "language": "th",
+    "width": 650.0,
+    "text": "(ภาษาไทย), ไทย! 2026",
+    "lines": [
+      "(ภาษาไทย), ไทย! 2026"
+    ],
+    "stock_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "candidate_breaks": [
+      0,
+      13,
+      25,
+      36,
+      40
+    ],
+    "row_widths": [
+      153.23800659179688
+    ],
+    "reference_lines": [
+      "(ภาษาไทย), ไทย! 2026"
+    ],
+    "reference_row_widths": [
+      153.25
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 10
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-nbsp",
+    "language": "th",
+    "width": 112.0,
+    "text": "ภาษาไทย ภาษาไทย",
+    "lines": [
+      "ภาษาไทย ภาษา",
+      "ไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "row_widths": [
+      99.90899658203125,
+      25.618995666503906
+    ],
+    "reference_lines": [
+      "ภาษาไทย ภาษา",
+      "ไทย"
+    ],
+    "reference_row_widths": [
+      99.921875,
+      25.625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-nbsp",
+    "language": "th",
+    "width": 160.0,
+    "text": "ภาษาไทย ภาษาไทย",
+    "lines": [
+      "ภาษาไทย ภาษาไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "row_widths": [
+      125.52799224853516
+    ],
+    "reference_lines": [
+      "ภาษาไทย ภาษาไทย"
+    ],
+    "reference_row_widths": [
+      125.53125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-nbsp",
+    "language": "th",
+    "width": 225.0,
+    "text": "ภาษาไทย ภาษาไทย",
+    "lines": [
+      "ภาษาไทย ภาษาไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "row_widths": [
+      125.52799224853516
+    ],
+    "reference_lines": [
+      "ภาษาไทย ภาษาไทย"
+    ],
+    "reference_row_widths": [
+      125.53125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-nbsp",
+    "language": "th",
+    "width": 320.0,
+    "text": "ภาษาไทย ภาษาไทย",
+    "lines": [
+      "ภาษาไทย ภาษาไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "row_widths": [
+      125.52799224853516
+    ],
+    "reference_lines": [
+      "ภาษาไทย ภาษาไทย"
+    ],
+    "reference_row_widths": [
+      125.53125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-nbsp",
+    "language": "th",
+    "width": 375.0,
+    "text": "ภาษาไทย ภาษาไทย",
+    "lines": [
+      "ภาษาไทย ภาษาไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "row_widths": [
+      125.52799224853516
+    ],
+    "reference_lines": [
+      "ภาษาไทย ภาษาไทย"
+    ],
+    "reference_row_widths": [
+      125.53125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-nbsp",
+    "language": "th",
+    "width": 650.0,
+    "text": "ภาษาไทย ภาษาไทย",
+    "lines": [
+      "ภาษาไทย ภาษาไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      35,
+      44
+    ],
+    "row_widths": [
+      125.52799224853516
+    ],
+    "reference_lines": [
+      "ภาษาไทย ภาษาไทย"
+    ],
+    "reference_row_widths": [
+      125.53125
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-zwsp",
+    "language": "th",
+    "width": 112.0,
+    "text": "ภาษาไทย​ภาษาไทย",
+    "lines": [
+      "ภาษาไทย​ภาษา",
+      "ไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "row_widths": [
+      95.48899841308594,
+      25.619003295898438
+    ],
+    "reference_lines": [
+      "ภาษาไทย​ภาษา",
+      "ไทย"
+    ],
+    "reference_row_widths": [
+      95.5,
+      25.625
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-zwsp",
+    "language": "th",
+    "width": 160.0,
+    "text": "ภาษาไทย​ภาษาไทย",
+    "lines": [
+      "ภาษาไทย​ภาษาไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "row_widths": [
+      121.10800170898438
+    ],
+    "reference_lines": [
+      "ภาษาไทย​ภาษาไทย"
+    ],
+    "reference_row_widths": [
+      121.109375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-zwsp",
+    "language": "th",
+    "width": 225.0,
+    "text": "ภาษาไทย​ภาษาไทย",
+    "lines": [
+      "ภาษาไทย​ภาษาไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "row_widths": [
+      121.10800170898438
+    ],
+    "reference_lines": [
+      "ภาษาไทย​ภาษาไทย"
+    ],
+    "reference_row_widths": [
+      121.109375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-zwsp",
+    "language": "th",
+    "width": 320.0,
+    "text": "ภาษาไทย​ภาษาไทย",
+    "lines": [
+      "ภาษาไทย​ภาษาไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "row_widths": [
+      121.10800170898438
+    ],
+    "reference_lines": [
+      "ภาษาไทย​ภาษาไทย"
+    ],
+    "reference_row_widths": [
+      121.109375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-zwsp",
+    "language": "th",
+    "width": 375.0,
+    "text": "ภาษาไทย​ภาษาไทย",
+    "lines": [
+      "ภาษาไทย​ภาษาไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "row_widths": [
+      121.10800170898438
+    ],
+    "reference_lines": [
+      "ภาษาไทย​ภาษาไทย"
+    ],
+    "reference_row_widths": [
+      121.109375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "id": "th-synthetic-zwsp",
+    "language": "th",
+    "width": 650.0,
+    "text": "ภาษาไทย​ภาษาไทย",
+    "lines": [
+      "ภาษาไทย​ภาษาไทย"
+    ],
+    "stock_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "candidate_breaks": [
+      0,
+      12,
+      24,
+      36,
+      45
+    ],
+    "row_widths": [
+      121.10800170898438
+    ],
+    "reference_lines": [
+      "ภาษาไทย​ภาษาไทย"
+    ],
+    "reference_row_widths": [
+      121.109375
+    ],
+    "reference_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 14
+        },
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ]
+    },
+    "match": true
+  }
+]

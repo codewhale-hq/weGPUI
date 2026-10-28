@@ -40,3 +40,17 @@ its own source. Windows UI remains outside the owner's scope; hosted final CI, r
 IME, hardware and mobile acceptance remain open. The macOS gallery is 64,491,432 bytes,
 372,560 bytes above the earlier `c343621` gallery; the delta includes other intervening
 changes and is not solely attributable to the dictionaries.
+
+The wider [192-case comparison](extended/summary.json) covers 32 attributed inputs
+at six widths, including mixed punctuation and spacing. It matches 189 normalized
+row sequences: all 48 sampled Lao, Myanmar and Thai cases each match; Khmer matches
+45 of 48. Two widths of `km-icu-rights` and one of `km-icu-prefix` differ. The
+[full results](extended/comparison.json), [corpus](extended/corpus.json), screenshots
+and probe/driver files are retained. The corpus is not linguistically reviewed or
+comprehensive. The subsequent website update passes selected [local shell and theme
+checks](website/extended/summary.json) on both mount paths.
+
+The [live website](https://codewhale-hq.github.io/weGPUI/) was published from
+`1c633f9c1d24cf0180e2dd9336f5d05d2f4a6007` by [Pages run 40656436658](https://github.com/codewhale-hq/weGPUI/actions/runs/40656436658).
+Its clean source identity and selected [live shell and theme checks](website/live-1c633f9.json)
+pass; they do not qualify native GPUI.

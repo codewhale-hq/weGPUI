@@ -1,0 +1,204 @@
+{
+  "cases": [
+    {
+      "id": "km-original",
+      "language": "km",
+      "text": "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា",
+      "source": "previous-capture"
+    },
+    {
+      "id": "km-icu-rights",
+      "language": "km",
+      "text": "សេចក្ដីប្រកាសជាសកលស្ដីពីសិទ្ធិមនុស្ស",
+      "source": "icu4x-2.4.0-LineBreakDictionary.txt"
+    },
+    {
+      "id": "km-icu-repeat",
+      "language": "km",
+      "text": "ភាសាខ្មែរភាសាខ្មែរភាសាខ្មែរ",
+      "source": "icu4x-2.4.0-LineBreakDictionary.txt"
+    },
+    {
+      "id": "km-icu-spaces",
+      "language": "km",
+      "text": "អស់ នឹង មាន",
+      "source": "icu4x-2.4.0-LineBreakDictionary.txt"
+    },
+    {
+      "id": "km-icu-prefix",
+      "language": "km",
+      "text": "ព្រះរាជាណាចក្រកម្ពុជាជាប",
+      "source": "icu4x-2.4.0-LineBreakDictionary.txt"
+    },
+    {
+      "id": "km-synthetic-punct",
+      "language": "km",
+      "text": "(ភាសាខ្មែរ), កម្ពុជា! 2026",
+      "source": "synthetic-icu-derived"
+    },
+    {
+      "id": "km-synthetic-nbsp",
+      "language": "km",
+      "text": "ភាសាខ្មែរ ភាសាខ្មែរ",
+      "source": "synthetic-icu-derived"
+    },
+    {
+      "id": "km-synthetic-zwsp",
+      "language": "km",
+      "text": "ភាសាខ្មែរ​ភាសាខ្មែរ",
+      "source": "synthetic-icu-derived"
+    },
+    {
+      "id": "lo-original",
+      "language": "lo",
+      "text": "ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ ພາສາລາວແມ່ນພາສາທາງການຂອງປະເທດລາວ",
+      "source": "previous-capture"
+    },
+    {
+      "id": "lo-icu-rights",
+      "language": "lo",
+      "text": "ກ່ຽວກັບສິດຂອງມະນຸດ",
+      "source": "icu4x-2.4.0-LineBreakDictionary.txt"
+    },
+    {
+      "id": "lo-icu-repeat",
+      "language": "lo",
+      "text": "ພາສາລາວພາສາລາວພາສາລາວ",
+      "source": "icu4x-2.4.0-LineBreakDictionary.txt"
+    },
+    {
+      "id": "lo-icu-prefix",
+      "language": "lo",
+      "text": "ປະເທດລາວມີພົນລ",
+      "source": "icu4x-2.4.0-LineBreakDictionary.txt"
+    },
+    {
+      "id": "lo-synthetic-punct",
+      "language": "lo",
+      "text": "(ພາສາລາວ), ສິດ! 2026",
+      "source": "synthetic-icu-derived"
+    },
+    {
+      "id": "lo-synthetic-nbsp",
+      "language": "lo",
+      "text": "ພາສາລາວ ພາສາລາວ",
+      "source": "synthetic-icu-derived"
+    },
+    {
+      "id": "lo-synthetic-zwsp",
+      "language": "lo",
+      "text": "ພາສາລາວ​ພາສາລາວ",
+      "source": "synthetic-icu-derived"
+    },
+    {
+      "id": "lo-synthetic-latin",
+      "language": "lo",
+      "text": "ພາສາລາວ GPUI ສິດ",
+      "source": "synthetic-icu-derived"
+    },
+    {
+      "id": "my-original",
+      "language": "my",
+      "text": "မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည် မြန်မာဘာသာသည်မြန်မာနိုင်ငံ၏ရုံးသုံးဘာသာစကားဖြစ်သည်",
+      "source": "previous-capture"
+    },
+    {
+      "id": "my-icu-language",
+      "language": "my",
+      "text": "မြန်မာဘာသာစကား",
+      "source": "icu4x-2.4.0-LineBreakDictionary.txt"
+    },
+    {
+      "id": "my-icu-repeat",
+      "language": "my",
+      "text": "မြန်မာစာမြန်မာစာမြန်မာစာ",
+      "source": "icu4x-2.4.0-LineBreakDictionary.txt"
+    },
+    {
+      "id": "my-icu-prefix",
+      "language": "my",
+      "text": "မြန်မာန",
+      "source": "icu4x-2.4.0-LineBreakDictionary.txt"
+    },
+    {
+      "id": "my-synthetic-punct",
+      "language": "my",
+      "text": "(မြန်မာစာ), မြန်မာ! 2026",
+      "source": "synthetic-icu-derived"
+    },
+    {
+      "id": "my-synthetic-nbsp",
+      "language": "my",
+      "text": "မြန်မာစာ မြန်မာစာ",
+      "source": "synthetic-icu-derived"
+    },
+    {
+      "id": "my-synthetic-zwsp",
+      "language": "my",
+      "text": "မြန်မာစာ​မြန်မာစာ",
+      "source": "synthetic-icu-derived"
+    },
+    {
+      "id": "my-synthetic-latin",
+      "language": "my",
+      "text": "မြန်မာစာ GPUI မြန်မာ",
+      "source": "synthetic-icu-derived"
+    },
+    {
+      "id": "th-original",
+      "language": "th",
+      "text": "เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน เป็นมนุษย์สุดประเสริฐเลิศคุณค่า กว่าบรรดาฝูงสัตว์เดรัจฉาน",
+      "source": "previous-capture"
+    },
+    {
+      "id": "th-icu-repeat",
+      "language": "th",
+      "text": "ภาษาไทยภาษาไทย",
+      "source": "icu4x-2.4.0-LineBreakDictionary.txt"
+    },
+    {
+      "id": "th-icu-grapheme",
+      "language": "th",
+      "text": "ตามที่กล่าวมาแล้ว",
+      "source": "icu4x-2.4.0-LineBreakDictionary.txt"
+    },
+    {
+      "id": "th-icu-wordjoiner",
+      "language": "th",
+      "text": "ก⁠รุ⁠ง",
+      "source": "icu4x-2.4.0-LineBreakDictionary.txt"
+    },
+    {
+      "id": "th-icu-prefix",
+      "language": "th",
+      "text": "ผู้ใช้ส",
+      "source": "icu4x-2.4.0-LineBreakDictionary.txt"
+    },
+    {
+      "id": "th-synthetic-punct",
+      "language": "th",
+      "text": "(ภาษาไทย), ไทย! 2026",
+      "source": "synthetic-icu-derived"
+    },
+    {
+      "id": "th-synthetic-nbsp",
+      "language": "th",
+      "text": "ภาษาไทย ภาษาไทย",
+      "source": "synthetic-icu-derived"
+    },
+    {
+      "id": "th-synthetic-zwsp",
+      "language": "th",
+      "text": "ภาษาไทย​ภาษาไทย",
+      "source": "synthetic-icu-derived"
+    }
+  ],
+  "widths": [
+    112,
+    160,
+    225,
+    320,
+    375,
+    650
+  ]
+}
