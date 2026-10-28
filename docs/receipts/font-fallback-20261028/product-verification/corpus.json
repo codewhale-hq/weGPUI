@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "id": "arabic",
+      "language": "ar",
+      "text": "Hello العربية 123",
+      "exact_icu4c_boundaries": [],
+      "source": "artifact"
+    },
+    {
+      "id": "emoji",
+      "language": "en",
+      "text": "Hello 😀 world",
+      "exact_icu4c_boundaries": [],
+      "source": "artifact"
+    },
+    {
+      "id": "control",
+      "language": "en",
+      "text": "ordinary latin text",
+      "exact_icu4c_boundaries": [],
+      "source": "artifact"
+    },
+    {
+      "id": "hebrew",
+      "language": "he",
+      "text": "Hello עברית 123",
+      "exact_icu4c_boundaries": [],
+      "source": "artifact"
+    }
+  ],
+  "widths": [
+    64,
+    400
+  ]
+}

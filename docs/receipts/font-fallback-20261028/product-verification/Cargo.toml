@@ -1,0 +1,24 @@
+[package]
+name = "wegpui-fallback-product-probe"
+version = "0.0.0"
+edition = "2024"
+[dependencies]
+wegpui = { path = "/src" }
+gpui = { package = "gpui-pre", version = "=0.3.9" }
+gpui_platform = { package = "gpui-pre-platform", version = "=0.3.9", features = ["font-kit", "x11", "wayland"] }
+serde_json = "=1.0.154"
+icu_segmenter = { version = "=2.4.0", default-features = false, features = ["compiled_data"] }
+icu_collections = "=2.4.0"
+icu_properties = "=2.4.0"
+icu_provider = "=2.4.0"
+zerovec = "=0.11.9"
+[patch.crates-io]
+gpui-pre = { path = "/src/vendor/gpui_pre" }
+gpui-pre-linux = { path = "/src/vendor/gpui_pre_linux" }
+gpui-pre-ios = { path = "/src/vendor/gpui_pre_ios" }
+accesskit_unix = { path = "/src/vendor/accesskit_unix" }
+accesskit_atspi_common = { path = "/src/vendor/accesskit_atspi_common" }
+[profile.dev]
+debug = 1
+[profile.dev.package."*"]
+debug = 0
