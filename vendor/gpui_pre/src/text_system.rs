@@ -376,6 +376,15 @@ impl TextSystem {
         if let Ok(font_id) = self.font_id(font) {
             return font_id;
         }
+        if font.fallbacks.is_some() {
+            for fallback in &self.fallback_font_stack {
+                let mut configured = fallback.clone();
+                configured.fallbacks = font.fallbacks.clone();
+                if let Ok(font_id) = self.font_id(&configured) {
+                    return font_id;
+                }
+            }
+        }
         for fallback in &self.fallback_font_stack {
             if let Ok(font_id) = self.font_id(fallback) {
                 return font_id;

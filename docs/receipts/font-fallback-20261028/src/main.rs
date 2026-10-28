@@ -1,0 +1,140 @@
+use gpui::{prelude::*, *};
+#[path = "/work/full-parity/dictionary-context-ab/src/browser_dictionary_fixture.rs"]
+mod browser_dictionary;
+#[path = "/src/examples/support/platform.rs"]
+mod platform;
+
+struct Probe;
+
+impl Render for Probe {
+    fn render(&mut self, window: &mut Window, _: &mut Context<Self>) -> impl IntoElement {
+        let corpus: serde_json::Value = serde_json::from_str(
+            &std::fs::read_to_string(
+                std::env::var("WEGPUI_RENDER_CORPUS")
+                    .unwrap_or_else(|_| "/work/full-parity/dictionary-context-ab/corpus.json".to_string()),
+            )
+            .unwrap(),
+        )
+        .unwrap();
+        let mut results = Vec::new();
+        let mut previewed = std::collections::HashSet::new();
+        let mut root = div()
+            .size_full()
+            .p(px(16.))
+            .flex()
+            .gap(px(16.))
+            .bg(rgb(0xffffff))
+            .text_color(rgb(0))
+            .font_family(".SystemUIFont")
+            .text_size(px(17.))
+            .line_height(relative(1.4));
+        let stock = icu_segmenter::LineSegmenter::new_dictionary(Default::default());
+        for case in corpus["cases"].as_array().unwrap() {
+            let id = case["id"].as_str().unwrap();
+            let language = case["language"].as_str().unwrap();
+            let text = case["text"].as_str().unwrap();
+            let family = if std::env::var_os("WEGPUI_EXPLICIT_SANS").is_some() { "Noto Sans" } else { ".SystemUIFont" };
+            let runs = [TextRun {
+                len: text.len(),
+                font: { let mut f = font(family); if let Ok(fallback) = std::env::var("WEGPUI_TEST_FALLBACK") { f.fallbacks = Some(FontFallbacks::from_fonts(vec![fallback])); } f },
+                color: rgb(0).into(),
+                background_color: None,
+                underline: None,
+                strikethrough: None,
+            }];
+            let stock_breaks: Vec<_> = stock.segment_str(text).collect();
+            let candidate_breaks = browser_dictionary::break_indices(text);
+            for width in corpus["widths"].as_array().unwrap() {
+                let width = width.as_f64().unwrap() as f32;
+                let line = window
+                    .text_system()
+                    .shape_text_with_overflow_wrap(
+                        text.into(),
+                        px(17.),
+                        &runs,
+                        Some(px(width)),
+                        None,
+                        OverflowWrap::Normal,
+                    )
+                    .unwrap()
+                    .remove(0);
+                let rows: Vec<_> = (0..=line.wrap_boundaries.len())
+                    .map(|i| {
+                        let start = line.wrapped_line_start_index(i);
+                        let end = if i < line.wrap_boundaries.len() {
+                            line.wrapped_line_start_index(i + 1)
+                        } else {
+                            text.len()
+                        };
+                        text[start..end].to_owned()
+                    })
+                    .collect();
+                let text_system = window.text_system();
+                let known_families = [".SystemUIFont", "Noto Sans", "Noto Color Emoji", "Noto Sans Myanmar", "Noto Sans Khmer", "Noto Sans Thai", "Noto Sans Lao"];
+                let known_ids: Vec<_> = known_families.iter().map(|family| (family, text_system.resolve_font(&font(*family)))).collect();
+                let shaped_runs: Vec<_> = line.unwrapped_layout.runs.iter().map(|run| serde_json::json!({
+                    "font_id": format!("{:?}", run.font_id),
+                    "known_family_ids": known_ids.iter().filter(|(_, id)| *id == run.font_id).map(|(family, _)| *family).collect::<Vec<_>>(),
+                    "glyphs": run.glyphs.iter().map(|g| serde_json::json!({"glyph_id": format!("{:?}", g.id), "index":g.index, "x":g.position.x.as_f32(), "y":g.position.y.as_f32(), "emoji":g.is_emoji})).collect::<Vec<_>>()
+                })).collect();
+                results.push(serde_json::json!({
+                    "id": id,
+                    "language": language,
+                    "width": width,
+                    "text": text,
+                    "lines": rows,
+                    "stock_breaks": stock_breaks,
+                    "candidate_breaks": candidate_breaks,
+                    "exact_icu4c_boundaries": case["exact_icu4c_boundaries"],
+                    "source": case["source"],
+                    "native_requested_font": family,
+                    "unwrapped_width": line.unwrapped_layout.width.as_f32(),
+                    "shaped_runs": shaped_runs,
+                    "row_widths": line.bidi_rows().iter().map(|row| row.width.as_f32()).collect::<Vec<_>>(),
+                }));
+            }
+            if previewed.insert(language.to_owned()) {
+                root = root.child(
+                    div()
+                        .flex_none()
+                        .w(px(225.))
+                        .font_family(family)
+                        .overflow_wrap(OverflowWrap::Normal)
+                        .child(
+                            div()
+                                .mb(px(12.))
+                                .font_weight(FontWeight::MEDIUM)
+                                .child(language.to_owned()),
+                        )
+                        .child(text.to_owned()),
+                );
+            }
+        }
+        std::fs::write(
+            "/work/full-parity/fallback-preservation-probe/native-diagnostic.json",
+            serde_json::to_string_pretty(&results).unwrap(),
+        )
+        .unwrap();
+        root
+    }
+}
+
+fn main() {
+    platform::application()
+        .with_assets(wegpui::Assets)
+        .run(|cx| {
+            wegpui::init(cx);
+            cx.open_window(
+                WindowOptions {
+                    window_bounds: Some(WindowBounds::Windowed(Bounds::new(
+                        point(px(30.), px(30.)),
+                        size(px(1024.), px(900.)),
+                    ))),
+                    ..Default::default()
+                },
+                |_, cx| cx.new(|_| Probe),
+            )
+            .unwrap();
+            cx.activate(true);
+        });
+}

@@ -1,0 +1,1232 @@
+[
+  {
+    "id": "arabic",
+    "language": "ar",
+    "width": 64.0,
+    "text": "Hello العربية 123",
+    "lines": [
+      "Hello ",
+      "العربية ",
+      "123"
+    ],
+    "stock_breaks": [
+      0,
+      6,
+      21,
+      24
+    ],
+    "candidate_breaks": [
+      0,
+      6,
+      21,
+      24
+    ],
+    "exact_icu4c_boundaries": [],
+    "source": "artifact",
+    "native_requested_font": ".SystemUIFont",
+    "unwrapped_width": 116.87348175048828,
+    "shaped_runs": [
+      {
+        "font_id": "FontId(2)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(43)",
+            "index": 0,
+            "x": 0.0,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(72)",
+            "index": 1,
+            "x": 12.597000122070312,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(79)",
+            "index": 2,
+            "x": 22.185001373291016,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(79)",
+            "index": 3,
+            "x": 26.571001052856445,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(82)",
+            "index": 4,
+            "x": 30.957000732421875,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      },
+      {
+        "font_id": "FontId(1)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(5262)",
+            "index": 18,
+            "x": 41.242000579833984,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(5358)",
+            "index": 16,
+            "x": 50.356258392333984,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(5259)",
+            "index": 14,
+            "x": 55.486141204833984,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(5288)",
+            "index": 12,
+            "x": 60.217586517333984,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(5318)",
+            "index": 10,
+            "x": 69.59747314453125,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(5337)",
+            "index": 8,
+            "x": 77.79864501953125,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(1365)",
+            "index": 6,
+            "x": 82.97833251953125,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      },
+      {
+        "font_id": "FontId(2)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(20)",
+            "index": 21,
+            "x": 87.70147705078125,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(21)",
+            "index": 22,
+            "x": 97.42547607421875,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(22)",
+            "index": 23,
+            "x": 107.14947509765625,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      }
+    ],
+    "row_widths": [
+      41.242000579833984,
+      46.459476470947266,
+      29.17200469970703
+    ]
+  },
+  {
+    "id": "arabic",
+    "language": "ar",
+    "width": 400.0,
+    "text": "Hello العربية 123",
+    "lines": [
+      "Hello العربية 123"
+    ],
+    "stock_breaks": [
+      0,
+      6,
+      21,
+      24
+    ],
+    "candidate_breaks": [
+      0,
+      6,
+      21,
+      24
+    ],
+    "exact_icu4c_boundaries": [],
+    "source": "artifact",
+    "native_requested_font": ".SystemUIFont",
+    "unwrapped_width": 125.7134780883789,
+    "shaped_runs": [
+      {
+        "font_id": "FontId(2)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(43)",
+            "index": 0,
+            "x": 0.0,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(72)",
+            "index": 1,
+            "x": 12.597000122070312,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(79)",
+            "index": 2,
+            "x": 22.185001373291016,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(79)",
+            "index": 3,
+            "x": 26.571001052856445,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(82)",
+            "index": 4,
+            "x": 30.957000732421875,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(3)",
+            "index": 5,
+            "x": 41.242000579833984,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(20)",
+            "index": 21,
+            "x": 45.66200256347656,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(21)",
+            "index": 22,
+            "x": 55.38600158691406,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(22)",
+            "index": 23,
+            "x": 65.11000061035156,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(3)",
+            "index": 20,
+            "x": 74.83399963378906,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      },
+      {
+        "font_id": "FontId(1)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(5262)",
+            "index": 18,
+            "x": 79.25399780273438,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(5358)",
+            "index": 16,
+            "x": 88.36825561523438,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(5259)",
+            "index": 14,
+            "x": 93.49813842773438,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(5288)",
+            "index": 12,
+            "x": 98.22958374023438,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(5318)",
+            "index": 10,
+            "x": 107.60946655273438,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(5337)",
+            "index": 8,
+            "x": 115.81063842773438,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(1365)",
+            "index": 6,
+            "x": 120.99032592773438,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      }
+    ],
+    "row_widths": [
+      125.7134780883789
+    ]
+  },
+  {
+    "id": "emoji",
+    "language": "en",
+    "width": 64.0,
+    "text": "Hello 😀 world",
+    "lines": [
+      "Hello 😀 ",
+      "world"
+    ],
+    "stock_breaks": [
+      0,
+      6,
+      11,
+      16
+    ],
+    "candidate_breaks": [
+      0,
+      6,
+      11,
+      16
+    ],
+    "exact_icu4c_boundaries": [],
+    "source": "artifact",
+    "native_requested_font": ".SystemUIFont",
+    "unwrapped_width": 113.31317138671875,
+    "shaped_runs": [
+      {
+        "font_id": "FontId(2)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(43)",
+            "index": 0,
+            "x": 0.0,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(72)",
+            "index": 1,
+            "x": 12.597000122070312,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(79)",
+            "index": 2,
+            "x": 22.185001373291016,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(79)",
+            "index": 3,
+            "x": 26.571001052856445,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(82)",
+            "index": 4,
+            "x": 30.957000732421875,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(3)",
+            "index": 5,
+            "x": 41.242000579833984,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      },
+      {
+        "font_id": "FontId(1)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(5857)",
+            "index": 6,
+            "x": 45.66200256347656,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      },
+      {
+        "font_id": "FontId(2)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(3)",
+            "index": 10,
+            "x": 63.38417053222656,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(90)",
+            "index": 11,
+            "x": 67.80416870117188,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(82)",
+            "index": 12,
+            "x": 81.16616821289062,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(85)",
+            "index": 13,
+            "x": 91.451171875,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(79)",
+            "index": 14,
+            "x": 98.47216796875,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(71)",
+            "index": 15,
+            "x": 102.85816955566406,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      }
+    ],
+    "row_widths": [
+      67.80416870117188,
+      45.509002685546875
+    ]
+  },
+  {
+    "id": "emoji",
+    "language": "en",
+    "width": 400.0,
+    "text": "Hello 😀 world",
+    "lines": [
+      "Hello 😀 world"
+    ],
+    "stock_breaks": [
+      0,
+      6,
+      11,
+      16
+    ],
+    "candidate_breaks": [
+      0,
+      6,
+      11,
+      16
+    ],
+    "exact_icu4c_boundaries": [],
+    "source": "artifact",
+    "native_requested_font": ".SystemUIFont",
+    "unwrapped_width": 113.31317138671875,
+    "shaped_runs": [
+      {
+        "font_id": "FontId(2)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(43)",
+            "index": 0,
+            "x": 0.0,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(72)",
+            "index": 1,
+            "x": 12.597000122070312,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(79)",
+            "index": 2,
+            "x": 22.185001373291016,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(79)",
+            "index": 3,
+            "x": 26.571001052856445,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(82)",
+            "index": 4,
+            "x": 30.957000732421875,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(3)",
+            "index": 5,
+            "x": 41.242000579833984,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      },
+      {
+        "font_id": "FontId(1)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(5857)",
+            "index": 6,
+            "x": 45.66200256347656,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      },
+      {
+        "font_id": "FontId(2)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(3)",
+            "index": 10,
+            "x": 63.38417053222656,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(90)",
+            "index": 11,
+            "x": 67.80416870117188,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(82)",
+            "index": 12,
+            "x": 81.16616821289062,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(85)",
+            "index": 13,
+            "x": 91.451171875,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(79)",
+            "index": 14,
+            "x": 98.47216796875,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(71)",
+            "index": 15,
+            "x": 102.85816955566406,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      }
+    ],
+    "row_widths": [
+      113.31317138671875
+    ]
+  },
+  {
+    "id": "control",
+    "language": "en",
+    "width": 64.0,
+    "text": "ordinary latin text",
+    "lines": [
+      "ordinary ",
+      "latin ",
+      "text"
+    ],
+    "stock_breaks": [
+      0,
+      9,
+      15,
+      19
+    ],
+    "candidate_breaks": [
+      0,
+      9,
+      15,
+      19
+    ],
+    "exact_icu4c_boundaries": [],
+    "source": "artifact",
+    "native_requested_font": ".SystemUIFont",
+    "unwrapped_width": 141.84799194335938,
+    "shaped_runs": [
+      {
+        "font_id": "FontId(2)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(82)",
+            "index": 0,
+            "x": 0.0,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(85)",
+            "index": 1,
+            "x": 10.28499984741211,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(71)",
+            "index": 2,
+            "x": 16.965999603271484,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(76)",
+            "index": 3,
+            "x": 27.42099952697754,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(81)",
+            "index": 4,
+            "x": 31.80699920654297,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(68)",
+            "index": 5,
+            "x": 42.3129997253418,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(85)",
+            "index": 6,
+            "x": 51.849998474121094,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(92)",
+            "index": 7,
+            "x": 58.87099838256836,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(3)",
+            "index": 8,
+            "x": 67.54100036621094,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(79)",
+            "index": 9,
+            "x": 71.96099853515625,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(68)",
+            "index": 10,
+            "x": 76.34700012207031,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(87)",
+            "index": 11,
+            "x": 85.88400268554688,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(76)",
+            "index": 12,
+            "x": 92.02100372314453,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(81)",
+            "index": 13,
+            "x": 96.4070053100586,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(3)",
+            "index": 14,
+            "x": 106.91300201416016,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(87)",
+            "index": 15,
+            "x": 111.33300018310547,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(72)",
+            "index": 16,
+            "x": 117.47000122070312,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(91)",
+            "index": 17,
+            "x": 126.71800231933594,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(87)",
+            "index": 18,
+            "x": 135.71099853515625,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      }
+    ],
+    "row_widths": [
+      71.96099853515625,
+      39.37200164794922,
+      30.514991760253906
+    ]
+  },
+  {
+    "id": "control",
+    "language": "en",
+    "width": 400.0,
+    "text": "ordinary latin text",
+    "lines": [
+      "ordinary latin text"
+    ],
+    "stock_breaks": [
+      0,
+      9,
+      15,
+      19
+    ],
+    "candidate_breaks": [
+      0,
+      9,
+      15,
+      19
+    ],
+    "exact_icu4c_boundaries": [],
+    "source": "artifact",
+    "native_requested_font": ".SystemUIFont",
+    "unwrapped_width": 141.84799194335938,
+    "shaped_runs": [
+      {
+        "font_id": "FontId(2)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(82)",
+            "index": 0,
+            "x": 0.0,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(85)",
+            "index": 1,
+            "x": 10.28499984741211,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(71)",
+            "index": 2,
+            "x": 16.965999603271484,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(76)",
+            "index": 3,
+            "x": 27.42099952697754,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(81)",
+            "index": 4,
+            "x": 31.80699920654297,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(68)",
+            "index": 5,
+            "x": 42.3129997253418,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(85)",
+            "index": 6,
+            "x": 51.849998474121094,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(92)",
+            "index": 7,
+            "x": 58.87099838256836,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(3)",
+            "index": 8,
+            "x": 67.54100036621094,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(79)",
+            "index": 9,
+            "x": 71.96099853515625,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(68)",
+            "index": 10,
+            "x": 76.34700012207031,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(87)",
+            "index": 11,
+            "x": 85.88400268554688,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(76)",
+            "index": 12,
+            "x": 92.02100372314453,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(81)",
+            "index": 13,
+            "x": 96.4070053100586,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(3)",
+            "index": 14,
+            "x": 106.91300201416016,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(87)",
+            "index": 15,
+            "x": 111.33300018310547,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(72)",
+            "index": 16,
+            "x": 117.47000122070312,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(91)",
+            "index": 17,
+            "x": 126.71800231933594,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(87)",
+            "index": 18,
+            "x": 135.71099853515625,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      }
+    ],
+    "row_widths": [
+      141.84799194335938
+    ]
+  },
+  {
+    "id": "hebrew",
+    "language": "he",
+    "width": 64.0,
+    "text": "Hello עברית 123",
+    "lines": [
+      "Hello ",
+      "עברית ",
+      "123"
+    ],
+    "stock_breaks": [
+      0,
+      6,
+      17,
+      20
+    ],
+    "candidate_breaks": [
+      0,
+      6,
+      17,
+      20
+    ],
+    "exact_icu4c_boundaries": [],
+    "source": "artifact",
+    "native_requested_font": ".SystemUIFont",
+    "unwrapped_width": 115.45404815673828,
+    "shaped_runs": [
+      {
+        "font_id": "FontId(2)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(43)",
+            "index": 0,
+            "x": 0.0,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(72)",
+            "index": 1,
+            "x": 12.597000122070312,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(79)",
+            "index": 2,
+            "x": 22.185001373291016,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(79)",
+            "index": 3,
+            "x": 26.571001052856445,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(82)",
+            "index": 4,
+            "x": 30.957000732421875,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      },
+      {
+        "font_id": "FontId(1)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(1345)",
+            "index": 14,
+            "x": 41.242000579833984,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(1328)",
+            "index": 12,
+            "x": 52.414852142333984,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(1343)",
+            "index": 10,
+            "x": 56.216609954833984,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(1320)",
+            "index": 8,
+            "x": 65.81231689453125,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(1337)",
+            "index": 6,
+            "x": 75.64044189453125,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      },
+      {
+        "font_id": "FontId(2)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(20)",
+            "index": 17,
+            "x": 86.28204345703125,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(21)",
+            "index": 18,
+            "x": 96.00604248046875,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(22)",
+            "index": 19,
+            "x": 105.73004150390625,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      }
+    ],
+    "row_widths": [
+      41.242000579833984,
+      45.040042877197266,
+      29.17200469970703
+    ]
+  },
+  {
+    "id": "hebrew",
+    "language": "he",
+    "width": 400.0,
+    "text": "Hello עברית 123",
+    "lines": [
+      "Hello עברית 123"
+    ],
+    "stock_breaks": [
+      0,
+      6,
+      17,
+      20
+    ],
+    "candidate_breaks": [
+      0,
+      6,
+      17,
+      20
+    ],
+    "exact_icu4c_boundaries": [],
+    "source": "artifact",
+    "native_requested_font": ".SystemUIFont",
+    "unwrapped_width": 124.2940444946289,
+    "shaped_runs": [
+      {
+        "font_id": "FontId(2)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(43)",
+            "index": 0,
+            "x": 0.0,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(72)",
+            "index": 1,
+            "x": 12.597000122070312,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(79)",
+            "index": 2,
+            "x": 22.185001373291016,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(79)",
+            "index": 3,
+            "x": 26.571001052856445,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(82)",
+            "index": 4,
+            "x": 30.957000732421875,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(3)",
+            "index": 5,
+            "x": 41.242000579833984,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(20)",
+            "index": 17,
+            "x": 45.66200256347656,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(21)",
+            "index": 18,
+            "x": 55.38600158691406,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(22)",
+            "index": 19,
+            "x": 65.11000061035156,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(3)",
+            "index": 16,
+            "x": 74.83399963378906,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      },
+      {
+        "font_id": "FontId(1)",
+        "known_family_ids": [],
+        "glyphs": [
+          {
+            "glyph_id": "GlyphId(1345)",
+            "index": 14,
+            "x": 79.25399780273438,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(1328)",
+            "index": 12,
+            "x": 90.42684936523438,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(1343)",
+            "index": 10,
+            "x": 94.22860717773438,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(1320)",
+            "index": 8,
+            "x": 103.82431030273438,
+            "y": 0.0,
+            "emoji": false
+          },
+          {
+            "glyph_id": "GlyphId(1337)",
+            "index": 6,
+            "x": 113.65243530273438,
+            "y": 0.0,
+            "emoji": false
+          }
+        ]
+      }
+    ],
+    "row_widths": [
+      124.2940444946289
+    ]
+  }
+]
