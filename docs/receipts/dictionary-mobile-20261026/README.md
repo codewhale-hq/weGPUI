@@ -62,3 +62,27 @@ document text or length. The pinned UIKit backend has no secure-entry trait; vis
 masking a plain native responder would expose password text to system UI/accessibility.
 Native secure entry is required before iOS password editing can be supported. Desktop
 password behavior is unchanged.
+
+## Completed checks and publication
+
+The reviewed source committed as `c343621` completed the macOS and Linux ARM64
+format, all-target build, library and gallery tests, Clippy and documentation gates.
+The extracted text contracts and a fresh standalone preview consumer build passed.
+The [Linux capture packet](linux-captures/README.md) records 112 paired captures
+and verification of all 224 image hashes; captures alone are not visual acceptance.
+The macOS gallery also accepted mixed Hebrew, combining and emoji input and restored
+the empty field with undo.
+
+[Pages run 40651595598](https://github.com/codewhale-hq/weGPUI/actions/runs/40651595598)
+published `c343621`; the live site's data identifies that commit and `sourceDirty: false`.
+This publication does not qualify native parity. Hosted CI for this slice was skipped
+and remains deferred to the final candidate under the workspace release policy.
+
+A subsequent source review identified that tapping an already focused iOS field after
+Done may not reopen the keyboard. A subsequent iOS-only gesture change requests the keyboard again for an editable,
+non-password field. Its simulator bundle builds; Done, same-field reopening and
+password transitions still need a runtime recheck. Simulator coordinate interaction
+returned `windowNotFoundAtPosition` during this attempt, so no runtime pass is claimed.
+This follow-up is separate from the evidence for `c343621`. Number, digit and telephone fields also currently receive
+the default iOS keyboard. Password editing remains intentionally unavailable until secure
+traits and privacy of the native responder can be verified.

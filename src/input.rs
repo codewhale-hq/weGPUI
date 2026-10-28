@@ -832,6 +832,10 @@ impl TextInput {
         }
         self.ensure_focus_subscriptions(window, cx);
         window.focus(&self.focus_handle, cx);
+        #[cfg(target_os = "ios")]
+        if self.editable() && self.kind != InputKind::Password {
+            window.request_virtual_keyboard();
+        }
         let index = self.index_for_mouse_position(event.position);
         if event.click_count >= 3 {
             self.move_to(0, cx);
