@@ -1,3 +1,4 @@
+mod browser_dictionary;
 mod font_fallbacks;
 mod font_features;
 mod line;

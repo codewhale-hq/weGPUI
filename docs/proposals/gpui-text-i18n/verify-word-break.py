@@ -169,9 +169,14 @@ pub mod collections {
     pub use std::collections::HashMap;
 }
 
+#[path = "BROWSER_DICTIONARY"]
+mod browser_dictionary;
 pub mod line_wrapper {
     use super::collections;
 '''
+
+
+STUBS = STUBS.replace("BROWSER_DICTIONARY", str(DEFAULT.parent / "browser_dictionary.rs"))
 
 
 def split(text):

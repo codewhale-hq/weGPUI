@@ -172,6 +172,15 @@ Repeated glyph indices stay in one shaping cluster. Reordered combining glyphs u
 row shaping. Browser dictionaries and font fallbacks can differ. Hyphenation and
 font-provided ligature caret positions remain outside this implementation.
 
+The line segmenter now substitutes the Khmer and Lao word lists from Chromium's
+pinned ICU 78.2 source, converted to ICU4X-compatible UCharsTries. Thai and Myanmar
+still use ICU4X's compiled dictionaries; line rules and shaping remain ICU4X/GPUI.
+Each thread initializes its own segmenter. Data provenance, licenses, generation and
+the limited comparison evidence are documented in
+[`browser_dictionary/README.md`](gpui_pre/src/text_system/browser_dictionary/README.md).
+This aligns one captured Khmer fixture and is not a guarantee of browser or language-wide
+equivalence; ICU4X and Chromium's patched ICU4C use different matching algorithms.
+
 ## iOS compatibility APIs
 
 The core now supplies the lifecycle variant and focused input methods required by the

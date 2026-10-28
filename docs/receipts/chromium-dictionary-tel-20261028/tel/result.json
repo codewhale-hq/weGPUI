@@ -1,0 +1,401 @@
+{
+  "passed": true,
+  "steps": [
+    {
+      "value": "",
+      "len": 0,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        0,
+        0
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 0,
+      "step": "initial"
+    },
+    {
+      "value": "+1-800-FLOWERS x12",
+      "len": 18,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        18,
+        18
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 18,
+      "step": "typed-vanity"
+    },
+    {
+      "value": "+1-800-FLOWERS x12+٨٦ １２３ ext. 9",
+      "len": 32,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        32,
+        32
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 19,
+      "step": "pasted-unicode"
+    },
+    {
+      "value": "+1-800-FLOWERS x12",
+      "len": 18,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        18,
+        18
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 20,
+      "step": "undo-paste"
+    },
+    {
+      "value": "+1-800-FLOWERS x12+٨٦ １２３ ext. 9",
+      "len": 32,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        32,
+        32
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 21,
+      "step": "redo-paste"
+    },
+    {
+      "value": "A😀B",
+      "len": 4,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        4,
+        4
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 23,
+      "step": "max-length-seed"
+    },
+    {
+      "value": "A😀B😀",
+      "len": 6,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        6,
+        6
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 24,
+      "step": "max-length-paste"
+    },
+    {
+      "value": "A😀B😀",
+      "len": 6,
+      "kind": "Tel",
+      "readonly": true,
+      "disabled": false,
+      "selection": [
+        6,
+        6
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 24,
+      "step": "readonly"
+    },
+    {
+      "value": "A😀B😀",
+      "len": 6,
+      "kind": "Tel",
+      "readonly": true,
+      "disabled": false,
+      "selection": [
+        6,
+        6
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 24,
+      "step": "readonly-guard"
+    },
+    {
+      "value": "A😀B😀",
+      "len": 6,
+      "kind": "Tel",
+      "readonly": true,
+      "disabled": true,
+      "selection": [
+        6,
+        6
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 24,
+      "step": "disabled"
+    },
+    {
+      "value": "A😀B😀",
+      "len": 6,
+      "kind": "Tel",
+      "readonly": true,
+      "disabled": true,
+      "selection": [
+        6,
+        6
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 24,
+      "step": "disabled-guard"
+    },
+    {
+      "value": "12abc34",
+      "len": 7,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        7,
+        7
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 32,
+      "step": "kind-tel"
+    },
+    {
+      "value": "1234",
+      "len": 4,
+      "kind": "Digit",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        4,
+        4
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 33,
+      "step": "kind-digit"
+    },
+    {
+      "value": "1234",
+      "len": 4,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        4,
+        4
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 33,
+      "step": "kind-restored"
+    },
+    {
+      "value": "1234xyz",
+      "len": 7,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        7,
+        7
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 36,
+      "step": "typed-after-kind-transition"
+    },
+    {
+      "value": "AB\tC",
+      "len": 4,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        4,
+        4
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 37,
+      "step": "programmatic-control-sanitization"
+    },
+    {
+      "value": "AB\txC",
+      "len": 5,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        4,
+        4
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 38,
+      "step": "tab-caret-edit"
+    },
+    {
+      "value": "AB\tC",
+      "len": 4,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        3,
+        3
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 39,
+      "step": "tab-caret-undo"
+    },
+    {
+      "value": "AB\tCx y",
+      "len": 7,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        7,
+        7
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 40,
+      "step": "multiline-paste-sanitization"
+    },
+    {
+      "value": "1782",
+      "len": 4,
+      "kind": "Digit",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        2,
+        2
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 43,
+      "step": "synthetic-digit-ime-commit"
+    },
+    {
+      "value": "A😀中Z",
+      "len": 5,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        3,
+        3
+      ],
+      "reversed": false,
+      "marked": [
+        1,
+        4
+      ],
+      "changes": 44,
+      "step": "synthetic-tel-ime-preedit"
+    },
+    {
+      "value": "A😀Z",
+      "len": 4,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        3,
+        3
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 45,
+      "step": "synthetic-tel-ime-commit"
+    },
+    {
+      "value": "AZ",
+      "len": 2,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        2,
+        2
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 46,
+      "step": "synthetic-tel-ime-undo"
+    },
+    {
+      "value": "áb",
+      "len": 3,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        1,
+        1
+      ],
+      "reversed": false,
+      "marked": [
+        1,
+        2
+      ],
+      "changes": 47,
+      "step": "synthetic-joined-grapheme-preedit"
+    },
+    {
+      "value": "áb",
+      "len": 3,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        2,
+        2
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 48,
+      "step": "synthetic-joined-grapheme-commit"
+    },
+    {
+      "value": "b",
+      "len": 1,
+      "kind": "Tel",
+      "readonly": false,
+      "disabled": false,
+      "selection": [
+        0,
+        0
+      ],
+      "reversed": false,
+      "marked": null,
+      "changes": 49,
+      "step": "synthetic-joined-grapheme-backspace"
+    }
+  ]
+}

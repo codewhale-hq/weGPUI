@@ -664,3 +664,12 @@ version = "=0.3.18"
 version = "=2.4.0"
 default-features = false
 features = ["compiled_data"]
+
+[dependencies.icu_collections]
+version = "=2.4.0"
+
+[dependencies.icu_provider]
+version = "=2.4.0"
+
+[dependencies.zerovec]
+version = "=0.11.9"

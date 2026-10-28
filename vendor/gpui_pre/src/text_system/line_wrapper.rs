@@ -523,8 +523,8 @@ impl LineWrapper {
     }
 
     pub(crate) fn break_indices(text: &str) -> Vec<usize> {
-        icu_segmenter::LineSegmenter::new_dictionary(Default::default())
-            .segment_str(text)
+        super::browser_dictionary::break_indices(text)
+            .into_iter()
             .filter(|&index| index > 0 || text.is_empty())
             .collect()
     }
@@ -1276,6 +1276,11 @@ mod tests {
             assert_eq!(LineWrapper::break_indices(text), vec![text.len()], "{text}");
         }
         assert_eq!(LineWrapper::break_indices("ภาษาไทย"), vec![12, 21]);
+        let khmer = "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា";
+        assert_eq!(
+            LineWrapper::break_indices(khmer),
+            vec![27, 33, 45, 60, 69, 81, khmer.len()]
+        );
         for text in [
             "ภาษาไทยภาษาไทย",
             "ພາສາລາວພາສາລາວ",

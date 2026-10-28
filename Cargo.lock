@@ -1831,6 +1831,8 @@ dependencies = [
  "gpui-pre-sum-tree",
  "gpui-pre-util",
  "heapless",
+ "icu_collections",
+ "icu_provider",
  "icu_segmenter",
  "image",
  "inventory",
@@ -1868,6 +1870,7 @@ dependencies = [
  "waker-fn",
  "windows 0.62.2",
  "zed-scap",
+ "zerovec",
 ]
 
 [[package]]

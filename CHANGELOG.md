@@ -15,6 +15,12 @@ versioning once a release policy is decided. No version has been published.
   validation messages and placeholders were previously English-only or WeUI-browser style and
   are now localised with the rest.
 
+- **Telephone input accepts text.** `InputKind::Tel` no longer strips letters or Unicode
+  digits, so applications that require a specific telephone format must validate it themselves.
+  Single-line assignment removes CR/LF; edits and paste normalize them to spaces. Tabs are
+  retained; other control characters are filtered. Tab accessibility/geometry and the iOS
+  telephone keyboard remain unverified.
+
 ### Added
 
 - Pinned WeUI source/style inventory and a complete paired-capture worklist, a verified local
@@ -81,6 +87,10 @@ versioning once a release policy is decided. No version has been published.
   the value; cancel keeps the previous value; focus returns to the field.
 
 ### Fixed
+
+- IME commit applies the input kind's sanitization and maps selection through filtered text;
+  NUL is removed from preedit before it can enter the accessibility tree. Other control
+  handling during preedit and complete IME/reader acceptance remain unqualified.
 
 - Dialog, half-screen dialog and form-link emphasis use upstream 500 weight.
 - Layers follows upstream responsive plane sizes and flattened transforms; labels and keyboard

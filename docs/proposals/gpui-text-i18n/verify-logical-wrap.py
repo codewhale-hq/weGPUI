@@ -232,6 +232,7 @@ pub mod layout {
 
 
 STUBS = STUBS.replace("BIDI_MODULE", str(TEXT_SYSTEM / "bidi.rs"))
+STUBS = STUBS.replace("pub mod layout {", f'#[path = "{TEXT_SYSTEM / "browser_dictionary.rs"}"]\nmod browser_dictionary;\npub mod layout {{')
 
 
 def unicode_args(work):
@@ -243,7 +244,7 @@ def unicode_args(work):
     project = work / "unicode-dependencies"
     project.mkdir(exist_ok=True)
     manifest = project / "Cargo.toml"
-    manifest.write_text('[package]\nname = "wegpui-text-harness-dependencies"\nversion = "0.0.0"\nedition = "2024"\n[workspace]\n[lib]\npath = "lib.rs"\n[dependencies]\nicu_segmenter = { version = "=2.4.0", default-features = false, features = ["compiled_data"] }\n[profile.dev]\ndebug = 1\n[profile.dev.package."*"]\ndebug = 0\n')
+    manifest.write_text('[package]\nname = "wegpui-text-harness-dependencies"\nversion = "0.0.0"\nedition = "2024"\n[workspace]\n[lib]\npath = "lib.rs"\n[dependencies]\nicu_segmenter = { version = "=2.4.0", default-features = false, features = ["compiled_data"] }\nicu_provider = "=2.4.0"\nicu_collections = "=2.4.0"\nzerovec = "=0.11.9"\n[profile.dev]\ndebug = 1\n[profile.dev.package."*"]\ndebug = 0\n')
     (project / "lib.rs").write_text('pub use icu_segmenter;\n')
     shutil.copyfile(TEXT_SYSTEM.parents[3] / "Cargo.lock", project / "Cargo.lock")
     subprocess.run(["cargo", "metadata", "--manifest-path", str(manifest), "--offline", "--format-version", "1"], check=True, capture_output=True)
@@ -258,8 +259,11 @@ def unicode_args(work):
                     print(item['message'].get('rendered', ''))
         sys.exit(result.returncode)
     artifacts = [json.loads(line) for line in result.stdout.splitlines() if line.startswith('{')]
-    segmenter = next(pathlib.Path(name) for item in artifacts if item.get("reason") == "compiler-artifact" and item["target"]["name"] == "icu_segmenter" for name in item["filenames"] if name.endswith('.rlib'))
-    return ["--extern", f"unicode_bidi={library}", "--extern", f"icu_segmenter={segmenter}", "-L", f"dependency={segmenter.parent}"]
+    libraries = {crate: next(pathlib.Path(name) for item in artifacts if item.get("reason") == "compiler-artifact" and item["target"]["name"] == crate for name in item["filenames"] if name.endswith('.rlib')) for crate in ("icu_segmenter", "icu_provider", "icu_collections", "zerovec")}
+    args = ["--extern", f"unicode_bidi={library}"]
+    for crate, path in libraries.items():
+        args.extend(["--extern", f"{crate}={path}"])
+    return args + ["-L", f"dependency={libraries['icu_segmenter'].parent}"]
 
 
 def function_text(source, name):

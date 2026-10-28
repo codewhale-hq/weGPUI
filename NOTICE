@@ -50,6 +50,12 @@ icu_segmenter / icu_segmenter_data / icu_locale_fallback / icu_locale_fallback_d
 Copyright Unicode, Inc. Licensed under Unicode-3.0.
 See LICENSE-UNICODE-3 for the complete copyright and permission notice.
 
+Chromium ICU Khmer and Lao word lists
+Derived from Chromium's ICU source, revision 19dfb44a62ae60ce6b0060de8c0cef5d5c527177.
+Copyright Unicode, Inc., IBM and others; the Lao source identifies additional contributors.
+Original notices, license and reproducible conversion are retained in
+vendor/gpui_pre/src/text_system/browser_dictionary/.
+
 GPUI platform/input compatibility bridge
 The lifecycle, input-field identity and focused-input eligibility API shapes follow
 published gpui-fast 0.1.10. Copyright Zed Industries; Apache-2.0.

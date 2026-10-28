@@ -50,3 +50,15 @@ native-speaker or screen-reader pass from correct automatic line breaks.
 Primary sources: [ICU4X segmenter API](https://docs.rs/icu_segmenter/2.4.0/icu_segmenter/struct.LineSegmenter.html),
 [official version metadata](https://crates.io/api/v1/crates/icu_segmenter/2.4.0).
 The versioned crate manifest/source and registry checksum were read for this decision.
+
+## Chromium dictionary continuation
+
+The preceding dependency decision describes the initial stock ICU4X implementation.
+The later continuation uses a custom ICU4X data provider with Chromium's abridged
+Khmer and Lao word lists and retains ICU4X's baked Thai/Myanmar dictionaries and
+line rules. Source licenses, exact hashes, and regeneration instructions are in
+[`vendor/gpui_pre/src/text_system/browser_dictionary`](../../../vendor/gpui_pre/src/text_system/browser_dictionary/README.md).
+An isolated provider prototype matched the observed Chromium opportunities for
+one Khmer corpus and left the other three sampled scripts' opportunities unchanged.
+That comparison is not full browser or language acceptance; the ICU4X matching
+algorithm differs from Chromium's patched ICU4C implementation.

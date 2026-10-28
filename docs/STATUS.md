@@ -58,8 +58,9 @@ intact and reordered combining glyphs use logical row shaping. The local iOS sim
 now links and launches, with touch Back navigation, portrait/landscape safe areas, native
 text entry, software-keyboard input, lower-field reveal and actual Pinyin preedit/commit
 samples. An opt-in normal overflow policy matches the browser in the previously different
-Myanmar sample: 15 of 16 controlled dictionary row comparisons now match, with one Khmer
-dictionary grouping difference remaining ([receipt](receipts/overflow-ios-20261028/README.md)). The iOS digit keypad builds; its native Done
+Myanmar sample. Pinned Chromium Khmer/Lao dictionary data now produces matching rows in all
+16 controlled four-script comparisons ([receipt](receipts/chromium-dictionary-tel-20261028/README.md));
+this does not prove broader language parity. The iOS digit keypad builds; its native Done
 control and keyboard switching still need runtime checks. Password entry remains fail-closed.
 Full reader, IME, hardware and mobile acceptance remain open. Windows stays
 build/tests only. VoiceOver stays off. Each receipt identifies its own source.

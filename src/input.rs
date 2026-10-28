@@ -12,7 +12,7 @@
 //! work where the GPUI backend supports them.
 //!
 //! Known limitations: `maxlength` counts UTF-16 code units, as HTML does, but IME composition text
-//! is only limited on commit. [`InputKind`] filters characters and is not HTML form validation.
+//! is only limited on commit. Numeric [`InputKind`]s filter characters and are not HTML form validation.
 //! There is no spell checking or context menu. Undo history is cleared by
 //! [`TextInput::set_text`]. Linux XIM preedit follows the input method's configured style;
 //! fcitx5's on-the-spot setting enables inline preedit. Canceling preedit restores the original
@@ -121,10 +121,10 @@ enum EditKind {
 }
 const BLINK_INTERVAL: Duration = Duration::from_millis(500);
 
-/// Character filter and presentation for a [`TextInput`], mirroring HTML `type` values.
+/// Character filter and presentation for a [`TextInput`], corresponding to HTML `type` values.
 ///
-/// Typing, pasting and committed IME text are filtered per character. This is not validation:
-/// a `Number` field can still hold `"1-e"`.
+/// Number and Digit filter typed, pasted and committed IME text per character. This is not
+/// validation: a `Number` field can still hold `"1-e"`. Tel does not restrict telephone syntax.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub enum InputKind {
     /// Any printable text (`type="text"`). The default.
@@ -135,7 +135,9 @@ pub enum InputKind {
     Number,
     /// ASCII digits only (the `pattern="[0-9]*"` examples).
     Digit,
-    /// Digits plus `+ - ( ) * #` and spaces (`type="tel"`).
+    /// Telephone text (`type="tel"`), including extensions, Unicode digits and tabs. Single-line
+    /// assignment removes CR/LF; edits and paste replace them with spaces. Other control characters
+    /// are dropped, unlike HTML values.
     Tel,
     /// Any text, rendered as bullets. Copy and cut are disabled (`type="password"`).
     Password,
@@ -144,12 +146,9 @@ pub enum InputKind {
 impl InputKind {
     fn accepts(self, ch: char) -> bool {
         match self {
-            InputKind::Text | InputKind::Password => true,
+            InputKind::Text | InputKind::Tel | InputKind::Password => true,
             InputKind::Number => ch.is_ascii_digit() || matches!(ch, '.' | '-' | '+' | 'e' | 'E'),
             InputKind::Digit => ch.is_ascii_digit(),
-            InputKind::Tel => {
-                ch.is_ascii_digit() || matches!(ch, '+' | '-' | ' ' | '(' | ')' | '*' | '#')
-            }
         }
     }
 }
@@ -301,9 +300,10 @@ impl TextInput {
 
     /// Replaces the text programmatically.
     ///
-    /// The text is sanitised (newlines become spaces in single-line inputs; control characters
-    /// and characters rejected by the [`InputKind`] are dropped) and truncated to the maximum
-    /// length. The caret moves to the end, any composition ends, and the undo history is cleared.
+    /// The text is sanitised and truncated to the maximum length. Single-line Tel removes CR and
+    /// LF, retains tabs, and drops other control characters. Other single-line inputs replace
+    /// newlines with spaces and drop control characters. Numeric kinds also drop characters they
+    /// reject. The caret moves to the end, any composition ends, and the undo history is cleared.
     /// Emits [`InputEvent::Changed`] if the text differs.
     pub fn set_text(&mut self, text: impl Into<SharedString>, cx: &mut Context<Self>) {
         let text: SharedString = text.into();
@@ -312,6 +312,10 @@ impl TextInput {
             && text.trim().parse::<f64>().is_err()
         {
             String::new()
+        } else if self.kind == InputKind::Tel && !self.multiline {
+            text.chars()
+                .filter(|ch| *ch == '\t' || !ch.is_control())
+                .collect()
         } else {
             self.sanitize(&text)
         };
@@ -478,7 +482,9 @@ impl TextInput {
             text.replace('\n', " ")
         };
         text.chars()
-            .filter(|ch| *ch == '\n' || !ch.is_control())
+            .filter(|ch| {
+                *ch == '\n' || (*ch == '\t' && self.kind == InputKind::Tel) || !ch.is_control()
+            })
             .filter(|ch| self.kind.accepts(*ch) || (*ch == '\n' && self.multiline))
             .collect()
     }
@@ -1328,12 +1334,24 @@ impl EntityInputHandler for TextInput {
     fn unmark_text(&mut self, _window: &mut Window, cx: &mut Context<Self>) {
         if let Some(range) = self.marked_range.take() {
             let marked = self.content[range.clone()].to_owned();
-            let limited = self.limit(&marked, range.clone());
+            let sanitized = self.sanitize(&marked);
+            let limited = self.limit(&sanitized, range.clone());
             if limited != marked {
-                self.replace(range.clone(), &limited);
-                self.selected_range =
-                    offset_after_replacement(self.selected_range.start, &range, limited.len())
-                        ..offset_after_replacement(self.selected_range.end, &range, limited.len());
+                let map_offset = |offset| {
+                    offset_after_sanitized_replacement(offset, &range, &marked, &limited, |text| {
+                        self.sanitize(text)
+                    })
+                };
+                let selection =
+                    map_offset(self.selected_range.start)..map_offset(self.selected_range.end);
+                self.replace(range, &limited);
+                self.selected_range = selection;
+                self.preferred_x = None;
+                self.autoscroll = true;
+            }
+            let selection = snap_selection_to_graphemes(&self.content, self.selected_range.clone());
+            if selection != self.selected_range {
+                self.selected_range = selection;
                 self.preferred_x = None;
                 self.autoscroll = true;
             }
@@ -1425,11 +1443,12 @@ impl EntityInputHandler for TextInput {
             .map(|range_utf16| self.range_from_utf16(range_utf16))
             .or(self.marked_range.clone())
             .unwrap_or(self.selected_range.clone());
-        let new_text = if self.multiline {
-            new_text.replace("\r\n", "\n").replace('\r', "\n")
-        } else {
-            new_text.replace(['\r', '\n'], " ")
-        };
+        let original_text = new_text;
+        let new_text = normalize_preedit(original_text, self.multiline);
+        if new_text.is_empty() {
+            self.cancel_composition(cx);
+            return;
+        }
         if self.marked_range.is_none() && self.composition_base.is_none() {
             self.composition_base = Some(self.snapshot());
         }
@@ -1438,9 +1457,13 @@ impl EntityInputHandler for TextInput {
         self.selected_range = new_selected_range_utf16
             .as_ref()
             .map(|range_utf16| {
-                let start = utf16_offset(&new_text, range_utf16.start);
-                let end = utf16_offset(&new_text, range_utf16.end).max(start);
-                inserted.start + start..inserted.start + end
+                let start = preedit_offset(original_text, range_utf16.start, self.multiline)
+                    .min(new_text.len());
+                let end = preedit_offset(original_text, range_utf16.end, self.multiline)
+                    .min(new_text.len())
+                    .max(start);
+                inserted.start + new_text.floor_char_boundary(start)
+                    ..inserted.start + new_text.floor_char_boundary(end)
             })
             .unwrap_or_else(|| inserted.end..inserted.end);
         self.selection_reversed = false;
@@ -2374,6 +2397,44 @@ fn offset_after_replacement(offset: usize, range: &Range<usize>, replacement_len
     }
 }
 
+fn offset_after_sanitized_replacement(
+    offset: usize,
+    range: &Range<usize>,
+    original: &str,
+    replacement: &str,
+    sanitize: impl Fn(&str) -> String,
+) -> usize {
+    if offset <= range.start || offset >= range.end {
+        return offset_after_replacement(offset, range, replacement.len());
+    }
+    let local = original.floor_char_boundary(offset - range.start);
+    let mapped = sanitize(&original[..local]).len().min(replacement.len());
+    range.start + replacement.floor_char_boundary(mapped)
+}
+
+fn snap_selection_to_graphemes(text: &str, selection: Range<usize>) -> Range<usize> {
+    let floor = |offset: usize| {
+        text.grapheme_indices(true)
+            .map(|(index, _)| index)
+            .take_while(|index| *index <= offset)
+            .last()
+            .unwrap_or(0)
+    };
+    let ceil = |offset: usize| {
+        text.grapheme_indices(true)
+            .map(|(index, _)| index)
+            .chain(std::iter::once(text.len()))
+            .find(|index| *index >= offset)
+            .unwrap_or(text.len())
+    };
+    if selection.is_empty() {
+        let position = ceil(selection.start);
+        position..position
+    } else {
+        floor(selection.start)..ceil(selection.end)
+    }
+}
+
 fn word_offset(text: &str, offset: usize, forward: bool, password: bool) -> usize {
     if password {
         return if forward { text.len() } else { 0 };
@@ -2638,6 +2699,19 @@ fn push_a11y_text(
     ids.into_iter().zip(lines).collect()
 }
 
+fn normalize_preedit(text: &str, multiline: bool) -> String {
+    let text = text.replace('\0', "");
+    if multiline {
+        text.replace("\r\n", "\n").replace('\r', "\n")
+    } else {
+        text.replace(['\r', '\n'], " ")
+    }
+}
+
+fn preedit_offset(text: &str, offset_utf16: usize, multiline: bool) -> usize {
+    normalize_preedit(&text[..utf16_offset(text, offset_utf16)], multiline).len()
+}
+
 fn utf16_offset(text: &str, offset: usize) -> usize {
     let mut units = 0;
     for (byte, ch) in text.char_indices() {
@@ -2722,8 +2796,9 @@ mod tests {
     use super::{
         A11yTextSnapshot, FieldSemantics, a11y_glyph_x, a11y_line_ranges, a11y_run_slices,
         a11y_selection_positions, a11y_text_position, a11y_text_run, a11y_word_starts,
-        input_display_text, native_grapheme_selection, offset_after_replacement, utf16_offset,
-        word_offset,
+        input_display_text, native_grapheme_selection, normalize_preedit, offset_after_replacement,
+        offset_after_sanitized_replacement, preedit_offset, snap_selection_to_graphemes,
+        utf16_offset, word_offset,
     };
     use core::prelude::v1::test;
 
@@ -2932,6 +3007,32 @@ mod tests {
             assert_eq!(adjusted, after);
             assert!(committed.is_char_boundary(adjusted));
         }
+        let marked = "1中2😀3";
+        let range = 1..1 + marked.len();
+        let sanitized = |text: &str| {
+            text.chars()
+                .filter(char::is_ascii_digit)
+                .collect::<String>()
+        };
+        for (before, after) in [(1, 1), (2, 2), (5, 2), (6, 3), (10, 3), (11, 4), (12, 5)] {
+            let adjusted =
+                offset_after_sanitized_replacement(before, &range, marked, "123", sanitized);
+            assert_eq!(adjusted, after);
+            assert!("A123Z".is_char_boundary(adjusted));
+        }
+        let joined = "a\u{301}b";
+        assert_eq!(snap_selection_to_graphemes(joined, 1..1), 3..3);
+        assert_eq!(snap_selection_to_graphemes(joined, 1..4), 0..4);
+        assert_eq!(snap_selection_to_graphemes(joined, 0..3), 0..3);
+        let marked = "😀\0中";
+        let range = 1..1 + marked.len();
+        let sanitized = |text: &str| text.chars().filter(|c| *c != '\0').collect::<String>();
+        for (before, after) in [(1, 1), (5, 5), (6, 5), (9, 5), (10, 6)] {
+            let adjusted =
+                offset_after_sanitized_replacement(before, &range, marked, "😀", sanitized);
+            assert_eq!(adjusted, after);
+            assert!("A😀Z".is_char_boundary(adjusted));
+        }
     }
 
     #[test]
@@ -3001,5 +3102,21 @@ mod tests {
             assert!(text.is_char_boundary(bytes));
         }
         assert_eq!(utf16_offset("", 99), 0);
+        let marked = "😀\0中\r\nZ";
+        assert_eq!(normalize_preedit(marked, false), "😀中  Z");
+        assert_eq!(normalize_preedit(marked, true), "😀中\nZ");
+        for (units, single, multi) in [
+            (0, 0, 0),
+            (1, 4, 4),
+            (2, 4, 4),
+            (3, 4, 4),
+            (4, 7, 7),
+            (5, 8, 8),
+            (6, 9, 8),
+            (7, 10, 9),
+        ] {
+            assert_eq!(preedit_offset(marked, units, false), single);
+            assert_eq!(preedit_offset(marked, units, true), multi);
+        }
     }
 }
