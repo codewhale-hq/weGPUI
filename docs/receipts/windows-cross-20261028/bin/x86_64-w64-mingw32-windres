@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /opt/homebrew/Cellar/llvm/21.1.6/bin/llvm-windres --target=pe-x86-64 --preprocessor=/Volumes/VIXinSSD/CW/artifacts/wegpui-windows-1f293a4-20261028/bin/windows-preprocess "$@"

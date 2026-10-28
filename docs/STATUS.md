@@ -58,9 +58,12 @@ integration against the newer source has been verified.
 Fractional slider values now retain their full `f32` display precision; a Linux X11 and
 AT-SPI sample is recorded in the [slider receipt](receipts/slider-precision-20261028/README.md).
 Picker and select option counts now reach the Linux AT-SPI tree, including a virtualized
-date picker; see the [set-size receipt](receipts/set-size-20261028/README.md). Radio groups now offer an option-only container; the gallery keeps decorative actions as siblings.
+date picker; see the [set-size receipt](receipts/set-size-20261028/README.md). Radio groups
+now offer an option-only container; the gallery keeps decorative actions as siblings.
 See the [radio receipt](receipts/radio-groups-20261028/README.md) for Linux samples and
-remaining reader and platform checks.
+remaining reader and platform checks. The current source also passes a Windows x64 GNU
+all-target cross-check; the ARM VM did not start and no native Windows tests ran
+([receipt](receipts/windows-cross-20261028/README.md)).
 
 ## Localisation and right-to-left — 2026-10-25
 
@@ -76,7 +79,9 @@ an expanded 192-case comparison matches 189 rows, with three Khmer differences. 
 comparison proves broader language parity. A later experimental matcher regressed 27 of 168
 leading-mark rendered samples and was not landed; [details](receipts/text-exploration-20261028/README.md).
 Independent ICU boundary checks on 480 correlated
-name/context cases found further mismatches; see the same receipt. The iOS digit keypad builds; its native Done
+name/context cases found further mismatches; see the same receipt. A later unshipped rule-context
+prototype improved Linux row matches from 311 to 393 of 420, with 27 still different and a
+measured debug-time cost; see the [experiment receipt](receipts/text-context-20261028/README.md). The iOS digit keypad builds; its native Done
 control and keyboard switching still need runtime checks. Password entry remains fail-closed.
 Full reader, IME, hardware and mobile acceptance remain open. Windows stays
 build/tests only. VoiceOver stays off. Each receipt identifies its own source.

@@ -1,0 +1,4 @@
+llvm-windres, compatible with GNU windres
+Homebrew LLVM version 21.1.6
+  Optimized build.
+0.16.0

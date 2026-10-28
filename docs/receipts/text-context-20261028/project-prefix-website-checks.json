@@ -1,0 +1,104 @@
+{
+  "browser": "156.0.8078.47",
+  "base": "http://127.0.0.1:39721/weGPUI/",
+  "native_gpui_test": false,
+  "complete_suite": false,
+  "checks": [
+    {
+      "name": "shell-integration",
+      "result": "PASS",
+      "detail": [
+        {
+          "width": 375,
+          "deep_link_config_reload": true,
+          "live_dialog": true
+        },
+        {
+          "width": 768,
+          "deep_link_config_reload": true,
+          "live_dialog": true
+        },
+        {
+          "width": 1280,
+          "deep_link_config_reload": true,
+          "live_dialog": true
+        },
+        {
+          "toolbar_draft_dom_preserved": true,
+          "colour_control": "programmatic HTML color-input event; native picker popup not exercised",
+          "brand_reset": true,
+          "wide_inner_horizontal_scroll_on_phone": true,
+          "native_capture_mode": true,
+          "keyboard_catalog": true,
+          "prefs_across_routes": true,
+          "example_state": "ios1",
+          "history": true,
+          "wide_inner_preview": 768
+        }
+      ]
+    },
+    {
+      "name": "theme-pages-layout",
+      "result": "PASS",
+      "detail": [
+        {
+          "page": "themes",
+          "width": 375,
+          "palette_route_retained": true,
+          "scrollWidth": 375,
+          "live_iframe_checked": true
+        },
+        {
+          "page": "native-themes",
+          "width": 375,
+          "palette_route_retained": true,
+          "scrollWidth": 375,
+          "live_iframe_checked": false
+        },
+        {
+          "page": "themes",
+          "width": 390,
+          "palette_route_retained": true,
+          "scrollWidth": 390,
+          "live_iframe_checked": true
+        },
+        {
+          "page": "native-themes",
+          "width": 390,
+          "palette_route_retained": true,
+          "scrollWidth": 390,
+          "live_iframe_checked": false
+        },
+        {
+          "page": "themes",
+          "width": 768,
+          "palette_route_retained": true,
+          "scrollWidth": 768,
+          "live_iframe_checked": true
+        },
+        {
+          "page": "native-themes",
+          "width": 768,
+          "palette_route_retained": true,
+          "scrollWidth": 768,
+          "live_iframe_checked": false
+        },
+        {
+          "page": "themes",
+          "width": 1280,
+          "palette_route_retained": true,
+          "scrollWidth": 1280,
+          "live_iframe_checked": true
+        },
+        {
+          "page": "native-themes",
+          "width": 1280,
+          "palette_route_retained": true,
+          "scrollWidth": 1280,
+          "live_iframe_checked": false
+        }
+      ]
+    }
+  ],
+  "result": "PASS"
+}

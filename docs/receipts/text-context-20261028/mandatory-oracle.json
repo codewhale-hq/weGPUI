@@ -1,0 +1,847 @@
+{
+  "version": [
+    78,
+    2,
+    0,
+    0
+  ],
+  "images": {
+    "u_getVersion": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/chromium-icu-78-oracle/run-20261028T083419.883341Z/build/lib/libicuuc.78.2.dylib",
+    "ubrk_open": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/chromium-icu-78-oracle/run-20261028T083419.883341Z/build/lib/libicuuc.78.2.dylib",
+    "icudt78_dat": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/chromium-icu-78-oracle/run-20261028T083419.883341Z/build/stubdata/libicudata.78.2.dylib"
+  },
+  "data_sha256": "02a01b3188b6a41a756f7322fdb5e6b5ca6573b327b01dfc8ed662d571a6f769",
+  "build_manifest": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/chromium-icu-78-oracle/run-20261028T083419.883341Z/build-manifest.json",
+  "reference_capture": "/Volumes/VIXinSSD/CW/artifacts/wegpui-completion-20261025/linux/full-parity/dictionary-extended/comparison-20261028T082530.123951Z/comparison.json",
+  "matcher_source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/khmer-icu-matcher/results.json",
+  "locale": "zh_CN",
+  "cases": [
+    {
+      "id": "km-lf",
+      "language": "km",
+      "text": "ភាសាខ្មែរ\nភាសាខ្មែរ",
+      "actual_language": "km",
+      "control": "lf",
+      "mandatory_boundary": 28,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        28,
+        55
+      ],
+      "status": -128
+    },
+    {
+      "id": "km-crlf",
+      "language": "km",
+      "text": "ភាសាខ្មែរ\r\nភាសាខ្មែរ",
+      "actual_language": "km",
+      "control": "crlf",
+      "mandatory_boundary": 29,
+      "forbidden_crlf_mid": 28,
+      "exact_icu4c_boundaries": [
+        0,
+        29,
+        56
+      ],
+      "status": -128
+    },
+    {
+      "id": "km-nel",
+      "language": "km",
+      "text": "ភាសាខ្មែរភាសាខ្មែរ",
+      "actual_language": "km",
+      "control": "nel",
+      "mandatory_boundary": 29,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        29,
+        56
+      ],
+      "status": -128
+    },
+    {
+      "id": "km-line-separator",
+      "language": "km",
+      "text": "ភាសាខ្មែរ ភាសាខ្មែរ",
+      "actual_language": "km",
+      "control": "line-separator",
+      "mandatory_boundary": 30,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        30,
+        57
+      ],
+      "status": -128
+    },
+    {
+      "id": "km-paragraph-separator",
+      "language": "km",
+      "text": "ភាសាខ្មែរ ភាសាខ្មែរ",
+      "actual_language": "km",
+      "control": "paragraph-separator",
+      "mandatory_boundary": 30,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        30,
+        57
+      ],
+      "status": -128
+    },
+    {
+      "id": "th-lf",
+      "language": "km",
+      "text": "ภาษาไทย\nภาษาไทย",
+      "actual_language": "th",
+      "control": "lf",
+      "mandatory_boundary": 22,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        12,
+        22,
+        34,
+        43
+      ],
+      "status": -128
+    },
+    {
+      "id": "th-crlf",
+      "language": "km",
+      "text": "ภาษาไทย\r\nภาษาไทย",
+      "actual_language": "th",
+      "control": "crlf",
+      "mandatory_boundary": 23,
+      "forbidden_crlf_mid": 22,
+      "exact_icu4c_boundaries": [
+        0,
+        12,
+        23,
+        35,
+        44
+      ],
+      "status": -128
+    },
+    {
+      "id": "th-nel",
+      "language": "km",
+      "text": "ภาษาไทยภาษาไทย",
+      "actual_language": "th",
+      "control": "nel",
+      "mandatory_boundary": 23,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        12,
+        23,
+        35,
+        44
+      ],
+      "status": -128
+    },
+    {
+      "id": "th-line-separator",
+      "language": "km",
+      "text": "ภาษาไทย ภาษาไทย",
+      "actual_language": "th",
+      "control": "line-separator",
+      "mandatory_boundary": 24,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        12,
+        24,
+        36,
+        45
+      ],
+      "status": -128
+    },
+    {
+      "id": "th-paragraph-separator",
+      "language": "km",
+      "text": "ภาษาไทย ภาษาไทย",
+      "actual_language": "th",
+      "control": "paragraph-separator",
+      "mandatory_boundary": 24,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        12,
+        24,
+        36,
+        45
+      ],
+      "status": -128
+    },
+    {
+      "id": "lo-lf",
+      "language": "km",
+      "text": "ພາສາລາວ\nພາສາລາວ",
+      "actual_language": "lo",
+      "control": "lf",
+      "mandatory_boundary": 22,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        12,
+        22,
+        34,
+        43
+      ],
+      "status": -128
+    },
+    {
+      "id": "lo-crlf",
+      "language": "km",
+      "text": "ພາສາລາວ\r\nພາສາລາວ",
+      "actual_language": "lo",
+      "control": "crlf",
+      "mandatory_boundary": 23,
+      "forbidden_crlf_mid": 22,
+      "exact_icu4c_boundaries": [
+        0,
+        12,
+        23,
+        35,
+        44
+      ],
+      "status": -128
+    },
+    {
+      "id": "lo-nel",
+      "language": "km",
+      "text": "ພາສາລາວພາສາລາວ",
+      "actual_language": "lo",
+      "control": "nel",
+      "mandatory_boundary": 23,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        12,
+        23,
+        35,
+        44
+      ],
+      "status": -128
+    },
+    {
+      "id": "lo-line-separator",
+      "language": "km",
+      "text": "ພາສາລາວ ພາສາລາວ",
+      "actual_language": "lo",
+      "control": "line-separator",
+      "mandatory_boundary": 24,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        12,
+        24,
+        36,
+        45
+      ],
+      "status": -128
+    },
+    {
+      "id": "lo-paragraph-separator",
+      "language": "km",
+      "text": "ພາສາລາວ ພາສາລາວ",
+      "actual_language": "lo",
+      "control": "paragraph-separator",
+      "mandatory_boundary": 24,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        12,
+        24,
+        36,
+        45
+      ],
+      "status": -128
+    },
+    {
+      "id": "my-lf",
+      "language": "km",
+      "text": "မြန်မာစာ\nမြန်မာစာ",
+      "actual_language": "my",
+      "control": "lf",
+      "mandatory_boundary": 25,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        18,
+        25,
+        43,
+        49
+      ],
+      "status": -128
+    },
+    {
+      "id": "my-crlf",
+      "language": "km",
+      "text": "မြန်မာစာ\r\nမြန်မာစာ",
+      "actual_language": "my",
+      "control": "crlf",
+      "mandatory_boundary": 26,
+      "forbidden_crlf_mid": 25,
+      "exact_icu4c_boundaries": [
+        0,
+        18,
+        26,
+        44,
+        50
+      ],
+      "status": -128
+    },
+    {
+      "id": "my-nel",
+      "language": "km",
+      "text": "မြန်မာစာမြန်မာစာ",
+      "actual_language": "my",
+      "control": "nel",
+      "mandatory_boundary": 26,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        18,
+        26,
+        44,
+        50
+      ],
+      "status": -128
+    },
+    {
+      "id": "my-line-separator",
+      "language": "km",
+      "text": "မြန်မာစာ မြန်မာစာ",
+      "actual_language": "my",
+      "control": "line-separator",
+      "mandatory_boundary": 27,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        18,
+        27,
+        45,
+        51
+      ],
+      "status": -128
+    },
+    {
+      "id": "my-paragraph-separator",
+      "language": "km",
+      "text": "မြန်မာစာ မြန်မာစာ",
+      "actual_language": "my",
+      "control": "paragraph-separator",
+      "mandatory_boundary": 27,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        18,
+        27,
+        45,
+        51
+      ],
+      "status": -128
+    },
+    {
+      "id": "cjk-fallback-lf",
+      "language": "km",
+      "text": "中文ภาษาไทย\n中文ภาษาไทย",
+      "actual_language": "cjk-fallback",
+      "control": "lf",
+      "mandatory_boundary": 28,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        3,
+        6,
+        18,
+        28,
+        31,
+        34,
+        46,
+        55
+      ],
+      "status": -128
+    },
+    {
+      "id": "cjk-fallback-crlf",
+      "language": "km",
+      "text": "中文ภาษาไทย\r\n中文ภาษาไทย",
+      "actual_language": "cjk-fallback",
+      "control": "crlf",
+      "mandatory_boundary": 29,
+      "forbidden_crlf_mid": 28,
+      "exact_icu4c_boundaries": [
+        0,
+        3,
+        6,
+        18,
+        29,
+        32,
+        35,
+        47,
+        56
+      ],
+      "status": -128
+    },
+    {
+      "id": "cjk-fallback-nel",
+      "language": "km",
+      "text": "中文ภาษาไทย中文ภาษาไทย",
+      "actual_language": "cjk-fallback",
+      "control": "nel",
+      "mandatory_boundary": 29,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        3,
+        6,
+        18,
+        29,
+        32,
+        35,
+        47,
+        56
+      ],
+      "status": -128
+    },
+    {
+      "id": "cjk-fallback-line-separator",
+      "language": "km",
+      "text": "中文ภาษาไทย 中文ภาษาไทย",
+      "actual_language": "cjk-fallback",
+      "control": "line-separator",
+      "mandatory_boundary": 30,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        3,
+        6,
+        18,
+        30,
+        33,
+        36,
+        48,
+        57
+      ],
+      "status": -128
+    },
+    {
+      "id": "cjk-fallback-paragraph-separator",
+      "language": "km",
+      "text": "中文ภาษาไทย 中文ภาษาไทย",
+      "actual_language": "cjk-fallback",
+      "control": "paragraph-separator",
+      "mandatory_boundary": 30,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        3,
+        6,
+        18,
+        30,
+        33,
+        36,
+        48,
+        57
+      ],
+      "status": -128
+    },
+    {
+      "id": "non-complex-lf",
+      "language": "km",
+      "text": "Plain text\nPlain text",
+      "actual_language": "non-complex",
+      "control": "lf",
+      "mandatory_boundary": 11,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        6,
+        11,
+        17,
+        21
+      ],
+      "status": -128
+    },
+    {
+      "id": "non-complex-crlf",
+      "language": "km",
+      "text": "Plain text\r\nPlain text",
+      "actual_language": "non-complex",
+      "control": "crlf",
+      "mandatory_boundary": 12,
+      "forbidden_crlf_mid": 11,
+      "exact_icu4c_boundaries": [
+        0,
+        6,
+        12,
+        18,
+        22
+      ],
+      "status": -128
+    },
+    {
+      "id": "non-complex-nel",
+      "language": "km",
+      "text": "Plain textPlain text",
+      "actual_language": "non-complex",
+      "control": "nel",
+      "mandatory_boundary": 12,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        6,
+        12,
+        18,
+        22
+      ],
+      "status": -128
+    },
+    {
+      "id": "non-complex-line-separator",
+      "language": "km",
+      "text": "Plain text Plain text",
+      "actual_language": "non-complex",
+      "control": "line-separator",
+      "mandatory_boundary": 13,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        6,
+        13,
+        19,
+        23
+      ],
+      "status": -128
+    },
+    {
+      "id": "non-complex-paragraph-separator",
+      "language": "km",
+      "text": "Plain text Plain text",
+      "actual_language": "non-complex",
+      "control": "paragraph-separator",
+      "mandatory_boundary": 13,
+      "forbidden_crlf_mid": null,
+      "exact_icu4c_boundaries": [
+        0,
+        6,
+        13,
+        19,
+        23
+      ],
+      "status": -128
+    }
+  ],
+  "khmer_spans": [
+    {
+      "id": "km-original",
+      "span": "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា",
+      "span_start_utf8": 0,
+      "reference_icu4c_78_3_chromium_data": [
+        27,
+        33,
+        45,
+        60,
+        69,
+        81
+      ],
+      "candidate_thresholds_10_5": [
+        27,
+        33,
+        45,
+        60,
+        69,
+        81
+      ],
+      "candidate_thresholds_3_3": [
+        27,
+        33,
+        45,
+        60,
+        69,
+        81
+      ],
+      "match_10_5": true,
+      "match_3_3": true,
+      "exact_icu4c_78_2_interior": [
+        27,
+        33,
+        45,
+        60,
+        69,
+        81
+      ],
+      "exact_status": -128,
+      "match_10_5_exact": true,
+      "match_3_3_exact": true
+    },
+    {
+      "id": "km-original",
+      "span": "ភាសាខ្មែរជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា",
+      "span_start_utf8": 121,
+      "reference_icu4c_78_3_chromium_data": [
+        27,
+        33,
+        45,
+        60,
+        69,
+        81
+      ],
+      "candidate_thresholds_10_5": [
+        27,
+        33,
+        45,
+        60,
+        69,
+        81
+      ],
+      "candidate_thresholds_3_3": [
+        27,
+        33,
+        45,
+        60,
+        69,
+        81
+      ],
+      "match_10_5": true,
+      "match_3_3": true,
+      "exact_icu4c_78_2_interior": [
+        27,
+        33,
+        45,
+        60,
+        69,
+        81
+      ],
+      "exact_status": -128,
+      "match_10_5_exact": true,
+      "match_3_3_exact": true
+    },
+    {
+      "id": "km-icu-rights",
+      "span": "សេចក្ដីប្រកាសជាសកលស្ដីពីសិទ្ធិមនុស្ស",
+      "span_start_utf8": 0,
+      "reference_icu4c_78_3_chromium_data": [
+        21,
+        36,
+        39,
+        45,
+        54,
+        66,
+        72,
+        90
+      ],
+      "candidate_thresholds_10_5": [
+        21,
+        39,
+        54,
+        72,
+        90
+      ],
+      "candidate_thresholds_3_3": [
+        21,
+        36,
+        39,
+        54,
+        66,
+        72,
+        90
+      ],
+      "match_10_5": false,
+      "match_3_3": false,
+      "exact_icu4c_78_2_interior": [
+        21,
+        39,
+        54,
+        72,
+        90
+      ],
+      "exact_status": -128,
+      "match_10_5_exact": true,
+      "match_3_3_exact": false
+    },
+    {
+      "id": "km-icu-repeat",
+      "span": "ភាសាខ្មែរភាសាខ្មែរភាសាខ្មែរ",
+      "span_start_utf8": 0,
+      "reference_icu4c_78_3_chromium_data": [
+        27,
+        54
+      ],
+      "candidate_thresholds_10_5": [
+        27,
+        54
+      ],
+      "candidate_thresholds_3_3": [
+        27,
+        54
+      ],
+      "match_10_5": true,
+      "match_3_3": true,
+      "exact_icu4c_78_2_interior": [
+        27,
+        54
+      ],
+      "exact_status": -128,
+      "match_10_5_exact": true,
+      "match_3_3_exact": true
+    },
+    {
+      "id": "km-icu-spaces",
+      "span": "អស់",
+      "span_start_utf8": 0,
+      "reference_icu4c_78_3_chromium_data": [],
+      "candidate_thresholds_10_5": [],
+      "candidate_thresholds_3_3": [],
+      "match_10_5": true,
+      "match_3_3": true,
+      "exact_icu4c_78_2_interior": [],
+      "exact_status": -128,
+      "match_10_5_exact": true,
+      "match_3_3_exact": true
+    },
+    {
+      "id": "km-icu-spaces",
+      "span": "នឹង",
+      "span_start_utf8": 10,
+      "reference_icu4c_78_3_chromium_data": [],
+      "candidate_thresholds_10_5": [],
+      "candidate_thresholds_3_3": [],
+      "match_10_5": true,
+      "match_3_3": true,
+      "exact_icu4c_78_2_interior": [],
+      "exact_status": -128,
+      "match_10_5_exact": true,
+      "match_3_3_exact": true
+    },
+    {
+      "id": "km-icu-spaces",
+      "span": "មាន",
+      "span_start_utf8": 20,
+      "reference_icu4c_78_3_chromium_data": [],
+      "candidate_thresholds_10_5": [],
+      "candidate_thresholds_3_3": [],
+      "match_10_5": true,
+      "match_3_3": true,
+      "exact_icu4c_78_2_interior": [],
+      "exact_status": -128,
+      "match_10_5_exact": true,
+      "match_3_3_exact": true
+    },
+    {
+      "id": "km-icu-prefix",
+      "span": "ព្រះរាជាណាចក្រកម្ពុជាជាប",
+      "span_start_utf8": 0,
+      "reference_icu4c_78_3_chromium_data": [
+        42,
+        63
+      ],
+      "candidate_thresholds_10_5": [
+        42,
+        63
+      ],
+      "candidate_thresholds_3_3": [
+        42,
+        63
+      ],
+      "match_10_5": true,
+      "match_3_3": true,
+      "exact_icu4c_78_2_interior": [
+        42,
+        63
+      ],
+      "exact_status": -128,
+      "match_10_5_exact": true,
+      "match_3_3_exact": true
+    },
+    {
+      "id": "km-synthetic-punct",
+      "span": "ភាសាខ្មែរ",
+      "span_start_utf8": 1,
+      "reference_icu4c_78_3_chromium_data": [],
+      "candidate_thresholds_10_5": [],
+      "candidate_thresholds_3_3": [],
+      "match_10_5": true,
+      "match_3_3": true,
+      "exact_icu4c_78_2_interior": [],
+      "exact_status": -128,
+      "match_10_5_exact": true,
+      "match_3_3_exact": true
+    },
+    {
+      "id": "km-synthetic-punct",
+      "span": "កម្ពុជា",
+      "span_start_utf8": 31,
+      "reference_icu4c_78_3_chromium_data": [],
+      "candidate_thresholds_10_5": [],
+      "candidate_thresholds_3_3": [],
+      "match_10_5": true,
+      "match_3_3": true,
+      "exact_icu4c_78_2_interior": [],
+      "exact_status": -128,
+      "match_10_5_exact": true,
+      "match_3_3_exact": true
+    },
+    {
+      "id": "km-synthetic-nbsp",
+      "span": "ភាសាខ្មែរ",
+      "span_start_utf8": 0,
+      "reference_icu4c_78_3_chromium_data": [],
+      "candidate_thresholds_10_5": [],
+      "candidate_thresholds_3_3": [],
+      "match_10_5": true,
+      "match_3_3": true,
+      "exact_icu4c_78_2_interior": [],
+      "exact_status": -128,
+      "match_10_5_exact": true,
+      "match_3_3_exact": true
+    },
+    {
+      "id": "km-synthetic-nbsp",
+      "span": "ភាសាខ្មែរ",
+      "span_start_utf8": 29,
+      "reference_icu4c_78_3_chromium_data": [],
+      "candidate_thresholds_10_5": [],
+      "candidate_thresholds_3_3": [],
+      "match_10_5": true,
+      "match_3_3": true,
+      "exact_icu4c_78_2_interior": [],
+      "exact_status": -128,
+      "match_10_5_exact": true,
+      "match_3_3_exact": true
+    },
+    {
+      "id": "km-synthetic-zwsp",
+      "span": "ភាសាខ្មែរ",
+      "span_start_utf8": 0,
+      "reference_icu4c_78_3_chromium_data": [],
+      "candidate_thresholds_10_5": [],
+      "candidate_thresholds_3_3": [],
+      "match_10_5": true,
+      "match_3_3": true,
+      "exact_icu4c_78_2_interior": [],
+      "exact_status": -128,
+      "match_10_5_exact": true,
+      "match_3_3_exact": true
+    },
+    {
+      "id": "km-synthetic-zwsp",
+      "span": "ភាសាខ្មែរ",
+      "span_start_utf8": 30,
+      "reference_icu4c_78_3_chromium_data": [],
+      "candidate_thresholds_10_5": [],
+      "candidate_thresholds_3_3": [],
+      "match_10_5": true,
+      "match_3_3": true,
+      "exact_icu4c_78_2_interior": [],
+      "exact_status": -128,
+      "match_10_5_exact": true,
+      "match_3_3_exact": true
+    }
+  ]
+}

@@ -1,0 +1,891 @@
+{
+  "cases": [
+    {
+      "baseline": [
+        0,
+        28,
+        55
+      ],
+      "candidate": [
+        0,
+        28,
+        55
+      ],
+      "candidate_matches": true,
+      "id": "km-lf",
+      "language": "km",
+      "oracle": [
+        0,
+        28,
+        55
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "ភាសាខ្មែរ\nភាសាខ្មែរ"
+    },
+    {
+      "baseline": [
+        0,
+        29,
+        56
+      ],
+      "candidate": [
+        0,
+        29,
+        56
+      ],
+      "candidate_matches": true,
+      "id": "km-crlf",
+      "language": "km",
+      "oracle": [
+        0,
+        29,
+        56
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "ភាសាខ្មែរ\r\nភាសាខ្មែរ"
+    },
+    {
+      "baseline": [
+        0,
+        29,
+        56
+      ],
+      "candidate": [
+        0,
+        29,
+        56
+      ],
+      "candidate_matches": true,
+      "id": "km-nel",
+      "language": "km",
+      "oracle": [
+        0,
+        29,
+        56
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "ភាសាខ្មែរភាសាខ្មែរ"
+    },
+    {
+      "baseline": [
+        0,
+        30,
+        57
+      ],
+      "candidate": [
+        0,
+        30,
+        57
+      ],
+      "candidate_matches": true,
+      "id": "km-line-separator",
+      "language": "km",
+      "oracle": [
+        0,
+        30,
+        57
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "ភាសាខ្មែរ ភាសាខ្មែរ"
+    },
+    {
+      "baseline": [
+        0,
+        30,
+        57
+      ],
+      "candidate": [
+        0,
+        30,
+        57
+      ],
+      "candidate_matches": true,
+      "id": "km-paragraph-separator",
+      "language": "km",
+      "oracle": [
+        0,
+        30,
+        57
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "ភាសាខ្មែរ ភាសាខ្មែរ"
+    },
+    {
+      "baseline": [
+        0,
+        12,
+        22,
+        34,
+        43
+      ],
+      "candidate": [
+        0,
+        12,
+        22,
+        34,
+        43
+      ],
+      "candidate_matches": true,
+      "id": "th-lf",
+      "language": "km",
+      "oracle": [
+        0,
+        12,
+        22,
+        34,
+        43
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "ภาษาไทย\nภาษาไทย"
+    },
+    {
+      "baseline": [
+        0,
+        12,
+        23,
+        35,
+        44
+      ],
+      "candidate": [
+        0,
+        12,
+        23,
+        35,
+        44
+      ],
+      "candidate_matches": true,
+      "id": "th-crlf",
+      "language": "km",
+      "oracle": [
+        0,
+        12,
+        23,
+        35,
+        44
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "ภาษาไทย\r\nภาษาไทย"
+    },
+    {
+      "baseline": [
+        0,
+        12,
+        23,
+        35,
+        44
+      ],
+      "candidate": [
+        0,
+        12,
+        23,
+        35,
+        44
+      ],
+      "candidate_matches": true,
+      "id": "th-nel",
+      "language": "km",
+      "oracle": [
+        0,
+        12,
+        23,
+        35,
+        44
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "ภาษาไทยภาษาไทย"
+    },
+    {
+      "baseline": [
+        0,
+        12,
+        24,
+        36,
+        45
+      ],
+      "candidate": [
+        0,
+        12,
+        24,
+        36,
+        45
+      ],
+      "candidate_matches": true,
+      "id": "th-line-separator",
+      "language": "km",
+      "oracle": [
+        0,
+        12,
+        24,
+        36,
+        45
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "ภาษาไทย ภาษาไทย"
+    },
+    {
+      "baseline": [
+        0,
+        12,
+        24,
+        36,
+        45
+      ],
+      "candidate": [
+        0,
+        12,
+        24,
+        36,
+        45
+      ],
+      "candidate_matches": true,
+      "id": "th-paragraph-separator",
+      "language": "km",
+      "oracle": [
+        0,
+        12,
+        24,
+        36,
+        45
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "ภาษาไทย ภาษาไทย"
+    },
+    {
+      "baseline": [
+        0,
+        12,
+        22,
+        34,
+        43
+      ],
+      "candidate": [
+        0,
+        12,
+        22,
+        34,
+        43
+      ],
+      "candidate_matches": true,
+      "id": "lo-lf",
+      "language": "km",
+      "oracle": [
+        0,
+        12,
+        22,
+        34,
+        43
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "ພາສາລາວ\nພາສາລາວ"
+    },
+    {
+      "baseline": [
+        0,
+        12,
+        23,
+        35,
+        44
+      ],
+      "candidate": [
+        0,
+        12,
+        23,
+        35,
+        44
+      ],
+      "candidate_matches": true,
+      "id": "lo-crlf",
+      "language": "km",
+      "oracle": [
+        0,
+        12,
+        23,
+        35,
+        44
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "ພາສາລາວ\r\nພາສາລາວ"
+    },
+    {
+      "baseline": [
+        0,
+        12,
+        23,
+        35,
+        44
+      ],
+      "candidate": [
+        0,
+        12,
+        23,
+        35,
+        44
+      ],
+      "candidate_matches": true,
+      "id": "lo-nel",
+      "language": "km",
+      "oracle": [
+        0,
+        12,
+        23,
+        35,
+        44
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "ພາສາລາວພາສາລາວ"
+    },
+    {
+      "baseline": [
+        0,
+        12,
+        24,
+        36,
+        45
+      ],
+      "candidate": [
+        0,
+        12,
+        24,
+        36,
+        45
+      ],
+      "candidate_matches": true,
+      "id": "lo-line-separator",
+      "language": "km",
+      "oracle": [
+        0,
+        12,
+        24,
+        36,
+        45
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "ພາສາລາວ ພາສາລາວ"
+    },
+    {
+      "baseline": [
+        0,
+        12,
+        24,
+        36,
+        45
+      ],
+      "candidate": [
+        0,
+        12,
+        24,
+        36,
+        45
+      ],
+      "candidate_matches": true,
+      "id": "lo-paragraph-separator",
+      "language": "km",
+      "oracle": [
+        0,
+        12,
+        24,
+        36,
+        45
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "ພາສາລາວ ພາສາລາວ"
+    },
+    {
+      "baseline": [
+        0,
+        18,
+        25,
+        43,
+        49
+      ],
+      "candidate": [
+        0,
+        18,
+        25,
+        43,
+        49
+      ],
+      "candidate_matches": true,
+      "id": "my-lf",
+      "language": "km",
+      "oracle": [
+        0,
+        18,
+        25,
+        43,
+        49
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "မြန်မာစာ\nမြန်မာစာ"
+    },
+    {
+      "baseline": [
+        0,
+        18,
+        26,
+        44,
+        50
+      ],
+      "candidate": [
+        0,
+        18,
+        26,
+        44,
+        50
+      ],
+      "candidate_matches": true,
+      "id": "my-crlf",
+      "language": "km",
+      "oracle": [
+        0,
+        18,
+        26,
+        44,
+        50
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "မြန်မာစာ\r\nမြန်မာစာ"
+    },
+    {
+      "baseline": [
+        0,
+        18,
+        26,
+        44,
+        50
+      ],
+      "candidate": [
+        0,
+        18,
+        26,
+        44,
+        50
+      ],
+      "candidate_matches": true,
+      "id": "my-nel",
+      "language": "km",
+      "oracle": [
+        0,
+        18,
+        26,
+        44,
+        50
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "မြန်မာစာမြန်မာစာ"
+    },
+    {
+      "baseline": [
+        0,
+        18,
+        27,
+        45,
+        51
+      ],
+      "candidate": [
+        0,
+        18,
+        27,
+        45,
+        51
+      ],
+      "candidate_matches": true,
+      "id": "my-line-separator",
+      "language": "km",
+      "oracle": [
+        0,
+        18,
+        27,
+        45,
+        51
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "မြန်မာစာ မြန်မာစာ"
+    },
+    {
+      "baseline": [
+        0,
+        18,
+        27,
+        45,
+        51
+      ],
+      "candidate": [
+        0,
+        18,
+        27,
+        45,
+        51
+      ],
+      "candidate_matches": true,
+      "id": "my-paragraph-separator",
+      "language": "km",
+      "oracle": [
+        0,
+        18,
+        27,
+        45,
+        51
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "မြန်မာစာ မြန်မာစာ"
+    },
+    {
+      "baseline": [
+        0,
+        3,
+        6,
+        18,
+        28,
+        31,
+        34,
+        46,
+        55
+      ],
+      "candidate": [
+        0,
+        3,
+        6,
+        18,
+        28,
+        31,
+        34,
+        46,
+        55
+      ],
+      "candidate_matches": true,
+      "id": "cjk-fallback-lf",
+      "language": "km",
+      "oracle": [
+        0,
+        3,
+        6,
+        18,
+        28,
+        31,
+        34,
+        46,
+        55
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "中文ภาษาไทย\n中文ภาษาไทย"
+    },
+    {
+      "baseline": [
+        0,
+        3,
+        6,
+        18,
+        29,
+        32,
+        35,
+        47,
+        56
+      ],
+      "candidate": [
+        0,
+        3,
+        6,
+        18,
+        29,
+        32,
+        35,
+        47,
+        56
+      ],
+      "candidate_matches": true,
+      "id": "cjk-fallback-crlf",
+      "language": "km",
+      "oracle": [
+        0,
+        3,
+        6,
+        18,
+        29,
+        32,
+        35,
+        47,
+        56
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "中文ภาษาไทย\r\n中文ภาษาไทย"
+    },
+    {
+      "baseline": [
+        0,
+        3,
+        6,
+        18,
+        29,
+        32,
+        35,
+        47,
+        56
+      ],
+      "candidate": [
+        0,
+        3,
+        6,
+        18,
+        29,
+        32,
+        35,
+        47,
+        56
+      ],
+      "candidate_matches": true,
+      "id": "cjk-fallback-nel",
+      "language": "km",
+      "oracle": [
+        0,
+        3,
+        6,
+        18,
+        29,
+        32,
+        35,
+        47,
+        56
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "中文ภาษาไทย中文ภาษาไทย"
+    },
+    {
+      "baseline": [
+        0,
+        3,
+        6,
+        18,
+        30,
+        33,
+        36,
+        48,
+        57
+      ],
+      "candidate": [
+        0,
+        3,
+        6,
+        18,
+        30,
+        33,
+        36,
+        48,
+        57
+      ],
+      "candidate_matches": true,
+      "id": "cjk-fallback-line-separator",
+      "language": "km",
+      "oracle": [
+        0,
+        3,
+        6,
+        18,
+        30,
+        33,
+        36,
+        48,
+        57
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "中文ภาษาไทย 中文ภาษาไทย"
+    },
+    {
+      "baseline": [
+        0,
+        3,
+        6,
+        18,
+        30,
+        33,
+        36,
+        48,
+        57
+      ],
+      "candidate": [
+        0,
+        3,
+        6,
+        18,
+        30,
+        33,
+        36,
+        48,
+        57
+      ],
+      "candidate_matches": true,
+      "id": "cjk-fallback-paragraph-separator",
+      "language": "km",
+      "oracle": [
+        0,
+        3,
+        6,
+        18,
+        30,
+        33,
+        36,
+        48,
+        57
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "中文ภาษาไทย 中文ภาษาไทย"
+    },
+    {
+      "baseline": [
+        0,
+        6,
+        11,
+        17,
+        21
+      ],
+      "candidate": [
+        0,
+        6,
+        11,
+        17,
+        21
+      ],
+      "candidate_matches": true,
+      "id": "non-complex-lf",
+      "language": "km",
+      "oracle": [
+        0,
+        6,
+        11,
+        17,
+        21
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "Plain text\nPlain text"
+    },
+    {
+      "baseline": [
+        0,
+        6,
+        12,
+        18,
+        22
+      ],
+      "candidate": [
+        0,
+        6,
+        12,
+        18,
+        22
+      ],
+      "candidate_matches": true,
+      "id": "non-complex-crlf",
+      "language": "km",
+      "oracle": [
+        0,
+        6,
+        12,
+        18,
+        22
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "Plain text\r\nPlain text"
+    },
+    {
+      "baseline": [
+        0,
+        6,
+        12,
+        18,
+        22
+      ],
+      "candidate": [
+        0,
+        6,
+        12,
+        18,
+        22
+      ],
+      "candidate_matches": true,
+      "id": "non-complex-nel",
+      "language": "km",
+      "oracle": [
+        0,
+        6,
+        12,
+        18,
+        22
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "Plain textPlain text"
+    },
+    {
+      "baseline": [
+        0,
+        6,
+        13,
+        19,
+        23
+      ],
+      "candidate": [
+        0,
+        6,
+        13,
+        19,
+        23
+      ],
+      "candidate_matches": true,
+      "id": "non-complex-line-separator",
+      "language": "km",
+      "oracle": [
+        0,
+        6,
+        13,
+        19,
+        23
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "Plain text Plain text"
+    },
+    {
+      "baseline": [
+        0,
+        6,
+        13,
+        19,
+        23
+      ],
+      "candidate": [
+        0,
+        6,
+        13,
+        19,
+        23
+      ],
+      "candidate_matches": true,
+      "id": "non-complex-paragraph-separator",
+      "language": "km",
+      "oracle": [
+        0,
+        6,
+        13,
+        19,
+        23
+      ],
+      "suppressed_non_grapheme": 0,
+      "text": "Plain text Plain text"
+    }
+  ],
+  "main_thread_initializations": 1,
+  "oracle": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-context-probe/qualification/mandatory-oracle.json",
+  "oracle_version": [
+    78,
+    2,
+    0,
+    0
+  ],
+  "per_language": {
+    "km": [
+      30,
+      30
+    ]
+  },
+  "thread_validation": null,
+  "binary_sha256": "ce4ef833de3a76a79ecac556e6e0d731c70c4fbc5912c7eb166843a558c23527",
+  "mandatory_failures": []
+}

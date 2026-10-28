@@ -1,0 +1,1947 @@
+{
+  "valid": true,
+  "errors": [],
+  "baseline": "/Volumes/VIXinSSD/CW/artifacts/wegpui-completion-20261025/linux/full-parity/dictionary-context-base/comparison-fresh-20261028T094113.428748Z",
+  "current": "/Volumes/VIXinSSD/CW/artifacts/wegpui-completion-20261025/linux/full-parity/dictionary-context-ab/comparison-fresh-20261028T094138.973495Z",
+  "pairs": 192,
+  "baseline_matches": 157,
+  "candidate_matches": 192,
+  "improved": [
+    {
+      "id": "fresh-km-0",
+      "width": 32.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "អាទិត្យច",
+        "ន្ទ",
+        "អង្គារ"
+      ],
+      "candidate_rows": [
+        "អា",
+        "ទិត្យ",
+        "ចន្ទ",
+        "អង្គារ"
+      ],
+      "browser_rows": [
+        "អា",
+        "ទិត្យ",
+        "ចន្ទ",
+        "អង្គារ"
+      ],
+      "baseline_breaks": [
+        0,
+        24,
+        33,
+        51
+      ],
+      "candidate_breaks": [
+        0,
+        6,
+        21,
+        33,
+        51
+      ],
+      "oracle_breaks": [
+        0,
+        6,
+        21,
+        33,
+        51
+      ],
+      "baseline_row_widths": [
+        52.36000061035156,
+        10.794998168945312,
+        31.382003784179688
+      ],
+      "candidate_row_widths": [
+        15.861000061035156,
+        26.04399871826172,
+        21.25,
+        31.382003784179688
+      ],
+      "browser_row_widths": [
+        15.875,
+        26.046875,
+        21.25,
+        31.390625
+      ]
+    },
+    {
+      "id": "fresh-km-0",
+      "width": 48.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "អាទិត្យច",
+        "ន្ទអង្គារ"
+      ],
+      "candidate_rows": [
+        "អាទិត្យ",
+        "ចន្ទ",
+        "អង្គារ"
+      ],
+      "browser_rows": [
+        "អាទិត្យ",
+        "ចន្ទ",
+        "អង្គារ"
+      ],
+      "baseline_breaks": [
+        0,
+        24,
+        33,
+        51
+      ],
+      "candidate_breaks": [
+        0,
+        6,
+        21,
+        33,
+        51
+      ],
+      "oracle_breaks": [
+        0,
+        6,
+        21,
+        33,
+        51
+      ],
+      "baseline_row_widths": [
+        52.36000061035156,
+        42.177001953125
+      ],
+      "candidate_row_widths": [
+        41.904998779296875,
+        21.25,
+        31.382003784179688
+      ],
+      "browser_row_widths": [
+        41.90625,
+        21.25,
+        31.390625
+      ]
+    },
+    {
+      "id": "fresh-km-1",
+      "width": 32.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "ចន្ទ",
+        "អង្គារ",
+        "ព្រហ"
+      ],
+      "candidate_rows": [
+        "ចន្ទ",
+        "អង្គារព្រហ"
+      ],
+      "browser_rows": [
+        "ចន្ទ",
+        "អង្គារព្រហ"
+      ],
+      "baseline_breaks": [
+        0,
+        12,
+        30,
+        42
+      ],
+      "candidate_breaks": [
+        0,
+        12,
+        42
+      ],
+      "oracle_breaks": [
+        0,
+        12,
+        42
+      ],
+      "baseline_row_widths": [
+        21.25,
+        31.381999969482422,
+        31.450000762939453
+      ],
+      "candidate_row_widths": [
+        21.25,
+        62.832000732421875
+      ],
+      "browser_row_widths": [
+        21.25,
+        62.84375
+      ]
+    },
+    {
+      "id": "fresh-km-1",
+      "width": 48.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "ចន្ទ",
+        "អង្គារ",
+        "ព្រហ"
+      ],
+      "candidate_rows": [
+        "ចន្ទ",
+        "អង្គារព្រហ"
+      ],
+      "browser_rows": [
+        "ចន្ទ",
+        "អង្គារព្រហ"
+      ],
+      "baseline_breaks": [
+        0,
+        12,
+        30,
+        42
+      ],
+      "candidate_breaks": [
+        0,
+        12,
+        42
+      ],
+      "oracle_breaks": [
+        0,
+        12,
+        42
+      ],
+      "baseline_row_widths": [
+        21.25,
+        31.381999969482422,
+        31.450000762939453
+      ],
+      "candidate_row_widths": [
+        21.25,
+        62.832000732421875
+      ],
+      "browser_row_widths": [
+        21.25,
+        62.84375
+      ]
+    },
+    {
+      "id": "fresh-km-1",
+      "width": 64.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "ចន្ទអង្គារ",
+        "ព្រហ"
+      ],
+      "candidate_rows": [
+        "ចន្ទ",
+        "អង្គារព្រហ"
+      ],
+      "browser_rows": [
+        "ចន្ទ",
+        "អង្គារព្រហ"
+      ],
+      "baseline_breaks": [
+        0,
+        12,
+        30,
+        42
+      ],
+      "candidate_breaks": [
+        0,
+        12,
+        42
+      ],
+      "oracle_breaks": [
+        0,
+        12,
+        42
+      ],
+      "baseline_row_widths": [
+        52.63199996948242,
+        31.450000762939453
+      ],
+      "candidate_row_widths": [
+        21.25,
+        62.832000732421875
+      ],
+      "browser_row_widths": [
+        21.25,
+        62.84375
+      ]
+    },
+    {
+      "id": "fresh-km-2",
+      "width": 32.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "អង្គារ",
+        "ព្រហសុ",
+        "ក្រ"
+      ],
+      "candidate_rows": [
+        "អង្គារ",
+        "ព្រហ",
+        "សុក្រ"
+      ],
+      "browser_rows": [
+        "អង្គារ",
+        "ព្រហ",
+        "សុក្រ"
+      ],
+      "baseline_breaks": [
+        0,
+        18,
+        36,
+        45
+      ],
+      "candidate_breaks": [
+        0,
+        18,
+        30,
+        45
+      ],
+      "oracle_breaks": [
+        0,
+        18,
+        30,
+        45
+      ],
+      "baseline_row_widths": [
+        31.381999969482422,
+        47.22600173950195,
+        15.690994262695312
+      ],
+      "candidate_row_widths": [
+        31.381999969482422,
+        31.450000762939453,
+        31.466995239257812
+      ],
+      "browser_row_widths": [
+        31.390625,
+        31.453125,
+        31.46875
+      ]
+    },
+    {
+      "id": "fresh-km-2",
+      "width": 48.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "អង្គារ",
+        "ព្រហសុ",
+        "ក្រ"
+      ],
+      "candidate_rows": [
+        "អង្គារ",
+        "ព្រហ",
+        "សុក្រ"
+      ],
+      "browser_rows": [
+        "អង្គារ",
+        "ព្រហ",
+        "សុក្រ"
+      ],
+      "baseline_breaks": [
+        0,
+        18,
+        36,
+        45
+      ],
+      "candidate_breaks": [
+        0,
+        18,
+        30,
+        45
+      ],
+      "oracle_breaks": [
+        0,
+        18,
+        30,
+        45
+      ],
+      "baseline_row_widths": [
+        31.381999969482422,
+        47.22600173950195,
+        15.690994262695312
+      ],
+      "candidate_row_widths": [
+        31.381999969482422,
+        31.450000762939453,
+        31.466995239257812
+      ],
+      "browser_row_widths": [
+        31.390625,
+        31.453125,
+        31.46875
+      ]
+    },
+    {
+      "id": "fresh-km-2",
+      "width": 64.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "អង្គារ",
+        "ព្រហសុក្រ"
+      ],
+      "candidate_rows": [
+        "អង្គារព្រហ",
+        "សុក្រ"
+      ],
+      "browser_rows": [
+        "អង្គារព្រហ",
+        "សុក្រ"
+      ],
+      "baseline_breaks": [
+        0,
+        18,
+        36,
+        45
+      ],
+      "candidate_breaks": [
+        0,
+        18,
+        30,
+        45
+      ],
+      "oracle_breaks": [
+        0,
+        18,
+        30,
+        45
+      ],
+      "baseline_row_widths": [
+        31.381999969482422,
+        62.916996002197266
+      ],
+      "candidate_row_widths": [
+        62.832000732421875,
+        31.466995239257812
+      ],
+      "browser_row_widths": [
+        62.84375,
+        31.46875
+      ]
+    },
+    {
+      "id": "fresh-km-3",
+      "width": 32.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "ព្រហសុ",
+        "ក្រសៅ",
+        "រ៍"
+      ],
+      "candidate_rows": [
+        "ព្រហ",
+        "សុក្រ",
+        "សៅរ៍"
+      ],
+      "browser_rows": [
+        "ព្រហ",
+        "សុក្រ",
+        "សៅរ៍"
+      ],
+      "baseline_breaks": [
+        0,
+        18,
+        33,
+        39
+      ],
+      "candidate_breaks": [
+        0,
+        12,
+        27,
+        39
+      ],
+      "oracle_breaks": [
+        0,
+        12,
+        27,
+        39
+      ],
+      "baseline_row_widths": [
+        47.22599792480469,
+        41.259002685546875,
+        4.89599609375
+      ],
+      "candidate_row_widths": [
+        31.44999885559082,
+        31.46700096130371,
+        30.46399688720703
+      ],
+      "browser_row_widths": [
+        31.453125,
+        31.46875,
+        30.46875
+      ]
+    },
+    {
+      "id": "fresh-km-3",
+      "width": 48.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "ព្រហសុ",
+        "ក្រសៅរ៍"
+      ],
+      "candidate_rows": [
+        "ព្រហ",
+        "សុក្រ",
+        "សៅរ៍"
+      ],
+      "browser_rows": [
+        "ព្រហ",
+        "សុក្រ",
+        "សៅរ៍"
+      ],
+      "baseline_breaks": [
+        0,
+        18,
+        33,
+        39
+      ],
+      "candidate_breaks": [
+        0,
+        12,
+        27,
+        39
+      ],
+      "oracle_breaks": [
+        0,
+        12,
+        27,
+        39
+      ],
+      "baseline_row_widths": [
+        47.22599792480469,
+        46.154998779296875
+      ],
+      "candidate_row_widths": [
+        31.44999885559082,
+        31.46700096130371,
+        30.46399688720703
+      ],
+      "browser_row_widths": [
+        31.453125,
+        31.46875,
+        30.46875
+      ]
+    },
+    {
+      "id": "fresh-km-3",
+      "width": 64.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "ព្រហសុ",
+        "ក្រសៅរ៍"
+      ],
+      "candidate_rows": [
+        "ព្រហសុក្រ",
+        "សៅរ៍"
+      ],
+      "browser_rows": [
+        "ព្រហសុក្រ",
+        "សៅរ៍"
+      ],
+      "baseline_breaks": [
+        0,
+        18,
+        33,
+        39
+      ],
+      "candidate_breaks": [
+        0,
+        12,
+        27,
+        39
+      ],
+      "oracle_breaks": [
+        0,
+        12,
+        27,
+        39
+      ],
+      "baseline_row_widths": [
+        47.22599792480469,
+        46.154998779296875
+      ],
+      "candidate_row_widths": [
+        62.91699981689453,
+        30.46399688720703
+      ],
+      "browser_row_widths": [
+        62.921875,
+        30.46875
+      ]
+    },
+    {
+      "id": "fresh-lo-4",
+      "width": 32.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "ເວີຍ",
+        "ເຊິ່ນ",
+        "ເຈຍ-",
+        "ຊິ"
+      ],
+      "candidate_rows": [
+        "ເວີຍ",
+        "ເຊິ່ນເຈຍ-",
+        "ຊິ"
+      ],
+      "browser_rows": [
+        "ເວີຍ",
+        "ເຊິ່ນເຈຍ-",
+        "ຊິ"
+      ],
+      "baseline_breaks": [
+        0,
+        12,
+        27,
+        37,
+        43
+      ],
+      "candidate_breaks": [
+        0,
+        12,
+        37,
+        43
+      ],
+      "oracle_breaks": [
+        0,
+        12,
+        37,
+        43
+      ],
+      "baseline_row_widths": [
+        25.177001953125,
+        25.670001983642578,
+        30.260005950927734,
+        10.455001831054688
+      ],
+      "candidate_row_widths": [
+        25.177001953125,
+        55.93000793457031,
+        10.455001831054688
+      ],
+      "browser_row_widths": [
+        25.1875,
+        55.9375,
+        10.46875
+      ]
+    },
+    {
+      "id": "fresh-lo-4",
+      "width": 48.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "ເວີຍ",
+        "ເຊິ່ນ",
+        "ເຈຍ-ຊິ"
+      ],
+      "candidate_rows": [
+        "ເວີຍ",
+        "ເຊິ່ນເຈຍ-",
+        "ຊິ"
+      ],
+      "browser_rows": [
+        "ເວີຍ",
+        "ເຊິ່ນເຈຍ-",
+        "ຊິ"
+      ],
+      "baseline_breaks": [
+        0,
+        12,
+        27,
+        37,
+        43
+      ],
+      "candidate_breaks": [
+        0,
+        12,
+        37,
+        43
+      ],
+      "oracle_breaks": [
+        0,
+        12,
+        37,
+        43
+      ],
+      "baseline_row_widths": [
+        25.177001953125,
+        25.670001983642578,
+        40.71500778198242
+      ],
+      "candidate_row_widths": [
+        25.177001953125,
+        55.93000793457031,
+        10.455001831054688
+      ],
+      "browser_row_widths": [
+        25.1875,
+        55.9375,
+        10.46875
+      ]
+    },
+    {
+      "id": "fresh-lo-4",
+      "width": 64.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "ເວີຍເຊິ່ນ",
+        "ເຈຍ-ຊິ"
+      ],
+      "candidate_rows": [
+        "ເວີຍ",
+        "ເຊິ່ນເຈຍ-",
+        "ຊິ"
+      ],
+      "browser_rows": [
+        "ເວີຍ",
+        "ເຊິ່ນເຈຍ-",
+        "ຊິ"
+      ],
+      "baseline_breaks": [
+        0,
+        12,
+        27,
+        37,
+        43
+      ],
+      "candidate_breaks": [
+        0,
+        12,
+        37,
+        43
+      ],
+      "oracle_breaks": [
+        0,
+        12,
+        37,
+        43
+      ],
+      "baseline_row_widths": [
+        50.84700393676758,
+        40.71500778198242
+      ],
+      "candidate_row_widths": [
+        25.177001953125,
+        55.93000793457031,
+        10.455001831054688
+      ],
+      "browser_row_widths": [
+        25.1875,
+        55.9375,
+        10.46875
+      ]
+    },
+    {
+      "id": "fresh-lo-5",
+      "width": 32.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "ເຊິ່ນ",
+        "ເຈຍ-",
+        "ຊິຢີ-",
+        "ຊູ"
+      ],
+      "candidate_rows": [
+        "ເຊິ່ນເຈຍ-",
+        "ຊິຢີ-",
+        "ຊູ"
+      ],
+      "browser_rows": [
+        "ເຊິ່ນເຈຍ-",
+        "ຊິຢີ-",
+        "ຊູ"
+      ],
+      "baseline_breaks": [
+        0,
+        15,
+        25,
+        31,
+        38,
+        44
+      ],
+      "candidate_breaks": [
+        0,
+        25,
+        38,
+        44
+      ],
+      "oracle_breaks": [
+        0,
+        25,
+        38,
+        44
+      ],
+      "baseline_row_widths": [
+        25.670001983642578,
+        30.259998321533203,
+        26.452003479003906,
+        10.455001831054688
+      ],
+      "candidate_row_widths": [
+        55.93000030517578,
+        26.452003479003906,
+        10.455001831054688
+      ],
+      "browser_row_widths": [
+        55.9375,
+        26.453125,
+        10.46875
+      ]
+    },
+    {
+      "id": "fresh-lo-5",
+      "width": 48.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "ເຊິ່ນ",
+        "ເຈຍ-ຊິ",
+        "ຢີ-ຊູ"
+      ],
+      "candidate_rows": [
+        "ເຊິ່ນເຈຍ-",
+        "ຊິຢີ-ຊູ"
+      ],
+      "browser_rows": [
+        "ເຊິ່ນເຈຍ-",
+        "ຊິຢີ-ຊູ"
+      ],
+      "baseline_breaks": [
+        0,
+        15,
+        25,
+        31,
+        38,
+        44
+      ],
+      "candidate_breaks": [
+        0,
+        25,
+        38,
+        44
+      ],
+      "oracle_breaks": [
+        0,
+        25,
+        38,
+        44
+      ],
+      "baseline_row_widths": [
+        25.670001983642578,
+        40.71500015258789,
+        26.452003479003906
+      ],
+      "candidate_row_widths": [
+        55.93000030517578,
+        36.907005310058594
+      ],
+      "browser_row_widths": [
+        55.9375,
+        36.921875
+      ]
+    },
+    {
+      "id": "fresh-lo-6",
+      "width": 32.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "ເຈຍ-",
+        "ຊິຢີ-",
+        "ຊູ",
+        "ບິງ-",
+        "ຢິນ"
+      ],
+      "candidate_rows": [
+        "ເຈຍ-",
+        "ຊິຢີ-",
+        "ຊູບິ",
+        "ງ-",
+        "ຢິນ"
+      ],
+      "browser_rows": [
+        "ເຈຍ-",
+        "ຊິຢີ-",
+        "ຊູບິ",
+        "ງ-",
+        "ຢິນ"
+      ],
+      "baseline_breaks": [
+        0,
+        10,
+        16,
+        23,
+        29,
+        39,
+        48
+      ],
+      "candidate_breaks": [
+        0,
+        10,
+        23,
+        35,
+        39,
+        48
+      ],
+      "oracle_breaks": [
+        0,
+        10,
+        23,
+        35,
+        39,
+        48
+      ],
+      "baseline_row_widths": [
+        30.259998321533203,
+        26.45199966430664,
+        10.455001831054688,
+        22.18500518798828,
+        20.96099853515625
+      ],
+      "candidate_row_widths": [
+        30.259998321533203,
+        26.45199966430664,
+        20.89300537109375,
+        11.747001647949219,
+        20.96099853515625
+      ],
+      "browser_row_widths": [
+        30.265625,
+        26.453125,
+        20.90625,
+        11.75,
+        20.96875
+      ]
+    },
+    {
+      "id": "fresh-lo-6",
+      "width": 48.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "ເຈຍ-ຊິ",
+        "ຢີ-ຊູ",
+        "ບິງ-ຢິນ"
+      ],
+      "candidate_rows": [
+        "ເຈຍ-",
+        "ຊິຢີ-ຊູບິ",
+        "ງ-ຢິນ"
+      ],
+      "browser_rows": [
+        "ເຈຍ-",
+        "ຊິຢີ-ຊູບິ",
+        "ງ-ຢິນ"
+      ],
+      "baseline_breaks": [
+        0,
+        10,
+        16,
+        23,
+        29,
+        39,
+        48
+      ],
+      "candidate_breaks": [
+        0,
+        10,
+        23,
+        35,
+        39,
+        48
+      ],
+      "oracle_breaks": [
+        0,
+        10,
+        23,
+        35,
+        39,
+        48
+      ],
+      "baseline_row_widths": [
+        40.714996337890625,
+        26.452003479003906,
+        43.14600372314453
+      ],
+      "candidate_row_widths": [
+        30.259998321533203,
+        47.34500503540039,
+        32.70800018310547
+      ],
+      "browser_row_widths": [
+        30.265625,
+        47.359375,
+        32.71875
+      ]
+    },
+    {
+      "id": "fresh-lo-7",
+      "width": 32.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "ຢີ-ຊູ",
+        "ບິງ-",
+        "ຢິນ",
+        "ດິງ-",
+        "ເມົາ"
+      ],
+      "candidate_rows": [
+        "ຢີ-",
+        "ຊູບິ",
+        "ງ-",
+        "ຢິນດິງ-",
+        "ເມົາ"
+      ],
+      "browser_rows": [
+        "ຢີ-",
+        "ຊູບິ",
+        "ງ-",
+        "ຢິນດິງ-",
+        "ເມົາ"
+      ],
+      "baseline_breaks": [
+        0,
+        7,
+        13,
+        23,
+        32,
+        42,
+        54
+      ],
+      "candidate_breaks": [
+        0,
+        7,
+        19,
+        23,
+        42,
+        54
+      ],
+      "oracle_breaks": [
+        0,
+        7,
+        19,
+        23,
+        42,
+        54
+      ],
+      "baseline_row_widths": [
+        26.45199966430664,
+        22.18499755859375,
+        20.961002349853516,
+        22.558998107910156,
+        20.722999572753906
+      ],
+      "candidate_row_widths": [
+        15.997000694274902,
+        20.89299774169922,
+        11.746997833251953,
+        43.52000045776367,
+        20.722999572753906
+      ],
+      "browser_row_widths": [
+        16,
+        20.90625,
+        11.75,
+        43.53125,
+        20.734375
+      ]
+    },
+    {
+      "id": "fresh-lo-7",
+      "width": 48.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "ຢີ-ຊູ",
+        "ບິງ-ຢິນ",
+        "ດິງ-ເມົາ"
+      ],
+      "candidate_rows": [
+        "ຢີ-ຊູບິ",
+        "ງ-",
+        "ຢິນດິງ-",
+        "ເມົາ"
+      ],
+      "browser_rows": [
+        "ຢີ-ຊູບິ",
+        "ງ-",
+        "ຢິນດິງ-",
+        "ເມົາ"
+      ],
+      "baseline_breaks": [
+        0,
+        7,
+        13,
+        23,
+        32,
+        42,
+        54
+      ],
+      "candidate_breaks": [
+        0,
+        7,
+        19,
+        23,
+        42,
+        54
+      ],
+      "oracle_breaks": [
+        0,
+        7,
+        19,
+        23,
+        42,
+        54
+      ],
+      "baseline_row_widths": [
+        26.45199966430664,
+        43.145999908447266,
+        43.28199768066406
+      ],
+      "candidate_row_widths": [
+        36.88999938964844,
+        11.746997833251953,
+        43.52000045776367,
+        20.722999572753906
+      ],
+      "browser_row_widths": [
+        36.890625,
+        11.75,
+        43.53125,
+        20.734375
+      ]
+    },
+    {
+      "id": "fresh-th-0",
+      "width": 32.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "พ.ศ.พุทธศักราช",
+        "จื่อ"
+      ],
+      "candidate_rows": [
+        "พ.ศ.พุทธ",
+        "ศักราช",
+        "จื่อ"
+      ],
+      "browser_rows": [
+        "พ.ศ.พุทธ",
+        "ศักราช",
+        "จื่อ"
+      ],
+      "baseline_breaks": [
+        0,
+        38,
+        47,
+        50
+      ],
+      "candidate_breaks": [
+        0,
+        20,
+        38,
+        50
+      ],
+      "oracle_breaks": [
+        0,
+        20,
+        38,
+        50
+      ],
+      "baseline_row_widths": [
+        108.44300079345703,
+        18.802001953125
+      ],
+      "candidate_row_widths": [
+        63.01900100708008,
+        45.42399978637695,
+        18.802001953125
+      ],
+      "browser_row_widths": [
+        63.03125,
+        45.4375,
+        18.8125
+      ]
+    },
+    {
+      "id": "fresh-th-0",
+      "width": 48.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "พ.ศ.พุทธศักราช",
+        "จื่อ"
+      ],
+      "candidate_rows": [
+        "พ.ศ.พุทธ",
+        "ศักราช",
+        "จื่อ"
+      ],
+      "browser_rows": [
+        "พ.ศ.พุทธ",
+        "ศักราช",
+        "จื่อ"
+      ],
+      "baseline_breaks": [
+        0,
+        38,
+        47,
+        50
+      ],
+      "candidate_breaks": [
+        0,
+        20,
+        38,
+        50
+      ],
+      "oracle_breaks": [
+        0,
+        20,
+        38,
+        50
+      ],
+      "baseline_row_widths": [
+        108.44300079345703,
+        18.802001953125
+      ],
+      "candidate_row_widths": [
+        63.01900100708008,
+        45.42399978637695,
+        18.802001953125
+      ],
+      "browser_row_widths": [
+        63.03125,
+        45.4375,
+        18.8125
+      ]
+    },
+    {
+      "id": "fresh-th-0",
+      "width": 64.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "พ.ศ.พุทธศักราช",
+        "จื่อ"
+      ],
+      "candidate_rows": [
+        "พ.ศ.พุทธ",
+        "ศักราช",
+        "จื่อ"
+      ],
+      "browser_rows": [
+        "พ.ศ.พุทธ",
+        "ศักราช",
+        "จื่อ"
+      ],
+      "baseline_breaks": [
+        0,
+        38,
+        47,
+        50
+      ],
+      "candidate_breaks": [
+        0,
+        20,
+        38,
+        50
+      ],
+      "oracle_breaks": [
+        0,
+        20,
+        38,
+        50
+      ],
+      "baseline_row_widths": [
+        108.44300079345703,
+        18.802001953125
+      ],
+      "candidate_row_widths": [
+        63.01900100708008,
+        45.42399978637695,
+        18.802001953125
+      ],
+      "browser_row_widths": [
+        63.03125,
+        45.4375,
+        18.8125
+      ]
+    },
+    {
+      "id": "fresh-th-0",
+      "width": 96.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "พ.ศ.พุทธศักราช",
+        "จื่อ"
+      ],
+      "candidate_rows": [
+        "พ.ศ.พุทธ",
+        "ศักราชจื่อ"
+      ],
+      "browser_rows": [
+        "พ.ศ.พุทธ",
+        "ศักราชจื่อ"
+      ],
+      "baseline_breaks": [
+        0,
+        38,
+        47,
+        50
+      ],
+      "candidate_breaks": [
+        0,
+        20,
+        38,
+        50
+      ],
+      "oracle_breaks": [
+        0,
+        20,
+        38,
+        50
+      ],
+      "baseline_row_widths": [
+        108.44300079345703,
+        18.802001953125
+      ],
+      "candidate_row_widths": [
+        63.01900100708008,
+        64.22599792480469
+      ],
+      "browser_row_widths": [
+        63.03125,
+        64.234375
+      ]
+    },
+    {
+      "id": "fresh-th-1",
+      "width": 32.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "พุทธศักราช",
+        "จื่",
+        "อโฉ่",
+        "ว"
+      ],
+      "candidate_rows": [
+        "พุทธ",
+        "ศักราช",
+        "จื่อ",
+        "โฉ่ว"
+      ],
+      "browser_rows": [
+        "พุทธ",
+        "ศักราช",
+        "จื่อ",
+        "โฉ่ว"
+      ],
+      "baseline_breaks": [
+        0,
+        30,
+        39,
+        51,
+        54
+      ],
+      "candidate_breaks": [
+        0,
+        12,
+        30,
+        42,
+        51,
+        54
+      ],
+      "oracle_breaks": [
+        0,
+        12,
+        30,
+        42,
+        51,
+        54
+      ],
+      "baseline_row_widths": [
+        76.84000396728516,
+        9.043998718261719,
+        25.07500457763672,
+        8.363998413085938
+      ],
+      "candidate_row_widths": [
+        31.416000366210938,
+        45.42400360107422,
+        18.802001953125,
+        23.680999755859375
+      ],
+      "browser_row_widths": [
+        31.421875,
+        45.4375,
+        18.8125,
+        23.6875
+      ]
+    },
+    {
+      "id": "fresh-th-1",
+      "width": 48.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "พุทธศักราช",
+        "จื่อโฉ่ว"
+      ],
+      "candidate_rows": [
+        "พุทธ",
+        "ศักราช",
+        "จื่อโฉ่ว"
+      ],
+      "browser_rows": [
+        "พุทธ",
+        "ศักราช",
+        "จื่อโฉ่ว"
+      ],
+      "baseline_breaks": [
+        0,
+        30,
+        39,
+        51,
+        54
+      ],
+      "candidate_breaks": [
+        0,
+        12,
+        30,
+        42,
+        51,
+        54
+      ],
+      "oracle_breaks": [
+        0,
+        12,
+        30,
+        42,
+        51,
+        54
+      ],
+      "baseline_row_widths": [
+        76.84000396728516,
+        42.483001708984375
+      ],
+      "candidate_row_widths": [
+        31.416000366210938,
+        45.42400360107422,
+        42.483001708984375
+      ],
+      "browser_row_widths": [
+        31.421875,
+        45.4375,
+        42.484375
+      ]
+    },
+    {
+      "id": "fresh-th-1",
+      "width": 64.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "พุทธศักราช",
+        "จื่อโฉ่ว"
+      ],
+      "candidate_rows": [
+        "พุทธ",
+        "ศักราช",
+        "จื่อโฉ่ว"
+      ],
+      "browser_rows": [
+        "พุทธ",
+        "ศักราช",
+        "จื่อโฉ่ว"
+      ],
+      "baseline_breaks": [
+        0,
+        30,
+        39,
+        51,
+        54
+      ],
+      "candidate_breaks": [
+        0,
+        12,
+        30,
+        42,
+        51,
+        54
+      ],
+      "oracle_breaks": [
+        0,
+        12,
+        30,
+        42,
+        51,
+        54
+      ],
+      "baseline_row_widths": [
+        76.84000396728516,
+        42.483001708984375
+      ],
+      "candidate_row_widths": [
+        31.416000366210938,
+        45.42400360107422,
+        42.483001708984375
+      ],
+      "browser_row_widths": [
+        31.421875,
+        45.4375,
+        42.484375
+      ]
+    },
+    {
+      "id": "fresh-th-1",
+      "width": 96.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "พุทธศักราชจื่",
+        "อโฉ่ว"
+      ],
+      "candidate_rows": [
+        "พุทธศักราชจื่อ",
+        "โฉ่ว"
+      ],
+      "browser_rows": [
+        "พุทธศักราชจื่อ",
+        "โฉ่ว"
+      ],
+      "baseline_breaks": [
+        0,
+        30,
+        39,
+        51,
+        54
+      ],
+      "candidate_breaks": [
+        0,
+        12,
+        30,
+        42,
+        51,
+        54
+      ],
+      "oracle_breaks": [
+        0,
+        12,
+        30,
+        42,
+        51,
+        54
+      ],
+      "baseline_row_widths": [
+        85.88400268554688,
+        33.439002990722656
+      ],
+      "candidate_row_widths": [
+        95.64200592041016,
+        23.680999755859375
+      ],
+      "browser_row_widths": [
+        95.65625,
+        23.6875
+      ]
+    },
+    {
+      "id": "fresh-th-2",
+      "width": 32.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "จื่",
+        "อโฉ่",
+        "วอิ๋น"
+      ],
+      "candidate_rows": [
+        "จื่อ",
+        "โฉ่",
+        "วอิ๋น"
+      ],
+      "browser_rows": [
+        "จื่อ",
+        "โฉ่",
+        "วอิ๋น"
+      ],
+      "baseline_breaks": [
+        0,
+        9,
+        21,
+        33,
+        36
+      ],
+      "candidate_breaks": [
+        0,
+        12,
+        21,
+        36
+      ],
+      "oracle_breaks": [
+        0,
+        12,
+        21,
+        36
+      ],
+      "baseline_row_widths": [
+        9.043999671936035,
+        25.075000762939453,
+        28.54300308227539
+      ],
+      "candidate_row_widths": [
+        18.802000045776367,
+        15.316999435424805,
+        28.54300308227539
+      ],
+      "browser_row_widths": [
+        18.8125,
+        15.328125,
+        28.546875
+      ]
+    },
+    {
+      "id": "fresh-th-3",
+      "width": 32.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "โฉ่",
+        "วอิ๋",
+        "นเห",
+        "ม่า"
+      ],
+      "candidate_rows": [
+        "โฉ่",
+        "วอิ๋น",
+        "เหม่",
+        "า"
+      ],
+      "browser_rows": [
+        "โฉ่",
+        "วอิ๋น",
+        "เหม่",
+        "า"
+      ],
+      "baseline_breaks": [
+        0,
+        9,
+        21,
+        30,
+        39
+      ],
+      "candidate_breaks": [
+        0,
+        9,
+        24,
+        36,
+        39
+      ],
+      "oracle_breaks": [
+        0,
+        9,
+        24,
+        36,
+        39
+      ],
+      "baseline_row_widths": [
+        15.316999435424805,
+        18.121999740600586,
+        25.415000915527344,
+        17.34000015258789
+      ],
+      "candidate_row_widths": [
+        15.316999435424805,
+        28.543001174926758,
+        25.43199920654297,
+        6.902000427246094
+      ],
+      "browser_row_widths": [
+        15.328125,
+        28.546875,
+        25.4375,
+        6.90625
+      ]
+    },
+    {
+      "id": "fresh-th-3",
+      "width": 48.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "โฉ่วอิ๋",
+        "นเหม่า"
+      ],
+      "candidate_rows": [
+        "โฉ่วอิ๋น",
+        "เหม่า"
+      ],
+      "browser_rows": [
+        "โฉ่วอิ๋น",
+        "เหม่า"
+      ],
+      "baseline_breaks": [
+        0,
+        9,
+        21,
+        30,
+        39
+      ],
+      "candidate_breaks": [
+        0,
+        9,
+        24,
+        36,
+        39
+      ],
+      "oracle_breaks": [
+        0,
+        9,
+        24,
+        36,
+        39
+      ],
+      "baseline_row_widths": [
+        33.43899917602539,
+        42.755001068115234
+      ],
+      "candidate_row_widths": [
+        43.86000061035156,
+        32.33399963378906
+      ],
+      "browser_row_widths": [
+        43.875,
+        32.34375
+      ]
+    },
+    {
+      "id": "fresh-th-3",
+      "width": 64.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "โฉ่วอิ๋นเห",
+        "ม่า"
+      ],
+      "candidate_rows": [
+        "โฉ่วอิ๋น",
+        "เหม่า"
+      ],
+      "browser_rows": [
+        "โฉ่วอิ๋น",
+        "เหม่า"
+      ],
+      "baseline_breaks": [
+        0,
+        9,
+        21,
+        30,
+        39
+      ],
+      "candidate_breaks": [
+        0,
+        9,
+        24,
+        36,
+        39
+      ],
+      "oracle_breaks": [
+        0,
+        9,
+        24,
+        36,
+        39
+      ],
+      "baseline_row_widths": [
+        58.854000091552734,
+        17.34000015258789
+      ],
+      "candidate_row_widths": [
+        43.86000061035156,
+        32.33399963378906
+      ],
+      "browser_row_widths": [
+        43.875,
+        32.34375
+      ]
+    },
+    {
+      "id": "fresh-th-4",
+      "width": 32.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "อิ๋",
+        "นเห",
+        "ม่าเ",
+        "ฉิน"
+      ],
+      "candidate_rows": [
+        "อิ๋น",
+        "เหม่",
+        "า",
+        "เฉิน"
+      ],
+      "browser_rows": [
+        "อิ๋น",
+        "เหม่",
+        "า",
+        "เฉิน"
+      ],
+      "baseline_breaks": [
+        0,
+        9,
+        18,
+        30,
+        39
+      ],
+      "candidate_breaks": [
+        0,
+        12,
+        24,
+        27,
+        39
+      ],
+      "oracle_breaks": [
+        0,
+        12,
+        24,
+        27,
+        39
+      ],
+      "baseline_row_widths": [
+        9.758000373840332,
+        25.415000915527344,
+        22.167999267578125,
+        20.68899917602539
+      ],
+      "candidate_row_widths": [
+        20.179000854492188,
+        25.43199920654297,
+        6.902000427246094,
+        25.516998291015625
+      ],
+      "browser_row_widths": [
+        20.1875,
+        25.4375,
+        6.90625,
+        25.53125
+      ]
+    },
+    {
+      "id": "fresh-th-4",
+      "width": 48.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "อิ๋นเห",
+        "ม่าเฉิน"
+      ],
+      "candidate_rows": [
+        "อิ๋นเหม่",
+        "าเฉิน"
+      ],
+      "browser_rows": [
+        "อิ๋นเหม่",
+        "าเฉิน"
+      ],
+      "baseline_breaks": [
+        0,
+        9,
+        18,
+        30,
+        39
+      ],
+      "candidate_breaks": [
+        0,
+        12,
+        24,
+        27,
+        39
+      ],
+      "oracle_breaks": [
+        0,
+        12,
+        24,
+        27,
+        39
+      ],
+      "baseline_row_widths": [
+        35.17300033569336,
+        42.856998443603516
+      ],
+      "candidate_row_widths": [
+        45.611000061035156,
+        32.41899871826172
+      ],
+      "browser_row_widths": [
+        45.625,
+        32.421875
+      ]
+    },
+    {
+      "id": "fresh-th-4",
+      "width": 64.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "อิ๋นเหม่าเ",
+        "ฉิน"
+      ],
+      "candidate_rows": [
+        "อิ๋นเหม่า",
+        "เฉิน"
+      ],
+      "browser_rows": [
+        "อิ๋นเหม่า",
+        "เฉิน"
+      ],
+      "baseline_breaks": [
+        0,
+        9,
+        18,
+        30,
+        39
+      ],
+      "candidate_breaks": [
+        0,
+        12,
+        24,
+        27,
+        39
+      ],
+      "oracle_breaks": [
+        0,
+        12,
+        24,
+        27,
+        39
+      ],
+      "baseline_row_widths": [
+        57.340999603271484,
+        20.68899917602539
+      ],
+      "candidate_row_widths": [
+        52.51300048828125,
+        25.516998291015625
+      ],
+      "browser_row_widths": [
+        52.515625,
+        25.53125
+      ]
+    }
+  ],
+  "worsened": [],
+  "both_mismatch_changed": []
+}

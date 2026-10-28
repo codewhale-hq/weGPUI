@@ -1,0 +1,205 @@
+{
+  "valid": true,
+  "errors": [],
+  "baseline": "/Volumes/VIXinSSD/CW/artifacts/wegpui-completion-20261025/linux/full-parity/dictionary-context-base/comparison-edge-20261028T094123.497849Z",
+  "current": "/Volumes/VIXinSSD/CW/artifacts/wegpui-completion-20261025/linux/full-parity/dictionary-context-ab/comparison-edge-20261028T094146.314677Z",
+  "pairs": 60,
+  "baseline_matches": 52,
+  "candidate_matches": 56,
+  "improved": [
+    {
+      "id": "edge-emoji-khmer-mark",
+      "width": 16.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "😀",
+        "ះ",
+        "ស"
+      ],
+      "candidate_rows": [
+        "😀ះ",
+        "ស"
+      ],
+      "browser_rows": [
+        "😀ះ",
+        "ស"
+      ],
+      "baseline_breaks": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "candidate_breaks": [
+        0,
+        7,
+        10
+      ],
+      "oracle_breaks": [
+        0,
+        7,
+        10
+      ],
+      "baseline_row_widths": [
+        17.72216796875,
+        17.35700225830078,
+        15.775997161865234
+      ],
+      "candidate_row_widths": [
+        35.07917022705078,
+        15.775997161865234
+      ],
+      "browser_row_widths": [
+        38.578125,
+        15.78125
+      ]
+    },
+    {
+      "id": "edge-emoji-khmer-mark",
+      "width": 24.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "😀",
+        "ះ",
+        "ស"
+      ],
+      "candidate_rows": [
+        "😀ះ",
+        "ស"
+      ],
+      "browser_rows": [
+        "😀ះ",
+        "ស"
+      ],
+      "baseline_breaks": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "candidate_breaks": [
+        0,
+        7,
+        10
+      ],
+      "oracle_breaks": [
+        0,
+        7,
+        10
+      ],
+      "baseline_row_widths": [
+        17.72216796875,
+        17.35700225830078,
+        15.775997161865234
+      ],
+      "candidate_row_widths": [
+        35.07917022705078,
+        15.775997161865234
+      ],
+      "browser_row_widths": [
+        38.578125,
+        15.78125
+      ]
+    },
+    {
+      "id": "edge-emoji-khmer-mark",
+      "width": 32.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "😀",
+        "ះ",
+        "ស"
+      ],
+      "candidate_rows": [
+        "😀ះ",
+        "ស"
+      ],
+      "browser_rows": [
+        "😀ះ",
+        "ស"
+      ],
+      "baseline_breaks": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "candidate_breaks": [
+        0,
+        7,
+        10
+      ],
+      "oracle_breaks": [
+        0,
+        7,
+        10
+      ],
+      "baseline_row_widths": [
+        17.72216796875,
+        17.35700225830078,
+        15.775997161865234
+      ],
+      "candidate_row_widths": [
+        35.07917022705078,
+        15.775997161865234
+      ],
+      "browser_row_widths": [
+        38.578125,
+        15.78125
+      ]
+    },
+    {
+      "id": "edge-slash-khmer-mark",
+      "width": 16.0,
+      "baseline_matches": false,
+      "candidate_matches": true,
+      "baseline_rows": [
+        "/",
+        "ា",
+        "ង"
+      ],
+      "candidate_rows": [
+        "/ា",
+        "ង"
+      ],
+      "browser_rows": [
+        "/ា",
+        "ង"
+      ],
+      "baseline_breaks": [
+        0,
+        1,
+        4,
+        7
+      ],
+      "candidate_breaks": [
+        0,
+        4,
+        7
+      ],
+      "oracle_breaks": [
+        0,
+        4,
+        7
+      ],
+      "baseline_row_widths": [
+        6.324000358581543,
+        15.690999031066895,
+        10.795001983642578
+      ],
+      "candidate_row_widths": [
+        22.014999389648438,
+        10.795001983642578
+      ],
+      "browser_row_widths": [
+        22.046875,
+        10.796875
+      ]
+    }
+  ],
+  "worsened": [],
+  "both_mismatch_changed": []
+}

@@ -1,0 +1,13 @@
+{
+  "description": "Host Python regex grapheme boundaries; may differ from ICU4X or product editor and do not prove input safety.",
+  "counts": {
+    "total": 5000,
+    "baseline_cases_with_non_grapheme": 900,
+    "candidate_cases_with_non_grapheme": 98,
+    "cases_with_new_non_grapheme": 0,
+    "cases_with_removed_non_grapheme": 804,
+    "new_non_grapheme_offsets": 0,
+    "removed_non_grapheme_offsets": 859
+  },
+  "new_offset_examples": []
+}

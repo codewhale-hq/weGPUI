@@ -1,0 +1,6 @@
+Command: utmctl start --hide 5E9E6B1D-E944-4787-9474-A9E53DF1C756
+Output observed:
+Error from event: The operation couldn’t be completed. (OSStatus error -10004.)
+Error from event: The operation couldn’t be completed. (OSStatus error -10004.)
+
+The command remained running and was terminated by the operator. Subsequent utmctl list and status reported the VM as stopped. The underlying cause was not established. No Windows guest build or test was started.
