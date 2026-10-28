@@ -1,0 +1,7 @@
+{
+  "src/components/radio.rs": "1c39fd37ff6b4c3d5810890060c6a7ec1bffc6f024697a2da334246ddb84043a",
+  "examples/gallery/pages/form/choice.rs": "7d91660391717174569025fa48003234fc8e3a65b4fa10a36d5cd5257a9c5015",
+  "examples/gallery/pages/input.rs": "9141b58ffae8a69c48ef7c3ab9546d5b0b76c5a810527a3d263f4819af8d8edd",
+  "Cargo.toml": "ff7ce45668e6dd0652079f4f690242951581b58bd7661ab27206de01e7b466aa",
+  "Cargo.lock": "04c8a0c6b6b8f41a473c2c65c87f035729487ea0ccb5e6a2eab4760eb5020429"
+}

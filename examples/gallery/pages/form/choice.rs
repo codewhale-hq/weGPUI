@@ -142,16 +142,16 @@ impl Render for Choice {
                         this.radio = *i;
                         cx.notify();
                     }))
-                    .rows(window, cx);
+                    .grouped_rows(tr("单选框样式展示"), (16., 16.), window, cx);
+                let group = FormGroup::new("group-1").first();
+                let group = if let Some(rows) = rows {
+                    group.row(rows)
+                } else {
+                    group
+                };
                 Form::new("weui-form")
                     .title(tr("单选框样式展示"))
-                    .child(
-                        FormGroup::new("group-1")
-                            .first()
-                            .role(Role::RadioGroup)
-                            .rows(rows, 16.)
-                            .row(add_more("add-more")),
-                    )
+                    .child(group.row(add_more("add-more")))
                     .opr_area(primary_button("showTooltips", tr("确定"), false, submit))
             }
             _ => Form::new("weui-form")

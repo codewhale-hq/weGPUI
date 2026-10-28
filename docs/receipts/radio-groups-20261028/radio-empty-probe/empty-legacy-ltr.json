@@ -1,0 +1,328 @@
+[
+  {
+    "role": "application",
+    "name": "radio_empty_probe",
+    "attributes": [],
+    "states": [],
+    "ancestors": [
+      {
+        "name": "main",
+        "role": "desktop frame",
+        "attributes": []
+      }
+    ],
+    "bounds": null
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI radio set proof",
+    "attributes": [],
+    "states": [
+      "active",
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "ancestors": [
+      {
+        "name": "radio_empty_probe",
+        "role": "application",
+        "attributes": []
+      },
+      {
+        "name": "main",
+        "role": "desktop frame",
+        "attributes": []
+      }
+    ],
+    "bounds": [
+      340,
+      158,
+      600,
+      900
+    ]
+  },
+  {
+    "role": "panel",
+    "name": "",
+    "attributes": [],
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "ancestors": [
+      {
+        "name": "weGPUI radio set proof",
+        "role": "frame",
+        "attributes": []
+      },
+      {
+        "name": "radio_empty_probe",
+        "role": "application",
+        "attributes": []
+      },
+      {
+        "name": "main",
+        "role": "desktop frame",
+        "attributes": []
+      }
+    ],
+    "bounds": [
+      340,
+      158,
+      600,
+      900
+    ]
+  },
+  {
+    "role": "panel",
+    "name": "Form delivery",
+    "attributes": [],
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "ancestors": [
+      {
+        "name": "",
+        "role": "panel",
+        "attributes": []
+      },
+      {
+        "name": "weGPUI radio set proof",
+        "role": "frame",
+        "attributes": []
+      },
+      {
+        "name": "radio_empty_probe",
+        "role": "application",
+        "attributes": []
+      },
+      {
+        "name": "main",
+        "role": "desktop frame",
+        "attributes": []
+      }
+    ],
+    "bounds": [
+      356,
+      166,
+      568,
+      26
+    ]
+  },
+  {
+    "role": "push button",
+    "name": "Form add more",
+    "attributes": [],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "ancestors": [
+      {
+        "name": "Form delivery",
+        "role": "panel",
+        "attributes": []
+      },
+      {
+        "name": "",
+        "role": "panel",
+        "attributes": []
+      },
+      {
+        "name": "weGPUI radio set proof",
+        "role": "frame",
+        "attributes": []
+      },
+      {
+        "name": "radio_empty_probe",
+        "role": "application",
+        "attributes": []
+      },
+      {
+        "name": "main",
+        "role": "desktop frame",
+        "attributes": []
+      }
+    ],
+    "bounds": [
+      356,
+      166,
+      568,
+      26
+    ]
+  },
+  {
+    "role": "panel",
+    "name": "Cells delivery",
+    "attributes": [],
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "ancestors": [
+      {
+        "name": "",
+        "role": "panel",
+        "attributes": []
+      },
+      {
+        "name": "weGPUI radio set proof",
+        "role": "frame",
+        "attributes": []
+      },
+      {
+        "name": "radio_empty_probe",
+        "role": "application",
+        "attributes": []
+      },
+      {
+        "name": "main",
+        "role": "desktop frame",
+        "attributes": []
+      }
+    ],
+    "bounds": [
+      340,
+      200,
+      600,
+      26
+    ]
+  },
+  {
+    "role": "push button",
+    "name": "Cells add more",
+    "attributes": [],
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "ancestors": [
+      {
+        "name": "Cells delivery",
+        "role": "panel",
+        "attributes": []
+      },
+      {
+        "name": "",
+        "role": "panel",
+        "attributes": []
+      },
+      {
+        "name": "weGPUI radio set proof",
+        "role": "frame",
+        "attributes": []
+      },
+      {
+        "name": "radio_empty_probe",
+        "role": "application",
+        "attributes": []
+      },
+      {
+        "name": "main",
+        "role": "desktop frame",
+        "attributes": []
+      }
+    ],
+    "bounds": [
+      340,
+      200,
+      600,
+      26
+    ]
+  },
+  {
+    "role": "status bar",
+    "name": "Form actions 0",
+    "attributes": [],
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "ancestors": [
+      {
+        "name": "",
+        "role": "panel",
+        "attributes": []
+      },
+      {
+        "name": "weGPUI radio set proof",
+        "role": "frame",
+        "attributes": []
+      },
+      {
+        "name": "radio_empty_probe",
+        "role": "application",
+        "attributes": []
+      },
+      {
+        "name": "main",
+        "role": "desktop frame",
+        "attributes": []
+      }
+    ],
+    "bounds": [
+      340,
+      226,
+      600,
+      26
+    ]
+  },
+  {
+    "role": "status bar",
+    "name": "Cells actions 0",
+    "attributes": [],
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ],
+    "ancestors": [
+      {
+        "name": "",
+        "role": "panel",
+        "attributes": []
+      },
+      {
+        "name": "weGPUI radio set proof",
+        "role": "frame",
+        "attributes": []
+      },
+      {
+        "name": "radio_empty_probe",
+        "role": "application",
+        "attributes": []
+      },
+      {
+        "name": "main",
+        "role": "desktop frame",
+        "attributes": []
+      }
+    ],
+    "bounds": [
+      340,
+      252,
+      600,
+      26
+    ]
+  }
+]

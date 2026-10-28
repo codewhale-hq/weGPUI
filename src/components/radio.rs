@@ -1,8 +1,8 @@
 //! WeUI radio lists (`src/style/widget/weui-cell/weui-check/weui-radio.less`, example
 //! `src/example/form/form_radio.html`). [`RadioGroup`] builds one `RadioButton` row per option
 //! for the caller to place in a container; [`radio_icon`] is the trailing tick.
-//! Known limitations: the builder is not an element and adds no `RadioGroup` node, so set that
-//! role on the container. Row element ids are scoped by the group id.
+//! [`RadioGroup::rows`] yields loose rows; [`RadioGroup::grouped_rows`] wraps only options in an
+//! accessible group. Row element ids are scoped by the group id.
 use crate::scrolling::RevealFocus;
 
 use super::Icon;
@@ -66,6 +66,48 @@ impl RadioGroup {
     pub fn on_change(mut self, handler: impl Fn(&usize, &mut Window, &mut App) + 'static) -> Self {
         self.on_change = Some(Rc::new(handler));
         self
+    }
+
+    #[doc = "Builds an accessible group containing only its radio options, or returns None for an empty set."]
+    #[doc = "Separator insets are logical start and end pixels and should match the surrounding rows container."]
+    pub fn grouped_rows(
+        self,
+        label: impl Into<SharedString>,
+        separator_inset: (f32, f32),
+        window: &mut Window,
+        cx: &mut App,
+    ) -> Option<AnyElement> {
+        let id = ElementId::from((self.id.clone(), "radio-group-container".to_string()));
+        let direction = crate::i18n::direction(cx);
+        let line = Theme::get(cx).fg_3;
+        let rows = self.rows(window, cx);
+        let count = rows.len();
+        if count == 0 {
+            return None;
+        }
+        Some(
+            div()
+                .id(id)
+                .role(Role::RadioGroup)
+                .aria_label(label.into())
+                .aria_size_of_set(count)
+                .flex()
+                .flex_col()
+                .children(rows.into_iter().enumerate().map(move |(i, row)| {
+                    div().relative().child(row).when(i > 0, |element| {
+                        element.child(
+                            div()
+                                .absolute()
+                                .top_0()
+                                .inset_s(direction, px(separator_inset.0))
+                                .inset_e(direction, px(separator_inset.1))
+                                .h(px(0.5))
+                                .bg(line),
+                        )
+                    })
+                }))
+                .into_any_element(),
+        )
     }
 
     /// Builds one row per option: a [`crate::components::form::cell_frame`] with the label and

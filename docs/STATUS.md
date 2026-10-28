@@ -58,8 +58,9 @@ integration against the newer source has been verified.
 Fractional slider values now retain their full `f32` display precision; a Linux X11 and
 AT-SPI sample is recorded in the [slider receipt](receipts/slider-precision-20261028/README.md).
 Picker and select option counts now reach the Linux AT-SPI tree, including a virtualized
-date picker; see the [set-size receipt](receipts/set-size-20261028/README.md). Radio groups
-still need an option-only container and broader reader acceptance remains open.
+date picker; see the [set-size receipt](receipts/set-size-20261028/README.md). Radio groups now offer an option-only container; the gallery keeps decorative actions as siblings.
+See the [radio receipt](receipts/radio-groups-20261028/README.md) for Linux samples and
+remaining reader and platform checks.
 
 ## Localisation and right-to-left — 2026-10-25
 

@@ -195,7 +195,13 @@ impl Render for InputPage {
                     })
                 }
             })
-            .rows(window, cx);
+            .grouped_rows(tr("单选列表项"), (16., 0.), window, cx);
+        let radio_cells = Cells::new().title(tr("单选列表项"));
+        let radio_cells = if let Some(radios) = radios {
+            radio_cells.child(radios)
+        } else {
+            radio_cells
+        };
 
         let checkbox = |ix: usize, label: &'static str| {
             let entity = entity.clone();
@@ -252,17 +258,12 @@ impl Render for InputPage {
             .title("Input")
             .desc(tr("表单输入"))
             .child(
-                Cells::new()
-                    .title(tr("单选列表项"))
-                    .role(Role::RadioGroup)
-                    .aria_label(tr("单选列表项"))
-                    .children(radios)
-                    .child(
-                        Cell::new("input-radio-more")
-                            .link()
-                            .title(tr("添加更多"))
-                            .on_click(|_, _, _| {}),
-                    ),
+                radio_cells.child(
+                    Cell::new("input-radio-more")
+                        .link()
+                        .title(tr("添加更多"))
+                        .on_click(|_, _, _| {}),
+                ),
             )
             .child(
                 Cells::new()
