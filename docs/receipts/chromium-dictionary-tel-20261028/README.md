@@ -54,3 +54,17 @@ The [live website](https://codewhale-hq.github.io/weGPUI/) was published from
 `1c633f9c1d24cf0180e2dd9336f5d05d2f4a6007` by [Pages run 40656436658](https://github.com/codewhale-hq/weGPUI/actions/runs/40656436658).
 Its clean source identity and selected [live shell and theme checks](website/live-1c633f9.json)
 pass; they do not qualify native GPUI.
+
+An independent [holdout boundary corpus](holdout/holdout-oracle.json) uses 32 new
+CLDR person-name test fields and correlated punctuation, spacing and cross-script
+variants. Against the private exact Chromium-pinned ICU4C 78.2 line iterator with
+its verified data and `zh_CN` locale, the shipped ICU4X provider matches 252 of 480
+boundary sequences; an unshipped experimental Khmer matcher matches 322 of 480.
+The [results](holdout/holdout-candidate.json), [oracle generator](holdout/holdout-oracle.py)
+and experimental [source](holdout/src/main.rs) are retained. The oracle generator
+requires the separately retained private ICU build artifact; it is not standalone. The per-case `language`
+field is the harness's `km` grouping; IDs and `holdout_language` in the oracle identify
+the actual scripts; [attributed results](holdout/holdout-attributed-results.json)
+provide corrected labels. These are correlated short-name and synthetic contexts, not 480
+independent natural-language samples or rendered browser comparisons. They demonstrate
+that broader segmentation parity remains open; the experimental matcher was not landed.

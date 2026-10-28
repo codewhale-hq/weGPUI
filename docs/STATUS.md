@@ -66,7 +66,8 @@ samples. An opt-in normal overflow policy matches the browser in the previously 
 Myanmar sample. Pinned Chromium Khmer/Lao dictionary data now produces matching rows in all
 16 controlled four-script comparisons ([receipt](receipts/chromium-dictionary-tel-20261028/README.md));
 an expanded 192-case comparison matches 189 rows, with three Khmer differences. Neither
-comparison proves broader language parity. The iOS digit keypad builds; its native Done
+comparison proves broader language parity. Independent ICU boundary checks on 480 correlated
+name/context cases found further mismatches; see the same receipt. The iOS digit keypad builds; its native Done
 control and keyboard switching still need runtime checks. Password entry remains fail-closed.
 Full reader, IME, hardware and mobile acceptance remain open. Windows stays
 build/tests only. VoiceOver stays off. Each receipt identifies its own source.
