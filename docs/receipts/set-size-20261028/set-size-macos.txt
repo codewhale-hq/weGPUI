@@ -67,4 +67,3 @@ test input::tests::oversized_graphemes_use_lossless_scalar_lengths_with_matching
 test input::tests::accessible_word_starts_preserve_unicode_and_large_run_boundaries ... ok
 
 test result: ok. 54 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
-
