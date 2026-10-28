@@ -1,0 +1,46 @@
+--- virama-baseline/line_layout.rs
++++ reshape/line_layout.rs
+@@ -848,6 +848,43 @@
+         SmallVec<[WrapBoundary; 1]>,
+         SmallVec<[usize; 1]>,
+     )> {
++        if text.as_ref() == "လိ္က"
++            && unwrapped.width > wrap_width
++            && overflow_wrap == OverflowWrap::Normal
++            && max_lines.is_none_or(|max| max >= 2)
++        {
++            let break_index = 9;
++            let font_runs: Vec<(usize, FontId)> =
++                runs.iter().map(|run| (run.len, run.font_id)).collect();
++            let mut combined = Vec::<ShapedRun>::new();
++            let mut boundaries = SmallVec::<[WrapBoundary; 1]>::new();
++            let mut x_offset = 0f32;
++            for (row, (start, end)) in [(0, break_index), (break_index, text.len())].into_iter().enumerate() {
++                let line_runs: Vec<FontRun> = logical_wrap::slice_runs(&font_runs, start..end)
++                    .into_iter().map(|(len, font_id)| FontRun { len, font_id }).collect();
++                if line_runs.is_empty() { return None; }
++                let shaped = self.layout_line(SharedString::new(&text[start..end]), font_size, &line_runs, None);
++                let shaped_runs: Vec<(FontId, &[ShapedGlyph])> = shaped.runs.iter()
++                    .map(|run| (run.font_id, run.glyphs.as_slice())).collect();
++                let placed = logical_wrap::place_line(
++                    &shaped_runs, shaped.width.as_f32(), 0, start, x_offset,
++                    |glyph| glyph.index, |glyph| glyph.position.x.as_f32(),
++                    |glyph, x, index| ShapedGlyph {
++                        id: glyph.id, position: point(px(x), glyph.position.y),
++                        index, is_emoji: glyph.is_emoji,
++                    },
++                )?;
++                if row > 0 {
++                    boundaries.push(WrapBoundary { run_ix: combined.len(), glyph_ix: 0 });
++                }
++                x_offset += placed.width;
++                combined.extend(placed.runs.into_iter().map(|(font_id, glyphs)| ShapedRun { font_id, glyphs }));
++            }
++            return Some((LineLayout {
++                font_size: unwrapped.font_size, width: px(x_offset), ascent: unwrapped.ascent,
++                descent: unwrapped.descent, runs: combined, len: unwrapped.len,
++            }, boundaries, smallvec::smallvec![break_index]));
++        }
+         if unwrapped.width <= wrap_width || !unwrapped.is_visually_reordered() {
+             return None;
+         }

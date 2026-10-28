@@ -1,0 +1,12 @@
+{
+  "valid": true,
+  "errors": [],
+  "baseline": "/Volumes/VIXinSSD/CW/artifacts/wegpui-completion-20261025/linux/full-parity/dictionary-leading-baseline/comparison-leading-baseline-20261028T091925.708928Z",
+  "current": "/Volumes/VIXinSSD/CW/artifacts/wegpui-completion-20261025/linux/full-parity/dictionary-leadingmark/comparison-leading-current-20261028T091941.806501Z",
+  "pairs": 168,
+  "baseline_matches": 102,
+  "candidate_matches": 75,
+  "improved": 0,
+  "worsened": 27,
+  "both_mismatch_changed": 43
+}

@@ -1,0 +1,20 @@
+{
+  "README.md": "7498253b8087357b1c51a5fd26a9708dad66c05a6ccd4c60dcdff6508b5b47e5",
+  "cluster/browser.json": "205e6da186c3bebdd3b3278a68bb9f61d488272ae21b85bf4201731d948f4b10",
+  "cluster/browser.png": "ab8ea3cc32504c4e2bcfd3731f89fc8335736590acdf4f91134e172a32ef263f",
+  "cluster/native.json": "93ce717a361818bfca05812709739e49c684c0ab929c4116bb412393be38f6b5",
+  "cluster/native.png": "292ec2aefd934271bbba00b48e577381b44b5807f90d8180ede1958278198d45",
+  "leading/baseline.json": "6915216a72fdc5c01e62410616a53a4f77668affa5c7139c216c1555ba258ba3",
+  "leading/candidate.json": "649eaebf7a3b9ecf78affcd738a249efdeb20ceeaebbf4a6b3b9a5b1ac991ad3",
+  "leading/compare-results.py": "fc40011ae4077ed27c1dd48d3ad31569148e609e18b887c968d078913a2891ad",
+  "leading/corpus.json": "86223d0379c4160abbb7c836dce5f348d07891487d4d872aefbc93a5fbc74606",
+  "leading/result.json": "88e3b2c8ef536c693314abbc9f0d615c02a0dd9698062a002c67d8ebe2b32fd7",
+  "virama/comparison.json": "d1e4e15dafa86e62d1151ac091b8e596b3aae50570ee955a6000ed54313b816a",
+  "virama/native.json": "8ff503fcc5a266b36de2288d030fad46a8c1b3d5cffa7be49f90a7ec1b95b9f3",
+  "virama/native.png": "b0b123b94c29c30f439d14816e2b55c5d3ef590cba471ad896dc03ac3ab50b7d",
+  "virama/reshape.patch": "51b80a9e2ba5d1da421270e5d3e03d067f8d87c8d4232574e8861a48d6acdf55",
+  "virama/summary.json": "33929d35ce6923819f135d0ba4cd24d6b60483be165826a75f764d2b43fc2703",
+  "website/project-prefix.json": "29e4c0efe7799b8081d6b73070a6d3d3bf0691ba770c2d8d1e49cc34e5c9c2e9",
+  "website/root.json": "6626014855f9021d9cdd7e96e47574d88227ac6421ecd59ac84122cab7764a8d",
+  "website/summary.json": "c2bee4caf212907aa62490c83508d71d9b2545b8fc077b84012effb047abaddc"
+}

@@ -1,0 +1,745 @@
+{
+  "cases": [
+    {
+      "id": "original-45",
+      "language": "th",
+      "text": "ဝိိလီဝီ😀็ิม",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-independent-review/candidate.json#45",
+      "exact_icu4c_boundaries": [
+        0,
+        9,
+        15,
+        21,
+        31,
+        34
+      ],
+      "baseline_boundaries": [
+        0,
+        9,
+        15,
+        21,
+        25,
+        31,
+        34
+      ],
+      "candidate_boundaries": [
+        0,
+        9,
+        15,
+        21,
+        25,
+        34
+      ]
+    },
+    {
+      "id": "minimal-45",
+      "language": "th",
+      "text": "😀็ิม",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-probe/worsening-analysis/substrings-candidate.json#45-7-4",
+      "exact_icu4c_boundaries": [
+        0,
+        10,
+        13
+      ],
+      "baseline_boundaries": [
+        0,
+        4,
+        10,
+        13
+      ],
+      "candidate_boundaries": [
+        0,
+        4,
+        13
+      ]
+    },
+    {
+      "id": "original-67",
+      "language": "km",
+      "text": "လေီစတကိစီငဂ😀ះស",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-independent-review/candidate.json#67",
+      "exact_icu4c_boundaries": [
+        0,
+        9,
+        12,
+        15,
+        21,
+        27,
+        30,
+        33,
+        40,
+        43
+      ],
+      "baseline_boundaries": [
+        0,
+        9,
+        12,
+        15,
+        21,
+        27,
+        30,
+        33,
+        37,
+        40,
+        43
+      ],
+      "candidate_boundaries": [
+        0,
+        9,
+        12,
+        15,
+        21,
+        27,
+        30,
+        33,
+        37,
+        43
+      ]
+    },
+    {
+      "id": "minimal-67",
+      "language": "km",
+      "text": "😀ះស",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-probe/worsening-analysis/substrings-candidate.json#67-11-3",
+      "exact_icu4c_boundaries": [
+        0,
+        7,
+        10
+      ],
+      "baseline_boundaries": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "candidate_boundaries": [
+        0,
+        4,
+        10
+      ]
+    },
+    {
+      "id": "original-1041",
+      "language": "km",
+      "text": "ခဟယညမဂ😀េាហេបាា",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-independent-review/candidate.json#1041",
+      "exact_icu4c_boundaries": [
+        0,
+        3,
+        6,
+        9,
+        12,
+        15,
+        18,
+        28,
+        43
+      ],
+      "baseline_boundaries": [
+        0,
+        3,
+        6,
+        9,
+        12,
+        15,
+        18,
+        22,
+        28,
+        43
+      ],
+      "candidate_boundaries": [
+        0,
+        3,
+        6,
+        9,
+        12,
+        15,
+        18,
+        22,
+        43
+      ]
+    },
+    {
+      "id": "minimal-1041",
+      "language": "km",
+      "text": "😀េាហ",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-probe/worsening-analysis/substrings-candidate.json#1041-6-4",
+      "exact_icu4c_boundaries": [
+        0,
+        10,
+        13
+      ],
+      "baseline_boundaries": [
+        0,
+        4,
+        10,
+        13
+      ],
+      "candidate_boundaries": [
+        0,
+        4,
+        13
+      ]
+    },
+    {
+      "id": "original-1102",
+      "language": "km",
+      "text": "บีบกย/ាងគា",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-independent-review/candidate.json#1102",
+      "exact_icu4c_boundaries": [
+        0,
+        9,
+        19,
+        28
+      ],
+      "baseline_boundaries": [
+        0,
+        9,
+        16,
+        19,
+        28
+      ],
+      "candidate_boundaries": [
+        0,
+        9,
+        16,
+        28
+      ]
+    },
+    {
+      "id": "minimal-1102",
+      "language": "km",
+      "text": "/ាង",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-probe/worsening-analysis/substrings-candidate.json#1102-5-3",
+      "exact_icu4c_boundaries": [
+        0,
+        4,
+        7
+      ],
+      "baseline_boundaries": [
+        0,
+        1,
+        4,
+        7
+      ],
+      "candidate_boundaries": [
+        0,
+        1,
+        7
+      ]
+    },
+    {
+      "id": "original-1533",
+      "language": "km",
+      "text": "ညေု😀្ចក",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-independent-review/candidate.json#1533",
+      "exact_icu4c_boundaries": [
+        0,
+        9,
+        16,
+        22
+      ],
+      "baseline_boundaries": [
+        0,
+        9,
+        13,
+        16,
+        22
+      ],
+      "candidate_boundaries": [
+        0,
+        9,
+        13,
+        22
+      ]
+    },
+    {
+      "id": "minimal-1533",
+      "language": "km",
+      "text": "😀្ច",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-probe/worsening-analysis/substrings-candidate.json#1533-3-3",
+      "exact_icu4c_boundaries": [
+        0,
+        7,
+        10
+      ],
+      "baseline_boundaries": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "candidate_boundaries": [
+        0,
+        4,
+        10
+      ]
+    },
+    {
+      "id": "original-1745",
+      "language": "my",
+      "text": "បគ😀့ယ",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-independent-review/candidate.json#1745",
+      "exact_icu4c_boundaries": [
+        0,
+        6,
+        13,
+        16
+      ],
+      "baseline_boundaries": [
+        0,
+        6,
+        10,
+        13,
+        16
+      ],
+      "candidate_boundaries": [
+        0,
+        6,
+        10,
+        16
+      ]
+    },
+    {
+      "id": "minimal-1745",
+      "language": "my",
+      "text": "😀့ယ",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-probe/worsening-analysis/substrings-candidate.json#1745-2-3",
+      "exact_icu4c_boundaries": [
+        0,
+        7,
+        10
+      ],
+      "baseline_boundaries": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "candidate_boundaries": [
+        0,
+        4,
+        10
+      ]
+    },
+    {
+      "id": "original-1809",
+      "language": "km",
+      "text": "់😀ះកាម",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-independent-review/candidate.json#1809",
+      "exact_icu4c_boundaries": [
+        0,
+        3,
+        10,
+        19
+      ],
+      "baseline_boundaries": [
+        0,
+        3,
+        7,
+        10,
+        19
+      ],
+      "candidate_boundaries": [
+        0,
+        3,
+        7,
+        19
+      ]
+    },
+    {
+      "id": "minimal-1809",
+      "language": "km",
+      "text": "😀ះក",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-probe/worsening-analysis/substrings-candidate.json#1809-1-3",
+      "exact_icu4c_boundaries": [
+        0,
+        7,
+        10
+      ],
+      "baseline_boundaries": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "candidate_boundaries": [
+        0,
+        4,
+        10
+      ]
+    },
+    {
+      "id": "original-1885",
+      "language": "lo",
+      "text": "ုဘတဝမ។່ຢ",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-independent-review/candidate.json#1885",
+      "exact_icu4c_boundaries": [
+        0,
+        3,
+        6,
+        9,
+        12,
+        21,
+        24
+      ],
+      "baseline_boundaries": [
+        0,
+        3,
+        6,
+        9,
+        12,
+        18,
+        21,
+        24
+      ],
+      "candidate_boundaries": [
+        0,
+        3,
+        6,
+        9,
+        12,
+        18,
+        24
+      ]
+    },
+    {
+      "id": "minimal-1885",
+      "language": "lo",
+      "text": "។່ຢ",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-probe/worsening-analysis/substrings-candidate.json#1885-5-3",
+      "exact_icu4c_boundaries": [
+        0,
+        6,
+        9
+      ],
+      "baseline_boundaries": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "candidate_boundaries": [
+        0,
+        3,
+        9
+      ]
+    },
+    {
+      "id": "original-3057",
+      "language": "th",
+      "text": "ငဂဟလခဒ😀้ย",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-independent-review/candidate.json#3057",
+      "exact_icu4c_boundaries": [
+        0,
+        3,
+        6,
+        9,
+        15,
+        18,
+        25,
+        28
+      ],
+      "baseline_boundaries": [
+        0,
+        3,
+        6,
+        9,
+        15,
+        18,
+        22,
+        25,
+        28
+      ],
+      "candidate_boundaries": [
+        0,
+        3,
+        6,
+        9,
+        15,
+        18,
+        22,
+        28
+      ]
+    },
+    {
+      "id": "minimal-3057",
+      "language": "th",
+      "text": "😀้ย",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-probe/worsening-analysis/substrings-candidate.json#3057-6-3",
+      "exact_icu4c_boundaries": [
+        0,
+        7,
+        10
+      ],
+      "baseline_boundaries": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "candidate_boundaries": [
+        0,
+        4,
+        10
+      ]
+    },
+    {
+      "id": "original-3091",
+      "language": "th",
+      "text": "လဘမကရေရ/ัลขีท้าริบหค",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-independent-review/candidate.json#3091",
+      "exact_icu4c_boundaries": [
+        0,
+        3,
+        6,
+        12,
+        25,
+        34,
+        43,
+        52,
+        58
+      ],
+      "baseline_boundaries": [
+        0,
+        3,
+        6,
+        12,
+        22,
+        25,
+        34,
+        43,
+        52,
+        58
+      ],
+      "candidate_boundaries": [
+        0,
+        3,
+        6,
+        12,
+        22,
+        34,
+        43,
+        52,
+        58
+      ]
+    },
+    {
+      "id": "minimal-3091",
+      "language": "th",
+      "text": "/ัล",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-probe/worsening-analysis/substrings-candidate.json#3091-7-3",
+      "exact_icu4c_boundaries": [
+        0,
+        4,
+        7
+      ],
+      "baseline_boundaries": [
+        0,
+        1,
+        4,
+        7
+      ],
+      "candidate_boundaries": [
+        0,
+        1,
+        7
+      ]
+    },
+    {
+      "id": "original-3844",
+      "language": "lo",
+      "text": "စ។ັິງວຶ່",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-independent-review/candidate.json#3844",
+      "exact_icu4c_boundaries": [
+        0,
+        12,
+        24
+      ],
+      "baseline_boundaries": [
+        0,
+        6,
+        12,
+        24
+      ],
+      "candidate_boundaries": [
+        0,
+        6,
+        24
+      ]
+    },
+    {
+      "id": "minimal-3844",
+      "language": "lo",
+      "text": "។ັິງ",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-probe/worsening-analysis/substrings-candidate.json#3844-1-4",
+      "exact_icu4c_boundaries": [
+        0,
+        9,
+        12
+      ],
+      "baseline_boundaries": [
+        0,
+        3,
+        9,
+        12
+      ],
+      "candidate_boundaries": [
+        0,
+        3,
+        12
+      ]
+    },
+    {
+      "id": "original-3887",
+      "language": "km",
+      "text": "ငဒခု😀ះយ",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-independent-review/candidate.json#3887",
+      "exact_icu4c_boundaries": [
+        0,
+        3,
+        6,
+        12,
+        19,
+        22
+      ],
+      "baseline_boundaries": [
+        0,
+        3,
+        6,
+        12,
+        16,
+        19,
+        22
+      ],
+      "candidate_boundaries": [
+        0,
+        3,
+        6,
+        12,
+        16,
+        22
+      ]
+    },
+    {
+      "id": "minimal-3887",
+      "language": "km",
+      "text": "😀ះយ",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-probe/worsening-analysis/substrings-candidate.json#3887-4-3",
+      "exact_icu4c_boundaries": [
+        0,
+        7,
+        10
+      ],
+      "baseline_boundaries": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "candidate_boundaries": [
+        0,
+        4,
+        10
+      ]
+    },
+    {
+      "id": "original-4016",
+      "language": "km",
+      "text": "ប!ាមសាត",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-independent-review/candidate.json#4016",
+      "exact_icu4c_boundaries": [
+        0,
+        7,
+        19
+      ],
+      "baseline_boundaries": [
+        0,
+        4,
+        7,
+        19
+      ],
+      "candidate_boundaries": [
+        0,
+        4,
+        19
+      ]
+    },
+    {
+      "id": "minimal-4016",
+      "language": "km",
+      "text": "!ាម",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-probe/worsening-analysis/substrings-candidate.json#4016-1-3",
+      "exact_icu4c_boundaries": [
+        0,
+        4,
+        7
+      ],
+      "baseline_boundaries": [
+        0,
+        1,
+        4,
+        7
+      ],
+      "candidate_boundaries": [
+        0,
+        1,
+        7
+      ]
+    },
+    {
+      "id": "original-4642",
+      "language": "lo",
+      "text": "ဂ/ີາິ",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-independent-review/candidate.json#4642",
+      "exact_icu4c_boundaries": [
+        0,
+        7,
+        13
+      ],
+      "baseline_boundaries": [
+        0,
+        4,
+        7,
+        13
+      ],
+      "candidate_boundaries": [
+        0,
+        4,
+        13
+      ]
+    },
+    {
+      "id": "minimal-4642",
+      "language": "lo",
+      "text": "/ີາ",
+      "source": "/Volumes/VIXinSSD/CW/artifacts/wegpui-overflow-ios-20261028/four-script-probe/worsening-analysis/substrings-candidate.json#4642-1-3",
+      "exact_icu4c_boundaries": [
+        0,
+        4,
+        7
+      ],
+      "baseline_boundaries": [
+        0,
+        1,
+        4,
+        7
+      ],
+      "candidate_boundaries": [
+        0,
+        1,
+        7
+      ]
+    }
+  ],
+  "widths": [
+    16,
+    24,
+    32,
+    48,
+    64,
+    96
+  ],
+  "source_sha256": "1f9973cc18a64a714ef520112a9c11d3fe81d0d361504b6668b9af03cfd4a919",
+  "substrings_sha256": "dfcb913ca2545dc67afe98f3a02a05ebaa7a0684c55c34932f82716c2586e6f4",
+  "note": "14 correlated synthetic fuzz cases and their shortest contiguous worsening subcases, not independent samples"
+}

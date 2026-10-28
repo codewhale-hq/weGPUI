@@ -1,0 +1,3242 @@
+[
+  {
+    "case": "emoji-khmer",
+    "text": "ม😀ះ",
+    "width": 12,
+    "chars": [
+      {
+        "text": "ม",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 16,
+            "y": 49.59375,
+            "width": 10.453125,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "😀",
+        "utf16_start": 1,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 16,
+            "y": 73.390625,
+            "width": 21.21875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "ះ",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 37.203125,
+            "y": 73.390625,
+            "width": 17.375,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "ม",
+        "utf16_start": 0
+      },
+      {
+        "segment": "😀ះ",
+        "utf16_start": 1
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Color Emoji",
+          "postScriptName": "NotoColorEmoji",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "emoji-khmer",
+    "text": "ม😀ះ",
+    "width": 16,
+    "chars": [
+      {
+        "text": "ม",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 118,
+            "y": 49.59375,
+            "width": 10.453125,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "😀",
+        "utf16_start": 1,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 118,
+            "y": 73.390625,
+            "width": 21.21875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "ះ",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 139.203125,
+            "y": 73.390625,
+            "width": 17.375,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "ม",
+        "utf16_start": 0
+      },
+      {
+        "segment": "😀ះ",
+        "utf16_start": 1
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Color Emoji",
+          "postScriptName": "NotoColorEmoji",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "emoji-khmer",
+    "text": "ม😀ះ",
+    "width": 20,
+    "chars": [
+      {
+        "text": "ม",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 220,
+            "y": 49.59375,
+            "width": 10.453125,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "😀",
+        "utf16_start": 1,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 220,
+            "y": 73.390625,
+            "width": 21.21875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "ះ",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 241.203125,
+            "y": 73.390625,
+            "width": 17.375,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "ม",
+        "utf16_start": 0
+      },
+      {
+        "segment": "😀ះ",
+        "utf16_start": 1
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Color Emoji",
+          "postScriptName": "NotoColorEmoji",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "emoji-khmer",
+    "text": "ม😀ះ",
+    "width": 24,
+    "chars": [
+      {
+        "text": "ม",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 322,
+            "y": 49.59375,
+            "width": 10.453125,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "😀",
+        "utf16_start": 1,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 322,
+            "y": 73.390625,
+            "width": 21.21875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "ះ",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 343.203125,
+            "y": 73.390625,
+            "width": 17.375,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "ม",
+        "utf16_start": 0
+      },
+      {
+        "segment": "😀ះ",
+        "utf16_start": 1
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Color Emoji",
+          "postScriptName": "NotoColorEmoji",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "emoji-khmer",
+    "text": "ม😀ះ",
+    "width": 28,
+    "chars": [
+      {
+        "text": "ม",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 424,
+            "y": 49.59375,
+            "width": 10.453125,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "😀",
+        "utf16_start": 1,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 424,
+            "y": 73.390625,
+            "width": 21.21875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "ះ",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 445.203125,
+            "y": 73.390625,
+            "width": 17.375,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "ม",
+        "utf16_start": 0
+      },
+      {
+        "segment": "😀ះ",
+        "utf16_start": 1
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Color Emoji",
+          "postScriptName": "NotoColorEmoji",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "emoji-khmer",
+    "text": "ม😀ះ",
+    "width": 32,
+    "chars": [
+      {
+        "text": "ม",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 526,
+            "y": 49.59375,
+            "width": 10.453125,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "😀",
+        "utf16_start": 1,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 526,
+            "y": 73.390625,
+            "width": 21.21875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "ះ",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 547.203125,
+            "y": 73.390625,
+            "width": 17.375,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "ม",
+        "utf16_start": 0
+      },
+      {
+        "segment": "😀ះ",
+        "utf16_start": 1
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Color Emoji",
+          "postScriptName": "NotoColorEmoji",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "emoji-khmer",
+    "text": "ม😀ះ",
+    "width": 40,
+    "chars": [
+      {
+        "text": "ม",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 628,
+            "y": 49.59375,
+            "width": 10.453125,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "😀",
+        "utf16_start": 1,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 628,
+            "y": 73.390625,
+            "width": 21.21875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "ះ",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 649.203125,
+            "y": 73.390625,
+            "width": 17.375,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "ม",
+        "utf16_start": 0
+      },
+      {
+        "segment": "😀ះ",
+        "utf16_start": 1
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Color Emoji",
+          "postScriptName": "NotoColorEmoji",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "emoji-khmer",
+    "text": "ม😀ះ",
+    "width": 48,
+    "chars": [
+      {
+        "text": "ม",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 730,
+            "y": 49.59375,
+            "width": 10.453125,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "😀",
+        "utf16_start": 1,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 730,
+            "y": 73.390625,
+            "width": 21.21875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "ះ",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 751.203125,
+            "y": 73.390625,
+            "width": 17.375,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "ม",
+        "utf16_start": 0
+      },
+      {
+        "segment": "😀ះ",
+        "utf16_start": 1
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Color Emoji",
+          "postScriptName": "NotoColorEmoji",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "emoji-khmer",
+    "text": "ม😀ះ",
+    "width": 64,
+    "chars": [
+      {
+        "text": "ม",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 832,
+            "y": 49.59375,
+            "width": 10.453125,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "😀",
+        "utf16_start": 1,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 842.4375,
+            "y": 49.59375,
+            "width": 21.21875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "ះ",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 863.640625,
+            "y": 49.59375,
+            "width": 17.375,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "ม",
+        "utf16_start": 0
+      },
+      {
+        "segment": "😀ះ",
+        "utf16_start": 1
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans Thai",
+          "postScriptName": "NotoSansThai-Regular",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Color Emoji",
+          "postScriptName": "NotoColorEmoji",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Noto Sans Khmer",
+          "postScriptName": "NotoSansKhmer-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "space-mark",
+    "text": "a ́b",
+    "width": 12,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 16,
+            "y": 150.78125,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": " ",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 25.546875,
+            "y": 150.78125,
+            "width": 4.421875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 16,
+            "y": 174.578125,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 16,
+            "y": 174.578125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": " ́",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 5
+        }
+      ]
+    }
+  },
+  {
+    "case": "space-mark",
+    "text": "a ́b",
+    "width": 16,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 118,
+            "y": 150.78125,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": " ",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 127.546875,
+            "y": 150.78125,
+            "width": 4.421875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 118,
+            "y": 174.578125,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 118,
+            "y": 174.578125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": " ́",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 5
+        }
+      ]
+    }
+  },
+  {
+    "case": "space-mark",
+    "text": "a ́b",
+    "width": 20,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 220,
+            "y": 150.78125,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": " ",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 229.546875,
+            "y": 150.78125,
+            "width": 4.421875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 220,
+            "y": 174.578125,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 220,
+            "y": 174.578125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": " ́",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 5
+        }
+      ]
+    }
+  },
+  {
+    "case": "space-mark",
+    "text": "a ́b",
+    "width": 24,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 322,
+            "y": 150.78125,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": " ",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 331.546875,
+            "y": 150.78125,
+            "width": 4.421875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 322,
+            "y": 174.578125,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 322,
+            "y": 174.578125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": " ́",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 5
+        }
+      ]
+    }
+  },
+  {
+    "case": "space-mark",
+    "text": "a ́b",
+    "width": 28,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 424,
+            "y": 150.78125,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": " ",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 433.53125,
+            "y": 150.78125,
+            "width": 4.4375,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 433.53125,
+            "y": 150.78125,
+            "width": 4.4375,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 437.953125,
+            "y": 150.78125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": " ́",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        }
+      ]
+    }
+  },
+  {
+    "case": "space-mark",
+    "text": "a ́b",
+    "width": 32,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 526,
+            "y": 150.78125,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": " ",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 535.53125,
+            "y": 150.78125,
+            "width": 4.4375,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 535.53125,
+            "y": 150.78125,
+            "width": 4.4375,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 539.953125,
+            "y": 150.78125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": " ́",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        }
+      ]
+    }
+  },
+  {
+    "case": "space-mark",
+    "text": "a ́b",
+    "width": 40,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 628,
+            "y": 150.78125,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": " ",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 637.53125,
+            "y": 150.78125,
+            "width": 4.4375,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 637.53125,
+            "y": 150.78125,
+            "width": 4.4375,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 641.953125,
+            "y": 150.78125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": " ́",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        }
+      ]
+    }
+  },
+  {
+    "case": "space-mark",
+    "text": "a ́b",
+    "width": 48,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 730,
+            "y": 150.78125,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": " ",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 739.53125,
+            "y": 150.78125,
+            "width": 4.4375,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 739.53125,
+            "y": 150.78125,
+            "width": 4.4375,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 743.953125,
+            "y": 150.78125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": " ́",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        }
+      ]
+    }
+  },
+  {
+    "case": "space-mark",
+    "text": "a ́b",
+    "width": 64,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 832,
+            "y": 150.78125,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": " ",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 841.53125,
+            "y": 150.78125,
+            "width": 4.4375,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 841.53125,
+            "y": 150.78125,
+            "width": 4.4375,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 845.953125,
+            "y": 150.78125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": " ́",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf",
+    "text": "a\r\nb",
+    "width": 12,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 16,
+            "y": 251.96875,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 25.53125,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 25.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 25.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 16,
+            "y": 275.765625,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf",
+    "text": "a\r\nb",
+    "width": 16,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 118,
+            "y": 251.96875,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 127.53125,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 127.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 127.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 118,
+            "y": 275.765625,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf",
+    "text": "a\r\nb",
+    "width": 20,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 220,
+            "y": 251.96875,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 229.53125,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 229.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 229.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 220,
+            "y": 275.765625,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf",
+    "text": "a\r\nb",
+    "width": 24,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 322,
+            "y": 251.96875,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 331.53125,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 331.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 331.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 322,
+            "y": 275.765625,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf",
+    "text": "a\r\nb",
+    "width": 28,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 424,
+            "y": 251.96875,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 433.53125,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 433.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 433.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 424,
+            "y": 275.765625,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf",
+    "text": "a\r\nb",
+    "width": 32,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 526,
+            "y": 251.96875,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 535.53125,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 535.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 535.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 526,
+            "y": 275.765625,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf",
+    "text": "a\r\nb",
+    "width": 40,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 628,
+            "y": 251.96875,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 637.53125,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 637.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 637.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 628,
+            "y": 275.765625,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf",
+    "text": "a\r\nb",
+    "width": 48,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 730,
+            "y": 251.96875,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 739.53125,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 739.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 739.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 730,
+            "y": 275.765625,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf",
+    "text": "a\r\nb",
+    "width": 64,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 832,
+            "y": 251.96875,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 841.53125,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 841.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 841.546875,
+            "y": 251.96875,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 832,
+            "y": 275.765625,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "b",
+        "utf16_start": 3
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf-mark",
+    "text": "a\r\ńb",
+    "width": 12,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 16,
+            "y": 353.15625,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 25.53125,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 25.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 25.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 16,
+            "y": 376.953125,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 4,
+        "utf16_end": 5,
+        "rects": [
+          {
+            "x": 16,
+            "y": 376.953125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "́",
+        "utf16_start": 3
+      },
+      {
+        "segment": "b",
+        "utf16_start": 4
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 3
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf-mark",
+    "text": "a\r\ńb",
+    "width": 16,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 118,
+            "y": 353.15625,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 127.53125,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 127.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 127.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 118,
+            "y": 376.953125,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 4,
+        "utf16_end": 5,
+        "rects": [
+          {
+            "x": 118,
+            "y": 376.953125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "́",
+        "utf16_start": 3
+      },
+      {
+        "segment": "b",
+        "utf16_start": 4
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 3
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf-mark",
+    "text": "a\r\ńb",
+    "width": 20,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 220,
+            "y": 353.15625,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 229.53125,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 229.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 229.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 220,
+            "y": 376.953125,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 4,
+        "utf16_end": 5,
+        "rects": [
+          {
+            "x": 220,
+            "y": 376.953125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "́",
+        "utf16_start": 3
+      },
+      {
+        "segment": "b",
+        "utf16_start": 4
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 3
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf-mark",
+    "text": "a\r\ńb",
+    "width": 24,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 322,
+            "y": 353.15625,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 331.53125,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 331.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 331.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 322,
+            "y": 376.953125,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 4,
+        "utf16_end": 5,
+        "rects": [
+          {
+            "x": 322,
+            "y": 376.953125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "́",
+        "utf16_start": 3
+      },
+      {
+        "segment": "b",
+        "utf16_start": 4
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 3
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf-mark",
+    "text": "a\r\ńb",
+    "width": 28,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 424,
+            "y": 353.15625,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 433.53125,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 433.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 433.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 424,
+            "y": 376.953125,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 4,
+        "utf16_end": 5,
+        "rects": [
+          {
+            "x": 424,
+            "y": 376.953125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "́",
+        "utf16_start": 3
+      },
+      {
+        "segment": "b",
+        "utf16_start": 4
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 3
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf-mark",
+    "text": "a\r\ńb",
+    "width": 32,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 526,
+            "y": 353.15625,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 535.53125,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 535.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 535.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 526,
+            "y": 376.953125,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 4,
+        "utf16_end": 5,
+        "rects": [
+          {
+            "x": 526,
+            "y": 376.953125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "́",
+        "utf16_start": 3
+      },
+      {
+        "segment": "b",
+        "utf16_start": 4
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 3
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf-mark",
+    "text": "a\r\ńb",
+    "width": 40,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 628,
+            "y": 353.15625,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 637.53125,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 637.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 637.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 628,
+            "y": 376.953125,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 4,
+        "utf16_end": 5,
+        "rects": [
+          {
+            "x": 628,
+            "y": 376.953125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "́",
+        "utf16_start": 3
+      },
+      {
+        "segment": "b",
+        "utf16_start": 4
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 3
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf-mark",
+    "text": "a\r\ńb",
+    "width": 48,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 730,
+            "y": 353.15625,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 739.53125,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 739.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 739.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 730,
+            "y": 376.953125,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 4,
+        "utf16_end": 5,
+        "rects": [
+          {
+            "x": 730,
+            "y": 376.953125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "́",
+        "utf16_start": 3
+      },
+      {
+        "segment": "b",
+        "utf16_start": 4
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 3
+        }
+      ]
+    }
+  },
+  {
+    "case": "crlf-mark",
+    "text": "a\r\ńb",
+    "width": 64,
+    "chars": [
+      {
+        "text": "a",
+        "utf16_start": 0,
+        "utf16_end": 1,
+        "rects": [
+          {
+            "x": 832,
+            "y": 353.15625,
+            "width": 9.546875,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\r",
+        "utf16_start": 1,
+        "utf16_end": 2,
+        "rects": [
+          {
+            "x": 841.53125,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          },
+          {
+            "x": 841.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "\n",
+        "utf16_start": 2,
+        "utf16_end": 3,
+        "rects": [
+          {
+            "x": 841.546875,
+            "y": 353.15625,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "́",
+        "utf16_start": 3,
+        "utf16_end": 4,
+        "rects": [
+          {
+            "x": 832,
+            "y": 376.953125,
+            "width": 0,
+            "height": 23
+          }
+        ]
+      },
+      {
+        "text": "b",
+        "utf16_start": 4,
+        "utf16_end": 5,
+        "rects": [
+          {
+            "x": 832,
+            "y": 376.953125,
+            "width": 10.46875,
+            "height": 23
+          }
+        ]
+      }
+    ],
+    "graphemes": [
+      {
+        "segment": "a",
+        "utf16_start": 0
+      },
+      {
+        "segment": "\r\n",
+        "utf16_start": 1
+      },
+      {
+        "segment": "́",
+        "utf16_start": 3
+      },
+      {
+        "segment": "b",
+        "utf16_start": 4
+      }
+    ],
+    "computed_font": "system-ui",
+    "platform_fonts": {
+      "fonts": [
+        {
+          "familyName": "Noto Sans",
+          "postScriptName": "NotoSans-Regular",
+          "isCustomFont": false,
+          "glyphCount": 3
+        }
+      ]
+    }
+  }
+]
