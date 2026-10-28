@@ -1,0 +1,49 @@
+[
+  {
+    "name": "vcode_deadline_candidate",
+    "role": "application",
+    "states": []
+  },
+  {
+    "name": "weGPUI vcode deadline",
+    "role": "frame",
+    "states": [
+      "active",
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "name": "Resend (3s)",
+    "role": "push button",
+    "states": [
+      "focusable",
+      "focused",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "name": "Reset",
+    "role": "push button",
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "name": "Sends 2",
+    "role": "status bar",
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  }
+]

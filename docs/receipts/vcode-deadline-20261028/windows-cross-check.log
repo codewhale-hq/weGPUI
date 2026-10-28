@@ -1,0 +1,4 @@
+build-lock: all 2 build slots are busy (pid 25375 in /Volumes/VIXinSSD/CW/codewhale: cargo --config build.build-dir = "/Volumes/VIXinSSD/cw-build-cache/build/{workspace-path-hash}" test -p; pid 35955 in /Volumes/VIXinSSD/CW/codewhale: cargo --config build.build-dir = "/Volumes/VIXinSSD/cw-build-cache/build/{workspace-path-hash}" test -p); set CODEWHALE_BUILD_LOCK=0 to skip
+build-lock: acquired after 8s
+    Checking wegpui v0.1.0 (/Volumes/VIXinSSD/CW/weGPUI)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.40s

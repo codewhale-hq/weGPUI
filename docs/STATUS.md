@@ -62,7 +62,8 @@ Picker and select option counts now reach the Linux AT-SPI tree, including a vir
 date picker; see the [set-size receipt](receipts/set-size-20261028/README.md). Radio groups
 now offer an option-only container; the gallery keeps decorative actions as siblings.
 See the [radio receipt](receipts/radio-groups-20261028/README.md) for Linux samples and
-remaining reader and platform checks. Explicit font fallback lists now survive an unavailable primary family; see the
+remaining reader and platform checks. Verification-code countdowns now catch up after a stalled process;
+see the [countdown receipt](receipts/vcode-deadline-20261028/README.md). Explicit font fallback lists now survive an unavailable primary family; see the
 [bounded Linux shaping receipt](receipts/font-fallback-20261028/README.md). The current source also passes a Windows x64 GNU
 all-target cross-check; the ARM VM did not start and no native Windows tests ran
 ([receipt](receipts/windows-cross-20261028/README.md)).

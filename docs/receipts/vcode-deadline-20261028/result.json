@@ -1,0 +1,78 @@
+{
+  "baseline": {
+    "initial": {
+      "label": "Send code",
+      "enabled": true,
+      "count": "Sends 0"
+    },
+    "start": {
+      "label": "Resend (3s)",
+      "enabled": false,
+      "count": "Sends 1"
+    },
+    "reset": {
+      "label": "Send code",
+      "enabled": true,
+      "count": "Sends 1"
+    },
+    "restart": {
+      "label": "Resend (3s)",
+      "enabled": false,
+      "count": "Sends 2"
+    },
+    "after-cancel": {
+      "label": "Send code",
+      "enabled": true,
+      "count": "Sends 2"
+    },
+    "natural-end": {
+      "label": "Send code",
+      "enabled": true,
+      "count": "Sends 3"
+    },
+    "after-pause": {
+      "label": "Resend (2s)",
+      "enabled": false,
+      "count": "Sends 1"
+    },
+    "pause_monotonic_seconds": 4.537316128
+  },
+  "candidate": {
+    "initial": {
+      "label": "Send code",
+      "enabled": true,
+      "count": "Sends 0"
+    },
+    "start": {
+      "label": "Resend (3s)",
+      "enabled": false,
+      "count": "Sends 1"
+    },
+    "reset": {
+      "label": "Send code",
+      "enabled": true,
+      "count": "Sends 1"
+    },
+    "restart": {
+      "label": "Resend (3s)",
+      "enabled": false,
+      "count": "Sends 2"
+    },
+    "after-cancel": {
+      "label": "Send code",
+      "enabled": true,
+      "count": "Sends 2"
+    },
+    "natural-end": {
+      "label": "Send code",
+      "enabled": true,
+      "count": "Sends 3"
+    },
+    "after-pause": {
+      "label": "Send code",
+      "enabled": true,
+      "count": "Sends 1"
+    },
+    "pause_monotonic_seconds": 4.556827669
+  }
+}

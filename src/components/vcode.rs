@@ -77,15 +77,22 @@ impl VcodeButton {
         if self.is_counting() {
             return;
         }
-        self.remaining = self.seconds;
+        let seconds = self.seconds;
+        let started = cx.background_executor().now();
+        self.remaining = seconds;
         cx.emit(VcodeEvent::Send);
         cx.notify();
         self.timer = Some(cx.spawn_in(window, async move |this, cx| {
             loop {
                 cx.background_executor().timer(Duration::from_secs(1)).await;
+                let elapsed = cx
+                    .background_executor()
+                    .now()
+                    .saturating_duration_since(started);
                 let done = this
                     .update(cx, |this, cx| {
-                        this.remaining = this.remaining.saturating_sub(1);
+                        this.remaining = seconds
+                            .saturating_sub(elapsed.as_secs().min(u64::from(seconds)) as u32);
                         cx.notify();
                         this.remaining == 0
                     })
