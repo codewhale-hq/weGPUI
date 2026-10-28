@@ -1,0 +1,32 @@
+warning: patch `gpui-pre-ios v0.3.9 (/src/vendor/gpui_pre_ios)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+     Locking 656 packages to highest Rust 1.99.1 compatible versions
+warning: patch `gpui-pre-ios v0.3.9 (/src/vendor/gpui_pre_ios)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+     Locking 656 packages to highest Rust 1.99.1 compatible versions
+warning: patch `gpui-pre-ios v0.3.9 (/src/vendor/gpui_pre_ios)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling gpui-pre v0.3.9 (/src/vendor/gpui_pre)
+   Compiling gpui-pre-wgpu v0.3.9
+   Compiling wegpui v0.1.0 (/src)
+   Compiling gpui-pre-linux v0.3.9 (/src/vendor/gpui_pre_linux)
+   Compiling gpui-pre-platform v0.3.9
+   Compiling progress_precision_baseline v0.0.0 (/work/full-parity/progress-precision-probe/baseline)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 34.10s
+warning: patch `gpui-pre-ios v0.3.9 (/src/vendor/gpui_pre_ios)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling wegpui v0.1.0 (/work/full-parity/progress-precision-probe/product)
+   Compiling progress_precision_candidate v0.0.0 (/work/full-parity/progress-precision-probe/candidate)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 16.93s

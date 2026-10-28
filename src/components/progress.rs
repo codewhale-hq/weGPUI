@@ -90,6 +90,7 @@ impl RenderOnce for Progress {
             let t = Theme::get(cx).clone();
             let dir = crate::i18n::direction(cx);
             let brand = t.brand;
+            let value = if self.value == 0. { 0. } else { self.value };
             let bar = div()
                 .id("progress-bar")
                 .role(Role::ProgressIndicator)
@@ -97,10 +98,10 @@ impl RenderOnce for Progress {
                     self.label
                         .unwrap_or_else(|| crate::i18n::messages(cx).progress.clone()),
                 )
-                .aria_numeric_value(self.value.round() as f64)
+                .aria_numeric_value(value as f64)
                 .aria_min_numeric_value(0.)
                 .aria_max_numeric_value(100.)
-                .aria_value(SharedString::from(format!("{}%", self.value.round())))
+                .aria_value(SharedString::from(format!("{value}%")))
                 .flex_1()
                 .flex()
                 .row(dir)

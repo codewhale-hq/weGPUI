@@ -1,0 +1,132 @@
+[
+  {
+    "name": "zero",
+    "value": 0.0,
+    "value_text": null,
+    "min": 0.0,
+    "max": 100.0,
+    "bounds": {
+      "x": 284,
+      "y": 164,
+      "width": 400,
+      "height": 3
+    }
+  },
+  {
+    "name": "fraction",
+    "value": 0.4000000059604645,
+    "value_text": null,
+    "min": 0.0,
+    "max": 100.0,
+    "bounds": {
+      "x": 284,
+      "y": 206,
+      "width": 400,
+      "height": 3
+    }
+  },
+  {
+    "name": "middle",
+    "value": 49.599998474121094,
+    "value_text": null,
+    "min": 0.0,
+    "max": 100.0,
+    "bounds": {
+      "x": 284,
+      "y": 248,
+      "width": 400,
+      "height": 3
+    }
+  },
+  {
+    "name": "fine",
+    "value": 0.125,
+    "value_text": null,
+    "min": 0.0,
+    "max": 100.0,
+    "bounds": {
+      "x": 284,
+      "y": 290,
+      "width": 400,
+      "height": 3
+    }
+  },
+  {
+    "name": "integer",
+    "value": 25.0,
+    "value_text": null,
+    "min": 0.0,
+    "max": 100.0,
+    "bounds": {
+      "x": 284,
+      "y": 332,
+      "width": 400,
+      "height": 3
+    }
+  },
+  {
+    "name": "negative-zero",
+    "value": 0.0,
+    "value_text": null,
+    "min": 0.0,
+    "max": 100.0,
+    "bounds": {
+      "x": 284,
+      "y": 374,
+      "width": 400,
+      "height": 3
+    }
+  },
+  {
+    "name": "nan",
+    "value": 0.0,
+    "value_text": null,
+    "min": 0.0,
+    "max": 100.0,
+    "bounds": {
+      "x": 284,
+      "y": 416,
+      "width": 400,
+      "height": 3
+    }
+  },
+  {
+    "name": "positive-infinity",
+    "value": 100.0,
+    "value_text": null,
+    "min": 0.0,
+    "max": 100.0,
+    "bounds": {
+      "x": 284,
+      "y": 458,
+      "width": 400,
+      "height": 3
+    }
+  },
+  {
+    "name": "below",
+    "value": 0.0,
+    "value_text": null,
+    "min": 0.0,
+    "max": 100.0,
+    "bounds": {
+      "x": 284,
+      "y": 500,
+      "width": 400,
+      "height": 3
+    }
+  },
+  {
+    "name": "above",
+    "value": 100.0,
+    "value_text": null,
+    "min": 0.0,
+    "max": 100.0,
+    "bounds": {
+      "x": 284,
+      "y": 542,
+      "width": 400,
+      "height": 3
+    }
+  }
+]
