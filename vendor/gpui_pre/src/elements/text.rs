@@ -1,9 +1,9 @@
 use crate::{
     ActiveTooltip, AnyView, App, Bounds, DispatchPhase, Element, ElementId, GlobalElementId,
     HighlightStyle, Hitbox, HitboxBehavior, InspectorElementId, IntoElement, LayoutId,
-    MouseDownEvent, MouseMoveEvent, MouseUpEvent, Pixels, Point, SharedString, Size, TextAlign,
-    TextOverflow, TextRun, TextStyle, TooltipId, TruncateFrom, WhiteSpace, Window, WrappedLine,
-    WrappedLineLayout, px, register_tooltip_mouse_handlers, set_tooltip_on_window,
+    MouseDownEvent, MouseMoveEvent, MouseUpEvent, OverflowWrap, Pixels, Point, SharedString, Size,
+    TextAlign, TextOverflow, TextRun, TextStyle, TooltipId, TruncateFrom, WhiteSpace, Window,
+    WrappedLine, WrappedLineLayout, px, register_tooltip_mouse_handlers, set_tooltip_on_window,
 };
 use anyhow::Context as _;
 use gpui_util::ResultExt;
@@ -627,16 +627,20 @@ fn clamp_shaped_text<'a>(
     wrap_width: Pixels,
     max_lines: usize,
     affix: &str,
+    overflow_wrap: OverflowWrap,
     window: &mut Window,
 ) -> (SharedString, Cow<'a, [TextRun]>) {
     if max_lines == 0 {
         return ("".into(), Cow::Owned(Vec::new()));
     }
-    let Ok(lines) =
-        window
-            .text_system()
-            .shape_text(text.clone(), font_size, runs, Some(wrap_width), None)
-    else {
+    let Ok(lines) = window.text_system().shape_text_with_overflow_wrap(
+        text.clone(),
+        font_size,
+        runs,
+        Some(wrap_width),
+        None,
+        overflow_wrap,
+    ) else {
         return (text, Cow::Borrowed(runs));
     };
     if lines
@@ -696,12 +700,13 @@ fn clamp_shaped_text<'a>(
             first.len = affix.len();
             styled.push(first);
         }
-        if let Ok(shaped) = window.text_system().shape_text(
+        if let Ok(shaped) = window.text_system().shape_text_with_overflow_wrap(
             result.clone(),
             font_size,
             &styled,
             Some(wrap_width),
             None,
+            overflow_wrap,
         ) && shaped
             .iter()
             .map(|line| line.bidi_rows().len())
@@ -728,6 +733,8 @@ struct TextLayoutInner {
     lines: SmallVec<[WrappedLine; 1]>,
     line_height: Pixels,
     wrap_width: Option<Pixels>,
+    overflow_wrap: OverflowWrap,
+    line_clamp: Option<usize>,
     truncate_width: Option<Pixels>,
     size: Option<Size<Pixels>>,
     bounds: Option<Bounds<Pixels>>,
@@ -796,7 +803,9 @@ impl TextLayout {
                 //    sizing with whatever width some earlier measure pass happened to use)
                 if let Some(text_layout) = element_state.0.borrow().as_ref()
                     && let Some(size) = text_layout.size
-                    && (wrap_width.is_none() || wrap_width == text_layout.wrap_width)
+                    && wrap_width == text_layout.wrap_width
+                    && text_layout.overflow_wrap == text_style.overflow_wrap
+                    && text_layout.line_clamp == text_style.line_clamp
                     && truncate_width.is_none()
                     && text_layout.truncate_width.is_none()
                 {
@@ -816,6 +825,7 @@ impl TextLayout {
                                 wrap_width,
                                 max_lines,
                                 &truncation_affix,
+                                text_style.overflow_wrap,
                                 window,
                             )
                         } else {
@@ -859,12 +869,13 @@ impl TextLayout {
 
                 let Some(lines) = window
                     .text_system()
-                    .shape_text(
+                    .shape_text_with_overflow_wrap(
                         text,
                         font_size,
                         &runs,
                         wrap_width,            // Wrap if we know the width.
                         text_style.line_clamp, // Limit the number of lines if line_clamp is set.
+                        text_style.overflow_wrap,
                     )
                     .log_err()
                 else {
@@ -874,6 +885,8 @@ impl TextLayout {
                         len: 0,
                         line_height,
                         wrap_width,
+                        overflow_wrap: text_style.overflow_wrap,
+                        line_clamp: text_style.line_clamp,
                         truncate_width,
                         size: Some(Size::default()),
                         bounds: None,
@@ -894,6 +907,8 @@ impl TextLayout {
                     len,
                     line_height,
                     wrap_width,
+                    overflow_wrap: text_style.overflow_wrap,
+                    line_clamp: text_style.line_clamp,
                     truncate_width,
                     size: Some(size),
                     bounds: None,
@@ -1069,10 +1084,8 @@ impl TextLayout {
     pub fn selection_bounds(&self, range: Range<usize>) -> Vec<Bounds<Pixels>> {
         let state = self.0.borrow();
         let state = state.as_ref().expect("measurement has not been performed");
-        let mut origin = state
-            .bounds
-            .expect("prepaint has not been performed")
-            .origin;
+        let element_bounds = state.bounds.expect("prepaint has not been performed");
+        let mut origin = element_bounds.origin;
         let mut offset = 0;
         let mut result = Vec::new();
         for line in &state.lines {
@@ -1086,7 +1099,7 @@ impl TextLayout {
                         .bidi_rows()
                         .get(row)
                         .map_or(line.width(), |row| row.width);
-                    let available = bounds.size.width;
+                    let available = element_bounds.size.width;
                     bounds.origin.x += match state.text_align {
                         TextAlign::Left => px(0.),
                         TextAlign::Center => (available - width) / 2.,

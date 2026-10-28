@@ -59,7 +59,7 @@ class PreviewBundleTests(unittest.TestCase):
         self.assertEqual(first.read_bytes(), second.read_bytes())
         self.assertEqual(preview.verify_bundle(first), preview.verify_bundle(second))
 
-    def test_separate_consumer_uses_all_four_workspace_patches(self):
+    def test_separate_consumer_uses_all_workspace_patches(self):
         archive = self.make_bundle()
         with tarfile.open(archive) as tar:
             root = pathlib.PurePosixPath(tar.getnames()[0]).parts[0]

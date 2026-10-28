@@ -47,6 +47,13 @@ use std::{
     sync::Arc,
 };
 
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Hash)]
+pub enum OverflowWrap {
+    Normal,
+    #[default]
+    BreakWord,
+}
+
 #[derive(Clone, Copy, Debug, Default, PartialEq, PartialOrd)]
 pub struct Pixels(pub f32);
 pub fn px(value: f32) -> Pixels {

@@ -1,4 +1,6 @@
-use crate::{FontId, GlyphId, Pixels, PlatformTextSystem, Point, SharedString, Size, point, px};
+use crate::{
+    FontId, GlyphId, OverflowWrap, Pixels, PlatformTextSystem, Point, SharedString, Size, point, px,
+};
 use collections::FxHashMap;
 use parking_lot::{Mutex, RwLock, RwLockUpgradableReadGuard};
 use smallvec::SmallVec;
@@ -15,7 +17,7 @@ use std::{
 use super::{LineWrapper, logical_wrap, text_bidi};
 
 /// A laid out and styled line of text
-#[derive(Default, Debug)]
+#[derive(Default, Debug, Clone)]
 pub struct LineLayout {
     /// The font size for this line
     pub font_size: Pixels,
@@ -237,6 +239,7 @@ impl LineLayout {
         text: &str,
         wrap_width: Pixels,
         max_lines: Option<usize>,
+        overflow_wrap: OverflowWrap,
     ) -> SmallVec<[WrapBoundary; 1]> {
         let mut boundaries = SmallVec::new();
         let mut first_non_whitespace_ix = None;
@@ -298,9 +301,11 @@ impl LineLayout {
                 if let Some(last_candidate_ix) = last_candidate_ix.take() {
                     last_boundary = last_candidate_ix;
                     last_boundary_x = last_candidate_x;
-                } else {
+                } else if overflow_wrap == OverflowWrap::BreakWord {
                     last_boundary = boundary;
                     last_boundary_x = x;
+                } else {
+                    continue;
                 }
                 boundaries.push(last_boundary);
             }
@@ -742,6 +747,7 @@ impl LineLayoutCache {
         runs: &[FontRun],
         wrap_width: Option<Pixels>,
         max_lines: Option<usize>,
+        overflow_wrap: OverflowWrap,
     ) -> Arc<WrappedLineLayout>
     where
         Text: AsRef<str>,
@@ -754,6 +760,8 @@ impl LineLayoutCache {
             runs,
             wrap_width,
             force_width: None,
+            overflow_wrap,
+            max_lines,
         } as &dyn AsCacheKeyRef;
 
         let current_frame = self.current_frame.upgradable_read();
@@ -781,6 +789,7 @@ impl LineLayoutCache {
                     &unwrapped_layout,
                     wrap_width,
                     max_lines,
+                    overflow_wrap,
                 ) {
                     Some((layout, boundaries, starts)) => (Arc::new(layout), boundaries, starts),
                     None => {
@@ -788,6 +797,7 @@ impl LineLayoutCache {
                             text.as_ref(),
                             wrap_width,
                             max_lines,
+                            overflow_wrap,
                         );
                         (unwrapped_layout, boundaries, SmallVec::new())
                     }
@@ -810,6 +820,8 @@ impl LineLayoutCache {
                 runs: SmallVec::from(runs),
                 wrap_width,
                 force_width: None,
+                overflow_wrap,
+                max_lines,
             });
 
             let mut current_frame = self.current_frame.write();
@@ -830,6 +842,7 @@ impl LineLayoutCache {
         unwrapped: &LineLayout,
         wrap_width: Pixels,
         max_lines: Option<usize>,
+        overflow_wrap: OverflowWrap,
     ) -> Option<(
         LineLayout,
         SmallVec<[WrapBoundary; 1]>,
@@ -849,11 +862,18 @@ impl LineLayoutCache {
             return None;
         }
         let breaks = LineWrapper::break_indices(text);
-        let starts = logical_wrap::wrap(&units, wrap_width.as_f32(), max_lines, |index, _, _| {
-            breaks.binary_search(&index).is_ok()
-        })?;
+        let can_break = |index, _, _| breaks.binary_search(&index).is_ok();
+        let starts = if overflow_wrap == OverflowWrap::BreakWord {
+            logical_wrap::wrap(&units, wrap_width.as_f32(), max_lines, can_break)
+        } else {
+            logical_wrap::wrap_with_policy(&units, wrap_width.as_f32(), max_lines, false, can_break)
+        }?;
         if starts.is_empty() {
-            return None;
+            return if overflow_wrap == OverflowWrap::Normal {
+                Some((unwrapped.clone(), SmallVec::new(), SmallVec::new()))
+            } else {
+                None
+            };
         }
 
         let mark = if logical_wrap::base_direction_is_rtl(text) {
@@ -954,6 +974,8 @@ impl LineLayoutCache {
             runs,
             wrap_width: None,
             force_width,
+            overflow_wrap: OverflowWrap::default(),
+            max_lines: None,
         } as &dyn AsCacheKeyRef;
 
         let current_frame = self.current_frame.upgradable_read();
@@ -983,6 +1005,8 @@ impl LineLayoutCache {
                 runs: SmallVec::from(runs),
                 wrap_width: None,
                 force_width,
+                overflow_wrap: OverflowWrap::default(),
+                max_lines: None,
             });
             let layout = Arc::new(layout);
             current_frame.lines.insert(key.clone(), layout.clone());
@@ -1213,6 +1237,8 @@ struct CacheKey {
     runs: SmallVec<[FontRun; 1]>,
     wrap_width: Option<Pixels>,
     force_width: Option<Pixels>,
+    overflow_wrap: OverflowWrap,
+    max_lines: Option<usize>,
 }
 
 #[derive(Copy, Clone, PartialEq, Eq, Hash)]
@@ -1222,6 +1248,8 @@ struct CacheKeyRef<'a> {
     runs: &'a [FontRun],
     wrap_width: Option<Pixels>,
     force_width: Option<Pixels>,
+    overflow_wrap: OverflowWrap,
+    max_lines: Option<usize>,
 }
 
 #[derive(Clone, Debug)]
@@ -1314,6 +1342,8 @@ impl AsCacheKeyRef for CacheKey {
             runs: self.runs.as_slice(),
             wrap_width: self.wrap_width,
             force_width: self.force_width,
+            overflow_wrap: self.overflow_wrap,
+            max_lines: self.max_lines,
         }
     }
 }
@@ -1498,7 +1528,8 @@ mod tests {
         ]);
         clusters.width = px(40.);
         clusters.len = "你好世界".len();
-        let boundaries = clusters.compute_wrap_boundaries("你好世界", px(25.), None);
+        let boundaries =
+            clusters.compute_wrap_boundaries("你好世界", px(25.), None, OverflowWrap::BreakWord);
         assert_eq!(
             boundaries
                 .iter()
@@ -1512,13 +1543,19 @@ mod tests {
         }
         clusters.width = px(80.);
         clusters.len = 4;
-        let boundaries = clusters.compute_wrap_boundaries("abcd", px(30.), None);
+        let boundaries =
+            clusters.compute_wrap_boundaries("abcd", px(30.), None, OverflowWrap::BreakWord);
         assert_eq!(
             boundaries
                 .iter()
                 .map(|boundary| boundary.glyph_ix)
                 .collect::<Vec<_>>(),
             vec![2, 4, 6]
+        );
+        assert!(
+            clusters
+                .compute_wrap_boundaries("abcd", px(30.), None, OverflowWrap::Normal)
+                .is_empty()
         );
     }
 

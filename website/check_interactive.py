@@ -139,6 +139,15 @@ class Checks:
     def capture(self, name):
         self.page.screenshot(path=str(self.out / f'{name}.png'), full_page=True)
 
+    def ready_frame(self, iframe, route=None):
+        body = iframe.content_frame.locator('body')
+        if route is not None:
+            expect(body).to_have_attribute('data-route', route)
+        expect(body).to_have_attribute('data-ready', 'true')
+        frame = iframe.element_handle().content_frame()
+        assert frame, 'ready iframe must have an attached frame'
+        return frame
+
     def audit(self, routes):
         observations, failures = [], []
         case = self.case
@@ -632,9 +641,7 @@ class Checks:
             iframe = self.page.locator('iframe[src*="playground/"]').first
             expect(iframe).to_be_visible()
             assert iframe.get_attribute('title'), 'live iframe needs an accessible title'
-            frame = iframe.element_handle().content_frame()
-            assert frame
-            frame.wait_for_function("() => document.body?.dataset.route === 'dialog' && document.body.dataset.ready === 'true'")
+            frame = self.ready_frame(iframe, 'dialog')
             config = frame.evaluate('WEGPUI_PLAYGROUND_CONFIG')
             assert config['route'] == 'dialog'
             assert config['theme'] == 'dark'
@@ -647,17 +654,13 @@ class Checks:
             expect(frame.locator('#showIOSDialog1')).to_be_focused()
             self.capture(f'shell-{width}-live-dialog')
             self.page.reload(wait_until='networkidle')
-            frame = self.page.locator('iframe[src*="playground/"]').first.element_handle().content_frame()
-            assert frame
-            frame.wait_for_function("() => document.body?.dataset.route === 'dialog' && document.body.dataset.ready === 'true'")
+            frame = self.ready_frame(self.page.locator('iframe[src*="playground/"]').first, 'dialog')
             results.append({'width': width, 'deep_link_config_reload': True, 'live_dialog': True})
         self.page.set_viewport_size({'width': 1280, 'height': 900})
         self.page.goto(self.base + '#components/form_primary?theme=light&care=0&brand=', wait_until='networkidle')
         iframe = self.page.locator('#live-demo')
         expect(iframe).to_be_visible()
-        frame = iframe.element_handle().content_frame()
-        assert frame
-        frame.wait_for_function("() => document.body?.dataset.route === 'form_primary' && document.body.dataset.ready === 'true'")
+        frame = self.ready_frame(iframe, 'form_primary')
         field = frame.locator('input:not([type=checkbox]):not([type=radio]):not(:disabled)').first
         field.fill('Shell draft 你好')
         field.evaluate('(node) => { window.__shellDraft = node; }')
@@ -696,18 +699,15 @@ class Checks:
         assert self.page.locator('#native-capture').evaluate('(image) => image.complete && image.naturalWidth > 0')
         self.page.locator('.preview-modes').get_by_role('link', name='Live browser demo', exact=True).click()
         iframe = self.page.locator('#live-demo')
-        frame = iframe.element_handle().content_frame()
-        assert frame
-        frame.wait_for_function("() => document.body?.dataset.ready === 'true'")
+        frame = self.ready_frame(iframe, 'form_primary')
         config = frame.evaluate('WEGPUI_PLAYGROUND_CONFIG')
         assert config['theme'] == 'dark' and config['care'] and config['brand'].lstrip('#') == '805ad5'
         search = self.page.get_by_role('searchbox', name='Search components')
         search.fill('dialog')
         self.page.locator('#catalog-list').get_by_role('link', name='Dialogs', exact=True).focus()
         self.page.keyboard.press('Enter')
-        frame = self.page.locator('#live-demo').element_handle().content_frame()
-        assert frame
-        frame.wait_for_function("() => document.body?.dataset.route === 'dialog' && document.body.dataset.ready === 'true'")
+        expect(self.page).to_have_url(re.compile(re.escape(self.base) + r'#components/dialog(?:\?|$)'))
+        frame = self.ready_frame(self.page.locator('#live-demo'), 'dialog')
         config = frame.evaluate('WEGPUI_PLAYGROUND_CONFIG')
         assert config['theme'] == 'dark' and config['care'] and config['brand'].lstrip('#') == '805ad5'
         self.page.locator('#state-select').select_option('ios1')
@@ -718,13 +718,11 @@ class Checks:
         search.fill('picker')
         self.page.locator('#catalog-list').get_by_role('link', name='Pickers', exact=True).focus()
         self.page.keyboard.press('Enter')
-        frame = self.page.locator('#live-demo').element_handle().content_frame()
-        assert frame
-        frame.wait_for_function("() => document.body?.dataset.route === 'picker' && document.body.dataset.ready === 'true'")
+        expect(self.page).to_have_url(re.compile(re.escape(self.base) + r'#components/picker(?:\?|$)'))
+        frame = self.ready_frame(self.page.locator('#live-demo'), 'picker')
         self.page.go_back(wait_until='networkidle')
-        frame = self.page.locator('#live-demo').element_handle().content_frame()
-        assert frame
-        frame.wait_for_function("() => document.body?.dataset.route === 'dialog' && document.body.dataset.ready === 'true'")
+        expect(self.page).to_have_url(re.compile(re.escape(self.base) + r'#components/dialog(?:\?|$)'))
+        frame = self.ready_frame(self.page.locator('#live-demo'), 'dialog')
         self.capture('shell-prefs-keyboard-native-history')
         results.append({'toolbar_draft_dom_preserved': True,
                         'colour_control': 'programmatic HTML color-input event; native picker popup not exercised',
@@ -742,9 +740,7 @@ class Checks:
                 if name == 'themes':
                     iframe = self.page.locator('#theme-demo')
                     iframe.scroll_into_view_if_needed()
-                    frame = iframe.element_handle().content_frame()
-                    assert frame
-                    frame.wait_for_function("() => document.body?.dataset.ready === 'true'")
+                    frame = self.ready_frame(iframe, 'form_checkbox')
                     frame.evaluate("window.__paletteFrameRetained = true")
                     draft = frame.locator('input[type=checkbox]:not(:disabled)').first
                     draft.locator('xpath=ancestor::label[1]').click()
@@ -761,8 +757,7 @@ class Checks:
                     iframe = self.page.locator('#theme-demo')
                     iframe.scroll_into_view_if_needed()
                     expect(iframe).to_be_visible()
-                    frame = iframe.element_handle().content_frame()
-                    assert frame
+                    frame = self.ready_frame(iframe, 'form_checkbox')
                     frame.wait_for_function("() => document.body?.dataset.route === 'form_checkbox' && document.body.dataset.ready === 'true' && WEGPUI_PLAYGROUND_CONFIG.theme === 'dark' && WEGPUI_PLAYGROUND_CONFIG.care")
                     assert frame.evaluate('window.__paletteFrameRetained')
                     assert draft.is_checked() == draft_value

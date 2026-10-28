@@ -2488,6 +2488,18 @@ pub struct TextInputConfiguration {
     pub suggestions: bool,
     /// The action advertised on a software keyboard's confirm ("enter") key.
     pub input_action: TextInputAction,
+    #[doc = "The type of software keyboard requested for this input."]
+    pub keyboard_type: TextInputKeyboardType,
+}
+
+#[doc = "The software keyboard layout requested by a focused text region."]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum TextInputKeyboardType {
+    #[doc = "Let the platform choose its default keyboard."]
+    #[default]
+    Default,
+    #[doc = "A keyboard intended for entering digits. iOS uses its number pad only with the Done action, and otherwise falls back to the default keyboard to retain an action key."]
+    Digits,
 }
 
 /// Automatic capitalization applied by software keyboards.

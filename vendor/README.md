@@ -1,8 +1,8 @@
 # Approved accessibility compatibility copies
 
-The owner approved these local compatibility copies on 2026-10-25. Package versions
-remain `accesskit_unix 0.22.1`, `accesskit_atspi_common 0.19.1`, `gpui-pre 0.3.9` and
-`gpui-pre-linux 0.3.9`. Copies came from the exact locked crate archives; licenses and
+The owner approved the original compatibility copies on 2026-10-25 and authorized
+additional dependencies and copies for the continuation. Package versions remain `accesskit_unix 0.22.1`, `accesskit_atspi_common 0.19.1`, `gpui-pre 0.3.9`,
+`gpui-pre-linux 0.3.9` and `gpui-pre-ios 0.3.9`. Copies came from the exact locked crate archives; licenses and
 package provenance are retained. Registry files were not edited. Root Cargo patches
 select these copies; the approved Unicode bidi continuation adds one direct edge to the already
 locked `unicode-bidi 0.3.18`. The owner subsequently approved ICU4X 2.4.0 dictionary
@@ -14,13 +14,14 @@ published iOS backend's missing focus, selection-fragment and lifecycle APIs.
 
 **The matching patched GPUI copy is required to compile current weGPUI source.**
 Semantics/Modal integration calls the added `Window::with_a11y_action_guard` API.
-Unpatched registry GPUI 0.3.9 does not provide that API. All four patches below belong
+Unpatched registry GPUI 0.3.9 does not provide that API. All five patches below belong
 in the consuming application's workspace-root Cargo.toml, using a matching checkout:
 
 ```toml
 [patch.crates-io]
 gpui-pre = { path = "/path/to/weGPUI/vendor/gpui_pre" }
 gpui-pre-linux = { path = "/path/to/weGPUI/vendor/gpui_pre_linux" }
+gpui-pre-ios = { path = "/path/to/weGPUI/vendor/gpui_pre_ios" }
 accesskit_unix = { path = "/path/to/weGPUI/vendor/accesskit_unix" }
 accesskit_atspi_common = { path = "/path/to/weGPUI/vendor/accesskit_atspi_common" }
 ```
@@ -179,5 +180,9 @@ against the window's current focus and fails closed. Selection fragments are opt
 other consumers; weGPUI input supplies document-ordered cluster fragments in window
 coordinates. An empty vector means unavailable geometry. A disconnected scene can reconnect;
 it is not a process-termination notification. These APIs preserve the single patched GPUI
-package identity and add no platform package. Mobile runtime and accessibility acceptance
-remain separate from successful linking.
+package identity. The separately patched `gpui-pre-ios 0.3.9` copy maps the digit keyboard
+request to a UIKit number pad with a Done accessory when the action is Done; other actions
+use the default keyboard to retain their action key. See its
+[`WEGPUI-PROVENANCE.md`](gpui_pre_ios/WEGPUI-PROVENANCE.md). Mobile runtime and accessibility
+acceptance remain separate from successful linking, and iOS password entry remains disabled
+pending secure native input verification.

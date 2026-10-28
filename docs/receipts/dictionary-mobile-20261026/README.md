@@ -75,6 +75,8 @@ the empty field with undo.
 
 [Pages run 40651595598](https://github.com/codewhale-hq/weGPUI/actions/runs/40651595598)
 published `c343621`; the live site's data identifies that commit and `sourceDirty: false`.
+The [live shell and theme checks](website/live-interactive-c343621.json) pass after
+fixing their frame-navigation race; they exercise selected browser flows, not native GPUI.
 This publication does not qualify native parity. Hosted CI for this slice was skipped
 and remains deferred to the final candidate under the workspace release policy.
 

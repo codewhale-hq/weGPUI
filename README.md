@@ -71,7 +71,7 @@ state, local image selection/preview/deletion, theme switching and modal confirm
 ## Use in an application
 
 The preview requires the matching compatibility copies in `vendor/`. **Cargo patches are not
-inherited from dependencies:** configure all four at your application's workspace root.
+inherited from dependencies:** configure all five at your application's workspace root.
 With a sibling checkout named `weGPUI`, use:
 
 ```toml
@@ -83,6 +83,7 @@ gpui_platform = { package = "gpui-pre-platform", version = "=0.3.9", features = 
 [patch.crates-io]
 gpui-pre = { path = "../weGPUI/vendor/gpui_pre" }
 gpui-pre-linux = { path = "../weGPUI/vendor/gpui_pre_linux" }
+gpui-pre-ios = { path = "../weGPUI/vendor/gpui_pre_ios" }
 accesskit_unix = { path = "../weGPUI/vendor/accesskit_unix" }
 accesskit_atspi_common = { path = "../weGPUI/vendor/accesskit_atspi_common" }
 ```

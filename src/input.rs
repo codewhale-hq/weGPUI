@@ -1249,6 +1249,11 @@ impl EntityInputHandler for TextInput {
         _cx: &mut Context<Self>,
     ) -> TextInputConfiguration {
         TextInputConfiguration {
+            keyboard_type: if self.kind == InputKind::Digit && !self.multiline {
+                TextInputKeyboardType::Digits
+            } else {
+                TextInputKeyboardType::Default
+            },
             input_action: if self.multiline {
                 TextInputAction::Enter
             } else {

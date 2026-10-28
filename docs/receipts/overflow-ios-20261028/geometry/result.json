@@ -1,0 +1,744 @@
+{
+  "passed": true,
+  "observed_normal_overflow": true,
+  "cases": [
+    {
+      "name": "ltr",
+      "text": "supercalifragilisticexpialidocious end",
+      "policy": "Normal",
+      "align": "Left",
+      "bounds": [
+        16.0,
+        16.0,
+        120.0,
+        48.0
+      ],
+      "samples": [
+        {
+          "row": 0,
+          "range": [
+            0,
+            1
+          ],
+          "row_width": 262.3780212402344,
+          "shift": 0.0,
+          "selection_x": 16.0,
+          "expected_selection_x": 16.0,
+          "selection_width": 8.142999649047852,
+          "expected_selection_width": 8.142999649047852,
+          "caret_x": 16.0,
+          "expected_caret_x": 16.0,
+          "hit": "Ok(0)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 1,
+          "range": [
+            35,
+            36
+          ],
+          "row_width": 30.54901123046875,
+          "shift": 0.0,
+          "selection_x": 16.0,
+          "expected_selection_x": 16.0,
+          "selection_width": 9.5880126953125,
+          "expected_selection_width": 9.5880126953125,
+          "caret_x": 16.0,
+          "expected_caret_x": 16.0,
+          "hit": "Ok(35)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        }
+      ]
+    },
+    {
+      "name": "ltr",
+      "text": "supercalifragilisticexpialidocious end",
+      "policy": "Normal",
+      "align": "Center",
+      "bounds": [
+        16.0,
+        69.0,
+        120.0,
+        48.0
+      ],
+      "samples": [
+        {
+          "row": 0,
+          "range": [
+            0,
+            1
+          ],
+          "row_width": 262.3780212402344,
+          "shift": -71.18901062011719,
+          "selection_x": -55.18901062011719,
+          "expected_selection_x": -55.18901062011719,
+          "selection_width": 8.142999649047852,
+          "expected_selection_width": 8.142999649047852,
+          "caret_x": -55.18901062011719,
+          "expected_caret_x": -55.18901062011719,
+          "hit": "Ok(0)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 1,
+          "range": [
+            35,
+            36
+          ],
+          "row_width": 30.54901123046875,
+          "shift": 44.725494384765625,
+          "selection_x": 60.725494384765625,
+          "expected_selection_x": 60.725494384765625,
+          "selection_width": 9.5880126953125,
+          "expected_selection_width": 9.5880126953125,
+          "caret_x": 60.725494384765625,
+          "expected_caret_x": 60.725494384765625,
+          "hit": "Ok(35)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        }
+      ]
+    },
+    {
+      "name": "ltr",
+      "text": "supercalifragilisticexpialidocious end",
+      "policy": "Normal",
+      "align": "Right",
+      "bounds": [
+        16.0,
+        122.0,
+        120.0,
+        48.0
+      ],
+      "samples": [
+        {
+          "row": 0,
+          "range": [
+            0,
+            1
+          ],
+          "row_width": 262.3780212402344,
+          "shift": -142.37802124023438,
+          "selection_x": -126.37802124023438,
+          "expected_selection_x": -126.37802124023438,
+          "selection_width": 8.142999649047852,
+          "expected_selection_width": 8.142999649047852,
+          "caret_x": -126.37802124023438,
+          "expected_caret_x": -126.37802124023438,
+          "hit": "Ok(0)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 1,
+          "range": [
+            35,
+            36
+          ],
+          "row_width": 30.54901123046875,
+          "shift": 89.45098876953125,
+          "selection_x": 105.45098876953125,
+          "expected_selection_x": 105.45098876953125,
+          "selection_width": 9.5880126953125,
+          "expected_selection_width": 9.5880126953125,
+          "caret_x": 105.45098876953125,
+          "expected_caret_x": 105.45098876953125,
+          "hit": "Ok(35)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        }
+      ]
+    },
+    {
+      "name": "ltr",
+      "text": "supercalifragilisticexpialidocious end",
+      "policy": "BreakWord",
+      "align": "Left",
+      "bounds": [
+        16.0,
+        175.0,
+        120.0,
+        72.0
+      ],
+      "samples": [
+        {
+          "row": 0,
+          "range": [
+            0,
+            1
+          ],
+          "row_width": 117.52100372314453,
+          "shift": 0.0,
+          "selection_x": 16.0,
+          "expected_selection_x": 16.0,
+          "selection_width": 8.142999649047852,
+          "expected_selection_width": 8.142999649047852,
+          "caret_x": 16.0,
+          "expected_caret_x": 16.0,
+          "hit": "Ok(0)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 1,
+          "range": [
+            16,
+            17
+          ],
+          "row_width": 111.50301361083984,
+          "shift": 0.0,
+          "selection_x": 16.0,
+          "expected_selection_x": 16.0,
+          "selection_width": 8.142997741699219,
+          "expected_selection_width": 8.142997741699219,
+          "caret_x": 16.0,
+          "expected_caret_x": 16.0,
+          "hit": "Ok(16)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 2,
+          "range": [
+            31,
+            32
+          ],
+          "row_width": 63.90301513671875,
+          "shift": 0.0,
+          "selection_x": 16.0,
+          "expected_selection_x": 16.0,
+          "selection_width": 10.285003662109375,
+          "expected_selection_width": 10.285003662109375,
+          "caret_x": 16.0,
+          "expected_caret_x": 16.0,
+          "hit": "Ok(31)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        }
+      ]
+    },
+    {
+      "name": "ltr",
+      "text": "supercalifragilisticexpialidocious end",
+      "policy": "BreakWord",
+      "align": "Center",
+      "bounds": [
+        16.0,
+        252.0,
+        120.0,
+        72.0
+      ],
+      "samples": [
+        {
+          "row": 0,
+          "range": [
+            0,
+            1
+          ],
+          "row_width": 117.52100372314453,
+          "shift": 1.2394981384277344,
+          "selection_x": 17.239498138427734,
+          "expected_selection_x": 17.239498138427734,
+          "selection_width": 8.142999649047852,
+          "expected_selection_width": 8.142999649047852,
+          "caret_x": 17.239498138427734,
+          "expected_caret_x": 17.239498138427734,
+          "hit": "Ok(0)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 1,
+          "range": [
+            16,
+            17
+          ],
+          "row_width": 111.50301361083984,
+          "shift": 4.248493194580078,
+          "selection_x": 20.248493194580078,
+          "expected_selection_x": 20.248493194580078,
+          "selection_width": 8.142997741699219,
+          "expected_selection_width": 8.142997741699219,
+          "caret_x": 20.248493194580078,
+          "expected_caret_x": 20.248493194580078,
+          "hit": "Ok(16)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 2,
+          "range": [
+            31,
+            32
+          ],
+          "row_width": 63.90301513671875,
+          "shift": 28.048492431640625,
+          "selection_x": 44.048492431640625,
+          "expected_selection_x": 44.048492431640625,
+          "selection_width": 10.285003662109375,
+          "expected_selection_width": 10.285003662109375,
+          "caret_x": 44.048492431640625,
+          "expected_caret_x": 44.048492431640625,
+          "hit": "Ok(31)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        }
+      ]
+    },
+    {
+      "name": "ltr",
+      "text": "supercalifragilisticexpialidocious end",
+      "policy": "BreakWord",
+      "align": "Right",
+      "bounds": [
+        16.0,
+        329.0,
+        120.0,
+        72.0
+      ],
+      "samples": [
+        {
+          "row": 0,
+          "range": [
+            0,
+            1
+          ],
+          "row_width": 117.52100372314453,
+          "shift": 2.4789962768554688,
+          "selection_x": 18.47899627685547,
+          "expected_selection_x": 18.47899627685547,
+          "selection_width": 8.142999649047852,
+          "expected_selection_width": 8.142999649047852,
+          "caret_x": 18.47899627685547,
+          "expected_caret_x": 18.47899627685547,
+          "hit": "Ok(0)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 1,
+          "range": [
+            16,
+            17
+          ],
+          "row_width": 111.50301361083984,
+          "shift": 8.496986389160156,
+          "selection_x": 24.496986389160156,
+          "expected_selection_x": 24.496986389160156,
+          "selection_width": 8.142997741699219,
+          "expected_selection_width": 8.142997741699219,
+          "caret_x": 24.496986389160156,
+          "expected_caret_x": 24.496986389160156,
+          "hit": "Ok(16)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 2,
+          "range": [
+            31,
+            32
+          ],
+          "row_width": 63.90301513671875,
+          "shift": 56.09698486328125,
+          "selection_x": 72.09698486328125,
+          "expected_selection_x": 72.09698486328125,
+          "selection_width": 10.285003662109375,
+          "expected_selection_width": 10.285003662109375,
+          "caret_x": 72.09698486328125,
+          "expected_caret_x": 72.09698486328125,
+          "hit": "Ok(31)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        }
+      ]
+    },
+    {
+      "name": "rtl",
+      "text": "אבגדהוזחטיכלמנסעפצקרשתאבגדהוז סוף",
+      "policy": "Normal",
+      "align": "Left",
+      "bounds": [
+        16.0,
+        406.0,
+        120.0,
+        48.0
+      ],
+      "samples": [
+        {
+          "row": 0,
+          "range": [
+            0,
+            2
+          ],
+          "row_width": 260.677978515625,
+          "shift": 0.0,
+          "selection_x": 265.9339904785156,
+          "expected_selection_x": 265.9339904785156,
+          "selection_width": 10.743988037109375,
+          "expected_selection_width": 10.743988037109375,
+          "caret_x": 276.677978515625,
+          "expected_caret_x": 276.677978515625,
+          "hit": "Ok(0)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 1,
+          "range": [
+            59,
+            61
+          ],
+          "row_width": 26.5880126953125,
+          "shift": 0.0,
+          "selection_x": 31.657012939453125,
+          "expected_selection_x": 31.657012939453125,
+          "selection_width": 10.930999755859375,
+          "expected_selection_width": 10.930999755859375,
+          "caret_x": 42.5880126953125,
+          "expected_caret_x": 42.5880126953125,
+          "hit": "Ok(59)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        }
+      ]
+    },
+    {
+      "name": "rtl",
+      "text": "אבגדהוזחטיכלמנסעפצקרשתאבגדהוז סוף",
+      "policy": "Normal",
+      "align": "Center",
+      "bounds": [
+        16.0,
+        459.0,
+        120.0,
+        48.0
+      ],
+      "samples": [
+        {
+          "row": 0,
+          "range": [
+            0,
+            2
+          ],
+          "row_width": 260.677978515625,
+          "shift": -70.3389892578125,
+          "selection_x": 195.59500122070312,
+          "expected_selection_x": 195.59500122070312,
+          "selection_width": 10.743988037109375,
+          "expected_selection_width": 10.743988037109375,
+          "caret_x": 206.3389892578125,
+          "expected_caret_x": 206.3389892578125,
+          "hit": "Ok(0)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 1,
+          "range": [
+            59,
+            61
+          ],
+          "row_width": 26.5880126953125,
+          "shift": 46.70599365234375,
+          "selection_x": 78.36300659179688,
+          "expected_selection_x": 78.36300659179688,
+          "selection_width": 10.930999755859375,
+          "expected_selection_width": 10.930999755859375,
+          "caret_x": 89.29400634765625,
+          "expected_caret_x": 89.29400634765625,
+          "hit": "Ok(59)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        }
+      ]
+    },
+    {
+      "name": "rtl",
+      "text": "אבגדהוזחטיכלמנסעפצקרשתאבגדהוז סוף",
+      "policy": "Normal",
+      "align": "Right",
+      "bounds": [
+        16.0,
+        512.0,
+        120.0,
+        48.0
+      ],
+      "samples": [
+        {
+          "row": 0,
+          "range": [
+            0,
+            2
+          ],
+          "row_width": 260.677978515625,
+          "shift": -140.677978515625,
+          "selection_x": 125.25601196289062,
+          "expected_selection_x": 125.25601196289062,
+          "selection_width": 10.743988037109375,
+          "expected_selection_width": 10.743988037109375,
+          "caret_x": 136.0,
+          "expected_caret_x": 136.0,
+          "hit": "Ok(0)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 1,
+          "range": [
+            59,
+            61
+          ],
+          "row_width": 26.5880126953125,
+          "shift": 93.4119873046875,
+          "selection_x": 125.06900024414062,
+          "expected_selection_x": 125.06900024414062,
+          "selection_width": 10.930999755859375,
+          "expected_selection_width": 10.930999755859375,
+          "caret_x": 136.0,
+          "expected_caret_x": 136.0,
+          "hit": "Ok(59)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        }
+      ]
+    },
+    {
+      "name": "rtl",
+      "text": "אבגדהוזחטיכלמנסעפצקרשתאבגדהוז סוף",
+      "policy": "BreakWord",
+      "align": "Left",
+      "bounds": [
+        16.0,
+        565.0,
+        120.0,
+        72.0
+      ],
+      "samples": [
+        {
+          "row": 0,
+          "range": [
+            0,
+            2
+          ],
+          "row_width": 119.30599975585938,
+          "shift": 0.0,
+          "selection_x": 124.56199645996094,
+          "expected_selection_x": 124.56199645996094,
+          "selection_width": 10.744003295898438,
+          "expected_selection_width": 10.744003295898438,
+          "caret_x": 135.30599975585938,
+          "expected_caret_x": 135.30599975585938,
+          "hit": "Ok(0)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 1,
+          "range": [
+            28,
+            30
+          ],
+          "row_width": 120.32600402832031,
+          "shift": 0.0,
+          "selection_x": 125.39500427246094,
+          "expected_selection_x": 125.39500427246094,
+          "selection_width": 10.930999755859375,
+          "expected_selection_width": 10.930999755859375,
+          "caret_x": 136.3260040283203,
+          "expected_caret_x": 136.3260040283203,
+          "hit": "Ok(28)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 2,
+          "range": [
+            52,
+            54
+          ],
+          "row_width": 52.39399719238281,
+          "shift": 0.0,
+          "selection_x": 57.73500061035156,
+          "expected_selection_x": 57.73500061035156,
+          "selection_width": 10.65899658203125,
+          "expected_selection_width": 10.65899658203125,
+          "caret_x": 68.39399719238281,
+          "expected_caret_x": 68.39399719238281,
+          "hit": "Ok(52)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        }
+      ]
+    },
+    {
+      "name": "rtl",
+      "text": "אבגדהוזחטיכלמנסעפצקרשתאבגדהוז סוף",
+      "policy": "BreakWord",
+      "align": "Center",
+      "bounds": [
+        16.0,
+        642.0,
+        120.0,
+        72.0
+      ],
+      "samples": [
+        {
+          "row": 0,
+          "range": [
+            0,
+            2
+          ],
+          "row_width": 119.30599975585938,
+          "shift": 0.3470001220703125,
+          "selection_x": 124.90899658203125,
+          "expected_selection_x": 124.90899658203125,
+          "selection_width": 10.744003295898438,
+          "expected_selection_width": 10.744003295898438,
+          "caret_x": 135.6529998779297,
+          "expected_caret_x": 135.6529998779297,
+          "hit": "Ok(0)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 1,
+          "range": [
+            28,
+            30
+          ],
+          "row_width": 120.32600402832031,
+          "shift": -0.16300201416015625,
+          "selection_x": 125.23200225830078,
+          "expected_selection_x": 125.23200225830078,
+          "selection_width": 10.930999755859375,
+          "expected_selection_width": 10.930999755859375,
+          "caret_x": 136.16299438476562,
+          "expected_caret_x": 136.16299438476562,
+          "hit": "Ok(28)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 2,
+          "range": [
+            52,
+            54
+          ],
+          "row_width": 52.39399719238281,
+          "shift": 33.803001403808594,
+          "selection_x": 91.53800201416016,
+          "expected_selection_x": 91.53800201416016,
+          "selection_width": 10.65899658203125,
+          "expected_selection_width": 10.65899658203125,
+          "caret_x": 102.1969985961914,
+          "expected_caret_x": 102.1969985961914,
+          "hit": "Ok(52)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        }
+      ]
+    },
+    {
+      "name": "rtl",
+      "text": "אבגדהוזחטיכלמנסעפצקרשתאבגדהוז סוף",
+      "policy": "BreakWord",
+      "align": "Right",
+      "bounds": [
+        16.0,
+        719.0,
+        120.0,
+        72.0
+      ],
+      "samples": [
+        {
+          "row": 0,
+          "range": [
+            0,
+            2
+          ],
+          "row_width": 119.30599975585938,
+          "shift": 0.694000244140625,
+          "selection_x": 125.25599670410156,
+          "expected_selection_x": 125.25599670410156,
+          "selection_width": 10.744003295898438,
+          "expected_selection_width": 10.744003295898438,
+          "caret_x": 136.0,
+          "expected_caret_x": 136.0,
+          "hit": "Ok(0)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 1,
+          "range": [
+            28,
+            30
+          ],
+          "row_width": 120.32600402832031,
+          "shift": -0.3260040283203125,
+          "selection_x": 125.06900024414062,
+          "expected_selection_x": 125.06900024414062,
+          "selection_width": 10.930999755859375,
+          "expected_selection_width": 10.930999755859375,
+          "caret_x": 136.0,
+          "expected_caret_x": 136.0,
+          "hit": "Ok(28)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        },
+        {
+          "row": 2,
+          "range": [
+            52,
+            54
+          ],
+          "row_width": 52.39399719238281,
+          "shift": 67.60600280761719,
+          "selection_x": 125.34100341796875,
+          "expected_selection_x": 125.34100341796875,
+          "selection_width": 10.65899658203125,
+          "expected_selection_width": 10.65899658203125,
+          "caret_x": 136.0,
+          "expected_caret_x": 136.0,
+          "hit": "Ok(52)",
+          "rect_ok": true,
+          "caret_ok": true,
+          "hit_ok": true
+        }
+      ]
+    }
+  ]
+}

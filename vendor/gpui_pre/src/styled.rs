@@ -2,7 +2,7 @@ use crate::{
     self as gpui, AbsoluteLength, AlignContent, AlignItems, AlignSelf, BorderStyle, CursorStyle,
     DefiniteLength, Display, Fill, FlexDirection, FlexWrap, Font, FontFeatures, FontStyle,
     FontWeight, GridPlacement, GridTemplate, GridTemplateMinSize, Hsla, JustifyContent, Length,
-    SharedString, StrikethroughStyle, StyleRefinement, TextAlign, TextOverflow,
+    OverflowWrap, SharedString, StrikethroughStyle, StyleRefinement, TextAlign, TextOverflow,
     TextStyleRefinement, UnderlineStyle, WhiteSpace, px, relative, rems,
 };
 pub use gpui_macros::{
@@ -81,6 +81,12 @@ pub trait Styled: Sized {
     /// [Docs](https://tailwindcss.com/docs/whitespace#nowrap)
     fn whitespace_nowrap(mut self) -> Self {
         self.text_style().white_space = Some(WhiteSpace::Nowrap);
+        self
+    }
+
+    #[doc = "Sets the wrapping behavior for an unbreakable span wider than its line."]
+    fn overflow_wrap(mut self, overflow_wrap: OverflowWrap) -> Self {
+        self.text_style().overflow_wrap = Some(overflow_wrap);
         self
     }
 

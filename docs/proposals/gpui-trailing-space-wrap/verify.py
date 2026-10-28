@@ -23,6 +23,9 @@ TESTS = r'''
     mod trailing_space_tests {
         use super::*;
         fn boundaries(text: &str, width: f32) -> Vec<usize> {
+            boundaries_with_policy(text, width, OverflowWrap::BreakWord)
+        }
+        fn boundaries_with_policy(text: &str, width: f32, policy: OverflowWrap) -> Vec<usize> {
             let glyphs = text.char_indices().enumerate().map(|(ordinal, (index, _))| ShapedGlyph {
                 id: GlyphId(0), position: point(px(ordinal as f32), px(0.)), index, is_emoji: false,
             }).collect();
@@ -30,7 +33,7 @@ TESTS = r'''
                 font_size: px(1.), width: px(text.chars().count() as f32), ascent: px(1.), descent: px(0.),
                 runs: vec![ShapedRun { font_id: FontId(0), glyphs }], len: text.len(),
             };
-            layout.compute_wrap_boundaries(text, px(width), None).iter().map(|boundary| {
+            layout.compute_wrap_boundaries(text, px(width), None, policy).iter().map(|boundary| {
                 layout.runs[boundary.run_ix].glyphs[boundary.glyph_ix].index
             }).collect()
         }
@@ -39,7 +42,13 @@ TESTS = r'''
         #[test] fn trailing_space_does_not_add_row() { assert_eq!(boundaries("aa bb ",5.),vec![]); }
         #[test] fn exact_fit_without_trailing_space() { assert_eq!(boundaries("aa bb",5.),vec![]); }
         #[test] fn genuinely_overflowing_word_moves() { assert_eq!(boundaries("aa bbb cc",5.),vec![3,7]); }
-        #[test] fn oversized_word_still_splits() { assert_eq!(boundaries("abcdeX",5.),vec![5]); }
+        #[test] fn oversized_word_still_splits() {
+            assert_eq!(boundaries("abcdeX",5.),vec![5]);
+            assert_eq!(boundaries_with_policy("abcdeX",5.,OverflowWrap::Normal),vec![]);
+            assert_eq!(boundaries_with_policy("a abcdeX bb",5.,OverflowWrap::Normal),vec![2,9]);
+            assert_eq!(boundaries_with_policy("abcdef bb",5.,OverflowWrap::Normal),vec![7]);
+            assert_eq!(boundaries_with_policy("a b c",0.,OverflowWrap::Normal),vec![2,4]);
+        }
         #[test] fn leading_space_policy_is_preserved() { assert_eq!(boundaries("   aa bb",3.),vec![3,6]); }
         #[test] fn unspaced_cjk_still_wraps() { assert_eq!(boundaries("你好世界",3.),vec![9]); }
     }

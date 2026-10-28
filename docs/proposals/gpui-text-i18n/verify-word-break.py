@@ -33,7 +33,7 @@ for candidate in [ROOT, *ROOT.parents]:
         DEFAULT = path
         break
 
-TEST_NAMES = r"test_is_word_char\w*|test_wrap_line_breaks_only_between_words\w*"
+TEST_NAMES = r"test_is_word_char\w*|test_wrap_line(?:_breaks_only_between_words\w*)?"
 MARKER = "#[cfg(test)]\nmod tests {"
 SPEC = importlib.util.spec_from_file_location("logical_harness", ROOT / "verify-logical-wrap.py")
 logical_harness = importlib.util.module_from_spec(SPEC)
@@ -45,6 +45,13 @@ use std::{
     ops::{Add, AddAssign, Deref, Div, Mul, Neg, Sub, SubAssign},
     sync::Arc,
 };
+
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Hash)]
+pub enum OverflowWrap {
+    Normal,
+    #[default]
+    BreakWord,
+}
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, PartialOrd)]
 pub struct Pixels(pub f32);
@@ -193,10 +200,10 @@ def main():
     _, tests_part = split(args.tests.read_text(encoding="utf-8"))
     tests = extract_tests(tests_part)
     names = [re.search(r"fn (\w+)", t).group(1) for t in tests]
-    body = STUBS + code + "}\n\n#[cfg(test)]\nmod tests {\n"
-    body += "    use super::line_wrapper::*;\n    use super::{FontId, px};\n    use std::sync::Arc;\n\n"
-    body += "    fn build_wrapper() -> LineWrapper {\n        LineWrapper::new(FontId(0), px(16.), Arc::new(super::TextSystem))\n    }\n\n"
-    body += "\n".join(tests) + "}\n"
+    body = STUBS + code + "\n#[cfg(test)]\nmod tests {\n"
+    body += "    use super::*;\n    use std::sync::Arc;\n\n"
+    body += "    fn build_wrapper() -> LineWrapper {\n        LineWrapper::new(FontId(0), px(16.), Arc::new(crate::TextSystem))\n    }\n\n"
+    body += "\n".join(tests) + "}\n}\n"
     work = args.workdir or pathlib.Path(tempfile.mkdtemp(prefix="wordbreak-"))
     work.mkdir(parents=True, exist_ok=True)
     src = work / "harness.rs"

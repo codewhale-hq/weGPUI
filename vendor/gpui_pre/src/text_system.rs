@@ -1,12 +1,12 @@
-#[doc(hidden)]
-#[path = "text_system/bidi.rs"]
-pub mod text_bidi;
 mod font_fallbacks;
 mod font_features;
 mod line;
 mod line_layout;
 mod line_wrapper;
 mod logical_wrap;
+#[doc(hidden)]
+#[path = "text_system/bidi.rs"]
+pub mod text_bidi;
 
 pub use font_fallbacks::*;
 pub use font_features::*;
@@ -17,8 +17,8 @@ use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::{
-    Bounds, DevicePixels, Hsla, Pixels, PlatformTextSystem, Point, Result, SharedString, Size,
-    StrikethroughStyle, TextRenderingMode, UnderlineStyle, px,
+    Bounds, DevicePixels, Hsla, OverflowWrap, Pixels, PlatformTextSystem, Point, Result,
+    SharedString, Size, StrikethroughStyle, TextRenderingMode, UnderlineStyle, px,
 };
 use anyhow::{Context as _, anyhow};
 use collections::{FxHashMap, FxHashSet};
@@ -759,6 +759,26 @@ impl WindowTextSystem {
         wrap_width: Option<Pixels>,
         line_clamp: Option<usize>,
     ) -> Result<SmallVec<[WrappedLine; 1]>> {
+        self.shape_text_with_overflow_wrap(
+            text,
+            font_size,
+            runs,
+            wrap_width,
+            line_clamp,
+            OverflowWrap::default(),
+        )
+    }
+
+    #[doc = "Shape wrapped text with an explicit policy for oversized unbreakable spans."]
+    pub fn shape_text_with_overflow_wrap(
+        &self,
+        text: SharedString,
+        font_size: Pixels,
+        runs: &[TextRun],
+        wrap_width: Option<Pixels>,
+        line_clamp: Option<usize>,
+        overflow_wrap: OverflowWrap,
+    ) -> Result<SmallVec<[WrappedLine; 1]>> {
         let mut runs = runs.iter().filter(|run| run.len > 0).cloned().peekable();
         let mut font_runs = self.font_runs_pool.lock().pop().unwrap_or_default();
 
@@ -825,6 +845,7 @@ impl WindowTextSystem {
                 &font_runs,
                 wrap_width,
                 max_wrap_lines.map(|max| max.saturating_sub(wrapped_lines)),
+                overflow_wrap,
             );
             wrapped_lines += layout.wrap_boundaries.len();
 

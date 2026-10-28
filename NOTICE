@@ -39,6 +39,12 @@ Local change: ignore X11 NotifyGrab/NotifyUngrab FocusIn/FocusOut before changin
 window activation, accessibility focus or keyboard/IME state. Normal and
 WhileGrabbed focus handling remains unchanged.
 
+Vendored GPUI iOS 0.3.9 compatibility copy
+Copyright Zed Industries. Licensed under Apache-2.0.
+See vendor/gpui_pre_ios/LICENSE-APACHE and WEGPUI-PROVENANCE.md.
+Local change: map digit keyboard preferences to UIKit with a Done accessory.
+The native password entry path remains disabled pending security verification.
+
 ICU4X Unicode segmentation and bundled dictionaries
 icu_segmenter / icu_segmenter_data / icu_locale_fallback / icu_locale_fallback_data 2.4.0
 Copyright Unicode, Inc. Licensed under Unicode-3.0.

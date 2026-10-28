@@ -402,6 +402,16 @@ pub enum WhiteSpace {
     Nowrap,
 }
 
+#[doc = "Controls whether an unbreakable span may wrap at a shaping cluster when it exceeds the line width."]
+#[derive(Copy, Clone, Debug, Default, PartialEq, Eq, Hash, Serialize, Deserialize, JsonSchema)]
+pub enum OverflowWrap {
+    #[doc = "Allow an unbreakable span to overflow until the next natural line break."]
+    Normal,
+    #[doc = "Break an oversized span at a shaping cluster when necessary."]
+    #[default]
+    BreakWord,
+}
+
 /// How to truncate text that overflows the width of the element
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize, JsonSchema)]
 pub enum TextOverflow {
@@ -472,6 +482,9 @@ pub struct TextStyle {
     /// How to handle whitespace in the text
     pub white_space: WhiteSpace,
 
+    #[doc = "How an unbreakable span wraps when it exceeds the line width."]
+    pub overflow_wrap: OverflowWrap,
+
     /// The text should be truncated if it overflows the width of the element
     pub text_overflow: Option<TextOverflow>,
 
@@ -498,6 +511,7 @@ impl Default for TextStyle {
             underline: None,
             strikethrough: None,
             white_space: WhiteSpace::Normal,
+            overflow_wrap: OverflowWrap::default(),
             text_overflow: None,
             text_align: TextAlign::default(),
             line_clamp: None,

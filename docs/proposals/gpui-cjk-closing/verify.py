@@ -80,10 +80,10 @@ def main():
     for name, source in [("baseline", original), ("proposal", candidate)]:
         code, tests = harness.split(source)
         existing = "\n".join(harness.extract_tests(tests))
-        generated = harness.STUBS + code + "}\n#[cfg(test)] mod tests {\n"
-        generated += "use super::line_wrapper::*; use super::{FontId,px}; use std::sync::Arc;\n"
-        generated += "fn build_wrapper() -> LineWrapper {LineWrapper::new(FontId(0),px(16.),Arc::new(super::TextSystem))}\n"
-        generated += existing + TESTS + "}\n"
+        generated = harness.STUBS + code + "\n#[cfg(test)] mod tests {\n"
+        generated += "use super::*; use std::sync::Arc;\n"
+        generated += "fn build_wrapper() -> LineWrapper {LineWrapper::new(FontId(0),px(16.),Arc::new(crate::TextSystem))}\n"
+        generated += existing + TESTS + "}\n}\n"
         target = args.workdir / (name + ".rs")
         target.write_text(generated)
         binary = args.workdir / name

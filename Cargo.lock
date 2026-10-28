@@ -1956,8 +1956,6 @@ dependencies = [
 [[package]]
 name = "gpui-pre-ios"
 version = "0.3.9"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "13e735b73ae85ed188764287df4d24837045d71a122c51c2264aed8c38ffd51b"
 dependencies = [
  "anyhow",
  "block2 0.6.2",

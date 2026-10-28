@@ -39,6 +39,17 @@ README in `receipts/takeover-20261025/`). Linux runtime results came from a loca
 [macOS follow-up](receipts/2026-10-24-macos/README.md) adds fresh build and sampled runtime evidence,
 including failed/incomplete attempts. It does not complete platform acceptance.
 
+## Consumer handoff — 2026-10-28
+
+For the existing Codewhale macOS client, `c343621c3651c3210098f701ac5aeeec4a52e193`
+is the latest source with the completed macOS build, library tests, Clippy/docs and sampled
+Unicode input/undo evidence described in the [dictionary receipt](receipts/dictionary-mobile-20261026/README.md).
+It requires the four workspace-root vendor patches documented at that revision. This is a
+tested library candidate, not a verified Codewhale app integration or an instruction to
+change its pin. `31c0954` adds an iOS-only keyboard request; the later continuation adds
+a fifth iOS backend patch and changes GPUI text configuration. Consumers should verify their
+own patch graph, compile and native input/rendering before updating.
+
 ## Localisation and right-to-left — 2026-10-25
 
 The [dictionary/mobile continuation](receipts/dictionary-mobile-20261026/README.md) uses
@@ -46,7 +57,11 @@ approved ICU4X 2.4.0 dictionaries for Thai, Lao, Khmer and Myanmar. Shaping clus
 intact and reordered combining glyphs use logical row shaping. The local iOS simulator app
 now links and launches, with touch Back navigation, portrait/landscape safe areas, native
 text entry, software-keyboard input, lower-field reveal and actual Pinyin preedit/commit
-samples. Full reader, IME, hardware and mobile acceptance remain open. Windows stays
+samples. An opt-in normal overflow policy matches the browser in the previously different
+Myanmar sample: 15 of 16 controlled dictionary row comparisons now match, with one Khmer
+dictionary grouping difference remaining ([receipt](receipts/overflow-ios-20261028/README.md)). The iOS digit keypad builds; its native Done
+control and keyboard switching still need runtime checks. Password entry remains fail-closed.
+Full reader, IME, hardware and mobile acceptance remain open. Windows stays
 build/tests only. VoiceOver stays off. Each receipt identifies its own source.
 
 The earlier [Unicode and website continuation](receipts/unicode-parity-20261026/README.md)

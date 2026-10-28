@@ -56,6 +56,16 @@ pub(crate) fn wrap(
     max_lines: Option<usize>,
     can_break_before: impl Fn(usize, char, char) -> bool,
 ) -> Option<Vec<usize>> {
+    wrap_with_policy(units, wrap_width, max_lines, true, can_break_before)
+}
+
+pub(crate) fn wrap_with_policy(
+    units: &[Unit],
+    wrap_width: f32,
+    max_lines: Option<usize>,
+    emergency_wrap: bool,
+    can_break_before: impl Fn(usize, char, char) -> bool,
+) -> Option<Vec<usize>> {
     let mut starts = Vec::new();
     let mut first_non_whitespace = None;
     let mut last_candidate: Option<(usize, f32)> = None;
@@ -85,7 +95,10 @@ pub(crate) fn wrap(
             let boundary = last_candidate
                 .take()
                 .filter(|(ordinal, _)| *ordinal > last_boundary)
-                .or_else(|| (prev_ch.is_alphanumeric() && ch.is_alphanumeric()).then_some((i, x)));
+                .or_else(|| {
+                    (emergency_wrap && prev_ch.is_alphanumeric() && ch.is_alphanumeric())
+                        .then_some((i, x))
+                });
             if let Some((ordinal, candidate_x)) = boundary {
                 last_boundary = ordinal;
                 last_boundary_x = candidate_x;
@@ -285,6 +298,30 @@ mod tests {
     fn a_word_wider_than_the_line_breaks_at_shaped_cluster_boundaries() {
         let units = uniform_units("aaaaaaaa", 10.);
         assert_eq!(wrap(&units, 25., None, word), Some(vec![2, 4, 6]));
+        assert_eq!(
+            wrap_with_policy(&units, 25., None, false, word),
+            Some(vec![])
+        );
+        let text = "aa aaaaaaaa bb";
+        let units = uniform_units(text, 10.);
+        assert_eq!(
+            wrap_with_policy(&units, 35., None, false, word),
+            Some(vec![3, 12])
+        );
+        let units = uniform_units("aaaaaaaa bb", 10.);
+        assert_eq!(
+            wrap_with_policy(&units, 35., None, false, word),
+            Some(vec![9])
+        );
+        let units = uniform_units("a b c", 10.);
+        assert_eq!(
+            wrap_with_policy(&units, 0., None, false, word),
+            Some(vec![2, 4])
+        );
+        assert_eq!(
+            wrap_with_policy(&units, 0., Some(2), false, word),
+            Some(vec![2])
+        );
     }
 
     #[test]

@@ -781,7 +781,13 @@ impl RenderOnce for Form {
                     )
                 })
                 .when_some(self.desc, |el, desc| {
-                    el.child(div().mt(px(16.)).text_size(px(17.)).child(desc))
+                    el.child(
+                        div()
+                            .mt(px(16.))
+                            .text_size(px(17.))
+                            .overflow_wrap(OverflowWrap::Normal)
+                            .child(desc),
+                    )
                 })
         });
         let bd = div()

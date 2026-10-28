@@ -12,7 +12,7 @@ import tomllib
 
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-VENDORS = ("gpui_pre", "gpui_pre_linux", "accesskit_unix", "accesskit_atspi_common")
+VENDORS = ("gpui_pre", "gpui_pre_linux", "gpui_pre_ios", "accesskit_unix", "accesskit_atspi_common")
 FILES = ("Cargo.toml", "Cargo.lock", "README.md", "CONTRIBUTING.md", "CHANGELOG.md", "CODE_OF_CONDUCT.md", "SECURITY.md", "LICENSE-MIT", "LICENSE-APACHE", "LICENSE-WEUI", "LICENSE-UNICODE-3", "NOTICE")
 DIRECTORIES = ("src", "assets", "examples", "vendor", "scripts", "docs")
 OMIT = {".git", "target", "__pycache__", ".DS_Store"}
@@ -65,6 +65,7 @@ resolver = "3"
 [patch.crates-io]
 gpui-pre = { path = "wegpui/vendor/gpui_pre" }
 gpui-pre-linux = { path = "wegpui/vendor/gpui_pre_linux" }
+gpui-pre-ios = { path = "wegpui/vendor/gpui_pre_ios" }
 accesskit_unix = { path = "wegpui/vendor/accesskit_unix" }
 accesskit_atspi_common = { path = "wegpui/vendor/accesskit_atspi_common" }
 '''
@@ -109,7 +110,7 @@ dependencies = [
         }),
         "README.md": b'''# weGPUI desktop developer preview
 
-This is a source bundle, not a signed installer or a published crate. It includes all four
+This is a source bundle, not a signed installer or a published crate. It includes all five
 required same-version vendor copies and a separate consumer with workspace-root Cargo patches.
 SOURCE.json identifies the exact on-disk source, including uncommitted changes; base_revision
 identifies its base and does not imply a clean checkout or platform acceptance.

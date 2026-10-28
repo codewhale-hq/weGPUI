@@ -1,4 +1,4 @@
-use crate::{FontId, Pixels, SharedString, TextRun, TextSystem, px};
+use crate::{FontId, OverflowWrap, Pixels, SharedString, TextRun, TextSystem, px};
 use collections::HashMap;
 use std::{borrow::Cow, iter, sync::Arc};
 
@@ -54,6 +54,22 @@ impl LineWrapper {
         fragments: &'a [LineFragment],
         wrap_width: Pixels,
         indent_adjustment: IndentAdjustment,
+    ) -> impl Iterator<Item = Boundary> + 'a {
+        self.wrap_line_with_overflow_wrap(
+            fragments,
+            wrap_width,
+            indent_adjustment,
+            OverflowWrap::default(),
+        )
+    }
+
+    #[doc = "Wrap line fragments with an explicit policy for oversized unbreakable spans."]
+    pub fn wrap_line_with_overflow_wrap<'a>(
+        &'a mut self,
+        fragments: &'a [LineFragment],
+        wrap_width: Pixels,
+        indent_adjustment: IndentAdjustment,
+        overflow_wrap: OverflowWrap,
     ) -> impl Iterator<Item = Boundary> + 'a {
         let mut text = String::new();
         let mut offsets = Vec::new();
@@ -134,8 +150,12 @@ impl LineWrapper {
 
                 width += item_width;
                 if width > wrap_width && ix > last_wrap_ix {
-                    let wrap_at_candidate =
-                        last_candidate_ix > 0 && width - last_candidate_width <= wrap_width;
+                    let wrap_at_candidate = last_candidate_ix > last_wrap_ix
+                        && (overflow_wrap == OverflowWrap::Normal
+                            || width - last_candidate_width <= wrap_width);
+                    if !wrap_at_candidate && overflow_wrap == OverflowWrap::Normal {
+                        continue;
+                    }
 
                     let carried_width = if wrap_at_candidate {
                         width - last_candidate_width
@@ -809,6 +829,18 @@ mod tests {
                 Boundary::new(18, 3),
                 Boundary::new(22, 3),
             ]
+        );
+
+        assert_eq!(
+            wrapper
+                .wrap_line_with_overflow_wrap(
+                    &[LineFragment::text("aaa aaaaaaaaaaaaaaaaaa bb")],
+                    px(72.),
+                    IndentAdjustment::NoIndent,
+                    OverflowWrap::Normal,
+                )
+                .collect::<Vec<_>>(),
+            &[Boundary::new(4, 0), Boundary::new(23, 0)],
         );
 
         // Test wrapping multiple text fragments
