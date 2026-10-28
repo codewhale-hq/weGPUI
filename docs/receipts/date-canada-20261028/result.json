@@ -1,0 +1,43 @@
+{
+  "en-CA": {
+    "display_before": "Text 04/03/2027; ISO 2027-03-04",
+    "display_after": "Text 2027-03-04; ISO 2027-03-04",
+    "picker_before": [
+      "Date 4",
+      "Date March",
+      "Date 2027"
+    ],
+    "picker_after": [
+      "Date 2027",
+      "Date March",
+      "Date 4"
+    ],
+    "legacy_ambiguous_commit": "Ok(Some(DateValue { year: 2027, month: 4, day: 3, hour: 0, minute: 0 }))"
+  },
+  "fr-CA": {
+    "display_before": "Text 04/03/2027; ISO 2027-03-04",
+    "display_after": "Text 2027-03-04; ISO 2027-03-04",
+    "picker_before": [
+      "Date 4",
+      "Date mars",
+      "Date 2027"
+    ],
+    "picker_after": [
+      "Date 2027",
+      "Date mars",
+      "Date 4"
+    ],
+    "legacy_ambiguous_commit": "Ok(Some(DateValue { year: 2027, month: 4, day: 3, hour: 0, minute: 0 }))"
+  },
+  "controls": {
+    "unchanged_locales": [
+      "en",
+      "en-US",
+      "en-GB",
+      "zh-CN",
+      "de"
+    ],
+    "invalid_and_range": "pass",
+    "datetime_legacy_and_iso": "pass"
+  }
+}

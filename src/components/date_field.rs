@@ -179,20 +179,24 @@ pub struct DateFieldValueChanged(pub Option<DateValue>);
 pub(crate) struct DatePresentation {
     pub(crate) order: [usize; 3],
     separator: char,
+    canadian_legacy_slashes: bool,
 }
 
 impl DatePresentation {
     pub(crate) fn for_locale(locale: &crate::i18n::Locale) -> Self {
         let language = locale.language();
         let region = locale.region();
-        let order =
-            if matches!(language, "zh" | "ja" | "ko") || (language == "en" && region.is_none()) {
-                [0, 1, 2]
-            } else if region == Some("US") {
-                [1, 2, 0]
-            } else {
-                [2, 1, 0]
-            };
+        let canadian_legacy_slashes = region == Some("CA") && matches!(language, "en" | "fr");
+        let order = if canadian_legacy_slashes
+            || matches!(language, "zh" | "ja" | "ko")
+            || (language == "en" && region.is_none())
+        {
+            [0, 1, 2]
+        } else if region == Some("US") {
+            [1, 2, 0]
+        } else {
+            [2, 1, 0]
+        };
         let separator = if matches!(language, "de" | "ru" | "tr" | "uk" | "pl") {
             '.'
         } else if order == [0, 1, 2] && !matches!(language, "zh" | "ja" | "ko") {
@@ -200,7 +204,11 @@ impl DatePresentation {
         } else {
             '/'
         };
-        Self { order, separator }
+        Self {
+            order,
+            separator,
+            canadian_legacy_slashes,
+        }
     }
 
     fn format(self, value: DateValue, mode: DateFieldMode) -> String {
@@ -251,17 +259,22 @@ impl DatePresentation {
         }
         let text = text.trim();
         let (date, time) = text.split_once([' ', 'T']).unwrap_or((text, ""));
-        let parts: Vec<_> = date.split(self.separator).collect();
+        let (order, separator) = if self.canadian_legacy_slashes && date.contains('/') {
+            ([2, 1, 0], '/')
+        } else {
+            (self.order, self.separator)
+        };
+        let parts: Vec<_> = date.split(separator).collect();
         if parts.len() != 3
             || parts.iter().enumerate().any(|(i, part)| {
-                part.len() != if self.order[i] == 0 { 4 } else { 2 }
+                part.len() != if order[i] == 0 { 4 } else { 2 }
                     || !part.bytes().all(|b| b.is_ascii_digit())
             })
         {
             return Err(DateFieldError::Format);
         }
         let mut ordered = [""; 3];
-        for (column, part) in self.order.into_iter().zip(parts) {
+        for (column, part) in order.into_iter().zip(parts) {
             ordered[column] = part;
         }
         let mut iso = ordered.join("-");

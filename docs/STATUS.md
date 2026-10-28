@@ -499,7 +499,9 @@ bridge events and actual reader speech are separate evidence classes.
 - **Date policy:** the approved `chrono` edge supplies host-local `picker::today()`. Locale
   display/entry and picker-column order follow the documented numeric policy; committed values
   remain ISO. DateField defaults to 1900–2100 with configurable Gregorian years 1–9999.
-  Alternate calendars, localized digits and seconds remain outside this policy.
+  Canadian English and French use year-month-day display and picker order while retaining the
+previous strict day/month/year slash entry as an alias ([receipt](receipts/date-canada-20261028/README.md)).
+Alternate calendars, localized digits and seconds remain outside this policy.
 - **Windowing/hardware:** X11 scale/resize/origin and nested-Weston Wayland samples exist, using
   software rendering. Hardware/compositor diversity, live scale changes and monitor moves are
   unqualified. Wayland has no global window-origin hook.

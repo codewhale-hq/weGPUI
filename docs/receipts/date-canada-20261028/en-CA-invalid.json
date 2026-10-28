@@ -1,0 +1,96 @@
+[
+  {
+    "role": "application",
+    "name": "date_canada_candidate",
+    "bounds": null,
+    "states": []
+  },
+  {
+    "role": "frame",
+    "name": "weGPUI date locale probe",
+    "bounds": {
+      "x": 340,
+      "y": 208,
+      "width": 600,
+      "height": 800
+    },
+    "states": [
+      "active",
+      "enabled",
+      "focusable",
+      "focused",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "panel",
+    "name": "",
+    "bounds": {
+      "x": 340,
+      "y": 208,
+      "width": 600,
+      "height": 800
+    },
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "entry",
+    "name": "Date",
+    "bounds": {
+      "x": 372,
+      "y": 240,
+      "width": 504,
+      "height": 26
+    },
+    "states": [
+      "editable",
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "single line",
+      "visible",
+      "selectable text"
+    ]
+  },
+  {
+    "role": "push button",
+    "name": "Date, open date picker",
+    "bounds": {
+      "x": 884,
+      "y": 241,
+      "width": 24,
+      "height": 24
+    },
+    "states": [
+      "enabled",
+      "focusable",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  },
+  {
+    "role": "status bar",
+    "name": "Text 31/04/2027; ISO 2027-03-04",
+    "bounds": {
+      "x": 372,
+      "y": 286,
+      "width": 536,
+      "height": 26
+    },
+    "states": [
+      "enabled",
+      "sensitive",
+      "showing",
+      "visible"
+    ]
+  }
+]

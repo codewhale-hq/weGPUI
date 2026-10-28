@@ -1,0 +1,29 @@
+build-lock: all 2 build slots are busy (pid 25375 in /Volumes/VIXinSSD/CW/codewhale: cargo --config build.build-dir = "/Volumes/VIXinSSD/cw-build-cache/build/{workspace-path-hash}" test -p; pid 42037 in /Volumes/VIXinSSD/CW/codewhale: cargo --config build.build-dir = "/Volumes/VIXinSSD/cw-build-cache/build/{workspace-path-hash}" test --manifest-path); set CODEWHALE_BUILD_LOCK=0 to skip
+build-lock: acquired after 81s
+warning: patch `gpui-pre-ios v0.3.9 (/src/vendor/gpui_pre_ios)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+     Locking 656 packages to highest Rust 1.99.1 compatible versions
+warning: patch `gpui-pre-ios v0.3.9 (/src/vendor/gpui_pre_ios)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+     Locking 656 packages to highest Rust 1.99.1 compatible versions
+warning: patch `gpui-pre-ios v0.3.9 (/src/vendor/gpui_pre_ios)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling date_canada_probe v0.0.0 (/work/full-parity/date-canada-probe)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 14.55s
+warning: patch `gpui-pre-ios v0.3.9 (/src/vendor/gpui_pre_ios)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling wegpui v0.1.0 (/work/full-parity/date-canada-candidate/product)
+   Compiling date_canada_candidate v0.0.0 (/work/full-parity/date-canada-candidate)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 19.51s
