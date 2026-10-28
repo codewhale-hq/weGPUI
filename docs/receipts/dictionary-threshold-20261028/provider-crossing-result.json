@@ -1,0 +1,55 @@
+{
+  "scope": "provider boundary streams only; does not exercise rendered wrapping, selection, caret, IME or undo",
+  "input_sha256": "a089bd28605bfb5620e093f55e71a75a67b60a5063ff8cdf9cbe46dec5b43cdf",
+  "guarded_binary_sha256": "1662df8ff06402a0a0890f2709c929d82e01fbb5358a5a43faac90e16eff7cba",
+  "unguarded_binary_sha256": "28fc7ffaaccf9ac7d7383d87d89ee2429da6ccbd96daa275d4ea849769381a03",
+  "sequences": {
+    "bytes": {
+      "before_bytes": 65536,
+      "after_bytes": 65537,
+      "before_spans": 3,
+      "after_spans": 3,
+      "before_candidate_equals_baseline": false,
+      "after_matches_full_baseline": true,
+      "delete_restores_prior_boundaries": true,
+      "changed_offsets_before_edit": 3,
+      "first_changed_offsets_before_edit": [
+        3,
+        27,
+        30
+      ]
+    },
+    "spans": {
+      "before_bytes": 24576,
+      "after_bytes": 24579,
+      "before_spans": 8192,
+      "after_spans": null,
+      "before_candidate_equals_baseline": false,
+      "after_matches_full_baseline": true,
+      "delete_restores_prior_boundaries": true,
+      "changed_offsets_before_edit": 8191,
+      "first_changed_offsets_before_edit": [
+        3,
+        6,
+        9,
+        12,
+        15,
+        18,
+        21,
+        24,
+        27,
+        30,
+        33,
+        36,
+        39,
+        42,
+        45,
+        48,
+        51,
+        54,
+        57,
+        60
+      ]
+    }
+  }
+}

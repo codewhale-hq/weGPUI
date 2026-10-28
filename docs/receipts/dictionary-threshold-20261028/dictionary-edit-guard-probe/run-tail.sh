@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+out=/work/full-parity/dictionary-edit-guard-probe
+export DISPLAY=:228 GPUI_X11_SCALE_FACTOR=1 LIBGL_ALWAYS_SOFTWARE=1 VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/lvp_icd.json
+unset WAYLAND_DISPLAY
+export XDG_RUNTIME_DIR=/work/runtime
+if xdpyinfo -display "$DISPLAY" >/dev/null 2>&1; then echo 'display busy' >&2; exit 1; fi
+Xvfb "$DISPLAY" -screen 0 1280x1024x24 -nolisten tcp >"$out/tail-xvfb.log" 2>&1 & xvfb=$!
+trap 'kill "${wm:-}" "$xvfb" 2>/dev/null || true' EXIT
+for _ in $(seq 1 50); do xdpyinfo -display "$DISPLAY" >/dev/null 2>&1 && break; sleep .1; done
+xdpyinfo -display "$DISPLAY" >/dev/null
+openbox >"$out/tail-openbox.log" 2>&1 & wm=$!
+dbus-run-session -- bash "$out/session-tail.sh" 2>&1 | tee "$out/tail-run.log"
