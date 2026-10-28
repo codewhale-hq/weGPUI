@@ -1,0 +1,13 @@
+dbus-daemon[92673]: [session uid=0 pid=92673] Activating service name='org.a11y.Bus' requested by ':1.0' (uid=0 pid=92679 comm="dbus-send --session --print-reply --dest=org.a11y.")
+dbus-daemon[92673]: [session uid=0 pid=92673] Successfully activated service 'org.a11y.Bus'
+starting baseline reduced False
+dbus-daemon[92708]: Activating service name='org.a11y.atspi.Registry' requested by ':1.0' (uid=0 pid=92692 comm="/usr/bin/python3 -I /work/full-parity/toast-reshow")
+dbus-daemon[92708]: Successfully activated service 'org.a11y.atspi.Registry'
+SpiRegistry daemon is running with well-known name - org.a11y.atspi.Registry
+passed baseline reduced False
+starting baseline reduced True
+passed baseline reduced True
+starting candidate reduced False
+passed candidate reduced False
+starting candidate reduced True
+passed candidate reduced True

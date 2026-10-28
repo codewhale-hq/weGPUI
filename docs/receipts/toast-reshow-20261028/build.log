@@ -1,0 +1,28 @@
+warning: patch `gpui-pre-ios v0.3.9 (/src/vendor/gpui_pre_ios)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+     Locking 656 packages to highest Rust 1.99.1 compatible versions
+warning: patch `gpui-pre-ios v0.3.9 (/src/vendor/gpui_pre_ios)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+     Locking 656 packages to highest Rust 1.99.1 compatible versions
+warning: patch `gpui-pre-ios v0.3.9 (/src/vendor/gpui_pre_ios)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling wegpui v0.1.0 (/src)
+   Compiling toast_reshow_baseline v0.0.0 (/work/full-parity/toast-reshow-probe/baseline)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 23.33s
+warning: patch `gpui-pre-ios v0.3.9 (/src/vendor/gpui_pre_ios)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling wegpui v0.1.0 (/work/full-parity/toast-reshow-probe/product)
+   Compiling toast_reshow_candidate v0.0.0 (/work/full-parity/toast-reshow-probe/candidate)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 18.23s

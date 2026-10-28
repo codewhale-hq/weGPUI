@@ -38,6 +38,7 @@ pub struct Presence {
     opener: Option<FocusHandle>,
     focus: FocusHandle,
     generation: usize,
+    hide_token: Arc<()>,
     duration: Duration,
     passive: bool,
     interactive: Arc<AtomicBool>,
@@ -55,6 +56,7 @@ impl Presence {
             opener: None,
             focus: cx.focus_handle(),
             generation: 0,
+            hide_token: Arc::new(()),
             duration: TRANSITION,
             passive: false,
             interactive: Arc::new(AtomicBool::new(false)),
@@ -84,8 +86,7 @@ impl Presence {
     pub(crate) fn accepts_input(&self) -> bool {
         self.interactive.load(Ordering::Relaxed)
     }
-    /// Counter incremented each time a closed presence is shown. Delayed tasks compare it to ignore
-    /// a stale timer, as [`Presence::hide_after`] does.
+    /// Counter incremented each time a closed presence is shown.
     pub fn generation(&self) -> usize {
         self.generation
     }
@@ -121,6 +122,7 @@ impl Presence {
     /// presence is [passive](Presence::passive), always focuses [`Presence::focus_handle`].
     /// Refreshes the window.
     pub fn show(&mut self, window: &mut Window, cx: &mut App) {
+        self.hide_token = Arc::new(());
         if !self.visible {
             if !self.passive {
                 self.opener = window.focused(cx).filter(|f| f != &self.focus);
@@ -171,8 +173,7 @@ impl Presence {
     /// Hides after `delay` unless the presence was hidden or shown again in the meantime.
     ///
     /// Spawns a task on the entity `T` that owns the presence; `get` returns the presence field of
-    /// that entity, which is notified when it hides. Call it after `show`: the current generation
-    /// is captured at call time.
+    /// that entity, which is notified when it hides. Call it after `show`.
     pub fn hide_after<T: 'static>(
         &self,
         delay: Duration,
@@ -180,12 +181,12 @@ impl Presence {
         cx: &mut Context<T>,
         get: fn(&mut T) -> &mut Presence,
     ) {
-        let generation = self.generation;
+        let token = self.hide_token.clone();
         cx.spawn_in(window, async move |this, cx| {
             cx.background_executor().timer(delay).await;
             this.update_in(cx, |this, window, cx| {
                 let presence = get(this);
-                if presence.visible && presence.generation == generation {
+                if presence.visible && Arc::ptr_eq(&presence.hide_token, &token) {
                     presence.hide(window, cx);
                     cx.notify();
                 }

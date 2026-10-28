@@ -1,0 +1,263 @@
+{
+  "name": "toast_reshow_candidate",
+  "reduced": true,
+  "initial": {
+    "ns": 23940584543086,
+    "status": "Open false; generation 0; shows 0; closes 0",
+    "nodes": [
+      {
+        "role": "application",
+        "name": "toast_reshow_candidate"
+      },
+      {
+        "role": "frame",
+        "name": "weGPUI toast reshow"
+      },
+      {
+        "role": "panel",
+        "name": ""
+      },
+      {
+        "role": "push button",
+        "name": "Show toast"
+      },
+      {
+        "role": "push button",
+        "name": "Hide toast"
+      },
+      {
+        "role": "status bar",
+        "name": "Open false; generation 0; shows 0; closes 0"
+      }
+    ]
+  },
+  "first": [
+    23940884970877,
+    23940910735836
+  ],
+  "second": [
+    23942171901670,
+    23942192841003
+  ],
+  "overlap": {
+    "ns": 23944354655129,
+    "status": "Open true; generation 1; shows 2; closes 0",
+    "nodes": [
+      {
+        "role": "application",
+        "name": "toast_reshow_candidate"
+      },
+      {
+        "role": "frame",
+        "name": "weGPUI toast reshow"
+      },
+      {
+        "role": "panel",
+        "name": ""
+      },
+      {
+        "role": "push button",
+        "name": "Show toast"
+      },
+      {
+        "role": "push button",
+        "name": "Hide toast"
+      },
+      {
+        "role": "status bar",
+        "name": "Open true; generation 1; shows 2; closes 0"
+      },
+      {
+        "role": "panel",
+        "name": ""
+      },
+      {
+        "role": "notification",
+        "name": "Saved toast"
+      }
+    ]
+  },
+  "second_done": {
+    "ns": 23945619808130,
+    "status": "Open false; generation 1; shows 2; closes 0",
+    "nodes": [
+      {
+        "role": "application",
+        "name": "toast_reshow_candidate"
+      },
+      {
+        "role": "frame",
+        "name": "weGPUI toast reshow"
+      },
+      {
+        "role": "panel",
+        "name": ""
+      },
+      {
+        "role": "push button",
+        "name": "Show toast"
+      },
+      {
+        "role": "push button",
+        "name": "Hide toast"
+      },
+      {
+        "role": "status bar",
+        "name": "Open false; generation 1; shows 2; closes 0"
+      }
+    ]
+  },
+  "single": [
+    23945674129796,
+    23945697689713
+  ],
+  "single_done": {
+    "ns": 23949055942840,
+    "status": "Open false; generation 2; shows 3; closes 0",
+    "nodes": [
+      {
+        "role": "application",
+        "name": "toast_reshow_candidate"
+      },
+      {
+        "role": "frame",
+        "name": "weGPUI toast reshow"
+      },
+      {
+        "role": "panel",
+        "name": ""
+      },
+      {
+        "role": "push button",
+        "name": "Show toast"
+      },
+      {
+        "role": "push button",
+        "name": "Hide toast"
+      },
+      {
+        "role": "status bar",
+        "name": "Open false; generation 2; shows 3; closes 0"
+      }
+    ]
+  },
+  "before_hide": [
+    23949107609381,
+    23949130060006
+  ],
+  "hide": [
+    23949599807632,
+    23949622817340
+  ],
+  "reopen": [
+    23950077123673,
+    23950096463924
+  ],
+  "reopen_overlap": {
+    "ns": 23952591944258,
+    "status": "Open true; generation 4; shows 5; closes 1",
+    "nodes": [
+      {
+        "role": "application",
+        "name": "toast_reshow_candidate"
+      },
+      {
+        "role": "frame",
+        "name": "weGPUI toast reshow"
+      },
+      {
+        "role": "panel",
+        "name": ""
+      },
+      {
+        "role": "push button",
+        "name": "Show toast"
+      },
+      {
+        "role": "push button",
+        "name": "Hide toast"
+      },
+      {
+        "role": "status bar",
+        "name": "Open true; generation 4; shows 5; closes 1"
+      },
+      {
+        "role": "panel",
+        "name": ""
+      },
+      {
+        "role": "notification",
+        "name": "Saved toast"
+      }
+    ]
+  },
+  "reopen_done": {
+    "ns": 23953651732050,
+    "status": "Open false; generation 4; shows 5; closes 1",
+    "nodes": [
+      {
+        "role": "application",
+        "name": "toast_reshow_candidate"
+      },
+      {
+        "role": "frame",
+        "name": "weGPUI toast reshow"
+      },
+      {
+        "role": "panel",
+        "name": ""
+      },
+      {
+        "role": "push button",
+        "name": "Show toast"
+      },
+      {
+        "role": "push button",
+        "name": "Hide toast"
+      },
+      {
+        "role": "status bar",
+        "name": "Open false; generation 4; shows 5; closes 1"
+      }
+    ]
+  },
+  "cancel_show": [
+    23953702759009,
+    23953730075384
+  ],
+  "cancel_hide": [
+    23953780765425,
+    23953798681759
+  ],
+  "cancel_done": {
+    "ns": 23957157084552,
+    "status": "Open false; generation 5; shows 6; closes 2",
+    "nodes": [
+      {
+        "role": "application",
+        "name": "toast_reshow_candidate"
+      },
+      {
+        "role": "frame",
+        "name": "weGPUI toast reshow"
+      },
+      {
+        "role": "panel",
+        "name": ""
+      },
+      {
+        "role": "push button",
+        "name": "Show toast"
+      },
+      {
+        "role": "push button",
+        "name": "Hide toast"
+      },
+      {
+        "role": "status bar",
+        "name": "Open false; generation 5; shows 6; closes 2"
+      }
+    ]
+  },
+  "passed": true
+}

@@ -1,0 +1,17 @@
+dbus-daemon[92541]: [session uid=0 pid=92541] Activating service name='org.a11y.Bus' requested by ':1.0' (uid=0 pid=92546 comm="dbus-send --session --print-reply --dest=org.a11y.")
+dbus-daemon[92541]: [session uid=0 pid=92541] Successfully activated service 'org.a11y.Bus'
+starting baseline reduced False
+dbus-daemon[92575]: Activating service name='org.a11y.atspi.Registry' requested by ':1.0' (uid=0 pid=92559 comm="/usr/bin/python3 -I /work/full-parity/toast-reshow")
+dbus-daemon[92575]: Successfully activated service 'org.a11y.atspi.Registry'
+SpiRegistry daemon is running with well-known name - org.a11y.atspi.Registry
+Traceback (most recent call last):
+  File "/work/full-parity/toast-reshow-probe/driver.py", line 68, in <module>
+    print('starting',variant,'reduced',reduced,flush=True);run(variant,reduced);print('passed',variant,'reduced',reduced,flush=True)
+                                                           ~~~^^^^^^^^^^^^^^^^^
+  File "/work/full-parity/toast-reshow-probe/driver.py", line 44, in run
+    expect(data['overlap'],variant=='candidate',1,2,0)
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/full-parity/toast-reshow-probe/driver.py", line 25, in expect
+    assert s['status']==expected,(expected,s['status'])
+           ^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('Open false; generation 1; shows 2; closes 0', 'Open false; generation 1; shows 1; closes 0')

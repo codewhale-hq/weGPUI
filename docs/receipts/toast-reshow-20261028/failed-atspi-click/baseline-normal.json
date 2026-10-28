@@ -1,0 +1,74 @@
+{
+  "name": "toast_reshow_baseline",
+  "reduced": false,
+  "initial": {
+    "ns": 23732554267157,
+    "status": "Open false; generation 0; shows 0; closes 0",
+    "nodes": [
+      {
+        "role": "application",
+        "name": "toast_reshow_baseline"
+      },
+      {
+        "role": "frame",
+        "name": "weGPUI toast reshow"
+      },
+      {
+        "role": "panel",
+        "name": ""
+      },
+      {
+        "role": "push button",
+        "name": "Show toast"
+      },
+      {
+        "role": "push button",
+        "name": "Hide toast"
+      },
+      {
+        "role": "status bar",
+        "name": "Open false; generation 0; shows 0; closes 0"
+      }
+    ]
+  },
+  "first": [
+    23732603521699,
+    23732605711741
+  ],
+  "second": [
+    23733866135033,
+    23733867687325
+  ],
+  "overlap": {
+    "ns": 23736011851367,
+    "status": "Open false; generation 1; shows 1; closes 0",
+    "nodes": [
+      {
+        "role": "application",
+        "name": "toast_reshow_baseline"
+      },
+      {
+        "role": "frame",
+        "name": "weGPUI toast reshow"
+      },
+      {
+        "role": "panel",
+        "name": ""
+      },
+      {
+        "role": "push button",
+        "name": "Show toast"
+      },
+      {
+        "role": "push button",
+        "name": "Hide toast"
+      },
+      {
+        "role": "status bar",
+        "name": "Open false; generation 1; shows 1; closes 0"
+      }
+    ]
+  },
+  "passed": false,
+  "error": "Traceback (most recent call last):\n  File \"/work/full-parity/toast-reshow-probe/driver.py\", line 44, in run\n    expect(data['overlap'],variant=='candidate',1,2,0)\n    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work/full-parity/toast-reshow-probe/driver.py\", line 25, in expect\n    assert s['status']==expected,(expected,s['status'])\n           ^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('Open false; generation 1; shows 2; closes 0', 'Open false; generation 1; shows 1; closes 0')\n"
+}
