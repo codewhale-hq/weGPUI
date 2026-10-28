@@ -1,0 +1,6 @@
+{
+  "src/components/slider.rs": "c8e6ec9ebe2b76c4e3c6394d340eb3cdf3e9a3d9c2c06c7d8a6c10d91c43319e",
+  "Cargo.toml": "ff7ce45668e6dd0652079f4f690242951581b58bd7661ab27206de01e7b466aa",
+  "Cargo.lock": "04c8a0c6b6b8f41a473c2c65c87f035729487ea0ccb5e6a2eab4760eb5020429",
+  "linux_binary_sha256": "ce29655761f34c6aadaf0907bbef89527988a03d66ac6d518b72fdf119dedc3e"
+}

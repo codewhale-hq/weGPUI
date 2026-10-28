@@ -85,8 +85,7 @@ impl Slider {
         self.label = label.into();
         self
     }
-    /// Shows the value to the right (`weui-slider-box__value`) as an integer or with one decimal
-    /// place. Default `false`.
+    /// Shows the current value to the right (`weui-slider-box__value`). Default `false`.
     pub fn show_value(mut self, show: bool) -> Self {
         self.show_value = show;
         self
@@ -123,11 +122,11 @@ fn requested_value(value: f64, min: f32, max: f32) -> Option<f32> {
 }
 
 fn format_value(value: f32) -> SharedString {
-    if value.fract() == 0. {
-        SharedString::from(format!("{}", value as i64))
+    SharedString::from(if value == 0. {
+        "0".to_owned()
     } else {
-        SharedString::from(format!("{value:.1}"))
-    }
+        value.to_string()
+    })
 }
 
 impl RenderOnce for Slider {
@@ -323,6 +322,16 @@ mod tests {
         assert_eq!(snap(-100., 5., 25., 5.), 5.);
         assert_eq!(snap(100., 5., 25., 5.), 25.);
         assert_eq!(snap(10., 5., 5., 1.), 5.);
+        for (value, expected) in [
+            (0., "0"),
+            (-0., "0"),
+            (0.125, "0.125"),
+            (-0.125, "-0.125"),
+            (50., "50"),
+            (1e20, "100000000000000000000"),
+        ] {
+            assert_eq!(&*format_value(value), expected);
+        }
     }
 
     #[test]

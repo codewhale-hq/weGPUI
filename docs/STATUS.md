@@ -55,6 +55,9 @@ input changes and passes the named macOS checks and Linux samples in its
 the five-patch graph, compile and native input/rendering before updating; no Codewhale app
 integration against the newer source has been verified.
 
+Fractional slider values now retain their full `f32` display precision; a Linux X11 and
+AT-SPI sample is recorded in the [slider receipt](receipts/slider-precision-20261028/README.md).
+
 ## Localisation and right-to-left — 2026-10-25
 
 The [dictionary/mobile continuation](receipts/dictionary-mobile-20261026/README.md) uses
