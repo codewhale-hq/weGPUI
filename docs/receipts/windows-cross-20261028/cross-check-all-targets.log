@@ -1,0 +1,19 @@
+    Checking windows-core v0.62.2
+    Checking sha1_smol v1.0.1
+    Checking hashbrown v0.16.1
+    Checking static_assertions v1.1.0
+   Compiling gpui-pre-windows v0.3.9
+    Checking windows-registry v0.6.1
+    Checking dunce v1.0.5
+    Checking uuid v1.28.0
+    Checking windows-future v0.3.2
+    Checking windows-collections v0.3.2
+    Checking windows-numerics v0.3.1
+    Checking accesskit v0.24.1
+    Checking windows v0.62.2
+    Checking accesskit_consumer v0.38.0
+    Checking gpui-pre v0.3.9 (/Volumes/VIXinSSD/CW/weGPUI/vendor/gpui_pre)
+    Checking accesskit_windows v0.34.0
+    Checking wegpui v0.1.0 (/Volumes/VIXinSSD/CW/weGPUI)
+    Checking gpui-pre-platform v0.3.9
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 21.86s
