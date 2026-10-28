@@ -86,7 +86,10 @@ name/context cases found further mismatches; see the same receipt. A later unshi
 prototype improved Linux row matches from 311 to 393 of 420, with 27 still different and a
 measured debug-time cost; see the [experiment receipt](receipts/text-context-20261028/README.md). A guarded variant
 can change earlier break opportunities when its thresholds are crossed; [native editing samples](receipts/dictionary-threshold-20261028/README.md)
-do not establish full-document geometry or real IME behavior. It remains unshipped. The iOS digit keypad builds; its native Done
+do not establish full-document geometry or real IME behavior. It remains unshipped. A later
+combined experiment preserved one sampled prefix position across Tai Le and Han paste;
+[details](receipts/dictionary-combined-native-20261028/README.md). Its global fallback,
+resource costs and broader editing behavior remain open. The iOS digit keypad builds; its native Done
 control and keyboard switching still need runtime checks. Password entry remains fail-closed.
 Full reader, IME, hardware and mobile acceptance remain open. Windows stays
 build/tests only. VoiceOver stays off. Each receipt identifies its own source.
