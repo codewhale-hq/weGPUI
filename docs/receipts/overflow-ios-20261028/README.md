@@ -39,3 +39,12 @@ but the accessory, Done, re-tap, focus switching, rotation and privacy have not 
 verified at runtime. The simulator control layer returned `windowNotFoundAtPosition` in
 this session. Password input remains deliberately fail-closed; no secure native password
 entry is claimed. Physical-device, accessibility, IME and platform acceptance remain open.
+
+The [live website](https://codewhale-hq.github.io/weGPUI/) was published from
+`d7bd7e5978a668d4cd5ff41e154063b5e23a0394` by [Pages run 40654164212](https://github.com/codewhale-hq/weGPUI/actions/runs/40654164212).
+Its clean source identity and selected [live shell and theme checks](website/live-d7bd7e5.json)
+pass; those checks do not qualify native GPUI.
+
+The [Khmer ICU investigation](khmer-icu/README.md) reproduces the relevant boundary
+difference using Chromium's bundled ICU data with a locally installed ICU4C 78.3 engine.
+It is one fixture and not proof of exact Chromium 78.2 engine or broad language parity.
