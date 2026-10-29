@@ -2,6 +2,20 @@ use gpui::{prelude::*, *};
 
 use crate::{I18n, logical::Logical};
 
+#[allow(missing_docs)]
+mod controls;
+#[allow(missing_docs)]
+mod icons;
+#[allow(missing_docs)]
+mod messaging;
+#[allow(missing_docs)]
+mod panels;
+
+pub use controls::*;
+pub use icons::*;
+pub use messaging::*;
+pub use panels::*;
+
 #[derive(IntoElement)]
 pub struct FormRow {
     id: ElementId,

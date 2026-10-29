@@ -1,0 +1,1177 @@
+{
+  "base_commit": "b5904aec7ccb5d9f9dc6c243240e4a4b006da1d9",
+  "source_commit": null,
+  "source_manifest_sha256": "27ee61e536c73da6369fa2c39bf15e33b4b387f7e767d50919837fe943986d4c",
+  "binary_sha256": "4799f75fdf7bd80db33f3999e99cecb920ac1bec732a1af5c0ca92f504df8556",
+  "platform": "macOS",
+  "host": {
+    "system": "Darwin",
+    "architecture": "arm64",
+    "version": "26.1"
+  },
+  "captured_at": "2026-10-29T12:29:49.753799+00:00",
+  "routes": [
+    {
+      "id": "desktop-chat",
+      "title": "Desktop chat",
+      "description": "A three-pane Mac chat layout with searchable conversations, messages and an editable composer.",
+      "states": [
+        "default",
+        "empty"
+      ]
+    },
+    {
+      "id": "desktop-controls",
+      "title": "Desktop controls",
+      "description": "Compact buttons, fields, choices, switches, tabs, badges and shortcuts, using WeUI theme tokens.",
+      "states": [
+        "default",
+        "disabled",
+        "error"
+      ]
+    },
+    {
+      "id": "desktop-messages",
+      "title": "Chat messages",
+      "description": "Incoming and outgoing bubbles, quotes, translations, file and link cards, voice previews and delivery feedback.",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "desktop-contacts",
+      "title": "Desktop contacts",
+      "description": "A searchable contact list, profile details and compact contact actions.",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "desktop-settings",
+      "title": "Desktop settings",
+      "description": "General, shortcut and notification settings with controlled switches and appearance menus.",
+      "states": [
+        "default",
+        "shortcuts",
+        "notifications",
+        "appearance"
+      ]
+    },
+    {
+      "id": "desktop-overlays",
+      "title": "Desktop menus & dialogs",
+      "description": "Context menus, confirmation dialogs, emoji selection and notices with keyboard focus management.",
+      "states": [
+        "default",
+        "menu",
+        "dialog",
+        "emoji",
+        "toast"
+      ]
+    },
+    {
+      "id": "desktop-history",
+      "title": "Chat history",
+      "description": "Searchable history, file and link rows, a media grid and an empty state.",
+      "states": [
+        "default",
+        "files",
+        "media",
+        "links",
+        "empty"
+      ]
+    },
+    {
+      "id": "desktop-chat-info",
+      "title": "Chat info",
+      "description": "A member grid, group details and controlled chat settings beside the conversation.",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "desktop-favorites",
+      "title": "Favorites",
+      "description": "Saved link and file previews with a local sample action.",
+      "states": [
+        "default"
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "route": "desktop-chat",
+      "state": "default",
+      "theme": "light",
+      "file": "macos-desktop-chat-default-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-chat",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "051497dd0dcd3bdd7b6eddba079d8e985adc3d6aa1cbac5208167e2cb509e595"
+    },
+    {
+      "route": "desktop-chat",
+      "state": "default",
+      "theme": "dark",
+      "file": "macos-desktop-chat-default-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-chat",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "9b57bddaf436274d900baaa95d56b1d2d96e7e5bb6fb413ca9e96b0266ee949c"
+    },
+    {
+      "route": "desktop-chat",
+      "state": "empty",
+      "theme": "light",
+      "file": "macos-desktop-chat-empty-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-chat",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "empty"
+      ],
+      "sha256": "6ca3ad2de9b5e0a1ba7f2762c39ec1b8141bccc8c5675e4b5b77d9aa9b2321b2"
+    },
+    {
+      "route": "desktop-chat",
+      "state": "empty",
+      "theme": "dark",
+      "file": "macos-desktop-chat-empty-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-chat",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "empty"
+      ],
+      "sha256": "06e10930468b9ba69ade4bf32750b6674aac415cc85a4d884acd36b4b95fb6eb"
+    },
+    {
+      "route": "desktop-controls",
+      "state": "default",
+      "theme": "light",
+      "file": "macos-desktop-controls-default-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-controls",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "62b909de3b6c2de1d636728b7e9ac8ee0e00881f88d137c9a29a1189e83b896d"
+    },
+    {
+      "route": "desktop-controls",
+      "state": "default",
+      "theme": "dark",
+      "file": "macos-desktop-controls-default-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-controls",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "4ffeea2e5f2221a122bae3feddfde0d2ee0f6cc485dd654c590f302fa77f7eb5"
+    },
+    {
+      "route": "desktop-controls",
+      "state": "disabled",
+      "theme": "light",
+      "file": "macos-desktop-controls-disabled-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-controls",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "disabled"
+      ],
+      "sha256": "8f8a680dcb662a7f770c6d745d5d2673ff54ff881868e868169045286d97264c"
+    },
+    {
+      "route": "desktop-controls",
+      "state": "disabled",
+      "theme": "dark",
+      "file": "macos-desktop-controls-disabled-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-controls",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "disabled"
+      ],
+      "sha256": "357408ad75fb621f08e80e06e98470ceb993a59705967b2ba0d34391474ce6f4"
+    },
+    {
+      "route": "desktop-controls",
+      "state": "error",
+      "theme": "light",
+      "file": "macos-desktop-controls-error-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-controls",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "error"
+      ],
+      "sha256": "621178264bbd6bd8cec5f8ae50541c7214a9ce77b58ea1f5933a6b990ff85e3c"
+    },
+    {
+      "route": "desktop-controls",
+      "state": "error",
+      "theme": "dark",
+      "file": "macos-desktop-controls-error-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-controls",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "error"
+      ],
+      "sha256": "cae9d1fd23957b9392eeca950e1d16f0a29ee51c228dd9bd8909b286ea694ed4"
+    },
+    {
+      "route": "desktop-messages",
+      "state": "default",
+      "theme": "light",
+      "file": "macos-desktop-messages-default-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-messages",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "ceb31ea865ed5c0e02decc150cc5bd8e68c120703240e4f4bb680d50055ad450"
+    },
+    {
+      "route": "desktop-messages",
+      "state": "default",
+      "theme": "dark",
+      "file": "macos-desktop-messages-default-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-messages",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "2ade33e19ccca2f59f5fa665b8fa1d5ba9d09195469c589446550d19db0ead49"
+    },
+    {
+      "route": "desktop-contacts",
+      "state": "default",
+      "theme": "light",
+      "file": "macos-desktop-contacts-default-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-contacts",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "51088364165a2da6e9c738720bba28c9b4dd59ce5263f04ac2ca8d7087a444a8"
+    },
+    {
+      "route": "desktop-contacts",
+      "state": "default",
+      "theme": "dark",
+      "file": "macos-desktop-contacts-default-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-contacts",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "6a9f1c3f85e1a54784bb3052398ec45c82d0d6550de4b57ca046e27bf665d14d"
+    },
+    {
+      "route": "desktop-settings",
+      "state": "default",
+      "theme": "light",
+      "file": "macos-desktop-settings-default-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-settings",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "23e34d4b4e1c84d01305b716291a9b19cb3b1ae730a1664e956bd9700afa2d9e"
+    },
+    {
+      "route": "desktop-settings",
+      "state": "default",
+      "theme": "dark",
+      "file": "macos-desktop-settings-default-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-settings",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "b4584afd3c7dca0cd70fa82b80b672b00d951d0b2ced3cf5972e11b34ca9edfa"
+    },
+    {
+      "route": "desktop-settings",
+      "state": "shortcuts",
+      "theme": "light",
+      "file": "macos-desktop-settings-shortcuts-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-settings",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "shortcuts"
+      ],
+      "sha256": "33f639570d254cf06629bf0f8707b64a849696335fd9606700554d029b305ead"
+    },
+    {
+      "route": "desktop-settings",
+      "state": "shortcuts",
+      "theme": "dark",
+      "file": "macos-desktop-settings-shortcuts-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-settings",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "shortcuts"
+      ],
+      "sha256": "b6a7f1cd6fa16e9012a9a9f453945b27542f598725166d8dc267315abd839c44"
+    },
+    {
+      "route": "desktop-settings",
+      "state": "notifications",
+      "theme": "light",
+      "file": "macos-desktop-settings-notifications-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-settings",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "notifications"
+      ],
+      "sha256": "dfdb9aefc0d9ffda5ac2152df72c76d94b3560d3ceac9846811086b5209e9081"
+    },
+    {
+      "route": "desktop-settings",
+      "state": "notifications",
+      "theme": "dark",
+      "file": "macos-desktop-settings-notifications-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-settings",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "notifications"
+      ],
+      "sha256": "5889ea6dff6efef4c4c757870346dbc8a8e4d751e05ce10c7a9192146c224d08"
+    },
+    {
+      "route": "desktop-settings",
+      "state": "appearance",
+      "theme": "light",
+      "file": "macos-desktop-settings-appearance-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-settings",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "appearance"
+      ],
+      "sha256": "755397de21deea7eff8a34474508d546202d304ce0b6ff9952cd7eeb5b6a6edd"
+    },
+    {
+      "route": "desktop-settings",
+      "state": "appearance",
+      "theme": "dark",
+      "file": "macos-desktop-settings-appearance-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-settings",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "appearance"
+      ],
+      "sha256": "56d0c39744ed5248eebf2d0aefc032ef1fa0a8c7137106525164c56e6c10b6f8"
+    },
+    {
+      "route": "desktop-overlays",
+      "state": "default",
+      "theme": "light",
+      "file": "macos-desktop-overlays-default-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-overlays",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "f1a3abac73a25bc49d12540e1bebb3338a80ba45c5d5adbca32ed5a0703adddf"
+    },
+    {
+      "route": "desktop-overlays",
+      "state": "default",
+      "theme": "dark",
+      "file": "macos-desktop-overlays-default-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-overlays",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "7aa10acb3d921b1be3e8455c0a7544688082592bd41693cad46da82c3f7a5a5b"
+    },
+    {
+      "route": "desktop-overlays",
+      "state": "menu",
+      "theme": "light",
+      "file": "macos-desktop-overlays-menu-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-overlays",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "menu"
+      ],
+      "sha256": "1db35c09eb4dc3658818a6cdfeb9c042f1994df1eaceb4ab798cd8e82afd866c"
+    },
+    {
+      "route": "desktop-overlays",
+      "state": "menu",
+      "theme": "dark",
+      "file": "vm-desktop-overlays-menu-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-overlays",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "menu"
+      ],
+      "sha256": "944831ee1a8f1a0227322aa148d2f84d7202d881e9b9f27fbf1aefe615203ed8",
+      "platform": "Linux ARM64 VM",
+      "binary_sha256": "73c3c9da4f48102553a8069c1ae447c268ec2537cb8e696a810f42413f0e07c1",
+      "host": {
+        "system": "Linux",
+        "architecture": "aarch64"
+      }
+    },
+    {
+      "route": "desktop-overlays",
+      "state": "dialog",
+      "theme": "light",
+      "file": "macos-desktop-overlays-dialog-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-overlays",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "dialog"
+      ],
+      "sha256": "51dff7c7fb94a0e91097f243080f077095230ed4d76b49eefeeae32f645d4b08"
+    },
+    {
+      "route": "desktop-overlays",
+      "state": "dialog",
+      "theme": "dark",
+      "file": "macos-desktop-overlays-dialog-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-overlays",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "dialog"
+      ],
+      "sha256": "d6129d6271a7db39af72771c651bceda88f9f49b8800098d376fba104c0f9054"
+    },
+    {
+      "route": "desktop-overlays",
+      "state": "emoji",
+      "theme": "light",
+      "file": "macos-desktop-overlays-emoji-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-overlays",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "emoji"
+      ],
+      "sha256": "fa70c2c636b3c7274c92f9831648b7dabde29067533f0b4e741c3cb5cd07bc24"
+    },
+    {
+      "route": "desktop-overlays",
+      "state": "emoji",
+      "theme": "dark",
+      "file": "macos-desktop-overlays-emoji-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-overlays",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "emoji"
+      ],
+      "sha256": "72044ae0db8f3a1f88c6be6dedebd0ed35115280604379a0525822dd967365eb"
+    },
+    {
+      "route": "desktop-overlays",
+      "state": "toast",
+      "theme": "light",
+      "file": "macos-desktop-overlays-toast-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-overlays",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "toast"
+      ],
+      "sha256": "a1c0a1b03eb7d638384ffc3207b44d054a4c28b0baab7cd3da357a4aa1ac7e63"
+    },
+    {
+      "route": "desktop-overlays",
+      "state": "toast",
+      "theme": "dark",
+      "file": "macos-desktop-overlays-toast-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-overlays",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "toast"
+      ],
+      "sha256": "5f29dc46eb38f144accfa473c8b0b15d3610c70554482676dd945434d17e2abb"
+    },
+    {
+      "route": "desktop-history",
+      "state": "default",
+      "theme": "light",
+      "file": "macos-desktop-history-default-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-history",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "1e04e2734f526733adae38346ec84c50d1225cca1ac906b8fc50c1f34728efbe"
+    },
+    {
+      "route": "desktop-history",
+      "state": "default",
+      "theme": "dark",
+      "file": "macos-desktop-history-default-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-history",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "cf835d06ac2fd22a23ffe5830050a6d646a7aee393eea4a77f56eb326485818a"
+    },
+    {
+      "route": "desktop-history",
+      "state": "files",
+      "theme": "light",
+      "file": "macos-desktop-history-files-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-history",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "files"
+      ],
+      "sha256": "9c131fcc1d767b846193909a61b9dbd43ee50ea5e3fd3288be827677274c279b"
+    },
+    {
+      "route": "desktop-history",
+      "state": "files",
+      "theme": "dark",
+      "file": "macos-desktop-history-files-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-history",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "files"
+      ],
+      "sha256": "b139f921ff3ab90fd2f9629a53e0ef9f162c0d63d128fb3119f61e4b0468d527"
+    },
+    {
+      "route": "desktop-history",
+      "state": "media",
+      "theme": "light",
+      "file": "macos-desktop-history-media-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-history",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "media"
+      ],
+      "sha256": "a7e18068031769d2f9c38fe1fc625593457900528da46b5ad67fe19ad59c7295"
+    },
+    {
+      "route": "desktop-history",
+      "state": "media",
+      "theme": "dark",
+      "file": "macos-desktop-history-media-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-history",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "media"
+      ],
+      "sha256": "4a67776c2f817833329a8d5bd69cf87f040230b9c0b02a5bf9d85de61a4e7ef2"
+    },
+    {
+      "route": "desktop-history",
+      "state": "links",
+      "theme": "light",
+      "file": "macos-desktop-history-links-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-history",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "links"
+      ],
+      "sha256": "7feffdc0296d312f8bfe1f3edb4e0de5549a4328c3f5d16280f933a32a19a92d"
+    },
+    {
+      "route": "desktop-history",
+      "state": "links",
+      "theme": "dark",
+      "file": "macos-desktop-history-links-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-history",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "links"
+      ],
+      "sha256": "ac1f5524b2a9192d381a4e8c18b332b45432e2567d55835b90e25b316a979926"
+    },
+    {
+      "route": "desktop-history",
+      "state": "empty",
+      "theme": "light",
+      "file": "macos-desktop-history-empty-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-history",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "empty"
+      ],
+      "sha256": "a34d1f5025d249f8b63814eeed8daf6b5fda065dbeb12207cd2a32cfbbea8cb6"
+    },
+    {
+      "route": "desktop-history",
+      "state": "empty",
+      "theme": "dark",
+      "file": "macos-desktop-history-empty-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-history",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion",
+        "--state",
+        "empty"
+      ],
+      "sha256": "f00dcad8d5f05ea21cef06a04a6559bb526894c7f13f5986d5cdab6c2105c7c2"
+    },
+    {
+      "route": "desktop-chat-info",
+      "state": "default",
+      "theme": "light",
+      "file": "macos-desktop-chat-info-default-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-chat-info",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "c4b7fdd1da59137a09b1d7244a5f24fcb69d233aa16f06360df679469e424b1b"
+    },
+    {
+      "route": "desktop-chat-info",
+      "state": "default",
+      "theme": "dark",
+      "file": "macos-desktop-chat-info-default-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-chat-info",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "69269006464888cf37936345e46c1615f41a47fa2267c9358b5aa7d3f4fa4525"
+    },
+    {
+      "route": "desktop-favorites",
+      "state": "default",
+      "theme": "light",
+      "file": "macos-desktop-favorites-default-light-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-favorites",
+        "--theme",
+        "light",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "b908d10910f3ae308b86ad08338a58102b649944a976c62d9593e6e8ad5f4ccc"
+    },
+    {
+      "route": "desktop-favorites",
+      "state": "default",
+      "theme": "dark",
+      "file": "macos-desktop-favorites-default-dark-gpui.png",
+      "viewport": [
+        1120,
+        760
+      ],
+      "args": [
+        "--page",
+        "desktop-favorites",
+        "--theme",
+        "dark",
+        "--size",
+        "1120x760",
+        "--lang",
+        "en",
+        "--reduce-motion"
+      ],
+      "sha256": "6fd847a9dbbba1271d3bf7aa5ceb6cc821ae3d3686ce484dc44ba84873ea964c"
+    }
+  ]
+}

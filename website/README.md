@@ -1,15 +1,15 @@
 # weGPUI component gallery
 
-The homepage is a visual catalog of all **62 native Rust/GPUI gallery routes**, including
-the native-only Languages and Desktop form pages. Search and category filters lead directly
+The homepage is a visual catalog of all **71 native Rust/GPUI gallery routes**, including
+nine Mac desktop examples alongside the Languages and Desktop form pages. Search and category filters lead directly
 to recorded native previews, light/dark themes, component states and the actual Rust gallery
 source. Getting started and theming default to Rust. Desktop/Phone controls select actual
 native captures of the two compositions. The Rust gallery opens in desktop mode by default
 and adapts when resized.
 
-Each component page identifies its capture host and source revision. The 136 native scenes
-and 816 bundled capture images include historical macOS comparisons, recent Linux replacement
-pairs, two hash-verified macOS Languages captures, and 276 desktop-gallery captures. Native captures show recorded Rust
+Each component page identifies its capture host and source revision. The 159 native scenes
+and 862 bundled capture images include historical macOS comparisons, recent Linux replacement
+pairs, two hash-verified macOS Languages captures, 276 desktop-gallery captures, and 46 current desktop component captures (45 macOS and one Linux VM). Native captures show recorded Rust
 rendering; the browser does not execute GPUI. Mobile backends remain experimental.
 
 The **WeUI browser reference** tab retains all 60 pinned upstream HTML/CSS/JavaScript routes
@@ -35,7 +35,7 @@ both a domain root and a project prefix such as `/weGPUI/`, without rewrite rule
 The builder checks route/state inventory, template hashes and local asset provenance.
 `native-evidence.json` selects recent samples from a checked-in receipt. The builder verifies
 its matrix, capture manifests and sample hashes, and rejects duplicate sample identifiers.
-The browser inventory excludes the native-only Languages and Desktop form routes. The website includes them
+The browser inventory excludes the eleven native-only routes. The website includes them
 with their native Rust source and hash-verified captures, then checks the full native
 registry. Unexpected missing or extra routes fail validation. Run
 `python3 -m unittest discover -s website/tests -v` for the five inventory/build regressions.

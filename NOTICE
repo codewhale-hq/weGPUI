@@ -60,3 +60,14 @@ GPUI platform/input compatibility bridge
 The lifecycle, input-field identity and focused-input eligibility API shapes follow
 published gpui-fast 0.1.10. Copyright Zed Industries; Apache-2.0.
 No gpui-fast package is selected by the dependency graph.
+
+Mac desktop component references
+Control/state contracts studied from IUpdatable/WeUiSharp at
+974b51e63e33131b45fa6f5f47de7c7d15f495da (README declares MIT).
+https://github.com/IUpdatable/WeUiSharp
+No WPF source, icons or artwork from that project are redistributed.
+Mac layout references were observed in WeChat for macOS 4.2.0.9.
+Desktop surfaces follow sampled Mac colors; shared control accents and states use
+the existing WeUI 2.6.26 theme tokens. The Rust implementation
+and geometric desktop icons are original. Public examples use synthetic data;
+private WeChat captures are not included. WeChat is a Tencent trademark.

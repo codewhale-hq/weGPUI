@@ -1,6 +1,6 @@
 # weGPUI
 
-**WeUI components, rendered natively in Rust.**
+**Mac desktop and WeUI mobile components, rendered natively in Rust.**
 
 weGPUI brings [Tencent's WeUI 2.6.26](https://github.com/Tencent/weui) design language to
 [GPUI](https://gpui.rs), the GPU-accelerated framework behind Zed. It provides native controls,
@@ -11,7 +11,7 @@ forms, navigation and overlays using GPUI primitives, with no embedded browser.
 [Contribute](CONTRIBUTING.md)
 
 **Developer preview · 0.1.0 · unreleased.** The native gallery maps all 60 upstream routes and
-adds a Languages page. Visual, interaction and accessibility parity are still being qualified;
+adds Languages, a desktop form, and nine Mac desktop examples. Visual, interaction and accessibility parity are still being qualified;
 no desktop platform has completed the full support criteria. See the
 [acceptance matrix](docs/ACCEPTANCE.md) and [remaining work](docs/COMPLETION.md).
 
@@ -23,6 +23,10 @@ Recorded macOS comparison. [Visual evidence](docs/PARITY.md) identifies each cap
 and review limits; these images are not a claim of current cross-platform parity.
 
 ## What is included
+
+- **Mac desktop:** a resizable chat shell, conversation rows, avatars, message bubbles,
+  quotes, translations, attachments, composer, contacts, settings, history, media grids,
+  menus, dialogs and emoji selection. [Desktop API and examples](docs/DESKTOP.md).
 
 - **Controls and forms:** buttons, cells, text inputs, text areas, choices, switches, sliders,
   search, validation, verification codes and date fields.
@@ -53,6 +57,7 @@ git clone https://github.com/codewhale-hq/weGPUI.git
 cd weGPUI
 cargo run --example minimal --locked
 cargo run --example gallery --locked
+cargo run --example gallery --locked -- --page desktop-chat --theme light
 ```
 
 More examples:
@@ -144,10 +149,12 @@ complete platform support are separate milestones.
 
 ## Component gallery website
 
-The website source showcases all **62 native Rust gallery routes**, with light/dark captures,
+The website source showcases all **71 native Rust gallery routes**, with light/dark captures,
 component states, search, category filters and the actual Rust source beside each preview.
-Desktop is the default: persistent navigation, compact button compositions, a bounded
-content area and a responsive desktop form built with `wegpui::desktop::FormRow`.
+The Mac desktop collection comes first. Its geometry follows the observed WeChat 4.2.0.9
+Mac app, its control contracts are informed by WeUiSharp, its desktop surfaces follow the sampled Mac reference, and its shared
+control accents and states use WeUI tokens. The original 60 WeUI routes retain their responsive desktop and phone
+compositions. These are distinct collections: the Mac set is an original GPUI implementation.
 Use the Desktop/Phone switch to inspect both native layouts. The 60 upstream
 HTML/CSS/JavaScript examples remain available as a separately labeled browser reference.
 Mobile backends are experimental; portrait native captures do not imply mobile support.

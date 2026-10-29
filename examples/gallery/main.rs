@@ -192,7 +192,12 @@ impl Render for Gallery {
         let width = window.viewport_size().width;
         #[cfg(target_os = "ios")]
         let width = window.fully_visible_bounds().size.width;
-        let is_desktop = cfg!(not(target_os = "ios")) && width >= px(desktop::BREAKPOINT);
+        let macos = self.stack.last().is_some_and(|entry| {
+            pages::macos::EXAMPLES
+                .iter()
+                .any(|(route, _)| *route == entry.route.as_ref())
+        });
+        let is_desktop = !macos && cfg!(not(target_os = "ios")) && width >= px(desktop::BREAKPOINT);
         let width = width - px(if is_desktop { desktop::SIDEBAR } else { 0. });
         let n = self.stack.len();
         let top = self

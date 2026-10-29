@@ -3,7 +3,9 @@
 import re
 
 
-NATIVE_ONLY_ROUTES = frozenset({'languages', 'desktop-form'})
+NATIVE_ONLY_ROUTES = frozenset({'languages', 'desktop-form', 'desktop-chat', 'desktop-controls',
+    'desktop-messages', 'desktop-contacts', 'desktop-settings', 'desktop-overlays',
+    'desktop-history', 'desktop-chat-info', 'desktop-favorites'})
 
 
 def browser_route_map(source):

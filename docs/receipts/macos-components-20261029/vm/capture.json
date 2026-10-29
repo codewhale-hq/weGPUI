@@ -1,0 +1,25 @@
+{
+  "platform": "Linux ARM64 VM",
+  "route": "desktop-chat",
+  "theme": "dark",
+  "care": true,
+  "viewport": [
+    1120,
+    760
+  ],
+  "binary_sha256": "73c3c9da4f48102553a8069c1ae447c268ec2537cb8e696a810f42413f0e07c1",
+  "file": "vm-care-chat-dark-gpui.png",
+  "sha256": "64e24dc995084329116493471a4e001f01e2d14afe67aca5c9338cbb03b7cea7",
+  "args": [
+    "--page",
+    "desktop-chat",
+    "--care",
+    "--theme",
+    "dark",
+    "--lang",
+    "en",
+    "--size",
+    "1120x760",
+    "--reduce-motion"
+  ]
+}

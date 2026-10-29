@@ -262,6 +262,49 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
     reports = output / 'reports'
     reports.mkdir(exist_ok=True)
     shutil.copyfile(desktop_receipt / 'README.md', reports / 'desktop-gallery.md')
+    macos_receipt = ROOT / 'docs/receipts/macos-components-20261029'
+    macos = json.loads((macos_receipt / 'captures.json').read_text())
+    source_manifest = macos_receipt / 'native-source.json'
+    if hashlib.sha256(source_manifest.read_bytes()).hexdigest() != macos['source_manifest_sha256']:
+        raise ValueError('Mac component source manifest differs from its receipt')
+    macos_routes = {route['id']: route for route in macos['routes']}
+    if set(macos_routes) != _inventory.NATIVE_ONLY_ROUTES - {'languages', 'desktop-form'}:
+        raise ValueError('Mac component inventory differs from the native registry')
+    macos_images = {route: {} for route in macos_routes}
+    macos_evidence = {route: {} for route in macos_routes}
+    observed = set()
+    for sample in macos['captures']:
+        route, state, theme = sample['route'], sample['state'], sample['theme']
+        key = route, state, theme
+        if key in observed or route not in macos_routes or state not in macos_routes[route]['states'] or theme not in ['light', 'dark']:
+            raise ValueError('Unexpected Mac component capture')
+        observed.add(key)
+        image = (macos_receipt / 'captures' / sample['file']).resolve()
+        if not image.is_relative_to(macos_receipt / 'captures'):
+            raise ValueError('Mac capture path leaves its receipt')
+        pixels = image.read_bytes()
+        dimensions = [int.from_bytes(pixels[16:20], 'big'), int.from_bytes(pixels[20:24], 'big')]
+        if hashlib.sha256(pixels).hexdigest() != sample['sha256'] or pixels[:8] != b'\x89PNG\r\n\x1a\n' or dimensions != [2240, 1520] or sample['viewport'] != [1120, 760]:
+            raise ValueError('Mac capture differs from its native receipt')
+        shutil.copyfile(image, captures / image.name)
+        macos_images[route].setdefault(state, {})[theme] = dict(gpui='captures/' + image.name)
+        macos_evidence[route].setdefault(state, {})[theme] = dict(commit=macos.get('source_commit') or macos['base_commit'], platform=sample.get('platform', 'macOS'), viewport=sample['viewport'],
+            receipt='reports/macos-components.md', args=sample['args'], modified=not bool(macos.get('source_commit')))
+    expected = {(route, state, theme) for route, info in macos_routes.items() for state in info['states'] for theme in ['light', 'dark']}
+    if observed != expected:
+        raise ValueError('Mac component capture matrix is incomplete')
+    macos_source = 'examples/gallery/pages/macos.rs'
+    for route, info in macos_routes.items():
+        shutil.copyfile(ROOT / macos_source, sources / (route + '.rs.txt'))
+        records.append(dict(id=route, family=route, familyLabel=info['title'], category='Mac desktop', title=info['title'], description=info['description'],
+            states=info['states'], images={}, captureEvidence={}, desktopImages=macos_images[route], desktopCaptureEvidence=macos_evidence[route], desktopOnly=True,
+            source=macos_source, rustSource='source/' + route + '.rs.txt', modules=['desktop'],
+            implementationSources=['desktop/controls', 'desktop/icons', 'desktop/messaging', 'desktop/panels']))
+    for module in ['controls', 'icons', 'messaging', 'panels']:
+        target = sources / 'api/desktop' / (module + '.rs.txt')
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / 'src/desktop' / (module + '.rs'), target)
+    shutil.copyfile(macos_receipt / 'README.md', reports / 'macos-components.md')
     for module in {'theme', 'i18n'} | {module for record in records for module in record['modules']}:
         module_source = ROOT / 'src' / (module + '.rs')
         module_output = sources / 'api' / (module + '.rs.txt')

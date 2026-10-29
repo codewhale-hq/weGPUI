@@ -15,3 +15,17 @@
 Run `python3 -I scripts/weui_upstream.py fetch`, then `python3 -I scripts/extract_weui.py "${CARGO_TARGET_DIR:-target}/weui-upstream/weui/package"`, to reproduce token, icon, palette and asset-table generation (including their rustdoc). The npm source package is intentionally outside the repository. Extraction does not execute upstream scripts. `assets/loading.svg` is extracted from the pinned loading SVG, with rotation handled by GPUI. Keep the separately authored `assets/loading-primary.svg`, which represents the upstream CSS-ring geometry and is included in the generated asset table. On 2026-10-25 (Linux, Pillow 12.3.0) regeneration reproduced every generated file except the eight `*-dark.png` images, which differ in PNG encoding bytes but have identical pixels.
 
 `docs/tokens.json` preserves the raw CSS values, including expressions. Rust fields use Hsla for colours and f32 for unitless or pixel dimensions. Font-relative expressions retain their CSS form for reference.
+
+## Mac desktop collection
+
+The Mac desktop collection is an original Rust/GPUI implementation. Control and state
+contracts were studied in [IUpdatable/WeUiSharp](https://github.com/IUpdatable/WeUiSharp/tree/974b51e63e33131b45fa6f5f47de7c7d15f495da),
+especially Button, ToggleButton, Field, ComboBox, ContextMenu, MessageBox and Window.
+Its Windows appearance is not used as the Mac visual specification.
+
+The installed WeChat for macOS 4.2.0.9 was inspected in light and dark modes on
+2026-10-29. Its pane geometry, density, settings, contact, chat info, emoji and history
+arrangements informed the native collection. Desktop surface colors were sampled from the supplied Mac screenshots after sRGB
+normalization. Shared control accents and states retain the existing WeUI theme tokens.
+Private app captures remain outside the repository. Public captures show synthetic
+content rendered by this repository's Rust gallery. See [DESKTOP.md](DESKTOP.md).

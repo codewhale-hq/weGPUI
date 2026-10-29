@@ -19,6 +19,21 @@ type Category = (
 
 const CATEGORIES: &[Category] = &[
     (
+        "Mac desktop",
+        "icon_nav_layout.png",
+        &[
+            ("desktop-chat", "Chat"),
+            ("desktop-controls", "Controls"),
+            ("desktop-messages", "Messages"),
+            ("desktop-contacts", "Contacts"),
+            ("desktop-settings", "Settings"),
+            ("desktop-overlays", "Menus & dialogs"),
+            ("desktop-history", "Chat history"),
+            ("desktop-chat-info", "Chat info"),
+            ("desktop-favorites", "Favorites"),
+        ],
+    ),
+    (
         "表单",
         "icon_nav_form.png",
         &[
@@ -151,7 +166,7 @@ impl Render for Home {
                         .mt(px(10.))
                         .text_size(px(14.))
                         .text_color(t.fg_1)
-                        .child("WeUI components, composed for native desktop applications."),
+                        .child("Native Mac desktop components and the WeUI mobile collection."),
                 )
         } else {
             header

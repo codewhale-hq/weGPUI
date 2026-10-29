@@ -11,6 +11,18 @@ pub const SIDEBAR: f32 = 224.;
 
 pub fn title(route: &str) -> String {
     match route {
+        route
+            if super::pages::macos::EXAMPLES
+                .iter()
+                .any(|(name, _)| *name == route) =>
+        {
+            super::pages::macos::EXAMPLES
+                .iter()
+                .find(|(name, _)| *name == route)
+                .unwrap()
+                .1
+                .into()
+        }
         "home" => "Overview".into(),
         "desktop-form" => "Desktop form".into(),
         "button_default" => "Button styles".into(),
@@ -41,6 +53,13 @@ pub fn title(route: &str) -> String {
 
 fn category(route: &str) -> &'static str {
     match route {
+        route
+            if super::pages::macos::EXAMPLES
+                .iter()
+                .any(|(name, _)| *name == route) =>
+        {
+            "Mac desktop"
+        }
         "home" | "desktop-form" => "Start here",
         "button" | "button_default" | "button_bottom_fixed" => "Actions",
         "dialog" | "actionsheet" | "half-screen-dialog" | "picker" => "Overlays & pickers",
@@ -83,6 +102,7 @@ pub fn frame(
         .pb(px(20.));
     for group in [
         "Start here",
+        "Mac desktop",
         "Actions",
         "Forms & inputs",
         "Navigation",

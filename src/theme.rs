@@ -182,7 +182,7 @@ impl Theme {
 }
 
 /// WCAG relative luminance contrast for two opaque, rendered colours.
-fn contrast_ratio(a: Hsla, b: Hsla) -> f32 {
+pub(crate) fn contrast_ratio(a: Hsla, b: Hsla) -> f32 {
     let luminance = |color: Hsla| {
         let color = color.to_rgb();
         let linear = |value: f32| {

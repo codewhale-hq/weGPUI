@@ -1,0 +1,842 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-29T12:37:26Z",
+  "title": "Design System: weGPUI",
+  "extensions": {
+    "colorMeta": {
+      "shared-brand": {
+        "role": "primary",
+        "displayName": "Shared WeUI Green",
+        "tonalRamp": [
+          "oklch(15.00% 0.18893 151.21)",
+          "oklch(26.43% 0.18893 151.21)",
+          "oklch(37.86% 0.18893 151.21)",
+          "oklch(49.29% 0.18893 151.21)",
+          "oklch(60.71% 0.18893 151.21)",
+          "oklch(72.14% 0.18893 151.21)",
+          "oklch(83.57% 0.18893 151.21)",
+          "oklch(95.00% 0.18893 151.21)"
+        ]
+      },
+      "shared-brand-care-light": {
+        "role": "primary",
+        "displayName": "Shared WeUI Green · Light Care",
+        "tonalRamp": [
+          "oklch(15.00% 0.14732 151.23)",
+          "oklch(26.43% 0.14732 151.23)",
+          "oklch(37.86% 0.14732 151.23)",
+          "oklch(49.29% 0.14732 151.23)",
+          "oklch(60.71% 0.14732 151.23)",
+          "oklch(72.14% 0.14732 151.23)",
+          "oklch(83.57% 0.14732 151.23)",
+          "oklch(95.00% 0.14732 151.23)"
+        ]
+      },
+      "desktop-selected-light": {
+        "role": "primary",
+        "displayName": "Mac Selection Green · Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.14380 159.57)",
+          "oklch(26.43% 0.14380 159.57)",
+          "oklch(37.86% 0.14380 159.57)",
+          "oklch(49.29% 0.14380 159.57)",
+          "oklch(60.71% 0.14380 159.57)",
+          "oklch(72.14% 0.14380 159.57)",
+          "oklch(83.57% 0.14380 159.57)",
+          "oklch(95.00% 0.14380 159.57)"
+        ]
+      },
+      "desktop-selected-dark": {
+        "role": "primary",
+        "displayName": "Mac Selection Green · Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.14929 157.71)",
+          "oklch(26.43% 0.14929 157.71)",
+          "oklch(37.86% 0.14929 157.71)",
+          "oklch(49.29% 0.14929 157.71)",
+          "oklch(60.71% 0.14929 157.71)",
+          "oklch(72.14% 0.14929 157.71)",
+          "oklch(83.57% 0.14929 157.71)",
+          "oklch(95.00% 0.14929 157.71)"
+        ]
+      },
+      "desktop-sent-light": {
+        "role": "primary",
+        "displayName": "Mac Sent Green · Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.18648 136.34)",
+          "oklch(26.43% 0.18648 136.34)",
+          "oklch(37.86% 0.18648 136.34)",
+          "oklch(49.29% 0.18648 136.34)",
+          "oklch(60.71% 0.18648 136.34)",
+          "oklch(72.14% 0.18648 136.34)",
+          "oklch(83.57% 0.18648 136.34)",
+          "oklch(95.00% 0.18648 136.34)"
+        ]
+      },
+      "desktop-sent-dark": {
+        "role": "primary",
+        "displayName": "Mac Sent Green · Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.14222 155.83)",
+          "oklch(26.43% 0.14222 155.83)",
+          "oklch(37.86% 0.14222 155.83)",
+          "oklch(49.29% 0.14222 155.83)",
+          "oklch(60.71% 0.14222 155.83)",
+          "oklch(72.14% 0.14222 155.83)",
+          "oklch(83.57% 0.14222 155.83)",
+          "oklch(95.00% 0.14222 155.83)"
+        ]
+      },
+      "solid-black": {
+        "role": "neutral",
+        "displayName": "Solid Black",
+        "tonalRamp": [
+          "oklch(15.00% 0 0.00)",
+          "oklch(26.43% 0 0.00)",
+          "oklch(37.86% 0 0.00)",
+          "oklch(49.29% 0 0.00)",
+          "oklch(60.71% 0 0.00)",
+          "oklch(72.14% 0 0.00)",
+          "oklch(83.57% 0 0.00)",
+          "oklch(95.00% 0 0.00)"
+        ]
+      },
+      "solid-white": {
+        "role": "neutral",
+        "displayName": "Solid White",
+        "tonalRamp": [
+          "oklch(15.00% 0 0.00)",
+          "oklch(26.43% 0 0.00)",
+          "oklch(37.86% 0 0.00)",
+          "oklch(49.29% 0 0.00)",
+          "oklch(60.71% 0 0.00)",
+          "oklch(72.14% 0 0.00)",
+          "oklch(83.57% 0 0.00)",
+          "oklch(95.00% 0 0.00)"
+        ]
+      },
+      "desktop-canvas-light": {
+        "role": "neutral",
+        "displayName": "Mac Canvas · Light",
+        "tonalRamp": [
+          "oklch(15.00% 0 0.00)",
+          "oklch(26.43% 0 0.00)",
+          "oklch(37.86% 0 0.00)",
+          "oklch(49.29% 0 0.00)",
+          "oklch(60.71% 0 0.00)",
+          "oklch(72.14% 0 0.00)",
+          "oklch(83.57% 0 0.00)",
+          "oklch(95.00% 0 0.00)"
+        ]
+      },
+      "desktop-canvas-dark": {
+        "role": "neutral",
+        "displayName": "Mac Canvas · Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.00189 286.25)",
+          "oklch(26.43% 0.00189 286.25)",
+          "oklch(37.86% 0.00189 286.25)",
+          "oklch(49.29% 0.00189 286.25)",
+          "oklch(60.71% 0.00189 286.25)",
+          "oklch(72.14% 0.00189 286.25)",
+          "oklch(83.57% 0.00189 286.25)",
+          "oklch(95.00% 0.00189 286.25)"
+        ]
+      },
+      "desktop-list-light": {
+        "role": "neutral",
+        "displayName": "Mac List and Received Bubble · Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.00267 286.35)",
+          "oklch(26.43% 0.00267 286.35)",
+          "oklch(37.86% 0.00267 286.35)",
+          "oklch(49.29% 0.00267 286.35)",
+          "oklch(60.71% 0.00267 286.35)",
+          "oklch(72.14% 0.00267 286.35)",
+          "oklch(83.57% 0.00267 286.35)",
+          "oklch(95.00% 0.00267 286.35)"
+        ]
+      },
+      "desktop-list-dark": {
+        "role": "neutral",
+        "displayName": "Mac List and Received Bubble · Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.00177 286.29)",
+          "oklch(26.43% 0.00177 286.29)",
+          "oklch(37.86% 0.00177 286.29)",
+          "oklch(49.29% 0.00177 286.29)",
+          "oklch(60.71% 0.00177 286.29)",
+          "oklch(72.14% 0.00177 286.29)",
+          "oklch(83.57% 0.00177 286.29)",
+          "oklch(95.00% 0.00177 286.29)"
+        ]
+      },
+      "desktop-pinned-light": {
+        "role": "neutral",
+        "displayName": "Mac Pinned Row and Field · Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.00268 286.35)",
+          "oklch(26.43% 0.00268 286.35)",
+          "oklch(37.86% 0.00268 286.35)",
+          "oklch(49.29% 0.00268 286.35)",
+          "oklch(60.71% 0.00268 286.35)",
+          "oklch(72.14% 0.00268 286.35)",
+          "oklch(83.57% 0.00268 286.35)",
+          "oklch(95.00% 0.00268 286.35)"
+        ]
+      },
+      "desktop-pinned-dark": {
+        "role": "neutral",
+        "displayName": "Mac Pinned Row · Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.00342 286.22)",
+          "oklch(26.43% 0.00342 286.22)",
+          "oklch(37.86% 0.00342 286.22)",
+          "oklch(49.29% 0.00342 286.22)",
+          "oklch(60.71% 0.00342 286.22)",
+          "oklch(72.14% 0.00342 286.22)",
+          "oklch(83.57% 0.00342 286.22)",
+          "oklch(95.00% 0.00342 286.22)"
+        ]
+      },
+      "desktop-rail-light": {
+        "role": "neutral",
+        "displayName": "Mac Navigation Rail · Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.00291 264.54)",
+          "oklch(26.43% 0.00291 264.54)",
+          "oklch(37.86% 0.00291 264.54)",
+          "oklch(49.29% 0.00291 264.54)",
+          "oklch(60.71% 0.00291 264.54)",
+          "oklch(72.14% 0.00291 264.54)",
+          "oklch(83.57% 0.00291 264.54)",
+          "oklch(95.00% 0.00291 264.54)"
+        ]
+      },
+      "desktop-rail-dark": {
+        "role": "neutral",
+        "displayName": "Mac Navigation Rail · Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.00340 228.90)",
+          "oklch(26.43% 0.00340 228.90)",
+          "oklch(37.86% 0.00340 228.90)",
+          "oklch(49.29% 0.00340 228.90)",
+          "oklch(60.71% 0.00340 228.90)",
+          "oklch(72.14% 0.00340 228.90)",
+          "oklch(83.57% 0.00340 228.90)",
+          "oklch(95.00% 0.00340 228.90)"
+        ]
+      },
+      "desktop-panel-dark": {
+        "role": "neutral",
+        "displayName": "Mac Panel and Border · Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.00181 286.28)",
+          "oklch(26.43% 0.00181 286.28)",
+          "oklch(37.86% 0.00181 286.28)",
+          "oklch(49.29% 0.00181 286.28)",
+          "oklch(60.71% 0.00181 286.28)",
+          "oklch(72.14% 0.00181 286.28)",
+          "oklch(83.57% 0.00181 286.28)",
+          "oklch(95.00% 0.00181 286.28)"
+        ]
+      },
+      "desktop-text-light": {
+        "role": "neutral",
+        "displayName": "Mac Primary Text · Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.00386 286.08)",
+          "oklch(26.43% 0.00386 286.08)",
+          "oklch(37.86% 0.00386 286.08)",
+          "oklch(49.29% 0.00386 286.08)",
+          "oklch(60.71% 0.00386 286.08)",
+          "oklch(72.14% 0.00386 286.08)",
+          "oklch(83.57% 0.00386 286.08)",
+          "oklch(95.00% 0.00386 286.08)"
+        ]
+      },
+      "desktop-text-dark": {
+        "role": "neutral",
+        "displayName": "Mac Primary Text · Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.00539 286.29)",
+          "oklch(26.43% 0.00539 286.29)",
+          "oklch(37.86% 0.00539 286.29)",
+          "oklch(49.29% 0.00539 286.29)",
+          "oklch(60.71% 0.00539 286.29)",
+          "oklch(72.14% 0.00539 286.29)",
+          "oklch(83.57% 0.00539 286.29)",
+          "oklch(95.00% 0.00539 286.29)"
+        ]
+      },
+      "desktop-support-light": {
+        "role": "neutral",
+        "displayName": "Mac Supporting Text and Placeholder · Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.00628 286.17)",
+          "oklch(26.43% 0.00628 286.17)",
+          "oklch(37.86% 0.00628 286.17)",
+          "oklch(49.29% 0.00628 286.17)",
+          "oklch(60.71% 0.00628 286.17)",
+          "oklch(72.14% 0.00628 286.17)",
+          "oklch(83.57% 0.00628 286.17)",
+          "oklch(95.00% 0.00628 286.17)"
+        ]
+      },
+      "desktop-support-dark": {
+        "role": "neutral",
+        "displayName": "Mac Supporting Text · Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.00853 286.19)",
+          "oklch(26.43% 0.00853 286.19)",
+          "oklch(37.86% 0.00853 286.19)",
+          "oklch(49.29% 0.00853 286.19)",
+          "oklch(60.71% 0.00853 286.19)",
+          "oklch(72.14% 0.00853 286.19)",
+          "oklch(83.57% 0.00853 286.19)",
+          "oklch(95.00% 0.00853 286.19)"
+        ]
+      },
+      "desktop-placeholder-dark": {
+        "role": "neutral",
+        "displayName": "Mac Placeholder · Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.00841 286.20)",
+          "oklch(26.43% 0.00841 286.20)",
+          "oklch(37.86% 0.00841 286.20)",
+          "oklch(49.29% 0.00841 286.20)",
+          "oklch(60.71% 0.00841 286.20)",
+          "oklch(72.14% 0.00841 286.20)",
+          "oklch(83.57% 0.00841 286.20)",
+          "oklch(95.00% 0.00841 286.20)"
+        ]
+      },
+      "desktop-field-dark": {
+        "role": "neutral",
+        "displayName": "Mac Field · Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.00333 286.24)",
+          "oklch(26.43% 0.00333 286.24)",
+          "oklch(37.86% 0.00333 286.24)",
+          "oklch(49.29% 0.00333 286.24)",
+          "oklch(60.71% 0.00333 286.24)",
+          "oklch(72.14% 0.00333 286.24)",
+          "oklch(83.57% 0.00333 286.24)",
+          "oklch(95.00% 0.00333 286.24)"
+        ]
+      },
+      "desktop-border-light": {
+        "role": "neutral",
+        "displayName": "Mac Border · Light",
+        "tonalRamp": [
+          "oklch(15.00% 0 0.00)",
+          "oklch(26.43% 0 0.00)",
+          "oklch(37.86% 0 0.00)",
+          "oklch(49.29% 0 0.00)",
+          "oklch(60.71% 0 0.00)",
+          "oklch(72.14% 0 0.00)",
+          "oklch(83.57% 0 0.00)",
+          "oklch(95.00% 0 0.00)"
+        ]
+      },
+      "shared-hover-light": {
+        "role": "neutral",
+        "displayName": "Shared Hover Surface · Light",
+        "tonalRamp": [
+          "oklch(15.00% 0 0.00)",
+          "oklch(26.43% 0 0.00)",
+          "oklch(37.86% 0 0.00)",
+          "oklch(49.29% 0 0.00)",
+          "oklch(60.71% 0 0.00)",
+          "oklch(72.14% 0 0.00)",
+          "oklch(83.57% 0 0.00)",
+          "oklch(95.00% 0 0.00)"
+        ]
+      },
+      "shared-hover-dark": {
+        "role": "neutral",
+        "displayName": "Shared Hover Surface · Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0 0.00)",
+          "oklch(26.43% 0 0.00)",
+          "oklch(37.86% 0 0.00)",
+          "oklch(49.29% 0 0.00)",
+          "oklch(60.71% 0 0.00)",
+          "oklch(72.14% 0 0.00)",
+          "oklch(83.57% 0 0.00)",
+          "oklch(95.00% 0 0.00)"
+        ]
+      },
+      "shared-link-light": {
+        "role": "secondary",
+        "displayName": "Slate Link · Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.07080 264.51)",
+          "oklch(26.43% 0.07080 264.51)",
+          "oklch(37.86% 0.07080 264.51)",
+          "oklch(49.29% 0.07080 264.51)",
+          "oklch(60.71% 0.07080 264.51)",
+          "oklch(72.14% 0.07080 264.51)",
+          "oklch(83.57% 0.07080 264.51)",
+          "oklch(95.00% 0.07080 264.51)"
+        ]
+      },
+      "shared-link-dark": {
+        "role": "secondary",
+        "displayName": "Slate Link · Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.04346 255.37)",
+          "oklch(26.43% 0.04346 255.37)",
+          "oklch(37.86% 0.04346 255.37)",
+          "oklch(49.29% 0.04346 255.37)",
+          "oklch(60.71% 0.04346 255.37)",
+          "oklch(72.14% 0.04346 255.37)",
+          "oklch(83.57% 0.04346 255.37)",
+          "oklch(95.00% 0.04346 255.37)"
+        ]
+      },
+      "shared-danger-light": {
+        "role": "secondary",
+        "displayName": "Destructive Red · Light",
+        "tonalRamp": [
+          "oklch(15.00% 0.17267 24.50)",
+          "oklch(26.43% 0.17267 24.50)",
+          "oklch(37.86% 0.17267 24.50)",
+          "oklch(49.29% 0.17267 24.50)",
+          "oklch(60.71% 0.17267 24.50)",
+          "oklch(72.14% 0.17267 24.50)",
+          "oklch(83.57% 0.17267 24.50)",
+          "oklch(95.00% 0.17267 24.50)"
+        ]
+      },
+      "shared-danger-dark": {
+        "role": "secondary",
+        "displayName": "Destructive Red · Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.16699 22.18)",
+          "oklch(26.43% 0.16699 22.18)",
+          "oklch(37.86% 0.16699 22.18)",
+          "oklch(49.29% 0.16699 22.18)",
+          "oklch(60.71% 0.16699 22.18)",
+          "oklch(72.14% 0.16699 22.18)",
+          "oklch(83.57% 0.16699 22.18)",
+          "oklch(95.00% 0.16699 22.18)"
+        ]
+      },
+      "shared-unread": {
+        "role": "secondary",
+        "displayName": "Unread Red",
+        "tonalRamp": [
+          "oklch(15.00% 0.20554 24.60)",
+          "oklch(26.43% 0.20554 24.60)",
+          "oklch(37.86% 0.20554 24.60)",
+          "oklch(49.29% 0.20554 24.60)",
+          "oklch(60.71% 0.20554 24.60)",
+          "oklch(72.14% 0.20554 24.60)",
+          "oklch(83.57% 0.20554 24.60)",
+          "oklch(95.00% 0.20554 24.60)"
+        ]
+      },
+      "catalog-paper": {
+        "role": "neutral",
+        "displayName": "Catalog Paper",
+        "tonalRamp": [
+          "oklch(15.00% 0 0.00)",
+          "oklch(26.43% 0 0.00)",
+          "oklch(37.86% 0 0.00)",
+          "oklch(49.29% 0 0.00)",
+          "oklch(60.71% 0 0.00)",
+          "oklch(72.14% 0 0.00)",
+          "oklch(83.57% 0 0.00)",
+          "oklch(95.00% 0 0.00)"
+        ]
+      },
+      "catalog-wash": {
+        "role": "neutral",
+        "displayName": "Catalog Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0 0.00)",
+          "oklch(26.43% 0 0.00)",
+          "oklch(37.86% 0 0.00)",
+          "oklch(49.29% 0 0.00)",
+          "oklch(60.71% 0 0.00)",
+          "oklch(72.14% 0 0.00)",
+          "oklch(83.57% 0 0.00)",
+          "oklch(95.00% 0 0.00)"
+        ]
+      },
+      "catalog-ink": {
+        "role": "neutral",
+        "displayName": "Catalog Primary Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0 0.00 / 0.9)",
+          "oklch(26.43% 0 0.00 / 0.9)",
+          "oklch(37.86% 0 0.00 / 0.9)",
+          "oklch(49.29% 0 0.00 / 0.9)",
+          "oklch(60.71% 0 0.00 / 0.9)",
+          "oklch(72.14% 0 0.00 / 0.9)",
+          "oklch(83.57% 0 0.00 / 0.9)",
+          "oklch(95.00% 0 0.00 / 0.9)"
+        ]
+      },
+      "catalog-body": {
+        "role": "neutral",
+        "displayName": "Catalog Body Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0 0.00 / 0.7)",
+          "oklch(26.43% 0 0.00 / 0.7)",
+          "oklch(37.86% 0 0.00 / 0.7)",
+          "oklch(49.29% 0 0.00 / 0.7)",
+          "oklch(60.71% 0 0.00 / 0.7)",
+          "oklch(72.14% 0 0.00 / 0.7)",
+          "oklch(83.57% 0 0.00 / 0.7)",
+          "oklch(95.00% 0 0.00 / 0.7)"
+        ]
+      },
+      "catalog-muted": {
+        "role": "neutral",
+        "displayName": "Catalog Supporting Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0 0.00 / 0.6)",
+          "oklch(26.43% 0 0.00 / 0.6)",
+          "oklch(37.86% 0 0.00 / 0.6)",
+          "oklch(49.29% 0 0.00 / 0.6)",
+          "oklch(60.71% 0 0.00 / 0.6)",
+          "oklch(72.14% 0 0.00 / 0.6)",
+          "oklch(83.57% 0 0.00 / 0.6)",
+          "oklch(95.00% 0 0.00 / 0.6)"
+        ]
+      },
+      "catalog-line": {
+        "role": "neutral",
+        "displayName": "Catalog Divider",
+        "tonalRamp": [
+          "oklch(15.00% 0 0.00 / 0.1)",
+          "oklch(26.43% 0 0.00 / 0.1)",
+          "oklch(37.86% 0 0.00 / 0.1)",
+          "oklch(49.29% 0 0.00 / 0.1)",
+          "oklch(60.71% 0 0.00 / 0.1)",
+          "oklch(72.14% 0 0.00 / 0.1)",
+          "oklch(83.57% 0 0.00 / 0.1)",
+          "oklch(95.00% 0 0.00 / 0.1)"
+        ]
+      },
+      "catalog-focus": {
+        "role": "primary",
+        "displayName": "Catalog Focus Green",
+        "tonalRamp": [
+          "oklch(15.00% 0.15913 151.38)",
+          "oklch(26.43% 0.15913 151.38)",
+          "oklch(37.86% 0.15913 151.38)",
+          "oklch(49.29% 0.15913 151.38)",
+          "oklch(60.71% 0.15913 151.38)",
+          "oklch(72.14% 0.15913 151.38)",
+          "oklch(83.57% 0.15913 151.38)",
+          "oklch(95.00% 0.15913 151.38)"
+        ]
+      },
+      "catalog-selected": {
+        "role": "primary",
+        "displayName": "Catalog Selection Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.07046 161.16)",
+          "oklch(26.43% 0.07046 161.16)",
+          "oklch(37.86% 0.07046 161.16)",
+          "oklch(49.29% 0.07046 161.16)",
+          "oklch(60.71% 0.07046 161.16)",
+          "oklch(72.14% 0.07046 161.16)",
+          "oklch(83.57% 0.07046 161.16)",
+          "oklch(95.00% 0.07046 161.16)"
+        ]
+      },
+      "catalog-selected-ink": {
+        "role": "neutral",
+        "displayName": "Catalog Selection Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0 0.00)",
+          "oklch(26.43% 0 0.00)",
+          "oklch(37.86% 0 0.00)",
+          "oklch(49.29% 0 0.00)",
+          "oklch(60.71% 0 0.00)",
+          "oklch(72.14% 0 0.00)",
+          "oklch(83.57% 0 0.00)",
+          "oklch(95.00% 0 0.00)"
+        ]
+      },
+      "code-background": {
+        "role": "neutral",
+        "displayName": "Code Pane",
+        "tonalRamp": [
+          "oklch(15.00% 0 0.00)",
+          "oklch(26.43% 0 0.00)",
+          "oklch(37.86% 0 0.00)",
+          "oklch(49.29% 0 0.00)",
+          "oklch(60.71% 0 0.00)",
+          "oklch(72.14% 0 0.00)",
+          "oklch(83.57% 0 0.00)",
+          "oklch(95.00% 0 0.00)"
+        ]
+      },
+      "code-text": {
+        "role": "neutral",
+        "displayName": "Code Text",
+        "tonalRamp": [
+          "oklch(15.00% 0 0.00)",
+          "oklch(26.43% 0 0.00)",
+          "oklch(37.86% 0 0.00)",
+          "oklch(49.29% 0 0.00)",
+          "oklch(60.71% 0 0.00)",
+          "oklch(72.14% 0 0.00)",
+          "oklch(83.57% 0 0.00)",
+          "oklch(95.00% 0 0.00)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "native-title": {
+        "displayName": "Native Title",
+        "purpose": "Chat header titles."
+      },
+      "native-body": {
+        "displayName": "Native Body",
+        "purpose": "Message body size; the desktop base uses the same size with its inherited line height."
+      },
+      "native-control": {
+        "displayName": "Native Control",
+        "purpose": "Compact buttons, menu labels and attachment titles."
+      },
+      "native-field": {
+        "displayName": "Native Field",
+        "purpose": "Single-line text fields."
+      },
+      "native-support": {
+        "displayName": "Native Support",
+        "purpose": "Conversation previews, descriptions and quotes."
+      },
+      "native-caption": {
+        "displayName": "Native Caption",
+        "purpose": "Authors, message status and supporting attachment details."
+      },
+      "catalog-display": {
+        "displayName": "Catalog Display",
+        "purpose": "Overview title, with the existing narrow-screen override."
+      },
+      "catalog-heading": {
+        "displayName": "Catalog Heading",
+        "purpose": "Website section headings."
+      },
+      "catalog-body": {
+        "displayName": "Catalog Reading",
+        "purpose": "Website explanatory prose."
+      },
+      "catalog-label": {
+        "displayName": "Catalog Label",
+        "purpose": "Website tools, filters and navigation labels."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Source panes, commands and API identifiers."
+      }
+    },
+    "shadows": [
+      {
+        "name": "native-menu",
+        "value": "0 6px 24px rgba(0, 0, 0, 0.2)",
+        "purpose": "Ambient separation for a floating DesktopMenu."
+      },
+      {
+        "name": "native-focus-inset",
+        "value": "inset 0 0 0 4px #000, inset 0 0 0 2px #fff",
+        "purpose": "Two-color focus bands for native buttons and inherited surfaces."
+      },
+      {
+        "name": "native-focus-outer",
+        "value": "0 0 0 4px #000, 0 0 0 2px #fff",
+        "purpose": "Two-color outer focus bands for native switches."
+      },
+      {
+        "name": "catalog-selected-segment",
+        "value": "0 1px 3px #00000012",
+        "purpose": "Subtle lift within the website segmented control."
+      }
+    ],
+    "motion": [
+      {
+        "name": "catalog-thumbnail-transform",
+        "value": "transform .24s cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Phone-layout thumbnail scale on hover; desktop thumbnail layout suppresses zoom."
+      },
+      {
+        "name": "catalog-link-reveal",
+        "value": "opacity .15s",
+        "purpose": "Reveal the capture-card link affordance."
+      },
+      {
+        "name": "native-popover",
+        "value": "none",
+        "purpose": "DesktopPopover uses Motion::None."
+      },
+      {
+        "name": "catalog-reduced-motion",
+        "value": "none",
+        "purpose": "The existing prefers-reduced-motion rule removes website transitions."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "catalog-medium-max",
+        "value": "1199px"
+      },
+      {
+        "name": "catalog-compact-max",
+        "value": "799px"
+      },
+      {
+        "name": "catalog-narrow-max",
+        "value": "559px"
+      },
+      {
+        "name": "catalog-sticky-min",
+        "value": "1100px"
+      },
+      {
+        "name": "native-chat-single-pane-below",
+        "value": "760px"
+      },
+      {
+        "name": "native-settings-compact-below",
+        "value": "600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Desktop Primary Button",
+      "kind": "button",
+      "refersTo": "desktop-button-primary",
+      "description": "CSS translation of the default-light native primary button; the actual native foreground is calculated from the current brand.",
+      "html": "<button type=\"button\" class=\"ds-button ds-primary\">Send</button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:34px;padding:0 12px;border:0;border-radius:5px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;line-height:1.3;cursor:pointer}.ds-button:focus-visible{outline:none;box-shadow:inset 0 0 0 4px #000,inset 0 0 0 2px #fff}.ds-button:active:not(:disabled){opacity:.65}.ds-button:disabled{opacity:.4;cursor:default}.ds-primary{background:#07c160;color:#000}.ds-primary:hover:not(:disabled){opacity:.88}"
+    },
+    {
+      "name": "Desktop Filled Button",
+      "kind": "button",
+      "refersTo": "desktop-button-filled",
+      "description": "Default-light field surface with primary text, used for secondary actions.",
+      "html": "<button type=\"button\" class=\"ds-button ds-filled\">Open file</button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:34px;padding:0 12px;border:0;border-radius:5px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;line-height:1.3;cursor:pointer}.ds-button:focus-visible{outline:none;box-shadow:inset 0 0 0 4px #000,inset 0 0 0 2px #fff}.ds-button:active:not(:disabled){opacity:.65}.ds-button:disabled{opacity:.4;cursor:default}.ds-filled{background:#e6e6e8;color:#1a1a1c}.ds-filled:hover:not(:disabled){background:#ececec}"
+    },
+    {
+      "name": "Desktop Quiet Button",
+      "kind": "button",
+      "refersTo": "desktop-button-quiet",
+      "description": "Transparent native action with the shared hover surface and dual focus bands.",
+      "html": "<button type=\"button\" class=\"ds-button ds-quiet\">Cancel</button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:34px;padding:0 12px;border:0;border-radius:5px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;line-height:1.3;cursor:pointer}.ds-button:focus-visible{outline:none;box-shadow:inset 0 0 0 4px #000,inset 0 0 0 2px #fff}.ds-button:active:not(:disabled){opacity:.65}.ds-button:disabled{opacity:.4;cursor:default}.ds-quiet{background:transparent;color:#1a1a1c}.ds-quiet:hover:not(:disabled){background:#ececec}"
+    },
+    {
+      "name": "Desktop Danger Button",
+      "kind": "button",
+      "refersTo": "desktop-button-danger",
+      "description": "Destructive text on the light field surface.",
+      "html": "<button type=\"button\" class=\"ds-button ds-danger\">Delete</button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:34px;padding:0 12px;border:0;border-radius:5px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;line-height:1.3;cursor:pointer}.ds-button:focus-visible{outline:none;box-shadow:inset 0 0 0 4px #000,inset 0 0 0 2px #fff}.ds-button:active:not(:disabled){opacity:.65}.ds-button:disabled{opacity:.4;cursor:default}.ds-danger{background:#e6e6e8;color:#c84040}.ds-danger:hover:not(:disabled){background:#ececec}"
+    },
+    {
+      "name": "Desktop Search Field",
+      "kind": "input",
+      "refersTo": "desktop-field",
+      "description": "Default-light search field with native placeholder color and an accent focus frame; this snippet illustrates the wrapper rather than the GPUI editor.",
+      "html": "<label class=\"ds-field\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.65\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"10\" cy=\"10\" r=\"6.5\"/><path d=\"m15 15 6 6\"/></svg><input type=\"search\" aria-label=\"Search conversations\" placeholder=\"Search\"></label>",
+      "css": ".ds-field{display:flex;align-items:center;gap:7px;height:30px;max-width:300px;padding:0 9px;border:1px solid transparent;border-radius:5px;background:#e6e6e8;color:#1a1a1c}.ds-field svg{width:15px;height:15px;flex-shrink:0;color:#626266}.ds-field input{min-width:0;width:100%;border:0;padding:0;background:transparent;color:#1a1a1c;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;line-height:1.2}.ds-field input::placeholder{color:#626266;opacity:1}.ds-field input:focus-visible{outline:none}.ds-field:focus-within{border-color:#07c160}"
+    },
+    {
+      "name": "Desktop Switch",
+      "kind": "custom",
+      "refersTo": "desktop-switch",
+      "description": "Static controlled on/off states with the source's outer focus indicator; application callbacks own toggling.",
+      "html": "<div class=\"ds-switches\"><button type=\"button\" role=\"switch\" aria-checked=\"true\" aria-label=\"Notifications on\" class=\"ds-switch\"><span></span></button><button type=\"button\" role=\"switch\" aria-checked=\"false\" aria-label=\"Notifications off\" class=\"ds-switch\"><span></span></button></div>",
+      "css": ".ds-switches{display:flex;gap:12px}.ds-switch{position:relative;flex-shrink:0;width:36px;height:21px;border:0;padding:0;border-radius:12px;background:#626266;cursor:pointer}.ds-switch[aria-checked=true]{background:#07c160}.ds-switch span{position:absolute;top:2px;left:2px;width:17px;height:17px;border-radius:50%;background:#fff}.ds-switch[aria-checked=true] span{left:17px}.ds-switch:focus-visible{outline:none;box-shadow:0 0 0 4px #000,0 0 0 2px #fff}.ds-switch:disabled{opacity:.4;cursor:default}"
+    },
+    {
+      "name": "Mac Conversation Selection",
+      "kind": "nav",
+      "refersTo": "desktop-selection-reference",
+      "description": "Ordinary reference selection preserves approved white text below normal-text AA; the second row demonstrates the black, opaque care-mode alternative. This exception does not apply to new surfaces.",
+      "html": "<nav class=\"ds-conversations\" aria-label=\"Conversation selection examples\"><button type=\"button\" class=\"ds-conversation ds-reference\" aria-selected=\"true\"><span class=\"ds-avatar\">MC</span><span class=\"ds-row-copy\"><span class=\"ds-row-title\">Design studio</span><span class=\"ds-row-preview\">Morgan: The prototype is ready.</span></span><span class=\"ds-row-time\">09:41</span></button><button type=\"button\" class=\"ds-conversation ds-care\" aria-selected=\"true\"><span class=\"ds-avatar\">MC</span><span class=\"ds-row-copy\"><span class=\"ds-row-title\">Design studio · Care</span><span class=\"ds-row-preview\">Morgan: The prototype is ready.</span></span><span class=\"ds-row-time\">09:41</span></button></nav>",
+      "css": ".ds-conversations{max-width:340px;background:#eeeef0}.ds-conversation{display:flex;align-items:center;width:100%;gap:10px;padding:10px 12px;border:0;border-radius:5px;background:#1cac72;text-align:left;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.3;cursor:pointer}.ds-reference{color:#fff}.ds-avatar{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:38px;height:38px;border-radius:5px;background:#647f72;color:#000;font-size:12.16px;font-weight:500}.ds-row-copy{display:flex;flex-direction:column;gap:5px;flex:1;min-width:0}.ds-row-title{font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ds-row-preview{font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ds-row-time{font-size:10px;align-self:flex-start}.ds-reference .ds-row-preview,.ds-reference .ds-row-time{color:rgba(255,255,255,.7)}.ds-care{color:#000}.ds-care .ds-row-preview,.ds-care .ds-row-time{color:#000}.ds-conversation:hover{opacity:.88}.ds-conversation:active{opacity:.65}.ds-conversation:focus-visible{outline:none;box-shadow:inset 0 0 0 4px #000,inset 0 0 0 2px #fff}"
+    },
+    {
+      "name": "Message Bubbles and Tails",
+      "kind": "custom",
+      "refersTo": "desktop-message-received",
+      "description": "Default-light incoming and outgoing native bubble geometry, translated into passive HTML; tails share the body fill.",
+      "html": "<div class=\"ds-messages\"><div class=\"ds-message-row\"><div class=\"ds-bubble ds-received\"><svg viewBox=\"0 0 8 12\" aria-hidden=\"true\"><path d=\"M8 0 1 6 8 12Z\"/></svg>The desktop components are ready for a look.</div></div><div class=\"ds-message-row ds-outgoing\"><div class=\"ds-bubble ds-sent\"><svg viewBox=\"0 0 8 12\" aria-hidden=\"true\"><path d=\"M0 0 7 6 0 12Z\"/></svg>Nice. How do the compact controls feel on the Mac?</div></div></div>",
+      "css": ".ds-messages{display:flex;flex-direction:column;gap:22px;padding:24px;background:#fafafa;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}.ds-message-row{display:flex;gap:12px;align-items:flex-start;width:100%}.ds-outgoing{flex-direction:row-reverse}.ds-bubble{position:relative;max-width:78%;padding:8px 12px;border-radius:5px;font-size:14px;line-height:1.5}.ds-received{background:#eeeef0;color:#1a1a1c}.ds-sent{background:#95ec69;color:#000}.ds-bubble svg{position:absolute;top:9px;width:8px;height:12px}.ds-received svg{left:-6px;fill:#eeeef0}.ds-sent svg{right:-6px;fill:#95ec69}"
+    },
+    {
+      "name": "Attachment Content",
+      "kind": "card",
+      "refersTo": "desktop-attachment",
+      "description": "Passive file attachment content with the original file icon; the host may compose it inside a DesktopButton to attach an action.",
+      "html": "<div class=\"ds-attachment\"><span class=\"ds-file-icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.65\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 2h9l5 5v15H5Zm9 0v6h5M8 13h8M8 17h6\"/></svg></span><span class=\"ds-file-copy\"><span class=\"ds-file-title\">Desktop components.pdf</span><span class=\"ds-file-detail\">PDF document</span></span></div>",
+      "css": ".ds-attachment{display:flex;align-items:center;gap:12px;width:236px;max-width:100%;color:#1a1a1c;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}.ds-file-icon{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:42px;height:42px;border-radius:5px;background:#fafafa;color:#576b95}.ds-file-icon svg{width:24px;height:24px}.ds-file-copy{display:flex;flex:1;min-width:0;flex-direction:column}.ds-file-title{font-size:13px}.ds-file-detail{margin-top:5px;font-size:11px;color:#626266}"
+    },
+    {
+      "name": "Catalog Category",
+      "kind": "chip",
+      "refersTo": "catalog-category-selected",
+      "description": "The website category control, with a light green selection wash and dark text.",
+      "html": "<div class=\"ds-categories\" role=\"group\" aria-label=\"Component category\"><button type=\"button\" aria-pressed=\"true\" class=\"ds-category\">Mac desktop</button><button type=\"button\" aria-pressed=\"false\" class=\"ds-category\">Forms &amp; inputs</button></div>",
+      "css": ".ds-categories{display:flex;gap:8px;align-items:center}.ds-category{border:1px solid transparent;padding:6px 11px;min-height:34px;border-radius:5px;background:transparent;color:var(--muted,rgba(0,0,0,.6));font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',sans-serif;font-size:12px;white-space:nowrap;cursor:pointer}.ds-category:hover{color:var(--ink,rgba(0,0,0,.9));background:var(--wash,#f7f7f7)}.ds-category[aria-pressed=true]{background:#b4ecce;color:#191919}.ds-category:focus-visible{outline:2px solid var(--green,#059a4c);outline-offset:4px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Native Mac Component Catalog",
+    "overview": "The native desktop collection uses the compact geometry, pane relationships and system typography of a modern Mac chat interface. Quiet neutral surfaces carry conversations, controls and content; green identifies a small set of meaningful states. The mobile collection retains its WeUI identity. Both collections follow the existing global `Theme`, while desktop surfaces keep their own sampled Mac roles.\n\nThe website is a restrained visual catalog. Real native renders, readable labels and source material carry its character. Its white canvas and modest controls give the component examples room to be inspected. The original desktop collection and the WeUI mobile ports remain identifiable within the same catalog.\n\nThis records the implemented system in [DesktopPalette and controls](src/desktop/controls.rs), [messages](src/desktop/messaging.rs), [panels](src/desktop/panels.rs), [icons](src/desktop/icons.rs), [native composition](examples/gallery/pages/macos.rs) and [catalog styles](website/style.css). The sampled surface map and compatibility limits live in [DESKTOP.md](docs/DESKTOP.md); the full mobile palette remains in [tokens.json](docs/tokens.json). This is a visual reference, not a statement of complete platform or accessibility acceptance.",
+    "keyCharacteristics": [
+      "Compact Mac controls within clearly differentiated panes.",
+      "Sampled desktop neutrals with shared WeUI control accents.",
+      "Native system type, small radii and original geometric icons.",
+      "A quiet catalog that presents actual native component captures."
+    ],
+    "rules": [
+      {
+        "name": "The Sampled Surface Rule",
+        "body": "Keep canvas, list, rail, pinned, panel, field and bubble roles distinct using the current `DesktopPalette`; mobile surface aliases do not replace the sampled Mac map.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Theme Rule",
+        "body": "Light, dark, care and brand changes resolve through the existing global `Theme`; component collections do not create independent appearance state.",
+        "section": "colors"
+      },
+      {
+        "name": "The Native Type Rule",
+        "body": "Use the platform UI family for native controls and content; use monospace for code and identifiers.",
+        "section": "typography"
+      },
+      {
+        "name": "The Surface Before Shadow Rule",
+        "body": "Separate persistent native panes with their surface roles and dividers; reserve ambient shadow for floating layers.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use the sampled Mac surface roles for the desktop collection and the existing WeUI palette for the mobile collection.",
+      "**Do** keep both collections connected to the existing global Theme, including light, dark, care and brand state.",
+      "**Do** retain native system typography, compact component geometry and the original SVG icon vocabulary.",
+      "**Do** preserve focus, disabled, selected, error and loading presentation when composing reusable controls.",
+      "**Do** keep incoming and outgoing bubble tails aligned with their direction and colored from the bubble surface.",
+      "**Do** describe the ordinary selected-row white text as the approved reference compatibility treatment and expose the care-mode alternative."
+    ],
+    "donts": [
+      "**Don't** replace sampled desktop surfaces with generic green-tinted or mobile surface mappings.",
+      "**Don't** apply the selected-row contrast exception as a general legibility rule or claim full AA acceptance.",
+      "**Don't** turn synthetic avatar colors into new theme tokens.",
+      "**Don't** replace the original geometric SVG icons with text glyph approximations.",
+      "**Don't** add persistent pane shadows where the existing surface and divider hierarchy provides separation."
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "application": "weGPUI Mac Gallery",
+  "checks": [
+    "Unicode text editing",
+    "local send clears draft and restores unavailable state",
+    "emoji selection updates draft",
+    "search filters conversations",
+    "clear restores conversations",
+    "settings navigation",
+    "controlled switch on to off",
+    "appearance popup",
+    "Escape dismisses popup",
+    "shortcut settings groups",
+    "Tab Down Enter chooses Dark Mode"
+  ],
+  "observedSelectedMenu": [
+    "\t\t\t4 (selected) Dark Mode"
+  ],
+  "scope": "macOS native synthetic gallery; no WeChat messages or external transport"
+}

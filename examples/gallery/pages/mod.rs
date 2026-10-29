@@ -21,6 +21,7 @@ pub mod layers;
 pub mod list;
 pub mod loading;
 pub mod loadmore;
+pub mod macos;
 pub mod msg;
 pub mod navbar;
 pub mod panel;
@@ -43,6 +44,15 @@ pub type Build = fn(&'static str, &Args, &mut Window, &mut App) -> AnyView;
 
 pub const ROUTES: &[(&str, Build)] = &[
     ("home", home::build),
+    ("desktop-chat", macos::build),
+    ("desktop-controls", macos::build),
+    ("desktop-messages", macos::build),
+    ("desktop-contacts", macos::build),
+    ("desktop-settings", macos::build),
+    ("desktop-overlays", macos::build),
+    ("desktop-history", macos::build),
+    ("desktop-chat-info", macos::build),
+    ("desktop-favorites", macos::build),
     ("desktop-form", desktop_form::build),
     ("layers", layers::build),
     ("languages", languages::build),

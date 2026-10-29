@@ -1,0 +1,110 @@
+{
+  "checked_at": "2026-10-29T12:41:33.165373+00:00",
+  "base_commit": "b5904aec7ccb5d9f9dc6c243240e4a4b006da1d9",
+  "native_builds": {
+    "macOS": {
+      "result": "PASS",
+      "command": "cargo build --example gallery --locked --offline",
+      "log_sha256": "e817dd15603102cc32d0af1cfbd7688f33a021dae0e00799ef1566953ad42037"
+    },
+    "Linux VM": {
+      "result": "PASS",
+      "command": "cargo build --all-targets --locked --offline",
+      "log_sha256": "85d23811dbf82788899d0dc1fde7030a9ec9ed01c882e0f2052cd3783766100c"
+    }
+  },
+  "vm_source_checks": [
+    {
+      "name": "clippy",
+      "command": [
+        "/work/build-tools/scripts/dev-cargo.sh",
+        "clippy",
+        "--manifest-path",
+        "/src/Cargo.toml",
+        "--all-targets",
+        "--locked",
+        "--offline",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "tests",
+      "command": [
+        "/work/build-tools/scripts/dev-cargo.sh",
+        "test",
+        "--manifest-path",
+        "/src/Cargo.toml",
+        "--lib",
+        "--example",
+        "gallery",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "existing_tests": {
+    "library": 54,
+    "gallery": 3,
+    "failures": 0
+  },
+  "native_capture_count": 46,
+  "source_manifest_sha256": "27ee61e536c73da6369fa2c39bf15e33b4b387f7e767d50919837fe943986d4c",
+  "native_interactions": {
+    "application": "weGPUI Mac Gallery",
+    "checks": [
+      "Unicode text editing",
+      "local send clears draft and restores unavailable state",
+      "emoji selection updates draft",
+      "search filters conversations",
+      "clear restores conversations",
+      "settings navigation",
+      "controlled switch on to off",
+      "appearance popup",
+      "Escape dismisses popup",
+      "shortcut settings groups",
+      "Tab Down Enter chooses Dark Mode"
+    ],
+    "observedSelectedMenu": [
+      "\t\t\t4 (selected) Dark Mode"
+    ],
+    "scope": "macOS native synthetic gallery; no WeChat messages or external transport"
+  },
+  "browser_checks": {
+    "browser": "156.0.8078.47",
+    "routes_checked": 71,
+    "state_theme_routes_checked": 588,
+    "captures_decoded": 852,
+    "api_links_checked": 41,
+    "page_errors": []
+  },
+  "visual_review": {
+    "disposition": "ship",
+    "scope": "Two native fixes scored resolved, including the explicitly approved default-selection contrast constraint; no material regressions in nine native recaptures.",
+    "limitations": [
+      "Default Mac selected-row white text is below normal-text AA; care mode provides black text.",
+      "Native interactions preceded the final bubble-tail and foreground-only corrections.",
+      "Full reader, IME and platform acceptance remains open."
+    ]
+  },
+  "publication": {
+    "status": "pending final source push and Pages workflow"
+  },
+  "native_capture_platforms": {
+    "macOS": 45,
+    "Linux ARM64 VM": 1
+  },
+  "supplemental_vm_care_capture": "vm/capture.json",
+  "browser_interaction_subset": {
+    "result": "PASS",
+    "checks": 4,
+    "mounts": [
+      "root",
+      "project-prefix"
+    ],
+    "suite_complete": false
+  }
+}

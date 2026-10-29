@@ -23,6 +23,11 @@ versioning once a release policy is decided. No version has been published.
 
 ### Added
 
+- A reusable Mac desktop collection in `wegpui::desktop`, with nine native gallery pages,
+  sampled Mac surfaces, WeUI control accents, compact controls, chat layouts, messages, composer, contacts,
+  settings, menus, dialogs, emoji, history and media. The website puts the Rust desktop
+  examples first and retains the mobile WeUI collection.
+
 - Pinned WeUI source/style inventory and a complete paired-capture worklist, a verified local
   UI reference, and a Linux capture runner covering themes, care, custom brand, states,
   responsive widths and scroll positions. Captures remain distinct from parity acceptance.

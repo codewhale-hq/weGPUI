@@ -351,8 +351,10 @@ impl TextInput {
 
     /// Overrides the placeholder colour; `None` restores the theme's placeholder colour.
     pub fn set_placeholder_color(&mut self, color: Option<Hsla>, cx: &mut Context<Self>) {
-        self.placeholder_color = color;
-        cx.notify();
+        if self.placeholder_color != color {
+            self.placeholder_color = color;
+            cx.notify();
+        }
     }
 
     /// Sets the accessible name, usually the visible form label of the cell.
