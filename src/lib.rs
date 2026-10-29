@@ -67,5 +67,6 @@ pub fn init(cx: &mut gpui::App) {
     Theme::init(cx);
     I18n::init(cx);
     input::init(cx);
+    desktop::init(cx);
     motion::sync_reduce_motion(cx);
 }

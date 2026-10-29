@@ -9,6 +9,16 @@ use crate::{
 };
 use gpui::{prelude::*, *};
 
+actions!(weui_desktop_dropdown, [DismissDesktopDropdown]);
+
+pub(super) fn init(cx: &mut App) {
+    cx.bind_keys([KeyBinding::new(
+        "escape",
+        DismissDesktopDropdown,
+        Some("WeuiPopupMenu"),
+    )]);
+}
+
 #[derive(IntoElement)]
 pub struct DesktopSettingRow {
     label: SharedString,
@@ -576,6 +586,7 @@ pub struct DesktopDropdown {
     label: SharedString,
     colors: DesktopDropdownColors,
     width: f32,
+    max_height: Option<Pixels>,
     trigger: DropdownTrigger,
     builder: DropdownBuilder,
     action_context: Option<FocusHandle>,
@@ -602,6 +613,18 @@ struct DesktopDropdownState {
     _activation: Subscription,
 }
 
+fn dismiss_dropdown(state: &Entity<DesktopDropdownState>, window: &mut Window, cx: &mut App) {
+    state.update(cx, |state, cx| {
+        state.open = false;
+        state.entries.clear();
+        state.handles.clear();
+        if let Some(focus) = state.return_focus.take() {
+            window.focus(&focus, cx);
+        }
+        cx.notify();
+    });
+}
+
 impl DesktopDropdown {
     pub fn new(
         id: impl Into<ElementId>,
@@ -615,6 +638,7 @@ impl DesktopDropdown {
             label: label.into(),
             colors,
             width: 300.,
+            max_height: None,
             trigger: Box::new(trigger),
             builder: std::rc::Rc::new(builder),
             action_context: None,
@@ -627,6 +651,11 @@ impl DesktopDropdown {
 
     pub fn width(mut self, width: f32) -> Self {
         self.width = width;
+        self
+    }
+
+    pub fn max_height(mut self, height: Pixels) -> Self {
+        self.max_height = Some(height.max(px(0.)));
         self
     }
 
@@ -847,7 +876,7 @@ impl RenderOnce for DesktopDropdown {
         let below_y = (trigger_bounds.bottom() + px(4.)).max(top_inset);
         let below = (viewport.height - below_y - px(8.)).max(px(0.));
         let above = (trigger_bounds.top() - top_inset - px(4.)).max(px(0.));
-        let estimated = entries
+        let estimated = px(entries
             .iter()
             .map(|entry| match entry {
                 DesktopDropdownEntry::Item(item) if item.detail.is_some() => 64.,
@@ -856,9 +885,11 @@ impl RenderOnce for DesktopDropdown {
                 DesktopDropdownEntry::Separator => 11.,
             })
             .sum::<f32>()
-            + 10.;
-        let opens_above = below < px(estimated) && above > below;
+            + 10.);
+        let estimated = self.max_height.map_or(estimated, |max| estimated.min(max));
+        let opens_above = below < estimated && above > below;
         let available = if opens_above { above } else { below };
+        let available = self.max_height.map_or(available, |max| available.min(max));
         let position = if opens_above {
             trigger_bounds.origin - point(px(0.), px(4.))
         } else {
@@ -940,6 +971,19 @@ impl RenderOnce for DesktopDropdown {
                     });
                 }
             })
+            .on_action({
+                let state = state.clone();
+                move |_: &DismissDesktopDropdown, window, cx| {
+                    if state.read(cx).disabled
+                        || !state.read(cx).open
+                        || state.read(cx).generation != generation
+                    {
+                        cx.propagate();
+                        return;
+                    }
+                    dismiss_dropdown(&state, window, cx);
+                }
+            })
             .on_key_down({
                 let state = state.clone();
                 let handles = handles.clone();
@@ -965,18 +1009,14 @@ impl RenderOnce for DesktopDropdown {
                             let tab = event.keystroke.key == "tab";
                             let backward = event.keystroke.modifiers.shift;
                             let trigger = state.read(cx).trigger_focus.clone();
-                            state.update(cx, |state, cx| {
-                                state.open = false;
-                                state.entries.clear();
-                                state.handles.clear();
-                                if tab {
-                                    window.focus(&state.trigger_focus, cx);
-                                } else if let Some(focus) = state.return_focus.take() {
-                                    window.focus(&focus, cx);
-                                }
-                                cx.notify();
-                            });
                             if tab {
+                                state.update(cx, |state, cx| {
+                                    state.open = false;
+                                    state.entries.clear();
+                                    state.handles.clear();
+                                    window.focus(&state.trigger_focus, cx);
+                                    cx.notify();
+                                });
                                 let state = state.clone();
                                 window.on_next_frame(move |window, cx| {
                                     if !state.read(cx).open
@@ -990,6 +1030,8 @@ impl RenderOnce for DesktopDropdown {
                                         }
                                     }
                                 });
+                            } else {
+                                dismiss_dropdown(&state, window, cx);
                             }
                         }
                         "up" | "down" | "home" | "end" => {

@@ -16,6 +16,10 @@ pub use icons::*;
 pub use messaging::*;
 pub use panels::*;
 
+pub(crate) fn init(cx: &mut App) {
+    panels::init(cx);
+}
+
 #[derive(IntoElement)]
 pub struct FormRow {
     id: ElementId,
