@@ -247,12 +247,26 @@ impl RenderOnce for DesktopButton {
     }
 }
 
+#[derive(Clone, Copy)]
+pub struct DesktopSwitchColors {
+    pub checked_track: Hsla,
+    pub unchecked_track: Hsla,
+    pub checked_thumb: Hsla,
+    pub unchecked_thumb: Hsla,
+    pub disabled_checked_track: Hsla,
+    pub disabled_unchecked_track: Hsla,
+    pub disabled_checked_thumb: Hsla,
+    pub disabled_unchecked_thumb: Hsla,
+}
+
 #[derive(IntoElement)]
 pub struct DesktopSwitch {
     id: ElementId,
     label: SharedString,
     checked: bool,
     disabled: bool,
+    visible_label: Option<SharedString>,
+    colors: Option<DesktopSwitchColors>,
     on_change: Option<ChangeHandler<bool>>,
 }
 
@@ -263,6 +277,8 @@ impl DesktopSwitch {
             label: label.into(),
             checked: false,
             disabled: false,
+            visible_label: None,
+            colors: None,
             on_change: None,
         }
     }
@@ -274,6 +290,14 @@ impl DesktopSwitch {
         self.disabled = disabled;
         self
     }
+    pub fn visible_label(mut self, label: impl Into<SharedString>) -> Self {
+        self.visible_label = Some(label.into());
+        self
+    }
+    pub fn colors(mut self, colors: DesktopSwitchColors) -> Self {
+        self.colors = Some(colors);
+        self
+    }
     pub fn on_change(mut self, handler: impl Fn(&bool, &mut Window, &mut App) + 'static) -> Self {
         self.on_change = Some(Box::new(handler));
         self
@@ -283,6 +307,35 @@ impl DesktopSwitch {
 impl RenderOnce for DesktopSwitch {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let p = DesktopPalette::get(cx);
+        let (track, thumb) = match (self.colors, self.disabled, self.checked) {
+            (Some(colors), false, true) => (colors.checked_track, colors.checked_thumb),
+            (Some(colors), false, false) => (colors.unchecked_track, colors.unchecked_thumb),
+            (Some(colors), true, true) => {
+                (colors.disabled_checked_track, colors.disabled_checked_thumb)
+            }
+            (Some(colors), true, false) => (
+                colors.disabled_unchecked_track,
+                colors.disabled_unchecked_thumb,
+            ),
+            (None, _, true) => (p.accent, white()),
+            (None, _, false) => (p.secondary, white()),
+        };
+        let track = div()
+            .w(px(36.))
+            .h(px(21.))
+            .flex_shrink_0()
+            .rounded(px(12.))
+            .relative()
+            .bg(track)
+            .child(
+                div()
+                    .absolute()
+                    .top(px(2.))
+                    .left(px(if self.checked { 17. } else { 2. }))
+                    .size(px(17.))
+                    .rounded_full()
+                    .bg(thumb),
+            );
         let mut el = div()
             .id(self.id)
             .role(Role::Switch)
@@ -292,34 +345,31 @@ impl RenderOnce for DesktopSwitch {
             } else {
                 Toggled::False
             })
-            .w(px(36.))
-            .h(px(21.))
-            .flex_shrink_0()
-            .rounded(px(12.))
-            .relative()
-            .bg(if self.checked { p.accent } else { p.secondary })
-            .child(
-                div()
-                    .absolute()
-                    .top(px(2.))
-                    .left(px(if self.checked { 17. } else { 2. }))
-                    .size(px(17.))
-                    .rounded_full()
-                    .bg(white()),
-            )
-            .when(self.disabled, |el| el.opacity(0.4));
+            .flex()
+            .items_center()
+            .min_w_0()
+            .when(self.visible_label.is_none(), |el| {
+                el.w(px(36.)).h(px(21.)).rounded(px(12.))
+            })
+            .child(track)
+            .when_some(self.visible_label, |el, label| {
+                el.gap(px(8.)).child(div().min_w_0().child(label))
+            })
+            .when(self.disabled && self.colors.is_none(), |el| el.opacity(0.4))
+            .on_click(move |_, window, cx| {
+                cx.stop_propagation();
+                if !self.disabled
+                    && let Some(handler) = &self.on_change
+                {
+                    handler(&!self.checked, window, cx);
+                }
+            });
         if !self.disabled {
             el = el
                 .focusable()
                 .tab_stop(true)
                 .cursor_pointer()
                 .focus_visible(|s| s.shadow(crate::components::form::dual_outer_focus_ring()));
-            if let Some(handler) = self.on_change {
-                el = el.on_click(move |_, w, cx| {
-                    cx.stop_propagation();
-                    handler(&!self.checked, w, cx);
-                });
-            }
         }
         Semantics::new(el).disabled(self.disabled).reveal_focus()
     }
@@ -487,24 +537,69 @@ impl RenderOnce for DesktopBadge {
 #[derive(IntoElement)]
 pub struct DesktopKeycap {
     text: SharedString,
+    text_size: Option<AbsoluteLength>,
+    text_color: Option<Hsla>,
+    background: Option<Hsla>,
+    border_color: Option<Hsla>,
+    padding_x: Option<AbsoluteLength>,
+    padding_y: Option<AbsoluteLength>,
+    min_width: Option<AbsoluteLength>,
 }
 impl DesktopKeycap {
     pub fn new(text: impl Into<SharedString>) -> Self {
-        Self { text: text.into() }
+        Self {
+            text: text.into(),
+            text_size: None,
+            text_color: None,
+            background: None,
+            border_color: None,
+            padding_x: None,
+            padding_y: None,
+            min_width: None,
+        }
+    }
+    pub fn text_size(mut self, size: impl Into<AbsoluteLength>) -> Self {
+        self.text_size = Some(size.into());
+        self
+    }
+    pub fn text_color(mut self, color: impl Into<Hsla>) -> Self {
+        self.text_color = Some(color.into());
+        self
+    }
+    pub fn background(mut self, color: impl Into<Hsla>) -> Self {
+        self.background = Some(color.into());
+        self
+    }
+    pub fn border_color(mut self, color: impl Into<Hsla>) -> Self {
+        self.border_color = Some(color.into());
+        self
+    }
+    pub fn padding_x(mut self, padding: impl Into<AbsoluteLength>) -> Self {
+        self.padding_x = Some(padding.into());
+        self
+    }
+    pub fn padding_y(mut self, padding: impl Into<AbsoluteLength>) -> Self {
+        self.padding_y = Some(padding.into());
+        self
+    }
+    pub fn min_width(mut self, width: impl Into<AbsoluteLength>) -> Self {
+        self.min_width = Some(width.into());
+        self
     }
 }
 impl RenderOnce for DesktopKeycap {
     fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
         let p = DesktopPalette::get(cx);
         div()
-            .px(px(8.))
-            .py(px(3.))
-            .min_w(px(28.))
+            .px(self.padding_x.unwrap_or(px(8.).into()))
+            .py(self.padding_y.unwrap_or(px(3.).into()))
+            .min_w(self.min_width.unwrap_or(px(28.).into()))
             .rounded(px(4.))
             .border_1()
-            .border_color(p.border)
-            .bg(p.canvas)
-            .text_size(px(12.))
+            .border_color(self.border_color.unwrap_or(p.border))
+            .bg(self.background.unwrap_or(p.canvas))
+            .text_size(self.text_size.unwrap_or(px(12.).into()))
+            .when_some(self.text_color, |el, color| el.text_color(color))
             .text_center()
             .child(self.text)
     }
