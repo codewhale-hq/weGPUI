@@ -1,22 +1,33 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>weGPUI — WeUI, ready to try</title>
-  <meta name="description" content="Try live WeUI components in your browser. Explore buttons, forms, pickers and overlays in light, dark, care mode and your own brand colour, with source examples and a native Rust companion.">
-  <meta name="theme-color" content="#f5f7f3"><link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css"><script src="data.js" defer></script><script src="app.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>weGPUI — WeUI, in Rust.</title>
+  <meta name="description" content="The WeUI component library, rendered natively in Rust with GPUI. Explore the gallery, switch component states and themes, and inspect the Rust source.">
+  <meta name="theme-color" content="#fafbf9">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
-  <a class="brand" href="#overview" aria-label="weGPUI home"><img src="favicon.svg" alt="" width="30" height="30"><span>we<span class="brand-soft">GPUI</span></span></a>
-  <nav aria-label="Main navigation"><a href="#components/button_default" data-nav="components">Components</a><a href="#get-started" data-nav="get-started">Get started</a><a href="#themes" data-nav="themes">Theming</a><a href="#native" data-nav="native">Native Rust</a></nav>
-  <a class="github-link" href="https://github.com/codewhale-hq/weGPUI">GitHub <span aria-hidden="true"><svg class="external-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M4 12 12 4M4 4h8v8" stroke="currentColor" stroke-width="1.4"/></svg></span></a>
+  <a class="brand" href="#overview" aria-label="weGPUI home"><img src="favicon.svg" alt="" width="28" height="28"><span>we<span class="brand-soft">GPUI</span></span></a>
+  <nav aria-label="Main navigation">
+    <a href="#overview" data-nav="overview">Gallery</a>
+    <a href="#get-started" data-nav="get-started">Get started</a>
+    <a href="#themes" data-nav="themes">Theming</a>
+  </nav>
+  <a class="github-link" href="https://github.com/codewhale-hq/weGPUI">GitHub <svg class="external-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M4 4h8v8" stroke="currentColor" stroke-width="1.4"/></svg></a>
 </header>
-<div class="release-bar"><span class="status-dot"></span><strong>Interactive gallery</strong><span>WeUI 2.6.26, live in your browser.</span><a href="#components/button_default">Try the components <span aria-hidden="true">→</span></a></div>
-<div id="app"><main id="main" tabindex="-1"><h1>WeUI, ready to try.</h1><p>Explore live browser components, themes and source examples.</p></main></div>
-<noscript><p class="noscript">This interactive catalog needs JavaScript. All documentation and examples are also available in the <a href="https://github.com/codewhale-hq/weGPUI">GitHub repository</a>.</p></noscript>
-<footer class="site-footer"><a class="brand" href="#overview">weGPUI</a><p>A live WeUI gallery and native Rust companion.<br>Code: <a href="licenses/LICENSE-MIT">MIT</a> / <a href="licenses/LICENSE-APACHE">Apache-2.0</a>. WeUI by Tencent: <a href="licenses/LICENSE-WEUI">MIT license</a>.</p><div><a href="licenses/NOTICE">Notices</a><a href="licenses/LICENSE-UNICODE-3">Unicode license</a><a href="https://github.com/codewhale-hq/weGPUI/blob/main/CONTRIBUTING.md">Contribute</a><a href="#native">Native Rust</a><a href="#platforms">Native status</a></div></footer>
+<div id="app"><main id="main" tabindex="-1"><h1>WeUI, in Rust.</h1><p>Native components for GPUI.</p></main></div>
+<noscript><p class="noscript">Enable JavaScript to browse the gallery, or explore the <a href="https://github.com/codewhale-hq/weGPUI/tree/main/examples/gallery">Rust examples on GitHub</a>.</p></noscript>
+<footer class="site-footer">
+  <p>weGPUI · Native Rust / GPUI · Developer preview</p>
+  <div><a href="https://github.com/codewhale-hq/weGPUI/blob/main/docs/PLATFORMS.md">Platform status</a><a href="licenses/NOTICE">Credits &amp; licenses</a><a href="https://github.com/Tencent/weui">WeUI by Tencent</a></div>
+</footer>
 <div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
-</body></html>
+</body>
+</html>

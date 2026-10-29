@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the static browser gallery and separate recorded native showcase."""
+"""Build the native Rust showcase and its upstream browser references."""
 import argparse
 import hashlib
 import importlib.util
@@ -123,6 +123,8 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
     evidence = native_evidence()
     captures = output / 'captures'
     captures.mkdir(exist_ok=True)
+    sources = output / 'source'
+    sources.mkdir(exist_ok=True)
     route_source = (ROOT / 'examples/gallery/pages/mod.rs').read_text()
     route_map = browser_route_map(route_source)
     records = []
@@ -157,6 +159,7 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
         if not (ROOT / page_source).exists():
             page_source = f'examples/gallery/pages/{module}/mod.rs'
         assert (ROOT / page_source).exists(), page_source
+        shutil.copyfile(ROOT / page_source, sources / f'{route}.rs')
         modules_match = re.search(r'components::\{([^}]+)\}', columns[1])
         modules = [x.strip() for x in modules_match.group(1).split(',')] if modules_match else []
         # input is a crate-level module, not components::input.
@@ -176,7 +179,7 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
                 images[state][theme][kind] = 'captures/' + filename
         records.append(dict(id=route, family=family, familyLabel=label, category=category,
                             title=title, description=description, states=states, images=images,
-                            source=page_source, modules=api_modules,
+                            source=page_source, rustSource=f'source/{route}.rs', modules=api_modules,
                             playground='playground/index.html#' + route,
                             browserSource='playground/source/' + route + '.html.txt', captureEvidence=capture_evidence))
     assert {r['id'] for r in records} == set(route_map), 'Coverage differs from the Rust gallery'
@@ -187,6 +190,30 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
         assert set(browser_routes[record['id']]['states']) == set(record['states']), record['id']
         source = playground_source / 'source' / (record['id'] + '.html.txt')
         assert hashlib.sha256(source.read_bytes()).hexdigest() == browser_routes[record['id']]['sha256'], record['id']
+    language_receipt = ROOT / 'docs/receipts/rtl-completion-20261025'
+    language_hashes = json.loads((language_receipt / 'evidence-sha256.json').read_text())
+    language_commit = json.loads((language_receipt / 'final/results.json').read_text())['source_commit']
+    language_images = {}
+    language_evidence = {}
+    for theme in ('light', 'dark'):
+        name = f'linux/captures/languages-en-paragraphs-{theme}-gpui.png'
+        source = language_receipt / name
+        if hashlib.sha256(source.read_bytes()).hexdigest() != language_hashes[name]:
+            raise ValueError('Native language capture differs from its receipt')
+        filename = f'languages-{theme}-gpui.png'
+        shutil.copyfile(source, captures / filename)
+        language_images[theme] = dict(gpui='captures/' + filename)
+        language_evidence[theme] = dict(commit=language_commit, platform='Linux ARM64',
+                                        viewport=[375, 812], receipt='docs/receipts/rtl-completion-20261025/README.md')
+    language_source = 'examples/gallery/pages/languages.rs'
+    shutil.copyfile(ROOT / language_source, sources / 'languages.rs')
+    records.append(dict(id='languages', family='languages', familyLabel='Languages', category='Content',
+                        title='Languages & typography', description='Multilingual text, bidirectional layout and native text editing.',
+                        states=['default'], images=dict(default=language_images), source=language_source,
+                        rustSource='source/languages.rs', modules=['input', 'i18n'],
+                        nativeArgs='--lang en --scroll 2310', captureEvidence=dict(default=language_evidence)))
+    registry = set(re.findall(r'\("([\w-]+)",\s*\w+::build\)', route_source))
+    assert {record['id'] for record in records} == registry, 'Website differs from the complete native gallery'
     manifest = tomllib.loads((ROOT / 'Cargo.toml').read_text())
     evidence.pop('samples')
     data = dict(nativeEvidence=evidence, routes=records, tokens=json.loads((ROOT / 'docs/tokens.json').read_text()),
@@ -198,7 +225,7 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
                 playground=dict(entry='playground/index.html', engine='WeUI HTML/CSS/JavaScript browser examples',
                                 weuiVersion=provenance['weuiVersion'], weuiJsVersion=provenance['weuiJsVersion'],
                                 zeptoVersion=provenance['zeptoVersion'], routeCount=len(provenance['routes']),
-                                states={record['id']: record['states'] for record in records},
+                                states={record['id']: record['states'] for record in records if record.get('playground')},
                                 provenance='playground/vendor/PROVENANCE.json'),
                 compatibilityPatches={name: entry['path'] for name, entry in
                     manifest.get('patch', {}).get('crates-io', {}).items() if 'path' in entry})

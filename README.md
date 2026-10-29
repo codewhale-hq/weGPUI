@@ -142,21 +142,24 @@ complete platform support are separate milestones.
 [Platform evidence](docs/PLATFORMS.md) defines the support criteria.
 [Release readiness](docs/RELEASE-READINESS.md) tracks packaging, signing and maintainer decisions.
 
-## Browser gallery
+## Component gallery website
 
-The [published gallery](https://codewhale-hq.github.io/weGPUI/) runs upstream WeUI examples in
-HTML/CSS/JavaScript. It offers 60 routes, 132 scene presets, light/dark/care/brand controls and
-local file previews. Native Rust is a separate implementation.
+The website source showcases all **61 native Rust gallery routes**, with light/dark captures,
+component states, search, category filters and the actual Rust source beside each preview.
+The same native gallery can run in phone-sized and desktop-sized windows. The 60 upstream
+HTML/CSS/JavaScript examples remain available as a separately labeled browser reference.
+Mobile backends are experimental; portrait native captures do not imply mobile support.
 
-To preview the website locally:
+Preview the current website locally:
 
 ```sh
 python3 website/build.py
 python3 -m http.server 4173 --bind 127.0.0.1 --directory website/dist
 ```
 
-Source pushes do not deploy the website. [Website documentation](website/README.md) covers
-builds, checks and the manual GitHub Pages publishing workflow.
+The [published gallery](https://codewhale-hq.github.io/weGPUI/) changes only after a separately
+approved Pages deployment. Source pushes do not deploy it. [Website documentation](website/README.md)
+covers the static build, source provenance and publishing workflow.
 
 ## Development and review
 

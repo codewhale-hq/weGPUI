@@ -1,17 +1,19 @@
-# weGPUI browser gallery
+# weGPUI component gallery
 
-An interactive-first static gallery with 60 live browser routes and 132 state presets,
-using pinned WeUI 2.6.26, WeUI.js 1.2.17 and local interaction adapters. Try controls,
-forms, overlays, light/dark themes, care mode and a custom brand color. Upload examples
-preview selected images locally in the browser; they have no server upload transport.
+The homepage is a visual catalog of all **61 native Rust/GPUI gallery routes**, including
+the native-only Languages page. Search and category filters lead directly to recorded native
+previews, light/dark themes, component states and the actual Rust gallery source. Getting
+started and theming default to Rust. Phone and desktop window sizes use the same native gallery.
 
-These demos are a separate HTML/CSS/JavaScript implementation. Native Rust/GPUI source,
-setup and acceptance evidence remain available through `#native-guide` and the
-**Native Rust captures** view, for example `#components/button_default?view=native`.
-Its 528 referenced comparison images include five recent Linux ARM64 pairs with per-image
-source/host/viewport provenance; other images keep their historical macOS identity. The
-538 bundled PNG assets include the ten replacements. Recorded controls do not establish
-current platform acceptance. See [playground provenance and adapters](playground/README.md).
+Each component page identifies its capture host and source revision. The 133 native scenes
+and 540 bundled capture images include historical macOS comparisons, recent Linux replacement
+pairs, and two hash-verified native Languages captures. Native captures show recorded Rust
+rendering; the browser does not execute GPUI. Mobile backends remain experimental.
+
+The **WeUI browser reference** tab retains all 60 pinned upstream HTML/CSS/JavaScript routes
+and 132 state presets, with WeUI 2.6.26, WeUI.js 1.2.17 and local interaction adapters. It is
+secondary to the Rust gallery and keeps its own provenance. Upload examples preview files
+locally with no server upload transport. See [playground documentation](playground/README.md).
 
 ## Build and preview
 
@@ -31,12 +33,14 @@ both a domain root and a project prefix such as `/weGPUI/`, without rewrite rule
 The builder checks route/state inventory, template hashes and local asset provenance.
 `native-evidence.json` selects recent samples from a checked-in receipt. The builder verifies
 its matrix, capture manifests and sample hashes, and rejects duplicate sample identifiers.
-The native-only Languages route has no browser counterpart and is explicitly excluded by
-the builder/checker shared inventory; other unexpected routes still fail validation. Run
+The browser inventory excludes the native-only Languages route. The website includes it
+with its native Rust source and hash-verified Linux captures, then checks the full native
+registry. Unexpected missing or extra routes fail validation. Run
 `python3 -m unittest discover -s website/tests -v` for the five inventory/build regressions.
-Current local Chromium verification passes 42 checks across both mounts (360 route/viewport
+Historical local Chromium verification passed 42 checks across both mounts (360 route/viewport
 observations), including retained live-frame/draft/focus during palette changes; see
 [the Unicode/website receipt](../docs/receipts/unicode-parity-20261026/README.md).
+The [Rust gallery website receipt](../docs/receipts/rust-gallery-20261029/README.md) records the current focused checks.
 Source/install links identify the checkout's exact HEAD; a dirty preview is marked.
 Rebuild from committed source before sharing revision-pinned setup instructions.
 
@@ -84,7 +88,7 @@ the website. Native GPUI and actual screen-reader acceptance require separate ch
 
 The gallery is published at <https://codewhale-hq.github.io/weGPUI/>. The latest reviewed
 update publishes `b368c94` through [run 40281443167](https://github.com/codewhale-hq/weGPUI/actions/runs/40281443167).
-Live-origin verification confirms the clean source revision, all 264 recorded views and 528
+That deployment’s live-origin verification confirmed the clean source revision, all 264 recorded views and 528
 referenced images, plus selected interactive/deep-link/palette checks. See the
 [deployment receipt](../docs/receipts/pages-update-20261026/README.md). The original owner-run
 publication and earlier cloud-proxy restriction retain their own historical receipt.

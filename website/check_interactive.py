@@ -637,7 +637,12 @@ class Checks:
         results = []
         for width in VIEWPORTS:
             self.page.set_viewport_size({'width': width, 'height': 900})
-            self.page.goto(self.base + '#components/dialog?theme=dark&care=1&brand=805ad5', wait_until='networkidle')
+            self.page.goto(self.base, wait_until='networkidle')
+            expect(self.page.locator('.gallery-card')).to_have_count(61)
+            expect(self.page.locator('iframe')).to_have_count(0)
+            assert not self.page.evaluate('document.documentElement.scrollWidth > innerWidth + 1'), width
+            self.capture(f'native-gallery-{width}')
+            self.page.goto(self.base + '#components/dialog?view=live&theme=dark&care=1&brand=805ad5', wait_until='networkidle')
             iframe = self.page.locator('iframe[src*="playground/"]').first
             expect(iframe).to_be_visible()
             assert iframe.get_attribute('title'), 'live iframe needs an accessible title'
@@ -657,7 +662,7 @@ class Checks:
             frame = self.ready_frame(self.page.locator('iframe[src*="playground/"]').first, 'dialog')
             results.append({'width': width, 'deep_link_config_reload': True, 'live_dialog': True})
         self.page.set_viewport_size({'width': 1280, 'height': 900})
-        self.page.goto(self.base + '#components/form_primary?theme=light&care=0&brand=', wait_until='networkidle')
+        self.page.goto(self.base + '#components/form_primary?view=live&theme=light&care=0&brand=', wait_until='networkidle')
         iframe = self.page.locator('#live-demo')
         expect(iframe).to_be_visible()
         frame = self.ready_frame(iframe, 'form_primary')
@@ -693,11 +698,14 @@ class Checks:
         self.page.set_viewport_size({'width': 1280, 'height': 900})
         full_page = self.page.locator('#open-demo').get_attribute('href')
         assert full_page.startswith(urljoin(self.base, 'playground/index.html'))
-        self.page.locator('.preview-modes').get_by_role('link', name='Native Rust captures', exact=True).click()
+        self.page.locator('.preview-modes').get_by_role('link', name='Native GPUI', exact=True).click()
         expect(self.page.locator('#native-capture')).to_be_visible()
         expect(self.page.locator('#native-capture')).to_have_js_property('complete', True)
         assert self.page.locator('#native-capture').evaluate('(image) => image.complete && image.naturalWidth > 0')
-        self.page.locator('.preview-modes').get_by_role('link', name='Live browser demo', exact=True).click()
+        expect(self.page.get_by_role('button', name='Copy Rust source', exact=True)).to_be_enabled()
+        assert self.page.locator('#rust-source code').text_content() == (ROOT / 'examples/gallery/pages/form/mod.rs').read_text()
+        self.capture('native-source-desktop')
+        self.page.locator('.preview-modes').get_by_role('link', name='WeUI browser reference', exact=True).click()
         iframe = self.page.locator('#live-demo')
         frame = self.ready_frame(iframe, 'form_primary')
         config = frame.evaluate('WEGPUI_PLAYGROUND_CONFIG')
@@ -735,9 +743,9 @@ class Checks:
         observations = []
         for width in (375, 390, 768, 1280):
             self.page.set_viewport_size({'width': width, 'height': 900})
-            for name in ('themes', 'native-themes'):
+            for name in ('reference-themes', 'themes'):
                 self.page.goto(self.base + '#' + name, wait_until='networkidle')
-                if name == 'themes':
+                if name == 'reference-themes':
                     iframe = self.page.locator('#theme-demo')
                     iframe.scroll_into_view_if_needed()
                     frame = self.ready_frame(iframe, 'form_checkbox')
@@ -753,7 +761,7 @@ class Checks:
                     sections:[...document.querySelectorAll('.two-column>section')].map(node => ({
                         width:node.getBoundingClientRect().width,right:node.getBoundingClientRect().right}))})""")
                 assert metrics['scrollWidth'] <= width + 1, (name, metrics)
-                if name == 'themes':
+                if name == 'reference-themes':
                     iframe = self.page.locator('#theme-demo')
                     iframe.scroll_into_view_if_needed()
                     expect(iframe).to_be_visible()
@@ -775,7 +783,7 @@ class Checks:
                     expect(self.page.locator('#theme-demo')).to_have_count(0)
                 self.capture(f'{name}-{width}-palette-layout')
                 observations.append({'page': name, 'width': width, 'palette_route_retained': True,
-                                     'scrollWidth': metrics['scrollWidth'], 'live_iframe_checked': name == 'themes'})
+                                     'scrollWidth': metrics['scrollWidth'], 'live_iframe_checked': name == 'reference-themes'})
         return observations
 
 

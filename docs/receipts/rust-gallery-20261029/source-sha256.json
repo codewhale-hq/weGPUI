@@ -1,0 +1,8 @@
+{
+  "website/app.js": "db151aa17338970ca74c6d8a8e3d41e1e83a52dbd6f82f52fefd94b2bdc959c0",
+  "website/style.css": "8c433ea6fa5c098fc581c4138b4c917c8824e361bb241377e462a92b0a4db8e7",
+  "website/index.html": "3914cddd378ef5f99eac03ab7fec01a7fe6b5a469b70dab3ad00598c9603d553",
+  "website/build.py": "c61906b5c49099917ee865e74b453c9646d775453c87756644acefe316ce1640",
+  "website/check_interactive.py": "04933b87518c7018678a735925a004308f5d329569528bf940dfe66374142515",
+  "website/tests/test_inventory.py": "3cd17eb0a28036e198b000a2de1761aa9d344f28b8cfaecbb68399550c60ee5a"
+}

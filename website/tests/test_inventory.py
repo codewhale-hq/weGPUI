@@ -42,13 +42,17 @@ class RouteInventoryTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             data = (Path(output) / 'data.js').read_text()
             records = json.loads(data.removeprefix('window.WEGPUI = ').removesuffix(';\n'))
-            self.assertEqual(len(records['routes']), 60)
+            self.assertEqual(len(records['routes']), 61)
+            languages = next(route for route in records['routes'] if route['id'] == 'languages')
+            self.assertNotIn('playground', languages)
+            self.assertEqual((Path(output) / languages['rustSource']).read_bytes(),
+                             (ROOT / languages['source']).read_bytes())
             evidence = records['nativeEvidence']
             self.assertEqual(evidence['capturedPairs'], 1056)
             self.assertEqual(evidence['scenes'], 132)
             panel = next(route for route in records['routes'] if route['id'] == 'panel')
             self.assertEqual(panel['captureEvidence']['default']['light']['platform'], 'Linux ARM64')
-            self.assertEqual(len(list((Path(output) / 'captures').glob('*.png'))), 538)
+            self.assertEqual(len(list((Path(output) / 'captures').glob('*.png'))), 540)
 
 
 if __name__ == '__main__':
