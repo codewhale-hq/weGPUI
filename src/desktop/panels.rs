@@ -17,6 +17,13 @@ pub(super) fn init(cx: &mut App) {
         DismissDesktopDropdown,
         Some("WeuiPopupMenu"),
     )]);
+    cx.bind_keys(
+        [
+            "up", "down", "home", "end", "left", "right", "enter", "space",
+        ]
+        .into_iter()
+        .map(|key| KeyBinding::new(key, NoAction, Some("WeuiPopupMenu"))),
+    );
 }
 
 pub(super) fn popup_geometry(
@@ -363,10 +370,27 @@ pub struct DesktopDropdownColors {
 }
 
 pub type DesktopDropdownAction = std::rc::Rc<dyn Fn(&ClickEvent, &mut Window, &mut App)>;
+pub type DesktopContextMenuAction = std::rc::Rc<dyn Fn(&MouseDownEvent, &mut Window, &mut App)>;
 type DropdownAction = DesktopDropdownAction;
 type DropdownIcon = std::rc::Rc<dyn Fn(&mut Window, &mut App) -> AnyElement>;
 type DropdownBuilder = std::rc::Rc<dyn Fn(&mut Window, &mut App) -> Vec<DesktopDropdownEntry>>;
-type DropdownTrigger = Box<dyn FnOnce(bool, FocusHandle, DropdownAction) -> AnyElement>;
+type DropdownSubmenuBuilder = std::rc::Rc<
+    dyn Fn(DesktopDropdownSubmenuHandle, &mut Window, &mut App) -> Vec<DesktopDropdownEntry>,
+>;
+type DropdownTrigger = Box<
+    dyn FnOnce(
+        bool,
+        FocusHandle,
+        DropdownAction,
+        DesktopContextMenuAction,
+        DesktopDropdownAnchor,
+    ) -> AnyElement,
+>;
+
+#[derive(Clone)]
+pub struct DesktopDropdownAnchor {
+    bounds: std::rc::Rc<std::cell::Cell<Option<Bounds<Pixels>>>>,
+}
 
 #[derive(IntoElement)]
 pub struct DesktopDropdownTrigger {
@@ -380,6 +404,7 @@ pub struct DesktopDropdownTrigger {
     tooltip: Option<Box<dyn Fn(&mut Window, &mut App) -> AnyView>>,
     debug_selector: Option<String>,
     root_wrapper: Option<Box<dyn FnOnce(Stateful<Div>, bool) -> AnyElement>>,
+    anchor: Option<DesktopDropdownAnchor>,
     style: StyleRefinement,
     children: Vec<AnyElement>,
 }
@@ -403,6 +428,7 @@ impl DesktopDropdownTrigger {
             tooltip: None,
             debug_selector: None,
             root_wrapper: None,
+            anchor: None,
             style: StyleRefinement::default().flex().items_center(),
             children: Vec::new(),
         }
@@ -425,6 +451,11 @@ impl DesktopDropdownTrigger {
 
     pub fn debug_selector(mut self, selector: impl Into<String>) -> Self {
         self.debug_selector = Some(selector.into());
+        self
+    }
+
+    pub fn anchor(mut self, anchor: DesktopDropdownAnchor) -> Self {
+        self.anchor = Some(anchor);
         self
     }
 
@@ -463,6 +494,22 @@ impl RenderOnce for DesktopDropdownTrigger {
         *root.style() = self.style;
         let mut root = root
             .children(self.children)
+            .when_some(self.anchor, |root, anchor| {
+                root.relative().child(
+                    canvas(
+                        move |value, window, _| {
+                            if anchor.bounds.get() != Some(value) {
+                                anchor.bounds.set(Some(value));
+                                window.refresh();
+                            }
+                        },
+                        |_, _, _, _| {},
+                    )
+                    .absolute()
+                    .inset_0()
+                    .size_full(),
+                )
+            })
             .when_some(self.debug_selector, |root, selector| {
                 root.debug_selector(|| selector)
             })
@@ -509,6 +556,7 @@ pub struct DesktopDropdownItem {
     foreground: Option<Hsla>,
     action: Option<DropdownAction>,
     dispatch: Option<std::rc::Rc<dyn Action>>,
+    submenu: Option<DropdownSubmenuBuilder>,
 }
 
 impl DesktopDropdownItem {
@@ -525,6 +573,7 @@ impl DesktopDropdownItem {
             foreground: None,
             action: None,
             dispatch: None,
+            submenu: None,
         }
     }
 
@@ -585,6 +634,19 @@ impl DesktopDropdownItem {
         self.dispatch = Some(std::rc::Rc::from(action));
         self
     }
+
+    pub fn submenu(
+        mut self,
+        builder: impl Fn(
+            DesktopDropdownSubmenuHandle,
+            &mut Window,
+            &mut App,
+        ) -> Vec<DesktopDropdownEntry>
+        + 'static,
+    ) -> Self {
+        self.submenu = Some(std::rc::Rc::new(builder));
+        self
+    }
 }
 
 #[derive(Clone)]
@@ -620,6 +682,7 @@ pub struct DesktopDropdown {
     context_key: Option<SharedString>,
     top_inset: Pixels,
     top_inset_rems: Option<f32>,
+    anchored_trigger: bool,
 }
 
 struct DesktopDropdownState {
@@ -632,11 +695,177 @@ struct DesktopDropdownState {
     return_focus: Option<FocusHandle>,
     action_context: Option<FocusHandle>,
     bounds: std::rc::Rc<std::cell::Cell<Option<Bounds<Pixels>>>>,
+    trigger_bounds: DesktopDropdownAnchor,
     scroll: ScrollHandle,
     entries: Vec<DesktopDropdownEntry>,
     handles: Vec<Option<FocusHandle>>,
+    context_position: Option<Point<Pixels>>,
+    child_serial: u64,
+    child: Option<DesktopDropdownChild>,
     _focus_out: Subscription,
     _activation: Subscription,
+}
+
+#[derive(Clone)]
+struct DesktopDropdownChild {
+    index: usize,
+    serial: u64,
+    revision: u64,
+    request: u64,
+    label: SharedString,
+    focus: FocusHandle,
+    focus_requested: bool,
+    return_focus: FocusHandle,
+    bounds: std::rc::Rc<std::cell::Cell<Option<Bounds<Pixels>>>>,
+    row_bounds: std::rc::Rc<std::cell::Cell<Option<Bounds<Pixels>>>>,
+    scroll: ScrollHandle,
+    entries: Vec<DesktopDropdownEntry>,
+    handles: Vec<Option<FocusHandle>>,
+}
+
+#[derive(Clone)]
+pub struct DesktopDropdownSubmenuHandle {
+    state: WeakEntity<DesktopDropdownState>,
+    generation: u64,
+    serial: u64,
+}
+
+#[derive(Clone)]
+pub struct DesktopDropdownSubmenuRequest {
+    handle: DesktopDropdownSubmenuHandle,
+    request: u64,
+}
+
+impl DesktopDropdownSubmenuRequest {
+    pub fn replace(
+        &self,
+        entries: Vec<DesktopDropdownEntry>,
+        window: &mut Window,
+        cx: &mut App,
+    ) -> bool {
+        self.handle.replace(entries, Some(self.request), window, cx)
+    }
+}
+
+impl DesktopDropdownSubmenuHandle {
+    pub fn request(&self, cx: &mut App) -> Option<DesktopDropdownSubmenuRequest> {
+        let request = self
+            .state
+            .update(cx, |state, _| {
+                if !state.open || state.generation != self.generation {
+                    return None;
+                }
+                let child = state
+                    .child
+                    .as_mut()
+                    .filter(|child| child.serial == self.serial)?;
+                child.request = child.request.wrapping_add(1);
+                Some(child.request)
+            })
+            .ok()
+            .flatten()?;
+        Some(DesktopDropdownSubmenuRequest {
+            handle: self.clone(),
+            request,
+        })
+    }
+
+    fn replace(
+        &self,
+        entries: Vec<DesktopDropdownEntry>,
+        request: Option<u64>,
+        window: &mut Window,
+        cx: &mut App,
+    ) -> bool {
+        if entries.iter().any(
+            |entry| matches!(entry, DesktopDropdownEntry::Item(item) if item.submenu.is_some()),
+        ) {
+            return false;
+        }
+        let result = self
+            .state
+            .update(cx, |state, cx| {
+                if !state.open || state.generation != self.generation {
+                    return None;
+                }
+                let Some(child) = state
+                    .child
+                    .as_mut()
+                    .filter(|child| child.serial == self.serial)
+                else {
+                    return None;
+                };
+                if request.is_some_and(|request| request != child.request) {
+                    return None;
+                }
+                let focused_id =
+                    child
+                        .entries
+                        .iter()
+                        .zip(&child.handles)
+                        .find_map(|(entry, handle)| {
+                            let DesktopDropdownEntry::Item(item) = entry else {
+                                return None;
+                            };
+                            handle
+                                .as_ref()
+                                .filter(|handle| handle.is_focused(window))
+                                .map(|_| item.id.clone())
+                        });
+                let old = child
+                    .entries
+                    .iter()
+                    .zip(&child.handles)
+                    .filter_map(|(entry, handle)| {
+                        let DesktopDropdownEntry::Item(item) = entry else {
+                            return None;
+                        };
+                        handle
+                            .as_ref()
+                            .map(|handle| (item.id.clone(), handle.clone()))
+                    })
+                    .collect::<Vec<_>>();
+                child.handles = entries
+                    .iter()
+                    .map(|entry| match entry {
+                        DesktopDropdownEntry::Item(item)
+                            if !item.disabled
+                                && (item.action.is_some() || item.dispatch.is_some()) =>
+                        {
+                            Some(
+                                old.iter()
+                                    .find(|(id, _)| id == &item.id)
+                                    .map(|(_, handle)| handle.clone())
+                                    .unwrap_or_else(|| cx.focus_handle().tab_stop(true)),
+                            )
+                        }
+                        _ => None,
+                    })
+                    .collect();
+                child.entries = entries;
+                child.revision = child.revision.wrapping_add(1);
+                let restore = focused_id
+                    .is_some_and(|id| {
+                        !child
+                            .entries
+                            .iter()
+                            .zip(&child.handles)
+                            .any(|(entry, handle)| {
+                                matches!(entry, DesktopDropdownEntry::Item(item) if item.id == id)
+                                    && handle.is_some()
+                            })
+                    })
+                    .then(|| child.focus.clone());
+                cx.notify();
+                Some(restore)
+            })
+            .ok()
+            .flatten();
+        if let Some(focus) = result.clone().flatten() {
+            window.focus(&focus, cx);
+        }
+        result.is_some()
+    }
 }
 
 fn dismiss_dropdown(state: &Entity<DesktopDropdownState>, window: &mut Window, cx: &mut App) {
@@ -644,11 +873,499 @@ fn dismiss_dropdown(state: &Entity<DesktopDropdownState>, window: &mut Window, c
         state.open = false;
         state.entries.clear();
         state.handles.clear();
+        state.child = None;
+        state.context_position = None;
         if let Some(focus) = state.return_focus.take() {
             window.focus(&focus, cx);
         }
         cx.notify();
     });
+}
+
+fn open_dropdown(
+    state: &Entity<DesktopDropdownState>,
+    builder: &DropdownBuilder,
+    action_context: &Option<FocusHandle>,
+    position: Option<Point<Pixels>>,
+    window: &mut Window,
+    cx: &mut App,
+) {
+    if state.read(cx).disabled {
+        return;
+    }
+    let previous = if state.read(cx).open {
+        state.read(cx).return_focus.clone()
+    } else {
+        window.focused(cx)
+    };
+    let entries = builder(window, cx);
+    state.update(cx, |state, cx| {
+        state.generation = state.generation.wrapping_add(1);
+        state.return_focus = previous
+            .or_else(|| action_context.clone())
+            .or_else(|| Some(state.trigger_focus.clone()));
+        state.action_context = action_context.clone();
+        state.context_position = position;
+        state.child = None;
+        state.handles = entries
+            .iter()
+            .map(|entry| match entry {
+                DesktopDropdownEntry::Item(item)
+                    if !item.disabled
+                        && (item.action.is_some()
+                            || item.dispatch.is_some()
+                            || item.submenu.is_some()) =>
+                {
+                    Some(cx.focus_handle().tab_stop(true))
+                }
+                _ => None,
+            })
+            .collect();
+        state.entries = entries;
+        state.open = true;
+        window.focus(&state.menu_focus, cx);
+        cx.notify();
+    });
+}
+
+fn open_dropdown_child(
+    state: &Entity<DesktopDropdownState>,
+    index: usize,
+    focus_child: bool,
+    window: &mut Window,
+    cx: &mut App,
+) {
+    let current = state.read(cx);
+    if !current.open || current.disabled {
+        return;
+    }
+    if let Some(child) = current.child.as_ref().filter(|child| child.index == index) {
+        if focus_child {
+            let serial = child.serial;
+            let focus = child.return_focus.clone();
+            window.focus(&focus, cx);
+            state.update(cx, |state, cx| {
+                if let Some(child) = state.child.as_mut().filter(|child| child.serial == serial) {
+                    child.focus_requested = true;
+                    cx.notify();
+                }
+            });
+        }
+        return;
+    }
+    let Some(DesktopDropdownEntry::Item(item)) = current.entries.get(index) else {
+        return;
+    };
+    let Some(builder) = item.submenu.clone().filter(|_| !item.disabled) else {
+        return;
+    };
+    let label = item.title.clone();
+    let Some(return_focus) = current.handles.get(index).and_then(Clone::clone) else {
+        return;
+    };
+    let generation = current.generation;
+    let prior_focus = current.child.as_ref().and_then(|child| {
+        (child.focus.is_focused(window) || child.focus.contains_focused(window, cx))
+            .then(|| child.return_focus.clone())
+    });
+    if let Some(prior_focus) = prior_focus {
+        window.focus(&prior_focus, cx);
+    }
+    if focus_child {
+        window.focus(&return_focus, cx);
+    }
+    let serial = state.update(cx, |state, cx| {
+        state.child_serial = state.child_serial.wrapping_add(1);
+        let serial = state.child_serial;
+        state.child = Some(DesktopDropdownChild {
+            index,
+            serial,
+            revision: 0,
+            request: 0,
+            label,
+            focus: cx.focus_handle(),
+            focus_requested: focus_child,
+            return_focus,
+            bounds: std::rc::Rc::new(std::cell::Cell::new(None)),
+            row_bounds: std::rc::Rc::new(std::cell::Cell::new(None)),
+            scroll: ScrollHandle::new(),
+            entries: Vec::new(),
+            handles: Vec::new(),
+        });
+        cx.notify();
+        serial
+    });
+    let handle = DesktopDropdownSubmenuHandle {
+        state: state.downgrade(),
+        generation,
+        serial,
+    };
+    let entries = builder(handle.clone(), window, cx);
+    let initial = state.read(cx).child.as_ref().is_some_and(|child| {
+        state.read(cx).open
+            && state.read(cx).generation == generation
+            && child.serial == serial
+            && child.revision == 0
+    });
+    if initial && !handle.replace(entries, None, window, cx) {
+        return;
+    }
+}
+
+fn close_dropdown_child(
+    state: &Entity<DesktopDropdownState>,
+    generation: u64,
+    serial: u64,
+    restore_focus: bool,
+    window: &mut Window,
+    cx: &mut App,
+) {
+    if !state.read(cx).open || state.read(cx).generation != generation {
+        return;
+    }
+    let Some(child) = state
+        .read(cx)
+        .child
+        .as_ref()
+        .filter(|child| child.serial == serial)
+    else {
+        return;
+    };
+    let return_focus = child.return_focus.clone();
+    state.update(cx, |state, cx| {
+        state.child = None;
+        cx.notify();
+    });
+    if restore_focus {
+        window.focus(&return_focus, cx);
+    }
+}
+
+fn render_dropdown_child(
+    state: Entity<DesktopDropdownState>,
+    child: DesktopDropdownChild,
+    generation: u64,
+    colors: DesktopDropdownColors,
+    width: f32,
+    max_height: Option<Pixels>,
+    top_inset: Pixels,
+    window: &mut Window,
+    cx: &mut App,
+) -> Option<AnyElement> {
+    let row_bounds = child.row_bounds.get()?;
+    let viewport = window.viewport_size();
+    let width = px(width).min((viewport.width - px(16.)).max(px(0.)));
+    let top_inset = top_inset.min((viewport.height - px(8.)).max(px(0.)));
+    let available = (viewport.height - top_inset - px(8.)).max(px(0.));
+    let open_left = viewport.width - row_bounds.right() < width + px(8.)
+        && row_bounds.left() > viewport.width - row_bounds.right();
+    let (anchor, position) = if open_left {
+        (
+            Anchor::TopRight,
+            point(row_bounds.left() - px(4.), row_bounds.top().max(top_inset)),
+        )
+    } else {
+        (
+            Anchor::TopLeft,
+            point(row_bounds.right() + px(4.), row_bounds.top().max(top_inset)),
+        )
+    };
+    let serial = child.serial;
+    let revision = child.revision;
+    if child.focus_requested {
+        let state = state.clone();
+        window.on_next_frame(move |window, cx| {
+            if !state.read(cx).open || state.read(cx).generation != generation {
+                return;
+            }
+            let focus = state.update(cx, |state, cx| {
+                let child = state
+                    .child
+                    .as_mut()
+                    .filter(|child| child.serial == serial && child.focus_requested)?;
+                child.focus_requested = false;
+                let focus = child
+                    .return_focus
+                    .is_focused(window)
+                    .then(|| child.focus.clone());
+                cx.notify();
+                focus
+            });
+            if let Some(focus) = focus {
+                window.focus(&focus, cx);
+            }
+        });
+    }
+    if child.focus.is_focused(window) {
+        if let Some(first) = child.handles.iter().flatten().next().cloned() {
+            let state = state.clone();
+            let focus = child.focus.clone();
+            window.on_next_frame(move |window, cx| {
+                if state.read(cx).open
+                    && state.read(cx).generation == generation
+                    && state
+                        .read(cx)
+                        .child
+                        .as_ref()
+                        .is_some_and(|child| child.serial == serial && child.revision == revision)
+                    && focus.is_focused(window)
+                {
+                    window.focus(&first, cx);
+                }
+            });
+        }
+    }
+    let child_focus = child.focus.clone();
+    let handles = child.handles.clone();
+    let mut menu =
+        div()
+            .id("desktop-dropdown-submenu")
+            .key_context("WeuiPopupMenu")
+            .role(Role::Menu)
+            .aria_label(child.label.clone())
+            .track_focus(&child_focus)
+            .tab_group()
+            .w(width)
+            .max_h(max_height.unwrap_or(available).min(available))
+            .overflow_y_scroll()
+            .track_scroll(&child.scroll)
+            .occlude()
+            .p(px(5.))
+            .rounded(px(7.))
+            .border_1()
+            .border_color(colors.border)
+            .bg(colors.background)
+            .shadow(vec![BoxShadow {
+                color: black().opacity(0.2),
+                offset: point(px(0.), px(6.)),
+                blur_radius: px(24.),
+                spread_radius: px(0.),
+                inset: false,
+            }])
+            .on_action({
+                let state = state.clone();
+                move |_: &DismissDesktopDropdown, window, cx| {
+                    close_dropdown_child(&state, generation, serial, true, window, cx);
+                    cx.stop_propagation();
+                }
+            })
+            .on_key_down({
+                let state = state.clone();
+                let handles = handles.clone();
+                move |event, window, cx| {
+                    if !state.read(cx).open
+                        || state.read(cx).generation != generation
+                        || !state.read(cx).child.as_ref().is_some_and(|child| {
+                            child.serial == serial && child.revision == revision
+                        })
+                        || event.keystroke.modifiers.modified()
+                    {
+                        return;
+                    }
+                    match event.keystroke.key.as_str() {
+                        "left" | "escape" => {
+                            close_dropdown_child(&state, generation, serial, true, window, cx)
+                        }
+                        "up" | "down" | "home" | "end" => {
+                            let enabled: Vec<_> = handles.iter().flatten().collect();
+                            if !enabled.is_empty() {
+                                let current =
+                                    enabled.iter().position(|handle| handle.is_focused(window));
+                                let next = match event.keystroke.key.as_str() {
+                                    "home" => 0,
+                                    "end" => enabled.len() - 1,
+                                    "up" => current
+                                        .map(|i| (i + enabled.len() - 1) % enabled.len())
+                                        .unwrap_or(enabled.len() - 1),
+                                    _ => current.map(|i| (i + 1) % enabled.len()).unwrap_or(0),
+                                };
+                                window.focus(enabled[next], cx);
+                            }
+                        }
+                        _ => return,
+                    }
+                    window.prevent_default();
+                    cx.stop_propagation();
+                }
+            });
+    for (index, entry) in child.entries.iter().cloned().enumerate() {
+        match entry {
+            DesktopDropdownEntry::Separator => {
+                menu = menu.child(div().h(px(1.)).my(px(5.)).mx(px(8.)).bg(colors.border));
+            }
+            DesktopDropdownEntry::Label(label) => {
+                menu = menu.child(
+                    crate::accessibility::Semantics::new(
+                        div()
+                            .id(("desktop-submenu-label", index))
+                            .role(Role::Label)
+                            .aria_label(label.clone())
+                            .px(px(10.))
+                            .py(px(6.))
+                            .text_size(px(11.))
+                            .text_color(colors.secondary)
+                            .child(label),
+                    )
+                    .read_only(true),
+                );
+            }
+            DesktopDropdownEntry::Item(item) => {
+                let disabled = item.disabled || (item.action.is_none() && item.dispatch.is_none());
+                let name = match &item.detail {
+                    Some(detail) if !detail.is_empty() => {
+                        SharedString::from(format!("{}. {}", item.title, detail))
+                    }
+                    _ => item.title.clone(),
+                };
+                let icon = item.icon.as_ref().map(|icon| icon(window, cx));
+                let mut row = div()
+                    .id(item.id)
+                    .role(match item.checked {
+                        Some((_, true)) => Role::MenuItemRadio,
+                        Some((_, false)) => Role::MenuItemCheckBox,
+                        None => Role::MenuItem,
+                    })
+                    .aria_label(name)
+                    .when_some(item.checked, |row, (checked, _)| {
+                        row.aria_toggled(if checked {
+                            gpui::accesskit::Toggled::True
+                        } else {
+                            gpui::accesskit::Toggled::False
+                        })
+                    })
+                    .flex()
+                    .items_center()
+                    .gap(px(10.))
+                    .px(px(10.))
+                    .py(px(8.))
+                    .rounded(px(5.))
+                    .text_color(item.foreground.unwrap_or(colors.foreground))
+                    .child(div().w(px(20.)).flex_shrink_0().children(icon))
+                    .child(
+                        div()
+                            .flex_1()
+                            .min_w_0()
+                            .flex()
+                            .flex_col()
+                            .child(
+                                div()
+                                    .text_size(item.title_size.unwrap_or(px(13.).into()))
+                                    .truncate()
+                                    .child(item.title),
+                            )
+                            .when_some(item.detail, |row, detail| {
+                                row.child(
+                                    div()
+                                        .text_size(item.detail_size.unwrap_or(px(11.).into()))
+                                        .text_color(colors.secondary)
+                                        .whitespace_normal()
+                                        .child(detail),
+                                )
+                            }),
+                    )
+                    .when(item.checked.is_some_and(|(checked, _)| checked), |row| {
+                        row.child(DesktopIcon::new(DesktopIconKind::Check).size(15.))
+                    });
+                if let Some(handle) = child.handles[index].clone() {
+                    let action = item.action;
+                    let dispatch = item.dispatch;
+                    let invoke: DropdownAction = std::rc::Rc::new({
+                        let state = state.clone();
+                        let scope = child_focus.clone();
+                        let parent_scope = state.read(cx).menu_focus.clone();
+                        move |event, window, cx| {
+                            if !state.read(cx).open
+                                || state.read(cx).generation != generation
+                                || !state.read(cx).child.as_ref().is_some_and(|child| {
+                                    child.serial == serial && child.revision == revision
+                                })
+                            {
+                                return;
+                            }
+                            let target = state.read(cx).return_focus.clone();
+                            let context = state.read(cx).action_context.clone();
+                            state.update(cx, |state, cx| {
+                                state.open = false;
+                                state.entries.clear();
+                                state.handles.clear();
+                                state.child = None;
+                                state.context_position = None;
+                                cx.notify();
+                            });
+                            if let Some(action) = &action {
+                                action(event, window, cx);
+                            } else if let Some(dispatch) = &dispatch {
+                                if let Some(context) = context {
+                                    window.focus(&context, cx);
+                                }
+                                window.dispatch_action(dispatch.boxed_clone(), cx);
+                            }
+                            if (scope.is_focused(window)
+                                || scope.contains_focused(window, cx)
+                                || parent_scope.is_focused(window)
+                                || parent_scope.contains_focused(window, cx))
+                                && let Some(target) = target
+                            {
+                                window.focus(&target, cx);
+                            }
+                        }
+                    });
+                    row = row
+                        .track_focus(&handle)
+                        .tab_stop(true)
+                        .cursor_pointer()
+                        .focus_visible(|style| {
+                            style.shadow(crate::components::form::dual_focus_ring())
+                        })
+                        .hover(move |style| style.bg(colors.hover))
+                        .on_click({
+                            let invoke = invoke.clone();
+                            move |event, window, cx| invoke(event, window, cx)
+                        })
+                        .on_a11y_action(gpui::accesskit::Action::Click, move |_, window, cx| {
+                            invoke(&ClickEvent::default(), window, cx)
+                        });
+                } else {
+                    row = row.opacity(0.65);
+                }
+                menu = menu.child(
+                    crate::accessibility::Semantics::new(row)
+                        .disabled(disabled)
+                        .reveal_focus(),
+                );
+            }
+        }
+    }
+    let bounds = child.bounds.clone();
+    let body = div().relative().child(menu).child(
+        canvas(
+            move |value, window, _| {
+                if bounds.get() != Some(value) {
+                    bounds.set(Some(value));
+                    window.refresh();
+                }
+            },
+            |_, _, _, _| {},
+        )
+        .absolute()
+        .inset_0()
+        .size_full(),
+    );
+    Some(
+        deferred(
+            anchored()
+                .anchor(anchor)
+                .position(position)
+                .snap_to_window_with_margin(px(8.))
+                .child(FocusScroll::new(
+                    "desktop-dropdown-submenu-scroll",
+                    &child.scroll,
+                    body,
+                )),
+        )
+        .with_priority(2)
+        .into_any_element(),
+    )
 }
 
 impl DesktopDropdown {
@@ -657,6 +1374,31 @@ impl DesktopDropdown {
         label: impl Into<SharedString>,
         colors: DesktopDropdownColors,
         trigger: impl FnOnce(bool, FocusHandle, DesktopDropdownAction) -> AnyElement + 'static,
+        builder: impl Fn(&mut Window, &mut App) -> Vec<DesktopDropdownEntry> + 'static,
+    ) -> Self {
+        let mut dropdown = Self::contextual(
+            id,
+            label,
+            colors,
+            move |open, focus, toggle, _, _| trigger(open, focus, toggle),
+            builder,
+        );
+        dropdown.anchored_trigger = false;
+        dropdown
+    }
+
+    pub fn contextual(
+        id: impl Into<ElementId>,
+        label: impl Into<SharedString>,
+        colors: DesktopDropdownColors,
+        trigger: impl FnOnce(
+            bool,
+            FocusHandle,
+            DesktopDropdownAction,
+            DesktopContextMenuAction,
+            DesktopDropdownAnchor,
+        ) -> AnyElement
+        + 'static,
         builder: impl Fn(&mut Window, &mut App) -> Vec<DesktopDropdownEntry> + 'static,
     ) -> Self {
         Self {
@@ -672,6 +1414,7 @@ impl DesktopDropdown {
             context_key: None,
             top_inset: px(8.),
             top_inset_rems: None,
+            anchored_trigger: true,
         }
     }
 
@@ -732,6 +1475,8 @@ impl RenderOnce for DesktopDropdown {
                         state.open = false;
                         state.entries.clear();
                         state.handles.clear();
+                        state.child = None;
+                        state.context_position = None;
                         cx.notify();
                     }
                 },
@@ -743,6 +1488,8 @@ impl RenderOnce for DesktopDropdown {
                         state.open = false;
                         state.entries.clear();
                         state.handles.clear();
+                        state.child = None;
+                        state.context_position = None;
                         if let Some(focus) = state.return_focus.take() {
                             window.focus(&focus, cx);
                         }
@@ -760,9 +1507,15 @@ impl RenderOnce for DesktopDropdown {
                 return_focus: None,
                 action_context: None,
                 bounds: std::rc::Rc::new(std::cell::Cell::new(None)),
+                trigger_bounds: DesktopDropdownAnchor {
+                    bounds: std::rc::Rc::new(std::cell::Cell::new(None)),
+                },
                 scroll: ScrollHandle::new(),
                 entries: Vec::new(),
                 handles: Vec::new(),
+                context_position: None,
+                child_serial: 0,
+                child: None,
                 _focus_out: focus_out,
                 _activation: activation,
             }
@@ -784,11 +1537,13 @@ impl RenderOnce for DesktopDropdown {
                     state.generation = state.generation.wrapping_add(1);
                     state.entries.clear();
                     state.handles.clear();
+                    state.child = None;
+                    state.context_position = None;
                     state.return_focus = None;
                 }
             });
             if was_open && focus_was_in_menu {
-                if !self.disabled {
+                if !self.disabled && !self.anchored_trigger {
                     window.focus(&trigger_focus, cx);
                 } else if let Some(focus) = fallback.filter(|focus| focus != &trigger_focus) {
                     window.focus(&focus, cx);
@@ -801,9 +1556,12 @@ impl RenderOnce for DesktopDropdown {
         let trigger_focus = state.read(cx).trigger_focus.clone();
         let menu_focus = state.read(cx).menu_focus.clone();
         let bounds = state.read(cx).bounds.clone();
+        let trigger_anchor = state.read(cx).trigger_bounds.clone();
         let scroll = state.read(cx).scroll.clone();
         let builder = self.builder.clone();
         let action_context = self.action_context.clone();
+        let context_builder = builder.clone();
+        let context_action = action_context.clone();
         let toggle: DropdownAction = std::rc::Rc::new({
             let state = state.clone();
             move |_, window, cx| {
@@ -815,44 +1573,45 @@ impl RenderOnce for DesktopDropdown {
                         state.open = false;
                         state.entries.clear();
                         state.handles.clear();
+                        state.child = None;
+                        state.context_position = None;
                         if let Some(focus) = state.return_focus.take() {
                             window.focus(&focus, cx);
                         }
                         cx.notify();
                     });
                 } else {
-                    let previous = window.focused(cx);
-                    let entries = builder(window, cx);
-                    state.update(cx, |state, cx| {
-                        state.generation = state.generation.wrapping_add(1);
-                        state.return_focus = previous
-                            .or_else(|| action_context.clone())
-                            .or_else(|| Some(state.trigger_focus.clone()));
-                        state.action_context = action_context.clone();
-                        state.handles = entries
-                            .iter()
-                            .map(|entry| match entry {
-                                DesktopDropdownEntry::Item(item)
-                                    if !item.disabled
-                                        && (item.action.is_some() || item.dispatch.is_some()) =>
-                                {
-                                    Some(cx.focus_handle().tab_stop(true))
-                                }
-                                _ => None,
-                            })
-                            .collect();
-                        state.entries = entries;
-                        state.open = true;
-                        window.focus(&state.menu_focus, cx);
-                        cx.notify();
-                    });
+                    open_dropdown(&state, &builder, &action_context, None, window, cx);
                 }
+            }
+        });
+        let context: DesktopContextMenuAction = std::rc::Rc::new({
+            let state = state.clone();
+            move |event, window, cx| {
+                if event.button != MouseButton::Right || state.read(cx).disabled {
+                    return;
+                }
+                open_dropdown(
+                    &state,
+                    &context_builder,
+                    &context_action,
+                    Some(event.position),
+                    window,
+                    cx,
+                );
+                cx.stop_propagation();
             }
         });
         let mut root = div()
             .id(self.id)
             .relative()
-            .child((self.trigger)(open, trigger_focus.clone(), toggle))
+            .child((self.trigger)(
+                open,
+                trigger_focus.clone(),
+                toggle,
+                context,
+                trigger_anchor.clone(),
+            ))
             .child(
                 canvas(
                     {
@@ -876,11 +1635,33 @@ impl RenderOnce for DesktopDropdown {
         let Some(trigger_bounds) = bounds.get() else {
             return root;
         };
+        let trigger_bounds = if let Some(position) = state.read(cx).context_position {
+            Bounds {
+                origin: position,
+                size: size(px(0.), px(0.)),
+            }
+        } else if self.anchored_trigger {
+            trigger_anchor.bounds.get().unwrap_or(trigger_bounds)
+        } else {
+            trigger_bounds
+        };
         let entries = state.read(cx).entries.clone();
         let handles = state.read(cx).handles.clone();
+        let child = state.read(cx).child.clone();
         let generation = state.read(cx).generation;
         if menu_focus.is_focused(window) {
-            if let Some(first) = handles.iter().flatten().next().cloned() {
+            let selected = entries
+                .iter()
+                .zip(&handles)
+                .find_map(|(entry, handle)| match entry {
+                    DesktopDropdownEntry::Item(item)
+                        if item.checked.is_some_and(|(checked, _)| checked) =>
+                    {
+                        handle.clone()
+                    }
+                    _ => None,
+                });
+            if let Some(first) = selected.or_else(|| handles.iter().flatten().next().cloned()) {
                 let scope = menu_focus.clone();
                 let state = state.clone();
                 window.on_next_frame(move |window, cx| {
@@ -943,6 +1724,8 @@ impl RenderOnce for DesktopDropdown {
             .on_mouse_down_out({
                 let state = state.clone();
                 let bounds = bounds.clone();
+                let trigger_anchor = trigger_anchor.clone();
+                let anchored_trigger = self.anchored_trigger;
                 let handles = handles.clone();
                 let scope = menu_focus.clone();
                 move |event, window, cx| {
@@ -952,9 +1735,18 @@ impl RenderOnce for DesktopDropdown {
                     {
                         return;
                     }
-                    if bounds
-                        .get()
-                        .is_some_and(|bounds| bounds.contains(&event.position))
+                    let trigger_bounds = if anchored_trigger {
+                        trigger_anchor.bounds.get()
+                    } else {
+                        bounds.get()
+                    };
+                    if trigger_bounds.is_some_and(|bounds| bounds.contains(&event.position))
+                        || state.read(cx).child.as_ref().is_some_and(|child| {
+                            child
+                                .bounds
+                                .get()
+                                .is_some_and(|bounds| bounds.contains(&event.position))
+                        })
                     {
                         return;
                     }
@@ -963,10 +1755,13 @@ impl RenderOnce for DesktopDropdown {
                         .return_focus
                         .clone()
                         .unwrap_or_else(|| state.read(cx).trigger_focus.clone());
+                    let child = state.read(cx).child.clone();
                     state.update(cx, |state, cx| {
                         state.open = false;
                         state.entries.clear();
                         state.handles.clear();
+                        state.child = None;
+                        state.context_position = None;
                         cx.notify();
                     });
                     let handles = handles.clone();
@@ -979,7 +1774,15 @@ impl RenderOnce for DesktopDropdown {
                                 || handles
                                     .iter()
                                     .flatten()
-                                    .any(|handle| handle.is_focused(window)))
+                                    .any(|handle| handle.is_focused(window))
+                                || child.as_ref().is_some_and(|child| {
+                                    child.focus.is_focused(window)
+                                        || child
+                                            .handles
+                                            .iter()
+                                            .flatten()
+                                            .any(|handle| handle.is_focused(window))
+                                }))
                         {
                             window.focus(&target, cx);
                         }
@@ -1029,6 +1832,8 @@ impl RenderOnce for DesktopDropdown {
                                     state.open = false;
                                     state.entries.clear();
                                     state.handles.clear();
+                                    state.child = None;
+                                    state.context_position = None;
                                     window.focus(&state.trigger_focus, cx);
                                     cx.notify();
                                 });
@@ -1062,7 +1867,24 @@ impl RenderOnce for DesktopDropdown {
                                         .unwrap_or(enabled.len() - 1),
                                     _ => current.map(|i| (i + 1) % enabled.len()).unwrap_or(0),
                                 };
+                                let child = state.read(cx).child.as_ref().and_then(|child| {
+                                    (enabled[next] != &child.return_focus).then_some(child.serial)
+                                });
+                                if let Some(serial) = child {
+                                    close_dropdown_child(
+                                        &state, generation, serial, false, window, cx,
+                                    );
+                                }
                                 window.focus(enabled[next], cx);
+                            }
+                        }
+                        "right" => {
+                            if let Some(index) = handles.iter().position(|handle| {
+                                handle
+                                    .as_ref()
+                                    .is_some_and(|handle| handle.is_focused(window))
+                            }) {
+                                open_dropdown_child(&state, index, true, window, cx);
                             }
                         }
                         _ => return,
@@ -1093,8 +1915,10 @@ impl RenderOnce for DesktopDropdown {
                     )
                 }
                 DesktopDropdownEntry::Item(item) => {
-                    let disabled =
-                        item.disabled || (item.action.is_none() && item.dispatch.is_none());
+                    let has_submenu = item.submenu.is_some();
+                    let child_open = child.as_ref().is_some_and(|child| child.index == index);
+                    let disabled = item.disabled
+                        || (item.action.is_none() && item.dispatch.is_none() && !has_submenu);
                     let name = match &item.detail {
                         Some(detail) if !detail.is_empty() => {
                             SharedString::from(format!("{}. {}", item.title, detail))
@@ -1110,6 +1934,7 @@ impl RenderOnce for DesktopDropdown {
                             None => Role::MenuItem,
                         })
                         .aria_label(name)
+                        .when(has_submenu, |row| row.aria_expanded(child_open))
                         .when_some(item.checked, |row, (checked, _)| {
                             row.aria_toggled(if checked {
                                 gpui::accesskit::Toggled::True
@@ -1117,6 +1942,7 @@ impl RenderOnce for DesktopDropdown {
                                 gpui::accesskit::Toggled::False
                             })
                         })
+                        .relative()
                         .flex()
                         .items_center()
                         .gap(px(10.))
@@ -1149,6 +1975,9 @@ impl RenderOnce for DesktopDropdown {
                         )
                         .when(item.checked.is_some_and(|(checked, _)| checked), |row| {
                             row.child(DesktopIcon::new(DesktopIconKind::Check).size(15.))
+                        })
+                        .when(has_submenu, |row| {
+                            row.child(DesktopIcon::new(DesktopIconKind::ChevronRight).size(15.))
                         });
                     if let Some(handle) = handles[index].clone() {
                         let action = item.action;
@@ -1163,12 +1992,18 @@ impl RenderOnce for DesktopDropdown {
                                 {
                                     return;
                                 }
+                                if has_submenu {
+                                    open_dropdown_child(&state, index, true, window, cx);
+                                    return;
+                                }
                                 let target = state.read(cx).return_focus.clone();
                                 let context = state.read(cx).action_context.clone();
                                 state.update(cx, |state, cx| {
                                     state.open = false;
                                     state.entries.clear();
                                     state.handles.clear();
+                                    state.child = None;
+                                    state.context_position = None;
                                     cx.notify();
                                 });
                                 if let Some(action) = &action {
@@ -1194,6 +2029,32 @@ impl RenderOnce for DesktopDropdown {
                                 style.shadow(crate::components::form::dual_focus_ring())
                             })
                             .hover(move |style| style.bg(colors.hover))
+                            .when(has_submenu, |row| {
+                                let state = state.clone();
+                                row.on_hover(move |hovered, window, cx| {
+                                    if *hovered && state.read(cx).generation == generation {
+                                        open_dropdown_child(&state, index, false, window, cx);
+                                    }
+                                })
+                            })
+                            .when(!has_submenu, |row| {
+                                let state = state.clone();
+                                row.on_hover(move |hovered, window, cx| {
+                                    if !*hovered || state.read(cx).generation != generation {
+                                        return;
+                                    }
+                                    let child = state.read(cx).child.as_ref().and_then(|child| {
+                                        (!(child.focus.is_focused(window)
+                                            || child.focus.contains_focused(window, cx)))
+                                        .then_some(child.serial)
+                                    });
+                                    if let Some(serial) = child {
+                                        close_dropdown_child(
+                                            &state, generation, serial, false, window, cx,
+                                        );
+                                    }
+                                })
+                            })
                             .on_click({
                                 let invoke = invoke.clone();
                                 move |event, window, cx| invoke(event, window, cx)
@@ -1205,11 +2066,46 @@ impl RenderOnce for DesktopDropdown {
                     } else {
                         row = row.opacity(0.65);
                     }
-                    menu = menu.child(
-                        crate::accessibility::Semantics::new(row)
-                            .disabled(disabled)
-                            .reveal_focus(),
-                    );
+                    if let Some(active) = child.as_ref().filter(|child| child.index == index) {
+                        let row_bounds = active.row_bounds.clone();
+                        row = row.child(
+                            canvas(
+                                move |value, window, _| {
+                                    if row_bounds.get() != Some(value) {
+                                        row_bounds.set(Some(value));
+                                        window.refresh();
+                                    }
+                                },
+                                |_, _, _, _| {},
+                            )
+                            .absolute()
+                            .inset_0()
+                            .size_full(),
+                        );
+                        if let Some(submenu) = render_dropdown_child(
+                            state.clone(),
+                            active.clone(),
+                            generation,
+                            colors,
+                            self.width,
+                            self.max_height,
+                            top_inset,
+                            window,
+                            cx,
+                        ) {
+                            row = row.child(submenu);
+                        }
+                    }
+                    let semantics = crate::accessibility::Semantics::new(row).disabled(disabled);
+                    menu = if has_submenu {
+                        menu.child(
+                            semantics
+                                .has_popup(gpui::accesskit::HasPopup::Menu)
+                                .reveal_focus(),
+                        )
+                    } else {
+                        menu.child(semantics.reveal_focus())
+                    };
                 }
             }
         }

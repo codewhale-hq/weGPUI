@@ -59,6 +59,7 @@ pub struct Semantics<E: Element> {
     inner: E,
     disabled: bool,
     read_only: bool,
+    has_popup: Option<accesskit::HasPopup>,
     live: Option<accesskit::Live>,
     busy: bool,
     invalid: bool,
@@ -74,6 +75,7 @@ impl<E: Element> Semantics<E> {
             inner: inner.into_element(),
             disabled: false,
             read_only: false,
+            has_popup: None,
             live: None,
             busy: false,
             invalid: false,
@@ -92,6 +94,10 @@ impl<E: Element> Semantics<E> {
     /// and inspection.
     pub fn read_only(mut self, value: bool) -> Self {
         self.read_only = value;
+        self
+    }
+    pub(crate) fn has_popup(mut self, value: accesskit::HasPopup) -> Self {
+        self.has_popup = Some(value);
         self
     }
     /// Sets the live-region politeness explicitly. A role such as `Alert` alone does not set
@@ -155,6 +161,9 @@ impl<E: Element> Element for Semantics<E> {
         }
         if self.read_only {
             node.set_read_only();
+        }
+        if let Some(has_popup) = self.has_popup {
+            node.set_has_popup(has_popup);
         }
         if let Some(live) = self.live {
             node.set_live(live);
