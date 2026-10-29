@@ -195,23 +195,25 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
     language_commit = json.loads((language_receipt / 'final/results.json').read_text())['source_commit']
     language_images = {}
     language_evidence = {}
-    for theme in ('light', 'dark'):
-        name = f'linux/captures/languages-en-paragraphs-{theme}-gpui.png'
+    samples = [('default', 'light', 'macos/paragraphs-en-final-light-gpui.png'),
+               ('arabic-selection', 'dark', 'macos/textarea-ar-dark-final-dark-gpui.png')]
+    for state, theme, name in samples:
         source = language_receipt / name
         if hashlib.sha256(source.read_bytes()).hexdigest() != language_hashes[name]:
             raise ValueError('Native language capture differs from its receipt')
         filename = f'languages-{theme}-gpui.png'
         shutil.copyfile(source, captures / filename)
-        language_images[theme] = dict(gpui='captures/' + filename)
-        language_evidence[theme] = dict(commit=language_commit, platform='Linux ARM64',
-                                        viewport=[375, 812], receipt='docs/receipts/rtl-completion-20261025/README.md')
+        language_images[state] = {theme: dict(gpui='captures/' + filename)}
+        language_evidence[state] = {theme: dict(commit=language_commit, platform='macOS',
+                                               viewport=[375, 812], receipt='docs/receipts/rtl-completion-20261025/README.md')}
     language_source = 'examples/gallery/pages/languages.rs'
     shutil.copyfile(ROOT / language_source, sources / 'languages.rs')
     records.append(dict(id='languages', family='languages', familyLabel='Languages', category='Content',
                         title='Languages & typography', description='Multilingual text, bidirectional layout and native text editing.',
-                        states=['default'], images=dict(default=language_images), source=language_source,
+                        states=['default', 'arabic-selection'], images=language_images, source=language_source,
                         rustSource='source/languages.rs', modules=['input', 'i18n'],
-                        nativeArgs='--lang en --scroll 2310', captureEvidence=dict(default=language_evidence)))
+                        nativeArgs={'default': '--lang en --scroll 2310', 'arabic-selection': '--lang ar --state type:7:all'},
+                        captureEvidence=language_evidence))
     registry = set(re.findall(r'\("([\w-]+)",\s*\w+::build\)', route_source))
     assert {record['id'] for record in records} == registry, 'Website differs from the complete native gallery'
     manifest = tomllib.loads((ROOT / 'Cargo.toml').read_text())

@@ -135,8 +135,9 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 28px 0; }
 figure { margin: 0; min-width: 0; }
 figcaption { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 11px; color: #4b5d4a; margin-bottom: 15px; }
 figcaption .mono { font-size: 10px; }
-.capture-window { max-width: 375px; max-height: 610px; overflow: auto; margin: auto; scrollbar-width: thin; border-radius: 8px; background: #eee; }
+.capture-window { max-width: 375px; overflow: hidden; margin: auto; scrollbar-width: thin; border-radius: 8px; background: #eee; }
 .capture-window img { width: 100%; height: auto; }
+.paragraph-capture img { margin-top: -24px; }
 .component-workspace.comparing { grid-template-columns: minmax(0, 1fr); }
 .comparing .preview-stage { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .source-pane { min-width: 0; }
@@ -281,7 +282,6 @@ summary { cursor: pointer; font-size: 13px; color: var(--body); }
   .source-pane .code-block pre { height: 380px; }
   .preview-stage { padding: 16px; }
   .comparing .preview-stage { grid-template-columns: minmax(0, 1fr); }
-  .capture-window { max-height: 550px; }
   .document { padding: 35px 18px 45px; }
   .document h1 { font-size: 32px; }
   .two-column { grid-template-columns: minmax(0, 1fr); }

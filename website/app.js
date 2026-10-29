@@ -125,7 +125,8 @@ function galleryCards() {
   const routes = galleryItems();
   if (!routes.length) return '<div class="gallery-empty"><h2>No matching components</h2><p>Try another name or choose All.</p><button type="button" class="button secondary" id="clear-gallery">Clear filters</button></div>';
   return routes.map((r, index) => {
-    const state = galleryStates[r.id] || 'default';
+    const preferred = galleryStates[r.id] || 'default';
+    const state = r.images[preferred]?.[galleryTheme] ? preferred : r.states.find(state => r.images[state]?.[galleryTheme]) || preferred;
     const captured = r.captureEvidence?.[state]?.[galleryTheme];
     return `<a class="gallery-card" href="#components/${r.id}?state=${state}&theme=${galleryTheme}">
       <div class="gallery-image ${['dialog', 'toast', 'actionsheet', 'picker', 'half-screen-dialog'].includes(r.id) ? 'overlay-crop' : ''} ${['dialog', 'toast'].includes(r.id) ? 'center-crop' : ''}"><img src="${r.images[state][galleryTheme].gpui}" alt="${escapeHTML(r.title)}, ${state} state, rendered in native GPUI" width="750" height="1624" loading="${index < 4 ? 'eager' : 'lazy'}" decoding="async"><span class="image-link" aria-hidden="true">↗</span></div>
@@ -178,14 +179,15 @@ function nativeComponentPage(info) {
   const r = data.routes.find(route => route.id === info.route);
   if (!r) return `<main id="main" tabindex="-1" class="document"><h1>Component not found.</h1><a class="button primary" href="#overview">Back to the gallery</a></main>`;
   const theme = info.params.get('theme') === 'dark' ? 'dark' : 'light';
-  const state = r.states.includes(info.params.get('state')) ? info.params.get('state') : 'default';
+  const requestedState = r.states.includes(info.params.get('state')) ? info.params.get('state') : 'default';
+  const state = r.images[requestedState]?.[theme] ? requestedState : r.states.find(state => r.images[state]?.[theme]) || requestedState;
   const capture = r.captureEvidence?.[state]?.[theme] || {commit:data.captureCommit, platform:'macOS', viewport:[375,812], receipt:'docs/PARITY.md'};
-  const command = `cargo run --example gallery -- --page ${r.id}${state === 'default' ? '' : ' --state ' + state} --theme ${theme}${r.nativeArgs ? ' ' + r.nativeArgs : ''}`;
+  const command = `cargo run --example gallery -- --page ${r.id}${state === 'default' || r.nativeArgs ? '' : ' --state ' + state} --theme ${theme}${r.nativeArgs?.[state] ? ' ' + r.nativeArgs[state] : ''}`;
   return `<div class="explorer">${catalogSidebar()}<main id="main" tabindex="-1" class="component-main native-component">
     <div class="component-header"><a class="back-link" href="#overview">← All components</a><h1>${escapeHTML(r.title)}</h1><p class="page-intro">${escapeHTML(r.description)}</p></div>
     ${viewTabs(info, 'native')}
-    <div class="preview-toolbar"><span class="preview-label">Native GPUI</span><label>State <select id="state-select">${r.states.map(value => `<option value="${value}" ${value === state ? 'selected' : ''}>${value === 'default' ? 'Default' : escapeHTML(value)}</option>`).join('')}</select></label><fieldset class="segmented"><legend class="sr-only">Capture theme</legend>${['light','dark'].map(value => `<button type="button" data-theme="${value}" aria-pressed="${value === theme}">${value === 'light' ? 'Light' : 'Dark'}</button>`).join('')}</fieldset>${r.playground ? `<button type="button" class="compare-toggle" aria-pressed="${compare}">${compare ? 'Hide comparison' : 'Compare WeUI'}</button>` : ''}</div>
-    <div class="component-workspace ${compare && r.playground ? 'comparing' : ''}"><div class="preview-stage"><figure><figcaption><span>weGPUI</span><span>${escapeHTML(capture.platform)}</span></figcaption><div class="capture-window"><img id="native-capture" src="${r.images[state][theme].gpui}" width="750" height="1624" alt="${escapeHTML(r.title)}, ${escapeHTML(state)} state, ${theme} theme: ${escapeHTML(capture.platform)} native capture"></div></figure>${compare && r.playground ? `<figure><figcaption><span>WeUI reference</span><span>Browser</span></figcaption><div class="capture-window"><img src="${r.images[state][theme].weui}" width="750" height="1624" alt="WeUI browser reference for ${escapeHTML(r.title)}"></div></figure>` : ''}</div>
+    <div class="preview-toolbar"><span class="preview-label">Native GPUI</span><label>State <select id="state-select">${r.states.map(value => `<option value="${value}" ${value === state ? 'selected' : ''}>${value === 'default' ? (r.id === 'languages' ? 'English paragraphs' : 'Default') : escapeHTML(value.replaceAll('-', ' '))}</option>`).join('')}</select></label><fieldset class="segmented"><legend class="sr-only">Capture theme</legend>${['light','dark'].map(value => `<button type="button" data-theme="${value}" aria-pressed="${value === theme}">${value === 'light' ? 'Light' : 'Dark'}</button>`).join('')}</fieldset>${r.playground ? `<button type="button" class="compare-toggle" aria-pressed="${compare}">${compare ? 'Hide comparison' : 'Compare WeUI'}</button>` : ''}</div>
+    <div class="component-workspace ${compare && r.playground ? 'comparing' : ''}"><div class="preview-stage"><figure><figcaption><span>weGPUI</span><span>${escapeHTML(capture.platform)}</span></figcaption><div class="capture-window ${r.id === 'languages' && state === 'default' ? 'paragraph-capture' : ''}"><img id="native-capture" src="${r.images[state][theme].gpui}" width="750" height="1624" alt="${escapeHTML(r.title)}, ${escapeHTML(state)} state, ${theme} theme: ${escapeHTML(capture.platform)} native capture"></div></figure>${compare && r.playground ? `<figure><figcaption><span>WeUI reference</span><span>Browser</span></figcaption><div class="capture-window"><img src="${r.images[state][theme].weui}" width="750" height="1624" alt="WeUI browser reference for ${escapeHTML(r.title)}"></div></figure>` : ''}</div>
     <aside class="source-pane"><div class="source-heading"><h2>Rust source</h2><a href="${link(r.source)}">${escapeHTML(r.source.split('/').at(-1))} ↗</a></div><div id="rust-source" class="code-block"><button class="copy" type="button" aria-label="Copy Rust source" disabled>Copy</button><pre tabindex="0" aria-label="Rust gallery source"><code>Loading Rust source…</code></pre></div><p id="source-status" class="source-status" role="status"></p><div class="module-list">${r.modules.map(module => apiLink(module)).join('')}</div></aside></div>
     <details class="run-example"><summary>Run this example</summary>${code(command)}<p>Use <code>--size 1100x760</code> for a desktop-sized window. The recorded preview above uses a ${capture.viewport.join(' × ')} layout.</p></details>
     <p class="capture-note">Recorded on ${escapeHTML(capture.platform)} at <code>${capture.commit.slice(0,7)}</code>. ${docsLink(capture.receipt, 'Capture details')} · <a href="#get-started">Set up weGPUI</a></p>
@@ -221,6 +223,15 @@ function updatePreview(changes) {
   }
   restoreFocus = changes.state ? "#state-select" : `[data-theme="${changes.theme}"]`;
   const info=current();
+  const route = data.routes.find(route => route.id === info.route);
+  if (changes.state && route) {
+    const theme = info.params.get('theme') === 'dark' ? 'dark' : 'light';
+    if (!route.images[changes.state]?.[theme]) changes.theme = Object.keys(route.images[changes.state])[0];
+  }
+  if (changes.theme && !changes.state && route) {
+    const state = info.params.get('state') || 'default';
+    if (!route.images[state]?.[changes.theme]) changes.state = route.states.find(state => route.images[state]?.[changes.theme]) || state;
+  }
   for (const [key,value] of Object.entries(changes)) info.params.set(key,value);
   location.hash=`components/${info.route}?${info.params}`;
 }

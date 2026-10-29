@@ -5,9 +5,9 @@ the native-only Languages page. Search and category filters lead directly to rec
 previews, light/dark themes, component states and the actual Rust gallery source. Getting
 started and theming default to Rust. Phone and desktop window sizes use the same native gallery.
 
-Each component page identifies its capture host and source revision. The 133 native scenes
+Each component page identifies its capture host and source revision. The 134 native scenes
 and 540 bundled capture images include historical macOS comparisons, recent Linux replacement
-pairs, and two hash-verified native Languages captures. Native captures show recorded Rust
+pairs, and two hash-verified macOS Languages captures. Native captures show recorded Rust
 rendering; the browser does not execute GPUI. Mobile backends remain experimental.
 
 The **WeUI browser reference** tab retains all 60 pinned upstream HTML/CSS/JavaScript routes

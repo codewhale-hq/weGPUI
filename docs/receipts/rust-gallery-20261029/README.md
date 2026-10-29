@@ -34,3 +34,23 @@ reports, traces and screenshots are in the local packet
 results and `shell-final/` for the final shell recheck after the empty-search recovery and
 native-tab theme fixes). Neither final hosted CI nor deployment was run. The published Pages
 site retains its earlier revision until an independently authorized deployment.
+
+
+## Founder screenshot correction
+
+The founder caught missing emoji glyphs in the historical Linux Languages capture used by
+`87861a4`. That image was an unsuitable showcase. The website now uses the hash-verified
+macOS English-paragraph capture, where the emoji render correctly, and a separately named
+macOS Arabic-selection state for dark appearance. The image provenance, state selector and
+native run command follow the actual capture. The catalog remains 61 routes and now exposes
+134 native scenes. This replaces the website sample; it does not qualify Linux emoji rendering.
+
+Native preview images now use the page's normal scrolling, removing the clipped nested image
+scroll area. The English paragraph presentation trims the partial line above its first full
+row; the recorded source PNG remains unchanged. The original `source-sha256.json` describes
+`87861a4`; `followup-source-sha256.json` describes this correction.
+
+All five existing inventory/build regressions pass again. JavaScript syntax and diff checks
+pass. In-app observations confirm decoded light/dark macOS images, correct state/theme
+transitions in both directions, and a 292-pixel preview without page overflow in a 375-pixel
+viewport. No native runtime, hosted CI or deployment was performed for this presentation fix.
