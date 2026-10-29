@@ -206,7 +206,7 @@ impl<T: Clone + PartialEq + 'static> DesktopChoicePicker<T> {
             menu_match_trigger: false,
             max_height: px(240.),
             top_inset: px(8.),
-            text_size: px(13.).into(),
+            text_size: rems(13. / 16.).into(),
             context_key: None,
             action_context: None,
             trigger_focus: None,
@@ -690,7 +690,8 @@ impl<T: Clone + PartialEq + 'static> RenderOnce for DesktopChoicePicker<T> {
             .when(self.full_width, |trigger| trigger.w_full())
             .when(!self.full_width, |trigger| trigger.w(self.width))
             .min_w_0()
-            .h(px(28.))
+            .min_h(px(28.))
+            .py(px(4.))
             .flex()
             .items_center()
             .gap(px(8.))
@@ -870,6 +871,7 @@ impl<T: Clone + PartialEq + 'static> RenderOnce for DesktopChoicePicker<T> {
             .border_color(colors.border)
             .bg(colors.background)
             .text_color(colors.foreground)
+            .text_size(self.text_size)
             .shadow(vec![BoxShadow {
                 color: black().opacity(0.2),
                 offset: point(px(0.), px(6.)),
