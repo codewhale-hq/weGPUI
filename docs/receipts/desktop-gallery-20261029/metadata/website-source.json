@@ -1,0 +1,16 @@
+{
+  "base_commit": "2c56bab8e79584f1de13a779945b7dc592e4d6f2",
+  "files": {
+    "README.md": "ee911356817a1c744ac20b491fc5a4e2850e4b49937abbe008e8efc0822fe5e5",
+    "website/README.md": "b5f208a5259a0d35fc73e3c3550134a4de51a0bc817ec843d30cc9a38a45f3e3",
+    "website/app.js": "5d9df1de505e72e9cf6e9d07d31a475ca7c229d9e2b44e31a1addfcb786e3e18",
+    "website/build.py": "71c7414d51db7c9a3d6510fdc75c31f46a97f83cb02518b9f45afe7998bb58c0",
+    "website/check_browser.py": "d30b103e0f469bcf820242e468418fd5d7e406af841fe1cb0b2f01b3a542d49b",
+    "website/check_interactive.py": "c85511272c56ee5d81f8b077650889181fcd37b2cdc816e6d4ee624d639e5ae5",
+    "website/inventory.py": "901dee9b9b254fdd5d999bf99130c2889b0773ca04b4ad32ec7d1f7e12972ffe",
+    "website/style.css": "fc8d3dc5d79c9c32070f4546881978d577fb306b59948cd8accf370f10323457",
+    "website/tests/test_inventory.py": "e44da1dee8122b98a4402e7f3db993a584eaea451ab2b7a2a8a0c8aaec244a80"
+  },
+  "checks": "website-checks.json",
+  "native_source_commit": "2c56bab8e79584f1de13a779945b7dc592e4d6f2"
+}

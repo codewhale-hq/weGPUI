@@ -1,0 +1,34 @@
+{
+  "native_source_commit": "2c56bab8e79584f1de13a779945b7dc592e4d6f2",
+  "native_build": "PASS: locked offline Linux ARM64 gallery build",
+  "native_clippy": "PASS: gallery, -D warnings",
+  "existing_gallery_tests": {
+    "passed": 3,
+    "failed": 0
+  },
+  "format": "PASS: cargo fmt --all -- --check",
+  "native_product_observations": {
+    "passed": 8,
+    "failed": 0,
+    "method": "AT-SPI actions/focus and XTEST keyboard in isolated Xvfb"
+  },
+  "captures": {
+    "desktop": 272,
+    "phone": 4,
+    "complete": true
+  },
+  "website_build": {
+    "routes": 62,
+    "scenes": 136,
+    "bundled_images": 816
+  },
+  "existing_website_tests": {
+    "passed": 5,
+    "failed": 0
+  },
+  "javascript_syntax": "PASS",
+  "python_compilation": "PASS",
+  "whitespace": "PASS",
+  "hosted_ci": false,
+  "deployed": false
+}

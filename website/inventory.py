@@ -3,7 +3,7 @@
 import re
 
 
-NATIVE_ONLY_ROUTES = frozenset({'languages'})
+NATIVE_ONLY_ROUTES = frozenset({'languages', 'desktop-form'})
 
 
 def browser_route_map(source):

@@ -22,31 +22,32 @@ with sync_playwright() as p:
     errors=[]
     page.on('pageerror',lambda e: errors.append(str(e)))
     page.goto(args.url,wait_until='networkidle')
-    expect(page.get_by_role('heading',level=1)).to_contain_text('Familiar design')
+    expect(page.get_by_role('heading',level=1)).to_contain_text('WeUI,')
     page.screenshot(path=str(args.out/'overview-desktop.png'),full_page=True)
     routes=page.evaluate('WEGPUI.routes')
     api_links=set()
     state_themes=0
     capture_paths=set()
     for route in routes:
-        for state in route['states']:
-            for theme in ('light','dark'):
-                page.goto(args.url+'#components/'+route['id']+'?state='+state+'&theme='+theme+'&view=native')
-                image=page.locator('#native-capture')
-                expected=route['images'][state][theme]
-                expect(image).to_be_visible()
-                expect(image).to_have_attribute('src',expected['gpui'])
-                expect(image).to_have_js_property('complete',True)
-                assert image.evaluate('(img)=>img.naturalWidth')>0,(route['id'],state,theme)
-                evidence=route.get('captureEvidence',{}).get(state,{}).get(theme)
-                if evidence:
-                    expect(image).to_have_attribute('alt',re.compile(re.escape(evidence['platform']+' capture from '+evidence['commit'][:7])))
-                    expect(page.locator('.provenance')).to_contain_text(evidence['commit'][:7])
-                    expect(page.locator('.provenance')).to_contain_text(evidence['platform'])
-                expect(page.locator('#state-select')).to_have_value(state)
-                capture_paths.update(expected.values())
-                state_themes+=1
-        api_links.update(page.locator('a[href^="api/"]').evaluate_all('(links)=>links.map(a=>a.getAttribute("href"))'))
+        for layout,images,evidence_map in (('desktop',route['desktopImages'],route.get('desktopCaptureEvidence',{})),('phone',route['images'],route.get('captureEvidence',{}))):
+            for state,themes in images.items():
+                for theme,expected in themes.items():
+                    page.goto(args.url+'#components/'+route['id']+'?state='+state+'&theme='+theme+'&view=native&layout='+layout)
+                    image=page.locator('#native-capture')
+                    expect(image).to_be_visible()
+                    expect(image).to_have_attribute('src',expected['gpui'])
+                    expect(image).to_have_js_property('complete',True)
+                    assert image.evaluate('(img)=>img.naturalWidth')>0,(route['id'],state,theme,layout)
+                    evidence=evidence_map.get(state,{}).get(theme)
+                    if evidence:
+                        expect(image).to_have_attribute('alt',re.compile(re.escape(evidence['platform']+' native capture')))
+                        expect(page.locator('.capture-note')).to_contain_text(evidence['commit'][:7])
+                        expect(page.locator('.capture-note')).to_contain_text(evidence['platform'])
+                    expect(page.locator('#state-select')).to_have_value(state)
+                    expect(page.locator('[data-native-layout="'+layout+'"]').first).to_have_attribute('aria-pressed','true')
+                    capture_paths.update(expected.values())
+                    state_themes+=1
+        api_links.update(page.locator('a.module-link').evaluate_all('(links)=>links.map(a=>a.getAttribute("href"))'))
     for path in sorted(capture_paths):
         decoded=page.evaluate("""src => new Promise(resolve => {
             const image = new Image();
@@ -63,7 +64,8 @@ with sync_playwright() as p:
     expect(page.locator('.empty-results')).to_be_visible()
     search.fill('dialog')
     page.locator('#catalog-list').get_by_role('link',name='Dialogs',exact=True).click()
-    page.locator('.preview-modes').get_by_role('link',name='Native Rust captures',exact=True).click()
+    page.locator('.preview-modes').get_by_role('link',name='Native GPUI',exact=True).click()
+    page.get_by_role('button',name='Phone',exact=True).click()
     page.locator('#state-select').select_option('ios1')
     page.get_by_role('button',name='Dark',exact=True).click()
     expect(page.locator('#native-capture')).to_have_attribute('src','captures/dialog-ios1-dark-gpui.png')
@@ -71,10 +73,11 @@ with sync_playwright() as p:
     page.get_by_role('button',name='Compare WeUI',exact=True).click()
     expect(page.locator('.preview-stage img')).to_have_count(2)
     expect(page.locator('.preview-stage img').nth(1)).to_have_attribute('src','captures/dialog-ios1-dark-weui.png')
+    page.locator('.run-example > summary').click()
     page.get_by_role('button',name='Copy code').click()
     expect(page.get_by_role('button',name='Copy code')).to_have_text('Copied')
     copied=page.evaluate('navigator.clipboard.readText()')
-    assert '--state ios1 --theme dark' in copied,copied
+    assert '--state ios1 --theme dark' in copied and '--size 375x812' in copied,copied
     page.reload(wait_until='networkidle')
     expect(page.locator('#native-capture')).to_have_attribute('src','captures/dialog-ios1-dark-gpui.png')
     page.goto(args.url+'#components/button_default?view=native')
@@ -86,7 +89,7 @@ with sync_playwright() as p:
     checked=[]
     for width in (390,768,1440):
         page.set_viewport_size({'width':width,'height':900})
-        for path in ('overview','components/form_select?view=native','get-started','themes','native','native-guide','native-themes','platforms','roadmap'):
+        for path in ('overview','overview?layout=phone','components/desktop-form','components/desktop-form?layout=phone','components/form_select?view=native','get-started','themes'):
             page.goto(args.url+'#'+path)
             expect(page.get_by_role('heading',level=1)).to_be_visible()
             overflow=page.evaluate('document.documentElement.scrollWidth > innerWidth + 1')
@@ -111,7 +114,7 @@ with sync_playwright() as p:
         expect(page).to_have_url(args.url+'#themes?palette='+palette)
         expect(page.locator('.swatches>div')).to_have_count(8)
     page.goto(args.url+'#components/does-not-exist')
-    expect(page.get_by_role('heading',level=1)).to_contain_text('isn’t in this gallery')
+    expect(page.get_by_role('heading',level=1)).to_contain_text('Component not found')
     assert errors==[],errors
     result={'browser':browser.version,'native_application_test':False,'source_commit':page.evaluate('WEGPUI.sourceCommit'),'source_dirty':page.evaluate('WEGPUI.sourceDirty'),'capture_commit':page.evaluate('WEGPUI.captureCommit'),'native_evidence':page.evaluate('WEGPUI.nativeEvidence'),'gpui_version':page.evaluate('WEGPUI.gpuiVersion'),'routes_checked':len(routes),'state_theme_routes_checked':state_themes,'captures_decoded':len(capture_paths),'api_links_checked':len(api_links),'viewport_routes':checked,'palettes':palettes,'page_errors':errors,'passed':['catalog search/empty state','state/theme deep links','native/reference comparison','recorded capture provenance','clipboard','keyboard skip/focus','mobile navigation','responsive overflow','missing route']}
     (args.out/'browser-checks.json').write_text(json.dumps(result,indent=2)+'\n')

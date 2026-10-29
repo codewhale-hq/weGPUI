@@ -638,7 +638,7 @@ class Checks:
         for width in VIEWPORTS:
             self.page.set_viewport_size({'width': width, 'height': 900})
             self.page.goto(self.base, wait_until='networkidle')
-            expect(self.page.locator('.gallery-card')).to_have_count(61)
+            expect(self.page.locator('.gallery-card')).to_have_count(62)
             expect(self.page.locator('iframe')).to_have_count(0)
             assert not self.page.evaluate('document.documentElement.scrollWidth > innerWidth + 1'), width
             self.capture(f'native-gallery-{width}')

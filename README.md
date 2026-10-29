@@ -144,9 +144,11 @@ complete platform support are separate milestones.
 
 ## Component gallery website
 
-The website source showcases all **61 native Rust gallery routes**, with light/dark captures,
+The website source showcases all **62 native Rust gallery routes**, with light/dark captures,
 component states, search, category filters and the actual Rust source beside each preview.
-The same native gallery can run in phone-sized and desktop-sized windows. The 60 upstream
+Desktop is the default: persistent navigation, compact button compositions, a bounded
+content area and a responsive desktop form built with `wegpui::desktop::FormRow`.
+Use the Desktop/Phone switch to inspect both native layouts. The 60 upstream
 HTML/CSS/JavaScript examples remain available as a separately labeled browser reference.
 Mobile backends are experimental; portrait native captures do not imply mobile support.
 

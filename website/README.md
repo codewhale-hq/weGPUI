@@ -1,13 +1,15 @@
 # weGPUI component gallery
 
-The homepage is a visual catalog of all **61 native Rust/GPUI gallery routes**, including
-the native-only Languages page. Search and category filters lead directly to recorded native
-previews, light/dark themes, component states and the actual Rust gallery source. Getting
-started and theming default to Rust. Phone and desktop window sizes use the same native gallery.
+The homepage is a visual catalog of all **62 native Rust/GPUI gallery routes**, including
+the native-only Languages and Desktop form pages. Search and category filters lead directly
+to recorded native previews, light/dark themes, component states and the actual Rust gallery
+source. Getting started and theming default to Rust. Desktop/Phone controls select actual
+native captures of the two compositions. The Rust gallery opens in desktop mode by default
+and adapts when resized.
 
-Each component page identifies its capture host and source revision. The 134 native scenes
-and 540 bundled capture images include historical macOS comparisons, recent Linux replacement
-pairs, and two hash-verified macOS Languages captures. Native captures show recorded Rust
+Each component page identifies its capture host and source revision. The 136 native scenes
+and 816 bundled capture images include historical macOS comparisons, recent Linux replacement
+pairs, two hash-verified macOS Languages captures, and 276 desktop-gallery captures. Native captures show recorded Rust
 rendering; the browser does not execute GPUI. Mobile backends remain experimental.
 
 The **WeUI browser reference** tab retains all 60 pinned upstream HTML/CSS/JavaScript routes
@@ -33,14 +35,16 @@ both a domain root and a project prefix such as `/weGPUI/`, without rewrite rule
 The builder checks route/state inventory, template hashes and local asset provenance.
 `native-evidence.json` selects recent samples from a checked-in receipt. The builder verifies
 its matrix, capture manifests and sample hashes, and rejects duplicate sample identifiers.
-The browser inventory excludes the native-only Languages route. The website includes it
-with its native Rust source and hash-verified Linux captures, then checks the full native
+The browser inventory excludes the native-only Languages and Desktop form routes. The website includes them
+with their native Rust source and hash-verified captures, then checks the full native
 registry. Unexpected missing or extra routes fail validation. Run
 `python3 -m unittest discover -s website/tests -v` for the five inventory/build regressions.
 Historical local Chromium verification passed 42 checks across both mounts (360 route/viewport
 observations), including retained live-frame/draft/focus during palette changes; see
 [the Unicode/website receipt](../docs/receipts/unicode-parity-20261026/README.md).
-The [Rust gallery website receipt](../docs/receipts/rust-gallery-20261029/README.md) records the current focused checks.
+The [Rust gallery website receipt](../docs/receipts/rust-gallery-20261029/README.md) records the initial Rust-first refresh.
+The [desktop gallery receipt](../docs/receipts/desktop-gallery-20261029/README.md) records the
+native desktop matrix and the checks for Desktop/Phone switching.
 Source/install links identify the checkout's exact HEAD; a dirty preview is marked.
 Rebuild from committed source before sharing revision-pinned setup instructions.
 
@@ -72,13 +76,13 @@ directory; `--out PATH` chooses a new evidence directory. `--hosting root|projec
 `--only CASE,CASE` selects a development subset and is recorded as incomplete.
 Default evidence goes to a fresh UTC-stamped directory under `target/web-interactive/`.
 
-The legacy capture-view suite requires the preview server above to be running:
+The capture-view suite requires the preview server above to be running:
 
 ```sh
 python3 website/check_browser.py --browser /usr/bin/chromium
 ```
 
-It checks 264 recorded state/theme views, decodes all 528 referenced capture images, and checks
+It checks 542 recorded layout/state/theme views, decodes all 806 referenced capture images, and checks
 source/API links and surrounding website behavior. `--url URL` selects the server base
 and `--out PATH` selects evidence output; its default is UTC-stamped under
 `target/website-browser/`. Both suites preserve source/build provenance and exercise

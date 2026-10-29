@@ -1,0 +1,54 @@
+{
+  "platform": "Linux ARM64",
+  "input": "AT-SPI actions/focus and XTEST keyboard in an isolated local Xvfb display",
+  "steps": [
+    {
+      "keyboard_input": "Desktop draft"
+    },
+    {
+      "theme_change_retains_input": "Desktop draft"
+    },
+    {
+      "save_status": "Changes saved locally"
+    },
+    {
+      "switch_pressed_before": true,
+      "switch_pressed_after": false
+    },
+    {
+      "reset_name": "Morgan Chen",
+      "reset_switch_pressed": true
+    },
+    {
+      "navigation_focus_revealed": [
+        184,
+        1634,
+        398,
+        68
+      ]
+    },
+    {
+      "desktop_navigation_selected": "Navigation tabs",
+      "tabs": [
+        {
+          "name": "Option 1",
+          "role": "page tab"
+        },
+        {
+          "name": "Option 2",
+          "role": "page tab"
+        },
+        {
+          "name": "Option 3",
+          "role": "page tab"
+        }
+      ]
+    },
+    {
+      "tab_selected": "Option 2"
+    }
+  ],
+  "result": "PASS",
+  "source_manifest_sha256": "b4067097e592bb27096dd7dd4f9b3c5714b73997ebdd572b3f9972651bbcc712",
+  "source_commit": "2c56bab8e79584f1de13a779945b7dc592e4d6f2"
+}

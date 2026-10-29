@@ -159,7 +159,7 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
         if not (ROOT / page_source).exists():
             page_source = f'examples/gallery/pages/{module}/mod.rs'
         assert (ROOT / page_source).exists(), page_source
-        shutil.copyfile(ROOT / page_source, sources / f'{route}.rs')
+        shutil.copyfile(ROOT / page_source, sources / f'{route}.rs.txt')
         modules_match = re.search(r'components::\{([^}]+)\}', columns[1])
         modules = [x.strip() for x in modules_match.group(1).split(',')] if modules_match else []
         # input is a crate-level module, not components::input.
@@ -179,7 +179,7 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
                 images[state][theme][kind] = 'captures/' + filename
         records.append(dict(id=route, family=family, familyLabel=label, category=category,
                             title=title, description=description, states=states, images=images,
-                            source=page_source, rustSource=f'source/{route}.rs', modules=api_modules,
+                            source=page_source, rustSource=f'source/{route}.rs.txt', modules=api_modules,
                             playground='playground/index.html#' + route,
                             browserSource='playground/source/' + route + '.html.txt', captureEvidence=capture_evidence))
     assert {r['id'] for r in records} == set(route_map), 'Coverage differs from the Rust gallery'
@@ -207,13 +207,66 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
         language_evidence[state] = {theme: dict(commit=language_commit, platform='macOS',
                                                viewport=[375, 812], receipt='docs/receipts/rtl-completion-20261025/README.md')}
     language_source = 'examples/gallery/pages/languages.rs'
-    shutil.copyfile(ROOT / language_source, sources / 'languages.rs')
+    shutil.copyfile(ROOT / language_source, sources / 'languages.rs.txt')
     records.append(dict(id='languages', family='languages', familyLabel='Languages', category='Content',
                         title='Languages & typography', description='Multilingual text, bidirectional layout and native text editing.',
                         states=['default', 'arabic-selection'], images=language_images, source=language_source,
-                        rustSource='source/languages.rs', modules=['input', 'i18n'],
+                        rustSource='source/languages.rs.txt', modules=['input', 'i18n'],
                         nativeArgs={'default': '--lang en --scroll 2310', 'arabic-selection': '--lang ar --state type:7:all'},
                         captureEvidence=language_evidence))
+    desktop_source = 'examples/gallery/pages/desktop_form.rs'
+    shutil.copyfile(ROOT / desktop_source, sources / 'desktop-form.rs.txt')
+    records.append(dict(id='desktop-form', family='desktop-form', familyLabel='Desktop forms', category='Inputs',
+                        title='Desktop form', description='Aligned labels, native inputs, a switch and compact actions in a responsive desktop form.',
+                        states=['default', 'saved'], images={state: {} for state in ['default', 'saved']},
+                        source=desktop_source, rustSource='source/desktop-form.rs.txt',
+                        modules=['desktop', 'input', 'components/switch', 'components/button'], captureEvidence={}))
+    desktop_receipt = ROOT / 'docs/receipts/desktop-gallery-20261029'
+    desktop_manifest = json.loads((desktop_receipt / 'captures.json').read_text())
+    native_source = desktop_receipt / 'metadata/native-source.json'
+    if hashlib.sha256(native_source.read_bytes()).hexdigest() != desktop_manifest['source_manifest_sha256']:
+        raise ValueError('Desktop source manifest differs from its capture receipt')
+    source_identity = desktop_manifest.get('source_commit') or json.loads(native_source.read_text())['base_commit']
+    by_route = {record['id']: record for record in records}
+    observed = set()
+    for sample in desktop_manifest['captures']:
+        key = tuple(sample[name] for name in ['route', 'state', 'theme', 'layout'])
+        if key in observed:
+            raise ValueError('Duplicate desktop gallery capture')
+        observed.add(key)
+        record = by_route[sample['route']]
+        if sample['state'] not in record['states'] or sample['theme'] not in ['light', 'dark'] or sample['layout'] not in ['desktop', 'phone']:
+            raise ValueError('Unexpected desktop gallery capture state')
+        image = (desktop_receipt / 'captures' / sample['file']).resolve()
+        if not image.is_relative_to(desktop_receipt / 'captures'):
+            raise ValueError('Native capture path leaves its receipt')
+        pixels = image.read_bytes()
+        viewport = [1120, 760] if sample['layout'] == 'desktop' else [375, 812]
+        dimensions = [int.from_bytes(pixels[16:20], 'big'), int.from_bytes(pixels[20:24], 'big')]
+        if sample['viewport'] != viewport or pixels[:8] != b'\x89PNG\r\n\x1a\n' or dimensions != [value * 2 for value in viewport]:
+            raise ValueError('Native capture dimensions differ from its layout')
+        if hashlib.sha256(pixels).hexdigest() != sample['sha256']:
+            raise ValueError('Native desktop capture differs from its receipt')
+        shutil.copyfile(image, captures / image.name)
+        info = dict(commit=source_identity, platform=desktop_manifest['platform'], viewport=sample['viewport'],
+                    receipt='reports/desktop-gallery.md', args=sample['args'], modified=not bool(desktop_manifest.get('source_commit')))
+        if sample['layout'] == 'desktop':
+            record.setdefault('desktopImages', {}).setdefault(sample['state'], {})[sample['theme']] = dict(gpui='captures/' + image.name)
+            record.setdefault('desktopCaptureEvidence', {}).setdefault(sample['state'], {})[sample['theme']] = info
+        else:
+            record['images'].setdefault(sample['state'], {})[sample['theme']] = dict(gpui='captures/' + image.name)
+            record['captureEvidence'].setdefault(sample['state'], {})[sample['theme']] = info
+    expected = {(record['id'], state, theme, 'desktop') for record in records for state in record['states'] for theme in ['light', 'dark']}
+    expected |= {('desktop-form', state, theme, 'phone') for state in ['default', 'saved'] for theme in ['light', 'dark']}
+    assert observed == expected, 'The desktop capture matrix is incomplete'
+    reports = output / 'reports'
+    reports.mkdir(exist_ok=True)
+    shutil.copyfile(desktop_receipt / 'README.md', reports / 'desktop-gallery.md')
+    for module in {'theme', 'i18n'} | {module for record in records for module in record['modules']}:
+        module_source = ROOT / 'src' / (module + '.rs')
+        module_output = sources / 'api' / (module + '.rs.txt')
+        module_output.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(module_source, module_output)
     registry = set(re.findall(r'\("([\w-]+)",\s*\w+::build\)', route_source))
     assert {record['id'] for record in records} == registry, 'Website differs from the complete native gallery'
     manifest = tomllib.loads((ROOT / 'Cargo.toml').read_text())
