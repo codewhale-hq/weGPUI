@@ -42,6 +42,7 @@
 pub mod accessibility;
 pub mod assets;
 pub mod components;
+pub mod desktop;
 pub mod i18n;
 pub mod input;
 pub mod logical;
