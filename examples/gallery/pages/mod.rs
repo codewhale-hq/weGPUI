@@ -4,6 +4,7 @@ pub mod actionsheet;
 pub mod article;
 pub mod badge;
 pub mod button;
+pub mod desktop_form;
 pub mod dialog;
 pub mod flex;
 pub mod footer;
@@ -42,6 +43,7 @@ pub type Build = fn(&'static str, &Args, &mut Window, &mut App) -> AnyView;
 
 pub const ROUTES: &[(&str, Build)] = &[
     ("home", home::build),
+    ("desktop-form", desktop_form::build),
     ("layers", layers::build),
     ("languages", languages::build),
     ("button", button::build),

@@ -1,7 +1,7 @@
 """Capture a native weGPUI gallery page and the matching official WeUI example.
 
 Usage:
-  python3 -I scripts/capture.py ROUTE [--state NAME] [--theme light|dark] [--height 812]
+  python3 -I scripts/capture.py ROUTE [--state NAME] [--theme light|dark] [--width 375] [--height 812]
       [--scroll Y] [--brand RRGGBB] [--care] [--lang TAG] [--name NAME] [--only gpui|weui] [--out DIR]
 
 Writes DIR/NAME-{theme}-gpui.png and DIR/NAME-{theme}-weui.png (default DIR docs/parity,
@@ -55,19 +55,19 @@ def save_native_capture(im, out):
     im.save(out)
 
 
-def window_id(pid, height):
+def window_id(pid, height, width=WIDTH):
     import Quartz
     infos = Quartz.CGWindowListCopyWindowInfo(Quartz.kCGWindowListOptionAll, Quartz.kCGNullWindowID)
     for info in infos:
         if info.get('kCGWindowOwnerPID') == pid and info.get('kCGWindowLayer') == 0:
             bounds = info.get('kCGWindowBounds')
-            if bounds and abs(bounds['Width'] - WIDTH) <= 1 and height <= bounds['Height'] <= height + 60:
+            if bounds and abs(bounds['Width'] - width) <= 1 and height <= bounds['Height'] <= height + 60:
                 return info['kCGWindowNumber']
     return None
 
 
 def capture_gpui(args, out):
-    cmd = [str(BINARY), '--page', args.route, '--theme', args.theme, '--size', f'{WIDTH}x{args.height}',
+    cmd = [str(BINARY), '--page', args.route, '--theme', args.theme, '--size', f'{args.width}x{args.height}',
            '--position', '60,60', '--reduce-motion']
     cmd += ['--lang', args.lang]
     if args.dir:
@@ -87,21 +87,23 @@ def capture_gpui(args, out):
         wid = None
         for _ in range(100):
             time.sleep(0.1)
-            wid = window_id(proc.pid, args.height)
+            wid = window_id(proc.pid, args.height, args.width)
             if wid:
                 break
         if not wid:
             raise SystemExit(f'gallery window not found; stderr: {proc.stderr.read1().decode() if proc.poll() is not None else ""}')
         time.sleep(args.settle)
+        if proc.poll() is not None:
+            raise SystemExit(f"native gallery exited before capture: {proc.stderr.read().decode()}")
         with tempfile.TemporaryDirectory() as tmp:
             raw = pathlib.Path(tmp) / 'raw.png'
-            subprocess.run(['screencapture', '-x', '-o', '-l', str(wid), str(raw)], check=True)
+            subprocess.run(['screencapture', '-x', '-o', '-l', str(wid), str(raw)], check=True, timeout=30)
             from PIL import Image
             im = Image.open(raw)
-            scale = round(im.width / WIDTH)
+            scale = round(im.width / args.width)
             content_h = args.height * scale
             top = im.height - content_h
-            if scale != 2 or im.width != WIDTH * 2 or not 0 <= top <= 120:
+            if scale != 2 or im.width != args.width * 2 or not 0 <= top <= 120:
                 im.save(out.with_name(out.stem + '-invalid.png'))
                 raise SystemExit(f'invalid native capture size {im.size}; expected 2x content plus titlebar')
             save_native_capture(to_srgb(im).crop((0, top, im.width, im.height)), out)
@@ -121,7 +123,7 @@ def capture_weui(args, out):
         raise SystemExit(f'no WeUI replay registered for {key}')
     with sync_playwright() as p:
         browser = p.chromium.launch(executable_path=os.environ.get('PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH') or None)
-        ctx = browser.new_context(viewport={'width': WIDTH, 'height': args.height}, device_scale_factor=2,
+        ctx = browser.new_context(viewport={'width': args.width, 'height': args.height}, device_scale_factor=2,
                                   color_scheme=args.theme)
         page = ctx.new_page()
         page.goto(f'{WEUI_URL}#{args.route}')
@@ -155,14 +157,16 @@ def capture_gpui_x11(args, cmd, out):
         if not wid:
             raise SystemExit(f'gallery window not found; stderr: {proc.stderr.read1().decode() if proc.poll() is not None else ""}')
         time.sleep(args.settle)
+        if proc.poll() is not None:
+            raise SystemExit(f"native gallery exited before capture: {proc.stderr.read().decode()}")
         with tempfile.TemporaryDirectory() as tmp:
             raw = pathlib.Path(tmp) / 'raw.png'
-            subprocess.run(['import', '-window', wid, str(raw)], check=True)
+            subprocess.run(['import', '-window', wid, str(raw)], check=True, timeout=30)
             from PIL import Image
             im = Image.open(raw).convert('RGB')
-            if im.size != (WIDTH * 2, args.height * 2):
+            if im.size != (args.width * 2, args.height * 2):
                 im.save(out.with_name(out.stem + '-invalid.png'))
-                raise SystemExit(f'invalid X11 capture size {im.size}; expected {(WIDTH * 2, args.height * 2)}')
+                raise SystemExit(f'invalid X11 capture size {im.size}; expected {(args.width * 2, args.height * 2)}')
             save_native_capture(im, out)
     finally:
         proc.terminate()
@@ -178,6 +182,7 @@ def main():
     ap.add_argument('--state')
     ap.add_argument('--theme', default='light', choices=['light', 'dark'])
     ap.add_argument('--height', type=int, default=812)
+    ap.add_argument('--width', type=int, default=WIDTH)
     ap.add_argument('--scroll', type=int, default=0)
     ap.add_argument('--brand')
     ap.add_argument('--care', action='store_true')

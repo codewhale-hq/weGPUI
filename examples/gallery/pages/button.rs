@@ -21,8 +21,14 @@ pub fn build(route: &'static str, args: &Args, _: &mut Window, cx: &mut App) -> 
     cx.new(|_| ButtonPage { route, agreed }).into()
 }
 
-fn sp_area() -> Div {
-    div().my(px(15.)).p(px(15.)).flex().flex_col().gap(px(16.))
+fn sp_area(desktop: bool) -> Div {
+    div()
+        .my(px(15.))
+        .p(px(15.))
+        .flex()
+        .gap(px(16.))
+        .when(desktop, |area| area.flex_wrap().items_start())
+        .when(!desktop, |area| area.flex_col())
 }
 
 const KINDS: [(ButtonKind, &str, &str); 3] = [
@@ -54,17 +60,23 @@ impl ButtonPage {
             )
     }
 
-    fn default_page(&self, cx: &App) -> impl IntoElement {
+    fn default_page(&self, desktop: bool, cx: &App) -> impl IntoElement {
         let brand = Theme::get(cx).brand;
-        let mut first = sp_area();
+        let mut first = sp_area(desktop);
         for (kind, key, label) in KINDS.map(|(kind, key, label)| (kind, key, tr(label))) {
             first = first
-                .child(Button::new(label).id(key).kind(kind))
+                .child(
+                    Button::new(label)
+                        .id(key)
+                        .kind(kind)
+                        .when(desktop, |button| button.mini().inline().margin_reset()),
+                )
                 .child(
                     Button::new("")
                         .id(format!("{key}-loading-only"))
                         .title(tr("正在操作"))
                         .kind(kind)
+                        .when(desktop, |button| button.mini().inline().margin_reset())
                         .loading(true),
                 )
                 .child(
@@ -72,16 +84,18 @@ impl ButtonPage {
                         .id(format!("{key}-loading"))
                         .title(tr("正在操作"))
                         .kind(kind)
+                        .when(desktop, |button| button.mini().inline().margin_reset())
                         .loading(true),
                 )
                 .child(
                     Button::new(label)
                         .id(format!("{key}-disabled"))
                         .kind(kind)
+                        .when(desktop, |button| button.mini().inline().margin_reset())
                         .disabled(true),
                 );
         }
-        let widths = sp_area()
+        let widths = sp_area(desktop)
             .child(Button::new(tr("按钮宽度")).id("w1").primary())
             .child(Button::new(tr("按钮宽度自适应内容")).id("w2").primary())
             .child(
@@ -107,9 +121,9 @@ impl ButtonPage {
                 .primary()
                 .loading(true),
             );
-        let mut medium = sp_area();
-        let mut overlay = sp_area().px_0().bg(brand);
-        let mut overlay_disabled = sp_area().px_0().bg(brand);
+        let mut medium = sp_area(desktop);
+        let mut overlay = sp_area(desktop).px_0().bg(brand);
+        let mut overlay_disabled = sp_area(desktop).px_0().bg(brand);
         let mut mini = div()
             .my(px(15.))
             .p(px(15.))
@@ -216,9 +230,15 @@ impl ButtonPage {
 }
 
 impl Render for ButtonPage {
-    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+    fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         match self.route {
-            "button_default" => self.default_page(cx).into_any_element(),
+            "button_default" => self
+                .default_page(
+                    cfg!(not(target_os = "ios"))
+                        && window.viewport_size().width >= px(crate::desktop::BREAKPOINT),
+                    cx,
+                )
+                .into_any_element(),
             "button_bottom_fixed" => self.bottom_fixed(cx).into_any_element(),
             _ => self.index().into_any_element(),
         }

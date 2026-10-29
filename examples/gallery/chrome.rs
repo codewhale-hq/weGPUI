@@ -180,7 +180,11 @@ impl RenderOnce for PageFrame {
             self.title
                 .map(|title| page_hd(title, self.desc, cx).into_any_element())
         });
+        let is_desktop = cfg!(not(target_os = "ios"))
+            && window.viewport_size().width >= px(crate::desktop::BREAKPOINT);
         let content = div()
+            .w_full()
+            .when(is_desktop, |content| content.max_w(px(800.)).mx_auto())
             .min_h_full()
             .flex()
             .flex_col()

@@ -106,6 +106,8 @@ impl Home {
 
 impl Render for Home {
     fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let is_desktop = cfg!(not(target_os = "ios"))
+            && window.viewport_size().width >= px(crate::desktop::BREAKPOINT);
         let t = Theme::get(cx).clone();
         let p = match self.changed {
             Some(at) if !cx.reduce_motion() => {
@@ -135,6 +137,25 @@ impl Render for Home {
                     .text_color(t.fg_1)
                     .child(tr("WeUI 是一套同微信原生视觉体验一致的基础样式库，由微信官方设计团队为微信内网页和微信小程序量身设计，令用户的使用感知更加统一。")),
             );
+        let header = if is_desktop {
+            div()
+                .p(px(32.))
+                .child(
+                    div()
+                        .text_size(px(30.))
+                        .font_weight(FontWeight::MEDIUM)
+                        .child("Component library"),
+                )
+                .child(
+                    div()
+                        .mt(px(10.))
+                        .text_size(px(14.))
+                        .text_color(t.fg_1)
+                        .child("WeUI components, composed for native desktop applications."),
+                )
+        } else {
+            header
+        };
         let brand = t.brand;
         let category = |i: usize,
                         label: &'static str,
@@ -143,11 +164,15 @@ impl Render for Home {
                         cx: &mut Context<Self>| {
             div()
                 .id(("category", i))
-                .role(Role::Button)
+                .role(if is_desktop {
+                    Role::Label
+                } else {
+                    Role::Button
+                })
                 .aria_label(label)
-                .aria_expanded(expanded)
-                .focusable()
-                .tab_stop(true)
+                .when(!is_desktop, |el| {
+                    el.aria_expanded(expanded).focusable().tab_stop(true)
+                })
                 .flex()
                 .items_center()
                 .p(px(18.))
@@ -159,21 +184,28 @@ impl Render for Home {
                 .child(div().flex_1().child(label))
                 .child(img(themed_image(icon, cx)).size(px(30.)))
         };
-        let mut list = div().flex().flex_col();
+        let mut list = div()
+            .flex()
+            .when(is_desktop, |list| list.flex_wrap().gap(px(16.)))
+            .when(!is_desktop, |list| list.flex_col());
         for (i, (label, icon, items)) in CATEGORIES.iter().enumerate() {
-            let expanded = self.open == Some(i);
+            let expanded = is_desktop || self.open == Some(i);
             let mut li = div()
-                .mt(px(if i == 0 { 0. } else { 8. }))
+                .mt(px(if is_desktop || i == 0 { 0. } else { 8. }))
+                .when(is_desktop, |item| item.w(relative(0.48)))
                 .bg(t.bg_2)
                 .rounded(px(2.))
                 .overflow_hidden()
                 .child(
                     category(i, tr(label), icon, expanded, cx)
-                        .on_click(cx.listener(move |this, _, _, cx| this.toggle(i, cx)))
+                        .when(!is_desktop, |el| {
+                            el.on_click(cx.listener(move |this, _, _, cx| this.toggle(i, cx)))
+                        })
                         .reveal_focus(),
                 );
             if expanded {
                 let cells = Cells::new()
+                    .id(("home-category-cells", i))
                     .style(CellsStyle::Bare)
                     .margin_top(0.)
                     .separator_inset(20., 20.)
@@ -195,8 +227,12 @@ impl Render for Home {
                 li = li.child(
                     div()
                         .relative()
-                        .top(px(-(1. - p) * 0.5 * 56. * items.len() as f32))
-                        .opacity(p)
+                        .top(px(if is_desktop {
+                            0.
+                        } else {
+                            -(1. - p) * 0.5 * 56. * items.len() as f32
+                        }))
+                        .opacity(if is_desktop { 1. } else { p })
                         .child(cells),
                 );
             }

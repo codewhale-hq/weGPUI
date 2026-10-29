@@ -1,4 +1,5 @@
 mod chrome;
+mod desktop;
 mod pages;
 mod text;
 
@@ -191,6 +192,8 @@ impl Render for Gallery {
         let width = window.viewport_size().width;
         #[cfg(target_os = "ios")]
         let width = window.fully_visible_bounds().size.width;
+        let is_desktop = cfg!(not(target_os = "ios")) && width >= px(desktop::BREAKPOINT);
+        let width = width - px(if is_desktop { desktop::SIDEBAR } else { 0. });
         let n = self.stack.len();
         let top = self
             .stack
@@ -213,20 +216,7 @@ impl Render for Gallery {
             .text_size(px(16.))
             .line_height(relative(1.6))
             .text_color(t.fg_0)
-            .bg(t.bg_0)
-            .on_key_down(|event, window, cx| {
-                if event.keystroke.key == "tab" && !event.keystroke.modifiers.platform {
-                    if event.keystroke.modifiers.shift {
-                        window.focus_prev(cx)
-                    } else {
-                        window.focus_next(cx)
-                    }
-                    window.prevent_default();
-                    cx.stop_propagation();
-                }
-            })
-            .on_action(|_: &Back, w, cx| back(w, cx))
-            .on_action(|_: &Home, w, cx| home(w, cx));
+            .bg(t.bg_0);
         root = root.text_start(I18n::get(cx).direction());
         let fallbacks: Vec<String> = I18n::get(cx)
             .locale()
@@ -250,6 +240,28 @@ impl Render for Gallery {
             let p = leaving_p.unwrap_or(1.);
             root = root.child(layer(entry, p, 1. - p, width));
         }
+        if is_desktop {
+            let route = self
+                .stack
+                .last()
+                .map(|entry| entry.route.as_ref())
+                .unwrap_or("home");
+            root = desktop::frame(root, route, window, cx);
+        }
+        let root = root
+            .on_key_down(|event, window, cx| {
+                if event.keystroke.key == "tab" && !event.keystroke.modifiers.platform {
+                    if event.keystroke.modifiers.shift {
+                        window.focus_prev(cx)
+                    } else {
+                        window.focus_next(cx)
+                    }
+                    window.prevent_default();
+                    cx.stop_propagation();
+                }
+            })
+            .on_action(|_: &Back, w, cx| back(w, cx))
+            .on_action(|_: &Home, w, cx| home(w, cx));
         #[cfg(target_os = "ios")]
         let root = platform::safe_area(
             div()
@@ -490,7 +502,11 @@ fn main() {
             KeyBinding::new("cmd-shift-h", Home, None),
         ]);
         set_menus(cx);
-        let (w, h) = args.size.unwrap_or((375., 812.));
+        let (w, h) = args.size.unwrap_or(if cfg!(target_os = "ios") {
+            (375., 812.)
+        } else {
+            (1120., 760.)
+        });
         let bounds = match args.position {
             Some((x, y)) => Bounds::new(point(px(x), px(y)), size(px(w), px(h))),
             None => Bounds::centered(None, size(px(w), px(h)), cx),
