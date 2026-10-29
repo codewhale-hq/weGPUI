@@ -17,7 +17,7 @@ status visible until the desktop release gates are complete.
 
 ## GitHub Pages
 
-The latest owner-authorized update publishes `b368c94` in
+The archived October 26 owner-authorized update published `b368c94` in
 [run 40281443167](https://github.com/codewhale-hq/weGPUI/actions/runs/40281443167).
 Build/deploy and direct live-origin browser checks pass; see the
 [update receipt](../docs/receipts/pages-update-20261026/README.md). The following original

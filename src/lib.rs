@@ -42,6 +42,8 @@
 pub mod accessibility;
 pub mod assets;
 pub mod components;
+#[cfg_attr(doc, doc = include_str!("../docs/DESKTOP.md"))]
+#[allow(missing_docs)]
 pub mod desktop;
 pub mod i18n;
 pub mod input;

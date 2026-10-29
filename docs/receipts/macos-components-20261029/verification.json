@@ -91,7 +91,10 @@
     ]
   },
   "publication": {
-    "status": "pending final source push and Pages workflow"
+    "snapshot": "Pre-publication source validation",
+    "authorization": "Owner requested GitHub main and website updated on 2026-10-29",
+    "workflow": "https://github.com/codewhale-hq/weGPUI/actions/workflows/pages.yml",
+    "live_evidence": "Task publication artifact and GitHub Pages deployment history"
   },
   "native_capture_platforms": {
     "macOS": 45,
@@ -106,5 +109,87 @@
       "project-prefix"
     ],
     "suite_complete": false
+  },
+  "source_commit": "6d4cbd0408fa4414be53168726c28677a0efb7ce",
+  "committed_native_inputs_verified": 442,
+  "post_capture_source_delta": {
+    "src/lib.rs": "Documentation inclusion and missing-docs scope only; no rendering or input behavior changes."
+  },
+  "final_vm_checks": [
+    {
+      "check": "format",
+      "command": [
+        "/work/build-tools/scripts/dev-cargo.sh",
+        "fmt",
+        "--manifest-path",
+        "/src/Cargo.toml",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "build",
+      "command": [
+        "/work/build-tools/scripts/dev-cargo.sh",
+        "build",
+        "--manifest-path",
+        "/src/Cargo.toml",
+        "--all-targets",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "clippy",
+      "command": [
+        "/work/build-tools/scripts/dev-cargo.sh",
+        "clippy",
+        "--manifest-path",
+        "/src/Cargo.toml",
+        "--all-targets",
+        "--locked",
+        "--offline",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "tests",
+      "command": [
+        "/work/build-tools/scripts/dev-cargo.sh",
+        "test",
+        "--manifest-path",
+        "/src/Cargo.toml",
+        "--lib",
+        "--example",
+        "gallery",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "docs",
+      "command": [
+        "/work/build-tools/scripts/dev-cargo.sh",
+        "doc",
+        "--manifest-path",
+        "/src/Cargo.toml",
+        "--no-deps",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "website_inventory_tests": {
+    "passed": 5,
+    "failed": 0,
+    "platform": "Linux ARM64 VM"
   }
 }

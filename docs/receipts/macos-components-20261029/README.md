@@ -57,4 +57,7 @@ interaction observations and website checks are recorded in `verification.json`.
 Screenshots demonstrate rendering at their recorded source. They do not establish
 complete WeChat parity, live messaging, VoiceOver, real IME acceptance or support on
 every operating system. Calling, recording and external transport remain application
-responsibilities. No hosted CI, deployment or publication was performed for this slice.
+responsibilities. No hosted native CI or client release qualification is claimed. The owner authorized
+a website update after this pre-publication validation; the existing manual
+[Pages workflow](https://github.com/codewhale-hq/weGPUI/actions/workflows/pages.yml)
+records the deployment identity and result separately.

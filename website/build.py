@@ -339,6 +339,11 @@ def build(output: Path, include_api: bool, api_dir: Path | None = None):
             raise ValueError('Run cargo doc --no-deps --locked before --include-api')
         shutil.copytree(source, output / 'api', dirs_exist_ok=True, ignore=shutil.ignore_patterns('.lock'))
     (output / 'data.js').write_text('window.WEGPUI = ' + json.dumps(data, ensure_ascii=False) + ';\n')
+    index = (output / 'index.html').read_text()
+    for asset in ['style.css', 'app.js', 'data.js']:
+        digest = hashlib.sha256((output / asset).read_bytes()).hexdigest()[:12]
+        index = index.replace(f'"{asset}"', f'"{asset}?v={digest}"')
+    (output / 'index.html').write_text(index)
     (output / '.nojekyll').write_text('')
     (output / 'robots.txt').write_text('User-agent: *\nAllow: /\n')
     print(f'Built {len(records)} routes, {sum(len(r["states"]) for r in records)} recorded states; API docs: {include_api}')
