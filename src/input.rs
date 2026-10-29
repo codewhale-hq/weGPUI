@@ -186,6 +186,7 @@ pub struct TextInput {
     disabled: bool,
     readonly: bool,
     multiline: bool,
+    choice_navigation: bool,
     rows: Option<usize>,
     selected_range: Range<usize>,
     selection_reversed: bool,
@@ -225,6 +226,7 @@ impl TextInput {
             disabled: false,
             readonly: false,
             multiline: false,
+            choice_navigation: false,
             rows: None,
             selected_range: 0..0,
             selection_reversed: false,
@@ -261,6 +263,14 @@ impl TextInput {
     /// The current committed text, including any IME text being composed.
     pub fn text(&self) -> &str {
         &self.content
+    }
+
+    pub(crate) fn set_choice_navigation(&mut self, enabled: bool) {
+        self.choice_navigation = enabled;
+    }
+
+    pub(crate) fn is_composing(&self) -> bool {
+        self.marked_range.is_some() || self.composition_base.is_some()
     }
 
     /// Text length in UTF-16 code units, the unit HTML `maxlength` counts.
@@ -599,10 +609,22 @@ impl TextInput {
     }
 
     fn up(&mut self, _: &Up, _: &mut Window, cx: &mut Context<Self>) {
+        if self.choice_navigation && !self.multiline {
+            if !self.is_composing() {
+                cx.propagate();
+            }
+            return;
+        }
         self.vertical(-1., false, cx);
     }
 
     fn down(&mut self, _: &Down, _: &mut Window, cx: &mut Context<Self>) {
+        if self.choice_navigation && !self.multiline {
+            if !self.is_composing() {
+                cx.propagate();
+            }
+            return;
+        }
         self.vertical(1., false, cx);
     }
 
@@ -706,6 +728,12 @@ impl TextInput {
     }
 
     fn enter(&mut self, _: &Enter, window: &mut Window, cx: &mut Context<Self>) {
+        if self.choice_navigation && !self.multiline {
+            if !self.is_composing() {
+                cx.propagate();
+            }
+            return;
+        }
         if self.multiline {
             if self.editable() {
                 self.replace_text_in_range(None, "\n", window, cx);

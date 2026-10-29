@@ -3,6 +3,8 @@ use gpui::{prelude::*, *};
 use crate::{I18n, logical::Logical};
 
 #[allow(missing_docs)]
+mod choice_picker;
+#[allow(missing_docs)]
 mod controls;
 #[allow(missing_docs)]
 mod icons;
@@ -11,6 +13,7 @@ mod messaging;
 #[allow(missing_docs)]
 mod panels;
 
+pub use choice_picker::*;
 pub use controls::*;
 pub use icons::*;
 pub use messaging::*;
@@ -18,6 +21,7 @@ pub use panels::*;
 
 pub(crate) fn init(cx: &mut App) {
     panels::init(cx);
+    choice_picker::init(cx);
 }
 
 #[derive(IntoElement)]

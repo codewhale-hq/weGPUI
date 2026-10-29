@@ -19,6 +19,32 @@ pub(super) fn init(cx: &mut App) {
     )]);
 }
 
+pub(super) fn popup_geometry(
+    trigger: Bounds<Pixels>,
+    viewport: Size<Pixels>,
+    top_inset: Pixels,
+    estimated: Pixels,
+    max_height: Option<Pixels>,
+) -> (Anchor, Point<Pixels>, Pixels) {
+    let top_inset = top_inset.min((viewport.height - px(8.)).max(px(0.)));
+    let below_y = (trigger.bottom() + px(4.)).max(top_inset);
+    let below = (viewport.height - below_y - px(8.)).max(px(0.));
+    let above = (trigger.top() - top_inset - px(4.)).max(px(0.));
+    let estimated = max_height.map_or(estimated, |max| estimated.min(max));
+    let opens_above = below < estimated && above > below;
+    let available = if opens_above { above } else { below };
+    let available = max_height.map_or(available, |max| available.min(max));
+    if opens_above {
+        (
+            Anchor::BottomLeft,
+            trigger.origin - point(px(0.), px(4.)),
+            available,
+        )
+    } else {
+        (Anchor::TopLeft, point(trigger.left(), below_y), available)
+    }
+}
+
 #[derive(IntoElement)]
 pub struct DesktopSettingRow {
     label: SharedString,
@@ -871,11 +897,7 @@ impl RenderOnce for DesktopDropdown {
         let top_inset = self
             .top_inset_rems
             .map(|inset| window.rem_size() * inset)
-            .unwrap_or(self.top_inset)
-            .min((viewport.height - px(8.)).max(px(0.)));
-        let below_y = (trigger_bounds.bottom() + px(4.)).max(top_inset);
-        let below = (viewport.height - below_y - px(8.)).max(px(0.));
-        let above = (trigger_bounds.top() - top_inset - px(4.)).max(px(0.));
+            .unwrap_or(self.top_inset);
         let estimated = px(entries
             .iter()
             .map(|entry| match entry {
@@ -886,20 +908,13 @@ impl RenderOnce for DesktopDropdown {
             })
             .sum::<f32>()
             + 10.);
-        let estimated = self.max_height.map_or(estimated, |max| estimated.min(max));
-        let opens_above = below < estimated && above > below;
-        let available = if opens_above { above } else { below };
-        let available = self.max_height.map_or(available, |max| available.min(max));
-        let position = if opens_above {
-            trigger_bounds.origin - point(px(0.), px(4.))
-        } else {
-            point(trigger_bounds.left(), below_y)
-        };
-        let anchor = if opens_above {
-            Anchor::BottomLeft
-        } else {
-            Anchor::TopLeft
-        };
+        let (anchor, position, available) = popup_geometry(
+            trigger_bounds,
+            viewport,
+            top_inset,
+            estimated,
+            self.max_height,
+        );
         let colors = self.colors;
         let mut menu = div()
             .id("desktop-dropdown-menu")
