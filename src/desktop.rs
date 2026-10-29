@@ -8,6 +8,9 @@ pub struct FormRow {
     label: SharedString,
     description: Option<SharedString>,
     label_width: Option<DefiniteLength>,
+    label_text_size: Option<AbsoluteLength>,
+    label_font_weight: Option<FontWeight>,
+    label_text_color: Option<Hsla>,
     control_basis: Length,
     focus_target: Option<FocusHandle>,
     stacked: bool,
@@ -21,6 +24,9 @@ impl FormRow {
             label: label.into(),
             description: None,
             label_width: None,
+            label_text_size: None,
+            label_font_weight: None,
+            label_text_color: None,
             control_basis: rems(12.).into(),
             focus_target: None,
             stacked: false,
@@ -35,6 +41,21 @@ impl FormRow {
 
     pub fn label_width(mut self, width: impl Into<DefiniteLength>) -> Self {
         self.label_width = Some(width.into());
+        self
+    }
+
+    pub fn label_text_size(mut self, size: impl Into<AbsoluteLength>) -> Self {
+        self.label_text_size = Some(size.into());
+        self
+    }
+
+    pub fn label_font_weight(mut self, weight: FontWeight) -> Self {
+        self.label_font_weight = Some(weight);
+        self
+    }
+
+    pub fn label_text_color(mut self, color: impl Into<Hsla>) -> Self {
+        self.label_text_color = Some(color.into());
         self
     }
 
@@ -69,6 +90,13 @@ impl RenderOnce for FormRow {
             .min_w_0()
             .max_w_full()
             .text_start(direction)
+            .when_some(self.label_text_size, |label, size| label.text_size(size))
+            .when_some(self.label_font_weight, |label, weight| {
+                label.font_weight(weight)
+            })
+            .when_some(self.label_text_color, |label, color| {
+                label.text_color(color)
+            })
             .when(!self.stacked, |label| {
                 label.when_some(self.label_width, |label, width| {
                     label.w(width).flex_shrink_0()
