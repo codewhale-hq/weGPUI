@@ -41,7 +41,7 @@ fn transition_progress(elapsed: Duration, duration: Duration, curve: [f32; 4]) -
     }
 }
 
-struct SwitchMotion {
+pub(crate) struct SwitchMotion {
     checked: bool,
     changed: Option<Instant>,
     from_color: f32,
@@ -53,7 +53,7 @@ struct SwitchMotion {
 }
 
 impl SwitchMotion {
-    fn new(checked: bool) -> Self {
+    pub(crate) fn new(checked: bool) -> Self {
         let position = f32::from(u8::from(checked));
         Self {
             checked,
@@ -90,7 +90,12 @@ impl SwitchMotion {
         )
     }
 
-    fn update(&mut self, checked: bool, now: Instant, reduced: bool) -> (f32, f32, bool) {
+    pub(crate) fn update(
+        &mut self,
+        checked: bool,
+        now: Instant,
+        reduced: bool,
+    ) -> (f32, f32, bool) {
         if reduced {
             *self = Self::new(checked);
             return (

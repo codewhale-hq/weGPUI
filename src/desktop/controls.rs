@@ -7,6 +7,7 @@ use crate::{
     scrolling::RevealFocus,
 };
 use gpui::{prelude::*, *};
+use std::time::Instant;
 
 #[derive(Clone, Copy)]
 pub struct DesktopPalette {
@@ -266,6 +267,7 @@ pub struct DesktopSwitch {
     checked: bool,
     disabled: bool,
     visible_label: Option<SharedString>,
+    visible_label_colors: Option<(Hsla, Hsla)>,
     colors: Option<DesktopSwitchColors>,
     on_change: Option<ChangeHandler<bool>>,
 }
@@ -278,6 +280,7 @@ impl DesktopSwitch {
             checked: false,
             disabled: false,
             visible_label: None,
+            visible_label_colors: None,
             colors: None,
             on_change: None,
         }
@@ -294,6 +297,14 @@ impl DesktopSwitch {
         self.visible_label = Some(label.into());
         self
     }
+    pub fn visible_label_colors(
+        mut self,
+        enabled: impl Into<Hsla>,
+        disabled: impl Into<Hsla>,
+    ) -> Self {
+        self.visible_label_colors = Some((enabled.into(), disabled.into()));
+        self
+    }
     pub fn colors(mut self, colors: DesktopSwitchColors) -> Self {
         self.colors = Some(colors);
         self
@@ -305,8 +316,22 @@ impl DesktopSwitch {
 }
 
 impl RenderOnce for DesktopSwitch {
-    fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
+    fn render(self, window: &mut Window, cx: &mut App) -> impl IntoElement {
         let p = DesktopPalette::get(cx);
+        let checked = self.checked;
+        let motion =
+            window.use_keyed_state((self.id.clone(), "desktop-switch-motion"), cx, |_, _| {
+                crate::components::switch::SwitchMotion::new(checked)
+            });
+        let reduced = cx.reduce_motion();
+        let (_, x, animating) =
+            motion.update(cx, |m, _| m.update(checked, Instant::now(), reduced));
+        if animating {
+            window.request_animation_frame();
+        }
+        let label_color = self
+            .visible_label_colors
+            .map(|(enabled, disabled)| if self.disabled { disabled } else { enabled });
         let (track, thumb) = match (self.colors, self.disabled, self.checked) {
             (Some(colors), false, true) => (colors.checked_track, colors.checked_thumb),
             (Some(colors), false, false) => (colors.unchecked_track, colors.unchecked_thumb),
@@ -331,7 +356,7 @@ impl RenderOnce for DesktopSwitch {
                 div()
                     .absolute()
                     .top(px(2.))
-                    .left(px(if self.checked { 17. } else { 2. }))
+                    .left(px(2. + x * 0.75))
                     .size(px(17.))
                     .rounded_full()
                     .bg(thumb),
@@ -353,7 +378,12 @@ impl RenderOnce for DesktopSwitch {
             })
             .child(track)
             .when_some(self.visible_label, |el, label| {
-                el.gap(px(8.)).child(div().min_w_0().child(label))
+                el.gap(px(8.)).child(
+                    div()
+                        .min_w_0()
+                        .when_some(label_color, |label, color| label.text_color(color))
+                        .child(label),
+                )
             })
             .when(self.disabled && self.colors.is_none(), |el| el.opacity(0.4))
             .on_click(move |_, window, cx| {
