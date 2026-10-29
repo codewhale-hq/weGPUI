@@ -470,6 +470,7 @@ pub struct DesktopDropdownItem {
     disabled: bool,
     title_size: Option<AbsoluteLength>,
     detail_size: Option<AbsoluteLength>,
+    foreground: Option<Hsla>,
     action: Option<DropdownAction>,
     dispatch: Option<std::rc::Rc<dyn Action>>,
 }
@@ -485,6 +486,7 @@ impl DesktopDropdownItem {
             disabled: false,
             title_size: None,
             detail_size: None,
+            foreground: None,
             action: None,
             dispatch: None,
         }
@@ -527,6 +529,11 @@ impl DesktopDropdownItem {
 
     pub fn detail_size(mut self, size: impl Into<AbsoluteLength>) -> Self {
         self.detail_size = Some(size.into());
+        self
+    }
+
+    pub fn foreground(mut self, color: impl Into<Hsla>) -> Self {
+        self.foreground = Some(color.into());
         self
     }
 
@@ -1059,7 +1066,7 @@ impl RenderOnce for DesktopDropdown {
                         .px(px(10.))
                         .py(px(8.))
                         .rounded(px(5.))
-                        .text_color(colors.foreground)
+                        .text_color(item.foreground.unwrap_or(colors.foreground))
                         .child(div().w(px(20.)).flex_shrink_0().children(icon))
                         .child(
                             div()
