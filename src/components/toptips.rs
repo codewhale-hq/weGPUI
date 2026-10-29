@@ -7,19 +7,22 @@
 
 use crate::Theme;
 use gpui::{prelude::*, *};
-use std::time::{Duration, Instant};
+use std::{
+    sync::Arc,
+    time::{Duration, Instant},
+};
 
 /// Fade-in and fade-out length of [`Toptips`].
 pub const FADE: Duration = Duration::from_millis(100);
 
 /// Caller-owned, cloneable visibility of a [`Toptips`]: open flag, transition start and a
-/// generation counter. Keep one in your view state and pass `&state` when rendering. Under reduced
+/// timer identity. Keep one in your view state and pass `&state` when rendering. Under reduced
 /// motion the fade is instant.
 #[derive(Clone, Default)]
 pub struct ToptipsState {
     visible: bool,
     changed: Option<Instant>,
-    generation: usize,
+    hide_token: Arc<()>,
 }
 
 impl ToptipsState {
@@ -31,11 +34,11 @@ impl ToptipsState {
     pub fn is_open(&self) -> bool {
         self.visible
     }
-    /// Fades the tips in if hidden, bumping the generation, and refreshes the window.
+    /// Fades the tips in if hidden and refreshes the window.
     pub fn show(&mut self, window: &mut Window) {
+        self.hide_token = Arc::new(());
         if !self.visible {
             self.visible = true;
-            self.generation += 1;
             self.reverse();
         }
         window.refresh();
@@ -69,12 +72,12 @@ impl ToptipsState {
         cx: &mut Context<T>,
         get: fn(&mut T) -> &mut ToptipsState,
     ) {
-        let generation = self.generation;
+        let token = self.hide_token.clone();
         cx.spawn_in(window, async move |this, cx| {
             cx.background_executor().timer(delay).await;
             this.update_in(cx, |this, window, cx| {
                 let state = get(this);
-                if state.visible && state.generation == generation {
+                if state.visible && Arc::ptr_eq(&state.hide_token, &token) {
                     state.hide(window);
                     cx.notify();
                 }

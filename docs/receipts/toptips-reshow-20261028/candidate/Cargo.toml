@@ -1,0 +1,20 @@
+[package]
+name = "toptips_macos_candidate"
+version = "0.0.0"
+edition = "2024"
+[dependencies]
+wegpui = { path = "/Volumes/VIXinSSD/CW/artifacts/wegpui-completion-20261025/linux/full-parity/toptips-macos-probe/product" }
+gpui = { package = "gpui-pre", version = "=0.3.9" }
+gpui_platform = { package = "gpui-pre-platform", version = "=0.3.9", features = ["font-kit", "x11", "wayland"] }
+serde_json = "=1.0.154"
+icu_segmenter = { version = "=2.4.0", default-features = false, features = ["compiled_data"] }
+[patch.crates-io]
+gpui-pre = { path = "/Volumes/VIXinSSD/CW/weGPUI/vendor/gpui_pre" }
+gpui-pre-linux = { path = "/Volumes/VIXinSSD/CW/weGPUI/vendor/gpui_pre_linux" }
+gpui-pre-ios = { path = "/Volumes/VIXinSSD/CW/weGPUI/vendor/gpui_pre_ios" }
+accesskit_unix = { path = "/Volumes/VIXinSSD/CW/weGPUI/vendor/accesskit_unix" }
+accesskit_atspi_common = { path = "/Volumes/VIXinSSD/CW/weGPUI/vendor/accesskit_atspi_common" }
+[profile.dev]
+debug = 1
+[profile.dev.package."*"]
+debug = 0

@@ -63,7 +63,8 @@ date picker; see the [set-size receipt](receipts/set-size-20261028/README.md). R
 now offer an option-only container; the gallery keeps decorative actions as siblings.
 See the [radio receipt](receipts/radio-groups-20261028/README.md) for Linux samples and
 remaining reader and platform checks. Repeated toast shows now invalidate older hide timers ([receipt](receipts/toast-reshow-20261028/README.md)).
-The analogous top-tips issue is reproduced but its candidate has not completed runtime checks.
+Repeated top-tips shows now invalidate older hide timers; macOS samples pass while Linux
+candidate runtime checks remain incomplete ([receipt](receipts/toptips-reshow-20261028/README.md)).
 Verification-code countdowns now catch up after a stalled process;
 see the [countdown receipt](receipts/vcode-deadline-20261028/README.md). Explicit font fallback lists now survive an unavailable primary family; see the
 [bounded Linux shaping receipt](receipts/font-fallback-20261028/README.md). The current source also passes a Windows x64 GNU

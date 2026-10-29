@@ -1,0 +1,14 @@
+{"stage":"first","elapsed_ms":102,"open":true,"shows":1,"closes":0,"opens":1}
+{"stage":"second","elapsed_ms":940,"open":true,"shows":2,"closes":0,"opens":1}
+{"stage":"overlap","elapsed_ms":2357,"open":true,"shows":2,"closes":0,"opens":1}
+{"stage":"second_done","elapsed_ms":3300,"open":false,"shows":2,"closes":0,"opens":1}
+{"stage":"single","elapsed_ms":3301,"open":true,"shows":3,"closes":0,"opens":2}
+{"stage":"single_done","elapsed_ms":5661,"open":false,"shows":3,"closes":0,"opens":2}
+{"stage":"before_hide","elapsed_ms":5661,"open":true,"shows":4,"closes":0,"opens":3}
+{"stage":"hide","elapsed_ms":6289,"open":false,"shows":4,"closes":1,"opens":3}
+{"stage":"reopen","elapsed_ms":6918,"open":true,"shows":5,"closes":1,"opens":4}
+{"stage":"reopen_overlap","elapsed_ms":7967,"open":true,"shows":5,"closes":1,"opens":4}
+{"stage":"reopen_done","elapsed_ms":9225,"open":false,"shows":5,"closes":1,"opens":4}
+{"stage":"cancel_show","elapsed_ms":9225,"open":true,"shows":6,"closes":1,"opens":5}
+{"stage":"cancel_hide","elapsed_ms":9225,"open":false,"shows":6,"closes":2,"opens":5}
+{"stage":"cancel_done","elapsed_ms":11586,"open":false,"shows":6,"closes":2,"opens":5}
