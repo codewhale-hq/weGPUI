@@ -1,9 +1,9 @@
 # Reproducible desktop preview source bundle
 
-Current weGPUI needs four matching Cargo compatibility copies. A dependency's `[patch]` table
+Current weGPUI needs five matching Cargo compatibility copies. A dependency's `[patch]` table
 is not inherited, so a standalone crate archive does not provide a complete consumer setup.
 `scripts/package_preview.py` builds a local source bundle containing the library, assets,
-examples, all four vendor copies with their provenance/licences, and a separate consumer under
+examples, all five vendor copies with their provenance/licences, and a separate consumer under
 a workspace that applies the patches at its root.
 
 This is a developer preview source distribution. It is not a crates.io publication, an
@@ -46,8 +46,8 @@ cargo test -p wegpui --locked
 ```
 
 The new consumer has a path dependency on `wegpui` and uses the root patches for `gpui-pre`,
-`gpui-pre-linux`, `accesskit_unix` and `accesskit_atspi_common`. Its lockfile adds only the
-consumer package to the supplied locked graph. Building with `--locked` verifies that graph;
+`gpui-pre-linux`, `gpui-pre-ios`, `accesskit_unix` and `accesskit_atspi_common`. Its lockfile
+adds only the consumer package to the supplied locked graph. Building with `--locked` verifies that graph;
 no dependency version is changed to make a build pass. With the registry sources already
 cached, append `--offline` to the commands above. A first build needs registry access plus
 the operating system's [GPUI system libraries](../CONTRIBUTING.md).
