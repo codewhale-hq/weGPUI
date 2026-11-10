@@ -33,13 +33,15 @@ Applications own their state, network requests, persistence and upload transport
 Run these from the weGPUI checkout after installing Rust 1.95+ and the [platform build requirements](../CONTRIBUTING.md#build-and-check):
 
 ```sh
+cargo run --example adaptive --locked
+cargo run --example adaptive --locked -- --size 390x800
 cargo run --example application --locked
 cargo run --example component_states --locked
 cargo run --example gallery --locked -- --lang zh-Hans --theme dark --care
 cargo doc --no-deps --open
 ```
 
-`application` combines validation, controlled state, local image selection/preview/deletion, theme switching and modal confirmation. `component_states` exercises loading, labels, countdowns and keyboard behavior.
+`adaptive` is one application for desktop and phone: a navigation rail and two resizable panes in a wide window, a bottom tab bar and one pane with Back in a narrow one. It uses [`wegpui::adaptive`](../src/adaptive.rs) and has no platform checks of its own; `bash examples/ios/build-simulator.sh adaptive` bundles the same source for the iOS simulator. `application` combines validation, controlled state, local image selection/preview/deletion, theme switching and modal confirmation. `component_states` exercises loading, labels, countdowns and keyboard behavior.
 
 Built-in control labels use the active `I18n` catalog. English is the default; applications can switch languages at runtime or supply a custom catalog. Text passed to component builders remains application-owned.
 

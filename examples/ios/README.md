@@ -1,6 +1,6 @@
 # Experimental iOS simulator bundle
 
-Both examples select `gpui-pre-ios =0.3.9` on iOS and `gpui-pre-platform =0.3.9`
+The examples select `gpui-pre-ios =0.3.9` on iOS and `gpui-pre-platform =0.3.9`
 on desktop. The desktop platform dependency is excluded on iOS because its
 published 0.3.9 dispatch does not contain an iOS branch. The library's public API
 is unchanged.
@@ -11,6 +11,7 @@ On a **separately authorized Apple host** with Xcode and a simulator SDK:
 rustup target add aarch64-apple-ios-sim
 bash examples/ios/build-simulator.sh gallery
 # Or: bash examples/ios/build-simulator.sh minimal
+# Or: bash examples/ios/build-simulator.sh adaptive
 ```
 
 For an Intel simulator use `IOS_SIMULATOR_TARGET=x86_64-apple-ios` and install
@@ -24,6 +25,7 @@ simulator/device and OS in the resulting receipt.
 The bundle layout and scene manifest follow the Apache-2.0-licensed
 `gpui-pre-ios 0.3.9` example (Zed snapshot `b4ecc454225fc1819e37e890b62df5473b2ba95b`).
 The scene delegate name `GPUIIosSceneDelegate` is supplied by that backend.
+The bundle declares both the iPhone and iPad device families, so it runs at native size on an iPad.
 No generated Xcode project or signing identity is needed for an ad-hoc simulator
 bundle; physical-device provisioning is separate.
 

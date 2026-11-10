@@ -6,7 +6,7 @@ if [[ $(uname -s) != Darwin ]]; then
   exit 1
 fi
 example=${1:-gallery}
-case "$example" in gallery|minimal) ;; *) echo 'Usage: build-simulator.sh [gallery|minimal]' >&2; exit 2 ;; esac
+case "$example" in gallery|minimal|adaptive) ;; *) echo 'Usage: build-simulator.sh [gallery|minimal|adaptive]' >&2; exit 2 ;; esac
 if (( $# > 1 )); then echo 'Unexpected arguments' >&2; exit 2; fi
 root=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 cd "$root"

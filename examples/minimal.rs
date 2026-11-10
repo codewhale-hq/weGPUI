@@ -2,6 +2,7 @@ use gpui::{prelude::*, *};
 use wegpui::{
     Theme,
     accessibility::ModalScope,
+    adaptive::SafeArea,
     components::{
         Cell, Cells, Presence,
         button::Button,
@@ -23,7 +24,7 @@ impl Demo {
 }
 
 impl Render for Demo {
-    fn render(&mut self, _window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         let t = Theme::get(cx);
         let page = cx.entity().downgrade();
         let close = move |confirmed: bool| {
@@ -82,9 +83,7 @@ impl Render for Demo {
                         .presence(&self.dialog)
                         .on_dismiss(close(false)),
                 );
-        #[cfg(target_os = "ios")]
-        let root = platform::safe_area(root, _window, cx);
-        ModalScope::new(root)
+        ModalScope::new(SafeArea::new(root))
     }
 }
 

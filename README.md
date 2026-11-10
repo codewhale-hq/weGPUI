@@ -38,6 +38,7 @@ These recorded macOS captures show rendering, not complete platform or accessibi
 
 - **Desktop surfaces:** chat layouts, conversation rows, messages, contacts, settings, history, menus, dialogs and emoji selection. [Desktop API →](docs/DESKTOP.md)
 - **Controls and content:** buttons, cells, inputs, switches, sliders, navigation, pickers, overlays, image viewers and upload interfaces. [Component modules →](src/components/mod.rs)
+- **Desktop and phone from one view tree:** a size class, safe-area root, rail-or-tab-bar shell and split-or-push panes. [Adaptive module →](src/adaptive.rs) · [Example →](examples/adaptive.rs)
 - **Appearance:** light, dark and care themes, custom brand colours and host palettes.
 - **Language and access:** 14 message catalogs, RTL layouts, keyboard navigation and modal focus handling. Translation, reader and platform qualification remain open. [Localisation →](docs/I18N.md) · [Acceptance →](docs/ACCEPTANCE.md)
 

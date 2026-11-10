@@ -23,6 +23,15 @@ versioning once a release policy is decided. No version has been published.
 
 ### Added
 
+- `wegpui::adaptive`: one view tree for a desktop window and a phone screen. `SizeClass` reads
+  the usable width, `SafeArea` keeps content clear of system insets and the software keyboard,
+  `AdaptiveShell` shows destinations as a rail or a bottom tab bar, and `AdaptiveSplit` shows a
+  list and its detail side by side or one at a time under a `NavigationBar` with Back.
+  `examples/adaptive.rs` runs unchanged on macOS and in the iOS simulator. The examples' own
+  iOS-only safe-area helper is replaced by `SafeArea`.
+  The example iOS bundle now declares the iPad device family.
+  [Receipt](docs/receipts/adaptive-20261109/README.md).
+
 - A reusable Mac desktop collection in `wegpui::desktop`, with nine native gallery pages,
   sampled Mac surfaces, WeUI control accents, compact controls, chat layouts, messages, composer, contacts,
   settings, menus, dialogs, emoji, history and media. The website puts the Rust desktop

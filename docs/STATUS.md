@@ -518,7 +518,7 @@ Alternate calendars, localized digits and seconds remain outside this policy.
   open. Android still needs a backend; neither mobile path has a verified AccessKit adapter.
 - **Composition/identity:** caller-supplied generic children own their semantics; plain-text
   helpers are available for many slots. Repeated helper/loop instances need explicit stable IDs.
-  Footer has an application-supplied bottom safe-area API; automatic host inset discovery remains application-owned.
+  Footer has an application-supplied bottom safe-area API. `adaptive::SafeArea` applies the host's reported insets to a root; `adaptive::AdaptiveShell` and `AdaptiveSplit` choose rail/two-pane or tab-bar/one-pane layouts from the usable width. Pushed-page transitions and a system back gesture are not implemented.
 - **API/release policy:** public naming mixes Navbar/Tabbar and SearchBar with hd/bd/ft helpers.
   Breaking naming, package/version policy and distribution authorization remain owner decisions.
   Approved Cargo path patches must be adopted at downstream workspace roots; current Linux

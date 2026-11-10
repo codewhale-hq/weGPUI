@@ -268,7 +268,7 @@ impl Render for Gallery {
             .on_action(|_: &Back, w, cx| back(w, cx))
             .on_action(|_: &Home, w, cx| home(w, cx));
         #[cfg(target_os = "ios")]
-        let root = platform::safe_area(
+        let root = wegpui::adaptive::SafeArea::new(
             div()
                 .size_full()
                 .flex()
@@ -293,8 +293,6 @@ impl Render for Gallery {
                     )
                 })
                 .child(div().relative().flex_1().min_h_0().child(root)),
-            window,
-            cx,
         );
         wegpui::accessibility::ModalScope::new(root)
     }

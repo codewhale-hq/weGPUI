@@ -35,11 +35,15 @@
 //!   active [`I18n`] catalog ([`i18n`]); English is the default and any language can be
 //!   supplied. Text you pass to builders is used as given.
 //!
+//! - [`adaptive`] chooses between the phone-shaped [`components`] and the window-shaped
+//!   [`desktop`] collection from the room a window has, so one view tree serves both.
+//!
 //! See `docs/STATUS.md` for verified behaviour and known gaps, and `docs/PLATFORMS.md` for
-//! platform support. Desktop builds are exercised on macOS and Linux; mobile platforms are not
-//! supported yet.
+//! platform support. Desktop builds are exercised on macOS and Linux; iOS is experimental and
+//! Android has no backend yet.
 
 pub mod accessibility;
+pub mod adaptive;
 pub mod assets;
 pub mod components;
 #[cfg_attr(doc, doc = include_str!("../docs/DESKTOP.md"))]
