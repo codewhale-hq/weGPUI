@@ -588,30 +588,27 @@ impl<T: Clone + PartialEq + 'static> RenderOnce for DesktopChoicePicker<T> {
             } else if was_open
                 && choices_changed
                 && let Some((_, old_focus)) = old_focused
-            {
-                if !state
+                && !state
                     .read(cx)
                     .handles
                     .iter()
                     .flatten()
                     .any(|focus| focus == &old_focus)
-                {
-                    let scope = state.read(cx).scope_focus.clone();
-                    window.focus(&scope, cx);
-                    let state = state.clone();
-                    let generation = state.read(cx).generation;
-                    window.on_next_frame(move |window, cx| {
-                        if state.read(cx).open
-                            && state.read(cx).generation == generation
-                            && scope.is_focused(window)
-                        {
-                            if state.read(cx).searchable {
-                                let search = state.read(cx).search.clone();
-                                search.update(cx, |input, cx| input.focus(window, cx));
-                            }
-                        }
-                    });
-                }
+            {
+                let scope = state.read(cx).scope_focus.clone();
+                window.focus(&scope, cx);
+                let state = state.clone();
+                let generation = state.read(cx).generation;
+                window.on_next_frame(move |window, cx| {
+                    if state.read(cx).open
+                        && state.read(cx).generation == generation
+                        && scope.is_focused(window)
+                        && state.read(cx).searchable
+                    {
+                        let search = state.read(cx).search.clone();
+                        search.update(cx, |input, cx| input.focus(window, cx));
+                    }
+                });
             }
         }
         let trigger_focus = state.read(cx).trigger_focus.clone();

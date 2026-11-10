@@ -393,6 +393,7 @@ pub struct DesktopDropdownAnchor {
 }
 
 #[derive(IntoElement)]
+#[allow(clippy::type_complexity)]
 pub struct DesktopDropdownTrigger {
     id: ElementId,
     label: SharedString,
@@ -533,13 +534,12 @@ impl RenderOnce for DesktopDropdownTrigger {
                     (self.toggle)(&ClickEvent::default(), window, cx)
                 });
         }
-        let root = match self.root_wrapper {
+        match self.root_wrapper {
             Some(wrapper) => wrapper(root, self.disabled),
             None => crate::accessibility::Semantics::new(root)
                 .disabled(self.disabled)
                 .into_any_element(),
-        };
-        root
+        }
     }
 }
 
@@ -788,13 +788,10 @@ impl DesktopDropdownSubmenuHandle {
                 if !state.open || state.generation != self.generation {
                     return None;
                 }
-                let Some(child) = state
+                let child = state
                     .child
                     .as_mut()
-                    .filter(|child| child.serial == self.serial)
-                else {
-                    return None;
-                };
+                    .filter(|child| child.serial == self.serial)?;
                 if request.is_some_and(|request| request != child.request) {
                     return None;
                 }
@@ -1007,8 +1004,8 @@ fn open_dropdown_child(
             && child.serial == serial
             && child.revision == 0
     });
-    if initial && !handle.replace(entries, None, window, cx) {
-        return;
+    if initial {
+        handle.replace(entries, None, window, cx);
     }
 }
 
@@ -1041,6 +1038,7 @@ fn close_dropdown_child(
     }
 }
 
+#[allow(clippy::too_many_arguments)]
 fn render_dropdown_child(
     state: Entity<DesktopDropdownState>,
     child: DesktopDropdownChild,
@@ -1096,24 +1094,24 @@ fn render_dropdown_child(
             }
         });
     }
-    if child.focus.is_focused(window) {
-        if let Some(first) = child.handles.iter().flatten().next().cloned() {
-            let state = state.clone();
-            let focus = child.focus.clone();
-            window.on_next_frame(move |window, cx| {
-                if state.read(cx).open
-                    && state.read(cx).generation == generation
-                    && state
-                        .read(cx)
-                        .child
-                        .as_ref()
-                        .is_some_and(|child| child.serial == serial && child.revision == revision)
-                    && focus.is_focused(window)
-                {
-                    window.focus(&first, cx);
-                }
-            });
-        }
+    if child.focus.is_focused(window)
+        && let Some(first) = child.handles.iter().flatten().next().cloned()
+    {
+        let state = state.clone();
+        let focus = child.focus.clone();
+        window.on_next_frame(move |window, cx| {
+            if state.read(cx).open
+                && state.read(cx).generation == generation
+                && state
+                    .read(cx)
+                    .child
+                    .as_ref()
+                    .is_some_and(|child| child.serial == serial && child.revision == revision)
+                && focus.is_focused(window)
+            {
+                window.focus(&first, cx);
+            }
+        });
     }
     let child_focus = child.focus.clone();
     let handles = child.handles.clone();
