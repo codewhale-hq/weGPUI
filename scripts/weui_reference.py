@@ -41,7 +41,7 @@ def prepare(source, output, javascript=None):
     original = (source / "dist/example/index.html").read_text()
     if original.count(SDK_TAG) != 1 or original.count(f'src="{JS_URL}"') != 1:
         raise ValueError("Expected exactly the two pinned external script tags")
-    inline_scripts = "\n".join(re.findall(r"<script\b[^>]*>(.*?)</script>", original, re.S))
+    inline_scripts = "\n".join(re.findall(r"<script\b[^>]*>(.*?)</script\s*>", original, re.S | re.I))
     if re.search(r"\bwx\s*(?:\.|\[)", inline_scripts):
         raise ValueError("Example uses the WeChat SDK; it cannot be omitted for this reference")
     license_text = (source / "LICENSE.txt").read_bytes()
